@@ -191,3 +191,7 @@ The build is done when all of the following are true:
 ## Reference material
 
 Reference photos of the park, the gates, the lake, the Promenade, the BeltLine trail surface, the Ponce Kroger, Ponce City Market, and the Krog Street Tunnel are attached. Use them for materials, tree placement, signage, and the look of each landmark. When a photo and OpenStreetMap disagree on layout, trust OpenStreetMap for positions and the photo for appearance.
+
+## 2026-09-10 world expansion — superseding requirements
+
+Elliott added swimming with the bike left at its lake-entry point, separate rider/bike recovery and more realistic crashes, rare gun/knife encounters (bullet hits end the run; knife hits show blood), occasional 50 mph hyperbikes, rollerskaters, linked owner/dog/leash groups, hill exploration, matched trees and benches, a horn and automatic bike lights. The world continues through Krog Street Tunnel with provision for a future different game area. See WORLD-EXPANSION.md for the full requirements and revised implementation/acceptance sequence. Its water recovery and traversable tunnel rules supersede automatic water respawn and an endpoint-only tunnel above. These additions are recorded, not implemented in the current checkpoint.

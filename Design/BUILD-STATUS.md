@@ -63,3 +63,8 @@ Elliott supplied a CrashReportClientEditor crash report at 18:43. The main edito
 The current map is still a geography/physics development build. Fourteen bridge ways, separated path components, full-network riding, landmarks, BeltLine south, race loop, traffic including scooters, audio, and visual/performance polish remain pending. Full V2 scope is not accepted.
 
 Final checkpoint checks: latest 20/20 bike regressions pass (bike-shore-recovery-regression); 727/727 installed pavement samples still pass after the lakebed change (park-pavement-after-lake). Clean normal restart log contains no ensure or fatal error entries. Full gameplay and performance remain unverified.
+
+
+## 2026-09-10 — Expanded world direction
+
+New requirements are captured in WORLD-EXPANSION.md and override conflicting V2 behavior. Current passing water tests validate the old nearby-path recovery only. They do not accept swimming, an independently persistent bike, realistic dismount/remount, hostile encounters, hyperbikes, skaters, horn, automatic lights or post-tunnel transitions. Next foundation work revisits rider/bike separation in the lab before finishing park geography. Full scope has increased; no implementation milestone was completed by this design update.
