@@ -68,3 +68,8 @@ Final checkpoint checks: latest 20/20 bike regressions pass (bike-shore-recovery
 ## 2026-09-10 — Expanded world direction
 
 New requirements are captured in WORLD-EXPANSION.md and override conflicting V2 behavior. Current passing water tests validate the old nearby-path recovery only. They do not accept swimming, an independently persistent bike, realistic dismount/remount, hostile encounters, hyperbikes, skaters, horn, automatic lights or post-tunnel transitions. Next foundation work revisits rider/bike separation in the lab before finishing park geography. Full scope has increased; no implementation milestone was completed by this design update.
+
+
+## 2026-09-10 — Two-stab chase, player gun and coarse compass
+
+Design clarified, implementation pending: first stab dismounts the rider, second before remount kills; voluntary dismount and on-foot shooting are required. The core game is continuously timed during combat and exploration. Death discards the item and resets its randomized search. A coarse four-direction item compass replaces the original warm/cold guidance. Current laboratory and park results do not validate these new systems. Next rider/bike separation work must support voluntary exits, persistent bike ownership and movement-dependent weapon permissions as well as swimming.

@@ -195,3 +195,8 @@ Reference photos of the park, the gates, the lake, the Promenade, the BeltLine t
 ## 2026-09-10 world expansion — superseding requirements
 
 Elliott added swimming with the bike left at its lake-entry point, separate rider/bike recovery and more realistic crashes, rare gun/knife encounters (bullet hits end the run; knife hits show blood), occasional 50 mph hyperbikes, rollerskaters, linked owner/dog/leash groups, hill exploration, matched trees and benches, a horn and automatic bike lights. The world continues through Krog Street Tunnel with provision for a future different game area. See WORLD-EXPANSION.md for the full requirements and revised implementation/acceptance sequence. Its water recovery and traversable tunnel rules supersede automatic water respawn and an endpoint-only tunnel above. These additions are recorded, not implemented in the current checkpoint.
+
+
+## 2026-09-10 combat and compass clarification
+
+The latest Combat and retrieval revision in WORLD-EXPANSION.md is authoritative: first knife hit dismounts and starts a chase; a second before remount is fatal. Voluntary dismount/remount and player gun use on foot are required. The countdown continues throughout movement and combat. Pre-pickup guidance is a coarse N/E/S/W compass, superseding the warm/cold pulse. Death clears the retrieved item and restarts the whole timed run with a newly randomized search. Bloody shooting effects and convincing hit/crash reactions are requested. All of these additions remain pending implementation.
