@@ -7,6 +7,14 @@
     {
       "Name": "Aura",
       "Enabled": true
+    },
+    {
+      "Name": "Water",
+      "Enabled": true
+    },
+    {
+      "Name": "PCG",
+      "Enabled": true
     }
   ],
   "Modules": [
