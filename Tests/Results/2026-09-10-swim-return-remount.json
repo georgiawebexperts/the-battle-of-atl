@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "water_crash_separates_rider",
+      "pass": true,
+      "bike": [
+        -3837.4226603583743,
+        2374.0101330999387,
+        -309.02757848559565
+      ],
+      "reason": "Water \u2014 shoreline recovery",
+      "recovery": 0.0,
+      "speed": 0.0
+    },
+    {
+      "name": "swim_away_with_bike_parked",
+      "pass": true,
+      "swimmer": [
+        -2583.548637178194,
+        2219.43000389297,
+        -333.3338317871094
+      ],
+      "bike": [
+        -3837.4226603583743,
+        2374.0101330999387,
+        -309.02757848559565
+      ]
+    },
+    {
+      "name": "swim_stroke_moves_arms",
+      "pass": true,
+      "hand_travel_cm": 44.203441219173015
+    },
+    {
+      "name": "cannot_remount_while_swimming",
+      "pass": true
+    },
+    {
+      "name": "swim_to_bank_and_walk_back",
+      "pass": true,
+      "position": [
+        -3926.2848540834193,
+        2325.4092720724334,
+        -302.62519684276845
+      ]
+    },
+    {
+      "name": "bike_never_teleported",
+      "pass": true
+    },
+    {
+      "name": "remount_after_swimming",
+      "pass": true
+    }
+  ],
+  "stage": 4
+}

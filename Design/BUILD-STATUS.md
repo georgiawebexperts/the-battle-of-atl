@@ -73,3 +73,18 @@ New requirements are captured in WORLD-EXPANSION.md and override conflicting V2 
 ## 2026-09-10 — Two-stab chase, player gun and coarse compass
 
 Design clarified, implementation pending: first stab dismounts the rider, second before remount kills; voluntary dismount and on-foot shooting are required. The core game is continuously timed during combat and exploration. Death discards the item and resets its randomized search. A coarse four-direction item compass replaces the original warm/cold guidance. Current laboratory and park results do not validate these new systems. Next rider/bike separation work must support voluntary exits, persistent bike ownership and movement-dependent weapon permissions as well as swimming.
+
+
+## 2026-09-10 — Separate rider foundation
+
+Added APiedmontExplorer, a separately possessed Character using the existing clothed rider asset, a chase camera and provisional procedural walk/swim posing. E dismounts and remounts; WASD or arrows move on foot, mouse turns the view. The unoccupied bike remains parked with movement disabled, so changing possession cannot keep applying old riding input. Remount requires proximity and unobstructed access. Voluntary dismount currently requires speed <=350 cm/s (about 7.8 mph), preserves rider momentum at allowed speeds, and rejects overlapping or obstructed lateral exits. This is not the final high-speed crash/ragdoll system.
+
+Eight live lab checks pass in Tests/Results/2026-09-10-explorer-possession.json: E possession transfer, actual walking while bike stays still, remote remount rejection, E remount, resumed pedaling, high-speed dismount rejection, blocked exits, and thin-barrier crossing rejection. Seventeen retained bike/land regressions pass in bike-land-after-explorer; the three old automatic water-respawn cases are explicitly superseded by swimming tests.
+
+Water crashes now attempt rider separation into surface swimming, retaining the bike at its contact position. The rider alone ignores bike-blocking shoreline guards, can move around the lake, exit onto a bank, return on foot and remount. Six actual-park swim/return checks passed before the final no-teleport fallback guard; rerunning those final changes is required before acceptance. Surface swimming uses a simplified Character flight mode constrained to the water surface; underwater diving, full swim animations and complete shoreline/island traversal are not yet accepted. The old automatic recovery remains historical code but is no longer the intended water-entry route; the new failure guard parks the bike instead of relocating it when no exit is available.
+
+Combat, knife pursuit, player gun, blood effects, timer/item compass/restart loop, traffic and the remaining full-world geography/presentation are still pending. This foundation does not complete the expanded game.
+
+Final movement checkpoint: all seven actual-lake cases pass after the no-teleport and immediate-stop changes, including animated hand travel, bank exit and remount. Archived swim-return-remount report supersedes the earlier six-case result. Procedural arm IK replaces the initial T-pose swimmer; visual review remains necessary before claiming presentation quality.
+
+Visual check completed in the running park: rider is prone at the lake surface and arms animate through a stroke instead of holding the T pose. This is a provisional swim animation, not final realistic presentation. No full milestone or full-game acceptance is implied.

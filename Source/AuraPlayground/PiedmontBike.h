@@ -5,6 +5,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/HUD.h"
 #include "PiedmontBike.generated.h"
+class APiedmontExplorer;
 class UCapsuleComponent;
 class UPoseableMeshComponent;
 class UCameraComponent;
@@ -67,10 +68,15 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Handlebar;
  UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
+ UPROPERTY(BlueprintReadOnly) bool bDismounted=false;
+ UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontExplorer> Explorer;
+ UFUNCTION(BlueprintCallable) bool Dismount(bool WaterEntry=false);
+ bool Remount(APiedmontExplorer* ReturningRider);
  UFUNCTION(BlueprintCallable) void ToggleCamera();
  UFUNCTION(BlueprintCallable) void ResetRide();
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
 private:
+ void Interact();
  void PedalInput(float V);void Steering(float V);void BrakeOn();void BrakeOff();void GearUp();void GearDown();
  void PoseRider(float Dt);
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel,FrontFork;

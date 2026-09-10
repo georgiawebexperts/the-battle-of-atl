@@ -3,6 +3,8 @@
 #include "Misc/FileHelper.h"
 #if WITH_EDITOR
 #include "Editor.h"
+#include "Engine/StaticMeshActor.h"
+#include "Components/StaticMeshComponent.h"
 #include "WaterBodyActor.h"
 #include "WaterBodyComponent.h"
 #include "Engine/World.h"
@@ -51,5 +53,19 @@ bool UPiedmontWorldTools::RefreshWaterBody(AActor* WaterActor){
  Water->MarkPackageDirty();return true;
 #else
  return false;
+#endif
+}
+
+AActor* UPiedmontWorldTools::SpawnValidationObstacle(UObject* WorldContext,FVector Location,FVector Scale){
+#if WITH_EDITOR
+ UWorld* World=WorldContext?WorldContext->GetWorld():nullptr;if(!World||World->WorldType!=EWorldType::PIE)return nullptr;
+ FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+ auto* Actor=World->SpawnActor<AStaticMeshActor>(Location,FRotator::ZeroRotator,Params);
+ if(!Actor)return nullptr;
+ Actor->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
+ Actor->GetStaticMeshComponent()->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));
+ Actor->SetActorScale3D(Scale);Actor->GetStaticMeshComponent()->SetCollisionProfileName(TEXT("BlockAll"));return Actor;
+#else
+ return nullptr;
 #endif
 }

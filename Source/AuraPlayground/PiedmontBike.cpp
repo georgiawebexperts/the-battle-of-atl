@@ -1,4 +1,6 @@
 #include "PiedmontBike.h"
+#include "PiedmontExplorer.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontPathSpline.h"
 #include "Components/SplineComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -22,6 +24,13 @@ float UPiedmontBikeMovement::GearLimit() const {static const float Caps[]={310,4
 void UPiedmontBikeMovement::Shift(int D){Gear=FMath::Clamp(Gear+D,1,7);}
 void UPiedmontBikeMovement::Crash(const FString& Reason){
  if(Recovery>0)return;
+ if(Reason.StartsWith(TEXT("Water"))){
+  if(LastCrash==Reason&&bRecoveryHold&&Speed<=1)return;
+  Crashes++;LastCrash=Reason;
+  if(auto* Bike=Cast<APiedmontBike>(PawnOwner))if(Bike->Dismount(true))return;
+  // A blocked exit must never teleport the bike away from its water contact.
+  Speed=0;VerticalSpeed=0;Pedal=0;bRecoveryHold=true;return;
+ }
  Recovery=4.f;Crashes++;LastCrash=Reason;Speed=0;VerticalSpeed=0;Velocity=FVector::ZeroVector;
 }
 void UPiedmontBikeMovement::Respawn(){
@@ -64,7 +73,7 @@ void UPiedmontBikeMovement::Respawn(){
 }
 void UPiedmontBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Fn){
  Super::TickComponent(Dt,Type,Fn);if(!PawnOwner||!UpdatedComponent||ShouldSkipUpdate(Dt))return;
- float Remaining=FMath::Min(Dt,.12f);while(Remaining>SMALL_NUMBER){const float StepTime=FMath::Min(Remaining,1.f/120);Step(StepTime);Remaining-=StepTime;}
+ float Remaining=FMath::Min(Dt,.12f);while(Remaining>SMALL_NUMBER&&IsComponentTickEnabled()){const float StepTime=FMath::Min(Remaining,1.f/120);Step(StepTime);Remaining-=StepTime;}
  UpdateComponentVelocity();
 }
 void UPiedmontBikeMovement::Step(float Dt){
@@ -189,7 +198,7 @@ void APiedmontBike::BeginPlay(){
  }
 }
 void APiedmontBike::SetupPlayerInputComponent(UInputComponent* I){
- Super::SetupPlayerInputComponent(I);I->BindAxis(TEXT("RidePedal"),this,&APiedmontBike::PedalInput);I->BindAxis(TEXT("RideSteer"),this,&APiedmontBike::Steering);
+ Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::E,IE_Pressed,this,&APiedmontBike::Interact);I->BindAxis(TEXT("RidePedal"),this,&APiedmontBike::PedalInput);I->BindAxis(TEXT("RideSteer"),this,&APiedmontBike::Steering);
  I->BindAction(TEXT("RideBrake"),IE_Pressed,this,&APiedmontBike::BrakeOn);I->BindAction(TEXT("RideBrake"),IE_Released,this,&APiedmontBike::BrakeOff);
  I->BindAction(TEXT("RideGearUp"),IE_Pressed,this,&APiedmontBike::GearUp);I->BindAction(TEXT("RideGearDown"),IE_Pressed,this,&APiedmontBike::GearDown);
  I->BindAction(TEXT("RideCamera"),IE_Pressed,this,&APiedmontBike::ToggleCamera);I->BindAction(TEXT("RideReset"),IE_Pressed,this,&APiedmontBike::ResetRide);
@@ -197,9 +206,9 @@ void APiedmontBike::SetupPlayerInputComponent(UInputComponent* I){
 void APiedmontBike::PedalInput(float V){Ride->Pedal=V;}void APiedmontBike::Steering(float V){Ride->Steer=V;}
 void APiedmontBike::BrakeOn(){Ride->Brake=1;}void APiedmontBike::BrakeOff(){Ride->Brake=0;}
 void APiedmontBike::GearUp(){Ride->Shift(1);}void APiedmontBike::GearDown(){Ride->Shift(-1);}
-void APiedmontBike::ResetRide(){Ride->Respawn();}void APiedmontBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
+void APiedmontBike::ResetRide(){if(!bDismounted&&!Ride->LastCrash.StartsWith(TEXT("Water")))Ride->Respawn();}void APiedmontBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void APiedmontBike::Tick(float Dt){
- Super::Tick(Dt);const float CrashRoll=Ride->Recovery>0?FMath::Min(80.f,(4-Ride->Recovery)*140):Ride->Lean;
+ Super::Tick(Dt);if(bDismounted)return;const float CrashRoll=Ride->Recovery>0?FMath::Min(80.f,(4-Ride->Recovery)*140):Ride->Lean;
  Visual->SetRelativeRotation(FRotator(Ride->Pitch,0,CrashRoll));
  // Procedural dismount: the rider separates from the saddle during the fall.
  float Fall=Ride->Recovery>0?FMath::Clamp((4-Ride->Recovery)*2.f,0.f,1.f):0.f;
@@ -232,12 +241,19 @@ void APiedmontBike::PoseRider(float Dt){
  Rider->MarkRefreshTransformDirty();
 }
 void APiedmontRideHUD::DrawHUD(){
- Super::DrawHUD();auto* Bike=Cast<APiedmontBike>(GetOwningPawn());if(!Canvas||!Bike)return;auto* M=Bike->Ride.Get();
+ Super::DrawHUD();auto* Bike=Cast<APiedmontBike>(GetOwningPawn());
+ if(auto* Person=Cast<APiedmontExplorer>(GetOwningPawn())){
+  if(!Canvas)return;
+  DrawRect(FLinearColor(.015,.027,.036,.9),24,24,680,82);
+  DrawText(Person->bSwimming?TEXT("SWIMMING  /  WASD or arrows move  /  Mouse look"):TEXT("ON FOOT  /  WASD or arrows move  /  Mouse look"),FColor::White,40,40,nullptr,1.5f);
+  DrawText(Person->bSwimming?TEXT("Swim to shore, then return to your bike  /  E remount"):TEXT("E remount near your bike  /  Bike stays where you left it"),FColor(89,229,203),40,75,nullptr,1.2f);return;
+ }
+ if(!Canvas||!Bike)return;auto* M=Bike->Ride.Get();
  float S=Canvas->SizeX/1280.f;auto Text=[&](FString T,float X,float Y,FColor C,float Size){DrawText(T,C,X*S,Y*S,nullptr,Size*S);};
  DrawRect(FLinearColor(.015,.027,.036,.88),24*S,24*S,700*S,96*S);
  Text(TEXT("PIEDMONT RIDE / PHYSICS LAB  •  BUILD 0.2.1"),40,37,FColor::White,1.65);
  Text(TEXT("W pedal   ↑ / ↓ gears   ← / → or A / D steer   SPACE brake"),40,72,FColor(193,219,220),1.25);
- Text(TEXT("TAB / SHIFT camera   R recover to last safe path   ESC stop"),40,95,FColor(193,219,220),1.05);
+ Text(TEXT("TAB / SHIFT camera   E dismount below 8 MPH   R recover   ESC stop"),40,95,FColor(193,219,220),1.05);
  float Y=Canvas->SizeY/S-140;
  DrawRect(FLinearColor(.015,.027,.036,.9),24*S,Y*S,390*S,112*S);
  Text(FString::Printf(TEXT("%02.0f MPH     GEAR %d / 7"),M->Speed*.0223694,M->Gear),42,Y+16,FColor(89,229,203),2.5);
@@ -270,4 +286,53 @@ bool APiedmontWaterHazard::ContainsBike(const FVector& WorldPoint) const {
   return Inside;
  };
  return Contains(Polygon)&&!Contains(IslandPolygon);
+}
+
+void APiedmontBike::Interact(){Dismount();}
+bool APiedmontBike::Dismount(bool WaterEntry){
+ auto* PC=Cast<APlayerController>(GetController());
+ if(!PC||bDismounted||Ride->Recovery>0)return false;
+ // Keep dismounts controlled; high-speed falls are handled by crash logic.
+ if(!WaterEntry&&Ride->Speed>350)return false;
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(PiedmontDismount),false,this);
+ FVector Exit;bool Found=false;
+ if(WaterEntry){
+  for(float Distance:{130.f,220.f,320.f}){
+   const FVector Ahead=GetActorLocation()+GetActorForwardVector()*Distance;
+   for(const auto& Water:Ride->WaterHazards)if(Water.IsValid()){
+    const FVector Target(Ahead.X,Ahead.Y,Water->GetActorLocation().Z+100);
+    if(Water->ContainsBike(Target)&&!GetWorld()->OverlapBlockingTestByChannel(Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q)){Exit=Target;Found=true;break;}
+   }
+   if(Found)break;
+  }
+ }
+ for(float Side:{1.f,-1.f}){
+  if(Found)break;
+  const FVector Candidate=GetActorLocation()+GetActorRightVector()*Side*105;
+  FHitResult Ground;
+  if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,80),Candidate-FVector(0,0,200),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.65f)continue;
+  const FVector Target=Ground.ImpactPoint+FVector(0,0,92);
+  bool Wet=false;for(const auto& Water:Ride->WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Target))Wet=true;
+  if(Wet||GetWorld()->OverlapBlockingTestByChannel(Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
+  FHitResult Crossing;
+  if(GetWorld()->SweepSingleByChannel(Crossing,GetActorLocation(),Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
+  Exit=Target;Found=true;break;
+ }
+ if(!Found)return false;
+ FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
+ auto* Person=GetWorld()->SpawnActor<APiedmontExplorer>(APiedmontExplorer::StaticClass(),Exit,GetActorRotation(),Params);if(!Person)return false;
+ Person->Bike=this;
+ const FVector Momentum=GetActorForwardVector()*Ride->Speed;
+ Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->Speed=0;Ride->Velocity=FVector::ZeroVector;Ride->SetComponentTickEnabled(false);
+ bDismounted=true;Explorer=Person;Rider->SetVisibility(false);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());
+ if(!WaterEntry)Person->LaunchCharacter(Momentum,false,false);return true;
+}
+bool APiedmontBike::Remount(APiedmontExplorer* Person){
+ if(!bDismounted||Person!=Explorer||!IsValid(Person)||FVector::DistSquared(Person->GetActorLocation(),GetActorLocation())>FMath::Square(180.f))return false;
+ auto* PC=Cast<APlayerController>(Person->GetController());if(!PC)return false;
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(PiedmontRemount),false,this);Q.AddIgnoredActor(Person);
+ FHitResult Hit;if(GetWorld()->LineTraceSingleByChannel(Hit,Person->GetActorLocation(),GetActorLocation(),ECC_Visibility,Q))return false;
+ PC->Possess(this);PC->SetControlRotation(GetActorRotation());bDismounted=false;Explorer=nullptr;
+ Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bRecoveryHold=true;Ride->SetComponentTickEnabled(true);Rider->SetVisibility(!bFirstPerson);
+ Person->Destroy();return true;
 }

@@ -19,6 +19,9 @@ cases=[('gear_up',.4,(0,4000,100),3,0,['Up']),('gear_down',.4,(0,4000,100),3,0,[
  ('downhill_coasting',2,(8700,0,582),7,400,[]),
  ('airborne_water_entry',3,(16000,0,600),4,500,[]),
  ('gentle_turn',1,(0,4000,100),3,400,['Right'])]
+if globals().get('WORLD_JOB',{}).get('land_only'):
+ cases=[c for c in cases if c[0] not in {'shoreline','recovery','airborne_water_entry'}]
+ report['scope']='17 retained land/bike cases; water respawn superseded by separate swimming integration'
 index=-1;active=None;last_world_time=None;elapsed=0;rows=[];started=time.monotonic()
 def snapshot(p,m):
  l=p.get_actor_location()
