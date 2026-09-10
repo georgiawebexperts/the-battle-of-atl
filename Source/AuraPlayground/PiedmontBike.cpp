@@ -8,6 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Engine/World.h"
+#include "EngineUtils.h"
 #include "Engine/Canvas.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
@@ -18,13 +19,13 @@ UPiedmontBikeMovement::UPiedmontBikeMovement(){PrimaryComponentTick.bCanEverTick
 float UPiedmontBikeMovement::GearLimit() const {static const float Caps[]={310,490,670,850,1040,1220,1430};return Caps[FMath::Clamp(Gear-1,0,6)];}
 void UPiedmontBikeMovement::Shift(int D){Gear=FMath::Clamp(Gear+D,1,7);}
 void UPiedmontBikeMovement::Crash(const FString& Reason){
- if(Recovery>0||Invulnerability>0)return;
+ if(Recovery>0)return;
  Recovery=4.f;Crashes++;LastCrash=Reason;Speed=0;VerticalSpeed=0;Velocity=FVector::ZeroVector;
 }
 void UPiedmontBikeMovement::Respawn(){
  if(!UpdatedComponent)return;
  UpdatedComponent->SetWorldLocationAndRotation(SafeLocation,SafeRotation,false,nullptr,ETeleportType::TeleportPhysics);
- Speed=0;VerticalSpeed=0;Lean=0;Recovery=0;Invulnerability=1.5f;Velocity=FVector::ZeroVector;
+ Speed=0;VerticalSpeed=0;Lean=0;Recovery=0;BrakePressure=0;SteeringRack=0;GripOverload=0;Velocity=FVector::ZeroVector;
 }
 void UPiedmontBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Fn){
  Super::TickComponent(Dt,Type,Fn);if(!PawnOwner||!UpdatedComponent||ShouldSkipUpdate(Dt))return;
@@ -32,9 +33,10 @@ void UPiedmontBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorCompone
  UpdateComponentVelocity();
 }
 void UPiedmontBikeMovement::Step(float Dt){
- Invulnerability=FMath::Max(0.f,Invulnerability-Dt);
+ BrakePressure=FMath::FInterpConstantTo(BrakePressure,Brake,Dt,Brake>0?3.f:6.f);
  if(Recovery>0){Recovery-=Dt;if(Recovery<=0)Respawn();return;}
  const FVector Location=UpdatedComponent->GetComponentLocation();
+ for(const auto& Water:WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Location)){Crash(TEXT("Water — shoreline recovery"));return;}
  if(Location.Z<-2000){Crash(TEXT("Off course"));return;}
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BikeGround),false,PawnOwner);
  const FVector Forward=UpdatedComponent->GetForwardVector();
@@ -49,17 +51,20 @@ void UPiedmontBikeMovement::Step(float Dt){
  // Power and gear-dependent wheel torque; high gears are intentionally weak off the line.
  const float Cap=GearLimit()*(bGrass?.6f:1.f);
  static const float Accel[]={290,235,195,163,138,119,104};
- float Drive=Pedal>0?Accel[Gear-1]*FMath::Clamp((Cap-Speed)/120.f,0.f,1.f):0;
+ float Drive=Pedal>0&&BrakePressure<.01f?Accel[Gear-1]*FMath::Clamp((Cap-Speed)/120.f,0.f,1.f):0;
  float Resistance=(Speed>1?14.f+Speed*Speed*.000027f:0.f)*(bGrass?2.8f:1.f);
  float Acceleration=(bGrounded?Drive-Resistance+980.f*Slope:0.f);
- if(Brake>0&&bGrounded)Acceleration-=FMath::Min(Speed/FMath::Max(Dt,.001f),620.f*Grip);
+ if(BrakePressure>0&&bGrounded)Acceleration-=FMath::Min(Speed/FMath::Max(Dt,.001f),620.f*Grip*BrakePressure);
  Speed=FMath::Clamp(Speed+Acceleration*Dt,0.f,1650.f);TopSpeed=FMath::Max(TopSpeed,Speed);
- const float WheelSteer=FMath::DegreesToRadians(Steer*FMath::Lerp(32.f,8.f,FMath::Clamp(Speed/1400.f,0.f,1.f)));
+ SteeringRack=FMath::FInterpConstantTo(SteeringRack,Steer,Dt,2.2f);
+ const float WheelSteer=FMath::DegreesToRadians(SteeringRack*FMath::Lerp(32.f,8.f,FMath::Clamp(Speed/1400.f,0.f,1.f)));
  const float YawRate=bGrounded?(Speed/118.f)*FMath::Tan(WheelSteer):0.f;
  const float LateralAccel=Speed*YawRate;
  const float LeanTarget=FMath::RadiansToDegrees(FMath::Atan2(LateralAccel,980.f));
  Lean=FMath::FInterpTo(Lean,LeanTarget,Dt,5.f);
- if(bGrounded&&Speed>650&&FMath::Abs(LateralAccel)>980.f*Grip*(Brake>0?.48f:.88f)){Crash(TEXT("Traction lost — ease steering / braking"));return;}
+ const bool Overloaded=bGrounded&&Speed>650&&FMath::Abs(LateralAccel)>980.f*Grip*FMath::Lerp(.88f,.48f,BrakePressure);
+ GripOverload=Overloaded?GripOverload+Dt:FMath::Max(0.f,GripOverload-Dt*2.f);
+ if(GripOverload>.2f){Crash(TEXT("Traction lost — ease steering / braking"));return;}
  FRotator Heading=UpdatedComponent->GetComponentRotation();Heading.Yaw+=FMath::RadiansToDegrees(YawRate)*Dt;Heading.Pitch=Heading.Roll=0;
  const FVector NewForward=Heading.Vector();
  if(bGrounded){VerticalSpeed=0;Pitch=FMath::FInterpTo(Pitch,(Front.bBlockingHit&&Rear.bBlockingHit)?FMath::RadiansToDegrees(FMath::Atan2(Front.ImpactPoint.Z-Rear.ImpactPoint.Z,120.f)):0,Dt,7.f);}
@@ -134,6 +139,7 @@ APiedmontBike::APiedmontBike(){
 UPawnMovementComponent* APiedmontBike::GetMovementComponent() const{return Ride;}
 void APiedmontBike::BeginPlay(){
  Super::BeginPlay();Ride->SafeLocation=GetActorLocation();Ride->SafeRotation=GetActorRotation();
+ for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)Ride->WaterHazards.Add(*It);
  if(auto* Mesh=Cast<USkeletalMesh>(Rider->GetSkinnedAsset())){
   const auto& Ref=Mesh->GetRefSkeleton();
   for(int32 I=0;I<Ref.GetNum();++I){Parents.Add(Ref.GetParentIndex(I));BoneNames.Add(Ref.GetBoneName(I));FTransform T=Ref.GetRefBonePose()[I];if(Parents[I]>=0)T=T*ReferencePose[Parents[I]];ReferencePose.Add(T);}
@@ -186,7 +192,7 @@ void APiedmontRideHUD::DrawHUD(){
  Super::DrawHUD();auto* Bike=Cast<APiedmontBike>(GetOwningPawn());if(!Canvas||!Bike)return;auto* M=Bike->Ride.Get();
  float S=Canvas->SizeX/1280.f;auto Text=[&](FString T,float X,float Y,FColor C,float Size){DrawText(T,C,X*S,Y*S,nullptr,Size*S);};
  DrawRect(FLinearColor(.015,.027,.036,.88),24*S,24*S,700*S,96*S);
- Text(TEXT("PIEDMONT RIDE / PHYSICS LAB  •  BUILD 0.2.0"),40,37,FColor::White,1.65);
+ Text(TEXT("PIEDMONT RIDE / PHYSICS LAB  •  BUILD 0.2.1"),40,37,FColor::White,1.65);
  Text(TEXT("W pedal   ↑ / ↓ gears   ← / → or A / D steer   SPACE brake"),40,72,FColor(193,219,220),1.25);
  Text(TEXT("TAB / SHIFT camera   R recover to last safe path   ESC stop"),40,95,FColor(193,219,220),1.05);
  float Y=Canvas->SizeY/S-140;
@@ -202,4 +208,23 @@ void APiedmontBike::ValidationKey(FName Key,bool Pressed){
 #if WITH_EDITOR
  if(auto* PC=Cast<APlayerController>(GetController()))PC->InputKey(FInputKeyParams(FKey(Key),Pressed?IE_Pressed:IE_Released,Pressed?1.0:0.0));
 #endif
+}
+
+APiedmontWaterHazard::APiedmontWaterHazard(){
+ RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("WaterBoundary"));
+ PrimaryActorTick.bCanEverTick=false;
+}
+bool APiedmontWaterHazard::ContainsBike(const FVector& WorldPoint) const {
+ if(Polygon.Num()<3)return false;
+ const FVector P=GetActorTransform().InverseTransformPosition(WorldPoint);
+ if(P.Z>DetectionHeight)return false;
+ bool Inside=false;
+ for(int I=0,J=Polygon.Num()-1;I<Polygon.Num();J=I++){
+  const FVector& A=Polygon[I];const FVector& B=Polygon[J];
+  if((A.Y>P.Y)!=(B.Y>P.Y)){
+   double EdgeX=(B.X-A.X)*(P.Y-A.Y)/(B.Y-A.Y)+A.X;
+   if(P.X<EdgeX)Inside=!Inside;
+  }
+ }
+ return Inside;
 }

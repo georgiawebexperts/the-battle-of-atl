@@ -46,5 +46,15 @@ if _v2_test_request.exists():
         if time.monotonic()-_glide_started<10:return
         unreal.unregister_slate_post_tick_callback(_v2_test_handle)
         _v2_test_request.unlink()
+        exec((_glide_root/'Scripts'/'upgrade_v2_lab.py').read_text(),{'__name__':'__main__'})
         exec((_glide_root/'Scripts'/'validate_v2_bike.py').read_text(),{'__name__':'__main__'})
     _v2_test_handle=unreal.register_slate_post_tick_callback(_v2_validate)
+_terrain_request=_glide_root/'Scripts'/'request-measured-landscape'
+if _terrain_request.exists():
+    def _terrain_build(delta):
+        global _terrain_handle
+        if time.monotonic()-_glide_started<10:return
+        unreal.unregister_slate_post_tick_callback(_terrain_handle)
+        _terrain_request.unlink()
+        exec((_glide_root/'Scripts'/'build_measured_landscape.py').read_text(),{'__name__':'__main__'})
+    _terrain_handle=unreal.register_slate_post_tick_callback(_terrain_build)

@@ -1,7 +1,7 @@
 """In-engine integration tests. Uses actual PlayerController key events, collision and game ticks."""
 import unreal,pathlib,json,traceback,time
 root=pathlib.Path(unreal.Paths.project_dir())
-report={'build':'0.2.0-dev','status':'running','cases':[]}
+report={'build':'0.2.1-dev','status':'running','cases':[]}
 # name, duration, start, gear, initial speed, held keys
 cases=[('gear_up',.4,(0,4000,100),3,0,['Up']),('gear_down',.4,(0,4000,100),3,0,['Down']),('handlebar_camera',.4,(0,4000,100),1,0,['Tab']),('chase_camera',.4,(0,4000,100),1,0,['LeftShift']),('low_gear_acceleration',2.5,(0,4000,100),1,0,['W']),
  ('high_gear_acceleration',2.5,(0,4000,100),7,0,['W']),
@@ -13,14 +13,26 @@ cases=[('gear_up',.4,(0,4000,100),3,0,['Up']),('gear_down',.4,(0,4000,100),3,0,[
  ('solid_wall',2.5,(1000,-2000,100),4,700,['W']),
  ('shoreline',2.5,(12000,0,100),4,700,['W']),
  ('lean_crash',2,(0,4000,100),7,1400,['Right']),
- ('recovery',6,(12000,0,100),4,700,['W'])]
+ ('recovery',6,(12000,0,100),4,700,['W']),
+ ('brake_pressure',.22,(21000,0,100),4,800,['SpaceBar']),
+ ('grass_braking',3,(21000,3000,100),4,800,['SpaceBar']),
+ ('downhill_coasting',2,(8700,0,582),7,400,[]),
+ ('airborne_water_entry',3,(16000,0,600),4,500,[]),
+ ('gentle_turn',1,(0,4000,100),3,400,['Right'])]
 index=-1;active=None;last_world_time=None;elapsed=0;rows=[];started=time.monotonic()
 def snapshot(p,m):
  l=p.get_actor_location()
  f=p.get_editor_property('rider').get_bone_location_by_name('Foot_L',unreal.BoneSpaces.COMPONENT_SPACE)
- return {'speed':m.get_editor_property('speed'),'gear':m.get_editor_property('gear'),'lean':m.get_editor_property('lean'),'grass':m.get_editor_property('grass'),'grounded':m.get_editor_property('grounded'),'recovery':m.get_editor_property('recovery'),'crashes':m.get_editor_property('crashes'),'reason':str(m.get_editor_property('last_crash')),'location':[l.x,l.y,l.z],'first_person':p.get_editor_property('first_person'),'pedal_foot':[f.x,f.y,f.z]}
+ return {'brake_pressure':m.get_editor_property('brake_pressure'),'speed':m.get_editor_property('speed'),'gear':m.get_editor_property('gear'),'lean':m.get_editor_property('lean'),'grass':m.get_editor_property('grass'),'grounded':m.get_editor_property('grounded'),'recovery':m.get_editor_property('recovery'),'crashes':m.get_editor_property('crashes'),'reason':str(m.get_editor_property('last_crash')),'location':[l.x,l.y,l.z],'first_person':p.get_editor_property('first_person'),'pedal_foot':[f.x,f.y,f.z]}
 def check(name,r):
  peak=max(x['speed'] for x in r);end=r[-1]['speed'];crashed=any(x['recovery']>0 for x in r)
+ if name=='brake_pressure':return .4<r[-1]['brake_pressure']<.9 and r[0]['brake_pressure']<.3
+ if name=='grass_braking':
+  pavement=next(x for x in report['cases'] if x['name']=='braking')
+  return end<5 and any(x['grass'] for x in r) and r[-1]['location'][0]-r[0]['location'][0]>(pavement['end']['location'][0]-pavement['start']['location'][0])*1.15
+ if name=='downhill_coasting':return peak>500 and r[-1]['location'][2]<r[0]['location'][2]-100 and not crashed
+ if name=='airborne_water_entry':return crashed and any('Water' in x['reason'] for x in r)
+ if name=='gentle_turn':return not crashed and max(abs(x['lean']) for x in r)>5 and abs(r[-1]['location'][1]-r[0]['location'][1])>50
  if name=='gear_up':return r[-1]['gear']==4
  if name=='gear_down':return r[-1]['gear']==2
  if name=='handlebar_camera':return r[-1]['first_person']

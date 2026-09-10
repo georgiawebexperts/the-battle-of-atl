@@ -1,0 +1,558 @@
+{
+  "status": "needs_review",
+  "main_component_nodes": 1844,
+  "disconnected_components": [
+    {
+      "node_count": 13,
+      "osm_ids": [
+        185624615
+      ],
+      "tags": [
+        {
+          "bicycle": "designated",
+          "foot": "designated",
+          "highway": "path",
+          "segregated": "no",
+          "surface": "asphalt"
+        }
+      ],
+      "gap_to_main_real_m": 8.11928968021637,
+      "nearest_pair_utm": [
+        [
+          743285.8394300082,
+          3742025.7087608203
+        ],
+        [
+          743293.6609039654,
+          3742027.8876160355
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 11,
+      "osm_ids": [
+        635800753,
+        635800755
+      ],
+      "tags": [
+        {
+          "footway": "sidewalk",
+          "highway": "footway",
+          "surface": "concrete"
+        },
+        {
+          "footway": "sidewalk",
+          "highway": "footway"
+        }
+      ],
+      "gap_to_main_real_m": 1.9350010772874353,
+      "nearest_pair_utm": [
+        [
+          742750.2477402313,
+          3741562.4070387045
+        ],
+        [
+          742752.1804520071,
+          3741562.5011363183
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 9,
+      "osm_ids": [
+        226119770
+      ],
+      "tags": [
+        {
+          "abandoned:railway": "rail",
+          "bicycle": "designated",
+          "foot": "designated",
+          "highway": "cycleway",
+          "name": "Atlanta Beltline Northeast Trail",
+          "old_railway_operator": "Southern",
+          "oneway": "no",
+          "railway": "abandoned",
+          "segregated": "no",
+          "surface": "gravel"
+        }
+      ],
+      "gap_to_main_real_m": 35.23891439745158,
+      "nearest_pair_utm": [
+        [
+          743453.8321577306,
+          3742445.8337287465
+        ],
+        [
+          743488.752189421,
+          3742441.1037737094
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 8,
+      "osm_ids": [
+        503237945
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 10.991548708455465,
+      "nearest_pair_utm": [
+        [
+          743234.2420487081,
+          3741824.0638170764
+        ],
+        [
+          743237.3101188953,
+          3741813.5091456776
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 7,
+      "osm_ids": [
+        1384353621,
+        1384353622,
+        1384366241,
+        1384366242
+      ],
+      "tags": [
+        {
+          "footway": "sidewalk",
+          "highway": "footway"
+        },
+        {
+          "bridge": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "layer": "1"
+        },
+        {
+          "footway": "sidewalk",
+          "highway": "footway"
+        },
+        {
+          "bridge": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "layer": "1"
+        }
+      ],
+      "gap_to_main_real_m": 89.52283519525938,
+      "nearest_pair_utm": [
+        [
+          743439.771516783,
+          3742579.9827295216
+        ],
+        [
+          743511.7687224371,
+          3742526.7780267275
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Bridge elevation/connection"
+    },
+    {
+      "node_count": 5,
+      "osm_ids": [
+        1089185057,
+        1089185058
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        },
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 14.554182320159576,
+      "nearest_pair_utm": [
+        [
+          743250.3847975401,
+          3741834.997715714
+        ],
+        [
+          743264.9344961115,
+          3741834.6364755
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 4,
+      "osm_ids": [
+        1029408565,
+        1029408566
+      ],
+      "tags": [
+        {
+          "highway": "footway"
+        },
+        {
+          "highway": "footway"
+        }
+      ],
+      "gap_to_main_real_m": 3.428166338641864,
+      "nearest_pair_utm": [
+        [
+          743399.527658211,
+          3742152.0559146423
+        ],
+        [
+          743400.6870570394,
+          3742155.282076263
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 3,
+      "osm_ids": [
+        61490791
+      ],
+      "tags": [
+        {
+          "bicycle": "designated",
+          "highway": "pedestrian",
+          "name": "Park Drive Northeast",
+          "tiger:cfcc": "A41",
+          "tiger:county": "Fulton, GA",
+          "tiger:name_base": "Park",
+          "tiger:name_direction_suffix": "NE",
+          "tiger:name_type": "Dr",
+          "tiger:reviewed": "no",
+          "tiger:zip_left": "30306",
+          "tiger:zip_right": "30306"
+        }
+      ],
+      "gap_to_main_real_m": 0.0988303146537485,
+      "nearest_pair_utm": [
+        [
+          743446.6381987858,
+          3741560.892109726
+        ],
+        [
+          743446.6213460636,
+          3741560.7947268896
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 3,
+      "osm_ids": [
+        182392760
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "source": "bing_imagery",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 17.827745580699613,
+      "nearest_pair_utm": [
+        [
+          743363.2497979389,
+          3741470.974555981
+        ],
+        [
+          743348.0893331683,
+          3741480.3547916086
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 3,
+      "osm_ids": [
+        182392761
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "source": "bing_imagery",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 11.98214541651737,
+      "nearest_pair_utm": [
+        [
+          743382.1738138227,
+          3741469.5486067687
+        ],
+        [
+          743393.3410920429,
+          3741465.2053699647
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 3,
+      "osm_ids": [
+        1209254623
+      ],
+      "tags": [
+        {
+          "highway": "footway"
+        }
+      ],
+      "gap_to_main_real_m": 19.53761380638643,
+      "nearest_pair_utm": [
+        [
+          743073.0501467178,
+          3741781.2130257892
+        ],
+        [
+          743086.9568280207,
+          3741767.489958771
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        182398937
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 22.523459184172285,
+      "nearest_pair_utm": [
+        [
+          743215.1485009606,
+          3741834.3427732396
+        ],
+        [
+          743198.8491294791,
+          3741849.88744123
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        182398939
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 8.165807529023844,
+      "nearest_pair_utm": [
+        [
+          743204.5946460657,
+          3741844.084902841
+        ],
+        [
+          743198.8491294791,
+          3741849.88744123
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        182466135
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "source": "bing_imagery",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 11.496630973218632,
+      "nearest_pair_utm": [
+        [
+          742813.5118350873,
+          3741355.877725523
+        ],
+        [
+          742817.6772154474,
+          3741345.16221666
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        216568146
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 3.2118135914976826,
+      "nearest_pair_utm": [
+        [
+          743403.3684712609,
+          3742162.7758810725
+        ],
+        [
+          743402.2873249551,
+          3742159.7515019276
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        216568147
+      ],
+      "tags": [
+        {
+          "highway": "footway",
+          "surface": "concrete"
+        }
+      ],
+      "gap_to_main_real_m": 3.153387854114929,
+      "nearest_pair_utm": [
+        [
+          743406.7252168956,
+          3742172.129391956
+        ],
+        [
+          743407.7892543509,
+          3742175.097839236
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        442709517
+      ],
+      "tags": [
+        {
+          "highway": "footway"
+        }
+      ],
+      "gap_to_main_real_m": 10.859318473606915,
+      "nearest_pair_utm": [
+        [
+          743605.8369891767,
+          3741161.410593217
+        ],
+        [
+          743614.6085896941,
+          3741167.8124540458
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        503237948
+      ],
+      "tags": [
+        {
+          "bicycle": "designated",
+          "foot": "designated",
+          "highway": "path",
+          "segregated": "no",
+          "source": "bing_imagery",
+          "surface": "asphalt"
+        }
+      ],
+      "gap_to_main_real_m": 34.679178914524236,
+      "nearest_pair_utm": [
+        [
+          743277.3451829588,
+          3741938.4192813574
+        ],
+        [
+          743308.5413475442,
+          3741953.56671564
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Separated source centerline; check connector or boundary clipping"
+    },
+    {
+      "node_count": 2,
+      "osm_ids": [
+        1389725669
+      ],
+      "tags": [
+        {
+          "bridge": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "layer": "1"
+        }
+      ],
+      "gap_to_main_real_m": 0.0,
+      "nearest_pair_utm": [
+        [
+          743386.5802317973,
+          3741566.3134874157
+        ],
+        [
+          743386.5802317973,
+          3741566.3134874157
+        ]
+      ],
+      "requires_review": true,
+      "reason": "Bridge elevation/connection"
+    }
+  ],
+  "policy": "No nearest-neighbor shortcut edges added. A small gap does not prove a safe crossing.",
+  "bridge_osm_ids": [
+    61490793,
+    102679938,
+    146304984,
+    146304988,
+    182302113,
+    226119763,
+    226324512,
+    226324514,
+    1032063077,
+    1050793219,
+    1384353622,
+    1384366242,
+    1389725669,
+    1389725671
+  ]
+}

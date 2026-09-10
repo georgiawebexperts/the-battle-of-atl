@@ -1,0 +1,401 @@
+{
+  "status": "passed",
+  "scope": "Exported source mesh geometry only; Unreal rendering/collision and rideability not yet tested",
+  "chunks": 56,
+  "triangles": 148697,
+  "worst_clearance_error_cm": 1.4003842352394713e-06,
+  "results": [
+    {
+      "file": "Park_Concrete_1_15.obj",
+      "triangles": 17,
+      "max_clearance_error_cm": 4.394818233777187e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_2_14.obj",
+      "triangles": 1311,
+      "max_clearance_error_cm": 5.237061486695893e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_2_15.obj",
+      "triangles": 5599,
+      "max_clearance_error_cm": 7.060323099494781e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_2_16.obj",
+      "triangles": 5156,
+      "max_clearance_error_cm": 5.367458797422842e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_3_14.obj",
+      "triangles": 1783,
+      "max_clearance_error_cm": 6.042242262083164e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_3_15.obj",
+      "triangles": 2089,
+      "max_clearance_error_cm": 6.137395871519402e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_3_16.obj",
+      "triangles": 4178,
+      "max_clearance_error_cm": 8.282251258151518e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_3_17.obj",
+      "triangles": 399,
+      "max_clearance_error_cm": 5.246093905952876e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_4_14.obj",
+      "triangles": 2338,
+      "max_clearance_error_cm": 6.209949532376413e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_4_15.obj",
+      "triangles": 4242,
+      "max_clearance_error_cm": 6.217081818249426e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_4_16.obj",
+      "triangles": 4924,
+      "max_clearance_error_cm": 6.605882276744524e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_4_17.obj",
+      "triangles": 4773,
+      "max_clearance_error_cm": 7.922798204162973e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_4_18.obj",
+      "triangles": 3930,
+      "max_clearance_error_cm": 1.043958036461845e-06,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_5_14.obj",
+      "triangles": 843,
+      "max_clearance_error_cm": 5.376591047934198e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_5_19.obj",
+      "triangles": 1967,
+      "max_clearance_error_cm": 6.770922027499182e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_5_20.obj",
+      "triangles": 2988,
+      "max_clearance_error_cm": 5.519624437511084e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Concrete_6_20.obj",
+      "triangles": 77,
+      "max_clearance_error_cm": 4.990074558008928e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_2_14.obj",
+      "triangles": 5016,
+      "max_clearance_error_cm": 5.987961415598875e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_2_15.obj",
+      "triangles": 6854,
+      "max_clearance_error_cm": 8.912052180676255e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_2_16.obj",
+      "triangles": 2730,
+      "max_clearance_error_cm": 5.388166428588193e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_2_17.obj",
+      "triangles": 375,
+      "max_clearance_error_cm": 6.548941939854558e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_3_14.obj",
+      "triangles": 2926,
+      "max_clearance_error_cm": 5.349097769169475e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_3_15.obj",
+      "triangles": 6190,
+      "max_clearance_error_cm": 7.188970982952014e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_3_16.obj",
+      "triangles": 6090,
+      "max_clearance_error_cm": 6.502836811250745e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_3_17.obj",
+      "triangles": 4079,
+      "max_clearance_error_cm": 6.137855450560892e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_14.obj",
+      "triangles": 5535,
+      "max_clearance_error_cm": 5.793904165329877e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_15.obj",
+      "triangles": 4738,
+      "max_clearance_error_cm": 5.354207246455189e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_16.obj",
+      "triangles": 7334,
+      "max_clearance_error_cm": 6.635506224483834e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_17.obj",
+      "triangles": 8310,
+      "max_clearance_error_cm": 8.419463028985774e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_18.obj",
+      "triangles": 5274,
+      "max_clearance_error_cm": 7.836218856027699e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_19.obj",
+      "triangles": 1923,
+      "max_clearance_error_cm": 8.301727802972891e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_4_20.obj",
+      "triangles": 238,
+      "max_clearance_error_cm": 6.507893886009697e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_14.obj",
+      "triangles": 3265,
+      "max_clearance_error_cm": 6.363938496178889e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_15.obj",
+      "triangles": 3693,
+      "max_clearance_error_cm": 6.302926749413018e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_16.obj",
+      "triangles": 341,
+      "max_clearance_error_cm": 5.904838076276064e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_17.obj",
+      "triangles": 793,
+      "max_clearance_error_cm": 6.211939762579277e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_18.obj",
+      "triangles": 746,
+      "max_clearance_error_cm": 5.697763754142215e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_19.obj",
+      "triangles": 265,
+      "max_clearance_error_cm": 5.358035650715465e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Asphalt_5_20.obj",
+      "triangles": 647,
+      "max_clearance_error_cm": 8.855871556079364e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_2_15.obj",
+      "triangles": 1930,
+      "max_clearance_error_cm": 6.399084213626338e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_2_16.obj",
+      "triangles": 2618,
+      "max_clearance_error_cm": 6.571177948444529e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_2_17.obj",
+      "triangles": 65,
+      "max_clearance_error_cm": 4.778272284511331e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_3_14.obj",
+      "triangles": 325,
+      "max_clearance_error_cm": 5.362335286918096e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_3_15.obj",
+      "triangles": 3408,
+      "max_clearance_error_cm": 6.47557527599929e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_3_16.obj",
+      "triangles": 4381,
+      "max_clearance_error_cm": 7.289630730156205e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_3_17.obj",
+      "triangles": 650,
+      "max_clearance_error_cm": 5.229296249353865e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_4_14.obj",
+      "triangles": 925,
+      "max_clearance_error_cm": 5.973588486085646e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_4_16.obj",
+      "triangles": 1236,
+      "max_clearance_error_cm": 6.673031407444796e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_4_17.obj",
+      "triangles": 677,
+      "max_clearance_error_cm": 1.4003842352394713e-06,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_4_19.obj",
+      "triangles": 1572,
+      "max_clearance_error_cm": 5.936258844485565e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_4_20.obj",
+      "triangles": 704,
+      "max_clearance_error_cm": 6.245942358873435e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_5_16.obj",
+      "triangles": 431,
+      "max_clearance_error_cm": 6.607464797525608e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_5_17.obj",
+      "triangles": 1540,
+      "max_clearance_error_cm": 7.382656121990294e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_5_18.obj",
+      "triangles": 1915,
+      "max_clearance_error_cm": 7.285466381290462e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_5_19.obj",
+      "triangles": 2145,
+      "max_clearance_error_cm": 1.0684814242267748e-06,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "Park_Gravel_5_20.obj",
+      "triangles": 199,
+      "max_clearance_error_cm": 5.988006250845501e-07,
+      "upward_faces": true,
+      "pass": true
+    }
+  ]
+}

@@ -5,3 +5,5 @@ DerivedDataCache/
 .vs/
 .DS_Store
 Content/Characters/
+
+Tools/terrain-venv/

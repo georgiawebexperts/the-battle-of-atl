@@ -1,12 +1,12 @@
 # Piedmont Ride V2 — Web Experts
 
 Author: Web Experts — www.webexperts.com
-Build: 0.2.0-dev (milestone 1 in progress)
+Build: 0.2.1-dev (bike validation extended; world in progress)
 
 The complete design specification is V2-SPEC.md. No milestone is accepted on compilation alone.
 
 1. IN PROGRESS: Bike, rigged rider, seven gears, controls, ground physics, grass, ramp, water, crash and respawn tests.
-2. Pending: real elevation, connected OSM park paths, lake and boundaries.
+2. IN PROGRESS: measured USGS Landscape saved; OSM path surfaces and connectivity under construction; real lake and boundaries pending.
 3. Pending: all named park landmarks, skyline, vegetation and reference matching.
 4. Pending: full Eastside Trail to Krog Street Tunnel.
 5. Pending: complete timed pickup/checkpoint/finish loop and saved results.
@@ -25,3 +25,15 @@ Clothed Quaternius Casual rider (CC0), procedural two-bone limb posing, custom t
 Milestone 1 still needs broader hands-on feel/edge-case checks (progressive brake pressure, downhill behavior, grass braking, airborne lake entry, full rider crash presentation). This checkpoint does NOT accept the full V2 game. No geography or later milestone is accepted.
 
 Unreal's CrashReportClientEditor crashed during the process-level restart. The editor recovered, Aura remained running, and the next complete bike test passed. Use the supported QUIT_EDITOR console command for future normal reloads; avoid process termination for routine reloads.
+
+## 2026-09-10 — Extended bike checks and measured terrain
+
+All 20 live bike integration cases passed in Tests/Results/2026-09-10-bike-extended-0.2.1.json. The five added cases cover progressive brake pressure, longer grass stopping distance, downhill coasting, airborne water entry, and a gentle turn without crashing. Hands-on riding feel and presentation remain subject to review.
+
+PiedmontWorld is saved with a 1513 x 3025 measured USGS heightmap, 288 Landscape components, real distance/elevation scale 1:3, and no missing DEM samples. Import inspection confirms component count and transform. The collision-height test is NOT yet passed: the first attempt hit a Python API error; its repaired version awaits execution.
+
+The source network contains 236 clipped OSM path pieces. The initial vertex graph has 20 components; SourceAssets/Terrain/park-connectivity-audit.json locates all 19 separated components and flags bridge crossings. No fabricated shortcut edges were added. Terrain-following pavement source generation is in progress, with bridge decks deferred. This does not establish that all paths are connected or rideable.
+
+The Mac is currently locked, preventing editor UI inspection following Elliott's crash report. Process/file checks confirm Unreal, Aura and Xcode running and both V2 maps present. Resume desktop validation after manual unlock; do not launch duplicate editors.
+
+Pavement source checkpoint: 56 OBJ chunks, 148,697 triangles across concrete/asphalt/gravel, with 14 bridge ways explicitly deferred. Independent exported-geometry checks pass, including coverage and 3 cm Landscape clearance (worst error below 0.000002 cm). Report: Tests/Results/2026-09-10-park-pavement-source.json. Unreal import, axis orientation, collision, connectivity and riding acceptance are still pending.

@@ -1,0 +1,66 @@
+{
+  "source": "USGS 3DEP 1 m bare-earth DEM, GA Statewide 2018 B18 DRRA",
+  "source_resolution_m": 1,
+  "sample_spacing_real_m": 2.0,
+  "scale": 0.3333333333333333,
+  "crs": "EPSG:32616",
+  "origin_lon_lat": [
+    -84.3725,
+    33.785
+  ],
+  "origin_utm": [
+    743286.3256402594,
+    3741420.9408946787
+  ],
+  "bounds_utm": [
+    742186.0,
+    3737420.0,
+    745210.0,
+    3743468.0
+  ],
+  "size": [
+    1513,
+    3025
+  ],
+  "base_elevation_m": 280.0,
+  "elevation_range_m": [
+    240.283203125,
+    322.6570739746094
+  ],
+  "unreal_location_cm": [
+    -36677.5213419809,
+    -133364.69648929,
+    0
+  ],
+  "unreal_scale": [
+    66.66666666666667,
+    66.66666666666667,
+    33.333333333333336
+  ],
+  "raw_rows": "south to north",
+  "sources": [
+    {
+      "title": "USGS 1 Meter 16 x74y374 GA_Statewide_2018_B18_DRRA",
+      "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/GA_Statewide_2018_B18_DRRA/TIFF/USGS_1M_16_x74y374_GA_Statewide_2018_B18_DRRA.tif",
+      "crs": "EPSG:26916",
+      "window": [
+        2186,
+        0,
+        3036,
+        2592
+      ]
+    },
+    {
+      "title": "USGS 1 Meter 16 x74y375 GA_Statewide_2018_B18_DRRA",
+      "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/GA_Statewide_2018_B18_DRRA/TIFF/USGS_1M_16_x74y375_GA_Statewide_2018_B18_DRRA.tif",
+      "crs": "EPSG:26916",
+      "window": [
+        2186,
+        6532,
+        3036,
+        3480
+      ]
+    }
+  ],
+  "missing_samples": 0
+}

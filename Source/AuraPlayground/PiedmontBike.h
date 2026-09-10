@@ -11,6 +11,16 @@ class UCameraComponent;
 class USpringArmComponent;
 class UStaticMeshComponent;
 
+UCLASS()
+class AURAPLAYGROUND_API APiedmontWaterHazard : public AActor {
+ GENERATED_BODY()
+public:
+ APiedmontWaterHazard();
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) TArray<FVector> Polygon;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float DetectionHeight=190;
+ bool ContainsBike(const FVector& WorldPoint) const;
+};
+
 UCLASS(ClassGroup=Movement, meta=(BlueprintSpawnableComponent))
 class AURAPLAYGROUND_API UPiedmontBikeMovement : public UPawnMovementComponent {
  GENERATED_BODY()
@@ -18,6 +28,8 @@ public:
  UPiedmontBikeMovement();
  virtual void TickComponent(float DeltaTime,ELevelTick TickType,FActorComponentTickFunction* ThisTickFunction) override;
  UPROPERTY(BlueprintReadOnly) float Speed=0;
+ UPROPERTY(BlueprintReadOnly) float BrakePressure=0;
+ TArray<TWeakObjectPtr<APiedmontWaterHazard>> WaterHazards;
  UPROPERTY(BlueprintReadOnly) float Lean=0;
  UPROPERTY(BlueprintReadOnly) float Pitch=0;
  UPROPERTY(BlueprintReadOnly) bool bGrass=false;
@@ -33,7 +45,7 @@ public:
  float GearLimit() const;
 private:
  void Step(float Dt);
- float VerticalSpeed=0,SafeTime=0,Invulnerability=0;
+ float VerticalSpeed=0,SafeTime=0,SteeringRack=0,GripOverload=0;
 };
 
 UCLASS()
