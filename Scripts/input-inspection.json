@@ -1,0 +1,21 @@
+{
+  "mappings": "[]",
+  "IA_Move": "<InputActionValueType.AXIS2D: 2>",
+  "IA_Brake": "<InputActionValueType.BOOLEAN: 0>",
+  "IA_Reset": "<InputActionValueType.BOOLEAN: 0>",
+  "graph nodes": "Traceback (most recent call last):\n  File \"/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Scripts/inspect_input.py\", line 4, in read\n    try:r[k]=str(fn())\n                 ^^^^\n  File \"/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Scripts/inspect_input.py\", line 12, in <lambda>\n    read('graph nodes',lambda:unreal.BlueprintEditorLibrary.find_graph(bp,'EventGraph').get_editor_property('nodes'))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nException: EdGraph: Property 'Nodes' for attribute 'nodes' on 'EdGraph' is protected and cannot be read\n",
+  "get_blueprint_graph": "{\n\t\"success\": false,\n\t\"error\": \"Unknown blueprint node command: get_blueprint_graph\"\n}",
+  "get_asset_graph": "{\n\t\"success\": false,\n\t\"error\": \"Unknown blueprint node command: get_asset_graph\"\n}",
+  "asset classes": [
+    "UnrealMCPAnimationCommands",
+    "UnrealMCPBlueprintCommands",
+    "UnrealMCPBlueprintNodeCommands",
+    "UnrealMCPControlRigCommands",
+    "UnrealMCPLevelDesignCommands",
+    "UnrealMCPPCGCommands",
+    "UnrealMCPPIECommands",
+    "UnrealMCPProjectCommands",
+    "UnrealMCPTerrainCommands",
+    "UnrealMCPUMGCommands"
+  ]
+}

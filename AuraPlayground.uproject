@@ -1,0 +1,19 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "",
+  "Description": "Disposable Aura trial playground created for Elliott, September 10, 2026.",
+  "Plugins": [
+    {
+      "Name": "Aura",
+      "Enabled": true
+    }
+  ],
+  "Modules": [
+    {
+      "Name": "AuraPlayground",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}

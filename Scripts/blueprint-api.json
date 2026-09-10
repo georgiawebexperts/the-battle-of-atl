@@ -1,0 +1,23 @@
+{
+  "UnrealMCPBlueprintCommands": {
+    "get_editor_property": "get_editor_property(self, name: str) -> object -- get the value of any property visible to the editor",
+    "handle_command": "X.handle_command(command_type, params_string) -> str\nHandle blueprint commands\n\nArgs:\n    command_type (str): \n    params_string (str): \n\nReturns:\n    str:",
+    "is_editor_property_overridden": "x.is_editor_property_overridden(property_name) -> EditorPropertyValueState\nAttempts to query whether the value of a named property on the given object overrides the value of its archetype (ie, would ResetEditorProperty do anything?).\n\nArgs:\n    property_name (Name): The name of the object property to query the value of.\n\nReturns:\n    EditorPropertyValueState: What state the requested property is in.",
+    "reset_editor_property": "x.reset_editor_property(property_name, change_notify_mode=PropertyAccessChangeNotifyMode.DEFAULT) -> bool\nAttempts to reset the value of a named property on the given object so that it matches the value of the archetype.\n\nArgs:\n    property_name (Name): The name of the object property to reset the value of.\n    change_notify_mode (PropertyAccessChangeNotifyMode): When to emit property change notifications.\n\nReturns:\n    bool: Whether the property value was found and correctly reset.",
+    "set_editor_property": "set_editor_property(self, name: str, value: object, notify_mode: PropertyAccessChangeNotifyMode=PropertyAccessChangeNotifyMode.DEFAULT) -> None -- set the value of any property visible to the editor, ensuring that the pre/post change notifications are called"
+  },
+  "UnrealMCPBlueprintNodeCommands": {
+    "get_editor_property": "get_editor_property(self, name: str) -> object -- get the value of any property visible to the editor",
+    "handle_command": "X.handle_command(command_type, params_string) -> str\nHandle Command\n\nArgs:\n    command_type (str): \n    params_string (str): \n\nReturns:\n    str:",
+    "is_editor_property_overridden": "x.is_editor_property_overridden(property_name) -> EditorPropertyValueState\nAttempts to query whether the value of a named property on the given object overrides the value of its archetype (ie, would ResetEditorProperty do anything?).\n\nArgs:\n    property_name (Name): The name of the object property to query the value of.\n\nReturns:\n    EditorPropertyValueState: What state the requested property is in.",
+    "reset_editor_property": "x.reset_editor_property(property_name, change_notify_mode=PropertyAccessChangeNotifyMode.DEFAULT) -> bool\nAttempts to reset the value of a named property on the given object so that it matches the value of the archetype.\n\nArgs:\n    property_name (Name): The name of the object property to reset the value of.\n    change_notify_mode (PropertyAccessChangeNotifyMode): When to emit property change notifications.\n\nReturns:\n    bool: Whether the property value was found and correctly reset.",
+    "set_editor_property": "set_editor_property(self, name: str, value: object, notify_mode: PropertyAccessChangeNotifyMode=PropertyAccessChangeNotifyMode.DEFAULT) -> None -- set the value of any property visible to the editor, ensuring that the pre/post change notifications are called"
+  },
+  "cdo_components": [
+    "CollisionCylinder",
+    "Arrow",
+    "CharMoveComp",
+    "CharacterMesh0"
+  ],
+  "character_movement": "<Object '/Game/BeltLineGlide/BP_BeltLineBike.Default__BP_BeltLineBike_C:CharMoveComp' (0x8487e2a6400) Class 'CharacterMovementComponent'>"
+}

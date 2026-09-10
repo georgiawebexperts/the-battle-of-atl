@@ -1,0 +1,13 @@
+{
+  "game_mode": "<Object '/Script/AuraPlayground.GlideGameMode' (0xa4921506400) Class 'Class'>",
+  "world": "BeltLineGlide",
+  "old_pawn_hidden": [
+    "BeltLineBike_Start_LakeLoop",
+    "Glide_BikeFrame",
+    "Glide_BikeSeat",
+    "Glide_BikeHandle",
+    "Glide_BikeStem",
+    "Glide_BikeRearWheel",
+    "Glide_BikeFrontWheel"
+  ]
+}

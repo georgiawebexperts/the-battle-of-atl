@@ -1,0 +1,41 @@
+[
+  {
+    "camera activation": "None"
+  },
+  {
+    "camera attach": "True"
+  },
+  {
+    "compile BP_BeltLineBike": "True"
+  },
+  {
+    "save BP_BeltLineBike": "True"
+  },
+  {
+    "compile BP_Pedestrian": "True"
+  },
+  {
+    "save BP_Pedestrian": "True"
+  },
+  {
+    "compile BP_ScooterRider": "True"
+  },
+  {
+    "save BP_ScooterRider": "True"
+  },
+  {
+    "compile BP_BeltLineHUD": "True"
+  },
+  {
+    "save BP_BeltLineHUD": "True"
+  },
+  {
+    "compile BP_BeltLineGameMode": "True"
+  },
+  {
+    "save BP_BeltLineGameMode": "True"
+  },
+  {
+    "save level": "True"
+  }
+]

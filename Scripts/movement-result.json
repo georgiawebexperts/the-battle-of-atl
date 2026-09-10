@@ -1,0 +1,14 @@
+[
+  {
+    "CharMoveComp": "<Object '/Game/BeltLineGlide/BP_BeltLineBike.Default__BP_BeltLineBike_C:CharMoveComp' (0x8487e2a6400) Class 'CharacterMovementComponent'>"
+  },
+  {
+    "StartLocation": "<Struct 'Vector' (0x8487dcef868) {x: -2484.837927, y: 6543.335979, z: 90.000000}>"
+  },
+  {
+    "StartRotation": "<Struct 'Rotator' (0x8487dcef880) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>"
+  },
+  {
+    "placed_movement_ref": "<Object '/Game/BeltLineGlide/BP_BeltLineBike.Default__BP_BeltLineBike_C:CharMoveComp' (0x8487e2a6400) Class 'CharacterMovementComponent'>"
+  }
+]

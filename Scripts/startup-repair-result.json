@@ -1,0 +1,43 @@
+[
+  {
+    "step": "load map",
+    "result": "True"
+  },
+  {
+    "step": "world game mode",
+    "result": "None"
+  },
+  {
+    "step": "sun intensity",
+    "result": "None"
+  },
+  {
+    "step": "sky intensity",
+    "result": "None"
+  },
+  {
+    "step": "sky capture",
+    "result": "None"
+  },
+  {
+    "step": "possess bike",
+    "result": "None"
+  },
+  {
+    "bike_location": "<Struct 'Vector' (0x414ead960) {x: -2484.837927, y: 6543.335979, z: 90.000000}>",
+    "components": [
+      "CapsuleComponent",
+      "ArrowComponent",
+      "CharacterMovementComponent",
+      "SkeletalMeshComponent"
+    ]
+  },
+  {
+    "step": "save level",
+    "result": "True"
+  },
+  {
+    "step": "save assets",
+    "result": "True"
+  }
+]
