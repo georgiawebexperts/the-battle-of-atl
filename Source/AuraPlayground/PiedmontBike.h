@@ -17,6 +17,7 @@ class AURAPLAYGROUND_API APiedmontWaterHazard : public AActor {
 public:
  APiedmontWaterHazard();
  UPROPERTY(EditAnywhere,BlueprintReadWrite) TArray<FVector> Polygon;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) TArray<FVector> IslandPolygon;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float DetectionHeight=190;
  bool ContainsBike(const FVector& WorldPoint) const;
 };

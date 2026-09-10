@@ -58,3 +58,27 @@ if _terrain_request.exists():
         _terrain_request.unlink()
         exec((_glide_root/'Scripts'/'build_measured_landscape.py').read_text(),{'__name__':'__main__'})
     _terrain_handle=unreal.register_slate_post_tick_callback(_terrain_build)
+
+# Opt-in, session-only build jobs. No listener or network access is created.
+# Only the named world-building scripts can be requested from the local project.
+_world_job_enable=_glide_root/'Scripts'/'enable-world-jobs'
+if _world_job_enable.exists():
+    _world_job_enable.unlink()
+    _world_allowed={'validate_measured_landscape.py','import_park_pavement.py','build_park_splines.py','validate_park_world.py','build_park_lake.py','validate_v2_bike.py','validate_park_ride.py'}
+    def _world_job_tick(delta):
+        if time.monotonic()-_glide_started<10:return
+        request=_glide_root/'Scripts'/'request-world-job.json'
+        if not request.exists():return
+        try:
+            job=json.loads(request.read_text());request.unlink()
+            name=job['script']
+            if name not in _world_allowed:raise RuntimeError('Unknown world build job')
+            target_map=job.get('map')
+            if target_map:
+                if target_map not in {'/Game/PiedmontRide/Maps/PiedmontWorld','/Game/PiedmontRide/Maps/BikePhysicsLab'}:raise RuntimeError('Unknown development map')
+                if not unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).load_level(target_map):raise RuntimeError('Could not load requested development map')
+            exec((_glide_root/'Scripts'/name).read_text(),{'__name__':'__main__','WORLD_JOB':job})
+            result={'job':job,'status':'executed'}
+        except Exception:result={'status':'error','error':traceback.format_exc()}
+        (_glide_root/'Scripts'/'world-job-result.json').write_text(json.dumps(result,indent=2))
+    _world_job_handle=unreal.register_slate_post_tick_callback(_world_job_tick)

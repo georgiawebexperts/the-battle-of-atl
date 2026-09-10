@@ -1,4 +1,6 @@
 #include "PiedmontBike.h"
+#include "PiedmontPathSpline.h"
+#include "Components/SplineComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -24,6 +26,21 @@ void UPiedmontBikeMovement::Crash(const FString& Reason){
 }
 void UPiedmontBikeMovement::Respawn(){
  if(!UpdatedComponent)return;
+ if(LastCrash.StartsWith(TEXT("Water"))){
+  const FVector From=UpdatedComponent->GetComponentLocation();double Best=TNumericLimits<double>::Max();
+  FCollisionQueryParams Query(SCENE_QUERY_STAT(PiedmontShoreRecovery),false,PawnOwner);
+  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){
+   const FVector P=It->Centerline->FindLocationClosestToWorldLocation(From,ESplineCoordinateSpace::World);
+   const double Distance=FVector::DistSquared2D(P,From);if(Distance>=Best)continue;
+   FHitResult Hit;
+   if(!GetWorld()->SweepSingleByChannel(Hit,P+FVector(0,0,150),P-FVector(0,0,150),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(2.f),Query))continue;
+   if(!Hit.GetActor()||(!Hit.GetActor()->ActorHasTag(TEXT("RidePath"))&&!Hit.GetActor()->ActorHasTag(TEXT("RideDirt")))||Hit.ImpactNormal.Z<.6f)continue;
+   const FVector Target=Hit.ImpactPoint+FVector(0,0,101);
+   bool InWater=false;for(const auto& Water:WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Target)&&!Hit.GetActor()->ActorHasTag(TEXT("RideBridge")))InWater=true;
+   if(InWater||GetWorld()->OverlapBlockingTestByChannel(Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32.f,96.f),Query))continue;
+   Best=Distance;SafeLocation=Target;SafeRotation=FRotator(0,It->Centerline->FindDirectionClosestToWorldLocation(P,ESplineCoordinateSpace::World).Rotation().Yaw,0);
+  }
+ }
  UpdatedComponent->SetWorldLocationAndRotation(SafeLocation,SafeRotation,false,nullptr,ETeleportType::TeleportPhysics);
  Speed=0;VerticalSpeed=0;Lean=0;Recovery=0;BrakePressure=0;SteeringRack=0;GripOverload=0;Velocity=FVector::ZeroVector;
 }
@@ -36,14 +53,20 @@ void UPiedmontBikeMovement::Step(float Dt){
  BrakePressure=FMath::FInterpConstantTo(BrakePressure,Brake,Dt,Brake>0?3.f:6.f);
  if(Recovery>0){Recovery-=Dt;if(Recovery<=0)Respawn();return;}
  const FVector Location=UpdatedComponent->GetComponentLocation();
- for(const auto& Water:WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Location)){Crash(TEXT("Water — shoreline recovery"));return;}
  if(Location.Z<-2000){Crash(TEXT("Off course"));return;}
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BikeGround),false,PawnOwner);
  const FVector Forward=UpdatedComponent->GetForwardVector();
  FHitResult Ground,Front,Rear;
- auto Probe=[&](FVector P,FHitResult& H){return GetWorld()->LineTraceSingleByChannel(H,P+FVector(0,0,100),P-FVector(0,0,180),ECC_Visibility,Q);};
+ auto Probe=[&](FVector P,FHitResult& H){
+  const FVector Start=P+FVector(0,0,100),End=P-FVector(0,0,180);
+  if(GetWorld()->LineTraceSingleByChannel(H,Start,End,ECC_Visibility,Q))return true;
+  // A finite tire contact remains stable at exact Landscape triangle corners.
+  return GetWorld()->SweepSingleByChannel(H,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(2.f),Q);
+ };
  Probe(Location,Ground);Probe(Location+Forward*60,Front);Probe(Location-Forward*60,Rear);
  bGrounded=Ground.bBlockingHit&&(Location.Z-Ground.ImpactPoint.Z<118)&&Ground.ImpactNormal.Z>.45;
+ const bool OnBridge=Ground.bBlockingHit&&Ground.GetActor()&&Ground.GetActor()->ActorHasTag(TEXT("RideBridge"))&&Ground.ImpactNormal.Z>.45;
+ if(!OnBridge)for(const auto& Water:WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Location)){Crash(TEXT("Water — shoreline recovery"));return;}
  bGrass=bGrounded&&Ground.GetActor()&&(Ground.GetActor()->ActorHasTag(TEXT("RideGrass"))||Ground.GetActor()->ActorHasTag(TEXT("RideDirt")));
  if(bGrounded&&Ground.GetActor()&&Ground.GetActor()->ActorHasTag(TEXT("RideWater"))){Crash(TEXT("Water — shoreline recovery"));return;}
  const float Grip=bGrass?.6f:1.f;
@@ -218,13 +241,13 @@ bool APiedmontWaterHazard::ContainsBike(const FVector& WorldPoint) const {
  if(Polygon.Num()<3)return false;
  const FVector P=GetActorTransform().InverseTransformPosition(WorldPoint);
  if(P.Z>DetectionHeight)return false;
- bool Inside=false;
- for(int I=0,J=Polygon.Num()-1;I<Polygon.Num();J=I++){
-  const FVector& A=Polygon[I];const FVector& B=Polygon[J];
-  if((A.Y>P.Y)!=(B.Y>P.Y)){
-   double EdgeX=(B.X-A.X)*(P.Y-A.Y)/(B.Y-A.Y)+A.X;
-   if(P.X<EdgeX)Inside=!Inside;
+ auto Contains=[&](const TArray<FVector>& Ring){
+  bool Inside=false;
+  for(int I=0,J=Ring.Num()-1;I<Ring.Num();J=I++){
+   const FVector& A=Ring[I];const FVector& B=Ring[J];
+   if((A.Y>P.Y)!=(B.Y>P.Y)&&P.X<(B.X-A.X)*(P.Y-A.Y)/(B.Y-A.Y)+A.X)Inside=!Inside;
   }
- }
- return Inside;
+  return Inside;
+ };
+ return Contains(Polygon)&&!Contains(IslandPolygon);
 }

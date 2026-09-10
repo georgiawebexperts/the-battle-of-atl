@@ -1,6 +1,6 @@
 {
   "status": "source_baked_not_imported",
-  "coordinates": "Unreal world centimeters, Z up",
+  "coordinates": "OBJ centimeters, Z up, Y negated from Unreal; bounds remain Unreal world coordinates",
   "source_splines": "../park-path-network.json",
   "landscape_clearance_cm": 3,
   "terrain_diagonal": "i00-i11",

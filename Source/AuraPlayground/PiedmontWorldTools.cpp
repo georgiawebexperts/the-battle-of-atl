@@ -23,3 +23,17 @@ ALandscape* UPiedmontWorldTools::ImportMeasuredLandscape(const FString& Filename
  return nullptr;
 #endif
 }
+
+bool UPiedmontWorldTools::TraceWorldSurface(FVector Start,FVector End,FVector& ImpactPoint,AActor*& HitActor,float SweepRadius){
+ ImpactPoint=FVector::ZeroVector;HitActor=nullptr;
+#if WITH_EDITOR
+ UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
+ if(!World)return false;
+ FHitResult Hit;FCollisionQueryParams Params(SCENE_QUERY_STAT(PiedmontSurfaceValidation),true);
+ const bool HitSurface=SweepRadius>0?World->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(SweepRadius),Params):World->LineTraceSingleByChannel(Hit,Start,End,ECC_Visibility,Params);
+ if(!HitSurface)return false;
+ ImpactPoint=Hit.ImpactPoint;HitActor=Hit.GetActor();return true;
+#else
+ return false;
+#endif
+}

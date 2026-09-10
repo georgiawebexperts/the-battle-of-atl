@@ -62,12 +62,12 @@ for material in ['Concrete','Asphalt','Gravel']:
  area_error.append({'material':material,'relative_coverage_error':error})
  if error>1e-7:raise RuntimeError(f'{material} polygon triangulation lost coverage: {error}')
  for (cx,cy),mesh in sorted(chunks.items()):
-  name=f'Park_{material}_{cx}_{cy}';lines=['# OSM contributors ODbL; elevations USGS 3DEP','# Centimeters, Z up. Explicit orientation verification required on import.',f'o {name}']
-  lines += ['v %.6f %.6f %.6f'%v for v in mesh['vertices']]
+  name=f'Park_{material}_{cx}_{cy}';lines=['# OSM contributors ODbL; elevations USGS 3DEP','# Centimeters, Z up, OBJ Y = negative Unreal Y.',f'o {name}']
+  lines += ['v %.6f %.6f %.6f'%(v[0],-v[1],v[2]) for v in mesh['vertices']]
   lines += ['vt %.6f %.6f'%v for v in mesh['uv']]
-  lines += ['f '+' '.join(f'{i}/{i}' for i in f) for f in mesh['faces']]
+  lines += ['f '+' '.join(f'{i}/{i}' for i in reversed(f)) for f in mesh['faces']]
   (OUT/(name+'.obj')).write_text('\n'.join(lines)+'\n')
   manifest.append({'file':name+'.obj','material':material,'vertices':len(mesh['vertices']),'triangles':len(mesh['faces']),'bounds_cm':[np.min(mesh['vertices'],axis=0).tolist(),np.max(mesh['vertices'],axis=0).tolist()]});allfaces+=len(mesh['faces'])
-result={'status':'source_baked_not_imported','coordinates':'Unreal world centimeters, Z up','source_splines':'../park-path-network.json','landscape_clearance_cm':3,'terrain_diagonal':'i00-i11','chunks':manifest,'triangle_count':allfaces,'deferred_bridge_osm_ids':sorted(set(deferred)),'coverage_checks':area_error,'pending':['Unreal import orientation and collision validation','Bridge deck reconstruction','All path connectivity and ride-through acceptance']}
+result={'status':'source_baked_not_imported','coordinates':'OBJ centimeters, Z up, Y negated from Unreal; bounds remain Unreal world coordinates','source_splines':'../park-path-network.json','landscape_clearance_cm':3,'terrain_diagonal':'i00-i11','chunks':manifest,'triangle_count':allfaces,'deferred_bridge_osm_ids':sorted(set(deferred)),'coverage_checks':area_error,'pending':['Unreal import orientation and collision validation','Bridge deck reconstruction','All path connectivity and ride-through acceptance']}
 (OUT/'manifest.json').write_text(json.dumps(result,indent=2))
 print(json.dumps({k:v for k,v in result.items() if k!='chunks'},indent=2));print('Chunks:',len(manifest))

@@ -37,3 +37,15 @@ The source network contains 236 clipped OSM path pieces. The initial vertex grap
 The Mac is currently locked, preventing editor UI inspection following Elliott's crash report. Process/file checks confirm Unreal, Aura and Xcode running and both V2 maps present. Resume desktop validation after manual unlock; do not launch duplicate editors.
 
 Pavement source checkpoint: 56 OBJ chunks, 148,697 triangles across concrete/asphalt/gravel, with 14 bridge ways explicitly deferred. Independent exported-geometry checks pass, including coverage and 3 cm Landscape clearance (worst error below 0.000002 cm). Report: Tests/Results/2026-09-10-park-pavement-source.json. Unreal import, axis orientation, collision, connectivity and riding acceptance are still pending.
+
+## 2026-09-10 — Installed park paths and recovered editor
+
+Unreal was responsive after manual unlock. Two normal editor exits and relaunches completed without process termination. The initial native surface-query wrapper and APiedmontPathSpline class compiled successfully.
+
+PiedmontWorld now contains all 236 OSM centerline spline actors and 56 placed pavement meshes. Corrected the OBJ Y-axis conversion. Set explicit full-detail Nanite fallback geometry and finer position precision after the first collision audit found simplification errors. All 727 installed pavement collision samples now pass, archived in Tests/Results/2026-09-10-park-pavement-installed.json. Source OBJ geometry checks also pass. Neither test accepts the bridges or full network ride-through.
+
+Terrain interior height samples pass. Rays at exact grid vertices can miss; a 2 cm sphere fallback for the actual bike ground probe is authored but NOT YET COMPILED OR TESTED. The expanded terrain validator now requires this pending native rebuild. Do not present it as passed. Existing 20-case bike results predate these latest movement edits and must be rerun.
+
+Lake Clara Meer's OSM outer ring and island are prepared, with 9,735 interior DEM samples agreeing on a water elevation of 267.359985 m. Authored underwater depth (maximum 4.5 real metres) is explicitly separate from measured 3DEP surface data. Source lakebed R16 and shoreline collision OBJ are ready, but no actual lake actor/bed/shoreline has been installed in PiedmontWorld yet. Island exclusion and nearest unobstructed path recovery code are authored, also awaiting compilation and regression.
+
+The Mac locked again before the next normal editor restart. Resume by closing the editor normally, compiling, enabling session-only world jobs if needed, and running the expanded terrain checks and all 20 bike regressions on BikePhysicsLab. Then install the lake, verify shoreline/airborne/island/bridge behavior and resume connectivity work. Full game scope remains pending.

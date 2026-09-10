@@ -10,7 +10,7 @@ for chunk in manifest['chunks']:
  for line in (B/chunk['file']).read_text().splitlines():
   if line.startswith('v '):vertices.append([float(x) for x in line.split()[1:]])
   elif line.startswith('f '):faces.append([int(x.split('/')[0])-1 for x in line.split()[1:]])
- v=np.array(vertices);f=np.array(faces);tri=v[f];points=np.concatenate([v,tri.mean(axis=1)])
+ v=np.array(vertices);v[:,1]*=-1;f=np.array(faces)[:,::-1];tri=v[f];points=np.concatenate([v,tri.mean(axis=1)])
  gx=(points[:,0]-m['unreal_location_cm'][0])/m['unreal_scale'][0];gy=(points[:,1]-m['unreal_location_cm'][1])/m['unreal_scale'][1]
  ix=np.clip(np.floor(gx).astype(int),0,nx-2);iy=np.clip(np.floor(gy).astype(int),0,ny-2);u=gx-ix;t=gy-iy
  a=h[iy,ix];b=h[iy,ix+1];c=h[iy+1,ix+1];d=h[iy+1,ix]
