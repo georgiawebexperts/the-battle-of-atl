@@ -3,6 +3,8 @@
 #include "Misc/FileHelper.h"
 #if WITH_EDITOR
 #include "Editor.h"
+#include "WaterBodyActor.h"
+#include "WaterBodyComponent.h"
 #include "Engine/World.h"
 #endif
 ALandscape* UPiedmontWorldTools::ImportMeasuredLandscape(const FString& Filename,int32 Width,int32 Height,FVector Location,FVector Scale){
@@ -33,6 +35,20 @@ bool UPiedmontWorldTools::TraceWorldSurface(FVector Start,FVector End,FVector& I
  const bool HitSurface=SweepRadius>0?World->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(SweepRadius),Params):World->LineTraceSingleByChannel(Hit,Start,End,ECC_Visibility,Params);
  if(!HitSurface)return false;
  ImpactPoint=Hit.ImpactPoint;HitActor=Hit.GetActor();return true;
+#else
+ return false;
+#endif
+}
+
+bool UPiedmontWorldTools::RefreshWaterBody(AActor* WaterActor){
+#if WITH_EDITOR
+ AWaterBody* Water=Cast<AWaterBody>(WaterActor);
+ if(!Water||!Water->GetWaterBodyComponent())return false;
+ FOnWaterBodyChangedParams Params;
+ Params.bShapeOrPositionChanged=true;
+ Params.bUserTriggered=true;
+ Water->GetWaterBodyComponent()->OnWaterBodyChanged(Params);
+ Water->MarkPackageDirty();return true;
 #else
  return false;
 #endif

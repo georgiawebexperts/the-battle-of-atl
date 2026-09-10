@@ -1,0 +1,5084 @@
+{
+  "status": "passed",
+  "timing": "Bike simulation seconds; movement caps frame delta at 0.12 s. This does not certify frame rate.",
+  "cases": [
+    {
+      "name": "path_ride",
+      "pass": true,
+      "water_crash": false,
+      "start": {
+        "position": [
+          -6445.407681952929,
+          -11776.982937854093,
+          132.75186473579765
+        ],
+        "speed": 150.0,
+        "recovery": 0.0,
+        "grounded": true,
+        "grass": false,
+        "reason": ""
+      },
+      "end": {
+        "position": [
+          -7193.774511157544,
+          -11796.544837244408,
+          150.6625684412939
+        ],
+        "speed": 500.8961181640625,
+        "recovery": 0.0,
+        "grounded": true,
+        "grass": false,
+        "reason": ""
+      },
+      "recovery_samples": []
+    },
+    {
+      "name": "nearest_path_recovery",
+      "pass": true,
+      "water_crash": true,
+      "start": {
+        "position": [
+          -3304.32947533136,
+          445.68203371794334,
+          178.51339061061543
+        ],
+        "speed": 0.0,
+        "recovery": 0.0,
+        "grounded": false,
+        "grass": false,
+        "reason": ""
+      },
+      "end": {
+        "position": [
+          -2775.9495940215215,
+          21.93080659671009,
+          -277.1249609071165
+        ],
+        "speed": 0.0,
+        "recovery": 0.0,
+        "grounded": true,
+        "grass": false,
+        "reason": "Water \u2014 shoreline recovery",
+        "recovered_on_path": true,
+        "distance_from_water_entry_cm": 677.3111555701333,
+        "prior_start_distance_cm": 12619.822158311385
+      },
+      "recovery_samples": [
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            178.51339061061543
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            177.99763296047848
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            177.31818408767384
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            176.24505832294625
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            175.15766447285813
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            173.55178767691058
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            172.22502753386897
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            169.90034711609286
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            168.10655993471545
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            164.98469293365878
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            162.62398094187182
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            158.7673916841547
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            155.56777966270846
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            151.60279414306086
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            148.23112306247157
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            143.35191181550425
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            139.1976213778059
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            134.03351208815974
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            129.32634613166255
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            124.08337494979304
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            118.69570085654658
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            112.17133018622798
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            107.47382745395106
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            99.45813402781886
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            93.27511295924586
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            85.47368166098994
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            79.02744505057734
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            71.08072322855395
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            63.81999486933154
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            55.194274010757624
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            48.09383493910235
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            39.33642547080916
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            32.01893989990157
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            20.787955212096392
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            13.596826004485308
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            1.180335926512896
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -7.715289426346601
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -19.598130894203962
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -28.81684656192857
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -40.757126999398054
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -50.966641617317975
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -64.2126620536049
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -74.68458159019548
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -87.98122901966173
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -98.61724491169053
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -111.84808237602311
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -123.26824505378801
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -138.26214988281328
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -150.9578009371956
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -165.5833529954155
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -177.765820932885
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -192.09490860750276
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -205.72818220903474
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -221.10095740606386
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": false,
+          "grass": false,
+          "reason": ""
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.9895589351654053,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.974951982498169,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.956153392791748,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.9409592151641846,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.9230411052703857,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.9086365699768066,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.890266180038452,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.874818801879883,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.8559107780456543,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.839602470397949,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.8185508251190186,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.801712989807129,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.784827470779419,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.770174264907837,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.7519490718841553,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.735697031021118,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.7187864780426025,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.7044565677642822,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.687417507171631,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.671039342880249,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.6527130603790283,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.6351842880249023,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.618401527404785,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.601317882537842,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.585362195968628,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.5697944164276123,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.550166368484497,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.534090757369995,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.5180165767669678,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.501457691192627,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.48516845703125,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.469481945037842,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.4515504837036133,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.4349594116210938,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.4186599254608154,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.4017934799194336,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.3845362663269043,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.366722345352173,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.34993314743042,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.3296058177948,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.313225269317627,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.2939789295196533,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.2774972915649414,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.2599198818206787,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.2427988052368164,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.223323106765747,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.2084994316101074,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.189267635345459,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.174659013748169,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.156965494155884,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.1429243087768555,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.124195098876953,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.1081714630126953,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.0900375843048096,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.075221538543701,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.056670665740967,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.0417351722717285,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.023799419403076,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 3.0091822147369385,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.9889769554138184,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.9738450050354004,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.9568960666656494,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.9423928260803223,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.926011085510254,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.9101710319519043,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.890364170074463,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.87632417678833,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.856452465057373,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.8415541648864746,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.8227550983428955,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.8074679374694824,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.7894976139068604,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.774075508117676,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.7571799755096436,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.7426834106445312,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.7242462635040283,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.70926570892334,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.690535306930542,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.675445556640625,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.6579842567443848,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.6425271034240723,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.623675584793091,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.606532335281372,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.5886735916137695,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.5721561908721924,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.5554778575897217,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.5378336906433105,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.52118182182312,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.5053179264068604,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.4886841773986816,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.4736227989196777,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.4540066719055176,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.437887191772461,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.4213459491729736,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.4043569564819336,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.3849027156829834,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.368260145187378,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.351555824279785,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.3346714973449707,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.320401430130005,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.304750680923462,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.2887542247772217,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.274071216583252,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.256173610687256,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.2426321506500244,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.222632884979248,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.206146001815796,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.1885595321655273,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.1724886894226074,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.154039144515991,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.1386637687683105,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.1209425926208496,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.105091094970703,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.0871996879577637,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.0711846351623535,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.0546469688415527,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.0386176109313965,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.0213356018066406,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 2.0067055225372314,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.9891213178634644,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.9728381633758545,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.9553874731063843,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.9394079446792603,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.9211608171463013,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.9059377908706665,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.8860365152359009,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.8663238286972046,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.851454257965088,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.8336602449417114,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.817386269569397,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.8007208108901978,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.7844643592834473,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.7661998271942139,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.7508342266082764,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.734187364578247,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.717325210571289,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.6991760730743408,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.6821917295455933,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.6641769409179688,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.6483933925628662,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.628606915473938,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.6124403476715088,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.5924237966537476,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.5760059356689453,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.5570555925369263,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.542631983757019,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.5224930047988892,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.5042389631271362,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.4874860048294067,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.471449375152588,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.4521408081054688,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.4366439580917358,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.4181338548660278,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.397131085395813,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.380965232849121,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.3603907823562622,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.34329092502594,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.3251698017120361,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.3081213235855103,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.289332389831543,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.2731385231018066,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.254778504371643,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.2355014085769653,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.2190123796463013,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.198453426361084,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.1820337772369385,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.1598304510116577,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.1443116664886475,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.12595796585083,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.1083849668502808,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.0894863605499268,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.0729470252990723,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.0510114431381226,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.0325262546539307,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 1.0155330896377563,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.9942103624343872,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.9792225956916809,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.958221971988678,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.9427378177642822,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.9237838983535767,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.9072261452674866,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.889419436454773,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.8732191920280457,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.8552748560905457,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.8393608927726746,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.8213379979133606,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.8067529797554016,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.7888995409011841,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.7725470066070557,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.7561677098274231,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.7407251596450806,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.7240593433380127,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.7080405950546265,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.691185474395752,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.6761561036109924,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.6564000248908997,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.6406150460243225,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.6231983304023743,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.607826828956604,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.5914205312728882,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.5752055644989014,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.5575996041297913,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.5413585901260376,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.5239394307136536,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.5079071521759033,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.4894065856933594,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.4730287492275238,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.4551593065261841,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.43775057792663574,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.420190691947937,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.4029726982116699,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.3874906599521637,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.3730071783065796,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.35522156953811646,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.3408648371696472,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.3225705921649933,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.3077557384967804,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.28955021500587463,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.27304747700691223,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.2556670904159546,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.239418625831604,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.22351858019828796,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.2073531150817871,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.19052235782146454,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.1749582290649414,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.15673963725566864,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.14218033850193024,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.12416603416204453,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.10877970606088638,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.09011899679899216,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.07516362518072128,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.056449003517627716,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.04252612963318825,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.023774048313498497,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -3304.32947533136,
+            445.68203371794334,
+            -235.1931815271576
+          ],
+          "speed": 0.0,
+          "recovery": 0.00836704857647419,
+          "grounded": false,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.35498046875,
+            19.82544708251953,
+            -270.0049844280719
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.35498046875,
+            19.82544708251953,
+            -271.26791898420237
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.35498046875,
+            19.82544708251953,
+            -272.40965792275733
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.35498046875,
+            19.82544708251953,
+            -273.0531383045218
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.35498046875,
+            19.82544708251953,
+            -273.5750517643039
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.445048680553,
+            19.835298401156813,
+            -273.59783819643957
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.5378074077457,
+            19.845443997891294,
+            -273.6461551784473
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.6227943747513,
+            19.85473954816077,
+            -273.66765610344225
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.735493739809,
+            19.86706617483139,
+            -273.69616801156775
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.82297709498,
+            19.8766347701667,
+            -273.7183004999068
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2763.9148143837892,
+            19.886679582152,
+            -273.7700298524167
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.0006428647744,
+            19.89606717469893,
+            -273.79174367138984
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.097701157531,
+            19.90668304038166,
+            -273.81629853111815
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.198474740341,
+            19.91770527121253,
+            -273.8417933247979
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.2929074500694,
+            19.928033961225065,
+            -273.86568393623463
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.3957685186347,
+            19.9392845121626,
+            -273.89170684464364
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.4908499360076,
+            19.949684155317286,
+            -273.9157615724672
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.607032777074,
+            19.9623917914693,
+            -273.94515476744573
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.725703221389,
+            19.975371513390595,
+            -273.97517730250996
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.8177599897836,
+            19.98544033130379,
+            -274.0027744190043
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.892505489511,
+            19.993615709927802,
+            -274.02168434582967
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2764.9981475066597,
+            20.00517043077464,
+            -274.0484108093001
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.0859879596624,
+            20.014778085112212,
+            -274.07063363874107
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.1853388061786,
+            20.0256447016845,
+            -274.09576849381557
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.285910730692,
+            20.036644874855913,
+            -274.1212122704363
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.394982948876,
+            20.04857477836895,
+            -274.1488065433643
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.494897909553,
+            20.059503097804996,
+            -274.1740841120001
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.595106115385,
+            20.07046348875292,
+            -274.1994358711192
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.7335505683714,
+            20.085606016576733,
+            -274.23446104881083
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.8314566175804,
+            20.096314606852843,
+            -274.25923038334
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2765.9434337841785,
+            20.108562243388125,
+            -274.28755958119103
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.037444330588,
+            20.11884475794943,
+            -274.3113433884463
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.157686069439,
+            20.13199634175003,
+            -274.3417634467024
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.253204780685,
+            20.142443813710813,
+            -274.36592880660385
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.3490767154667,
+            20.152929920557625,
+            -274.39449403245425
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.4649117384593,
+            20.16559951430437,
+            -274.42379923264303
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.553284887119,
+            20.175265431749523,
+            -274.44615683058674
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.6923364860672,
+            20.190474367086146,
+            -274.48133561144266
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.7602653211466,
+            20.197904165309943,
+            -274.49852098310924
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.885576862427,
+            20.21161026467932,
+            -274.53022365571417
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2766.976241052998,
+            20.221526768812023,
+            -274.55316086505854
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.0909285452663,
+            20.23407084992542,
+            -274.5821757506786
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.187749504598,
+            20.244660758054913,
+            -274.6066705667519
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.2912224526385,
+            20.255978235455224,
+            -274.632848274327
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.3839494738145,
+            20.26612036328142,
+            -274.65630736220066
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.485129138872,
+            20.27718700909622,
+            -274.68190489163436
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.581227924376,
+            20.287697927931884,
+            -274.70621700432025
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.6873989930336,
+            20.299310514382718,
+            -274.73307731318914
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.7905842150913,
+            20.310596520759937,
+            -274.7591822301552
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2767.907741712565,
+            20.32370049803978,
+            -274.7889209999876
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.0119151037184,
+            20.336094995914568,
+            -274.8156211492346
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.1124624862177,
+            20.34872354031736,
+            -274.84162839232727
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.2194197969725,
+            20.36287547162358,
+            -274.86955532144856
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.3290735022656,
+            20.378139405040862,
+            -274.8984684631926
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.4417340141113,
+            20.39462186657263,
+            -274.9284811032577
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.543915067466,
+            20.41026023290976,
+            -274.95597289788884
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.6664714249237,
+            20.429880671815376,
+            -274.98929524589545
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.7667205369794,
+            20.44661034479146,
+            -275.01683375551175
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.8931814820203,
+            20.468597600556375,
+            -275.05194780074794
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2768.9928386997926,
+            20.486605503530406,
+            -275.07991547972824
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.1254294304263,
+            20.5114950900749,
+            -275.11754142533823
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.232863998227,
+            20.53242396437821,
+            -275.1483773797438
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.3569290154824,
+            20.55744362757382,
+            -275.18438690812616
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.459578403053,
+            20.578748838811713,
+            -275.2144711033021
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.5808884756784,
+            20.604021231867204,
+            -275.2500700960623
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.6954934212345,
+            20.627896753121703,
+            -275.2837014380105
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.8240250159865,
+            20.65467359728947,
+            -275.3214196204286
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2769.9328899993375,
+            20.67735331876238,
+            -275.3533665452087
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.0486784302952,
+            20.70147539440798,
+            -275.387345187201
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.1569216372923,
+            20.724025580919793,
+            -275.4191096489978
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.277553058025,
+            20.749156591148456,
+            -275.45450948747566
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.410224789094,
+            20.77679594525151,
+            -275.4934426114726
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.528511183547,
+            20.80143841937112,
+            -275.5281542914862
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.6474489280426,
+            20.826216588717944,
+            -275.5630571140096
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.762965789527,
+            20.850282086827217,
+            -275.59695606267024
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2770.904024510097,
+            20.879668693538555,
+            -275.6383503858596
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.0023983484966,
+            20.9001628053068,
+            -275.6672186379806
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.1377241292744,
+            20.92835507495469,
+            -275.7069306039336
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.250410866722,
+            20.951830978790994,
+            -275.7421936854979
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.3872076743737,
+            20.980329705818843,
+            -275.7823373305147
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.4946417010015,
+            21.00271131698784,
+            -275.81386433336723
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.6115335997124,
+            21.027063276630706,
+            -275.8481667910819
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.7215697064094,
+            21.04998697698387,
+            -275.8804573873332
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.8502380520117,
+            21.076792310749443,
+            -275.91821569791455
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2771.954488727647,
+            21.098510739842933,
+            -275.94880853247827
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.0816746308383,
+            21.125007237373097,
+            -275.98613181479413
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.1893933027914,
+            21.147448148340604,
+            -276.0177423492005
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.305109354184,
+            21.17155514446922,
+            -276.0516997510376
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.4105741342855,
+            21.193526504194296,
+            -276.08264887128377
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.5230708104878,
+            21.216962812005658,
+            -276.11781143955
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.634413460928,
+            21.240158702647292,
+            -276.15048544771736
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.744752328824,
+            21.263145477153802,
+            -276.18286489141275
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.8568432601332,
+            21.28649725555175,
+            -276.21575848592147
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2772.972694066089,
+            21.31063232497964,
+            -276.2497554319956
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.0819586866373,
+            21.333395301216644,
+            -276.281819632734
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.199813390602,
+            21.357947841010457,
+            -276.31640463104833
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.3106899404147,
+            21.381046630441684,
+            -276.34894185741626
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.427677033561,
+            21.405418420825466,
+            -276.3832722549757
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.5392954201443,
+            21.428671754509036,
+            -276.4160271790816
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.65129509699,
+            21.452004524538957,
+            -276.44889399326814
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.764794955321,
+            21.475649823918427,
+            -276.48220104494544
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.873077988317,
+            21.49820830711806,
+            -276.5139771953662
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2773.985197826943,
+            21.52156611083434,
+            -276.54687926880104
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.105762288539,
+            21.546683171354978,
+            -276.58225945791116
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.212902560099,
+            21.569003586029257,
+            -276.61370025744094
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.32488118093,
+            21.59233196691077,
+            -276.646560893928
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.4243253919,
+            21.613049070086298,
+            -276.67574324913556
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.5549466715597,
+            21.640261259270506,
+            -276.7140746534536
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.666175893077,
+            21.663433522207516,
+            -276.7467153705437
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.7784863916113,
+            21.686831044347763,
+            -276.7808426893305
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2774.8901539498515,
+            21.71009462319627,
+            -276.8136120434512
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.021116700707,
+            21.737377948551817,
+            -276.85204365874006
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.1341372056772,
+            21.76092338502961,
+            -276.8852100393969
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.2391288459453,
+            21.782796177026732,
+            -276.91602031323015
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.356375960044,
+            21.80722213785157,
+            -276.95042701218824
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.472817685977,
+            21.831480313717837,
+            -276.9845973655386
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.5974150160337,
+            21.857437535411073,
+            -277.0211610196517
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.709624175177,
+            21.880813946143224,
+            -277.0545406643008
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.839964639731,
+            21.907967629656003,
+            -277.092789666263
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery"
+        },
+        {
+          "position": [
+            -2775.9495940215215,
+            21.93080659671009,
+            -277.1249609071165
+          ],
+          "speed": 0.0,
+          "recovery": 0.0,
+          "grounded": true,
+          "grass": false,
+          "reason": "Water \u2014 shoreline recovery",
+          "recovered_on_path": true,
+          "distance_from_water_entry_cm": 677.3111555701333,
+          "prior_start_distance_cm": 12619.822158311385
+        }
+      ]
+    },
+    {
+      "name": "solid_shore",
+      "pass": true,
+      "water_crash": true,
+      "start": {
+        "position": [
+          -3997.5564381631584,
+          2392.5980483880776,
+          -294.2479749001755
+        ],
+        "speed": 508.6212463378906,
+        "recovery": 0.0,
+        "grounded": true,
+        "grass": false,
+        "reason": "Water \u2014 shoreline recovery"
+      },
+      "end": {
+        "position": [
+          -3837.5347526124892,
+          2372.890224344876,
+          -309.0245563186452
+        ],
+        "speed": 0.0,
+        "recovery": 1.354039192199707,
+        "grounded": true,
+        "grass": false,
+        "reason": "Water \u2014 shoreline recovery"
+      },
+      "recovery_samples": []
+    },
+    {
+      "name": "airborne_water_entry",
+      "pass": true,
+      "water_crash": true,
+      "start": {
+        "position": [
+          -3304.32947533136,
+          445.6820337179429,
+          178.4709960545103
+        ],
+        "speed": 0.0,
+        "recovery": 0.0,
+        "grounded": false,
+        "grass": false,
+        "reason": "Water \u2014 shoreline recovery"
+      },
+      "end": {
+        "position": [
+          -3304.32947533136,
+          445.6820337179429,
+          -234.82728426841396
+        ],
+        "speed": 0.0,
+        "recovery": 2.2086169719696045,
+        "grounded": false,
+        "grass": false,
+        "reason": "Water \u2014 shoreline recovery"
+      },
+      "recovery_samples": []
+    },
+    {
+      "name": "island_footing",
+      "pass": true,
+      "water_crash": false,
+      "start": {
+        "position": [
+          -8719.738527262953,
+          -3549.9850838522734,
+          -293.3993925573236
+        ],
+        "speed": 0.0,
+        "recovery": 0.0,
+        "grounded": true,
+        "grass": true,
+        "reason": "Water \u2014 shoreline recovery"
+      },
+      "end": {
+        "position": [
+          -8719.738527262953,
+          -3549.9850838522734,
+          -296.0630625875106
+        ],
+        "speed": 0.0,
+        "recovery": 0.0,
+        "grounded": true,
+        "grass": true,
+        "reason": "Water \u2014 shoreline recovery"
+      },
+      "recovery_samples": []
+    }
+  ],
+  "active": "island_footing"
+}

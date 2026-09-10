@@ -1,7 +1,7 @@
 """In-engine integration tests. Uses actual PlayerController key events, collision and game ticks."""
 import unreal,pathlib,json,traceback,time
 root=pathlib.Path(unreal.Paths.project_dir())
-report={'build':'0.2.1-dev','status':'running','cases':[]}
+report={'timing':'Bike simulation seconds; does not certify frame rate','build':'0.2.1-dev','status':'running','cases':[]}
 # name, duration, start, gear, initial speed, held keys
 cases=[('gear_up',.4,(0,4000,100),3,0,['Up']),('gear_down',.4,(0,4000,100),3,0,['Down']),('handlebar_camera',.4,(0,4000,100),1,0,['Tab']),('chase_camera',.4,(0,4000,100),1,0,['LeftShift']),('low_gear_acceleration',2.5,(0,4000,100),1,0,['W']),
  ('high_gear_acceleration',2.5,(0,4000,100),7,0,['W']),
@@ -58,7 +58,7 @@ def tick(dt):
   if not p or 'PiedmontBike' not in p.get_class().get_name():return
   m=p.get_editor_property('ride');now=unreal.GameplayStatics.get_time_seconds(w)
   if last_world_time is None:last_world_time=now
-  elapsed+=now-last_world_time;last_world_time=now
+  elapsed+=min(now-last_world_time,.12);last_world_time=now
   if active is not None:
    rows.append(snapshot(p,m))
    if elapsed<active[1]:return

@@ -49,3 +49,17 @@ Terrain interior height samples pass. Rays at exact grid vertices can miss; a 2 
 Lake Clara Meer's OSM outer ring and island are prepared, with 9,735 interior DEM samples agreeing on a water elevation of 267.359985 m. Authored underwater depth (maximum 4.5 real metres) is explicitly separate from measured 3DEP surface data. Source lakebed R16 and shoreline collision OBJ are ready, but no actual lake actor/bed/shoreline has been installed in PiedmontWorld yet. Island exclusion and nearest unobstructed path recovery code are authored, also awaiting compilation and regression.
 
 The Mac locked again before the next normal editor restart. Resume by closing the editor normally, compiling, enabling session-only world jobs if needed, and running the expanded terrain checks and all 20 bike regressions on BikePhysicsLab. Then install the lake, verify shoreline/airborne/island/bridge behavior and resume connectivity work. Full game scope remains pending.
+
+## 2026-09-10 — Rendered lake and safe shoreline recovery
+
+Ground-probe sphere fallback is compiled. All 50 terrain contact samples pass, including exact grid corners; the initial 20 bike regressions also pass (archived under Tests/Results with terrain-ground-contact and bike-ground-probe-regression names).
+
+Installed Lake Clara Meer using the OSM outer ring and island, measured water elevation, authored lakebed and island bank, and hidden solid shoreline mesh. The DEM does not measure underwater depth or the island bank profile; those remain authored estimates. Positive ring winding and a native OnWaterBodyChanged shape refresh fix empty water geometry. The water surface and island are visually confirmed in the editor.
+
+All five real-park integration cases pass in Tests/Results/2026-09-10-park-lake-recovery.json: path travel, nearby-path recovery, shoreline water crash, airborne water entry, and dry island footing. Recovery checks a 42 cm footprint against water and capsule clearance, then holds the bike stationary until pedaling so gravity cannot roll it back into the lake. Test duration now follows the movement component's capped simulation time; these tests do not establish real-time performance or 60 fps.
+
+Elliott supplied a CrashReportClientEditor crash report at 18:43. The main editor remained running. Its log identifies an Interchange OBJ UV-index ensure during shoreline import; the reporting helper itself faulted while shutting down its task scheduler. Added valid explicit UV indices to all shoreline faces and reimported. No process termination was used. A clean subsequent restart is being checked.
+
+The current map is still a geography/physics development build. Fourteen bridge ways, separated path components, full-network riding, landmarks, BeltLine south, race loop, traffic including scooters, audio, and visual/performance polish remain pending. Full V2 scope is not accepted.
+
+Final checkpoint checks: latest 20/20 bike regressions pass (bike-shore-recovery-regression); 727/727 installed pavement samples still pass after the lakebed change (park-pavement-after-lake). Clean normal restart log contains no ensure or fatal error entries. Full gameplay and performance remain unverified.

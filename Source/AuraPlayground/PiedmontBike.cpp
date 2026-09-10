@@ -26,19 +26,37 @@ void UPiedmontBikeMovement::Crash(const FString& Reason){
 }
 void UPiedmontBikeMovement::Respawn(){
  if(!UpdatedComponent)return;
+ bRecoveryHold=LastCrash.StartsWith(TEXT("Water"));
  if(LastCrash.StartsWith(TEXT("Water"))){
   const FVector From=UpdatedComponent->GetComponentLocation();double Best=TNumericLimits<double>::Max();
   FCollisionQueryParams Query(SCENE_QUERY_STAT(PiedmontShoreRecovery),false,PawnOwner);
-  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){
-   const FVector P=It->Centerline->FindLocationClosestToWorldLocation(From,ESplineCoordinateSpace::World);
-   const double Distance=FVector::DistSquared2D(P,From);if(Distance>=Best)continue;
+  auto Consider=[&](const FVector& P,const FVector& Direction){
+   const double Distance=FVector::DistSquared2D(P,From);if(Distance>=Best)return;
    FHitResult Hit;
-   if(!GetWorld()->SweepSingleByChannel(Hit,P+FVector(0,0,150),P-FVector(0,0,150),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(2.f),Query))continue;
-   if(!Hit.GetActor()||(!Hit.GetActor()->ActorHasTag(TEXT("RidePath"))&&!Hit.GetActor()->ActorHasTag(TEXT("RideDirt")))||Hit.ImpactNormal.Z<.6f)continue;
+   if(!GetWorld()->SweepSingleByChannel(Hit,P+FVector(0,0,150),P-FVector(0,0,150),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(2.f),Query))return;
+   AActor* Surface=Hit.GetActor();
+   if(!Surface||(!Surface->ActorHasTag(TEXT("RidePath"))&&!Surface->ActorHasTag(TEXT("RideDirt")))||Hit.ImpactNormal.Z<.6f)return;
    const FVector Target=Hit.ImpactPoint+FVector(0,0,101);
-   bool InWater=false;for(const auto& Water:WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Target)&&!Hit.GetActor()->ActorHasTag(TEXT("RideBridge")))InWater=true;
-   if(InWater||GetWorld()->OverlapBlockingTestByChannel(Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32.f,96.f),Query))continue;
-   Best=Distance;SafeLocation=Target;SafeRotation=FRotator(0,It->Centerline->FindDirectionClosestToWorldLocation(P,ESplineCoordinateSpace::World).Rotation().Yaw,0);
+   // Test the whole tire/capsule footprint in the water plane. A high root
+   // position must not make a horizontally submerged recovery point valid.
+   if(!Surface->ActorHasTag(TEXT("RideBridge")))for(const auto& Water:WaterHazards)if(Water.IsValid()){
+    for(int32 I=0;I<9;++I){
+     const float Angle=(I-1)*PI/4;const float Radius=I==0?0.f:42.f;
+     const FVector Sample(Target.X+FMath::Cos(Angle)*Radius,Target.Y+FMath::Sin(Angle)*Radius,Water->GetActorLocation().Z+1);
+     if(Water->ContainsBike(Sample))return;
+    }
+   }
+   if(GetWorld()->OverlapBlockingTestByChannel(Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32.f,96.f),Query))return;
+   Best=Distance;SafeLocation=Target;SafeRotation=FRotator(0,Direction.Rotation().Yaw,0);
+  };
+  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){
+   for(int32 I=0;I+1<It->Centerline->GetNumberOfSplinePoints();++I){
+    const FVector A=It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);
+    const FVector B=It->Centerline->GetLocationAtSplinePoint(I+1,ESplineCoordinateSpace::World);const FVector D=B-A;
+    const double Length2=D.X*D.X+D.Y*D.Y;
+    const double T=Length2>0?FMath::Clamp(((From.X-A.X)*D.X+(From.Y-A.Y)*D.Y)/Length2,0.,1.):0.;
+    Consider(A+D*T,D);Consider(A,D);Consider(B,D);
+   }
   }
  }
  UpdatedComponent->SetWorldLocationAndRotation(SafeLocation,SafeRotation,false,nullptr,ETeleportType::TeleportPhysics);
@@ -76,7 +94,9 @@ void UPiedmontBikeMovement::Step(float Dt){
  static const float Accel[]={290,235,195,163,138,119,104};
  float Drive=Pedal>0&&BrakePressure<.01f?Accel[Gear-1]*FMath::Clamp((Cap-Speed)/120.f,0.f,1.f):0;
  float Resistance=(Speed>1?14.f+Speed*Speed*.000027f:0.f)*(bGrass?2.8f:1.f);
- float Acceleration=(bGrounded?Drive-Resistance+980.f*Slope:0.f);
+ // Keep a recovered bike stationary until the rider pedals again.
+ if(Pedal>0||Speed>1)bRecoveryHold=false;
+ float Acceleration=(bGrounded&&!bRecoveryHold?Drive-Resistance+980.f*Slope:0.f);
  if(BrakePressure>0&&bGrounded)Acceleration-=FMath::Min(Speed/FMath::Max(Dt,.001f),620.f*Grip*BrakePressure);
  Speed=FMath::Clamp(Speed+Acceleration*Dt,0.f,1650.f);TopSpeed=FMath::Max(TopSpeed,Speed);
  SteeringRack=FMath::FInterpConstantTo(SteeringRack,Steer,Dt,2.2f);

@@ -796,8 +796,9 @@
   ],
   "authored_bathymetry": {
     "max_depth_real_m": 4.5,
+    "authored_island_bank_max_rise_real_m": 0.9,
     "source": "Authored underwater depth; no measured bathymetry available",
-    "modified_samples": 11500,
+    "modified_samples": 11544,
     "shore_wall_triangles": 2916,
     "bridge_gap_segments": 12
   }

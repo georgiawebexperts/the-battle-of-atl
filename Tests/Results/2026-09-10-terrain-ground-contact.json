@@ -1,0 +1,607 @@
+{
+  "status": "passed",
+  "map": "PiedmontWorld",
+  "scope": "25 interior surface rays and 25 finite-radius grid-corner contacts; full riding acceptance remains separate",
+  "samples": [
+    {
+      "mode": "surface",
+      "sample": [
+        12,
+        12
+      ],
+      "expected_z": 948.7760416666675,
+      "collision_z": 948.773078475877,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.002963190790524095,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        12,
+        756
+      ],
+      "expected_z": 846.5625000000008,
+      "collision_z": 846.5591716258486,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.003328374152147262,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        12,
+        1512
+      ],
+      "expected_z": 810.5208333333338,
+      "collision_z": 810.5191315947586,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0017017385752069458,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        12,
+        2268
+      ],
+      "expected_z": 323.61979166666595,
+      "collision_z": 323.6161108250053,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0036808416606390892,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        12,
+        3012
+      ],
+      "expected_z": -1276.9921875000005,
+      "collision_z": -1276.9950902904943,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0029027904938629945,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        378,
+        12
+      ],
+      "expected_z": 1120.2213541666672,
+      "collision_z": 1120.2192004193053,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0021537473619446246,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        378,
+        756
+      ],
+      "expected_z": 792.578125,
+      "collision_z": 792.5773064170546,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0008185829453850602,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        378,
+        1512
+      ],
+      "expected_z": -59.29687500000019,
+      "collision_z": -59.30282601853972,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.005951018539526842,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        378,
+        2268
+      ],
+      "expected_z": 629.479166666666,
+      "collision_z": 629.4703512038725,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.008815462793450024,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        378,
+        3012
+      ],
+      "expected_z": -871.2109375000002,
+      "collision_z": -871.2157977368961,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.004860236895865455,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        756,
+        12
+      ],
+      "expected_z": 732.4869791666667,
+      "collision_z": 732.4849201921368,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0020589745299730566,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        756,
+        756
+      ],
+      "expected_z": 910.6510416666671,
+      "collision_z": 910.6490520332636,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0019896334034683605,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        756,
+        1512
+      ],
+      "expected_z": 55.36458333333296,
+      "collision_z": 55.36167855598717,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0029047773457904214,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        756,
+        2268
+      ],
+      "expected_z": -151.06770833333297,
+      "collision_z": -151.0777083571774,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.010000023844440875,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        756,
+        3012
+      ],
+      "expected_z": 433.2421875000004,
+      "collision_z": 433.2325761043716,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.009611395628780883,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1134,
+        12
+      ],
+      "expected_z": 773.0598958333342,
+      "collision_z": 773.0572817324082,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0026141009259390557,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1134,
+        756
+      ],
+      "expected_z": 543.4635416666671,
+      "collision_z": 543.4591868848704,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.004354781796678253,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1134,
+        1512
+      ],
+      "expected_z": 671.4062499999993,
+      "collision_z": 671.4017617017626,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.004488298236765331,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1134,
+        2268
+      ],
+      "expected_z": -30.091145833333147,
+      "collision_z": -30.099967455365686,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.008821622032538556,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1134,
+        3012
+      ],
+      "expected_z": -349.3880208333337,
+      "collision_z": -349.3976024261844,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.009581592850679499,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1500,
+        12
+      ],
+      "expected_z": 1240.9765624999998,
+      "collision_z": 1240.9754025759132,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0011599240865507454,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1500,
+        756
+      ],
+      "expected_z": 643.5546875,
+      "collision_z": 643.5488986085671,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.005788891432871424,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1500,
+        1512
+      ],
+      "expected_z": 908.294270833333,
+      "collision_z": 908.2922370918211,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0020337415119229263,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1500,
+        2268
+      ],
+      "expected_z": -15.45572916666629,
+      "collision_z": -15.459284637979806,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.003555471313516634,
+      "pass": true
+    },
+    {
+      "mode": "surface",
+      "sample": [
+        1500,
+        3012
+      ],
+      "expected_z": -883.7890625000001,
+      "collision_z": -883.7920759581397,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.003013458139548675,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        12,
+        12
+      ],
+      "expected_z": 951.3020833333334,
+      "collision_z": 951.3193359375,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.01725260416662877,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        12,
+        756
+      ],
+      "expected_z": 847.9166666666667,
+      "collision_z": 847.918212890625,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.001546223958257542,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        12,
+        1512
+      ],
+      "expected_z": 810.6770833333334,
+      "collision_z": 810.6753540039062,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.001729329427121229,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        12,
+        2268
+      ],
+      "expected_z": 325.52083333333337,
+      "collision_z": 325.5891418457031,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.06830851236975377,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        12,
+        3012
+      ],
+      "expected_z": -1273.9583333333335,
+      "collision_z": -1273.9254150390625,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.032918294270984916,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        378,
+        12
+      ],
+      "expected_z": 1120.3125,
+      "collision_z": 1120.3118896484375,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0006103515625,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        378,
+        756
+      ],
+      "expected_z": 792.7083333333334,
+      "collision_z": 792.7076416015625,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.000691731770871229,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        378,
+        1512
+      ],
+      "expected_z": -58.07291666666667,
+      "collision_z": -58.05915832519531,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.013758341471358904,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        378,
+        2268
+      ],
+      "expected_z": 632.03125,
+      "collision_z": 632.0303955078125,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0008544921875,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        378,
+        3012
+      ],
+      "expected_z": -875.5208333333334,
+      "collision_z": -875.3932495117188,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.12758382161462123,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        756,
+        12
+      ],
+      "expected_z": 732.03125,
+      "collision_z": 732.0305786132812,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.00067138671875,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        756,
+        756
+      ],
+      "expected_z": 913.5416666666667,
+      "collision_z": 913.5428466796875,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.001180013020757542,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        756,
+        1512
+      ],
+      "expected_z": 53.645833333333336,
+      "collision_z": 53.66765594482422,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.021822611490883048,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        756,
+        2268
+      ],
+      "expected_z": -146.61458333333334,
+      "collision_z": -146.42987060546875,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.1847127278645928,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        756,
+        3012
+      ],
+      "expected_z": 433.8541666666667,
+      "collision_z": 433.85113525390625,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0030314127604356145,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1134,
+        12
+      ],
+      "expected_z": 771.3541666666667,
+      "collision_z": 771.3594360351562,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.005269368489507542,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1134,
+        756
+      ],
+      "expected_z": 544.0104166666667,
+      "collision_z": 544.0257568359375,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.015340169270757542,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1134,
+        1512
+      ],
+      "expected_z": 671.3541666666667,
+      "collision_z": 671.3534545898438,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0007120768229924579,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1134,
+        2268
+      ],
+      "expected_z": -34.63541666666667,
+      "collision_z": -34.595638275146484,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.03977839152018703,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1134,
+        3012
+      ],
+      "expected_z": -349.21875,
+      "collision_z": -349.16748046875,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.05126953125,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1500,
+        12
+      ],
+      "expected_z": 1242.4479166666667,
+      "collision_z": 1242.45849609375,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.010579427083257542,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1500,
+        756
+      ],
+      "expected_z": 645.0520833333334,
+      "collision_z": 645.0469360351562,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.005147298177121229,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1500,
+        1512
+      ],
+      "expected_z": 908.3333333333334,
+      "collision_z": 908.3328857421875,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.00044759114587122895,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1500,
+        2268
+      ],
+      "expected_z": -14.583333333333334,
+      "collision_z": -14.556196212768555,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.027137120564779238,
+      "pass": true
+    },
+    {
+      "mode": "corner_contact",
+      "sample": [
+        1500,
+        3012
+      ],
+      "expected_z": -883.5937500000001,
+      "collision_z": -883.5946655273438,
+      "actor": "USGS measured Atlanta terrain \u2014 1 to 3 scale",
+      "error_cm": 0.0009155273436363132,
+      "pass": true
+    }
+  ]
+}

@@ -31,6 +31,7 @@ public:
  UPROPERTY(BlueprintReadOnly) float Speed=0;
  UPROPERTY(BlueprintReadOnly) float BrakePressure=0;
  TArray<TWeakObjectPtr<APiedmontWaterHazard>> WaterHazards;
+ bool bRecoveryHold=false;
  UPROPERTY(BlueprintReadOnly) float Lean=0;
  UPROPERTY(BlueprintReadOnly) float Pitch=0;
  UPROPERTY(BlueprintReadOnly) bool bGrass=false;

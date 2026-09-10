@@ -22,6 +22,15 @@ bank_distance=shapely.distance(shapely.points(px,py),poly.boundary)
 depth=np.minimum(bank_distance*.3,4.5)
 values=np.round(32768+(height-depth-m['base_elevation_m'])*128).astype('<u2')
 carved[(m['size'][1]-1)-yy[fullmask],xx[fullmask]]=values
+# Lidar water filling also flattened the tiny island. Preserve its OSM outline
+# with a documented low authored bank, never lowering any measured island cell.
+island_shape=Polygon(rings['inner']);island_mask=shapely.contains_xy(island_shape,west+xx*spacing,north-yy*spacing)
+island_x=west+xx[island_mask]*spacing;island_y=north-yy[island_mask]*spacing
+island_distance=shapely.distance(shapely.points(island_x,island_y),island_shape.boundary)
+island_height=height+np.minimum(island_distance*.2,.9)
+island_values=np.round(32768+(island_height-m['base_elevation_m'])*128).astype('<u2')
+ri=(m['size'][1]-1)-yy[island_mask];ci=xx[island_mask]
+carved[ri,ci]=np.maximum(carved[ri,ci],island_values)
 carved.tofile(O/'atlanta-height-lakebed.r16')
 # Solid submerged shoreline walls. Leave bridge crossings for their deck actors;
 # the water hazard still protects these gaps until decks are built.
@@ -41,7 +50,7 @@ for name in ['outer_cm','island_cm']:
    verts.extend([(start[0],-start[1],z-300),(end[0],-end[1],z-300),(end[0],-end[1],z+120),(start[0],-start[1],z+120)])
    # Both windings ensure contact from either side, including island shore.
    faces.extend([(k,k+1,k+2),(k,k+2,k+3),(k+2,k+1,k),(k+3,k+2,k)])
-lines=['# Solid shoreline: OpenStreetMap geometry, OBJ Y = -Unreal Y']+['v %.6f %.6f %.6f'%v for v in verts]+['f %d %d %d'%f for f in faces]
+lines=['# Solid shoreline: OpenStreetMap geometry, OBJ Y = -Unreal Y']+['v %.6f %.6f %.6f'%v for v in verts]+['vt %.6f %.6f'%(v[0]/200,v[2]/200) for v in verts]+['f '+' '.join('%d/%d'%(i,i) for i in f) for f in faces]
 (O/'LakeShoreCollision.obj').write_text('\n'.join(lines)+'\n')
-out['authored_bathymetry']={'max_depth_real_m':4.5,'source':'Authored underwater depth; no measured bathymetry available','modified_samples':int(np.count_nonzero(raw!=carved)),'shore_wall_triangles':len(faces),'bridge_gap_segments':gaps}
+out['authored_bathymetry']={'max_depth_real_m':4.5,'authored_island_bank_max_rise_real_m':.9,'source':'Authored underwater depth; no measured bathymetry available','modified_samples':int(np.count_nonzero(raw!=carved)),'shore_wall_triangles':len(faces),'bridge_gap_segments':gaps}
 (O/'lake-clara-meer.json').write_text(json.dumps(out,indent=2));print(out['authored_bathymetry'])
