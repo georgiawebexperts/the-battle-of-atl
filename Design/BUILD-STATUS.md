@@ -108,3 +108,14 @@ Final bike regression also passes 17/17 retained land/handling cases on the comb
 Installed OSM way 102679938 lake bridge deck plus mapped wood spur 146304988, with distinct deck/rail materials, Nanite meshes and full fallback collision. Deck elevation is authored from bank heights with a 12 cm crown; it is not a surveyed bridge structure. Updated editable splines retain those deck heights when rebuilt. Added a bridge-ground exception to dismount water rejection.
 
 Five live checks pass in Tests/Results/2026-09-10-lake-bridge-crossing.json: crossing each direction including 150 cm bank approaches, dismounting on the deck, remaining on foot above the water, and remounting. Imported mesh bounds agree within 0.001 cm. The wooden spur is installed but not independently ride-tested. Final bridge architecture/reference matching, the other twelve mapped bridge ways, remaining network connectivity and full end-to-end acceptance remain pending.
+
+
+## 2026-09-10 — Seven creek/Northwoods crossings and public plazas
+
+Installed decks and separate rails for OSM ways 146304984, 182302113, 226119763, 226324512, 226324514, 1032063077 and 1050793219. Decks use authored bank-anchored elevations and an 8 cm crown, constrained above sampled terrain; these are not bridge surveys or final architecture. Editable splines preserve their revised deck heights. All 35 live checks pass across these seven crossings: both bank approaches/directions and dismount, non-swimming footing and remount for each. Results: Tests/Results/2026-09-10-wetland-crossings.json. Fourteen imported meshes have verified bounds and full fallback collision. Five mapped bridge ways remain undecked, and full network traversal is still unaccepted.
+
+Added the two public OSM pedestrian areas 1089139296 and Welcome Plaza 1089185052. Private courtyard/terrace areas are excluded. Their pavement follows exact quantized landscape triangles and subtracts existing path footprints to avoid coplanar overlaps. All 445 source triangles pass geometry checks; 25/25 installed collision samples pass. Source intersection data identifies Welcome Plaza as the connection between ways 503237946 and 1089185057 (the latter belongs to an isolated path component in the old centerline-only graph). A full drive through every network junction is still required.
+
+Narrow deck tests exposed dismount capsules touching rail posts at the old 105 cm lateral offset. Reduced it to 90 cm, preserving floor, overlap and swept-barrier checks. Restart now restores gear 1 and zero cadence; encounter spawning runs only after checking timeout. Walking and combat regression results are recorded separately after the rebuild.
+
+Rebuilt regressions pass: 8/8 walking/possession/blocked-exit cases, 18/18 combat/run cases including reset to gear 1, and 9/9 actual attacker pursuit/defense cases. The closer dismount remains protected by overlap and swept-path checks.

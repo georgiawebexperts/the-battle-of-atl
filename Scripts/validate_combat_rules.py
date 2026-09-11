@@ -40,12 +40,13 @@ def tick(delta):
   elif stage==5:
    person=unreal.GameplayStatics.get_player_pawn(w,0);record('first_stab_forces_dismount_without_death',isinstance(person,unreal.PiedmontExplorer) and person.get_editor_property('knife_wounded') and not mode.get_editor_property('run_ended'))
    if not isinstance(person,unreal.PiedmontExplorer):raise RuntimeError('Knife dismount failed')
-   mode.set_editor_property('item_collected',True);old_item=xyz(mode.get_editor_property('item_location'));run=mode.get_editor_property('run_number');timer=mode.get_editor_property('time_remaining');unreal.GameplayStatics.apply_damage(person,1,pc,None,unreal.PiedmontKnifeDamage)
+   mode.set_editor_property('item_collected',True);old_item=xyz(mode.get_editor_property('item_location'));run=mode.get_editor_property('run_number');timer=mode.get_editor_property('time_remaining');bike.ride.set_editor_property('gear',7);unreal.GameplayStatics.apply_damage(person,1,pc,None,unreal.PiedmontKnifeDamage)
   elif stage==6:
    record('second_stab_ends_run_and_discards_item',mode.get_editor_property('run_ended') and not mode.get_editor_property('item_collected'));timer=mode.get_editor_property('time_remaining')
   elif stage==7:
    record('ended_run_stops_clock',mode.get_editor_property('time_remaining')==timer);mode.restart_run()
   elif stage==8:
+   record('restart_restores_first_gear',bike.ride.get_editor_property('gear')==1)
    record('restart_returns_bike_and_resets_search',pawn==bike and not mode.get_editor_property('item_collected') and mode.get_editor_property('time_remaining')>590 and mode.get_editor_property('run_number')==run+1 and xyz(mode.get_editor_property('item_location'))!=old_item)
    original=mode.get_editor_property('item_location');here=bike.get_actor_location();directions=[]
    for label,d in [('NORTH',(0,5000,0)),('EAST',(5000,0,0)),('SOUTH',(0,-5000,0)),('WEST',(-5000,0,0))]:

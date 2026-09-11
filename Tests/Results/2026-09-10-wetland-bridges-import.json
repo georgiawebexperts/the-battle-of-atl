@@ -1,0 +1,103 @@
+{
+  "status": "installed",
+  "meshes": [
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.00012326888645475265,
+      "pass": true,
+      "source_file": "ParkBridge_146304984_Deck.obj",
+      "label": "Park bridge 146304984 Deck"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.00012326888645475265,
+      "pass": true,
+      "source_file": "ParkBridge_146304984_Rails.obj",
+      "label": "Park bridge 146304984 Rails"
+    },
+    {
+      "kind": "Wood",
+      "axis_error_cm": 0.00047376610928040463,
+      "pass": true,
+      "source_file": "ParkBridge_182302113_Wood.obj",
+      "label": "Park bridge 182302113 Wood"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.00047376610928040463,
+      "pass": true,
+      "source_file": "ParkBridge_182302113_Rails.obj",
+      "label": "Park bridge 182302113 Rails"
+    },
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.0003045832709176466,
+      "pass": true,
+      "source_file": "ParkBridge_226119763_Deck.obj",
+      "label": "Park bridge 226119763 Deck"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0003045832709176466,
+      "pass": true,
+      "source_file": "ParkBridge_226119763_Rails.obj",
+      "label": "Park bridge 226119763 Rails"
+    },
+    {
+      "kind": "Wood",
+      "axis_error_cm": 0.0015612160495948046,
+      "pass": true,
+      "source_file": "ParkBridge_226324512_Wood.obj",
+      "label": "Park bridge 226324512 Wood"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0015612160495948046,
+      "pass": true,
+      "source_file": "ParkBridge_226324512_Rails.obj",
+      "label": "Park bridge 226324512 Rails"
+    },
+    {
+      "kind": "Wood",
+      "axis_error_cm": 0.001085343239537906,
+      "pass": true,
+      "source_file": "ParkBridge_226324514_Wood.obj",
+      "label": "Park bridge 226324514 Wood"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.001085343239537906,
+      "pass": true,
+      "source_file": "ParkBridge_226324514_Rails.obj",
+      "label": "Park bridge 226324514 Rails"
+    },
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.0006407530127034988,
+      "pass": true,
+      "source_file": "ParkBridge_1032063077_Deck.obj",
+      "label": "Park bridge 1032063077 Deck"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0006407530127034988,
+      "pass": true,
+      "source_file": "ParkBridge_1032063077_Rails.obj",
+      "label": "Park bridge 1032063077 Rails"
+    },
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.0003288299994892441,
+      "pass": true,
+      "source_file": "ParkBridge_1050793219_Deck.obj",
+      "label": "Park bridge 1050793219 Deck"
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0003288299994892441,
+      "pass": true,
+      "source_file": "ParkBridge_1050793219_Rails.obj",
+      "label": "Park bridge 1050793219 Rails"
+    }
+  ]
+}

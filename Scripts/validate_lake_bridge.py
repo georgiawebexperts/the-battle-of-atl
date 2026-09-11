@@ -1,6 +1,6 @@
 """Ride the installed lake deck both directions and dismount above water."""
 import unreal,json,pathlib,time,traceback,math
-p=pathlib.Path(unreal.Paths.project_dir());data=json.loads((p/'SourceAssets/Terrain/LakeBridge/manifest.json').read_text());points=data['centerline_cm'];level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem);report={'status':'running','cases':[]};stage=0;elapsed=0.;last=None;bike=None;start=None;origin=None;started=time.monotonic()
+p=pathlib.Path(unreal.Paths.project_dir());job=globals().get('WORLD_JOB',{});wet=job.get('collection')=='wetlands';data=json.loads((p/('SourceAssets/Terrain/WetlandBridges/manifest.json' if wet else 'SourceAssets/Terrain/LakeBridge/manifest.json')).read_text());points=next(b['centerline_cm'] for b in data['bridges'] if b['osm_id']==job['osm_id']) if wet else data['centerline_cm'];report_file=p/(('Scripts/bridge-'+str(job['osm_id'])+'-validation.json') if wet else 'Scripts/lake-bridge-validation.json');level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem);report={'status':'running','cases':[]};stage=0;elapsed=0.;last=None;bike=None;start=None;origin=None;started=time.monotonic()
 # Include the bank approaches so reaching a deck end is not mistaken for a full crossing.
 for front in [True,False]:
  a,b=(points[0],points[1]) if front else (points[-1],points[-2]);dx=a[0]-b[0];dy=a[1]-b[1];length=math.hypot(dx,dy);v=[a[0]+dx/length*150,a[1]+dy/length*150,a[2]]
@@ -44,7 +44,7 @@ def tick(delta):
    if not globals().get('WORLD_JOB',{}).get('preview'):level.editor_request_end_play()
    else:report['status']='preview'
    stage=7
-  report['stage']=stage;(p/'Scripts/lake-bridge-validation.json').write_text(json.dumps(report,indent=2))
+  report['stage']=stage;report_file.write_text(json.dumps(report,indent=2))
  except Exception:
-  report['status']='error';report['error']=traceback.format_exc();(p/'Scripts/lake-bridge-validation.json').write_text(json.dumps(report,indent=2));unreal.unregister_slate_post_tick_callback(handle);level.editor_request_end_play()
+  report['status']='error';report['error']=traceback.format_exc();report_file.write_text(json.dumps(report,indent=2));unreal.unregister_slate_post_tick_callback(handle);level.editor_request_end_play()
 handle=unreal.register_slate_post_tick_callback(tick);level.editor_request_begin_play()

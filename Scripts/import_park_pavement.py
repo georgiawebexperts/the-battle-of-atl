@@ -1,6 +1,6 @@
 """Import baked pavement, checking world axes before any placement."""
 import unreal,json,pathlib,traceback
-p=pathlib.Path(unreal.Paths.project_dir());base=p/'SourceAssets/Terrain/ParkPavement';manifest=json.loads((base/'manifest.json').read_text());job=globals().get('WORLD_JOB',{});rows=[]
+p=pathlib.Path(unreal.Paths.project_dir());collection=globals().get('WORLD_JOB',{}).get('collection','paths');base=p/('SourceAssets/Terrain/ParkPlazas' if collection=='plazas' else 'SourceAssets/Terrain/ParkPavement');manifest=json.loads((base/'manifest.json').read_text());job=globals().get('WORLD_JOB',{});rows=[]
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);existing={a.get_actor_label():a for a in ea.get_all_level_actors()}
 chunks=manifest['chunks'] if job.get('all') else [next(c for c in manifest['chunks'] if c['file']=='Park_Concrete_2_15.obj')]
 try:
@@ -34,4 +34,4 @@ try:
  if job.get('place'):unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
  result={'status':'passed','scope':'import bounds only','meshes':rows}
 except Exception:result={'status':'error','error':traceback.format_exc(),'meshes':rows}
-(p/'Scripts/park-pavement-import.json').write_text(json.dumps(result,indent=2))
+(p/('Scripts/park-plaza-import.json' if collection=='plazas' else 'Scripts/park-pavement-import.json')).write_text(json.dumps(result,indent=2))

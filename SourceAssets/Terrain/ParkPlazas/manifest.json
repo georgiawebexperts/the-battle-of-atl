@@ -1,0 +1,62 @@
+{
+  "status": "source_baked_not_imported",
+  "plaza_osm_ids": [
+    1089139296,
+    1089185052
+  ],
+  "coordinates": "OBJ centimeters, Z up, Y negated from Unreal; bounds remain Unreal world coordinates",
+  "source_splines": "../park-path-network.json",
+  "landscape_clearance_cm": 3,
+  "terrain_diagonal": "i00-i11",
+  "chunks": [
+    {
+      "file": "ParkPlaza_Concrete_4_17.obj",
+      "material": "Concrete",
+      "vertices": 262,
+      "triangles": 349,
+      "bounds_cm": [
+        [
+          -1378.3235327604343,
+          13208.84257708164,
+          -259.3880609631551
+        ],
+        [
+          1708.768477048361,
+          17835.303510709986,
+          -168.03447435503494
+        ]
+      ]
+    },
+    {
+      "file": "ParkPlaza_Concrete_4_18.obj",
+      "material": "Concrete",
+      "vertices": 77,
+      "triangles": 96,
+      "bounds_cm": [
+        [
+          1346.2433455015562,
+          17835.303510709986,
+          -176.33725694119812
+        ],
+        [
+          1815.6834591429433,
+          18127.361150737852,
+          -170.95833333333348
+        ]
+      ]
+    }
+  ],
+  "triangle_count": 445,
+  "deferred_bridge_osm_ids": [],
+  "coverage_checks": [
+    {
+      "material": "Concrete",
+      "relative_coverage_error": 1.875453187402127e-14
+    }
+  ],
+  "pending": [
+    "Unreal import orientation and collision validation",
+    "Bridge deck reconstruction",
+    "All path connectivity and ride-through acceptance"
+  ]
+}

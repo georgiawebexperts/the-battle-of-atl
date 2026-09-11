@@ -21,8 +21,8 @@ void APiedmontRideMode::Tick(float Dt){
  }
  if(bRunEnded){if(PC->WasInputKeyJustPressed(EKeys::Enter))RestartRun();return;}
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
- EncounterCountdown-=Dt;if(EncounterCountdown<=0){EncounterCountdown=300;ConsiderEncounter();}
  TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt);if(TimeRemaining<=0){EndRun(TEXT("Time expired"));return;}
+ EncounterCountdown-=Dt;if(EncounterCountdown<=0){EncounterCountdown=300;ConsiderEncounter();}
  if(bObjectiveReady&&!bItemCollected&&PC->GetPawn()&&FVector::DistSquared(PC->GetPawn()->GetActorLocation(),ItemLocation)<FMath::Square(130.f)){
   FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(PiedmontPickup),false,PC->GetPawn());Q.AddIgnoredActor(ItemActor);
   if(!GetWorld()->LineTraceSingleByChannel(Hit,PC->GetPawn()->GetActorLocation(),ItemLocation,ECC_Visibility,Q)){
@@ -62,7 +62,7 @@ void APiedmontRideMode::RestartRun(){
  auto* PC=UGameplayStatics::GetPlayerController(this,0);if(!PC||!IsValid(RunBike))return;
  for(TActorIterator<APiedmontThreat> It(GetWorld());It;++It)It->Destroy();ActiveThreat=nullptr;EncounterCountdown=300;
  if(auto* Person=Cast<APiedmontExplorer>(PC->GetPawn())){PC->UnPossess();Person->Destroy();}
- RunBike->KnifeHits=0;RunBike->Explorer=nullptr;RunBike->bDismounted=false;RunBike->Ride->Recovery=0;RunBike->Ride->LastCrash.Empty();RunBike->Ride->Speed=0;RunBike->Ride->Pedal=RunBike->Ride->Steer=RunBike->Ride->Brake=0;RunBike->Ride->Crashes=0;RunBike->Ride->TopSpeed=0;
+ RunBike->Ride->Gear=1;RunBike->Ride->Cadence=0;RunBike->KnifeHits=0;RunBike->Explorer=nullptr;RunBike->bDismounted=false;RunBike->Ride->Recovery=0;RunBike->Ride->LastCrash.Empty();RunBike->Ride->Speed=0;RunBike->Ride->Pedal=RunBike->Ride->Steer=RunBike->Ride->Brake=0;RunBike->Ride->Crashes=0;RunBike->Ride->TopSpeed=0;
  RunBike->Ride->SafeLocation=StartLocation;RunBike->Ride->SafeRotation=StartRotation;RunBike->Ride->Respawn();RunBike->Ride->SetComponentTickEnabled(true);RunBike->Rider->SetVisibility(!RunBike->bFirstPerson);PC->Possess(RunBike);PC->SetControlRotation(StartRotation);
  bRunEnded=false;bItemCollected=false;FailureReason.Empty();TimeRemaining=600;StartCountdown=3;RunNumber++;ChooseItem();
 }

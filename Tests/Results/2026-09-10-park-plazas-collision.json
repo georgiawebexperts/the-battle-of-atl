@@ -1,0 +1,209 @@
+{
+  "status": "passed",
+  "scope": "Static installed pavement collision samples; full ride-through and bridges remain unverified",
+  "samples": 25,
+  "passed": 25,
+  "spline_count": 236,
+  "results": [
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 0,
+      "expected_z": -214.406338,
+      "actual_z": -214.4063327652305,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 29,
+      "expected_z": -232.56122833333333,
+      "actual_z": -232.56122925238793,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 58,
+      "expected_z": -218.10802133333334,
+      "actual_z": -218.10801986244854,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 87,
+      "expected_z": -218.48377200000002,
+      "actual_z": -218.48377467030957,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 116,
+      "expected_z": -255.156447,
+      "actual_z": -255.15645017982087,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 145,
+      "expected_z": -252.937198,
+      "actual_z": -252.93718524278643,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 174,
+      "expected_z": -252.740266,
+      "actual_z": -252.74024817036155,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 203,
+      "expected_z": -247.85590833333333,
+      "actual_z": -247.85591893295327,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 232,
+      "expected_z": -240.75186,
+      "actual_z": -240.75185218584969,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 261,
+      "expected_z": -233.71875,
+      "actual_z": -233.7187493802637,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 290,
+      "expected_z": -169.27201466666668,
+      "actual_z": -169.2720226617279,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 319,
+      "expected_z": -169.67759466666666,
+      "actual_z": -169.6775981359505,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_17.obj",
+      "triangle": 348,
+      "expected_z": -172.33240066666667,
+      "actual_z": -172.33241266186047,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 0,
+      "expected_z": -171.79258833333336,
+      "actual_z": -171.79259431196243,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 8,
+      "expected_z": -172.260417,
+      "actual_z": -172.2604253659187,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 16,
+      "expected_z": -173.05747799999997,
+      "actual_z": -173.05747767561587,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 24,
+      "expected_z": -172.95486100000002,
+      "actual_z": -172.95485798014323,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 32,
+      "expected_z": -174.864583,
+      "actual_z": -174.86457709175596,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 40,
+      "expected_z": -175.93435666666664,
+      "actual_z": -175.93436915551584,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 48,
+      "expected_z": -174.43055566666666,
+      "actual_z": -174.4305704194187,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 56,
+      "expected_z": -175.44415533333336,
+      "actual_z": -175.44415804475094,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 64,
+      "expected_z": -176.17250533333333,
+      "actual_z": -176.17251021026973,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 72,
+      "expected_z": -174.95138899999998,
+      "actual_z": -174.9513931260732,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 80,
+      "expected_z": -175.541122,
+      "actual_z": -175.541120717779,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "ParkPlaza_Concrete_4_18.obj",
+      "triangle": 88,
+      "expected_z": -175.496773,
+      "actual_z": -175.4967716188864,
+      "actor": "Park pavement SM_ParkPlaza_Concrete_4_18",
+      "pass": true
+    }
+  ]
+}

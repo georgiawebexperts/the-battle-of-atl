@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "scope": "Exported source mesh geometry only; Unreal rendering/collision and rideability not yet tested",
+  "chunks": 2,
+  "triangles": 445,
+  "worst_clearance_error_cm": 5.399435849540168e-07,
+  "results": [
+    {
+      "file": "ParkPlaza_Concrete_4_17.obj",
+      "triangles": 349,
+      "max_clearance_error_cm": 5.399435849540168e-07,
+      "upward_faces": true,
+      "pass": true
+    },
+    {
+      "file": "ParkPlaza_Concrete_4_18.obj",
+      "triangles": 96,
+      "max_clearance_error_cm": 4.839195639760874e-07,
+      "upward_faces": true,
+      "pass": true
+    }
+  ]
+}

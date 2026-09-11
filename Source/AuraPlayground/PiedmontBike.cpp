@@ -336,7 +336,7 @@ bool APiedmontBike::Dismount(bool WaterEntry,bool Forced){
  }
  for(float Side:{1.f,-1.f}){
   if(Found)break;
-  const FVector Candidate=GetActorLocation()+GetActorRightVector()*Side*105;
+  const FVector Candidate=GetActorLocation()+GetActorRightVector()*Side*90;
   FHitResult Ground;
   if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,80),Candidate-FVector(0,0,200),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.65f)continue;
   const FVector Target=Ground.ImpactPoint+FVector(0,0,92);

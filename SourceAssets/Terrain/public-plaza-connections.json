@@ -1,0 +1,21 @@
+{
+  "scope": "Source polygon-to-path intersections, with 20 cm real-world rounding tolerance; not full network or route acceptance",
+  "plazas": [
+    {
+      "osm_id": 1089139296,
+      "name": "Public pedestrian plaza",
+      "intersecting_path_osm_ids": [
+        1089139297,
+        1089139298
+      ]
+    },
+    {
+      "osm_id": 1089185052,
+      "name": "Welcome Plaza",
+      "intersecting_path_osm_ids": [
+        503237946,
+        1089185057
+      ]
+    }
+  ]
+}

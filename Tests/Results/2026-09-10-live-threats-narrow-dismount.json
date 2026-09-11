@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "protected_start_has_long_encounter_cooldown",
+      "pass": true
+    },
+    {
+      "name": "only_one_active_attacker",
+      "pass": true
+    },
+    {
+      "name": "knife_attacker_chases_and_dismounts_player",
+      "pass": true
+    },
+    {
+      "name": "escape_by_remounting_before_second_stab",
+      "pass": true
+    },
+    {
+      "name": "remount_survives_first_stab_and_clock_continues",
+      "pass": true
+    },
+    {
+      "name": "player_fires_at_attacker",
+      "pass": true,
+      "shot": "<Struct 'Vector' (0xbb5a06c3078) {x: 670.093129, y: 4092.362011, z: 117.521917}>",
+      "target": "<Struct 'Vector' (0x41d34f7b0) {x: 700.000000, y: 4090.000000, z: 90.149993}>",
+      "health": 0.0
+    },
+    {
+      "name": "hit_creates_blood_effect",
+      "pass": true
+    },
+    {
+      "name": "player_shot_defeats_attacker",
+      "pass": true
+    },
+    {
+      "name": "unescaped_chase_causes_second_stab_death",
+      "pass": true
+    }
+  ],
+  "stage": 8
+}
