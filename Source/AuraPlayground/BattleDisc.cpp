@@ -23,7 +23,7 @@ ABattleDisc* ABattleDisc::Launch(APawn* Shooter,USceneComponent* Gun){
  const bool Blocked=Shooter->GetWorld()->SweepSingleByChannel(Wall,Eye,Wanted,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(12),Q);
  const FVector Start=Blocked?Eye:Wanted;
  auto* Projectile=Shooter->GetWorld()->SpawnActorDeferred<ABattleDisc>(StaticClass(),FTransform(Start),Person->ParkedBike,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
- if(!Projectile)return nullptr;Projectile->Bike=Person->ParkedBike;Projectile->LaunchPawn=Shooter;Projectile->Velocity=View.Vector()*2600;Projectile->FinishSpawning(FTransform(Start));
+ if(!Projectile)return nullptr;if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordGunfire();Projectile->Bike=Person->ParkedBike;Projectile->LaunchPawn=Shooter;Projectile->Velocity=View.Vector()*2600;Projectile->FinishSpawning(FTransform(Start));
  if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_DiscLaunch.S_DiscLaunch")))UGameplayStatics::PlaySoundAtLocation(Shooter,Sound,Start);PC->AddPitchInput(-.4f);return Projectile;
 }
 void ABattleDisc::Tick(float Dt){

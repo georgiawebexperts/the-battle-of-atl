@@ -1,0 +1,31 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build032-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "485aeb004e82438d7c79f0eabe4ac827d5997cf67da0f6ad04d325577763138e"
+    },
+    {
+      "file": "work/build032-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8be90ea60d72cc824763479757bad6c24e91a055b46be184b65083bfac707d22"
+    }
+  ],
+  "visual_review": {
+    "foot_inspected": true,
+    "rigged_uniform_visible": true,
+    "navy_black_visor_materials_visible": true,
+    "danger_and_taser_warning_readable": true,
+    "final_art_accepted": false
+  },
+  "scope": "Native cooked Mac game; controlled officer/warning fixture with input suppressed. Actual navigation pursuit and taser encounter tested separately. Audio disabled; no physical-input, animation-quality or FPS acceptance."
+}

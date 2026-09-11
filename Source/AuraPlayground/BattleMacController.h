@@ -27,6 +27,10 @@ private:
  void TickFrisbeeAudit(float Dt);
  void TickHUDReview(float Dt);
  void TickTimeAudit(float Dt);
+ void TickTroubleAudit(float Dt);
+ int32 TroubleStage=0;float TroubleClock=0,TroubleTime=0;
+ TWeakObjectPtr<AActor> TroubleOfficer;
+ FVector TroublePoliceStart=FVector::ZeroVector;
  void TickAmmoAudit(float Dt);
  int32 AmmoStage=0,AmmoShots=0;float AmmoClock=0;
  int32 TimeAuditStage=0;float TimeAuditClock=0;

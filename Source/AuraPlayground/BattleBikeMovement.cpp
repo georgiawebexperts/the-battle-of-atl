@@ -2,6 +2,7 @@
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 UBattleBikeMovement::UBattleBikeMovement(){
  MaxWalkSpeed=1800;MaxAcceleration=800;MaxStepHeight=60;SetWalkableFloorAngle(75);
  bOrientRotationToMovement=false;bUseControllerDesiredRotation=false;bMaintainHorizontalGroundVelocity=true;
@@ -62,6 +63,7 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
   const float Directness=-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),Hit.ImpactNormal.GetSafeNormal2D());
   const bool Direct=Speed>500&&Directness>.7f;
   if(auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor()))Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
+  if(Direct&&Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic")))if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(CharacterOwner)))Mode->RecordAssault(Hit.GetActor());
   ContactCooldown=.35f;if(Direct)Wipeout(TEXT("Traffic impact"));else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
  // Terrain, walls and fences never enter the wipeout state.

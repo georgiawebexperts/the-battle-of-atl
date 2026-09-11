@@ -92,6 +92,11 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 Deaths=0;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  float ApplyRiderDamage(float Amount);
+ bool ApplyTaser();
+ void UpdateStun(float Dt);
+ UPROPERTY(BlueprintReadOnly) float StunRemaining=0,TaserGrace=0;
+ UPROPERTY(BlueprintReadOnly) int32 TaserHits=0;
+
  UFUNCTION(BlueprintCallable) float RestoreRiderHealth(float Amount);
  UPROPERTY(BlueprintReadOnly) int32 HealthPickups=0;
  UPROPERTY(BlueprintReadOnly) float PickupNoticeRemaining=0;
@@ -133,6 +138,15 @@ public:
  ABattleLabMode();
  UFUNCTION(BlueprintCallable) bool AdjustRunTime(float Seconds,const FString& Reason);
  void RecordPlayerShotHit(AActor* Victim);
+ void RecordGunfire();
+ bool RecordAssault(AActor* Victim);
+ void TickTrouble(float Dt);
+ UPROPERTY(BlueprintReadOnly) float Trouble=0;
+ UPROPERTY(BlueprintReadOnly) int32 PeopleHit=0,PoliceSpawned=0;
+ UPROPERTY(BlueprintReadOnly) bool bPoliceAlert=false;
+ TSet<TWeakObjectPtr<AActor>> AssaultVictims;
+ float QuietTime=0,PoliceDelay=0;
+
  UPROPERTY(BlueprintReadOnly) float TimeNoticeRemaining=0,LastTimeDelta=0;
  UPROPERTY(BlueprintReadOnly) FString TimeNotice;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float FootTimeMultiplier=1.25f;

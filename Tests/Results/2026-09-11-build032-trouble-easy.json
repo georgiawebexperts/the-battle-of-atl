@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "stage": 8,
+  "reason": "Impact routing, three people, police spawn/pursuit, real shot penalty, escalation, blocked taser, windup, knockoff, recovery and death during stun pass",
+  "people": 3,
+  "police_spawned": 1,
+  "taser_hits": 2,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false
+}

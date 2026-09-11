@@ -1,6 +1,7 @@
 #include "BattleZombie.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattleQuest.h"
 #include "PiedmontBlood.h"
 #include "PiedmontDarkZone.h"
 #include "AIController.h"
@@ -82,12 +83,12 @@ void ABattleEnemyDirector::BeginPlay(){
  Super::BeginPlay();
  #if !UE_BUILD_SHIPPING
  // Existing opt-in terrain/quest fixtures isolate the subsystem they validate.
- for(const TCHAR* Flag:{TEXT("BattleAmmoAudit"),TEXT("BattleHUDReview"),TEXT("BattleFrisbeeAudit"),TEXT("BattleDiscAudit"),TEXT("BattleInventoryAudit"),TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattlePickupAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit")})if(FParse::Param(FCommandLine::Get(),Flag))bFreezeSpawns=true;
+ for(const TCHAR* Flag:{TEXT("BattleTroubleAudit"),TEXT("BattleTimeAudit"),TEXT("BattleAmmoAudit"),TEXT("BattleHUDReview"),TEXT("BattleFrisbeeAudit"),TEXT("BattleDiscAudit"),TEXT("BattleInventoryAudit"),TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattlePickupAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit")})if(FParse::Param(FCommandLine::Get(),Flag))bFreezeSpawns=true;
  #endif
 }
 void ABattleEnemyDirector::Tick(float Dt){
  Super::Tick(Dt);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
- if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies;LiveZombies=0;
+ if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies+FMath::CeilToInt(Mode->Trouble*.5f)+(Mode->Quest&&Mode->Quest->bCollected?6:0);LiveZombies=0;
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;}
  if(bFreezeSpawns||Mode->StartCountdown>0||Mode->bRunEnded)return;
  bool InTunnel=false;for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(Pawn->GetActorLocation())){InTunnel=true;break;}
@@ -97,7 +98,7 @@ void ABattleEnemyDirector::Tick(float Dt){
  SpawnDelay-=Dt;
  if(SpawnDelay<=0){
   const bool Wave=RemainingWave>0;
-  if(LiveZombies<DesiredZombies+(Wave?Mode->Difficulty.TunnelWaveSize:0)&&SpawnZombie(Wave)){if(Wave){RemainingWave--;WaveSpawned++;}SpawnDelay=Wave?.25f:Mode->Difficulty.ZombieRespawnSeconds;}
+  if(LiveZombies<DesiredZombies+(Wave?Mode->Difficulty.TunnelWaveSize:0)&&SpawnZombie(Wave)){if(Wave){RemainingWave--;WaveSpawned++;}SpawnDelay=Wave?.25f:Mode->Difficulty.ZombieRespawnSeconds/(1.f+Mode->Trouble*.08f+(Mode->Quest&&Mode->Quest->bCollected?.75f:0.f));}
   else SpawnDelay=1;
  }
 }

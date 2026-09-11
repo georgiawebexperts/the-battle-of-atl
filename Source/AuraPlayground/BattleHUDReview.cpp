@@ -2,6 +2,7 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattlePickup.h"
+#include "BattlePolice.h"
 #include "Engine/Engine.h"
 #include "UnrealClient.h"
 #include "Misc/CommandLine.h"
@@ -12,6 +13,7 @@
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeReview"))){
@@ -20,6 +22,11 @@ void ABattleMacController::TickHUDReview(float Dt){
    FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);const FTransform Transform((Eye-Spot).Rotation(),Spot);
    auto* Token=GetWorld()->SpawnActorDeferred<ABattleColaPickup>(ABattleColaPickup::StaticClass(),Transform,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
    if(Token){Token->bTimeBonus=true;Token->FinishSpawning(Transform);Token->SetActorTickEnabled(false);}
+  }
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))){
+   APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*440-Viewer->GetActorRightVector()*100;
+   if(auto* Officer=GetWorld()->SpawnActor<ABattlePolice>(Spot,(Viewer->GetActorLocation()-Spot).Rotation())){Officer->Cooldown=100;Officer->Tick(.1f);Officer->SetActorTickEnabled(false);Officer->GetCharacterMovement()->DisableMovement();Officer->bWarning=true;}
+   if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){Rules->PeopleHit=3;Rules->bPoliceAlert=true;Rules->Trouble=9;}
   }
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);
   if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");IFileManager::Get().MakeDirectory(*Folder,true);

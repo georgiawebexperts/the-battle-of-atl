@@ -10,6 +10,7 @@ bool ABattleLabMode::AdjustRunTime(float Seconds,const FString& Reason){
 }
 void ABattleLabMode::RecordPlayerShotHit(AActor* Victim){
  if(!IsValid(Victim))return;
+ if(Victim->ActorHasTag(TEXT("PiedmontTraffic")))RecordAssault(Victim);
  if(Victim->ActorHasTag(TEXT("BattleZombie")))AdjustRunTime(10,TEXT("ZOMBIE HIT"));
  else if(Victim->ActorHasTag(TEXT("BattlePolice")))AdjustRunTime(-60,TEXT("POLICE HIT"));
  else if(Victim->ActorHasTag(TEXT("PiedmontTraffic")))AdjustRunTime(-10,TEXT("PEDESTRIAN HIT"));

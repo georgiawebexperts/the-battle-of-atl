@@ -2,6 +2,7 @@
 #include "BattleRider.h"
 #include "BattleQuest.h"
 #include "BattleZombie.h"
+#include "BattlePolice.h"
 #include "PiedmontPedestrian.h"
 #include "BattleCheckpoints.h"
 #include "Engine/Canvas.h"
@@ -41,6 +42,7 @@ void ABattleLabHUD::DrawHUD(){
  Panel(W-M-300*S,M,300*S,106*S);
  if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
  else{Text(BattleWeapons::Name(Person->CurrentWeapon),W-M-280*S,M+12*S,28,Peach);Text(FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()),W-M-280*S,M+55*S,30);}
+ if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){Panel(M,M+118*S,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,M+128*S,18,Peach);}}
  const float Bottom=H-M-156*S;
  Panel(M,Bottom,310*S,156*S);
  Text(FString::Printf(TEXT("HEALTH  %.0f"),Owner->RiderHealth),M+18*S,Bottom+10*S,22);
@@ -58,16 +60,18 @@ void ABattleLabHUD::DrawHUD(){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){
    auto* Target=Cast<APiedmontExplorer>(Hit.GetActor());
-   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->IsA<ABattleZombie>()?TEXT("ZOMBIE"):TEXT("PERSON");Panel(CX-80*S,CY+32*S,160*S,38*S);Center(Name,CY+36*S,22,Aim);}
+   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->ActorHasTag(TEXT("BattlePolice"))?TEXT("POLICE -60s"):Target->IsA<ABattleZombie>()?TEXT("ZOMBIE +10s"):TEXT("PERSON -10s");Panel(CX-115*S,CY+32*S,230*S,38*S);Center(Name,CY+36*S,22,Aim);}
   }
  }
  DrawLine(CX-15*S,CY,CX-5*S,CY,Aim,2*S);DrawLine(CX+5*S,CY,CX+15*S,CY,Aim,2*S);DrawLine(CX,CY-15*S,CX,CY-5*S,Aim,2*S);DrawLine(CX,CY+5*S,CX,CY+15*S,Aim,2*S);
  if((Person?Person->HitFeedback:Bike->HitFeedback)>0){for(int SX:{-1,1})for(int SY:{-1,1})DrawLine(CX+SX*8*S,CY+SY*8*S,CX+SX*19*S,CY+SY*19*S,Peach,3*S);}
  FString Notice;
  if(Owner->RespawnRemaining>0)Notice=TEXT("RECOVERING AT CHECKPOINT  |  -10 SECONDS");
+ else if(Owner->StunRemaining>0)Notice=FString::Printf(TEXT("TASED  %.1fs  |  GET UP, THEN E TO REMOUNT"),Owner->StunRemaining);
  else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
  else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
+ if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
  if(auto* Viewer=GetOwningPawn()){
   const ABattleZombie* Speaking=nullptr;float Best=2500;

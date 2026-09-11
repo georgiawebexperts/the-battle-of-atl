@@ -1,0 +1,33 @@
+{
+  "saved_mesh": [
+    {
+      "slot": "Swat1",
+      "material": "/Game/BattleForTheA/Police/M_Swat.M_Swat",
+      "skeletal_usage": true
+    },
+    {
+      "slot": "Swat_Black",
+      "material": "/Game/BattleForTheA/Police/M_Swat_Black.M_Swat_Black",
+      "skeletal_usage": true
+    },
+    {
+      "slot": "Skin",
+      "material": "/Game/PiedmontRide/Rider/Skin.Skin",
+      "skeletal_usage": "inherited"
+    },
+    {
+      "slot": "Visor",
+      "material": "/Game/BattleForTheA/Police/M_Visor.M_Visor",
+      "skeletal_usage": true
+    }
+  ],
+  "actor_mesh": "/Game/BattleForTheA/Police/Swat.Swat",
+  "actor_materials": [
+    "/Game/BattleForTheA/Police/M_Swat.M_Swat",
+    "/Game/BattleForTheA/Police/M_Swat_Black.M_Swat_Black",
+    "/Game/PiedmontRide/Rider/Skin.Skin",
+    "/Game/BattleForTheA/Police/M_Visor.M_Visor"
+  ],
+  "passed": true,
+  "scope": "Fresh editor process reopened saved mesh and spawned police actor; material interfaces and skeletal usage verified. Separate native render required."
+}
