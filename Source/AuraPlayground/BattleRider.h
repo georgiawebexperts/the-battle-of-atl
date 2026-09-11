@@ -16,6 +16,10 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector RightGrip;
  UPROPERTY(BlueprintReadOnly) FVector LeftGrip;
  virtual bool Fire() override;
+ UFUNCTION(BlueprintCallable) bool Melee();
+ UPROPERTY(BlueprintReadOnly) int32 MeleeSwings=0,MeleeHits=0;
+ UPROPERTY(BlueprintReadOnly) float MeleeRemaining=0;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> MeleeRoot;
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
@@ -27,7 +31,12 @@ public:
 protected:
  virtual bool CanUseWeapon() const override;
 private:
- void ReloadPistol(){Reload();}
+ void ReloadPistol(){if(MeleeRemaining<=0)Reload();}
+ void StartMelee(){Melee();}
+ void BuildMeleeVisual();
+ void UpdateMelee(float Dt);
+ void ResolveMelee();
+ bool bMeleeResolved=false;
  void Interact(){MountBike();}
  void StartJump(){Jump();}void EndJump(){StopJumping();}
  float ShotCooldown=0,Kick=0;

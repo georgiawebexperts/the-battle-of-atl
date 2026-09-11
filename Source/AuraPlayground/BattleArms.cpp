@@ -22,7 +22,8 @@ void ABattleRider::PoseArms(float Dt){
   }
  };
  const FQuat Motion=(Weapon->GetRelativeRotation()-GunRestRotation).Quaternion();const FVector Gun=Weapon->GetRelativeLocation();const float Reload=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((1.5f-ReloadRemaining)/1.5f,0.f,1.f)):0;
- const FVector Right=Gun+Motion.RotateVector(RightWristOffset);const FVector Left=Gun+Motion.RotateVector(LeftWristOffset)+FVector(-4,-6,-18)*Reload;
+ FVector Right=Gun+Motion.RotateVector(RightWristOffset);FVector Left=Gun+Motion.RotateVector(LeftWristOffset)+FVector(-4,-6,-18)*Reload;
+ if(MeleeRemaining>0){Right=MeleeRoot->GetRelativeTransform().TransformPosition(FVector(0,0,-31));Left=FVector(20,-20,-28);}
  RightGrip=FirstPersonArms->GetRelativeTransform().InverseTransformPosition(Right);LeftGrip=FirstPersonArms->GetRelativeTransform().InverseTransformPosition(Left);
  Limb(TEXT("R"),RightGrip);Limb(TEXT("L"),LeftGrip);
  for(int I=0;I<Pose.Num();I++)FirstPersonArms->BoneSpaceTransforms[I]=ArmParents[I]>=0?Pose[I].GetRelativeTransform(Pose[ArmParents[I]]):Pose[I];FirstPersonArms->MarkRefreshTransformDirty();

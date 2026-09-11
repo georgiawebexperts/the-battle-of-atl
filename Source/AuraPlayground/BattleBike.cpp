@@ -175,7 +175,7 @@ void ABattleLabHUD::DrawHUD(){
   if(auto* Person=Cast<ABattleRider>(GetOwningPawn())){
    DrawRect(FLinearColor(.03,.015,.02,.85),20,20,760,125);
    DrawText(TEXT("BATTLE FOR THE A | FIRST PERSON"),FColor::White,35,30,nullptr,1.8);
-   DrawText(FString::Printf(TEXT("PISTOL %d / unlimited   HEALTH %.0f%s"),Person->Ammo,Person->Health,Person->ReloadRemaining>0?TEXT("   RELOADING"):TEXT("")),FColor(255,190,80),35,65,nullptr,1.4);
+   DrawText(FString::Printf(TEXT("PISTOL %d / unlimited   HEALTH %.0f%s   F: U-lock"),Person->Ammo,Person->Health,Person->ReloadRemaining>0?TEXT("   RELOADING"):TEXT("")),FColor(255,190,80),35,65,nullptr,1.4);
    DrawText(TEXT("WASD move | Shift sprint | Space jump | Mouse aim/fire | R reload | E bike"),FColor::White,35,105,nullptr,1.1);
    const float X=Canvas->SizeX*.5f,Y=Canvas->SizeY*.5f;DrawLine(X-8,Y,X+8,Y,FColor::White,1.5);DrawLine(X,Y-8,X,Y+8,FColor::White,1.5);
    if(Person->HitFeedback>0){DrawLine(X-12,Y-12,X+12,Y+12,FColor::Orange,2);DrawLine(X+12,Y-12,X-12,Y+12,FColor::Orange,2);}

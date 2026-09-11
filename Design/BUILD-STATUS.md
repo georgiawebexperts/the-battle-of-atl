@@ -487,3 +487,30 @@ still locked on a fresh CUA check. Full V3 remains incomplete: weapons/crates,
 other enemies/vehicles, spoken dialogue and full audio, world/foliage/park life/
 landmarks, Cabbagetown/home/results/saves/outfits and final performance/World
 Partition/shipping acceptance remain required. Goal stays active.
+
+## Build 022 — chain-lock melee (2026-09-11)
+
+Added F-key U-lock melee while on foot, with a 0.22-second windup and 0.7-second
+swing/recovery. A short swept strike stops at the first wall or target, deals
+50 damage, interrupts and knocks back surviving zombies, and uses existing
+blood/hit feedback and kill/nitro rewards. It cannot overlap firing, repeated
+swings or an R-key reload. Shared health, pause, swimming, countdown and run-end
+guards prevent attacks. The first-person steel shackle and six-link chain swing
+across the view; the right hand follows the grip. Two original synthesized sounds
+provide swing/impact feedback. Instructions and the FPS HUD now show F.
+
+Game/Editor compilation and complete Mac packaging pass. The cooked F-input
+melee audit passes windup, cooldown, firing exclusion, two 50-damage hits with
+one kill reward, wall blocking, out-of-range misses and reload/end/death guards.
+The zombie pistol/navigation/attack/cleanup regression and all three difficulty,
+quest, possession, pause and timeout profiles pass. Evidence is in
+Tests/Results/2026-09-11-native-melee.json, build022-native-zombies.json and
+build022-native-quest.json (the latter two share the same date prefix).
+These are headless controlled fixtures, not human gameplay or appearance tests.
+
+The complete 0.22.0 native app is installed behind the desktop icon with build021
+retained under Previous. Visual/audio acceptance is still pending because the
+Mac remains locked. Shotgun, SMG, frisbee launcher, inventory/crates/drops,
+remaining enemies/traffic, Cabbagetown/home/win/results/saves, finished world art,
+spoken audio and performance/shipping requirements remain. Full V3 stays active.
+See Design/CHAIN-LOCK.md for behavior and validation scope.

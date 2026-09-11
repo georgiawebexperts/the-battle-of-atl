@@ -1,5 +1,6 @@
 #include "BattleRider.h"
 #include "Engine/SkeletalMesh.h"
+#include "Materials/MaterialInterface.h"
 #include "BattleShot.h"
 #include "BattleBike.h"
 #include "Camera/CameraComponent.h"
@@ -16,10 +17,12 @@ ABattleRider::ABattleRider(){
  CameraArm->SetComponentTickEnabled(false);Body->SetOwnerNoSee(true);
  GetCharacterMovement()->MaxWalkSpeed=520;GetCharacterMovement()->JumpZVelocity=560;GetCharacterMovement()->AirControl=.8f;GetCharacterMovement()->GravityScale=1.4f;
  FirstPersonArms=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("FirstPersonArms"));FirstPersonArms->SetupAttachment(Camera);FirstPersonArms->SetRelativeLocation(FVector(10,0,-175));FirstPersonArms->SetRelativeRotation(FRotator(0,-90,0));FirstPersonArms->SetOnlyOwnerSee(true);FirstPersonArms->SetBoundsScale(10);FirstPersonArms->SetCastShadow(false);FirstPersonArms->SetCollisionEnabled(ECollisionEnabled::NoCollision);FirstPersonArms->SetCanEverAffectNavigation(false);
- Weapon->SetupAttachment(Camera);bWeaponDrawn=true;
+ Weapon->SetupAttachment(Camera);bWeaponDrawn=true;BuildMeleeVisual();
 }
 void ABattleRider::BeginPlay(){
- Super::BeginPlay();Weapon->SetRelativeLocation(GunRestPosition);Weapon->SetVisibility(true);GunRestRotation=Weapon->GetRelativeRotation();
+ Super::BeginPlay();
+ if(auto* Steel=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")))for(auto Child:MeleeRoot->GetAttachChildren())if(auto* Mesh=Cast<UStaticMeshComponent>(Child))Mesh->SetMaterial(0,Steel);
+ Weapon->SetRelativeLocation(GunRestPosition);Weapon->SetVisibility(true);GunRestRotation=Weapon->GetRelativeRotation();
  if(auto* Mesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/BattleForTheA/Rider/SK_FPSArms.SK_FPSArms"))){FirstPersonArms->SetSkinnedAssetAndUpdate(Mesh);const auto& Ref=Mesh->GetRefSkeleton();for(int32 I=0;I<Ref.GetNum();I++){ArmParents.Add(Ref.GetParentIndex(I));ArmNames.Add(Ref.GetBoneName(I));FTransform T=Ref.GetRefBonePose()[I];if(ArmParents[I]>=0)T=T*ArmRest[ArmParents[I]];ArmRest.Add(T);}}
  if(IsValid(ParkedBike))GetCapsuleComponent()->IgnoreActorWhenMoving(ParkedBike,true);
 }
@@ -28,8 +31,9 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  I->BindKey(EKeys::E,IE_Pressed,this,&ABattleRider::Interact);
  I->BindKey(EKeys::SpaceBar,IE_Pressed,this,&ABattleRider::StartJump);I->BindKey(EKeys::SpaceBar,IE_Released,this,&ABattleRider::EndJump);
  I->BindKey(EKeys::R,IE_Pressed,this,&ABattleRider::ReloadPistol);
+ I->BindKey(EKeys::F,IE_Pressed,this,&ABattleRider::StartMelee);
 }
-bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
+bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||ParkedBike->RiderHealth>0)&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::Tick(float Dt){
  ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
  SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/80.f,0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
@@ -41,7 +45,7 @@ void ABattleRider::Tick(float Dt){
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
- Super::Tick(Dt);PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
+ Super::Tick(Dt);UpdateMelee(Dt);PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}
 float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
@@ -74,7 +78,7 @@ bool ABattleBike::Remount(ABattleRider* Person){
 }
 
 bool ABattleRider::Fire(){
- if(!CanUseWeapon()||!bWeaponDrawn||ShotCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
+ if(!CanUseWeapon()||!bWeaponDrawn||MeleeRemaining>0||ShotCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
  Ammo--;ShotsFired++;ShotCooldown=.22f;Kick=1;
  const auto Shot=FireBattlePistol(this,Weapon,bAiming?.1f:.4f);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;
  if(Shot.EnemyKilled&&IsValid(ParkedBike))ParkedBike->AwardEnemyKill();return true;

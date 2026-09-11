@@ -60,7 +60,7 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal){
 void ABattlePickupDirector::BeginPlay(){
  Super::BeginPlay();
 #if !UE_BUILD_SHIPPING
- for(const TCHAR* Flag:{TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit"),TEXT("BattleZombieAudit"),TEXT("BattleZombiePopulationAudit")})if(FParse::Param(FCommandLine::Get(),Flag))return;
+ for(const TCHAR* Flag:{TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit"),TEXT("BattleZombieAudit"),TEXT("BattleZombiePopulationAudit")})if(FParse::Param(FCommandLine::Get(),Flag))return;
 #endif
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Mode)return;
  const int32 Desired=Mode->Difficulty.HealthPickups;const int32 TrailGoal=FMath::Min(Desired,FMath::Max(2,Desired/3));const float Heal=Mode->Difficulty.ColaHealAmount;

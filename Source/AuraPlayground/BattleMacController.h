@@ -21,6 +21,10 @@ private:
  void TickGeographyAudit(float Dt);
  void TickHealthAudit(float Dt);
  void TickPickupAudit(float Dt);
+ void TickMeleeAudit(float Dt);
+ int32 MeleePhase=0;
+ float MeleeAuditClock=0;
+ TWeakObjectPtr<AActor> MeleeTarget,MeleeWall;
  int32 PickupPhase=0;
  float PickupAuditClock=0;
  TWeakObjectPtr<AActor> PickupAuditTarget,PickupAuditWall;
