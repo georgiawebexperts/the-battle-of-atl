@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattlePickup.h"
 #include "Engine/Engine.h"
 #include "UnrealClient.h"
 #include "Misc/CommandLine.h"
@@ -13,6 +14,13 @@ void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeReview"))){
+   if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->AdjustRunTime(30,TEXT("TIME BONUS"));
+   APawn* ViewerPawn=GetPawn();const FVector Spot=ViewerPawn->GetActorLocation()+ViewerPawn->GetActorForwardVector()*300+ViewerPawn->GetActorRightVector()*100-FVector(0,0,30);
+   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);const FTransform Transform((Eye-Spot).Rotation(),Spot);
+   auto* Token=GetWorld()->SpawnActorDeferred<ABattleColaPickup>(ABattleColaPickup::StaticClass(),Transform,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+   if(Token){Token->bTimeBonus=true;Token->FinishSpawning(Transform);Token->SetActorTickEnabled(false);}
+  }
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);
   if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");IFileManager::Get().MakeDirectory(*Folder,true);
   FScreenshotRequest::RequestScreenshot(Folder/TEXT("bike.png"),false,false);HUDReviewStage=1;

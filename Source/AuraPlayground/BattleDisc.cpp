@@ -39,7 +39,7 @@ void ABattleDisc::Tick(float Dt){
   Distance=FMath::Max(0.f,Distance-FVector::Dist(Start,Hit.Location));
   if(auto* Victim=Cast<APiedmontExplorer>(Hit.GetActor())){
    Struck.Add(Victim);const bool Alive=!Victim->bDead;const float Damage=UGameplayStatics::ApplyDamage(Victim,65,UGameplayStatics::GetPlayerController(this,0),this,UDamageType::StaticClass());
-   if(Alive&&Damage>0){Hits++;Bike->HitFeedback=.25f;if(auto* P=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0)))if(P->ParkedBike==Bike)P->HitFeedback=.25f;
+   if(Alive&&Damage>0){if(Mode)Mode->RecordPlayerShotHit(Victim);Hits++;Bike->HitFeedback=.25f;if(auto* P=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0)))if(P->ParkedBike==Bike)P->HitFeedback=.25f;
     if(Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile"))){Kills++;Bike->AwardEnemyKill();}
     else if(auto* Z=Cast<ABattleZombie>(Victim)){Z->bTelegraphing=false;Z->LaunchCharacter(Direction*220,true,false);}
    }

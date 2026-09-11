@@ -147,7 +147,9 @@ void ABattleParkMode::StartPlay(){
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){
- AGameModeBase::Tick(Dt);if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}if(!bRunEnded){TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt);if(TimeRemaining<=0)bRunEnded=true;}
+ AGameModeBase::Tick(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);
+ if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
+ if(!bRunEnded){APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&Player->IsA<ABattleRider>()?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
 }
 void ABattleBike::PoseRider(float Dt){
  if(ReferencePose.IsEmpty())return;

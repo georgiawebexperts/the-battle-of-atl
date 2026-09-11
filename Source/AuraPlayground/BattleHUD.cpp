@@ -33,7 +33,8 @@ void ABattleLabHUD::DrawHUD(){
   Panel(W*.5f-125*S,M,250*S,106*S);
   const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
   Center(FString::Printf(TEXT("%02d:%02d"),Seconds/60,Seconds%60),M+6*S,50,Seconds<60?FLinearColor(1,.2,.2):FLinearColor::White);
-  Center(Park->DifficultyName.ToString(),M+66*S,22,Muted);
+  Center(Person?FString::Printf(TEXT("ON FOOT %.2fx"),Park->FootTimeMultiplier):Park->DifficultyName.ToString(),M+66*S,Person?18:22,Person?Peach:Muted);
+  if(Park->TimeNoticeRemaining>0){Panel(W*.5f-230*S,M+116*S,460*S,46*S);Center(FString::Printf(TEXT("%+.0fs  %s"),Park->LastTimeDelta,*Park->TimeNotice),M+121*S,23,Park->LastTimeDelta>0?FLinearColor(.3,1,.65):FLinearColor(1,.35,.3));}
   if(Park->Quest)Park->Quest->DrawRadar(this,Canvas);
   if(Park->StartCountdown>0){Panel(W*.5f-100*S,H*.38f,200*S,120*S);Center(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),H*.38f+12*S,82,Peach);}
  }

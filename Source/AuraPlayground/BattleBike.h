@@ -131,6 +131,11 @@ class AURAPLAYGROUND_API ABattleLabMode : public APiedmontRideMode {
  GENERATED_BODY()
 public:
  ABattleLabMode();
+ UFUNCTION(BlueprintCallable) bool AdjustRunTime(float Seconds,const FString& Reason);
+ void RecordPlayerShotHit(AActor* Victim);
+ UPROPERTY(BlueprintReadOnly) float TimeNoticeRemaining=0,LastTimeDelta=0;
+ UPROPERTY(BlueprintReadOnly) FString TimeNotice;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float FootTimeMultiplier=1.25f;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) FString CourseLabel=TEXT("ARCADE BIKE TEST");
  virtual void StartPlay() override;
  virtual void Tick(float Dt) override;

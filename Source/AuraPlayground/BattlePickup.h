@@ -12,6 +12,7 @@ public:
  virtual void Tick(float Dt) override;
  UPROPERTY(BlueprintReadOnly) bool bConsumed=false;
  UPROPERTY(BlueprintReadOnly) bool bTrailPickup=false;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bTimeBonus=false;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float HealAmount=35;
  UFUNCTION(BlueprintCallable) bool TryCollect(APawn* Pawn);
 private:
@@ -28,6 +29,7 @@ public:
  virtual void BeginPlay() override;
  UPROPERTY(BlueprintReadOnly) int32 Spawned=0;
  UPROPERTY(BlueprintReadOnly) int32 WeaponCrates=0;
+ UPROPERTY(BlueprintReadOnly) int32 TimePickups=0;
  UPROPERTY(BlueprintReadOnly) int32 ParkPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 TrailPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 PlacementFailures=0;

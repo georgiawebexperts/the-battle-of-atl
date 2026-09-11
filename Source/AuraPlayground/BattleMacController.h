@@ -26,6 +26,9 @@ private:
  void TickDiscAudit(float Dt);
  void TickFrisbeeAudit(float Dt);
  void TickHUDReview(float Dt);
+ void TickTimeAudit(float Dt);
+ int32 TimeAuditStage=0;float TimeAuditClock=0;
+ TWeakObjectPtr<AActor> TimeAuditTarget;
  void TickLocomotionReview(float Dt);
  float LocoClock=0,LocoKneeMotion=0;int32 LocoStage=0;
  FQuat LocoInitialKnee;FVector LocoStart;

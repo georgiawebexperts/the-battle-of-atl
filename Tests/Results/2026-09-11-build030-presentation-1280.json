@@ -1,0 +1,30 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build030-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f0b9df35630235543d9273439d5a1c9096254d12ef37695e477a58592549124a"
+    },
+    {
+      "file": "work/build030-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "90cac3c5269abb56878ea4feb5f2b49a8d35db2eb9b1948c3d1d42db540b2a2d"
+    }
+  ],
+  "visual_review": {
+    "bike_and_foot_inspected": true,
+    "timer_notice_and_foot_rate_readable": true,
+    "token_visible": true,
+    "final_art_accepted": false
+  },
+  "scope": "Native cooked Mac game; controlled +30 notice and display-token fixture followed by dismount. Actual collection tested separately. Audio disabled; no physical input/FPS acceptance."
+}
