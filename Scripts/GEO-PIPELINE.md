@@ -44,3 +44,28 @@ reflection. Keep its scale positive and author the ESU world spline in positive
 (counterclockwise) order. The reflected actor hid the Water plugin surface.
 Scripts/normalize_lake_transform.py preserves all world vertices while fixing it.
 Do not reflect the saved lake a second time; WorldSettings conversion tag remains.
+
+
+## Positive landscape physics frame, build026
+
+2026-09-11 [codex-maclaptop]
+
+The earlier reflected Landscape transform supported ray traces but failed most
+capsule sweeps: 9/164 sampled sweeps hit; the Meadow visitors and bike fell through
+its grass in native gameplay. Landscape must now use positive scale and yaw -90.
+Transpose the source R16 grid (swap local X/Y) before import. Unlike reversing
+only its rows, this preserves the grid's triangle diagonals as well as every
+sample's world position. The original ENU data remains unchanged.
+
+`battle_geography.import_source_landscape` implements the frame from the metadata
+layout `transpose_xy`. Canonical `size` and `unreal_*` fields remain the source
+frame; `landscape_import_size` is 3025x1513, `world_scale` is positive,
+`landscape_rotation_yaw` is -90, and world location remains unchanged. Derived
+R16 files live in SourceAssets/Terrain/ImportFrames. The active source is still
+atlanta-height-krog.r16, preserving the lake basin and tunnel cut.
+
+All 164 comparison sweeps hit after conversion; maximum sampled height change
+was 0.00038924 cm. These are sampled comparisons, not every triangle. Path-only
+navigation was rebuilt. Existing source-geometry reflection still applies to
+baked road meshes; do not apply the landscape frame to those actors. WaterBodyLake
+retains its separately normalized positive transform and positive spline winding.

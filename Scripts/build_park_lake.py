@@ -4,7 +4,7 @@ p=pathlib.Path(unreal.Paths.project_dir());data=p/'SourceAssets/Terrain';lake_da
 w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 if w.get_name()!='PiedmontWorld':raise RuntimeError('Lake installation requires PiedmontWorld')
 import sys;sys.path.insert(0,str(p/'Scripts'))
-from battle_geography import source_to_world,place_source_geometry,require_converted_world
+from battle_geography import source_to_world,place_source_geometry,require_converted_world,import_source_landscape
 require_converted_world(w)
 try:
  actors=ea.get_all_level_actors();by_label={a.get_actor_label():a for a in actors}
@@ -12,7 +12,7 @@ try:
  land=by_label.get(label)
  if not land:
   old=[a for a in actors if isinstance(a,unreal.Landscape)]
-  land=unreal.PiedmontWorldTools.import_measured_landscape(str(data/'atlanta-height-lakebed.r16'),*meta['size'],unreal.Vector(*meta['world_location_cm']),unreal.Vector(*meta['world_scale']))
+  land=import_source_landscape(data/'atlanta-height-lakebed.r16',meta)
   if not land or len(land.get_components_by_class(unreal.LandscapeComponent))!=288:raise RuntimeError('Replacement terrain failed validation; original retained')
   land.set_editor_property('landscape_material',unreal.load_asset('/Game/PiedmontRide/Materials/M_Grass'));land.set_actor_label(label)
   for a in old:ea.destroy_actor(a)

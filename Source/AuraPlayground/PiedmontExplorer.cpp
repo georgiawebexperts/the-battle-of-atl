@@ -100,6 +100,7 @@ void APiedmontExplorer::AnimateBody(float Dt){
  for(int Side:{1,-1}){
   FVector Hand=bSwimming?FVector(Side*(20+35*Stroke),20+10*FMath::Cos(Gait),175-45*Stroke):FVector(Side*26,FMath::Sin(Gait)*Side*18*Blend,80);
   if(bWeaponDrawn)Hand=Side==1?FVector(5,40,128):FVector(-15,45,130);
+  if(!bWeaponDrawn&&!bSwimming)Hand=AdjustVisitorHand(Side,Hand);
   if(Side==1)Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),Hand,FVector(1,1,0));
   else Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),Hand,FVector(-1,1,0));
   const int Leg=Index(Side==1?TEXT("UpperLeg_L"):TEXT("UpperLeg_R"));

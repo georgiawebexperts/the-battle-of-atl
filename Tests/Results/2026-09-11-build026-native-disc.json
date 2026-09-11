@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "phase": 6,
+  "reason": "Launcher crate/key, two-target flight, ricochet, one hit per target, reload, cleanup and enemy drop pass",
+  "kills": 2,
+  "ammo": 8,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}

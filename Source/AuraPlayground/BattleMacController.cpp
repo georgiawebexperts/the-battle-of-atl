@@ -43,6 +43,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiscAudit")))TickDiscAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleFrisbeeAudit")))TickFrisbeeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleInventoryAudit")))TickInventoryAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMeleeAudit")))TickMeleeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieAudit")))TickZombieAudit(Dt);

@@ -24,6 +24,10 @@ private:
  void TickMeleeAudit(float Dt);
  void TickInventoryAudit(float Dt);
  void TickDiscAudit(float Dt);
+ void TickFrisbeeAudit(float Dt);
+ int32 FrisbeePhase=0,FrisbeeInitialWipeouts=0;float FrisbeeClock=0,FrisbeeGrassSeconds=0,FrisbeePeakSpeed=0;
+ FVector FrisbeeGrassStart;
+ TWeakObjectPtr<AActor> FrisbeeAuditGroup;
  int32 DiscPhase=0;float DiscClock=0;
  TWeakObjectPtr<AActor> DiscFirst,DiscSecond,DiscProjectile,DiscWall;
  int32 InventoryPhase=0,InventoryShots=0;

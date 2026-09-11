@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-09-11T09:45:04.394564+00:00",
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "map_saved": false,
+  "capture": "static editor SceneCapture2D, diagnostic light override",
+  "texture_streaming": 0,
+  "warmup_frames_per_view": 12,
+  "persistent_capture_state": true,
+  "force_lod": -1,
+  "lights": [
+    {
+      "actor": "DirectionalLight",
+      "saved_intensity": 4.0,
+      "review_intensity": 40
+    }
+  ],
+  "images": [
+    {
+      "file": "gate-oblique.png",
+      "camera": [
+        -17400,
+        -5200,
+        600
+      ],
+      "target": [
+        -14000,
+        -5200,
+        100
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5edb96f28e7db4d10d1ef823b207ee2803b77aef7b25daf73c78c1580b4af8d4"
+    },
+    {
+      "file": "park-aerial.png",
+      "camera": [
+        -16000,
+        16000,
+        18000
+      ],
+      "target": [
+        -5000,
+        -2000,
+        -400
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "3ab47c3b88f832710de0870a60d483e57e503178de738f1c3fb0e3f926d9c366"
+    }
+  ],
+  "scope": "Static scene only. No game-mode spawning, HUD, input, audio or FPS acceptance.",
+  "build": 26,
+  "review": "Lake, island, bridges and path layout visible after positive terrain frame conversion. Diagnostic static scene only."
+}

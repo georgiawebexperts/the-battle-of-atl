@@ -2,7 +2,7 @@
 import unreal,json,pathlib,sys,math
 root=pathlib.Path(unreal.Paths.project_dir())
 sys.path.insert(0,str(root/'Scripts'))
-from battle_geography import source_vector,place_source_geometry,require_converted_world
+from battle_geography import source_vector,place_source_geometry,require_converted_world,import_source_landscape
 level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
@@ -28,7 +28,7 @@ for filename in ['park-path-network.json','eastside-trail-network.json']:
 meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text())
 old=[a for a in ea.get_all_level_actors() if isinstance(a,unreal.Landscape)]
 assert len(old)==1
-land=unreal.PiedmontWorldTools.import_measured_landscape(str(root/'SourceAssets/Terrain/atlanta-height-krog.r16'),meta['size'][0],meta['size'][1],unreal.Vector(*meta['world_location_cm']),unreal.Vector(*meta['world_scale']))
+land=import_source_landscape(root/'SourceAssets/Terrain/atlanta-height-krog.r16',meta)
 assert land and len(land.get_components_by_class(unreal.LandscapeComponent))==288
 land.set_editor_property('landscape_material',old[0].get_editor_property('landscape_material'))
 label=old[0].get_actor_label();land.tags=list(old[0].tags)

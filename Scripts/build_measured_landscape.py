@@ -3,7 +3,8 @@ p=pathlib.Path(unreal.Paths.project_dir());meta=json.loads((p/'SourceAssets/Terr
 try:
     editor=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
     editor.new_level('/Game/PiedmontRide/Maps/PiedmontWorld')
-    land=unreal.PiedmontWorldTools.import_measured_landscape(str(p/'SourceAssets/Terrain/atlanta-height.r16'),meta['size'][0],meta['size'][1],unreal.Vector(*meta['world_location_cm']),unreal.Vector(*meta['world_scale']))
+    import sys;sys.path.insert(0,str(p/'Scripts'));from battle_geography import import_source_landscape
+    land=import_source_landscape(p/'SourceAssets/Terrain/atlanta-height.r16',meta)
     if not land:raise RuntimeError('Landscape import returned no actor')
     land.set_editor_property('landscape_material',unreal.load_asset('/Game/PiedmontRide/Materials/M_Grass'))
     ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)

@@ -63,7 +63,9 @@ bool ABattleBike::Dismount(){
  for(const FVector Direction:{GetActorRightVector(),-GetActorRightVector(),-GetActorForwardVector(),GetActorForwardVector()}){
   const FVector Candidate=GetActorLocation()+Direction*145;FHitResult Ground;
   if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,100),Candidate-FVector(0,0,220),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.65f)continue;
-  Exit=Ground.ImpactPoint+FVector(0,0,90);
+  // A vertical capsule needs extra clearance above a sloped plane.
+  const float Clearance=88.f+30.f*(1.f/FMath::Max(.65f,Ground.ImpactNormal.Z)-1.f)+2.f;
+  Exit=Ground.ImpactPoint+FVector(0,0,Clearance);
   FHitResult Wall;if(GetWorld()->SweepSingleByChannel(Wall,GetActorLocation(),Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
   if(!GetWorld()->OverlapBlockingTestByChannel(Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q)){Found=true;break;}
  }

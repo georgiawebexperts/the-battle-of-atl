@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleFrisbee.h"
 #include "BattleMacController.h"
 #include "BattleQuest.h"
 #include "BattleZombie.h"
@@ -141,6 +142,7 @@ void ABattleParkMode::StartPlay(){
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
+ GetWorld()->SpawnActor<ABattleParkLifeDirector>();
 }
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}

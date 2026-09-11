@@ -41,6 +41,7 @@ private:
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
 protected:
  virtual bool CanUseWeapon() const;
+ virtual FVector AdjustVisitorHand(int32 Side,FVector Target) const {return Target;}
  virtual void FinishReload(){Ammo=12;}
 private:
  bool bTriggerHeld=false;
