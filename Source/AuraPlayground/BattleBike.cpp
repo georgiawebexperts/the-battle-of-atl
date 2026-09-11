@@ -82,7 +82,7 @@ void ABattleBike::BeginPlay(){
  }
 }
 void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
- Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::Up,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Down,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
+ Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::R,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Q,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
 void ABattleBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
@@ -94,15 +94,15 @@ void ABattleBike::Tick(float Dt){
  Handlebar->SetFieldOfView(FMath::FInterpTo(Handlebar->FieldOfView,Ride->BoostRemaining>0?108.f:95.f,Dt,5));
  if(auto* PC=Cast<APlayerController>(GetController())){
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))FirePistol();
-  Ride->Pedal=PC->IsInputKeyDown(EKeys::W)?1:0;
+  Ride->Pedal=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up))?1:0;
   Ride->Steer=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
-  Ride->Brake=PC->IsInputKeyDown(EKeys::SpaceBar)?1:0;
+  Ride->Brake=(PC->IsInputKeyDown(EKeys::SpaceBar)||PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down))?1:0;
  }
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded||RiderHealth<=0||StunRemaining>0)Ride->Pedal=Ride->Steer=0;
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;
- const float Lean=Ride->Steer*FMath::Min(24.f,Ride->Speed*.035f);
- Visual->SetRelativeRotation(FRotator(0,0,Lean+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
- WheelAngle+=Ride->Speed*Dt/35*180/PI;FrontWheel->SetRelativeRotation(FRotator(WheelAngle,Ride->Steer*20,90));RearWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));PoseRider(Dt);
+ LeanAngle=FMath::Lerp(LeanAngle,Ride->SmoothedSteer*FMath::Min(24.f,Ride->Speed*.035f),1.f-FMath::Exp(-10.f*Dt));
+ Visual->SetRelativeRotation(FRotator(0,0,LeanAngle+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
+ WheelAngle+=Ride->Speed*Dt/35*180/PI;FrontWheel->SetRelativeRotation(FRotator(WheelAngle,Ride->SmoothedSteer*20,90));RearWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));PoseRider(Dt);
 }
 FVector ABattleBike::FindPathReturn() const{
  FVector Best=Ride->LastSafeLocation;double Distance=TNumericLimits<double>::Max();

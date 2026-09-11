@@ -1,0 +1,31 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build033-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "32364e78379923d284d57941710040000885fe0c363f87fe71c8bd5f99809a95"
+    },
+    {
+      "file": "work/build033-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "46a0a3e917d879da4385b722cb8655d181f345d5d09cb4703f6de58478309bf4"
+    }
+  ],
+  "visual_review": {
+    "bike_and_foot_inspected": true,
+    "controls_readable_at_1280": true,
+    "no_help_panel_clipping": true,
+    "final_art_accepted": false,
+    "notes": "Control labels and mount prompts are legible. Crowd repetition, simple terrain and character/weapon quality remain unfinished. Static captures do not evaluate steering animation or game feel."
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

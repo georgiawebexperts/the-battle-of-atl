@@ -23,6 +23,8 @@ public:
  virtual void CalcVelocity(float Dt,float Friction,bool Fluid,float Braking) override;
  virtual void HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta) override;
  UPROPERTY(BlueprintReadOnly) float Speed=0;
+ UPROPERTY(BlueprintReadOnly) float SmoothedSteer=0;
+ static float SteeringResponse(float Current,float Target,float Dt){return FMath::Lerp(Current,FMath::Clamp(Target,-1.f,1.f),1.f-FMath::Exp(-8.f*FMath::Max(0.f,Dt)));}
  UPROPERTY(BlueprintReadOnly) int32 Gear=1;
  UPROPERTY(BlueprintReadOnly) float Recovery=0;
  UPROPERTY(BlueprintReadOnly) int32 Wipeouts=0;
@@ -77,6 +79,7 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 ShotsFired=0;
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  UPROPERTY(BlueprintReadOnly) float PistolSpread=0;
+ UPROPERTY(BlueprintReadOnly) float LeanAngle=0;
  UPROPERTY(BlueprintReadOnly) FVector LastShotEnd;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Pistol;
  UFUNCTION(BlueprintCallable) bool FirePistol();

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "phase": 4,
+  "reason": "Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass",
+  "groups": 2,
+  "throws": 7,
+  "catches": 5,
+  "misses": 1,
+  "retrievals": 1,
+  "ammo_given": 10,
+  "supply": 14,
+  "grass_ride": {
+    "distance_cm": 3472.44,
+    "grounded_grass_seconds": 4.716,
+    "peak_speed_cm_s": 1266.092,
+    "wipeouts": 0.0
+  },
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "expected_groups": 2,
+  "physical_input_and_audio_verified": false
+}

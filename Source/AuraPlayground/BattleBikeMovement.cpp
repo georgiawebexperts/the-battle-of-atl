@@ -11,6 +11,7 @@ UBattleBikeMovement::UBattleBikeMovement(){
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
  BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
+ SmoothedSteer=SteeringResponse(SmoothedSteer,Recovery>0?0.f:Steer,Dt);
  ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);BounceRemaining=FMath::Max(0.f,BounceRemaining-Dt);SlideRemaining=FMath::Max(0.f,SlideRemaining-Dt);
  if(Recovery>0){
   Recovery=FMath::Max(0.f,Recovery-Dt);Speed=0;
@@ -23,7 +24,7 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&Floor->ActorHasTag(TEXT("RideGrass"));
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
-   Heading.Yaw+=Steer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*Dt;CharacterOwner->SetActorRotation(Heading);
+   Heading.Yaw+=SmoothedSteer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f)*Dt;CharacterOwner->SetActorRotation(Heading);
    const bool BrakeTurn=Brake>.5f&&PreviousBrake<=.5f&&FMath::Abs(Steer)>.3f&&Speed>800;
    const bool FastTurn=FMath::Abs(Steer)>.8f&&FMath::Abs(PreviousSteer)<=.8f&&Speed>1350;
    if(BrakeTurn||FastTurn)SlideRemaining=.65f;
@@ -45,7 +46,7 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(BoostRemaining>0&&Brake<=0)Speed=Cap;
  Speed=FMath::Clamp(Speed+(Pedal*Accel[Gear-1]-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
- const FVector Horizontal=FMath::VInterpTo(FVector(Velocity.X,Velocity.Y,0),Desired,Dt,SlideRemaining>0?2.3f:18.f);
+ const FVector Horizontal=FMath::Lerp(FVector(Velocity.X,Velocity.Y,0),Desired,1.f-FMath::Exp(-(SlideRemaining>0?2.3f:18.f)*Dt));
  Velocity.X=Horizontal.X;Velocity.Y=Horizontal.Y;
  if(Pedal>0)Cadence+=Dt*FMath::Clamp(Speed/(Gear*100.f),.5f,2.f)*2*PI;
 }

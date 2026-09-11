@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "stage": 9,
+  "reason": "Actual arrow/WASD pedal/brake, eased steering reversal and lean, Q/R gears, remount reset, stationary heading and 30/120Hz response pass",
+  "speed": 0.0,
+  "steer": -0.921,
+  "lean": 0.0,
+  "exit_code": 0,
+  "difficulty": "Hard",
+  "visual_review": false
+}
