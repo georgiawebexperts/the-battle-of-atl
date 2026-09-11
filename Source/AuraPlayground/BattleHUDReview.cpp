@@ -48,7 +48,7 @@ void ABattleMacController::TickHUDReview(float Dt){
  auto Aim=[&](bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  if(HUDReviewStage==3&&HUDReviewClock>10){CheckWrists(TEXT("rest"));Aim(true);HUDReviewStage=4;}
  if(HUDReviewStage==4&&HUDReviewClock>11){CheckWrists(TEXT("aim"));Capture(TEXT("aim.png"));HUDReviewStage=5;}
- if(HUDReviewStage==5&&HUDReviewClock>12){Aim(false);if(!Rider||!Rider->Fire()){UE_LOG(LogTemp,Error,TEXT("RigReview: fire failed"));}else{Rider->Reload();}HUDReviewStage=6;}
+ if(HUDReviewStage==5&&HUDReviewClock>12){Aim(false);if(!Rider||!Rider->Fire()){UE_LOG(LogTemp,Error,TEXT("RigReview: fire failed"));}else{Rider->ParkedBike->GiveWeapon(0,10);Rider->Reload();}HUDReviewStage=6;}
  if(HUDReviewStage==6&&HUDReviewClock>12.7f){CheckWrists(TEXT("reload"));Capture(TEXT("reload.png"));HUDReviewStage=7;}
  if(HUDReviewStage==7&&HUDReviewClock>14.2f){
   CheckWrists(TEXT("recovered"));

@@ -52,7 +52,7 @@ void ABattleLabHUD::DrawHUD(){
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=TEXT("CLICK fire   R reload   F melee   ESC help");}
  Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
- if(Bike)Text(FString::Printf(TEXT("PISTOL  %d"),Bike->PistolAmmo),M+20*S,Bottom-48*S,27,Peach);
+ if(Bike)Text(FString::Printf(TEXT("PISTOL  %d / %d"),Bike->PistolAmmo,Bike->Inventory[0].Reserve),M+20*S,Bottom-48*S,27,Peach);
  const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;
  if(auto* PC=GetOwningPlayerController()){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);

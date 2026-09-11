@@ -66,7 +66,7 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int3
  auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Ground.ImpactPoint,Pawn);
  if(!Route||!Route->IsValid()||Route->IsPartial())return false;
  if(WeaponSlot>=0){
-  if(auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));Locations.Add(Spot);WeaponCrates++;return true;}return false;
+  if(auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==0)AmmoPickups++;else WeaponCrates++;return true;}return false;
  }
  if(auto* Pickup=GetWorld()->SpawnActorDeferred<ABattleColaPickup>(ABattleColaPickup::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){
   Pickup->HealAmount=Heal;Pickup->bTrailPickup=Trail;Pickup->bTimeBonus=WeaponSlot==-2;Pickup->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==-2)TimePickups++;else{Spawned++;if(Trail)TrailPickups++;else ParkPickups++;}return true;
@@ -98,6 +98,9 @@ void ABattlePickupDirector::BeginPlay(){
   while(!Supplies.IsEmpty()&&WeaponCrates<Mode->Difficulty.WeaponCrates){const int32 I=FMath::RandHelper(Supplies.Num());const FVector P=Supplies[I];Supplies.RemoveAtSwap(I);SpawnCola(P,false,0,1+WeaponCrates%3);}
   auto FillTime=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&TimePickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-2);}};
   FillTime(Park,false,5);FillTime(Trail,true,10);
+  auto FillAmmo=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&AmmoPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,0);}};
+  FillAmmo(Park,false,6);FillAmmo(Trail,true,12);
+  UE_LOG(LogTemp,Display,TEXT("BattleAmmoPickups: spawned=%d desired=12"),AmmoPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleTimePickups: spawned=%d desired=10"),TimePickups);
   UE_LOG(LogTemp,Display,TEXT("BattleCrates: spawned=%d desired=%d"),WeaponCrates,Mode->Difficulty.WeaponCrates);
  }

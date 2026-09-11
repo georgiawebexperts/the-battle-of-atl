@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "reason": "Ten initial shots, dry fire, pickups, bike/foot reload conservation, possession, interrupted reload and reserve cap pass",
+  "stage": 9,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false
+}

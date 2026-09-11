@@ -34,7 +34,7 @@
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSubobjectClass<UBattleBikeMovement>(ACharacter::CharacterMovementComponentName)){
- Inventory.SetNum(4);Inventory[0].Owned=true;Inventory[0].Magazine=12;Inventory[0].Reserve=-1;
+ Inventory.SetNum(4);Inventory[0].Owned=true;Inventory[0].Magazine=10;Inventory[0].Reserve=0;
  AsphaltAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("AsphaltTires"));GrassAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("GrassTires"));MotorAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("ElectricMotor"));
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()}){Audio->SetupAttachment(GetCapsuleComponent());Audio->bAutoActivate=false;Audio->SetVolumeMultiplier(0);}
  PrimaryActorTick.bCanEverTick=true;bUseControllerRotationYaw=false;
@@ -87,7 +87,7 @@ void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
 void ABattleBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
  Super::Tick(Dt);UpdateHealth(Dt);UpdateLights(Dt);UpdateRideFeedback(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
- if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0)PistolAmmo=12;}
+ if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0){auto& Item=Inventory[0];const int32 Add=FMath::Min(BattleWeapons::Capacity(0)-PistolAmmo,Item.Reserve);PistolAmmo+=Add;Item.Reserve-=Add;Item.Magazine=PistolAmmo;}}
  Pistol->SetVisibility(!bParked&&GunHold>0);if(bParked)return;UpdateNearMisses();
  for(auto* View:{Chase.Get(),Handlebar.Get()}){View->PostProcessSettings.bOverride_MotionBlurAmount=true;View->PostProcessSettings.MotionBlurAmount=Ride->BoostRemaining>0?.4f:.1f;}
  Chase->SetFieldOfView(FMath::FInterpTo(Chase->FieldOfView,Ride->BoostRemaining>0?98.f:85.f,Dt,5));
@@ -178,8 +178,8 @@ void ABattleBike::PoseRider(float Dt){
 bool ABattleBike::FirePistol(){
  if(!GetController()||bParked||RiderHealth<=0||Ride->Recovery>0||ShotCooldown>0||ReloadTimer>0)return false;
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded)return false;
- if(PistolAmmo<=0){ReloadTimer=1.5f;return false;}
- PistolAmmo--;ShotsFired++;ShotCooldown=.25f;GunHold=.8f;PistolSpread=FMath::Lerp(.15f,3.f,FMath::Clamp(Ride->Speed/1600.f,0.f,1.f));
+ if(PistolAmmo<=0){if(Inventory[0].Reserve>0)ReloadTimer=1.5f;return false;}
+ PistolAmmo--;Inventory[0].Magazine=PistolAmmo;ShotsFired++;ShotCooldown=.25f;GunHold=.8f;PistolSpread=FMath::Lerp(.15f,3.f,FMath::Clamp(Ride->Speed/1600.f,0.f,1.f));
  const auto Shot=FireBattlePistol(this,Pistol,PistolSpread);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;if(Shot.EnemyKilled)AwardEnemyKill();return true;
 }
 bool ABattleBike::Boost(){

@@ -9,7 +9,7 @@
 #include "Materials/MaterialInterface.h"
 
 bool ABattleBike::GiveWeapon(int32 Slot,int32 Rounds){
- if(Slot<1||Slot>3||Rounds<=0||Inventory.Num()!=4||RiderHealth<=0||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this))return false;
+ if(Slot<0||Slot>3||Rounds<=0||Inventory.Num()!=4||RiderHealth<=0||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this))return false;
  const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(Mode&&(Mode->bRunEnded||Mode->StartCountdown>0))return false;
  auto& Item=Inventory[Slot];const bool New=!Item.Owned;const int32 Old=Item.Reserve;
  if(New){Item.Owned=true;Item.Magazine=FMath::Min(Rounds,BattleWeapons::Capacity(Slot));Rounds-=Item.Magazine;}
@@ -30,15 +30,14 @@ bool ABattleRider::SelectWeapon(int32 Slot){
  if(!CanUseWeapon()||MeleeRemaining>0||!ParkedBike||Slot<0||Slot>3||!ParkedBike->Inventory[Slot].Owned)return false;
  if(Slot==CurrentWeapon)return true;SaveWeapon();ReloadRemaining=0;CurrentWeapon=Slot;Ammo=ParkedBike->Inventory[Slot].Magazine;ParkedBike->LastFootWeapon=Slot;ShotCooldown=FMath::Max(ShotCooldown,.2f);UpdateWeaponModel();return true;
 }
-FString ABattleRider::ReserveLabel() const{return CurrentWeapon==0?TEXT("unlimited"):ParkedBike?FString::FromInt(ParkedBike->Inventory[CurrentWeapon].Reserve):TEXT("0");}
+FString ABattleRider::ReserveLabel() const{return ParkedBike?FString::FromInt(ParkedBike->Inventory[CurrentWeapon].Reserve):TEXT("0");}
 void ABattleRider::Reload(){
  if(!CanUseWeapon()||!bWeaponDrawn||MeleeRemaining>0||ReloadRemaining>0||Ammo>=BattleWeapons::Capacity(CurrentWeapon))return;
- if(CurrentWeapon!=0&&(!ParkedBike||ParkedBike->Inventory[CurrentWeapon].Reserve<=0))return;
+ if(!ParkedBike||ParkedBike->Inventory[CurrentWeapon].Reserve<=0)return;
  ReloadRemaining=BattleWeapons::ReloadSeconds(CurrentWeapon);
 }
 void ABattleRider::FinishReload(){
- if(CurrentWeapon==0)Ammo=12;
- else if(ParkedBike){auto& Item=ParkedBike->Inventory[CurrentWeapon];const int32 Add=FMath::Min(BattleWeapons::Capacity(CurrentWeapon)-Ammo,Item.Reserve);Ammo+=Add;Item.Reserve-=Add;}
+ if(ParkedBike){auto& Item=ParkedBike->Inventory[CurrentWeapon];const int32 Add=FMath::Min(BattleWeapons::Capacity(CurrentWeapon)-Ammo,Item.Reserve);Ammo+=Add;Item.Reserve-=Add;}
  SaveWeapon();
 }
 void ABattleRider::BuildLongGun(){

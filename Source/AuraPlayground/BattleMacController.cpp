@@ -46,6 +46,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleLocomotionReview")))TickLocomotionReview(Dt);
  else if(FParse::Param(FCommandLine::Get(),TEXT("BattleHUDReview")))TickHUDReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFrisbeeAudit")))TickFrisbeeAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmmoAudit")))TickAmmoAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeAudit")))TickTimeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleInventoryAudit")))TickInventoryAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMeleeAudit")))TickMeleeAudit(Dt);
@@ -114,7 +115,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Mac playtest 030 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Mac playtest 031 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);

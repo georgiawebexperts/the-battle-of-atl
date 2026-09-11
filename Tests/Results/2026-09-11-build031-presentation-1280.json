@@ -1,0 +1,46 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build031-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "27d043d98b05f841d91843a6218d788c457ac92002e270c13e3391bc14dca3af"
+    },
+    {
+      "file": "work/build031-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d4129616d6ed02f4c63b791167cc418bb4e9ae107ccc57e79e4c8344147212e5"
+    },
+    {
+      "file": "work/build031-packaged-1280/aim.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0cfe8a6d5f0c403bafd95b7011fac7e4becee87f682c08e5c689b9fc61072093"
+    },
+    {
+      "file": "work/build031-packaged-1280/reload.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "858c7ac3dac9757e097230435336be9ad0bc2944b0d985674681648be5648edf"
+    }
+  ],
+  "visual_review": {
+    "bike_and_foot_inspected": true,
+    "loaded_reserve_counts_readable": true,
+    "starting_ammo_visible": "10 / 0",
+    "final_art_accepted": false
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

@@ -30,6 +30,7 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 Spawned=0;
  UPROPERTY(BlueprintReadOnly) int32 WeaponCrates=0;
  UPROPERTY(BlueprintReadOnly) int32 TimePickups=0;
+ UPROPERTY(BlueprintReadOnly) int32 AmmoPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 ParkPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 TrailPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 PlacementFailures=0;
