@@ -111,6 +111,7 @@ class AURAPLAYGROUND_API ABattleLabMode : public APiedmontRideMode {
  GENERATED_BODY()
 public:
  ABattleLabMode();
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) FString CourseLabel=TEXT("ARCADE BIKE TEST");
  virtual void StartPlay() override;
  virtual void Tick(float Dt) override;
 };
@@ -119,4 +120,11 @@ class AURAPLAYGROUND_API ABattleLabHUD : public AHUD {
  GENERATED_BODY()
 public:
  virtual void DrawHUD() override;
+};
+
+UCLASS()
+class AURAPLAYGROUND_API ABattleParkMode : public ABattleLabMode {
+ GENERATED_BODY()
+public:
+ ABattleParkMode();
 };

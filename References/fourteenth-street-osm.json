@@ -1,0 +1,1188 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-11T03:56:21Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 9252985,
+      "bounds": {
+        "minlat": 33.7864811,
+        "minlon": -84.3791289,
+        "maxlat": 33.7876516,
+        "maxlon": -84.3791276
+      },
+      "nodes": [
+        69315704,
+        14053858089,
+        5996570178,
+        5424125832,
+        13241914739,
+        5424123711,
+        5424123714,
+        69315708
+      ],
+      "geometry": [
+        {
+          "lat": 33.7864811,
+          "lon": -84.3791279
+        },
+        {
+          "lat": 33.7865139,
+          "lon": -84.3791279
+        },
+        {
+          "lat": 33.7865702,
+          "lon": -84.379128
+        },
+        {
+          "lat": 33.7870895,
+          "lon": -84.3791276
+        },
+        {
+          "lat": 33.787116,
+          "lon": -84.3791284
+        },
+        {
+          "lat": 33.7872454,
+          "lon": -84.3791286
+        },
+        {
+          "lat": 33.7875936,
+          "lon": -84.3791288
+        },
+        {
+          "lat": 33.7876516,
+          "lon": -84.3791289
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "14th Place Northeast",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "Pl",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309"
+      }
+    },
+    {
+      "type": "way",
+      "id": 9261039,
+      "bounds": {
+        "minlat": 33.7866598,
+        "minlon": -84.3878096,
+        "maxlat": 33.7866957,
+        "maxlon": -84.38697
+      },
+      "nodes": [
+        2911510963,
+        13123520092,
+        6005931759,
+        69372826
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866598,
+          "lon": -84.38697
+        },
+        {
+          "lat": 33.786688,
+          "lon": -84.3871859
+        },
+        {
+          "lat": 33.7866931,
+          "lon": -84.3876546
+        },
+        {
+          "lat": 33.7866957,
+          "lon": -84.3878096
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309"
+      }
+    },
+    {
+      "type": "way",
+      "id": 9261737,
+      "bounds": {
+        "minlat": 33.7866957,
+        "minlon": -84.3892454,
+        "maxlat": 33.7866997,
+        "maxlon": -84.3878096
+      },
+      "nodes": [
+        69372826,
+        6005931797,
+        13124675194,
+        12857222270,
+        69424999
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866957,
+          "lon": -84.3878096
+        },
+        {
+          "lat": 33.7866962,
+          "lon": -84.3879554
+        },
+        {
+          "lat": 33.7866995,
+          "lon": -84.3889419
+        },
+        {
+          "lat": 33.7866995,
+          "lon": -84.3891516
+        },
+        {
+          "lat": 33.7866997,
+          "lon": -84.3892454
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A25",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_base_1": "United States Highway 19",
+        "tiger:name_base_2": "State Route 9",
+        "tiger:name_direction_suffix": "NW",
+        "tiger:name_type": "St",
+        "tiger:zip_left": "30318",
+        "tiger:zip_right": "30318"
+      }
+    },
+    {
+      "type": "way",
+      "id": 48663357,
+      "bounds": {
+        "minlat": 33.7866997,
+        "minlon": -84.3897219,
+        "maxlat": 33.7867035,
+        "maxlon": -84.3892454
+      },
+      "nodes": [
+        69424999,
+        5999239806,
+        6694512553
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866997,
+          "lon": -84.3892454
+        },
+        {
+          "lat": 33.7866998,
+          "lon": -84.3893742
+        },
+        {
+          "lat": 33.7867035,
+          "lon": -84.3897219
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "ref": "US 19;GA 9",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:county": "Fulton, GA"
+      }
+    },
+    {
+      "type": "way",
+      "id": 287527645,
+      "bounds": {
+        "minlat": 33.7866598,
+        "minlon": -84.38697,
+        "maxlat": 33.7866601,
+        "maxlon": -84.3866314
+      },
+      "nodes": [
+        2911510963,
+        7430760736,
+        5406938417
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866598,
+          "lon": -84.38697
+        },
+        {
+          "lat": 33.78666,
+          "lon": -84.3866738
+        },
+        {
+          "lat": 33.7866601,
+          "lon": -84.3866314
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "4",
+        "name": "14th Street Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309"
+      }
+    },
+    {
+      "type": "way",
+      "id": 287527648,
+      "bounds": {
+        "minlat": 33.7865998,
+        "minlon": -84.3878104,
+        "maxlat": 33.7866598,
+        "maxlon": -84.38697
+      },
+      "nodes": [
+        2911510961,
+        13124675219,
+        6005931758,
+        8765611100,
+        13123520093,
+        2911510963
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866021,
+          "lon": -84.3878104
+        },
+        {
+          "lat": 33.7866015,
+          "lon": -84.387772
+        },
+        {
+          "lat": 33.7865998,
+          "lon": -84.3876559
+        },
+        {
+          "lat": 33.7866124,
+          "lon": -84.3873376
+        },
+        {
+          "lat": 33.7866208,
+          "lon": -84.3871906
+        },
+        {
+          "lat": 33.7866598,
+          "lon": -84.38697
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309"
+      }
+    },
+    {
+      "type": "way",
+      "id": 287527650,
+      "bounds": {
+        "minlat": 33.7866016,
+        "minlon": -84.3892451,
+        "maxlat": 33.7866026,
+        "maxlon": -84.3878104
+      },
+      "nodes": [
+        2911510962,
+        13124675110,
+        6005931803,
+        6005931796,
+        2911510961
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866016,
+          "lon": -84.3892451
+        },
+        {
+          "lat": 33.7866017,
+          "lon": -84.3892177
+        },
+        {
+          "lat": 33.7866017,
+          "lon": -84.3891512
+        },
+        {
+          "lat": 33.7866026,
+          "lon": -84.3879518
+        },
+        {
+          "lat": 33.7866021,
+          "lon": -84.3878104
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "3",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "ref": "US 19;GA 9",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:county": "Fulton, GA",
+        "turn:lanes": "left|none|none"
+      }
+    },
+    {
+      "type": "way",
+      "id": 287527655,
+      "bounds": {
+        "minlat": 33.7865512,
+        "minlon": -84.3904374,
+        "maxlat": 33.7865876,
+        "maxlon": -84.3896617
+      },
+      "nodes": [
+        2911510955,
+        12857347575,
+        9732068956
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865547,
+          "lon": -84.3904374
+        },
+        {
+          "lat": 33.7865512,
+          "lon": -84.3902855
+        },
+        {
+          "lat": 33.7865876,
+          "lon": -84.3896617
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "ref": "US 19;GA 9",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:county": "Fulton, GA"
+      }
+    },
+    {
+      "type": "way",
+      "id": 290405872,
+      "bounds": {
+        "minlat": 33.7865501,
+        "minlon": -84.384328,
+        "maxlat": 33.786655,
+        "maxlon": -84.3831523
+      },
+      "nodes": [
+        69421271,
+        6005931765,
+        2939367165,
+        69421273,
+        2939367164,
+        3602660758,
+        69421277
+      ],
+      "geometry": [
+        {
+          "lat": 33.786655,
+          "lon": -84.384328
+        },
+        {
+          "lat": 33.786625,
+          "lon": -84.3842445
+        },
+        {
+          "lat": 33.7866064,
+          "lon": -84.3841904
+        },
+        {
+          "lat": 33.7865608,
+          "lon": -84.3834845
+        },
+        {
+          "lat": 33.7865501,
+          "lon": -84.3832875
+        },
+        {
+          "lat": 33.7865552,
+          "lon": -84.3832646
+        },
+        {
+          "lat": 33.7865802,
+          "lon": -84.3831523
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "yes",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309",
+        "turn:lanes": "left|none"
+      }
+    },
+    {
+      "type": "way",
+      "id": 290405873,
+      "bounds": {
+        "minlat": 33.7865802,
+        "minlon": -84.384328,
+        "maxlat": 33.7866774,
+        "maxlon": -84.3831523
+      },
+      "nodes": [
+        69421277,
+        3602660759,
+        2939367166,
+        2939367167,
+        2939367168,
+        6005931764,
+        69421271
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865802,
+          "lon": -84.3831523
+        },
+        {
+          "lat": 33.786625,
+          "lon": -84.3832812
+        },
+        {
+          "lat": 33.7866348,
+          "lon": -84.3833095
+        },
+        {
+          "lat": 33.7866456,
+          "lon": -84.3835064
+        },
+        {
+          "lat": 33.7866774,
+          "lon": -84.384209
+        },
+        {
+          "lat": 33.7866717,
+          "lon": -84.3842397
+        },
+        {
+          "lat": 33.786655,
+          "lon": -84.384328
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "yes",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309"
+      }
+    },
+    {
+      "type": "way",
+      "id": 290405874,
+      "bounds": {
+        "minlat": 33.7865032,
+        "minlon": -84.3831523,
+        "maxlat": 33.7865802,
+        "maxlon": -84.3821632
+      },
+      "nodes": [
+        69421277,
+        3602660757,
+        69421281,
+        13336389467,
+        13336389514,
+        5674179652,
+        5198748651
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865802,
+          "lon": -84.3831523
+        },
+        {
+          "lat": 33.786541,
+          "lon": -84.3830273
+        },
+        {
+          "lat": 33.7865321,
+          "lon": -84.382988
+        },
+        {
+          "lat": 33.7865152,
+          "lon": -84.3828917
+        },
+        {
+          "lat": 33.786506,
+          "lon": -84.3827931
+        },
+        {
+          "lat": 33.786504,
+          "lon": -84.3822701
+        },
+        {
+          "lat": 33.7865032,
+          "lon": -84.3821632
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "5",
+        "lanes:backward": "2",
+        "lanes:forward": "3",
+        "name": "14th Street Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309",
+        "turn:lanes:backward": "through|through;right",
+        "turn:lanes:forward": "through|through|right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 431441735,
+      "bounds": {
+        "minlat": 33.7864806,
+        "minlon": -84.3801983,
+        "maxlat": 33.7864811,
+        "maxlon": -84.3791279
+      },
+      "nodes": [
+        4306377241,
+        5834678394,
+        69315704
+      ],
+      "geometry": [
+        {
+          "lat": 33.7864806,
+          "lon": -84.3801983
+        },
+        {
+          "lat": 33.7864806,
+          "lon": -84.3801352
+        },
+        {
+          "lat": 33.7864811,
+          "lon": -84.3791279
+        }
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "cycleway:left:buffer": "no",
+        "highway": "secondary",
+        "lanes": "3",
+        "lanes:backward": "2",
+        "lanes:forward": "1",
+        "name": "14th Street Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 431441736,
+      "bounds": {
+        "minlat": 33.78648,
+        "minlon": -84.3821632,
+        "maxlat": 33.7865032,
+        "maxlon": -84.3801983
+      },
+      "nodes": [
+        5198748651,
+        12999959426,
+        4338646193,
+        5674179654,
+        8482370936,
+        4338646199,
+        4338645785,
+        12999959342,
+        4338646192,
+        5834678396,
+        7258187491,
+        13239619651,
+        5853527365,
+        4306377241
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865032,
+          "lon": -84.3821632
+        },
+        {
+          "lat": 33.7864967,
+          "lon": -84.3820096
+        },
+        {
+          "lat": 33.7864948,
+          "lon": -84.3819353
+        },
+        {
+          "lat": 33.7864932,
+          "lon": -84.3818049
+        },
+        {
+          "lat": 33.7864852,
+          "lon": -84.3815467
+        },
+        {
+          "lat": 33.7864801,
+          "lon": -84.3813784
+        },
+        {
+          "lat": 33.78648,
+          "lon": -84.3812201
+        },
+        {
+          "lat": 33.7864803,
+          "lon": -84.3810908
+        },
+        {
+          "lat": 33.7864805,
+          "lon": -84.3809872
+        },
+        {
+          "lat": 33.7864804,
+          "lon": -84.3808239
+        },
+        {
+          "lat": 33.7864805,
+          "lon": -84.3804985
+        },
+        {
+          "lat": 33.7864806,
+          "lon": -84.3803544
+        },
+        {
+          "lat": 33.7864806,
+          "lon": -84.3803012
+        },
+        {
+          "lat": 33.7864806,
+          "lon": -84.3801983
+        }
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "cycleway:left:buffer": "no",
+        "highway": "secondary",
+        "lanes": "4",
+        "lanes:backward": "3",
+        "lanes:forward": "1",
+        "name": "14th Street Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt",
+        "turn:lanes:backward": "left|left|through",
+        "turn:lanes:forward": "through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 431441737,
+      "bounds": {
+        "minlat": 33.7864443,
+        "minlon": -84.3789347,
+        "maxlat": 33.7864804,
+        "maxlon": -84.378237
+      },
+      "nodes": [
+        8481441836,
+        9535944759,
+        1573471346,
+        5674178519,
+        9535944762
+      ],
+      "geometry": [
+        {
+          "lat": 33.7864804,
+          "lon": -84.3789347
+        },
+        {
+          "lat": 33.7864499,
+          "lon": -84.3787428
+        },
+        {
+          "lat": 33.7864468,
+          "lon": -84.378409
+        },
+        {
+          "lat": 33.7864443,
+          "lon": -84.378286
+        },
+        {
+          "lat": 33.7864497,
+          "lon": -84.378237
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309",
+        "turn:lanes:forward": "left"
+      }
+    },
+    {
+      "type": "way",
+      "id": 619421349,
+      "bounds": {
+        "minlat": 33.786655,
+        "minlon": -84.3866314,
+        "maxlat": 33.7866607,
+        "maxlon": -84.384328
+      },
+      "nodes": [
+        5406938417,
+        7430760747,
+        7430760724,
+        7430760732,
+        7430760763,
+        7430760772,
+        5410723025,
+        6005931761,
+        69421271
+      ],
+      "geometry": [
+        {
+          "lat": 33.7866601,
+          "lon": -84.3866314
+        },
+        {
+          "lat": 33.7866603,
+          "lon": -84.3862566
+        },
+        {
+          "lat": 33.7866605,
+          "lon": -84.3860466
+        },
+        {
+          "lat": 33.7866607,
+          "lon": -84.3857149
+        },
+        {
+          "lat": 33.7866598,
+          "lon": -84.3855107
+        },
+        {
+          "lat": 33.7866587,
+          "lon": -84.3852163
+        },
+        {
+          "lat": 33.7866584,
+          "lon": -84.3851314
+        },
+        {
+          "lat": 33.7866555,
+          "lon": -84.3844052
+        },
+        {
+          "lat": 33.786655,
+          "lon": -84.384328
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "4",
+        "name": "14th Street Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309"
+      }
+    },
+    {
+      "type": "way",
+      "id": 711988181,
+      "bounds": {
+        "minlat": 33.7866998,
+        "minlon": -84.390425,
+        "maxlat": 33.7867017,
+        "maxlon": -84.3899761
+      },
+      "nodes": [
+        13129051234,
+        13320064396,
+        12857347577,
+        69425001
+      ],
+      "geometry": [
+        {
+          "lat": 33.7867017,
+          "lon": -84.3899761
+        },
+        {
+          "lat": 33.7867,
+          "lon": -84.3902504
+        },
+        {
+          "lat": 33.7866998,
+          "lon": -84.3902886
+        },
+        {
+          "lat": 33.7867016,
+          "lon": -84.390425
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "3",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "ref": "US 19;GA 9",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:county": "Fulton, GA"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1035224024,
+      "bounds": {
+        "minlat": 33.7864804,
+        "minlon": -84.3791279,
+        "maxlat": 33.7864811,
+        "maxlon": -84.3789347
+      },
+      "nodes": [
+        69315704,
+        8481441836
+      ],
+      "geometry": [
+        {
+          "lat": 33.7864811,
+          "lon": -84.3791279
+        },
+        {
+          "lat": 33.7864804,
+          "lon": -84.3789347
+        }
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "cycleway:left:buffer": "no",
+        "highway": "secondary",
+        "lanes": "3",
+        "lanes:backward": "2",
+        "lanes:forward": "1",
+        "name": "14th Street Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt",
+        "turn:lanes:forward": "left"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1035224025,
+      "bounds": {
+        "minlat": 33.7865056,
+        "minlon": -84.3783613,
+        "maxlat": 33.7865903,
+        "maxlon": -84.3781525
+      },
+      "nodes": [
+        5674178518,
+        9535944758,
+        9535944757,
+        9535944760,
+        9535944764,
+        9535944756,
+        9535944752
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865903,
+          "lon": -84.3781525
+        },
+        {
+          "lat": 33.7865701,
+          "lon": -84.3781961
+        },
+        {
+          "lat": 33.7865462,
+          "lon": -84.3782138
+        },
+        {
+          "lat": 33.7865319,
+          "lon": -84.3782323
+        },
+        {
+          "lat": 33.7865184,
+          "lon": -84.3782547
+        },
+        {
+          "lat": 33.7865125,
+          "lon": -84.3782891
+        },
+        {
+          "lat": 33.7865056,
+          "lon": -84.3783613
+        }
+      ],
+      "tags": {
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1035224032,
+      "bounds": {
+        "minlat": 33.7864497,
+        "minlon": -84.378237,
+        "maxlat": 33.7865089,
+        "maxlon": -84.3781405
+      },
+      "nodes": [
+        9535944762,
+        9535944755,
+        9535944754,
+        69421284
+      ],
+      "geometry": [
+        {
+          "lat": 33.7864497,
+          "lon": -84.378237
+        },
+        {
+          "lat": 33.7864595,
+          "lon": -84.3782035
+        },
+        {
+          "lat": 33.7864776,
+          "lon": -84.3781716
+        },
+        {
+          "lat": 33.7865089,
+          "lon": -84.3781405
+        }
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "14th",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "St",
+        "tiger:zip_left": "30309",
+        "tiger:zip_right": "30309",
+        "turn:lanes": "left"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1035224034,
+      "bounds": {
+        "minlat": 33.7864804,
+        "minlon": -84.3789347,
+        "maxlat": 33.7865056,
+        "maxlon": -84.3783613
+      },
+      "nodes": [
+        9535944752,
+        9535944765,
+        8481441836
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865056,
+          "lon": -84.3783613
+        },
+        {
+          "lat": 33.786502,
+          "lon": -84.3787143
+        },
+        {
+          "lat": 33.7864804,
+          "lon": -84.3789347
+        }
+      ],
+      "tags": {
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "14th Street Northeast",
+        "oneway": "yes",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt",
+        "turn:lanes:backward": "left"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1059205202,
+      "bounds": {
+        "minlat": 33.7865876,
+        "minlon": -84.3896617,
+        "maxlat": 33.7866016,
+        "maxlon": -84.3892451
+      },
+      "nodes": [
+        9732068956,
+        5999239805,
+        2911510962
+      ],
+      "geometry": [
+        {
+          "lat": 33.7865876,
+          "lon": -84.3896617
+        },
+        {
+          "lat": 33.7866009,
+          "lon": -84.3893757
+        },
+        {
+          "lat": 33.7866016,
+          "lon": -84.3892451
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "3",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "ref": "US 19;GA 9",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:county": "Fulton, GA"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1428119784,
+      "bounds": {
+        "minlat": 33.7867017,
+        "minlon": -84.3899761,
+        "maxlat": 33.7867035,
+        "maxlon": -84.3897219
+      },
+      "nodes": [
+        6694512553,
+        13129051234
+      ],
+      "geometry": [
+        {
+          "lat": 33.7867035,
+          "lon": -84.3897219
+        },
+        {
+          "lat": 33.7867017,
+          "lon": -84.3899761
+        }
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "name": "14th Street Northwest",
+        "oneway": "yes",
+        "ref": "US 19;GA 9",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "tiger:county": "Fulton, GA"
+      }
+    }
+  ]
+}

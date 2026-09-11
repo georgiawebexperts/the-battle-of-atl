@@ -1,8 +1,8 @@
 {
-  "build": 10,
-  "version": "0.10.0-dev",
+  "build": 11,
+  "version": "0.11.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Ride feedback, automatic fast-turn drift and visible lab water; 11 feedback and 14 terrain checks pass; fun review pending",
-  "author": "2026-09-10 [codex-maclaptop]"
+  "milestone": "V3 park integration and sourced 14th Street spawn; 39 park, 2 startup and 14 lab checks pass; full game and presentation incomplete",
+  "author": "2026-09-11 [codex-maclaptop]"
 }

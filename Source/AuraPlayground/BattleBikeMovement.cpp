@@ -5,7 +5,7 @@
 UBattleBikeMovement::UBattleBikeMovement(){
  MaxWalkSpeed=1800;MaxAcceleration=800;MaxStepHeight=60;SetWalkableFloorAngle(75);
  bOrientRotationToMovement=false;bUseControllerDesiredRotation=false;bMaintainHorizontalGroundVelocity=true;
- bEnablePhysicsInteraction=false;GravityScale=2;AirControl=1;BrakingDecelerationWalking=0;GroundFriction=0;
+ bAlwaysCheckFloor=true;bEnablePhysicsInteraction=false;GravityScale=2;AirControl=1;BrakingDecelerationWalking=0;GroundFriction=0;
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
@@ -14,7 +14,7 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  if(Recovery>0){
   Recovery=FMath::Max(0.f,Recovery-Dt);Speed=0;
   if(Recovery==0){
-   if(bWaterReturn&&CharacterOwner){CharacterOwner->SetActorLocation(ReturnLocation,false,nullptr,ETeleportType::TeleportPhysics);SetMovementMode(MOVE_Walking);bWaterReturn=false;}
+   if(bWaterReturn&&CharacterOwner){CharacterOwner->SetActorLocation(ReturnLocation,false,nullptr,ETeleportType::TeleportPhysics);SetMovementMode(MOVE_Walking);bForceNextFloorCheck=true;bWaterReturn=false;}
    Speed=Pedal>0?240:0;
   }
  }
@@ -27,10 +27,12 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
    const bool FastTurn=FMath::Abs(Steer)>.8f&&FMath::Abs(PreviousSteer)<=.8f&&Speed>1350;
    if(BrakeTurn||FastTurn)SlideRemaining=.65f;
    if(Floor&&(Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))))LastSafeLocation=CharacterOwner->GetActorLocation();
-   if(!Floor||!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wipeout(TEXT("Splash"),true);break;}
   }
  }
  PreviousBrake=Brake;PreviousSteer=Steer;Super::TickComponent(Dt,Type,Function);
+ // Resolve water after movement refreshes CurrentFloor. A bridge return must not
+ // be judged using the underwater floor cached before teleporting to safety.
+ if(CharacterOwner&&Recovery<=0){const AActor* Floor=CurrentFloor.HitResult.GetActor();if(!Floor||!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wipeout(TEXT("Splash"),true);break;}}
 }
 void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float Braking){
  if(!CharacterOwner)return;

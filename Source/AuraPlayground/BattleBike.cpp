@@ -115,6 +115,7 @@ void ABattleBike::ValidationKey(FName Key,bool Pressed){
  if(auto* PC=Cast<APlayerController>(GetController()))PC->InputKey(FInputKeyParams(FKey(Key),Pressed?IE_Pressed:IE_Released,Pressed?1.0:0.0));
 #endif
 }
+ABattleParkMode::ABattleParkMode(){CourseLabel=TEXT("PIEDMONT PARK | DEVELOPMENT");}
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){
@@ -131,7 +132,7 @@ void ABattleLabHUD::DrawHUD(){
    if(Person->HitFeedback>0){DrawLine(X-12,Y-12,X+12,Y+12,FColor::Orange,2);DrawLine(X+12,Y-12,X-12,Y+12,FColor::Orange,2);}
   }return;
  }
- DrawRect(FLinearColor(.03,.015,.02,.85),20,20,720,125);DrawText(TEXT("BATTLE FOR THE A | ARCADE BIKE TEST"),FColor::White,35,30,nullptr,1.8);
+ DrawRect(FLinearColor(.03,.015,.02,.85),20,20,720,125);const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));DrawText(TEXT("BATTLE FOR THE A | ")+(Mode?Mode->CourseLabel:TEXT("RIDE")),FColor::White,35,30,nullptr,1.8);
  DrawText(FString::Printf(TEXT("GEAR %d / 5   %.0f MPH   Wipeouts %d"),Bike->Ride->Gear,Bike->Ride->Speed*.0223694f,Bike->Ride->Wipeouts),FColor(255,190,80),35,65,nullptr,1.5);
  DrawText(TEXT("W pedal | Arrows or A/D steer | Up/Down gears | Space brake | Tab view"),FColor::White,35,105,nullptr,1.1);
  DrawText(FString::Printf(TEXT("NITRO %.0f%% | Shift boost | H horn | E on/off | Click pistol %d"),Bike->Nitro,Bike->PistolAmmo),FColor::Cyan,35,155,nullptr,1.2);
