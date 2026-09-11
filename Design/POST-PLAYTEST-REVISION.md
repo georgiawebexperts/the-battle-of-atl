@@ -17,3 +17,15 @@ User requests a switch between real bike physics and arcade handling. Both must 
 User's latest correction prioritizes visual quality and readable text. Rebuild the HUD, render actual gameplay screenshots and review them before further mechanic expansion. Improve scene composition and foliage, with truthful asset provenance. The interim Epic template tree does not satisfy the specified Megascans oak/magnolia species or photo-matching requirement. Character animation and collision feel still need a separate overhaul and a real playtest.
 
 Technical test success never establishes fun, readability, animation quality or resemblance to Atlanta. Do not label the full game complete while those are unproven.
+
+## 2026-09-11 — Battle for the ATL expansion [codex-maclaptop]
+
+User renamed the game **Battle for the ATL** and the existing store **Murder K**. Preserve the store geometry and all other store details.
+
+Add occasional, sparse drones that swoop down. A drone collision harms the rider, knocks them off the bike and costs recovery/remount time. Add ducks that fly into the pond; duck collisions while swimming briefly force the swimmer under and cost time. Add park benches, bike jumping and usable ramps. Zombies should have ragged, worn clothing and a visibly undead appearance, distinct from ordinary pedestrians.
+
+Allow finding different guns, including a rifle/AK with zoom while aiming. Police begin appearing after the player hits three people; this refines the earlier gunfire/runover escalation request. Add the real skate park on the right when heading south after Murder K near the Freedom Parkway underpass, with rideable features, skateboarders, sightseers and bonus-time opportunities. Research identified Historic Fourth Ward Skatepark (now also listed by the BeltLine as Thomas Taylor Memorial Skatepark); geography and photo references still need implementing.
+
+Time rules requested: scattered pickups add 30 seconds; catching air on the bike adds 10 seconds; shooting a zombie adds 10 seconds; shooting a pedestrian, pet or duck subtracts 10 seconds; shooting a police officer subtracts 60 seconds; riding through dog waste in the grass subtracts 10 seconds. These rules are not implemented merely by documenting them. Avoid repeat overlap deductions every frame and tiny ground-contact jitter triggering repeated air rewards. Exact drone/duck collision penalties remain tuning choices; preserve the specified numeric rewards/penalties above.
+
+References located: https://www.h4wpc.org/skate-park/ (Conservancy location/features); https://beltline.org/parks-trails/eastside-trail/ (current naming and trail connection); https://www.atlantaareaparks.com/directory-parks/listing/historic-fourth-ward-skatepark/ (photo reference); https://www.ajc.com/news/photos-sunday-fun-historic-fourth-ward-skatepark/VBgIUZOx8a96jI2dcI4o7I/ (photo gallery near Freedom Parkway). Images are references, not licensed game textures.

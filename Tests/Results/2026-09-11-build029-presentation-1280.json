@@ -1,0 +1,52 @@
+{
+  "locomotion_review": true,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build029-packaged-1280/walk.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "08328c5b1c9e784fd657a86557b88c8c1c174aa429f10eef7fdf1310152e383c"
+    },
+    {
+      "file": "work/build029-packaged-1280/walk-step.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a4cd0116f7c0c15d3d63f1ce64ab711328baee1b72ceb104c23539db144d313f"
+    },
+    {
+      "file": "work/build029-packaged-1280/run.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2b1325a6109614bf1dea3bb7773697b69c08e007adefd278bc1b66e4c2703bc8"
+    },
+    {
+      "file": "work/build029-packaged-1280/idle.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "608d18d23de0825347b014c435099e3f19d81259a1ed6996930687a4835b3e18"
+    }
+  ],
+  "visual_review": {
+    "all_four_captures_inspected": true,
+    "authored_knee_and_arm_motion_visible": true,
+    "character_art_accepted": false,
+    "limitations": "Stylized placeholder model remains. Full foot locking, terrain IK and perceptual motion quality are not accepted."
+  },
+  "scope": "Native cooked Mac game, controlled walking/running/idle character with following camera; audio disabled; no physical input or FPS acceptance.",
+  "metrics": {
+    "knee_motion_degrees": 102.955,
+    "travel_cm": 1464.56,
+    "grounded": true,
+    "idle_foot_gap_cm": 0.382
+  }
+}

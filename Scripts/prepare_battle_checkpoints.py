@@ -10,7 +10,7 @@ for file in ['eastside-trail-network.json','krog-route-network.json']:
   for p in path['points_cm']:
    if not points or np.linalg.norm(np.array(points[-1])-p)>1:points.append(p)
 a=np.array(points);landmarks=json.loads((root/'References/checkpoint-landmarks-osm.json').read_text())['elements'];rows=[]
-for source_id,name in [(741961704,'Murder Kroger'),(5413435,'Krog Street Market')]:
+for source_id,name in [(741961704,'Murder K'),(5413435,'Krog Street Market')]:
  e=next(e for e in landmarks if e['id']==source_id);c=e['center'];x,y=t.transform(c['lon'],c['lat']);q=np.array([(x-ox)/.03,(y-oy)/.03]);i=int(np.argmin(np.linalg.norm(a[:,:2]-q,axis=1)))
  p=a[i];d=a[min(i+1,len(a)-1)]-a[max(0,i-1)];yaw=float(np.degrees(np.arctan2(-d[1],d[0])))
  rows.append({'name':name,'source_id':source_id,'source_type':e['type'],'landmark_center':c,'mainline_index':i,'world_xyz_cm':[p[0],-p[1],p[2]],'world_yaw':yaw,'policy':'Nearest installed trail sample to OSM landmark centre; gameplay checkpoint, not a surveyed plaza entrance.'})

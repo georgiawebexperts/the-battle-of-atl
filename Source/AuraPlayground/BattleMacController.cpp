@@ -43,7 +43,8 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiscAudit")))TickDiscAudit(Dt);
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleHUDReview")))TickHUDReview(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleLocomotionReview")))TickLocomotionReview(Dt);
+ else if(FParse::Param(FCommandLine::Get(),TEXT("BattleHUDReview")))TickHUDReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFrisbeeAudit")))TickFrisbeeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleInventoryAudit")))TickInventoryAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMeleeAudit")))TickMeleeAudit(Dt);
@@ -81,7 +82,7 @@ void ABattleMacController::ShowMenu(FString Page){
  TSharedRef<SVerticalBox> Items=SNew(SVerticalBox);
  auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).AutoWrapText(true)];};
  auto Button=[&](FString Text,TFunction<void()> Action){Items->AddSlot().AutoHeight().Padding(0,5)[SNew(SButton).ContentPadding(FMargin(18,10)).OnClicked_Lambda([Action](){Action();return FReply::Handled();})[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18))]];};
- Label(TEXT("BATTLE FOR THE A"),42,FLinearColor(1,.12,.16));
+ Label(TEXT("BATTLE FOR THE ATL"),42,FLinearColor(1,.12,.16));
  const auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  const bool Ended=Park&&Park->bRunEnded;
  Label(Ended?TEXT("THE A WINS THIS TIME"):(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST")),16,FLinearColor(1,.7,.35));
@@ -98,7 +99,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("Timers and walking crowds scale now. The expanded enemy roster and complete route are still in development."),14,FLinearColor(.7,.72,.75));
   Button(TEXT("BACK"),[this,Ended](){ShowMenu(Ended?TEXT("Loss"):TEXT("Home"));});
  }else if(Page==TEXT("Instructions")){
-  Label(TEXT("Find your lost phone using the radar. Pick it up and follow the gold path toward the BeltLine. Pass Murder Kroger and Krog Street Market, then ride through Krog Tunnel. The Cabbagetown finish is still being built."),16,FLinearColor::White);
+  Label(TEXT("Find your lost phone using the radar. Pick it up and follow the gold path toward the BeltLine. Pass Murder K and Krog Street Market, then ride through Krog Tunnel. The Cabbagetown finish is still being built."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW pedal | A/D or Left/Right steer\nUp/Down gears | Space brake/drift\nShift nitro | H horn | Tab camera\nE dismount | Left click pistol"),17,FLinearColor::White);
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee (crates)\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
@@ -112,7 +113,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Mac playtest 028 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Mac playtest 029 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);

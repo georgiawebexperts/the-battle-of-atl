@@ -1,4 +1,5 @@
 #include "PiedmontExplorer.h"
+#include "Animation/AnimSequence.h"
 #include "PiedmontBike.h"
 #include "PiedmontCombat.h"
 #include "PiedmontBlood.h"
@@ -22,6 +23,10 @@
 #include "UObject/ConstructorHelpers.h"
 APiedmontExplorer::APiedmontExplorer(){
  PrimaryActorTick.bCanEverTick=true;
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> IdleClip(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle.Animations_CharacterArmature_Idle"));
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> WalkClip(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Walk.Animations_CharacterArmature_Walk"));
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> RunClip(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run.Animations_CharacterArmature_Run"));
+ IdleAnimation=IdleClip.Object;WalkAnimation=WalkClip.Object;RunAnimation=RunClip.Object;
  GetCapsuleComponent()->InitCapsuleSize(30,88);GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
  GetCharacterMovement()->MaxWalkSpeed=380;
  GetCharacterMovement()->MaxStepHeight=35;
@@ -80,6 +85,7 @@ void APiedmontExplorer::AnimateBody(float Dt){
  Gait+=bSwimming?Dt*3.f:GetVelocity().Size2D()*Dt/85.f;
  const float Blend=FMath::Clamp(GetVelocity().Size2D()/220.f,0.f,1.f);
  TArray<FTransform> Pose=RestPose;
+ bAuthoredLocomotion=!bSwimming&&SampleLocomotion(Dt,Pose);
  for(int32 I=0;I<Pose.Num();++I)if(Parents[I]>=0)Pose[I]=Pose[I]*Pose[Parents[I]];
  auto Index=[&](const TCHAR* Name){return Bones.IndexOfByKey(FName(Name));};
  auto Descendant=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Parents[I];}return false;};
@@ -100,12 +106,27 @@ void APiedmontExplorer::AnimateBody(float Dt){
  for(int Side:{1,-1}){
   FVector Hand=bSwimming?FVector(Side*(20+35*Stroke),20+10*FMath::Cos(Gait),175-45*Stroke):FVector(Side*26,FMath::Sin(Gait)*Side*18*Blend,80);
   if(bWeaponDrawn)Hand=Side==1?FVector(5,40,128):FVector(-15,45,130);
+  const int HandIndex=Index(Side==1?TEXT("Hand_L"):TEXT("Hand_R"));
+  if(bAuthoredLocomotion&&!bWeaponDrawn&&HandIndex>=0)Hand=Pose[HandIndex].GetLocation();
   if(!bWeaponDrawn&&!bSwimming)Hand=AdjustVisitorHand(Side,Hand);
+  const bool OverrideHand=!bAuthoredLocomotion||bWeaponDrawn||HandIndex<0||!Hand.Equals(Pose[HandIndex].GetLocation(),.01f);
+  if(OverrideHand){
   if(Side==1)Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),Hand,FVector(1,1,0));
   else Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),Hand,FVector(-1,1,0));
+  }
   const int Leg=Index(Side==1?TEXT("UpperLeg_L"):TEXT("UpperLeg_R"));
-  if(Leg>=0)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait)*(bSwimming?8.f:28.f*Blend))));
+  if(Leg>=0&&!bAuthoredLocomotion)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait)*(bSwimming?8.f:28.f*Blend))));
  }
+ // Keep the support foot down after translation retargeting; fade this correction
+ // out for running, where both feet may legitimately be airborne in the stride.
+ float HeightTarget=0;
+ if(bAuthoredLocomotion&&GetCharacterMovement()->IsMovingOnGround()){
+  float FootHeight=BIG_NUMBER;
+  for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R"),TEXT("Foot_L_end"),TEXT("Foot_R_end")}){const int32 I=Index(Name);if(I>=0)FootHeight=FMath::Min(FootHeight,float(Pose[I].GetLocation().Z));}
+  if(FootHeight<BIG_NUMBER)HeightTarget=FMath::Clamp(2.275f-FootHeight,-35.f,15.f)*(1.f-FMath::Clamp((LocomotionSpeed-180.f)/170.f,0.f,1.f));
+ }
+ GroundPoseOffset=FMath::Lerp(GroundPoseOffset,HeightTarget,1.f-FMath::Exp(-20.f*Dt));
+ if(!bSwimming)Body->AddLocalOffset(FVector(0,0,GroundPoseOffset));
  for(int I=0;I<Pose.Num();++I)Body->BoneSpaceTransforms[I]=Parents[I]>=0?Pose[I].GetRelativeTransform(Pose[Parents[I]]):Pose[I];
  Body->MarkRefreshTransformDirty();
 }

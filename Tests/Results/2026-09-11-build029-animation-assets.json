@@ -1,0 +1,110 @@
+{
+  "source": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+  "license": "CC0",
+  "source_sha256": "259ed6f6e5f1bb2a15215a66a9ed02e8956083a281a8098103490d1a00292b7f",
+  "clips": [
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Death.Animations_CharacterArmature_Death",
+      "seconds": 1.0666667222976685
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Gun_Shoot.Animations_CharacterArmature_Gun_Shoot",
+      "seconds": 0.6000000238418579
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_HitRecieve.Animations_CharacterArmature_HitRecieve",
+      "seconds": 0.5666666626930237
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_HitRecieve_2.Animations_CharacterArmature_HitRecieve_2",
+      "seconds": 0.5666666626930237
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle.Animations_CharacterArmature_Idle",
+      "seconds": 1.6666666269302368
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Gun.Animations_CharacterArmature_Idle_Gun",
+      "seconds": 1.6666666269302368
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Gun_Pointing.Animations_CharacterArmature_Idle_Gun_Pointing",
+      "seconds": 1.6666666269302368
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Gun_Shoot.Animations_CharacterArmature_Idle_Gun_Shoot",
+      "seconds": 0.6666666865348816
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Neutral.Animations_CharacterArmature_Idle_Neutral",
+      "seconds": 1.6666666269302368
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Sword.Animations_CharacterArmature_Idle_Sword",
+      "seconds": 1.6666666269302368
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Interact.Animations_CharacterArmature_Interact",
+      "seconds": 1.2666666507720947
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Kick_Left.Animations_CharacterArmature_Kick_Left",
+      "seconds": 0.9333333373069763
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Kick_Right.Animations_CharacterArmature_Kick_Right",
+      "seconds": 0.9333333373069763
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Punch_Left.Animations_CharacterArmature_Punch_Left",
+      "seconds": 0.8333333134651184
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Punch_Right.Animations_CharacterArmature_Punch_Right",
+      "seconds": 0.8333333134651184
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Roll.Animations_CharacterArmature_Roll",
+      "seconds": 1.3333333730697632
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run.Animations_CharacterArmature_Run",
+      "seconds": 0.800000011920929
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Back.Animations_CharacterArmature_Run_Back",
+      "seconds": 0.8333333134651184
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Left.Animations_CharacterArmature_Run_Left",
+      "seconds": 0.800000011920929
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Right.Animations_CharacterArmature_Run_Right",
+      "seconds": 0.800000011920929
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Shoot.Animations_CharacterArmature_Run_Shoot",
+      "seconds": 0.8333333134651184
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Sword_Slash.Animations_CharacterArmature_Sword_Slash",
+      "seconds": 1.0333333015441895
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Walk.Animations_CharacterArmature_Walk",
+      "seconds": 1.3333333730697632
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Wave.Animations_CharacterArmature_Wave",
+      "seconds": 1.6666666269302368
+    }
+  ],
+  "imported_count": 24,
+  "integrated_clips": [
+    "Idle",
+    "Walk",
+    "Run"
+  ],
+  "final_character_quality_accepted": false
+}

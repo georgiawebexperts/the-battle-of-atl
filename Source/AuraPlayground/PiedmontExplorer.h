@@ -3,6 +3,7 @@
 #include "GameFramework/Character.h"
 #include "PiedmontExplorer.generated.h"
 class APiedmontBike;
+class UAnimSequence;
 class UPoseableMeshComponent;
 class USpringArmComponent;
 class UCameraComponent;
@@ -18,6 +19,7 @@ public:
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontBike> Bike;
  UPROPERTY(BlueprintReadOnly) bool bSwimming=false;
+ UPROPERTY(BlueprintReadOnly) bool bAuthoredLocomotion=false;
  UPROPERTY(BlueprintReadOnly) bool bWeaponDrawn=false;
  UPROPERTY(BlueprintReadOnly) bool bAiming=false;
  UPROPERTY(BlueprintReadOnly) bool bDead=false;
@@ -52,4 +54,9 @@ private:
  TArray<int32> Parents;
  TArray<FName> Bones;
  float Gait=0;
+ UPROPERTY() TObjectPtr<UAnimSequence> IdleAnimation;
+ UPROPERTY() TObjectPtr<UAnimSequence> WalkAnimation;
+ UPROPERTY() TObjectPtr<UAnimSequence> RunAnimation;
+ bool SampleLocomotion(float Dt,TArray<FTransform>& Pose);
+ float LocomotionPhase=0,LocomotionSpeed=0,IdleClock=0,GroundPoseOffset=0;
 };

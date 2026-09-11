@@ -26,6 +26,10 @@ private:
  void TickDiscAudit(float Dt);
  void TickFrisbeeAudit(float Dt);
  void TickHUDReview(float Dt);
+ void TickLocomotionReview(float Dt);
+ float LocoClock=0,LocoKneeMotion=0;int32 LocoStage=0;
+ FQuat LocoInitialKnee;FVector LocoStart;
+ TWeakObjectPtr<AActor> LocoPerson,LocoCamera;
  float HUDReviewClock=0;int32 HUDReviewStage=0;
  int32 FrisbeePhase=0,FrisbeeInitialWipeouts=0;float FrisbeeClock=0,FrisbeeGrassSeconds=0,FrisbeePeakSpeed=0;
  FVector FrisbeeGrassStart;

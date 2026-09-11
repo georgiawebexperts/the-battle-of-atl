@@ -56,7 +56,7 @@ void ABattleMacController::TickHealthAudit(float Dt){
   Place(Quest->CheckpointLocations[0]+FVector(0,0,98));HealthPhase=6;HealthAuditClock=0;return;
  }
  if(HealthPhase==6&&HealthAuditClock>.3f){
-  VERIFY_HEALTH(Quest->NextCheckpoint==1&&Bike->CheckpointName==TEXT("Murder Kroger"),"First checkpoint not recorded");
+  VERIFY_HEALTH(Quest->NextCheckpoint==1&&Bike->CheckpointName==TEXT("Murder K"),"First checkpoint not recorded");
   VERIFY_HEALTH(Quest->RoutePoints.Num()>1&&Quest->RouteTargetLocation.Equals(Quest->CheckpointLocations[1],1),"Radar did not advance");
   const float Before=Mode->TimeRemaining;Bike->TakeDamage(1000,Damage,this,this);
   VERIFY_HEALTH(Bike->RiderHealth==0&&Bike->RespawnRemaining==2&&FMath::IsNearlyEqual(Before-Mode->TimeRemaining,10.f,.01f),"Lethal hit penalty/recovery failed");
