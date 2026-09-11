@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "phase": 10,
+  "reason": "Crates, keys, shotgun/SMG fire, reload conservation and possession/death persistence pass",
+  "crates": 6,
+  "desired": 6,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Hard",
+  "expected_crates": 6,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}

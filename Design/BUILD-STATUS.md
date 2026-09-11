@@ -551,3 +551,42 @@ interrupted. Frisbee launcher/ricochets/Meadow ammo, enemy drops, remaining enem
 and park-life groups, Cabbagetown/home/win/results/saves, full world art/audio and
 performance/shipping acceptance remain. Full V3 goal stays active.
 See Design/WEAPON-INVENTORY.md for tuning and validation scope.
+
+## Build 024 — ricochet launcher and zombie drops (2026-09-11)
+
+Slot 4 now unlocks a real moving frisbee launcher from the third crate type.
+Crates retain difficulty counts 20/12/6 and cycle through all three secondary
+weapons. The launcher has eight loaded discs, eight initial reserve, a 32-disc
+reserve cap and a 0.55-second fire interval. It uses the existing inventory and
+reload flow, a glowing hopper/disc, spin and original launch/bounce effects.
+
+The disc sweeps its travel, passes through characters with 65 ordinary damage,
+remembers struck targets, reflects off walls and awards kills to the persistent
+bike. It supports four ricochets, dies at the next solid impact or eight seconds,
+and cleans up when the run ends. Muzzle clearance prevents spawning beyond a
+nearby wall. Launched and currently possessed rider pawns and the bike are ignored.
+Zombies now have a configurable 25% weapon-drop chance, checked once on death;
+drops need real ground/clearance and carry a 60-second lifetime timer.
+
+The cooked native disc test passes actual crate/key acquisition, two-target
+flight, a wall reflection, prevention of repeated hits on return, two-disc kills
+and rewards, reload conservation, eight-second cleanup and normal grounded enemy
+drop creation/pickup/duplicate protection. The drop's lifetime setting is checked,
+not a full 60-second expiry observation. The flight fixture is a floating arena
+with frozen zombies; this is collision/gameplay evidence, not rendered acceptance.
+All three inventory/layout profiles still pass independent CSV counts, shotgun/
+SMG combat and possession/death persistence. Pistol/zombie and U-lock regressions
+also pass. Reports: Tests/Results/2026-09-11-native-disc.json and the
+build024-inventory-{easy,medium,hard}/build024-native-{zombies,melee} reports.
+
+Compilation and complete Mac packaging pass. Installed native 0.24.0 behind the
+desktop icon, preserving023 under Previous. Fresh CUA check remains locked. Visual,
+audio, physical input and performance acceptance remain pending. Investigated
+Unreal offscreen support: NullPlatformApplicationMisc explicitly enables its null
+application only on Windows/Linux, while Mac Metal viewport code uses Cocoa
+windows. This is not yet a tested offscreen-render failure; an editor scene-capture
+render is a possible next approach to obtain useful art evidence while locked.
+
+Meadow frisbee-player ammunition, remaining park-life/enemy groups, full world
+art/audio, Cabbagetown/home/win/results/saves and shipping/performance requirements
+remain. Full V3 goal stays active. See Design/FRISBEE-LAUNCHER.md.

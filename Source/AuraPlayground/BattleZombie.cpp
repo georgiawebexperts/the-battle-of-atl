@@ -74,7 +74,7 @@ float ABattleZombie::TakeDamage(float Amount,const FDamageEvent& Event,AControll
  if(Event.IsOfType(FPointDamageEvent::ClassID)){const auto& Point=static_cast<const FPointDamageEvent&>(Event);HitPoint=Point.HitInfo.ImpactPoint;Head=HitPoint.Z>GetActorLocation().Z+45;}
  const float Applied=FMath::Min(Health,Amount*(Head?3.f:1.f));Health-=Applied;if(Head)Headshots++;
  APiedmontBlood::Burst(GetWorld(),HitPoint,Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal():FVector::UpVector);Flinch=.3f;
- if(Health<=0){bDead=true;bTelegraphing=false;SubtitleRemaining=0;if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);LeftEye->SetVisibility(false);RightEye->SetVisibility(false);SetLifeSpan(5);}
+ if(Health<=0){bDead=true;bTelegraphing=false;SubtitleRemaining=0;if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);LeftEye->SetVisibility(false);RightEye->SetVisibility(false);DropWeapon();SetLifeSpan(5);}
  return Applied;
 }
 ABattleEnemyDirector::ABattleEnemyDirector(){PrimaryActorTick.bCanEverTick=true;}
@@ -82,7 +82,7 @@ void ABattleEnemyDirector::BeginPlay(){
  Super::BeginPlay();
  #if !UE_BUILD_SHIPPING
  // Existing opt-in terrain/quest fixtures isolate the subsystem they validate.
- for(const TCHAR* Flag:{TEXT("BattleInventoryAudit"),TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattlePickupAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit")})if(FParse::Param(FCommandLine::Get(),Flag))bFreezeSpawns=true;
+ for(const TCHAR* Flag:{TEXT("BattleDiscAudit"),TEXT("BattleInventoryAudit"),TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattlePickupAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit")})if(FParse::Param(FCommandLine::Get(),Flag))bFreezeSpawns=true;
  #endif
 }
 void ABattleEnemyDirector::Tick(float Dt){

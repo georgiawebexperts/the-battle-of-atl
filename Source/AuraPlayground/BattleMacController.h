@@ -23,6 +23,9 @@ private:
  void TickPickupAudit(float Dt);
  void TickMeleeAudit(float Dt);
  void TickInventoryAudit(float Dt);
+ void TickDiscAudit(float Dt);
+ int32 DiscPhase=0;float DiscClock=0;
+ TWeakObjectPtr<AActor> DiscFirst,DiscSecond,DiscProjectile,DiscWall;
  int32 InventoryPhase=0,InventoryShots=0;
  float InventoryClock=0;
  TWeakObjectPtr<AActor> InventoryTarget;

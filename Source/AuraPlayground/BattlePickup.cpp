@@ -83,7 +83,7 @@ void ABattlePickupDirector::BeginPlay(){
 #endif
  if(!ColaAudit){
   TArray<FVector> Supplies=Park;Supplies.Append(Trail);
-  while(!Supplies.IsEmpty()&&WeaponCrates<Mode->Difficulty.WeaponCrates){const int32 I=FMath::RandHelper(Supplies.Num());const FVector P=Supplies[I];Supplies.RemoveAtSwap(I);SpawnCola(P,false,0,1+WeaponCrates%2);}
+  while(!Supplies.IsEmpty()&&WeaponCrates<Mode->Difficulty.WeaponCrates){const int32 I=FMath::RandHelper(Supplies.Num());const FVector P=Supplies[I];Supplies.RemoveAtSwap(I);SpawnCola(P,false,0,1+WeaponCrates%3);}
   UE_LOG(LogTemp,Display,TEXT("BattleCrates: spawned=%d desired=%d"),WeaponCrates,Mode->Difficulty.WeaponCrates);
  }
  UE_LOG(LogTemp,Display,TEXT("BattlePickups: spawned=%d park=%d trail=%d desired=%d"),Spawned,ParkPickups,TrailPickups,Desired);

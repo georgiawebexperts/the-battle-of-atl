@@ -42,6 +42,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiscAudit")))TickDiscAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleInventoryAudit")))TickInventoryAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMeleeAudit")))TickMeleeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieAudit")))TickZombieAudit(Dt);
@@ -97,7 +98,7 @@ void ABattleMacController::ShowMenu(FString Page){
  }else if(Page==TEXT("Instructions")){
   Label(TEXT("Find your lost phone using the radar. Pick it up and follow the gold path toward the BeltLine. The trail now continues to Irwin Street. The tunnel and Cabbagetown finish are still being built."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW pedal | A/D or Left/Right steer\nUp/Down gears | Space brake/drift\nShift nitro | H horn | Tab camera\nE dismount | Left click pistol"),17,FLinearColor::White);
-  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG (find crates)\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
+  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee (crates)\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
   Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);

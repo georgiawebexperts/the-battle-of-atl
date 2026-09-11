@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "PiedmontExplorer.h"
 #include "BattleZombie.generated.h"
-class UMaterialInstanceDynamic;class AAIController;
+class UMaterialInstanceDynamic;class AAIController;class ABattleWeaponCrate;
 UCLASS()
 class AURAPLAYGROUND_API ABattleZombie : public APiedmontExplorer {
  GENERATED_BODY()
@@ -12,6 +12,9 @@ public:
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  UPROPERTY(BlueprintReadOnly) float Health=100;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float WeaponDropChance=.25f;
+ UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleWeaponCrate> DroppedWeapon;
+ void DropWeapon();
  UPROPERTY(BlueprintReadOnly) bool bSprinter=false;
  UPROPERTY(BlueprintReadOnly) bool bTelegraphing=false;
  UPROPERTY(BlueprintReadOnly) int32 Attacks=0;

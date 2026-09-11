@@ -177,7 +177,7 @@ void ABattleLabHUD::DrawHUD(){
    DrawRect(FLinearColor(.03,.015,.02,.85),20,20,760,125);
    DrawText(TEXT("BATTLE FOR THE A | FIRST PERSON"),FColor::White,35,30,nullptr,1.8);
    DrawText(FString::Printf(TEXT("%s %d / %s   HEALTH %.0f%s   F: U-lock"),BattleWeapons::Name(Person->CurrentWeapon),Person->Ammo,*Person->ReserveLabel(),Person->Health,Person->ReloadRemaining>0?TEXT("   RELOADING"):TEXT("")),FColor(255,190,80),35,65,nullptr,1.4);
-   DrawText(FString::Printf(TEXT("1 Pistol | 2 Shotgun%s | 3 SMG%s | F U-lock | E bike"),Person->ParkedBike&&Person->ParkedBike->Inventory[1].Owned?TEXT(""):TEXT(" (find crate)"),Person->ParkedBike&&Person->ParkedBike->Inventory[2].Owned?TEXT(""):TEXT(" (find crate)")),FColor::White,35,105,nullptr,1.1);
+   DrawText(FString::Printf(TEXT("1 Pistol | 2 Shotgun%s | 3 SMG%s | 4 Frisbee | F U-lock | E bike"),Person->ParkedBike&&Person->ParkedBike->Inventory[1].Owned?TEXT(""):TEXT(" (find crate)"),Person->ParkedBike&&Person->ParkedBike->Inventory[2].Owned?TEXT(""):TEXT(" (find crate)")),FColor::White,35,105,nullptr,1.1);
    const float X=Canvas->SizeX*.5f,Y=Canvas->SizeY*.5f;DrawLine(X-8,Y,X+8,Y,FColor::White,1.5);DrawLine(X,Y-8,X,Y+8,FColor::White,1.5);
    if(Person->HitFeedback>0){DrawLine(X-12,Y-12,X+12,Y+12,FColor::Orange,2);DrawLine(X+12,Y-12,X-12,Y+12,FColor::Orange,2);}
   }return;

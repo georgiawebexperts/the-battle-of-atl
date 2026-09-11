@@ -3,14 +3,14 @@
 2026-09-11 [codex-maclaptop]
 
 A new run starts with the pistol. Glowing labeled crates unlock the shotgun or
-SMG and supply ammunition. The difficulty table's WeaponCrates field controls
-the finite supply; types alternate during placement. Crates use the same actual
+SMG or frisbee launcher and supply ammunition. The difficulty table's WeaponCrates field controls
+the finite supply; types cycle through all three during placement. Crates use the same actual
 path/gravel/bridge, clearance, water and complete-navigation checks as health
 pickups and share their minimum spacing. Collection works on bike or foot within
 150 cm with a clear line of sight. Dead/unpossessed/paused players cannot collect;
 a crate remains when the corresponding reserve is already full.
 
-On foot, 1 selects the pistol, 2 the shotgun and 3 the SMG. Unowned selections do
+On foot, 1 selects the pistol, 2 the shotgun, 3 the SMG and 4 the frisbee launcher. Unowned selections do
 nothing. The HUD shows the current gun, loaded rounds, reserve supply and which
 weapons still need a crate. R reloads. Changing guns cancels an unfinished reload
 without taking reserve ammunition. F melee and firing cannot overlap a reload.
@@ -45,6 +45,6 @@ reload conservation, and loadout persistence through possession and death.
 Enemies are frozen and positioned for controlled collision tests. Rendering,
 human aim, sound quality and frame rate are outside the headless test's scope.
 
-The frisbee launcher/ricochets, enemy weapon drops, Meadow ammo source and final
-weapon presentation remain required. Key 4 is reserved and does not unlock a
-placeholder weapon. The broader game remains unfinished.
+Build 024 adds slot 4, moving ricocheting discs and enemy weapon drops; see
+Design/FRISBEE-LAUNCHER.md. The Meadow ammo source and final weapon presentation
+still require work. The broader game remains unfinished.

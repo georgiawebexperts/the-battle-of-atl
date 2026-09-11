@@ -2,6 +2,7 @@
 #include "Engine/SkeletalMesh.h"
 #include "Materials/MaterialInterface.h"
 #include "BattleShot.h"
+#include "BattleDisc.h"
 #include "BattleBike.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -23,6 +24,7 @@ void ABattleRider::BeginPlay(){
  Super::BeginPlay();
  if(auto* Steel=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")))for(auto Child:MeleeRoot->GetAttachChildren())if(auto* Mesh=Cast<UStaticMeshComponent>(Child))Mesh->SetMaterial(0,Steel);
  if(auto* Steel=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")))for(auto Part:LongGunParts)Part->SetMaterial(0,Steel);
+ if(LongGunParts.Num()>5)LongGunParts[5]->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow")));
  Weapon->SetRelativeLocation(GunRestPosition);Weapon->SetVisibility(true);GunRestRotation=Weapon->GetRelativeRotation();
  if(auto* Mesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/BattleForTheA/Rider/SK_FPSArms.SK_FPSArms"))){FirstPersonArms->SetSkinnedAssetAndUpdate(Mesh);const auto& Ref=Mesh->GetRefSkeleton();for(int32 I=0;I<Ref.GetNum();I++){ArmParents.Add(Ref.GetParentIndex(I));ArmNames.Add(Ref.GetBoneName(I));FTransform T=Ref.GetRefBonePose()[I];if(ArmParents[I]>=0)T=T*ArmRest[ArmParents[I]];ArmRest.Add(T);}}
  if(IsValid(ParkedBike))GetCapsuleComponent()->IgnoreActorWhenMoving(ParkedBike,true);
@@ -81,6 +83,7 @@ bool ABattleBike::Remount(ABattleRider* Person){
 
 bool ABattleRider::Fire(){
  if(!CanUseWeapon()||!bWeaponDrawn||MeleeRemaining>0||ShotCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
+ if(CurrentWeapon==3){if(!ABattleDisc::Launch(this,LongGun))return false;Ammo--;ShotsFired++;ShotCooldown=.55f;Kick=.7f;SaveWeapon();return true;}
  Ammo--;ShotsFired++;ShotCooldown=CurrentWeapon==1?.85f:CurrentWeapon==2?.085f:.22f;Kick=CurrentWeapon==1?2:1;SaveWeapon();
  const auto Shot=CurrentWeapon==0?FireBattlePistol(this,Weapon,bAiming?.1f:.4f):FireBattleLongGun(this,LongGun,CurrentWeapon,bAiming);
  LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;

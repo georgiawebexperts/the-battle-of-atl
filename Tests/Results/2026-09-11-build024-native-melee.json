@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "phase": 7,
+  "reason": "F input, windup, cooldown, 50 damage, kill reward, wall/range, reload and death guards pass",
+  "swings": 4,
+  "hits": 2,
+  "kills": 1,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}
