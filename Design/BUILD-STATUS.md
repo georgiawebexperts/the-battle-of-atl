@@ -130,3 +130,16 @@ Ground probes now ignore bridge surfaces above the wheel's allowable floor level
 Config project version now matches the development HUD (0.3.0-dev). Design/ACCEPTANCE.md preserves the complete requested scope and lists unaccepted requirements; it does not replace or narrow V2-SPEC.md or WORLD-EXPANSION.md.
 
 Final rebuilt results: 30/30 remaining-bridge route checks (five OSM ways plus movement across Park Drive), 5/5 lake crossing checks, 5/5 short wooden spur checks, 2/2 underpass fixture checks and 17/17 retained bike/land regressions pass. Reports are archived under Tests/Results/2026-09-10-*. All fourteen sourced bridge ways have installed coverage and scoped live riding evidence. This does not certify every park junction, full connected navigation, architectural fidelity, or performance.
+
+
+## Path-only Recast navigation foundation — 2026-09-10 [codex-maclaptop]
+
+Installed/saved navigation over tagged paths, dirt ribbons, bridge decks and barriers; excludes open landscape, lake and unrelated scenery. Native editor helper builds geographically centered brush bounds (CubeBuilder resets location, so center is reapplied after building). Agent settings: radius 36 cm, height 180 cm, slope 40 degrees, cell 10 x 2 cm, step 24 cm.
+
+Resolved a UE editor scripting ensure caused by invoking NavigationSystemV1 static Python build-state polling on its class default object: polling now uses a native instance wrapper. The audit unregisters its Slate callback before saving to prevent reentrant saves. Native build succeeds; final editor log has no navigation ensure or play-mode errors. Map save returns true.
+
+Initial routes exhausted the default search-node budget. Exposed that diagnostic (-2 route result), then set Recast DefaultMaxSearchNodes to 32768 and recreated its default filter. Final regular audit: 675/708 reachable samples, 225/236 path pieces fully reachable at their three samples, zero exhausted searches. Dense follow-up verifies all 121 vertices of dirt path 1278380268 reachable. The budget change restores three sampled path pieces without invented geometry.
+
+Remaining isolated sampled paths: 182392760, 182392761, 182398937, 182466135, 226119770, 442709517, 1209254623, 1384353621, 1384353622, 1384366241, 1384366242. Some are northern/boundary fragments or disconnected source spurs. Review genuine public connectors and full BeltLine expansion before adding geometry. Scripts/audit_source_connectors.py records exact shared-OSM-node candidate chains and preserves their source IDs/coordinates; no candidate connector was installed in this milestone.
+
+Evidence: Tests/Results/2026-09-10-park-navigation.json, navigation-default-budget.json and navigation-expanded-budget.json (same date prefix). These are scoped audits, not full ride-through, actual AI path-following, performance, or finished-game acceptance. Next: actual NPC navigation/traffic and missing genuine geographic links; preserve all requirements in ACCEPTANCE.md.

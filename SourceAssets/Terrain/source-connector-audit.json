@@ -1,0 +1,559 @@
+{
+  "scope": "Exact shared-OSM-node connectivity. Routes may extend outside the clipped park; candidates require geographic and installed-surface review. No connecting geometry was fabricated.",
+  "components": [
+    {
+      "component": 1,
+      "node_count": 13,
+      "mapped_source_nodes": 12,
+      "source_route_found": true,
+      "route_real_m": 62.083578239189386,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [
+        9490743641,
+        9490743642,
+        1595736499,
+        566462476,
+        1926653869,
+        1926653866,
+        1926653865,
+        1926653861
+      ],
+      "edge_way_ids": [
+        185624615,
+        185624615,
+        185624615,
+        182313924,
+        182313924,
+        182313924,
+        182313924
+      ],
+      "points_utm": [
+        [
+          743279.2341526666,
+          3742043.776041267
+        ],
+        [
+          743273.6435017046,
+          3742052.5903477096
+        ],
+        [
+          743267.6859761875,
+          3742057.9878600473
+        ],
+        [
+          743257.9627901807,
+          3742066.0529525075
+        ],
+        [
+          743262.0621005527,
+          3742067.378478692
+        ],
+        [
+          743272.7948659774,
+          3742065.144003284
+        ],
+        [
+          743279.1746784542,
+          3742061.3555474947
+        ],
+        [
+          743283.9622383502,
+          3742054.5962835257
+        ]
+      ]
+    },
+    {
+      "component": 2,
+      "node_count": 11,
+      "mapped_source_nodes": 9,
+      "source_route_found": true,
+      "route_real_m": 1.936579615364514,
+      "missing_way_ids": [
+        1388100455
+      ],
+      "missing_ways": [
+        {
+          "id": 1388100455,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway",
+            "surface": "concrete"
+          }
+        }
+      ],
+      "node_chain": [
+        4307557041,
+        9535944808
+      ],
+      "edge_way_ids": [
+        1388100455
+      ],
+      "points_utm": [
+        [
+          742750.243938608,
+          3741562.485121898
+        ],
+        [
+          742752.1804520071,
+          3741562.5011363183
+        ]
+      ]
+    },
+    {
+      "component": 3,
+      "node_count": 9,
+      "mapped_source_nodes": 7,
+      "source_route_found": true,
+      "route_real_m": 41.660225241718834,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [
+        12926353193,
+        12926353192,
+        12926353191,
+        69332023,
+        12926353190,
+        69332024
+      ],
+      "edge_way_ids": [
+        226119770,
+        226119770,
+        226119770,
+        226119770,
+        226119770
+      ],
+      "points_utm": [
+        [
+          743453.9030085164,
+          3742451.135042899
+        ],
+        [
+          743453.7756914411,
+          3742441.60871506
+        ],
+        [
+          743453.12505802,
+          3742432.9791498696
+        ],
+        [
+          743453.320118255,
+          3742427.1570762545
+        ],
+        [
+          743454.7425954525,
+          3742420.4451274765
+        ],
+        [
+          743457.7411528782,
+          3742410.0774218487
+        ]
+      ]
+    },
+    {
+      "component": 4,
+      "node_count": 8,
+      "mapped_source_nodes": 8,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 5,
+      "node_count": 7,
+      "mapped_source_nodes": 5,
+      "source_route_found": true,
+      "route_real_m": 248.29945771959393,
+      "missing_way_ids": [
+        1384339890
+      ],
+      "missing_ways": [
+        {
+          "id": 1384339890,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          }
+        }
+      ],
+      "node_chain": [
+        12817209834,
+        12816949497,
+        12816949496,
+        12816949495,
+        6003263569,
+        6003263568,
+        6003263567,
+        6003263566,
+        2938286004
+      ],
+      "edge_way_ids": [
+        1384366241,
+        1384339890,
+        1384339890,
+        1384339890,
+        1384339887,
+        1384339887,
+        1384339887,
+        1384339887
+      ],
+      "points_utm": [
+        [
+          743519.4631070177,
+          3742680.054319125
+        ],
+        [
+          743523.6837444868,
+          3742685.3232882125
+        ],
+        [
+          743538.9509507709,
+          3742705.425574487
+        ],
+        [
+          743553.8090238501,
+          3742724.1300380616
+        ],
+        [
+          743577.9884988826,
+          3742754.4605418453
+        ],
+        [
+          743637.502814751,
+          3742678.520816299
+        ],
+        [
+          743652.5331548412,
+          3742657.1396149904
+        ],
+        [
+          743664.7055705576,
+          3742641.3459387673
+        ],
+        [
+          743671.2445811403,
+          3742632.4118109676
+        ]
+      ]
+    },
+    {
+      "component": 6,
+      "node_count": 5,
+      "mapped_source_nodes": 5,
+      "source_route_found": true,
+      "route_real_m": 15.483949955833648,
+      "missing_way_ids": [
+        1089185052
+      ],
+      "missing_ways": [
+        {
+          "id": 1089185052,
+          "tags": {
+            "area": "yes",
+            "highway": "pedestrian",
+            "name": "Welcome Plaza"
+          }
+        }
+      ],
+      "node_chain": [
+        9977818482,
+        9977818441,
+        9977818442,
+        9977818443,
+        9977818444,
+        9977818445,
+        1927477608
+      ],
+      "edge_way_ids": [
+        1089185052,
+        1089185052,
+        1089185052,
+        1089185052,
+        1089185052,
+        1089185052
+      ],
+      "points_utm": [
+        [
+          743250.3847975401,
+          3741834.997715714
+        ],
+        [
+          743252.2255810157,
+          3741836.2211977267
+        ],
+        [
+          743254.8769904957,
+          3741836.910410454
+        ],
+        [
+          743257.6059666263,
+          3741837.102142776
+        ],
+        [
+          743259.7934166014,
+          3741836.725099945
+        ],
+        [
+          743262.2295870156,
+          3741836.0436294354
+        ],
+        [
+          743264.9344961115,
+          3741834.6364755
+        ]
+      ]
+    },
+    {
+      "component": 7,
+      "node_count": 4,
+      "mapped_source_nodes": 4,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 8,
+      "node_count": 3,
+      "mapped_source_nodes": 1,
+      "source_route_found": true,
+      "route_real_m": 60.7286968991543,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [
+        69491573,
+        767401578,
+        69491568
+      ],
+      "edge_way_ids": [
+        61490791,
+        61490793
+      ],
+      "points_utm": [
+        [
+          743445.5816115659,
+          3741561.081696068
+        ],
+        [
+          743462.3680912212,
+          3741558.069651996
+        ],
+        [
+          743419.3336182988,
+          3741565.517042587
+        ]
+      ]
+    },
+    {
+      "component": 9,
+      "node_count": 3,
+      "mapped_source_nodes": 3,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 10,
+      "node_count": 3,
+      "mapped_source_nodes": 3,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 11,
+      "node_count": 3,
+      "mapped_source_nodes": 1,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 12,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 13,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 14,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 15,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 16,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 17,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 18,
+      "node_count": 2,
+      "mapped_source_nodes": 2,
+      "source_route_found": false,
+      "route_real_m": null,
+      "missing_way_ids": [],
+      "missing_ways": [],
+      "node_chain": [],
+      "edge_way_ids": [],
+      "points_utm": []
+    },
+    {
+      "component": 19,
+      "node_count": 2,
+      "mapped_source_nodes": 1,
+      "source_route_found": true,
+      "route_real_m": 335.19373220632787,
+      "missing_way_ids": [
+        1389725668,
+        1388985205,
+        1389725670
+      ],
+      "missing_ways": [
+        {
+          "id": 1389725668,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          }
+        },
+        {
+          "id": 1388985205,
+          "tags": {
+            "crossing": "uncontrolled",
+            "crossing:markings": "yes",
+            "footway": "crossing",
+            "highway": "footway"
+          }
+        },
+        {
+          "id": 1389725670,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          }
+        }
+      ],
+      "node_chain": [
+        12864027777,
+        12864027776,
+        12857313850,
+        6003256633,
+        12857313851,
+        12864027778,
+        12864027779
+      ],
+      "edge_way_ids": [
+        1389725669,
+        1389725668,
+        1388985205,
+        1388985205,
+        1389725670,
+        1389725671
+      ],
+      "points_utm": [
+        [
+          743374.7215907755,
+          3741568.3293065047
+        ],
+        [
+          743461.574895436,
+          3741553.5653424766
+        ],
+        [
+          743536.6372733774,
+          3741539.999309219
+        ],
+        [
+          743535.4343865074,
+          3741545.729037084
+        ],
+        [
+          743534.9641393755,
+          3741553.2533446113
+        ],
+        [
+          743461.8592177087,
+          3741564.205579525
+        ],
+        [
+          743379.474585799,
+          3741577.8183169095
+        ]
+      ]
+    }
+  ]
+}

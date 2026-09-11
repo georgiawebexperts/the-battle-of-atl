@@ -4,6 +4,14 @@
 #include "Misc/FileHelper.h"
 #if WITH_EDITOR
 #include "Editor.h"
+#include "NavigationSystem.h"
+#include "NavigationPath.h"
+#include "NavMesh/NavMeshBoundsVolume.h"
+#include "NavMesh/RecastNavMesh.h"
+#include "Builders/CubeBuilder.h"
+#include "Model.h"
+#include "Components/BrushComponent.h"
+#include "EngineUtils.h"
 #include "Engine/StaticMeshActor.h"
 #include "Components/StaticMeshComponent.h"
 #include "WaterBodyActor.h"
@@ -77,5 +85,59 @@ AActor* UPiedmontWorldTools::SpawnValidationDarkZone(UObject* WorldContext,FVect
  return World->SpawnActor<APiedmontDarkZone>(Location,FRotator::ZeroRotator);
 #else
  return nullptr;
+#endif
+}
+
+bool UPiedmontWorldTools::BuildParkNavigation(FVector Center,FVector Extent){
+#if WITH_EDITOR
+ UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
+ if(!World||World->GetName()!=TEXT("PiedmontWorld"))return false;
+ for(TActorIterator<AActor> It(World);It;++It){
+  const bool Relevant=It->ActorHasTag(TEXT("RideDirt"))||It->ActorHasTag(TEXT("RidePath"))||It->ActorHasTag(TEXT("RideBridge"))||It->ActorHasTag(TEXT("RideBarrier"));
+  TArray<UPrimitiveComponent*> Components;It->GetComponents(Components);
+  for(auto* Component:Components)Component->SetCanEverAffectNavigation(Relevant);
+ }
+ ANavMeshBoundsVolume* Bounds=nullptr;
+ for(TActorIterator<ANavMeshBoundsVolume> It(World);It;++It)if(It->ActorHasTag(TEXT("PiedmontNavBounds")))Bounds=*It;
+ if(!Bounds){Bounds=World->SpawnActor<ANavMeshBoundsVolume>();Bounds->Tags.Add(TEXT("PiedmontNavBounds"));Bounds->SetActorLabel(TEXT("Park path navigation bounds"));}
+ Bounds->SetActorLocation(Center);Bounds->Brush=NewObject<UModel>(Bounds,NAME_None,RF_Transactional);Bounds->Brush->Initialize(Bounds,true);Bounds->GetBrushComponent()->Brush=Bounds->Brush;
+ auto* Builder=NewObject<UCubeBuilder>(Bounds);Bounds->BrushBuilder=Builder;Builder->X=Extent.X*2;Builder->Y=Extent.Y*2;Builder->Z=Extent.Z*2;
+ if(!Builder->Build(World,Bounds))return false;Bounds->SetActorLocation(Center);Bounds->GetBrushComponent()->BuildSimpleBrushCollision();Bounds->PostEditChange();
+ auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(World);
+ if(!Nav){FNavigationSystem::AddNavigationSystemToWorld(*World,FNavigationSystemRunMode::EditorMode);Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(World);}
+ if(!Nav)return false;Nav->OnNavigationBoundsUpdated(Bounds);
+ if(auto* Recast=Cast<ARecastNavMesh>(Nav->GetDefaultNavDataInstance(FNavigationSystem::Create))){
+  Recast->AgentRadius=36;Recast->AgentHeight=180;Recast->AgentMaxSlope=40;
+  // Long park routes exhausted Recast's default search budget during the dense audit.
+  Recast->DefaultMaxSearchNodes=32768;Recast->RecreateDefaultFilter();
+  for(uint8 I=0;I<(uint8)ENavigationDataResolution::MAX;++I){Recast->SetCellSize((ENavigationDataResolution)I,10);Recast->SetCellHeight((ENavigationDataResolution)I,2);Recast->NavMeshResolutionParams[I].AgentMaxStepHeight=24;}
+ }
+ Nav->Build();World->MarkPackageDirty();return true;
+#else
+ return false;
+#endif
+}
+bool UPiedmontWorldTools::ProjectParkNavigation(FVector Point,FVector& Projected){
+#if WITH_EDITOR
+ UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;auto* Nav=World?FNavigationSystem::GetCurrent<UNavigationSystemV1>(World):nullptr;FNavLocation Location;
+ if(Nav&&Nav->ProjectPointToNavigation(Point,Location,FVector(120,120,180))){Projected=Location.Location;return true;}
+#endif
+ return false;
+}
+float UPiedmontWorldTools::ParkRouteLength(FVector Start,FVector End){
+#if WITH_EDITOR
+ UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;if(!World)return -1;
+ auto* Path=UNavigationSystemV1::FindPathToLocationSynchronously(World,Start,End);
+ if(Path&&Path->GetPath().IsValid()&&Path->GetPath()->DidSearchReachedLimit())return -2;
+ if(Path&&Path->IsValid()&&!Path->IsPartial())return Path->GetPathLength();
+#endif
+ return -1;
+}
+
+bool UPiedmontWorldTools::IsParkNavigationBuilding(){
+#if WITH_EDITOR
+ UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;auto* Nav=World?FNavigationSystem::GetCurrent<UNavigationSystemV1>(World):nullptr;return Nav&&Nav->IsNavigationBuildInProgress();
+#else
+ return false;
 #endif
 }

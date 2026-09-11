@@ -7,6 +7,14 @@ UCLASS()
 class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary {
  GENERATED_BODY()
 public:
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
+ static bool BuildParkNavigation(FVector Center,FVector Extent);
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
+ static bool IsParkNavigationBuilding();
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
+ static bool ProjectParkNavigation(FVector Point,FVector& Projected);
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
+ static float ParkRouteLength(FVector Start,FVector End);
  UFUNCTION(BlueprintCallable,Category="Piedmont|Validation")
  static AActor* SpawnValidationDarkZone(UObject* WorldContext,FVector Location);
  UFUNCTION(BlueprintCallable,Category="Piedmont|Validation")
