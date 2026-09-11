@@ -346,3 +346,54 @@ Installed and locally signed complete native0.18.0 app behind the desktop icon;
 build017 retained under Previous. Physical Mac window/input, rendered
 visuals/audio and frame rate remain unverified while the Mac is locked. Full V3
 remains incomplete; the goal remains active.
+
+
+## Build019 — 0.19.0-dev — 2026-09-11 [codex-maclaptop]
+
+Implemented shared health across bike and FPS possession. The bike owns health
+and its five-second regeneration delay; health then recovers at4points/second.
+An unoccupied bike cannot injure its on-foot rider. Lethal damage deducts ten
+seconds exactly once, starts a two-second wipeout, and recovers player and bike
+at the last checkpoint with retained Artifact progress and two seconds of damage
+protection. The initial checkpoint is the start gate. Capsule clearance is
+checked before recovery; an obstructed checkpoint is retried. If the penalty
+exhausts the timer, the run ends. Health and nitro bars appear at lower left in
+both modes; rendered HUD acceptance remains pending.
+
+Added ordered Kroger and Krog Street Market checkpoint anchors, projected from
+OSM way741961704 and relation5413435 onto the installed trail. Source geometry
+and generated header are retained. These are authored gameplay locations near
+landmark centres, not surveyed storefront entries. Runtime posts/labels identify
+them; full buildings/plazas remain unfinished. Checkpoints require the Artifact,
+correct order, proximity, height agreement and unobstructed line of sight.
+The radar advances to the next checkpoint. Cabbagetown and the final win sequence
+remain required; the temporary post-checkpoint target is the southern tunnel exit.
+
+A first native test found that an exact on-trail checkpoint join can return an
+invalid zero-length Recast approach. Fixed by allowing only a near, vertically
+aligned, unobstructed join to the canonical trail. Arbitrary failed navigation
+requests still do not produce a shortcut. Corrected one TObjectPtr range-loop
+compile error before successful Game/Editor compilation and packaging.
+
+The cooked health audit passes all phases: bike/on-foot damage, empty-bike
+immunity, possession continuity, negative-damage rejection, actual delayed
+regeneration, Artifact pickup, pre-Artifact/out-of-order rejection, two checkpoint
+activations, both death modes, single penalties, real recovery timing, respawn
+protection and retained quest progress. It uses teleport fixtures for interaction
+coverage and does not prove physical keyboard input or route travel. Evidence:
+Tests/Results/2026-09-11-native-health-checkpoints.json. See
+Design/HEALTH-AND-CHECKPOINTS.md for rules, source locations and remaining scope.
+
+All three difficulty/quest/possession/pause/timeout regressions pass after the
+route correction. Two-second lake recovery passes (2.000seconds). The native
+two-way Krog drive passes48,003.83gamecm with zero wipeouts,65.02cm maximum
+centreline deviation,3010/3010paved grounded samples and476lit/0unlit tunnel
+samples. Evidence: Tests/Results/2026-09-11-build019-native-quest.json,
+build019-native-geography.json and build019-native-krog.json (same date prefix).
+
+Installed and locally signed complete native0.19.0 behind the desktop icon;
+build018 retained under Previous. The Mac remains locked on a fresh CUA check,
+so window/physical-input, HUD/marker rendering, audio and performance acceptance
+are pending. Coke pickups, full enemy damage encounters and presentation,
+Cabbagetown/home/results/saves, world/foliage/life and remaining V3 scope still
+require implementation and acceptance. The goal remains active.

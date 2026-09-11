@@ -1,0 +1,39 @@
+{
+  "source": "OpenStreetMap contributors, ODbL",
+  "checkpoints": [
+    {
+      "name": "Murder Kroger",
+      "source_id": 741961704,
+      "source_type": "way",
+      "landmark_center": {
+        "lat": 33.7716164,
+        "lon": -84.3633523
+      },
+      "mainline_index": 634,
+      "world_xyz_cm": [
+        27579.887574045766,
+        49480.913125878826,
+        147.02315579448754
+      ],
+      "world_yaw": 70.79884442960586,
+      "policy": "Nearest installed trail sample to OSM landmark centre; gameplay checkpoint, not a surveyed plaza entrance."
+    },
+    {
+      "name": "Krog Street Market",
+      "source_id": 5413435,
+      "source_type": "relation",
+      "landmark_center": {
+        "lat": 33.7569229,
+        "lon": -84.3639995
+      },
+      "mainline_index": 1584,
+      "world_xyz_cm": [
+        25807.477770609938,
+        102714.33573359004,
+        814.6935576770937
+      ],
+      "world_yaw": 98.21730102395333,
+      "policy": "Nearest installed trail sample to OSM landmark centre; gameplay checkpoint, not a surveyed plaza entrance."
+    }
+  ]
+}

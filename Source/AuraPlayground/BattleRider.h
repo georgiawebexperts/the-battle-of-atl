@@ -30,7 +30,7 @@ private:
  void ReloadPistol(){Reload();}
  void Interact(){MountBike();}
  void StartJump(){Jump();}void EndJump(){StopJumping();}
- float HurtCooldown=0,ShotCooldown=0,Kick=0;
+ float ShotCooldown=0,Kick=0;
  FRotator GunRestRotation;
  void PoseArms(float Dt);
  TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;

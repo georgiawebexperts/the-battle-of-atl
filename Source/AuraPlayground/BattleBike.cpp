@@ -68,7 +68,7 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
 void ABattleBike::BeginPlay(){
  Super::BeginPlay();
  if(auto* Gun=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/PiedmontRide/Bike/SM_Pistol.SM_Pistol"))){const FVector Size=Gun->GetBounds().BoxExtent*2;const float Scale=28/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);Pistol->SetStaticMesh(Gun);Pistol->SetRelativeScale3D(FVector(Scale));Pistol->SetRelativeRotation(Rot);Pistol->SetRelativeLocation(FVector(45,28,130)-Rot.RotateVector(Gun->GetBounds().Origin)*Scale);}
- Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
+ CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
  RideEffects=GetWorld()->SpawnActor<ABattleRideFX>();
  AsphaltAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Asphalt.S_Asphalt")));GrassAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Grass.S_Grass")));MotorAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Motor.S_Motor")));
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()})Audio->Play();
@@ -82,7 +82,7 @@ void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
 }
 void ABattleBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
- Super::Tick(Dt);UpdateLights(Dt);UpdateRideFeedback(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
+ Super::Tick(Dt);UpdateHealth(Dt);UpdateLights(Dt);UpdateRideFeedback(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
  if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0)PistolAmmo=12;}
  Pistol->SetVisibility(!bParked&&GunHold>0);if(bParked)return;UpdateNearMisses();
  for(auto* View:{Chase.Get(),Handlebar.Get()}){View->PostProcessSettings.bOverride_MotionBlurAmount=true;View->PostProcessSettings.MotionBlurAmount=Ride->BoostRemaining>0?.4f:.1f;}
@@ -94,7 +94,7 @@ void ABattleBike::Tick(float Dt){
   Ride->Steer=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
   Ride->Brake=PC->IsInputKeyDown(EKeys::SpaceBar)?1:0;
  }
- if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded)Ride->Pedal=Ride->Steer=0;
+ if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded||RiderHealth<=0)Ride->Pedal=Ride->Steer=0;
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;
  const float Lean=Ride->Steer*FMath::Min(24.f,Ride->Speed*.035f);
  Visual->SetRelativeRotation(FRotator(0,0,Lean+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
@@ -150,7 +150,18 @@ void ABattleLabHUD::DrawHUD(){
   DrawText(FString::Printf(TEXT("%02d:%02d  |  %s"),Seconds/60,Seconds%60,*Park->DifficultyName.ToString()),Seconds<60?FColor::Red:FColor::White,Canvas->SizeX-235,28,nullptr,1.7);
   if(Park->StartCountdown>0)DrawText(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),FColor::Yellow,Canvas->SizeX*.5f,Canvas->SizeY*.35f,nullptr,4);
  }
- auto* Bike=Cast<ABattleBike>(GetOwningPawn());if(!Bike){
+ auto* Bike=Cast<ABattleBike>(GetOwningPawn());
+ auto* Foot=Cast<ABattleRider>(GetOwningPawn());auto* HealthBike=Bike?Bike:(Foot?Foot->ParkedBike.Get():nullptr);
+ if(HealthBike){
+  const float Y=Canvas->SizeY-90;
+  DrawText(FString::Printf(TEXT("HEALTH %.0f"),HealthBike->RiderHealth),FColor::White,35,Y-22,nullptr,1.1);
+  DrawRect(FLinearColor(.02,.02,.02,.9),35,Y,204,16);
+  DrawRect(HealthBike->RiderHealth<25?FLinearColor(1,.1,.08):FLinearColor(.1,.85,.3),37,Y+2,FMath::Clamp(HealthBike->RiderHealth,0.f,100.f)*2,12);
+  DrawText(TEXT("NITRO"),FColor::Cyan,35,Y+23,nullptr,.9);
+  DrawRect(FLinearColor(.02,.02,.02,.9),96,Y+24,143,12);DrawRect(FLinearColor(.05,.8,1),98,Y+26,FMath::Clamp(HealthBike->Nitro,0.f,100.f)*1.39f,8);
+  if(HealthBike->RespawnRemaining>0)DrawText(TEXT("Wipeout | checkpoint -10 seconds"),FColor::Yellow,Canvas->SizeX*.32f,Canvas->SizeY*.6f,nullptr,1.5);
+ }
+ if(!Bike){
   if(auto* Person=Cast<ABattleRider>(GetOwningPawn())){
    DrawRect(FLinearColor(.03,.015,.02,.85),20,20,760,125);
    DrawText(TEXT("BATTLE FOR THE A | FIRST PERSON"),FColor::White,35,30,nullptr,1.8);
@@ -164,7 +175,7 @@ void ABattleLabHUD::DrawHUD(){
  DrawText(FString::Printf(TEXT("GEAR %d / 5   %.0f MPH   Wipeouts %d"),Bike->Ride->Gear,Bike->Ride->Speed*.0223694f,Bike->Ride->Wipeouts),FColor(255,190,80),35,65,nullptr,1.5);
  DrawText(TEXT("W pedal | Arrows or A/D steer | Up/Down gears | Space brake | Tab view"),FColor::White,35,105,nullptr,1.1);
  DrawText(FString::Printf(TEXT("NITRO %.0f%% | Shift boost | H horn | E on/off | Click pistol %d"),Bike->Nitro,Bike->PistolAmmo),FColor::Cyan,35,155,nullptr,1.2);
- DrawRect(FLinearColor(.01,.02,.03,.9),35,183,204,14);DrawRect(FLinearColor(.05,.8,1,1),37,185,FMath::Clamp(Bike->Nitro,0.f,100.f)*2,10);
+
  const float CrossX=Canvas->SizeX*.5f,CrossY=Canvas->SizeY*.5f;
  DrawLine(CrossX-5,CrossY,CrossX+5,CrossY,FColor::White,1);DrawLine(CrossX,CrossY-5,CrossX,CrossY+5,FColor::White,1);
  if(Bike->HitFeedback>0){DrawLine(CrossX-12,CrossY-12,CrossX+12,CrossY+12,FColor::Orange,2);DrawLine(CrossX+12,CrossY-12,CrossX-12,CrossY+12,FColor::Orange,2);}
@@ -195,7 +206,7 @@ void ABattleBike::PoseRider(float Dt){
 }
 
 bool ABattleBike::FirePistol(){
- if(!GetController()||bParked||Ride->Recovery>0||ShotCooldown>0||ReloadTimer>0)return false;
+ if(!GetController()||bParked||RiderHealth<=0||Ride->Recovery>0||ShotCooldown>0||ReloadTimer>0)return false;
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded)return false;
  if(PistolAmmo<=0){ReloadTimer=1.5f;return false;}
  PistolAmmo--;ShotsFired++;ShotCooldown=.25f;GunHold=.8f;PistolSpread=FMath::Lerp(.15f,3.f,FMath::Clamp(Ride->Speed/1600.f,0.f,1.f));

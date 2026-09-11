@@ -19,6 +19,9 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector ExitLocation;
  UPROPERTY(BlueprintReadOnly) FVector RouteTargetLocation;
  UPROPERTY(BlueprintReadOnly) int32 EastsideRoutePointCount=0;
+ UPROPERTY(BlueprintReadOnly) int32 NextCheckpoint=0;
+ UPROPERTY(BlueprintReadOnly) FString CheckpointNotice;
+ UPROPERTY(BlueprintReadOnly) TArray<FVector> CheckpointLocations;
  UPROPERTY(BlueprintReadOnly) FVector StartLocation;
  UPROPERTY(BlueprintReadOnly) FString ArtifactWay;
  UPROPERTY(BlueprintReadOnly) int32 CandidateCount=0;
@@ -31,6 +34,12 @@ public:
  static bool ClipToCircle(FVector2D& A,FVector2D& B,float Radius);
 private:
  bool PlaceArtifact();
+ void UpdateCheckpoints(float Dt);
+ void SpawnCheckpointMarkers();
+ int32 RouteEndIndex=0;
+ float CheckpointNoticeTime=0;
+ TArray<int32> CheckpointIndices;
+ TArray<TObjectPtr<AActor>> CheckpointMarkers;
  void RefreshRoute();
  float Clock=0,RouteDelay=0,EnemyDelay=0;
  TArray<TPair<FVector2D,FVector2D>> Segments;

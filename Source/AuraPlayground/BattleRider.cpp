@@ -41,20 +41,16 @@ void ABattleRider::Tick(float Dt){
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
- Super::Tick(Dt);PoseArms(Dt);HurtCooldown=FMath::Max(0.f,HurtCooldown-Dt);if(HurtCooldown<=0&&Health>0)Health=FMath::Min(100.f,Health+4*Dt);
+ Super::Tick(Dt);PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}
 float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
- if(Amount<=0||Health<=0)return 0;const float Applied=FMath::Min(Health,Amount);Health-=Applied;HurtCooldown=5;
- // Lab recovery; persistent route checkpoints are implemented with the game loop.
- if(Health<=0){
-  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->TimeRemaining=FMath::Max(0.f,Mode->TimeRemaining-10);
-  Health=100;SetActorLocation(IsValid(ParkedBike)?ParkedBike->GetActorLocation()+FVector(0,160,0):FVector(-7000,4000,100),false,nullptr,ETeleportType::TeleportPhysics);
- }
+ if(!IsValid(ParkedBike))return 0;
+ const float Applied=ParkedBike->ApplyRiderDamage(Amount);Health=ParkedBike->RiderHealth;
  return Applied;
 }
 bool ABattleBike::Dismount(){
- auto* PC=Cast<APlayerController>(GetController());if(!PC||bParked||Ride->Recovery>0)return false;
+ auto* PC=Cast<APlayerController>(GetController());if(!PC||bParked||RiderHealth<=0||Ride->Recovery>0)return false;
  FVector Exit;bool Found=false;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleDismount),false,this);
  for(const FVector Direction:{GetActorRightVector(),-GetActorRightVector(),-GetActorForwardVector(),GetActorForwardVector()}){
   const FVector Candidate=GetActorLocation()+Direction*145;FHitResult Ground;
@@ -74,7 +70,7 @@ bool ABattleBike::Remount(ABattleRider* Person){
  auto* PC=Cast<APlayerController>(Person->GetController());if(!PC)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleRemount),false,this);Q.AddIgnoredActor(Person);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))return false;
- RiderHealth=Person->Health;PistolAmmo=Person->Ammo;bParked=false;Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
+ PistolAmmo=Person->Ammo;bParked=false;Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
 }
 
 bool ABattleRider::Fire(){

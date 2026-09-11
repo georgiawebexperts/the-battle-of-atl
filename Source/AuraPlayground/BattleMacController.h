@@ -19,6 +19,11 @@ private:
  void RunDevelopmentAudit();
  void TickConnectorAudit(float Dt);
  void TickGeographyAudit(float Dt);
+ void TickHealthAudit(float Dt);
+ int32 HealthPhase=0;
+ float HealthAuditClock=0,HealthDeathTime=0;
+ FVector HealthArtifactLocation;
+ TWeakObjectPtr<APawn> HealthFormerRider;
  int32 GeographyPhase=0,GeographyInitialWipeouts=0;
  float GeographyClock=0;
  TArray<FVector> ConnectorPoints;

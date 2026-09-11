@@ -1,5 +1,6 @@
 #include "BattleQuest.h"
 #include "BattleRouteAnchors.h"
+#include "BattleCheckpoints.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "PiedmontPathSpline.h"
@@ -39,7 +40,15 @@ void ABattleQuest::BeginPlay(){
    if(Mainline.IsEmpty()||!Mainline.Last().Equals(P,1))Mainline.Add(P);
   }
  }
- EastsideRoutePointCount=Mainline.Num();RouteTargetLocation=Mainline.IsEmpty()?ExitLocation:Mainline.Last();
+ EastsideRoutePointCount=Mainline.Num();
+ for(const auto& Anchor:BattleCheckpoints::Anchors){
+  int32 BestIndex=INDEX_NONE;double Best=TNumericLimits<double>::Max();const FVector Point(Anchor.X,Anchor.Y,Anchor.Z);
+  for(int32 I=0;I<Mainline.Num();I++){const double D=FVector::DistSquared(Mainline[I],Point);if(D<Best){Best=D;BestIndex=I;}}
+  if(BestIndex!=INDEX_NONE&&Best<100){CheckpointLocations.Add(Mainline[BestIndex]);CheckpointIndices.Add(BestIndex);}
+ }
+ RouteEndIndex=CheckpointIndices.IsEmpty()?Mainline.Num()-1:CheckpointIndices[0];
+ RouteTargetLocation=Mainline.IsValidIndex(RouteEndIndex)?Mainline[RouteEndIndex]:ExitLocation;
+ SpawnCheckpointMarkers();
  RadarSegmentCount=Segments.Num();
  bReady=PlaceArtifact();
  UE_LOG(LogTemp,Display,TEXT("BattleQuest: ready=%d candidates=%d way=%s segments=%d location=%s"),bReady,CandidateCount,*ArtifactWay,RadarSegmentCount,*ArtifactLocation.ToString());
@@ -86,19 +95,22 @@ bool ABattleQuest::PlaceArtifact(){
 void ABattleQuest::RefreshRoute(){
  RoutePoints.Reset();auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
  FVector Join=ExitLocation;int32 Next=0;float Best=TNumericLimits<float>::Max();
- if(Mainline.Num()>1)for(int32 I=0;I<Mainline.Num()-1;I++){
+ if(Mainline.Num()>1)for(int32 I=0;I<RouteEndIndex;I++){
   const FVector2D A(Mainline[I]),B(Mainline[I+1]),P(Pawn->GetActorLocation());
   const FVector2D D=B-A;const float T=D.SizeSquared()>0?FMath::Clamp(FVector2D::DotProduct(P-A,D)/D.SizeSquared(),0.,1.):0;
   const FVector Q=FMath::Lerp(Mainline[I],Mainline[I+1],T);const float Distance=FVector::DistSquared2D(Pawn->GetActorLocation(),Q);
   if(Distance<Best){Best=Distance;Join=Q;Next=I+1;}
  }
  auto* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Join,Pawn);
- if(Path&&Path->IsValid()&&!Path->IsPartial()){
-  RoutePoints=Path->PathPoints;
-  // Once joined, follow the actual trail and bridges instead of cutting across
-  // bare ground along a navigation shortcut. The Cabbagetown home leg will extend this route.
-  for(int32 I=Next;I<Mainline.Num();I++)RoutePoints.Add(Mainline[I]);
+ if(Path&&Path->IsValid()&&!Path->IsPartial())RoutePoints=Path->PathPoints;
+ else if(Best<FMath::Square(120.f)&&FMath::Abs(Pawn->GetActorLocation().Z-Join.Z)<150){
+  // At an exact trail/checkpoint join Recast can return a zero-length path.
+  // A nearby, unobstructed join needs no approach route, but still follows the
+  // canonical trail. Do not turn an arbitrary failed navigation query into a shortcut.
+  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleRouteJoin),false,Pawn);
+  if(!GetWorld()->LineTraceSingleByChannel(Hit,Pawn->GetActorLocation(),Join+FVector(0,0,98),ECC_Visibility,Q))RoutePoints.Add(Join);
  }
+ if(!RoutePoints.IsEmpty())for(int32 I=Next;I<=RouteEndIndex;I++)RoutePoints.Add(Mainline[I]);
 }
 void ABattleQuest::Tick(float Dt){
  Super::Tick(Dt);Clock+=Dt;
@@ -115,7 +127,7 @@ void ABattleQuest::Tick(float Dt){
    UE_LOG(LogTemp,Display,TEXT("BattleQuest: Artifact collected; route points=%d"),RoutePoints.Num());
   }
  }
- if(bCollected&&!Mode->bRunEnded){RouteDelay-=Dt;if(RouteDelay<=0){RouteDelay=2;RefreshRoute();}}
+ if(bCollected&&!Mode->bRunEnded){UpdateCheckpoints(Dt);RouteDelay-=Dt;if(RouteDelay<=0){RouteDelay=2;RefreshRoute();}}
  EnemyDelay-=Dt;if(EnemyDelay<=0){
   EnemyDelay=.5f;EnemyLocations.Reset();
   for(TActorIterator<APawn> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("PiedmontHostile"))||It->ActorHasTag(TEXT("BattleHostile"))){
@@ -123,7 +135,7 @@ void ABattleQuest::Tick(float Dt){
   }
  }
 }
-void ABattleQuest::EndPlay(const EEndPlayReason::Type Reason){if(IsValid(Artifact))Artifact->Destroy();Super::EndPlay(Reason);}
+void ABattleQuest::EndPlay(const EEndPlayReason::Type Reason){if(IsValid(Artifact))Artifact->Destroy();for(auto Marker:CheckpointMarkers)if(IsValid(Marker))Marker->Destroy();Super::EndPlay(Reason);}
 bool ABattleQuest::ArtifactVisibleOnRadar(FVector Viewer) const{return bReady&&!bCollected&&FVector::Dist2D(Viewer,ArtifactLocation)<=RadarRange;}
 bool ABattleQuest::ClipToCircle(FVector2D& A,FVector2D& B,float Radius){
  const FVector2D D=B-A;const double AA=D.SizeSquared();if(AA<.00001)return A.SizeSquared()<=Radius*Radius;
@@ -158,5 +170,6 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  HUD->DrawText(TEXT("S"),FColor::White,Center.X-4,Center.Y+Radius+3,nullptr,.9);
  HUD->DrawText(TEXT("W"),FColor::White,Center.X-Radius-16,Center.Y-7,nullptr,.9);
  HUD->DrawText(TEXT("E"),FColor::White,Center.X+Radius+7,Center.Y-7,nullptr,.9);
- HUD->DrawText(!bReady?TEXT("Artifact unavailable"):(bCollected?TEXT("Get home | through Krog Tunnel"):TEXT("Find the Artifact")),FColor(255,205,95),35,218,nullptr,1.4);
+ const FString Objective=!bReady?TEXT("Artifact unavailable"):(!bCollected?TEXT("Find the Artifact"):(CheckpointNoticeTime>0?CheckpointNotice:(NextCheckpoint<2?FString::Printf(TEXT("Get home | next: %s"),BattleCheckpoints::Anchors[NextCheckpoint].Name):TEXT("Get home | through Krog Tunnel"))));
+ HUD->DrawText(Objective,FColor(255,205,95),35,218,nullptr,1.4);
 }

@@ -40,6 +40,7 @@ void ABattleMacController::PlayerTick(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
 #endif
  if(bStarted&&!Menu.IsValid())if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)ShowMenu(TEXT("Loss"));
 }

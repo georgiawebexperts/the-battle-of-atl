@@ -83,6 +83,16 @@ public:
  void AwardEnemyKill(){EnemyKills++;Nitro=FMath::Min(100.f,Nitro+25);}
  UPROPERTY(BlueprintReadOnly) bool bParked=false;
  UPROPERTY(BlueprintReadOnly) float RiderHealth=100;
+ UPROPERTY(BlueprintReadOnly) float HurtCooldown=0;
+ UPROPERTY(BlueprintReadOnly) float RespawnRemaining=0;
+ UPROPERTY(BlueprintReadOnly) float DamageGrace=0;
+ UPROPERTY(BlueprintReadOnly) FTransform CheckpointTransform;
+ UPROPERTY(BlueprintReadOnly) FString CheckpointName=TEXT("14th Street Gate");
+ UPROPERTY(BlueprintReadOnly) int32 Deaths=0;
+ virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
+ float ApplyRiderDamage(float Amount);
+ void UpdateHealth(float Dt);
+ bool RecoverAtCheckpoint();
  UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=12;
  UFUNCTION(BlueprintCallable) bool Dismount();
  bool Remount(ABattleRider* Person);

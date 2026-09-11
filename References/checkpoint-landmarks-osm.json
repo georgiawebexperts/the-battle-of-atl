@@ -1,0 +1,177 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-11T06:46:15Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 741961704,
+  "center": {
+    "lat": 33.7716164,
+    "lon": -84.3633523
+  },
+  "nodes": [
+    6945790440,
+    6945790441,
+    6945790442,
+    6945790435,
+    6945790434,
+    6945790440
+  ],
+  "tags": {
+    "addr:city": "Atlanta",
+    "addr:housenumber": "725",
+    "addr:postcode": "30306",
+    "addr:state": "GA",
+    "addr:street": "Ponce de Leon Avenue Northeast",
+    "branch": "Ponce",
+    "brand": "Kroger",
+    "brand:wikidata": "Q153417",
+    "building": "retail",
+    "check_date": "2025-02-08",
+    "name": "Kroger",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+1 470-351-4222",
+    "ref": "01100695",
+    "shop": "supermarket",
+    "website": "https://www.kroger.com/stores/grocery/ga/atlanta/kroger-atlanta/011/00695",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "relation",
+  "id": 5413435,
+  "center": {
+    "lat": 33.7569229,
+    "lon": -84.3639995
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 287287318,
+      "role": "outer"
+    },
+    {
+      "type": "node",
+      "ref": 13568699359,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699362,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699360,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 4879481768,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 3681452517,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 4879481766,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 4879481765,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 4879481767,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699363,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699364,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699365,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699366,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699367,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699368,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699369,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699370,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699371,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699372,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13568699373,
+      "role": "vendor"
+    },
+    {
+      "type": "node",
+      "ref": 13571436151,
+      "role": "Vendor"
+    }
+  ],
+  "tags": {
+    "addr:city": "Atlanta",
+    "addr:housenumber": "99",
+    "addr:postcode": "30307",
+    "addr:state": "GA",
+    "addr:street": "Krog Street Northeast",
+    "building": "retail",
+    "name": "Krog Street Market",
+    "type": "multipolygon",
+    "website": "http://www.krogstreetmarket.com",
+    "wikidata": "Q6438751"
+  }
+}
+
+  ]
+}
