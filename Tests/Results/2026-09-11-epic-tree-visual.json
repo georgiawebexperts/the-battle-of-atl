@@ -1,0 +1,41 @@
+{
+  "map_saved": false,
+  "scope": "Editor material and silhouette review only; no gameplay or performance acceptance",
+  "trees": [
+    {
+      "path": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01",
+      "height_cm": 1621.4334716796875,
+      "material_slots": [
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_TwoSided.MI_EuropeanHornbeam_TwoSided",
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Tileable.MI_EuropeanHornbeam_Tileable",
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Decoration.MI_EuropeanHornbeam_Decoration",
+        "/Game/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Forest_01.MI_Impostor_Forest_01"
+      ]
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01",
+      "height_cm": 1665.5458984375,
+      "material_slots": [
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_TwoSided.MI_EuropeanHornbeam_TwoSided",
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Tileable.MI_EuropeanHornbeam_Tileable",
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Trunk_01.MI_EuropeanHornbeam_Trunk_01",
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Decoration.MI_EuropeanHornbeam_Decoration",
+        "/Game/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Field_01.MI_Impostor_Field_01"
+      ]
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Sapling_01",
+      "height_cm": 219.94566345214844,
+      "material_slots": [
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_TwoSided.MI_EuropeanHornbeam_TwoSided",
+        "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Tileable.MI_EuropeanHornbeam_Tileable"
+      ]
+    }
+  ],
+  "visual_acceptance": false,
+  "findings": [
+    "Coarse angular foliage and very dark leaf shading require material, wind and LOD investigation.",
+    "Field tree comparison is obscured by adjacent review trees; isolate one tree per capture.",
+    "No saved map or installed game modified."
+  ]
+}
