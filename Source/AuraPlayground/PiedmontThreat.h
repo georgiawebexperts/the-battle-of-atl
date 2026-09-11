@@ -15,9 +15,16 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bWindingUp=false;
  UPROPERTY(BlueprintReadOnly) int32 Attacks=0;
  UPROPERTY(BlueprintReadOnly) float Health=34;
+ UPROPERTY(BlueprintReadOnly) TArray<FVector> NavRoute;
+ UPROPERTY(BlueprintReadOnly) int32 NavPoint=0;
+ UPROPERTY(BlueprintReadOnly) int32 RouteRequests=0;
+ UPROPERTY(BlueprintReadOnly) bool bUsingNavigation=false;
+ UPROPERTY(BlueprintReadOnly) FString NavigationFailure;
 protected:
  virtual bool CanUseWeapon() const override;
 private:
  float AttackCooldown=1.5f,Windup=0,DeadTime=0;
  FVector AimPoint;
+ float RouteRefresh=0;
+ void Pursue(AActor* Target,float Dt);
 };

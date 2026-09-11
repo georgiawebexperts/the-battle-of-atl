@@ -12,6 +12,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Materials/MaterialInterface.h"
+#include "NavigationSystem.h"
+#include "NavigationPath.h"
 void APiedmontRideMode::StartPlay(){Super::StartPlay();}
 void APiedmontRideMode::Tick(float Dt){
  Super::Tick(Dt);auto* PC=UGameplayStatics::GetPlayerController(this,0);if(!PC)return;
@@ -83,8 +85,14 @@ APiedmontThreat* APiedmontRideMode::SpawnThreatForValidation(bool Gunman,FVector
  return nullptr;
 #endif
 }
-void APiedmontRideMode::ConsiderEncounter(){
- if(bRunEnded||(IsValid(ActiveThreat)&&!ActiveThreat->bDead)||FMath::FRand()>.35f)return;
+APiedmontThreat* APiedmontRideMode::TryEncounterForValidation(){
+#if WITH_EDITOR
+ if(GetWorld()->WorldType==EWorldType::PIE){ConsiderEncounter(true);return ActiveThreat;}
+#endif
+ return nullptr;
+}
+void APiedmontRideMode::ConsiderEncounter(bool ForceOpportunity){
+ if(bRunEnded||(IsValid(ActiveThreat)&&!ActiveThreat->bDead)||(!ForceOpportunity&&FMath::FRand()>.35f))return;
  auto* PC=UGameplayStatics::GetPlayerController(this,0);if(!PC||!PC->GetPawn())return;
  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);TArray<FVector> Candidates;
  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){
@@ -97,7 +105,18 @@ void APiedmontRideMode::ConsiderEncounter(){
   }
  }
  if(Candidates.IsEmpty())return;
+ auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());FNavLocation Goal;
+ if(!Nav||!Nav->ProjectPointToNavigation(PC->GetPawn()->GetActorLocation(),Goal,FVector(500,500,250)))return;
  FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
- ActiveThreat=GetWorld()->SpawnActor<APiedmontThreat>(Candidates[FMath::RandRange(0,Candidates.Num()-1)],FRotator::ZeroRotator,Params);
- if(ActiveThreat)ActiveThreat->bGunman=FMath::FRand()<.35f;
+ // Never introduce an encounter on an isolated source fragment with no route to the player.
+ while(!Candidates.IsEmpty()){
+  const int32 Index=FMath::RandRange(0,Candidates.Num()-1);const FVector Candidate=Candidates[Index];Candidates.RemoveAtSwap(Index);
+  FNavLocation Start;if(!Nav->ProjectPointToNavigation(Candidate,Start,FVector(180,180,200)))continue;
+  const float SpawnDistance=FVector::Dist2D(Start.Location,PC->GetPawn()->GetActorLocation());
+  if(SpawnDistance<2000||SpawnDistance>3500||FVector::DotProduct((Start.Location+FVector(0,0,92)-Eye).GetSafeNormal(),View.Vector())>.3f)continue;
+  auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(GetWorld(),Start.Location,Goal.Location);
+  if(!Route||!Route->IsValid()||Route->IsPartial())continue;
+  ActiveThreat=GetWorld()->SpawnActor<APiedmontThreat>(Start.Location+FVector(0,0,92),FRotator::ZeroRotator,Params);
+  if(ActiveThreat){ActiveThreat->bGunman=FMath::FRand()<.35f;break;}
+ }
 }

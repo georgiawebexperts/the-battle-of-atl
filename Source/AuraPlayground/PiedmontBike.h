@@ -120,12 +120,13 @@ public:
  UPROPERTY(BlueprintReadOnly) float EncounterCountdown=300;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontThreat> ActiveThreat;
  UFUNCTION(BlueprintCallable) APiedmontThreat* SpawnThreatForValidation(bool Gunman,FVector Location);
+ UFUNCTION(BlueprintCallable) APiedmontThreat* TryEncounterForValidation();
  UFUNCTION(BlueprintCallable) void RestartRun();
  UFUNCTION(BlueprintCallable) void EndRun(const FString& Reason);
  UFUNCTION(BlueprintCallable) FString ItemDirection();
 private:
  void ChooseItem();
- void ConsiderEncounter();
+ void ConsiderEncounter(bool ForceOpportunity=false);
  UPROPERTY() TObjectPtr<APiedmontBike> RunBike;
  UPROPERTY() TObjectPtr<AStaticMeshActor> ItemActor;
  FVector StartLocation,PreviousItem=FVector::ZeroVector;
