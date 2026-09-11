@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "phase": 15,
+  "reason": "Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass",
+  "crates": 6,
+  "desired": 6,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Hard",
+  "expected_crates": 6,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}

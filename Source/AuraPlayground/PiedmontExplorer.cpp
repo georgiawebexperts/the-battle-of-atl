@@ -68,7 +68,7 @@ void APiedmontExplorer::Tick(float Dt){
  if(ReloadRemaining>0){ReloadRemaining=FMath::Max(0.f,ReloadRemaining-Dt);if(ReloadRemaining<=0)FinishReload();}
  if(bTriggerHeld)Fire();Weapon->SetVisibility(bWeaponDrawn);
  CameraArm->TargetArmLength=FMath::FInterpTo(CameraArm->TargetArmLength,bAiming?180.f:320.f,Dt,10);
- Camera->SetFieldOfView(FMath::FInterpTo(Camera->FieldOfView,bAiming?65.f:85.f,Dt,10));
+ Camera->SetFieldOfView(FMath::FInterpTo(Camera->FieldOfView,bAiming?AimedFieldOfView():85.f,Dt,10));
  if(auto* PC=Cast<APlayerController>(GetController())){
   float X=0,Y=0;PC->GetInputMouseDelta(X,Y);AddControllerYawInput(X*.18f);AddControllerPitchInput(Y*-.12f);
   const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);

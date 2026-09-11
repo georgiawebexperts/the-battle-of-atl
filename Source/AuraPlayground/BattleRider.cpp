@@ -35,7 +35,7 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  I->BindKey(EKeys::SpaceBar,IE_Pressed,this,&ABattleRider::StartJump);I->BindKey(EKeys::SpaceBar,IE_Released,this,&ABattleRider::EndJump);
  I->BindKey(EKeys::R,IE_Pressed,this,&ABattleRider::ReloadPistol);
  I->BindKey(EKeys::F,IE_Pressed,this,&ABattleRider::StartMelee);
- I->BindKey(EKeys::One,IE_Pressed,this,&ABattleRider::SelectPistol);I->BindKey(EKeys::Two,IE_Pressed,this,&ABattleRider::SelectShotgun);I->BindKey(EKeys::Three,IE_Pressed,this,&ABattleRider::SelectSMG);I->BindKey(EKeys::Four,IE_Pressed,this,&ABattleRider::SelectFrisbee);
+ I->BindKey(EKeys::One,IE_Pressed,this,&ABattleRider::SelectPistol);I->BindKey(EKeys::Two,IE_Pressed,this,&ABattleRider::SelectShotgun);I->BindKey(EKeys::Three,IE_Pressed,this,&ABattleRider::SelectSMG);I->BindKey(EKeys::Five,IE_Pressed,this,&ABattleRider::SelectRifle);I->BindKey(EKeys::Four,IE_Pressed,this,&ABattleRider::SelectFrisbee);
 }
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||(ParkedBike->RiderHealth>0&&ParkedBike->StunRemaining<=0))&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::Tick(float Dt){
@@ -46,7 +46,7 @@ void ABattleRider::Tick(float Dt){
  bWeaponDrawn=CanUseWeapon();
  if(auto* PC=Cast<APlayerController>(GetController())){
   GetCharacterMovement()->MaxWalkSpeed=PC->IsInputKeyDown(EKeys::LeftShift)?850:520;
-  bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn;
+  bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn&&ReloadRemaining<=0&&MeleeRemaining<=0;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
  // Exponential smoothing gives the view rig the same response at different frame rates.
@@ -95,7 +95,7 @@ bool ABattleRider::Fire(){
  if(!CanUseWeapon()||!bWeaponDrawn||MeleeRemaining>0||ShotCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
  if(CurrentWeapon==3){if(!ABattleDisc::Launch(this,LongGun))return false;Ammo--;ShotsFired++;ShotCooldown=.55f;Kick=.7f;SaveWeapon();return true;}
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->RecordGunfire();
- Ammo--;ShotsFired++;ShotCooldown=CurrentWeapon==1?.85f:CurrentWeapon==2?.085f:.22f;Kick=CurrentWeapon==1?2:1;SaveWeapon();
+ Ammo--;ShotsFired++;ShotCooldown=CurrentWeapon==1?.85f:CurrentWeapon==2?.085f:CurrentWeapon==4?.12f:.22f;Kick=CurrentWeapon==1?2:1;SaveWeapon();
  const auto Shot=CurrentWeapon==0?FireBattlePistol(this,Weapon,bAiming?.1f:.4f):FireBattleLongGun(this,LongGun,CurrentWeapon,bAiming);
  LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;
  if(IsValid(ParkedBike))for(int32 I=0;I<Shot.Kills;I++)ParkedBike->AwardEnemyKill();return true;

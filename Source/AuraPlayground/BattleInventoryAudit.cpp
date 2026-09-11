@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "Camera/CameraComponent.h"
 #include "BattlePickup.h"
 #include "BattleZombie.h"
 #include "PiedmontTrafficDirector.h"
@@ -25,7 +26,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
   CHECK_INVENTORY(Mode->Pickups->WeaponCrates==Mode->Difficulty.WeaponCrates,"Incomplete actual crate layout");
-  CHECK_INVENTORY(Bike->Inventory.Num()==4&&Bike->Inventory[0].Owned&&!Bike->Inventory[1].Owned&&!Bike->Inventory[2].Owned,"Initial ownership incorrect");
+  CHECK_INVENTORY(Bike->Inventory.Num()==BattleWeapons::Count&&Bike->Inventory[0].Owned&&!Bike->Inventory[1].Owned&&!Bike->Inventory[2].Owned&&!Bike->Inventory[3].Owned&&!Bike->Inventory[4].Owned,"Initial ownership incorrect");
   ABattleWeaponCrate* Crate=nullptr;for(TActorIterator<ABattleWeaponCrate> It(GetWorld());It;++It)if(It->WeaponSlot==1){Crate=*It;break;}
   CHECK_INVENTORY(Crate,"Missing shotgun crate");Bike->SetActorLocation(Crate->GetActorLocation()+FVector(0,0,33),false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->bForceNextFloorCheck=true;InventoryPhase=1;InventoryClock=0;
  }
@@ -43,7 +44,12 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  else if(InventoryPhase==7){Aim();if(InventoryClock>.3f){CHECK_INVENTORY(Person->CurrentWeapon==2&&Person->Fire(),"3 key/SMG fire failed");InventoryShots++;InventoryPhase=8;InventoryClock=0;}}
  else if(InventoryPhase==8){Aim();if(InventoryClock>.1f){CHECK_INVENTORY(Person->Fire(),"SMG cadence failed");InventoryShots++;InventoryClock=0;if(InventoryShots==8){CHECK_INVENTORY(Z->bDead&&Bike->EnemyKills==2&&Person->Ammo==22,"SMG damage/ammo failed");CHECK_INVENTORY(Person->MountBike(),"Remount failed");CHECK_INVENTORY(Bike->PistolAmmo==10&&Bike->Inventory[2].Magazine==22,"Remount corrupted magazines");InventoryPhase=9;InventoryClock=0;}}}
  else if(InventoryPhase==9&&InventoryClock>.2f){CHECK_INVENTORY(Bike->Dismount(),"Second dismount failed");Person=Cast<ABattleRider>(GetPawn());CHECK_INVENTORY(Person&&Person->CurrentWeapon==2&&Person->Ammo==22,"Loadout lost on dismount");Person->TakeDamage(1000,FDamageEvent(),this,this);InventoryPhase=10;InventoryClock=0;}
- else if(InventoryPhase==10&&InventoryClock>2.3f){CHECK_INVENTORY(!Person&&!Bike->bParked&&Bike->Deaths==1&&Bike->Inventory[2].Magazine==22&&Bike->Inventory[1].Reserve==11&&Bike->PistolAmmo==10,"Checkpoint respawn lost inventory");Finish(true,TEXT("Crates, keys, shotgun/SMG fire, reload conservation and possession/death persistence pass"));return;}
+ else if(InventoryPhase==10&&InventoryClock>2.3f){CHECK_INVENTORY(!Person&&!Bike->bParked&&Bike->Deaths==1&&Bike->Inventory[2].Magazine==22&&Bike->Inventory[1].Reserve==11&&Bike->PistolAmmo==10,"Checkpoint respawn lost inventory");ABattleWeaponCrate* Crate=nullptr;for(TActorIterator<ABattleWeaponCrate> It(GetWorld());It;++It)if(It->WeaponSlot==4){Crate=*It;break;}CHECK_INVENTORY(Crate,"Missing findable rifle crate");Bike->SetActorLocation(Crate->GetActorLocation()+FVector(0,0,33),false,nullptr,ETeleportType::TeleportPhysics);InventoryPhase=11;InventoryClock=0;}
+ else if(InventoryPhase==11&&InventoryClock>.4f){CHECK_INVENTORY(Bike->Inventory[4].Owned&&Bike->Inventory[4].Magazine==30&&Bike->Inventory[4].Reserve==30,"Rifle crate supply incorrect");Bike->SetActorTransform(Bike->CheckpointTransform,false,nullptr,ETeleportType::TeleportPhysics);CHECK_INVENTORY(Bike->Dismount(),"Rifle dismount failed");Person=Cast<ABattleRider>(GetPawn());Key(EKeys::Five);InventoryPhase=12;InventoryClock=0;}
+ else if(InventoryPhase==12&&InventoryClock>.4f){CHECK_INVENTORY(Person->CurrentWeapon==4&&Person->Ammo==30,"5 key rifle selection failed");InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Pressed,1.f,false,0));InventoryPhase=13;InventoryClock=0;}
+ else if(InventoryPhase==13&&InventoryClock>1){CHECK_INVENTORY(Person->bAiming&&FMath::IsNearlyEqual(Person->Camera->FieldOfView,35.f,.1f),"Rifle zoom not applied");CHECK_INVENTORY(Person->Fire()&&Person->Ammo==29,"Rifle shot ammo incorrect");Key(EKeys::R);InventoryPhase=14;InventoryClock=0;}
+ else if(InventoryPhase==14&&InventoryClock>1){CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->bAiming&&Person->Camera->FieldOfView>84,"Reload did not exit zoom");CHECK_INVENTORY(!Person->Fire(),"Reload allowed rifle fire");InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Released,0.f,false,0));InventoryPhase=15;}
+ else if(InventoryPhase==15&&InventoryClock>2.7f){CHECK_INVENTORY(Person->Ammo==30&&Bike->Inventory[4].Reserve==29,"Rifle reload conservation failed");CHECK_INVENTORY(Person->MountBike()&&Bike->Dismount(),"Rifle possession cycle failed");Person=Cast<ABattleRider>(GetPawn());CHECK_INVENTORY(Person&&Person->CurrentWeapon==4&&Person->Ammo==30,"Rifle loadout not retained");Finish(true,TEXT("Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass"));return;}
  if(InventoryClock>15)Finish(false,TEXT("Inventory phase timed out"));
 #undef CHECK_INVENTORY
 #endif

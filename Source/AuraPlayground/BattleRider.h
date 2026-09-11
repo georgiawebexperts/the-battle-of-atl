@@ -25,6 +25,7 @@ public:
  FString ReserveLabel() const;
  void UpdateWeaponModel();
  UPROPERTY() TObjectPtr<USceneComponent> LongGun;
+ UPROPERTY() TObjectPtr<UStaticMeshComponent> RifleMesh;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> LongGunParts;
  UFUNCTION(BlueprintCallable) bool Melee();
  UPROPERTY(BlueprintReadOnly) int32 MeleeSwings=0,MeleeHits=0;
@@ -39,11 +40,12 @@ public:
  UPROPERTY(BlueprintReadOnly) float Health=100;
  UFUNCTION(BlueprintCallable) bool MountBike();
 protected:
+ virtual float AimedFieldOfView() const override{return CurrentWeapon==4?35.f:65.f;}
  virtual bool CanUseWeapon() const override;
  virtual void FinishReload() override;
 private:
  void ReloadPistol(){Reload();}
- void SelectPistol(){SelectWeapon(0);}void SelectShotgun(){SelectWeapon(1);}void SelectSMG(){SelectWeapon(2);}void SelectFrisbee(){SelectWeapon(3);}
+ void SelectPistol(){SelectWeapon(0);}void SelectShotgun(){SelectWeapon(1);}void SelectSMG(){SelectWeapon(2);}void SelectFrisbee(){SelectWeapon(3);}void SelectRifle(){SelectWeapon(4);}
  void BuildLongGun();
  void StartMelee(){Melee();}
  void BuildMeleeVisual();

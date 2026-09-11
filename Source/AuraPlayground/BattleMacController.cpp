@@ -108,7 +108,7 @@ void ABattleMacController::ShowMenu(FString Page){
  }else if(Page==TEXT("Instructions")){
   Label(TEXT("Find your lost phone using the radar. Pick it up and follow the gold path toward the BeltLine. Pass Murder K and Krog Street Market, then ride through Krog Tunnel. The Cabbagetown finish is still being built."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn | Tab camera\nE dismount | Left click pistol"),17,FLinearColor::White);
-  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee (crates)\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
+  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
   Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);
@@ -120,7 +120,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Mac playtest 038 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Mac playtest 039 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);

@@ -9,7 +9,7 @@
 #include "Materials/MaterialInterface.h"
 
 bool ABattleBike::GiveWeapon(int32 Slot,int32 Rounds){
- if(Slot<0||Slot>3||Rounds<=0||Inventory.Num()!=4||RiderHealth<=0||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this))return false;
+ if(Slot<0||Slot>=BattleWeapons::Count||Rounds<=0||Inventory.Num()!=BattleWeapons::Count||RiderHealth<=0||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this))return false;
  const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(Mode&&(Mode->bRunEnded||Mode->StartCountdown>0))return false;
  auto& Item=Inventory[Slot];const bool New=!Item.Owned;const int32 Old=Item.Reserve;
  if(New){Item.Owned=true;Item.Magazine=FMath::Min(Rounds,BattleWeapons::Capacity(Slot));Rounds-=Item.Magazine;}
@@ -27,7 +27,7 @@ void ABattleRider::RestoreLoadout(){
  Ammo=ParkedBike->Inventory[CurrentWeapon].Magazine;
 }
 bool ABattleRider::SelectWeapon(int32 Slot){
- if(!CanUseWeapon()||MeleeRemaining>0||!ParkedBike||Slot<0||Slot>3||!ParkedBike->Inventory[Slot].Owned)return false;
+ if(!CanUseWeapon()||MeleeRemaining>0||!ParkedBike||Slot<0||Slot>=BattleWeapons::Count||!ParkedBike->Inventory[Slot].Owned)return false;
  if(Slot==CurrentWeapon)return true;SaveWeapon();ReloadRemaining=0;CurrentWeapon=Slot;Ammo=ParkedBike->Inventory[Slot].Magazine;ParkedBike->LastFootWeapon=Slot;ShotCooldown=FMath::Max(ShotCooldown,.2f);UpdateWeaponModel();return true;
 }
 FString ABattleRider::ReserveLabel() const{return ParkedBike?FString::FromInt(ParkedBike->Inventory[CurrentWeapon].Reserve):TEXT("0");}
@@ -51,12 +51,17 @@ void ABattleRider::BuildLongGun(){
  Part(TEXT("MagazineOrPump"),FVector(12,0,-4),FVector(.17,.07,.065),false);
  Part(TEXT("DiscHopper"),FVector(8,0,7),FVector(.32,.32,.05),true);
  LongGunParts[5]->SetRelativeRotation(FRotator::ZeroRotator);
+ RifleMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RifleModel"));RifleMesh->SetupAttachment(LongGun);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Rifle(TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"));RifleMesh->SetStaticMesh(Rifle.Object);RifleMesh->SetRelativeRotation(FRotator(0,-90,0));RifleMesh->SetRelativeScale3D(FVector(.5));RifleMesh->SetRelativeLocation(FVector(-10,0,-10));RifleMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleMesh->SetOnlyOwnerSee(true);RifleMesh->SetCastShadow(false);RifleMesh->SetVisibility(false);
+
 }
 void ABattleRider::UpdateWeaponModel(){
  const bool Visible=CurrentWeapon>0&&bWeaponDrawn&&MeleeRemaining<=0;
  LongGun->SetRelativeLocation(Weapon->GetRelativeLocation());LongGun->SetRelativeRotation(Weapon->GetRelativeRotation()-GunRestRotation);
  LongGun->SetRelativeScale3D(FVector(CurrentWeapon==2?.7f:1.f,1,1));LongGun->SetVisibility(Visible,true);
  if(CurrentWeapon>0)Weapon->SetVisibility(false);
+ RifleMesh->SetVisibility(Visible&&CurrentWeapon==4);
  if(LongGunParts.Num()==6){
   LongGunParts[5]->SetVisibility(Visible&&CurrentWeapon==3);LongGunParts[1]->SetRelativeScale3D(CurrentWeapon==3?FVector(.14,.035,.2):FVector(.035,.035,.35));LongGunParts[4]->SetRelativeLocation(CurrentWeapon==2?FVector(3,0,-10):FVector(12,0,-4));LongGunParts[4]->SetRelativeScale3D(CurrentWeapon==2?FVector(.06,.05,.2):FVector(.17,.07,.065));}
+ if(CurrentWeapon==4)for(auto Part:LongGunParts)Part->SetVisibility(false);
 }

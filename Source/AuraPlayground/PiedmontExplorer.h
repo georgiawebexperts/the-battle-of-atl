@@ -42,6 +42,7 @@ private:
  void Interact();
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
 protected:
+ virtual float AimedFieldOfView() const{return 65.f;}
  void SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run);
  virtual bool CanUseWeapon() const;
  virtual FVector AdjustVisitorHand(int32 Side,FVector Target) const {return Target;}

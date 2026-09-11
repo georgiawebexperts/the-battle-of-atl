@@ -22,5 +22,5 @@ bool ABattleWeaponCrate::TryCollect(APawn* Pawn){
  if(bConsumed||!Pawn||!Pawn->IsPlayerControlled()||FVector::DistSquared(GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(150.f))return false;
  auto* Bike=Cast<ABattleBike>(Pawn);auto* Person=Cast<ABattleRider>(Pawn);if(Person)Bike=Person->ParkedBike;if(!Bike)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(WeaponPickup),false,Pawn);Q.AddIgnoredActor(this);FHitResult Hit;if(GetWorld()->LineTraceSingleByChannel(Hit,Pawn->GetActorLocation(),GetActorLocation(),ECC_Visibility,Q))return false;
- if(!Bike->GiveWeapon(WeaponSlot,WeaponSlot==0?10:WeaponSlot==1?18:WeaponSlot==2?90:16))return false;bConsumed=true;Destroy();return true;
+ if(!Bike->GiveWeapon(WeaponSlot,WeaponSlot==0?10:WeaponSlot==1?18:WeaponSlot==2?90:WeaponSlot==4?60:16))return false;bConsumed=true;Destroy();return true;
 }

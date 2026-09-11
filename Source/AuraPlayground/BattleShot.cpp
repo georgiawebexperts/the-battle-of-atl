@@ -47,7 +47,7 @@ FBattleShotResult FireBattlePistol(APawn* Shooter,USceneComponent* Gun,float Spr
 FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Slot,bool Aiming){
  FBattleShotResult Result;auto* PC=Shooter?Cast<APlayerController>(Shooter->GetController()):nullptr;if(!PC||!Gun)return Result;
  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);const bool Shotgun=Slot==1;const int32 Pellets=Shotgun?8:1;
- const float Range=Shotgun?2400:11000,Spread=Shotgun?(Aiming?3.f:5.f):(Aiming?1.f:3.f);
+ const float Range=Shotgun?2400:Slot==4?15000:11000,Spread=Shotgun?(Aiming?3.f:5.f):(Aiming?(Slot==4?.15f:1.f):3.f);
  const FVector Muzzle=Gun->GetComponentLocation()+View.Vector()*(Shotgun?43:30);
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleLongGun),true,Shooter);
  TSet<AActor*> TimedVictims;
@@ -58,7 +58,7 @@ FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Sl
   Result.End=Hit.bBlockingHit?Hit.ImpactPoint:Target;auto* Victim=Cast<APiedmontExplorer>(Hit.GetActor());const bool Alive=Victim&&!Victim->bDead;
   if(Hit.GetActor()){
    const float Falloff=Shotgun?FMath::GetMappedRangeValueClamped(FVector2D(400,2400),FVector2D(1,.15),FVector::Distance(Eye,Result.End)):1;
-   const float Damage=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),(Shotgun?18:14)*Falloff,Aim,Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());
+   const float Damage=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),(Shotgun?18:Slot==4?28:14)*Falloff,Aim,Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());
    if(Alive&&Damage>0&&!TimedVictims.Contains(Victim)){TimedVictims.Add(Victim);if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
    if(Alive){Result.Damage+=Damage;if(Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile")))Result.Kills++;else if(Shotgun)if(auto* Z=Cast<ABattleZombie>(Victim)){Z->bTelegraphing=false;Z->LaunchCharacter(View.Vector()*650+FVector(0,0,120),true,true);}}
   }

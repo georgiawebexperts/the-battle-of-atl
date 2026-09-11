@@ -1,0 +1,42 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build039-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "df0cbabd86bfa851e6a569eb8d46e768ce4df792a09bf2bae95c1b1f6664d6e6"
+    },
+    {
+      "file": "work/build039-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ceb08d1856aaffd0797c599ad191a7c4a060d1803d0915347f32ed9cdb127965"
+    },
+    {
+      "file": "work/build039-packaged-1280/aim.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1f7046b76767b9fc7dc3f679bea2dabfd7c0dd296bc6d112f32e84c691c188cf"
+    },
+    {
+      "file": "work/build039-packaged-1280/reload.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "da8a445ae3d842336af45483cf6564311eb938fa60baa0033dbd5ba4ded23666"
+    }
+  ],
+  "visual_review": "Aim and reload inspected: textured rifle visible, clear central reticle, readable ammo/reload UI. Wrist reach checks pass. Static capture only; full animation, audio and visual quality acceptance remain open.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "rifle_review": true
+}

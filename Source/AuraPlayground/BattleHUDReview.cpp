@@ -57,7 +57,7 @@ void ABattleMacController::TickHUDReview(float Dt){
   FScreenshotRequest::RequestScreenshot(Folder/TEXT("bike.png"),false,false);HUDReviewStage=1;
  }
  if(HUDReviewStage==1&&HUDReviewClock>7){
-  auto* Bike=Cast<ABattleBike>(GetPawn());if(Bike&&!Bike->Dismount()){UE_LOG(LogTemp,Error,TEXT("HUDReview: dismount failed"));ConsoleCommand(TEXT("quit"));return;}HUDReviewStage=2;
+  auto* Bike=Cast<ABattleBike>(GetPawn());if(Bike&&!Bike->Dismount()){UE_LOG(LogTemp,Error,TEXT("HUDReview: dismount failed"));ConsoleCommand(TEXT("quit"));return;}if(FParse::Param(FCommandLine::Get(),TEXT("BattleRifleReview"))){if(auto* P=Cast<ABattleRider>(GetPawn())){P->ParkedBike->GiveWeapon(4,60);P->SelectWeapon(4);}}HUDReviewStage=2;
  }
  if(HUDReviewStage==2&&HUDReviewClock>9){
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");
@@ -79,11 +79,11 @@ void ABattleMacController::TickHUDReview(float Dt){
  auto Aim=[&](bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  if(HUDReviewStage==3&&HUDReviewClock>10){CheckWrists(TEXT("rest"));Aim(true);HUDReviewStage=4;}
  if(HUDReviewStage==4&&HUDReviewClock>11){CheckWrists(TEXT("aim"));Capture(TEXT("aim.png"));HUDReviewStage=5;}
- if(HUDReviewStage==5&&HUDReviewClock>12){Aim(false);if(!Rider||!Rider->Fire()){UE_LOG(LogTemp,Error,TEXT("RigReview: fire failed"));}else{Rider->ParkedBike->GiveWeapon(0,10);Rider->Reload();}HUDReviewStage=6;}
+ if(HUDReviewStage==5&&HUDReviewClock>12){Aim(false);if(!Rider||!Rider->Fire()){UE_LOG(LogTemp,Error,TEXT("RigReview: fire failed"));}else{Rider->ParkedBike->GiveWeapon(Rider->CurrentWeapon,10);Rider->Reload();}HUDReviewStage=6;}
  if(HUDReviewStage==6&&HUDReviewClock>12.7f){CheckWrists(TEXT("reload"));Capture(TEXT("reload.png"));HUDReviewStage=7;}
- if(HUDReviewStage==7&&HUDReviewClock>14.2f){
+ if(HUDReviewStage==7&&HUDReviewClock>15.f){
   CheckWrists(TEXT("recovered"));
-  const bool Restored=Rider&&Rider->Ammo==12&&Rider->ReloadRemaining<=0&&Rider->MountBike();
+  const bool Restored=Rider&&Rider->Ammo==BattleWeapons::Capacity(Rider->CurrentWeapon)&&Rider->ReloadRemaining<=0&&Rider->MountBike();
   UE_LOG(LogTemp,Display,TEXT("RigReview: reload_and_remount=%d"),Restored);
   UE_LOG(LogTemp,Display,TEXT("HUDReview: requested bike and foot captures"));ConsoleCommand(TEXT("quit"));HUDReviewStage=8;
  }

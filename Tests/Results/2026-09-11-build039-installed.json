@@ -1,0 +1,9 @@
+{
+  "version": "0.39.0",
+  "startup_exit_code": 0,
+  "home_menu": true,
+  "quest_ready": true,
+  "desktop_link_verified": true,
+  "strict_signature_verified_by_finalize": true,
+  "previous_build_preserved": "038"
+}

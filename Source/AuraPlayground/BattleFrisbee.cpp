@@ -73,7 +73,7 @@ void ABattleFrisbeeGroup::BeginThrow(){
 }
 bool ABattleFrisbeeGroup::TrySupply(APawn* Pawn){
  if(!bReady||Supply<=0||SupplyCooldown>0||!Pawn||!Pawn->IsPlayerControlled()||FVector::DistSquared(Pawn->GetActorLocation(),GetActorLocation())>FMath::Square(170.f))return false;
- auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Rider=Cast<ABattleRider>(Pawn))Bike=Rider->ParkedBike;if(!Bike||Bike->Inventory.Num()!=4||!Bike->Inventory[3].Owned)return false;
+ auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Rider=Cast<ABattleRider>(Pawn))Bike=Rider->ParkedBike;if(!Bike||Bike->Inventory.Num()!=BattleWeapons::Count||!Bike->Inventory[3].Owned)return false;
  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(FrisbeeSupplySight),false,Pawn);Q.AddIgnoredActor(this);Q.AddIgnoredActor(Bike);
  if(GetWorld()->LineTraceSingleByChannel(Hit,Pawn->GetActorLocation(),GetActorLocation()+FVector(0,0,10),ECC_Visibility,Q))return false;
  const int32 Amount=FMath::Min3(8,Supply,BattleWeapons::ReserveLimit(3)-Bike->Inventory[3].Reserve);if(Amount<=0||!Bike->GiveWeapon(3,Amount))return false;
