@@ -1,0 +1,31 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build036-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f0027b458b9c0cbb614b9a6e77a1f017bcb6c554e4952e0894d4329f09ef2145"
+    },
+    {
+      "file": "work/build036-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a722de545f4f4c4c4a300e91263d3c236077a3c3801e60895b9662f335d6b163"
+    }
+  ],
+  "visual_review": {
+    "bike_and_foot_inspected": true,
+    "drone_model_visible": true,
+    "warning_readable": true,
+    "final_art_accepted": false,
+    "notes": "Controlled hovering fixture shows mechanical quadcopter and warning. No motion/audio acceptance; rotor audio and better impact animation remain unfinished."
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

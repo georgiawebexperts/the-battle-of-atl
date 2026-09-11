@@ -102,6 +102,8 @@ public:
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  float ApplyRiderDamage(float Amount);
  bool ApplyTaser();
+ bool ApplyDroneStrike();
+ FString StunLabel=TEXT("TASED");
  void UpdateStun(float Dt);
  UPROPERTY(BlueprintReadOnly) float StunRemaining=0,TaserGrace=0;
  UPROPERTY(BlueprintReadOnly) int32 TaserHits=0;
@@ -151,6 +153,8 @@ public:
  void RecordGunfire();
  bool RecordAssault(AActor* Victim);
  void TickTrouble(float Dt);
+ void TickDrones(float Dt);
+ float DroneDelay=35;
  UPROPERTY(BlueprintReadOnly) float Trouble=0;
  UPROPERTY(BlueprintReadOnly) int32 PeopleHit=0,PoliceSpawned=0;
  UPROPERTY(BlueprintReadOnly) bool bPoliceAlert=false;

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Warning, swept rider hit, 15 harm, knockoff/recovery/remount, wall obstruction and destruction pass",
+  "health": 85.0,
+  "exit_code": 0,
+  "difficulty": "Hard",
+  "visual_review": false
+}

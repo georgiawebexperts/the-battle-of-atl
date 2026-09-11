@@ -1,6 +1,7 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
+#include "BattleDrone.h"
 #include "BattleZombie.h"
 #include "BattlePolice.h"
 #include "PiedmontPedestrian.h"
@@ -67,11 +68,12 @@ void ABattleLabHUD::DrawHUD(){
  if((Person?Person->HitFeedback:Bike->HitFeedback)>0){for(int SX:{-1,1})for(int SY:{-1,1})DrawLine(CX+SX*8*S,CY+SY*8*S,CX+SX*19*S,CY+SY*19*S,Peach,3*S);}
  FString Notice;
  if(Owner->RespawnRemaining>0)Notice=TEXT("RECOVERING AT CHECKPOINT  |  -10 SECONDS");
- else if(Owner->StunRemaining>0)Notice=FString::Printf(TEXT("TASED  %.1fs  |  GET UP, THEN E TO REMOUNT"),Owner->StunRemaining);
+ else if(Owner->StunRemaining>0)Notice=FString::Printf(TEXT("%s  %.1fs  |  GET UP, THEN E TO REMOUNT"),*Owner->StunLabel,Owner->StunRemaining);
  else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
  else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
  if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
+ if(Notice.IsEmpty())for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("DRONE SWOOP — KEEP MOVING!");break;}
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
  if(auto* Viewer=GetOwningPawn()){
   const ABattleZombie* Speaking=nullptr;float Best=2500;

@@ -3,6 +3,7 @@
 #include "BattleRider.h"
 #include "BattlePickup.h"
 #include "BattlePolice.h"
+#include "BattleDrone.h"
 #include "Engine/Engine.h"
 #include "UnrealClient.h"
 #include "Misc/CommandLine.h"
@@ -27,6 +28,10 @@ void ABattleMacController::TickHUDReview(float Dt){
    APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*440-Viewer->GetActorRightVector()*100;
    if(auto* Officer=GetWorld()->SpawnActor<ABattlePolice>(Spot,(Viewer->GetActorLocation()-Spot).Rotation())){Officer->Cooldown=100;Officer->Tick(.1f);Officer->SetActorTickEnabled(false);Officer->GetCharacterMovement()->DisableMovement();Officer->bWarning=true;}
    if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){Rules->PeopleHit=3;Rules->bPoliceAlert=true;Rules->Trouble=9;}
+  }
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDroneReview"))){
+   APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*360+Viewer->GetActorRightVector()*80+FVector(0,0,110);
+   if(auto* Drone=GetWorld()->SpawnActor<ABattleDrone>(Spot,FRotator(-15,Viewer->GetActorRotation().Yaw+180,0)))Drone->SetActorTickEnabled(false);
   }
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);
   if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");IFileManager::Get().MakeDirectory(*Folder,true);
