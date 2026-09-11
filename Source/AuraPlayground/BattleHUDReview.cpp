@@ -4,6 +4,9 @@
 #include "BattlePickup.h"
 #include "BattlePolice.h"
 #include "BattleDrone.h"
+#include "BattleZombie.h"
+#include "PiedmontTrafficDirector.h"
+#include "PiedmontPedestrian.h"
 #include "BattleParkFurniture.h"
 #include "EngineUtils.h"
 #include "Engine/Engine.h"
@@ -35,6 +38,15 @@ void ABattleMacController::TickHUDReview(float Dt){
    APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*440-Viewer->GetActorRightVector()*100;
    if(auto* Officer=GetWorld()->SpawnActor<ABattlePolice>(Spot,(Viewer->GetActorLocation()-Spot).Rotation())){Officer->Cooldown=100;Officer->Tick(.1f);Officer->SetActorTickEnabled(false);Officer->GetCharacterMovement()->DisableMovement();Officer->bWarning=true;}
    if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){Rules->PeopleHit=3;Rules->bPoliceAlert=true;Rules->Trouble=9;}
+  }
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieReview"))){
+   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
+   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
+   APawn* Viewer=GetPawn();for(int Style=0;Style<2;Style++){
+    const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*400+Viewer->GetActorRightVector()*(Style==0?-100:100);
+    const FTransform T(FRotator(0,Viewer->GetActorRotation().Yaw+180,0),Spot);
+    auto* Z=GetWorld()->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),T,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);Z->VisualStyle=Style;Z->Emergence=0;Z->FinishSpawning(T);Z->Tick(.1f);Z->SetActorTickEnabled(false);Z->GetCharacterMovement()->DisableMovement();
+   }
   }
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleDroneReview"))){
    APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*360+Viewer->GetActorRightVector()*80+FVector(0,0,110);

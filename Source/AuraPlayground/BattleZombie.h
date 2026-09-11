@@ -8,6 +8,12 @@ class AURAPLAYGROUND_API ABattleZombie : public APiedmontExplorer {
  GENERATED_BODY()
 public:
  ABattleZombie();
+ UPROPERTY(EditAnywhere) int32 VisualStyle=-1;
+ UPROPERTY() TObjectPtr<USkeletalMesh> CoatMesh;
+ UPROPERTY() TObjectPtr<USkeletalMesh> JacketMesh;
+ UPROPERTY() TArray<TObjectPtr<UAnimSequence>> StyleIdle;
+ UPROPERTY() TArray<TObjectPtr<UAnimSequence>> StyleWalk;
+ UPROPERTY() TArray<TObjectPtr<UAnimSequence>> StyleRun;
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;

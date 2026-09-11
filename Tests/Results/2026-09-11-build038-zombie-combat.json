@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "phase": 7,
+  "reason": "Spawn, navigation, telegraph, health damage, pistol body/head hits and cleanup pass",
+  "spawned": 1,
+  "desired": 5,
+  "kills": 2,
+  "nitro": 50.0,
+  "subtitleLines": 30,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}

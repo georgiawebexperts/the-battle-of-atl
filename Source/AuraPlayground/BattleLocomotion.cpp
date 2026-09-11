@@ -63,3 +63,5 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  }
  return true;
 }
+
+void APiedmontExplorer::SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run){IdleAnimation=Idle;WalkAnimation=Walk;RunAnimation=Run;}

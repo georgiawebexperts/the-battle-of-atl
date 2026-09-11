@@ -9,6 +9,8 @@
 #include "EngineUtils.h"
 #include "Engine/DamageEvents.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/SkeletalMesh.h"
+#include "Animation/AnimSequence.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -21,6 +23,17 @@
 #include "BattleZombieLines.h"
 
 ABattleZombie::ABattleZombie(){
+ static ConstructorHelpers::FObjectFinder<USkeletalMesh> Coat(TEXT("/Game/BattleForTheA/Zombies/Farmer/Farmer/SkeletalMeshes/Farmer.Farmer"));
+ static ConstructorHelpers::FObjectFinder<USkeletalMesh> Jacket(TEXT("/Game/BattleForTheA/Zombies/Punk/Punk/SkeletalMeshes/Punk.Punk"));CoatMesh=Coat.Object;JacketMesh=Jacket.Object;
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> FarmerIdle(TEXT("/Game/BattleForTheA/Zombies/Farmer/Farmer/SkeletalMeshes/FarmerIdle.FarmerIdle"));
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> PunkIdle(TEXT("/Game/BattleForTheA/Zombies/Punk/Punk/SkeletalMeshes/PunkIdle.PunkIdle"));
+ StyleIdle={FarmerIdle.Object,PunkIdle.Object};
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> FarmerWalk(TEXT("/Game/BattleForTheA/Zombies/Farmer/Farmer/SkeletalMeshes/FarmerWalk.FarmerWalk"));
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> PunkWalk(TEXT("/Game/BattleForTheA/Zombies/Punk/Punk/SkeletalMeshes/PunkWalk.PunkWalk"));
+ StyleWalk={FarmerWalk.Object,PunkWalk.Object};
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> FarmerRun(TEXT("/Game/BattleForTheA/Zombies/Farmer/Farmer/SkeletalMeshes/FarmerRun.FarmerRun"));
+ static ConstructorHelpers::FObjectFinder<UAnimSequence> PunkRun(TEXT("/Game/BattleForTheA/Zombies/Punk/Punk/SkeletalMeshes/PunkRun.PunkRun"));
+ StyleRun={FarmerRun.Object,PunkRun.Object};
  Tags.Add(TEXT("PiedmontHostile"));Tags.Add(TEXT("BattleHostile"));Tags.Add(TEXT("BattleZombie"));
  AIControllerClass=AAIController::StaticClass();AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;bUseControllerRotationYaw=false;
  GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->RotationRate=FRotator(0,540,0);GetCharacterMovement()->MaxStepHeight=60;
@@ -29,9 +42,9 @@ ABattleZombie::ABattleZombie(){
  int32 Side=-1;for(auto* Eye:{LeftEye.Get(),RightEye.Get()}){Eye->SetupAttachment(GetCapsuleComponent());Eye->SetStaticMesh(Sphere.Object);Eye->SetRelativeLocation(FVector(10,Side*4,64));Eye->SetRelativeScale3D(FVector(.035));Eye->SetCollisionEnabled(ECollisionEnabled::NoCollision);Eye->SetCastShadow(false);Eye->SetCanEverAffectNavigation(false);Side=1;}
 }
 void ABattleZombie::BeginPlay(){
+ VisualStyle=VisualStyle<0?FMath::RandHelper(2):FMath::Clamp(VisualStyle,0,1);Body->SetSkinnedAssetAndUpdate(VisualStyle==0?CoatMesh:JacketMesh);SetLocomotionClips(StyleIdle[VisualStyle],StyleWalk[VisualStyle],StyleRun[VisualStyle]);
  Super::BeginPlay();Weapon->SetVisibility(false);GetCharacterMovement()->MaxWalkSpeed=MoveSpeed;
- if(auto* Material=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_Zombie.M_Zombie"))){Skin=UMaterialInstanceDynamic::Create(Material,this);for(int32 I=0;I<Body->GetNumMaterials();I++)Body->SetMaterial(I,Skin);}
- for(auto* Eye:{LeftEye.Get(),RightEye.Get()})Eye->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_ZombieEye.M_ZombieEye")));
+ for(auto* Eye:{LeftEye.Get(),RightEye.Get()})Eye->SetVisibility(false);
  Speak();
 }
 void ABattleZombie::Speak(bool Charge){

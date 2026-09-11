@@ -1,0 +1,32 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build038-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b4e14aabf112885e49db0124a13e1de01a456e21db0d712784234fa6d92e9367"
+    },
+    {
+      "file": "work/build038-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "efd90e0daf4e652427bbdc31394e5512756ed87c8804e3f198d6999c43e36052"
+    }
+  ],
+  "visual_review": {
+    "foot_comparison_inspected": true,
+    "both_variants_visible": true,
+    "upright_aligned_limbs": true,
+    "detached_eye_effect_removed": true,
+    "final_art_accepted": false,
+    "notes": "Static native comparison shows two distinct clothed silhouettes with matching idle clips. Torn/frayed geometry, accessories, material polish and full animation acceptance remain unfinished."
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}
