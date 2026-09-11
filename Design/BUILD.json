@@ -1,8 +1,8 @@
 {
-  "build": 12,
-  "version": "0.12.0-dev",
+  "build": 13,
+  "version": "0.13.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Native Mac playtest packaged, desktop link, menu and headless startup pass; visual retest awaiting unlock; full V3 incomplete",
+  "milestone": "Cooked difficulty table, level select, timers/crowds and timeout menu; all three native headless profiles pass; rendered UI and full V3 incomplete",
   "author": "2026-09-11 [codex-maclaptop]"
 }

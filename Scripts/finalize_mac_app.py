@@ -3,9 +3,12 @@ from pathlib import Path
 import plistlib
 import shutil
 import subprocess
+import re
 
 root=Path(__file__).resolve().parents[1]
 archive=Path('/Volumes/Adam Assets/Unreal/Builds/BattleForTheA')
+version=re.search(r'^ProjectVersion=(.+)$',(root/'Config/DefaultGame.ini').read_text(),re.M).group(1).split('-')[0]
+
 source=root/'Saved/StagedBuilds/Mac/AuraPlayground.app'
 if not (source/'Contents/UE/AuraPlayground/Content/Paks/AuraPlayground-Mac.utoc').is_file():
     raise SystemExit('Staged app lacks cooked game content.')
@@ -19,8 +22,8 @@ with plist_path.open('rb') as f:
 info['CFBundleDisplayName']='Battle for the A'
 info['CFBundleName']='BattleForTheA'
 info['CFBundleIconFile']='BattleForTheA.icns'
-info['CFBundleShortVersionString']='0.12.0'
-info['CFBundleVersion']='12'
+info['CFBundleShortVersionString']=version
+info['CFBundleVersion']=version
 with plist_path.open('wb') as f:
     plistlib.dump(info,f)
 shutil.copy2(root/'SourceAssets/UI/BattleForTheA.icns',target/'Contents/Resources/BattleForTheA.icns')

@@ -1,4 +1,12 @@
 #include "BattleMacController.h"
+#include "BattleBike.h"
+#include "BattleRider.h"
+#include "PiedmontTrafficDirector.h"
+#include "EngineUtils.h"
+#include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
+#include "Misc/FileHelper.h"
+#include "TimerManager.h"
 #include "Engine/GameViewportClient.h"
 #include "GameFramework/GameUserSettings.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -12,7 +20,24 @@
 
 void ABattleMacController::BeginPlay(){
  Super::BeginPlay();
- if(GetWorld()->WorldType==EWorldType::Game)ShowMenu();
+ if(GetWorld()->WorldType==EWorldType::Game){
+  const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+  if(Mode&&UGameplayStatics::HasOption(Mode->OptionsString,TEXT("AutoStart")))ResumeRide();else ShowMenu();
+#if !UE_BUILD_SHIPPING
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAudit"))){
+   FTimerHandle AuditHandle;
+   GetWorld()->GetTimerManager().SetTimer(AuditHandle,this,&ABattleMacController::RunDevelopmentAudit,12,false);
+  }
+#endif
+ }
+}
+void ABattleMacController::PlayerTick(float Dt){
+ Super::PlayerTick(Dt);
+ if(bStarted&&!Menu.IsValid())if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)ShowMenu(TEXT("Loss"));
+}
+void ABattleMacController::StartDifficulty(FName Name){
+ SetPause(false);
+ UGameplayStatics::OpenLevel(this,TEXT("/Game/PiedmontRide/Maps/PiedmontWorld"),true,TEXT("Difficulty=")+Name.ToString()+TEXT("?AutoStart=1"));
 }
 void ABattleMacController::SetupInputComponent(){
  Super::SetupInputComponent();
@@ -29,15 +54,33 @@ void ABattleMacController::ResumeRide(){
  FlushPressedKeys();
  UE_LOG(LogTemp,Display,TEXT("BattleMac: ride resumed"));
 }
-void ABattleMacController::ToggleMenu(){if(Menu.IsValid()&&bStarted)ResumeRide();else ShowMenu();}
+void ABattleMacController::ToggleMenu(){
+ const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ if(Mode&&Mode->bRunEnded){ShowMenu(TEXT("Loss"));return;}
+ if(Menu.IsValid()&&bStarted)ResumeRide();else ShowMenu();
+}
 void ABattleMacController::ShowMenu(FString Page){
  RemoveMenu();SetPause(true);bShowMouseCursor=true;ResetIgnoreMoveInput();ResetIgnoreLookInput();SetIgnoreMoveInput(true);SetIgnoreLookInput(true);
  TSharedRef<SVerticalBox> Items=SNew(SVerticalBox);
  auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).AutoWrapText(true)];};
  auto Button=[&](FString Text,TFunction<void()> Action){Items->AddSlot().AutoHeight().Padding(0,5)[SNew(SButton).ContentPadding(FMargin(18,10)).OnClicked_Lambda([Action](){Action();return FReply::Handled();})[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18))]];};
  Label(TEXT("BATTLE FOR THE A"),42,FLinearColor(1,.12,.16));
- Label(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST"),16,FLinearColor(1,.7,.35));
- if(Page==TEXT("Instructions")){
+ const auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ const bool Ended=Park&&Park->bRunEnded;
+ Label(Ended?TEXT("THE A WINS THIS TIME"):(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST")),16,FLinearColor(1,.7,.35));
+ if(Page==TEXT("Loss")){
+  Label(TEXT("Time ran out. Pick a difficulty and ride again."),18,FLinearColor::White);
+  Button(TEXT("RETRY"),[this](){const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));StartDifficulty(Mode?Mode->DifficultyName:FName(TEXT("Easy")));});
+  Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});
+  Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
+ }else if(Page==TEXT("Levels")){
+  Label(TEXT("Select a difficulty to start a new ride."),18,FLinearColor::White);
+  if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty")))for(FName Name:{FName(TEXT("Easy")),FName(TEXT("Medium")),FName(TEXT("Hard"))}){
+   if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %.0f MIN  |  %s"),*Name.ToString(),Row->TimeLimitSeconds/60,*Row->Warning),[this,Name](){StartDifficulty(Name);});
+  }
+  Label(TEXT("Timers and walking crowds scale now. The expanded enemy roster and complete route are still in development."),14,FLinearColor(.7,.72,.75));
+  Button(TEXT("BACK"),[this,Ended](){ShowMenu(Ended?TEXT("Loss"):TEXT("Home"));});
+ }else if(Page==TEXT("Instructions")){
   Label(TEXT("Explore the park, dodge visitors, and test your bike and pistol. The Artifact-to-Cabbagetown campaign is still being built."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW pedal | A/D or Left/Right steer\nUp/Down gears | Space brake/drift\nShift nitro | H horn | Tab camera\nE dismount | Left click pistol"),17,FLinearColor::White);
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\nE near bike to remount | Esc pause"),17,FLinearColor::White);
@@ -48,13 +91,45 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else{
   Button(bStarted?TEXT("RESUME RIDE"):TEXT("START PARK RIDE"),[this](){ResumeRide();});
+  Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Development build 012 | Web Experts\nPark riding and FPS test. Full route, enemies, difficulty and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Development build 013 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);
  FInputModeGameAndUI Mode;Mode.SetWidgetToFocus(Menu);Mode.SetHideCursorDuringCapture(false);SetInputMode(Mode);
  UE_LOG(LogTemp,Display,TEXT("BattleMac: menu %s"),*Page);
+}
+
+
+// Opt-in native packaged integration probe; never active in normal play or Shipping.
+void ABattleMacController::RunDevelopmentAudit(){
+#if !UE_BUILD_SHIPPING
+ FString Output;if(!FParse::Value(FCommandLine::Get(),TEXT("BattleAuditOutput="),Output))return;
+ auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ auto* Bike=Cast<ABattleBike>(GetPawn());
+ int Desired=0,Live=0;
+ for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It){Desired+=It->DesiredPopulation;Live+=It->LivePopulation;}
+ const bool Timer=Mode&&Mode->TimeRemaining<Mode->Difficulty.TimeLimitSeconds-5&&Mode->TimeRemaining>Mode->Difficulty.TimeLimitSeconds-20;
+ const bool Population=Mode&&Desired==Mode->Difficulty.Walkers+Mode->Difficulty.Joggers&&Live==Desired;
+ const bool Dismounted=Bike&&Bike->Dismount();
+ auto* Person=Cast<ABattleRider>(GetPawn());
+ const int Ammo=Person?Person->Ammo:0;
+ if(Person)Person->Fire();
+ const bool Shot=Person&&Person->Ammo==Ammo-1;
+ const bool Mounted=Bike&&Person&&Bike->Remount(Person)&&GetPawn()==Bike;
+ ToggleMenu();const bool Paused=IsPaused()&&Menu.IsValid();
+ ToggleMenu();const bool Resumed=!IsPaused()&&!Menu.IsValid();
+ if(Mode){Mode->TimeRemaining=.01f;Mode->Tick(.02f);}
+ PlayerTick(0);
+ const bool Loss=Mode&&Mode->bRunEnded&&IsPaused()&&Menu.IsValid();
+ const bool Passed=Timer&&Population&&Dismounted&&Shot&&Mounted&&Paused&&Resumed&&Loss;
+ const FString Json=FString::Printf(TEXT("{\"difficulty\":\"%s\",\"timerSeconds\":%.0f,\"desiredCrowd\":%d,\"liveCrowd\":%d,\"timer\":%s,\"population\":%s,\"dismount\":%s,\"fire\":%s,\"remount\":%s,\"pause\":%s,\"resume\":%s,\"timeout\":%s,\"passed\":%s}"),
+  Mode?*Mode->DifficultyName.ToString():TEXT("Missing"),Mode?Mode->Difficulty.TimeLimitSeconds:0,Desired,Live,Timer?TEXT("true"):TEXT("false"),Population?TEXT("true"):TEXT("false"),Dismounted?TEXT("true"):TEXT("false"),Shot?TEXT("true"):TEXT("false"),Mounted?TEXT("true"):TEXT("false"),Paused?TEXT("true"):TEXT("false"),Resumed?TEXT("true"):TEXT("false"),Loss?TEXT("true"):TEXT("false"),Passed?TEXT("true"):TEXT("false"));
+ FFileHelper::SaveStringToFile(Json,*Output);
+ UE_LOG(LogTemp,Display,TEXT("BattleAudit: %s"),*Json);
+ UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);
+#endif
 }

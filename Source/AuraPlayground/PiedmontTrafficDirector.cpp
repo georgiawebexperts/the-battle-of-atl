@@ -42,7 +42,7 @@ void APiedmontTrafficDirector::Tick(float Dt){
  for(int32 Attempt=0;Attempt<16&&Visitors.Num()<DesiredPopulation&&!Nearby.IsEmpty();Attempt++){
   const int32 Index=FMath::RandRange(0,Nearby.Num()-1);const FVector P=Nearby[Index];Nearby.RemoveAtSwap(Index);
   bool TooClose=false;for(const auto& Other:Visitors)if(Other.IsValid()&&FVector::Dist2D(P,Other->GetActorLocation())<350){TooClose=true;break;}if(TooClose)continue;
-  const bool Jogger=FMath::FRand()<.3f;
+  const bool Jogger=FMath::FRand()<FMath::Clamp(JoggerShare,0.f,1.f);
   if(auto* Leader=SpawnVisitor(P,Jogger))if(!Jogger&&Visitors.Num()<DesiredPopulation&&FMath::FRand()<.55f){
    if(auto* Friend=SpawnVisitor(Leader->GetActorLocation()+Leader->GetActorRightVector()*105,false)){Friend->GroupLeader=Leader;Friend->GroupSide=1;}
   }

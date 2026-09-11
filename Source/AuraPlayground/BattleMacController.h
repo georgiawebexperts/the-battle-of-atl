@@ -9,11 +9,14 @@ class AURAPLAYGROUND_API ABattleMacController : public APlayerController {
 public:
  virtual void BeginPlay() override;
  virtual void SetupInputComponent() override;
+ virtual void PlayerTick(float DeltaTime) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  void ToggleMenu();
 private:
  TSharedPtr<SWidget> Menu;
  bool bStarted=false;
+ void StartDifficulty(FName Name);
+ void RunDevelopmentAudit();
  void ShowMenu(FString Page=TEXT("Home"));
  void ResumeRide();
  void RemoveMenu();

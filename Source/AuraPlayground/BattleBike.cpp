@@ -117,13 +117,37 @@ void ABattleBike::ValidationKey(FName Key,bool Pressed){
 #endif
 }
 ABattleParkMode::ABattleParkMode(){CourseLabel=TEXT("PIEDMONT PARK | DEVELOPMENT");PlayerControllerClass=ABattleMacController::StaticClass();}
+void ABattleParkMode::InitGame(const FString& MapName,const FString& Options,FString& ErrorMessage){
+ Super::InitGame(MapName,Options,ErrorMessage);
+ FString Choice=UGameplayStatics::ParseOption(Options,TEXT("Difficulty"));
+ if(Choice!=TEXT("Easy")&&Choice!=TEXT("Medium")&&Choice!=TEXT("Hard"))Choice=TEXT("Easy");
+ DifficultyName=FName(*Choice);
+ if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty"))){
+  if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(DifficultyName,TEXT("Battle start")))Difficulty=*Row;
+ }else UE_LOG(LogTemp,Error,TEXT("Battle difficulty table is missing"));
+ TimeRemaining=Difficulty.TimeLimitSeconds;StartCountdown=3;
+ UE_LOG(LogTemp,Display,TEXT("BattleDifficulty: %s timer=%.0f crowd=%d radar=%.0f"),*Choice,TimeRemaining,Difficulty.Walkers+Difficulty.Joggers,Difficulty.RadarRange);
+}
+void ABattleParkMode::StartPlay(){
+ Super::StartPlay();
+ for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It){
+  It->DesiredPopulation=Difficulty.Walkers+Difficulty.Joggers;
+  It->JoggerShare=float(Difficulty.Joggers)/FMath::Max(1,It->DesiredPopulation);
+ }
+}
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){
  AGameModeBase::Tick(Dt);if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}if(!bRunEnded){TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt);if(TimeRemaining<=0)bRunEnded=true;}
 }
 void ABattleLabHUD::DrawHUD(){
- Super::DrawHUD();if(!Canvas)return;auto* Bike=Cast<ABattleBike>(GetOwningPawn());if(!Bike){
+ Super::DrawHUD();if(!Canvas)return;
+ if(auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){
+  const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
+  DrawText(FString::Printf(TEXT("%02d:%02d  |  %s"),Seconds/60,Seconds%60,*Park->DifficultyName.ToString()),Seconds<60?FColor::Red:FColor::White,Canvas->SizeX-235,28,nullptr,1.7);
+  if(Park->StartCountdown>0)DrawText(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),FColor::Yellow,Canvas->SizeX*.5f,Canvas->SizeY*.35f,nullptr,4);
+ }
+ auto* Bike=Cast<ABattleBike>(GetOwningPawn());if(!Bike){
   if(auto* Person=Cast<ABattleRider>(GetOwningPawn())){
    DrawRect(FLinearColor(.03,.015,.02,.85),20,20,760,125);
    DrawText(TEXT("BATTLE FOR THE A | FIRST PERSON"),FColor::White,35,30,nullptr,1.8);

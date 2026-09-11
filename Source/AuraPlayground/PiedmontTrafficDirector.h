@@ -11,6 +11,7 @@ public:
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 DesiredPopulation=24;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float JoggerShare=.3f;
  UPROPERTY(BlueprintReadOnly) int32 LivePopulation=0;
  UPROPERTY(BlueprintReadOnly) int32 TotalSpawned=0;
  UFUNCTION(BlueprintCallable) APiedmontPedestrian* SpawnVisitorForValidation(FVector Location,bool Jogger);

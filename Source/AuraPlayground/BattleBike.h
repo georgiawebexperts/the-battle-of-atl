@@ -3,6 +3,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontBike.h"
+#include "BattleDifficulty.h"
 #include "BattleBike.generated.h"
 class ABattleRideFX;class UAudioComponent;
 class USpotLightComponent;class UPointLightComponent;
@@ -127,4 +128,9 @@ class AURAPLAYGROUND_API ABattleParkMode : public ABattleLabMode {
  GENERATED_BODY()
 public:
  ABattleParkMode();
+ virtual void InitGame(const FString& MapName,const FString& Options,FString& ErrorMessage) override;
+ virtual void StartPlay() override;
+ UPROPERTY(BlueprintReadOnly) FName DifficultyName=TEXT("Easy");
+ UPROPERTY(BlueprintReadOnly) FBattleDifficultyRow Difficulty;
+
 };
