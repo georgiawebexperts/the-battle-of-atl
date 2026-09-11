@@ -187,6 +187,11 @@ void ABattleBike::PoseRider(float Dt){
  const float C=Ride->Cadence;
  Limb(TEXT("UpperLeg_L"),TEXT("LowerLeg_L"),TEXT("Foot_L"),FVector(12,-5+FMath::Sin(C)*16,32+FMath::Cos(C)*16),FVector(0,1,0));
  Limb(TEXT("UpperLeg_R"),TEXT("LowerLeg_R"),TEXT("Foot_R"),FVector(-12,-5-FMath::Sin(C)*16,32-FMath::Cos(C)*16),FVector(0,1,0));
+ // Leg IK locates the ankles but also rotates the attached shoes. Keep each
+ // shoe in its forward-facing bind orientation so it stays level on the pedal.
+ for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R")}){
+  const int Foot=Index(Name);if(Foot>=0)MoveBranch(Foot,Pose[Foot].GetLocation(),ReferencePose[Foot].GetRotation()*Pose[Foot].GetRotation().Inverse());
+ }
  Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),FVector(28,29,114),FVector(1,0,-.4));
  Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),GunHold>0?FVector(-28,45,130):FVector(-28,29,114),FVector(-1,0,-.4));
  for(int I=0;I<Pose.Num();++I)Rider->BoneSpaceTransforms[I]=Parents[I]>=0?Pose[I].GetRelativeTransform(Pose[Parents[I]]):Pose[I];

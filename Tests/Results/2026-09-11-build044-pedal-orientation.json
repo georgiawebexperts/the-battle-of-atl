@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "minimum_toe_forward_dot": 0.9994,
+  "maximum_toe_height_delta_cm": 0.59,
+  "exit_code": 0,
+  "visual_review": "pending"
+}

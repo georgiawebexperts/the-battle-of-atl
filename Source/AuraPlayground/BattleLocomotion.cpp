@@ -26,6 +26,14 @@ const FCrowdClip& Clip(UAnimSequence* Animation){
    Animation->GetBoneTransform(Transform,FSkeletonPoseBoneIndex(Bone),Context,false);
   }
  }
+#if !UE_BUILD_SHIPPING
+ // Compare decoded ankle rotations with the bind pose before correcting retargeting.
+ for(const TCHAR* Name:{TEXT("UpperLeg_L"),TEXT("LowerLeg_L"),TEXT("Foot_L"),TEXT("Foot_L_end")}){
+  const auto& Ref=Animation->GetSkeleton()->GetReferenceSkeleton();
+  const int32 Bone=Ref.FindBoneIndex(Name);if(Bone<0)continue;
+  UE_LOG(LogTemp,Display,TEXT("CrowdClipAxes: clip=%s bone=%s bind=%s sample0=%s"),*Animation->GetName(),Name,*Ref.GetRefBonePose()[Bone].ToString(),*Result.Samples[Bone].ToString());
+ }
+#endif
  UE_LOG(LogTemp,Display,TEXT("CrowdClip: cached %s bones=%d frames=%d"),*Animation->GetName(),Result.Bones,Result.Frames);
  return CrowdClips.Add(Key,MoveTemp(Result));
 }
@@ -50,6 +58,8 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  const float CycleSeconds=FMath::Lerp(WalkAnimation->GetPlayLength(),RunAnimation->GetPlayLength(),RunWeight);
  LocomotionPhase=FMath::Frac(LocomotionPhase+Dt*LocomotionSpeed/ReferenceSpeed/CycleSeconds);
  IdleClock=FMath::Fmod(IdleClock+Dt,IdleAnimation->GetPlayLength());
+ const int32 RootIndex=Bones.IndexOfByKey(FName(TEXT("Root")));
+ FQuat AuthoredRootRotation=FQuat::Identity;
  for(int32 I=0;I<Pose.Num();I++){
   const int32 Bone=Skeleton.FindBoneIndex(Bones[I]);if(Bone<0)continue;
   FTransform Moving;Moving.Blend(Sample(Walk,Bone,LocomotionPhase),Sample(Run,Bone,LocomotionPhase),RunWeight);
@@ -58,8 +68,23 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
   // and scale to this mesh's skeleton while preserving the authored rotations.
   Pose[I].SetTranslation(RestPose[I].GetTranslation());
   Pose[I].SetScale3D(RestPose[I].GetScale3D());
+  if(I==RootIndex)AuthoredRootRotation=Pose[I].GetRotation();
   // CharacterMovement owns world travel; retain hip/knee/ankle animation above it.
   if(Parents[I]<0||Bones[I]==TEXT("Root"))Pose[I]=RestPose[I];
+ }
+ // The legacy animation FBX parents its IK feet directly to Root, whereas the
+ // character FBX parents each shoe to its lower leg. Imported tracks keep the
+ // source local frame even when assigned to Casual_Skeleton. Convert the foot
+ // rotation through its actual source parent before applying it to the mesh.
+ // Native glTF character clips already match their hierarchy and skip this path.
+ if(RootIndex>=0&&WalkAnimation->GetPathName().StartsWith(TEXT("/Game/PiedmontRide/Rider/Animations/"))){
+  TArray<FQuat> ComponentRotations;ComponentRotations.SetNum(Pose.Num());
+  for(int32 I=0;I<Pose.Num();I++)ComponentRotations[I]=Parents[I]>=0?ComponentRotations[Parents[I]]*Pose[I].GetRotation():Pose[I].GetRotation();
+  const FQuat SourceRoot=(Parents[RootIndex]>=0?ComponentRotations[Parents[RootIndex]]:FQuat::Identity)*AuthoredRootRotation;
+  for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R")}){
+   const int32 I=Bones.IndexOfByKey(FName(Name));if(I<0||Parents[I]<0)continue;
+   Pose[I].SetRotation((ComponentRotations[Parents[I]].Inverse()*SourceRoot*Pose[I].GetRotation()).GetNormalized());
+  }
  }
  return true;
 }

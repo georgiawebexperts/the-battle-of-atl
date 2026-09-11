@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "PiedmontExplorer.h"
+#include "BattleBike.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -12,6 +13,18 @@
 void ABattleMacController::TickLocomotionReview(float Dt){
 #if !UE_BUILD_SHIPPING
  LocoClock+=Dt;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePedalReview"))){
+  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike||LocoClock<6)return;
+  if(!LocoCamera.IsValid()){LocoCamera=GetWorld()->SpawnActor<ACameraActor>();Cast<ACameraActor>(LocoCamera.Get())->GetCameraComponent()->SetFieldOfView(55);SetViewTarget(LocoCamera.Get());if(GetHUD())GetHUD()->bShowHUD=false;}
+  const int Phase=FMath::Min(3,int(LocoClock-6));Bike->Ride->Cadence=Phase*PI*.5f;Bike->RefreshRiderPose();
+  const FVector Look=Bike->GetActorLocation()+FVector(0,0,5);const FVector Offset=Bike->GetActorRotation().RotateVector(FVector(80,-450,5));LocoCamera->SetActorLocation(Look+Offset);LocoCamera->SetActorRotation((-Offset).Rotation());
+  static float MinDot=1,MaxTilt=0;
+  for(const TCHAR* Side:{TEXT("L"),TEXT("R")}){const FVector Ankle=Bike->Rider->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side));const FVector Toe=Bike->Rider->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side+TEXT("_end")));const FVector Direction=(Toe-Ankle).GetSafeNormal();MinDot=FMath::Min(MinDot,float(FVector::DotProduct(Direction,Bike->GetActorForwardVector())));MaxTilt=FMath::Max(MaxTilt,float(FMath::Abs(Toe.Z-Ankle.Z)));}
+  if(LocoClock>6.4f+LocoStage&&LocoStage<4){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);FScreenshotRequest::RequestScreenshot(Folder/FString::Printf(TEXT("pedal-%d.png"),LocoStage),false,false);LocoStage++;}
+  if(LocoClock>10.5f){UE_LOG(LogTemp,Display,TEXT("PedalReview: {\"passed\":%s,\"minimum_toe_forward_dot\":%.4f,\"maximum_toe_height_delta_cm\":%.3f}"),MinDot>.95f&&MaxTilt<2?TEXT("true"):TEXT("false"),MinDot,MaxTilt);ConsoleCommand(TEXT("quit"));}
+  return;
+ }
+
  if(LocoStage==0&&LocoClock>6){
   APawn* Player=GetPawn();if(!Player)return;
   FHitResult Ground;FCollisionQueryParams Query(SCENE_QUERY_STAT(LocoReview),false,Player);
@@ -50,7 +63,10 @@ void ABattleMacController::TickLocomotionReview(float Dt){
   const float Distance=FVector::Dist2D(LocoStart,Person->GetActorLocation());
   const float FootGap=FMath::Min(Person->Body->GetSocketLocation(TEXT("Foot_L")).Z,Person->Body->GetSocketLocation(TEXT("Foot_R")).Z)-Person->GetCharacterMovement()->CurrentFloor.HitResult.ImpactPoint.Z-2.275f;
   UE_LOG(LogTemp,Display,TEXT("LocoReview: idle_foot_gap_cm=%.3f"),FootGap);
-  const bool Pass=FMath::Abs(FootGap)<6&&Person->bAuthoredLocomotion&&LocoKneeMotion>15&&Distance>400&&Person->GetCharacterMovement()->IsMovingOnGround();
+  float MinimumIdleFootDot=1;
+  for(const TCHAR* Side:{TEXT("L"),TEXT("R")}){const FVector Ankle=Person->Body->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side));const FVector Toe=Person->Body->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side+TEXT("_end")));const float FootDot=FVector::DotProduct((Toe-Ankle).GetSafeNormal(),Person->GetActorForwardVector());MinimumIdleFootDot=FMath::Min(MinimumIdleFootDot,FootDot);UE_LOG(LogTemp,Display,TEXT("LocoReview: foot_%s_forward_dot=%.4f"),Side,FootDot);}
+
+  const bool Pass=MinimumIdleFootDot>.5f&&FMath::Abs(FootGap)<6&&Person->bAuthoredLocomotion&&LocoKneeMotion>15&&Distance>400&&Person->GetCharacterMovement()->IsMovingOnGround();
   UE_LOG(LogTemp,Display,TEXT("LocoReview: pass=%d knee_motion_deg=%.3f travel_cm=%.3f grounded=%d"),Pass,LocoKneeMotion,Distance,Person->GetCharacterMovement()->IsMovingOnGround());
   ConsoleCommand(TEXT("quit"));LocoStage=6;
  }
