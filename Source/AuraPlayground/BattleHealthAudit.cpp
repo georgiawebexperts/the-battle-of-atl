@@ -25,6 +25,8 @@ void ABattleMacController::TickHealthAudit(float Dt){
  FDamageEvent Damage;HealthAuditClock+=Dt;
  if(HealthPhase==0){
   VERIFY_HEALTH(Quest->bReady&&Quest->CheckpointLocations.Num()==2,"Missing quest checkpoints");
+  VERIFY_HEALTH(Quest->SearchDirection(Quest->ArtifactLocation+FVector(0,1000,0))==TEXT("Search NORTH")&&Quest->SearchDirection(Quest->ArtifactLocation-FVector(0,1000,0))==TEXT("Search SOUTH")&&Quest->SearchDirection(Quest->ArtifactLocation-FVector(1000,0,0))==TEXT("Search EAST")&&Quest->SearchDirection(Quest->ArtifactLocation+FVector(1000,0,0))==TEXT("Search WEST"),"Cardinal guidance orientation failed");
+  VERIFY_HEALTH(!Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation)&&ABattleQuest::CoarseDirection(FVector2D(100,20))==ABattleQuest::CoarseDirection(FVector2D(10000,6000)),"Guidance exposes exact bearing/location");
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
   Place(Quest->CheckpointLocations[0]+FVector(0,0,98));HealthPhase=1;HealthAuditClock=0;return;
@@ -66,7 +68,7 @@ void ABattleMacController::TickHealthAudit(float Dt){
  if(HealthPhase==7&&Bike->RespawnRemaining==0){
   VERIFY_HEALTH(GetWorld()->GetTimeSeconds()-HealthDeathTime>=1.98f&&HealthAuditClock<2.3f,"Incorrect respawn duration");
   VERIFY_HEALTH(GetPawn()==Bike&&Bike->RiderHealth==100&&FVector::Dist(Bike->GetActorLocation(),Bike->CheckpointTransform.GetLocation())<150,"Bike checkpoint recovery failed");
-  VERIFY_HEALTH(Quest->bCollected&&Quest->NextCheckpoint==1&&Quest->ArtifactLocation.Equals(HealthArtifactLocation,1),"Death reset quest progress");
+  VERIFY_HEALTH(!Quest->bCollected&&!Mode->bItemCollected&&Quest->NextCheckpoint==0&&Quest->bReady&&IsValid(Quest->Artifact)&&Quest->RoutePoints.IsEmpty()&&Quest->SearchResets==1&&Bike->CheckpointTransform.Equals(Quest->InitialStartTransform),"Death did not reset Artifact hunt and park start");
   VERIFY_HEALTH(Bike->TakeDamage(50,Damage,this,this)==0,"Missing respawn protection");
   HealthPhase=8;HealthAuditClock=0;return;
  }
@@ -78,11 +80,20 @@ void ABattleMacController::TickHealthAudit(float Dt){
  }
  if(HealthPhase==9&&HealthAuditClock>2.2f){
   VERIFY_HEALTH(GetPawn()==Bike&&!HealthFormerRider.IsValid()&&!Bike->bParked&&Bike->RiderHealth==100&&Bike->Deaths==2,"FPS death did not restore bike possession");
+  VERIFY_HEALTH(!Quest->bCollected&&Quest->SearchResets==2&&Quest->bReady,"Foot death did not reset hunt");
+  Place(Quest->ArtifactLocation+FVector(0,0,13));HealthPhase=91;HealthAuditClock=0;return;
+ }
+ if(HealthPhase==91&&HealthAuditClock>.3f){
+  VERIFY_HEALTH(Quest->bCollected&&Mode->bItemCollected,"Cannot recollect after death");
+  Place(Quest->CheckpointLocations[0]+FVector(0,0,98));HealthPhase=92;HealthAuditClock=0;return;
+ }
+ if(HealthPhase==92&&HealthAuditClock>.3f){
+  VERIFY_HEALTH(Quest->NextCheckpoint==1,"First checkpoint cannot be regained");
   Place(Quest->CheckpointLocations[1]+FVector(0,0,98));HealthPhase=10;HealthAuditClock=0;return;
  }
  if(HealthPhase==10&&HealthAuditClock>.3f){
   VERIFY_HEALTH(Quest->NextCheckpoint==2&&Bike->CheckpointName==TEXT("Krog Street Market")&&Quest->bCollected,"Second checkpoint failed");
-  Finish(true,TEXT("Shared health, regeneration, ordered checkpoints and both death modes pass"));return;
+  Finish(true,TEXT("Cardinal hunt, both death resets, recollection, health and ordered checkpoints pass"));return;
  }
  if(HealthAuditClock>15)Finish(false,TEXT("Phase timed out"));
 #undef VERIFY_HEALTH

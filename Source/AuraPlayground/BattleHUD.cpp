@@ -27,7 +27,7 @@ void ABattleLabHUD::DrawHUD(){
  if(!Owner)return;
  Panel(M,M,470*S,106*S);DrawRect(Peach,M,M,5*S,106*S);
  Text(Park&&Park->Quest&&Park->Quest->bCollected?TEXT("GET HOME"):TEXT("FIND THE ARTIFACT"),M+20*S,M+15*S,30,Peach);
- FString Objective=TEXT("Follow the gold radar signal");
+ FString Objective=Park&&Park->Quest?Park->Quest->SearchDirection(GetOwningPawn()->GetActorLocation()):TEXT("Search the park");
  if(Park&&Park->Quest&&Park->Quest->bCollected)Objective=Park->Quest->NextCheckpoint<2?FString(BattleCheckpoints::Anchors[Park->Quest->NextCheckpoint].Name):TEXT("Through Krog Street Tunnel");
  Text(Objective,M+20*S,M+60*S,23,Muted);
  if(Park){

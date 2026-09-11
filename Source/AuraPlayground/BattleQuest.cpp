@@ -26,7 +26,7 @@ ABattleQuest::ABattleQuest(){PrimaryActorTick.bCanEverTick=true;}
 void ABattleQuest::BeginPlay(){
  Super::BeginPlay();
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
- StartLocation=Pawn->GetActorLocation();
+ StartLocation=Pawn->GetActorLocation();InitialStartTransform=Pawn->GetActorTransform();
  // Sourced Eastside endpoint reached by the installed Monroe connector.
  ExitLocation=FVector(BattleRouteAnchors::ParkExitX,BattleRouteAnchors::ParkExitY,0);
  FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleExit),false,Pawn);
@@ -117,9 +117,11 @@ void ABattleQuest::RefreshRoute(){
 void ABattleQuest::Tick(float Dt){
  Super::Tick(Dt);Clock+=Dt;
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
- auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn||!bReady)return;
+ auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn)return;
+ if(!bReady){RouteDelay-=Dt;if(RouteDelay<=0){RouteDelay=2;bReady=PlaceArtifact();}return;}
+ auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Person=Cast<ABattleRider>(Pawn))Bike=Person->ParkedBike;
  if(Artifact&&!bCollected){Artifact->SetActorLocation(ArtifactLocation+FVector(0,0,FMath::Sin(Clock*2.5f)*8));Artifact->AddActorWorldRotation(FRotator(0,Dt*45,0));}
- if(Mode->StartCountdown<=0&&!Mode->bRunEnded&&!bCollected&&FVector::DistSquared(Pawn->GetActorLocation(),ArtifactLocation)<FMath::Square(150.f)){
+ if(Bike&&Bike->RiderHealth>0&&Bike->RespawnRemaining<=0&&Mode->StartCountdown<=0&&!Mode->bRunEnded&&!bCollected&&FVector::DistSquared(Pawn->GetActorLocation(),ArtifactLocation)<FMath::Square(150.f)){
   FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleCollect),false,Pawn);Q.AddIgnoredActor(Artifact);
   if(!GetWorld()->LineTraceSingleByChannel(Hit,Pawn->GetActorLocation(),ArtifactLocation,ECC_Visibility,Q)){
    bCollected=true;Mode->bItemCollected=true;
@@ -138,7 +140,26 @@ void ABattleQuest::Tick(float Dt){
  }
 }
 void ABattleQuest::EndPlay(const EEndPlayReason::Type Reason){if(IsValid(Artifact))Artifact->Destroy();for(auto Marker:CheckpointMarkers)if(IsValid(Marker))Marker->Destroy();Super::EndPlay(Reason);}
-bool ABattleQuest::ArtifactVisibleOnRadar(FVector Viewer) const{return bReady&&!bCollected&&FVector::Dist2D(Viewer,ArtifactLocation)<=RadarRange;}
+bool ABattleQuest::ArtifactVisibleOnRadar(FVector Viewer) const{return false;}
+FVector2D ABattleQuest::CoarseDirection(FVector2D Delta){
+ if(FMath::Abs(Delta.X)>FMath::Abs(Delta.Y))return FVector2D(Delta.X>=0?1:-1,0);
+ return FVector2D(0,Delta.Y>=0?1:-1);
+}
+FString ABattleQuest::SearchDirection(FVector Viewer) const{
+ if(!bReady)return TEXT("Searching for signal...");
+ const FVector2D D=CoarseDirection(FVector2D(ArtifactLocation-Viewer));
+ return D.X>0?TEXT("Search EAST"):D.X<0?TEXT("Search WEST"):D.Y<0?TEXT("Search NORTH"):TEXT("Search SOUTH");
+}
+void ABattleQuest::ResetAfterDeath(){
+ SearchResets++;bCollected=false;bReady=false;RoutePoints.Reset();NextCheckpoint=0;CheckpointNotice.Empty();CheckpointNoticeTime=0;
+ if(IsValid(Artifact))Artifact->Destroy();Artifact=nullptr;
+ RouteEndIndex=CheckpointIndices.IsEmpty()?Mainline.Num()-1:CheckpointIndices[0];
+ RouteTargetLocation=Mainline.IsValidIndex(RouteEndIndex)?Mainline[RouteEndIndex]:ExitLocation;
+ if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))Mode->bItemCollected=false;
+ for(TActorIterator<ABattleBike> It(GetWorld());It;++It){It->CheckpointTransform=InitialStartTransform;It->CheckpointName=TEXT("14th Street Gate");}
+ bReady=PlaceArtifact();RouteDelay=2;
+ UE_LOG(LogTemp,Display,TEXT("BattleQuest: death reset=%d ready=%d"),SearchResets,bReady);
+}
 bool ABattleQuest::ClipToCircle(FVector2D& A,FVector2D& B,float Radius){
  const FVector2D D=B-A;const double AA=D.SizeSquared();if(AA<.00001)return A.SizeSquared()<=Radius*Radius;
  const double BB=2*FVector2D::DotProduct(A,D),CC=A.SizeSquared()-Radius*Radius,Disc=BB*BB-4*AA*CC;
@@ -162,10 +183,10 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  for(FVector P:EnemyLocations){FVector2D D=Project(FVector2D(P));if(D.Size()<Radius-4)Circle(D,2.5f,FLinearColor::Red,2);}
  if(bReady){
   const FVector Target=bCollected?RouteTargetLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);
-  const float Pulse=.65f+.35f*FMath::Sin(Clock*(1+3*(1-FMath::Clamp(Distance/(RadarRange*4),0.f,1.f)))*2*PI);
+  const float Pulse=.65f+.35f*FMath::Sin(Clock*2*PI);
   const FLinearColor Gold(1,.5f+.3f*Pulse,.05f);
-  const FVector2D D=Project(FVector2D(Target));
-  if(bCollected?Distance<=RadarRange:ArtifactVisibleOnRadar(Pawn->GetActorLocation()))Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
+  const FVector2D D=bCollected?Project(FVector2D(Target)):CoarseDirection(FVector2D(Target-Pawn->GetActorLocation()))*Radius;
+  if(bCollected&&Distance<=RadarRange)Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
   else{const auto F=D.GetSafeNormal(),R=FVector2D(-F.Y,F.X);const auto Tip=F*(Radius-5);Line(Tip,Tip-F*10+R*6,Gold,3);Line(Tip,Tip-F*10-R*6,Gold,3);}
  }
  auto Compass=[&](const TCHAR* Label,FVector2D Offset){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),FLinearColor::White);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};

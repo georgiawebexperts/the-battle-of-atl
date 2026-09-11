@@ -1,5 +1,6 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattleQuest.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -20,6 +21,7 @@ float ABattleBike::ApplyRiderDamage(float Amount){
  if(Person&&Person->ParkedBike==this)Person->Health=RiderHealth;
  if(RiderHealth<=0){
   Deaths++;RespawnRemaining=2;
+  if(auto* Park=Cast<ABattleParkMode>(Mode))if(Park->Quest)Park->Quest->ResetAfterDeath();
   if(Mode){Mode->TimeRemaining=FMath::Max(0.f,Mode->TimeRemaining-10);if(Mode->TimeRemaining<=0)Mode->bRunEnded=true;}
   // Override an in-progress water/traffic recovery so it cannot teleport later.
   Ride->Recovery=0;Ride->Wipeout(TEXT("Wipeout | checkpoint -10 seconds"));

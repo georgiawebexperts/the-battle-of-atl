@@ -118,7 +118,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Mac playtest 034 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Mac playtest 035 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);
@@ -145,7 +145,7 @@ void ABattleMacController::RunDevelopmentAudit(){
  const bool Mounted=Bike&&Person&&Bike->Remount(Person)&&GetPawn()==Bike;
  auto* Quest=Mode?Mode->Quest.Get():nullptr;
  const bool QuestReady=Quest&&Quest->bReady&&Quest->Artifact&&Quest->CandidateCount>5&&Quest->RadarSegmentCount>100;
- const bool Radar=QuestReady&&Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation)&&!Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation+FVector(Quest->RadarRange+1,0,0));
+ const bool Radar=QuestReady&&!Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation)&&!Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation+FVector(Quest->RadarRange+1,0,0));
  bool Placement=false;
  if(QuestReady){
   FVector P=Quest->ArtifactLocation,Start=Quest->StartLocation,End=Quest->ExitLocation;P.Z=Start.Z=End.Z=0;

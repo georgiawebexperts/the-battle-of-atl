@@ -29,6 +29,11 @@ public:
  UPROPERTY(BlueprintReadOnly) TArray<FVector> RoutePoints;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float RadarRange=18000;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<AActor> Artifact;
+ void ResetAfterDeath();
+ FString SearchDirection(FVector Viewer) const;
+ static FVector2D CoarseDirection(FVector2D Delta);
+ FTransform InitialStartTransform;
+ int32 SearchResets=0;
  bool ArtifactVisibleOnRadar(FVector Viewer) const;
  void DrawRadar(AHUD* HUD,UCanvas* Canvas) const;
  static bool ClipToCircle(FVector2D& A,FVector2D& B,float Radius);
