@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleSpirit.h"
 #include "BattleHome.h"
 #include "BattleTutorial.h"
 #include "BattleFrisbee.h"
@@ -149,6 +150,7 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleParkFurniture>();
  GetWorld()->SpawnActor<ABattleSkatepark>(FVector(39000,74000,0),FRotator::ZeroRotator);
  GetWorld()->SpawnActor<ABattleHome>();
+ GetWorld()->SpawnActor<ABattleSpirit>();
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
@@ -241,3 +243,5 @@ void ABattleBike::UpdateLights(float Dt){
  if(Dark){LightOffDelay=1.5f;bLightsOn=true;}else if(LightOffDelay<=0)bLightsOn=false;
  Headlight->SetVisibility(bLightsOn);TailLight->SetVisibility(bLightsOn);
 }
+
+void ABattleBike::UnPossessed(){ABattleSpirit::CancelForRider(this);Super::UnPossessed();}

@@ -74,6 +74,7 @@ void ABattleMacController::PlayerTick(float Dt){
 #endif
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
 #endif
  if(bStarted&&!Menu.IsValid()&&!bOpeningSeen)if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->bTutorialActive)BeginOpening();

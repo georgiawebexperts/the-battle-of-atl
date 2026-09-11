@@ -16,6 +16,8 @@ public:
  void ToggleMenu();
  void TogglePracticeHelp();
 private:
+ void TickSpiritAudit(float Dt);
+ bool bSpiritAuditDone=false;
  TSharedPtr<SWidget> Menu;
  UPROPERTY() TObjectPtr<class ACameraActor> OpeningCamera;
  bool bOpeningActive=false,bOpeningSeen=false,bOpeningOldCameraMoveable=false;

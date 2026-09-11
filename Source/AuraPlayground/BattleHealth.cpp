@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleSpirit.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
 #include "Components/CapsuleComponent.h"
@@ -20,6 +21,7 @@ float ABattleBike::ApplyRiderDamage(float Amount){
  auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Person&&Person->ParkedBike==this)Person->Health=RiderHealth;
  if(RiderHealth<=0){
+  ABattleSpirit::CancelForRider(this);
   Deaths++;RespawnRemaining=2;
   if(auto* Park=Cast<ABattleParkMode>(Mode))if(Park->Quest)Park->Quest->ResetAfterDeath();
   if(Mode){Mode->TimeRemaining=FMath::Max(0.f,Mode->TimeRemaining-10);if(Mode->TimeRemaining<=0)Mode->bRunEnded=true;}

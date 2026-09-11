@@ -57,6 +57,7 @@ public:
  virtual void BeginPlay() override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  virtual void Tick(float Dt) override;
+ virtual void UnPossessed() override;
  void RefreshRiderPose();
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UBattleBikeMovement> Ride;
