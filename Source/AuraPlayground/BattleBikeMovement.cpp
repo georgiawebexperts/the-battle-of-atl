@@ -9,6 +9,7 @@ UBattleBikeMovement::UBattleBikeMovement(){
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
+ BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
  ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);BounceRemaining=FMath::Max(0.f,BounceRemaining-Dt);SlideRemaining=FMath::Max(0.f,SlideRemaining-Dt);
  if(Recovery>0){
   Recovery=FMath::Max(0.f,Recovery-Dt);Speed=0;
@@ -34,8 +35,9 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(Recovery>0){Velocity.X=Velocity.Y=0;return;}
  if(BounceRemaining>0){Velocity.X=BounceDirection.X*140;Velocity.Y=BounceDirection.Y*140;return;}
  static const float Caps[]={420,700,1000,1300,1600};static const float Accel[]={640,500,420,360,320};
- const float Cap=Caps[Gear-1]*(bGrass?.75f:1.f);
+ const float Cap=(BoostRemaining>0?1800.f:Caps[Gear-1])*(bGrass?.75f:1.f);
  const float Drag=Speed>0?22.f+Speed*.012f:0;
+ if(BoostRemaining>0&&Brake<=0)Speed=Cap;
  Speed=FMath::Clamp(Speed+(Pedal*Accel[Gear-1]-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
  const FVector Horizontal=FMath::VInterpTo(FVector(Velocity.X,Velocity.Y,0),Desired,Dt,SlideRemaining>0?2.3f:18.f);
@@ -43,7 +45,7 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(Pedal>0)Cadence+=Dt*FMath::Clamp(Speed/(Gear*100.f),.5f,2.f)*2*PI;
 }
 void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
- if(Recovery>0)return;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
+ if(Recovery>0)return;BoostRemaining=0;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
  ReturnLocation=LastSafeLocation;if(Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))ReturnLocation=Bike->FindPathReturn();
  Speed=0;StopMovementImmediately();
 }

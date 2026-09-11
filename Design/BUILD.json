@@ -1,8 +1,8 @@
 {
-  "build": 6,
-  "version": "0.6.0-dev",
+  "build": 7,
+  "version": "0.7.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "FPS bike handoff and pistol foundation: 14 live checks pass; V3 milestone 1 fun acceptance pending",
+  "milestone": "Bike pistol, shared shot effects and near-miss nitro; 11 action, 15 FPS and 14 terrain checks pass; full V3 milestone 1 acceptance pending",
   "author": "2026-09-10 [codex-maclaptop]"
 }

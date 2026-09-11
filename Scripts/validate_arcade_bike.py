@@ -1,7 +1,7 @@
 """Live V3 Character Movement handling checks; does not accept the full FPS milestone."""
 import unreal,json,pathlib,time,math,traceback
 root=pathlib.Path(unreal.Paths.project_dir());level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
-report={'status':'running','scope':'V3 arcade handling foundation; FPS, nitro, audio and milestone-1 fun acceptance remain pending.','cases':[]};stage=0;case_index=-1;case_start=0.;started=time.monotonic();bike=None;director=None;victim=None;rows=[];recovery_start=None;gear_step=0
+report={'status':'running','scope':'V3 terrain/handling foundation only; other gameplay is tested separately and full fun acceptance remains pending.','cases':[]};stage=0;case_index=-1;case_start=0.;started=time.monotonic();bike=None;director=None;victim=None;rows=[];recovery_start=None;gear_step=0
 cases=[('hill',( -1600,-2500,100),3.1,[]),('stairs',(-1700,-4500,100),3.2,[]),('roots',(-1500,-6500,100),2.3,[]),('asphalt',(-4000,0,100),2,[]),('grass',(-4000,9000,90),2,[]),('wall',(5000,0,100),2,[]),('sharp_turn',(-4000,4000,100),2,['Right']),('drift',(-4000,4000,100),1,['Right','SpaceBar'])]
 def tick(dt):
  global stage,case_index,case_start,bike,director,victim,rows,handle,recovery_start,gear_step

@@ -24,6 +24,7 @@ public:
  UPROPERTY(BlueprintReadOnly) FString RecoveryReason;
  UPROPERTY(BlueprintReadOnly) bool bGrass=false;
  UPROPERTY(BlueprintReadOnly) float SlideRemaining=0;
+ UPROPERTY(BlueprintReadOnly) float BoostRemaining=0;
  float Pedal=0,Steer=0,Brake=0,Cadence=0;
  FVector LastSafeLocation;
  void Wipeout(const FString& Reason,bool Water=false);
@@ -50,6 +51,17 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Handlebar;
  UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
+ UPROPERTY(BlueprintReadOnly) float Nitro=0;
+ UPROPERTY(BlueprintReadOnly) int32 NearMisses=0;
+ UPROPERTY(BlueprintReadOnly) int32 EnemyKills=0;
+ UPROPERTY(BlueprintReadOnly) int32 ShotsFired=0;
+ UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
+ UPROPERTY(BlueprintReadOnly) float PistolSpread=0;
+ UPROPERTY(BlueprintReadOnly) FVector LastShotEnd;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Pistol;
+ UFUNCTION(BlueprintCallable) bool FirePistol();
+ UFUNCTION(BlueprintCallable) bool Boost();
+ void AwardEnemyKill(){EnemyKills++;Nitro=FMath::Min(100.f,Nitro+25);}
  UPROPERTY(BlueprintReadOnly) bool bParked=false;
  UPROPERTY(BlueprintReadOnly) float RiderHealth=100;
  UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=12;
@@ -59,7 +71,12 @@ public:
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
  FVector FindPathReturn() const;
 private:
+ void StartBoost(){Boost();}
  void Interact(){Dismount();}
+ void UpdateNearMisses();
+ TMap<TWeakObjectPtr<AActor>,FVector2D> Passes;
+ TMap<TWeakObjectPtr<AActor>,float> RewardTimes;
+ float ShotCooldown=0,ReloadTimer=0,GunHold=0;
  void PoseRider(float Dt);
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;

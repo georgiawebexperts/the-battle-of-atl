@@ -8,6 +8,8 @@ class AURAPLAYGROUND_API ABattleRider : public APiedmontExplorer {
  GENERATED_BODY()
 public:
  ABattleRider();
+ virtual bool Fire() override;
+ UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
@@ -21,5 +23,6 @@ private:
  void ReloadPistol(){Reload();}
  void Interact(){MountBike();}
  void StartJump(){Jump();}void EndJump(){StopJumping();}
- float HurtCooldown=0;
+ float HurtCooldown=0,ShotCooldown=0,Kick=0;
+ FRotator GunRestRotation;
 };

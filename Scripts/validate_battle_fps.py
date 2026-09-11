@@ -43,6 +43,7 @@ def tick(dt):
    if not target:raise RuntimeError('Could not spawn pistol collision target')
    target.get_controller().stop_movement();target.get_component_by_class(unreal.CharacterMovementComponent).disable_movement();target.set_actor_tick_enabled(False);rider.aim_at_for_validation(target);next_stage()
   elif stage==8 and now-mark>.3:
+   mode.set_editor_property('run_ended',True);check('ended_run_blocks_pistol',not rider.fire());mode.set_editor_property('run_ended',False)
    check('pistol_hits_target',rider.fire() and target.get_editor_property('dead'));target.destroy_actor();rider.set_editor_property('health',63.0);rider.validation_key('E',True);next_stage()
   elif stage==9 and now-mark>.3:
    check('E_remount_restores_bike_possession',unreal.GameplayStatics.get_player_pawn(w,0)==bike and not bike.get_editor_property('parked'));bike.validation_key('E',False)

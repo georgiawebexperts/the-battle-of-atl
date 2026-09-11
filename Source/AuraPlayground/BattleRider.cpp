@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "BattleShot.h"
 #include "BattleBike.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -16,7 +17,7 @@ ABattleRider::ABattleRider(){
  Weapon->SetupAttachment(Camera);bWeaponDrawn=true;
 }
 void ABattleRider::BeginPlay(){
- Super::BeginPlay();Weapon->SetRelativeLocation(FVector(34,16,-17));Weapon->SetVisibility(true);
+ Super::BeginPlay();Weapon->SetRelativeLocation(FVector(34,16,-17));Weapon->SetVisibility(true);GunRestRotation=Weapon->GetRelativeRotation();
  if(IsValid(ParkedBike))GetCapsuleComponent()->IgnoreActorWhenMoving(ParkedBike,true);
 }
 void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
@@ -25,8 +26,10 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  I->BindKey(EKeys::SpaceBar,IE_Pressed,this,&ABattleRider::StartJump);I->BindKey(EKeys::SpaceBar,IE_Released,this,&ABattleRider::EndJump);
  I->BindKey(EKeys::R,IE_Pressed,this,&ABattleRider::ReloadPistol);
 }
-bool ABattleRider::CanUseWeapon() const{return Health>0&&!bSwimming&&GetController();}
+bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::Tick(float Dt){
+ ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
+ Weapon->SetRelativeLocation(FVector(34-4*Kick,16,-17-Kick));Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick,0,0));
  bWeaponDrawn=CanUseWeapon();
  if(auto* PC=Cast<APlayerController>(GetController())){
   GetCharacterMovement()->MaxWalkSpeed=PC->IsInputKeyDown(EKeys::LeftShift)?850:520;
@@ -58,7 +61,7 @@ bool ABattleBike::Dismount(){
  if(!Found)return false;
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
  auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation(),P);if(!Person)return false;
- Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false);
+ Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false);
  Person->ParkedBike=this;Person->Health=RiderHealth;Person->Ammo=PistolAmmo;Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
@@ -67,4 +70,11 @@ bool ABattleBike::Remount(ABattleRider* Person){
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleRemount),false,this);Q.AddIgnoredActor(Person);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))return false;
  RiderHealth=Person->Health;PistolAmmo=Person->Ammo;bParked=false;Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
+}
+
+bool ABattleRider::Fire(){
+ if(!CanUseWeapon()||!bWeaponDrawn||ShotCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
+ Ammo--;ShotsFired++;ShotCooldown=.22f;Kick=1;
+ const auto Shot=FireBattlePistol(this,Weapon,bAiming?.1f:.4f);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;
+ if(Shot.EnemyKilled&&IsValid(ParkedBike))ParkedBike->AwardEnemyKill();return true;
 }

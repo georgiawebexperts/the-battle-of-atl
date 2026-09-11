@@ -28,7 +28,7 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector LastShotEnd;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Weapon;
  UFUNCTION(BlueprintCallable) void ToggleWeapon();
- UFUNCTION(BlueprintCallable) bool Fire();
+ UFUNCTION(BlueprintCallable) virtual bool Fire();
  UFUNCTION(BlueprintCallable) void AimAtForValidation(AActor* Target);
  UFUNCTION(BlueprintCallable) void Reload();
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UPoseableMeshComponent> Body;
