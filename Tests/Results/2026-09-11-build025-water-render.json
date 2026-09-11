@@ -1,0 +1,74 @@
+{
+  "build": 25,
+  "normalization": {
+    "world_vertex_max_error_cm": 0.0,
+    "points": 131,
+    "previous_world_signed_area": 51362900.787012555,
+    "new_world_signed_area": 51362900.787012555,
+    "scale": [
+      1,
+      1,
+      1
+    ],
+    "map_saved": true
+  },
+  "saved_map_reopened_in_fresh_process": true,
+  "water_surface_visually_verified": true,
+  "visual_scope": "Static editor scene with diagnostic sunlight; no runtime appearance, input, audio or FPS acceptance.",
+  "manifest": {
+    "created_utc": "2026-09-11T09:02:06.518644+00:00",
+    "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+    "map_saved": false,
+    "capture": "static editor SceneCapture2D, diagnostic light override",
+    "texture_streaming": 0,
+    "warmup_frames_per_view": 12,
+    "persistent_capture_state": true,
+    "force_lod": -1,
+    "lights": [
+      {
+        "actor": "DirectionalLight",
+        "saved_intensity": 4.0,
+        "review_intensity": 40
+      }
+    ],
+    "images": [
+      {
+        "file": "gate-oblique.png",
+        "camera": [
+          -17400,
+          -5200,
+          600
+        ],
+        "target": [
+          -14000,
+          -5200,
+          100
+        ],
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "ab4befce114a200c75fa7a55407b2fe5f0c8bca428b3d3466359bf29d632ec30"
+      },
+      {
+        "file": "park-aerial.png",
+        "camera": [
+          -16000,
+          16000,
+          18000
+        ],
+        "target": [
+          -5000,
+          -2000,
+          -400
+        ],
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "85f06e5943a36a69b5c2d85a2fbb111c789d650236105e926403e02e29566d8a"
+      }
+    ],
+    "scope": "Static scene only. No game-mode spawning, HUD, input, audio or FPS acceptance."
+  }
+}

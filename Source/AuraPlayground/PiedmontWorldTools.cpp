@@ -18,6 +18,10 @@
 #include "Components/StaticMeshComponent.h"
 #include "WaterBodyActor.h"
 #include "WaterBodyComponent.h"
+#include "Commandlets/Commandlet.h"
+#include "WaterSubsystem.h"
+#include "WaterZoneActor.h"
+#include "WaterMeshComponent.h"
 #include "Engine/World.h"
 #endif
 void UPiedmontWorldTools::FinishEditorAssetLoading(){
@@ -172,5 +176,28 @@ bool UPiedmontWorldTools::FinishParkNavigationBuild(){
  World->MarkPackageDirty();return !IsParkNavigationBuilding();
 #else
  return false;
+#endif
+}
+
+void UPiedmontWorldTools::TickSceneReview(){
+#if WITH_EDITOR
+ if(IsRunningCommandlet() && GEditor){
+  if(UWorld* World=GEditor->GetEditorWorldContext().World()){
+   if(UWaterSubsystem* Water=World->GetSubsystem<UWaterSubsystem>())Water->Tick(1.f/60.f);
+   CommandletHelpers::TickEngine(World,1.0/60.0);
+  }
+ }
+#endif
+}
+
+void UPiedmontWorldTools::RebuildWaterZones(){
+#if WITH_EDITOR
+ if(UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr){
+  for(TActorIterator<AWaterZone> It(World);It;++It){
+   It->MarkForRebuild(EWaterZoneRebuildFlags::All);It->Update();
+   if(auto* Mesh=It->FindComponentByClass<UWaterMeshComponent>()){Mesh->MarkWaterMeshGridDirty();Mesh->Update();}
+   It->MarkPackageDirty();
+  }
+ }
 #endif
 }

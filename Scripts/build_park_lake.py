@@ -30,6 +30,8 @@ try:
  for i in range(len(ring)-1):spline.set_spline_point_type(i,unreal.SplinePointType.LINEAR,False)
  spline.set_closed_loop(True,True)
  component=lake.get_component_by_class(unreal.WaterBodyComponent);component.set_editor_property('affects_landscape',False)
+ # Separate hazard/shore actors own gameplay collision; use the spline for water tiles.
+ component.set_collision_enabled(unreal.CollisionEnabled.NO_COLLISION)
  component.set_water_material(unreal.load_asset('/Water/Materials/WaterSurface/Water_Material_Lake'))
  component.set_water_zone_override(zone)
  component.set_water_info_material(unreal.load_asset('/Water/Materials/WaterInfo/DrawWaterInfo'))

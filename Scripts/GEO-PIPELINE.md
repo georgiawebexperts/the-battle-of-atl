@@ -37,3 +37,10 @@ The structure uses shared cross-sections to avoid gaps at curved segment joins.
 `install_krog_route.py` imports the new terrain and source-reflected geometry,
 retains the old on-disk map until collision/navigation checks pass, and creates
 ordered `BattleKrog_0` through `_5` splines plus tunnel darkness volumes.
+
+
+2026-09-11 [codex-maclaptop]: WaterBodyLake is an exception to negative actor-scale
+reflection. Keep its scale positive and author the ESU world spline in positive
+(counterclockwise) order. The reflected actor hid the Water plugin surface.
+Scripts/normalize_lake_transform.py preserves all world vertices while fixing it.
+Do not reflect the saved lake a second time; WorldSettings conversion tag remains.

@@ -10,6 +10,10 @@ public:
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void FinishEditorAssetLoading();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
+ static void TickSceneReview();
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
+ static void RebuildWaterZones();
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static bool RefreshLandscapeCollision(ALandscape* Landscape);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
  static bool BuildParkNavigation(FVector Center,FVector Extent);

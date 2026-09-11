@@ -35,3 +35,38 @@ assuming a missing runtime asset. Foliage, landmark architecture and final world
 materials remain visibly unfinished. The diagnostic files in work/render-probe
 preserve exploratory attempts, all without map saves. Final image hashes and
 scope are recorded in Tests/Results/2026-09-11-static-render-review.json.
+
+## Lake render correction, build025
+
+2026-09-11 [codex-maclaptop]
+
+The reflected WaterBodyLake scale (1,-1,1) left the world-space shoreline
+clockwise. The normal material was invisible; a plain material on a temporary
+copy of the same mesh rendered the full lake. Rebuilding water alone, warming
+engine frames, and enabling persistent capture state did not resolve it.
+Normalizing the actor to positive scale and reversing its spline order restored
+water rendering with the original Water plugin materials. All 131 world-space
+vertices are identical (maximum error 0 cm). The terrain, island, hazard polygon,
+paths and bridges were not moved. Scripts/normalize_lake_transform.py is
+repeatable and saves only after checking the vertex positions.
+
+Static reviews now warm 12 engine frames per view, explicitly ticking the water
+subsystem, and preserve the capture view state. TickSceneReview is commandlet-only
+and editor-only. These captures still do not establish actual gameplay input,
+audio or frame rate. The map remains visibly unfinished in foliage and landmarks.
+
+The first normalized save still rendered only part of the lake after reopening.
+A fresh water-body rebuild restored coverage; rebuilding the water zone alone did
+not. WaterMeshComponent.cpp reuses the lake physics hull vertices for tile
+polygons, assuming bottom vertices then top vertices. Disabling the redundant
+WaterBody collision makes it use the shoreline spline instead. The separate
+PiedmontWaterHazard and hidden solid shore still implement V3 recovery. Underwater
+Water plugin post-processing/buoyancy overlaps are no longer supplied by this
+lake; V3 uses timed bike recovery, not an underwater swimming mode.
+
+Final fresh-process review after saving the spline-tile setup shows full lake
+coverage, the exposed island, and the crossing bridges. The verified image is
+work/water-review/final-spline-aerial.png and the manifest/hash is recorded in
+Tests/Results/2026-09-11-build025-water-render.json. Use unique image filenames
+when reviewing successive revisions so the image viewer cannot reuse a prior
+path's preview.
