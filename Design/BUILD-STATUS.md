@@ -590,3 +590,20 @@ render is a possible next approach to obtain useful art evidence while locked.
 Meadow frisbee-player ammunition, remaining park-life/enemy groups, full world
 art/audio, Cabbagetown/home/win/results/saves and shipping/performance requirements
 remain. Full V3 goal stays active. See Design/FRISBEE-LAUNCHER.md.
+
+## Static visual review unlocked (2026-09-11, app remains build024)
+
+Added Scripts/render_park_review.sh/.py: editor SceneCapture2D renders actual
+Metal images while the desktop is locked. NoTextureStreaming fixes a misleading
+capture artifact that made paths appear buried by coarse landscape heightmaps.
+RCWebControlDisable prevents an external Aura client from generating unrelated
+remote-call errors during the commandlet. Final wrapper exits0 and exports two
+1280×720 PNGs; both were inspected. A separate 2,926-sample terrain-only clearance
+check found no buried pavement centroid. No map, game assets or installed app
+changed. Tests/Results/2026-09-11-static-render-review.json records the evidence.
+
+This is a static editor scene with temporary sunlight40 (saved value4), without
+GameMode spawning or HUD. It is not native gameplay/physical input/audio/FPS
+acceptance. Water is not visible in these captures and needs diagnosis; foliage,
+landmarks, materials and other full V3 work remain. Full goal stays active. See
+Design/STATIC-SCENE-REVIEW.md. User-facing previews are in the task outputs folder.
