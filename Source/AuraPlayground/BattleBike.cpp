@@ -2,6 +2,7 @@
 #include "BattleMacController.h"
 #include "BattleQuest.h"
 #include "BattleZombie.h"
+#include "BattlePickup.h"
 #include "BattleRideFX.h"
 #include "Components/AudioComponent.h"
 #include "PiedmontDarkZone.h"
@@ -138,6 +139,7 @@ void ABattleParkMode::StartPlay(){
  }
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
+ Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
 }
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
@@ -161,6 +163,7 @@ void ABattleLabHUD::DrawHUD(){
  auto* Foot=Cast<ABattleRider>(GetOwningPawn());auto* HealthBike=Bike?Bike:(Foot?Foot->ParkedBike.Get():nullptr);
  if(HealthBike){
   const float Y=Canvas->SizeY-90;
+  if(HealthBike->PickupNoticeRemaining>0)DrawText(FString::Printf(TEXT("Coca-Cola +%.0f HP"),HealthBike->LastHealAmount),FColor::Green,35,Y-50,nullptr,1.1);
   DrawText(FString::Printf(TEXT("HEALTH %.0f"),HealthBike->RiderHealth),FColor::White,35,Y-22,nullptr,1.1);
   DrawRect(FLinearColor(.02,.02,.02,.9),35,Y,204,16);
   DrawRect(HealthBike->RiderHealth<25?FLinearColor(1,.1,.08):FLinearColor(.1,.85,.3),37,Y+2,FMath::Clamp(HealthBike->RiderHealth,0.f,100.f)*2,12);

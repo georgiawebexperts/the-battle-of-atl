@@ -451,3 +451,39 @@ unverified. Full V3 remains unfinished: other enemies/vehicles/weapons/crates,
 Coke pickups, world/foliage/life/landmarks, Cabbagetown/home/results/saves and final
 presentation/World Partition/shipping acceptance still require work. Goal stays
 active.
+
+
+## Build021 — 0.21.0-dev — 2026-09-11 [codex-maclaptop]
+
+Added the V3 Coca-Cola health pickups. Difficulty rows now tune18/12/8cans and
+35health per can. Layout checks actual path/gravel/bridge collision, clearance,
+water exclusion and complete navigation from the start. Both checkpoints are
+prioritized, with the remaining supply divided between park and trail. Counts
+are12park+6trail on Easy,8+4on Medium and6+2on Hard. Supplies are finite per run.
+Cans bob/rotate with red material, lettering/glow and an original generated
+opening/fizz sound. Artwork, readability and audio quality await rendered review.
+
+Collection works for the controlled bike or FPS rider within150cm with line of
+sight. It heals shared health, caps at100and preserves the regeneration cooldown.
+Full-health players leave cans available. Empty parked bikes, distant/dead
+players and paused/countdown/ended runs cannot collect. Successful collection
+is single-use, increments a statistic and displays a brief HUD heal notice.
+See Design/COLA-PICKUPS.md for source, placement rules and test scope.
+
+The cooked pickup audit passes all three actual layouts against source CSV
+counts, including supplies at both checkpoints, bike/FPS automatic healing,
+capped health, full-health preservation, duplicate protection, wall occlusion,
+unoccupied-bike exclusion and dead-player guards. It uses controlled damage,
+teleport and wall fixtures; it does not prove physical driving/aiming feel or
+rendering. Existing health/checkpoint and all three difficulty/quest/possession/
+pause/timeout regressions also pass. Dedicated earlier fixtures suppress pickups
+to retain their intended scope; the pickup test leaves its actual layout active.
+Evidence: Tests/Results/2026-09-11-native-cola-pickups.json,
+build021-native-health.json and build021-native-quest.json (same date prefix).
+
+Game/Editor compilation and packaging pass. Installed complete locally signed
+native0.21.0 behind the desktop icon, preserving020under Previous. The Mac is
+still locked on a fresh CUA check. Full V3 remains incomplete: weapons/crates,
+other enemies/vehicles, spoken dialogue and full audio, world/foliage/park life/
+landmarks, Cabbagetown/home/results/saves/outfits and final performance/World
+Partition/shipping acceptance remain required. Goal stays active.

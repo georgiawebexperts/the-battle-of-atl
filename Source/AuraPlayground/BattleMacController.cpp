@@ -41,6 +41,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieAudit")))TickZombieAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombiePopulationAudit")))TickZombiePopulationAudit(Dt);
 #endif

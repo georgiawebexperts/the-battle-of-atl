@@ -5,7 +5,7 @@
 #include "PiedmontBike.h"
 #include "BattleDifficulty.h"
 #include "BattleBike.generated.h"
-class ABattleQuest;class ABattleEnemyDirector;
+class ABattleQuest;class ABattleEnemyDirector;class ABattlePickupDirector;
 class ABattleRideFX;class UAudioComponent;
 class USpotLightComponent;class UPointLightComponent;
 class ABattleRider;
@@ -91,6 +91,10 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 Deaths=0;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  float ApplyRiderDamage(float Amount);
+ UFUNCTION(BlueprintCallable) float RestoreRiderHealth(float Amount);
+ UPROPERTY(BlueprintReadOnly) int32 HealthPickups=0;
+ UPROPERTY(BlueprintReadOnly) float PickupNoticeRemaining=0;
+ UPROPERTY(BlueprintReadOnly) float LastHealAmount=0;
  void UpdateHealth(float Dt);
  bool RecoverAtCheckpoint();
  UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=12;
@@ -145,5 +149,6 @@ public:
  UPROPERTY(BlueprintReadOnly) FBattleDifficultyRow Difficulty;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleQuest> Quest;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleEnemyDirector> Enemies;
+ UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattlePickupDirector> Pickups;
 
 };

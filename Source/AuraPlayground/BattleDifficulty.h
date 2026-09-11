@@ -40,5 +40,7 @@ struct AURAPLAYGROUND_API FBattleDifficultyRow : public FTableRowBase {
  UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 KnifeBehavior=0;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float KnifeSpeed=0;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 WeaponCrates=20;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 HealthPickups=18;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float ColaHealAmount=35;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float RadarRange=18000;
 };

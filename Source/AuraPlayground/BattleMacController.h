@@ -20,6 +20,10 @@ private:
  void TickConnectorAudit(float Dt);
  void TickGeographyAudit(float Dt);
  void TickHealthAudit(float Dt);
+ void TickPickupAudit(float Dt);
+ int32 PickupPhase=0;
+ float PickupAuditClock=0;
+ TWeakObjectPtr<AActor> PickupAuditTarget,PickupAuditWall;
  void TickZombieAudit(float Dt);
  void TickZombiePopulationAudit(float Dt);
  int32 ZombiePhase=0,ZombieShots=0;

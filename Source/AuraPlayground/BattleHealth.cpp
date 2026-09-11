@@ -28,7 +28,15 @@ float ABattleBike::ApplyRiderDamage(float Amount){
  }
  return Applied;
 }
+float ABattleBike::RestoreRiderHealth(float Amount){
+ const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
+ if(!FMath::IsFinite(Amount)||Amount<=0||RiderHealth<=0||RiderHealth>=100||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this)||(Mode&&(Mode->StartCountdown>0||Mode->bRunEnded)))return 0;
+ const float Applied=FMath::Min(100-RiderHealth,Amount);RiderHealth+=Applied;
+ if(auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0)))if(Person->ParkedBike==this)Person->Health=RiderHealth;
+ return Applied;
+}
 void ABattleBike::UpdateHealth(float Dt){
+ PickupNoticeRemaining=FMath::Max(0.f,PickupNoticeRemaining-Dt);
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
  if(Mode&&(Mode->StartCountdown>0||Mode->bRunEnded))return;
  if(RespawnRemaining>0){

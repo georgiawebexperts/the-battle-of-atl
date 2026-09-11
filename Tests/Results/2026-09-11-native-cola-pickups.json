@@ -1,0 +1,42 @@
+{
+  "profiles": [
+    {
+      "passed": true,
+      "difficulty": "Easy",
+      "phase": 7,
+      "reason": "Layout, checkpoints, bike/FPS healing, cap, walls, duplicate and death guards pass",
+      "spawned": 18,
+      "park": 12,
+      "trail": 6,
+      "collected": 4,
+      "exit_code": 0,
+      "expected_pickups": 18
+    },
+    {
+      "passed": true,
+      "difficulty": "Medium",
+      "phase": 7,
+      "reason": "Layout, checkpoints, bike/FPS healing, cap, walls, duplicate and death guards pass",
+      "spawned": 12,
+      "park": 8,
+      "trail": 4,
+      "collected": 4,
+      "exit_code": 0,
+      "expected_pickups": 12
+    },
+    {
+      "passed": true,
+      "difficulty": "Hard",
+      "phase": 7,
+      "reason": "Layout, checkpoints, bike/FPS healing, cap, walls, duplicate and death guards pass",
+      "spawned": 8,
+      "park": 6,
+      "trail": 2,
+      "collected": 4,
+      "exit_code": 0,
+      "expected_pickups": 8
+    }
+  ],
+  "all_passed": true,
+  "scope": "Actual layouts and tick-driven collection, controlled damage/position/occlusion fixtures. Visual and audio acceptance pending."
+}
