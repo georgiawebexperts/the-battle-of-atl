@@ -1,5 +1,7 @@
 #include "BattleBike.h"
 #include "BattleSpirit.h"
+#include "BattleSpiritData.h"
+#include "BattleMemorial.h"
 #include "BattleHome.h"
 #include "BattleTutorial.h"
 #include "BattleFrisbee.h"
@@ -151,6 +153,7 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleSkatepark>(FVector(39000,74000,0),FRotator::ZeroRotator);
  GetWorld()->SpawnActor<ABattleHome>();
  GetWorld()->SpawnActor<ABattleSpirit>();
+ GetWorld()->SpawnActor<ABattleMemorial>(BattleSpiritData::Memorial,FRotator(0,BattleSpiritData::MemorialYaw,0));
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();

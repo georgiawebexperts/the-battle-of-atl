@@ -11,6 +11,7 @@ class AURAPLAYGROUND_API ABattleSpirit : public AActor {
  GENERATED_BODY()
 public:
  ABattleSpirit();
+ virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  bool TryApproach(float EligibilityRoll);
  bool TryCatch();

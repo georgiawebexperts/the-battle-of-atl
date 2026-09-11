@@ -1,0 +1,31 @@
+{
+  "author": "2026-09-11 [codex-maclaptop]",
+  "license": "Original project geometry",
+  "parts": {
+    "Stems": {
+      "vertices": 2223,
+      "triangles": 3328
+    },
+    "Petals": {
+      "vertices": 6930,
+      "triangles": 10692
+    },
+    "Lavender": {
+      "vertices": 3080,
+      "triangles": 4752
+    },
+    "Centers": {
+      "vertices": 6084,
+      "triangles": 8944
+    },
+    "Stone": {
+      "vertices": 697,
+      "triangles": 1280
+    },
+    "Ribbon": {
+      "vertices": 204,
+      "triangles": 288
+    }
+  },
+  "route": "Fictional small flower arrangement beside trail 66 real metres before checkpoint; not a surveyed site"
+}

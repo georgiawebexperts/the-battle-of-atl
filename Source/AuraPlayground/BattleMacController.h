@@ -17,6 +17,9 @@ public:
  void TogglePracticeHelp();
 private:
  void TickSpiritAudit(float Dt);
+ void TickMemorialReview(float Dt);
+ int MemorialReviewStage=0;float MemorialReviewClock=0;
+ UPROPERTY() TObjectPtr<class ACameraActor> MemorialReviewCamera;
  bool bSpiritAuditDone=false;
  TSharedPtr<SWidget> Menu;
  UPROPERTY() TObjectPtr<class ACameraActor> OpeningCamera;

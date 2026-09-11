@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
 #include "BattleHomeData.h"
+#include "BattleSpiritData.h"
 #include "PiedmontPathSpline.h"
 #include "Components/SplineComponent.h"
 #include "EngineUtils.h"
@@ -17,7 +18,8 @@
 // the entire crossing is traversed through ordinary keyboard input and movement.
 void ABattleMacController::TickConnectorAudit(float Dt){
 #if !UE_BUILD_SHIPPING
- const bool Home=FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"));
+ const bool Spirit=FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"));
+ const bool Home=Spirit||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"));
  const bool Krog=FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit"));
  const bool Eastside=Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
@@ -32,7 +34,8 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);
  };
  if(ConnectorPoints.IsEmpty()){
-  if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);
+  if(Spirit){for(const FVector& P:BattleSpiritData::Ride)ConnectorPoints.Add(P);}
+  else if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);
   for(int32 Part=0;!Home&&Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
    for(int32 I=0;I<It->Centerline->GetNumberOfSplinePoints();I++){
     const FVector P=It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);

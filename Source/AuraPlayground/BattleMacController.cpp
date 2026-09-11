@@ -48,7 +48,7 @@ void ABattleMacController::BeginPlay(){
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
 #if !UE_BUILD_SHIPPING
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
@@ -75,6 +75,7 @@ void ABattleMacController::PlayerTick(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
 #endif
  if(bStarted&&!Menu.IsValid()&&!bOpeningSeen)if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->bTutorialActive)BeginOpening();

@@ -1,4 +1,5 @@
 #include "BattleSpirit.h"
+#include "BattleSpiritData.h"
 #include "BattleBike.h"
 #include "PiedmontBike.h"
 #include "Components/SceneComponent.h"
@@ -68,3 +69,5 @@ void ABattleSpirit::Tick(float Dt){
   TryCatch();
  }
 }
+
+void ABattleSpirit::BeginPlay(){Super::BeginPlay();ApproachPoint=BattleSpiritData::Approach;for(const FVector& P:BattleSpiritData::Chase)ChaseRoute.Add(P);}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 6055.32,
+  "maxCenterlineErrorCm": 20.33,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "ground_samples": {
+    "total": 590,
+    "paved": 590
+  },
+  "scope": "Both directions past memorial using W/A/D and CharacterMovement; no bear chase or crowds acceptance."
+}
