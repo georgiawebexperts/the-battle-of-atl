@@ -1,0 +1,8 @@
+{
+  "build": 4,
+  "version": "0.4.0-dev",
+  "name": "BATTLE FOR THE A",
+  "target": "macOS native .app",
+  "milestone": "Walker/jogger groundwork and V3 specification transition; V3 milestone 1 not accepted",
+  "author": "2026-09-10 [codex-maclaptop]"
+}

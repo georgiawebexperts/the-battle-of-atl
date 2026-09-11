@@ -1,6 +1,7 @@
 #include "PiedmontBike.h"
 #include "PiedmontExplorer.h"
 #include "PiedmontThreat.h"
+#include "PiedmontTrafficDirector.h"
 #include "PiedmontPathSpline.h"
 #include "Kismet/GameplayStatics.h"
 #include "EngineUtils.h"
@@ -14,7 +15,10 @@
 #include "Materials/MaterialInterface.h"
 #include "NavigationSystem.h"
 #include "NavigationPath.h"
-void APiedmontRideMode::StartPlay(){Super::StartPlay();}
+void APiedmontRideMode::StartPlay(){
+ Super::StartPlay();
+ if(TActorIterator<APiedmontPathSpline>(GetWorld()))GetWorld()->SpawnActor<APiedmontTrafficDirector>();
+}
 void APiedmontRideMode::Tick(float Dt){
  Super::Tick(Dt);auto* PC=UGameplayStatics::GetPlayerController(this,0);if(!PC)return;
  if(!bAnchored){

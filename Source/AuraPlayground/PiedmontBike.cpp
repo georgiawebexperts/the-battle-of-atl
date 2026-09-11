@@ -1,5 +1,6 @@
 #include "PiedmontBike.h"
 #include "PiedmontExplorer.h"
+#include "PiedmontPedestrian.h"
 #include "PiedmontCombat.h"
 #include "PiedmontBlood.h"
 #include "PiedmontDarkZone.h"
@@ -145,6 +146,11 @@ void UPiedmontBikeMovement::Step(float Dt){
  if(Hit.IsValidBlockingHit()){
   const bool Water=Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideWater"));
   if(Water){Crash(TEXT("Water — shoreline recovery"));return;}
+  if(auto* Visitor=Cast<APiedmontPedestrian>(Hit.GetActor())){
+   Visitor->BikeImpact(Speed,NewForward);
+   if(Speed>330){Crash(TEXT("Collision with park traffic"));return;}
+   Speed*=.4f;SlideAlongSurface(Travel,1-Hit.Time,Hit.Normal,Hit,true);return;
+  }
   if(Hit.ImpactNormal.Z<.45){
    // A small curb or ramp lip is climbable, including a descending landing.
    // The swept up/over moves still reject walls and steps taller than 24 cm.
@@ -285,7 +291,7 @@ void APiedmontRideHUD::DrawHUD(){
  if(!Canvas||!Bike)return;auto* M=Bike->Ride.Get();
  float S=Canvas->SizeX/1280.f;auto Text=[&](FString T,float X,float Y,FColor C,float Size){DrawText(T,C,X*S,Y*S,nullptr,Size*S);};
  DrawRect(FLinearColor(.015,.027,.036,.88),24*S,24*S,640*S,96*S);
- Text(TEXT("PIEDMONT RIDE / DEVELOPMENT  •  BUILD 0.3.0"),40,37,FColor::White,1.65);
+ Text(TEXT("BATTLE FOR THE A / V3 TRANSITION  •  BUILD 0.4.0"),40,37,FColor::White,1.65);
  Text(TEXT("W pedal   ↑ / ↓ gears   ← / → or A / D steer   SPACE brake"),40,72,FColor(193,219,220),1.25);
  Text(TEXT("TAB camera   E bike   H horn   R recover   ESC stop"),40,95,FColor(193,219,220),1.05);
  float Y=Canvas->SizeY/S-140;
@@ -388,6 +394,7 @@ void APiedmontBike::Horn(){
  if(!GetController()||bDismounted||HornCooldown>0)return;
  if(auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)return;
  HornCooldown=.65f;HornCount++;
+ for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->HearHorn(this);
  if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/PiedmontRide/Audio/S_Horn.S_Horn"),nullptr,LOAD_NoWarn))UGameplayStatics::PlaySoundAtLocation(this,Sound,GetActorLocation());
 }
 void APiedmontBike::UpdateLights(float Dt){
