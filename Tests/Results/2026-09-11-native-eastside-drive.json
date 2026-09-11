@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 206903.69,
+  "maxCenterlineErrorCm": 48.59,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 12401,
+    "paved": 12401
+  },
+  "exit_code": 0,
+  "scope": "Full Monroe-to-Irwin trail, both directions using real W/A/D input and CharacterMovement; crowds disabled to isolate terrain/decks; appearance unverified."
+}

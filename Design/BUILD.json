@@ -1,8 +1,8 @@
 {
-  "build": 16,
-  "version": "0.16.0-dev",
+  "build": 17,
+  "version": "0.17.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Correct Unreal geographic orientation across park terrain, paths, bridges, water and radar; saved-map collision, native water return, connector and quest checks pass; full V3 remains unfinished",
+  "milestone": "Sourced 3.1 km Eastside Trail through three bridge crossings to Irwin, canonical gold return route and full two-way native ride pass; tunnel, Cabbagetown and full V3 remain unfinished",
   "author": "2026-09-11 [codex-maclaptop]"
 }

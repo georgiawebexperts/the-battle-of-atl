@@ -17,6 +17,8 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bCollected=false;
  UPROPERTY(BlueprintReadOnly) FVector ArtifactLocation;
  UPROPERTY(BlueprintReadOnly) FVector ExitLocation;
+ UPROPERTY(BlueprintReadOnly) FVector RouteTargetLocation;
+ UPROPERTY(BlueprintReadOnly) int32 EastsideRoutePointCount=0;
  UPROPERTY(BlueprintReadOnly) FVector StartLocation;
  UPROPERTY(BlueprintReadOnly) FString ArtifactWay;
  UPROPERTY(BlueprintReadOnly) int32 CandidateCount=0;
@@ -33,4 +35,5 @@ private:
  float Clock=0,RouteDelay=0,EnemyDelay=0;
  TArray<TPair<FVector2D,FVector2D>> Segments;
  TArray<FVector> EnemyLocations;
+ TArray<FVector> Mainline;
 };

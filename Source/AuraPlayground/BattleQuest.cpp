@@ -32,6 +32,14 @@ void ABattleQuest::BeginPlay(){
   auto* S=It->Centerline.Get();const float Length=S->GetSplineLength();
   for(float D=0;D<Length;D+=700)Segments.Add({FVector2D(S->GetLocationAtDistanceAlongSpline(D,ESplineCoordinateSpace::World)),FVector2D(S->GetLocationAtDistanceAlongSpline(FMath::Min(D+700,Length),ESplineCoordinateSpace::World))});
  }
+ // Ordered sourced mainline, kept separate from Artifact's park-exit exclusion.
+ for(int32 Part=0;Part<8;Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("BattleEastside_%d"),Part)))){
+  auto* S=It->Centerline.Get();for(int32 I=0;I<S->GetNumberOfSplinePoints();I++){
+   const FVector P=S->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);
+   if(Mainline.IsEmpty()||!Mainline.Last().Equals(P,1))Mainline.Add(P);
+  }
+ }
+ EastsideRoutePointCount=Mainline.Num();RouteTargetLocation=Mainline.IsEmpty()?ExitLocation:Mainline.Last();
  RadarSegmentCount=Segments.Num();
  bReady=PlaceArtifact();
  UE_LOG(LogTemp,Display,TEXT("BattleQuest: ready=%d candidates=%d way=%s segments=%d location=%s"),bReady,CandidateCount,*ArtifactWay,RadarSegmentCount,*ArtifactLocation.ToString());
@@ -77,8 +85,20 @@ bool ABattleQuest::PlaceArtifact(){
 }
 void ABattleQuest::RefreshRoute(){
  RoutePoints.Reset();auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
- auto* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),ExitLocation,Pawn);
- if(Path&&Path->IsValid()&&!Path->IsPartial())RoutePoints=Path->PathPoints;
+ FVector Join=ExitLocation;int32 Next=0;float Best=TNumericLimits<float>::Max();
+ if(Mainline.Num()>1)for(int32 I=0;I<Mainline.Num()-1;I++){
+  const FVector2D A(Mainline[I]),B(Mainline[I+1]),P(Pawn->GetActorLocation());
+  const FVector2D D=B-A;const float T=D.SizeSquared()>0?FMath::Clamp(FVector2D::DotProduct(P-A,D)/D.SizeSquared(),0.,1.):0;
+  const FVector Q=FMath::Lerp(Mainline[I],Mainline[I+1],T);const float Distance=FVector::DistSquared2D(Pawn->GetActorLocation(),Q);
+  if(Distance<Best){Best=Distance;Join=Q;Next=I+1;}
+ }
+ auto* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Join,Pawn);
+ if(Path&&Path->IsValid()&&!Path->IsPartial()){
+  RoutePoints=Path->PathPoints;
+  // Once joined, follow the actual trail and bridges instead of cutting across
+  // bare ground along a navigation shortcut. Krog/home will extend this route.
+  for(int32 I=Next;I<Mainline.Num();I++)RoutePoints.Add(Mainline[I]);
+ }
 }
 void ABattleQuest::Tick(float Dt){
  Super::Tick(Dt);Clock+=Dt;
@@ -127,7 +147,7 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!Pawn->IsA<ABattleBike>())for(TActorIterator<ABattleBike> It(GetWorld());It;++It)if(It->bParked){const FVector2D B=Project(FVector2D(It->GetActorLocation())).GetClampedToMaxSize(Radius-9);HUD->DrawText(TEXT("B"),FColor::Cyan,Center.X+B.X-4,Center.Y+B.Y-6,nullptr,.9f);}
  for(FVector P:EnemyLocations){FVector2D D=Project(FVector2D(P));if(D.Size()<Radius-4)Circle(D,2.5f,FLinearColor::Red,2);}
  if(bReady){
-  const FVector Target=bCollected?ExitLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);
+  const FVector Target=bCollected?RouteTargetLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);
   const float Pulse=.65f+.35f*FMath::Sin(Clock*(1+3*(1-FMath::Clamp(Distance/(RadarRange*4),0.f,1.f)))*2*PI);
   const FLinearColor Gold(1,.5f+.3f*Pulse,.05f);
   const FVector2D D=Project(FVector2D(Target));
@@ -138,5 +158,5 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  HUD->DrawText(TEXT("S"),FColor::White,Center.X-4,Center.Y+Radius+3,nullptr,.9);
  HUD->DrawText(TEXT("W"),FColor::White,Center.X-Radius-16,Center.Y-7,nullptr,.9);
  HUD->DrawText(TEXT("E"),FColor::White,Center.X+Radius+7,Center.Y-7,nullptr,.9);
- HUD->DrawText(!bReady?TEXT("Artifact unavailable"):(bCollected?TEXT("Get home | toward BeltLine"):TEXT("Find the Artifact")),FColor(255,205,95),35,218,nullptr,1.4);
+ HUD->DrawText(!bReady?TEXT("Artifact unavailable"):(bCollected?TEXT("Get home | south toward Irwin"):TEXT("Find the Artifact")),FColor(255,205,95),35,218,nullptr,1.4);
 }

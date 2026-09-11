@@ -18,3 +18,10 @@ Official Conservancy entrance map: https://piedmontpark.org/maps/?location=19 an
 ## Monroe connector / Eastside source — 2026-09-11 [codex-maclaptop]
 
 The connector follows shared OSM nodes on Northeast Trail way 182302109 and crossing way 1396654821 to node 2396740017 on Eastside way 741964053. The retained broader snapshot eastside-krog-corridor-osm.json covers south 33.751, west -84.371, north 33.783, east -84.359. Attribution: © OpenStreetMap contributors, ODbL. Official Eastside access reference: https://beltline.org/parks-trails/eastside-trail/ ; Northeast endpoint: https://beltline.org/parks-trails/northeast-trail/ . Trail width and pavement lift are authored arcade values. These sources establish alignment/access, not architectural/photo fidelity.
+
+
+## Monroe–Irwin mainline — 2026-09-11 [codex-maclaptop]
+
+The retained Eastside snapshot supplies a continuous 3107.894 real-metre node-connected route from node2396740017 at Monroe to node6016404357 at Irwin, through ways741964053,83291379,83291378,83294497,83294499,83291376,83291377,742982445. This is the current game extension, not the complete tunnel/Cabbagetown route. © OpenStreetMap contributors, ODbL. Official access sequence: https://beltline.org/parks-trails/eastside-trail/ .
+
+Bridges83291379/83294497/83291376 use authored grades between USGS bare-earth embankment samples12 real metres beyond their mapped ends. These restore crossings above the road dips in the DEM; no bridge-survey accuracy is claimed. Arcade trail width320 game cm and guardrails104 game cm high are authored gameplay dimensions. Architecture/reference-photo matching remains pending.

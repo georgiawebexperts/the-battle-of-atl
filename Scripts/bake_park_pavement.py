@@ -12,13 +12,15 @@ import shapely, mapbox_earcut
 from shapely.geometry import LineString, Polygon
 from shapely.ops import unary_union
 import argparse
-parser=argparse.ArgumentParser();parser.add_argument('--plazas',action='store_true');parser.add_argument('--network',default='park-path-network.json');parser.add_argument('--output-dir');parser.add_argument('--prefix');parser.add_argument('--subtract-park',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--plazas',action='store_true');parser.add_argument('--network',default='park-path-network.json');parser.add_argument('--output-dir');parser.add_argument('--prefix');parser.add_argument('--subtract-park',action='store_true');parser.add_argument('--include-bridges',action='store_true');parser.add_argument('--height-profiles');parser.add_argument('--subtract-network',action='append',default=[]);args=parser.parse_args()
 P=Path(__file__).resolve().parents[1]; O=P/'SourceAssets/Terrain'; plazas=args.plazas; OUT=O/(args.output_dir or ('ParkPlazas' if plazas else 'ParkPavement'));OUT.mkdir(exist_ok=True)
 m=json.loads((O/'terrain-georeference.json').read_text()); d=json.loads((O/args.network).read_text())
+from route_height_profiles import RouteHeightProfiles
+height_profiles=RouteHeightProfiles(O/args.height_profiles) if args.height_profiles else None
 nx,ny=m['size']; raw=np.fromfile(O/'atlanta-height.r16',dtype='<u2').reshape(ny,nx)
 loc=np.array(m['unreal_location_cm']); scale=np.array(m['unreal_scale']); groups=collections.defaultdict(list); deferred=[]
 for p in d['paths']:
- if p['tags'].get('bridge')=='yes':deferred.append(p['osm_id']);continue
+ if p['tags'].get('bridge')=='yes' and not args.include_bridges:deferred.append(p['osm_id']);continue
  surface=p['tags'].get('surface','asphalt')
  material='Concrete' if surface in ['concrete','paving_stones'] else 'Gravel' if surface in ['gravel','fine_gravel','compacted','dirt','ground'] else 'Asphalt'
  points=[((v[0]-loc[0])/scale[0],(v[1]-loc[1])/scale[1]) for v in p['points_cm']]
@@ -40,10 +42,21 @@ if plazas:
   poly=transform(lambda x,y:(((np.array(x)-ox)*100/3-loc[0])/scale[0],((np.array(y)-oy)*100/3-loc[1])/scale[1]),poly)
   groups['Concrete'].append(poly.difference(paths_footprint));plaza_ids.append(element['id'])
  deferred=[]
+def triangle_parts(v,n):
+ a,b,c=map(np.array,v)
+ def at(i,j):return a+(b-a)*i/n+(c-a)*j/n
+ for i in range(n):
+  for j in range(n-i):
+   yield [at(i,j),at(i+1,j),at(i,j+1)]
+   if i+j<n-1:yield [at(i+1,j),at(i+1,j+1),at(i,j+1)]
 used=Polygon()
 if args.subtract_park:
  original=json.loads((O/'park-path-network.json').read_text())
  used=unary_union([LineString([((v[0]-loc[0])/scale[0],(v[1]-loc[1])/scale[1]) for v in p['points_cm']]).buffer(p['width_game_cm']/scale[0]/2,quad_segs=4) for p in original['paths']])
+for network_file in args.subtract_network:
+ original=json.loads((O/network_file).read_text())
+ footprint=unary_union([LineString([((v[0]-loc[0])/scale[0],(v[1]-loc[1])/scale[1]) for v in p['points_cm']]).buffer(p['width_game_cm']/scale[0]/2,quad_segs=4) for p in original['paths']])
+ used=used.union(footprint)
 manifest=[]; area_error=[];allfaces=0
 for material in ['Concrete','Asphalt','Gravel']:
  footprint=unary_union(groups[material]).difference(used);used=used.union(footprint)
@@ -75,23 +88,31 @@ for material in ['Concrete','Asphalt','Gravel']:
      total_area+=face.area;indices=[]
      v=list(face.exterior.coords)[:3]
      if not face.exterior.is_ccw:v.reverse()
-     for x,y in v:
-      wz=float(plane[0]*x+plane[1]*y+plane[2]);wx=float(loc[0]+x*scale[0]);wy=float(loc[1]+y*scale[1])
-      k=(round(wx,5),round(wy,5),round(wz,5))
-      if k not in mesh['lookup']:
-       mesh['lookup'][k]=len(mesh['vertices'])+1;mesh['vertices'].append((wx,wy,wz));mesh['uv'].append((wx/200,wy/200))
-      indices.append(mesh['lookup'][k])
-     mesh['faces'].append(indices)
+     subdivisions=1
+     if height_profiles:
+      coords_world=[(loc[0]+q[0]*scale[0],loc[1]+q[1]*scale[1]) for q in v]
+      xmin0=min(q[0] for q in coords_world);xmax0=max(q[0] for q in coords_world);ymin0=min(q[1] for q in coords_world);ymax0=max(q[1] for q in coords_world)
+      if any(xmin0<=p['_bounds'][2] and xmax0>=p['_bounds'][0] and ymin0<=p['_bounds'][3] and ymax0>=p['_bounds'][1] for p in height_profiles.profiles):subdivisions=4
+     for subtriangle in triangle_parts(v,subdivisions):
+      indices=[]
+      for x,y in subtriangle:
+       wz=float(plane[0]*x+plane[1]*y+plane[2]);wx=float(loc[0]+x*scale[0]);wy=float(loc[1]+y*scale[1])
+       if height_profiles:wz=height_profiles.height(wx,wy,wz)
+       k=(round(wx,5),round(wy,5),round(wz,5))
+       if k not in mesh['lookup']:
+        mesh['lookup'][k]=len(mesh['vertices'])+1;mesh['vertices'].append((wx,wy,wz));mesh['uv'].append((wx/200,wy/200))
+       indices.append(mesh['lookup'][k])
+      mesh['faces'].append(indices)
  error=abs(total_area-footprint.area)/max(footprint.area,1)
  area_error.append({'material':material,'relative_coverage_error':error})
  if error>1e-7:raise RuntimeError(f'{material} polygon triangulation lost coverage: {error}')
  for (cx,cy),mesh in sorted(chunks.items()):
-  name=f'{args.prefix or ("ParkPlaza" if plazas else "Park")}_{material}_{cx}_{cy}';lines=['# OSM contributors ODbL; elevations USGS 3DEP','# Centimeters, Z up, OBJ Y = negative Unreal Y.',f'o {name}']
+  name=f'{args.prefix or ("ParkPlaza" if plazas else "Park")}_{material}_{cx}_{cy}';lines=['# OSM contributors ODbL; elevations USGS 3DEP','# Centimeters, Z up, OBJ Y = negative source ENU Y. Apply source-to-world placement.',f'o {name}']
   lines += ['v %.6f %.6f %.6f'%(v[0],-v[1],v[2]) for v in mesh['vertices']]
   lines += ['vt %.6f %.6f'%v for v in mesh['uv']]
   lines += ['f '+' '.join(f'{i}/{i}' for i in reversed(f)) for f in mesh['faces']]
   (OUT/(name+'.obj')).write_text('\n'.join(lines)+'\n')
   manifest.append({'file':name+'.obj','material':material,'vertices':len(mesh['vertices']),'triangles':len(mesh['faces']),'bounds_cm':[np.min(mesh['vertices'],axis=0).tolist(),np.max(mesh['vertices'],axis=0).tolist()]});allfaces+=len(mesh['faces'])
-result={'status':'source_baked_not_imported','plaza_osm_ids':plaza_ids,'coordinates':'OBJ centimeters, Z up, Y negated from Unreal; bounds remain Unreal world coordinates','source_splines':'../'+args.network,'landscape_clearance_cm':3,'terrain_diagonal':'i00-i11','chunks':manifest,'triangle_count':allfaces,'deferred_bridge_osm_ids':sorted(set(deferred)),'coverage_checks':area_error,'pending':['Unreal import orientation and collision validation','Bridge deck reconstruction','All path connectivity and ride-through acceptance']}
+result={'status':'source_baked_not_imported','plaza_osm_ids':plaza_ids,'coordinates':'OBJ centimeters, Z up, Y negated from retained source ENU; bounds are source ENU, not final actor world bounds','source_splines':'../'+args.network,'ground_clearance_cm':3,'height_profiles':args.height_profiles,'terrain_diagonal':'i00-i11','chunks':manifest,'triangle_count':allfaces,'deferred_bridge_osm_ids':sorted(set(deferred)),'coverage_checks':area_error,'pending':['Unreal import orientation and collision validation',('Reference-matched bridge architecture' if height_profiles else 'Bridge deck reconstruction'),'All path connectivity and ride-through acceptance']}
 (OUT/'manifest.json').write_text(json.dumps(result,indent=2))
 print(json.dumps({k:v for k,v in result.items() if k!='chunks'},indent=2));print('Chunks:',len(manifest))
