@@ -59,7 +59,7 @@ bool ABattleBike::RecoverAtCheckpoint(){
  if(!GetWorld()->FindTeleportSpot(this,Location,Rotation))return false;
  Ride->StopMovementImmediately();Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->Recovery=0;Ride->BoostRemaining=0;
  SetActorLocationAndRotation(Location,Rotation,false,nullptr,ETeleportType::TeleportPhysics);
- if(Person){PistolAmmo=Person->Ammo;PC->Possess(this);Person->Destroy();}else if(PC->GetPawn()!=this)PC->Possess(this);
+ if(Person){Person->SaveWeapon();PC->Possess(this);Person->Destroy();}else if(PC->GetPawn()!=this)PC->Possess(this);
  bParked=false;RiderHealth=100;DamageGrace=2;HurtCooldown=5;RespawnRemaining=0;
  Ride->LastSafeLocation=Location;Ride->SetMovementMode(MOVE_Walking);Ride->bForceNextFloorCheck=true;
  Rider->SetVisibility(!bFirstPerson);PC->SetControlRotation(Rotation);

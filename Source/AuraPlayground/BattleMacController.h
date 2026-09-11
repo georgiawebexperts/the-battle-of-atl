@@ -22,6 +22,10 @@ private:
  void TickHealthAudit(float Dt);
  void TickPickupAudit(float Dt);
  void TickMeleeAudit(float Dt);
+ void TickInventoryAudit(float Dt);
+ int32 InventoryPhase=0,InventoryShots=0;
+ float InventoryClock=0;
+ TWeakObjectPtr<AActor> InventoryTarget;
  int32 MeleePhase=0;
  float MeleeAuditClock=0;
  TWeakObjectPtr<AActor> MeleeTarget,MeleeWall;

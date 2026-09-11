@@ -30,7 +30,7 @@ public:
  UFUNCTION(BlueprintCallable) void ToggleWeapon();
  UFUNCTION(BlueprintCallable) virtual bool Fire();
  UFUNCTION(BlueprintCallable) void AimAtForValidation(AActor* Target);
- UFUNCTION(BlueprintCallable) void Reload();
+ UFUNCTION(BlueprintCallable) virtual void Reload();
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UPoseableMeshComponent> Body;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> CameraArm;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
@@ -41,6 +41,7 @@ private:
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
 protected:
  virtual bool CanUseWeapon() const;
+ virtual void FinishReload(){Ammo=12;}
 private:
  bool bTriggerHeld=false;
  float FireCooldown=0;

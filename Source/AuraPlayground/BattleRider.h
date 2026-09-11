@@ -16,6 +16,15 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector RightGrip;
  UPROPERTY(BlueprintReadOnly) FVector LeftGrip;
  virtual bool Fire() override;
+ virtual void Reload() override;
+ UFUNCTION(BlueprintCallable) bool SelectWeapon(int32 Slot);
+ UPROPERTY(BlueprintReadOnly) int32 CurrentWeapon=0;
+ void SaveWeapon();
+ void RestoreLoadout();
+ FString ReserveLabel() const;
+ void UpdateWeaponModel();
+ UPROPERTY() TObjectPtr<USceneComponent> LongGun;
+ UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> LongGunParts;
  UFUNCTION(BlueprintCallable) bool Melee();
  UPROPERTY(BlueprintReadOnly) int32 MeleeSwings=0,MeleeHits=0;
  UPROPERTY(BlueprintReadOnly) float MeleeRemaining=0;
@@ -30,8 +39,11 @@ public:
  UFUNCTION(BlueprintCallable) bool MountBike();
 protected:
  virtual bool CanUseWeapon() const override;
+ virtual void FinishReload() override;
 private:
- void ReloadPistol(){if(MeleeRemaining<=0)Reload();}
+ void ReloadPistol(){Reload();}
+ void SelectPistol(){SelectWeapon(0);}void SelectShotgun(){SelectWeapon(1);}void SelectSMG(){SelectWeapon(2);}void SelectFrisbee(){SelectWeapon(3);}
+ void BuildLongGun();
  void StartMelee(){Melee();}
  void BuildMeleeVisual();
  void UpdateMelee(float Dt);

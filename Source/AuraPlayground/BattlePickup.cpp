@@ -42,7 +42,7 @@ bool ABattleColaPickup::TryCollect(APawn* Pawn){
  Destroy();return true;
 }
 ABattlePickupDirector::ABattlePickupDirector(){PrimaryActorTick.bCanEverTick=false;}
-bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal){
+bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot){
  for(const FVector& P:Locations)if(FVector::DistSquared2D(P,Surface)<FMath::Square(1600.f))return false;
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return false;
  FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(ColaPlacement),false,Pawn);
@@ -53,6 +53,9 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal){
  if(GetWorld()->OverlapBlockingTestByChannel(Spot,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(28),Q))return false;
  auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Ground.ImpactPoint,Pawn);
  if(!Route||!Route->IsValid()||Route->IsPartial())return false;
+ if(WeaponSlot>=0){
+  if(auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));Locations.Add(Spot);WeaponCrates++;return true;}return false;
+ }
  if(auto* Pickup=GetWorld()->SpawnActorDeferred<ABattleColaPickup>(ABattleColaPickup::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){
   Pickup->HealAmount=Heal;Pickup->bTrailPickup=Trail;Pickup->FinishSpawning(FTransform(Spot));Locations.Add(Spot);Spawned++;if(Trail)TrailPickups++;else ParkPickups++;return true;
  }return false;
@@ -73,5 +76,15 @@ void ABattlePickupDirector::BeginPlay(){
   while(!Candidates.IsEmpty()&&(IsTrail?TrailPickups:ParkPickups)<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);if(!SpawnCola(P,IsTrail,Heal))PlacementFailures++;}
  };
  Fill(Trail,true,TrailGoal);Fill(Park,false,Desired-TrailGoal);
+#if !UE_BUILD_SHIPPING
+ const bool ColaAudit=FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit"));
+#else
+ const bool ColaAudit=false;
+#endif
+ if(!ColaAudit){
+  TArray<FVector> Supplies=Park;Supplies.Append(Trail);
+  while(!Supplies.IsEmpty()&&WeaponCrates<Mode->Difficulty.WeaponCrates){const int32 I=FMath::RandHelper(Supplies.Num());const FVector P=Supplies[I];Supplies.RemoveAtSwap(I);SpawnCola(P,false,0,1+WeaponCrates%2);}
+  UE_LOG(LogTemp,Display,TEXT("BattleCrates: spawned=%d desired=%d"),WeaponCrates,Mode->Difficulty.WeaponCrates);
+ }
  UE_LOG(LogTemp,Display,TEXT("BattlePickups: spawned=%d park=%d trail=%d desired=%d"),Spawned,ParkPickups,TrailPickups,Desired);
 }

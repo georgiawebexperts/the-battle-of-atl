@@ -514,3 +514,40 @@ Mac remains locked. Shotgun, SMG, frisbee launcher, inventory/crates/drops,
 remaining enemies/traffic, Cabbagetown/home/win/results/saves, finished world art,
 spoken audio and performance/shipping requirements remain. Full V3 stays active.
 See Design/CHAIN-LOCK.md for behavior and validation scope.
+
+## Build 023 — shotgun, SMG, crates and inventory (2026-09-11)
+
+Added a bike-owned per-run weapon inventory. Players start with the pistol;
+glowing labeled crates unlock and supply the shotgun and SMG. The existing
+difficulty table now drives 20/12/6 weapon crates. Actual placement checks path,
+gravel or bridge surfaces, water exclusion, clearance, spacing and complete
+navigation from the start. Automatic collection works on bike and foot with
+range/visibility and player-state guards. Full reserves leave crates available.
+
+Keys 1/2/3 select owned guns. Shotgun fires eight pellets with distance falloff,
+a strong surviving-zombie knockback, six shells and a 2.2-second reload. SMG fires
+14-damage bullets every 0.085 seconds with aim-dependent spread, a 30-round
+magazine and 1.8-second reload. Both have finite reserves, procedural view models,
+original synthesized sound, tracer/flash/recoil/hit feedback. Ammo is transferred
+only when reload finishes. All magazines, ownership, reserves and the last
+on-foot weapon survive bike switches and checkpoint death without overwriting
+the bike's pistol ammo. This is per-run persistence, not a disk save system.
+
+Game/Editor compilation and Mac packaging pass. Native inventory tests pass all
+three actual crate layouts, independently compared with source CSV counts,
+numbered input selection, automatic bike/foot collection, shotgun/SMG kills,
+reload conservation, and possession/death persistence. Pistol/zombie, U-lock,
+shared health/checkpoints, and all three quest/difficulty profiles also pass.
+Reports: Tests/Results/2026-09-11-native-inventory*.json and
+Tests/Results/2026-09-11-build023-native-{zombies,melee,health,quest}.json.
+Targets and some positions are controlled fixtures; rendered appearance, human
+keyboard/aim, audio quality, feel and frame rate remain unverified.
+
+Installed the complete locally signed 0.23.0 app behind the desktop icon, retaining
+022 under Previous. Fresh CUA check still reports a locked Mac. Also terminated
+an obsolete relative-project tunnel-import process (PID 24243) that remained
+alive and consuming CPU despite the later successful import; no active build was
+interrupted. Frisbee launcher/ricochets/Meadow ammo, enemy drops, remaining enemy
+and park-life groups, Cabbagetown/home/win/results/saves, full world art/audio and
+performance/shipping acceptance remain. Full V3 goal stays active.
+See Design/WEAPON-INVENTORY.md for tuning and validation scope.

@@ -60,7 +60,7 @@ void APiedmontExplorer::Tick(float Dt){
  Super::Tick(Dt);if(bDead){Weapon->SetVisibility(false);return;}UpdateSwimming(Dt);
  FireCooldown=FMath::Max(0.f,FireCooldown-Dt);
  if(!CanUseWeapon()){bWeaponDrawn=false;bAiming=false;bTriggerHeld=false;ReloadRemaining=0;}
- if(ReloadRemaining>0){ReloadRemaining=FMath::Max(0.f,ReloadRemaining-Dt);if(ReloadRemaining<=0)Ammo=12;}
+ if(ReloadRemaining>0){ReloadRemaining=FMath::Max(0.f,ReloadRemaining-Dt);if(ReloadRemaining<=0)FinishReload();}
  if(bTriggerHeld)Fire();Weapon->SetVisibility(bWeaponDrawn);
  CameraArm->TargetArmLength=FMath::FInterpTo(CameraArm->TargetArmLength,bAiming?180.f:320.f,Dt,10);
  Camera->SetFieldOfView(FMath::FInterpTo(Camera->FieldOfView,bAiming?65.f:85.f,Dt,10));

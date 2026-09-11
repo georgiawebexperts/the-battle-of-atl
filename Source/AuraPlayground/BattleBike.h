@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontBike.h"
 #include "BattleDifficulty.h"
+#include "BattleInventory.h"
 #include "BattleBike.generated.h"
 class ABattleQuest;class ABattleEnemyDirector;class ABattlePickupDirector;
 class ABattleRideFX;class UAudioComponent;
@@ -98,6 +99,9 @@ public:
  void UpdateHealth(float Dt);
  bool RecoverAtCheckpoint();
  UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=12;
+ UPROPERTY(BlueprintReadOnly) TArray<FBattleWeaponState> Inventory;
+ UPROPERTY(BlueprintReadOnly) int32 LastFootWeapon=0;
+ UFUNCTION(BlueprintCallable) bool GiveWeapon(int32 Slot,int32 Rounds);
  UFUNCTION(BlueprintCallable) bool Dismount();
  bool Remount(ABattleRider* Person);
  UFUNCTION(BlueprintCallable) void ToggleCamera();
