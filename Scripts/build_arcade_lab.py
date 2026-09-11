@@ -1,7 +1,7 @@
 """V3's isolated playable handling course; prior park/map assets are retained."""
 import unreal,json,pathlib,time,traceback
 root=pathlib.Path(unreal.Paths.project_dir());level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem);ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-if globals().get('WORLD_JOB',{}).get('action') not in ['navigation','curb']:
+if globals().get('WORLD_JOB',{}).get('action') not in ['navigation','curb','water']:
  level.new_level('/Game/BattleForTheA/Maps/ArcadeBikeLab')
  w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();w.get_world_settings().set_editor_property('default_game_mode',unreal.BattleLabMode)
  cube=unreal.load_asset('/Engine/BasicShapes/Cube');mats={n:unreal.load_asset('/Game/PiedmontRide/Materials/M_'+n) for n in ['Asphalt','Grass','Concrete','Safety']}
@@ -39,6 +39,26 @@ if not any(a.get_actor_label()=='Lighting test shelter roof' for a in ea.get_all
  for name,loc,scale in [('roof',(4000,-6500,410),(10,13,.2)),('north wall',(4000,-7140,205),(10,.2,4.1)),('south wall',(4000,-5860,205),(10,.2,4.1))]:
   a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(*loc));a.set_actor_label('Lighting test shelter '+name);a.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));a.static_mesh_component.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_Concrete'));a.set_actor_scale3d(unreal.Vector(*scale));a.tags=[unreal.Name('RideBarrier')]
  zone=ea.spawn_actor_from_class(unreal.PiedmontDarkZone,unreal.Vector(4000,-6500,180));zone.set_actor_label('Lighting shelter automatic lights');zone.get_editor_property('bounds').set_box_extent(unreal.Vector(500,630,230))
+# Use the same explicit Water Body setup as the geographic park. Positive winding
+# and a zone/static surface are required for a visible lake, not just a hazard.
+lakes=[a for a in ea.get_all_level_actors() if isinstance(a,unreal.WaterBodyLake)]
+if lakes:
+ lake=lakes[0];spline=lake.get_component_by_class(unreal.WaterSplineComponent);spline.clear_spline_points(False)
+ for p in [(-1000,-800,0),(1000,-800,0),(1000,800,0),(-1000,800,0)]:spline.add_spline_point(unreal.Vector(*p),unreal.SplineCoordinateSpace.LOCAL,False)
+ for i in range(4):spline.set_spline_point_type(i,unreal.SplinePointType.LINEAR,False)
+ spline.set_closed_loop(True,True)
+ zones=[a for a in ea.get_all_level_actors() if isinstance(a,unreal.WaterZone)]
+ waterzone=zones[0] if zones else ea.spawn_actor_from_class(unreal.WaterZone,unreal.Vector(8500,-9000,-5));waterzone.set_editor_property('zone_extent',unreal.Vector2D(6000,6000))
+ component=lake.get_component_by_class(unreal.WaterBodyComponent);component.set_editor_property('affects_landscape',False);component.set_water_zone_override(waterzone)
+ component.set_water_material(unreal.load_asset('/Water/Materials/WaterSurface/Water_Material_Lake'));component.set_water_info_material(unreal.load_asset('/Water/Materials/WaterInfo/DrawWaterInfo'));component.set_water_static_mesh_material(unreal.load_asset('/Water/Materials/WaterSurface/LODs/Water_Material_Lake_LOD'));component.set_water_body_static_mesh_enabled(True)
+ unreal.PiedmontWorldTools.refresh_water_body(lake)
+ # Give the test lake depth rather than leaving an opaque grass slab at its surface.
+ old=[a for a in ea.get_all_level_actors() if a.get_actor_label()=='Arcade grass foundation']
+ if old:
+  for label,loc,scale in [('west',(-2750,0,-60),(205,220,1)),('east',(11250,0,-60),(35,220,1)),('north',(8500,1400,-60),(20,192,1)),('south',(8500,-10400,-60),(20,12,1)),('lakebed',(8500,-9000,-350),(20,16,1))]:
+   a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(*loc));a.set_actor_label('Arcade ground '+label);a.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));a.static_mesh_component.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_Grass'));a.set_actor_scale3d(unreal.Vector(*scale));a.tags=[unreal.Name('RideGrass')]
+  for a in old:ea.destroy_actor(a)
+
 started=time.monotonic();nav_requested=False
 def finish(dt):
  global handle,nav_requested

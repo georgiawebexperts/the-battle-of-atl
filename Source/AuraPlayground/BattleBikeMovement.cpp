@@ -23,12 +23,14 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
    Heading.Yaw+=Steer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*Dt;CharacterOwner->SetActorRotation(Heading);
-   if(Brake>.5f&&PreviousBrake<=.5f&&FMath::Abs(Steer)>.3f&&Speed>800)SlideRemaining=.65f;
+   const bool BrakeTurn=Brake>.5f&&PreviousBrake<=.5f&&FMath::Abs(Steer)>.3f&&Speed>800;
+   const bool FastTurn=FMath::Abs(Steer)>.8f&&FMath::Abs(PreviousSteer)<=.8f&&Speed>1350;
+   if(BrakeTurn||FastTurn)SlideRemaining=.65f;
    if(Floor&&(Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))))LastSafeLocation=CharacterOwner->GetActorLocation();
    if(!Floor||!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wipeout(TEXT("Splash"),true);break;}
   }
  }
- PreviousBrake=Brake;Super::TickComponent(Dt,Type,Function);
+ PreviousBrake=Brake;PreviousSteer=Steer;Super::TickComponent(Dt,Type,Function);
 }
 void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float Braking){
  if(!CharacterOwner)return;
@@ -47,6 +49,7 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
 void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
  if(Recovery>0)return;BoostRemaining=0;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
  ReturnLocation=LastSafeLocation;if(Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))ReturnLocation=Bike->FindPathReturn();
+ if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(Water?1.8f:1.0f,Water);
  Speed=0;StopMovementImmediately();
 }
 void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta){
@@ -57,8 +60,9 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
   const float Directness=-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),Hit.ImpactNormal.GetSafeNormal2D());
   const bool Direct=Speed>500&&Directness>.7f;
   if(auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor()))Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
-  ContactCooldown=.35f;if(Direct)Wipeout(TEXT("Traffic impact"));else Speed*=.8f;return;
+  ContactCooldown=.35f;if(Direct)Wipeout(TEXT("Traffic impact"));else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
  // Terrain, walls and fences never enter the wipeout state.
+ if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>100)Bike->RideImpact(.45f);
  BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=0;
 }

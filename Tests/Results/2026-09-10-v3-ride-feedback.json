@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "scope": "Ride feedback integration; visual/audio review separate.",
+  "cases": [
+    {
+      "name": "asphalt_motor_audio_play_during_ride",
+      "pass": true
+    },
+    {
+      "name": "fast_turn_without_brake_leaves_tracks_and_skid_sound",
+      "pass": true,
+      "tracks": 9
+    },
+    {
+      "name": "drift_feedback_never_tips_capsule",
+      "pass": true
+    },
+    {
+      "name": "grass_switches_tire_audio_and_has_bob",
+      "pass": true
+    },
+    {
+      "name": "curb_bobs_and_shakes_without_wipeout",
+      "pass": true,
+      "peak": 0.3499999940395355,
+      "bumps": 1
+    },
+    {
+      "name": "water_entry_spawns_visible_splash_and_camera_impulse",
+      "pass": true
+    },
+    {
+      "name": "water_feedback_preserves_two_second_path_return",
+      "pass": true,
+      "seconds": 2.0034651681780815
+    },
+    {
+      "name": "splash_drops_expire",
+      "pass": true
+    },
+    {
+      "name": "dismount_for_audio_stop",
+      "pass": true
+    },
+    {
+      "name": "parked_bike_mutes_ride_audio",
+      "pass": true
+    },
+    {
+      "name": "old_skids_expire_and_pool_stays_bounded",
+      "pass": true
+    }
+  ],
+  "stage": 10
+}

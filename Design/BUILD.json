@@ -1,8 +1,8 @@
 {
-  "build": 9,
-  "version": "0.9.0-dev",
+  "build": 10,
+  "version": "0.10.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "First-person skinned arms with recoil/reload; V3 milestone 1 presentation/fun acceptance pending",
+  "milestone": "Ride feedback, automatic fast-turn drift and visible lab water; 11 feedback and 14 terrain checks pass; fun review pending",
   "author": "2026-09-10 [codex-maclaptop]"
 }

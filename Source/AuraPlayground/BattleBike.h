@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontBike.h"
 #include "BattleBike.generated.h"
+class ABattleRideFX;class UAudioComponent;
 class USpotLightComponent;class UPointLightComponent;
 class ABattleRider;
 class UPoseableMeshComponent;
@@ -32,7 +33,7 @@ public:
  void Shift(int32 Delta){Gear=FMath::Clamp(Gear+Delta,1,5);}
 private:
  bool bWaterReturn=false;
- float BounceRemaining=0,ContactCooldown=0,PreviousBrake=0;
+ float BounceRemaining=0,ContactCooldown=0,PreviousBrake=0,PreviousSteer=0;
  FVector BounceDirection,ReturnLocation;
 };
 
@@ -42,9 +43,19 @@ class AURAPLAYGROUND_API ABattleBike : public ACharacter {
 public:
  ABattleBike(const FObjectInitializer& Init);
  virtual void BeginPlay() override;
+ virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  virtual void Tick(float Dt) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UBattleBikeMovement> Ride;
+ UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleRideFX> RideEffects;
+ UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UAudioComponent> AsphaltAudio;
+ UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UAudioComponent> GrassAudio;
+ UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UAudioComponent> MotorAudio;
+ UPROPERTY(BlueprintReadOnly) float FeedbackStrength=0;
+ UPROPERTY(BlueprintReadOnly) int32 ImpactEvents=0;
+ UPROPERTY(BlueprintReadOnly) int32 TerrainBumps=0;
+ UPROPERTY(BlueprintReadOnly) int32 SkidSounds=0;
+ void RideImpact(float Strength,bool Water=false);
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> Capsule;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> Visual;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPoseableMeshComponent> Rider;
@@ -78,6 +89,10 @@ public:
  FVector FindPathReturn() const;
 private:
  void UpdateLights(float Dt);
+ void UpdateRideFeedback(float Dt);
+ FVector PreviousFeedbackLocation,PreviousTrackPoint;
+ float FeedbackClock=0,BumpCooldown=0,PreviousVertical=0,TrackDelay=0;
+ bool WasSliding=false,HasTrackPoint=false;
  float HornCooldown=0,LightOffDelay=0,LightCheck=0;
  void StartBoost(){Boost();}
  void Interact(){Dismount();}
