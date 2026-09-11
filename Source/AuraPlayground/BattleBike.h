@@ -59,6 +59,7 @@ public:
  virtual void Tick(float Dt) override;
  virtual void UnPossessed() override;
  void RefreshRiderPose();
+ bool ApplyKnifeStab(bool Lethal);
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UBattleBikeMovement> Ride;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleRideFX> RideEffects;
@@ -164,6 +165,8 @@ public:
  bool bPracticeSteered=false,bPracticeBraked=false,bPracticeDismounted=false,bPracticeHorn=false;
  float PracticeDistance=0,ExpansionNoticeRemaining=0;
  void TickTrouble(float Dt);
+ void TickKnife(float Dt);
+ float KnifeDelay=90;int32 KnifeSpawned=0;
  void TickDrones(float Dt);
  float DroneDelay=35;
  UPROPERTY(BlueprintReadOnly) float Trouble=0;

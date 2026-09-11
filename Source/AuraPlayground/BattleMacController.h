@@ -17,6 +17,10 @@ public:
  void TogglePracticeHelp();
 private:
  void TickSpiritAudit(float Dt);
+ void TickKnifeAudit(float Dt);
+ int KnifeAuditStage=0,KnifeAuditResets=0;float KnifeAuditClock=0,KnifeAuditTime=0;
+ FVector KnifeAuditOrigin;
+ UPROPERTY() TObjectPtr<class ABattleKnife> KnifeAuditActor;
  void TickMemorialReview(float Dt);
  int MemorialReviewStage=0;float MemorialReviewClock=0;
  UPROPERTY() TObjectPtr<class ACameraActor> MemorialReviewCamera;

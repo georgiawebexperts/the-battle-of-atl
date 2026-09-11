@@ -75,6 +75,7 @@ void ABattleMacController::PlayerTick(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeAudit")))TickKnifeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
 #endif

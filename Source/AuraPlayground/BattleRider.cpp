@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "BattleKnife.h"
 #include "Engine/SkeletalMesh.h"
 #include "Materials/MaterialInterface.h"
 #include "BattleShot.h"
@@ -90,7 +91,7 @@ bool ABattleBike::Remount(ABattleRider* Person){
  auto* PC=Cast<APlayerController>(Person->GetController());if(!PC)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleRemount),false,this);Q.AddIgnoredActor(Person);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))return false;
- Person->SaveWeapon();bParked=false;Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
+ Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
 }
 
 bool ABattleRider::Fire(){

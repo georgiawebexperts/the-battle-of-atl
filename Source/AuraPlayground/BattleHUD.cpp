@@ -5,6 +5,7 @@
 #include "BattleDrone.h"
 #include "BattleZombie.h"
 #include "BattlePolice.h"
+#include "BattleKnife.h"
 #include "PiedmontPedestrian.h"
 #include "BattleCheckpoints.h"
 #include "Engine/Canvas.h"
@@ -75,7 +76,7 @@ void ABattleLabHUD::DrawHUD(){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){
    auto* Target=Cast<APiedmontExplorer>(Hit.GetActor());
-   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->ActorHasTag(TEXT("BattlePolice"))?TEXT("POLICE -60s"):Target->IsA<ABattleZombie>()?TEXT("ZOMBIE +10s"):TEXT("PERSON -10s");Panel(CX-115*S,CY+32*S,230*S,38*S);Center(Name,CY+36*S,22,Aim);}
+   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->ActorHasTag(TEXT("BattlePolice"))?TEXT("POLICE -60s"):Target->IsA<ABattleZombie>()?TEXT("ZOMBIE +10s"):Target->IsA<ABattleKnife>()?TEXT("KNIFE ATTACKER"):TEXT("PERSON -10s");Panel(CX-115*S,CY+32*S,230*S,38*S);Center(Name,CY+36*S,22,Aim);}
   }
  }
  DrawLine(CX-15*S,CY,CX-5*S,CY,Aim,2*S);DrawLine(CX+5*S,CY,CX+15*S,CY,Aim,2*S);DrawLine(CX,CY-15*S,CX,CY-5*S,Aim,2*S);DrawLine(CX,CY+5*S,CX,CY+15*S,Aim,2*S);
@@ -87,6 +88,7 @@ void ABattleLabHUD::DrawHUD(){
  else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
  else if(Owner->HornNoticeRemaining>0)Notice=Owner->HornNotice;
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
+ if(Notice.IsEmpty())for(TActorIterator<ABattleKnife> It(GetWorld());It;++It)if(!It->bDead&&!It->bEscaped&&FVector::Dist2D(It->GetActorLocation(),GetOwningPawn()->GetActorLocation())<1400){Notice=It->bWindingUp?TEXT("KNIFE STRIKE — MOVE!"):It->Stabs>0?TEXT("KNIFE CHASE — RUN, DEFEND OR REMOUNT"):TEXT("KNIFE ATTACKER — RUN OR G TO DRAW");break;}
  if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
  if(Notice.IsEmpty())for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("DRONE SWOOP — KEEP MOVING!");break;}
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
