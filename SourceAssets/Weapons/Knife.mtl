@@ -1,0 +1,6 @@
+newmtl Blade
+Kd 0.65 0.68 0.72
+Ns 100
+newmtl Grip
+Kd 0.025 0.018 0.015
+Ns 15

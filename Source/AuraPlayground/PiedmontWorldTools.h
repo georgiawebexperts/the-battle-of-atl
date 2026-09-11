@@ -8,6 +8,8 @@ class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary 
  GENERATED_BODY()
 public:
  UFUNCTION(BlueprintCallable,Category="Piedmont|Validation")
+ static AActor* SpawnValidationDarkZone(UObject* WorldContext,FVector Location);
+ UFUNCTION(BlueprintCallable,Category="Piedmont|Validation")
  static AActor* SpawnValidationObstacle(UObject* WorldContext,FVector Location,FVector Scale);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static bool RefreshWaterBody(AActor* WaterActor);

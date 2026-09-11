@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "timer_continues_through_dismount",
+      "pass": true
+    },
+    {
+      "name": "draw_on_foot",
+      "pass": true
+    },
+    {
+      "name": "shot_consumes_one_round",
+      "pass": true
+    },
+    {
+      "name": "cooldown_rejects_immediate_second_shot",
+      "pass": true
+    },
+    {
+      "name": "reload_completes_while_clock_runs",
+      "pass": true
+    },
+    {
+      "name": "muzzle_cannot_fire_through_close_cover",
+      "pass": true,
+      "hit": [
+        40.0,
+        4113.823530197144,
+        132.14999341964722
+      ]
+    },
+    {
+      "name": "swimming_rejects_fire",
+      "pass": true
+    },
+    {
+      "name": "dead_rider_rejects_fire",
+      "pass": true
+    },
+    {
+      "name": "remount_after_weapon_use",
+      "pass": true
+    },
+    {
+      "name": "mounted_rider_has_no_weapon_pawn",
+      "pass": true
+    },
+    {
+      "name": "first_stab_forces_dismount_without_death",
+      "pass": true
+    },
+    {
+      "name": "second_stab_ends_run_and_discards_item",
+      "pass": true
+    },
+    {
+      "name": "ended_run_stops_clock",
+      "pass": true
+    },
+    {
+      "name": "restart_returns_bike_and_resets_search",
+      "pass": true
+    },
+    {
+      "name": "compass_shows_only_four_cardinal_hints",
+      "pass": true
+    },
+    {
+      "name": "physical_item_can_be_collected",
+      "pass": true
+    },
+    {
+      "name": "single_bullet_ends_run_and_clears_collected_item",
+      "pass": true
+    }
+  ],
+  "stage": 11
+}

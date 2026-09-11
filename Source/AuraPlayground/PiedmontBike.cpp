@@ -1,5 +1,14 @@
 #include "PiedmontBike.h"
 #include "PiedmontExplorer.h"
+#include "PiedmontCombat.h"
+#include "PiedmontBlood.h"
+#include "PiedmontDarkZone.h"
+#include "Components/SpotLightComponent.h"
+#include "Components/PointLightComponent.h"
+#include "Engine/DirectionalLight.h"
+#include "Sound/SoundBase.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/DamageEvents.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontPathSpline.h"
 #include "Components/SplineComponent.h"
@@ -72,7 +81,9 @@ void UPiedmontBikeMovement::Respawn(){
  Speed=0;VerticalSpeed=0;Lean=0;Recovery=0;BrakePressure=0;SteeringRack=0;GripOverload=0;Velocity=FVector::ZeroVector;
 }
 void UPiedmontBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Fn){
- Super::TickComponent(Dt,Type,Fn);if(!PawnOwner||!UpdatedComponent||ShouldSkipUpdate(Dt))return;
+ Super::TickComponent(Dt,Type,Fn);
+ if(auto* Mode=Cast<APiedmontRideMode>(GetWorld()->GetAuthGameMode()))if(Mode->StartCountdown>0||Mode->bRunEnded){Velocity=FVector::ZeroVector;return;}
+ if(!PawnOwner||!UpdatedComponent||ShouldSkipUpdate(Dt))return;
  float Remaining=FMath::Min(Dt,.12f);while(Remaining>SMALL_NUMBER&&IsComponentTickEnabled()){const float StepTime=FMath::Min(Remaining,1.f/120);Step(StepTime);Remaining-=StepTime;}
  UpdateComponentVelocity();
 }
@@ -161,7 +172,9 @@ void UPiedmontBikeMovement::Step(float Dt){
 
 APiedmontBike::APiedmontBike(){
  PrimaryActorTick.bCanEverTick=true;
- Capsule=CreateDefaultSubobject<UCapsuleComponent>(TEXT("PhysicalBike"));SetRootComponent(Capsule);Capsule->InitCapsuleSize(32,96);Capsule->SetCollisionProfileName(TEXT("Pawn"));
+ Capsule=CreateDefaultSubobject<UCapsuleComponent>(TEXT("PhysicalBike"));SetRootComponent(Capsule);Capsule->InitCapsuleSize(32,96);Capsule->SetCollisionProfileName(TEXT("Pawn"));Capsule->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
+ Headlight=CreateDefaultSubobject<USpotLightComponent>(TEXT("AutomaticHeadlight"));Headlight->SetupAttachment(Capsule);Headlight->SetRelativeLocation(FVector(58,0,18));Headlight->SetMobility(EComponentMobility::Movable);Headlight->SetIntensity(8000);Headlight->SetAttenuationRadius(3000);Headlight->SetInnerConeAngle(16);Headlight->SetOuterConeAngle(28);Headlight->SetLightColor(FLinearColor(1,.93,.8));Headlight->SetVisibility(false);
+ TailLight=CreateDefaultSubobject<UPointLightComponent>(TEXT("AutomaticRearLight"));TailLight->SetupAttachment(Capsule);TailLight->SetRelativeLocation(FVector(-65,0,-15));TailLight->SetMobility(EComponentMobility::Movable);TailLight->SetIntensity(25);TailLight->SetAttenuationRadius(90);TailLight->SetLightColor(FLinearColor(1,.015,.01));TailLight->SetVisibility(false);
  Ride=CreateDefaultSubobject<UPiedmontBikeMovement>(TEXT("BikeMovement"));Ride->SetUpdatedComponent(Capsule);
  Visual=CreateDefaultSubobject<USceneComponent>(TEXT("LeanAssembly"));Visual->SetupAttachment(Capsule);Visual->SetRelativeLocation(FVector(0,0,-96));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
@@ -198,7 +211,7 @@ void APiedmontBike::BeginPlay(){
  }
 }
 void APiedmontBike::SetupPlayerInputComponent(UInputComponent* I){
- Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::E,IE_Pressed,this,&APiedmontBike::Interact);I->BindAxis(TEXT("RidePedal"),this,&APiedmontBike::PedalInput);I->BindAxis(TEXT("RideSteer"),this,&APiedmontBike::Steering);
+ Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::E,IE_Pressed,this,&APiedmontBike::Interact);I->BindKey(EKeys::H,IE_Pressed,this,&APiedmontBike::Horn);I->BindAxis(TEXT("RidePedal"),this,&APiedmontBike::PedalInput);I->BindAxis(TEXT("RideSteer"),this,&APiedmontBike::Steering);
  I->BindAction(TEXT("RideBrake"),IE_Pressed,this,&APiedmontBike::BrakeOn);I->BindAction(TEXT("RideBrake"),IE_Released,this,&APiedmontBike::BrakeOff);
  I->BindAction(TEXT("RideGearUp"),IE_Pressed,this,&APiedmontBike::GearUp);I->BindAction(TEXT("RideGearDown"),IE_Pressed,this,&APiedmontBike::GearDown);
  I->BindAction(TEXT("RideCamera"),IE_Pressed,this,&APiedmontBike::ToggleCamera);I->BindAction(TEXT("RideReset"),IE_Pressed,this,&APiedmontBike::ResetRide);
@@ -208,7 +221,7 @@ void APiedmontBike::BrakeOn(){Ride->Brake=1;}void APiedmontBike::BrakeOff(){Ride
 void APiedmontBike::GearUp(){Ride->Shift(1);}void APiedmontBike::GearDown(){Ride->Shift(-1);}
 void APiedmontBike::ResetRide(){if(!bDismounted&&!Ride->LastCrash.StartsWith(TEXT("Water")))Ride->Respawn();}void APiedmontBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void APiedmontBike::Tick(float Dt){
- Super::Tick(Dt);if(bDismounted)return;const float CrashRoll=Ride->Recovery>0?FMath::Min(80.f,(4-Ride->Recovery)*140):Ride->Lean;
+ Super::Tick(Dt);UpdateLights(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);if(bDismounted)return;const float CrashRoll=Ride->Recovery>0?FMath::Min(80.f,(4-Ride->Recovery)*140):Ride->Lean;
  Visual->SetRelativeRotation(FRotator(Ride->Pitch,0,CrashRoll));
  // Procedural dismount: the rider separates from the saddle during the fall.
  float Fall=Ride->Recovery>0?FMath::Clamp((4-Ride->Recovery)*2.f,0.f,1.f):0.f;
@@ -241,19 +254,33 @@ void APiedmontBike::PoseRider(float Dt){
  Rider->MarkRefreshTransformDirty();
 }
 void APiedmontRideHUD::DrawHUD(){
- Super::DrawHUD();auto* Bike=Cast<APiedmontBike>(GetOwningPawn());
+ Super::DrawHUD();
+ if(Canvas)if(auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this))){
+  const float X=Canvas->SizeX*.55f;
+  DrawRect(FLinearColor(.015,.027,.036,.9),X,24,Canvas->SizeX*.43f,86);
+  const int Seconds=FMath::CeilToInt(Mode->TimeRemaining);
+  DrawText(Mode->StartCountdown>0?FString::Printf(TEXT("START IN %.0f"),FMath::CeilToFloat(Mode->StartCountdown)):FString::Printf(TEXT("%02d:%02d"),Seconds/60,Seconds%60),FColor::White,X+16,35,nullptr,2);
+  DrawText(Mode->ItemDirection(),FColor(89,229,203),X+16,75,nullptr,1.25);
+  if(Mode->bRunEnded){
+   DrawRect(FLinearColor(.15,.015,.02,.95),Canvas->SizeX*.2,Canvas->SizeY*.4,Canvas->SizeX*.6,130);
+   DrawText(Mode->FailureReason,FColor::Red,Canvas->SizeX*.23,Canvas->SizeY*.4+20,nullptr,2);
+   DrawText(TEXT("ENTER — restart and find the item again"),FColor::White,Canvas->SizeX*.23,Canvas->SizeY*.4+70,nullptr,1.3);
+  }
+ }
+ auto* Bike=Cast<APiedmontBike>(GetOwningPawn());
  if(auto* Person=Cast<APiedmontExplorer>(GetOwningPawn())){
   if(!Canvas)return;
-  DrawRect(FLinearColor(.015,.027,.036,.9),24,24,680,82);
+  DrawRect(FLinearColor(.015,.027,.036,.9),24,24,Canvas->SizeX*.52f-24,82);
   DrawText(Person->bSwimming?TEXT("SWIMMING  /  WASD or arrows move  /  Mouse look"):TEXT("ON FOOT  /  WASD or arrows move  /  Mouse look"),FColor::White,40,40,nullptr,1.5f);
-  DrawText(Person->bSwimming?TEXT("Swim to shore, then return to your bike  /  E remount"):TEXT("E remount near your bike  /  Bike stays where you left it"),FColor(89,229,203),40,75,nullptr,1.2f);return;
+  DrawText(Person->bSwimming?TEXT("Swim to shore, then return to your bike  /  E remount"):TEXT("E remount  /  1 draw gun  /  Mouse aim/fire  /  R reload"),FColor(89,229,203),40,75,nullptr,1.2f);
+  if(Person->bWeaponDrawn){DrawText(FString::Printf(TEXT("AMMO %d / 12  %s"),Person->Ammo,Person->ReloadRemaining>0?TEXT("RELOADING"):TEXT("")),FColor::White,40,Canvas->SizeY-70,nullptr,1.5);DrawRect(FLinearColor::White,Canvas->SizeX*.5-2,Canvas->SizeY*.5-2,4,4);}return;
  }
  if(!Canvas||!Bike)return;auto* M=Bike->Ride.Get();
  float S=Canvas->SizeX/1280.f;auto Text=[&](FString T,float X,float Y,FColor C,float Size){DrawText(T,C,X*S,Y*S,nullptr,Size*S);};
- DrawRect(FLinearColor(.015,.027,.036,.88),24*S,24*S,700*S,96*S);
- Text(TEXT("PIEDMONT RIDE / PHYSICS LAB  •  BUILD 0.2.1"),40,37,FColor::White,1.65);
+ DrawRect(FLinearColor(.015,.027,.036,.88),24*S,24*S,640*S,96*S);
+ Text(TEXT("PIEDMONT RIDE / DEVELOPMENT  •  BUILD 0.3.0"),40,37,FColor::White,1.65);
  Text(TEXT("W pedal   ↑ / ↓ gears   ← / → or A / D steer   SPACE brake"),40,72,FColor(193,219,220),1.25);
- Text(TEXT("TAB / SHIFT camera   E dismount below 8 MPH   R recover   ESC stop"),40,95,FColor(193,219,220),1.05);
+ Text(TEXT("TAB camera   E bike   H horn   R recover   ESC stop"),40,95,FColor(193,219,220),1.05);
  float Y=Canvas->SizeY/S-140;
  DrawRect(FLinearColor(.015,.027,.036,.9),24*S,Y*S,390*S,112*S);
  Text(FString::Printf(TEXT("%02.0f MPH     GEAR %d / 7"),M->Speed*.0223694,M->Gear),42,Y+16,FColor(89,229,203),2.5);
@@ -261,7 +288,7 @@ void APiedmontRideHUD::DrawHUD(){
  Text(TEXT("Web Experts  /  www.webexperts.com"),42,Y+87,FColor(163,183,184),.9);
  if(M->Recovery>0){DrawRect(FLinearColor(.1,.015,.01,.9),Canvas->SizeX*.25,Canvas->SizeY*.4,Canvas->SizeX*.5,100*S);Text(FString::Printf(TEXT("%s  —  %.1f sec"),*M->LastCrash,M->Recovery),Canvas->SizeX/S*.27,Canvas->SizeY/S*.4+30,FColor(255,177,126),1.5);}
 }
-APiedmontRideMode::APiedmontRideMode(){DefaultPawnClass=APiedmontBike::StaticClass();HUDClass=APiedmontRideHUD::StaticClass();}
+APiedmontRideMode::APiedmontRideMode(){PrimaryActorTick.bCanEverTick=true;DefaultPawnClass=APiedmontBike::StaticClass();HUDClass=APiedmontRideHUD::StaticClass();}
 
 void APiedmontBike::ValidationKey(FName Key,bool Pressed){
 #if WITH_EDITOR
@@ -289,11 +316,12 @@ bool APiedmontWaterHazard::ContainsBike(const FVector& WorldPoint) const {
 }
 
 void APiedmontBike::Interact(){Dismount();}
-bool APiedmontBike::Dismount(bool WaterEntry){
+bool APiedmontBike::Dismount(bool WaterEntry,bool Forced){
  auto* PC=Cast<APlayerController>(GetController());
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));if(Mode&&(Mode->bRunEnded||Mode->StartCountdown>0))return false;
  if(!PC||bDismounted||Ride->Recovery>0)return false;
  // Keep dismounts controlled; high-speed falls are handled by crash logic.
- if(!WaterEntry&&Ride->Speed>350)return false;
+ if(!WaterEntry&&!Forced&&Ride->Speed>350)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(PiedmontDismount),false,this);
  FVector Exit;bool Found=false;
  if(WaterEntry){
@@ -332,7 +360,33 @@ bool APiedmontBike::Remount(APiedmontExplorer* Person){
  auto* PC=Cast<APlayerController>(Person->GetController());if(!PC)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(PiedmontRemount),false,this);Q.AddIgnoredActor(Person);
  FHitResult Hit;if(GetWorld()->LineTraceSingleByChannel(Hit,Person->GetActorLocation(),GetActorLocation(),ECC_Visibility,Q))return false;
- PC->Possess(this);PC->SetControlRotation(GetActorRotation());bDismounted=false;Explorer=nullptr;
+ PC->Possess(this);PC->SetControlRotation(GetActorRotation());bDismounted=false;Explorer=nullptr;KnifeHits=0;
  Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bRecoveryHold=true;Ride->SetComponentTickEnabled(true);Rider->SetVisibility(!bFirstPerson);
  Person->Destroy();return true;
+}
+
+float APiedmontBike::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
+ if(Amount<=0)return 0;
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded)return 0;
+ APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,45),FVector::UpVector);
+ if(Event.DamageTypeClass&&Event.DamageTypeClass->IsChildOf(UPiedmontKnifeDamage::StaticClass())){
+  KnifeHits++;
+  if(KnifeHits>=2)Mode->EndRun(TEXT("Second stab — run ended"));
+  else if(Dismount(false,true)&&Explorer)Explorer->bKnifeWounded=true;
+ }else if(Event.DamageTypeClass&&Event.DamageTypeClass->IsChildOf(UPiedmontBulletDamage::StaticClass()))Mode->EndRun(TEXT("Shot — run ended"));
+ return Amount;
+}
+
+void APiedmontBike::Horn(){
+ if(!GetController()||bDismounted||HornCooldown>0)return;
+ if(auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)return;
+ HornCooldown=.65f;HornCount++;
+ if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/PiedmontRide/Audio/S_Horn.S_Horn"),nullptr,LOAD_NoWarn))UGameplayStatics::PlaySoundAtLocation(this,Sound,GetActorLocation());
+}
+void APiedmontBike::UpdateLights(float Dt){
+ LightOffDelay=FMath::Max(0.f,LightOffDelay-Dt);LightCheck-=Dt;if(LightCheck>0)return;LightCheck=.2f;bool Dark=false;
+ for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(GetActorLocation())){Dark=true;break;}
+ if(!Dark){TActorIterator<ADirectionalLight> It(GetWorld());if(It)Dark=It->GetActorForwardVector().Z>0;}
+ if(Dark){LightOffDelay=1.5f;bLightsOn=true;}else if(LightOffDelay<=0)bLightsOn=false;
+ Headlight->SetVisibility(bLightsOn);TailLight->SetVisibility(bLightsOn);
 }

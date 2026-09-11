@@ -1,4 +1,5 @@
 #include "PiedmontWorldTools.h"
+#include "PiedmontDarkZone.h"
 #include "Landscape.h"
 #include "Misc/FileHelper.h"
 #if WITH_EDITOR
@@ -65,6 +66,15 @@ AActor* UPiedmontWorldTools::SpawnValidationObstacle(UObject* WorldContext,FVect
  Actor->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
  Actor->GetStaticMeshComponent()->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));
  Actor->SetActorScale3D(Scale);Actor->GetStaticMeshComponent()->SetCollisionProfileName(TEXT("BlockAll"));return Actor;
+#else
+ return nullptr;
+#endif
+}
+
+AActor* UPiedmontWorldTools::SpawnValidationDarkZone(UObject* WorldContext,FVector Location){
+#if WITH_EDITOR
+ UWorld* World=WorldContext?WorldContext->GetWorld():nullptr;if(!World||World->WorldType!=EWorldType::PIE)return nullptr;
+ return World->SpawnActor<APiedmontDarkZone>(Location,FRotator::ZeroRotator);
 #else
  return nullptr;
 #endif

@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "daylight_lights_off",
+      "pass": true
+    },
+    {
+      "name": "horn_repeat_is_limited",
+      "pass": true
+    },
+    {
+      "name": "H_sounds_horn",
+      "pass": true
+    },
+    {
+      "name": "dark_zone_turns_head_and_tail_lights_on",
+      "pass": true
+    },
+    {
+      "name": "leaving_darkness_turns_lights_off_after_delay",
+      "pass": true
+    },
+    {
+      "name": "reentering_darkness_restores_lights",
+      "pass": true
+    },
+    {
+      "name": "dismount_for_parked_light_test",
+      "pass": true
+    },
+    {
+      "name": "parked_bike_updates_automatic_lights",
+      "pass": true
+    }
+  ],
+  "stage": 6
+}

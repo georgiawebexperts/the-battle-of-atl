@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "E_transfers_to_walking_rider",
+      "pass": true
+    },
+    {
+      "name": "walk_and_leave_bike_stationary",
+      "pass": true,
+      "distance_cm": 345.9708299944795
+    },
+    {
+      "name": "reject_remote_remount",
+      "pass": true
+    },
+    {
+      "name": "E_remount_restores_bike_possession",
+      "pass": true
+    },
+    {
+      "name": "pedal_works_after_remount",
+      "pass": true,
+      "speed": 138.26779174804688
+    },
+    {
+      "name": "reject_unsafe_fast_dismount",
+      "pass": true
+    },
+    {
+      "name": "reject_blocked_dismount",
+      "pass": true
+    },
+    {
+      "name": "reject_dismount_through_thin_barrier",
+      "pass": true
+    }
+  ],
+  "stage": 9
+}

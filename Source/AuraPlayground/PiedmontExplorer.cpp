@@ -1,5 +1,13 @@
 #include "PiedmontExplorer.h"
 #include "PiedmontBike.h"
+#include "PiedmontCombat.h"
+#include "PiedmontBlood.h"
+#include "Sound/SoundBase.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/DamageEvents.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
+#include "DrawDebugHelpers.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -14,7 +22,7 @@
 #include "UObject/ConstructorHelpers.h"
 APiedmontExplorer::APiedmontExplorer(){
  PrimaryActorTick.bCanEverTick=true;
- GetCapsuleComponent()->InitCapsuleSize(30,88);
+ GetCapsuleComponent()->InitCapsuleSize(30,88);GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
  GetCharacterMovement()->MaxWalkSpeed=380;
  GetCharacterMovement()->MaxStepHeight=35;
  GetCharacterMovement()->BrakingDecelerationWalking=1600;
@@ -23,22 +31,39 @@ APiedmontExplorer::APiedmontExplorer(){
  Body=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("WalkingRider"));Body->SetupAttachment(GetCapsuleComponent());
  Body->SetRelativeLocation(FVector(0,0,-88));Body->SetRelativeRotation(FRotator(0,-90,0));Body->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  static ConstructorHelpers::FObjectFinder<USkeletalMesh> Human(TEXT("/Game/PiedmontRide/Rider/Casual.Casual"));Body->SetSkinnedAssetAndUpdate(Human.Object);
- CameraArm=CreateDefaultSubobject<USpringArmComponent>(TEXT("ExplorerArm"));CameraArm->SetupAttachment(GetCapsuleComponent());CameraArm->TargetArmLength=320;CameraArm->SetRelativeLocation(FVector(0,0,65));CameraArm->bUsePawnControlRotation=true;
+ CameraArm=CreateDefaultSubobject<USpringArmComponent>(TEXT("ExplorerArm"));CameraArm->SetupAttachment(GetCapsuleComponent());CameraArm->TargetArmLength=320;CameraArm->SocketOffset=FVector(0,55,15);CameraArm->SetRelativeLocation(FVector(0,0,65));CameraArm->bUsePawnControlRotation=true;
+ Weapon=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DevelopmentSidearm"));Weapon->SetupAttachment(GetCapsuleComponent());
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));Weapon->SetStaticMesh(Cube.Object);Weapon->SetRelativeLocation(FVector(48,15,42));Weapon->SetRelativeScale3D(FVector(.35,.05,.08));Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);Weapon->SetVisibility(false);
  Camera=CreateDefaultSubobject<UCameraComponent>(TEXT("ExplorerCamera"));Camera->SetupAttachment(CameraArm);Camera->FieldOfView=85;
 }
 void APiedmontExplorer::BeginPlay(){
  Super::BeginPlay();
+ if(auto* Gun=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/PiedmontRide/Bike/SM_Pistol.SM_Pistol"),nullptr,LOAD_NoWarn)){
+  const FVector Size=Gun->GetBounds().BoxExtent*2;const float Scale=28.f/FMath::Max(Size.X,Size.Y);const FRotator Rotation(0,Size.Y>Size.X?-90.f:0.f,0);
+  Weapon->SetStaticMesh(Gun);Weapon->SetRelativeScale3D(FVector(Scale));Weapon->SetRelativeRotation(Rotation);Weapon->SetRelativeLocation(FVector(48,15,42)-Rotation.RotateVector(Gun->GetBounds().Origin)*Scale);
+ }
  for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("RideWater")))GetCapsuleComponent()->IgnoreActorWhenMoving(*It,true);
  if(auto* Asset=Cast<USkeletalMesh>(Body->GetSkinnedAsset())){
   const auto& Ref=Asset->GetRefSkeleton();
   for(int32 I=0;I<Ref.GetNum();++I){Parents.Add(Ref.GetParentIndex(I));Bones.Add(Ref.GetBoneName(I));RestPose.Add(Ref.GetRefBonePose()[I]);}
  }
 }
-void APiedmontExplorer::SetupPlayerInputComponent(UInputComponent* Input){Super::SetupPlayerInputComponent(Input);Input->BindKey(EKeys::E,IE_Pressed,this,&APiedmontExplorer::Interact);}
+void APiedmontExplorer::SetupPlayerInputComponent(UInputComponent* Input){Super::SetupPlayerInputComponent(Input);Input->BindKey(EKeys::E,IE_Pressed,this,&APiedmontExplorer::Interact);
+ Input->BindKey(EKeys::One,IE_Pressed,this,&APiedmontExplorer::ToggleWeapon);
+ Input->BindKey(EKeys::LeftMouseButton,IE_Pressed,this,&APiedmontExplorer::PullTrigger);Input->BindKey(EKeys::LeftMouseButton,IE_Released,this,&APiedmontExplorer::ReleaseTrigger);
+ Input->BindKey(EKeys::RightMouseButton,IE_Pressed,this,&APiedmontExplorer::AimOn);Input->BindKey(EKeys::RightMouseButton,IE_Released,this,&APiedmontExplorer::AimOff);
+ Input->BindKey(EKeys::R,IE_Pressed,this,&APiedmontExplorer::Reload);
+}
 void APiedmontExplorer::Interact(){Remount();}
-bool APiedmontExplorer::Remount(){return !bSwimming&&IsValid(Bike)&&Bike->Remount(this);}
+bool APiedmontExplorer::Remount(){return !bDead&&!bSwimming&&IsValid(Bike)&&Bike->Remount(this);}
 void APiedmontExplorer::Tick(float Dt){
- Super::Tick(Dt);UpdateSwimming(Dt);
+ Super::Tick(Dt);if(bDead){Weapon->SetVisibility(false);return;}UpdateSwimming(Dt);
+ FireCooldown=FMath::Max(0.f,FireCooldown-Dt);
+ if(!CanUseWeapon()){bWeaponDrawn=false;bAiming=false;bTriggerHeld=false;ReloadRemaining=0;}
+ if(ReloadRemaining>0){ReloadRemaining=FMath::Max(0.f,ReloadRemaining-Dt);if(ReloadRemaining<=0)Ammo=12;}
+ if(bTriggerHeld)Fire();Weapon->SetVisibility(bWeaponDrawn);
+ CameraArm->TargetArmLength=FMath::FInterpTo(CameraArm->TargetArmLength,bAiming?180.f:320.f,Dt,10);
+ Camera->SetFieldOfView(FMath::FInterpTo(Camera->FieldOfView,bAiming?65.f:85.f,Dt,10));
  if(auto* PC=Cast<APlayerController>(GetController())){
   float X=0,Y=0;PC->GetInputMouseDelta(X,Y);AddControllerYawInput(X*.18f);AddControllerPitchInput(Y*-.12f);
   const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);
@@ -73,7 +98,8 @@ void APiedmontExplorer::AnimateBody(float Dt){
  };
  const float Stroke=.5f+.5f*FMath::Sin(Gait);
  for(int Side:{1,-1}){
-  const FVector Hand=bSwimming?FVector(Side*(20+35*Stroke),20+10*FMath::Cos(Gait),175-45*Stroke):FVector(Side*26,FMath::Sin(Gait)*Side*18*Blend,80);
+  FVector Hand=bSwimming?FVector(Side*(20+35*Stroke),20+10*FMath::Cos(Gait),175-45*Stroke):FVector(Side*26,FMath::Sin(Gait)*Side*18*Blend,80);
+  if(bWeaponDrawn)Hand=Side==1?FVector(5,40,128):FVector(-15,45,130);
   if(Side==1)Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),Hand,FVector(1,1,0));
   else Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),Hand,FVector(-1,1,0));
   const int Leg=Index(Side==1?TEXT("UpperLeg_L"):TEXT("UpperLeg_R"));
@@ -105,4 +131,40 @@ void APiedmontExplorer::UpdateSwimming(float Dt){
   FHitResult Hit;SetActorLocation(FVector(Here.X,Here.Y,FMath::FInterpTo(Here.Z,Target,Dt,8)),true,&Hit);
   GetCharacterMovement()->Velocity.Z=0;
  }
+}
+
+bool APiedmontExplorer::CanUseWeapon() const{return !bDead&&!bSwimming&&GetController()&&GetCharacterMovement()->IsMovingOnGround();}
+void APiedmontExplorer::ToggleWeapon(){if(CanUseWeapon()){bWeaponDrawn=!bWeaponDrawn;if(!bWeaponDrawn){bTriggerHeld=false;bAiming=false;ReloadRemaining=0;}}}
+void APiedmontExplorer::PullTrigger(){bTriggerHeld=true;Fire();}void APiedmontExplorer::ReleaseTrigger(){bTriggerHeld=false;}
+void APiedmontExplorer::AimOn(){bAiming=bWeaponDrawn&&CanUseWeapon();}void APiedmontExplorer::AimOff(){bAiming=false;}
+void APiedmontExplorer::Reload(){if(CanUseWeapon()&&bWeaponDrawn&&Ammo<12&&ReloadRemaining<=0)ReloadRemaining=1.5f;}
+bool APiedmontExplorer::Fire(){
+ if(!CanUseWeapon()||!bWeaponDrawn||FireCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
+ Ammo--;ShotsFired++;FireCooldown=.28f;
+ if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/PiedmontRide/Audio/S_Gunshot.S_Gunshot"),nullptr,LOAD_NoWarn))UGameplayStatics::PlaySoundAtLocation(this,Sound,GetActorLocation());
+ auto* PC=Cast<APlayerController>(GetController());FVector Eye;FRotator Aim;PC->GetPlayerViewPoint(Eye,Aim);
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(PiedmontGunshot),true,this);
+ const FVector Muzzle=GetActorLocation()+GetActorRotation().RotateVector(FVector(68,15,42));
+ FHitResult CameraHit,Hit;const FVector Far=Eye+Aim.Vector()*15000;
+ GetWorld()->LineTraceSingleByChannel(CameraHit,Eye,Far,ECC_Visibility,Q);
+ const FVector Target=CameraHit.bBlockingHit?CameraHit.ImpactPoint:Far;
+ if(!GetWorld()->LineTraceSingleByChannel(Hit,GetActorLocation()+FVector(0,0,42),Muzzle,ECC_Visibility,Q))GetWorld()->LineTraceSingleByChannel(Hit,Muzzle,Target+(Target-Muzzle).GetSafeNormal()*3.f,ECC_Visibility,Q);LastShotEnd=Hit.bBlockingHit?Hit.ImpactPoint:Target;
+ DrawDebugLine(GetWorld(),Muzzle,LastShotEnd,FColor(255,185,70),false,.08f,0,1.5f);
+ if(Hit.GetActor())UGameplayStatics::ApplyPointDamage(Hit.GetActor(),34,(Target-Muzzle).GetSafeNormal(),Hit,PC,this,UPiedmontBulletDamage::StaticClass());
+ PC->AddPitchInput(-.7f);return true;
+}
+float APiedmontExplorer::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
+ if(Amount<=0||bDead)return 0;
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded)return 0;
+ APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,35),FVector::UpVector);
+ if(Event.DamageTypeClass&&Event.DamageTypeClass->IsChildOf(UPiedmontKnifeDamage::StaticClass())){
+  if(bKnifeWounded)Mode->EndRun(TEXT("Second stab — run ended"));else {bKnifeWounded=true;GetCharacterMovement()->StopMovementImmediately();}
+ }else if(Event.DamageTypeClass&&Event.DamageTypeClass->IsChildOf(UPiedmontBulletDamage::StaticClass()))Mode->EndRun(TEXT("Shot — run ended"));
+ return Amount;
+}
+
+void APiedmontExplorer::AimAtForValidation(AActor* Target){
+#if WITH_EDITOR
+ if(!IsValid(Target))return;if(auto* PC=Cast<APlayerController>(GetController())){FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);PC->SetControlRotation((Target->GetActorLocation()+FVector(0,0,25)-Eye).Rotation());}
+#endif
 }

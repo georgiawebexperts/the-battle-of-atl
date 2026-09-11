@@ -9,7 +9,9 @@ def tick(delta):
   if time.monotonic()-started>120:raise RuntimeError('Explorer integration timeout')
   worlds=unreal.EditorLevelLibrary.get_pie_worlds(False)
   if not worlds:return
-  w=worlds[0];pawn=unreal.GameplayStatics.get_player_pawn(w,0);now=unreal.GameplayStatics.get_time_seconds(w)
+  w=worlds[0]
+  if unreal.GameplayStatics.get_game_mode(w).get_editor_property('start_countdown')>0:return
+  pawn=unreal.GameplayStatics.get_player_pawn(w,0);now=unreal.GameplayStatics.get_time_seconds(w)
   if last is None:last=now
   elapsed+=min(now-last,.12);last=now
   if elapsed<.5:return

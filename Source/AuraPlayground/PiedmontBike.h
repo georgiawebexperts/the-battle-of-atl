@@ -6,11 +6,15 @@
 #include "GameFramework/HUD.h"
 #include "PiedmontBike.generated.h"
 class APiedmontExplorer;
+class AStaticMeshActor;
+class APiedmontThreat;
 class UCapsuleComponent;
 class UPoseableMeshComponent;
 class UCameraComponent;
 class USpringArmComponent;
 class UStaticMeshComponent;
+class USpotLightComponent;
+class UPointLightComponent;
 
 UCLASS()
 class AURAPLAYGROUND_API APiedmontWaterHazard : public AActor {
@@ -57,6 +61,7 @@ class AURAPLAYGROUND_API APiedmontBike : public APawn {
 public:
  APiedmontBike();
  virtual void BeginPlay() override;
+ virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  virtual void Tick(float Dt) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  virtual UPawnMovementComponent* GetMovementComponent() const override;
@@ -67,16 +72,24 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> Arm;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Handlebar;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<USpotLightComponent> Headlight;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> TailLight;
+ UPROPERTY(BlueprintReadOnly) bool bLightsOn=false;
+ UPROPERTY(BlueprintReadOnly) int32 HornCount=0;
+ UFUNCTION(BlueprintCallable) void Horn();
  UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
  UPROPERTY(BlueprintReadOnly) bool bDismounted=false;
+ int32 KnifeHits=0;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontExplorer> Explorer;
- UFUNCTION(BlueprintCallable) bool Dismount(bool WaterEntry=false);
+ UFUNCTION(BlueprintCallable) bool Dismount(bool WaterEntry=false,bool Forced=false);
  bool Remount(APiedmontExplorer* ReturningRider);
  UFUNCTION(BlueprintCallable) void ToggleCamera();
  UFUNCTION(BlueprintCallable) void ResetRide();
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
 private:
  void Interact();
+ void UpdateLights(float Dt);
+ float LightCheck=0,LightOffDelay=0,HornCooldown=0;
  void PedalInput(float V);void Steering(float V);void BrakeOn();void BrakeOff();void GearUp();void GearDown();
  void PoseRider(float Dt);
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel,FrontFork;
@@ -92,5 +105,32 @@ public: virtual void DrawHUD() override;
 UCLASS()
 class AURAPLAYGROUND_API APiedmontRideMode : public AGameModeBase {
  GENERATED_BODY()
-public: APiedmontRideMode();
+public:
+ APiedmontRideMode();
+ virtual void StartPlay() override;
+ virtual void Tick(float Dt) override;
+ UPROPERTY(BlueprintReadOnly) float TimeRemaining=600;
+ UPROPERTY(BlueprintReadOnly) float StartCountdown=3;
+ UPROPERTY(BlueprintReadOnly) bool bRunEnded=false;
+ UPROPERTY(BlueprintReadOnly) bool bItemCollected=false;
+ UPROPERTY(BlueprintReadOnly) bool bObjectiveReady=false;
+ UPROPERTY(BlueprintReadOnly) int32 RunNumber=0;
+ UPROPERTY(BlueprintReadOnly) FString FailureReason;
+ UPROPERTY(BlueprintReadOnly) FVector ItemLocation;
+ UPROPERTY(BlueprintReadOnly) float EncounterCountdown=300;
+ UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontThreat> ActiveThreat;
+ UFUNCTION(BlueprintCallable) APiedmontThreat* SpawnThreatForValidation(bool Gunman,FVector Location);
+ UFUNCTION(BlueprintCallable) void RestartRun();
+ UFUNCTION(BlueprintCallable) void EndRun(const FString& Reason);
+ UFUNCTION(BlueprintCallable) FString ItemDirection();
+private:
+ void ChooseItem();
+ void ConsiderEncounter();
+ UPROPERTY() TObjectPtr<APiedmontBike> RunBike;
+ UPROPERTY() TObjectPtr<AStaticMeshActor> ItemActor;
+ FVector StartLocation,PreviousItem=FVector::ZeroVector;
+ FRotator StartRotation;
+ int32 CompassSector=-1;
+ bool bAnchored=false;
+
 };

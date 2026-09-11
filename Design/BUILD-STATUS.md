@@ -88,3 +88,16 @@ Combat, knife pursuit, player gun, blood effects, timer/item compass/restart loo
 Final movement checkpoint: all seven actual-lake cases pass after the no-teleport and immediate-stop changes, including animated hand travel, bank exit and remount. Archived swim-return-remount report supersedes the earlier six-case result. Procedural arm IK replaces the initial T-pose swimmer; visual review remains necessary before claiming presentation quality.
 
 Visual check completed in the running park: rider is prone at the lake surface and arms animate through a stroke instead of holding the T pose. This is a provisional swim animation, not final realistic presentation. No full milestone or full-game acceptance is implied.
+
+
+## 2026-09-10 — Timed retrieval and combat prototype
+
+Added a continuously running ten-minute prototype clock after a three-second countdown, a cardinal-only item hint, item loss on death, and a fresh item placement on restart. The final difficulty selector, off-direct-exit placement constraint, complete reachable network, Krog finish, results and saved best times remain pending. The item is currently an orange placeholder sphere.
+
+Added on-foot pistol draw/aim/fire/reload, obstruction-aware shot traces, lethal player bullet hits, first-stab dismount and chase, second-stab death before remount, and successful-remount reset of the two-hit window. Rare encounter scheduling waits five minutes and then has a 35% opportunity to spawn one attacker; some runs have none. Initial live attacker integration passes nine checks, including actual pursuit, escape by remount, a defensive shot with blood particles, attacker defeat, and two-hit death. Combat is provisional: simplified pursuit, posed falls and short blood particles, with realistic ragdolls, production effects and full park navigation still pending. Reloads currently have unlimited reserve ammunition.
+
+Added an over-shoulder camera, H horn with repeat limiting, and head/tail lights responding to night or authored darkness volumes. Native build succeeds; latest integration results are recorded below when complete. Darkness volumes still need placement in the future Krog tunnel. The full game is not complete.
+
+Latest rebuilt integration: 17/17 combat/run rules, 9/9 live pursuit/defense, 8/8 horn/automatic-light and 7/7 real-lake swim/return checks pass. Reports are archived under Tests/Results/2026-09-10-*. These checks do not establish finished visuals, complete geography or target frame rate.
+
+Final bike regression also passes 17/17 retained land/handling cases on the combat build. Total fresh checks for this checkpoint: 58 (17 bike + 17 combat/run + 9 live threats + 8 lights/horn + 7 swimming). Visual quality and full route acceptance remain separate.

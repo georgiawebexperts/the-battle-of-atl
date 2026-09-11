@@ -1,0 +1,876 @@
+{
+  "timing": "Bike simulation seconds; does not certify frame rate",
+  "build": "0.3.0-dev",
+  "status": "passed",
+  "cases": [
+    {
+      "name": "gear_up",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          97.74020368331645
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          96.00219328775789
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "peak_speed": 0.0,
+      "max_height": 97.74020368331645,
+      "crash_seen": false
+    },
+    {
+      "name": "gear_down",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 2,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          97.74391704454897
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 2,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          96.00200750095661
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "peak_speed": 0.0,
+      "max_height": 97.74391704454897,
+      "crash_seen": false
+    },
+    {
+      "name": "handlebar_camera",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 1,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          97.63266606714558
+        ],
+        "first_person": true,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 1,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          96.00227009597542
+        ],
+        "first_person": true,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "peak_speed": 0.0,
+      "max_height": 97.63266606714558,
+      "crash_seen": false
+    },
+    {
+      "name": "chase_camera",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 1,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          98.81988902199335
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 1,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0,
+          4000.0,
+          96.0022728094865
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "peak_speed": 0.0,
+      "max_height": 98.81988902199335,
+      "crash_seen": false
+    },
+    {
+      "name": "low_gear_acceleration",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 4.782007694244385,
+        "gear": 1,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.0605765662871407,
+          4000.0,
+          98.76462509002073
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000003077377,
+          -4.999999897215879,
+          47.999998541181604
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 301.90618896484375,
+        "gear": 1,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          575.2604988758675,
+          4000.0,
+          96.00000000000003
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000014264959,
+          -17.859874961120248,
+          41.519640806658536
+        ]
+      },
+      "peak_speed": 301.90618896484375,
+      "max_height": 98.76462509002073,
+      "crash_seen": false
+    },
+    {
+      "name": "high_gear_acceleration",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 3.7613861560821533,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          0.09137469631266698,
+          4000.0,
+          97.70265068839757
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000014264959,
+          -17.859874961120248,
+          41.519640806658536
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 224.6023406982422,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          283.22559676288296,
+          4000.0,
+          96.00000000000003
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000013123874,
+          -20.540164909617076,
+          28.19167308557867
+        ]
+      },
+      "peak_speed": 224.6023406982422,
+      "max_height": 97.70265068839757,
+      "crash_seen": false
+    },
+    {
+      "name": "top_speed",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 1.4842230081558228,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          21000.01603560027,
+          0.0,
+          98.93746390181305
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000013123874,
+          -20.540164909617076,
+          28.19167308557867
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 1332.50244140625,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          35323.90617458388,
+          0.0,
+          96.00000000000003
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000017184078,
+          9.528505697578844,
+          25.29757533630329
+        ]
+      },
+      "peak_speed": 1332.50244140625,
+      "max_height": 98.93746390181305,
+      "crash_seen": false
+    },
+    {
+      "name": "coasting",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 798.8777465820312,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          21028.694740005845,
+          0.0,
+          97.83002183875261
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000017184078,
+          9.528505697578844,
+          25.29757533630329
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 711.59814453125,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          23268.87299629882,
+          0.0,
+          96.00000000000003
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000017184078,
+          9.528505697578844,
+          25.29757533630329
+        ]
+      },
+      "peak_speed": 798.8777465820312,
+      "max_height": 97.83002183875261,
+      "crash_seen": false
+    },
+    {
+      "name": "braking",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.1437358856201172,
+        "speed": 796.010009765625,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          21038.23442154761,
+          0.0,
+          97.40672285993682
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000011075803,
+          9.528505882299232,
+          25.29757278148169
+        ]
+      },
+      "end": {
+        "brake_pressure": 1.0,
+        "speed": 0.0,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          21615.732293833993,
+          0.0,
+          96.00000000000026
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000011075803,
+          9.528505882299232,
+          25.29757278148169
+        ]
+      },
+      "peak_speed": 796.010009765625,
+      "max_height": 97.40672285993682,
+      "crash_seen": false
+    },
+    {
+      "name": "grass_speed",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 701.129638671875,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": true,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          21028.565724852877,
+          3000.0,
+          94.69484954396745
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000009954654,
+          7.777039527577749,
+          22.369458473501396
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 762.1015625,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": true,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          31585.098712140712,
+          3000.0,
+          91.00000000000003
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000006947943,
+          -12.72241944018209,
+          46.013000166726364
+        ]
+      },
+      "peak_speed": 762.1015625,
+      "max_height": 94.69484954396745,
+      "crash_seen": false
+    },
+    {
+      "name": "uphill_ramp",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 505.9020690917969,
+        "gear": 3,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          4217.065766971749,
+          0.0,
+          97.90780279392148
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004534096,
+          -8.270039679559321,
+          47.662272368960956
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 240.06190490722656,
+        "gear": 3,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          6300.557910348948,
+          0.0,
+          583.343917944438
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000013983152,
+          -19.068435031812598,
+          39.6209650756872
+        ]
+      },
+      "peak_speed": 592.21826171875,
+      "max_height": 583.343917944438,
+      "crash_seen": false
+    },
+    {
+      "name": "solid_wall",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 705.0452880859375,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 0,
+        "reason": "",
+        "location": [
+          1026.1407811205286,
+          -2000.0,
+          97.78054575932363
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000008805022,
+          -15.695875816241852,
+          43.89950571729102
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 2.9811694622039795,
+        "crashes": 1,
+        "reason": "Impact \u2014 StaticMeshActor_4",
+        "location": [
+          2147.573919155645,
+          -2000.0,
+          96.00000000000004
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "peak_speed": 809.7427368164062,
+      "max_height": 97.78054575932363,
+      "crash_seen": true
+    },
+    {
+      "name": "lean_crash",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 1397.6002197265625,
+        "gear": 7,
+        "lean": 1.1117184162139893,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 1,
+        "reason": "Impact \u2014 StaticMeshActor_4",
+        "location": [
+          50.20412867017464,
+          4000.0693948629632,
+          97.83007803429551
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 0.0,
+        "gear": 7,
+        "lean": 41.307518005371094,
+        "grass": false,
+        "grounded": true,
+        "recovery": 2.357807159423828,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          496.14544135331494,
+          4042.1889975837307,
+          96.0016255127322
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "peak_speed": 1397.6002197265625,
+      "max_height": 97.83007803429551,
+      "crash_seen": true
+    },
+    {
+      "name": "brake_pressure",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.10874900966882706,
+        "speed": 797.379150390625,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          21028.94885585195,
+          0.0,
+          97.81649940897042
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000015509949,
+          10.669007284697127,
+          35.23762333392583
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.7022925019264221,
+        "speed": 740.228759765625,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          21182.025287373534,
+          0.0,
+          96.02466561332206
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000015509949,
+          10.669007284697127,
+          35.23762333392583
+        ]
+      },
+      "peak_speed": 797.379150390625,
+      "max_height": 97.81649940897042,
+      "crash_seen": false
+    },
+    {
+      "name": "grass_braking",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.11647901684045792,
+        "speed": 795.5940551757812,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": true,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          21030.963199891998,
+          3000.0,
+          94.86345459431409
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000015509949,
+          10.669007284697127,
+          35.23762333392583
+        ]
+      },
+      "end": {
+        "brake_pressure": 1.0,
+        "speed": 0.0,
+        "gear": 4,
+        "lean": 0.0,
+        "grass": true,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          21835.838495388274,
+          3000.0,
+          91.00000000000003
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000015509949,
+          10.669007284697127,
+          35.23762333392583
+        ]
+      },
+      "peak_speed": 795.5940551757812,
+      "max_height": 94.86345459431409,
+      "crash_seen": false
+    },
+    {
+      "name": "downhill_coasting",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 408.50946044921875,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          8715.118585846765,
+          0.0,
+          579.1492778424999
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 859.173095703125,
+        "gear": 7,
+        "lean": 0.0,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          9984.3092909094,
+          0.0,
+          239.06664723669772
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "peak_speed": 859.173095703125,
+      "max_height": 579.1492778424999,
+      "crash_seen": false
+    },
+    {
+      "name": "gentle_turn",
+      "pass": true,
+      "start": {
+        "brake_pressure": 0.0,
+        "speed": 399.3115234375,
+        "gear": 3,
+        "lean": 0.30996936559677124,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          15.020995455203062,
+          4000.0198760684957,
+          97.76472477374193
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "end": {
+        "brake_pressure": 0.0,
+        "speed": 381.68780517578125,
+        "gear": 3,
+        "lean": 30.625219345092773,
+        "grass": false,
+        "grounded": true,
+        "recovery": 0.0,
+        "crashes": 2,
+        "reason": "Traction lost \u2014 ease steering / braking",
+        "location": [
+          324.3429729358403,
+          4169.03932471225,
+          96.0000000012215
+        ],
+        "first_person": false,
+        "pedal_foot": [
+          12.000000004908355,
+          10.669008473850255,
+          35.23761530033658
+        ]
+      },
+      "peak_speed": 399.3115234375,
+      "max_height": 97.76472477374193,
+      "crash_seen": false
+    }
+  ],
+  "scope": "17 retained land/bike cases; water respawn superseded by separate swimming integration",
+  "active": "gentle_turn"
+}
