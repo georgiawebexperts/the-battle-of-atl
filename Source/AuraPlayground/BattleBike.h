@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontBike.h"
 #include "BattleBike.generated.h"
+class ABattleRider;
 class UPoseableMeshComponent;
 class UCameraComponent;
 class USpringArmComponent;
@@ -49,10 +50,16 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Handlebar;
  UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
+ UPROPERTY(BlueprintReadOnly) bool bParked=false;
+ UPROPERTY(BlueprintReadOnly) float RiderHealth=100;
+ UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=12;
+ UFUNCTION(BlueprintCallable) bool Dismount();
+ bool Remount(ABattleRider* Person);
  UFUNCTION(BlueprintCallable) void ToggleCamera();
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
  FVector FindPathReturn() const;
 private:
+ void Interact(){Dismount();}
  void PoseRider(float Dt);
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;

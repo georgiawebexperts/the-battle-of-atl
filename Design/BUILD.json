@@ -1,8 +1,8 @@
 {
-  "build": 5,
-  "version": "0.5.0-dev",
+  "build": 6,
+  "version": "0.6.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Arcade Character Movement foundation: 14 live checks pass; FPS and V3 milestone 1 acceptance pending",
+  "milestone": "FPS bike handoff and pistol foundation: 14 live checks pass; V3 milestone 1 fun acceptance pending",
   "author": "2026-09-10 [codex-maclaptop]"
 }

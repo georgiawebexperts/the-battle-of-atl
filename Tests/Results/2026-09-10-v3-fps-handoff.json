@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "scope": "FPS/pistol handoff foundation, not full combat or milestone fun acceptance.",
+  "cases": [
+    {
+      "name": "E_dismount_possesses_first_person_rider",
+      "pass": true
+    },
+    {
+      "name": "bike_stops_and_parks",
+      "pass": true
+    },
+    {
+      "name": "camera_at_rider_eye",
+      "pass": true
+    },
+    {
+      "name": "sprint_moves_fps_rider",
+      "pass": true,
+      "speed": 850.0
+    },
+    {
+      "name": "parked_bike_stays_put",
+      "pass": true
+    },
+    {
+      "name": "cannot_remount_from_far_away",
+      "pass": true
+    },
+    {
+      "name": "space_jumps",
+      "pass": true,
+      "height": 106.73958772044071
+    },
+    {
+      "name": "pistol_fires_while_airborne",
+      "pass": true
+    },
+    {
+      "name": "right_mouse_aims",
+      "pass": true
+    },
+    {
+      "name": "reload_refills_without_reserve_limit",
+      "pass": true
+    },
+    {
+      "name": "pistol_hits_target",
+      "pass": true
+    },
+    {
+      "name": "E_remount_restores_bike_possession",
+      "pass": true
+    },
+    {
+      "name": "remount_preserves_health_and_magazine",
+      "pass": true
+    },
+    {
+      "name": "one_player_pawn_after_remount",
+      "pass": true
+    }
+  ],
+  "stage": 10
+}

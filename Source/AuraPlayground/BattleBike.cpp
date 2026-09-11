@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleRider.h"
 #include "PiedmontPathSpline.h"
 #include "PiedmontTrafficDirector.h"
 #include "Components/CapsuleComponent.h"
@@ -56,11 +57,11 @@ void ABattleBike::BeginPlay(){
  }
 }
 void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
- Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::Up,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Down,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
+ Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::Up,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Down,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
 void ABattleBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
- Super::Tick(Dt);
+ Super::Tick(Dt);if(bParked)return;
  if(auto* PC=Cast<APlayerController>(GetController())){
   Ride->Pedal=PC->IsInputKeyDown(EKeys::W)?1:0;
   Ride->Steer=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
@@ -95,7 +96,15 @@ void ABattleLabMode::Tick(float Dt){
  AGameModeBase::Tick(Dt);if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}if(!bRunEnded){TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt);if(TimeRemaining<=0)bRunEnded=true;}
 }
 void ABattleLabHUD::DrawHUD(){
- Super::DrawHUD();if(!Canvas)return;auto* Bike=Cast<ABattleBike>(GetOwningPawn());if(!Bike)return;
+ Super::DrawHUD();if(!Canvas)return;auto* Bike=Cast<ABattleBike>(GetOwningPawn());if(!Bike){
+  if(auto* Person=Cast<ABattleRider>(GetOwningPawn())){
+   DrawRect(FLinearColor(.03,.015,.02,.85),20,20,760,125);
+   DrawText(TEXT("BATTLE FOR THE A | FIRST PERSON"),FColor::White,35,30,nullptr,1.8);
+   DrawText(FString::Printf(TEXT("PISTOL %d / unlimited   HEALTH %.0f%s"),Person->Ammo,Person->Health,Person->ReloadRemaining>0?TEXT("   RELOADING"):TEXT("")),FColor(255,190,80),35,65,nullptr,1.4);
+   DrawText(TEXT("WASD move | Shift sprint | Space jump | Mouse aim/fire | R reload | E bike"),FColor::White,35,105,nullptr,1.1);
+   const float X=Canvas->SizeX*.5f,Y=Canvas->SizeY*.5f;DrawLine(X-8,Y,X+8,Y,FColor::White,1.5);DrawLine(X,Y-8,X,Y+8,FColor::White,1.5);
+  }return;
+ }
  DrawRect(FLinearColor(.03,.015,.02,.85),20,20,720,125);DrawText(TEXT("BATTLE FOR THE A | ARCADE BIKE TEST"),FColor::White,35,30,nullptr,1.8);
  DrawText(FString::Printf(TEXT("GEAR %d / 5   %.0f MPH   Wipeouts %d"),Bike->Ride->Gear,Bike->Ride->Speed*.0223694f,Bike->Ride->Wipeouts),FColor(255,190,80),35,65,nullptr,1.5);
  DrawText(TEXT("W pedal | Arrows or A/D steer | Up/Down gears | Space brake | Tab view"),FColor::White,35,105,nullptr,1.1);
