@@ -1,0 +1,45 @@
+{
+  "profiles": [
+    {
+      "passed": true,
+      "difficulty": "Easy",
+      "reason": "Configured population spawned",
+      "desired": 3,
+      "live": 3,
+      "sprinters": 0,
+      "waves": 0,
+      "waveSpawned": 0,
+      "tuned": true,
+      "scope": "Configured population reached before completion; Hard then tests a full wave, a repeat wave and departure. Its final live count is after returning to the gate.",
+      "exit_code": 0
+    },
+    {
+      "passed": true,
+      "difficulty": "Medium",
+      "reason": "Configured population spawned",
+      "desired": 12,
+      "live": 12,
+      "sprinters": 2,
+      "waves": 0,
+      "waveSpawned": 0,
+      "tuned": true,
+      "scope": "Configured population reached before completion; Hard then tests a full wave, a repeat wave and departure. Its final live count is after returning to the gate.",
+      "exit_code": 0
+    },
+    {
+      "passed": true,
+      "difficulty": "Hard",
+      "reason": "Full covered wave, repeat wave and ordinary spawns after leaving pass",
+      "desired": 30,
+      "live": 3,
+      "sprinters": 3,
+      "waves": 2,
+      "waveSpawned": 16,
+      "tuned": true,
+      "scope": "Configured population reached before completion; Hard then tests a full wave, a repeat wave and departure. Its final live count is after returning to the gate.",
+      "exit_code": 0
+    }
+  ],
+  "all_passed": true,
+  "scope": "Actual navigation/collision-checked spawns with pursuit frozen; tuning values and covered Hard wave, not rendered density or game balance."
+}

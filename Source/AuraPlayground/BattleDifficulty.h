@@ -27,6 +27,9 @@ struct AURAPLAYGROUND_API FBattleDifficultyRow : public FTableRowBase {
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float IllegalBikeSpeed=2235.2;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float ArmedBikeFraction=0;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 Zombies=3;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float ZombieRespawnSeconds=12;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float ZombieDamage=20;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float ZombieWarningSeconds=.9f;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float ZombieSpeed=140;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float SprinterFraction=0;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float SprinterSpeed=500;

@@ -5,7 +5,7 @@
 #include "PiedmontBike.h"
 #include "BattleDifficulty.h"
 #include "BattleBike.generated.h"
-class ABattleQuest;
+class ABattleQuest;class ABattleEnemyDirector;
 class ABattleRideFX;class UAudioComponent;
 class USpotLightComponent;class UPointLightComponent;
 class ABattleRider;
@@ -144,5 +144,6 @@ public:
  UPROPERTY(BlueprintReadOnly) FName DifficultyName=TEXT("Easy");
  UPROPERTY(BlueprintReadOnly) FBattleDifficultyRow Difficulty;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleQuest> Quest;
+ UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleEnemyDirector> Enemies;
 
 };

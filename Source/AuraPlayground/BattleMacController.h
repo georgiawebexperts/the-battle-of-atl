@@ -20,6 +20,12 @@ private:
  void TickConnectorAudit(float Dt);
  void TickGeographyAudit(float Dt);
  void TickHealthAudit(float Dt);
+ void TickZombieAudit(float Dt);
+ void TickZombiePopulationAudit(float Dt);
+ int32 ZombiePhase=0,ZombieShots=0;
+ float ZombieAuditClock=0;
+ FVector ZombieAuditInitial;
+ TWeakObjectPtr<AActor> ZombieAuditTarget,ZombieAuditCorpse;
  int32 HealthPhase=0;
  float HealthAuditClock=0,HealthDeathTime=0;
  FVector HealthArtifactLocation;

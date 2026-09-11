@@ -1,4 +1,4 @@
-Name,Warning,TimeLimitSeconds,Walkers,Joggers,Cyclists,Skaters,DogOwners,FrisbeeGroups,PicnicGroups,Dancers,Scooters,ScooterSlowSpeed,ScooterMediumSpeed,ScooterFastSpeed,ScooterWrongWayFraction,ScooterPackSize,IllegalBikes,IllegalBikeSpeed,ArmedBikeFraction,Zombies,ZombieSpeed,SprinterFraction,SprinterSpeed,TunnelWaveSize,Shooters,KrogerShooters,ShooterWarningSeconds,KnifeBehavior,KnifeSpeed,WeaponCrates,RadarRange
-Easy,Just a bike ride,900,14,6,3,3,2,2,3,5,3,250,350,400,0,1,0,2235.2,0,3,140,0,500,0,0,0,3,0,0,20,18000
-Medium,They are waiting at Kroger,600,35,15,8,7,5,3,6,12,10,250,450,650,0.15,1,3,2235.2,0,12,190,0.15,650,0,4,1,2.5,1,450,12,11000
-Hard,Good luck,300,60,30,16,14,10,5,10,20,24,300,550,900,0.4,4,10,2235.2,0.3,30,250,0.3,800,12,10,3,1.4,2,650,6,6500
+Name,Warning,TimeLimitSeconds,Walkers,Joggers,Cyclists,Skaters,DogOwners,FrisbeeGroups,PicnicGroups,Dancers,Scooters,ScooterSlowSpeed,ScooterMediumSpeed,ScooterFastSpeed,ScooterWrongWayFraction,ScooterPackSize,IllegalBikes,IllegalBikeSpeed,ArmedBikeFraction,Zombies,ZombieSpeed,SprinterFraction,SprinterSpeed,TunnelWaveSize,Shooters,KrogerShooters,ShooterWarningSeconds,KnifeBehavior,KnifeSpeed,WeaponCrates,RadarRange,ZombieRespawnSeconds,ZombieDamage,ZombieWarningSeconds
+Easy,Just a bike ride,900,14,6,3,3,2,2,3,5,3,250,350,400,0,1,0,2235.2,0,3,140,0,500,0,0,0,3,0,0,20,18000,12,20,0.9
+Medium,They are waiting at Kroger,600,35,15,8,7,5,3,6,12,10,250,450,650,0.15,1,3,2235.2,0,12,190,0.15,650,0,4,1,2.5,1,450,12,11000,3,25,0.7
+Hard,Good luck,300,60,30,16,14,10,5,10,20,24,300,550,900,0.4,4,10,2235.2,0.3,30,250,0.3,800,12,10,3,1.4,2,650,6,6500,0.75,30,0.5

@@ -397,3 +397,57 @@ so window/physical-input, HUD/marker rendering, audio and performance acceptance
 are pending. Coke pickups, full enemy damage encounters and presentation,
 Cabbagetown/home/results/saves, world/foliage/life and remaining V3 scope still
 require implementation and acceptance. The goal remains active.
+
+
+## Build020 — 0.20.0-dev — 2026-09-11 [codex-maclaptop]
+
+Added the V3 zombie combat foundation. BattleEnemyDirector now consumes actual
+difficulty-table zombie counts, shambler/sprinter speeds, sprinter fraction,
+replacement interval, damage and warning time. It uses navigation-reachable,
+collision-clear spawn points near the player, excludes water, retires distant
+actors and pauses encounter work during countdown/end states. AAIController
+provides pursuit. Zombies emerge, move with the articulated rider rig, twitch,
+telegraph a melee attack and recheck range/height/line of sight before applying
+shared player health damage. A mounted hit grabs the wheel for a wipeout.
+
+Pistol body hits take three shots at100health; head-region damage is tripled and
+kills in one. Existing blood and hit-marker effects run, deaths award the
+existing enemy-kill/nitro reward once, collision is removed, and the corpse falls
+and dissolves before removal at5seconds. Added green-gray masked skin with the
+skeletal-mesh shader usage flag and glowing eyes. These are prototype character
+art/presentation, not accepted final ragged clothing or head-pop effects.
+
+Hard spawns12-member waves inside the tunnel volumes, repeats after45seconds,
+and clears unspawned wave members on exit so a pending wave cannot suppress
+ordinary spawning outside. Added30original subtitle lines at spawn and during
+pursuit, plus a sprinter warning. The procedural growl is original audio, but it
+is not a spoken recording of the lines. Thirty spoken performances, a real
+sprinter shriek, headshot crunch and audio/visual acceptance remain pending.
+Source/generation and scope are documented in Design/ZOMBIE-ENCOUNTERS.md.
+
+The final cooked combat test passes a real spawn, AAIController navigation and
+movement, visible-state windup, actual health damage and wipeout, actual FPS
+pistol body/head hits, two kill rewards totaling50nitro and timed corpse cleanup.
+The firing fixtures reposition/freeze targets for precise hits; this does not
+establish human aiming feel. Final actual population tests reach3Easy,12Medium
+and30Hard zombies with matching speed/damage/warning values. Hard passes a full
+covered12-zombie wave, a repeat wave, and normal spawning after leaving during
+its first4members. Its final reported live count is after the return to the gate,
+not the initially verified30. Evidence: Tests/Results/2026-09-11-native-zombie-
+combat.json and native-zombie-populations.json (same date prefix).
+
+All three existing difficulty/quest/possession/pause/timeout regressions and the
+shared-health/checkpoint audit pass in the final cooked app. Those dedicated
+fixtures explicitly freeze new enemy spawns to retain their scope; the separate
+combat/population tests exercise enemies. Reports: build020-native-quest.json
+and build020-native-health.json with the2026-09-11prefix. Corrected two native
+compile issues in audit/dialogue code before successful packaging. No failed
+build was installed.
+
+Installed and locally signed complete native0.20.0 behind the desktop icon,
+with019retained under Previous. The Mac remains locked on a fresh CUA check;
+rendered enemies/HUD, audio, physical controls, game balance and performance are
+unverified. Full V3 remains unfinished: other enemies/vehicles/weapons/crates,
+Coke pickups, world/foliage/life/landmarks, Cabbagetown/home/results/saves and final
+presentation/World Partition/shipping acceptance still require work. Goal stays
+active.
