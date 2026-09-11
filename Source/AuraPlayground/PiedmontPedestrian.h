@@ -30,10 +30,11 @@ public:
  void BikeImpact(float Speed,FVector Direction);
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
+ float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
  bool MoveTo(FVector Goal);
  void ChooseDestination();
  void YieldTo(APawn* Source,bool Horn);
- float ThinkRemaining=0,YieldRemaining=0,YieldCooldown=0;
+ float ThinkRemaining=0,YieldRemaining=0;
 };

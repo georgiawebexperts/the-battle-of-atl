@@ -20,7 +20,8 @@
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
- if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkaterReview"))){TickSkaterReview(Dt);return;}
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBenchReview"))){
   if(auto* Bike=Cast<ABattleBike>(GetPawn()))for(TActorIterator<ABattleParkFurniture> It(GetWorld());It;++It)if(!It->Benches.IsEmpty()){
    const FTransform T=It->Benches[0];const FVector Spot=T.TransformPosition(FVector(0,380,98));const FRotator R(0,(T.GetLocation()-Spot).Rotation().Yaw,0);Bike->SetActorLocationAndRotation(Spot,R,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(R);Bike->Ride->StopMovementImmediately();break;
@@ -32,6 +33,10 @@ void ABattleMacController::TickHUDReview(float Dt){
  }
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))){
+   APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*340+FVector(0,0,10);
+   if(auto* H=GetWorld()->SpawnActor<ABattleHornPickup>(Spot,FRotator::ZeroRotator)){H->SetActorTickEnabled(false);HornReviewActor=H;const FVector Eye=Spot+FVector(160,190,70);if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Spot+FVector(0,0,20)-Eye).Rotation()))SetViewTarget(Cam);}
+  }
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeReview"))){
    if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->AdjustRunTime(30,TEXT("TIME BONUS"));
    APawn* ViewerPawn=GetPawn();const FVector Spot=ViewerPawn->GetActorLocation()+ViewerPawn->GetActorForwardVector()*300+ViewerPawn->GetActorRightVector()*100-FVector(0,0,30);
@@ -62,7 +67,7 @@ void ABattleMacController::TickHUDReview(float Dt){
   FScreenshotRequest::RequestScreenshot(Folder/TEXT("bike.png"),false,false);HUDReviewStage=1;
  }
  if(HUDReviewStage==1&&HUDReviewClock>7){
-  auto* Bike=Cast<ABattleBike>(GetPawn());if(Bike&&!Bike->Dismount()){UE_LOG(LogTemp,Error,TEXT("HUDReview: dismount failed"));ConsoleCommand(TEXT("quit"));return;}if(FParse::Param(FCommandLine::Get(),TEXT("BattleRifleReview"))){if(auto* P=Cast<ABattleRider>(GetPawn())){P->ParkedBike->GiveWeapon(4,60);P->SelectWeapon(4);}}HUDReviewStage=2;
+  auto* Bike=Cast<ABattleBike>(GetPawn());if(Bike&&!Bike->Dismount()){UE_LOG(LogTemp,Error,TEXT("HUDReview: dismount failed"));ConsoleCommand(TEXT("quit"));return;}if(FParse::Param(FCommandLine::Get(),TEXT("BattleRifleReview"))){if(auto* P=Cast<ABattleRider>(GetPawn())){P->ParkedBike->GiveWeapon(4,60);P->SelectWeapon(4);}}if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReview"))){SetViewTarget(GetPawn());SetControlRotation(FRotator(0,180,0));}if(FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))&&HornReviewActor.IsValid()){SetViewTarget(GetPawn());FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((HornReviewActor->GetActorLocation()-Eye).Rotation());}HUDReviewStage=2;
  }
  if(HUDReviewStage==2&&HUDReviewClock>9){
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");

@@ -79,6 +79,10 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> TailLight;
  UPROPERTY(BlueprintReadOnly) bool bLightsOn=false;
  UPROPERTY(BlueprintReadOnly) int32 HornCount=0;
+ UPROPERTY(BlueprintReadOnly) int32 HornUses=5;
+ float HornNoticeRemaining=0;
+ FString HornNotice;
+ int32 AddHornUses(int32 Amount);
  UFUNCTION(BlueprintCallable) void Horn();
  UPROPERTY(BlueprintReadOnly) float Nitro=0;
  UPROPERTY(BlueprintReadOnly) int32 NearMisses=0;

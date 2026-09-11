@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "stage": 8,
+  "reason": "Six world pickups, five H presses, cooldown, empty feedback, +3 once/cap five, full pickup retention, foot refill/remount and invalid-state guards pass",
+  "uses": 5,
+  "sounded": 6,
+  "exit_code": 0
+}

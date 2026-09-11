@@ -31,6 +31,12 @@ private:
  bool bFurnitureAudited=false;
  void TickDroneAudit(float Dt);
  int32 DroneStage=0;float DroneClock=0;TWeakObjectPtr<AActor> AuditDrone,AuditDroneWall;
+ void TickSkaterReview(float Dt);
+ TWeakObjectPtr<AActor> SkateReviewActor,SkateReviewCamera;int32 SkateReviewFrames=0;
+ void TickSkaterAudit(float Dt);
+ void TickHornAudit(float Dt);
+ int32 HornStage=0,HornPresses=0;float HornAuditClock=0;TWeakObjectPtr<AActor> HornReviewActor;
+ int32 SkaterStage=0,SkaterInitialWipeouts=0;float SkaterClock=0,SkaterMaxError=0;bool SkaterPushSeen=false,SkaterCoastSeen=false;TWeakObjectPtr<AActor> SkaterTarget;
  void TickSkateAudit(float Dt);
  int32 SkateStage=0;float SkateClock=0,SkateTime=0;
  void TickJumpAudit(float Dt);

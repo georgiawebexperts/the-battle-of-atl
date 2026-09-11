@@ -1,0 +1,10 @@
+{
+  "installed_version": "0.41.0",
+  "strict_signature": true,
+  "desktop_link": true,
+  "startup_exit_code": 0,
+  "quest_ready": true,
+  "horn_pickups": 6,
+  "skatepark_bonuses": 3,
+  "previous_build_preserved": "040"
+}

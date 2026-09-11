@@ -44,6 +44,7 @@ void ABattleLabHUD::DrawHUD(){
  if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
  else{Text(BattleWeapons::Name(Person->CurrentWeapon),W-M-280*S,M+12*S,28,Peach);Text(FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()),W-M-280*S,M+55*S,30);}
  if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){Panel(M,M+118*S,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,M+128*S,18,Peach);}}
+ Panel(W-M-300*S,M+118*S,300*S,44*S);Text(FString::Printf(TEXT("%sHORN  %d / 5"),Bike?TEXT("H  "):TEXT(""),Owner->HornUses),W-M-280*S,M+126*S,22,Owner->HornUses>0?Muted:Peach);
  const float Bottom=H-M-156*S;
  Panel(M,Bottom,310*S,156*S);
  Text(FString::Printf(TEXT("HEALTH  %.0f"),Owner->RiderHealth),M+18*S,Bottom+10*S,22);
@@ -71,6 +72,7 @@ void ABattleLabHUD::DrawHUD(){
  else if(Owner->StunRemaining>0)Notice=FString::Printf(TEXT("%s  %.1fs  |  GET UP, THEN E TO REMOUNT"),*Owner->StunLabel,Owner->StunRemaining);
  else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
  else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
+ else if(Owner->HornNoticeRemaining>0)Notice=Owner->HornNotice;
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
  if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
  if(Notice.IsEmpty())for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("DRONE SWOOP — KEEP MOVING!");break;}

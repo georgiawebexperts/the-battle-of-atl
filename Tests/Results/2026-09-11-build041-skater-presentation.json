@@ -1,0 +1,21 @@
+{
+  "captures": 24,
+  "inspected_frames": [
+    5,
+    12
+  ],
+  "resolution": [
+    1280,
+    720
+  ],
+  "observations": [
+    "Rear foot off deck during push, back on deck during coast",
+    "Proportionate bent legs and visible board wheels",
+    "Readable civilian time-penalty label"
+  ],
+  "limitations": [
+    "Procedural prototype, stiff upper body, identical clothing",
+    "No final animation, collision reaction or FPS acceptance"
+  ],
+  "source": "work/build041-skater-poses"
+}

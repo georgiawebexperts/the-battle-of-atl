@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus pass",
+  "air_rewards": 1,
+  "air_peak_cm": 143.49,
+  "x": 41813.65,
+  "z": 605.36,
+  "exit_code": 0
+}

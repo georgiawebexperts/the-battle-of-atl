@@ -31,6 +31,7 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 WeaponCrates=0;
  UPROPERTY(BlueprintReadOnly) int32 TimePickups=0;
  UPROPERTY(BlueprintReadOnly) int32 AmmoPickups=0;
+ UPROPERTY(BlueprintReadOnly) int32 HornPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 ParkPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 TrailPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 PlacementFailures=0;
@@ -52,4 +53,14 @@ public:
 private:
  UPROPERTY() TObjectPtr<UStaticMeshComponent> Box;
  UPROPERTY() TObjectPtr<UPointLightComponent> Glow;
+};
+
+UCLASS()
+class AURAPLAYGROUND_API ABattleHornPickup : public AActor {
+ GENERATED_BODY()
+public:
+ ABattleHornPickup();
+ virtual void Tick(float Dt) override;
+ UPROPERTY(BlueprintReadOnly) bool bConsumed=false;
+ bool TryCollect(APawn* Pawn);
 };

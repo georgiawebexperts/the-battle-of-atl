@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Two skaters/three spectators, circuit, foot reach, push/coast, real bike collision and civilian shooting penalty pass",
+  "max_stance_error_cm": 0.0,
+  "travel_cm": 9742.7,
+  "corners": 6,
+  "people_hit": 1,
+  "exit_code": 0
+}

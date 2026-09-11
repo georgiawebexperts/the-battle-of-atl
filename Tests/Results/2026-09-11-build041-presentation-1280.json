@@ -1,0 +1,25 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build041-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5ded1d37c84fa6a7350ab2d56b1b16641bddbd88b715b07cdc68b3e40cfff26f"
+    },
+    {
+      "file": "work/build041-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b03f33fcb8b717ab1ec3f69cddea419eb7df4eb308d3380cedbccb1c719652da"
+    }
+  ],
+  "visual_review": "Inspected native bike and foot images at 1280x720. Horn inventory counter readable in both views. Bulb/bell model recognizable and backed HORN +3 label no longer overlaps. Foot image verifies HUD, not pickup framing. Basic pickup/world art remains unfinished; no final animation or FPS acceptance.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

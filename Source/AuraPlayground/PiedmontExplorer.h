@@ -50,7 +50,9 @@ protected:
 private:
  bool bTriggerHeld=false;
  float FireCooldown=0;
- void AnimateBody(float Dt);
+protected:
+ virtual void AnimateBody(float Dt);
+private:
  void UpdateSwimming(float Dt);
  TArray<FTransform> RestPose;
  TArray<int32> Parents;

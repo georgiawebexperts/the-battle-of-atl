@@ -65,6 +65,7 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int3
  if(GetWorld()->OverlapBlockingTestByChannel(Spot,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(28),Q))return false;
  auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Ground.ImpactPoint,Pawn);
  if(!Route||!Route->IsValid()||Route->IsPartial())return false;
+ if(WeaponSlot==-3){if(GetWorld()->SpawnActor<ABattleHornPickup>(Spot,FRotator::ZeroRotator)){Locations.Add(Spot);HornPickups++;return true;}return false;}
  if(WeaponSlot>=0){
   if(auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==0)AmmoPickups++;else WeaponCrates++;return true;}return false;
  }
@@ -100,6 +101,9 @@ void ABattlePickupDirector::BeginPlay(){
   FillTime(Park,false,5);FillTime(Trail,true,10);
   auto FillAmmo=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&AmmoPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,0);}};
   FillAmmo(Park,false,6);FillAmmo(Trail,true,12);
+  auto FillHorns=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&HornPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-3);}};
+  FillHorns(Park,false,3);FillHorns(Trail,true,6);
+  UE_LOG(LogTemp,Display,TEXT("BattleHornPickups: spawned=%d desired=6"),HornPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleAmmoPickups: spawned=%d desired=12"),AmmoPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleTimePickups: spawned=%d desired=10"),TimePickups);
   UE_LOG(LogTemp,Display,TEXT("BattleCrates: spawned=%d desired=%d"),WeaponCrates,Mode->Difficulty.WeaponCrates);
