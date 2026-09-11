@@ -8,6 +8,7 @@
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
 #include "BattleParkFurniture.h"
+#include "Camera/CameraActor.h"
 #include "EngineUtils.h"
 #include "Engine/Engine.h"
 #include "UnrealClient.h"
@@ -24,6 +25,10 @@ void ABattleMacController::TickHUDReview(float Dt){
   if(auto* Bike=Cast<ABattleBike>(GetPawn()))for(TActorIterator<ABattleParkFurniture> It(GetWorld());It;++It)if(!It->Benches.IsEmpty()){
    const FTransform T=It->Benches[0];const FVector Spot=T.TransformPosition(FVector(0,380,98));const FRotator R(0,(T.GetLocation()-Spot).Rotation().Yaw,0);Bike->SetActorLocationAndRotation(Spot,R,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(R);Bike->Ride->StopMovementImmediately();break;
   }
+ }
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReview"))){
+  if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->SetActorLocationAndRotation(FVector(41600,74168,580),FRotator(0,180,0),false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(FRotator(0,180,0));Bike->Ride->StopMovementImmediately();Bike->Ride->bForceNextFloorCheck=true;}
+  const FVector Eye(42500,76800,3700),Target(39000,74000,600);if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation()))SetViewTarget(Cam);
  }
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){

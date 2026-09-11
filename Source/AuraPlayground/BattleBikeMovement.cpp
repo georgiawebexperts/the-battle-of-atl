@@ -2,6 +2,7 @@
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
 #include "Engine/World.h"
+#include "Components/PrimitiveComponent.h"
 #include "Kismet/GameplayStatics.h"
 UBattleBikeMovement::UBattleBikeMovement(){
  MaxWalkSpeed=1800;MaxAcceleration=800;MaxStepHeight=60;SetWalkableFloorAngle(75);
@@ -11,6 +12,17 @@ UBattleBikeMovement::UBattleBikeMovement(){
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
  if(IsFalling()){AirSeconds+=Dt;if(CharacterOwner)AirPeak=FMath::Max(AirPeak,float(CharacterOwner->GetActorLocation().Z-AirOrigin.Z));}
+ RampLaunchGrace=FMath::Max(0.f,RampLaunchGrace-Dt);
+ if(IsMovingOnGround()&&CharacterOwner){
+  const auto& H=CurrentFloor.HitResult;const bool Ramp=H.GetActor()&&H.GetActor()->ActorHasTag(TEXT("RideRamp"))&&!(H.GetComponent()&&H.GetComponent()->ComponentHasTag(TEXT("RideGrass")));
+  const float Rise=Ramp&&H.ImpactNormal.Z>.25f?-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),H.ImpactNormal)/H.ImpactNormal.Z:0;
+  if(Ramp&&Rise>.1f&&Speed>=500){RampLaunchSpeed=FMath::Clamp(Speed*Rise,0.f,750.f);RampLaunchGrace=.35f;}
+  else if(!Ramp||Rise<-.1f){RampLaunchSpeed=RampLaunchGrace=0;}
+  else if(Ramp&&Rise<=.05f&&RampLaunchGrace>0&&RampLaunchSpeed>510){
+   const auto* Bike=Cast<ABattleBike>(CharacterOwner);const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
+   if(Bike&&Mode&&!Mode->bRunEnded&&Mode->StartCountdown<=0&&!UGameplayStatics::IsGamePaused(this)&&!Bike->bParked&&Bike->RiderHealth>0&&Bike->StunRemaining<=0&&Recovery<=0)SetMovementMode(MOVE_Falling);
+  }
+ }
  BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
  SmoothedSteer=SteeringResponse(SmoothedSteer,Recovery>0?0.f:Steer,Dt);
  ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);BounceRemaining=FMath::Max(0.f,BounceRemaining-Dt);SlideRemaining=FMath::Max(0.f,SlideRemaining-Dt);
@@ -22,7 +34,7 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   }
  }
  if(CharacterOwner){
-  const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&Floor->ActorHasTag(TEXT("RideGrass"));
+  const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&(Floor->ActorHasTag(TEXT("RideGrass"))||(CurrentFloor.HitResult.GetComponent()&&CurrentFloor.HitResult.GetComponent()->ComponentHasTag(TEXT("RideGrass"))));
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
    Heading.Yaw+=SmoothedSteer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f)*Dt;CharacterOwner->SetActorRotation(Heading);
@@ -81,7 +93,7 @@ bool UBattleBikeMovement::Hop(){
 void UBattleBikeMovement::OnMovementModeChanged(EMovementMode Previous,uint8 Custom){
  Super::OnMovementModeChanged(Previous,Custom);
  auto* Bike=Cast<ABattleBike>(CharacterOwner);if(!Bike)return;
- if(IsFalling()&&Previous==MOVE_Walking){AirOrigin=Bike->GetActorLocation();AirSeconds=AirPeak=0;bRewardableAir=Speed>=500&&!Bike->bParked&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;}
+ if(IsFalling()&&Previous==MOVE_Walking){AirOrigin=Bike->GetActorLocation();AirSeconds=AirPeak=0;if(RampLaunchGrace>0&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0&&!Bike->bParked)Velocity.Z=FMath::Max(Velocity.Z,RampLaunchSpeed);RampLaunchSpeed=RampLaunchGrace=0;bRewardableAir=Speed>=500&&!Bike->bParked&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;}
  else if(Previous==MOVE_Falling){
   bool Water=false;for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Bike->GetActorLocation())){Water=true;break;}
   const bool Earned=!Water&&bRewardableAir&&IsMovingOnGround()&&AirSeconds>=.25f&&AirPeak>=65&&Recovery<=0&&!Bike->bParked&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;

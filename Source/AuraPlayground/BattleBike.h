@@ -25,6 +25,7 @@ public:
  bool Hop();
  int32 AirRewards=0;
  float AirSeconds=0,AirPeak=0;
+ float RampLaunchSpeed=0,RampLaunchGrace=0;
  bool bRewardableAir=false;
  FVector AirOrigin;
  virtual void HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta) override;
@@ -86,6 +87,7 @@ public:
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  UPROPERTY(BlueprintReadOnly) float PistolSpread=0;
  UPROPERTY(BlueprintReadOnly) float LeanAngle=0;
+ UPROPERTY(BlueprintReadOnly) float SurfacePitch=0;
  UPROPERTY(BlueprintReadOnly) FVector LastShotEnd;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Pistol;
  UFUNCTION(BlueprintCallable) bool FirePistol();

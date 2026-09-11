@@ -1,0 +1,26 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build040-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "201d8ce0de5fd0cd82117d6cd7b2b020208854a2966a06a02aa908840a4d1401"
+    },
+    {
+      "file": "work/build040-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "50a5d7e61f276a335a836fea22ce5afa14d207b7b46798a5a5ddbdf9d31adddf"
+    }
+  ],
+  "visual_review": "Final aerial inspected: correct bowls/ramp/token alignment and trimmed trail join. Bare prototype geometry; finished scenery/texture/sign lighting pending. Foot capture points at sky after fixture camera handoff and is not accepted as an entrance-view check. Earlier entrance capture showed geometry before final trail-edge trim. No full animation/game-feel acceptance.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "skatepark_review": true
+}

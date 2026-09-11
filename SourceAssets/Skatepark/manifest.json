@@ -1,0 +1,59 @@
+{
+  "origin_world": [
+    39000.0,
+    74000.0,
+    0
+  ],
+  "deck_z": 650,
+  "trail_connection": [
+    41703.21309731,
+    74167.72982629,
+    475.11337638
+  ],
+  "grid_spacing_cm": 50,
+  "vertex_count": 8249,
+  "triangles": {
+    "Concrete": 7212,
+    "Berm": 7622
+  },
+  "bounds": [
+    [
+      -2400.0,
+      -1800.0,
+      210.41421443566742
+    ],
+    [
+      3200.0,
+      1800.0,
+      950
+    ]
+  ],
+  "bonuses": [
+    [
+      38050.0,
+      73650.0,
+      510.0
+    ],
+    [
+      38050.0,
+      74400.0,
+      550.0
+    ],
+    [
+      40100.0,
+      73500.0,
+      990
+    ]
+  ],
+  "ramp_start": [
+    39100.0,
+    73500.0,
+    748
+  ],
+  "bowl_start": [
+    38050.0,
+    73650.0,
+    568.0
+  ],
+  "policy": "Original playable adaptation of mapped Fourth Ward skatepark. Two connected bowls, street launch bank and manual pad. Berm/entrance meet retained terrain. Landscape untouched."
+}

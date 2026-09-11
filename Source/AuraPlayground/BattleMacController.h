@@ -31,6 +31,8 @@ private:
  bool bFurnitureAudited=false;
  void TickDroneAudit(float Dt);
  int32 DroneStage=0;float DroneClock=0;TWeakObjectPtr<AActor> AuditDrone,AuditDroneWall;
+ void TickSkateAudit(float Dt);
+ int32 SkateStage=0;float SkateClock=0,SkateTime=0;
  void TickJumpAudit(float Dt);
  int32 JumpStage=0;float JumpClock=0,JumpTimeBefore=0;
  void TickSteeringAudit(float Dt);

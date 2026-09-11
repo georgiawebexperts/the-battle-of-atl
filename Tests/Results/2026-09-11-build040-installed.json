@@ -1,0 +1,10 @@
+{
+  "version": "0.40.0",
+  "startup_exit_code": 0,
+  "home_menu": true,
+  "quest_ready": true,
+  "skatepark_bonuses": 3,
+  "desktop_link_verified": true,
+  "strict_signature_verified_by_finalize": true,
+  "previous_build_preserved": "039"
+}

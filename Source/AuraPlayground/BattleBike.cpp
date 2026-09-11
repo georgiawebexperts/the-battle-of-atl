@@ -1,6 +1,7 @@
 #include "BattleBike.h"
 #include "BattleFrisbee.h"
 #include "BattleParkFurniture.h"
+#include "BattleSkatepark.h"
 #include "BattleMacController.h"
 #include "BattleQuest.h"
 #include "BattleZombie.h"
@@ -102,7 +103,10 @@ void ABattleBike::Tick(float Dt){
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded||RiderHealth<=0||StunRemaining>0)Ride->Pedal=Ride->Steer=0;
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;
  LeanAngle=FMath::Lerp(LeanAngle,Ride->SmoothedSteer*FMath::Min(24.f,Ride->Speed*.035f),1.f-FMath::Exp(-10.f*Dt));
- Visual->SetRelativeRotation(FRotator(0,0,LeanAngle+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
+ float TargetPitch=0;
+ if(!bParked&&Fall<=0){if(Ride->IsMovingOnGround()){const FVector N=Ride->CurrentFloor.HitResult.ImpactNormal;TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(-FVector::DotProduct(GetActorForwardVector(),N),N.Z));}else if(Ride->IsFalling())TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(Ride->Velocity.Z,FMath::Max(400.f,Ride->Speed)));}
+ SurfacePitch=FMath::Lerp(SurfacePitch,FMath::Clamp(TargetPitch,-40.f,40.f),1.f-FMath::Exp(-12.f*Dt));
+ Visual->SetRelativeRotation(FRotator(SurfacePitch,0,LeanAngle+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
  WheelAngle+=Ride->Speed*Dt/35*180/PI;FrontWheel->SetRelativeRotation(FRotator(WheelAngle,Ride->SmoothedSteer*20,90));RearWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));PoseRider(Dt);
 }
 FVector ABattleBike::FindPathReturn() const{
@@ -141,6 +145,7 @@ void ABattleParkMode::StartPlay(){
   It->JoggerShare=float(Difficulty.Joggers)/FMath::Max(1,It->DesiredPopulation);
  }
  GetWorld()->SpawnActor<ABattleParkFurniture>();
+ GetWorld()->SpawnActor<ABattleSkatepark>(FVector(39000,74000,0),FRotator::ZeroRotator);
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
