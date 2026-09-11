@@ -17,7 +17,7 @@ ABattleRider::ABattleRider(){
  Camera->SetupAttachment(GetCapsuleComponent());Camera->SetRelativeLocation(FVector(0,0,64));Camera->bUsePawnControlRotation=true;
  CameraArm->SetComponentTickEnabled(false);Body->SetOwnerNoSee(true);
  GetCharacterMovement()->MaxWalkSpeed=520;GetCharacterMovement()->JumpZVelocity=560;GetCharacterMovement()->AirControl=.8f;GetCharacterMovement()->GravityScale=1.4f;
- FirstPersonArms=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("FirstPersonArms"));FirstPersonArms->SetupAttachment(Camera);FirstPersonArms->SetRelativeLocation(FVector(10,0,-175));FirstPersonArms->SetRelativeRotation(FRotator(0,-90,0));FirstPersonArms->SetOnlyOwnerSee(true);FirstPersonArms->SetBoundsScale(10);FirstPersonArms->SetCastShadow(false);FirstPersonArms->SetCollisionEnabled(ECollisionEnabled::NoCollision);FirstPersonArms->SetCanEverAffectNavigation(false);
+ FirstPersonArms=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("FirstPersonArms"));FirstPersonArms->SetupAttachment(Camera);FirstPersonArms->SetRelativeLocation(FVector(22,0,-175));FirstPersonArms->SetRelativeRotation(FRotator(0,-90,0));FirstPersonArms->SetOnlyOwnerSee(true);FirstPersonArms->SetBoundsScale(10);FirstPersonArms->SetCastShadow(false);FirstPersonArms->SetCollisionEnabled(ECollisionEnabled::NoCollision);FirstPersonArms->SetCanEverAffectNavigation(false);
  Weapon->SetupAttachment(Camera);bWeaponDrawn=true;BuildMeleeVisual();BuildLongGun();
 }
 void ABattleRider::BeginPlay(){
@@ -42,13 +42,18 @@ void ABattleRider::Tick(float Dt){
  ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
  SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/80.f,0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
  const float ReloadPose=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
- Weapon->SetRelativeLocation(GunRestPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob-8*ReloadPose));Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
+
  bWeaponDrawn=CanUseWeapon();
  if(auto* PC=Cast<APlayerController>(GetController())){
   GetCharacterMovement()->MaxWalkSpeed=PC->IsInputKeyDown(EKeys::LeftShift)?850:520;
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
+ // Exponential smoothing gives the view rig the same response at different frame rates.
+ AimBlend=FMath::Lerp(AimBlend,bAiming?1.f:0.f,1.f-FMath::Exp(-12.f*Dt));
+ const FVector ViewPosition=FMath::Lerp(GunRestPosition,GunAimPosition,AimBlend);
+ Weapon->SetRelativeLocation(ViewPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob*(1.f-.8f*AimBlend)-8*ReloadPose));
+ Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
  Super::Tick(Dt);UpdateMelee(Dt);UpdateWeaponModel();PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}

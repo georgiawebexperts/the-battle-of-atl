@@ -9,10 +9,11 @@ class AURAPLAYGROUND_API ABattleRider : public APiedmontExplorer {
 public:
  ABattleRider();
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UPoseableMeshComponent> FirstPersonArms;
- UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector GunRestPosition=FVector(55,12,-10);
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector GunRestPosition=FVector(65,18,-24);
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector GunAimPosition=FVector(65,0,-11.5f);
  UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector RightWristOffset=FVector(-9,4,-3);
  UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector LeftWristOffset=FVector(-10,-4,-5);
- UPROPERTY(EditAnywhere,BlueprintReadWrite) float HandScale=.65f;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float HandScale=1.f;
  UPROPERTY(BlueprintReadOnly) FVector RightGrip;
  UPROPERTY(BlueprintReadOnly) FVector LeftGrip;
  virtual bool Fire() override;
@@ -56,4 +57,5 @@ private:
  void PoseArms(float Dt);
  TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;
  float SwayTime=0;
+ float AimBlend=0;
 };

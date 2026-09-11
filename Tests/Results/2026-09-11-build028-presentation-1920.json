@@ -1,0 +1,48 @@
+{
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build028-packaged-1920/bike.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "6996f7f4ff1842d8104e9102011da58869e34e76cb660d1f8375e75002cc09a0"
+    },
+    {
+      "file": "work/build028-packaged-1920/foot.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7ba0710d761805d7b8430e5f3492bc16c592c937a35472cce038dccc2b717e00"
+    },
+    {
+      "file": "work/build028-packaged-1920/aim.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "3cde501c2e16104992395078ad1a9fafd933a999c727605e68ae7954d2d60313"
+    },
+    {
+      "file": "work/build028-packaged-1920/reload.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "1e5df21fbac9520f08245b67fc02a2b7e0bc25a46938b9fb34f3dcee6ce24fff"
+    }
+  ],
+  "visual_review": {
+    "rest_aim_reload_inspected": true,
+    "result": "Resting weapon leaves the center clear; aimed pistol aligns with the reticle; reload stays below center. Placeholder hand shapes and procedural grip still need replacement, not final art acceptance.",
+    "character_quality_accepted": false
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "rig_review": {
+    "rest_aim_reload_recovered_wrist_errors_cm": 0.0,
+    "reload_and_remount": true
+  }
+}

@@ -6,6 +6,8 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Paths.h"
 #include "HAL/FileManager.h"
+#include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
+#include "Components/PoseableMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
@@ -22,6 +24,29 @@ void ABattleMacController::TickHUDReview(float Dt){
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");
   FScreenshotRequest::RequestScreenshot(Folder/TEXT("foot.png"),false,false);HUDReviewStage=3;
  }
- if(HUDReviewStage==3&&HUDReviewClock>10){UE_LOG(LogTemp,Display,TEXT("HUDReview: requested bike and foot captures"));ConsoleCommand(TEXT("quit"));}
+ if(!FParse::Param(FCommandLine::Get(),TEXT("BattleRigReview"))){
+  if(HUDReviewStage==3&&HUDReviewClock>10){UE_LOG(LogTemp,Display,TEXT("HUDReview: requested bike and foot captures"));ConsoleCommand(TEXT("quit"));}
+  return;
+ }
+ auto* Rider=Cast<ABattleRider>(GetPawn());
+ auto CheckWrists=[&](const TCHAR* Phase){
+  if(!Rider)return;
+  const float RightError=FVector::Distance(Rider->FirstPersonArms->GetBoneLocationByName(TEXT("Hand_R"),EBoneSpaces::ComponentSpace),Rider->RightGrip);
+  const float LeftError=FVector::Distance(Rider->FirstPersonArms->GetBoneLocationByName(TEXT("Hand_L"),EBoneSpaces::ComponentSpace),Rider->LeftGrip);
+  UE_LOG(LogTemp,Display,TEXT("RigReview: %s wrist_error right=%.3f left=%.3f"),Phase,RightError,LeftError);
+  if(RightError>2||LeftError>2)UE_LOG(LogTemp,Error,TEXT("RigReview: grip unreachable"));
+ };
+ auto Capture=[&](const TCHAR* Name){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");FScreenshotRequest::RequestScreenshot(Folder/Name,false,false);};
+ auto Aim=[&](bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
+ if(HUDReviewStage==3&&HUDReviewClock>10){CheckWrists(TEXT("rest"));Aim(true);HUDReviewStage=4;}
+ if(HUDReviewStage==4&&HUDReviewClock>11){CheckWrists(TEXT("aim"));Capture(TEXT("aim.png"));HUDReviewStage=5;}
+ if(HUDReviewStage==5&&HUDReviewClock>12){Aim(false);if(!Rider||!Rider->Fire()){UE_LOG(LogTemp,Error,TEXT("RigReview: fire failed"));}else{Rider->Reload();}HUDReviewStage=6;}
+ if(HUDReviewStage==6&&HUDReviewClock>12.7f){CheckWrists(TEXT("reload"));Capture(TEXT("reload.png"));HUDReviewStage=7;}
+ if(HUDReviewStage==7&&HUDReviewClock>14.2f){
+  CheckWrists(TEXT("recovered"));
+  const bool Restored=Rider&&Rider->Ammo==12&&Rider->ReloadRemaining<=0&&Rider->MountBike();
+  UE_LOG(LogTemp,Display,TEXT("RigReview: reload_and_remount=%d"),Restored);
+  UE_LOG(LogTemp,Display,TEXT("HUDReview: requested bike and foot captures"));ConsoleCommand(TEXT("quit"));HUDReviewStage=8;
+ }
 #endif
 }
