@@ -27,6 +27,8 @@ private:
  void TickFrisbeeAudit(float Dt);
  void TickHUDReview(float Dt);
  void TickTimeAudit(float Dt);
+ void TickFurnitureAudit(float Dt);
+ bool bFurnitureAudited=false;
  void TickDroneAudit(float Dt);
  int32 DroneStage=0;float DroneClock=0;TWeakObjectPtr<AActor> AuditDrone,AuditDroneWall;
  void TickJumpAudit(float Dt);

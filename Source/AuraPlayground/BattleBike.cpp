@@ -1,5 +1,6 @@
 #include "BattleBike.h"
 #include "BattleFrisbee.h"
+#include "BattleParkFurniture.h"
 #include "BattleMacController.h"
 #include "BattleQuest.h"
 #include "BattleZombie.h"
@@ -139,6 +140,7 @@ void ABattleParkMode::StartPlay(){
   It->DesiredPopulation=Difficulty.Walkers+Difficulty.Joggers;
   It->JoggerShare=float(Difficulty.Joggers)/FMath::Max(1,It->DesiredPopulation);
  }
+ GetWorld()->SpawnActor<ABattleParkFurniture>();
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();

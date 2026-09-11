@@ -4,6 +4,8 @@
 #include "BattlePickup.h"
 #include "BattlePolice.h"
 #include "BattleDrone.h"
+#include "BattleParkFurniture.h"
+#include "EngineUtils.h"
 #include "Engine/Engine.h"
 #include "UnrealClient.h"
 #include "Misc/CommandLine.h"
@@ -15,6 +17,11 @@
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBenchReview"))){
+  if(auto* Bike=Cast<ABattleBike>(GetPawn()))for(TActorIterator<ABattleParkFurniture> It(GetWorld());It;++It)if(!It->Benches.IsEmpty()){
+   const FTransform T=It->Benches[0];const FVector Spot=T.TransformPosition(FVector(0,380,98));const FRotator R(0,(T.GetLocation()-Spot).Rotation().Yaw,0);Bike->SetActorLocationAndRotation(Spot,R,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(R);Bike->Ride->StopMovementImmediately();break;
+  }
+ }
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeReview"))){

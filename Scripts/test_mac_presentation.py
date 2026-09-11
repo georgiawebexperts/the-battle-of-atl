@@ -4,7 +4,7 @@ A successful capture is not visual acceptance, animation acceptance or FPS proof
 """
 import argparse,json,pathlib,subprocess,struct,hashlib,plistlib,shutil,uuid,re
 root=pathlib.Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--width',type=int,choices=[1280,1920],default=1920);p.add_argument('--build',default='027');p.add_argument('--rig',action='store_true');p.add_argument('--locomotion',action='store_true');p.add_argument('--time-review',action='store_true');p.add_argument('--police-review',action='store_true');p.add_argument('--drone-review',action='store_true');args=p.parse_args();height=args.width*9//16
+p=argparse.ArgumentParser();p.add_argument('--width',type=int,choices=[1280,1920],default=1920);p.add_argument('--build',default='027');p.add_argument('--rig',action='store_true');p.add_argument('--locomotion',action='store_true');p.add_argument('--time-review',action='store_true');p.add_argument('--police-review',action='store_true');p.add_argument('--drone-review',action='store_true');p.add_argument('--bench-review',action='store_true');args=p.parse_args();height=args.width*9//16
 assert re.fullmatch(r'[0-9]{3}',args.build)
 assert not (args.rig and args.locomotion)
 out=root/'work'/f'build{args.build}-packaged-{args.width}';out.mkdir(parents=True,exist_ok=True)
@@ -15,7 +15,7 @@ bundle_id=plistlib.loads((bundle/'Contents/Info.plist').read_bytes())['CFBundleI
 capture=pathlib.Path.home()/'Library/Containers'/bundle_id/'Data/Documents/BattleHUDReview'/str(args.width)/uuid.uuid4().hex
 capture.mkdir(parents=True,exist_ok=True)
 with (out/'render.log').open('w') as log:
- run=subprocess.run([str(app),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-windowed',f'-ResX={args.width}',f'-ResY={height}','-ForceRes','-NoTextureStreaming','-unattended','-nosound','-BattleHUDReview',*(['-BattleRigReview'] if args.rig else []),*(['-BattleLocomotionReview'] if args.locomotion else []),*(['-BattleTimeReview'] if args.time_review else []),*(['-BattlePoliceReview'] if args.police_review else []),*(['-BattleDroneReview'] if args.drone_review else []),'-ExecCmds=r.ScreenshotDelegate 0',f'-BattleHUDReviewDir={capture}','-stdout'],stdout=log,stderr=subprocess.STDOUT,timeout=180)
+ run=subprocess.run([str(app),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-windowed',f'-ResX={args.width}',f'-ResY={height}','-ForceRes','-NoTextureStreaming','-unattended','-nosound','-BattleHUDReview',*(['-BattleRigReview'] if args.rig else []),*(['-BattleLocomotionReview'] if args.locomotion else []),*(['-BattleTimeReview'] if args.time_review else []),*(['-BattlePoliceReview'] if args.police_review else []),*(['-BattleDroneReview'] if args.drone_review else []),*(['-BattleBenchReview'] if args.bench_review else []),'-ExecCmds=r.ScreenshotDelegate 0',f'-BattleHUDReviewDir={capture}','-stdout'],stdout=log,stderr=subprocess.STDOUT,timeout=180)
 images=[]
 names=['walk.png','walk-step.png','run.png','idle.png'] if args.locomotion else ['bike.png','foot.png']+(['aim.png','reload.png'] if args.rig else [])
 for name in names:

@@ -1,0 +1,31 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build037-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "3a47a3439ed18006552a08948a8bee122e38a475c075036163c2e3b39e0d3689"
+    },
+    {
+      "file": "work/build037-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a3fe56116c08d16785f741c5a3e5dea649671fcb4572c428f31ac26aaa50f11b"
+    }
+  ],
+  "visual_review": {
+    "bike_and_foot_inspected": true,
+    "back_slats_level": true,
+    "brown_seat_and_dark_frame_rendered": true,
+    "final_art_accepted": false,
+    "notes": "Corrected native bench geometry and dedicated materials inspected. Exact surveyed positions, detailed wood texture, swing benches and final landscape still unfinished."
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}
