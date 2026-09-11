@@ -1,0 +1,10 @@
+{
+  "version": "0.43.0",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "desktop_link_verified": true,
+  "signature_verified": true,
+  "startup_exit_code": 0,
+  "startup_home_quest_tutorial_initialized": true,
+  "previous_build": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Previous/build042/TheBattleOfATL.app",
+  "spirit_enabled": false
+}

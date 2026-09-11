@@ -1,0 +1,25 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build043-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "90f8016c75bad541dab2f7147b25596d7b55b9f06df2d3989d2c7f315b403809"
+    },
+    {
+      "file": "work/build043-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e72075395b505b199830e3450b4c0096a7d06a0a38bda8bbfcd9b6bb4f8a1b17"
+    }
+  ],
+  "visual_review": "Inspected final bike and foot park views at 1280x720. Ground detail visible with corrected greener tint; paths and HUD remain readable. Distant scenery, repeated crowds, foliage, buildings and path surfaces remain visually unfinished. Not performance or final animation acceptance.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

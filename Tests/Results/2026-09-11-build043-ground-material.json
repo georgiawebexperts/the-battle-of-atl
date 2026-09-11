@@ -1,0 +1,14 @@
+{
+  "material": "/Game/PiedmontRide/Materials/M_Grass.M_Grass",
+  "expressions_before": 30,
+  "expressions_after": 59,
+  "textures": {
+    "diff": "/Game/PiedmontRide/Materials/Ground/T_LeafyGrass_diff.T_LeafyGrass_diff",
+    "nor_gl": "/Game/PiedmontRide/Materials/Ground/T_LeafyGrass_nor_gl.T_LeafyGrass_nor_gl",
+    "rough": "/Game/PiedmontRide/Materials/Ground/T_LeafyGrass_rough.T_LeafyGrass_rough"
+  },
+  "world_tile_cm": 200,
+  "macro_tile_cm": 4700,
+  "normal_strength": 0.55,
+  "geometry_modified": false
+}
