@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "Engine/SkeletalMesh.h"
 #include "BattleShot.h"
 #include "BattleBike.h"
 #include "Camera/CameraComponent.h"
@@ -14,10 +15,12 @@ ABattleRider::ABattleRider(){
  Camera->SetupAttachment(GetCapsuleComponent());Camera->SetRelativeLocation(FVector(0,0,64));Camera->bUsePawnControlRotation=true;
  CameraArm->SetComponentTickEnabled(false);Body->SetOwnerNoSee(true);
  GetCharacterMovement()->MaxWalkSpeed=520;GetCharacterMovement()->JumpZVelocity=560;GetCharacterMovement()->AirControl=.8f;GetCharacterMovement()->GravityScale=1.4f;
+ FirstPersonArms=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("FirstPersonArms"));FirstPersonArms->SetupAttachment(Camera);FirstPersonArms->SetRelativeLocation(FVector(10,0,-175));FirstPersonArms->SetRelativeRotation(FRotator(0,-90,0));FirstPersonArms->SetOnlyOwnerSee(true);FirstPersonArms->SetBoundsScale(10);FirstPersonArms->SetCastShadow(false);FirstPersonArms->SetCollisionEnabled(ECollisionEnabled::NoCollision);FirstPersonArms->SetCanEverAffectNavigation(false);
  Weapon->SetupAttachment(Camera);bWeaponDrawn=true;
 }
 void ABattleRider::BeginPlay(){
- Super::BeginPlay();Weapon->SetRelativeLocation(FVector(34,16,-17));Weapon->SetVisibility(true);GunRestRotation=Weapon->GetRelativeRotation();
+ Super::BeginPlay();Weapon->SetRelativeLocation(GunRestPosition);Weapon->SetVisibility(true);GunRestRotation=Weapon->GetRelativeRotation();
+ if(auto* Mesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/BattleForTheA/Rider/SK_FPSArms.SK_FPSArms"))){FirstPersonArms->SetSkinnedAssetAndUpdate(Mesh);const auto& Ref=Mesh->GetRefSkeleton();for(int32 I=0;I<Ref.GetNum();I++){ArmParents.Add(Ref.GetParentIndex(I));ArmNames.Add(Ref.GetBoneName(I));FTransform T=Ref.GetRefBonePose()[I];if(ArmParents[I]>=0)T=T*ArmRest[ArmParents[I]];ArmRest.Add(T);}}
  if(IsValid(ParkedBike))GetCapsuleComponent()->IgnoreActorWhenMoving(ParkedBike,true);
 }
 void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
@@ -29,14 +32,16 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::Tick(float Dt){
  ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
- Weapon->SetRelativeLocation(FVector(34-4*Kick,16,-17-Kick));Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick,0,0));
+ SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/80.f,0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
+ const float ReloadPose=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((1.5f-ReloadRemaining)/1.5f,0.f,1.f)):0;
+ Weapon->SetRelativeLocation(GunRestPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob-8*ReloadPose));Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
  bWeaponDrawn=CanUseWeapon();
  if(auto* PC=Cast<APlayerController>(GetController())){
   GetCharacterMovement()->MaxWalkSpeed=PC->IsInputKeyDown(EKeys::LeftShift)?850:520;
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
- Super::Tick(Dt);HurtCooldown=FMath::Max(0.f,HurtCooldown-Dt);if(HurtCooldown<=0&&Health>0)Health=FMath::Min(100.f,Health+4*Dt);
+ Super::Tick(Dt);PoseArms(Dt);HurtCooldown=FMath::Max(0.f,HurtCooldown-Dt);if(HurtCooldown<=0&&Health>0)Health=FMath::Min(100.f,Health+4*Dt);
 }
 bool ABattleRider::MountBike(){return Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}
 float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){

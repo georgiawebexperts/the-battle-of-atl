@@ -1,8 +1,8 @@
 {
-  "build": 8,
-  "version": "0.8.0-dev",
+  "build": 9,
+  "version": "0.9.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Horn, automatic lights, curb/glancing/blocked-exit behavior; 14 detail and 14 updated-course checks pass; V3 milestone 1 presentation/fun acceptance pending",
+  "milestone": "First-person skinned arms with recoil/reload; V3 milestone 1 presentation/fun acceptance pending",
   "author": "2026-09-10 [codex-maclaptop]"
 }

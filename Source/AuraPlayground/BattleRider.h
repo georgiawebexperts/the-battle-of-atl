@@ -8,6 +8,13 @@ class AURAPLAYGROUND_API ABattleRider : public APiedmontExplorer {
  GENERATED_BODY()
 public:
  ABattleRider();
+ UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UPoseableMeshComponent> FirstPersonArms;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector GunRestPosition=FVector(55,12,-10);
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector RightWristOffset=FVector(-9,4,-3);
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) FVector LeftWristOffset=FVector(-10,-4,-5);
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float HandScale=.65f;
+ UPROPERTY(BlueprintReadOnly) FVector RightGrip;
+ UPROPERTY(BlueprintReadOnly) FVector LeftGrip;
  virtual bool Fire() override;
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  virtual void BeginPlay() override;
@@ -25,4 +32,7 @@ private:
  void StartJump(){Jump();}void EndJump(){StopJumping();}
  float HurtCooldown=0,ShotCooldown=0,Kick=0;
  FRotator GunRestRotation;
+ void PoseArms(float Dt);
+ TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;
+ float SwayTime=0;
 };

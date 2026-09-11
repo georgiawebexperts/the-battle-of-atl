@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "First-person arm integration; visual grip quality is reviewed separately.",
+  "cases": [
+    {
+      "name": "skinned_arms_and_finger_rig_loaded",
+      "pass": true
+    },
+    {
+      "name": "arms_visible_only_to_owner",
+      "pass": true
+    },
+    {
+      "name": "wrists_reach_pistol_grip_targets",
+      "pass": true
+    },
+    {
+      "name": "right_hand_moves_with_recoil",
+      "pass": true
+    },
+    {
+      "name": "reload_has_support_hand_motion",
+      "pass": true,
+      "movement_cm": 32.926913080786136
+    },
+    {
+      "name": "reload_tilts_pistol",
+      "pass": true,
+      "angle": 22.0
+    },
+    {
+      "name": "reload_completes_and_returns_to_grip",
+      "pass": true
+    },
+    {
+      "name": "remount_cleans_up_first_person_arms",
+      "pass": true
+    }
+  ],
+  "stage": 5
+}
