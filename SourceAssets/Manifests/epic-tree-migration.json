@@ -1,0 +1,599 @@
+{
+  "roots": [
+    "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01",
+    "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01",
+    "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Sapling_01"
+  ],
+  "packages": [
+    "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01",
+    "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01",
+    "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Sapling_01",
+    "/Game/EuropeanHornbeam/Materials/Impostor/MAI_Impostor_EuropeanHornbeam",
+    "/Game/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Field_01",
+    "/Game/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Forest_01",
+    "/Game/EuropeanHornbeam/Materials/SimpleWind/MAI_EuropeanHornbeam",
+    "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Decoration",
+    "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Tileable",
+    "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Trunk_01",
+    "/Game/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_TwoSided",
+    "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Albedo",
+    "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Mask",
+    "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Normal",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Summer",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Winter",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Summer",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Winter",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Summer",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Winter",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Summer",
+    "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Winter",
+    "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Albedo",
+    "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Mask",
+    "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Normal",
+    "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Albedo",
+    "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Mask",
+    "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Normal",
+    "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Albedo",
+    "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Mask",
+    "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Normal",
+    "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Albedo",
+    "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Mask",
+    "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Normal",
+    "/Game/MSPresets/MS_Foliage_Material/MasterMaterials/MA_Foliage",
+    "/Game/MSPresets/MS_Foliage_Material/MasterMaterials/MA_Impostor_SimpleOffset_MS",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_AdvancedWind",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_AdvancedWind_Level",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_BarkDetailer",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_BranchBlending",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_DecorationBlending",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_DefaultLit_Trunk",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_GenerateBranchMask",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_HealthSeason",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_LightInfluenceColorVariation",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_Opacity",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_Roughness",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_SimpleWind",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSidedRoughness",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSided_Decoration",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSided_Leaves",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_WindGust",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_WorldspaceColorVariation",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustBaseColor",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustNormal",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustTwoSidedBaseColor",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustTwoSidedNormal",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateSpecular",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateTranslucency",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateTwoSidedSpecular",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/FrameBlendWeights",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/FrameBlendWeights_TextureObject",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/GenerateTreeMask",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/HemiOctahedronToUnitVector",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImposterFrameTransform",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImposterFrameTransform_Setup",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImpostorInfo",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Impostor_MS",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Impostor_SingleFrameVersion",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/OverrideMobile",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Sprite_PositionBased",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/TriangleInterpolator",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/TriangulatedWireframe",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/UnitVectorToHemiOctahedra",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/VirtualPlaneCoordinates_Imposter",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialFunctions/Textures/T_WindNoise",
+    "/Game/MSPresets/MS_Foliage_Material/MaterialParameterCollection/MPC_GlobalFoliageActor"
+  ],
+  "external_dependencies": [
+    "/Engine/EngineMaterials/BlendFunc_DefBase",
+    "/Engine/EngineMaterials/BlendFunc_DefBlend",
+    "/Engine/EngineMaterials/DefaultDiffuse_TC_Masks",
+    "/Engine/EngineMaterials/DefaultNormal",
+    "/Engine/EngineMaterials/Good64x64TilingNoiseHighFreq",
+    "/Engine/EngineMaterials/T_Default_Normal",
+    "/Engine/EngineResources/Black",
+    "/Engine/EngineResources/DefaultTexture",
+    "/Engine/Functions/Engine_MaterialFunctions01/ImageAdjustment/3ColorBlend",
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal",
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter",
+    "/Engine/Functions/Engine_MaterialFunctions01/Vectors/OctahedronToUnitVector",
+    "/Engine/Functions/Engine_MaterialFunctions01/Vectors/UnitVectorToOctahedron",
+    "/Engine/Functions/Engine_MaterialFunctions01/WorldPositionOffset/SimpleGrassWind",
+    "/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/PivotPainter2/PP2_rgb_XVect_a_XExtent",
+    "/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/PivotPainter2/SimpExPivPos",
+    "/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/PivotPainter2/test2_rgb_PivotPos_a_ParentIndexInt_UV_2",
+    "/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/Textures/WindTurblenceVectorAndGustMagnitude",
+    "/Engine/Functions/Engine_MaterialFunctions02/FixRotateAboutAxisNormals",
+    "/Engine/Functions/Engine_MaterialFunctions02/Lerp_Multiple_Float2",
+    "/Engine/Functions/Engine_MaterialFunctions02/Math/CreateThirdOrthogonalVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/Math/InverseTransformMatrix",
+    "/Engine/Functions/Engine_MaterialFunctions02/PivotPainter2/ms_PivotPainter2_CalculateMeshElementIndex",
+    "/Engine/Functions/Engine_MaterialFunctions02/PivotPainter2/ms_PivotPainter2_Decode8BitAlphaAxisExtent",
+    "/Engine/Functions/Engine_MaterialFunctions02/PivotPainter2/ms_PivotPainter2_DecodeAxisVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/PivotPainter2/ms_PivotPainter2_DecodePostion",
+    "/Engine/Functions/Engine_MaterialFunctions02/PivotPainter2/ms_PivotPainter2_ReturnParentTextureInfo",
+    "/Engine/Functions/Engine_MaterialFunctions02/Texturing/CustomRotator",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat3Components",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/CameraDirectionVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/DebugFloat2Values",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/DitherTemporalAA",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/MakeFloat2",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/MakeFloat3",
+    "/Engine/Functions/Engine_MaterialFunctions02/WorldPositionOffset/ComponentPivotLocation",
+    "/Engine/Functions/Engine_MaterialFunctions02/WorldPositionOffset/ObjectPivotPoint",
+    "/Engine/Functions/Engine_MaterialFunctions02/WorldPositionOffset/ObjectScale",
+    "/Engine/Functions/Engine_MaterialFunctions02/WorldPositionOffset/Sprite",
+    "/Engine/Functions/Engine_MaterialFunctions02/ms_PivotPainter2_UnpackIntegerAsFloat",
+    "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_LinearDodge",
+    "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay",
+    "/Engine/MaterialTemplates/LayerBlends/T_DefaultMaskTexture",
+    "/Engine/MaterialTemplates/Textures/T_Noise01",
+    "/Script/NavigationSystem"
+  ],
+  "files": [
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.uasset",
+      "sha256": "ab7189477f887d7586e04296183f8346c323e3c489e53c9124cb13fdace764b6",
+      "bytes": 74906661
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.uasset",
+      "sha256": "fe2b48d51f87a0c2bc4bff19f2636d854f3fe5c5854956de106476c939ca7b70",
+      "bytes": 42252333
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Sapling_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Sapling_01.uasset",
+      "sha256": "cae6ab0bbdbbbaa2cd1937475db841e17a8eb5e017ded3a1415d4ea47bc231bc",
+      "bytes": 4826560
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/Impostor/MAI_Impostor_EuropeanHornbeam.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/Impostor/MAI_Impostor_EuropeanHornbeam.uasset",
+      "sha256": "115b1f3b95e01636561d626e6c761b1d74b9a36336a00f2646983fde6f5f4df0",
+      "bytes": 14188
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Field_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Field_01.uasset",
+      "sha256": "1f2238b2bea4e98562075a50d164bb2742f53670e909a85496740d60274f89bc",
+      "bytes": 87486
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Forest_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/Impostor/MI_Impostor_Forest_01.uasset",
+      "sha256": "41ad6ef3d219f68fc9b30cb0b34d4f5fcbf0b31ce27e7d7d6b1756bfe6b3a04e",
+      "bytes": 85563
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/SimpleWind/MAI_EuropeanHornbeam.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/SimpleWind/MAI_EuropeanHornbeam.uasset",
+      "sha256": "d942747eaea2ceea4646bdce1ec42771684b312790ec39793b129e0428f968d0",
+      "bytes": 119753
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Decoration.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Decoration.uasset",
+      "sha256": "089ce46d607a873e1bce97d741303ff881d6a968be01112b74b8333485489cab",
+      "bytes": 146125
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Tileable.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Tileable.uasset",
+      "sha256": "6a14e42c02fe5241b1ef3a13c5452c10cdb3b1545dff2b1f03a56191722df64f",
+      "bytes": 152667
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Trunk_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_Trunk_01.uasset",
+      "sha256": "cc99830de2bf0e7dc166d4bb1293420e62d7cc11a94cf3cf1caacccb6a426c21",
+      "bytes": 159003
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_TwoSided.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Materials/SimpleWind/MI_EuropeanHornbeam_TwoSided.uasset",
+      "sha256": "37b80a7d5c0162c7c4c68e9cd46d2370e250ae98493699e352308576c6a4ec91",
+      "bytes": 35227
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Albedo.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Albedo.uasset",
+      "sha256": "3e58f6855ef246dbc73258e893c65bb55f1c01d60ef8ab47fd23e790ed40d1dd",
+      "bytes": 87041942
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Mask.uasset",
+      "sha256": "7bdd77b545cdf99ca8f7696019ac2eb3cc2818bd50b879118027a191e9f83211",
+      "bytes": 114761661
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Normal.uasset",
+      "sha256": "da7f5a5f02d315471ae9ad121ab6367746fa2455704d75573bd0edddcde4fb2c",
+      "bytes": 124469687
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Summer.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Summer.uasset",
+      "sha256": "1b17933d4b7ea7b7f211ec3eaf687f73a2d84c7ea3bfbf02146131b6077e833a",
+      "bytes": 228269877
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Winter.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Winter.uasset",
+      "sha256": "8aee078698e6627ad02edecc4acf857ba01f15b65567b1214ad5360b6de0f88b",
+      "bytes": 191895355
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Summer.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Summer.uasset",
+      "sha256": "2228e9bd9496f32c57e946ae60eb431d6b84ffacf33a088a1f8647ba5e0b1290",
+      "bytes": 217537263
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Winter.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Winter.uasset",
+      "sha256": "d8958d8ff643f132540ebab4598cb99e5a3811381b92d3903fd76858f3805920",
+      "bytes": 186907407
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Summer.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Summer.uasset",
+      "sha256": "ab26521ba9b4ed4ddfd2d921af18211ee5f73dfdd66c0be9b9df8d9efc18f6bd",
+      "bytes": 118533511
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Winter.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Winter.uasset",
+      "sha256": "0ba088362b7cb270e85d742a60c9c20192013a3ae71cb2d403a55b668d866c01",
+      "bytes": 103714179
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Summer.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Summer.uasset",
+      "sha256": "3aa94cb6825523f164a40df0cc8dc1425a0083b123171363e1df7f2d0b3f44ac",
+      "bytes": 109970108
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Winter.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Winter.uasset",
+      "sha256": "b5122a4af6dab2032778b180449a955d8429341c3c6e0b08fe739add56f6d2da",
+      "bytes": 97297299
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Albedo.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Albedo.uasset",
+      "sha256": "9cd5ed789f046d81070bf216e3e4f3be1342b9f70765e88e00f16eda4c6e83f1",
+      "bytes": 136376275
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Mask.uasset",
+      "sha256": "84eb3c5e0fef5ecc21ea5c2da5aff2a322c7882fbe7181379001f2ccf60aec2d",
+      "bytes": 160877875
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Normal.uasset",
+      "sha256": "22ad30216311fe4ee2dfa39dd714aba4ba343e576f1bbfc9e0900aea2887dc6e",
+      "bytes": 161388871
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Albedo.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Albedo.uasset",
+      "sha256": "b1af7b15c0d6b75a42b3ab7a0997556e81868b9b33ddda607140a2ac6f5264c2",
+      "bytes": 118556771
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Mask.uasset",
+      "sha256": "4478e49ad611824dd3d8bad1669a33d91e049921d301090515aa873af4ae8f87",
+      "bytes": 155639801
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Normal.uasset",
+      "sha256": "5aa179668fc28ec207ee5ec91d36c5fee02176718c9f0b23130d26661fbac196",
+      "bytes": 141298127
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Albedo.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Albedo.uasset",
+      "sha256": "f9ccf9808acf1db986499261d3019c2dba54631662b282c6c98a8ec20825acc3",
+      "bytes": 27303264
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Mask.uasset",
+      "sha256": "4c12f3cba938ff4fe2b8a0c76e9b427c681662baae50f462bb1b7e63f8fc7d22",
+      "bytes": 77285338
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Normal.uasset",
+      "sha256": "8eb8ce6a980358811f82633f50a6abf0f6fe7c0ead7c5bdc19f3052bad099a1d",
+      "bytes": 69129392
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Albedo.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Albedo.uasset",
+      "sha256": "dd5dd922ad9c051171cfbc00e2ee2806a02e95ba94cf31da56d2e35c19f1dad5",
+      "bytes": 8774841
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Mask.uasset",
+      "sha256": "da615466ba1aaf30deddb0dd4cfc8916e9e84649b41b57c7f539cd55de40746e",
+      "bytes": 19701029
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Normal.uasset",
+      "sha256": "4592b7221f55bb27fa7a854c715f226c39d857170fb84900cd3993edbe843062",
+      "bytes": 22509930
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MasterMaterials/MA_Foliage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MasterMaterials/MA_Foliage.uasset",
+      "sha256": "b2f3de5a8b230b1ec5dc829242d62aa350785a2e73cb9e503e070d93ded7213f",
+      "bytes": 27550
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MasterMaterials/MA_Impostor_SimpleOffset_MS.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MasterMaterials/MA_Impostor_SimpleOffset_MS.uasset",
+      "sha256": "cc2d8843a1dbd5d4115520dc7d5050197b2cc76444fb14a50aa7fc021ce4c517",
+      "bytes": 19662
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_AdvancedWind.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_AdvancedWind.uasset",
+      "sha256": "954f159c8dc17d3391d78281a92128d2103b3071a1a1750432f2f195e2e42258",
+      "bytes": 125801
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_AdvancedWind_Level.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_AdvancedWind_Level.uasset",
+      "sha256": "aab9591fa3a3519ee15f0ca80c3653b8a9d8c2308b0cc1e8ea6effa381f12c9c",
+      "bytes": 80385
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_BarkDetailer.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_BarkDetailer.uasset",
+      "sha256": "485551befa7759cc7c89c3cad0ff778b1a4bee3020bea599778822e16d9dac65",
+      "bytes": 108559
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_BranchBlending.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_BranchBlending.uasset",
+      "sha256": "9757f7aa8a797066fbbfb1a309e85125e4dce5a33b31475c95fb0a762fb80819",
+      "bytes": 112614
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_DecorationBlending.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_DecorationBlending.uasset",
+      "sha256": "257642b58f68688b17447740c86634238379858fbbd5a8ed93d20cedfe09111c",
+      "bytes": 109728
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_DefaultLit_Trunk.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_DefaultLit_Trunk.uasset",
+      "sha256": "e55c88f430e5802603a0744634dd6d5ec32d2527748c0bd23ca67a365df7c6d7",
+      "bytes": 124509
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_GenerateBranchMask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_GenerateBranchMask.uasset",
+      "sha256": "5ff5f71dedcca387e16dc580fbd6101e100061f8e28aaae0926c7b33b9769b90",
+      "bytes": 104149
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_HealthSeason.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_HealthSeason.uasset",
+      "sha256": "7c5ae214466c4433eea0be537119c1b3ba4b19bb609701bf8d09916e2de0509d",
+      "bytes": 148749
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_LightInfluenceColorVariation.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_LightInfluenceColorVariation.uasset",
+      "sha256": "8b19523e62bca604b4cb9eede548d6bbd2e8a87914fb19c7dfce297b4e873aae",
+      "bytes": 126727
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_Opacity.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_Opacity.uasset",
+      "sha256": "d0c22512dbb6628f15bae56f95978f90a161899f607130b5e104347bb5ccf91f",
+      "bytes": 14956
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_Roughness.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_Roughness.uasset",
+      "sha256": "a21028238480921d91ef5e22959cf5f5d1df7e247093091841779657ef7355f7",
+      "bytes": 111219
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_SimpleWind.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_SimpleWind.uasset",
+      "sha256": "79fa936c40176ea65e81cc8d64d0b1196d3bbdbadc9dd08d81f52febf896793f",
+      "bytes": 137030
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSidedRoughness.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSidedRoughness.uasset",
+      "sha256": "2dc54ddb87803fb04f4298be192a5f5f212ed4fa8d18fcf2a82487809aa0004e",
+      "bytes": 128388
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSided_Decoration.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSided_Decoration.uasset",
+      "sha256": "4b936709fc78a6e184f186ccc94017eadc36e4d20615dab7449339590e800501",
+      "bytes": 123736
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSided_Leaves.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_TwoSided_Leaves.uasset",
+      "sha256": "e6b84477ec6165e6ea083d9e464d1a37481d77dcd188a3faa7239b2306695d44",
+      "bytes": 44651
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_WindGust.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_WindGust.uasset",
+      "sha256": "04ffa47d12f73ab13114245a2d2df5b87d846beb955c3ca8ced72863c476b537",
+      "bytes": 126140
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_WorldspaceColorVariation.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_WorldspaceColorVariation.uasset",
+      "sha256": "43d63588bf3724e6ac28d83b760468ba63acd820acd72b9cbec446f267b4dd9a",
+      "bytes": 125625
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustBaseColor.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustBaseColor.uasset",
+      "sha256": "71b0075bfc643426f29dbad498a93737983d2d5fd774e9aafd800f7719c0a9f6",
+      "bytes": 112545
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustNormal.uasset",
+      "sha256": "063eb2f22c248036cbd67032e048bf79b2edbcdc43ef10b1dcc5f4c2e9bc95d4",
+      "bytes": 104567
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustTwoSidedBaseColor.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustTwoSidedBaseColor.uasset",
+      "sha256": "dfe8ffa3ee555a87a857c54655d3d302039986ef34dfd269597789013b494ae6",
+      "bytes": 134960
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustTwoSidedNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_adjustTwoSidedNormal.uasset",
+      "sha256": "839b612e8f4ca66cf9922f3c227a972e6c79218a4b8b771e3d6b04bd02390eb5",
+      "bytes": 105805
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateSpecular.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateSpecular.uasset",
+      "sha256": "5ef004ffd97dd4371c1c72315e6171ad792bda7b535839156cce970232b5f013",
+      "bytes": 108778
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateTranslucency.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateTranslucency.uasset",
+      "sha256": "5c3df3199aa127f2eb3e31ae81ad7e92285aeb2fd84462ee075bf8bf6f57b117",
+      "bytes": 112649
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateTwoSidedSpecular.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Foliage/MF_generateTwoSidedSpecular.uasset",
+      "sha256": "7eeefae45be685a230fcb458737b2f06ea64f80132511b9104a465d0df193f1e",
+      "bytes": 121837
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/FrameBlendWeights.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/FrameBlendWeights.uasset",
+      "sha256": "127a67e0b314d8bb3ccb0381756861b87467dfa16f7a8ec7255d80bf822c96a6",
+      "bytes": 13895
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/FrameBlendWeights_TextureObject.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/FrameBlendWeights_TextureObject.uasset",
+      "sha256": "b7d2d632e202c400a5422aa777477faf7fdfee16e508c539a8d98d9792806e8f",
+      "bytes": 19073
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/GenerateTreeMask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/GenerateTreeMask.uasset",
+      "sha256": "5bc9524eac7e0c2cb4ea28a2f8eaebb08c96d15aa10ed054836114b93f87f45b",
+      "bytes": 18254
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/HemiOctahedronToUnitVector.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/HemiOctahedronToUnitVector.uasset",
+      "sha256": "4eefe13bde8b30ee83cc8807b0475fc98b81449899972b96004465b1d34a9fdc",
+      "bytes": 8330
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImposterFrameTransform.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImposterFrameTransform.uasset",
+      "sha256": "aba6eb5a180d6c99dfec92f20df77ac03a9a5b96e6705f97606439a1774ce452",
+      "bytes": 22381
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImposterFrameTransform_Setup.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImposterFrameTransform_Setup.uasset",
+      "sha256": "85388a344beaa5c1763313a9c71824d6093677974c35859cfaf098100337f70c",
+      "bytes": 13234
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImpostorInfo.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/ImpostorInfo.uasset",
+      "sha256": "b02a6ea3d3f25c368ffdc0ae4adbed1b54f2637d592e2e20cf5bc0efba4047bc",
+      "bytes": 20540
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Impostor_MS.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Impostor_MS.uasset",
+      "sha256": "96b51962a6b808664a3406c3746f27dbad31a83cf3fc1a7016f595eee5839bcb",
+      "bytes": 232740
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Impostor_SingleFrameVersion.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Impostor_SingleFrameVersion.uasset",
+      "sha256": "2e9331020ae632c4bdc1b7bcc6c9dbdbd18e9f501ade76540a23c5b516a350d0",
+      "bytes": 70729
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/OverrideMobile.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/OverrideMobile.uasset",
+      "sha256": "33b078107beaa09b5f57e0fac2ee3dd41e6453152aa4cbeb622cb99c88397c90",
+      "bytes": 7156
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Sprite_PositionBased.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/Sprite_PositionBased.uasset",
+      "sha256": "246a0d7b382eeeccd127bfb40e43f8f097ffc16aa147a10703ab995190359dfb",
+      "bytes": 32796
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/TriangleInterpolator.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/TriangleInterpolator.uasset",
+      "sha256": "3049871da4bedf0143c3f2f82a8c58a6661342841ad9c253ad1e806b17a58fed",
+      "bytes": 19811
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/TriangulatedWireframe.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/TriangulatedWireframe.uasset",
+      "sha256": "6e183ccee12bceca51d8e998bc28956c62e9f999a1ee8a7fd06143ce5ddf1b43",
+      "bytes": 20790
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/UnitVectorToHemiOctahedra.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/UnitVectorToHemiOctahedra.uasset",
+      "sha256": "4b0ce748b548af4924c3e747238cbc049f930032caf8b864cb3f923d757a6251",
+      "bytes": 6898
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/VirtualPlaneCoordinates_Imposter.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Impostor/VirtualPlaneCoordinates_Imposter.uasset",
+      "sha256": "48f6cf4de6c569c4a67b7a24f0b79d74d4617949d3764385e8eddb9729acb50c",
+      "bytes": 33361
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Textures/T_WindNoise.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialFunctions/Textures/T_WindNoise.uasset",
+      "sha256": "e8cd972a89e86e00c23fa69b9acd3e5daff92742bb16158878f4a861eae0577a",
+      "bytes": 6977634
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/MSPresets/MS_Foliage_Material/MaterialParameterCollection/MPC_GlobalFoliageActor.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/MSPresets/MS_Foliage_Material/MaterialParameterCollection/MPC_GlobalFoliageActor.uasset",
+      "sha256": "a48e44322a80e03bd366a51f3985dccc44b6f048fe625c9bb3c8c9b9a743fb8c",
+      "bytes": 4024
+    }
+  ],
+  "total_bytes": 2812248334,
+  "status": "copied; native render acceptance pending"
+}
