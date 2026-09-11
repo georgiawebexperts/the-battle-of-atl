@@ -57,6 +57,7 @@ public:
  virtual void BeginPlay() override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  virtual void Tick(float Dt) override;
+ void RefreshRiderPose();
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UBattleBikeMovement> Ride;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleRideFX> RideEffects;
@@ -158,6 +159,9 @@ public:
  void RecordPlayerShotHit(AActor* Victim);
  void RecordGunfire();
  bool RecordAssault(AActor* Victim);
+ bool bTutorialActive=false,bTutorialHelp=true;
+ bool bPracticeSteered=false,bPracticeBraked=false,bPracticeDismounted=false,bPracticeHorn=false;
+ float PracticeDistance=0,ExpansionNoticeRemaining=0;
  void TickTrouble(float Dt);
  void TickDrones(float Dt);
  float DroneDelay=35;
@@ -187,6 +191,11 @@ class AURAPLAYGROUND_API ABattleParkMode : public ABattleLabMode {
  GENERATED_BODY()
 public:
  ABattleParkMode();
+ bool CompleteRun(ABattleBike* Bike);
+ bool bWon=false,bRecordSaved=false;
+ float RunElapsed=0,RunTopSpeed=0;
+ int32 FinishKills=0,FinishWipeouts=0,FinishNearMisses=0;
+ FString FinishGrade;
  virtual void InitGame(const FString& MapName,const FString& Options,FString& ErrorMessage) override;
  virtual void StartPlay() override;
  UPROPERTY(BlueprintReadOnly) FName DifficultyName=TEXT("Easy");

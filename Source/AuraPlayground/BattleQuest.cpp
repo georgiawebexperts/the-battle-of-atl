@@ -1,4 +1,6 @@
 #include "BattleQuest.h"
+#include "BattleTutorialData.h"
+#include "BattleTutorialBlock.h"
 #include "BattleRouteAnchors.h"
 #include "BattleCheckpoints.h"
 #include "BattleBike.h"
@@ -42,6 +44,7 @@ void ABattleQuest::BeginPlay(){
    if(Mainline.IsEmpty()||!Mainline.Last().Equals(P,1))Mainline.Add(P);
   }
  }
+ for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattleHomeRoute"))){auto* S=It->Centerline.Get();for(int I=0;I<S->GetNumberOfSplinePoints();I++){const FVector P=S->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);if(Mainline.IsEmpty()||!Mainline.Last().Equals(P,1))Mainline.Add(P);}}
  EastsideRoutePointCount=Mainline.Num();
  for(const auto& Anchor:BattleCheckpoints::Anchors){
   int32 BestIndex=INDEX_NONE;double Best=TNumericLimits<double>::Max();const FVector Point(Anchor.X,Anchor.Y,Anchor.Z);
@@ -121,11 +124,12 @@ void ABattleQuest::Tick(float Dt){
  if(!bReady){RouteDelay-=Dt;if(RouteDelay<=0){RouteDelay=2;bReady=PlaceArtifact();}return;}
  auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Person=Cast<ABattleRider>(Pawn))Bike=Person->ParkedBike;
  if(Artifact&&!bCollected){Artifact->SetActorLocation(ArtifactLocation+FVector(0,0,FMath::Sin(Clock*2.5f)*8));Artifact->AddActorWorldRotation(FRotator(0,Dt*45,0));}
- if(Bike&&Bike->RiderHealth>0&&Bike->RespawnRemaining<=0&&Mode->StartCountdown<=0&&!Mode->bRunEnded&&!bCollected&&FVector::DistSquared(Pawn->GetActorLocation(),ArtifactLocation)<FMath::Square(150.f)){
+ if(Bike&&Bike->RiderHealth>0&&Bike->RespawnRemaining<=0&&!Mode->bTutorialActive&&Mode->StartCountdown<=0&&!Mode->bRunEnded&&!bCollected&&FVector::DistSquared(Pawn->GetActorLocation(),ArtifactLocation)<FMath::Square(150.f)){
   FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleCollect),false,Pawn);Q.AddIgnoredActor(Artifact);
   if(!GetWorld()->LineTraceSingleByChannel(Hit,Pawn->GetActorLocation(),ArtifactLocation,ECC_Visibility,Q)){
    bCollected=true;Mode->bItemCollected=true;
    if(Artifact){Artifact->Destroy();Artifact=nullptr;}
+   CheckpointNotice=TEXT("PHONE FOUND • Morgan is waiting at 98 Estoria");CheckpointNoticeTime=6;
    RefreshRoute();
    if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Boost.S_Boost")))UGameplayStatics::PlaySound2D(this,Sound,.5f,1.5f);
    UE_LOG(LogTemp,Display,TEXT("BattleQuest: Artifact collected; route points=%d"),RoutePoints.Num());
@@ -169,12 +173,15 @@ bool ABattleQuest::ClipToCircle(FVector2D& A,FVector2D& B,float Radius){
 }
 void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!HUD||!Canvas)return;auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
+ const auto* PracticeMode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));const bool Practice=PracticeMode&&PracticeMode->bTutorialActive;
  const float UIScale=FMath::Clamp(FMath::Min(Canvas->SizeX/1920.f,Canvas->SizeY/1080.f),.75f,1.5f);const float Radius=140*UIScale;const FVector2D Center(Canvas->SizeX-Radius-40*UIScale,Canvas->SizeY-Radius-45*UIScale),Player(Pawn->GetActorLocation());
  auto Project=[&](FVector2D World){return RadarOffset(World-Player,Radius/FMath::Max(1.f,RadarRange));};
  auto Line=[&](FVector2D A,FVector2D B,FLinearColor C,float W){HUD->DrawLine(Center.X+A.X,Center.Y+A.Y,Center.X+B.X,Center.Y+B.Y,C,W);};
  for(float Y=-Radius;Y<Radius;Y+=2){const float X=FMath::Sqrt(FMath::Max(0.f,Radius*Radius-Y*Y));HUD->DrawRect(FLinearColor(.008,.016,.025,.9),Center.X-X,Center.Y+Y,X*2,2);}
  auto Circle=[&](FVector2D C,float R,FLinearColor Color,float Width){for(int I=0;I<48;I++){const float A=I*2*PI/48,B=(I+1)*2*PI/48;Line(C+FVector2D(FMath::Cos(A),FMath::Sin(A))*R,C+FVector2D(FMath::Cos(B),FMath::Sin(B))*R,Color,Width);}};
  for(const auto& Segment:Segments){FVector2D A=Project(Segment.Key),B=Project(Segment.Value);if(ClipToCircle(A,B,Radius-3))Line(A,B,FLinearColor(.36,.48,.5),1);}
+ if(Practice)for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialData::Road);I++){FVector2D A=Project(FVector2D(BattleTutorialData::Road[I-1])),B=Project(FVector2D(BattleTutorialData::Road[I]));if(ClipToCircle(A,B,Radius-3))Line(A,B,FLinearColor(.2,1,.7),2);}
+ if(Practice)for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialBlock::Alternate);I++){FVector2D A=Project(FVector2D(BattleTutorialBlock::Alternate[I-1])),B=Project(FVector2D(BattleTutorialBlock::Alternate[I]));if(ClipToCircle(A,B,Radius-3))Line(A,B,FLinearColor(.2,1,.7),2);}
  if(bCollected)for(int I=1;I<RoutePoints.Num();I++){FVector2D A=Project(FVector2D(RoutePoints[I-1])),B=Project(FVector2D(RoutePoints[I]));if(ClipToCircle(A,B,Radius-3))Line(A,B,FLinearColor(1,.66,.05),2);}
  Circle(FVector2D::ZeroVector,Radius,FLinearColor(.3,.6,.67),2);
  const float Yaw=FMath::DegreesToRadians(Pawn->GetActorRotation().Yaw);const FVector2D Forward(FMath::Cos(Yaw),FMath::Sin(Yaw)),Right(-Forward.Y,Forward.X);
@@ -182,14 +189,15 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!Pawn->IsA<ABattleBike>())for(TActorIterator<ABattleBike> It(GetWorld());It;++It)if(It->bParked){const FVector2D B=Project(FVector2D(It->GetActorLocation())).GetClampedToMaxSize(Radius-9);HUD->DrawText(TEXT("B"),FColor::Cyan,Center.X+B.X-4,Center.Y+B.Y-6,nullptr,.9f);}
  for(FVector P:EnemyLocations){FVector2D D=Project(FVector2D(P));if(D.Size()<Radius-4)Circle(D,2.5f,FLinearColor::Red,2);}
  if(bReady){
-  const FVector Target=bCollected?RouteTargetLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);
+  const FVector Target=Practice?BattleTutorialData::Gate:bCollected?RouteTargetLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);
   const float Pulse=.65f+.35f*FMath::Sin(Clock*2*PI);
   const FLinearColor Gold(1,.5f+.3f*Pulse,.05f);
-  const FVector2D D=bCollected?Project(FVector2D(Target)):CoarseDirection(FVector2D(Target-Pawn->GetActorLocation()))*Radius;
-  if(bCollected&&Distance<=RadarRange)Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
+  const FVector2D D=(bCollected||Practice)?Project(FVector2D(Target)):CoarseDirection(FVector2D(Target-Pawn->GetActorLocation()))*Radius;
+  if((bCollected||Practice)&&Distance<=RadarRange)Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
   else{const auto F=D.GetSafeNormal(),R=FVector2D(-F.Y,F.X);const auto Tip=F*(Radius-5);Line(Tip,Tip-F*10+R*6,Gold,3);Line(Tip,Tip-F*10-R*6,Gold,3);}
  }
  auto Compass=[&](const TCHAR* Label,FVector2D Offset){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),FLinearColor::White);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};
+ Compass(TEXT("ELLISON’S WATCH"),FVector2D(0,-Radius-52*UIScale));
  Compass(TEXT("N"),FVector2D(0,-Radius-28*UIScale));Compass(TEXT("S"),FVector2D(0,Radius+3*UIScale));Compass(TEXT("W"),FVector2D(-Radius-18*UIScale,-12*UIScale));Compass(TEXT("E"),FVector2D(Radius+18*UIScale,-12*UIScale));
 
 }

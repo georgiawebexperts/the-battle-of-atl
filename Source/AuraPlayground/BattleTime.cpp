@@ -1,7 +1,7 @@
 #include "BattleBike.h"
 #include "Kismet/GameplayStatics.h"
 bool ABattleLabMode::AdjustRunTime(float Seconds,const FString& Reason){
- if(bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this)||!FMath::IsFinite(Seconds)||Seconds==0)return false;
+ if(bTutorialActive||bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this)||!FMath::IsFinite(Seconds)||Seconds==0)return false;
  TimeRemaining=FMath::Max(0.f,TimeRemaining+Seconds);
  LastTimeDelta=Seconds;TimeNotice=Reason;TimeNoticeRemaining=2.5f;
  if(TimeRemaining<=0)bRunEnded=true;

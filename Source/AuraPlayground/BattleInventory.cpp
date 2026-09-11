@@ -28,11 +28,11 @@ void ABattleRider::RestoreLoadout(){
 }
 bool ABattleRider::SelectWeapon(int32 Slot){
  if(!CanUseWeapon()||MeleeRemaining>0||!ParkedBike||Slot<0||Slot>=BattleWeapons::Count||!ParkedBike->Inventory[Slot].Owned)return false;
- if(Slot==CurrentWeapon)return true;SaveWeapon();ReloadRemaining=0;CurrentWeapon=Slot;Ammo=ParkedBike->Inventory[Slot].Magazine;ParkedBike->LastFootWeapon=Slot;ShotCooldown=FMath::Max(ShotCooldown,.2f);UpdateWeaponModel();return true;
+ if(Slot==CurrentWeapon){if(!bWeaponDrawn)return ToggleDrawWeapon();return true;}SaveWeapon();ReloadRemaining=0;CurrentWeapon=Slot;Ammo=ParkedBike->Inventory[Slot].Magazine;ParkedBike->LastFootWeapon=Slot;ShotCooldown=FMath::Max(ShotCooldown,.2f);bWeaponDrawn=true;DrawRemaining=.3f;UpdateWeaponModel();return true;
 }
 FString ABattleRider::ReserveLabel() const{return ParkedBike?FString::FromInt(ParkedBike->Inventory[CurrentWeapon].Reserve):TEXT("0");}
 void ABattleRider::Reload(){
- if(!CanUseWeapon()||!bWeaponDrawn||MeleeRemaining>0||ReloadRemaining>0||Ammo>=BattleWeapons::Capacity(CurrentWeapon))return;
+ if(!CanUseWeapon()||!bWeaponDrawn||DrawRemaining>0||MeleeRemaining>0||ReloadRemaining>0||Ammo>=BattleWeapons::Capacity(CurrentWeapon))return;
  if(!ParkedBike||ParkedBike->Inventory[CurrentWeapon].Reserve<=0)return;
  ReloadRemaining=BattleWeapons::ReloadSeconds(CurrentWeapon);
 }

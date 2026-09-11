@@ -14,7 +14,7 @@ float ABattleBike::TakeDamage(float Amount,const FDamageEvent& Event,AController
 float ABattleBike::ApplyRiderDamage(float Amount){
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
  if(!FMath::IsFinite(Amount)||Amount<=0||RiderHealth<=0||DamageGrace>0||RespawnRemaining>0||
-    (Mode&&(Mode->StartCountdown>0||Mode->bRunEnded))||UGameplayStatics::IsGamePaused(this))return 0;
+    (Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded))||UGameplayStatics::IsGamePaused(this))return 0;
  const float Applied=FMath::Min(RiderHealth,Amount);RiderHealth-=Applied;HurtCooldown=5;
  RideImpact(.35f);
  auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0));
@@ -32,7 +32,7 @@ float ABattleBike::ApplyRiderDamage(float Amount){
 }
 float ABattleBike::RestoreRiderHealth(float Amount){
  const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(!FMath::IsFinite(Amount)||Amount<=0||RiderHealth<=0||RiderHealth>=100||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this)||(Mode&&(Mode->StartCountdown>0||Mode->bRunEnded)))return 0;
+ if(!FMath::IsFinite(Amount)||Amount<=0||RiderHealth<=0||RiderHealth>=100||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this)||(Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)))return 0;
  const float Applied=FMath::Min(100-RiderHealth,Amount);RiderHealth+=Applied;
  if(auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0)))if(Person->ParkedBike==this)Person->Health=RiderHealth;
  return Applied;
@@ -40,7 +40,7 @@ float ABattleBike::RestoreRiderHealth(float Amount){
 void ABattleBike::UpdateHealth(float Dt){
  PickupNoticeRemaining=FMath::Max(0.f,PickupNoticeRemaining-Dt);
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(Mode&&(Mode->StartCountdown>0||Mode->bRunEnded))return;
+ if(Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded))return;
  if(RespawnRemaining>0){
   RespawnRemaining=FMath::Max(0.f,RespawnRemaining-Dt);
   if(RespawnRemaining<=0&&!RecoverAtCheckpoint())RespawnRemaining=.2f;

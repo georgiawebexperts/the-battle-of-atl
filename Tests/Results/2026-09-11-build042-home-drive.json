@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 4215.73,
+  "maxCenterlineErrorCm": 71.18,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 433,
+    "paved": 433
+  },
+  "lights": {},
+  "exit_code": 0,
+  "scope": "Krog southern exit along sourced Wylie Street to 98 Estoria patio, both directions using real W/A/D input and CharacterMovement; crowds disabled to isolate terrain/decks; appearance unverified."
+}

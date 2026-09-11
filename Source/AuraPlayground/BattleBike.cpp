@@ -1,4 +1,6 @@
 #include "BattleBike.h"
+#include "BattleHome.h"
+#include "BattleTutorial.h"
 #include "BattleFrisbee.h"
 #include "BattleParkFurniture.h"
 #include "BattleSkatepark.h"
@@ -146,18 +148,22 @@ void ABattleParkMode::StartPlay(){
  }
  GetWorld()->SpawnActor<ABattleParkFurniture>();
  GetWorld()->SpawnActor<ABattleSkatepark>(FVector(39000,74000,0),FRotator::ZeroRotator);
+ GetWorld()->SpawnActor<ABattleHome>();
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
  GetWorld()->SpawnActor<ABattleParkLifeDirector>();
+ GetWorld()->SpawnActor<ABattleTutorial>();
 }
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){
- AGameModeBase::Tick(Dt);TickTrouble(Dt);TickDrones(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);
+ AGameModeBase::Tick(Dt);ExpansionNoticeRemaining=FMath::Max(0.f,ExpansionNoticeRemaining-Dt);if(bTutorialActive)return;TickTrouble(Dt);TickDrones(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
- if(!bRunEnded){APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&Player->IsA<ABattleRider>()?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
+ if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
+ APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&Player->IsA<ABattleRider>()?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
 }
+void ABattleBike::RefreshRiderPose(){PoseRider(0);Rider->RefreshBoneTransforms();Rider->MarkRenderDynamicDataDirty();}
 void ABattleBike::PoseRider(float Dt){
  if(ReferencePose.IsEmpty())return;
  TArray<FTransform> Pose=ReferencePose;

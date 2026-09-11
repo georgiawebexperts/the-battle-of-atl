@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PiedmontExplorer.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "BattleRider.generated.h"
 class ABattleBike;
 UCLASS()
@@ -16,6 +17,8 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float HandScale=1.f;
  UPROPERTY(BlueprintReadOnly) FVector RightGrip;
  UPROPERTY(BlueprintReadOnly) FVector LeftGrip;
+ UFUNCTION(BlueprintCallable) bool ToggleDrawWeapon();
+ UPROPERTY(BlueprintReadOnly) float DrawRemaining=0;
  virtual bool Fire() override;
  virtual void Reload() override;
  UFUNCTION(BlueprintCallable) bool SelectWeapon(int32 Slot);
@@ -33,6 +36,8 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> MeleeRoot;
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  virtual void BeginPlay() override;
+ virtual void OnStartCrouch(float HalfHeightAdjust,float ScaledHalfHeightAdjust) override;
+ virtual void OnEndCrouch(float HalfHeightAdjust,float ScaledHalfHeightAdjust) override;
  virtual void Tick(float Dt) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
@@ -45,6 +50,9 @@ protected:
  virtual void FinishReload() override;
 private:
  void ReloadPistol(){Reload();}
+ void DrawWeapon(){ToggleDrawWeapon();}
+ void StartCrouch(){if(Health>0&&!bSwimming)Crouch();}void EndCrouch(){UnCrouch();}
+ void ToggleCrouch(){if(GetCharacterMovement()->bWantsToCrouch)UnCrouch();else StartCrouch();}
  void SelectPistol(){SelectWeapon(0);}void SelectShotgun(){SelectWeapon(1);}void SelectSMG(){SelectWeapon(2);}void SelectFrisbee(){SelectWeapon(3);}void SelectRifle(){SelectWeapon(4);}
  void BuildLongGun();
  void StartMelee(){Melee();}
@@ -59,5 +67,5 @@ private:
  void PoseArms(float Dt);
  TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;
  float SwayTime=0;
- float AimBlend=0;
+ float AimBlend=0,ArmPoseBlend=0,EmptyArmMotion=0;
 };

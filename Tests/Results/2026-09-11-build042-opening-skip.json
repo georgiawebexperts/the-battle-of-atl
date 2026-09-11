@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "duration": 2.03,
+  "skipped": true,
+  "protected": true,
+  "exit_code": 0,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

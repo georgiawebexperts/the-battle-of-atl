@@ -1,0 +1,988 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-11T20:33:05Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 9252985,
+  "bounds": {
+    "minlat": 33.7864811,
+    "minlon": -84.3791289,
+    "maxlat": 33.7876516,
+    "maxlon": -84.3791276
+  },
+  "nodes": [
+    69315704,
+    14053858089,
+    5996570178,
+    5424125832,
+    13241914739,
+    5424123711,
+    5424123714,
+    69315708
+  ],
+  "geometry": [
+    { "lat": 33.7864811, "lon": -84.3791279 },
+    { "lat": 33.7865139, "lon": -84.3791279 },
+    { "lat": 33.7865702, "lon": -84.3791280 },
+    { "lat": 33.7870895, "lon": -84.3791276 },
+    { "lat": 33.7871160, "lon": -84.3791284 },
+    { "lat": 33.7872454, "lon": -84.3791286 },
+    { "lat": 33.7875936, "lon": -84.3791288 },
+    { "lat": 33.7876516, "lon": -84.3791289 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "14th Place Northeast",
+    "sidewalk:both": "no",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "14th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Pl",
+    "tiger:zip_left": "30309",
+    "tiger:zip_right": "30309"
+  }
+},
+{
+  "type": "way",
+  "id": 9254743,
+  "bounds": {
+    "minlat": 33.7830270,
+    "minlon": -84.3809460,
+    "maxlat": 33.7837898,
+    "maxlon": -84.3808754
+  },
+  "nodes": [
+    69227179,
+    12877422016,
+    13230587259,
+    13230587267,
+    13230587289,
+    69339467
+  ],
+  "geometry": [
+    { "lat": 33.7830270, "lon": -84.3809460 },
+    { "lat": 33.7830788, "lon": -84.3809404 },
+    { "lat": 33.7834805, "lon": -84.3809037 },
+    { "lat": 33.7836249, "lon": -84.3808904 },
+    { "lat": 33.7836338, "lon": -84.3808896 },
+    { "lat": 33.7837898, "lon": -84.3808754 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Dickson Place Northeast",
+    "sidewalk:left": "no",
+    "sidewalk:right": "yes",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Dickson",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Pl",
+    "tiger:zip_left": "30309",
+    "tiger:zip_right": "30309"
+  }
+},
+{
+  "type": "way",
+  "id": 9272986,
+  "bounds": {
+    "minlat": 33.7817935,
+    "minlon": -84.3804635,
+    "maxlat": 33.7858950,
+    "maxlon": -84.3782180
+  },
+  "nodes": [
+    69589540,
+    6003256662,
+    2277885154,
+    2277885178,
+    5416547090,
+    69589545,
+    5416547087,
+    69227192,
+    9537493885,
+    69589552,
+    69589556,
+    13230601407,
+    69227188,
+    69387097,
+    9537493879,
+    69589562,
+    5416485179,
+    69589565,
+    5416416503,
+    5416485183,
+    69589569,
+    6005931679,
+    69387083,
+    6005931685,
+    1928236255,
+    69589571,
+    6702906081,
+    69249230,
+    69589572,
+    5834678446,
+    69589577
+  ],
+  "geometry": [
+    { "lat": 33.7817935, "lon": -84.3804635 },
+    { "lat": 33.7818760, "lon": -84.3804364 },
+    { "lat": 33.7819496, "lon": -84.3804149 },
+    { "lat": 33.7821104, "lon": -84.3803649 },
+    { "lat": 33.7822013, "lon": -84.3803366 },
+    { "lat": 33.7823030, "lon": -84.3803050 },
+    { "lat": 33.7823132, "lon": -84.3803011 },
+    { "lat": 33.7825957, "lon": -84.3801911 },
+    { "lat": 33.7826281, "lon": -84.3801770 },
+    { "lat": 33.7826990, "lon": -84.3801410 },
+    { "lat": 33.7827960, "lon": -84.3800770 },
+    { "lat": 33.7829651, "lon": -84.3799346 },
+    { "lat": 33.7830112, "lon": -84.3798960 },
+    { "lat": 33.7833130, "lon": -84.3795770 },
+    { "lat": 33.7833748, "lon": -84.3795230 },
+    { "lat": 33.7835340, "lon": -84.3793840 },
+    { "lat": 33.7836546, "lon": -84.3792924 },
+    { "lat": 33.7837630, "lon": -84.3792100 },
+    { "lat": 33.7837905, "lon": -84.3791921 },
+    { "lat": 33.7838834, "lon": -84.3791315 },
+    { "lat": 33.7839960, "lon": -84.3790580 },
+    { "lat": 33.7842099, "lon": -84.3789354 },
+    { "lat": 33.7842779, "lon": -84.3789003 },
+    { "lat": 33.7843325, "lon": -84.3788711 },
+    { "lat": 33.7844907, "lon": -84.3787918 },
+    { "lat": 33.7847800, "lon": -84.3786480 },
+    { "lat": 33.7850252, "lon": -84.3785421 },
+    { "lat": 33.7854184, "lon": -84.3783803 },
+    { "lat": 33.7856210, "lon": -84.3782980 },
+    { "lat": 33.7858393, "lon": -84.3782343 },
+    { "lat": 33.7858950, "lon": -84.3782180 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "3",
+    "maxspeed": "35 mph",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "yes",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305"
+  }
+},
+{
+  "type": "way",
+  "id": 28798751,
+  "bounds": {
+    "minlat": 33.7846889,
+    "minlon": -84.3771581,
+    "maxlat": 33.7877426,
+    "maxlon": -84.3748750
+  },
+  "nodes": [
+    316638906,
+    316638908,
+    1926653811,
+    316638910,
+    1926653790,
+    316638912,
+    316638914,
+    1926653756,
+    316638916,
+    3602660752,
+    316638917,
+    316638918,
+    316638919,
+    316638920,
+    1595736405,
+    767408373,
+    316638921,
+    1926653481,
+    316638922,
+    767408369,
+    316638923,
+    1926653477,
+    316638924,
+    1926653485,
+    1928135912,
+    316638925,
+    1926653506,
+    316638926,
+    316638927,
+    1927469417,
+    316638928,
+    1927469419,
+    767408374,
+    316638929,
+    1926653750,
+    316638930,
+    1926653770,
+    316638931,
+    1926653784,
+    316638932,
+    1926653805,
+    316638906
+  ],
+  "geometry": [
+    { "lat": 33.7877197, "lon": -84.3755445 },
+    { "lat": 33.7877426, "lon": -84.3758454 },
+    { "lat": 33.7876983, "lon": -84.3760701 },
+    { "lat": 33.7876282, "lon": -84.3762463 },
+    { "lat": 33.7874925, "lon": -84.3764249 },
+    { "lat": 33.7873630, "lon": -84.3765573 },
+    { "lat": 33.7871276, "lon": -84.3767633 },
+    { "lat": 33.7869210, "lon": -84.3768768 },
+    { "lat": 33.7866925, "lon": -84.3769693 },
+    { "lat": 33.7864435, "lon": -84.3770313 },
+    { "lat": 33.7862788, "lon": -84.3770723 },
+    { "lat": 33.7859189, "lon": -84.3771526 },
+    { "lat": 33.7855511, "lon": -84.3771581 },
+    { "lat": 33.7852315, "lon": -84.3770505 },
+    { "lat": 33.7851489, "lon": -84.3770126 },
+    { "lat": 33.7850342, "lon": -84.3769378 },
+    { "lat": 33.7849157, "lon": -84.3768395 },
+    { "lat": 33.7848269, "lon": -84.3767061 },
+    { "lat": 33.7847580, "lon": -84.3765419 },
+    { "lat": 33.7847201, "lon": -84.3764047 },
+    { "lat": 33.7846889, "lon": -84.3762017 },
+    { "lat": 33.7847326, "lon": -84.3759167 },
+    { "lat": 33.7848192, "lon": -84.3756839 },
+    { "lat": 33.7849066, "lon": -84.3755636 },
+    { "lat": 33.7849861, "lon": -84.3754960 },
+    { "lat": 33.7850155, "lon": -84.3754723 },
+    { "lat": 33.7851497, "lon": -84.3753750 },
+    { "lat": 33.7852894, "lon": -84.3752974 },
+    { "lat": 33.7856777, "lon": -84.3751858 },
+    { "lat": 33.7859797, "lon": -84.3750945 },
+    { "lat": 33.7860642, "lon": -84.3750689 },
+    { "lat": 33.7861375, "lon": -84.3750517 },
+    { "lat": 33.7862458, "lon": -84.3750262 },
+    { "lat": 33.7865975, "lon": -84.3749449 },
+    { "lat": 33.7867939, "lon": -84.3748876 },
+    { "lat": 33.7869921, "lon": -84.3748750 },
+    { "lat": 33.7871259, "lon": -84.3748892 },
+    { "lat": 33.7872592, "lon": -84.3749286 },
+    { "lat": 33.7874035, "lon": -84.3750218 },
+    { "lat": 33.7875354, "lon": -84.3751333 },
+    { "lat": 33.7876425, "lon": -84.3753286 },
+    { "lat": 33.7877197, "lon": -84.3755445 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "yes",
+    "highway": "footway",
+    "motor_vehicle": "no",
+    "name": "Active Oval",
+    "source": "bing_imagery",
+    "surface": "gravel"
+  }
+},
+{
+  "type": "way",
+  "id": 28977645,
+  "bounds": {
+    "minlat": 33.7865903,
+    "minlon": -84.3781525,
+    "maxlat": 33.7881375,
+    "maxlon": -84.3776205
+  },
+  "nodes": [
+    5674178518,
+    9535944766,
+    1573471353,
+    69589586,
+    1928236350,
+    5424125374,
+    69589594,
+    5424125380,
+    69589596,
+    2349772852,
+    69589600,
+    13241914625,
+    69589602,
+    69589604,
+    69233073
+  ],
+  "geometry": [
+    { "lat": 33.7865903, "lon": -84.3781525 },
+    { "lat": 33.7866013, "lon": -84.3781524 },
+    { "lat": 33.7868615, "lon": -84.3781487 },
+    { "lat": 33.7870800, "lon": -84.3781350 },
+    { "lat": 33.7872529, "lon": -84.3781350 },
+    { "lat": 33.7873116, "lon": -84.3781350 },
+    { "lat": 33.7873210, "lon": -84.3781350 },
+    { "lat": 33.7874227, "lon": -84.3781223 },
+    { "lat": 33.7874410, "lon": -84.3781200 },
+    { "lat": 33.7875099, "lon": -84.3781026 },
+    { "lat": 33.7875801, "lon": -84.3780749 },
+    { "lat": 33.7876740, "lon": -84.3780286 },
+    { "lat": 33.7876820, "lon": -84.3780250 },
+    { "lat": 33.7877970, "lon": -84.3779410 },
+    { "lat": 33.7881375, "lon": -84.3776205 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "no",
+    "source": "bing_imagery",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305",
+    "turn:lanes:backward": "right|right"
+  }
+},
+{
+  "type": "way",
+  "id": 431441735,
+  "bounds": {
+    "minlat": 33.7864806,
+    "minlon": -84.3801983,
+    "maxlat": 33.7864811,
+    "maxlon": -84.3791279
+  },
+  "nodes": [
+    4306377241,
+    5834678394,
+    69315704
+  ],
+  "geometry": [
+    { "lat": 33.7864806, "lon": -84.3801983 },
+    { "lat": 33.7864806, "lon": -84.3801352 },
+    { "lat": 33.7864811, "lon": -84.3791279 }
+  ],
+  "tags": {
+    "cycleway:left": "lane",
+    "cycleway:left:buffer": "no",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:backward": "2",
+    "lanes:forward": "1",
+    "name": "14th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 431441736,
+  "bounds": {
+    "minlat": 33.7864800,
+    "minlon": -84.3821632,
+    "maxlat": 33.7865032,
+    "maxlon": -84.3801983
+  },
+  "nodes": [
+    5198748651,
+    12999959426,
+    4338646193,
+    5674179654,
+    8482370936,
+    4338646199,
+    4338645785,
+    12999959342,
+    4338646192,
+    5834678396,
+    7258187491,
+    13239619651,
+    5853527365,
+    4306377241
+  ],
+  "geometry": [
+    { "lat": 33.7865032, "lon": -84.3821632 },
+    { "lat": 33.7864967, "lon": -84.3820096 },
+    { "lat": 33.7864948, "lon": -84.3819353 },
+    { "lat": 33.7864932, "lon": -84.3818049 },
+    { "lat": 33.7864852, "lon": -84.3815467 },
+    { "lat": 33.7864801, "lon": -84.3813784 },
+    { "lat": 33.7864800, "lon": -84.3812201 },
+    { "lat": 33.7864803, "lon": -84.3810908 },
+    { "lat": 33.7864805, "lon": -84.3809872 },
+    { "lat": 33.7864804, "lon": -84.3808239 },
+    { "lat": 33.7864805, "lon": -84.3804985 },
+    { "lat": 33.7864806, "lon": -84.3803544 },
+    { "lat": 33.7864806, "lon": -84.3803012 },
+    { "lat": 33.7864806, "lon": -84.3801983 }
+  ],
+  "tags": {
+    "cycleway:left": "lane",
+    "cycleway:left:buffer": "no",
+    "highway": "secondary",
+    "lanes": "4",
+    "lanes:backward": "3",
+    "lanes:forward": "1",
+    "name": "14th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "turn:lanes:backward": "left|left|through",
+    "turn:lanes:forward": "through"
+  }
+},
+{
+  "type": "way",
+  "id": 431441737,
+  "bounds": {
+    "minlat": 33.7864443,
+    "minlon": -84.3789347,
+    "maxlat": 33.7864804,
+    "maxlon": -84.3782370
+  },
+  "nodes": [
+    8481441836,
+    9535944759,
+    1573471346,
+    5674178519,
+    9535944762
+  ],
+  "geometry": [
+    { "lat": 33.7864804, "lon": -84.3789347 },
+    { "lat": 33.7864499, "lon": -84.3787428 },
+    { "lat": 33.7864468, "lon": -84.3784090 },
+    { "lat": 33.7864443, "lon": -84.3782860 },
+    { "lat": 33.7864497, "lon": -84.3782370 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "1",
+    "name": "14th Street Northeast",
+    "oneway": "yes",
+    "sidewalk:left": "separate",
+    "sidewalk:right": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "14th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "St",
+    "tiger:reviewed": "no",
+    "tiger:zip_left": "30309",
+    "tiger:zip_right": "30309",
+    "turn:lanes:forward": "left"
+  }
+},
+{
+  "type": "way",
+  "id": 431571139,
+  "bounds": {
+    "minlat": 33.7858950,
+    "minlon": -84.3782180,
+    "maxlat": 33.7862779,
+    "maxlon": -84.3781541
+  },
+  "nodes": [
+    69589577,
+    69589580,
+    1573471363
+  ],
+  "geometry": [
+    { "lat": 33.7858950, "lon": -84.3782180 },
+    { "lat": 33.7861880, "lon": -84.3781620 },
+    { "lat": 33.7862779, "lon": -84.3781541 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "3",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "yes",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305",
+    "turn:lanes": "left|none|none"
+  }
+},
+{
+  "type": "way",
+  "id": 586592806,
+  "bounds": {
+    "minlat": 33.7842779,
+    "minlon": -84.3822440,
+    "maxlat": 33.7843165,
+    "maxlon": -84.3789003
+  },
+  "nodes": [
+    69387078,
+    4165941949,
+    13230587240,
+    5416485164,
+    5416485169,
+    13230587258,
+    6702906075,
+    6702906078,
+    6694851733,
+    9537493832,
+    5849239947,
+    6005931681,
+    69387083
+  ],
+  "geometry": [
+    { "lat": 33.7843032, "lon": -84.3822440 },
+    { "lat": 33.7843130, "lon": -84.3821633 },
+    { "lat": 33.7843155, "lon": -84.3818604 },
+    { "lat": 33.7843165, "lon": -84.3817482 },
+    { "lat": 33.7843157, "lon": -84.3815641 },
+    { "lat": 33.7843153, "lon": -84.3815264 },
+    { "lat": 33.7843083, "lon": -84.3808228 },
+    { "lat": 33.7843077, "lon": -84.3805239 },
+    { "lat": 33.7842997, "lon": -84.3801645 },
+    { "lat": 33.7842883, "lon": -84.3796030 },
+    { "lat": 33.7842813, "lon": -84.3792574 },
+    { "lat": 33.7842795, "lon": -84.3790100 },
+    { "lat": 33.7842779, "lon": -84.3789003 }
+  ],
+  "tags": {
+    "cycleway": "shared_lane",
+    "highway": "residential",
+    "lanes": "2",
+    "lit": "no",
+    "name": "12th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "12th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "St",
+    "tiger:zip_left": "30309",
+    "tiger:zip_left_1": "30309",
+    "tiger:zip_right": "30309"
+  }
+},
+{
+  "type": "way",
+  "id": 673535177,
+  "bounds": {
+    "minlat": 33.7853541,
+    "minlon": -84.3793724,
+    "maxlat": 33.7854184,
+    "maxlon": -84.3783803
+  },
+  "nodes": [
+    6702910689,
+    6702910685,
+    11068664336,
+    11068664324,
+    13232006944,
+    5996570169,
+    69249229,
+    13232006946,
+    69249230
+  ],
+  "geometry": [
+    { "lat": 33.7853644, "lon": -84.3793724 },
+    { "lat": 33.7853685, "lon": -84.3791304 },
+    { "lat": 33.7853671, "lon": -84.3790335 },
+    { "lat": 33.7853616, "lon": -84.3787806 },
+    { "lat": 33.7853549, "lon": -84.3785616 },
+    { "lat": 33.7853541, "lon": -84.3785270 },
+    { "lat": 33.7853595, "lon": -84.3784747 },
+    { "lat": 33.7853814, "lon": -84.3784225 },
+    { "lat": 33.7854184, "lon": -84.3783803 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "13th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "13th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "St",
+    "turn:forward": "left"
+  }
+},
+{
+  "type": "way",
+  "id": 750019483,
+  "bounds": {
+    "minlat": 33.7853808,
+    "minlon": -84.3821740,
+    "maxlat": 33.7854320,
+    "maxlon": -84.3801162
+  },
+  "nodes": [
+    69249214,
+    5674181091,
+    13232006943,
+    8482370929,
+    69249224,
+    13233862423,
+    8323499758,
+    7258187490,
+    5853527355
+  ],
+  "geometry": [
+    { "lat": 33.7854320, "lon": -84.3821740 },
+    { "lat": 33.7854301, "lon": -84.3820890 },
+    { "lat": 33.7854296, "lon": -84.3820636 },
+    { "lat": 33.7854191, "lon": -84.3815493 },
+    { "lat": 33.7854183, "lon": -84.3814448 },
+    { "lat": 33.7854125, "lon": -84.3811973 },
+    { "lat": 33.7854083, "lon": -84.3810180 },
+    { "lat": 33.7853961, "lon": -84.3804952 },
+    { "lat": 33.7853808, "lon": -84.3801162 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "13th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "13th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "St"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224024,
+  "bounds": {
+    "minlat": 33.7864804,
+    "minlon": -84.3791279,
+    "maxlat": 33.7864811,
+    "maxlon": -84.3789347
+  },
+  "nodes": [
+    69315704,
+    8481441836
+  ],
+  "geometry": [
+    { "lat": 33.7864811, "lon": -84.3791279 },
+    { "lat": 33.7864804, "lon": -84.3789347 }
+  ],
+  "tags": {
+    "cycleway:left": "lane",
+    "cycleway:left:buffer": "no",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:backward": "2",
+    "lanes:forward": "1",
+    "name": "14th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "turn:lanes:forward": "left"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224025,
+  "bounds": {
+    "minlat": 33.7865056,
+    "minlon": -84.3783613,
+    "maxlat": 33.7865903,
+    "maxlon": -84.3781525
+  },
+  "nodes": [
+    5674178518,
+    9535944758,
+    9535944757,
+    9535944760,
+    9535944764,
+    9535944756,
+    9535944752
+  ],
+  "geometry": [
+    { "lat": 33.7865903, "lon": -84.3781525 },
+    { "lat": 33.7865701, "lon": -84.3781961 },
+    { "lat": 33.7865462, "lon": -84.3782138 },
+    { "lat": 33.7865319, "lon": -84.3782323 },
+    { "lat": 33.7865184, "lon": -84.3782547 },
+    { "lat": 33.7865125, "lon": -84.3782891 },
+    { "lat": 33.7865056, "lon": -84.3783613 }
+  ],
+  "tags": {
+    "cycleway:right": "lane",
+    "cycleway:right:buffer": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "14th Street Northeast",
+    "oneway": "yes",
+    "sidewalk:right": "separate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224026,
+  "bounds": {
+    "minlat": 33.7862779,
+    "minlon": -84.3781541,
+    "maxlat": 33.7865089,
+    "maxlon": -84.3781405
+  },
+  "nodes": [
+    1573471363,
+    1928236307,
+    9535944767,
+    69421284
+  ],
+  "geometry": [
+    { "lat": 33.7862779, "lon": -84.3781541 },
+    { "lat": 33.7863969, "lon": -84.3781444 },
+    { "lat": 33.7864524, "lon": -84.3781430 },
+    { "lat": 33.7865089, "lon": -84.3781405 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "yes",
+    "sidewalk:right": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305",
+    "turn:lanes": "through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224027,
+  "bounds": {
+    "minlat": 33.7862779,
+    "minlon": -84.3782370,
+    "maxlat": 33.7864497,
+    "maxlon": -84.3781541
+  },
+  "nodes": [
+    1573471363,
+    9535944750,
+    9535944763,
+    9535944762
+  ],
+  "geometry": [
+    { "lat": 33.7862779, "lon": -84.3781541 },
+    { "lat": 33.7863977, "lon": -84.3781952 },
+    { "lat": 33.7864234, "lon": -84.3782128 },
+    { "lat": 33.7864497, "lon": -84.3782370 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "1",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305",
+    "turn:lanes": "left"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224028,
+  "bounds": {
+    "minlat": 33.7865089,
+    "minlon": -84.3781525,
+    "maxlat": 33.7865903,
+    "maxlon": -84.3781310
+  },
+  "nodes": [
+    69421284,
+    9535944753,
+    1928236319,
+    5674178518
+  ],
+  "geometry": [
+    { "lat": 33.7865089, "lon": -84.3781405 },
+    { "lat": 33.7865439, "lon": -84.3781310 },
+    { "lat": 33.7865663, "lon": -84.3781327 },
+    { "lat": 33.7865903, "lon": -84.3781525 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "yes",
+    "sidewalk:right": "separate",
+    "source": "bing_imagery",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224032,
+  "bounds": {
+    "minlat": 33.7864497,
+    "minlon": -84.3782370,
+    "maxlat": 33.7865089,
+    "maxlon": -84.3781405
+  },
+  "nodes": [
+    9535944762,
+    9535944755,
+    9535944754,
+    69421284
+  ],
+  "geometry": [
+    { "lat": 33.7864497, "lon": -84.3782370 },
+    { "lat": 33.7864595, "lon": -84.3782035 },
+    { "lat": 33.7864776, "lon": -84.3781716 },
+    { "lat": 33.7865089, "lon": -84.3781405 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "1",
+    "name": "14th Street Northeast",
+    "oneway": "yes",
+    "sidewalk:right": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "14th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "St",
+    "tiger:zip_left": "30309",
+    "tiger:zip_right": "30309",
+    "turn:lanes": "left"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224033,
+  "bounds": {
+    "minlat": 33.7864497,
+    "minlon": -84.3783613,
+    "maxlat": 33.7865056,
+    "maxlon": -84.3782370
+  },
+  "nodes": [
+    9535944762,
+    9535944751,
+    9535944761,
+    9535944752
+  ],
+  "geometry": [
+    { "lat": 33.7864497, "lon": -84.3782370 },
+    { "lat": 33.7864763, "lon": -84.3782869 },
+    { "lat": 33.7864881, "lon": -84.3783050 },
+    { "lat": 33.7865056, "lon": -84.3783613 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "1",
+    "name": "Piedmont Avenue Northeast",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A31",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "Piedmont",
+    "tiger:name_base_1": "State Route 237",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "30305",
+    "tiger:zip_right": "30305"
+  }
+},
+{
+  "type": "way",
+  "id": 1035224034,
+  "bounds": {
+    "minlat": 33.7864804,
+    "minlon": -84.3789347,
+    "maxlat": 33.7865056,
+    "maxlon": -84.3783613
+  },
+  "nodes": [
+    9535944752,
+    9535944765,
+    8481441836
+  ],
+  "geometry": [
+    { "lat": 33.7865056, "lon": -84.3783613 },
+    { "lat": 33.7865020, "lon": -84.3787143 },
+    { "lat": 33.7864804, "lon": -84.3789347 }
+  ],
+  "tags": {
+    "cycleway:right": "lane",
+    "cycleway:right:buffer": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "14th Street Northeast",
+    "oneway": "yes",
+    "sidewalk:left": "separate",
+    "sidewalk:right": "yes",
+    "surface": "asphalt",
+    "turn:lanes:backward": "left"
+  }
+},
+{
+  "type": "way",
+  "id": 1442051393,
+  "bounds": {
+    "minlat": 33.7853644,
+    "minlon": -84.3801162,
+    "maxlat": 33.7853808,
+    "maxlon": -84.3793724
+  },
+  "nodes": [
+    5853527355,
+    13232006942,
+    6702910689
+  ],
+  "geometry": [
+    { "lat": 33.7853808, "lon": -84.3801162 },
+    { "lat": 33.7853739, "lon": -84.3799574 },
+    { "lat": 33.7853644, "lon": -84.3793724 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "13th Street Northeast",
+    "sidewalk:both": "separate",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Fulton, GA",
+    "tiger:name_base": "13th",
+    "tiger:name_direction_suffix": "NE",
+    "tiger:name_type": "St"
+  }
+}
+
+  ]
+}

@@ -1,4 +1,5 @@
 #include "BattleMacController.h"
+#include "BattleRunRecords.h"
 #include "BattleBike.h"
 #include "BattleQuest.h"
 #include "BattleRider.h"
@@ -21,6 +22,15 @@
 #include "Widgets/Input/SButton.h"
 #include "Widgets/Text/STextBlock.h"
 #include "Styling/CoreStyle.h"
+#include "Widgets/Images/SImage.h"
+#include "Widgets/Layout/SScaleBox.h"
+#include "Engine/Texture2D.h"
+#include "UObject/ConstructorHelpers.h"
+#include "Containers/Ticker.h"
+
+ABattleMacController::ABattleMacController(){
+ static ConstructorHelpers::FObjectFinder<UTexture2D> Art(TEXT("/Game/BattleForTheA/Story/T_EstoriaCelebration.T_EstoriaCelebration"));CelebrationArt=Art.Object;
+}
 
 void ABattleMacController::BeginPlay(){
  Super::BeginPlay();
@@ -38,7 +48,7 @@ void ABattleMacController::BeginPlay(){
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
 #if !UE_BUILD_SHIPPING
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
@@ -54,6 +64,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkateAudit")))TickSkateAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkaterAudit")))TickSkaterAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHornAudit")))TickHornAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleFinishAudit")))TickFinishAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSteeringAudit")))TickSteeringAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeAudit")))TickTimeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleInventoryAudit")))TickInventoryAudit(Dt);
@@ -61,7 +72,12 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieAudit")))TickZombieAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombiePopulationAudit")))TickZombiePopulationAudit(Dt);
 #endif
- if(bStarted&&!Menu.IsValid())if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)ShowMenu(TEXT("Loss"));
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
+#endif
+ if(bStarted&&!Menu.IsValid()&&!bOpeningSeen)if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->bTutorialActive)BeginOpening();
+ if(bStarted&&!Menu.IsValid())if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)ShowMenu(Mode->bWon?(bCelebrationSeen?TEXT("Win"):TEXT("Celebration")):TEXT("Loss"));
 }
 void ABattleMacController::StartDifficulty(FName Name){
  SetPause(false);
@@ -71,32 +87,49 @@ void ABattleMacController::SetupInputComponent(){
  Super::SetupInputComponent();
  auto& Binding=InputComponent->BindKey(EKeys::Escape,IE_Pressed,this,&ABattleMacController::ToggleMenu);
  Binding.bExecuteWhenPaused=true;
+ auto& Skip=InputComponent->BindKey(EKeys::Enter,IE_Pressed,this,&ABattleMacController::SkipOpening);Skip.bExecuteWhenPaused=true;
+ InputComponent->BindKey(EKeys::F1,IE_Pressed,this,&ABattleMacController::TogglePracticeHelp);
 }
+void ABattleMacController::TogglePracticeHelp(){if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))M->bTutorialHelp=!M->bTutorialHelp;}
 void ABattleMacController::RemoveMenu(){
  if(Menu.IsValid()&&GetWorld()&&GetWorld()->GetGameViewport())GetWorld()->GetGameViewport()->RemoveViewportWidgetContent(Menu.ToSharedRef());
  Menu.Reset();
 }
-void ABattleMacController::EndPlay(const EEndPlayReason::Type Reason){RemoveMenu();Super::EndPlay(Reason);}
+void ABattleMacController::EndPlay(const EEndPlayReason::Type Reason){if(bOpeningActive&&GetWorld())GetWorld()->bIsCameraMoveableWhenPaused=bOpeningOldCameraMoveable;bOpeningActive=false;RemoveMenu();Super::EndPlay(Reason);}
 void ABattleMacController::ResumeRide(){
+ SetViewTarget(GetPawn());
  RemoveMenu();bStarted=true;SetPause(false);bShowMouseCursor=false;ResetIgnoreMoveInput();ResetIgnoreLookInput();SetInputMode(FInputModeGameOnly());
  FlushPressedKeys();
  UE_LOG(LogTemp,Display,TEXT("BattleMac: ride resumed"));
 }
 void ABattleMacController::ToggleMenu(){
+ if(bOpeningActive){FinishOpening();return;}
  const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
- if(Mode&&Mode->bRunEnded){ShowMenu(TEXT("Loss"));return;}
+ if(Mode&&Mode->bRunEnded){ShowMenu(Mode->bWon?TEXT("Win"):TEXT("Loss"));return;}
  if(Menu.IsValid()&&bStarted)ResumeRide();else ShowMenu();
 }
 void ABattleMacController::ShowMenu(FString Page){
+ bCelebrating=Page==TEXT("Celebration");
+
  RemoveMenu();SetPause(true);bShowMouseCursor=true;ResetIgnoreMoveInput();ResetIgnoreLookInput();SetIgnoreMoveInput(true);SetIgnoreLookInput(true);
  TSharedRef<SVerticalBox> Items=SNew(SVerticalBox);
  auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).AutoWrapText(true)];};
  auto Button=[&](FString Text,TFunction<void()> Action){Items->AddSlot().AutoHeight().Padding(0,5)[SNew(SButton).ContentPadding(FMargin(18,10)).OnClicked_Lambda([Action](){Action();return FReply::Handled();})[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18))]];};
- Label(TEXT("BATTLE FOR THE ATL"),42,FLinearColor(1,.12,.16));
+ Label(TEXT("THE BATTLE OF ATL"),42,FLinearColor(1,.12,.16));
  const auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  const bool Ended=Park&&Park->bRunEnded;
- Label(Ended?TEXT("THE A WINS THIS TIME"):(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST")),16,FLinearColor(1,.7,.35));
- if(Page==TEXT("Loss")){
+ Label(Ended?(Park->bWon?TEXT("BATTLE WON"):TEXT("THE A WINS THIS TIME")):(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST")),16,FLinearColor(1,.7,.35));
+ if(Page==TEXT("Celebration")&&Park&&Park->bWon){
+  bCelebrationSeen=true;CelebrationStart=FPlatformTime::Seconds();
+  Items->AddSlot().AutoHeight().Padding(0,8)[SNew(STextBlock).Text_Lambda([this](){const double T=FPlatformTime::Seconds()-CelebrationStart;return FText::FromString(T<4?TEXT("Phone recovered. Party reached."):T<8?TEXT("Morgan: You made it, Ellison!"):TEXT("Ellison: Cheers, Morgan. What a ride."));}).Font(FCoreStyle::GetDefaultFontStyle("Bold",26)).ColorAndOpacity(FLinearColor::White).AutoWrapText(true)];
+  Button(TEXT("CONTINUE TO RESULTS"),[this](){ShowMenu(TEXT("Win"));});
+  FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){if(Weak.IsValid()&&Weak->bCelebrating)Weak->ShowMenu(TEXT("Win"));return false;}),12.f);
+ }else if(Page==TEXT("Win")&&Park&&Park->bWon){
+  Label(FString::Printf(TEXT("MADE THE PARTY  |  GRADE %s"),*Park->FinishGrade),30,FLinearColor(.3,1,.65));
+  Label(FString::Printf(TEXT("TIME LEFT  %s\nRUN TIME  %s\nZOMBIES  %d   WIPEOUTS  %d\nTOP SPEED  %.0f MPH   NEAR MISSES  %d"),*BattleRecords::Format(Park->TimeRemaining),*BattleRecords::Format(Park->RunElapsed),Park->FinishKills,Park->FinishWipeouts,Park->RunTopSpeed*.0223694f,Park->FinishNearMisses),22,FLinearColor::White);
+  Label(Park->bRecordSaved?FString::Printf(TEXT("BEST %s  %s"),*Park->DifficultyName.ToString(),*BattleRecords::Format(BattleRecords::Best(Park->DifficultyName))):TEXT("Best time could not be saved."),18,FLinearColor(1,.7,.35));
+  Button(TEXT("RIDE AGAIN"),[this](){const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));StartDifficulty(M?M->DifficultyName:FName(TEXT("Easy")));});Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
+ }else if(Page==TEXT("Loss")){
   Label(TEXT("Time ran out. Pick a difficulty and ride again."),18,FLinearColor::White);
   Button(TEXT("RETRY"),[this](){const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));StartDifficulty(Mode?Mode->DifficultyName:FName(TEXT("Easy")));});
   Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});
@@ -105,27 +138,38 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("Select a difficulty to start a new ride."),18,FLinearColor::White);
   if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty")))for(FName Name:{FName(TEXT("Easy")),FName(TEXT("Medium")),FName(TEXT("Hard"))}){
    if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %.0f MIN  |  %s"),*Name.ToString(),Row->TimeLimitSeconds/60,*Row->Warning),[this,Name](){StartDifficulty(Name);});
+   const float Best=BattleRecords::Best(Name);if(Best>0)Label(TEXT("BEST RUN  ")+BattleRecords::Format(Best),16,FLinearColor(1,.7,.35));
   }
   Label(TEXT("Timers and walking crowds scale now. The expanded enemy roster and complete route are still in development."),14,FLinearColor(.7,.72,.75));
-  Button(TEXT("BACK"),[this,Ended](){ShowMenu(Ended?TEXT("Loss"):TEXT("Home"));});
+  Button(TEXT("BACK"),[this,Ended](){const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));ShowMenu(Ended?(M&&M->bWon?TEXT("Win"):TEXT("Loss")):TEXT("Home"));});
  }else if(Page==TEXT("Instructions")){
-  Label(TEXT("Find your lost phone using the radar. Pick it up and follow the gold path toward the BeltLine. Pass Murder K and Krog Street Market, then ride through Krog Tunnel. The Cabbagetown finish is still being built."),16,FLinearColor::White);
+  Label(TEXT("Ellison dropped his cell phone playing frisbee in Piedmont Park. Use Find My Lost Phone on his watch to follow a broad compass direction. Recover it, then race past Murder K and Krog Street Market, through Krog Tunnel and right into 98 Estoria. Morgan is waiting for him at the Cabbagetown party. Make it before the clock runs out and celebrate with a beer."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn (5 uses) | Tab camera\nE dismount | Left click pistol"),17,FLinearColor::White);
-  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
+  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
   Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);
   for(int Quality:{1,2})Button(Quality==1?TEXT("PERFORMANCE / 1080p"):TEXT("BALANCED / 1080p"),[this,Quality](){if(auto* Settings=UGameUserSettings::GetGameUserSettings()){Settings->SetOverallScalabilityLevel(Quality);Settings->SetScreenResolution(FIntPoint(1920,1080));Settings->SetFullscreenMode(EWindowMode::Windowed);Settings->SetFrameRateLimit(60);Settings->ApplySettings(false);Settings->SaveSettings();}ShowMenu(TEXT("Options"));});
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else{
+  if(!bStarted)Label(TEXT("Start at Ellison’s bungalow on 13th Street. Practice freely, then ride to the 14th Street gate to start the clock. Find the phone he dropped playing frisbee. Meet Morgan at 98 Estoria."),18,FLinearColor::White);
   Button(bStarted?TEXT("RESUME RIDE"):TEXT("START PARK RIDE"),[this](){ResumeRide();});
   Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Mac playtest 041 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Mac playtest 042 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
- Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
+ if(bCelebrating&&CelebrationArt){
+  CelebrationBrush.SetResourceObject(CelebrationArt);CelebrationBrush.ImageSize=FVector2D(CelebrationArt->GetSizeX(),CelebrationArt->GetSizeY());
+  Menu=SNew(SOverlay)
+   +SOverlay::Slot()[SNew(SScaleBox).Stretch(EStretch::ScaleToFill)[SNew(SImage).Image(&CelebrationBrush)]]
+   +SOverlay::Slot().HAlign(HAlign_Left).VAlign(VAlign_Bottom).Padding(36,20)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.84)).Padding(20)[SNew(SBox).WidthOverride(620)[Items]]];
+ }else{
+  const bool Opening=!bStarted&&Page==TEXT("Home");
+  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,Opening?.15f:.94f))]+SOverlay::Slot().HAlign(Opening?HAlign_Left:HAlign_Center).VAlign(VAlign_Center).Padding(Opening?30:0)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.85)).Padding(20)[SNew(SBox).WidthOverride(600)[Items]]];
+ }
+
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);
  FInputModeGameAndUI Mode;Mode.SetWidgetToFocus(Menu);Mode.SetHideCursorDuringCapture(false);SetInputMode(Mode);
  UE_LOG(LogTemp,Display,TEXT("BattleMac: menu %s"),*Page);

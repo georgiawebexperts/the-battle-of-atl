@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "BattleHomeData.h"
 #include "PiedmontPathSpline.h"
 #include "Components/SplineComponent.h"
 #include "EngineUtils.h"
@@ -16,8 +17,9 @@
 // the entire crossing is traversed through ordinary keyboard input and movement.
 void ABattleMacController::TickConnectorAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ const bool Home=FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"));
  const bool Krog=FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit"));
- const bool Eastside=Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
+ const bool Eastside=Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
  auto Finish=[&](bool Passed){
@@ -30,7 +32,8 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);
  };
  if(ConnectorPoints.IsEmpty()){
-  for(int32 Part=0;Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
+  if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);
+  for(int32 Part=0;!Home&&Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
    for(int32 I=0;I<It->Centerline->GetNumberOfSplinePoints();I++){
     const FVector P=It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);
     if(ConnectorPoints.IsEmpty()||!ConnectorPoints.Last().Equals(P,1))ConnectorPoints.Add(P);
@@ -41,7 +44,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   if(Eastside){for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();}
  }
  if(ConnectorElapsed==0){
-  FlushPressedKeys();Bike->Ride->Gear=Eastside?3:1;Bike->Ride->Speed=0;Bike->Ride->Velocity=FVector::ZeroVector;
+  FlushPressedKeys();Bike->Ride->Gear=Home?2:Eastside?3:1;Bike->Ride->Speed=0;Bike->Ride->Velocity=FVector::ZeroVector;
   Bike->SetActorLocationAndRotation(ConnectorPoints[0]+FVector(0,0,98),(ConnectorPoints[1]-ConnectorPoints[0]).Rotation(),false,nullptr,ETeleportType::TeleportPhysics);
   Bike->Ride->bForceNextFloorCheck=true;ConnectorPrevious=Bike->GetActorLocation();
  }
@@ -62,13 +65,13 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   if(Distance<Best){Best=Distance;Segment=I;Closest=Q;}
  }
  ConnectorMaxError=FMath::Max(ConnectorMaxError,Best);
- if(ConnectorElapsed>(Eastside?180:30)||Best>180||Bike->Ride->Wipeouts!=ConnectorWipeouts){Finish(false);return;}
+ if(ConnectorElapsed>(Eastside?180:30)||Best>180||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
  if(ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100){
   FlushPressedKeys();ConnectorLeg++;
-  if(ConnectorLeg==2){Finish(ConnectorTravel>(Krog?47000:(Eastside?200000:4500)));return;}
+  if(ConnectorLeg==2){float Expected=0;for(int I=1;I<ConnectorPoints.Num();I++)Expected+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);Finish(ConnectorTravel>(Home?Expected*1.75f:Krog?47000:(Eastside?200000:4500)));return;}
   Algo::Reverse(ConnectorPoints);ConnectorElapsed=0;return;
  }
- FVector Target=Closest;float Remaining=Eastside?350:180;
+ FVector Target=Closest;float Remaining=Home?180:Eastside?350:180;
  for(int32 I=Segment+1;I<ConnectorPoints.Num();I++){
   const FVector Next=ConnectorPoints[I];float Distance=FVector::Dist2D(Target,Next);
   if(Distance>=Remaining){Target=FMath::Lerp(Target,Next,Remaining/Distance);break;}

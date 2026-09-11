@@ -1,22 +1,44 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Styling/SlateBrush.h"
 #include "BattleMacController.generated.h"
 class SWidget;
 UCLASS()
 class AURAPLAYGROUND_API ABattleMacController : public APlayerController {
  GENERATED_BODY()
 public:
+ ABattleMacController();
  virtual void BeginPlay() override;
  virtual void SetupInputComponent() override;
  virtual void PlayerTick(float DeltaTime) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  void ToggleMenu();
+ void TogglePracticeHelp();
 private:
  TSharedPtr<SWidget> Menu;
+ UPROPERTY() TObjectPtr<class ACameraActor> OpeningCamera;
+ bool bOpeningActive=false,bOpeningSeen=false,bOpeningOldCameraMoveable=false;
+ FVector OpeningInitialEye=FVector::ZeroVector;
+ double OpeningStart=0;
+ FVector OpeningRiderLocation=FVector::ZeroVector;
+ float OpeningTimer=0;
+ int32 OpeningCaptureStage=0;
+ void BeginOpening();
+ void FinishOpening();
+ void SkipOpening();
+ UPROPERTY() TObjectPtr<class UTexture2D> CelebrationArt;
+ FSlateBrush CelebrationBrush;
+ bool bCelebrating=false,bCelebrationSeen=false;
+ double CelebrationStart=0;
  bool bStarted=false;
  void StartDifficulty(FName Name);
  void RunDevelopmentAudit();
+ void TickTutorialAudit(float Dt);
+ void TickFootAudit(float Dt);
+ int32 FootStage=0,FootCaptures=0;float FootClock=0,FootWalkSpeed=0,FootRunSpeed=0,FootArmMin=MAX_flt,FootArmMax=-MAX_flt,FootJumpBase=0;
+ FVector FootStart;TWeakObjectPtr<AActor> FootCeiling;
+ int TutorialStage=0;float TutorialClock=0,TutorialDistance=0,TutorialMaxError=0;FVector TutorialPrevious;
  void TickConnectorAudit(float Dt);
  void TickGeographyAudit(float Dt);
  void TickHealthAudit(float Dt);
@@ -35,6 +57,8 @@ private:
  TWeakObjectPtr<AActor> SkateReviewActor,SkateReviewCamera;int32 SkateReviewFrames=0;
  void TickSkaterAudit(float Dt);
  void TickHornAudit(float Dt);
+ void TickFinishAudit(float Dt);
+ bool FinishAuditDone=false;
  int32 HornStage=0,HornPresses=0;float HornAuditClock=0;TWeakObjectPtr<AActor> HornReviewActor;
  int32 SkaterStage=0,SkaterInitialWipeouts=0;float SkaterClock=0,SkaterMaxError=0;bool SkaterPushSeen=false,SkaterCoastSeen=false;TWeakObjectPtr<AActor> SkaterTarget;
  void TickSkateAudit(float Dt);

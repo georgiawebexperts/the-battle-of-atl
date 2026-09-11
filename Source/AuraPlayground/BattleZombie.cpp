@@ -59,7 +59,7 @@ void ABattleZombie::Tick(float Dt){
   if(Skin)Skin->SetScalarParameterValue(TEXT("Dissolve"),FMath::Clamp((DeathTime-3.5f)/1.5f,0.f,1.f));return;
  }
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
- if(!Mode||Mode->bRunEnded||Mode->StartCountdown>0){if(AI)AI->StopMovement();return;}
+ if(!Mode||Mode->bRunEnded||Mode->bTutorialActive||Mode->StartCountdown>0){if(AI)AI->StopMovement();return;}
  if(Emergence>0){Emergence=FMath::Max(0.f,Emergence-Dt);Body->AddLocalOffset(FVector(0,0,-130*Emergence));if(AI)AI->StopMovement();return;}
  auto* Target=UGameplayStatics::GetPlayerPawn(this,0);if(!Target)return;
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Foot=Cast<ABattleRider>(Target))Bike=Foot->ParkedBike;
@@ -103,7 +103,7 @@ void ABattleEnemyDirector::Tick(float Dt){
  Super::Tick(Dt);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
  if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies+FMath::CeilToInt(Mode->Trouble*.5f)+(Mode->Quest&&Mode->Quest->bCollected?6:0);LiveZombies=0;
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;}
- if(bFreezeSpawns||Mode->StartCountdown>0||Mode->bRunEnded)return;
+ if(bFreezeSpawns||Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)return;
  bool InTunnel=false;for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(Pawn->GetActorLocation())){InTunnel=true;break;}
  WaveDelay=FMath::Max(0.f,WaveDelay-Dt);
  if(!InTunnel)RemainingWave=0; // Leaving a partial wave must not block ordinary spawns.
