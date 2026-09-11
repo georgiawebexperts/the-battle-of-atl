@@ -1,0 +1,28 @@
+{
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build027-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "fe87a935e11b87edfba8e3429c6fbeba3cafe6529748e69560e58ea2f0bb27d3"
+    },
+    {
+      "file": "work/build027-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "29b6b2682ac5a72648e91ca486e0a4e04db8c0b19893527ee3e0e84f7704f704"
+    }
+  ],
+  "visual_review": "Reviewed both native captures: sharp HUD text, visible bike interaction prompts, separated panels and textured canopy. Character art, FPS arms, animation, combat feel and performance remain unaccepted.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "subtitle_font_measure": {
+    "largest_existing_line_pixels_at_32px": 567.984375,
+    "available_panel_width_at_1080p": 880
+  }
+}

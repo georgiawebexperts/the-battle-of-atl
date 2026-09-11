@@ -149,51 +149,6 @@ void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<AP
 void ABattleLabMode::Tick(float Dt){
  AGameModeBase::Tick(Dt);if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}if(!bRunEnded){TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt);if(TimeRemaining<=0)bRunEnded=true;}
 }
-void ABattleLabHUD::DrawHUD(){
- Super::DrawHUD();if(!Canvas)return;
- if(auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){
-  if(Park->Quest)Park->Quest->DrawRadar(this,Canvas);
-  if(auto* Viewer=GetOwningPawn()){
-   const ABattleZombie* Speaking=nullptr;float Best=2500;
-   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->SubtitleRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Speaking=*It;}}
-   if(Speaking)DrawText(TEXT("Zombie: ")+Speaking->Subtitle,FColor(200,255,160),Canvas->SizeX*.25f,Canvas->SizeY-60,nullptr,1.2);
-  }
-  const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
-  DrawText(FString::Printf(TEXT("%02d:%02d  |  %s"),Seconds/60,Seconds%60,*Park->DifficultyName.ToString()),Seconds<60?FColor::Red:FColor::White,Canvas->SizeX-235,28,nullptr,1.7);
-  if(Park->StartCountdown>0)DrawText(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),FColor::Yellow,Canvas->SizeX*.5f,Canvas->SizeY*.35f,nullptr,4);
- }
- auto* Bike=Cast<ABattleBike>(GetOwningPawn());
- auto* Foot=Cast<ABattleRider>(GetOwningPawn());auto* HealthBike=Bike?Bike:(Foot?Foot->ParkedBike.Get():nullptr);
- if(HealthBike){
-  const float Y=Canvas->SizeY-90;
-  if(HealthBike->PickupNoticeRemaining>0)DrawText(FString::Printf(TEXT("Coca-Cola +%.0f HP"),HealthBike->LastHealAmount),FColor::Green,35,Y-50,nullptr,1.1);
-  DrawText(FString::Printf(TEXT("HEALTH %.0f"),HealthBike->RiderHealth),FColor::White,35,Y-22,nullptr,1.1);
-  DrawRect(FLinearColor(.02,.02,.02,.9),35,Y,204,16);
-  DrawRect(HealthBike->RiderHealth<25?FLinearColor(1,.1,.08):FLinearColor(.1,.85,.3),37,Y+2,FMath::Clamp(HealthBike->RiderHealth,0.f,100.f)*2,12);
-  DrawText(TEXT("NITRO"),FColor::Cyan,35,Y+23,nullptr,.9);
-  DrawRect(FLinearColor(.02,.02,.02,.9),96,Y+24,143,12);DrawRect(FLinearColor(.05,.8,1),98,Y+26,FMath::Clamp(HealthBike->Nitro,0.f,100.f)*1.39f,8);
-  if(HealthBike->RespawnRemaining>0)DrawText(TEXT("Wipeout | checkpoint -10 seconds"),FColor::Yellow,Canvas->SizeX*.32f,Canvas->SizeY*.6f,nullptr,1.5);
- }
- if(!Bike){
-  if(auto* Person=Cast<ABattleRider>(GetOwningPawn())){
-   DrawRect(FLinearColor(.03,.015,.02,.85),20,20,760,125);
-   DrawText(TEXT("BATTLE FOR THE A | FIRST PERSON"),FColor::White,35,30,nullptr,1.8);
-   DrawText(FString::Printf(TEXT("%s %d / %s   HEALTH %.0f%s   F: U-lock"),BattleWeapons::Name(Person->CurrentWeapon),Person->Ammo,*Person->ReserveLabel(),Person->Health,Person->ReloadRemaining>0?TEXT("   RELOADING"):TEXT("")),FColor(255,190,80),35,65,nullptr,1.4);
-   DrawText(FString::Printf(TEXT("1 Pistol | 2 Shotgun%s | 3 SMG%s | 4 Frisbee | F U-lock | E bike"),Person->ParkedBike&&Person->ParkedBike->Inventory[1].Owned?TEXT(""):TEXT(" (find crate)"),Person->ParkedBike&&Person->ParkedBike->Inventory[2].Owned?TEXT(""):TEXT(" (find crate)")),FColor::White,35,105,nullptr,1.1);
-   const float X=Canvas->SizeX*.5f,Y=Canvas->SizeY*.5f;DrawLine(X-8,Y,X+8,Y,FColor::White,1.5);DrawLine(X,Y-8,X,Y+8,FColor::White,1.5);
-   if(Person->HitFeedback>0){DrawLine(X-12,Y-12,X+12,Y+12,FColor::Orange,2);DrawLine(X+12,Y-12,X-12,Y+12,FColor::Orange,2);}
-  }return;
- }
- DrawRect(FLinearColor(.03,.015,.02,.85),20,20,720,125);const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));DrawText(TEXT("BATTLE FOR THE A | ")+(Mode?Mode->CourseLabel:TEXT("RIDE")),FColor::White,35,30,nullptr,1.8);
- DrawText(FString::Printf(TEXT("GEAR %d / 5   %.0f MPH   Wipeouts %d"),Bike->Ride->Gear,Bike->Ride->Speed*.0223694f,Bike->Ride->Wipeouts),FColor(255,190,80),35,65,nullptr,1.5);
- DrawText(TEXT("W pedal | Arrows or A/D steer | Up/Down gears | Space brake | Tab view"),FColor::White,35,105,nullptr,1.1);
- DrawText(FString::Printf(TEXT("NITRO %.0f%% | Shift boost | H horn | E on/off | Click pistol %d"),Bike->Nitro,Bike->PistolAmmo),FColor::Cyan,35,155,nullptr,1.2);
-
- const float CrossX=Canvas->SizeX*.5f,CrossY=Canvas->SizeY*.5f;
- DrawLine(CrossX-5,CrossY,CrossX+5,CrossY,FColor::White,1);DrawLine(CrossX,CrossY-5,CrossX,CrossY+5,FColor::White,1);
- if(Bike->HitFeedback>0){DrawLine(CrossX-12,CrossY-12,CrossX+12,CrossY+12,FColor::Orange,2);DrawLine(CrossX+12,CrossY-12,CrossX-12,CrossY+12,FColor::Orange,2);}
- if(Bike->Ride->Recovery>0)DrawText(FString::Printf(TEXT("%s — back in %.1f"),*Bike->Ride->RecoveryReason,Bike->Ride->Recovery),FColor::Yellow,Canvas->SizeX*.4,Canvas->SizeY*.5,nullptr,2);
-}
 void ABattleBike::PoseRider(float Dt){
  if(ReferencePose.IsEmpty())return;
  TArray<FTransform> Pose=ReferencePose;

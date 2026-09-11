@@ -12,6 +12,8 @@
 #include "Engine/StaticMeshActor.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/Canvas.h"
+#include "CanvasItem.h"
+#include "Styling/CoreStyle.h"
 #include "EngineUtils.h"
 #include "GameFramework/HUD.h"
 #include "Kismet/GameplayStatics.h"
@@ -146,7 +148,7 @@ bool ABattleQuest::ClipToCircle(FVector2D& A,FVector2D& B,float Radius){
 }
 void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!HUD||!Canvas)return;auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
- const float Radius=105;const FVector2D Center(Canvas->SizeX-135,Canvas->SizeY-145),Player(Pawn->GetActorLocation());
+ const float UIScale=FMath::Clamp(FMath::Min(Canvas->SizeX/1920.f,Canvas->SizeY/1080.f),.75f,1.5f);const float Radius=140*UIScale;const FVector2D Center(Canvas->SizeX-Radius-40*UIScale,Canvas->SizeY-Radius-45*UIScale),Player(Pawn->GetActorLocation());
  auto Project=[&](FVector2D World){return RadarOffset(World-Player,Radius/FMath::Max(1.f,RadarRange));};
  auto Line=[&](FVector2D A,FVector2D B,FLinearColor C,float W){HUD->DrawLine(Center.X+A.X,Center.Y+A.Y,Center.X+B.X,Center.Y+B.Y,C,W);};
  for(float Y=-Radius;Y<Radius;Y+=2){const float X=FMath::Sqrt(FMath::Max(0.f,Radius*Radius-Y*Y));HUD->DrawRect(FLinearColor(.008,.016,.025,.9),Center.X-X,Center.Y+Y,X*2,2);}
@@ -166,10 +168,7 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
   if(bCollected?Distance<=RadarRange:ArtifactVisibleOnRadar(Pawn->GetActorLocation()))Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
   else{const auto F=D.GetSafeNormal(),R=FVector2D(-F.Y,F.X);const auto Tip=F*(Radius-5);Line(Tip,Tip-F*10+R*6,Gold,3);Line(Tip,Tip-F*10-R*6,Gold,3);}
  }
- HUD->DrawText(TEXT("N"),FColor::White,Center.X-4,Center.Y-Radius-18,nullptr,1);
- HUD->DrawText(TEXT("S"),FColor::White,Center.X-4,Center.Y+Radius+3,nullptr,.9);
- HUD->DrawText(TEXT("W"),FColor::White,Center.X-Radius-16,Center.Y-7,nullptr,.9);
- HUD->DrawText(TEXT("E"),FColor::White,Center.X+Radius+7,Center.Y-7,nullptr,.9);
- const FString Objective=!bReady?TEXT("Artifact unavailable"):(!bCollected?TEXT("Find the Artifact"):(CheckpointNoticeTime>0?CheckpointNotice:(NextCheckpoint<2?FString::Printf(TEXT("Get home | next: %s"),BattleCheckpoints::Anchors[NextCheckpoint].Name):TEXT("Get home | through Krog Tunnel"))));
- HUD->DrawText(Objective,FColor(255,205,95),35,218,nullptr,1.4);
+ auto Compass=[&](const TCHAR* Label,FVector2D Offset){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),FLinearColor::White);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};
+ Compass(TEXT("N"),FVector2D(0,-Radius-28*UIScale));Compass(TEXT("S"),FVector2D(0,Radius+3*UIScale));Compass(TEXT("W"),FVector2D(-Radius-18*UIScale,-12*UIScale));Compass(TEXT("E"),FVector2D(Radius+18*UIScale,-12*UIScale));
+
 }

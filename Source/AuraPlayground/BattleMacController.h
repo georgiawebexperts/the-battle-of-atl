@@ -25,6 +25,8 @@ private:
  void TickInventoryAudit(float Dt);
  void TickDiscAudit(float Dt);
  void TickFrisbeeAudit(float Dt);
+ void TickHUDReview(float Dt);
+ float HUDReviewClock=0;int32 HUDReviewStage=0;
  int32 FrisbeePhase=0,FrisbeeInitialWipeouts=0;float FrisbeeClock=0,FrisbeeGrassSeconds=0,FrisbeePeakSpeed=0;
  FVector FrisbeeGrassStart;
  TWeakObjectPtr<AActor> FrisbeeAuditGroup;

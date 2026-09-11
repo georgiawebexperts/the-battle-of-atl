@@ -1,0 +1,11 @@
+{
+  "instances": 587,
+  "rejected_station_indices": [],
+  "pcg_graph": "/Game/BattleForTheA/Environment/Park/PCG_ParkCanopy",
+  "map_saved": true,
+  "asset": "Epic ArchVis HillTree_02 with rebuilt materials",
+  "megascans_species_requirement_met": false,
+  "collision": "visual canopy only; trunk collision pending",
+  "render_review_pending": false,
+  "native_materials_visible": true
+}

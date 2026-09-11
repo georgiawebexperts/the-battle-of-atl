@@ -7,6 +7,8 @@ UCLASS()
 class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary {
  GENERATED_BODY()
 public:
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
+ static AActor* CreateParkFoliage(const TArray<FTransform>& Stations,UStaticMesh* Mesh);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void FinishEditorAssetLoading();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")

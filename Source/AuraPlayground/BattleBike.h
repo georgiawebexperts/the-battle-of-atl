@@ -140,6 +140,7 @@ class AURAPLAYGROUND_API ABattleLabHUD : public AHUD {
  GENERATED_BODY()
 public:
  virtual void DrawHUD() override;
+ UPROPERTY(Transient) TObjectPtr<UFont> ReadableFont;
 };
 
 UCLASS()

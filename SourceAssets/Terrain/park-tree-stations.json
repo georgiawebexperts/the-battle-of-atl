@@ -1,0 +1,5889 @@
+{
+  "coordinate_system": "ESU: +X east, +Y south, cm at 1:3",
+  "seed": 2701,
+  "asset_status": "Interim Epic ArchVis HillTree_02; not the required Megascans species",
+  "spacing_cm": 330,
+  "path_clearance_cm": 180,
+  "water_clearance_cm": 120,
+  "trees": [
+    {
+      "xy_cm": [
+        2641.0334332690886,
+        -10091.032489420226
+      ],
+      "yaw": 159.77948736541862,
+      "height_game_cm": 1432.1038617748313,
+      "placement": "mapped_tree",
+      "osm_id": 4015374876
+    },
+    {
+      "xy_cm": [
+        12087.086001302427,
+        -35720.936873415485
+      ],
+      "yaw": -101.479103691697,
+      "height_game_cm": 1119.0899848703034,
+      "placement": "mapped_tree",
+      "osm_id": 4015374884
+    },
+    {
+      "xy_cm": [
+        1944.0238947630862,
+        -11099.168416624889
+      ],
+      "yaw": 56.41192329508297,
+      "height_game_cm": 1415.6600309568855,
+      "placement": "mapped_tree",
+      "osm_id": 4015378092
+    },
+    {
+      "xy_cm": [
+        4270.745888383439,
+        -501.92312765866524
+      ],
+      "yaw": 169.899183891949,
+      "height_game_cm": 1239.3664106777865,
+      "placement": "mapped_tree",
+      "osm_id": 4015378095
+    },
+    {
+      "xy_cm": [
+        2267.5054586143233,
+        -10710.077453420188
+      ],
+      "yaw": -73.2441463009708,
+      "height_game_cm": 1265.9254638803968,
+      "placement": "mapped_tree",
+      "osm_id": 4015378105
+    },
+    {
+      "xy_cm": [
+        12280.233717496352,
+        -36563.12284140538
+      ],
+      "yaw": -138.6690884209795,
+      "height_game_cm": 1379.7566124362052,
+      "placement": "mapped_tree",
+      "osm_id": 4015378107
+    },
+    {
+      "xy_cm": [
+        4273.530180531088,
+        -925.2411574125291
+      ],
+      "yaw": -56.67917568387978,
+      "height_game_cm": 1215.8863421356841,
+      "placement": "mapped_tree",
+      "osm_id": 4015378110
+    },
+    {
+      "xy_cm": [
+        2467.2929591033608,
+        -8765.060221636668
+      ],
+      "yaw": -159.06035770622938,
+      "height_game_cm": 886.7444648226901,
+      "placement": "mapped_tree",
+      "osm_id": 4020735001
+    },
+    {
+      "xy_cm": [
+        4443.07291621808,
+        -1266.24380305099
+      ],
+      "yaw": 151.19764957118628,
+      "height_game_cm": 1064.9973044490778,
+      "placement": "mapped_tree",
+      "osm_id": 4020735028
+    },
+    {
+      "xy_cm": [
+        6247.847554487332,
+        2811.7389166882886
+      ],
+      "yaw": -131.2517776818489,
+      "height_game_cm": 1379.4264945669977,
+      "placement": "mapped_tree",
+      "osm_id": 4020735035
+    },
+    {
+      "xy_cm": [
+        1843.9104277291335,
+        -9542.342086535675
+      ],
+      "yaw": -7.246425276609472,
+      "height_game_cm": 1046.2619206275747,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1614.5180787206573,
+        -8485.371565016056
+      ],
+      "yaw": -34.0887372718625,
+      "height_game_cm": 1410.530306826653,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -337.8984483594668,
+        -9818.10473320853
+      ],
+      "yaw": 112.7688387824087,
+      "height_game_cm": 1334.2207409441585,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        887.8381587005497,
+        -10262.032365478428
+      ],
+      "yaw": 161.33270410971107,
+      "height_game_cm": 1281.3944506039313,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        452.17496174998814,
+        -9548.055758730688
+      ],
+      "yaw": -21.166200663239948,
+      "height_game_cm": 949.2911894671782,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1714.01909099373,
+        -10562.97252979719
+      ],
+      "yaw": -173.1203228248966,
+      "height_game_cm": 1191.609219734076,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2240.500901188847,
+        -6306.724326678594
+      ],
+      "yaw": -8.9339842067412,
+      "height_game_cm": 1371.1907233853312,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -711.0556426113262,
+        -11413.10923580644
+      ],
+      "yaw": 156.4127243601052,
+      "height_game_cm": 880.8264933958907,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1413.5144015210717,
+        -10786.064422181717
+      ],
+      "yaw": -32.55864209077674,
+      "height_game_cm": 952.79986177374,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2716.500216751203,
+        -5893.824294968609
+      ],
+      "yaw": -152.8016634422565,
+      "height_game_cm": 1399.687652489314,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        863.754950223496,
+        -13731.28290907023
+      ],
+      "yaw": -7.85614770453779,
+      "height_game_cm": 1234.9042231997134,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        347.1233971651927,
+        -8719.409241576912
+      ],
+      "yaw": -77.6969020366798,
+      "height_game_cm": 1288.0493540684165,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2292.4043315787276,
+        -9993.070603472295
+      ],
+      "yaw": -170.33956262353757,
+      "height_game_cm": 1436.5625268090364,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        115.25405444270837,
+        -11035.876337700469
+      ],
+      "yaw": 6.90062949490428,
+      "height_game_cm": 942.308497671176,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1799.967781235191,
+        -6550.623134024458
+      ],
+      "yaw": 144.6689043070328,
+      "height_game_cm": 1378.703268950531,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        80.78021311866723,
+        -9132.924444617785
+      ],
+      "yaw": -111.359208480872,
+      "height_game_cm": 1430.0460650550604,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2653.563891703914,
+        -9362.656771788557
+      ],
+      "yaw": 98.34094656878739,
+      "height_game_cm": 1259.891979204391,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1060.4626061103718,
+        -8808.15651687932
+      ],
+      "yaw": 107.6578097932433,
+      "height_game_cm": 1016.1396846367377,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        330.52949340694613,
+        -7981.450767237704
+      ],
+      "yaw": -20.34450677456303,
+      "height_game_cm": 900.5435969009587,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2543.40666650371,
+        -8336.548869723316
+      ],
+      "yaw": 21.40141309430959,
+      "height_game_cm": 966.6001312225673,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        668.8316094996626,
+        -11497.028387891101
+      ],
+      "yaw": -54.1450480098712,
+      "height_game_cm": 1016.0193320607945,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1186.7703710304067,
+        -6836.352433538838
+      ],
+      "yaw": -168.5165290050515,
+      "height_game_cm": 923.091330864704,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1262.320522944623,
+        -7358.319965050638
+      ],
+      "yaw": -10.83362676922502,
+      "height_game_cm": 941.9002779187942,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3120.88607807874,
+        -5649.372110232731
+      ],
+      "yaw": -65.37905351349909,
+      "height_game_cm": 1078.0251436515557,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1395.478196763259,
+        -9259.415571509046
+      ],
+      "yaw": 101.99909604973254,
+      "height_game_cm": 1267.9764172083185,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1958.4492979284987,
+        -9938.98549094801
+      ],
+      "yaw": 100.0326960111496,
+      "height_game_cm": 1109.3253843992918,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1471.7702241449824,
+        -7671.988142470496
+      ],
+      "yaw": 70.7925290914385,
+      "height_game_cm": 1392.7138678011647,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        728.0072304034638,
+        -7417.590585259995
+      ],
+      "yaw": 173.77169033597244,
+      "height_game_cm": 1013.8100917260917,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1264.6931049444975,
+        -11341.78245329356
+      ],
+      "yaw": -124.00673047463746,
+      "height_game_cm": 1359.816675007393,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        446.7288957981709,
+        -13004.849770127177
+      ],
+      "yaw": -133.58393092138604,
+      "height_game_cm": 1050.0438577945158,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1486.204200450844,
+        -9823.943543109981
+      ],
+      "yaw": -49.640652596620924,
+      "height_game_cm": 913.2508590288451,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2256.7237628045914,
+        -6871.453025271178
+      ],
+      "yaw": -97.72640616977783,
+      "height_game_cm": 1136.5115279163224,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -102.77226850007719,
+        -9459.181402979688
+      ],
+      "yaw": 7.423184864600444,
+      "height_game_cm": 1428.3644902288765,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1734.59322920852,
+        -8953.423159783946
+      ],
+      "yaw": -42.99965682946137,
+      "height_game_cm": 1241.669601772299,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        488.8170370556454,
+        -7186.867616274186
+      ],
+      "yaw": 46.63641790573095,
+      "height_game_cm": 991.9461884226444,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2347.2276718442336,
+        -9205.953569335463
+      ],
+      "yaw": -60.641318245530044,
+      "height_game_cm": 1306.8110408780042,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1765.1813472710637,
+        -10226.603827072102
+      ],
+      "yaw": -60.551270784263934,
+      "height_game_cm": 878.1723246471716,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -176.99046992788863,
+        -11936.477188936798
+      ],
+      "yaw": -142.67755617023408,
+      "height_game_cm": 1379.0171163448522,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        716.8480425563066,
+        -7828.218844395931
+      ],
+      "yaw": 155.50723201313326,
+      "height_game_cm": 1139.3970877483735,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        484.5890580648156,
+        -10639.89240152498
+      ],
+      "yaw": -120.7378061902759,
+      "height_game_cm": 1135.2678091274659,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        834.7929855741404,
+        -10956.029275785922
+      ],
+      "yaw": -146.7968934703856,
+      "height_game_cm": 1053.865016591037,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1499.8131404150827,
+        -6697.842490225065
+      ],
+      "yaw": -41.87515746367009,
+      "height_game_cm": 1391.3403463500788,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2279.9483360702507,
+        -8051.742025670948
+      ],
+      "yaw": 84.57819543713475,
+      "height_game_cm": 1025.9113109100008,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        111.46819156665697,
+        -12315.09289028767
+      ],
+      "yaw": 139.4529897693754,
+      "height_game_cm": 948.6777390170079,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -815.9302001070146,
+        -10483.09437736525
+      ],
+      "yaw": -54.83690489979618,
+      "height_game_cm": 1396.1496917618306,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2794.791980764756,
+        -6395.427831606083
+      ],
+      "yaw": 75.79963952460065,
+      "height_game_cm": 979.9199779350976,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1827.6499765978606,
+        -7056.570232899879
+      ],
+      "yaw": -139.2917382824914,
+      "height_game_cm": 1152.677701677314,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2507.0356209454276,
+        -9685.678128090836
+      ],
+      "yaw": 160.27461554609164,
+      "height_game_cm": 1184.5427326293952,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        743.9289766983347,
+        -13368.720002545937
+      ],
+      "yaw": 160.2213028759075,
+      "height_game_cm": 1229.4459481817812,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        943.0207583466763,
+        -11940.270427867155
+      ],
+      "yaw": -144.3281473332454,
+      "height_game_cm": 1418.9079118351842,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1154.4920124854634,
+        -9539.735072437767
+      ],
+      "yaw": 80.91677907325669,
+      "height_game_cm": 1382.5008163102864,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        255.6775927504841,
+        -12659.471281091408
+      ],
+      "yaw": 88.22222485789717,
+      "height_game_cm": 1356.229680841472,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1257.4486848224478,
+        -10432.48411383885
+      ],
+      "yaw": 136.47865490381452,
+      "height_game_cm": 1168.5604787923348,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        495.0875413186568,
+        -11203.12422330778
+      ],
+      "yaw": -162.7292094688438,
+      "height_game_cm": 922.0551390758925,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2678.078706837239,
+        -7745.819171656273
+      ],
+      "yaw": -167.15948480320927,
+      "height_game_cm": 859.0017943800489,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1045.5926099226162,
+        -7938.242151864751
+      ],
+      "yaw": -98.5192021343051,
+      "height_game_cm": 1197.5784593832227,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        59.80553674577095,
+        -9850.197679492143
+      ],
+      "yaw": -128.53543531721806,
+      "height_game_cm": 1001.0566285030006,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8568.557593530742,
+        3608.3301801098896
+      ],
+      "yaw": -133.35325732684964,
+      "height_game_cm": 1347.190580389727,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -489.816512272062,
+        -11666.239185696373
+      ],
+      "yaw": -18.276661988220468,
+      "height_game_cm": 1117.8340085310629,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -772.8871073644023,
+        -10850.984893406801
+      ],
+      "yaw": -74.62920947898877,
+      "height_game_cm": 854.2448428655799,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2171.7816829346248,
+        -8482.920940982118
+      ],
+      "yaw": 78.38819696413316,
+      "height_game_cm": 1178.4350641855372,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1140.6378582368525,
+        -10032.100634059474
+      ],
+      "yaw": 73.22047979872988,
+      "height_game_cm": 1025.251995725035,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1583.1481301478088,
+        -11433.999840394612
+      ],
+      "yaw": -24.564838363403965,
+      "height_game_cm": 1190.7876704565385,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2453.907476282926,
+        -6594.041644652792
+      ],
+      "yaw": 168.98883099835797,
+      "height_game_cm": 1213.763638092471,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2102.48813463232,
+        -8844.06228994231
+      ],
+      "yaw": 41.02204342544755,
+      "height_game_cm": 1153.500714452667,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        946.2704030775985,
+        -7068.744698997232
+      ],
+      "yaw": 123.62992072868946,
+      "height_game_cm": 1126.9597525311005,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        206.66115601841375,
+        -8379.471718946912
+      ],
+      "yaw": 38.42366020434352,
+      "height_game_cm": 893.7605548154521,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1046.6881968517155,
+        -11607.68400643706
+      ],
+      "yaw": -17.874357739724246,
+      "height_game_cm": 912.6954937354553,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2385.549889247086,
+        -10319.427481113404
+      ],
+      "yaw": 2.8167445609971082,
+      "height_game_cm": 1359.789774648669,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -989.0276881535128,
+        -11103.735591795848
+      ],
+      "yaw": 101.48886475620435,
+      "height_game_cm": 1366.1599006593751,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3018.772564017392,
+        -6052.041689814393
+      ],
+      "yaw": -32.25732139837788,
+      "height_game_cm": 977.6750802325379,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        633.6941491336402,
+        -8244.58561088467
+      ],
+      "yaw": -57.035096872607284,
+      "height_game_cm": 877.0286733659055,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        116.82086884189266,
+        -10547.487023629586
+      ],
+      "yaw": -142.2994609325545,
+      "height_game_cm": 968.0282741817027,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -608.7110107565059,
+        -10225.73272052129
+      ],
+      "yaw": 140.99109720594208,
+      "height_game_cm": 1115.2262603586385,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1392.5193230899094,
+        -8891.553872265427
+      ],
+      "yaw": -152.51051378555553,
+      "height_game_cm": 1198.6466576784906,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2347.4800413351004,
+        -5903.988767832514
+      ],
+      "yaw": 94.14426224215657,
+      "height_game_cm": 1245.1365843479052,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        431.3643586081853,
+        -9038.98444580394
+      ],
+      "yaw": 164.77848794368333,
+      "height_game_cm": 1408.9533489222304,
+      "placement": "mapped_woodland",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2022.1758977916543,
+        1161.0801261423649
+      ],
+      "yaw": 115.29839292996951,
+      "height_game_cm": 1166.4573189212142,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13849.816298228212,
+        1330.7465483307287
+      ],
+      "yaw": 34.778578102208996,
+      "height_game_cm": 1025.7528209832592,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12678.377118093904,
+        2644.654926574346
+      ],
+      "yaw": -46.35579296411527,
+      "height_game_cm": 1393.6233263402287,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8122.366763976328,
+        6282.4423700850175
+      ],
+      "yaw": -35.13773243866194,
+      "height_game_cm": 1034.5744445711503,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12865.484301730521,
+        1556.4894106226448
+      ],
+      "yaw": -122.17377987113525,
+      "height_game_cm": 1128.1883507203463,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4211.781687627501,
+        6627.58238801445
+      ],
+      "yaw": 55.50049844758877,
+      "height_game_cm": 868.3198268480131,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13816.94917595107,
+        6021.711041958769
+      ],
+      "yaw": -2.2255278556291103,
+      "height_game_cm": 972.5600758468926,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2593.190010702603,
+        -4720.9153475696085
+      ],
+      "yaw": 45.3474974705741,
+      "height_game_cm": 1115.7673962968531,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1434.864289620018,
+        3047.8943611098957
+      ],
+      "yaw": -11.788267265384917,
+      "height_game_cm": 1311.465830304562,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1233.655469611609,
+        -1918.8193971497767
+      ],
+      "yaw": -128.27913890244085,
+      "height_game_cm": 1277.5086879065036,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        943.008856555578,
+        -2260.9111816404047
+      ],
+      "yaw": -94.2630398574787,
+      "height_game_cm": 1299.1628744105922,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2019.1527410280123,
+        2291.819447142977
+      ],
+      "yaw": -159.44151081652404,
+      "height_game_cm": 1424.2509883520913,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1443.57014067017,
+        5058.745434361404
+      ],
+      "yaw": -15.811947425472312,
+      "height_game_cm": 935.1852056078882,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1177.0861259171088,
+        -582.890848826818
+      ],
+      "yaw": 2.4456489229676777,
+      "height_game_cm": 880.1690439349011,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3387.057046152644,
+        5361.85218843492
+      ],
+      "yaw": -130.2237666557948,
+      "height_game_cm": 1124.7123215494707,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2528.301389916942,
+        -4858.553533402786
+      ],
+      "yaw": -58.88239592854029,
+      "height_game_cm": 895.7318771780848,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5181.275692445775,
+        6566.8849460114625
+      ],
+      "yaw": -5.696631751989145,
+      "height_game_cm": 1148.2121422608448,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2751.6115751309226,
+        6317.513722821753
+      ],
+      "yaw": -144.2624646053038,
+      "height_game_cm": 867.011167373707,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5771.298611123997,
+        407.07567648520126
+      ],
+      "yaw": 33.021895555262205,
+      "height_game_cm": 1171.2540983767385,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1708.4882244201945,
+        -1254.4468863756556
+      ],
+      "yaw": 96.85148033733327,
+      "height_game_cm": 907.4031124619921,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1637.462130226495,
+        2361.1256986545022
+      ],
+      "yaw": 62.30110505089013,
+      "height_game_cm": 1431.7201452220804,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1706.424249447069,
+        -3348.609362675472
+      ],
+      "yaw": -74.70407169846328,
+      "height_game_cm": 1088.591369380011,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1229.6667605461862,
+        -2583.6194084993094
+      ],
+      "yaw": 102.59264011135946,
+      "height_game_cm": 1016.8048526308359,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4065.0483999110256,
+        -4739.593672805142
+      ],
+      "yaw": 88.40870128949234,
+      "height_game_cm": 1379.7051083431575,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6728.147341866041,
+        361.93167788559913
+      ],
+      "yaw": -108.34384666020121,
+      "height_game_cm": 1011.8253891145068,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        593.5346192453799,
+        -2063.2174679583004
+      ],
+      "yaw": -106.7504216039485,
+      "height_game_cm": 1261.973072438954,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12758.185286125616,
+        6364.9902474716755
+      ],
+      "yaw": -142.4967628487327,
+      "height_game_cm": 1023.4469463957355,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1135.2321201796713,
+        -3132.23450266935
+      ],
+      "yaw": 91.53079074006143,
+      "height_game_cm": 855.5084650738196,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        928.8103543922825,
+        -1553.9776060344557
+      ],
+      "yaw": 38.677564334132086,
+      "height_game_cm": 1390.387986839111,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1494.8314373129215,
+        4638.957488041012
+      ],
+      "yaw": -20.645464895196227,
+      "height_game_cm": 1271.4173986290148,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14284.64076248592,
+        1966.8084281294023
+      ],
+      "yaw": 175.91517433842995,
+      "height_game_cm": 1273.8737563422328,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3730.3293200978787,
+        -4781.728655166777
+      ],
+      "yaw": -89.70812869858412,
+      "height_game_cm": 1041.9364403634665,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -278.0279649485692,
+        -1735.8991226964345
+      ],
+      "yaw": 141.54716536417902,
+      "height_game_cm": 1433.6013806726928,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3286.1075696517146,
+        -5385.364362979073
+      ],
+      "yaw": 41.61863100926291,
+      "height_game_cm": 1218.2759009041933,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7998.20611353353,
+        5896.355790855273
+      ],
+      "yaw": 135.4534477528357,
+      "height_game_cm": 1120.5508812374303,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -415.6944412447101,
+        -1245.3060464447553
+      ],
+      "yaw": -79.06089772959633,
+      "height_game_cm": 1217.794500236808,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        266.13118877316447,
+        -1772.1470739912247
+      ],
+      "yaw": -132.41700831381638,
+      "height_game_cm": 1065.6425287937327,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7034.271253309047,
+        6329.694039344752
+      ],
+      "yaw": -90.76212330545856,
+      "height_game_cm": 1412.2282232643179,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1846.9272022676905,
+        -3002.125838547041
+      ],
+      "yaw": 34.35187529495866,
+      "height_game_cm": 1340.1911568938904,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13417.44960529667,
+        2710.8916095923714
+      ],
+      "yaw": 83.2495648609164,
+      "height_game_cm": 1152.1588289933024,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1910.2911574338086,
+        2916.8025591481337
+      ],
+      "yaw": -167.3792552910849,
+      "height_game_cm": 929.9484327528228,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6177.182473847384,
+        305.2582479745197
+      ],
+      "yaw": 61.72982313524008,
+      "height_game_cm": 994.564421154922,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1209.0669999749225,
+        3653.505597948403
+      ],
+      "yaw": -30.670900778805304,
+      "height_game_cm": 1198.4639035989403,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7395.309716086147,
+        6141.97199094991
+      ],
+      "yaw": 102.04078260313918,
+      "height_game_cm": 1337.1297918946834,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14249.03561847963,
+        5914.359065732443
+      ],
+      "yaw": -88.69488714435886,
+      "height_game_cm": 1089.7539519455047,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1133.0400605419109,
+        -7164.8901556115925
+      ],
+      "yaw": -20.160626564238953,
+      "height_game_cm": 995.871512207495,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3956.026308023247,
+        6936.183657774128
+      ],
+      "yaw": -27.642705349158604,
+      "height_game_cm": 1110.8608619272734,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8013.355710316257,
+        926.5004025208718
+      ],
+      "yaw": -44.54268681151083,
+      "height_game_cm": 871.4747918525106,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1798.213116816938,
+        1546.1297316921728
+      ],
+      "yaw": 58.78036508450421,
+      "height_game_cm": 1438.915002076835,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -748.5700237777328,
+        -7316.363656722547
+      ],
+      "yaw": 21.258420535941838,
+      "height_game_cm": 1200.861296663558,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1138.8426574938076,
+        -7601.4744700419715
+      ],
+      "yaw": -123.76682674037103,
+      "height_game_cm": 1401.4809295155524,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13482.543806410675,
+        1570.1889593895075
+      ],
+      "yaw": 168.58526721242526,
+      "height_game_cm": 926.0518659294548,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5995.148248731177,
+        6054.763817788839
+      ],
+      "yaw": -76.0525693162612,
+      "height_game_cm": 1407.1947965160068,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4179.666969559556,
+        -900.4574031799721
+      ],
+      "yaw": -114.38716370158802,
+      "height_game_cm": 994.2315032555811,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        488.28822556562045,
+        -2445.316304825754
+      ],
+      "yaw": 98.51157189052105,
+      "height_game_cm": 1046.989931163847,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1783.2723012252009,
+        3698.1120794749577
+      ],
+      "yaw": 23.107338635017328,
+      "height_game_cm": 1005.1344891897743,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5625.995009768329,
+        6430.41764280097
+      ],
+      "yaw": -16.0405924618874,
+      "height_game_cm": 1400.8047598543048,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        506.9516148376115,
+        -1496.1706744141356
+      ],
+      "yaw": -73.23686239098566,
+      "height_game_cm": 948.4002611558659,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2490.827800479272,
+        -4351.099988055724
+      ],
+      "yaw": 4.691335536213046,
+      "height_game_cm": 1029.1425980314164,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5390.886492684689,
+        493.20681778118615
+      ],
+      "yaw": 95.64104089959,
+      "height_game_cm": 927.4687212791731,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2822.521921317786,
+        -4404.740952166074
+      ],
+      "yaw": 11.374864972423552,
+      "height_game_cm": 1378.4001238179342,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13961.927086362455,
+        2938.1034141181926
+      ],
+      "yaw": -157.6594959889128,
+      "height_game_cm": 1435.3578389956285,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1651.1274492182038,
+        3394.152421208556
+      ],
+      "yaw": 53.33435284231416,
+      "height_game_cm": 1310.9539121588155,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12219.232392206926,
+        6291.021914494219
+      ],
+      "yaw": -169.06195529324523,
+      "height_game_cm": 1116.8669426944375,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13492.362888299374,
+        6210.070247517143
+      ],
+      "yaw": 44.49048846191474,
+      "height_game_cm": 977.5255937547075,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8933.635939587011,
+        6078.876447727583
+      ],
+      "yaw": -143.24279759375443,
+      "height_game_cm": 1301.5674897205392,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14826.187678362496,
+        5658.858215024916
+      ],
+      "yaw": 106.06136205718326,
+      "height_game_cm": 1344.528613984004,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10828.12885152479,
+        952.1813354373471
+      ],
+      "yaw": -27.75701380970321,
+      "height_game_cm": 1265.616971911247,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6211.08341456842,
+        745.1401349882935
+      ],
+      "yaw": -128.30415322446083,
+      "height_game_cm": 1424.5925484005093,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1320.0979529413362,
+        4247.241807469379
+      ],
+      "yaw": -26.47324306304222,
+      "height_game_cm": 970.8064762062198,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2761.3123607831367,
+        -4455.095867964943
+      ],
+      "yaw": 78.04023940235447,
+      "height_game_cm": 914.0182626923386,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1696.7242964397665,
+        1893.0155403819508
+      ],
+      "yaw": 148.744224526074,
+      "height_game_cm": 1438.4949157313495,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6750.894063300328,
+        763.6797031467877
+      ],
+      "yaw": 8.975794095591084,
+      "height_game_cm": 1049.2310080644854,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11490.562207472856,
+        1085.8505074250743
+      ],
+      "yaw": 0.8468145595044234,
+      "height_game_cm": 1181.0800557029675,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4663.905406134449,
+        6449.829702382581
+      ],
+      "yaw": 90.61925076447483,
+      "height_game_cm": 1056.5873099030423,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6051.3649234428885,
+        1541.5630205082607
+      ],
+      "yaw": 96.53043852544602,
+      "height_game_cm": 1417.1739643546318,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1157.040223422584,
+        255.63389221071247
+      ],
+      "yaw": 39.18091293504034,
+      "height_game_cm": 1133.398824988672,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1758.504509596447,
+        -2546.1737897337
+      ],
+      "yaw": -170.72417641184683,
+      "height_game_cm": 930.1045968256376,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -46.41637643406466,
+        -1130.4842765741014
+      ],
+      "yaw": 76.09287677862221,
+      "height_game_cm": 881.8296936540947,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1665.0242647047398,
+        4043.508004444825
+      ],
+      "yaw": -57.71442267822442,
+      "height_game_cm": 926.9278865694068,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7289.231832482176,
+        1659.3916467062472
+      ],
+      "yaw": 115.32943909254845,
+      "height_game_cm": 927.2639708967696,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4243.883567940571,
+        -175.43996332991628
+      ],
+      "yaw": 164.57119809746962,
+      "height_game_cm": 903.1252832802186,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        867.906509735536,
+        -2845.1172325591488
+      ],
+      "yaw": 169.25710910708898,
+      "height_game_cm": 1395.4515196073633,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -645.3126156395738,
+        -7686.056661839659
+      ],
+      "yaw": -25.054553386648536,
+      "height_game_cm": 1154.0425222980289,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -387.97840909076695,
+        -7023.798721815825
+      ],
+      "yaw": -21.239295096835377,
+      "height_game_cm": 1331.6459688178097,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3064.423382263456,
+        -5672.571942436662
+      ],
+      "yaw": 53.66571060673246,
+      "height_game_cm": 1019.2688359568615,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3838.9469159996497,
+        -5110.745494789873
+      ],
+      "yaw": 81.64525350844292,
+      "height_game_cm": 1205.1629746750523,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        181.00493840813215,
+        -2182.5863944356397
+      ],
+      "yaw": 61.914460800125966,
+      "height_game_cm": 1242.5595878024446,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2675.4446181608673,
+        -4030.9287210679363
+      ],
+      "yaw": 112.2009687185809,
+      "height_game_cm": 1370.6706883897846,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11633.132948194985,
+        6037.362287670504
+      ],
+      "yaw": -130.29622443911805,
+      "height_game_cm": 852.9860713788697,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -9478.395423367598,
+        5978.769181896651
+      ],
+      "yaw": -118.56249751775378,
+      "height_game_cm": 1139.6738340161946,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1723.4360212033407,
+        -4248.095888774139
+      ],
+      "yaw": 5.814642102036487,
+      "height_game_cm": 1365.6095924187603,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1569.1096876066895,
+        1290.2677212588433
+      ],
+      "yaw": 153.13706855292787,
+      "height_game_cm": 1330.7899279124638,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7178.501163133444,
+        711.6517080277326
+      ],
+      "yaw": -39.37534009030608,
+      "height_game_cm": 1324.2669791201456,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14293.132525265157,
+        4736.712903437169
+      ],
+      "yaw": -143.791062395271,
+      "height_game_cm": 1114.568917722468,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8486.826262940904,
+        6040.467001593855
+      ],
+      "yaw": 53.69842278876959,
+      "height_game_cm": 1420.618952484716,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2297.2054196832014,
+        6139.798209707881
+      ],
+      "yaw": 130.42840748742873,
+      "height_game_cm": 1359.7926530920038,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12469.536119985936,
+        1548.876262299168
+      ],
+      "yaw": 64.26270189076092,
+      "height_game_cm": 902.8949678575815,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7559.586284796243,
+        859.5297481416592
+      ],
+      "yaw": -170.32280669832653,
+      "height_game_cm": 1329.9029603812805,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1855.285737606091,
+        -3819.4170593901736
+      ],
+      "yaw": 19.048596127210118,
+      "height_game_cm": 1415.065790634187,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1541.7931929657934,
+        -360.8624451581363
+      ],
+      "yaw": 55.46975704055939,
+      "height_game_cm": 1322.8176471182378,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4816.424784909626,
+        6742.746534031555
+      ],
+      "yaw": -30.974064774391564,
+      "height_game_cm": 1110.420302612402,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10151.93316089618,
+        704.5215806088208
+      ],
+      "yaw": 50.396888839592236,
+      "height_game_cm": 1059.103086738008,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4406.119623075878,
+        553.8530182360746
+      ],
+      "yaw": 42.56816888514888,
+      "height_game_cm": 1375.1950451197577,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13158.96547567626,
+        6138.948689641223
+      ],
+      "yaw": 63.597010793582,
+      "height_game_cm": 1087.816947359823,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2072.8880187414106,
+        1892.143455964656
+      ],
+      "yaw": 132.94109532045536,
+      "height_game_cm": 1002.4000832819421,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5190.347239164314,
+        -461.0429971292706
+      ],
+      "yaw": 135.2299301866933,
+      "height_game_cm": 1390.112620983392,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8780.821720219958,
+        1735.8798905544672
+      ],
+      "yaw": 118.22227208294896,
+      "height_game_cm": 1326.1291228098066,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11247.053575028174,
+        2448.0905039472245
+      ],
+      "yaw": -172.67953407131753,
+      "height_game_cm": 1145.4413100988747,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11903.538655192122,
+        2548.049423586849
+      ],
+      "yaw": -76.83784274829281,
+      "height_game_cm": 1106.6068328924198,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -390.7304114413946,
+        -881.2947274980606
+      ],
+      "yaw": -123.74959144372387,
+      "height_game_cm": 914.358002538932,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1378.836616789993,
+        -3540.5994529838217
+      ],
+      "yaw": 71.6228985856354,
+      "height_game_cm": 1003.4648357600558,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4853.721568826064,
+        1279.0700000517218
+      ],
+      "yaw": -140.51487400481068,
+      "height_game_cm": 932.3006419238952,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        393.77360656475867,
+        -7538.331314129693
+      ],
+      "yaw": -53.63556320017946,
+      "height_game_cm": 1420.160466711765,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3145.946732298278,
+        5080.864213993135
+      ],
+      "yaw": -81.13484914839663,
+      "height_game_cm": 1390.74306191808,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -782.3418624480037,
+        -1131.9453458139897
+      ],
+      "yaw": -105.24795876334524,
+      "height_game_cm": 1330.467774849526,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -791.0697577435494,
+        -762.7785361244169
+      ],
+      "yaw": 157.77451237496342,
+      "height_game_cm": 1093.1644659364604,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4951.795970701884,
+        -1223.9070524637227
+      ],
+      "yaw": 172.40434363631874,
+      "height_game_cm": 1374.6028844932289,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1460.997563678513,
+        2707.0281240708473
+      ],
+      "yaw": -12.782712800900555,
+      "height_game_cm": 1166.400528898879,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13878.79227521439,
+        1699.6015867871984
+      ],
+      "yaw": 70.25498636677872,
+      "height_game_cm": 1261.5357727617916,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11882.96667112269,
+        6279.300070484928
+      ],
+      "yaw": 101.5932411628362,
+      "height_game_cm": 1323.408474613071,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2846.0908711716893,
+        6711.878493059722
+      ],
+      "yaw": 66.30689219865133,
+      "height_game_cm": 1224.0905009020316,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14826.95033954558,
+        3717.542821186523
+      ],
+      "yaw": 155.0514654749931,
+      "height_game_cm": 1373.9607597946192,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6773.278216154153,
+        5959.798412363855
+      ],
+      "yaw": 139.9772921218231,
+      "height_game_cm": 1052.0779013624895,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6144.526248377893,
+        6390.731218168873
+      ],
+      "yaw": -173.58840202917435,
+      "height_game_cm": 1437.4779205676073,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2237.9673502273,
+        5676.584016640157
+      ],
+      "yaw": 141.23835175721575,
+      "height_game_cm": 924.4321506933231,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4561.805954786365,
+        1022.3659481654404
+      ],
+      "yaw": -47.81031825611578,
+      "height_game_cm": 1147.9922277018543,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1492.2101594673968,
+        -2208.8085406996906
+      ],
+      "yaw": 174.62707466407875,
+      "height_game_cm": 1300.7678029985143,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2317.372557767747,
+        -5230.418279604315
+      ],
+      "yaw": -141.46198860053556,
+      "height_game_cm": 932.0744611612092,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12508.371483259478,
+        6104.5642676629695
+      ],
+      "yaw": -125.54258030144013,
+      "height_game_cm": 1218.4038719343291,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3593.0208138006856,
+        7071.132504791717
+      ],
+      "yaw": -83.60193100891593,
+      "height_game_cm": 879.2606691664201,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1769.669223760162,
+        4434.261249369923
+      ],
+      "yaw": 23.96486682100749,
+      "height_game_cm": 913.2902842555948,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1467.284902332227,
+        428.6865770219365
+      ],
+      "yaw": -85.56849067458462,
+      "height_game_cm": 1128.564603477848,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3341.268089640307,
+        -4938.823551890842
+      ],
+      "yaw": 111.27457792408825,
+      "height_game_cm": 1026.9371894512217,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1162.6289909530933,
+        -1769.6704679343165
+      ],
+      "yaw": 80.66390485081564,
+      "height_game_cm": 883.2509643549572,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13203.297367546998,
+        1338.4201723001343
+      ],
+      "yaw": -77.9850648356462,
+      "height_game_cm": 1027.1198862605154,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1523.9069396106406,
+        -2853.147791390691
+      ],
+      "yaw": 92.07248190424411,
+      "height_game_cm": 1111.1397291383469,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        178.94922826396942,
+        -1449.9966274406079
+      ],
+      "yaw": 108.71882585736131,
+      "height_game_cm": 901.9652838221368,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7188.018646548355,
+        5864.913003968618
+      ],
+      "yaw": -42.97884915351909,
+      "height_game_cm": 1217.762264234013,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -418.98508251630665,
+        -7416.171558495133
+      ],
+      "yaw": -147.18265491781094,
+      "height_game_cm": 1009.7693537738464,
+      "placement": "authored_lakeshore",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        746.8326966673922,
+        -21162.22535845896
+      ],
+      "yaw": -132.94275111972576,
+      "height_game_cm": 1169.2585650932929,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6707.865850515358,
+        3555.812845648703
+      ],
+      "yaw": 150.60573581245183,
+      "height_game_cm": 1308.2056549513725,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8451.483763531043,
+        -32088.42401397248
+      ],
+      "yaw": -95.6798698909081,
+      "height_game_cm": 1339.5304534837921,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16310.914724416281,
+        -7755.039827709552
+      ],
+      "yaw": -153.2724896153593,
+      "height_game_cm": 1364.6715935460174,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -18037.844767667528,
+        1350.1261282295964
+      ],
+      "yaw": 31.933957778179263,
+      "height_game_cm": 924.0788533136688,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12588.945104033664,
+        -39486.697527555625
+      ],
+      "yaw": -155.41276778455384,
+      "height_game_cm": 1202.8022488217587,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1946.0519097816032,
+        -29312.061050751705
+      ],
+      "yaw": -26.730185997974473,
+      "height_game_cm": 1171.430237103209,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6226.924919992192,
+        10870.360462981807
+      ],
+      "yaw": -117.7064872581901,
+      "height_game_cm": 1219.387412311148,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9217.52957517322,
+        -32343.296140030085
+      ],
+      "yaw": -133.3440182510507,
+      "height_game_cm": 1109.8700703098557,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8562.397666713798,
+        7153.2758264055155
+      ],
+      "yaw": 112.15327891246716,
+      "height_game_cm": 1059.0658028117787,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16138.532296259,
+        8896.41851630219
+      ],
+      "yaw": 61.06091289998153,
+      "height_game_cm": 1226.356656291313,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2669.055455766811,
+        -30691.148068854083
+      ],
+      "yaw": 154.58810416072083,
+      "height_game_cm": 1014.9675944270903,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5735.075431737978,
+        10715.16772655199
+      ],
+      "yaw": 102.28296326516232,
+      "height_game_cm": 1424.7682762143017,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5540.674542915091,
+        -17935.956616684285
+      ],
+      "yaw": 169.57352406171185,
+      "height_game_cm": 1184.2126836529123,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5056.661568029624,
+        -1201.9337750890336
+      ],
+      "yaw": 145.12166029342467,
+      "height_game_cm": 1006.175931990038,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11952.19476788901,
+        -37271.11555176833
+      ],
+      "yaw": 35.154472692652746,
+      "height_game_cm": 1439.8608700869909,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9812.846992476942,
+        7782.844718882749
+      ],
+      "yaw": -82.27022016616822,
+      "height_game_cm": 871.839794575394,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        380.289325584552,
+        -17402.97237448726
+      ],
+      "yaw": 137.89997966943497,
+      "height_game_cm": 1445.8379064111423,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7488.660901625211,
+        -39321.34779037643
+      ],
+      "yaw": 43.450862327972914,
+      "height_game_cm": 902.0965393421104,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7981.935463401718,
+        -38300.986034340945
+      ],
+      "yaw": 61.36723007268009,
+      "height_game_cm": 1170.4398297515634,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14998.356271983237,
+        -7317.353212975751
+      ],
+      "yaw": 44.82906114795193,
+      "height_game_cm": 1012.8872650469747,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        570.7657468553152,
+        10940.328164089668
+      ],
+      "yaw": -9.279302710011649,
+      "height_game_cm": 1385.5924679507473,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10061.456045836738,
+        10961.773142914986
+      ],
+      "yaw": -159.50949574186853,
+      "height_game_cm": 1303.1524622730449,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2128.1285137485647,
+        -28908.99287123503
+      ],
+      "yaw": 136.6964118196545,
+      "height_game_cm": 1194.471086688711,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7520.484654129912,
+        -32537.142780788043
+      ],
+      "yaw": 94.8976826018473,
+      "height_game_cm": 1120.5950801873928,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8667.732928035912,
+        10869.391122662812
+      ],
+      "yaw": 104.03079584307869,
+      "height_game_cm": 1429.1092773965352,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5904.179462866945,
+        10280.493722191168
+      ],
+      "yaw": 148.87015041347172,
+      "height_game_cm": 1282.0066384295328,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7326.640016241741,
+        4900.296075598861
+      ],
+      "yaw": -153.0150466326941,
+      "height_game_cm": 1055.0569118443516,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4246.767489740167,
+        -12755.28024445727
+      ],
+      "yaw": 57.54439317710788,
+      "height_game_cm": 1034.9601886857813,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5875.531723550874,
+        -37302.242539437335
+      ],
+      "yaw": 67.40598749333708,
+      "height_game_cm": 1111.1372887936645,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12905.584140322066,
+        -8893.445192386687
+      ],
+      "yaw": -159.8739101911179,
+      "height_game_cm": 1047.1384895741908,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3863.8634243548895,
+        10743.703300190027
+      ],
+      "yaw": -4.682617023860217,
+      "height_game_cm": 1256.95651546729,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12921.827220382187,
+        -36007.01834736496
+      ],
+      "yaw": -100.23801561391753,
+      "height_game_cm": 1196.6943250424179,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7874.9275892138285,
+        9205.823037144808
+      ],
+      "yaw": 75.52944810619647,
+      "height_game_cm": 1227.8626350247648,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17379.95998373995,
+        -1125.6307154202368
+      ],
+      "yaw": 128.23968920433566,
+      "height_game_cm": 949.5170850639266,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -9026.034886909327,
+        -10466.60055839465
+      ],
+      "yaw": 122.85071507049315,
+      "height_game_cm": 1440.8325942292365,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10399.270415048715,
+        -10328.355094117476
+      ],
+      "yaw": 137.36412054365098,
+      "height_game_cm": 1344.8422581085356,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16283.389837221375,
+        5665.088987407318
+      ],
+      "yaw": 1.3487909174792776,
+      "height_game_cm": 1053.574992100225,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11902.943541330034,
+        -38700.873676269905
+      ],
+      "yaw": -4.0580997521174424,
+      "height_game_cm": 1126.34437663398,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4277.739747939948,
+        -6447.352023618056
+      ],
+      "yaw": -71.58891169793272,
+      "height_game_cm": 1246.9917405428491,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10571.438132815416,
+        10608.566127153972
+      ],
+      "yaw": 62.068170590438115,
+      "height_game_cm": 1243.8910921740235,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5911.06194776763,
+        -20690.550267583058
+      ],
+      "yaw": 71.24977940581084,
+      "height_game_cm": 1154.3771297800677,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2396.619250739048,
+        -26316.253668266945
+      ],
+      "yaw": 179.71396634962377,
+      "height_game_cm": 1023.0917626446462,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8197.676644920593,
+        -38612.27597982907
+      ],
+      "yaw": 171.9371234889166,
+      "height_game_cm": 1283.04222876907,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2945.931801602994,
+        -25798.040728688517
+      ],
+      "yaw": 174.82834408190064,
+      "height_game_cm": 1208.9260768164813,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3994.1906605467557,
+        -5493.657263485751
+      ],
+      "yaw": 91.25867793855355,
+      "height_game_cm": 919.3371799945749,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3757.8274979382586,
+        -30391.556304684436
+      ],
+      "yaw": -63.40854220813516,
+      "height_game_cm": 954.2640853326434,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3429.9719082843694,
+        10774.24277086644
+      ],
+      "yaw": -89.77688636827686,
+      "height_game_cm": 958.7861773532054,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12747.400972163896,
+        10846.611318789139
+      ],
+      "yaw": -175.35059761898282,
+      "height_game_cm": 1343.4452382833763,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        13032.379031457567,
+        -33994.92874302372
+      ],
+      "yaw": -47.76481009842419,
+      "height_game_cm": 1221.1989601523385,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6549.953993661526,
+        -33365.20307716369
+      ],
+      "yaw": 79.61674195429578,
+      "height_game_cm": 1418.5617611316015,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -18149.28296268726,
+        2124.221670188941
+      ],
+      "yaw": -40.941763657337674,
+      "height_game_cm": 1112.2475449300248,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16965.430416492447,
+        7633.863379715112
+      ],
+      "yaw": -69.71820396958053,
+      "height_game_cm": 1445.4807866772549,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5350.267598108763,
+        -21437.63249621259
+      ],
+      "yaw": 86.18999949782642,
+      "height_game_cm": 1257.1062164005914,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6559.3857651527105,
+        -31590.465364993688
+      ],
+      "yaw": 65.07137554681265,
+      "height_game_cm": 991.3824803847878,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2435.7404397108676,
+        10373.237864018301
+      ],
+      "yaw": 66.336059263798,
+      "height_game_cm": 931.6789210776205,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5756.422410409003,
+        -23044.857436141956
+      ],
+      "yaw": 117.89131483203437,
+      "height_game_cm": 932.713578621282,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7975.2222273138905,
+        5571.125557372201
+      ],
+      "yaw": -178.3659269390841,
+      "height_game_cm": 1349.0019678659621,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8492.415155708419,
+        -10136.06441723754
+      ],
+      "yaw": 2.278721585011027,
+      "height_game_cm": 882.5179195280682,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4305.2720577758555,
+        -11215.151135207878
+      ],
+      "yaw": -19.310848790270796,
+      "height_game_cm": 1189.1490496715599,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5809.524970361395,
+        -21907.974163055664
+      ],
+      "yaw": 108.675657230014,
+      "height_game_cm": 1410.494962355102,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13981.258860613558,
+        10626.68427490571
+      ],
+      "yaw": -50.27002856348017,
+      "height_game_cm": 1364.6590611251927,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -1801.4299273631004,
+        10688.729134129877
+      ],
+      "yaw": 140.14725291927107,
+      "height_game_cm": 978.5572112710854,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7492.459139108356,
+        -31850.69009794321
+      ],
+      "yaw": -42.47530066941442,
+      "height_game_cm": 1170.1845371217207,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -15139.294058218098,
+        -7718.157906048953
+      ],
+      "yaw": 157.9600305520828,
+      "height_game_cm": 893.3975987561524,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9096.022579868331,
+        -33318.64818181162
+      ],
+      "yaw": 60.426853963685545,
+      "height_game_cm": 1019.0280664197724,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12697.305685481333,
+        -33589.01074224606
+      ],
+      "yaw": 103.11441300585494,
+      "height_game_cm": 927.3236679970043,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9457.454709275873,
+        8520.55782896583
+      ],
+      "yaw": 4.151928902826086,
+      "height_game_cm": 1105.026703057868,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7889.608287837509,
+        -38949.05244433444
+      ],
+      "yaw": 90.76981423214664,
+      "height_game_cm": 1270.7744998417165,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -9356.050492359109,
+        10728.436617114734
+      ],
+      "yaw": -84.28266647073491,
+      "height_game_cm": 1133.7930716250967,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12446.684025431681,
+        -34341.88598763843
+      ],
+      "yaw": -2.680382662222428,
+      "height_game_cm": 1385.4517428051304,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6374.157825117585,
+        -36441.48842284141
+      ],
+      "yaw": 30.396022768356573,
+      "height_game_cm": 894.5639872548287,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6903.143516540738,
+        3878.284818697357
+      ],
+      "yaw": -82.47732239466025,
+      "height_game_cm": 1205.6725837170927,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5931.599739257683,
+        -37766.89348681624
+      ],
+      "yaw": -47.2284438097802,
+      "height_game_cm": 1087.3837720287977,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11179.907930523776,
+        -38173.38086244896
+      ],
+      "yaw": 33.62069466095795,
+      "height_game_cm": 1132.424486481532,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5469.840096562068,
+        -347.9869703672666
+      ],
+      "yaw": -128.8567454461725,
+      "height_game_cm": 1308.3975840247363,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -9524.745414982406,
+        -10304.253893146575
+      ],
+      "yaw": -114.96979321439056,
+      "height_game_cm": 1399.456508486965,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3025.169186829544,
+        10478.148531335435
+      ],
+      "yaw": 111.33107878527323,
+      "height_game_cm": 947.5565985400947,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9414.016027641046,
+        7902.747667518255
+      ],
+      "yaw": 27.998215018880586,
+      "height_game_cm": 1173.4521440173226,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7063.402646503382,
+        -39985.66385929921
+      ],
+      "yaw": 158.2853031615859,
+      "height_game_cm": 904.7516161451686,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12304.793462438407,
+        10666.146054574048
+      ],
+      "yaw": 88.17355710806669,
+      "height_game_cm": 1004.7707729200677,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        10016.941130104387,
+        -33537.60095156537
+      ],
+      "yaw": 177.04052644290908,
+      "height_game_cm": 891.3761569718168,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12995.448998818367,
+        -34801.22394171362
+      ],
+      "yaw": -61.81791972905869,
+      "height_game_cm": 1258.9292792643405,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11211.03799638119,
+        10690.830361831577
+      ],
+      "yaw": 157.5651653828761,
+      "height_game_cm": 1284.918315660131,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5546.709191069225,
+        -38570.456081516604
+      ],
+      "yaw": 131.82113981977363,
+      "height_game_cm": 886.3556876929055,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5008.974945393264,
+        10811.631341565517
+      ],
+      "yaw": -95.1353912948962,
+      "height_game_cm": 913.5393144536441,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11797.184680150483,
+        -37914.89919069041
+      ],
+      "yaw": 82.10034367265291,
+      "height_game_cm": 1401.4357810451916,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8661.760980097555,
+        -32463.125244568342
+      ],
+      "yaw": -54.27560677750813,
+      "height_game_cm": 1160.929820313013,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12484.084701085765,
+        -35037.08602678024
+      ],
+      "yaw": -159.06403261912774,
+      "height_game_cm": 987.9947567125992,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12355.265653299735,
+        -36886.60897742736
+      ],
+      "yaw": -39.201315828927676,
+      "height_game_cm": 1232.934030840357,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3284.2892788989775,
+        -25082.648298342538
+      ],
+      "yaw": -32.197643262556426,
+      "height_game_cm": 984.2533011534779,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16109.191976382377,
+        6166.209330703423
+      ],
+      "yaw": -67.63115535099625,
+      "height_game_cm": 1421.3800152110152,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4368.734936001601,
+        -3002.832704168708
+      ],
+      "yaw": 123.58209325848122,
+      "height_game_cm": 1308.2925459543262,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5203.626241680871,
+        -18335.078311159414
+      ],
+      "yaw": 10.838923136145638,
+      "height_game_cm": 1359.151143810685,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4249.45233133349,
+        11131.936693675983
+      ],
+      "yaw": -151.32638065254025,
+      "height_game_cm": 940.471209388442,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5902.655461618611,
+        -22232.52638385227
+      ],
+      "yaw": 70.66004432878489,
+      "height_game_cm": 1326.6951857999277,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4077.1493422464664,
+        -9369.84032218238
+      ],
+      "yaw": 155.18605652158737,
+      "height_game_cm": 1220.9359618339527,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11840.770334016932,
+        -36693.670771852245
+      ],
+      "yaw": 84.13668406692693,
+      "height_game_cm": 1099.160666494083,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4288.437703263169,
+        10465.079436604836
+      ],
+      "yaw": 14.501080062591797,
+      "height_game_cm": 1247.860090846007,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8300.844054559911,
+        6636.592894522488
+      ],
+      "yaw": 70.99490235521378,
+      "height_game_cm": 1106.5104887563489,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5346.046137714198,
+        -37753.07711745661
+      ],
+      "yaw": -93.31854232743275,
+      "height_game_cm": 1342.3974140619353,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2458.822054593704,
+        -29078.39289123332
+      ],
+      "yaw": 110.85904721292394,
+      "height_game_cm": 893.5489898596783,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2784.205593030987,
+        10338.15412473453
+      ],
+      "yaw": -145.46945849211076,
+      "height_game_cm": 1429.4843880875965,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16975.0750259984,
+        8372.032274176643
+      ],
+      "yaw": -107.90411354580954,
+      "height_game_cm": 1414.1249742291675,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6836.389374634022,
+        10272.017129612948
+      ],
+      "yaw": 127.12260820383341,
+      "height_game_cm": 1444.4307909264567,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4811.154659823656,
+        -15910.29862197216
+      ],
+      "yaw": 19.057792996957915,
+      "height_game_cm": 943.8698968795378,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4388.433675003569,
+        -11855.483018301846
+      ],
+      "yaw": 146.94179797268828,
+      "height_game_cm": 1250.7350589294533,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8888.419821795365,
+        10577.775036482351
+      ],
+      "yaw": 26.822297845727945,
+      "height_game_cm": 1318.691563203143,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6568.614048904339,
+        -39146.726311114246
+      ],
+      "yaw": -54.063081411438176,
+      "height_game_cm": 873.4874591263142,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5982.196229282137,
+        -36678.017219731395
+      ],
+      "yaw": 93.2438376592275,
+      "height_game_cm": 1426.625357502076,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14952.536881948876,
+        10697.79681632849
+      ],
+      "yaw": -172.48880545100397,
+      "height_game_cm": 982.4338983811009,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2261.096164635903,
+        10319.10766991572
+      ],
+      "yaw": -140.25124370741068,
+      "height_game_cm": 1265.4020549476436,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1890.2679789412177,
+        10340.988648799816
+      ],
+      "yaw": -88.47644755533108,
+      "height_game_cm": 1316.2574814573381,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16573.189650263223,
+        -6599.331575523829
+      ],
+      "yaw": 37.81965263626458,
+      "height_game_cm": 1062.3797835334487,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8975.945719458905,
+        -32597.391449476625
+      ],
+      "yaw": -90.46522992787635,
+      "height_game_cm": 1017.0263058532124,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5144.270927722482,
+        -38035.13539653994
+      ],
+      "yaw": 0.18345195767437872,
+      "height_game_cm": 1031.6249581806287,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7578.324431143508,
+        11026.693981295466
+      ],
+      "yaw": -68.1277895815283,
+      "height_game_cm": 1221.660024684964,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1889.956246310132,
+        -28206.198017107687
+      ],
+      "yaw": 73.06215432686284,
+      "height_game_cm": 1148.4511563535568,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3136.184475369537,
+        -29967.531347069686
+      ],
+      "yaw": 88.46146312053145,
+      "height_game_cm": 967.274207512457,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8066.92795499384,
+        8619.036745430101
+      ],
+      "yaw": -109.13258912656093,
+      "height_game_cm": 1288.5429971616172,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4335.866935291098,
+        -12336.244315227807
+      ],
+      "yaw": -173.27386895277448,
+      "height_game_cm": 905.8603879254055,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        965.9054518136072,
+        -19897.83864781209
+      ],
+      "yaw": 71.14990681651628,
+      "height_game_cm": 1067.8486437098459,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6762.616582290659,
+        -39554.83113317784
+      ],
+      "yaw": 38.609098880789986,
+      "height_game_cm": 1362.7067053751543,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8153.108238319452,
+        -32503.53095302007
+      ],
+      "yaw": -99.29411761813093,
+      "height_game_cm": 1386.8704196414765,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -18022.50220407718,
+        630.2527470115529
+      ],
+      "yaw": 49.196582988837434,
+      "height_game_cm": 1435.7406869542556,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7954.070739278428,
+        4801.700410546451
+      ],
+      "yaw": -119.2484400704652,
+      "height_game_cm": 1344.935325503629,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12139.21197819887,
+        -37934.50766316887
+      ],
+      "yaw": 80.55463949724992,
+      "height_game_cm": 1036.5490905471154,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5745.735952463361,
+        -19459.53933449043
+      ],
+      "yaw": 162.35440431938446,
+      "height_game_cm": 1213.8843992502216,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4875.914387328732,
+        -19092.63415632937
+      ],
+      "yaw": -65.17412767437007,
+      "height_game_cm": 910.8485138176757,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5130.597568656023,
+        -19488.363928841965
+      ],
+      "yaw": -102.08011279020957,
+      "height_game_cm": 1384.4994428021387,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2121.2086299730618,
+        -27161.73925547648
+      ],
+      "yaw": -173.6120350495274,
+      "height_game_cm": 1069.4173288735888,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5748.99919267814,
+        -38844.677073717845
+      ],
+      "yaw": 174.1893849582384,
+      "height_game_cm": 1351.486131028502,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5295.757239484272,
+        -22007.44401160474
+      ],
+      "yaw": -25.83059144128333,
+      "height_game_cm": 1035.5442972977226,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5614.599568858834,
+        -20048.205239307175
+      ],
+      "yaw": 136.2708144996427,
+      "height_game_cm": 1344.0820386172857,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4080.6754055538513,
+        -10528.071162530436
+      ],
+      "yaw": 90.7355324891642,
+      "height_game_cm": 1220.3420540397915,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11342.459773587641,
+        -10190.486669094757
+      ],
+      "yaw": 1.9322594743506727,
+      "height_game_cm": 1259.297194865721,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        10364.779369271666,
+        -38554.16220174455
+      ],
+      "yaw": 85.40173364323874,
+      "height_game_cm": 1272.7702861989173,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7970.565429849787,
+        -31923.41097943253
+      ],
+      "yaw": 82.96651399599875,
+      "height_game_cm": 1230.907745217663,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9538.126190178958,
+        -33258.62536979115
+      ],
+      "yaw": -178.34376576808205,
+      "height_game_cm": 1101.2288264669514,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12318.005554687097,
+        -34724.95367905164
+      ],
+      "yaw": -51.42336932020058,
+      "height_game_cm": 1249.593125968402,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4884.138106234626,
+        10491.142331305186
+      ],
+      "yaw": 79.17572925131827,
+      "height_game_cm": 1280.9142963706404,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8716.677761428127,
+        5879.853551112297
+      ],
+      "yaw": -69.87415430822533,
+      "height_game_cm": 918.4607285337513,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8648.221704268133,
+        -32962.97458581069
+      ],
+      "yaw": 153.60195971450747,
+      "height_game_cm": 1069.2198449406324,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6910.463884849172,
+        10749.392375166011
+      ],
+      "yaw": 57.49030476405224,
+      "height_game_cm": 941.1669016894929,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4175.200504208853,
+        -4370.095996185446
+      ],
+      "yaw": -72.95070519887031,
+      "height_game_cm": 1382.649307276098,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7050.887364707989,
+        -33353.643831157286
+      ],
+      "yaw": 19.270991763515582,
+      "height_game_cm": 1310.130249457196,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        246.1972546916768,
+        10856.348051004403
+      ],
+      "yaw": -4.0990002972252455,
+      "height_game_cm": 1209.5818414715177,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16617.81547255154,
+        -4348.279400072104
+      ],
+      "yaw": 110.77654342781062,
+      "height_game_cm": 856.3666277709066,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3914.588161524087,
+        10700.26104723366
+      ],
+      "yaw": 102.0839631359766,
+      "height_game_cm": 900.0496824763055,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -15282.121561649954,
+        10853.589470745537
+      ],
+      "yaw": 171.21064645423917,
+      "height_game_cm": 1415.2192590505638,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6921.767993417241,
+        -28215.023898394393
+      ],
+      "yaw": -3.182269126154438,
+      "height_game_cm": 954.9244500545284,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8035.483041058156,
+        -39433.10210401604
+      ],
+      "yaw": 51.20236080873863,
+      "height_game_cm": 1108.825174214026,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16991.14343067879,
+        -6692.456145559139
+      ],
+      "yaw": -79.14277311360446,
+      "height_game_cm": 1112.8851076814412,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9794.980508416218,
+        -37267.14160106298
+      ],
+      "yaw": -152.4289269642784,
+      "height_game_cm": 1036.2241157418207,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5768.09043724346,
+        -29615.976417614882
+      ],
+      "yaw": 90.9389565804604,
+      "height_game_cm": 1387.6215547213267,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3532.6683786255635,
+        -13663.99518165908
+      ],
+      "yaw": 16.903626188279844,
+      "height_game_cm": 856.8269365429308,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        345.15964673239796,
+        -17803.425231349807
+      ],
+      "yaw": -148.31602100182621,
+      "height_game_cm": 1414.7496498693306,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        10102.409271748384,
+        -37533.62782319453
+      ],
+      "yaw": 90.52018903363853,
+      "height_game_cm": 1044.0646977811157,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2114.208196703603,
+        10558.073559910015
+      ],
+      "yaw": 166.87728292783152,
+      "height_game_cm": 921.519573818549,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5788.874619713424,
+        2469.8985085094464
+      ],
+      "yaw": 46.136428378785325,
+      "height_game_cm": 1276.0679938489216,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5142.583073871025,
+        -20468.820092586022
+      ],
+      "yaw": 71.47210705792085,
+      "height_game_cm": 1419.7844840670791,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13914.314593138275,
+        10975.074731945868
+      ],
+      "yaw": -83.45776015401812,
+      "height_game_cm": 1433.856043346891,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5868.987529387068,
+        -24062.17278383843
+      ],
+      "yaw": -88.40653175413708,
+      "height_game_cm": 1444.2530910047735,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12871.970504964003,
+        -35357.888007856294
+      ],
+      "yaw": -88.43997547630714,
+      "height_game_cm": 1193.873510374374,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9384.198848271506,
+        7404.573896498558
+      ],
+      "yaw": 35.31933640793227,
+      "height_game_cm": 1232.1737609539919,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5266.042801262745,
+        -37337.85784001134
+      ],
+      "yaw": 34.919075469516656,
+      "height_game_cm": 889.2093250692834,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5012.895539394638,
+        -19970.49237958174
+      ],
+      "yaw": -5.062634675573605,
+      "height_game_cm": 1101.1761012403792,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12354.68465422214,
+        -39210.13288332996
+      ],
+      "yaw": 115.65257482495178,
+      "height_game_cm": 856.1192666649324,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3886.648390327826,
+        -13200.55556737502
+      ],
+      "yaw": -20.678934530733102,
+      "height_game_cm": 1379.4953870890492,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5094.131693507399,
+        -185.83153069273976
+      ],
+      "yaw": -10.738336314946139,
+      "height_game_cm": 1403.0671370449759,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4333.427773626043,
+        -13374.029389073603
+      ],
+      "yaw": -159.70668090347175,
+      "height_game_cm": 1373.7008685893315,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6451.202189318028,
+        10556.418146763564
+      ],
+      "yaw": 9.742606379547397,
+      "height_game_cm": 1351.9237987453062,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6143.536611530373,
+        -25084.16946810145
+      ],
+      "yaw": 166.9831719830446,
+      "height_game_cm": 1182.4058156847739,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16067.586832367599,
+        10568.597044451504
+      ],
+      "yaw": -87.08301401336422,
+      "height_game_cm": 1328.5188599436851,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7688.494290625415,
+        11059.13215868859
+      ],
+      "yaw": -23.251421949357933,
+      "height_game_cm": 1044.821060658354,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6640.419694621385,
+        -40000.940433970274
+      ],
+      "yaw": -12.550728018593304,
+      "height_game_cm": 1088.7662719805737,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12531.293944748373,
+        -38765.175334111125
+      ],
+      "yaw": -52.4870160260961,
+      "height_game_cm": 989.3699469013138,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3302.17152351392,
+        10930.256988011562
+      ],
+      "yaw": 70.92489956312784,
+      "height_game_cm": 1216.2451141107472,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17981.30403837782,
+        2446.865984157499
+      ],
+      "yaw": 175.06418425602425,
+      "height_game_cm": 1153.5842658047436,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16882.910765803448,
+        -2169.2112258210036
+      ],
+      "yaw": -36.60223792645695,
+      "height_game_cm": 1264.8292023755826,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9872.471917118528,
+        -33150.77174284666
+      ],
+      "yaw": 22.96585740187814,
+      "height_game_cm": 904.3973332408333,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9645.845319874617,
+        -36931.07146577536
+      ],
+      "yaw": -126.31947257166169,
+      "height_game_cm": 1400.6030832085978,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6932.287047391408,
+        -32147.89896526771
+      ],
+      "yaw": 156.0050029756464,
+      "height_game_cm": 1213.8926001990349,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8710.26160210983,
+        8238.041544229876
+      ],
+      "yaw": 92.30470547589255,
+      "height_game_cm": 951.7303599682034,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5322.778488920056,
+        -16782.768591660046
+      ],
+      "yaw": -114.31759767954817,
+      "height_game_cm": 1381.7413400998746,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5167.579158545759,
+        -544.2586975912345
+      ],
+      "yaw": -164.91316453685118,
+      "height_game_cm": 1445.2788044897898,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2487.249444339792,
+        -30384.93539075972
+      ],
+      "yaw": 123.09987275578868,
+      "height_game_cm": 1402.2799873317913,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5700.738094174139,
+        -35478.03147563551
+      ],
+      "yaw": 137.95607496678105,
+      "height_game_cm": 950.1819679669122,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11692.931557537358,
+        -10046.513190824651
+      ],
+      "yaw": 57.896864470945445,
+      "height_game_cm": 1111.6113063177802,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6733.569827942763,
+        -29429.234048429804
+      ],
+      "yaw": -163.41288229994655,
+      "height_game_cm": 1346.6528634737701,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2811.1618479778954,
+        -27877.373223046518
+      ],
+      "yaw": -128.8824369737306,
+      "height_game_cm": 1067.9345501862176,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10955.894507323213,
+        10974.364911326942
+      ],
+      "yaw": -56.73748971435458,
+      "height_game_cm": 1117.3801021918325,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8875.159686085615,
+        6706.60743386158
+      ],
+      "yaw": 49.712166583430815,
+      "height_game_cm": 1022.0497511632525,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16685.217795883633,
+        -2719.2929300406395
+      ],
+      "yaw": -178.9569057114717,
+      "height_game_cm": 1332.713178227426,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2151.098939094987,
+        -26717.679194444412
+      ],
+      "yaw": -53.23201259649302,
+      "height_game_cm": 1122.606324637517,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16347.946842095702,
+        -8172.849959055653
+      ],
+      "yaw": 5.798976013429609,
+      "height_game_cm": 1359.0487522077062,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5239.540127293054,
+        -17539.46487944817
+      ],
+      "yaw": -37.46414788779148,
+      "height_game_cm": 1240.938770041088,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12340.902990490784,
+        -37255.21406621775
+      ],
+      "yaw": 115.85984688515634,
+      "height_game_cm": 1159.8276825903488,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12010.976211982914,
+        -39047.77820838435
+      ],
+      "yaw": 158.57782409006626,
+      "height_game_cm": 1051.7224107071684,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1702.2082431907475,
+        10704.982960771427
+      ],
+      "yaw": -20.043688532691647,
+      "height_game_cm": 1212.0405498920784,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -15981.597406763858,
+        4822.377719665019
+      ],
+      "yaw": 88.29965601025833,
+      "height_game_cm": 926.2084360366716,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8054.103937490683,
+        -40566.752351151306
+      ],
+      "yaw": -84.73401842179432,
+      "height_game_cm": 890.3397485531805,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1188.1987237338835,
+        -29377.146049048337
+      ],
+      "yaw": 165.06040685284069,
+      "height_game_cm": 1075.822140315304,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17908.78827963648,
+        1802.6380448425843
+      ],
+      "yaw": 65.62700160000213,
+      "height_game_cm": 1084.100968717372,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -9744.644968245579,
+        10750.10621399025
+      ],
+      "yaw": 89.48104864852672,
+      "height_game_cm": 1219.5243170522022,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11854.912453773311,
+        -33825.271186767844
+      ],
+      "yaw": 17.303238492602105,
+      "height_game_cm": 882.9949677521703,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9282.059561675258,
+        -33648.1023727281
+      ],
+      "yaw": 117.45983841931178,
+      "height_game_cm": 872.6168201424673,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1918.0404273247477,
+        -21444.393945293792
+      ],
+      "yaw": -124.22340885183738,
+      "height_game_cm": 1058.4855190215821,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9827.319351970862,
+        8217.793763446083
+      ],
+      "yaw": -132.07096485376107,
+      "height_game_cm": 1314.0113821224204,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        10080.830931980607,
+        8564.347852596351
+      ],
+      "yaw": 167.00542280677172,
+      "height_game_cm": 886.2638131746868,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4802.446947061333,
+        -17348.03118584473
+      ],
+      "yaw": 116.28284447033951,
+      "height_game_cm": 1013.1648656031059,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8624.270320036341,
+        10921.05203768571
+      ],
+      "yaw": 166.41875649343064,
+      "height_game_cm": 1431.4045344696628,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12741.530747909175,
+        -36496.691121236625
+      ],
+      "yaw": 44.12900786010121,
+      "height_game_cm": 1321.6227866957809,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1509.6435152845297,
+        -28677.962989467873
+      ],
+      "yaw": -161.71521188725382,
+      "height_game_cm": 1432.4626676071641,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6402.0887706958165,
+        -36068.652656234466
+      ],
+      "yaw": -20.309688616285,
+      "height_game_cm": 1104.618128722267,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7085.677728601157,
+        -31451.96470234827
+      ],
+      "yaw": 121.49720074281936,
+      "height_game_cm": 1273.2479532138389,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -15417.377620735282,
+        -6969.538514348897
+      ],
+      "yaw": -2.296641499243975,
+      "height_game_cm": 1190.0917236036034,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14511.94704212371,
+        10905.12951465977
+      ],
+      "yaw": 25.766672797569754,
+      "height_game_cm": 904.0704835185425,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4164.922365835144,
+        -10908.096242823132
+      ],
+      "yaw": -140.58051521032107,
+      "height_game_cm": 1392.7331994760225,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4233.093112392216,
+        -3825.552308002283
+      ],
+      "yaw": 153.91276773538033,
+      "height_game_cm": 897.5569223154891,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5600.566252674795,
+        -37991.444418246705
+      ],
+      "yaw": -74.90166976640694,
+      "height_game_cm": 1376.001920849634,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6597.150571633385,
+        -31133.806358150214
+      ],
+      "yaw": 84.9842884128849,
+      "height_game_cm": 1319.5606805318248,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6443.895858210413,
+        10454.057374127995
+      ],
+      "yaw": 120.74759197765809,
+      "height_game_cm": 1171.5047512133024,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7526.964562202731,
+        -40446.08623029097
+      ],
+      "yaw": -129.76466727428726,
+      "height_game_cm": 1092.3272710078595,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4217.290662278352,
+        -8230.412262102123
+      ],
+      "yaw": 131.2234298415823,
+      "height_game_cm": 1241.642888565175,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16990.663386260894,
+        10496.257347368788
+      ],
+      "yaw": -1.15873065511488,
+      "height_game_cm": 1229.6110176863015,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8080.1872304704375,
+        10521.160204496387
+      ],
+      "yaw": -106.52166169845799,
+      "height_game_cm": 1287.2874624576482,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7008.133974690347,
+        -25615.29258207274
+      ],
+      "yaw": 49.696323530765085,
+      "height_game_cm": 1363.6945778840181,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5484.4103022946365,
+        -18840.790319636548
+      ],
+      "yaw": -124.48643662758016,
+      "height_game_cm": 1111.405999000328,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4023.1961734964316,
+        -9815.542134954056
+      ],
+      "yaw": 100.31720319590937,
+      "height_game_cm": 1009.5264433072696,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4955.109584698319,
+        -16652.20217882206
+      ],
+      "yaw": 25.164456965612885,
+      "height_game_cm": 1338.2762304917671,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        575.6588803205195,
+        -20409.180067544785
+      ],
+      "yaw": -138.47080098697836,
+      "height_game_cm": 1176.1469333859368,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6061.409865838192,
+        -26708.733183950128
+      ],
+      "yaw": 178.67854530349172,
+      "height_game_cm": 909.2167487333938,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7267.902672882787,
+        10494.241800655072
+      ],
+      "yaw": -28.214230816231577,
+      "height_game_cm": 1194.6337119809289,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6991.748375401079,
+        4490.746194035397
+      ],
+      "yaw": 96.87135821526545,
+      "height_game_cm": 865.8729231453265,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5652.090896349728,
+        39.37604118701711
+      ],
+      "yaw": -12.153464965988121,
+      "height_game_cm": 1202.5272660276028,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1859.5220658612525,
+        -23164.935153206217
+      ],
+      "yaw": -130.95671454893863,
+      "height_game_cm": 1263.7699530918817,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17366.370188906396,
+        416.9877700047218
+      ],
+      "yaw": 96.37141945864795,
+      "height_game_cm": 1096.5999570678512,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16323.901005321379,
+        5222.661456038753
+      ],
+      "yaw": 168.96825650874575,
+      "height_game_cm": 1378.0383603520102,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3983.2478517842937,
+        -5949.738981161434
+      ],
+      "yaw": 4.052241264447673,
+      "height_game_cm": 1135.4727793531922,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8826.84093622004,
+        -38892.46538065432
+      ],
+      "yaw": -140.44101153442264,
+      "height_game_cm": 1016.8963063190511,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7539.427539596447,
+        -39958.8278056634
+      ],
+      "yaw": -156.26930101979679,
+      "height_game_cm": 893.1968655263751,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8353.368469408011,
+        5808.450438164109
+      ],
+      "yaw": 101.7818257971785,
+      "height_game_cm": 1135.8206941307171,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -2840.1601279739734,
+        10838.429644871954
+      ],
+      "yaw": -176.07708216277825,
+      "height_game_cm": 1053.877107819213,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7264.330836838148,
+        4099.245219292592
+      ],
+      "yaw": 93.333391850586,
+      "height_game_cm": 906.865075838031,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4499.474349899574,
+        -1811.3656747126224
+      ],
+      "yaw": 29.469986562740246,
+      "height_game_cm": 918.0552614050238,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -11926.283134595174,
+        10935.590642613897
+      ],
+      "yaw": 16.33143884754702,
+      "height_game_cm": 1369.1305827772985,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11985.185183178484,
+        -34177.830962622014
+      ],
+      "yaw": 54.67515220054369,
+      "height_game_cm": 1350.3922939600213,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9015.44678786198,
+        7178.166282302613
+      ],
+      "yaw": 171.17382090242222,
+      "height_game_cm": 1097.16285217843,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7296.448591746044,
+        3590.703458796561
+      ],
+      "yaw": 30.18182647211819,
+      "height_game_cm": 1083.3549565937744,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16834.42488789804,
+        -3587.688486523999
+      ],
+      "yaw": 86.23949253334854,
+      "height_game_cm": 978.8489585445018,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2124.03126666995,
+        -30386.878891219545
+      ],
+      "yaw": -85.69732952630667,
+      "height_game_cm": 1305.945299195605,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8906.379584694198,
+        6327.6373880169995
+      ],
+      "yaw": 42.43227976917703,
+      "height_game_cm": 1381.7845766668652,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8231.348821204841,
+        -10345.203992187795
+      ],
+      "yaw": 117.90218800068806,
+      "height_game_cm": 1218.1204786368082,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1661.2950432409598,
+        -30151.2516656351
+      ],
+      "yaw": 166.34024584464726,
+      "height_game_cm": 1015.0720569449555,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5972.394994451384,
+        -38566.12148812108
+      ],
+      "yaw": -64.28250851551964,
+      "height_game_cm": 1219.7737368941573,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -8416.056005669803,
+        10638.357336816378
+      ],
+      "yaw": -83.04235062871544,
+      "height_game_cm": 1067.410020748412,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7801.953680485483,
+        -40992.78479789574
+      ],
+      "yaw": -6.723363125222079,
+      "height_game_cm": 1448.2233956005832,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9006.968257347224,
+        -38251.85284397122
+      ],
+      "yaw": -8.14346451732277,
+      "height_game_cm": 1136.2500420298024,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5462.377776155772,
+        -22581.534032268486
+      ],
+      "yaw": 131.4229815380669,
+      "height_game_cm": 1023.1590603142786,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -12545.785143285088,
+        -9259.632032755482
+      ],
+      "yaw": 166.24470565253984,
+      "height_game_cm": 914.9276326073639,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -4875.935170459648,
+        -12328.987620645687
+      ],
+      "yaw": 92.7536330065472,
+      "height_game_cm": 969.4817518914899,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -15670.195792541008,
+        10744.231978988391
+      ],
+      "yaw": -70.37713775047764,
+      "height_game_cm": 1229.0765138894512,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5355.012290841889,
+        412.12666586272826
+      ],
+      "yaw": 113.2531248257198,
+      "height_game_cm": 1036.2035870793327,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3858.7334196763004,
+        11109.853908561912
+      ],
+      "yaw": 105.80058591885194,
+      "height_game_cm": 1343.9281008909065,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17765.867224944755,
+        102.36426634942472
+      ],
+      "yaw": -125.96460657066922,
+      "height_game_cm": 1139.7757898167322,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8861.24787016428,
+        8800.36678738919
+      ],
+      "yaw": 46.553013648895444,
+      "height_game_cm": 1065.3883668764906,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17648.188811156295,
+        -265.2030163955278
+      ],
+      "yaw": -165.60394157781712,
+      "height_game_cm": 1128.8766912223646,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16549.209410131338,
+        -5794.681150781318
+      ],
+      "yaw": 23.610768860232525,
+      "height_game_cm": 929.4395546770377,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12566.021342969078,
+        -36067.92869906192
+      ],
+      "yaw": -162.97672236101877,
+      "height_game_cm": 1250.02124365902,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8349.668148356785,
+        5439.14760512529
+      ],
+      "yaw": -55.18390782509299,
+      "height_game_cm": 1286.826803982608,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9046.836684017966,
+        8486.423969912561
+      ],
+      "yaw": 8.552775711103664,
+      "height_game_cm": 1356.2359040220176,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6092.183741716268,
+        -28549.27445178425
+      ],
+      "yaw": -153.04011582874983,
+      "height_game_cm": 1247.324033458734,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4818.1124407379975,
+        -508.8320543363079
+      ],
+      "yaw": 127.61030830943832,
+      "height_game_cm": 1230.17584247661,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2813.012314530013,
+        -26312.492470583566
+      ],
+      "yaw": 78.1039357615964,
+      "height_game_cm": 1063.2316501259827,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13291.099088717667,
+        10772.736959092479
+      ],
+      "yaw": 51.717223091680495,
+      "height_game_cm": 1173.3474561523435,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4812.147540997947,
+        11114.390055955002
+      ],
+      "yaw": -9.303686930147848,
+      "height_game_cm": 1366.233208876116,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12834.441680578664,
+        -34362.640349294146
+      ],
+      "yaw": 166.59083036530393,
+      "height_game_cm": 1370.08500948882,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6319.343869028213,
+        -38183.57268048301
+      ],
+      "yaw": 157.0321291774785,
+      "height_game_cm": 1392.14753934031,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6236.335217272768,
+        3539.431718182561
+      ],
+      "yaw": 149.35906072664966,
+      "height_game_cm": 1115.4166472853635,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5156.913592415978,
+        -21051.653254356876
+      ],
+      "yaw": -107.4688554966897,
+      "height_game_cm": 984.7825700946391,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5004.689767886783,
+        144.42008208335756
+      ],
+      "yaw": 19.631842019288797,
+      "height_game_cm": 1035.1903826088746,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16736.629021736462,
+        3839.172606545915
+      ],
+      "yaw": 153.05551729515872,
+      "height_game_cm": 1074.3322118700266,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6527.226423331103,
+        2358.150516030779
+      ],
+      "yaw": -78.40215884574175,
+      "height_game_cm": 1050.425091023935,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8068.059653197037,
+        5226.624792137591
+      ],
+      "yaw": -145.70902914407915,
+      "height_game_cm": 1420.959206894376,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16129.031504226961,
+        7838.705546042125
+      ],
+      "yaw": -56.060173037936934,
+      "height_game_cm": 885.6033835598803,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5046.033926575139,
+        -17818.51535786585
+      ],
+      "yaw": 52.417111226462225,
+      "height_game_cm": 1441.1794370876291,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8446.684464790174,
+        -39628.5631192915
+      ],
+      "yaw": 128.78279400324453,
+      "height_game_cm": 855.0631619470721,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -15041.99690307766,
+        -6925.24543978709
+      ],
+      "yaw": 158.09951893092347,
+      "height_game_cm": 1203.3890344706526,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3227.5802018026498,
+        -14023.923553349472
+      ],
+      "yaw": -26.531280787337693,
+      "height_game_cm": 867.6399454443975,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17724.760332691923,
+        794.8803973278991
+      ],
+      "yaw": -135.43896308760156,
+      "height_game_cm": 1278.7929922572469,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4142.919338379837,
+        -7219.379770069638
+      ],
+      "yaw": -51.00393392498643,
+      "height_game_cm": 1205.647205828879,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5781.2169724554915,
+        -36336.17139080267
+      ],
+      "yaw": -154.60303361625463,
+      "height_game_cm": 1184.1736456032122,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6152.392535137631,
+        -25938.447722572433
+      ],
+      "yaw": -86.79808245216694,
+      "height_game_cm": 1052.965271926112,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        446.0068222939153,
+        10536.534336008473
+      ],
+      "yaw": 148.45052388839866,
+      "height_game_cm": 901.427421507673,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3912.0121480985363,
+        -6758.94597509734
+      ],
+      "yaw": -64.19351254252618,
+      "height_game_cm": 869.4493294442234,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6457.258284682062,
+        3842.5702727704556
+      ],
+      "yaw": 142.21988301319408,
+      "height_game_cm": 1276.2130453489744,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        912.3335922920814,
+        -20787.261285400364
+      ],
+      "yaw": 5.976160351977114,
+      "height_game_cm": 1203.399199701597,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        11567.464593596942,
+        -38604.85394083282
+      ],
+      "yaw": -154.0633975961327,
+      "height_game_cm": 874.0285773718159,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6917.584395840386,
+        -39093.69105543856
+      ],
+      "yaw": 20.18662531937727,
+      "height_game_cm": 1376.0410115958985,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9434.542720485966,
+        6985.520330738043
+      ],
+      "yaw": 150.0382348951693,
+      "height_game_cm": 1221.366422247818,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -24.38516497199089,
+        10420.231678722048
+      ],
+      "yaw": -119.77401280871834,
+      "height_game_cm": 1138.1006277525153,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7733.9856755215405,
+        4396.285756987563
+      ],
+      "yaw": 84.58314252193315,
+      "height_game_cm": 1258.7564048356098,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5524.7699360659535,
+        -21098.933644712535
+      ],
+      "yaw": 147.0873092813556,
+      "height_game_cm": 1010.9496869238819,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9073.065353397702,
+        7718.153044390172
+      ],
+      "yaw": -10.344553502278444,
+      "height_game_cm": 916.9772401321568,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16753.169665102687,
+        -3207.677692352074
+      ],
+      "yaw": -35.18586314373434,
+      "height_game_cm": 890.1960391471374,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -14983.533132127699,
+        11042.745020794791
+      ],
+      "yaw": 123.8695882387699,
+      "height_game_cm": 1185.634563540471,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1036.3112530732833,
+        -20398.560953060296
+      ],
+      "yaw": 132.12583877219436,
+      "height_game_cm": 1045.438550932441,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4091.7824872905985,
+        -8619.129242194871
+      ],
+      "yaw": 95.99150840220449,
+      "height_game_cm": 1273.4609695969693,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6857.711217433964,
+        -23990.965653356543
+      ],
+      "yaw": 160.361904145781,
+      "height_game_cm": 933.3756567993566,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1898.1667132194962,
+        -27529.051103370984
+      ],
+      "yaw": -13.242531691130296,
+      "height_game_cm": 1165.2368647112671,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -7705.165650372146,
+        10674.471325411738
+      ],
+      "yaw": 60.350657842706,
+      "height_game_cm": 1056.5892439510733,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12625.502840375633,
+        -35584.8085938787
+      ],
+      "yaw": 101.15813981089343,
+      "height_game_cm": 1004.2196034374159,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12678.381222794458,
+        -37066.354771901024
+      ],
+      "yaw": 88.5549613599635,
+      "height_game_cm": 1090.923503772871,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -6323.0330212538265,
+        -11273.225760296653
+      ],
+      "yaw": 114.57062861744492,
+      "height_game_cm": 927.862417310881,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5724.460566777107,
+        -18283.37403586865
+      ],
+      "yaw": 97.38714391003026,
+      "height_game_cm": 853.2500316795405,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6087.7476842550495,
+        -39022.08625714996
+      ],
+      "yaw": 143.45899318523652,
+      "height_game_cm": 1041.7286498209278,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6635.200448780895,
+        -29809.574757705726
+      ],
+      "yaw": 104.48226161292308,
+      "height_game_cm": 909.1598171915917,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4875.735164433347,
+        -1481.7999115866987
+      ],
+      "yaw": -62.28798127020508,
+      "height_game_cm": 1222.8905915173414,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        9605.976725203756,
+        -32601.44217269621
+      ],
+      "yaw": 69.22425705027422,
+      "height_game_cm": 1153.0066359872942,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        8495.268818748082,
+        -38412.37311861235
+      ],
+      "yaw": 18.941327541196443,
+      "height_game_cm": 945.6910069947279,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7190.104741556977,
+        -40555.80888982381
+      ],
+      "yaw": -177.92353472955082,
+      "height_game_cm": 1340.4405263374836,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7190.059354382258,
+        -32458.72580408994
+      ],
+      "yaw": 70.41596071542935,
+      "height_game_cm": 1165.8281118644843,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -3874.2819458442173,
+        -13824.626711944078
+      ],
+      "yaw": -101.61100206145069,
+      "height_game_cm": 1214.508736830579,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        7626.827841960356,
+        5643.236408131219
+      ],
+      "yaw": -98.9331329909957,
+      "height_game_cm": 884.6421641149655,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12067.293521689073,
+        -33405.44596229619
+      ],
+      "yaw": 133.34039355157012,
+      "height_game_cm": 1393.140092699642,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        12377.817028596291,
+        -38206.398007167634
+      ],
+      "yaw": -44.9998649133783,
+      "height_game_cm": 977.6736731933391,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16298.630619408266,
+        -6074.371507122072
+      ],
+      "yaw": -5.4127371200360415,
+      "height_game_cm": 892.3312969833298,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6906.356902195752,
+        -27765.691489301786
+      ],
+      "yaw": -94.27823551098365,
+      "height_game_cm": 1269.7121268866938,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17079.48898865235,
+        -1870.5317661081208
+      ],
+      "yaw": 94.83633214793491,
+      "height_game_cm": 1368.07987869203,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17140.570048760255,
+        11157.91028573412
+      ],
+      "yaw": 136.32637522813155,
+      "height_game_cm": 1424.8367515202726,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        2047.4148361562911,
+        -28522.494040176694
+      ],
+      "yaw": 21.88681987461834,
+      "height_game_cm": 1186.7217845587948,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -17688.63904997195,
+        -604.923829365558
+      ],
+      "yaw": 40.65075400790559,
+      "height_game_cm": 1290.6663219717218,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        1307.4540630787087,
+        -20802.135518587846
+      ],
+      "yaw": -170.15707770358352,
+      "height_game_cm": 1192.2625276688316,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4129.15747635773,
+        -3487.9277124752625
+      ],
+      "yaw": -5.638681382539517,
+      "height_game_cm": 926.7602894044583,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        13135.123460286257,
+        -39217.977865148154
+      ],
+      "yaw": -143.1544823269586,
+      "height_game_cm": 1084.4858615878363,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5695.121462765408,
+        -36998.32394911254
+      ],
+      "yaw": -63.191837183660226,
+      "height_game_cm": 978.8596676655869,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -13998.439834511883,
+        -6921.401539662089
+      ],
+      "yaw": 106.5802558092438,
+      "height_game_cm": 1169.5081094849816,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5990.551866811948,
+        -22735.458629456833
+      ],
+      "yaw": -80.49964815339206,
+      "height_game_cm": 1036.2302872658818,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4243.627487976126,
+        -30946.288591188306
+      ],
+      "yaw": 14.970702577173398,
+      "height_game_cm": 1210.9011672304014,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -10785.961095529274,
+        -10238.849206862815
+      ],
+      "yaw": -62.771387932309224,
+      "height_game_cm": 960.0709567518238,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6459.4358206635225,
+        -31988.485260974987
+      ],
+      "yaw": 131.961142182684,
+      "height_game_cm": 1066.7834210508413,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5006.694175071589,
+        -16990.800731580555
+      ],
+      "yaw": -140.68746984542142,
+      "height_game_cm": 1153.945078987717,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16997.37484394704,
+        6512.46506834172
+      ],
+      "yaw": 136.3750073451589,
+      "height_game_cm": 1079.0867084636234,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16173.793377718572,
+        9374.090091752827
+      ],
+      "yaw": -86.87109240609162,
+      "height_game_cm": 994.7177584832916,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -16735.51021393016,
+        -6123.906954935781
+      ],
+      "yaw": -10.633494970957884,
+      "height_game_cm": 1174.0242392232817,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        10956.230338550482,
+        -33184.185902018035
+      ],
+      "yaw": 146.41272729334048,
+      "height_game_cm": 1355.6262751337913,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        3731.540723457114,
+        -26274.55353855413
+      ],
+      "yaw": 78.46520173248791,
+      "height_game_cm": 1283.4051236344148,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4598.724577469988,
+        -778.4886485685784
+      ],
+      "yaw": -44.35837236259434,
+      "height_game_cm": 892.6352003668069,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6936.745372558595,
+        3126.031283311553
+      ],
+      "yaw": 0.3347238360294966,
+      "height_game_cm": 1302.5056746073096,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -9846.838549227516,
+        -10600.336861690874
+      ],
+      "yaw": -37.10071158095309,
+      "height_game_cm": 1288.0368431121656,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6541.783581324333,
+        -30416.245765477004
+      ],
+      "yaw": 16.283558712836196,
+      "height_game_cm": 1315.0804861461606,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5845.215662662526,
+        -21189.588735940786
+      ],
+      "yaw": 37.779615562712024,
+      "height_game_cm": 900.5255718985042,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        -5784.8171392077475,
+        -11833.454362265176
+      ],
+      "yaw": 53.81822342071689,
+      "height_game_cm": 908.6212862557136,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6208.534545000992,
+        -25499.608624190547
+      ],
+      "yaw": -126.46251702355363,
+      "height_game_cm": 1079.6230056219317,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        981.9824723144666,
+        -21819.806238527308
+      ],
+      "yaw": 122.19181562237367,
+      "height_game_cm": 988.1509947483962,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        4824.735961228198,
+        -1970.6011085355567
+      ],
+      "yaw": 120.50116189635906,
+      "height_game_cm": 1050.8233006218904,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5770.696182131447,
+        -23602.1288594046
+      ],
+      "yaw": -25.88242938125657,
+      "height_game_cm": 1149.0766371653367,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        5739.982600987263,
+        -30344.99080239026
+      ],
+      "yaw": -161.39565275570982,
+      "height_game_cm": 1205.519622400037,
+      "placement": "authored_boundary",
+      "osm_id": null
+    },
+    {
+      "xy_cm": [
+        6881.784896394776,
+        -28605.144701664198
+      ],
+      "yaw": -148.11452253063223,
+      "height_game_cm": 898.1915216900054,
+      "placement": "authored_boundary",
+      "osm_id": null
+    }
+  ],
+  "count": 587,
+  "by_region": {
+    "mapped_tree": 10,
+    "mapped_woodland": 77,
+    "authored_lakeshore": 140,
+    "authored_boundary": 360
+  },
+  "all_outside_exclusions": true,
+  "all_inside_park": true
+}

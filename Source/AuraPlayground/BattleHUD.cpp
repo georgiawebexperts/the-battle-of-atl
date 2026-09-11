@@ -1,0 +1,76 @@
+#include "BattleBike.h"
+#include "BattleRider.h"
+#include "BattleQuest.h"
+#include "BattleZombie.h"
+#include "PiedmontPedestrian.h"
+#include "BattleCheckpoints.h"
+#include "Engine/Canvas.h"
+#include "CanvasItem.h"
+#include "Styling/CoreStyle.h"
+#include "Engine/Engine.h"
+#include "Engine/Font.h"
+#include "EngineUtils.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/PlayerController.h"
+
+void ABattleLabHUD::DrawHUD(){
+ Super::DrawHUD();if(!Canvas||!GEngine||UGameplayStatics::IsGamePaused(this))return;
+ const float W=Canvas->SizeX,H=Canvas->SizeY,S=FMath::Clamp(FMath::Min(W/1920.f,H/1080.f),.75f,1.5f),M=28*S;
+ if(!ReadableFont){ReadableFont=NewObject<UFont>(this);ReadableFont->FontCacheType=EFontCacheType::Runtime;}
+ const FLinearColor Ink(.018,.024,.032,.93),Peach(1,.64,.32),Muted(.77,.82,.87);
+ auto Panel=[&](float X,float Y,float Width,float Height){DrawRect(Ink,X,Y,Width,Height);};
+ auto Text=[&](const FString& T,float X,float Y,float Size,FLinearColor C=FLinearColor::White){FCanvasTextItem Item(FVector2D(X,Y),FText::FromString(T),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(Size*S)),C);Item.Font=ReadableFont;Canvas->DrawItem(Item);};
+ auto Center=[&](const FString& T,float Y,float Size,FLinearColor C=FLinearColor::White){FCanvasTextItem Item(FVector2D(W*.5f,Y),FText::FromString(T),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(Size*S)),C);Item.Font=ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);};
+ auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ auto* Bike=Cast<ABattleBike>(GetOwningPawn());auto* Person=Cast<ABattleRider>(GetOwningPawn());auto* Owner=Bike?Bike:Person?Person->ParkedBike.Get():nullptr;
+ if(!Owner)return;
+ Panel(M,M,470*S,106*S);DrawRect(Peach,M,M,5*S,106*S);
+ Text(Park&&Park->Quest&&Park->Quest->bCollected?TEXT("GET HOME"):TEXT("FIND THE ARTIFACT"),M+20*S,M+15*S,30,Peach);
+ FString Objective=TEXT("Follow the gold radar signal");
+ if(Park&&Park->Quest&&Park->Quest->bCollected)Objective=Park->Quest->NextCheckpoint<2?FString(BattleCheckpoints::Anchors[Park->Quest->NextCheckpoint].Name):TEXT("Through Krog Street Tunnel");
+ Text(Objective,M+20*S,M+60*S,23,Muted);
+ if(Park){
+  Panel(W*.5f-125*S,M,250*S,106*S);
+  const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
+  Center(FString::Printf(TEXT("%02d:%02d"),Seconds/60,Seconds%60),M+6*S,50,Seconds<60?FLinearColor(1,.2,.2):FLinearColor::White);
+  Center(Park->DifficultyName.ToString(),M+66*S,22,Muted);
+  if(Park->Quest)Park->Quest->DrawRadar(this,Canvas);
+  if(Park->StartCountdown>0){Panel(W*.5f-100*S,H*.38f,200*S,120*S);Center(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),H*.38f+12*S,82,Peach);}
+ }
+ Panel(W-M-300*S,M,300*S,106*S);
+ if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
+ else{Text(BattleWeapons::Name(Person->CurrentWeapon),W-M-280*S,M+12*S,28,Peach);Text(FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()),W-M-280*S,M+55*S,30);}
+ const float Bottom=H-M-156*S;
+ Panel(M,Bottom,310*S,156*S);
+ Text(FString::Printf(TEXT("HEALTH  %.0f"),Owner->RiderHealth),M+18*S,Bottom+10*S,22);
+ DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+50*S,274*S,18*S);DrawRect(Owner->RiderHealth<25?FLinearColor(1,.15,.1):FLinearColor(.3,.9,.62),M+18*S,Bottom+50*S,FMath::Clamp(Owner->RiderHealth/100.f,0.f,1.f)*274*S,18*S);
+ Text(FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
+ DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);
+ FString Prompt=TEXT("E  GET OFF THE BIKE");
+ FString Help=TEXT("W pedal   A / D steer   SPACE brake   ESC help");
+ if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=TEXT("CLICK fire   R reload   F melee   ESC help");}
+ Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
+ Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
+ if(Bike)Text(FString::Printf(TEXT("PISTOL  %d"),Bike->PistolAmmo),M+20*S,Bottom-48*S,27,Peach);
+ const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;
+ if(auto* PC=GetOwningPlayerController()){
+  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
+  if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){
+   auto* Target=Cast<APiedmontExplorer>(Hit.GetActor());
+   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->IsA<ABattleZombie>()?TEXT("ZOMBIE"):TEXT("PERSON");Panel(CX-80*S,CY+32*S,160*S,38*S);Center(Name,CY+36*S,22,Aim);}
+  }
+ }
+ DrawLine(CX-15*S,CY,CX-5*S,CY,Aim,2*S);DrawLine(CX+5*S,CY,CX+15*S,CY,Aim,2*S);DrawLine(CX,CY-15*S,CX,CY-5*S,Aim,2*S);DrawLine(CX,CY+5*S,CX,CY+15*S,Aim,2*S);
+ if((Person?Person->HitFeedback:Bike->HitFeedback)>0){for(int SX:{-1,1})for(int SY:{-1,1})DrawLine(CX+SX*8*S,CY+SY*8*S,CX+SX*19*S,CY+SY*19*S,Peach,3*S);}
+ FString Notice;
+ if(Owner->RespawnRemaining>0)Notice=TEXT("RECOVERING AT CHECKPOINT  |  -10 SECONDS");
+ else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
+ else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
+ else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
+ if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
+ if(auto* Viewer=GetOwningPawn()){
+  const ABattleZombie* Speaking=nullptr;float Best=2500;
+  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->SubtitleRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Speaking=*It;}}
+  if(Speaking){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(Speaking->Subtitle,H-M-159*S,24);}
+ }
+}
