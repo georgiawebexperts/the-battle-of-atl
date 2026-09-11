@@ -1,8 +1,8 @@
 {
-  "build": 11,
-  "version": "0.11.0-dev",
+  "build": 12,
+  "version": "0.12.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "V3 park integration and sourced 14th Street spawn; 39 park, 2 startup and 14 lab checks pass; full game and presentation incomplete",
+  "milestone": "Native Mac playtest packaged, desktop link, menu and headless startup pass; visual retest awaiting unlock; full V3 incomplete",
   "author": "2026-09-11 [codex-maclaptop]"
 }

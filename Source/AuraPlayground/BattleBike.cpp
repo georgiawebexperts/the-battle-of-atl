@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleMacController.h"
 #include "BattleRideFX.h"
 #include "Components/AudioComponent.h"
 #include "PiedmontDarkZone.h"
@@ -115,7 +116,7 @@ void ABattleBike::ValidationKey(FName Key,bool Pressed){
  if(auto* PC=Cast<APlayerController>(GetController()))PC->InputKey(FInputKeyParams(FKey(Key),Pressed?IE_Pressed:IE_Released,Pressed?1.0:0.0));
 #endif
 }
-ABattleParkMode::ABattleParkMode(){CourseLabel=TEXT("PIEDMONT PARK | DEVELOPMENT");}
+ABattleParkMode::ABattleParkMode(){CourseLabel=TEXT("PIEDMONT PARK | DEVELOPMENT");PlayerControllerClass=ABattleMacController::StaticClass();}
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){

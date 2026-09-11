@@ -19,3 +19,14 @@ Active spec: V3-SPEC.md plus V3-DECISIONS.md (native Mac delivery overrides Wind
 | Final play acceptance | Full run of each difficulty; geography/reference screenshots, Meadow activity, zombie combat/subtitles, radar retrieval-to-home flow, terrain-proof riding/FPS/remount and standalone launch verified. Actual fun/playability feedback required; subset tests do not prove this. |
 
 Increment the project build version at each saved milestone. Preserve the complete scope and the build order.
+
+
+## Build 012 — 0.12.0-dev — 2026-09-11 [codex-maclaptop]
+
+Created a native arm64 Development app on Adam Assets and a desktop symlink named Battle for the A.app. Added a standalone launch menu, Start Park Ride, Instructions, graphics presets, Quit, and Escape pause/resume. Editor PIE remains immediately playable. The menu explicitly identifies the unfinished park playtest; this is not the complete V3 front end or campaign. Default Mac startup is PiedmontWorld, with 1080p windowed settings and a 60 FPS cap, not measured 60 FPS acceptance.
+
+Three packaging issues were diagnosed and fixed: missing editor GameFeatureData asset-manager cook rule; UAT archive copying the executable-only bundle rather than the complete staged app; and a standalone startup crash in UConversationRegistry/UGameFeaturesSubsystem, pulled in by Aura's AllToolsets dependencies. Aura now has TargetAllowList Editor, preserving development use while excluding its dependency chain from the Game target. Finalization checks for cooked IoStore content, copies the complete staged app, applies an original icon, signs locally, and installs the desktop link. Config/DefaultEngine.ini remains untouched/untracked; AndroidFileServer settings are denied from staged config.
+
+Native Game/Editor builds and BuildCookRun pass. The packaged app passes display-free startup: loads PiedmontWorld, selects BattleParkMode, initializes the Home menu, and exits 0 with no errors. Codesign verification passes. The first rendered launch exposed the now-fixed plugin crash; the Mac locked before visual retesting. Manual unlock requested. Start/instructions/options/pause/quit, packaged movement/dismount/fire/remount, audio and performance remain unverified in the corrected rendered app. Report: Tests/Results/2026-09-11-v3-mac-package.json.
+
+Final app: /Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/BattleForTheA.app (~917 MiB). Full V3 world, foliage/life, route, enemies/weapons, retrieval/checkpoints/radar/difficulty/saves/audio/performance remain unfinished. Goal stays active.

@@ -1,0 +1,31 @@
+{
+  "build": 12,
+  "version": "0.12.0-dev",
+  "platform": "macOS arm64",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/BattleForTheA.app",
+  "desktop_link": "/Users/elliottinspace/Desktop/Battle for the A.app",
+  "passed": [
+    "Native Game and Editor compilation",
+    "BuildCookRun exit 0",
+    "Complete staged app contains cooked IoStore containers",
+    "Local codesign --verify --deep --strict",
+    "Game receipt excludes Aura, AllToolsets and CommonConversation",
+    "Packaged headless startup loads PiedmontWorld with BattleParkMode",
+    "Title menu initialized in packaged headless startup",
+    "Headless startup exits 0 without errors"
+  ],
+  "pending": [
+    "Rendered launch after plugin fix",
+    "Start/instructions/options/pause/quit UI",
+    "Packaged riding/dismount/shoot/remount",
+    "Measured frame rate and subjective audio",
+    "Full V3 game acceptance"
+  ],
+  "failures_fixed": [
+    "GameFeatureData cook rule missing",
+    "UAT archive copied binary-only bundle: finalize uses complete staged app",
+    "CommonConversation startup crash from Aura dependency chain: Aura restricted to Editor target"
+  ],
+  "limitation": "Mac locked during visual retest; requested manual unlock. Headless verification does not establish rendered UI or gameplay acceptance.",
+  "author": "2026-09-11 [codex-maclaptop]"
+}
