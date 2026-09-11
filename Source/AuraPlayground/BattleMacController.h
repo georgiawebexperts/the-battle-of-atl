@@ -25,6 +25,8 @@ private:
  float ConnectorElapsed=0,ConnectorTravel=0,ConnectorMaxError=0;
  int32 ConnectorLeg=0,ConnectorWipeouts=0,TrailGroundSamples=0,TrailPavedSamples=0;
  FVector ConnectorPrevious;
+ float TunnelDarkTime=0;
+ int32 TunnelLitSamples=0,TunnelUnlitSamples=0;
  void ShowMenu(FString Page=TEXT("Home"));
  void ResumeRide();
  void RemoveMenu();

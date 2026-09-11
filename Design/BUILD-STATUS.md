@@ -304,3 +304,45 @@ After Artifact collection, the gold route joins the nearest mainline point throu
 The real cooked Mac full-route test passes both directions in third gear through normal player-controller W/A/D events and CharacterMovement. Crowds are disabled only in this opt-in development probe to isolate terrain/decks. Travel206903.69gamecm (about6.2km of mapped distance), maximum centreline deviation48.59cm, zero wipeouts, and all12401grounded samples on pavement. Evidence: Tests/Results/2026-09-11-native-eastside-drive.json. A first compile attempt used a nonliteral checked format string; corrected before successful packaging. Source interpolation initially exceeded the desired profile tolerance; refined bridge regions and reran installed collision validation successfully.
 
 All three updated native quest/difficulty profiles pass, including canonical route termination at the Irwin target; two-second water recovery and the short Monroe connector also pass. Results retain separate build017 filenames. Installed complete locally signed native app0.17.0 with build016 preserved under Previous. Mac remains locked, so rendered/physical-input/audio/performance acceptance is pending. Full V3 remains unfinished and the goal stays active.
+
+
+## Build018 — 0.18.0-dev — 2026-09-11 [codex-maclaptop]
+
+Added the 727.175 real-metre connected route from Irwin through both Krog Tunnel
+portals to the southern sidewalk exit, six OSM ways. The sidewalk changes name
+inside the tunnel; roadway44062162 supplies the full portal span rather than
+ending the roof at the end of tunnel-tagged cycleway722838795. Eight meshes add
+the trail, roadway, walls, roof and columns. Dimensions are authored for arcade
+play at 1:3 world scale, including 270gamecm headroom, not photo-matched or surveyed.
+Graffiti, echoing audio and final Krog architecture remain unfinished.
+
+The Landscape now uses the existing lakebed plus a local tunnel excavation.
+2,123 height samples are lowered; every sample outside its allowed corridor is
+byte-identical. The floor grade is authored between bare-earth samples outside
+the portals. The DEM does not describe the subterranean interior. A curved roof
+join initially had gaps; shared cross-sections corrected those before map save.
+The first commandlet attempt used a relative project filename and failed before
+loading; a subsequent Python component-access error was also fixed before save.
+
+Installed collision passes372 path samples (max error0.077cm) and50 overhead
+samples (max error0.249cm), with1978 park/Eastside surface samples exactly
+preserved. Navigation through the new stretch passes. The return radar route now
+continues through the tunnel; home and checkpoint/finish sequencing remain
+unfinished. Darkness volumes cover the tunnel. Evidence:
+Tests/Results/2026-09-11-krog-installed.json.
+
+Native Game/Editor compilation and packaging pass. The cooked Krog drive covers
+both directions through normal W/A/D input and CharacterMovement:48,014.81gamecm,
+63.66cm maximum centreline deviation, zero wipeouts, all3010grounded samples on
+pavement. Tunnel illumination state passes476lit samples and0unlit after the
+activation allowance. Crowds are disabled only for this route fixture. This
+checks light state, not the rendered beam or artwork. All three difficulty,
+Artifact/radar/route, dismount/fire/remount, pause and timeout profiles pass. Lake
+recovery passes in2.001seconds. Evidence: native-krog-drive.json,
+build018-native-quest.json and build018-native-geography.json in Tests/Results
+with the2026-09-11 prefix.
+
+Installed and locally signed complete native0.18.0 app behind the desktop icon;
+build017 retained under Previous. Physical Mac window/input, rendered
+visuals/audio and frame rate remain unverified while the Mac is locked. Full V3
+remains incomplete; the goal remains active.

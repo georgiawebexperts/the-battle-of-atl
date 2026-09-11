@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "phase": 2,
+  "reason": "Completed water return",
+  "recoverySeconds": 2.001,
+  "wipeouts": 1,
+  "water_return": {
+    "inside_boundary": false,
+    "on_path": true,
+    "on_bridge": false,
+    "on_gravel": true
+  },
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}

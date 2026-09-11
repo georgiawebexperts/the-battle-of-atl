@@ -33,7 +33,7 @@ void ABattleQuest::BeginPlay(){
   for(float D=0;D<Length;D+=700)Segments.Add({FVector2D(S->GetLocationAtDistanceAlongSpline(D,ESplineCoordinateSpace::World)),FVector2D(S->GetLocationAtDistanceAlongSpline(FMath::Min(D+700,Length),ESplineCoordinateSpace::World))});
  }
  // Ordered sourced mainline, kept separate from Artifact's park-exit exclusion.
- for(int32 Part=0;Part<8;Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("BattleEastside_%d"),Part)))){
+ for(int32 Section=0;Section<2;Section++)for(int32 Part=0;Part<(Section==0?8:6);Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Section==0?TEXT("BattleEastside"):TEXT("BattleKrog"),Part)))){
   auto* S=It->Centerline.Get();for(int32 I=0;I<S->GetNumberOfSplinePoints();I++){
    const FVector P=S->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);
    if(Mainline.IsEmpty()||!Mainline.Last().Equals(P,1))Mainline.Add(P);
@@ -96,7 +96,7 @@ void ABattleQuest::RefreshRoute(){
  if(Path&&Path->IsValid()&&!Path->IsPartial()){
   RoutePoints=Path->PathPoints;
   // Once joined, follow the actual trail and bridges instead of cutting across
-  // bare ground along a navigation shortcut. Krog/home will extend this route.
+  // bare ground along a navigation shortcut. The Cabbagetown home leg will extend this route.
   for(int32 I=Next;I<Mainline.Num();I++)RoutePoints.Add(Mainline[I]);
  }
 }
@@ -158,5 +158,5 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  HUD->DrawText(TEXT("S"),FColor::White,Center.X-4,Center.Y+Radius+3,nullptr,.9);
  HUD->DrawText(TEXT("W"),FColor::White,Center.X-Radius-16,Center.Y-7,nullptr,.9);
  HUD->DrawText(TEXT("E"),FColor::White,Center.X+Radius+7,Center.Y-7,nullptr,.9);
- HUD->DrawText(!bReady?TEXT("Artifact unavailable"):(bCollected?TEXT("Get home | south toward Irwin"):TEXT("Find the Artifact")),FColor(255,205,95),35,218,nullptr,1.4);
+ HUD->DrawText(!bReady?TEXT("Artifact unavailable"):(bCollected?TEXT("Get home | through Krog Tunnel"):TEXT("Find the Artifact")),FColor(255,205,95),35,218,nullptr,1.4);
 }

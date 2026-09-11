@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48014.81,
+  "maxCenterlineErrorCm": 63.66,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 3010,
+    "paved": 3010
+  },
+  "lights": {
+    "lit_samples": 476,
+    "unlit_samples": 0
+  },
+  "exit_code": 0,
+  "scope": "Irwin through the complete Krog tunnel, both directions using real W/A/D input and CharacterMovement; crowds disabled to isolate terrain/decks; appearance unverified."
+}

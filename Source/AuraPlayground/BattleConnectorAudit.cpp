@@ -10,24 +10,27 @@
 #include "Misc/CommandLine.h"
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
+#include "PiedmontDarkZone.h"
 
 // Opt-in cooked-game physics test. Only each leg's starting fixture is teleported;
 // the entire crossing is traversed through ordinary keyboard input and movement.
 void ABattleMacController::TickConnectorAudit(float Dt){
 #if !UE_BUILD_SHIPPING
- const bool Eastside=FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
+ const bool Krog=FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit"));
+ const bool Eastside=Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
  auto Finish=[&](bool Passed){
   UE_LOG(LogTemp,Display,TEXT("Connector state: key=%d pedal=%.1f speed=%.1f movement=%d tick=%d"),IsInputKeyDown(EKeys::W),Bike->Ride->Pedal,Bike->Ride->Speed,int32(Bike->Ride->MovementMode),Bike->IsActorTickEnabled());
   UE_LOG(LogTemp,Display,TEXT("TrailGroundAudit: samples=%d paved=%d"),TrailGroundSamples,TrailPavedSamples);
   if(Eastside)Passed=Passed&&TrailGroundSamples>100&&TrailPavedSamples>=TrailGroundSamples*.99f;
+  if(Krog){UE_LOG(LogTemp,Display,TEXT("TunnelLightAudit: lit=%d unlit=%d"),TunnelLitSamples,TunnelUnlitSamples);Passed=Passed&&TunnelLitSamples>10&&TunnelUnlitSamples==0;}
   FlushPressedKeys();
   UE_LOG(LogTemp,Display,TEXT("BattleConnectorAudit: {\"passed\":%s,\"completedLegs\":%d,\"travelCm\":%.2f,\"maxCenterlineErrorCm\":%.2f,\"wipeouts\":%d}"),Passed?TEXT("true"):TEXT("false"),ConnectorLeg,ConnectorTravel,ConnectorMaxError,Bike->Ride->Wipeouts-ConnectorWipeouts);
   UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);
  };
  if(ConnectorPoints.IsEmpty()){
-  for(int32 Part=0;Part<(Eastside?8:2);Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Eastside?TEXT("BattleEastside"):TEXT("BattleConnector"),Part)))){
+  for(int32 Part=0;Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
    for(int32 I=0;I<It->Centerline->GetNumberOfSplinePoints();I++){
     const FVector P=It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);
     if(ConnectorPoints.IsEmpty()||!ConnectorPoints.Last().Equals(P,1))ConnectorPoints.Add(P);
@@ -45,6 +48,11 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  if(Eastside&&FMath::FloorToInt(ConnectorElapsed/30)!=FMath::FloorToInt((ConnectorElapsed+Dt)/30))UE_LOG(LogTemp,Display,TEXT("EastsideDrive: leg=%d elapsed=%.0f travelCm=%.0f"),ConnectorLeg,ConnectorElapsed,ConnectorTravel);
  ConnectorElapsed+=Dt;
  if(Bike->Ride->IsMovingOnGround()&&Bike->Ride->Speed>100){TrailGroundSamples++;const AActor* Floor=Bike->Ride->CurrentFloor.HitResult.GetActor();if(Floor&&(Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))))TrailPavedSamples++;}
+ if(Krog){
+  bool Dark=false;for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(Bike->GetActorLocation())){Dark=true;break;}
+  TunnelDarkTime=Dark?TunnelDarkTime+Dt:0;
+  if(TunnelDarkTime>.4f){if(Bike->bLightsOn)TunnelLitSamples++;else TunnelUnlitSamples++;}
+ }
  const FVector Position=Bike->GetActorLocation();
  ConnectorTravel+=FVector::Dist2D(Position,ConnectorPrevious);ConnectorPrevious=Position;
  float Best=TNumericLimits<float>::Max();int32 Segment=0;FVector Closest;
@@ -57,7 +65,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  if(ConnectorElapsed>(Eastside?180:30)||Best>180||Bike->Ride->Wipeouts!=ConnectorWipeouts){Finish(false);return;}
  if(ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100){
   FlushPressedKeys();ConnectorLeg++;
-  if(ConnectorLeg==2){Finish(ConnectorTravel>(Eastside?200000:4500));return;}
+  if(ConnectorLeg==2){Finish(ConnectorTravel>(Krog?47000:(Eastside?200000:4500)));return;}
   Algo::Reverse(ConnectorPoints);ConnectorElapsed=0;return;
  }
  FVector Target=Closest;float Remaining=Eastside?350:180;

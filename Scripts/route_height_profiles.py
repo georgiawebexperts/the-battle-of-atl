@@ -10,7 +10,7 @@ class RouteHeightProfiles:
         self.profiles=self.data['profiles']
         for profile in self.profiles:
             from shapely.ops import substring
-            profile['_bounds']=substring(self.line,profile['blend_start_cm'],profile['blend_end_cm']).buffer(400).bounds
+            profile['_bounds']=substring(self.line,profile['blend_start_cm'],profile['blend_end_cm']).buffer(profile.get('bounds_padding_cm',400)).bounds
 
     def height(self,x,y,ground):
         for p in self.profiles:

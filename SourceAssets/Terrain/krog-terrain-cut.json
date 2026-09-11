@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "base": "atlanta-height-lakebed.r16",
+  "output": "atlanta-height-krog.r16",
+  "changed_samples": 2123,
+  "allowed_samples": 2137,
+  "outside_corridor_identical": true,
+  "only_lowered": true,
+  "max_lowering_game_cm": 211.19791666666669,
+  "source_bounds_cm": [
+    28355.37858090504,
+    -121052.31238519122,
+    32590.080223012566,
+    -114566.79898907471
+  ],
+  "base_sha256": "c06628f831e1ca9bb89ec4abd98e3f07b234eb4c11483acf6bafd81b8ae3b0ef",
+  "output_sha256": "c37a6bb88e72b24d8ea109d3ec03afc503e881dcf35c301043eaf5d69aeac645",
+  "policy": "Landscape is cut 32 cm below the sidewalk profile (20 cm below roadway). Corridor centre shifted -140 cm laterally, full half-width 580 cm, eased shoulders to 780 cm. Authored arcade excavation, not a surveyed subterranean DEM.",
+  "installed": false
+}

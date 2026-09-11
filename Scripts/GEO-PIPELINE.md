@@ -11,3 +11,29 @@ The map carries `BattleGeography_ESU_v1` on WorldSettings. `convert_park_coordin
 Current landscape, lake, pavement, bridge, spline, connector and start installers use the new placement convention. The V3 park validator now converts its source fixtures too. The complete authored map remains the primary game asset; `build_measured_landscape.py` creates a new map and must not be run casually over it. Older V2 validation reports and source-space draft scripts are historical evidence, not acceptance of the converted game.
 
 Game radar offsets use world east/south coordinates directly for a north-up screen. `prepare_battle_exit.py` generates the native exit header from the converted source endpoint; start JSON retains both source and world placement. Packaged geography tests verify the saved start/exit convention, radar cardinal axes, island exclusion and real timed water return. These checks do not establish rendered appearance, all bridge ride-throughs, 60 FPS or the full game requirements.
+
+
+## Krog excavation — 2026-09-11 [codex-maclaptop]
+
+The installed Landscape for build018 uses `atlanta-height-krog.r16`, generated
+from the existing lakebed R16 by `carve_krog_terrain.py`. It preserves all samples
+outside the local tunnel corridor byte for byte. Do not rebuild from the older
+lakebed or original terrain and erase this excavation. `krog-terrain-cut.json`
+records hashes and the authored cut policy; its `installed:false` refers to the
+source-generation stage, while the installed collision report is authoritative.
+
+`prepare_krog_route.py` follows six connected OSM ways from Irwin to the southern
+tunnel exit. The sidewalk changes name inside the tunnel, so roadway44062162
+provides portal stations. `krog-height-profiles.json` uses the shared profile
+interpolator; bridge-named fields describe the fully overridden tunnel section.
+The tunnel floor is authored between bare-earth samples outside the portals.
+The DEM does not measure the tunnel interior. Width and 270cm headroom accommodate
+an unscaled player in the 1:3 world; they are not surveyed architecture.
+
+Regenerate pavement using `bake_park_pavement.py --network krog-route-network.json
+--output-dir KrogRoute --prefix KrogRoute --height-profiles krog-height-profiles.json
+--subtract-network eastside-trail-network.json`, then `bake_krog_structure.py`.
+The structure uses shared cross-sections to avoid gaps at curved segment joins.
+`install_krog_route.py` imports the new terrain and source-reflected geometry,
+retains the old on-disk map until collision/navigation checks pass, and creates
+ordered `BattleKrog_0` through `_5` splines plus tunnel darkness volumes.
