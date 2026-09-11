@@ -21,6 +21,12 @@ public:
  UBattleBikeMovement();
  virtual void TickComponent(float Dt,ELevelTick TickType,FActorComponentTickFunction* Function) override;
  virtual void CalcVelocity(float Dt,float Friction,bool Fluid,float Braking) override;
+ virtual void OnMovementModeChanged(EMovementMode PreviousMovementMode,uint8 PreviousCustomMode) override;
+ bool Hop();
+ int32 AirRewards=0;
+ float AirSeconds=0,AirPeak=0;
+ bool bRewardableAir=false;
+ FVector AirOrigin;
  virtual void HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta) override;
  UPROPERTY(BlueprintReadOnly) float Speed=0;
  UPROPERTY(BlueprintReadOnly) float SmoothedSteer=0;
@@ -123,6 +129,7 @@ private:
  bool WasSliding=false,HasTrackPoint=false;
  float HornCooldown=0,LightOffDelay=0,LightCheck=0;
  void StartBoost(){Boost();}
+ void HopBike(){Ride->Hop();}
  void Interact(){Dismount();}
  void UpdateNearMisses();
  TMap<TWeakObjectPtr<AActor>,FVector2D> Passes;

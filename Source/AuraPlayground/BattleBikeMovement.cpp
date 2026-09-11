@@ -10,6 +10,7 @@ UBattleBikeMovement::UBattleBikeMovement(){
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
+ if(IsFalling()){AirSeconds+=Dt;if(CharacterOwner)AirPeak=FMath::Max(AirPeak,float(CharacterOwner->GetActorLocation().Z-AirOrigin.Z));}
  BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
  SmoothedSteer=SteeringResponse(SmoothedSteer,Recovery>0?0.f:Steer,Dt);
  ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);BounceRemaining=FMath::Max(0.f,BounceRemaining-Dt);SlideRemaining=FMath::Max(0.f,SlideRemaining-Dt);
@@ -70,4 +71,21 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
  // Terrain, walls and fences never enter the wipeout state.
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>100)Bike->RideImpact(.45f);
  BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=0;
+}
+
+bool UBattleBikeMovement::Hop(){
+ auto* Bike=Cast<ABattleBike>(CharacterOwner);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
+ if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||!IsMovingOnGround()||Speed<500)return false;
+ Velocity.Z=650;SetMovementMode(MOVE_Falling);return true;
+}
+void UBattleBikeMovement::OnMovementModeChanged(EMovementMode Previous,uint8 Custom){
+ Super::OnMovementModeChanged(Previous,Custom);
+ auto* Bike=Cast<ABattleBike>(CharacterOwner);if(!Bike)return;
+ if(IsFalling()&&Previous==MOVE_Walking){AirOrigin=Bike->GetActorLocation();AirSeconds=AirPeak=0;bRewardableAir=Speed>=500&&!Bike->bParked&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;}
+ else if(Previous==MOVE_Falling){
+  bool Water=false;for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Bike->GetActorLocation())){Water=true;break;}
+  const bool Earned=!Water&&bRewardableAir&&IsMovingOnGround()&&AirSeconds>=.25f&&AirPeak>=65&&Recovery<=0&&!Bike->bParked&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;
+  bRewardableAir=false;
+  if(Earned)if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->AdjustRunTime(10,TEXT("AIRTIME")))AirRewards++;
+ }
 }

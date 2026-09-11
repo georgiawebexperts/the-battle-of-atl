@@ -1,0 +1,30 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build034-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b68e7f58d9f6a502e2b8ac5c63d8238d8ad2ea88ef7ba50b78ee4f30b157b2bf"
+    },
+    {
+      "file": "work/build034-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d07a73e730d56ee043f4b2a4cf1f652e25dc600059e31e59f9f44f095e76902d"
+    }
+  ],
+  "visual_review": {
+    "bike_and_foot_inspected": true,
+    "jump_hint_readable": true,
+    "final_art_accepted": false,
+    "notes": "Bike J hint and mount prompts readable. Foot capture has a pedestrian very close to camera, obstructing view; crowd spacing remains a gameplay/presentation issue. No animation acceptance."
+  },
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

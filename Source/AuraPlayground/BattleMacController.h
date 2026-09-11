@@ -27,6 +27,8 @@ private:
  void TickFrisbeeAudit(float Dt);
  void TickHUDReview(float Dt);
  void TickTimeAudit(float Dt);
+ void TickJumpAudit(float Dt);
+ int32 JumpStage=0;float JumpClock=0,JumpTimeBefore=0;
  void TickSteeringAudit(float Dt);
  int32 SteeringStage=0;float SteeringClock=0,SteeringYaw=0;FVector SteeringStart=FVector::ZeroVector;
  void TickTroubleAudit(float Dt);

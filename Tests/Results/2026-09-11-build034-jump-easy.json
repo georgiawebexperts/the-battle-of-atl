@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 107.76,
+  "air_seconds": 0.696,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false
+}

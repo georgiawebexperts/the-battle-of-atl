@@ -50,7 +50,7 @@ void ABattleLabHUD::DrawHUD(){
  Text(FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);
  FString Prompt=TEXT("E  GET OFF THE BIKE");
- FString Help=TEXT("W/UP pedal   S/DOWN brake   Q/R gears");
+ FString Help=TEXT("W/UP pedal   S/DOWN brake   J jump");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=TEXT("CLICK fire   R reload   F melee   ESC help");}
  Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
