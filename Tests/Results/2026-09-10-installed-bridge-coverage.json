@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "scope": "One installed deck sample per sourced bridge way; not full rideability or architectural acceptance",
+  "ways": [
+    {
+      "osm_id": "61490793",
+      "pass": true,
+      "deck": "Park Drive unified Deck",
+      "height_error_cm": 0.015322791213520759
+    },
+    {
+      "osm_id": "102679938",
+      "pass": true,
+      "deck": "Lake crossing Deck",
+      "height_error_cm": 3.1555738928545907e-06
+    },
+    {
+      "osm_id": "146304984",
+      "pass": true,
+      "deck": "Park bridge 146304984 Deck",
+      "height_error_cm": 2.0955154127477726e-05
+    },
+    {
+      "osm_id": "146304988",
+      "pass": true,
+      "deck": "Lake crossing Wood",
+      "height_error_cm": 3.315010701498977e-06
+    },
+    {
+      "osm_id": "182302113",
+      "pass": true,
+      "deck": "Park bridge 182302113 Wood",
+      "height_error_cm": 1.798909465833276e-06
+    },
+    {
+      "osm_id": "226119763",
+      "pass": true,
+      "deck": "Park bridge 226119763 Deck",
+      "height_error_cm": 2.2801508407610527e-05
+    },
+    {
+      "osm_id": "226324512",
+      "pass": true,
+      "deck": "Park bridge 226324512 Wood",
+      "height_error_cm": 1.1319649274810217e-05
+    },
+    {
+      "osm_id": "226324514",
+      "pass": true,
+      "deck": "Park bridge 226324514 Wood",
+      "height_error_cm": 1.9041538052988471e-06
+    },
+    {
+      "osm_id": "1032063077",
+      "pass": true,
+      "deck": "Park bridge 1032063077 Deck",
+      "height_error_cm": 2.017813812926761e-05
+    },
+    {
+      "osm_id": "1050793219",
+      "pass": true,
+      "deck": "Park bridge 1050793219 Deck",
+      "height_error_cm": 1.2998844454159553e-05
+    },
+    {
+      "osm_id": "1384353622",
+      "pass": true,
+      "deck": "Park bridge 1384353622 Deck",
+      "height_error_cm": 0.0001240894482634758
+    },
+    {
+      "osm_id": "1384366242",
+      "pass": true,
+      "deck": "Park bridge 1384366242 Deck",
+      "height_error_cm": 6.057918881197111e-06
+    },
+    {
+      "osm_id": "1389725669",
+      "pass": true,
+      "deck": "Park Drive unified Deck",
+      "height_error_cm": 0.13484764289290752
+    },
+    {
+      "osm_id": "1389725671",
+      "pass": true,
+      "deck": "Park Drive unified Deck",
+      "height_error_cm": 0.10461625491672066
+    }
+  ]
+}

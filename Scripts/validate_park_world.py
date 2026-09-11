@@ -1,5 +1,18 @@
 import unreal,json,pathlib
-if globals().get('WORLD_JOB',{}).get('inspect_water'):
+if globals().get('WORLD_JOB',{}).get('inspect_actor'):
+ name=WORLD_JOB['inspect_actor'];rows=[]
+ for a in unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_actors():
+  if a.get_name()==name:rows.append({'name':a.get_name(),'label':a.get_actor_label(),'tags':[str(t) for t in a.tags],'bounds':str(a.get_actor_bounds(False))})
+ (pathlib.Path(unreal.Paths.project_dir())/'Scripts/actor-inspection.json').write_text(json.dumps(rows,indent=2))
+elif globals().get('WORLD_JOB',{}).get('inspect_bridges'):
+ rows=[]
+ for a in unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_actors():
+  if not isinstance(a,unreal.PiedmontPathSpline) or not a.get_editor_property('bridge'):continue
+  count=a.centerline.get_number_of_spline_points();v=a.centerline.get_location_at_spline_point(count//2,unreal.SplineCoordinateSpace.WORLD)
+  hit=unreal.PiedmontWorldTools.trace_world_surface(v+unreal.Vector(0,0,80),v-unreal.Vector(0,0,80));okay=bool(hit and hit[1].actor_has_tag('RideBridge') and abs(hit[0].z-v.z)<2)
+  rows.append({'osm_id':a.get_editor_property('osm_way_id'),'pass':okay,'deck':hit[1].get_actor_label() if hit else None,'height_error_cm':abs(hit[0].z-v.z) if hit else None})
+ (pathlib.Path(unreal.Paths.project_dir())/'Scripts/installed-bridge-coverage.json').write_text(json.dumps({'status':'passed' if len(rows)==14 and all(r['pass'] for r in rows) else 'failed','scope':'One installed deck sample per sourced bridge way; not full rideability or architectural acceptance','ways':rows},indent=2))
+elif globals().get('WORLD_JOB',{}).get('inspect_water'):
  result=[]
  for a in unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_actors():
   if isinstance(a,(unreal.WaterBodyLake,unreal.WaterZone)):

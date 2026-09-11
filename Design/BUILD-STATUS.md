@@ -119,3 +119,14 @@ Added the two public OSM pedestrian areas 1089139296 and Welcome Plaza 108918505
 Narrow deck tests exposed dismount capsules touching rail posts at the old 105 cm lateral offset. Reduced it to 90 cm, preserving floor, overlap and swept-barrier checks. Restart now restores gear 1 and zero cadence; encounter spawning runs only after checking timeout. Walking and combat regression results are recorded separately after the rebuild.
 
 Rebuilt regressions pass: 8/8 walking/possession/blocked-exit cases, 18/18 combat/run cases including reset to gear 1, and 9/9 actual attacker pursuit/defense cases. The closer dismount remains protected by overlap and swept-path checks.
+
+
+## 2026-09-10 — Park Drive and final two northern bridge decks
+
+Generated and installed a unified Park Drive deck for OSM ways 61490793, 1389725669 and 1389725671, plus individual decks for 1384353622 and 1384366242. Park Drive uses a smooth authored elevation field constrained to its six bank endpoints, retaining terrain where higher. It is not a surveyed bridge reconstruction. The overlapping road/sidewalk ribbons share one surface with outer rails, a solid underside, and no internal barriers. Closing faces are subdivided at the deck grid/triangle edges; the first unsplit caps caused invisible approach barriers and were replaced. All fourteen sourced bridge ways now have a verified installed deck midpoint within 2 cm of their editable spline. This is coverage evidence, not full network acceptance or final architectural matching.
+
+Ground probes now ignore bridge surfaces above the wheel's allowable floor level, preventing capture by an overhead deck. A low-deck fixture validates riding underneath without climbing/crashing and support from above. Small-curb handling now permits landings up to 24 cm lower as well as higher, retaining swept up/over collision checks against tall obstacles. One descending sidewalk lip exposed this asymmetry. Final rebuilt route and bike regression results are recorded below when complete.
+
+Config project version now matches the development HUD (0.3.0-dev). Design/ACCEPTANCE.md preserves the complete requested scope and lists unaccepted requirements; it does not replace or narrow V2-SPEC.md or WORLD-EXPANSION.md.
+
+Final rebuilt results: 30/30 remaining-bridge route checks (five OSM ways plus movement across Park Drive), 5/5 lake crossing checks, 5/5 short wooden spur checks, 2/2 underpass fixture checks and 17/17 retained bike/land regressions pass. Reports are archived under Tests/Results/2026-09-10-*. All fourteen sourced bridge ways have installed coverage and scoped live riding evidence. This does not certify every park junction, full connected navigation, architectural fidelity, or performance.

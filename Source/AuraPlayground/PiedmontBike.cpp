@@ -97,9 +97,15 @@ void UPiedmontBikeMovement::Step(float Dt){
  FHitResult Ground,Front,Rear;
  auto Probe=[&](FVector P,FHitResult& H){
   const FVector Start=P+FVector(0,0,100),End=P-FVector(0,0,180);
-  if(GetWorld()->LineTraceSingleByChannel(H,Start,End,ECC_Visibility,Q))return true;
+  FCollisionQueryParams FloorQuery=Q;
+  bool Found=GetWorld()->LineTraceSingleByChannel(H,Start,End,ECC_Visibility,FloorQuery);
+  // A deck above the wheel cannot become its ground while riding underneath.
+  for(int Skip=0;Found&&Skip<4&&H.GetActor()&&H.GetActor()->ActorHasTag(TEXT("RideBridge"))&&H.ImpactPoint.Z>P.Z-64.f;++Skip){
+   FloorQuery.AddIgnoredActor(H.GetActor());Found=GetWorld()->LineTraceSingleByChannel(H,Start,End,ECC_Visibility,FloorQuery);
+  }
+  if(Found)return true;
   // A finite tire contact remains stable at exact Landscape triangle corners.
-  return GetWorld()->SweepSingleByChannel(H,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(2.f),Q);
+  return GetWorld()->SweepSingleByChannel(H,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(2.f),FloorQuery);
  };
  Probe(Location,Ground);Probe(Location+Forward*60,Front);Probe(Location-Forward*60,Rear);
  bGrounded=Ground.bBlockingHit&&(Location.Z-Ground.ImpactPoint.Z<118)&&Ground.ImpactNormal.Z>.45;
@@ -140,12 +146,13 @@ void UPiedmontBikeMovement::Step(float Dt){
   const bool Water=Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideWater"));
   if(Water){Crash(TEXT("Water — shoreline recovery"));return;}
   if(Hit.ImpactNormal.Z<.45){
-   // A small curb or ramp lip is climbable; a wall or tall step is not.
+   // A small curb or ramp lip is climbable, including a descending landing.
+   // The swept up/over moves still reject walls and steps taller than 24 cm.
    FHitResult Ahead;const FVector Here=UpdatedComponent->GetComponentLocation();
    GetWorld()->LineTraceSingleByChannel(Ahead,Here+NewForward*48+FVector(0,0,30),Here+NewForward*48-FVector(0,0,130),ECC_Visibility,Q);
    const float Rise=Ahead.bBlockingHit?Ahead.ImpactPoint.Z-(Here.Z-96):1000;
    bool Stepped=false;
-   if(bGrounded&&Ahead.bBlockingHit&&Ahead.ImpactNormal.Z>.6&&Rise>=0&&Rise<=24&&(!Ahead.GetActor()||!Ahead.GetActor()->ActorHasTag(TEXT("RideWater")))){
+   if(bGrounded&&Ahead.bBlockingHit&&Ahead.ImpactNormal.Z>.6&&Rise>=-24&&Rise<=24&&(!Ahead.GetActor()||!Ahead.GetActor()->ActorHasTag(TEXT("RideWater")))){
     FHitResult UpHit,OverHit,DownHit;
     SafeMoveUpdatedComponent(FVector(0,0,26),Heading.Quaternion(),true,UpHit);
     if(!UpHit.bBlockingHit){

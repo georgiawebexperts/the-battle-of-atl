@@ -7,6 +7,8 @@ bridge_file=p/'SourceAssets/Terrain/LakeBridge/manifest.json'
 bridge=json.loads(bridge_file.read_text()) if bridge_file.exists() else {}
 wetland_file=p/'SourceAssets/Terrain/WetlandBridges/manifest.json'
 wetlands=json.loads(wetland_file.read_text())['bridges'] if wetland_file.exists() else []
+drive_file=p/'SourceAssets/Terrain/ParkDriveBridge/manifest.json'
+if drive_file.exists():wetlands+=json.loads(drive_file.read_text())['bridges']
 wetland_heights={b['osm_id']:b['centerline_cm'] for b in wetlands}
 existing={a.get_actor_label():a for a in ea.get_all_level_actors() if isinstance(a,unreal.PiedmontPathSpline)};rows=[]
 for i,path in enumerate(data['paths']):

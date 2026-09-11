@@ -1,9 +1,9 @@
-"""Authored bank-anchored decks for seven mapped creek and Northwoods crossings."""
+"""Authored bank-anchored decks for nine mapped creek and northern crossings."""
 from pathlib import Path
 import json,numpy as np
 P=Path(__file__).resolve().parents[1];O=P/'SourceAssets/Terrain/WetlandBridges';O.mkdir(exist_ok=True)
 paths=json.loads((P/'SourceAssets/Terrain/park-path-network.json').read_text())['paths']
-ids={146304984,182302113,226119763,226324512,226324514,1032063077,1050793219}
+ids={146304984,182302113,226119763,226324512,226324514,1032063077,1050793219,1384353622,1384366242}
 chunks=[];bridges=[]
 def quad(m,v):
  n=len(m['v']);m['v'].extend([list(x) for x in v]);m['f'].extend([[n,n+1,n+2],[n,n+2,n+3]])
