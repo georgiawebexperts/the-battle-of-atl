@@ -101,3 +101,10 @@ Added an over-shoulder camera, H horn with repeat limiting, and head/tail lights
 Latest rebuilt integration: 17/17 combat/run rules, 9/9 live pursuit/defense, 8/8 horn/automatic-light and 7/7 real-lake swim/return checks pass. Reports are archived under Tests/Results/2026-09-10-*. These checks do not establish finished visuals, complete geography or target frame rate.
 
 Final bike regression also passes 17/17 retained land/handling cases on the combat build. Total fresh checks for this checkpoint: 58 (17 bike + 17 combat/run + 9 live threats + 8 lights/horn + 7 swimming). Visual quality and full route acceptance remain separate.
+
+
+## 2026-09-10 — Lake crossing restored
+
+Installed OSM way 102679938 lake bridge deck plus mapped wood spur 146304988, with distinct deck/rail materials, Nanite meshes and full fallback collision. Deck elevation is authored from bank heights with a 12 cm crown; it is not a surveyed bridge structure. Updated editable splines retain those deck heights when rebuilt. Added a bridge-ground exception to dismount water rejection.
+
+Five live checks pass in Tests/Results/2026-09-10-lake-bridge-crossing.json: crossing each direction including 150 cm bank approaches, dismounting on the deck, remaining on foot above the water, and remounting. Imported mesh bounds agree within 0.001 cm. The wooden spur is installed but not independently ride-tested. Final bridge architecture/reference matching, the other twelve mapped bridge ways, remaining network connectivity and full end-to-end acceptance remain pending.

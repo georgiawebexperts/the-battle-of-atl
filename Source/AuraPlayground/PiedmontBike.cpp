@@ -340,7 +340,7 @@ bool APiedmontBike::Dismount(bool WaterEntry,bool Forced){
   FHitResult Ground;
   if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,80),Candidate-FVector(0,0,200),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.65f)continue;
   const FVector Target=Ground.ImpactPoint+FVector(0,0,92);
-  bool Wet=false;for(const auto& Water:Ride->WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Target))Wet=true;
+  bool Wet=false;if(!Ground.GetActor()||!Ground.GetActor()->ActorHasTag(TEXT("RideBridge")))for(const auto& Water:Ride->WaterHazards)if(Water.IsValid()&&Water->ContainsBike(Target))Wet=true;
   if(Wet||GetWorld()->OverlapBlockingTestByChannel(Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
   FHitResult Crossing;
   if(GetWorld()->SweepSingleByChannel(Crossing,GetActorLocation(),Target,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
