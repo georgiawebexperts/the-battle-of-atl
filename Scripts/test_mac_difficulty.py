@@ -14,10 +14,12 @@ with tempfile.TemporaryDirectory(prefix='battle-difficulty-') as scratch:
                 stdout=stream,stderr=subprocess.STDOUT,timeout=90)
         matches=re.findall(r'BattleAudit: (\{[^\n]+\})',log.read_text())
         data=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
+        quest=re.findall(r'BattleQuestAudit: ready=(\d) radar=(\d) placement=(\d) clipping=(\d) pickup=(\d) route=(\d) blocked=(\d) onFoot=(\d)',log.read_text())
+        data['quest']=dict(zip(['ready','radar','placement','clipping','pickup','route','blocked','onFoot'],[bool(int(x)) for x in quest[-1]])) if quest else {}
         data.update(exit_code=run.returncode,expected_timer=seconds,expected_crowd=population)
         data['passed']=bool(data.get('passed') and run.returncode==0 and data.get('timerSeconds')==seconds and data.get('desiredCrowd')==population)
         results.append(data)
         print(json.dumps(data),flush=True)
-        (root/'Tests/Results/2026-09-11-v3-native-difficulty.json').write_text(json.dumps({'profiles':results,'all_passed':all(r['passed'] for r in results),'rendered_ui_verified':False},indent=2)+'\n')
+        (root/'Tests/Results/2026-09-11-v3-native-quest.json').write_text(json.dumps({'profiles':results,'all_passed':all(r['passed'] for r in results),'rendered_ui_verified':False},indent=2)+'\n')
 if not all(r['passed'] for r in results):
     raise SystemExit(1)

@@ -1,8 +1,12 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "BattleQuest.h"
 #include "BattleRider.h"
 #include "PiedmontTrafficDirector.h"
 #include "EngineUtils.h"
+#include "Engine/StaticMeshActor.h"
+#include "Engine/StaticMesh.h"
+#include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/CommandLine.h"
 #include "Misc/FileHelper.h"
@@ -81,7 +85,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("Timers and walking crowds scale now. The expanded enemy roster and complete route are still in development."),14,FLinearColor(.7,.72,.75));
   Button(TEXT("BACK"),[this,Ended](){ShowMenu(Ended?TEXT("Loss"):TEXT("Home"));});
  }else if(Page==TEXT("Instructions")){
-  Label(TEXT("Explore the park, dodge visitors, and test your bike and pistol. The Artifact-to-Cabbagetown campaign is still being built."),16,FLinearColor::White);
+  Label(TEXT("Find your lost phone using the radar. Pick it up and follow the gold path toward the BeltLine. The rest of the route to Cabbagetown is still being built."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW pedal | A/D or Left/Right steer\nUp/Down gears | Space brake/drift\nShift nitro | H horn | Tab camera\nE dismount | Left click pistol"),17,FLinearColor::White);
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump\nLeft click fire | Right click aim | R reload\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
@@ -95,7 +99,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Development build 013 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("Development build 014 | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
  }
  Menu=SNew(SOverlay)+SOverlay::Slot()[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(.008,.012,.02,.94))]+SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(600)[Items]];
  if(auto* Viewport=GetWorld()->GetGameViewport())Viewport->AddViewportWidgetContent(Menu.ToSharedRef(),100);
@@ -120,12 +124,36 @@ void ABattleMacController::RunDevelopmentAudit(){
  if(Person)Person->Fire();
  const bool Shot=Person&&Person->Ammo==Ammo-1;
  const bool Mounted=Bike&&Person&&Bike->Remount(Person)&&GetPawn()==Bike;
+ auto* Quest=Mode?Mode->Quest.Get():nullptr;
+ const bool QuestReady=Quest&&Quest->bReady&&Quest->Artifact&&Quest->CandidateCount>5&&Quest->RadarSegmentCount>100;
+ const bool Radar=QuestReady&&Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation)&&!Quest->ArtifactVisibleOnRadar(Quest->ArtifactLocation+FVector(Quest->RadarRange+1,0,0));
+ bool Placement=false;
+ if(QuestReady){
+  FVector P=Quest->ArtifactLocation,Start=Quest->StartLocation,End=Quest->ExitLocation;P.Z=Start.Z=End.Z=0;
+  Placement=FVector::Distance(P,Start)>=5000&&FMath::PointDistToSegment(P,Start,End)>=1200;
+ }
+ FVector2D ClipA(200,0),ClipB(-200,0),OutsideA(200,200),OutsideB(300,300);
+ const bool Clipping=ABattleQuest::ClipToCircle(ClipA,ClipB,105)&&FMath::IsNearlyEqual(ClipA.X,105.,.001)&&FMath::IsNearlyEqual(ClipB.X,-105.,.001)&&!ABattleQuest::ClipToCircle(OutsideA,OutsideB,105);
+ bool BlockedPickup=false,CollectorMode=false;const bool OnFoot=Mode&&Mode->DifficultyName==FName(TEXT("Medium"));
+ if(QuestReady&&Mounted){
+  if(OnFoot)Bike->Dismount();
+  APawn* Collector=GetPawn();CollectorMode=OnFoot?Collector->IsA<ABattleRider>():Collector->IsA<ABattleBike>();Collector->SetActorLocation(Quest->ArtifactLocation+FVector(120,0,12),false,nullptr,ETeleportType::TeleportPhysics);
+  auto* Wall=GetWorld()->SpawnActor<AStaticMeshActor>(Quest->ArtifactLocation+FVector(60,0,0),FRotator::ZeroRotator);
+  auto* Mesh=Wall->GetStaticMeshComponent();Mesh->SetMobility(EComponentMobility::Movable);Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));Wall->SetActorScale3D(FVector(.08,.8,1.5));
+  Mesh->SetCollisionEnabled(ECollisionEnabled::QueryOnly);Mesh->SetCollisionResponseToAllChannels(ECR_Ignore);Mesh->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
+  Quest->Tick(.01f);BlockedPickup=!Quest->bCollected;
+  Wall->SetActorEnableCollision(false);Wall->Destroy();
+  Collector->SetActorLocation(Quest->ArtifactLocation+FVector(0,0,12),false,nullptr,ETeleportType::TeleportPhysics);Quest->Tick(.01f);
+ }
+ const bool Pickup=Quest&&Quest->bCollected&&Mode->bItemCollected&&!Quest->Artifact;
+ const bool Route=Pickup&&Quest->RoutePoints.Num()>1;
+ UE_LOG(LogTemp,Display,TEXT("BattleQuestAudit: ready=%d radar=%d placement=%d clipping=%d pickup=%d route=%d blocked=%d onFoot=%d"),QuestReady,Radar,Placement,Clipping,Pickup,Route,BlockedPickup,OnFoot&&CollectorMode);
  ToggleMenu();const bool Paused=IsPaused()&&Menu.IsValid();
  ToggleMenu();const bool Resumed=!IsPaused()&&!Menu.IsValid();
  if(Mode){Mode->TimeRemaining=.01f;Mode->Tick(.02f);}
  PlayerTick(0);
  const bool Loss=Mode&&Mode->bRunEnded&&IsPaused()&&Menu.IsValid();
- const bool Passed=Timer&&Population&&Dismounted&&Shot&&Mounted&&Paused&&Resumed&&Loss;
+ const bool Passed=Timer&&Population&&Dismounted&&Shot&&Mounted&&Paused&&Resumed&&Loss&&QuestReady&&Radar&&Placement&&Clipping&&Pickup&&Route&&BlockedPickup&&CollectorMode;
  const FString Json=FString::Printf(TEXT("{\"difficulty\":\"%s\",\"timerSeconds\":%.0f,\"desiredCrowd\":%d,\"liveCrowd\":%d,\"timer\":%s,\"population\":%s,\"dismount\":%s,\"fire\":%s,\"remount\":%s,\"pause\":%s,\"resume\":%s,\"timeout\":%s,\"passed\":%s}"),
   Mode?*Mode->DifficultyName.ToString():TEXT("Missing"),Mode?Mode->Difficulty.TimeLimitSeconds:0,Desired,Live,Timer?TEXT("true"):TEXT("false"),Population?TEXT("true"):TEXT("false"),Dismounted?TEXT("true"):TEXT("false"),Shot?TEXT("true"):TEXT("false"),Mounted?TEXT("true"):TEXT("false"),Paused?TEXT("true"):TEXT("false"),Resumed?TEXT("true"):TEXT("false"),Loss?TEXT("true"):TEXT("false"),Passed?TEXT("true"):TEXT("false"));
  FFileHelper::SaveStringToFile(Json,*Output);

@@ -1,0 +1,18 @@
+{
+  "source_node": 5674504871,
+  "source_way": 741964055,
+  "source_lat_lon": [
+    33.781933,
+    -84.3687209
+  ],
+  "description": "First route-home waypoint on nearest installed park path; not the full connector or home finish",
+  "projected_to_installed_path": 182302109,
+  "xy_cm": [
+    11322.241115950359,
+    -8938.93870107519
+  ],
+  "projection_distance_game_cm": 2196.401293529137,
+  "georeference": "terrain-georeference.json",
+  "limitation": "The mapped connector is about 66 real metres from the nearest installed centerline. The remaining connector and full route are still required.",
+  "author": "2026-09-11 [codex-maclaptop]"
+}

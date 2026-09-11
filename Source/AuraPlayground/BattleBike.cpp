@@ -1,5 +1,6 @@
 #include "BattleBike.h"
 #include "BattleMacController.h"
+#include "BattleQuest.h"
 #include "BattleRideFX.h"
 #include "Components/AudioComponent.h"
 #include "PiedmontDarkZone.h"
@@ -134,6 +135,7 @@ void ABattleParkMode::StartPlay(){
   It->DesiredPopulation=Difficulty.Walkers+Difficulty.Joggers;
   It->JoggerShare=float(Difficulty.Joggers)/FMath::Max(1,It->DesiredPopulation);
  }
+ Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
 }
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
@@ -143,6 +145,7 @@ void ABattleLabMode::Tick(float Dt){
 void ABattleLabHUD::DrawHUD(){
  Super::DrawHUD();if(!Canvas)return;
  if(auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){
+  if(Park->Quest)Park->Quest->DrawRadar(this,Canvas);
   const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
   DrawText(FString::Printf(TEXT("%02d:%02d  |  %s"),Seconds/60,Seconds%60,*Park->DifficultyName.ToString()),Seconds<60?FColor::Red:FColor::White,Canvas->SizeX-235,28,nullptr,1.7);
   if(Park->StartCountdown>0)DrawText(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),FColor::Yellow,Canvas->SizeX*.5f,Canvas->SizeY*.35f,nullptr,4);
