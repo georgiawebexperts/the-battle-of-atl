@@ -7,6 +7,10 @@ UCLASS()
 class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary {
  GENERATED_BODY()
 public:
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
+ static void FinishEditorAssetLoading();
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
+ static bool RefreshLandscapeCollision(ALandscape* Landscape);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
  static bool BuildParkNavigation(FVector Center,FVector Extent);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")

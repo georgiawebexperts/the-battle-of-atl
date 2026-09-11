@@ -1,16 +1,21 @@
 """Real park V3 mode, movement, water return and all authored bridge routes."""
 import unreal,pathlib,json,time,math,traceback
 root=pathlib.Path(unreal.Paths.project_dir());level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem);job=globals().get('WORLD_JOB',{});points=json.loads((root/'SourceAssets/Terrain/lake-test-points.json').read_text());routes=[]
+import sys;sys.path.insert(0,str(root/'Scripts'))
+from battle_geography import source_to_world,require_converted_world
+require_converted_world(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world())
+points['water_drop']=source_to_world(points['water_drop'])
 lake=json.loads((root/'SourceAssets/Terrain/LakeBridge/manifest.json').read_text());routes.append(('lake_crossing',lake['centerline_cm'],True));routes.append(('lake_wood_spur',lake['spur_cm'],False))
 for folder in ['WetlandBridges','ParkDriveBridge']:
  d=json.loads((root/f'SourceAssets/Terrain/{folder}/manifest.json').read_text())
  for b in d['bridges']:routes.append((str(b['osm_id']),b['centerline_cm'],True))
  if 'test_routes' in d:
   for n,pts in d['test_routes'].items():routes.append((n,pts,False))
+routes=[(name,[source_to_world(v) for v in pts],extend) for name,pts,extend in routes]
 if job.get('route'):routes=[r for r in routes if r[0]==job['route']]
 report={'status':'running','scope':'V3 controls on existing park and authored bridge routes; not full park/game/route acceptance.','cases':[]};stage=0;mark=0;started=time.monotonic();bike=None;first=None;water_start=None;route_index=0;reverse=False;active=[];water_seen=False;route_pedaling=False
 def open_water_point():
- data=json.loads((root/'SourceAssets/Terrain/lake-clara-meer.json').read_text());outer=data['outer_cm'];island=data['island_cm'];z=data['water_z_cm']
+ data=json.loads((root/'SourceAssets/Terrain/lake-clara-meer.json').read_text());outer=[source_to_world(v) for v in data['outer_cm']];island=[source_to_world(v) for v in data['island_cm']];z=data['water_z_cm']
  def inside(x,y,ring):
   yes=False
   for a,b in zip(ring,ring[1:]+ring[:1]):
@@ -54,12 +59,12 @@ def tick(dt):
    a,b=active[:2];place(unreal.Vector(*a)+unreal.Vector(0,0,102),math.degrees(math.atan2(b[1]-a[1],b[0]-a[0])));bike.ride.set_editor_property('gear',1);mark=now;water_seen=False;route_pedaling=False
   if stage==0:
    bike=unreal.GameplayStatics.get_player_pawn(w,0);check('park_uses_V3_mode_and_arcade_bike',isinstance(mode,unreal.BattleParkMode) and isinstance(bike,unreal.BattleBike));first=bike.get_actor_location()
-   entry=json.loads((root/'SourceAssets/Terrain/battle-start.json').read_text());distance=math.hypot(first.x-entry['start_xy_cm'][0],first.y-entry['start_xy_cm'][1]);angle=abs((bike.get_actor_rotation().yaw-entry['heading_yaw']+180)%360-180);check('spawns_inside_14th_street_gate_facing_inward',distance<10 and angle<1,distance_cm=distance,heading_error_degrees=angle)
+   entry=json.loads((root/'SourceAssets/Terrain/battle-start.json').read_text());distance=math.hypot(first.x-entry['world_start_xy_cm'][0],first.y-entry['world_start_xy_cm'][1]);angle=abs((bike.get_actor_rotation().yaw-entry['world_heading_yaw']+180)%360-180);check('spawns_inside_14th_street_gate_facing_inward',distance<10 and angle<1,distance_cm=distance,heading_error_degrees=angle)
    if job.get('startup_only'):
     report['status']='passed' if all(c['pass'] for c in report['cases']) else 'failed';(root/'Scripts/battle-park-start-validation.json').write_text(json.dumps(report,indent=2));unreal.unregister_slate_post_tick_callback(handle);level.editor_request_end_play();return
    advance()
   elif stage==1 and now-mark>8:
-   visitors=unreal.GameplayStatics.get_all_actors_of_class(w,unreal.PiedmontPedestrian);check('park_streams_wandering_visitors',len(visitors)>=24,count=len(visitors))
+   visitors=unreal.GameplayStatics.get_all_actors_of_class(w,unreal.PiedmontPedestrian);check('park_streams_wandering_visitors',len(visitors)==mode.difficulty.walkers+mode.difficulty.joggers,count=len(visitors))
    for d in unreal.GameplayStatics.get_all_actors_of_class(w,unreal.PiedmontTrafficDirector):d.set_actor_tick_enabled(False)
    for v in visitors:v.destroy_actor()
    bike.validation_key('W',True);advance()
@@ -84,7 +89,7 @@ def tick(dt):
      reverse=False;route_index+=1
      if route_index<len(routes):route_start()
      else:
-      pts=lake['centerline_cm'];mid=pts[len(pts)//2];place(unreal.Vector(*mid)+unreal.Vector(0,0,102),math.degrees(math.atan2(pts[-1][1]-pts[0][1],pts[-1][0]-pts[0][0])));advance()
+      pts=[source_to_world(v) for v in lake['centerline_cm']];mid=pts[len(pts)//2];place(unreal.Vector(*mid)+unreal.Vector(0,0,102),math.degrees(math.atan2(pts[-1][1]-pts[0][1],pts[-1][0]-pts[0][0])));advance()
   elif stage==6 and now-mark>.7:
    check('V3_dismount_on_lake_bridge',bike.dismount());advance()
   elif stage==7 and now-mark>.5:

@@ -7,6 +7,8 @@ UCLASS()
 class AURAPLAYGROUND_API ABattleQuest : public AActor {
  GENERATED_BODY()
 public:
+ // East is +X and north is -Y; screen coordinates increase downward.
+ static FVector2D RadarOffset(FVector2D WorldDelta,float Scale){return WorldDelta*Scale;}
  ABattleQuest();
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;

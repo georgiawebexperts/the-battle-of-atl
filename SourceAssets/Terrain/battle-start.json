@@ -20,5 +20,11 @@
   "placement_policy": "Two game meters inside the mapped gate, facing inward along path 61491566. Z resolved against installed collision. Gate identity inferred from the OSM gate at the 14th Street terminus and Conservancy map; architecture still pending.",
   "official_map": "https://piedmontpark.org/maps/?location=19",
   "official_printable_map": "https://piedmontpark.org/wp-content/uploads/2026/06/2026_PPCPrintableMap.pdf",
-  "author": "2026-09-11 [codex-maclaptop]"
+  "author": "2026-09-11 [codex-maclaptop]",
+  "source_coordinate_system": "east/north/up cm",
+  "world_start_xy_cm": [
+    -16926.189428730733,
+    -5097.984049233254
+  ],
+  "world_heading_yaw": -2.796906155762442
 }

@@ -1,10 +1,14 @@
 """Install only the sourced connector; retain the park map and validate collision/nav before saving."""
-import unreal,json,pathlib
+import unreal,json,pathlib,sys
 root=pathlib.Path(unreal.Paths.project_dir())
+sys.path.insert(0,str(root/'Scripts'))
+from battle_geography import source_vector,place_source_geometry,require_converted_world
 level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 assert world.get_name()=='PiedmontWorld'
+require_converted_world(world)
+unreal.PiedmontWorldTools.finish_editor_asset_loading()
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 base=root/'SourceAssets/Terrain/BeltlineConnector'
 manifest=json.loads((base/'manifest.json').read_text())
@@ -28,17 +32,19 @@ for chunk in manifest['chunks']:
     label='Eastside connector '+name
     a=existing.get(label) or ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector())
     a.set_actor_label(label);a.set_folder_path('BattleForTheA/BeltLine');a.static_mesh_component.set_static_mesh(mesh)
+    place_source_geometry(a)
     a.static_mesh_component.set_collision_profile_name('BlockAll');a.tags=[unreal.Name('RidePath'),unreal.Name('BattleRouteConnector')]
     rows.append({'mesh':name,'bounds_match':True})
 for i,path in enumerate(network['paths']):
     label='Eastside connector spline '+str(i);a=existing.get(label) or ea.spawn_actor_from_class(unreal.PiedmontPathSpline,unreal.Vector())
     a.set_actor_label(label);a.set_folder_path('BattleForTheA/BeltLine')
     a.set_editor_property('osm_way_id',str(path['osm_id']));a.set_editor_property('width_cm',path['width_game_cm']);a.set_editor_property('artifact_eligible',False)
-    a.set_centerline([unreal.Vector(*v) for v in path['points_cm']])
+    a.set_centerline([source_vector(v) for v in path['points_cm']])
     a.tags=[unreal.Name('PiedmontPathSource'),unreal.Name('BattleConnector_'+str(i))]
 samples=[]
 for path in network['paths']:
-    for p in path['points_cm']:
+    for source_p in path['points_cm']:
+        world_p=source_vector(source_p);p=[world_p.x,world_p.y,world_p.z]
         hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(p[0],p[1],p[2]+100),unreal.Vector(p[0],p[1],p[2]-100))
         assert hit,'Missing connector collision'
         impact,actor=hit
@@ -49,7 +55,7 @@ all_points=[a.centerline.get_location_at_spline_point(i,unreal.SplineCoordinateS
 lo=[min(getattr(p,k) for p in all_points) for k in ['x','y','z']];hi=[max(getattr(p,k) for p in all_points) for k in ['x','y','z']]
 assert unreal.PiedmontWorldTools.build_park_navigation(unreal.Vector(*[(a+b)/2 for a,b in zip(lo,hi)]),unreal.Vector(*[(b-a)/2+500 for a,b in zip(lo,hi)]))
 assert unreal.PiedmontWorldTools.finish_park_navigation_build()
-start=unreal.Vector(*network['paths'][0]['points_cm'][0]);end=unreal.Vector(*network['paths'][-1]['points_cm'][-1])
+start=source_vector(network['paths'][0]['points_cm'][0]);end=source_vector(network['paths'][-1]['points_cm'][-1])
 length=unreal.PiedmontWorldTools.park_route_length(start,end)
 assert length>0,'Connector is not reachable in navigation'
 assert unreal.EditorLoadingAndSavingUtils.save_map(world,'/Game/PiedmontRide/Maps/PiedmontWorld')

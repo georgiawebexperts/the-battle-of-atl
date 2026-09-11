@@ -62,5 +62,18 @@
       ]
     }
   ],
-  "missing_samples": 0
+  "missing_samples": 0,
+  "source_coordinate_system": "east/north/up centimetres; existing unreal_location_cm and unreal_scale fields describe retained source geometry, not converted actor placement",
+  "world_coordinate_system": "Unreal east/south/up centimetres (north = -Y), BattleGeography_ESU_v1",
+  "world_location_cm": [
+    -36677.5213419809,
+    133364.69648929,
+    0
+  ],
+  "world_scale": [
+    66.66666666666667,
+    -66.66666666666667,
+    33.333333333333336
+  ],
+  "conversion": "Scripts/battle_geography.py: reflect source Y at the actor/placement boundary; retain DEM and OBJ source data"
 }

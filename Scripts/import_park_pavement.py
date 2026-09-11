@@ -1,6 +1,9 @@
 """Import baked pavement, checking world axes before any placement."""
 import unreal,json,pathlib,traceback
 p=pathlib.Path(unreal.Paths.project_dir());collection=globals().get('WORLD_JOB',{}).get('collection','paths');base=p/('SourceAssets/Terrain/ParkPlazas' if collection=='plazas' else 'SourceAssets/Terrain/ParkPavement');manifest=json.loads((base/'manifest.json').read_text());job=globals().get('WORLD_JOB',{});rows=[]
+import sys;sys.path.insert(0,str(p/'Scripts'))
+from battle_geography import place_source_geometry,source_vector,require_converted_world
+require_converted_world(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world())
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);existing={a.get_actor_label():a for a in ea.get_all_level_actors()}
 chunks=manifest['chunks'] if job.get('all') else [next(c for c in manifest['chunks'] if c['file']=='Park_Concrete_2_15.obj')]
 try:
@@ -29,6 +32,7 @@ try:
    label='Park pavement '+name
    actor=existing.get(label) or ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector())
    actor.set_actor_label(label);actor.set_folder_path('Piedmont/Pavement');actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('BlockAll');actor.tags=[unreal.Name('RideDirt' if c['material']=='Gravel' else 'RidePath')]
+   place_source_geometry(actor)
    rows[-1]['placed']=True;rows[-1]['collision_complexity']=str(editor.get_collision_complexity(mesh))
   (p/'Scripts/park-pavement-progress.json').write_text(json.dumps({'completed':len(rows),'total':len(chunks),'last':name}))
  if job.get('place'):unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()

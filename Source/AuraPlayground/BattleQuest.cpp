@@ -115,14 +115,14 @@ bool ABattleQuest::ClipToCircle(FVector2D& A,FVector2D& B,float Radius){
 void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!HUD||!Canvas)return;auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
  const float Radius=105;const FVector2D Center(Canvas->SizeX-135,Canvas->SizeY-145),Player(Pawn->GetActorLocation());
- auto Project=[&](FVector2D World){const auto D=(World-Player)*(Radius/FMath::Max(1.f,RadarRange));return FVector2D(D.X,-D.Y);};
+ auto Project=[&](FVector2D World){return RadarOffset(World-Player,Radius/FMath::Max(1.f,RadarRange));};
  auto Line=[&](FVector2D A,FVector2D B,FLinearColor C,float W){HUD->DrawLine(Center.X+A.X,Center.Y+A.Y,Center.X+B.X,Center.Y+B.Y,C,W);};
  for(float Y=-Radius;Y<Radius;Y+=2){const float X=FMath::Sqrt(FMath::Max(0.f,Radius*Radius-Y*Y));HUD->DrawRect(FLinearColor(.008,.016,.025,.9),Center.X-X,Center.Y+Y,X*2,2);}
  auto Circle=[&](FVector2D C,float R,FLinearColor Color,float Width){for(int I=0;I<48;I++){const float A=I*2*PI/48,B=(I+1)*2*PI/48;Line(C+FVector2D(FMath::Cos(A),FMath::Sin(A))*R,C+FVector2D(FMath::Cos(B),FMath::Sin(B))*R,Color,Width);}};
  for(const auto& Segment:Segments){FVector2D A=Project(Segment.Key),B=Project(Segment.Value);if(ClipToCircle(A,B,Radius-3))Line(A,B,FLinearColor(.36,.48,.5),1);}
  if(bCollected)for(int I=1;I<RoutePoints.Num();I++){FVector2D A=Project(FVector2D(RoutePoints[I-1])),B=Project(FVector2D(RoutePoints[I]));if(ClipToCircle(A,B,Radius-3))Line(A,B,FLinearColor(1,.66,.05),2);}
  Circle(FVector2D::ZeroVector,Radius,FLinearColor(.3,.6,.67),2);
- const float Yaw=FMath::DegreesToRadians(Pawn->GetActorRotation().Yaw);const FVector2D Forward(FMath::Cos(Yaw),-FMath::Sin(Yaw)),Right(-Forward.Y,Forward.X);
+ const float Yaw=FMath::DegreesToRadians(Pawn->GetActorRotation().Yaw);const FVector2D Forward(FMath::Cos(Yaw),FMath::Sin(Yaw)),Right(-Forward.Y,Forward.X);
  Line(Forward*8,-Forward*5+Right*5,FLinearColor::White,2);Line(Forward*8,-Forward*5-Right*5,FLinearColor::White,2);Line(-Forward*5+Right*5,-Forward*5-Right*5,FLinearColor::White,2);
  if(!Pawn->IsA<ABattleBike>())for(TActorIterator<ABattleBike> It(GetWorld());It;++It)if(It->bParked){const FVector2D B=Project(FVector2D(It->GetActorLocation())).GetClampedToMaxSize(Radius-9);HUD->DrawText(TEXT("B"),FColor::Cyan,Center.X+B.X-4,Center.Y+B.Y-6,nullptr,.9f);}
  for(FVector P:EnemyLocations){FVector2D D=Project(FVector2D(P));if(D.Size()<Radius-4)Circle(D,2.5f,FLinearColor::Red,2);}

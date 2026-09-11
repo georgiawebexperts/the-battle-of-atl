@@ -1,6 +1,9 @@
 """Install sourced bridge collections with separate deck and rail collision."""
 import unreal,pathlib,json,traceback
 p=pathlib.Path(unreal.Paths.project_dir());collection=globals().get('WORLD_JOB',{}).get('collection','lake');base=p/('SourceAssets/Terrain/'+{'wetlands':'WetlandBridges','parkdrive':'ParkDriveBridge'}.get(collection,'LakeBridge'));data=json.loads((base/'manifest.json').read_text());ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);editor=unreal.get_editor_subsystem(unreal.StaticMeshEditorSubsystem);rows=[]
+import sys;sys.path.insert(0,str(p/'Scripts'))
+from battle_geography import place_source_geometry,source_vector,require_converted_world
+require_converted_world(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world())
 try:
  if unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world().get_name()!='PiedmontWorld':raise RuntimeError('Wrong map')
  existing={a.get_actor_label():a for a in ea.get_all_level_actors()}
@@ -19,14 +22,15 @@ try:
    mat=unreal.AssetToolsHelpers.get_asset_tools().create_asset('M_'+matname,'/Game/PiedmontRide/Materials',unreal.Material,unreal.MaterialFactoryNew());color=unreal.MaterialEditingLibrary.create_material_expression(mat,unreal.MaterialExpressionConstant3Vector);color.set_editor_property('constant',unreal.LinearColor(*{'Deck':(.4,.37,.3),'Wood':(.22,.12,.06),'Rails':(.055,.07,.06)}[c['kind']]));unreal.MaterialEditingLibrary.connect_material_property(color,'',unreal.MaterialProperty.MP_BASE_COLOR);unreal.MaterialEditingLibrary.recompile_material(mat);unreal.EditorAssetLibrary.save_loaded_asset(mat)
   mesh.set_material(0,mat);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
   label=c.get('label','Lake crossing '+c['kind']);actor=existing.get(label) or ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());actor.set_actor_label(label);actor.set_folder_path('Piedmont/Bridges/'+(collection.title()));actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('BlockAll');actor.tags=[unreal.Name('RideBridge'),unreal.Name('RidePath')] if c['kind']!='Rails' else [unreal.Name('RideBarrier')]
+  place_source_geometry(actor)
   rows.append({'kind':c['kind'],'axis_error_cm':error,'pass':True})
  for actor in ea.get_all_level_actors():
   if isinstance(actor,unreal.PiedmontPathSpline):
    way=actor.get_editor_property('osm_way_id')
    if collection in ['wetlands','parkdrive']:
     match=next((b for b in data['bridges'] if str(b['osm_id'])==way),None)
-    if match:actor.set_centerline([unreal.Vector(*v) for v in match['centerline_cm']])
-   elif way in ['102679938','146304988']:actor.set_centerline([unreal.Vector(*v) for v in data['centerline_cm' if way=='102679938' else 'spur_cm']])
+    if match:actor.set_centerline([source_vector(v) for v in match['centerline_cm']])
+   elif way in ['102679938','146304988']:actor.set_centerline([source_vector(v) for v in data['centerline_cm' if way=='102679938' else 'spur_cm']])
  unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level();report={'status':'installed','meshes':rows}
 except Exception:report={'status':'error','error':traceback.format_exc(),'meshes':rows}
 (p/('Scripts/'+collection+'-bridges-install.json' if collection!='lake' else 'Scripts/lake-bridge-install.json')).write_text(json.dumps(report,indent=2))

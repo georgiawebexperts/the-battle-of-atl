@@ -1,8 +1,8 @@
 {
-  "build": 15,
-  "version": "0.15.0-dev",
+  "build": 16,
+  "version": "0.16.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Sourced Monroe connector installed; cooked native bike traverses both directions without wipeouts; full V3 and geographic orientation correction remain unfinished",
+  "milestone": "Correct Unreal geographic orientation across park terrain, paths, bridges, water and radar; saved-map collision, native water return, connector and quest checks pass; full V3 remains unfinished",
   "author": "2026-09-11 [codex-maclaptop]"
 }

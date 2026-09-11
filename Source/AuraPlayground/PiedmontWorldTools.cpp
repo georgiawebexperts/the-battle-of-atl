@@ -20,6 +20,20 @@
 #include "WaterBodyComponent.h"
 #include "Engine/World.h"
 #endif
+void UPiedmontWorldTools::FinishEditorAssetLoading(){
+#if WITH_EDITOR
+ FlushAsyncLoading();FAssetCompilingManager::Get().FinishAllCompilation();
+ if(IsRunningCommandlet())for(int I=0;I<20;I++)FTSTicker::GetCoreTicker().Tick(.15f);
+#endif
+}
+bool UPiedmontWorldTools::RefreshLandscapeCollision(ALandscape* Landscape){
+#if WITH_EDITOR
+ if(!Landscape)return false;
+ Landscape->RecreateCollisionComponents();Landscape->RecreateComponentsState();Landscape->MarkPackageDirty();return true;
+#else
+ return false;
+#endif
+}
 ALandscape* UPiedmontWorldTools::ImportMeasuredLandscape(const FString& Filename,int32 Width,int32 Height,FVector Location,FVector Scale){
 #if WITH_EDITOR
  if(!GEditor||Width<127||Height<127||Width>4097||Height>4097||(Width-1)%126||(Height-1)%126)return nullptr;

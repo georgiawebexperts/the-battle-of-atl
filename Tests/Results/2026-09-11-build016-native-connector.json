@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 5115.47,
+  "maxCenterlineErrorCm": 2.48,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "scope": "Cooked Mac game, real W/A/D input and CharacterMovement, both directions; display-free, appearance unverified."
+}

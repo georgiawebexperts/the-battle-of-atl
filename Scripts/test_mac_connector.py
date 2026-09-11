@@ -1,7 +1,9 @@
 """Drive the installed connection using real cooked movement and keyboard input."""
-import json,re,subprocess
+import json,re,subprocess,argparse
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-11-native-connector-drive.json');args=parser.parse_args()
+assert Path(args.report).name==args.report
 app=root/'Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground'
 log=root/'work/mac-connector-drive.log'
 with log.open('w') as stream:
@@ -12,6 +14,6 @@ result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':
 result['exit_code']=run.returncode
 result['passed']=bool(result.get('passed') and run.returncode==0)
 result['scope']='Cooked Mac game, real W/A/D input and CharacterMovement, both directions; display-free, appearance unverified.'
-(root/'Tests/Results/2026-09-11-native-connector-drive.json').write_text(json.dumps(result,indent=2)+'\n')
+(root/'Tests/Results'/args.report).write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result),flush=True)
 if not result['passed']:raise SystemExit(1)

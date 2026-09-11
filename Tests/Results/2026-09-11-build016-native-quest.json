@@ -1,0 +1,90 @@
+{
+  "profiles": [
+    {
+      "difficulty": "Easy",
+      "timerSeconds": 900,
+      "desiredCrowd": 20,
+      "liveCrowd": 20,
+      "timer": true,
+      "population": true,
+      "dismount": true,
+      "fire": true,
+      "remount": true,
+      "pause": true,
+      "resume": true,
+      "timeout": true,
+      "passed": true,
+      "quest": {
+        "ready": true,
+        "radar": true,
+        "placement": true,
+        "clipping": true,
+        "pickup": true,
+        "route": true,
+        "blocked": true,
+        "onFoot": false
+      },
+      "exit_code": 0,
+      "expected_timer": 900,
+      "expected_crowd": 20
+    },
+    {
+      "difficulty": "Medium",
+      "timerSeconds": 600,
+      "desiredCrowd": 50,
+      "liveCrowd": 50,
+      "timer": true,
+      "population": true,
+      "dismount": true,
+      "fire": true,
+      "remount": true,
+      "pause": true,
+      "resume": true,
+      "timeout": true,
+      "passed": true,
+      "quest": {
+        "ready": true,
+        "radar": true,
+        "placement": true,
+        "clipping": true,
+        "pickup": true,
+        "route": true,
+        "blocked": true,
+        "onFoot": true
+      },
+      "exit_code": 0,
+      "expected_timer": 600,
+      "expected_crowd": 50
+    },
+    {
+      "difficulty": "Hard",
+      "timerSeconds": 300,
+      "desiredCrowd": 90,
+      "liveCrowd": 90,
+      "timer": true,
+      "population": true,
+      "dismount": true,
+      "fire": true,
+      "remount": true,
+      "pause": true,
+      "resume": true,
+      "timeout": true,
+      "passed": true,
+      "quest": {
+        "ready": true,
+        "radar": true,
+        "placement": true,
+        "clipping": true,
+        "pickup": true,
+        "route": true,
+        "blocked": true,
+        "onFoot": false
+      },
+      "exit_code": 0,
+      "expected_timer": 300,
+      "expected_crowd": 90
+    }
+  ],
+  "all_passed": true,
+  "rendered_ui_verified": false
+}

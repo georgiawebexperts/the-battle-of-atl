@@ -1,8 +1,11 @@
 """Retain every sourced path as an editable Unreal spline, with OSM provenance."""
-import unreal,json,pathlib
+import unreal,json,pathlib,sys
 p=pathlib.Path(unreal.Paths.project_dir());data=json.loads((p/'SourceAssets/Terrain/park-path-network.json').read_text());ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 if w.get_name()!='PiedmontWorld':raise RuntimeError('Wrong map for park paths')
+sys.path.insert(0,str(p/'Scripts'))
+from battle_geography import source_vector,require_converted_world
+require_converted_world(w)
 bridge_file=p/'SourceAssets/Terrain/LakeBridge/manifest.json'
 bridge=json.loads(bridge_file.read_text()) if bridge_file.exists() else {}
 wetland_file=p/'SourceAssets/Terrain/WetlandBridges/manifest.json'
@@ -18,7 +21,7 @@ for i,path in enumerate(data['paths']):
  a.set_editor_property('osm_way_id',str(path['osm_id']));a.set_editor_property('width_cm',path['width_game_cm']);a.set_editor_property('bridge',path['tags'].get('bridge')=='yes');a.set_editor_property('ride_validated',False)
  points=bridge.get('centerline_cm',path['points_cm']) if path['osm_id']==102679938 else bridge.get('spur_cm',path['points_cm']) if path['osm_id']==146304988 else path['points_cm']
  points=wetland_heights.get(path['osm_id'],points)
- a.set_centerline([unreal.Vector(*v) for v in points])
+ a.set_centerline([source_vector(v) for v in points])
  count=a.centerline.get_number_of_spline_points()
  rows.append({'osm_id':path['osm_id'],'points':count,'pass':count==len(points)})
 unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
