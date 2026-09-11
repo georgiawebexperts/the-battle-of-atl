@@ -17,6 +17,11 @@ private:
  bool bStarted=false;
  void StartDifficulty(FName Name);
  void RunDevelopmentAudit();
+ void TickConnectorAudit(float Dt);
+ TArray<FVector> ConnectorPoints;
+ float ConnectorElapsed=0,ConnectorTravel=0,ConnectorMaxError=0;
+ int32 ConnectorLeg=0,ConnectorWipeouts=0;
+ FVector ConnectorPrevious;
  void ShowMenu(FString Page=TEXT("Home"));
  void ResumeRide();
  void RemoveMenu();

@@ -1,0 +1,41 @@
+{
+  "status": "source_baked_not_imported",
+  "plaza_osm_ids": [],
+  "coordinates": "OBJ centimeters, Z up, Y negated from Unreal; bounds remain Unreal world coordinates",
+  "source_splines": "../beltline-connector-network.json",
+  "landscape_clearance_cm": 3,
+  "terrain_diagonal": "i00-i11",
+  "chunks": [
+    {
+      "file": "BeltlineConnector_Asphalt_5_14.obj",
+      "material": "Asphalt",
+      "vertices": 442,
+      "triangles": 599,
+      "bounds_cm": [
+        [
+          11195.251565202816,
+          -10886.700102670875,
+          -356.532949710876
+        ],
+        [
+          12730.648756713585,
+          -8841.606003596302,
+          -315.5592510693823
+        ]
+      ]
+    }
+  ],
+  "triangle_count": 599,
+  "deferred_bridge_osm_ids": [],
+  "coverage_checks": [
+    {
+      "material": "Asphalt",
+      "relative_coverage_error": 1.820693077749693e-12
+    }
+  ],
+  "pending": [
+    "Unreal import orientation and collision validation",
+    "Bridge deck reconstruction",
+    "All path connectivity and ride-through acceptance"
+  ]
+}

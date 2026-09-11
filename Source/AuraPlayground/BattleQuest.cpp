@@ -1,4 +1,5 @@
 #include "BattleQuest.h"
+#include "BattleRouteAnchors.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "PiedmontPathSpline.h"
@@ -23,8 +24,8 @@ void ABattleQuest::BeginPlay(){
  Super::BeginPlay();
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
  StartLocation=Pawn->GetActorLocation();
- // Closest installed park path to mapped node 5674504871. See battle-park-exit.json.
- ExitLocation=FVector(11322.24111595,-8938.93870108,0);
+ // Sourced Eastside endpoint reached by the installed Monroe connector.
+ ExitLocation=FVector(BattleRouteAnchors::ParkExitX,BattleRouteAnchors::ParkExitY,0);
  FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleExit),false,Pawn);
  if(GetWorld()->LineTraceSingleByChannel(Ground,ExitLocation+FVector(0,0,6000),ExitLocation-FVector(0,0,6000),ECC_Visibility,Q))ExitLocation.Z=Ground.ImpactPoint.Z;
  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){
@@ -40,7 +41,7 @@ bool ABattleQuest::PlaceArtifact(){
  TArray<FCandidate> Candidates;
  const FVector2D Start(StartLocation),Exit(ExitLocation),Direction=Exit-Start;
  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){
-  if(It->bBridge)continue;
+  if(It->bBridge||!It->bArtifactEligible)continue;
   auto* S=It->Centerline.Get();const float Length=S->GetSplineLength();
   for(float D=FMath::Min(Length*.5f,500.f);D<Length;D+=1800){
    const FVector P=S->GetLocationAtDistanceAlongSpline(D,ESplineCoordinateSpace::World);const FVector2D P2(P);

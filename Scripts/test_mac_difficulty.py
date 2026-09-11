@@ -1,8 +1,10 @@
 """Exercise real cooked park profiles without a display; UI appearance remains a separate test."""
 from pathlib import Path
-import json, subprocess, tempfile, re
+import json, subprocess, tempfile, re, argparse
 root=Path(__file__).resolve().parents[1]
 app=root/'Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground'
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-11-v3-native-quest.json');args=parser.parse_args()
+assert Path(args.report).name==args.report
 results=[]
 with tempfile.TemporaryDirectory(prefix='battle-difficulty-') as scratch:
     for name,seconds,population in [('Easy',900,20),('Medium',600,50),('Hard',300,90)]:
@@ -20,6 +22,6 @@ with tempfile.TemporaryDirectory(prefix='battle-difficulty-') as scratch:
         data['passed']=bool(data.get('passed') and run.returncode==0 and data.get('timerSeconds')==seconds and data.get('desiredCrowd')==population)
         results.append(data)
         print(json.dumps(data),flush=True)
-        (root/'Tests/Results/2026-09-11-v3-native-quest.json').write_text(json.dumps({'profiles':results,'all_passed':all(r['passed'] for r in results),'rendered_ui_verified':False},indent=2)+'\n')
+        (root/'Tests/Results'/args.report).write_text(json.dumps({'profiles':results,'all_passed':all(r['passed'] for r in results),'rendered_ui_verified':False},indent=2)+'\n')
 if not all(r['passed'] for r in results):
     raise SystemExit(1)

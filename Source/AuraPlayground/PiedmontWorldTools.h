@@ -12,6 +12,8 @@ public:
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
  static bool IsParkNavigationBuilding();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
+ static bool FinishParkNavigationBuild();
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
  static bool ProjectParkNavigation(FVector Point,FVector& Projected);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
  static float ParkRouteLength(FVector Start,FVector End);

@@ -4,6 +4,8 @@
 #include "Misc/FileHelper.h"
 #if WITH_EDITOR
 #include "Editor.h"
+#include "AssetCompilingManager.h"
+#include "Containers/Ticker.h"
 #include "NavigationSystem.h"
 #include "NavigationPath.h"
 #include "NavMesh/NavMeshBoundsVolume.h"
@@ -112,6 +114,12 @@ bool UPiedmontWorldTools::BuildParkNavigation(FVector Center,FVector Extent){
   Recast->DefaultMaxSearchNodes=32768;Recast->RecreateDefaultFilter();
   for(uint8 I=0;I<(uint8)ENavigationDataResolution::MAX;++I){Recast->SetCellSize((ENavigationDataResolution)I,10);Recast->SetCellHeight((ENavigationDataResolution)I,2);Recast->NavMeshResolutionParams[I].AgentMaxStepHeight=24;}
  }
+ // Headless imports do not pump the editor's delayed asset-loading unlock.
+ // Finish assets, then let the engine's own ticker release that specific lock.
+ if(IsRunningCommandlet()){
+  FlushAsyncLoading();FAssetCompilingManager::Get().FinishAllCompilation();
+  for(int I=0;I<20;I++)FTSTicker::GetCoreTicker().Tick(.15f);
+ }
  Nav->Build();World->MarkPackageDirty();return true;
 #else
  return false;
@@ -137,6 +145,17 @@ float UPiedmontWorldTools::ParkRouteLength(FVector Start,FVector End){
 bool UPiedmontWorldTools::IsParkNavigationBuilding(){
 #if WITH_EDITOR
  UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;auto* Nav=World?FNavigationSystem::GetCurrent<UNavigationSystemV1>(World):nullptr;return Nav&&Nav->IsNavigationBuildInProgress();
+#else
+ return false;
+#endif
+}
+
+bool UPiedmontWorldTools::FinishParkNavigationBuild(){
+#if WITH_EDITOR
+ UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
+ if(!World||World->GetName()!=TEXT("PiedmontWorld"))return false;
+ for(TActorIterator<ANavigationData> It(World);It;++It)It->EnsureBuildCompletion();
+ World->MarkPackageDirty();return !IsParkNavigationBuilding();
 #else
  return false;
 #endif

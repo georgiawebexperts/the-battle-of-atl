@@ -1,8 +1,8 @@
 {
-  "build": 14,
-  "version": "0.14.0-dev",
+  "build": 15,
+  "version": "0.15.0-dev",
   "name": "BATTLE FOR THE A",
   "target": "macOS native .app",
-  "milestone": "Random reachable Artifact, circular radar and park-side return routing; three expanded native profiles pass; full route and rendered acceptance incomplete",
+  "milestone": "Sourced Monroe connector installed; cooked native bike traverses both directions without wipeouts; full V3 and geographic orientation correction remain unfinished",
   "author": "2026-09-11 [codex-maclaptop]"
 }

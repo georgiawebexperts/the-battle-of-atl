@@ -13,6 +13,7 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Path") FString OsmWayId;
  UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Path") float WidthCm=280.f;
  UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Path") bool bBridge=false;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Path") bool bArtifactEligible=true;
  UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Path") bool bRideValidated=false;
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Path")
  void SetCenterline(const TArray<FVector>& WorldPoints);
