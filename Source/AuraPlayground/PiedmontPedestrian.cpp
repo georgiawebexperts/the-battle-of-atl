@@ -39,7 +39,7 @@ void APiedmontPedestrian::ChooseDestination(){
  GroupLeader=nullptr;
  for(int32 Try=0;Try<5;Try++)if(Nav->GetRandomReachablePointInRadius(GetActorLocation(),3000,Goal)&&FVector::Dist2D(GetActorLocation(),Goal.Location)>600){if(MoveTo(Goal.Location))return;}
 }
-void APiedmontPedestrian::YieldTo(APiedmontBike* Source,bool Horn){
+void APiedmontPedestrian::YieldTo(APawn* Source,bool Horn){
  if(!Source||bDead||Kind==EPiedmontPedestrianKind::Jogger||YieldCooldown>0||StumbleRemaining>0)return;
  if(FVector::Dist2D(Source->GetActorLocation(),GetActorLocation())>(Horn?1400:600))return;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(ParkVisitorWarning),false,this);Q.AddIgnoredActor(Source);FHitResult Hit;
@@ -52,7 +52,7 @@ void APiedmontPedestrian::YieldTo(APiedmontBike* Source,bool Horn){
   PauseRemaining=0;YieldRemaining=2;YieldCooldown=5;if(Horn)HornReactions++;
  }
 }
-void APiedmontPedestrian::HearHorn(APiedmontBike* Source){YieldTo(Source,true);}
+void APiedmontPedestrian::HearHorn(APawn* Source){YieldTo(Source,true);}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
  if(bDead||StumbleRemaining>0)return;BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
@@ -69,7 +69,7 @@ void APiedmontPedestrian::Tick(float Dt){
  if(PauseRemaining>0){PauseRemaining=FMath::Max(0.f,PauseRemaining-Dt);AI->StopMovement();bHasDestination=false;return;}
  if(YieldRemaining>0){YieldRemaining-=Dt;return;}
  if(ThinkRemaining>0)return;ThinkRemaining=.65f;
- if(auto* BikePawn=Cast<APiedmontBike>(UGameplayStatics::GetPlayerPawn(this,0)))if(BikePawn->Ride->Speed>150&&FVector::DotProduct((GetActorLocation()-BikePawn->GetActorLocation()).GetSafeNormal2D(),BikePawn->GetActorForwardVector())>.5f){YieldTo(BikePawn,false);if(YieldRemaining>0)return;}
+ if(auto* BikePawn=UGameplayStatics::GetPlayerPawn(this,0))if((BikePawn->ActorHasTag(TEXT("RideBike"))||Cast<APiedmontBike>(BikePawn))&&BikePawn->GetVelocity().Size2D()>150&&FVector::DotProduct((GetActorLocation()-BikePawn->GetActorLocation()).GetSafeNormal2D(),BikePawn->GetActorForwardVector())>.5f){YieldTo(BikePawn,false);if(YieldRemaining>0)return;}
  if(bHasDestination&&AI->GetMoveStatus()==EPathFollowingStatus::Idle){
   const bool Arrived=FVector::Dist2D(GetActorLocation(),Destination)<150;bHasDestination=false;
   if(Arrived){CompletedWalks++;if(!GroupLeader&&Kind==EPiedmontPedestrianKind::Walker&&FMath::FRand()<.25f){PauseRemaining=FMath::FRandRange(2.f,5.f);return;}}

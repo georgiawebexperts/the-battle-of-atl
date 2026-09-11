@@ -26,7 +26,7 @@ public:
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontPedestrian> GroupLeader;
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);
- void HearHorn(APiedmontBike* Source);
+ void HearHorn(APawn* Source);
  void BikeImpact(float Speed,FVector Direction);
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
@@ -34,6 +34,6 @@ protected:
 private:
  bool MoveTo(FVector Goal);
  void ChooseDestination();
- void YieldTo(APiedmontBike* Source,bool Horn);
+ void YieldTo(APawn* Source,bool Horn);
  float ThinkRemaining=0,YieldRemaining=0,YieldCooldown=0;
 };

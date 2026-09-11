@@ -1,0 +1,195 @@
+{
+  "status": "passed",
+  "scope": "V3 terrain/handling foundation only; other gameplay is tested separately and full fun acceptance remains pending.",
+  "cases": [
+    {
+      "name": "fifty_wandering_visitors",
+      "pass": true,
+      "count": 50
+    },
+    {
+      "name": "uses_character_movement",
+      "pass": true
+    },
+    {
+      "name": "five_gear_upper_limit",
+      "pass": true
+    },
+    {
+      "name": "first_gear_lower_limit",
+      "pass": true
+    },
+    {
+      "name": "hill",
+      "pass": true,
+      "travel_cm": 4889.457482847243,
+      "max_height": 448.1500014934583,
+      "last": {
+        "x": 3289.457482847243,
+        "y": -2500.0,
+        "z": 98.15000156313181,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "speed": 1600.0,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 0.0
+      }
+    },
+    {
+      "name": "stairs",
+      "pass": true,
+      "travel_cm": 5049.076635794176,
+      "max_height": 206.03319336335971,
+      "last": {
+        "x": 3349.076635794175,
+        "y": -4500.0,
+        "z": 98.14999939363315,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "speed": 1600.0,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 0.0
+      }
+    },
+    {
+      "name": "roots",
+      "pass": true,
+      "travel_cm": 3599.926523216852,
+      "max_height": 118.15000006748505,
+      "last": {
+        "x": 2099.926523216852,
+        "y": -6500.0,
+        "z": 98.1499982430405,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "speed": 1600.0,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 0.0
+      }
+    },
+    {
+      "name": "asphalt",
+      "pass": true,
+      "travel_cm": 3121.705113915268,
+      "max_height": 123.15000107991364,
+      "last": {
+        "x": -878.2948860847318,
+        "y": 0.0,
+        "z": 98.31341412770416,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "speed": 1600.0,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 0.0
+      }
+    },
+    {
+      "name": "grass",
+      "pass": true,
+      "travel_cm": 2346.564725435717,
+      "max_height": 88.15000009536743,
+      "last": {
+        "x": -1653.4352745642832,
+        "y": 9000.0,
+        "z": 88.15000009536743,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "speed": 1200.0,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": true,
+        "slide": 0.0,
+        "visual_roll": 0.0
+      }
+    },
+    {
+      "name": "wall",
+      "pass": true,
+      "travel_cm": 1426.1569174619035,
+      "max_height": 98.69845308267577,
+      "last": {
+        "x": 6426.1569174619035,
+        "y": 0.0,
+        "z": 98.15000118219359,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "speed": 15.933664321899414,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 0.0
+      }
+    },
+    {
+      "name": "sharp_turn",
+      "pass": true,
+      "travel_cm": 320.9060960292027,
+      "max_height": 98.15000009536743,
+      "last": {
+        "x": -3679.0939039707973,
+        "y": 6114.37813571866,
+        "z": 98.15000009536743,
+        "pitch": 0.0,
+        "roll": -0.0,
+        "speed": 1600.0,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 23.999999997713914
+      }
+    },
+    {
+      "name": "drift",
+      "pass": true,
+      "travel_cm": 744.5302242973858,
+      "max_height": 98.15000009536743,
+      "last": {
+        "x": -3255.4697757026142,
+        "y": 4621.8717975661,
+        "z": 98.15000009536743,
+        "pitch": 0.0,
+        "roll": -0.0,
+        "speed": 1317.22998046875,
+        "recovery": 0.0,
+        "wipeouts": 0,
+        "grass": false,
+        "slide": 0.0,
+        "visual_roll": 23.999999997713914
+      }
+    },
+    {
+      "name": "water_returns_to_nearest_path_in_two_seconds",
+      "pass": true,
+      "elapsed": 2.00104571133852,
+      "location": [
+        8500.238281355503,
+        -6499.990543002312,
+        98.0
+      ]
+    },
+    {
+      "name": "direct_traffic_hit_has_two_second_wipeout",
+      "pass": true,
+      "elapsed": 2.0083427503705025
+    }
+  ],
+  "editor_nav_actors": [
+    "RecastNavMesh_0"
+  ],
+  "stage": 5,
+  "active": "recovery"
+}

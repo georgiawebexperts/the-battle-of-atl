@@ -1,4 +1,8 @@
 #include "BattleBike.h"
+#include "PiedmontDarkZone.h"
+#include "Engine/DirectionalLight.h"
+#include "Components/SpotLightComponent.h"
+#include "Components/PointLightComponent.h"
 #include "BattleShot.h"
 #include "PiedmontPedestrian.h"
 #include "Sound/SoundBase.h"
@@ -45,6 +49,8 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  static ConstructorHelpers::FObjectFinder<UStaticMesh> DetailedWheel(TEXT("/Game/PiedmontRide/Bike/SM_BikeWheel.SM_BikeWheel"));
  if(DetailedWheel.Succeeded()){FrontWheel->SetStaticMesh(DetailedWheel.Object);RearWheel->SetStaticMesh(DetailedWheel.Object);FrontWheel->SetRelativeScale3D(FVector(1));RearWheel->SetRelativeScale3D(FVector(1));}
  Tube(TEXT("HubMotor"),Back-FVector(0,6,0),Back+FVector(0,6,0),9,Rubber.Object);
+ Headlight=CreateDefaultSubobject<USpotLightComponent>(TEXT("AutomaticHeadlight"));Headlight->SetupAttachment(Capsule);Headlight->SetRelativeLocation(FVector(58,0,18));Headlight->SetIntensity(8000);Headlight->SetAttenuationRadius(3000);Headlight->SetInnerConeAngle(16);Headlight->SetOuterConeAngle(28);Headlight->SetLightColor(FLinearColor(1,.93,.8));Headlight->SetVisibility(false);
+ TailLight=CreateDefaultSubobject<UPointLightComponent>(TEXT("AutomaticRearLight"));TailLight->SetupAttachment(Capsule);TailLight->SetRelativeLocation(FVector(-65,0,-15));TailLight->SetIntensity(25);TailLight->SetAttenuationRadius(90);TailLight->SetLightColor(FLinearColor(1,.015,.01));TailLight->SetVisibility(false);
  Pistol=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingPistol"));Pistol->SetupAttachment(Visual);Pistol->SetCollisionEnabled(ECollisionEnabled::NoCollision);Pistol->SetVisibility(false);
  Rider=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("RiggedRider"));Rider->SetupAttachment(Visual);Rider->SetRelativeRotation(FRotator(0,-90,0));Rider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  static ConstructorHelpers::FObjectFinder<USkeletalMesh> Human(TEXT("/Game/PiedmontRide/Rider/Casual.Casual"));
@@ -63,11 +69,11 @@ void ABattleBike::BeginPlay(){
  }
 }
 void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
- Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::Up,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Down,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
+ Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::Up,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Down,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
 void ABattleBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
- Super::Tick(Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
+ Super::Tick(Dt);UpdateLights(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
  if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0)PistolAmmo=12;}
  Pistol->SetVisibility(!bParked&&GunHold>0);if(bParked)return;UpdateNearMisses();
  for(auto* View:{Chase.Get(),Handlebar.Get()}){View->PostProcessSettings.bOverride_MotionBlurAmount=true;View->PostProcessSettings.MotionBlurAmount=Ride->BoostRemaining>0?.4f:.1f;}
@@ -121,7 +127,7 @@ void ABattleLabHUD::DrawHUD(){
  DrawRect(FLinearColor(.03,.015,.02,.85),20,20,720,125);DrawText(TEXT("BATTLE FOR THE A | ARCADE BIKE TEST"),FColor::White,35,30,nullptr,1.8);
  DrawText(FString::Printf(TEXT("GEAR %d / 5   %.0f MPH   Wipeouts %d"),Bike->Ride->Gear,Bike->Ride->Speed*.0223694f,Bike->Ride->Wipeouts),FColor(255,190,80),35,65,nullptr,1.5);
  DrawText(TEXT("W pedal | Arrows or A/D steer | Up/Down gears | Space brake | Tab view"),FColor::White,35,105,nullptr,1.1);
- DrawText(FString::Printf(TEXT("NITRO %.0f%% | Shift boost | E on/off | Click pistol %d"),Bike->Nitro,Bike->PistolAmmo),FColor::Cyan,35,155,nullptr,1.2);
+ DrawText(FString::Printf(TEXT("NITRO %.0f%% | Shift boost | H horn | E on/off | Click pistol %d"),Bike->Nitro,Bike->PistolAmmo),FColor::Cyan,35,155,nullptr,1.2);
  DrawRect(FLinearColor(.01,.02,.03,.9),35,183,204,14);DrawRect(FLinearColor(.05,.8,1,1),37,185,FMath::Clamp(Bike->Nitro,0.f,100.f)*2,10);
  const float CrossX=Canvas->SizeX*.5f,CrossY=Canvas->SizeY*.5f;
  DrawLine(CrossX-5,CrossY,CrossX+5,CrossY,FColor::White,1);DrawLine(CrossX,CrossY-5,CrossX,CrossY+5,FColor::White,1);
@@ -183,4 +189,19 @@ void ABattleBike::UpdateNearMisses(){
  }
  for(auto It=Passes.CreateIterator();It;++It)if(!It.Key().IsValid())It.RemoveCurrent();
  for(auto It=RewardTimes.CreateIterator();It;++It)if(!It.Key().IsValid())It.RemoveCurrent();
+}
+
+void ABattleBike::Horn(){
+ if(!GetController()||bParked||HornCooldown>0)return;
+ if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)return;
+ HornCooldown=.65f;HornCount++;
+ for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->HearHorn(this);
+ if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/PiedmontRide/Audio/S_Horn.S_Horn")))UGameplayStatics::PlaySoundAtLocation(this,Sound,GetActorLocation());
+}
+void ABattleBike::UpdateLights(float Dt){
+ LightOffDelay=FMath::Max(0.f,LightOffDelay-Dt);LightCheck-=Dt;if(LightCheck>0)return;LightCheck=.2f;bool Dark=false;
+ for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(GetActorLocation())){Dark=true;break;}
+ if(!Dark){TActorIterator<ADirectionalLight> Sun(GetWorld());if(Sun)Dark=Sun->GetActorForwardVector().Z>0;}
+ if(Dark){LightOffDelay=1.5f;bLightsOn=true;}else if(LightOffDelay<=0)bLightsOn=false;
+ Headlight->SetVisibility(bLightsOn);TailLight->SetVisibility(bLightsOn);
 }

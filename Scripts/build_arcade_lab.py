@@ -1,7 +1,7 @@
 """V3's isolated playable handling course; prior park/map assets are retained."""
 import unreal,json,pathlib,time,traceback
 root=pathlib.Path(unreal.Paths.project_dir());level=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem);ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-if globals().get('WORLD_JOB',{}).get('action')!='navigation':
+if globals().get('WORLD_JOB',{}).get('action') not in ['navigation','curb']:
  level.new_level('/Game/BattleForTheA/Maps/ArcadeBikeLab')
  w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();w.get_world_settings().set_editor_property('default_game_mode',unreal.BattleLabMode)
  cube=unreal.load_asset('/Engine/BasicShapes/Cube');mats={n:unreal.load_asset('/Game/PiedmontRide/Materials/M_'+n) for n in ['Asphalt','Grass','Concrete','Safety']}
@@ -33,6 +33,12 @@ if globals().get('WORLD_JOB',{}).get('action')!='navigation':
  sun=ea.spawn_actor_from_class(unreal.DirectionalLight,unreal.Vector(0,0,3000),unreal.Rotator(pitch=-35,yaw=-40));sun.light_component.set_editor_property('mobility',unreal.ComponentMobility.MOVABLE);sun.light_component.set_editor_property('intensity',4)
  ea.spawn_actor_from_class(unreal.SkyAtmosphere,unreal.Vector());sky=ea.spawn_actor_from_class(unreal.SkyLight,unreal.Vector(0,0,1000));sky.light_component.set_editor_property('mobility',unreal.ComponentMobility.MOVABLE);sky.light_component.set_editor_property('real_time_capture',True)
 w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
+if not any(a.get_actor_label()=='Single 25cm curb' for a in ea.get_all_level_actors()):
+ curb=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(-2000,0,12.5));curb.set_actor_label('Single 25cm curb');curb.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));curb.static_mesh_component.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_Concrete'));curb.set_actor_scale3d(unreal.Vector(2,6,.25));curb.tags=[unreal.Name('RidePath')]
+if not any(a.get_actor_label()=='Lighting test shelter roof' for a in ea.get_all_level_actors()):
+ for name,loc,scale in [('roof',(4000,-6500,410),(10,13,.2)),('north wall',(4000,-7140,205),(10,.2,4.1)),('south wall',(4000,-5860,205),(10,.2,4.1))]:
+  a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(*loc));a.set_actor_label('Lighting test shelter '+name);a.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));a.static_mesh_component.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_Concrete'));a.set_actor_scale3d(unreal.Vector(*scale));a.tags=[unreal.Name('RideBarrier')]
+ zone=ea.spawn_actor_from_class(unreal.PiedmontDarkZone,unreal.Vector(4000,-6500,180));zone.set_actor_label('Lighting shelter automatic lights');zone.get_editor_property('bounds').set_box_extent(unreal.Vector(500,630,230))
 started=time.monotonic();nav_requested=False
 def finish(dt):
  global handle,nav_requested
@@ -42,7 +48,7 @@ def finish(dt):
    if not unreal.PiedmontWorldTools.build_park_navigation(unreal.Vector(0,0,500),unreal.Vector(14000,12000,2500)):raise RuntimeError('Lab navigation setup failed')
    nav_requested=True;return
   if unreal.PiedmontWorldTools.is_park_navigation_building():return
-  unreal.unregister_slate_post_tick_callback(handle);saved=level.save_current_level();(root/'Scripts/arcade-lab-built.json').write_text(json.dumps({'map':w.get_name(),'saved':bool(saved),'status':'built','scope':'V3 handling course. FPS, nitro and complete milestone acceptance pending.'},indent=2))
+  unreal.unregister_slate_post_tick_callback(handle);saved=level.save_current_level();(root/'Scripts/arcade-lab-built.json').write_text(json.dumps({'map':w.get_name(),'saved':bool(saved),'status':'built','scope':'V3 development course; full gameplay/presentation acceptance pending.'},indent=2))
  except Exception:
   (root/'Scripts/arcade-lab-built.json').write_text(json.dumps({'status':'error','error':traceback.format_exc()},indent=2));unreal.unregister_slate_post_tick_callback(handle)
 handle=unreal.register_slate_post_tick_callback(finish)

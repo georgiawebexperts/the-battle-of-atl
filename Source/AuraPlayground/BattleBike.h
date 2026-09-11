@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PiedmontBike.h"
 #include "BattleBike.generated.h"
+class USpotLightComponent;class UPointLightComponent;
 class ABattleRider;
 class UPoseableMeshComponent;
 class UCameraComponent;
@@ -51,6 +52,11 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Handlebar;
  UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<USpotLightComponent> Headlight;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> TailLight;
+ UPROPERTY(BlueprintReadOnly) bool bLightsOn=false;
+ UPROPERTY(BlueprintReadOnly) int32 HornCount=0;
+ UFUNCTION(BlueprintCallable) void Horn();
  UPROPERTY(BlueprintReadOnly) float Nitro=0;
  UPROPERTY(BlueprintReadOnly) int32 NearMisses=0;
  UPROPERTY(BlueprintReadOnly) int32 EnemyKills=0;
@@ -71,6 +77,8 @@ public:
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
  FVector FindPathReturn() const;
 private:
+ void UpdateLights(float Dt);
+ float HornCooldown=0,LightOffDelay=0,LightCheck=0;
  void StartBoost(){Boost();}
  void Interact(){Dismount();}
  void UpdateNearMisses();
