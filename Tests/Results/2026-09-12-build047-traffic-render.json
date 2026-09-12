@@ -1,0 +1,33 @@
+{
+  "packaged": true,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-traffic-review/90c69ef634ea407fb416f6847144191a/traffic-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-traffic-review/90c69ef634ea407fb416f6847144191a/traffic-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-traffic-review/90c69ef634ea407fb416f6847144191a/traffic-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": true,
+  "scope": "Packaged main-world traffic under a controlled review camera; full rider playthrough and performance remain unverified.",
+  "frames": [
+    {
+      "frame": 1,
+      "cars": 6,
+      "distance": 19933.119,
+      "speed": 650.0
+    },
+    {
+      "frame": 2,
+      "cars": 6,
+      "distance": 21230.289,
+      "speed": 650.0
+    },
+    {
+      "frame": 3,
+      "cars": 6,
+      "distance": 22528.859,
+      "speed": 650.0
+    }
+  ],
+  "visual_review": "Inspected frames 1 and 3: body, wheels and opposing traffic present in packaged main map. Paint/lighting polish, continuous motion and full player-camera acceptance remain pending."
+}

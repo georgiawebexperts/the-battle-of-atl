@@ -281,3 +281,10 @@ Keep the requested Monroe, pre-Krog and Krog tunnel road crossings, occasional f
 Road-car swept impacts now compute closing speed against the bike and trigger the existing Traffic impact recovery above 500 cm/s, only for a mounted living rider. This covers late cut-ins where braking cannot prevent contact. Normal forward braking remains in place. Partial swept travel now advances route distance and wheel rotation by the completed fraction, avoiding a stale route position after emergency contact.
 
 Editor build passed. Native late cut-in fixture at 650 cm/s caused exactly one wipeout; normal road-car obstruction test also passed braking, stationary hold, resume and endpoint at 3997.578 cm. The cut-in is a deliberately placed fixture, not a rider-controlled crossing or visual crash-quality test. Physical rider ejection, health damage, on-foot collision response, glance tuning and packaging remain unfinished. Desktop remains 046.
+
+
+## Mac build 047 installed — 2026-09-12 [codex-maclaptop]
+
+BuildCookRun succeeded in 152 seconds. Packaged main-world traffic captured six live cars in three frames; frames 1 and 3 inspected for assembled bodies/wheels and opposing-lane placement. Packaged bike-to-car and late-cut-in moving-car tests passed with one recovery each. Health/checkpoint test passed two death resets, phone recollection and ordered checkpoints.
+
+Installed branded version 0.47.0 with strict ad-hoc signature verification at the existing desktop link. Previous 046 is retained in Builds/BattleForTheA/Mac/TheBattleOfATL-build046.app. New render/collision scripts accept explicit app and report paths, preserving historical reports. This is narrow packaged integration evidence, not full game/visual/performance acceptance. See PLAYTEST-047.md for remaining limitations.
