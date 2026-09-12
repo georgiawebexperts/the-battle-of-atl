@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "physics": {
+    "passed": false,
+    "hip_drop_cm": 22.372,
+    "max_limb_span_cm": 97.131,
+    "hip_floor_cm": 97.437,
+    "final_speed": 7.527
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b47f369948394f29a1ab8173ff88fe23/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b47f369948394f29a1ab8173ff88fe23/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b47f369948394f29a1ab8173ff88fe23/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b47f369948394f29a1ab8173ff88fe23/player-fall-4.png"
+  ],
+  "capture_passed": true,
+  "scope": "Mounted-pose candidate physics only. No production trigger, bike fall, recovery, or visual acceptance."
+}

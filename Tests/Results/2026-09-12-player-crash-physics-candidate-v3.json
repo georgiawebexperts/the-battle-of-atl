@@ -1,0 +1,6 @@
+{
+  "asset": "/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV3.PA_EllisonCrashCandidateV3",
+  "live_mesh_assignment_changed": false,
+  "main_map_changed": false,
+  "scope": "Anatomical capsule radii fitted in scaled bone space; auto-generated joint constraints retained. Live mesh unchanged. Runtime fall evidence is in player-crash-runtime report; recovery and production integration remain incomplete."
+}
