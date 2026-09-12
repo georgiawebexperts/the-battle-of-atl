@@ -1,28 +1,28 @@
 {
   "exit_code": 0,
   "skin": {
-    "min_clearance_cm": -18.339,
-    "below_vertices": 1976,
+    "min_clearance_cm": -18.298,
+    "below_vertices": 2085,
     "vertices": 3273
   },
   "physics": {
     "passed": true,
-    "hip_drop_cm": 99.81,
-    "max_limb_span_cm": 96.853,
-    "hip_floor_cm": 2.116,
-    "final_speed": 0.169
+    "hip_drop_cm": 99.811,
+    "max_limb_span_cm": 97.618,
+    "hip_floor_cm": 2.119,
+    "final_speed": 0.66
   },
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-fall-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-fall-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-fall-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-fall-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-recovery-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-recovery-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-recovery-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-recovery-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-recovery-5.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f76dcbc1bf7a4d3ba31892532a88ccf9/player-recovery-6.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/ec2e80f44e444dbfa0923f5de7e97603/player-recovery-6.png"
   ],
   "capture_passed": true,
   "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
@@ -30,7 +30,7 @@
   "transfer": {
     "choice": 2,
     "max_transfer_error_cm": 0.0,
-    "initial_pose_rms_cm": 39.033
+    "initial_pose_rms_cm": 47.175
   },
   "recovery": {
     "passed": true,
@@ -40,10 +40,31 @@
   },
   "bike": {
     "passed": true,
-    "upright_dot": 0.199,
+    "upright_dot": 0.197,
     "speed": 0.0,
     "parts": 16
   },
-  "visual_acceptance": false,
-  "diagnostic_scope": "Skin sampled against a separate complex ground trace at each vertex, ignoring rider and fallen bike. Still fails:1976/3273 below by up to18.339cm. Simple and complex query both hit road324.092; actual physics body bounds extend below it. Next inspect triangle collision sidedness/contact filtering rather than enlarging body blindly."
+  "actual_shape_diagnostics": [
+    "bone=Hips type=3 size=X=26.000 Y=26.100 Z=26.000 static_response=2",
+    "bone=Abdomen type=3 size=X=22.000 Y=22.100 Z=22.000 static_response=2",
+    "bone=Torso type=3 size=X=22.000 Y=22.100 Z=22.000 static_response=2",
+    "bone=Chest type=3 size=X=26.000 Y=26.100 Z=26.000 static_response=2",
+    "bone=Neck type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2",
+    "bone=Head type=3 size=X=20.000 Y=25.427 Z=20.000 static_response=2",
+    "bone=Shoulder_L type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2",
+    "bone=UpperArm_L type=3 size=X=8.000 Y=18.191 Z=8.000 static_response=2",
+    "bone=LowerArm_L type=3 size=X=8.000 Y=23.528 Z=8.000 static_response=2",
+    "bone=Hand_L type=3 size=X=9.343 Y=15.074 Z=8.006 static_response=2",
+    "bone=Shoulder_R type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2",
+    "bone=UpperArm_R type=3 size=X=8.000 Y=18.191 Z=8.000 static_response=2",
+    "bone=LowerArm_R type=3 size=X=8.000 Y=23.528 Z=8.000 static_response=2",
+    "bone=Hand_R type=3 size=X=9.343 Y=15.074 Z=8.006 static_response=2",
+    "bone=UpperLeg_L type=3 size=X=12.000 Y=43.298 Z=12.000 static_response=2",
+    "bone=LowerLeg_L type=3 size=X=12.000 Y=51.112 Z=12.000 static_response=2",
+    "bone=Foot_L type=3 size=X=10.000 Y=17.734 Z=10.000 static_response=2",
+    "bone=UpperLeg_R type=3 size=X=12.000 Y=43.298 Z=12.000 static_response=2",
+    "bone=LowerLeg_R type=3 size=X=12.000 Y=51.112 Z=12.000 static_response=2",
+    "bone=Foot_R type=3 size=X=10.000 Y=17.734 Z=10.000 static_response=2"
+  ],
+  "visual_acceptance": false
 }

@@ -1,4 +1,6 @@
 #include "BattleBike.h"
+#include "Physics/PhysicsInterfaceCore.h"
+#include "Chaos/ImplicitObject.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Rendering/SkeletalMeshRenderData.h"
@@ -54,6 +56,7 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
   if(auto* Road=Cast<UStaticMeshComponent>(Hit.GetComponent()))UE_LOG(LogTemp,Display,TEXT("CrashRoadMesh: %s traceflag=%d"),*GetNameSafe(Road->GetStaticMesh()),Road->GetStaticMesh()&&Road->GetStaticMesh()->GetBodySetup()?int32(Road->GetStaticMesh()->GetBodySetup()->CollisionTraceFlag):-1);
   Q.bTraceComplex=false;FHitResult Simple;PC->GetWorld()->LineTraceSingleByChannel(Simple,Hip+FVector(0,0,100),Hip-FVector(0,0,300),ECC_WorldStatic,Q);UE_LOG(LogTemp,Display,TEXT("CrashRoadSurfaces: simple=%.3f complex=%.3f actor=%s"),Simple.ImpactPoint.Z,Hit.ImpactPoint.Z,*GetNameSafe(Simple.GetActor()));Q.bTraceComplex=true;
   for(const auto& Setup:S.Body->GetPhysicsAsset()->SkeletalBodySetups){if(auto* Instance=S.Body->GetBodyInstance(Setup->BoneName)){
+   FPhysicsCommand::ExecuteRead(Instance->GetPhysicsActor(),[&](const FPhysicsActorHandle& Actor){TArray<FPhysicsShapeHandle> Shapes;FPhysicsInterface::GetAllShapes_AssumedLocked(Actor,Shapes);for(const auto& Shape:Shapes){auto Geometry=FPhysicsInterface::GetGeometryCollection(Shape);UE_LOG(LogTemp,Display,TEXT("CrashActualShape: bone=%s type=%d size=%s static_response=%d"),*Setup->BoneName.ToString(),int32(Geometry.GetType()),*FVector(Geometry.GetGeometry().BoundingBox().Extents()).ToString(),int32(Instance->GetResponseToChannel(ECC_WorldStatic)));}});
    FTransform T=Instance->GetUnrealWorldTransform();T.SetScale3D(Instance->Scale3D);const FBox Bounds=Setup->AggGeom.CalcAABB(T);
    UE_LOG(LogTemp,Display,TEXT("CrashClearance: bone=%s bone_z=%.3f body_z=%.3f bottom=%.3f floor=%.3f scale=%s collision=%d actual_min=%.3f actual_max=%.3f"),*Setup->BoneName.ToString(),S.Body->GetSocketLocation(Setup->BoneName).Z,T.GetLocation().Z,Bounds.Min.Z,Hit.ImpactPoint.Z,*Instance->Scale3D.ToString(),int32(Instance->GetCollisionEnabled()),Instance->GetBodyBounds().Min.Z,Instance->GetBodyBounds().Max.Z);
   }}

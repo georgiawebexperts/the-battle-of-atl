@@ -12,6 +12,7 @@ images=[out/f'player-fall-{i}.png' for i in range(1,5)]
 skin=re.findall(r'CrashSkin: (\{[^\n]+\})',text)
 if args.recovery:images += [out/f'player-recovery-{i}.png' for i in range(1,7)]
 r={'exit_code':result.returncode,'skin':json.loads(skin[-1]) if skin else None,'physics':json.loads(rows[-1]) if rows else None,'images':[str(p) for p in images],'capture_passed':result.returncode==0 and bool(rows) and all(p.is_file() for p in images),'scope':'Mounted-pose candidate physics only. No production trigger, bike fall, recovery, or visual acceptance.'}
+r['actual_shape_diagnostics']=re.findall(r'CrashActualShape: ([^\n]+)',text)
 r['skin_clearance_passed']=bool(r['skin']) and r['skin']['vertices']>0 and r['skin']['below_vertices']==0 and r['skin']['min_clearance_cm']>=-1
 if args.recovery:
  transfer=re.findall(r'PlayerRecoveryTransfer: (\{[^\n]+\})',text);complete=re.findall(r'PlayerRecoveryComplete: (\{[^\n]+\})',text)
