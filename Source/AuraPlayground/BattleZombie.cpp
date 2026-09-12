@@ -127,6 +127,7 @@ void ABattleEnemyDirector::BeginPlay(){
 void ABattleEnemyDirector::Tick(float Dt){
  Super::Tick(Dt);
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanDeathAudit"))){extern void TickBattleGunmanDeathAudit(ABattleEnemyDirector*,float);TickBattleGunmanDeathAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanDirectorAudit"))){extern void TickBattleGunmanDirectorAudit(ABattleEnemyDirector*,float);TickBattleGunmanDirectorAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanAudit"))){extern void TickBattleGunmanAudit(ABattleEnemyDirector*,float);TickBattleGunmanAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleVendorRegionAudit"))){extern void TickBattleVendorRegionAudit(ABattleEnemyDirector*,float);TickBattleVendorRegionAudit(this,Dt);return;}

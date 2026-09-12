@@ -78,3 +78,10 @@ Connected ABattleGunman to ABattleEnemyDirector in normal gameplay. Eligible aft
 Placement uses actual reachable navigation points1200–2000cm from player, rejects water/capsule obstruction, and restricts arrival to behind camera (horizontal dot<=-.15). Three-second arrival cooldown precedes normal1.8second locked-aim warning. Gunman can be escaped or shot. No chase introduced.
 
 Editor build and Scripts/test_gunman_director.py pass: quiet search/practice/countdown/grace suppression, first quiet interval, real nav placement/range/behind-camera direction, arrival grace/lifetime/cooldown, single-shooter cap, escape retirement and dead-player suppression. Director time is accelerated by the fixture; this does not prove full-route encounter frequency, human reaction balance, animation quality or packaged behavior. Existing core shot contract remains unchanged. Installed051 unchanged; next acceptance requires actual route encounters and gunman art/death improvements.
+
+
+## Gunman physical death — 2026-09-12 [codex-maclaptop]
+
+Fatal gunman damage now starts the Casual rig's existing V6 physics asset at the current visible bone transforms. Initial velocity/upper-body impulse follow the damage-causer direction. Hidden skeletal simulation drives the visible poseable mesh after physics, retaining BodyInstance scale and updating bounds. Collision ignores pawns/camera, blocks world and visibility. Corpse lasts8seconds; cannot fire. Physics asset is constructor-referenced for cooking. Existing blood burst retained.
+
+Native build and rendered death fixture pass physical Hips simulation, visible hip tracking within10cm, head height drop>60cm, and dead-fire suppression. Initial test incorrectly queried nonphysical root; replaced with Hips query. Inspected .3s and2.5s captures: body transitions from upright to a prone ground-contact pose. Only one flat-pavement direction reviewed; arbitrary terrain, slopes, shot animation and packaged behavior remain unaccepted. Art remains stylized and blood effect rough; no claim of GTA-quality animation. Installed051 unchanged. Reproducer Scripts/test_gunman_death.py --render.

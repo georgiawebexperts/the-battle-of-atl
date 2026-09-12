@@ -7,9 +7,12 @@
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+#include "PhysicsEngine/PhysicsAsset.h"
+#include "UObject/ConstructorHelpers.h"
 ABattleGunman::ABattleGunman(){
  Tags.Add(TEXT("PiedmontHostile"));Tags.Add(TEXT("BattleHostile"));Tags.Add(TEXT("BattleGunman"));
- bUseControllerRotationYaw=false;
+ bUseControllerRotationYaw=false;PrimaryActorTick.TickGroup=TG_PostPhysics;
+ static ConstructorHelpers::FObjectFinder<UPhysicsAsset> DeathCollision(TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));DeathAsset=DeathCollision.Object;
 }
 bool ABattleGunman::CanAttack() const{
  const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
@@ -38,6 +41,7 @@ bool ABattleGunman::ResolveShot(){
  return true;
 }
 void ABattleGunman::Tick(float Dt){
+ if(bDead){Super::Tick(Dt);MirrorDeathPose();return;}
  ShotAlertRemaining=FMath::Max(0.f,ShotAlertRemaining-Dt);
  bWeaponDrawn=bWarning;Super::Tick(Dt);
  if(!CanAttack()){bWarning=false;WindupRemaining=0;return;}
@@ -49,6 +53,6 @@ float ABattleGunman::TakeDamage(float Amount,const FDamageEvent& Event,AControll
  if(bDead||!FMath::IsFinite(Amount)||Amount<=0)return 0;
  const float Applied=FMath::Min(Health,Amount);Health-=Applied;bWarning=false;WindupRemaining=0;Cooldown=FMath::Max(Cooldown,.8f);
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,20),Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal():FVector::UpVector);
- if(Health<=0){bDead=true;GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Weapon->SetVisibility(false);SetLifeSpan(8);}
+ if(Health<=0){bDead=true;GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Weapon->SetVisibility(false);BeginDeathPhysics(Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal2D():GetActorForwardVector());SetLifeSpan(8);}
  return Applied;
 }
