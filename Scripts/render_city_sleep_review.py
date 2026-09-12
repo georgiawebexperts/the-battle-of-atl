@@ -1,12 +1,13 @@
 """Transient flat-floor review of sleeping contact and recovery candidate poses."""
 import unreal,json,pathlib,os
 root=pathlib.Path(unreal.Paths.project_dir())
-stumble=os.environ.get('BATTLE_SLEEP_STUMBLE')=='1'
+settle=os.environ.get('BATTLE_SLEEP_SETTLE')=='1'
+stumble=os.environ.get('BATTLE_SLEEP_STUMBLE')=='1' or settle
 baked=os.environ.get('BATTLE_SLEEP_WAKE')=='1'
 recovery=os.environ.get('BATTLE_SLEEP_RECOVERY')=='1'
 reference=os.environ.get('BATTLE_SLEEP_REFERENCE')=='1'
 offset=float(os.environ.get('BATTLE_SLEEP_REVIEW_OFFSET','0'))
-out=root/('work/sleep-'+('stumble' if stumble else ('wake' if baked else ('recovery' if recovery else ('source' if reference else 'city'))))+'-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
+out=root/('work/'+('settle-' if settle else '')+'sleep-'+('stumble' if stumble else ('wake' if baked else ('recovery' if recovery else ('source' if reference else 'city'))))+'-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 def vector_values(v):return [v.x,v.y,v.z]
@@ -24,6 +25,8 @@ variants=[]
 variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim')]
 if stumble:
  variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/StumbleCandidate/MixamoStumbleReference_Anim')]
+if settle:
+ variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/StumbleCandidate/'+name) for name in ['StumbleToSleep','SleepingAtLanding']]
 if baked:
  variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/SleepCandidate/SleepToStand_R')]
 if recovery:
@@ -61,6 +64,7 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
  cam.set_actor_location(pos,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(pos,target),False)
  samples=[]
  times=[0,.125,.25,.375,.5,1,2,animation.get_editor_property('sequence_length')-.001] if baked else [animation.get_editor_property('sequence_length')*fraction for fraction in [0,.25,.55,.999]]
+ if settle and clip.endswith('StumbleToSleep'):times=[0,4.9,5.3,animation.get_editor_property('sequence_length')-.001]
  for phase,sample_time in enumerate(times):
   body.set_animation_mode(unreal.AnimationMode.ANIMATION_CUSTOM_MODE)
   body.override_animation_data(animation,True,False,sample_time,1.0)

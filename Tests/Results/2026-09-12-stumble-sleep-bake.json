@@ -1,0 +1,31 @@
+{
+  "transition": "/Game/BattleRetarget/Mixamo/StumbleCandidate/StumbleToSleep.StumbleToSleep",
+  "aligned_loop": "/Game/BattleRetarget/Mixamo/StumbleCandidate/SleepingAtLanding.SleepingAtLanding",
+  "duration": 5.733333333333333,
+  "blend_seconds": 0.8,
+  "anchor_local_translation": [
+    -261.38745644734155,
+    39.75357501318582,
+    0.0
+  ],
+  "anchor_local_yaw_degrees": -323.48923692241056,
+  "visual_acceptance": false,
+  "gameplay_installed": false,
+  "note": "Trajectory remains in mesh root; runtime must reserve fall clearance and reconcile capsule with landing anchor before placement.",
+  "review": {
+    "manifest": "work/settle-sleep-stumble-contact-0.0/manifest.json",
+    "endpoint_gap_cm": {
+      "head": 0.005215234366278188,
+      "pelvis": 0.004456232351904298,
+      "left_foot": 0.00838625886915789,
+      "right_foot": 0.005191006287950449
+    },
+    "visually_inspected": [
+      "male-p-3.png",
+      "male-g-0.png"
+    ],
+    "finding": "Transition endpoint and aligned sleep start visually match. Continuous fall, root-motion collision and skin-ground contact remain unverified.",
+    "render_exit": 1,
+    "render_issue": "Occupied HTTP listener port30010; eight images and manifest completed."
+  }
+}
