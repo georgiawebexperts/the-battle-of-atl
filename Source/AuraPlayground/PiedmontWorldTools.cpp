@@ -111,7 +111,7 @@ AActor* UPiedmontWorldTools::SpawnValidationDarkZone(UObject* WorldContext,FVect
 bool UPiedmontWorldTools::BuildParkNavigation(FVector Center,FVector Extent){
 #if WITH_EDITOR
  UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
- if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("ArcadeBikeLab")))return false;
+ if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("ArcadeBikeLab")&&World->GetName()!=TEXT("PiedmontKrogWorldReview")))return false;
  for(TActorIterator<AActor> It(World);It;++It){
   const bool Relevant=It->ActorHasTag(TEXT("RideDirt"))||It->ActorHasTag(TEXT("RidePath"))||It->ActorHasTag(TEXT("RideBridge"))||It->ActorHasTag(TEXT("RideBarrier"));
   TArray<UPrimitiveComponent*> Components;It->GetComponents(Components);
@@ -171,7 +171,7 @@ bool UPiedmontWorldTools::IsParkNavigationBuilding(){
 bool UPiedmontWorldTools::FinishParkNavigationBuild(){
 #if WITH_EDITOR
  UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
- if(!World||World->GetName()!=TEXT("PiedmontWorld"))return false;
+ if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("PiedmontKrogWorldReview")))return false;
  for(TActorIterator<ANavigationData> It(World);It;++It)It->EnsureBuildCompletion();
  World->MarkPackageDirty();return !IsParkNavigationBuilding();
 #else

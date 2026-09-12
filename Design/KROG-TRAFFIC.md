@@ -180,3 +180,9 @@ Extended candidate drive harness with --world and added quarter-second traffic o
 Observed run passes48102.50cm, maxroute error41.90cm, zero wipeouts,81563/81563paved samples,12138lit/0unlit tunnel samples.202traffic samples:22live peak,20moving peak,11nearby samples, nearest car centre213.33cm. Actual W/A/D follows Irwin through full tunnel in both directions; pedestrians disabled by existing fixture. Not a full mixed-crowd quest playthrough or GPU performance measurement.
 
 Before main integration: rebuild navigation in combined candidate around changed road/building/rail geometry. Current BuildParkNavigation helper accepts only PiedmontWorld/ArcadeBikeLab; review map still carries inherited navigation. Add explicitly scoped review support and verify it, rather than assuming new obstacles updated navigation. Installed054/main unchanged.
+
+
+## Combined navigation rebuilt — 2026-09-12 [codex-maclaptop]
+Extended BuildParkNavigation and FinishParkNavigationBuild allowlists only for PiedmontKrogWorldReview, preserving existing main/lab restrictions. Scripts/rebuild_krog_world_navigation.py rebuilds native Recast with current path/barrier geometry, compares before/after connectivity from the park anchor, and saves candidate only if no sampled previously reachable point regresses and all Krog samples pass. Native editor build and commandlet pass.826samples total:793reachable before/after;88/88Krog samples reachable;0regressions.33pre-existing unreachable samples remain outside Krog and are not accepted as complete world navigation.
+
+Saved updated navigation in KrogWorldReview only. Re-run this rebuild after recreating the combined candidate or changing geometry. Checks are sampled path connectivity, not actual NPC pursuit, complete walkable-area coverage or runtime crowd performance. Main map and installed054 unchanged.
