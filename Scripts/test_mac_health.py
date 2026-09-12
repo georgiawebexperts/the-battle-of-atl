@@ -2,9 +2,10 @@
 import json,re,subprocess,argparse
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-11-native-health-checkpoints.json');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-11-native-health-checkpoints.json');parser.add_argument('--app',type=Path);args=parser.parse_args()
 assert Path(args.report).name==args.report
-app=root/'Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground'
+app=args.app or root/'Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground'
+assert app.is_file(),app
 log=root/'work/mac-health-checkpoints.log'
 with log.open('w') as stream:
     run=subprocess.run([str(app),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1',

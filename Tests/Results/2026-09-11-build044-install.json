@@ -1,0 +1,10 @@
+{
+  "version": "0.44.0",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "desktop_link": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "previous_build": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build043.app",
+  "hashes": {
+    "Contents/MacOS/AuraPlayground": "5f9ed6aee627ed206972daa92729dcdc4d4ef03d6dd0116d6a332d1d8e7daba4",
+    "Contents/UE/AuraPlayground/Content/Paks/AuraPlayground-Mac.utoc": "32dd00b5b5169c4d4adf00a531f0d1d5e56677db495afdcf3a628cc7d4b1db1c"
+  }
+}
