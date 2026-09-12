@@ -1,6 +1,7 @@
 #include "BattleMarketClosure.h"
 #include "BattleBike.h"
 #include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "Engine/StaticMesh.h"
@@ -30,6 +31,9 @@ void ABattleMarketClosure::BeginPlay(){
 
 void ABattleMarketClosure::Tick(float Dt){
  Super::Tick(Dt);
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketImpactAudit"))){extern void TickMarketImpactAudit(ABattleMarketClosure*,float);TickMarketImpactAudit(this,Dt);}
+#endif
  if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));Mode&&!Mode->bTutorialActive){
   UE_LOG(LogTemp,Display,TEXT("MarketClosure: tutorial ended; clearing entrance"));
   Destroy();

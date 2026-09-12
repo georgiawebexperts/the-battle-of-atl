@@ -549,3 +549,10 @@ Static entrance renderbe8eaec49a83433bbdcf072f2ec764d7 inspected: sign readable,
 ## Tutorial-only market fence lifecycle — 2026-09-12 [codex-maclaptop]
 
 ABattleMarketClosure now ticks and destroys itself once the active park mode leaves tutorial state. It does not evaluate lifecycle in BeginPlay, because the tutorial spawns it before setting initial practice state. Static editor art study is unaffected (no gameplay mode). Native build and Scripts/test_tutorial_routes.py --closure direct pass: fence present and237 isolated crossing sweeps pass during practice; actual7692cm keyboard gate route with max11.8cm centreline error; after real gateway start no market closure actor remains and countdown/single-start timer pass. Report2026-09-12-market-closure-direct.json. Still opt-in prototype: jumping, around-end bypasses and full closure design remain; desktop050 unchanged.
+
+
+## Actual bike attempts at market fence — 2026-09-12 [codex-maclaptop]
+
+Added opt-in BattleMarketImpactAudit, driven from closure actor. Teleports fixture1400cm west of gate onto ground, then actual W input at gear4 for6seconds; optional J at450cm approach. Native build passes. Both tests stay outside: ground attempt closest55.10cm, no airtime; jump attempt closest55.03cm, observed airtime and peak107.37cm above start. Both retain tutorial state/zero run elapsed. Script test_market_impact.py [--jump] verifies requested mode and jump peak>65cm.
+
+Narrow fixtures only: no actual side bypass, on-foot jumps, different speeds/jump timings, ramps, or rendered crash/animation acceptance. Closure remains opt-in, no main installation or desktop update. Next access work remains perimeter/end bypasses and walking/jumping, not more identical direct collision sweeps.

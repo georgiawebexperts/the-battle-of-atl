@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "jump": true,
+  "reason": "Real W approach remained outside gate; jump mode requires observed airtime",
+  "closest_cm": 55.03,
+  "peak_cm": 107.37,
+  "airborne": true,
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-impact-jump.log",
+  "scope": "Single direct W approach with optional J hop at450cm. No side bypass, on-foot jump, alternate speed/timing or rendered acceptance.",
+  "requested_mode_covered": true
+}
