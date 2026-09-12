@@ -1,0 +1,117 @@
+{
+  "meshes": [
+    {
+      "file": "FancyRoach_Brick.obj",
+      "material": "Brick",
+      "bounds": [
+        [
+          -22362.901031547877,
+          9694.560711740156,
+          264.766
+        ],
+        [
+          -17637.38867363498,
+          12018.168453454042,
+          570.976
+        ]
+      ],
+      "faces": 174
+    },
+    {
+      "file": "FancyRoach_Stucco.obj",
+      "material": "Stucco",
+      "bounds": [
+        [
+          -22387.904070443434,
+          9668.258933869907,
+          326.266
+        ],
+        [
+          -17611.075290096836,
+          12044.08643630314,
+          1748.976
+        ]
+      ],
+      "faces": 11544
+    },
+    {
+      "file": "FancyRoach_Trim.obj",
+      "material": "Trim",
+      "bounds": [
+        [
+          -22408.622145570906,
+          9644.98134420455,
+          320.766
+        ],
+        [
+          -17587.800938136577,
+          12067.082299811918,
+          1725.976
+        ]
+      ],
+      "faces": 2346
+    },
+    {
+      "file": "FancyRoach_Glass.obj",
+      "material": "Glass",
+      "bounds": [
+        [
+          -22377.804806751825,
+          9677.958241500059,
+          329.766
+        ],
+        [
+          -17620.775118389327,
+          12034.341965240541,
+          1653.476
+        ]
+      ],
+      "faces": 1896
+    },
+    {
+      "file": "FancyRoach_Roof.obj",
+      "material": "Roof",
+      "bounds": [
+        [
+          -22417.477143488577,
+          9640.350291815432,
+          1714.766
+        ],
+        [
+          -17583.177727572045,
+          12072.424044147494,
+          1771.976
+        ]
+      ],
+      "faces": 199
+    },
+    {
+      "file": "FancyRoach_WarmGlass.obj",
+      "material": "WarmGlass",
+      "bounds": [
+        [
+          -22377.804806751825,
+          9677.958241500059,
+          329.766
+        ],
+        [
+          -17624.639209298417,
+          12034.341965240541,
+          1653.476
+        ]
+      ],
+      "faces": 204
+    }
+  ],
+  "windows": 350,
+  "sign": {
+    "position_world_cm": [
+      -18600.37835896176,
+      11977.46886543717,
+      630.976
+    ],
+    "yaw": 88.84857114521093,
+    "text": "THE FANCY ROACH MOTEL"
+  },
+  "scope": "Photo-informed authored facade, actual footprint; height and window spacing approximated. Native render pending."
+}
