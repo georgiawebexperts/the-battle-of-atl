@@ -24,5 +24,11 @@ for row in json.loads((root/'SourceAssets/Terrain/IrwinTraffic/car-lane-probes.j
 (root/'Tests/Results/2026-09-12-irwin-building-clearance.json').write_text(json.dumps({'failures':failures,'passed':not failures},indent=2)+'\n')
 for car in cars:car.set_actor_enable_collision(True)
 assert not failures,len(failures)
+trail_failures=[]
+for row in json.loads((folder/'trail-probes.json').read_text())['samples']:
+ x,y,z=row['xyz'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+180),unreal.Vector(x,y,z-100))
+ if not hit or hit[1].actor_has_tag('IrwinBuildingReview') or abs(hit[0].z-z)>1.25:trail_failures.append({'sample':row,'actor':hit[1].get_actor_label() if hit else None,'height':hit[0].z if hit else None})
+(root/'Tests/Results/2026-09-12-irwin-building-trail-clearance.json').write_text(json.dumps({'passed':not trail_failures,'probes':len(json.loads((folder/'trail-probes.json').read_text())['samples']),'failures':trail_failures},indent=2)+'\n')
+assert not trail_failures,len(trail_failures)
 assert unreal.EditorLoadingAndSavingUtils.save_map(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world(),'/Game/PiedmontRide/Maps/PiedmontIrwinBuildingsReview')
 (root/'Tests/Results/2026-09-12-irwin-building-import.json').write_text(json.dumps({'assets':assets,'road_probes':6474,'road_clear':not failures,'main_map_changed':False,'visual_accepted':False},indent=2)+'\n')
