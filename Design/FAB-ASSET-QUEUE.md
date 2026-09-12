@@ -14,3 +14,6 @@ Other newly observed library additions, not downloaded by this agent:
 LCAT is an editor Control Rig animation tool, potentially useful for cinematics, not a runtime locomotion pack. Shooter core lists C++/HUD/recoil/ammo systems, but weapon models, combat animations, audio and effects are external demo content; verify Mac support before use and avoid replacing working gameplay without a scoped integration test.
 
 Sources: https://www.fab.com/listings/343098bf-bcfa-4d3a-8260-96e9c77b8635 ; https://www.fab.com/listings/0a897de8-58de-48f6-bc8a-cc343fdb5483 ; https://www.fab.com/listings/6fbe6321-4915-49c5-8350-fc7e04709376 .
+
+
+2026-09-11 [codex-maclaptop]: Added Epic City Sample Vehicles (free) to the Fab library; product page now shows View in My Library and View in Launcher. Listing includes 13 vehicles and Mac as a target platform, package versions UE 5.0–5.3. Actual UE 5.8/Mac integration remains unverified. https://www.fab.com/listings/2909157b-ddfa-4cef-a925-69dc2467021f . Download not started: native UI unavailable while Mac locked. Do not count library acquisition as downloaded content.
