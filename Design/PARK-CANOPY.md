@@ -51,3 +51,10 @@ Main source map changed; desktop048 not repackaged. Detailed tree migration depe
 Inspected all three mesh body setups: each already supplies one narrow capsule and no box/sphere/convex hull. Used these existing shapes, set game-copy meshes to simple-as-complex so leaf triangles do not block movement or traces, and enabled BlockAll in both mixed PCG graph descriptors and generated instance components. Added RideTree tag. Original source Fab assets unchanged.
 
 Native editor build passes. Before saving main, probed every one of587 instances through capsule centre and beside radius+30 cm:587 trunk hits,587 adjacent passes,0failures. Saved graph profiles and main. Existing bike nontraffic impact response remains speed-stop/bounce (no new realistic crash or tree wipeout claim). Actual bike/on-foot interaction, slope/path clearance and navigation/performance remain pending. Desktop048 unchanged. Installer script reproduces body flags; migrated Hornbeam asset files remain local dependency rather than newly tracked whole pack.
+
+
+## Native tree riding verified — 2026-09-12 [codex-maclaptop]
+
+Added opt-in BattleTreeRideAudit: selects an actual saved instance of each of three tree meshes, uses normal W keyboard input with starting teleports only, and runs a near pass plus direct contact for each. Added TreeContacts movement telemetry without changing collision response. First candidate selection used neighbouring tree centres only and timed out on forest approach before contact; retained failure evidence. Selection now sweeps walking-sized capsule along approach ground samples to exclude unrelated world blockers.
+
+Final native build/test passes all six legs: near passes produce no tree contact; direct hits stop bike before trunk centre. Existing nontraffic speed-stop/bounce response retained, not realistic crash animation or wipeout. Pedestrians/zombies removed and enemy spawns frozen within test. This is not all-path/slope clearance, on-foot navigation or packaged performance proof. Desktop048 unchanged; main canopy/trunks already saved in previous entries. Full game and outstanding scope remain unfinished.

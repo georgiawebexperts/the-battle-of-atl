@@ -23,6 +23,7 @@ public:
  virtual void CalcVelocity(float Dt,float Friction,bool Fluid,float Braking) override;
  virtual void OnMovementModeChanged(EMovementMode PreviousMovementMode,uint8 PreviousCustomMode) override;
  bool Hop();
+ int32 TreeContacts=0;
  int32 AirRewards=0;
  float AirSeconds=0,AirPeak=0;
  float RampLaunchSpeed=0,RampLaunchGrace=0;

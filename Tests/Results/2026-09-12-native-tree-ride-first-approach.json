@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Tree approach timed out",
+    "completed": 2,
+    "tree": 1,
+    "leg": 0
+  },
+  "scope": "Native keyboard passes beside and into three authored tree instances, one per mesh type. Nearby pedestrians/zombies removed; does not establish full-path clearance, realistic crash animation, on-foot navigation or packaged performance.",
+  "passed": false
+}

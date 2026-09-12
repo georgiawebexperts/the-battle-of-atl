@@ -80,6 +80,7 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
   if(Direct&&Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic")))if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(CharacterOwner)))Mode->RecordAssault(Hit.GetActor());
   ContactCooldown=.35f;if(Direct)Wipeout(TEXT("Traffic impact"));else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
+ if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree")))++TreeContacts;
  // Terrain, walls and fences never enter the wipeout state.
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>100)Bike->RideImpact(.45f);
  BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=0;
