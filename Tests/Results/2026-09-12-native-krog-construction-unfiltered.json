@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Capsule passed closure",
+    "blocked_capsule_sweeps": 315,
+    "cars": 0
+  },
+  "scope": "Native sweeps using actual bike, standing and crouched character capsule dimensions at ground and150/300cm lift, plus two native car routes with crossing control. Not a player jump trajectory, perimeter containment or natural traffic population test.",
+  "passed": false
+}
