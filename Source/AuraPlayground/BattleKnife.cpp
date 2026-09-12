@@ -52,6 +52,8 @@ void ABattleKnife::Tick(float Dt){
  if(bEscaped||bSwimming||!M||!P||M->bTutorialActive||M->StartCountdown>0||M->bRunEnded){bWindingUp=false;if(AI)AI->StopMovement();return;}
  auto* B=Cast<ABattleBike>(P);if(auto* Foot=Cast<ABattleRider>(P)){if(Foot->bSwimming){Escape();return;}B=Foot->ParkedBike;}
  if(!B||B->RiderHealth<=0||B->RespawnRemaining>0){Escape();return;}
+ // Keep the attacker clear of the get-up pose, then allow a reaction window.
+ if(B->bCrashActive){bWindingUp=false;Cooldown=FMath::Max(Cooldown,1.5f);if(AI)AI->StopMovement();return;}
  const float Distance=FVector::Dist2D(P->GetActorLocation(),GetActorLocation());FarTime=Distance>2200?FarTime+Dt:0;if(FarTime>5){Escape();return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);PathDelay-=Dt;
  if(bWindingUp){if(AI)AI->StopMovement();SetActorRotation(FRotator(0,(P->GetActorLocation()-GetActorLocation()).Rotation().Yaw,0));WindupRemaining-=Dt;if(WindupRemaining<=0)ResolveStrike();return;}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "reason": "Pursuit, first-hit dismount, remount escape, second-hit reset, obstruction/protection and actual G-draw/mouse-fire defense with ammo/heat pass",
+  "runtime": "native editor game",
+  "scope": "Scripted pursuit, mounted physical first fall, recovery/remount escape, second-stab death, protection/cover and actual gun defense; not full gameplay acceptance",
+  "installed_build": "053 unchanged",
+  "physical_falls": 3,
+  "physical_recoveries": 3
+}

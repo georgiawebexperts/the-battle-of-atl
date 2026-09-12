@@ -31,5 +31,5 @@ bool ABattleBike::ApplyKnifeStab(bool Lethal){
  if(!M||M->bTutorialActive||M->bRunEnded||M->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||RiderHealth<=0||RespawnRemaining>0||DamageGrace>0||StunRemaining>0||Ride->Recovery>0)return false;
  if(Lethal)return ApplyRiderDamage(1000)>0;
  const float Damage=FMath::Min(25.f,RiderHealth-1);if(Damage>0&&ApplyRiderDamage(Damage)<=0)return false;
- if(!bParked)Dismount();StunLabel=TEXT("STABBED");StunRemaining=.9f;HurtCooldown=5;Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=0;Ride->StopMovementImmediately();UpdateStun(0);RideImpact(.8f);return true;
+ if(!bParked){Ride->Wipeout(TEXT("Knife attack"));if(!bCrashActive)Dismount();}StunLabel=TEXT("STABBED");StunRemaining=.9f;HurtCooldown=5;Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=0;Ride->StopMovementImmediately();UpdateStun(0);RideImpact(.8f);return true;
 }
