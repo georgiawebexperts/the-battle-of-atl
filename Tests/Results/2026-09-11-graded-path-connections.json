@@ -1,0 +1,102 @@
+{
+  "changes": [
+    {
+      "source": "SM_Park_Asphalt_2_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Asphalt_3_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Asphalt_4_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Asphalt_5_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Concrete_2_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Concrete_3_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Concrete_4_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Concrete_5_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_Park_Gravel_4_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_EastsideTrail_Concrete_5_14",
+      "matched_actors": 1
+    },
+    {
+      "source": "SM_BeltlineConnector_Asphalt_5_14",
+      "matched_actors": 1
+    }
+  ],
+  "near_monroe": [
+    {
+      "label": "Park pavement SM_Park_Concrete_5_14",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/Connections/SM_Park_Concrete_5_14.SM_Park_Concrete_5_14"
+    },
+    {
+      "label": "Park pavement SM_Park_Asphalt_5_14",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/Connections/SM_Park_Asphalt_5_14.SM_Park_Asphalt_5_14"
+    },
+    {
+      "label": "Eastside connector SM_BeltlineConnector_Asphalt_5_14",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/Connections/SM_BeltlineConnector_Asphalt_5_14.SM_BeltlineConnector_Asphalt_5_14"
+    },
+    {
+      "label": "Eastside trail SM_EastsideTrail_Concrete_5_14",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/Connections/SM_EastsideTrail_Concrete_5_14.SM_EastsideTrail_Concrete_5_14"
+    },
+    {
+      "label": "Eastside trail SM_EastsideTrail_Concrete_6_14",
+      "mesh": "/Game/BattleForTheA/Environment/BeltLine/Paths/SM_EastsideTrail_Concrete_6_14.SM_EastsideTrail_Concrete_6_14"
+    },
+    {
+      "label": "SM_TenthStreet_Road",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Road.SM_TenthStreet_Road"
+    },
+    {
+      "label": "SM_TenthStreet_CycleTrack",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_CycleTrack.SM_TenthStreet_CycleTrack"
+    },
+    {
+      "label": "SM_TenthStreet_Separator",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Separator.SM_TenthStreet_Separator"
+    },
+    {
+      "label": "SM_TenthStreet_Sidewalk",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Sidewalk.SM_TenthStreet_Sidewalk"
+    },
+    {
+      "label": "SM_TenthStreet_WhitePaint",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_WhitePaint.SM_TenthStreet_WhitePaint"
+    },
+    {
+      "label": "SM_TenthStreet_YellowPaint",
+      "mesh": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_YellowPaint.SM_TenthStreet_YellowPaint"
+    }
+  ],
+  "process_exit_code": 0,
+  "map_saved": false,
+  "native_ride_verified": false,
+  "findings": [
+    "Eleven affected pavement sections swapped into isolated graded preview. All matched exactly one existing actor.",
+    "Apartment and Monroe renders inspected; previously buried park and Eastside connections now visible.",
+    "Preserves existing mesh topology, material and actor transform; bridge meshes excluded. Navigation heights, native sweeps and ride transition acceptance pending."
+  ]
+}

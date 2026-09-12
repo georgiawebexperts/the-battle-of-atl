@@ -1,0 +1,214 @@
+{
+  "chunks": [
+    {
+      "file": "Park_Asphalt_2_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Asphalt_2_14",
+      "changed_vertices": 1241,
+      "max_shift_cm": 27.224795581082144,
+      "bounds_cm": [
+        [
+          -17733.475052,
+          -12336.948095,
+          -163.764428
+        ],
+        [
+          -11477.521342,
+          -7364.696489,
+          274.39128473834774
+        ]
+      ]
+    },
+    {
+      "file": "Park_Asphalt_3_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Asphalt_3_14",
+      "changed_vertices": 1687,
+      "max_shift_cm": 49.2705100406513,
+      "bounds_cm": [
+        [
+          -11477.521342,
+          -12137.823772,
+          -50.74674428207333
+        ],
+        [
+          -3077.521342,
+          -10893.37227,
+          101.935695
+        ]
+      ]
+    },
+    {
+      "file": "Park_Asphalt_4_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Asphalt_4_14",
+      "changed_vertices": 1696,
+      "max_shift_cm": 44.12184388604475,
+      "bounds_cm": [
+        [
+          -3077.521342,
+          -11990.316292,
+          -513.940623
+        ],
+        [
+          5322.478658,
+          -7364.696489,
+          24.938873
+        ]
+      ]
+    },
+    {
+      "file": "Park_Asphalt_5_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Asphalt_5_14",
+      "changed_vertices": 671,
+      "max_shift_cm": 39.35082105051452,
+      "bounds_cm": [
+        [
+          5322.478658,
+          -11783.891708,
+          -531.139368
+        ],
+        [
+          11480.860899,
+          -7364.696489,
+          -329.214897
+        ]
+      ]
+    },
+    {
+      "file": "Park_Concrete_2_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Concrete_2_14",
+      "changed_vertices": 908,
+      "max_shift_cm": 24.79863423470317,
+      "bounds_cm": [
+        [
+          -17779.218028,
+          -12163.619249,
+          71.13194874683346
+        ],
+        [
+          -11477.521342,
+          -11760.548511,
+          271.57641123470313
+        ]
+      ]
+    },
+    {
+      "file": "Park_Concrete_3_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Concrete_3_14",
+      "changed_vertices": 1254,
+      "max_shift_cm": 50.26041666565095,
+      "bounds_cm": [
+        [
+          -11477.521342,
+          -12040.632971,
+          -47.61251911395525
+        ],
+        [
+          -3077.521342,
+          -11554.212642,
+          84.47231440935865
+        ]
+      ]
+    },
+    {
+      "file": "Park_Concrete_4_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Concrete_4_14",
+      "changed_vertices": 1207,
+      "max_shift_cm": 44.27083333135647,
+      "bounds_cm": [
+        [
+          -3077.521342,
+          -11834.297102,
+          -507.44431758484154
+        ],
+        [
+          5322.478658,
+          -7364.696489,
+          -36.396424066807995
+        ]
+      ]
+    },
+    {
+      "file": "Park_Concrete_5_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Concrete_5_14",
+      "changed_vertices": 597,
+      "max_shift_cm": 37.49999999808331,
+      "bounds_cm": [
+        [
+          5322.478658,
+          -11633.722692,
+          -508.6619973250531
+        ],
+        [
+          9333.247819,
+          -11267.636744,
+          -471.6693569959972
+        ]
+      ]
+    },
+    {
+      "file": "Park_Gravel_4_14.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Gravel_4_14",
+      "changed_vertices": 16,
+      "max_shift_cm": 0.20733746168915002,
+      "bounds_cm": [
+        [
+          -3077.521342,
+          -11106.57204,
+          -282.658872
+        ],
+        [
+          -829.764196,
+          -7859.802264,
+          -169.361649
+        ]
+      ]
+    },
+    {
+      "file": "EastsideTrail_Concrete_5_14.obj",
+      "source_collection": "EastsideTrail",
+      "original_mesh": "SM_EastsideTrail_Concrete_5_14",
+      "changed_vertices": 296,
+      "max_shift_cm": 22.135416665880452,
+      "bounds_cm": [
+        [
+          12438.56015,
+          -12793.728781,
+          -329.19649089733934
+        ],
+        [
+          13722.478658,
+          -10642.745475,
+          -305.82693236339946
+        ]
+      ]
+    },
+    {
+      "file": "BeltlineConnector_Asphalt_5_14.obj",
+      "source_collection": "BeltlineConnector",
+      "original_mesh": "SM_BeltlineConnector_Asphalt_5_14",
+      "changed_vertices": 418,
+      "max_shift_cm": 15.176924850197556,
+      "bounds_cm": [
+        [
+          11195.251565,
+          -10886.700103,
+          -356.304655
+        ],
+        [
+          12730.648757,
+          -8841.606004,
+          -315.37848453107523
+        ]
+      ]
+    }
+  ],
+  "scope": "Matching existing path topology to terrain delta; native contact and navigation not yet verified."
+}

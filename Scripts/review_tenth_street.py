@@ -33,6 +33,9 @@ for row in data['surfaces']:
  mesh=unreal.load_asset(dest+'/'+name);assert mesh;b=mesh.get_bounding_box();bounds=[[b.min.x,b.min.y,b.min.z],[b.max.x,b.max.y,b.max.z]];error=max(abs(bounds[i][j]-row['bounds_cm'][i][j]) for i in range(2) for j in range(3));assert error<.1
  mesh.set_material(0,unreal.load_asset(dest+'/M_'+name.removeprefix('SM_TenthStreet_') if 'Paint' in name else '/Game/PiedmontRide/Materials/M_Concrete' if any(k in name for k in ['Separator','Sidewalk']) else '/Game/PiedmontRide/Materials/M_Asphalt'));mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
  actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());actor.set_actor_label(name);actor.tags=[unreal.Name('BattleTenthStreet')];actor.set_folder_path('Midtown/TenthStreet');actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('NoCollision' if 'Paint' in name else 'BlockAll');rows.append({'asset':mesh.get_path_name(),'bounds_error_cm':error})
+if graded:
+ import runpy
+ runpy.run_path(str(root/'Scripts/review_graded_park_connections.py'))
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 original_lights=[]
 for a in ea.get_all_level_actors():
