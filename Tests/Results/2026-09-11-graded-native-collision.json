@@ -1,0 +1,124 @@
+{
+  "route_updates": [
+    {
+      "label": "OSM path 28798697 part 1",
+      "changed_points": 15,
+      "max_shift_cm": 5.435775341478433
+    },
+    {
+      "label": "OSM path 61490788 part 10",
+      "changed_points": 16,
+      "max_shift_cm": 9.333134498047357
+    },
+    {
+      "label": "OSM path 61490789 part 11",
+      "changed_points": 18,
+      "max_shift_cm": 35.26008517534815
+    },
+    {
+      "label": "OSM path 102679931 part 27",
+      "changed_points": 15,
+      "max_shift_cm": 17.12877529165192
+    },
+    {
+      "label": "OSM path 102679940 part 31",
+      "changed_points": 3,
+      "max_shift_cm": 2.0601214525423
+    },
+    {
+      "label": "OSM path 102679946 part 34",
+      "changed_points": 166,
+      "max_shift_cm": 8.534259899048163
+    },
+    {
+      "label": "OSM path 146304979 part 39",
+      "changed_points": 16,
+      "max_shift_cm": 0.8004190002492825
+    },
+    {
+      "label": "OSM path 146304987 part 45",
+      "changed_points": 4,
+      "max_shift_cm": 1.7013320017974585
+    },
+    {
+      "label": "OSM path 182395365 part 84",
+      "changed_points": 52,
+      "max_shift_cm": 10.428748267911145
+    },
+    {
+      "label": "OSM path 741964052 part 156",
+      "changed_points": 145,
+      "max_shift_cm": 36.331114966682456
+    },
+    {
+      "label": "OSM path 741964056 part 157",
+      "changed_points": 409,
+      "max_shift_cm": 49.59887448264216
+    },
+    {
+      "label": "OSM path 1035389486 part 175",
+      "changed_points": 255,
+      "max_shift_cm": 42.81457221091242
+    },
+    {
+      "label": "OSM path 1035815115 part 180",
+      "changed_points": 5,
+      "max_shift_cm": 4.150801875797269
+    },
+    {
+      "label": "OSM path 1035815117 part 181",
+      "changed_points": 5,
+      "max_shift_cm": 17.697491897130867
+    },
+    {
+      "label": "OSM path 1035815123 part 182",
+      "changed_points": 5,
+      "max_shift_cm": 3.329113973207498
+    },
+    {
+      "label": "OSM path 1035815127 part 184",
+      "changed_points": 9,
+      "max_shift_cm": 4.967146692162376
+    },
+    {
+      "label": "OSM path 1035815128 part 185",
+      "changed_points": 11,
+      "max_shift_cm": 14.51716872622114
+    },
+    {
+      "label": "OSM path 1035815129 part 186",
+      "changed_points": 11,
+      "max_shift_cm": 14.51716872622114
+    },
+    {
+      "label": "OSM path 1035815130 part 187",
+      "changed_points": 6,
+      "max_shift_cm": 14.51716872622114
+    },
+    {
+      "label": "OSM path 1035815134 part 188",
+      "changed_points": 5,
+      "max_shift_cm": 2.4806585634761604
+    },
+    {
+      "label": "Eastside connector spline 0",
+      "changed_points": 22,
+      "max_shift_cm": 11.79839123397007
+    },
+    {
+      "label": "Eastside connector spline 1",
+      "changed_points": 13,
+      "max_shift_cm": 11.79839123397007
+    },
+    {
+      "label": "Eastside trail spline 0",
+      "changed_points": 24,
+      "max_shift_cm": 21.57476746609373
+    }
+  ],
+  "probe_count": 900,
+  "failures": [],
+  "passed": true,
+  "scope": "Vertical native line/capsule probes and transient route-point adjustment. Moving bike and rebuilt navmesh not verified.",
+  "map_saved": false
+}
