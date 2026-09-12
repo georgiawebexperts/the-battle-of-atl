@@ -30,10 +30,10 @@ for kind,grid in [('Fire',6),('Smoke',8)]:
   coords=add(mul(uv,c(1/grid)),offset)
   sample=n(unreal.MaterialExpressionTextureSample,texture=tex,sampler_type=unreal.MaterialSamplerType.SAMPLERTYPE_COLOR);wire(coords,sample,'UVs');samples.append(sample)
  blend=n(unreal.MaterialExpressionLinearInterpolate);wire(samples[0],blend,'A','RGB' if kind=='Fire' else 'A');wire(samples[1],blend,'B','RGB' if kind=='Fire' else 'A');wire(alpha,blend,'Alpha')
- tint=n(unreal.MaterialExpressionConstant3Vector,constant=unreal.LinearColor(8,1.5,.06) if kind=='Fire' else unreal.LinearColor(.065,.06,.055))
+ tint=n(unreal.MaterialExpressionConstant3Vector,constant=unreal.LinearColor(2.8,.6,.025) if kind=='Fire' else unreal.LinearColor(.065,.06,.055))
  color=mul(blend,tint) if kind=='Fire' else tint
  assert lib.connect_material_property(color,'',unreal.MaterialProperty.MP_EMISSIVE_COLOR)
- opacity=c(1) if kind=='Fire' else mul(blend,c(.45))
+ opacity=c(1) if kind=='Fire' else mul(blend,c(1.0))
  fade=n(unreal.MaterialExpressionDepthFade,fade_distance_default=12);wire(opacity,fade,'Opacity')
  assert lib.connect_material_property(fade,'',unreal.MaterialProperty.MP_OPACITY)
  lib.recompile_material(m);assert unreal.EditorAssetLibrary.save_loaded_asset(m)

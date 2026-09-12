@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/53a1087633b649ac8bceac576432b16d/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/53a1087633b649ac8bceac576432b16d/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/53a1087633b649ac8bceac576432b16d/fire-3.png"
+  ],
+  "captured": true,
+  "visual_accepted": false,
+  "scope": "Native visual candidate on first actual bench; no rare-event logic, ignition NPC, damage or packaged acceptance",
+  "capture_passed": true,
+  "solid_diagnostic": false,
+  "visual_inspection": {
+    "flames_visible": true,
+    "smoke_visible": "Thin plume visible above bench",
+    "frame_inspected": "fire-3.png",
+    "polish_complete": false
+  }
+}
