@@ -1,26 +1,91 @@
 {
   "buildings": 7,
-  "window_bays": 194,
+  "window_bays": 311,
+  "entrances": [
+    {
+      "osm_way": 211061295,
+      "xyz": [
+        27073.54242302232,
+        100395.077714464,
+        794.3276364559462
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    },
+    {
+      "osm_way": 211061296,
+      "xyz": [
+        25740.23851276006,
+        100017.26728037688,
+        827.1173306169901
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    },
+    {
+      "osm_way": 211061297,
+      "xyz": [
+        25884.270776737143,
+        103826.91917621624,
+        866.4547729647636
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    },
+    {
+      "osm_way": 211061298,
+      "xyz": [
+        26855.18075002914,
+        99013.33846473767,
+        674.41995550877
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    },
+    {
+      "osm_way": 211061637,
+      "xyz": [
+        25817.099344700746,
+        99063.31982799261,
+        830.2397609323563
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    },
+    {
+      "osm_way": 1139043893,
+      "xyz": [
+        26209.265437276477,
+        101685.00387945368,
+        813.9721634293846
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    },
+    {
+      "osm_way": 1396654871,
+      "xyz": [
+        24744.72786516722,
+        101317.91749166384,
+        1023.8721541959366
+      ],
+      "scope": "Closed exterior door; thresholds and public approach paving not yet authored."
+    }
+  ],
   "surfaces": [
     {
       "material": "Brick",
       "file": "IrwinBuildings_Brick.obj",
-      "triangles": 840
+      "triangles": 124
     },
     {
       "material": "Roof",
       "file": "IrwinBuildings_Roof.obj",
-      "triangles": 7778
+      "triangles": 4608
     },
     {
       "material": "Glass",
       "file": "IrwinBuildings_Glass.obj",
-      "triangles": 2328
+      "triangles": 3732
     },
     {
       "material": "Stucco",
       "file": "IrwinBuildings_Stucco.obj",
-      "triangles": 14472
+      "triangles": 8808
     }
   ],
   "scope": "Mapped footprint exterior study; estimated heights and generic facade treatment, not photo-matched or main-installed."

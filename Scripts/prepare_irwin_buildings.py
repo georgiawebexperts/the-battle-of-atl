@@ -25,8 +25,13 @@ for e in json.loads((root/'References/irwin-lake-buildings-osm.json').read_text(
  # Road safety clearance takes precedence where our gameplay road is wider
  # than mapped streets; retain original shape alongside the trimmed candidate.
  clipped=poly.difference(protected);assert clipped.geom_type=='Polygon' and not clipped.interiors
+ raw_vertices=len(clipped.exterior.coords)-1
+ simplified=clipped.simplify(5,preserve_topology=True)
+ assert simplified.geom_type=='Polygon' and simplified.is_valid
+ assert simplified.intersection(protected.buffer(-5.01)).area<.01
+ clipped=simplified
  coords=list(clipped.exterior.coords)[:-1];heights=[height(x,y) for x,y in coords]
- rows.append({'osm_way':e['id'],'tags':e['tags'],'original_footprint_xy':list(poly.exterior.coords),'footprint_xy':coords,'road_trim_area_cm2':overlap,'trail_clearance_trim_area_cm2':poly.difference(road).intersection(trail.buffer(100,join_style=2)).area,'base_z_cm':max(heights)+10,'foundation_z_cm':min(heights)-30,'storeys':ids[e['id']],'storey_height_cm':340,'height_source':'Gameplay estimate, not surveyed height','terrain_range_cm':[min(heights),max(heights)]})
+ rows.append({'facade_simplification_cm':5,'vertices_before_simplification':raw_vertices,'osm_way':e['id'],'tags':e['tags'],'original_footprint_xy':list(poly.exterior.coords),'footprint_xy':coords,'road_trim_area_cm2':overlap,'trail_clearance_trim_area_cm2':poly.difference(road).intersection(trail.buffer(100,join_style=2)).area,'base_z_cm':max(heights)+10,'foundation_z_cm':min(heights)-30,'storeys':ids[e['id']],'storey_height_cm':340,'height_source':'Gameplay estimate, not surveyed height','terrain_range_cm':[min(heights),max(heights)]})
 assert len(rows)==len(ids)
 r={'author':'2026-09-12 [codex-maclaptop]','source':'OpenStreetMap contributors ODbL; References/irwin-lake-buildings-osm.json','frame':'world ESU centimetres, one-third footprint geography; full gameplay storey heights','buildings':rows,'reserved_roadside_width_cm':180,'trail_setback_cm':100,'main_map_changed':False}
 (folder/'buildings.json').write_text(json.dumps(r,indent=2)+'\n');print([(r['osm_way'],r['road_trim_area_cm2']) for r in rows])
