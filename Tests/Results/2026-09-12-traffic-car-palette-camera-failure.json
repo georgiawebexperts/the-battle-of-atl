@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/car-palette/fae5f30bf7a846b4a32346977226bb77/car-paint-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/car-palette/fae5f30bf7a846b4a32346977226bb77/car-paint-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/car-palette/fae5f30bf7a846b4a32346977226bb77/car-paint-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/car-palette/fae5f30bf7a846b4a32346977226bb77/car-paint-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/car-palette/fae5f30bf7a846b4a32346977226bb77/car-paint-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/car-palette/fae5f30bf7a846b4a32346977226bb77/car-paint-5.png"
+  ],
+  "capture_passed": true,
+  "visual_review": "failed: colors 4 and 5 captured rider camera instead of car; colors 0-3 visually correct",
+  "scope": "Six paint variants on one existing vehicle body. No additional body styles or full traffic-population acceptance."
+}

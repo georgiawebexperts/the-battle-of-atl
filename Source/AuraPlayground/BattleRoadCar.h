@@ -19,6 +19,9 @@ class AURAPLAYGROUND_API ABattleRoadCar : public AActor {
  GENERATED_BODY()
 public:
  ABattleRoadCar();
+ virtual void BeginPlay() override;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 PaintVariant=-1;
+ UFUNCTION(BlueprintCallable) void ApplyPaint(int32 Variant);
  virtual void Tick(float DeltaSeconds) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  UPROPERTY(EditAnywhere) TArray<FVector> Route;

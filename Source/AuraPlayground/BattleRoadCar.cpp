@@ -4,6 +4,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "Engine/World.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Misc/CommandLine.h"
@@ -22,6 +23,12 @@ ABattleRoadCar::ABattleRoadCar(){
  Body->SetStaticMesh(B.Object);Glass->SetStaticMesh(G.Object);
  for(auto* Part:{Body,Glass}){Part->SetRelativeLocation(FVector(-12,0,-59));Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
  for(int32 I=0;I<4;++I){auto* Wheel=CreateDefaultSubobject<UStaticMeshComponent>(*FString::Printf(TEXT("Wheel%d"),I));Wheel->SetupAttachment(Collision);Wheel->SetStaticMesh(W.Object);Wheel->SetCollisionEnabled(ECollisionEnabled::NoCollision);Wheels.Add(Wheel);}
+}
+void ABattleRoadCar::BeginPlay(){Super::BeginPlay();ApplyPaint(PaintVariant<0?FMath::RandHelper(6):PaintVariant);}
+void ABattleRoadCar::ApplyPaint(int32 Variant){
+ static const FLinearColor Colors[]={FLinearColor(.65f,.68f,.72f),FLinearColor(.045f,.05f,.06f),FLinearColor(.035f,.14f,.32f),FLinearColor(.32f,.035f,.025f),FLinearColor(.06f,.18f,.11f),FLinearColor(.7f,.16f,.025f)};
+ PaintVariant=FMath::Clamp(Variant,0,UE_ARRAY_COUNT(Colors)-1);
+ for(int32 Slot=0;Slot<Body->GetNumMaterials();++Slot)if(auto* Paint=Body->CreateDynamicMaterialInstance(Slot))Paint->SetVectorParameterValue(TEXT("Paint Tint"),Colors[PaintVariant]);
 }
 FVector ABattleRoadCar::SampleRoute(float D) const {
  for(int32 I=1;I<Lengths.Num();++I)if(D<=Lengths[I])return FMath::Lerp(Route[I-1],Route[I],FMath::Clamp((D-Lengths[I-1])/(Lengths[I]-Lengths[I-1]),0.f,1.f));

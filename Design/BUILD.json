@@ -8,5 +8,8 @@
   "author": "2026-09-12 [codex-maclaptop]",
   "unreleased_main_map_changes": [
     "Verified DeKalb road-end construction fences and signs; main navigation rebuilt."
+  ],
+  "unreleased_code_changes": [
+    "Traffic spawns cycle through six visually reviewed paint colors on the existing car body."
   ]
 }

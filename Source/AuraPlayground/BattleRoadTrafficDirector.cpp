@@ -27,6 +27,7 @@ ABattleRoadCar* ABattleRoadTrafficDirector::TrySpawnLane(int32 Index){
  const FTransform Spawn(FRotator::ZeroRotator,Lanes[Index].Points[0]+FVector(0,0,73.3));
  auto* Car=GetWorld()->SpawnActorDeferred<ABattleRoadCar>(ABattleRoadCar::StaticClass(),Spawn,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
  if(!Car)return nullptr;
+ Car->PaintVariant=TotalSpawned%6;
  Car->SetActorHiddenInGame(true);Car->SetActorEnableCollision(false);Car->Route=Lanes[Index].Points;Car->Crossings=Lanes[Index].Crossings;Car->CruiseSpeed=FMath::Clamp(Lanes[Index].CruiseSpeed,100.f,1000.f);Car->FinishSpawning(Spawn);
  if(!Car->StartRoute()){Car->Destroy();return nullptr;}
  Car->SetActorEnableCollision(true);Car->SetActorHiddenInGame(false);Car->Tags.Add(TEXT("AmbientRoadCar"));Cars.Add({Car,Index});++TotalSpawned;LiveCars=Cars.Num();PeakCars=FMath::Max(PeakCars,LiveCars);return Car;
