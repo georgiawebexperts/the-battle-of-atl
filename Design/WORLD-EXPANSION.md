@@ -620,3 +620,10 @@ Replaced conspicuous18cm-square wooden levelling blocks with metal leg continuat
 Extended actual keyboard impact fixture with --offset and --junction. Offset550 test crosses fence but starts beyond existing street closure, so retained failure does not demonstrate a reachable tutorial bypass. Corrected junction fixture approaches24.12degrees, from1000cm behind target at marketY+640, inside street boundary. Dismount at that narrow fixture position failed; normal practice-start dismount succeeds, then fixture repositions the possessed rider on the approach.
 
 Native editor build and --foot --jump --junction pass:94.37cm rise, airborne true, closest35cm to market plane, no crossing or tutorial timer start. This covers one inside-angle sprint jump at south junction; not exhaustive perimeter closure or gate-pier freeform bypass. No production behavior changed. Desktop050 unchanged.
+
+
+## Market practice closure enabled — 2026-09-12 [codex-maclaptop]
+
+Added --pier actual keyboard fixture: normal tutorial dismount, reposition1000cm west of gate south pier, sprint and jump. Native pass100.99cm airborne rise, closest169.05cm to gate plane, no crossing/countdown. This is one aimed approach, not exhaustive freeform testing. Together with central bike/foot and south-junction tests plus both preserved street routes, enough evidence to enable current prototype for normal practice.
+
+Moved closure spawn from nonshipping review flag into normal ABattleTutorial initialization after tutorial mode becomes active. Explicit skip-tutorial audit early returns still omit closure. Starts during untimed practice, clears when gate starts countdown; market dressing remains. Editor build passes; new actual direct route7693.1cm/error11.6cm passes with normal-spawn closure,237 sweeps and removed-after-start check. Previous alternate with same geometry remains passed; not rerun here. Saved stalls/materials and new closure/vendor code ready for next package verification. Desktop050 unchanged. Art polish and broad freeform/performance acceptance remain incomplete.

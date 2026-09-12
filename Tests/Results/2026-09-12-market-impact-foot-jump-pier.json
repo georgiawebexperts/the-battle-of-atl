@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "jump": true,
+  "on_foot": true,
+  "reason": "Real W approach remained outside gate; foot mode sprints; jump requires airtime",
+  "offset_cm": 0.0,
+  "closest_cm": 169.05,
+  "peak_cm": 100.99,
+  "airborne": true,
+  "pier_requested": true,
+  "junction_requested": false,
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-impact-foot-jump-pier.log",
+  "scope": "Stone-pier eastbound sprint jump; normal-start dismount then fixture reposition. One approach only.",
+  "requested_mode_covered": true
+}

@@ -66,14 +66,12 @@ ABattleTutorial::ABattleTutorial(){
 }
 void ABattleTutorial::BeginPlay(){
  Super::BeginPlay();
-#if !UE_BUILD_SHIPPING
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview")))GetWorld()->SpawnActor<ABattleMarketClosure>(FVector(-19107.993785,3187.443844,0),FRotator::ZeroRotator);
-#endif
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* B=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(this,0));if(!M||!B)return;
 #if !UE_BUILD_SHIPPING
  for(const TCHAR* Flag:{TEXT("BattleSkipTutorial"),TEXT("BattleFinishAudit"),TEXT("BattleHealthAudit"),TEXT("BattleHomeDriveAudit"),TEXT("BattleHUDReview")})if(FParse::Param(FCommandLine::Get(),Flag)){if(FString(Flag)==TEXT("BattleHUDReview")&&FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialReview")))continue;M->bTutorialActive=false;return;}
 #endif
  M->bTutorialActive=true;M->StartCountdown=0;
+ GetWorld()->SpawnActor<ABattleMarketClosure>(FVector(-19107.993785,3187.443844,0),FRotator::ZeroRotator);
  const FVector P=BattleTutorialData::Road[0]+FVector(0,0,98);FRotator R=(BattleTutorialData::Road[1]-BattleTutorialData::Road[0]).Rotation();
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAlternate")))R=(BattleTutorialBlock::Alternate[1]-BattleTutorialBlock::Alternate[0]).Rotation();
