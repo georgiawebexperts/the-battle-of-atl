@@ -45,6 +45,20 @@ FTransform Sample(const FCrowdClip& Data,int32 Bone,float Phase){
 }
 
 bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
+ if(BodySequence){
+  const float Duration=BodySequence->GetPlayLength();
+  if(Duration<=0){StopBodySequence();return false;}
+  BodySequenceClock+=Dt;
+  const float Time=bBodySequenceLoop?FMath::Fmod(BodySequenceClock,Duration):FMath::Min(BodySequenceClock,Duration);
+  const auto& Data=Clip(BodySequence);
+  const auto& Ref=BodySequence->GetSkeleton()->GetReferenceSkeleton();
+  for(int32 I=0;I<Pose.Num();++I){
+   const int32 Bone=Ref.FindBoneIndex(Bones[I]);
+   if(Bone>=0)Pose[I]=Sample(Data,Bone,FMath::Min(Time/Duration,.999999f));
+   if(Parents[I]<0)Pose[I]=RestPose[I];
+  }
+  return true;
+ }
  if(!IdleAnimation||!WalkAnimation||!RunAnimation)return false;
  if(BodyAction){BodyActionClock+=Dt;if(BodyActionClock>=BodyAction->GetPlayLength())BodyAction=nullptr;else Clip(BodyAction);}
  // Fill the cache before retaining references: a TMap growth may relocate values.
@@ -106,3 +120,12 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
 void APiedmontExplorer::SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run){IdleAnimation=Idle;WalkAnimation=Walk;RunAnimation=Run;}
 
 void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose){BodyAction=Animation;BodyActionClock=0;BodyActionFromPose=FromPose;}
+
+void APiedmontExplorer::SetBodySequence(UAnimSequence* Animation,bool bLoop){
+ BodySequence=Animation;BodySequenceClock=0;bBodySequenceLoop=bLoop;
+ BodyAction=nullptr;BodyActionFromPose.Reset();
+}
+void APiedmontExplorer::StopBodySequence(){BodySequence=nullptr;BodySequenceClock=0;}
+bool APiedmontExplorer::IsBodySequencePlaying() const{
+ return BodySequence&&(bBodySequenceLoop||BodySequenceClock<BodySequence->GetPlayLength());
+}

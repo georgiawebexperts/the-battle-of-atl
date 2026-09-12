@@ -55,7 +55,7 @@ void APiedmontPedestrian::YieldTo(APawn* Source,bool Horn){
 }
 void APiedmontPedestrian::HearHorn(APawn* Source){YieldTo(Source,true);}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
- if(bDead||StumbleRemaining>0)return;BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
+ if(bDead||StumbleRemaining>0)return;SleepPhase=0;StopBodySequence();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
  if(Speed>330&&BeginKnockdown(Speed,Direction))return;
  // Light contact plays an authored surprise; unavailable rigs retain the fallback.
@@ -69,6 +69,11 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
  if(KnockdownPhase){TickKnockdown(Dt);return;}
+ if(SleepPhase){
+  if(bDead){SleepPhase=0;StopBodySequence();}
+  else if(SleepPhase==2&&!IsBodySequencePlaying()){SleepPhase=0;StopBodySequence();}
+  else{if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return;}
+ }
  if(bDead){Body->SetRelativeRotation(FRotator(0,-90,85));return;}
  if(StumbleRemaining>0){StumbleRemaining=FMath::Max(0.f,StumbleRemaining-Dt);if(!bPlayingBumpReaction)Body->SetRelativeRotation(FRotator(0,-90,FMath::Sin(StumbleRemaining*5)*22));
   if(StumbleRemaining<=0)bPlayingBumpReaction=false;return;}
@@ -89,6 +94,7 @@ void APiedmontPedestrian::Tick(float Dt){
 }
 float APiedmontPedestrian::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  if(bDead||Amount<=0)return 0;
+ SleepPhase=0;StopBodySequence();
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,30),FVector::UpVector);bDead=true;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  if(KnockdownPhase==2)KnockdownPhase=0;
@@ -100,4 +106,25 @@ bool APiedmontPedestrian::SetDestinationForValidation(FVector Goal){
  if(GetWorld()->WorldType==EWorldType::PIE){GroupLeader=nullptr;PauseRemaining=0;return MoveTo(Goal);}
 #endif
  return false;
+}
+
+bool APiedmontPedestrian::BeginSleeping(){
+ if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||SleepPhase)return false;
+ // The initial candidate was authored for the male City skeleton only.
+ if(!Body->GetSkinnedAsset()||!Body->GetSkinnedAsset()->GetName().StartsWith(TEXT("m_tal_nrw")))return false;
+ auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim"));
+ if(!Animation)return false;
+ if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+ GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;
+ SetBodySequence(Animation,true);SleepPhase=1;return true;
+}
+bool APiedmontPedestrian::WakeFromSleep(){
+ if(SleepPhase!=1||bDead||bSwimming)return false;
+ // Keep the sleeper down if there is no room for the standing capsule.
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(SleeperStandingSpace),false,this);
+ if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,
+  FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius(),GetCapsuleComponent()->GetScaledCapsuleHalfHeight()-2.f),Q))return false;
+ auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/SleepToStand_R"));
+ if(!Animation)return false;
+ SetBodySequence(Animation,false);SleepPhase=2;return true;
 }

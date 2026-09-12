@@ -45,6 +45,10 @@ private:
 protected:
  virtual float AimedFieldOfView() const{return 65.f;}
  void PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose=TArray<FTransform>());
+ // Full-body authored sequences keep sleeping/get-up poses independent of movement blending.
+ void SetBodySequence(UAnimSequence* Animation,bool bLoop);
+ void StopBodySequence();
+ bool IsBodySequencePlaying() const;
  void SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run);
  virtual bool CanUseWeapon() const;
  virtual FVector AdjustVisitorHand(int32 Side,FVector Target) const {return Target;}
@@ -60,6 +64,9 @@ private:
  TArray<int32> Parents;
  TArray<FName> Bones;
  float Gait=0;
+ UPROPERTY() TObjectPtr<UAnimSequence> BodySequence;
+ float BodySequenceClock=0;
+ bool bBodySequenceLoop=false;
  UPROPERTY() TObjectPtr<UAnimSequence> BodyAction;
  float BodyActionClock=0;
  TArray<FTransform> BodyActionFromPose;

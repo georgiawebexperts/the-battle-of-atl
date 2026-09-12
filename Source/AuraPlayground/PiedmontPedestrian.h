@@ -34,6 +34,10 @@ public:
  void Configure(EPiedmontPedestrianKind NewKind);
  void HearHorn(APawn* Source);
  void BikeImpact(float Speed,FVector Direction);
+ // Opt-in until encounter placement and chase/settle behavior are complete.
+ UFUNCTION(BlueprintCallable) bool BeginSleeping();
+ UFUNCTION(BlueprintCallable) bool WakeFromSleep();
+ UPROPERTY(BlueprintReadOnly) int32 SleepPhase=0;
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
  virtual void AnimateBody(float Dt) override;

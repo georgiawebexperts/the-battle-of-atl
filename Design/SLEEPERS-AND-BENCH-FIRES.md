@@ -32,3 +32,7 @@ Use City Sample as the first sleeping retarget development target; preserve Punk
 ## Wake clip candidate — 2026-09-11 [codex-maclaptop]
 
 Rendered four sample times for each existing City Sample male F/B/L/R recovery on a transient flat floor. Right-side `/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R` starts in the same side-lying orientation as the Mixamo sleeping candidate; left-side faces the opposite direction. R start, intermediate and standing frames inspected with outfit/face/hair. Use R for development of the sleep-to-wake blend; this is not continuous transition or contact acceptance. Evidence: `Tests/Results/2026-09-11-sleep-wake-selection.json`. Need explicit pose alignment/blending, clear standing space, bounded pursuit, and authored settle/stagger motion before releasing the encounter.
+
+## Native runtime foundation — 2026-09-11 [codex-maclaptop]
+
+Added opt-in `APiedmontPedestrian::BeginSleeping()` and `WakeFromSleep()` for the male City body. Full-body sequence sampling bypasses locomotion blending, loops sleep, holds the wake endpoint until the state finishes, then restores normal pedestrian AI. Damage and bike impacts clear sleeping state; wake checks standing-capsule overlap. Editor target compiles successfully. No callers or map placements yet: proximity activation, short chase, authored stagger/settle, bench seating, lying collision volume and live transition/interruption acceptance remain required. This is runtime foundation, not the finished encounter.
