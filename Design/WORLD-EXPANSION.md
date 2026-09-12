@@ -199,3 +199,10 @@ Packaged new asphalt surfaces, bench reach/prop/fire/retreat, rare director and 
 Imported 55 bundled UE 5.8 vehicle assets (39 MB) on the external project drive, with source hashes. The sports-car skeletal mesh is a rig; visible body, glass and four wheels require separate static mesh components. Native Mac review now shows the assembled car on the graded 10th Street road. Editor build and offscreen native capture passed. Static body bounds are approximately 471 x 228 cm; wheel radius 39.27 cm. Do not size traffic using padded skeletal bounds.
 
 This is an asset candidate, not installed moving traffic. Lane routes, slope and four-wheel contact, wheel rotation/steering, swept collision, braking, intersection behavior and packaged verification remain pending. Desktop build remains 046. Review command: python3 Scripts/render_native_car.py.
+
+
+## Road-car movement prototype — 2026-09-12 [codex-maclaptop]
+
+ABattleRoadCar now follows supplied world-space routes with acceleration, braking-distance sweeps, swept box movement, four static-ground wheel probes, slope alignment and wheel rotation. StartRoute rejects invalid routes and overlapping spawn locations. Endpoints stop rather than teleport or wrap. Native test on a 40 m 10th Street segment passed grounded travel, obstruction braking, two-second stationary hold, resumption after removal and endpoint stop (3997.563 cm). Editor build passed; native moving frame reviewed.
+
+Not installed in the main map or desktop build 046. Current test route is close to the centre marking; generate actual lane paths before traffic placement. Still needs curved-lane steering review, four-wheel contact measurement, emergency cut-in / swept-hit route progress handling, bike/rider collision consequences, signal crossings, safe population spawn/despawn and packaged validation. Native moving capture has motion blur; no continuous-animation or frame-rate acceptance.

@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-car-review/48eca669d8d84e7ca5e0ac4697535c3a/car.png",
+  "capture_passed": true,
+  "visual_accepted": false,
+  "scope": "Native moving-car frame; continuous animation, traffic population, crossings and packaged behavior unverified",
+  "visual_review": {
+    "reviewer": "2026-09-12 [codex-maclaptop]",
+    "observations": "Body and visible wheels remain assembled while travelling on sloped 10th Street. Capture has motion blur; continuous movement and far-side contact require further review. Test route runs too close to centre marking to use as an authored traffic lane."
+  }
+}
