@@ -148,3 +148,8 @@ Mixamo Picking Up Object exposes Object Height. Downloaded a distinct variant at
 ## Native bench reach review — 2026-09-12 [codex-maclaptop]
 
 Added City male BeginBenchReach playback with completion cleanup and horn, impact, damage, swimming/run-end cancellation paths. Native review flag -BattleBenchFireReview -BattleBenchReachReview places a paused City male at first bench local(0,55,90), facing bench(-Y), instead of spawning fire. Editor build exit0; native render exit0 with three images, started=1 and final reaching=0. Inspected bent and final standing poses. Sample2 right hand bench-local(23.535,25.654,59.406), still above/front of45cm seat; needs held prop/contact alignment and continuous motion review. Interruption paths coded but not yet exercised; no natural trigger/ignition or packaged assignment. Reservation/two-fire-cap/expiry native regression passes. Review evidence work/bench-fire-review/d360a3569d38462c980a75a26f010b6e. Desktop remains045.
+
+
+## Bench reach interruption checks — 2026-09-12 [codex-maclaptop]
+
+Added BeginBenchReach run-end guard and BeginSleeping active-reach guard. New BattleBenchReachAudit/test_native_bench_reach.py passes native duplicate-start rejection, sleep conflict, horn cancellation/restart, bike impact cancellation, stumble rejection, post-stumble restart, run-end rejection/cancellation, and damage/death rejection. Build exit0, native test exit0. Initial fixture timed out because setting run-ended across frames opens controller loss menu and pauses world. Final fixture explicitly ticks visitor with run-ended before menu can pause; this verifies cancellation-on-update, not full loss-menu lifecycle. No ignition or natural encounter yet; contact/prop and scene integration remain next.

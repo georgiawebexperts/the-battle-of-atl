@@ -59,6 +59,7 @@ void APiedmontPedestrian::YieldTo(APawn* Source,bool Horn){
  }
 }
 bool APiedmontPedestrian::BeginBenchReach(){
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded)return false;
  if(bDead||bSwimming||SleepPhase||KnockdownPhase||StumbleRemaining>0||bBenchReaching||CityAppearanceVariant!=0||!bNativeCrowdRig)return false;
  auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/LowReachCandidate/MixamoLowReachReference_Anim.MixamoLowReachReference_Anim"));if(!Clip)return false;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
@@ -123,7 +124,7 @@ bool APiedmontPedestrian::SetDestinationForValidation(FVector Goal){
 }
 
 bool APiedmontPedestrian::BeginSleeping(){
- if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||SleepPhase)return false;
+ if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||SleepPhase||bBenchReaching)return false;
  // The initial candidate was authored for the male City skeleton only.
  if(!Body->GetSkinnedAsset()||!Body->GetSkinnedAsset()->GetName().StartsWith(TEXT("m_tal_nrw")))return false;
  auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/SleepingBaked"));
