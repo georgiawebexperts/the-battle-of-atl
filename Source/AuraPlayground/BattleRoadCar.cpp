@@ -7,7 +7,7 @@
 #include "UObject/ConstructorHelpers.h"
 
 ABattleRoadCar::ABattleRoadCar(){
- PrimaryActorTick.bCanEverTick=true;
+ PrimaryActorTick.bCanEverTick=true;Tags.Add(TEXT("RideVehicle"));
  Collision=CreateDefaultSubobject<UBoxComponent>(TEXT("CarCollision"));SetRootComponent(Collision);
  Collision->SetBoxExtent(FVector(236,114,55));Collision->SetCollisionProfileName(TEXT("BlockAllDynamic"));
  Body=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));Body->SetupAttachment(Collision);

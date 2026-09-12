@@ -265,3 +265,12 @@ Added ABattleRoadTrafficDirector and authored lane data: six cars maximum, three
 Native API fixture passed camera proximity, visible-spawn rejection, occupied-spawn rejection, spacing, cap, visible completed-car retention, hidden removal and teardown. A separate automatic run used both actual 10th Street lanes and the installed signal: nine cars spawned, four completed and recycled, peak six, with an observed stopped signal wait. The camera was deliberately kept facing away from spawn/removal areas; ordinary rider interaction, rendered traffic motion, performance and packaging are not proven by that test.
 
 Installed the director in the main world under tag TenthRoadTraffic, binding the westbound lane to TenthPiedmontBikeCrossing. The test map remains generated and uncommitted. Main-world live play, collision consequences, remaining road junctions and packaged validation still pending; desktop remains 046. Routes still terminate before Monroe crossing traversal; the director preserves visible finished cars rather than popping them out.
+
+
+## Main-world traffic appearance and bike impact — 2026-09-12 [codex-maclaptop]
+
+Captured and inspected three native main-world frames of naturally spawned traffic: six cars active, tracked route progress increased from 19953.924 to 22456.643 cm at 650 cm/s. Cars are assembled and road-aligned, with opposing traffic visible. This accepts sampled placement only; identical bright orange paint, continuous motion, rider-camera visibility and performance remain unfinished.
+
+Fixed road cars missing the RideVehicle tag, which had caused the bike to treat them as ordinary walls. Review builders now preserve constructor tags. Native keyboard-driven bike impact against a stationary road car passed with exactly one Traffic impact wipeout. This does not validate car-initiated impacts, glances, injury or realistic crash animation; the existing recovery pose remains rudimentary. Editor build succeeded. Desktop remains 046; no packaging performed.
+
+Keep the requested Monroe, pre-Krog and Krog tunnel road crossings, occasional fallen scooter rider with helpers, and 10th Street Peachtree race dressing with active cars in remaining scope.

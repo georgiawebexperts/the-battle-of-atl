@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-traffic-review/0a09ebfcae00432c9b8dcc28c9444cd6/traffic-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-traffic-review/0a09ebfcae00432c9b8dcc28c9444cd6/traffic-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-traffic-review/0a09ebfcae00432c9b8dcc28c9444cd6/traffic-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": true,
+  "scope": "Naturally spawned main-world traffic under a controlled review camera; rider input, performance and packaging remain unverified.",
+  "frames": [
+    {
+      "frame": 1,
+      "cars": 6,
+      "distance": 19953.924,
+      "speed": 650.0
+    },
+    {
+      "frame": 2,
+      "cars": 6,
+      "distance": 21158.514,
+      "speed": 650.0
+    },
+    {
+      "frame": 3,
+      "cars": 6,
+      "distance": 22456.643,
+      "speed": 650.0
+    }
+  ],
+  "visual_review": "Three sampled frames inspected: assembled cars aligned with the road, opposing lane traffic visible. Acceptance is limited to sampled placement/assembly. Bright identical orange cars, continuous motion, rider camera and performance still need review."
+}

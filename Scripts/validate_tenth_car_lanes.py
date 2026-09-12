@@ -23,7 +23,7 @@ report={'passed':not failures,'probes':len(samples),'failures':failures,'max_err
 if not failures:
  routes=json.loads((folder/'car-lanes.json').read_text())['routes']
  for route in routes:
-  car=ea.spawn_actor_from_class(unreal.BattleRoadCar,unreal.Vector(*route['points_cm'][0])+unreal.Vector(0,0,73.3));car.set_actor_label('10th lane review '+route['name']);car.set_editor_property('route',[unreal.Vector(*p) for p in route['points_cm']]);car.tags=[unreal.Name('TenthCarLaneReview')]
+  car=ea.spawn_actor_from_class(unreal.BattleRoadCar,unreal.Vector(*route['points_cm'][0])+unreal.Vector(0,0,73.3));car.set_actor_label('10th lane review '+route['name']);car.set_editor_property('route',[unreal.Vector(*p) for p in route['points_cm']]);car.tags=list(car.tags)+[unreal.Name('TenthCarLaneReview')]
  target='/Game/PiedmontRide/Maps/PiedmontCarLaneReview';assert unreal.EditorLoadingAndSavingUtils.save_map(world,target);report['review_map']=target
 (root/'Tests/Results/2026-09-12-tenth-car-lane-collision.json').write_text(json.dumps(report,indent=2)+'\n')
 assert report['passed'],len(failures)

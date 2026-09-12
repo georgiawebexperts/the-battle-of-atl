@@ -17,7 +17,7 @@ Gate=ea.spawn_actor_from_class(unreal.BattleRoadCrossing,unreal.Vector(*center))
 Signal=ea.spawn_actor_from_class(unreal.BattleTrafficSignal,unreal.Vector(x,y,min(ground)),unreal.Rotator(yaw=180));Signal.set_actor_label('10th Street westbound crossing signal');Signal.set_editor_property('crossing',Gate)
 rows=[]
 for route in json.loads((folder/'car-lanes.json').read_text())['routes']:
- car=ea.spawn_actor_from_class(unreal.BattleRoadCar,unreal.Vector(*route['points_cm'][0])+unreal.Vector(0,0,73.3));car.set_actor_label('10th signal review '+route['name']);car.set_editor_property('route',[unreal.Vector(*p) for p in route['points_cm']]);car.tags=[unreal.Name('TenthCarLaneReview')]
+ car=ea.spawn_actor_from_class(unreal.BattleRoadCar,unreal.Vector(*route['points_cm'][0])+unreal.Vector(0,0,73.3));car.set_actor_label('10th signal review '+route['name']);car.set_editor_property('route',[unreal.Vector(*p) for p in route['points_cm']]);car.tags=list(car.tags)+[unreal.Name('TenthCarLaneReview')]
  if route['crossing_point_indices']:
   first=min(route['crossing_point_indices']);stop=sum(math.dist(a[:2],b[:2]) for a,b in zip(route['points_cm'][:first],route['points_cm'][1:first+1]))-100
   binding=unreal.BattleCarCrossing();binding.set_editor_property('crossing',Gate);binding.set_editor_property('stop_distance',stop);car.set_editor_property('crossings',[binding]);rows.append({'lane':route['name'],'stop_distance_cm':stop})
