@@ -1,5 +1,6 @@
 """Author an original reusable produce stall; dimensions in game centimetres."""
 import math,json
+import numpy as np
 from pathlib import Path
 root=Path(__file__).resolve().parents[1];out=root/'SourceAssets/Terrain/TwelfthMarket/Stall';out.mkdir(exist_ok=True)
 groups={k:[] for k in ['Canvas','Metal','Wood','Leaf','Tomato','Cloth']}
@@ -35,11 +36,12 @@ for cx in [-73,0,73]:
   for z in [92,99,106]:box('Wood',(x,-60,z),(2,50,5))
  for row in range(3):
   for col in range(4):
-   px,py=cx-22+col*14,-76+row*15
+   px,py=cx-22+col*14+math.sin(row*3+col)*1.8,-76+row*15+math.cos(col*4+row)*1.6
+   radius=5.2+.7*math.sin(row+col*2)
    for lat in range(5):
     for lon in range(10):
      def point(i,j):
-      t=math.pi*i/5;a=math.tau*j/10;return(px+6*math.sin(t)*math.cos(a),py+6*math.sin(t)*math.sin(a),99+5*math.cos(t))
+      t=math.pi*i/5;a=math.tau*j/10;return(px+radius*math.sin(t)*math.cos(a),py+radius*math.sin(t)*math.sin(a),99+(7 if cx==0 else 5)*math.cos(t))
      face('Leaf' if cx==0 else 'Tomato',[point(lat,lon),point(lat+1,lon),point(lat+1,lon+1),point(lat,lon+1)])
 manifest=[]
 for name,triangles in groups.items():
@@ -47,7 +49,8 @@ for name,triangles in groups.items():
  for tri in triangles:
   for p in tri:lines.append('v '+' '.join(f'{v:.4f}' for v in p))
  for tri in triangles:
-  for p in tri:lines.append(f'vt {p[0]/300+.5:.6f} {p[1]/300+.5:.6f}')
+  normal=np.cross(np.subtract(tri[1],tri[0]),np.subtract(tri[2],tri[0]));drop=int(np.argmax(np.abs(normal)));axes=[i for i in range(3) if i!=drop]
+  for p in tri:lines.append(f'vt {p[axes[0]]/100:.6f} {p[axes[1]]/100:.6f}')
  for i in range(len(triangles)):lines.append('f '+' '.join(f'{j}/{j}' for j in [i*3+1,i*3+2,i*3+3]))
  file=f'SM_MarketStall_{name}.obj';(out/file).write_text('\n'.join(lines)+'\n');manifest.append({'file':file,'material':name,'triangles':len(triangles)})
 (out/'manifest.json').write_text(json.dumps({'status':'source geometry; native material/import/render/collision acceptance pending','dimensions_cm':[300,300,285],'surfaces':manifest},indent=2)+'\n');print(manifest)

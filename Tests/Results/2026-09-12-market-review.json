@@ -136,7 +136,14 @@
           "bottom_z": -163.54010009765625,
           "top_z": -149.00758361816406
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.716114, w: 0.697984}, translation: {x: -18704.023266, y: 3037.751426, z: 52.992416}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.716114, w: 0.697984}, translation: {x: -18704.023266, y: 3037.751426, z: 52.992416}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "PEACHES & GREENS"
+      }
     },
     {
       "stall": 2,
@@ -273,7 +280,14 @@
           "bottom_z": -174.32356191807276,
           "top_z": -169.10406494140625
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.697984, w: 0.716114}, translation: {x: -18712.227260, y: 3357.646244, z: 32.895935}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.697984, w: 0.716114}, translation: {x: -18712.227260, y: 3357.646244, z: 32.895935}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "PEACHES & GREENS"
+      }
     },
     {
       "stall": 3,
@@ -410,7 +424,14 @@
           "bottom_z": -173.90675354003906,
           "top_z": -157.89039611816406
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.716114, w: 0.697984}, translation: {x: -18304.154744, y: 3048.006418, z: 44.109604}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.716114, w: 0.697984}, translation: {x: -18304.154744, y: 3048.006418, z: 44.109604}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "THE GARDEN PATCH"
+      }
     },
     {
       "stall": 4,
@@ -547,7 +568,14 @@
           "bottom_z": -180.17345506087895,
           "top_z": -178.24591010515337
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.697984, w: 0.716114}, translation: {x: -18312.358737, y: 3367.901236, z: 23.754090}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.697984, w: 0.716114}, translation: {x: -18312.358737, y: 3367.901236, z: 23.754090}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "THE GARDEN PATCH"
+      }
     },
     {
       "stall": 5,
@@ -684,7 +712,14 @@
           "bottom_z": -182.57136901629383,
           "top_z": -167.6277313232422
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.739857, w: 0.672764}, translation: {x: -17893.970620, y: 3071.299532, z: 34.372269}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.739857, w: 0.672764}, translation: {x: -17893.970620, y: 3071.299532, z: 34.372269}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "FRESH PICKED"
+      }
     },
     {
       "stall": 6,
@@ -821,7 +856,14 @@
           "bottom_z": -188.60195238601636,
           "top_z": -187.44430359570333
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.672764, w: 0.739857}, translation: {x: -17924.298999, y: 3389.859086, z: 14.555696}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.672764, w: 0.739857}, translation: {x: -17924.298999, y: 3389.859086, z: 14.555696}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "FRESH PICKED"
+      }
     },
     {
       "stall": 7,
@@ -958,7 +1000,14 @@
           "bottom_z": -180.64918518066406,
           "top_z": -173.2886962890625
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.769669, w: 0.638444}, translation: {x: -17483.602164, y: 3127.036583, z: 28.711304}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.769669, w: 0.638444}, translation: {x: -17483.602164, y: 3127.036583, z: 28.711304}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "ROOTS & SHOOTS"
+      }
     },
     {
       "stall": 8,
@@ -1095,7 +1144,14 @@
           "bottom_z": -193.21353189861134,
           "top_z": -192.21426338949186
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.638444, w: 0.769669}, translation: {x: -17542.731676, y: 3441.526170, z: 9.785737}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.638444, w: 0.769669}, translation: {x: -17542.731676, y: 3441.526170, z: 9.785737}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "ROOTS & SHOOTS"
+      }
     },
     {
       "stall": 9,
@@ -1232,7 +1288,14 @@
           "bottom_z": -180.64292651437268,
           "top_z": -178.60723876953125
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.800812, w: 0.598916}, translation: {x: -17078.132473, y: 3218.399697, z: 23.392761}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: 0.000000, y: -0.000000, z: 0.800812, w: 0.598916}, translation: {x: -17078.132473, y: 3218.399697, z: 23.392761}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "SUNDAY TOMATOES"
+      }
     },
     {
       "stall": 10,
@@ -1369,18 +1432,25 @@
           "bottom_z": -194.78208923339844,
           "top_z": -189.09922790527344
         }
-      ]
+      ],
+      "sign_debug": {
+        "actor_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.598916, w: 0.800812}, translation: {x: -17168.564214, y: 3525.355883, z: 12.900772}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "component_transform": "<Struct 'Transform' (0x3ffadd0b0) {rotation: {x: -0.000000, y: 0.000000, z: -0.598916, w: 0.800812}, translation: {x: -17168.564214, y: 3525.355883, z: 12.900772}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+        "visible": true,
+        "hidden_in_game": false,
+        "text": "SUNDAY TOMATOES"
+      }
     }
   ],
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/f647203633604311aac8ec521c879c91/entrance.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/f647203633604311aac8ec521c879c91/stall.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/f647203633604311aac8ec521c879c91/wide.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/548b63f75c2b41c1847a0aec7cf80af2/entrance.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/548b63f75c2b41c1847a0aec7cf80af2/stall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/548b63f75c2b41c1847a0aec7cf80af2/wide.png"
   ],
   "main_map_saved": false,
   "visual_accepted": false,
-  "scope": "Transient static market study with measured levelling blocks. No saved main-map changes, entrance barrier or gameplay acceptance.",
+  "scope": "Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.",
   "import_exit_code": 0,
   "capture_passed": true,
-  "review": "Entrance render inspected: tables face aisle and supports align. Plain materials, repeated produce and dark shadows need polish."
+  "review": "Texture/produce revision imported. Sign text absent in close-up despite visible component, unlit two-sided material and depth-offset diagnostic. Signage NOT accepted. Capture used 180cm sign offset; source restored to intended155cm for further diagnosis."
 }
