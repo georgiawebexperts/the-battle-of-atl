@@ -1,0 +1,51 @@
+{
+  "exit_code": 0,
+  "poses": [
+    {
+      "clip": 0,
+      "head_height": 157.809,
+      "left_foot_height": 3.176,
+      "right_foot_height": 2.804
+    },
+    {
+      "clip": 1,
+      "head_height": 157.796,
+      "left_foot_height": 3.182,
+      "right_foot_height": 2.788
+    },
+    {
+      "clip": 2,
+      "head_height": 157.792,
+      "left_foot_height": 3.179,
+      "right_foot_height": 2.795
+    },
+    {
+      "clip": 3,
+      "head_height": 157.886,
+      "left_foot_height": 3.256,
+      "right_foot_height": 2.875
+    }
+  ],
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-0-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-0-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-0-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-0-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-1-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-1-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-1-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-1-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-2-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-2-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-2-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-2-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-3-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-3-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-3-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-recovery-runtime/5074ed689be14abe968816ce22bbc13f/getup-3-4.png"
+  ],
+  "capture_passed": true,
+  "scope": "Four retargeted clips on Ellison; no physical transition or production integration. Visual acceptance remains separate.",
+  "standing_height_passed": true,
+  "visual_review": "Midpoint frame inspected for F/B/L/R, standing F inspected: connected mesh with grounded-scale recovery. No full motion continuity, physical landing transition or contact alignment acceptance."
+}

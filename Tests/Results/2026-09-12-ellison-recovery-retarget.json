@@ -1,0 +1,26 @@
+{
+  "clips": [
+    {
+      "asset": "/Game/BattleRetarget/Ellison/RecoveryCandidate/M_ragdoll_getup_stand_F.M_ragdoll_getup_stand_F",
+      "duration": 5.0
+    },
+    {
+      "asset": "/Game/BattleRetarget/Ellison/RecoveryCandidate/M_ragdoll_getup_stand_B.M_ragdoll_getup_stand_B",
+      "duration": 5.0
+    },
+    {
+      "asset": "/Game/BattleRetarget/Ellison/RecoveryCandidate/M_ragdoll_getup_stand_L.M_ragdoll_getup_stand_L",
+      "duration": 5.0
+    },
+    {
+      "asset": "/Game/BattleRetarget/Ellison/RecoveryCandidate/M_ragdoll_getup_stand_R.M_ragdoll_getup_stand_R",
+      "duration": 5.0
+    }
+  ],
+  "rigs": [
+    "/Game/BattleRetarget/Ellison/RecoveryCandidate/IK_EllisonRecoverySource.IK_EllisonRecoverySource",
+    "/Game/BattleRetarget/Ellison/RecoveryCandidate/IK_EllisonRecoveryTarget.IK_EllisonRecoveryTarget"
+  ],
+  "visual_acceptance": false,
+  "gameplay_installed": false
+}

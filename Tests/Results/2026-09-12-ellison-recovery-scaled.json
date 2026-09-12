@@ -1,0 +1,11 @@
+{
+  "clips": [
+    "/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_F.GetUp_F",
+    "/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_B.GetUp_B",
+    "/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_L.GetUp_L",
+    "/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_R.GetUp_R"
+  ],
+  "pelvis_translation_scale": 0.01,
+  "armature_scale": 100,
+  "runtime_verified": false
+}
