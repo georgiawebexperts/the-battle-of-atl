@@ -1,0 +1,3442 @@
+{
+  "main_map_changed": false,
+  "instances": 98,
+  "groups": [
+    77,
+    21
+  ],
+  "accepted": [
+    {
+      "index": 10,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 383.4455319751304
+    },
+    {
+      "index": 15,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 241.4053911073721
+    },
+    {
+      "index": 18,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 269.53862460184234
+    },
+    {
+      "index": 32,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 98.37462529567273
+    },
+    {
+      "index": 35,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 413.3287385072093
+    },
+    {
+      "index": 40,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 155.32827835978298
+    },
+    {
+      "index": 43,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 110.98820950380025
+    },
+    {
+      "index": 46,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 584.4318070344247
+    },
+    {
+      "index": 50,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 320.9926266144389
+    },
+    {
+      "index": 62,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 131.61571992181348
+    },
+    {
+      "index": 67,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 441.0538570452801
+    },
+    {
+      "index": 74,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 195.14436007036807
+    },
+    {
+      "index": 77,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 194.11530717029405
+    },
+    {
+      "index": 95,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 88.30854569322435
+    },
+    {
+      "index": 109,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 155.22847300553656
+    },
+    {
+      "index": 156,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 117.02621758394673
+    },
+    {
+      "index": 205,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 178.8769438488705
+    },
+    {
+      "index": 223,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 81.93472094455853
+    },
+    {
+      "index": 224,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 109.61175253331425
+    },
+    {
+      "index": 229,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 646.7144351423956
+    },
+    {
+      "index": 235,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1029.5743301005762
+    },
+    {
+      "index": 236,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 177.03323680254465
+    },
+    {
+      "index": 245,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 865.4514717514126
+    },
+    {
+      "index": 246,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 141.59322512783285
+    },
+    {
+      "index": 254,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 353.85572589961606
+    },
+    {
+      "index": 256,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 550.8318829972022
+    },
+    {
+      "index": 259,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 715.8340447263596
+    },
+    {
+      "index": 270,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 274.87698028152147
+    },
+    {
+      "index": 276,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 558.6400291739518
+    },
+    {
+      "index": 282,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 196.5480457114412
+    },
+    {
+      "index": 290,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 385.66964903853454
+    },
+    {
+      "index": 291,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 308.80749360648605
+    },
+    {
+      "index": 292,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 172.51290665413467
+    },
+    {
+      "index": 293,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 326.88174737192656
+    },
+    {
+      "index": 295,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 821.949455928753
+    },
+    {
+      "index": 298,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 300.477692359109
+    },
+    {
+      "index": 299,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 111.0484324665548
+    },
+    {
+      "index": 300,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 421.29029739509724
+    },
+    {
+      "index": 304,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 155.9614498649201
+    },
+    {
+      "index": 305,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 198.8014721055847
+    },
+    {
+      "index": 307,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 88.11388511280603
+    },
+    {
+      "index": 309,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 497.4966565809759
+    },
+    {
+      "index": 314,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 701.3366824517296
+    },
+    {
+      "index": 315,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 169.83596605710602
+    },
+    {
+      "index": 316,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 328.7296545806489
+    },
+    {
+      "index": 326,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 355.42022486080805
+    },
+    {
+      "index": 335,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 270.46935329181827
+    },
+    {
+      "index": 336,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 118.81659596159113
+    },
+    {
+      "index": 337,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 165.05369040907527
+    },
+    {
+      "index": 341,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 899.0809442423167
+    },
+    {
+      "index": 350,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 130.9305878173774
+    },
+    {
+      "index": 353,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 525.2016181154574
+    },
+    {
+      "index": 355,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 269.7814250337183
+    },
+    {
+      "index": 356,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 156.4776564416302
+    },
+    {
+      "index": 364,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 515.3435423859383
+    },
+    {
+      "index": 369,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 459.97452325210986
+    },
+    {
+      "index": 378,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 1029.89712249478
+    },
+    {
+      "index": 380,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 141.15211978016634
+    },
+    {
+      "index": 382,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 138.77152488204968
+    },
+    {
+      "index": 385,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 91.19704854810368
+    },
+    {
+      "index": 390,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 478.08424557238413
+    },
+    {
+      "index": 392,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 116.62681060748758
+    },
+    {
+      "index": 403,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 399.5356955799889
+    },
+    {
+      "index": 407,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 167.31086414493524
+    },
+    {
+      "index": 408,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 83.72568218538697
+    },
+    {
+      "index": 424,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 451.21689251890655
+    },
+    {
+      "index": 428,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 533.2571634697216
+    },
+    {
+      "index": 430,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 217.1437295369684
+    },
+    {
+      "index": 437,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 429.70033783515566
+    },
+    {
+      "index": 439,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 555.8684975977028
+    },
+    {
+      "index": 440,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 192.32001863986306
+    },
+    {
+      "index": 442,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 268.0577861116367
+    },
+    {
+      "index": 460,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 232.83609071603144
+    },
+    {
+      "index": 461,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 516.8026147676779
+    },
+    {
+      "index": 464,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 285.8766246427913
+    },
+    {
+      "index": 467,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 484.0070685657503
+    },
+    {
+      "index": 468,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 435.251620060352
+    },
+    {
+      "index": 475,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 155.35572711379507
+    },
+    {
+      "index": 496,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 347.6227061026542
+    },
+    {
+      "index": 500,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 202.83437088526716
+    },
+    {
+      "index": 504,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 249.32507864408637
+    },
+    {
+      "index": 505,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 430.5521279957941
+    },
+    {
+      "index": 506,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 525.4308613060185
+    },
+    {
+      "index": 514,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1389.6942366701628
+    },
+    {
+      "index": 523,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 439.3590013872846
+    },
+    {
+      "index": 526,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 335.78555690789744
+    },
+    {
+      "index": 530,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 156.94915198766876
+    },
+    {
+      "index": 531,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 265.7996004367418
+    },
+    {
+      "index": 532,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 86.29066277294629
+    },
+    {
+      "index": 538,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 102.09251234156113
+    },
+    {
+      "index": 539,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 452.34871519265926
+    },
+    {
+      "index": 540,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 663.8211448577359
+    },
+    {
+      "index": 546,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 553.7033086378926
+    },
+    {
+      "index": 547,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 235.21204192934465
+    },
+    {
+      "index": 551,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 578.217403282484
+    },
+    {
+      "index": 553,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 752.3435391420693
+    },
+    {
+      "index": 563,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 324.1309527571321
+    },
+    {
+      "index": 575,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 141.13719890831402
+    }
+  ],
+  "rejected": [
+    {
+      "index": 0,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 244.94646096039736,
+      "radius_cm": 805.1232660552455
+    },
+    {
+      "index": 1,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 419.57535089480723,
+      "radius_cm": 629.1480720622191
+    },
+    {
+      "index": 2,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 341.4997323815457,
+      "radius_cm": 795.8786078094414
+    },
+    {
+      "index": 3,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 280.5293951870521,
+      "radius_cm": 696.7670146265942
+    },
+    {
+      "index": 4,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 353.57271973797066,
+      "radius_cm": 711.6984118726851
+    },
+    {
+      "index": 5,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 759.6036491333454,
+      "radius_cm": 775.6938444319487
+    },
+    {
+      "index": 6,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 210.90413306333113,
+      "radius_cm": 683.5666106779659
+    },
+    {
+      "index": 7,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 420.33981863458393,
+      "radius_cm": 498.5243170768763
+    },
+    {
+      "index": 8,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 238.9969315221491,
+      "radius_cm": 598.7373758181311
+    },
+    {
+      "index": 9,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 725.4907447072991,
+      "radius_cm": 775.5082534394699
+    },
+    {
+      "index": 11,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 221.56393784712492,
+      "radius_cm": 674.0109690618988
+    },
+    {
+      "index": 12,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 244.67065878824496,
+      "radius_cm": 750.0937531558085
+    },
+    {
+      "index": 13,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 295.3692525648699,
+      "radius_cm": 612.304401558836
+    },
+    {
+      "index": 14,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 188.90552097184622,
+      "radius_cm": 453.6114335424398
+    },
+    {
+      "index": 16,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 403.7305747270757,
+      "radius_cm": 655.212854175995
+    },
+    {
+      "index": 17,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 287.11406617591217,
+      "radius_cm": 420.89610943901505
+    },
+    {
+      "index": 19,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 359.9516973131435,
+      "radius_cm": 668.8298907669173
+    },
+    {
+      "index": 20,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 253.99332334326328,
+      "radius_cm": 590.0894069054275
+    },
+    {
+      "index": 21,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 215.7988124498629,
+      "radius_cm": 724.1363775827634
+    },
+    {
+      "index": 22,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 607.0719093461703,
+      "radius_cm": 686.4502635118231
+    },
+    {
+      "index": 23,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 254.55760689318242,
+      "radius_cm": 450.27480841548856
+    },
+    {
+      "index": 24,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 244.84378737074633,
+      "radius_cm": 775.1016587880856
+    },
+    {
+      "index": 25,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 320.79094777091177,
+      "radius_cm": 683.3364227950408
+    },
+    {
+      "index": 26,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 272.5201163642011,
+      "radius_cm": 602.0296123429735
+    },
+    {
+      "index": 27,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 184.3248484798607,
+      "radius_cm": 571.2698104515756
+    },
+    {
+      "index": 28,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 227.42802099409266,
+      "radius_cm": 430.3177744512635
+    },
+    {
+      "index": 29,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 349.1611276198741,
+      "radius_cm": 461.8823771368615
+    },
+    {
+      "index": 30,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 371.02862838671916,
+      "radius_cm": 571.2021486976987
+    },
+    {
+      "index": 31,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.1772704726339,
+      "radius_cm": 441.09203427787037
+    },
+    {
+      "index": 33,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 192.71463448327728,
+      "radius_cm": 606.061576756562
+    },
+    {
+      "index": 34,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 418.98432744033676,
+      "radius_cm": 605.8926983518143
+    },
+    {
+      "index": 36,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 195.05245271951458,
+      "radius_cm": 782.978363409238
+    },
+    {
+      "index": 37,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 544.204919998837,
+      "radius_cm": 484.4412906705535
+    },
+    {
+      "index": 38,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 530.522582662183,
+      "radius_cm": 649.7778533594452
+    },
+    {
+      "index": 39,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 354.3031947746271,
+      "radius_cm": 590.3306057991025
+    },
+    {
+      "index": 41,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 249.13049619736432,
+      "radius_cm": 543.0732204572474
+    },
+    {
+      "index": 42,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 262.855033332844,
+      "radius_cm": 803.0210057985473
+    },
+    {
+      "index": 44,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 306.30300635992444,
+      "radius_cm": 473.99379402215766
+    },
+    {
+      "index": 45,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 566.406983353804,
+      "radius_cm": 734.6841255248158
+    },
+    {
+      "index": 47,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 275.84996390990534,
+      "radius_cm": 658.9526353613943
+    },
+    {
+      "index": 48,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 461.43564643186266,
+      "radius_cm": 640.5646469557811
+    },
+    {
+      "index": 49,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 395.9015183011271,
+      "radius_cm": 542.478919078496
+    },
+    {
+      "index": 51,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 181.42358590829252,
+      "radius_cm": 782.206174948462
+    },
+    {
+      "index": 52,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 378.38179567008524,
+      "radius_cm": 490.2237644178399
+    },
+    {
+      "index": 53,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 257.1545119147273,
+      "radius_cm": 453.31830100186994
+    },
+    {
+      "index": 54,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 210.80265142589525,
+      "radius_cm": 784.9099703845686
+    },
+    {
+      "index": 55,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 308.873142734425,
+      "radius_cm": 468.24716259876783
+    },
+    {
+      "index": 56,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 384.68283848454155,
+      "radius_cm": 550.7981012272202
+    },
+    {
+      "index": 57,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 428.730369866926,
+      "radius_cm": 665.9453543366913
+    },
+    {
+      "index": 58,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 314.57419109867436,
+      "radius_cm": 587.4812125146813
+    },
+    {
+      "index": 59,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 353.58331961827747,
+      "radius_cm": 678.0141426505056
+    },
+    {
+      "index": 60,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 195.03221391684298,
+      "radius_cm": 777.236625262861
+    },
+    {
+      "index": 61,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 295.913047363697,
+      "radius_cm": 648.0638360128551
+    },
+    {
+      "index": 63,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 433.7750455464686,
+      "radius_cm": 518.3758419139912
+    },
+    {
+      "index": 64,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 258.3971277794435,
+      "radius_cm": 410.46734625543917
+    },
+    {
+      "index": 65,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 186.97750541416076,
+      "radius_cm": 572.253580110945
+    },
+    {
+      "index": 66,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 207.96885004872416,
+      "radius_cm": 562.7901744833862
+    },
+    {
+      "index": 68,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 215.0854151776344,
+      "radius_cm": 534.1483126551223
+    },
+    {
+      "index": 69,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 241.8888356468221,
+      "radius_cm": 480.2531549956281
+    },
+    {
+      "index": 70,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 545.3464692315649,
+      "radius_cm": 563.1060571645183
+    },
+    {
+      "index": 71,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 355.49404257298545,
+      "radius_cm": 489.9087157694094
+    },
+    {
+      "index": 72,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.18989754204426,
+      "radius_cm": 669.4562342902377
+    },
+    {
+      "index": 73,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 311.63575914626085,
+      "radius_cm": 579.9875422480669
+    },
+    {
+      "index": 75,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 373.28934080973613,
+      "radius_cm": 633.5724250796773
+    },
+    {
+      "index": 76,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 218.80620567724048,
+      "radius_cm": 427.0765503902751
+    },
+    {
+      "index": 78,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 430.70171880848807,
+      "radius_cm": 764.4685652595475
+    },
+    {
+      "index": 79,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 195.27382836701787,
+      "radius_cm": 652.808914548261
+    },
+    {
+      "index": 80,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 270.65360041262625,
+      "radius_cm": 467.1744556398148
+    },
+    {
+      "index": 81,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 186.8843055009155,
+      "radius_cm": 493.0621366032452
+    },
+    {
+      "index": 82,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 192.1478331964217,
+      "radius_cm": 462.5648041752507
+    },
+    {
+      "index": 83,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 183.32673962358086,
+      "radius_cm": 532.9022204128935
+    },
+    {
+      "index": 84,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 477.05672999037984,
+      "radius_cm": 673.8745265865679
+    },
+    {
+      "index": 85,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 188.32389108504867,
+      "radius_cm": 594.9788613325358
+    },
+    {
+      "index": 86,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 205.77738210597153,
+      "radius_cm": 673.2574319559001
+    },
+    {
+      "index": 87,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 202.80725192592848,
+      "radius_cm": 655.7778045231985
+    },
+    {
+      "index": 88,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 457.93846610504954,
+      "radius_cm": 490.14803123536757
+    },
+    {
+      "index": 89,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 245.5400281019074,
+      "radius_cm": 665.9320995428152
+    },
+    {
+      "index": 90,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 578.0508880321065,
+      "radius_cm": 581.6337613656834
+    },
+    {
+      "index": 91,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 334.1676925881586,
+      "radius_cm": 539.0960547768058
+    },
+    {
+      "index": 92,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 182.05612660958656,
+      "radius_cm": 414.9198958129261
+    },
+    {
+      "index": 93,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 232.27118712316212,
+      "radius_cm": 546.7695225193819
+    },
+    {
+      "index": 94,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 197.503339456984,
+      "radius_cm": 533.1607980246931
+    },
+    {
+      "index": 96,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 432.6374044797807,
+      "radius_cm": 718.2104557322631
+    },
+    {
+      "index": 97,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 658.1381709520674,
+      "radius_cm": 620.7949050883726
+    },
+    {
+      "index": 98,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 237.43063796372644,
+      "radius_cm": 680.5672903308518
+    },
+    {
+      "index": 99,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 327.59053506198484,
+      "radius_cm": 525.7575146626853
+    },
+    {
+      "index": 100,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 277.67659257196317,
+      "radius_cm": 420.5819523123187
+    },
+    {
+      "index": 101,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 250.3052525683333,
+      "radius_cm": 537.4350611926125
+    },
+    {
+      "index": 102,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 235.0383384619027,
+      "radius_cm": 503.5770056297811
+    },
+    {
+      "index": 103,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 371.5631085827661,
+      "radius_cm": 548.6642682885509
+    },
+    {
+      "index": 104,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 289.7504819735009,
+      "radius_cm": 414.29456303121964
+    },
+    {
+      "index": 105,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 476.5443130469406,
+      "radius_cm": 658.4745354271934
+    },
+    {
+      "index": 106,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 227.65025542227608,
+      "radius_cm": 433.5955407695136
+    },
+    {
+      "index": 107,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 609.2915746447835,
+      "radius_cm": 684.1363690210804
+    },
+    {
+      "index": 108,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 432.94764815528663,
+      "radius_cm": 612.0018680967639
+    },
+    {
+      "index": 110,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 336.34942176329923,
+      "radius_cm": 659.2813870027028
+    },
+    {
+      "index": 111,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 320.5793339420031,
+      "radius_cm": 568.8443301534629
+    },
+    {
+      "index": 112,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 562.564046613847,
+      "radius_cm": 603.0240466071274
+    },
+    {
+      "index": 113,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 499.2457785276648,
+      "radius_cm": 489.046186944784
+    },
+    {
+      "index": 114,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 222.1291784875175,
+      "radius_cm": 480.96355852606547
+    },
+    {
+      "index": 115,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 316.98369198589415,
+      "radius_cm": 664.3861176508709
+    },
+    {
+      "index": 116,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 404.29096849723,
+      "radius_cm": 607.5369446403646
+    },
+    {
+      "index": 117,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 238.69210982446208,
+      "radius_cm": 716.1669112303398
+    },
+    {
+      "index": 118,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 346.5956442603849,
+      "radius_cm": 497.88124825919937
+    },
+    {
+      "index": 119,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 194.0210827939771,
+      "radius_cm": 685.0353027929847
+    },
+    {
+      "index": 120,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 369.91792164326546,
+      "radius_cm": 684.910011398741
+    },
+    {
+      "index": 121,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 196.57250985466328,
+      "radius_cm": 535.4465492096818
+    },
+    {
+      "index": 122,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 421.4922923003777,
+      "radius_cm": 581.9136584661379
+    },
+    {
+      "index": 123,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 550.5899822681197,
+      "radius_cm": 599.1001184554306
+    },
+    {
+      "index": 124,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 420.8411025959714,
+      "radius_cm": 674.8223052650261
+    },
+    {
+      "index": 125,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 302.9095745974915,
+      "radius_cm": 640.399951716351
+    },
+    {
+      "index": 126,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 246.01865870031452,
+      "radius_cm": 647.7392486490796
+    },
+    {
+      "index": 127,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 262.2486254588549,
+      "radius_cm": 444.3686472412351
+    },
+    {
+      "index": 128,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 424.81321680564054,
+      "radius_cm": 475.244896230009
+    },
+    {
+      "index": 129,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 606.1216011802339,
+      "radius_cm": 673.7717829481072
+    },
+    {
+      "index": 130,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 463.2519107365067,
+      "radius_cm": 638.9371021910474
+    },
+    {
+      "index": 131,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 254.30313625153258,
+      "radius_cm": 520.730475364462
+    },
+    {
+      "index": 132,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 374.06765880458227,
+      "radius_cm": 559.8751221061515
+    },
+    {
+      "index": 133,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 291.68116265611866,
+      "radius_cm": 530.816248624251
+    },
+    {
+      "index": 134,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 259.2061821438505,
+      "radius_cm": 416.42747137492995
+    },
+    {
+      "index": 135,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 495.7933855004061,
+      "radius_cm": 808.9524628557579
+    },
+    {
+      "index": 136,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 566.4770454520465,
+      "radius_cm": 573.8222584483634
+    },
+    {
+      "index": 137,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 196.15817953235432,
+      "radius_cm": 669.6867942878141
+    },
+    {
+      "index": 138,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 415.48895855840465,
+      "radius_cm": 520.6227863317534
+    },
+    {
+      "index": 139,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 227.89490531574842,
+      "radius_cm": 672.4171213254028
+    },
+    {
+      "index": 140,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 213.77506311657186,
+      "radius_cm": 475.0858139934439
+    },
+    {
+      "index": 141,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 211.92135138710887,
+      "radius_cm": 588.6137000293422
+    },
+    {
+      "index": 142,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 280.01401128723126,
+      "radius_cm": 480.29572127413655
+    },
+    {
+      "index": 143,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 493.37463050885935,
+      "radius_cm": 669.3636918585917
+    },
+    {
+      "index": 144,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 449.7715635363918,
+      "radius_cm": 533.1869679082783
+    },
+    {
+      "index": 145,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 212.45719308945496,
+      "radius_cm": 491.76780991156795
+    },
+    {
+      "index": 146,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 426.14749884587263,
+      "radius_cm": 443.18373634264645
+    },
+    {
+      "index": 147,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 334.37314444776445,
+      "radius_cm": 774.9312317640689
+    },
+    {
+      "index": 148,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 219.125585693373,
+      "radius_cm": 685.8746127820215
+    },
+    {
+      "index": 149,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 452.9186763360211,
+      "radius_cm": 626.4291610419401
+    },
+    {
+      "index": 150,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 443.6893721526842,
+      "radius_cm": 627.8982863274097
+    },
+    {
+      "index": 151,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 369.99483664223675,
+      "radius_cm": 467.10302468558683
+    },
+    {
+      "index": 152,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 346.06329396504617,
+      "radius_cm": 621.9439318674744
+    },
+    {
+      "index": 153,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 273.3563754239667,
+      "radius_cm": 755.8887996111948
+    },
+    {
+      "index": 154,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 221.69394482193843,
+      "radius_cm": 604.765255713091
+    },
+    {
+      "index": 155,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 341.5847823120581,
+      "radius_cm": 680.7305021513372
+    },
+    {
+      "index": 157,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 220.0522448178191,
+      "radius_cm": 436.75653900944275
+    },
+    {
+      "index": 158,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 594.6131651902624,
+      "radius_cm": 687.3736405735062
+    },
+    {
+      "index": 159,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 359.8772736762018,
+      "radius_cm": 589.8736248168411
+    },
+    {
+      "index": 160,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 197.13481238258458,
+      "radius_cm": 564.369945850352
+    },
+    {
+      "index": 161,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 182.7410207561981,
+      "radius_cm": 504.88205265750037
+    },
+    {
+      "index": 162,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 183.87147134878347,
+      "radius_cm": 796.7297353249228
+    },
+    {
+      "index": 163,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 222.17347452999928,
+      "radius_cm": 541.5858395009407
+    },
+    {
+      "index": 164,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 332.3435149314894,
+      "radius_cm": 444.44326903244456
+    },
+    {
+      "index": 165,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 339.7308378520491,
+      "radius_cm": 495.76125168700315
+    },
+    {
+      "index": 166,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 349.36754552379574,
+      "radius_cm": 442.92530267052496
+    },
+    {
+      "index": 167,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 221.33944867915483,
+      "radius_cm": 443.08589796016605
+    },
+    {
+      "index": 168,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 186.0390594588539,
+      "radius_cm": 507.73355001675435
+    },
+    {
+      "index": 169,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 197.11070697848209,
+      "radius_cm": 666.8056875186638
+    },
+    {
+      "index": 170,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 508.0885204607624,
+      "radius_cm": 551.4502701772325
+    },
+    {
+      "index": 171,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 282.04385628289754,
+      "radius_cm": 748.6462261998063
+    },
+    {
+      "index": 172,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 200.1662885891846,
+      "radius_cm": 487.0497092710156
+    },
+    {
+      "index": 173,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 369.56546425811314,
+      "radius_cm": 575.8777819284951
+    },
+    {
+      "index": 174,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 193.44876298755884,
+      "radius_cm": 698.562206486849
+    },
+    {
+      "index": 175,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 323.53054825799063,
+      "radius_cm": 654.9643594860204
+    },
+    {
+      "index": 176,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 210.1529496880451,
+      "radius_cm": 407.59277966866756
+    },
+    {
+      "index": 177,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 226.84848954489019,
+      "radius_cm": 640.7202326398674
+    },
+    {
+      "index": 178,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 240.28982590139964,
+      "radius_cm": 652.5459540228866
+    },
+    {
+      "index": 179,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 237.13837093154962,
+      "radius_cm": 635.9076473500593
+    },
+    {
+      "index": 180,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 373.66831364969664,
+      "radius_cm": 744.4977866598077
+    },
+    {
+      "index": 181,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 191.00616993824286,
+      "radius_cm": 532.5881143316086
+    },
+    {
+      "index": 182,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 323.40041815597226,
+      "radius_cm": 678.8317501565009
+    },
+    {
+      "index": 183,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 464.03491005331614,
+      "radius_cm": 764.4701835092853
+    },
+    {
+      "index": 184,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 185.5881530993583,
+      "radius_cm": 431.44135882901634
+    },
+    {
+      "index": 185,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 312.5551810013559,
+      "radius_cm": 635.4838167933347
+    },
+    {
+      "index": 186,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 238.41538136092777,
+      "radius_cm": 795.5445281925903
+    },
+    {
+      "index": 187,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 217.6822910862416,
+      "radius_cm": 632.0981547941435
+    },
+    {
+      "index": 188,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.73593805767666,
+      "radius_cm": 530.6057307719876
+    },
+    {
+      "index": 189,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 199.78597364442044,
+      "radius_cm": 595.4236693607686
+    },
+    {
+      "index": 190,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 185.9729855433361,
+      "radius_cm": 657.1262882649996
+    },
+    {
+      "index": 191,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 259.6758890467461,
+      "radius_cm": 519.8048927438307
+    },
+    {
+      "index": 192,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 220.0705890312775,
+      "radius_cm": 563.5454595770792
+    },
+    {
+      "index": 193,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 234.3901756186525,
+      "radius_cm": 664.2545362120593
+    },
+    {
+      "index": 194,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 209.40239197669882,
+      "radius_cm": 633.6805177742915
+    },
+    {
+      "index": 195,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 189.23442413945787,
+      "radius_cm": 643.9626854427165
+    },
+    {
+      "index": 196,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 222.10389145048077,
+      "radius_cm": 528.7834938381098
+    },
+    {
+      "index": 197,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 245.5169964506103,
+      "radius_cm": 436.91888106060117
+    },
+    {
+      "index": 198,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 198.096320777706,
+      "radius_cm": 564.1440593124762
+    },
+    {
+      "index": 199,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 234.70552765447968,
+      "radius_cm": 445.4926321532627
+    },
+    {
+      "index": 200,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 209.30424081546573,
+      "radius_cm": 678.612666285256
+    },
+    {
+      "index": 201,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 209.09211981241737,
+      "radius_cm": 781.8703839451065
+    },
+    {
+      "index": 202,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 237.9591856259923,
+      "radius_cm": 635.7537090070928
+    },
+    {
+      "index": 203,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 292.6440324289092,
+      "radius_cm": 522.3601630279726
+    },
+    {
+      "index": 204,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 207.58371148452062,
+      "radius_cm": 772.7964384654101
+    },
+    {
+      "index": 206,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 377.60783007862494,
+      "radius_cm": 602.815086347466
+    },
+    {
+      "index": 207,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 443.4351710924773,
+      "radius_cm": 744.0151387380275
+    },
+    {
+      "index": 208,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 241.52181413743256,
+      "radius_cm": 584.9221535612407
+    },
+    {
+      "index": 209,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 219.07739191099472,
+      "radius_cm": 656.5364945937334
+    },
+    {
+      "index": 210,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 236.80772012593638,
+      "radius_cm": 591.4741372457087
+    },
+    {
+      "index": 211,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 188.87488995820559,
+      "radius_cm": 686.8876773208717
+    },
+    {
+      "index": 212,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 215.3682075524393,
+      "radius_cm": 441.7327346354955
+    },
+    {
+      "index": 213,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 244.19360042222593,
+      "radius_cm": 645.3968014777109
+    },
+    {
+      "index": 214,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 451.4209055404958,
+      "radius_cm": 621.561807768581
+    },
+    {
+      "index": 215,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 201.3571545409008,
+      "radius_cm": 445.3845534297477
+    },
+    {
+      "index": 216,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 247.48542253595002,
+      "radius_cm": 684.9819562181731
+    },
+    {
+      "index": 217,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 197.44343323199752,
+      "radius_cm": 420.1478924732553
+    },
+    {
+      "index": 218,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 191.6974794310225,
+      "radius_cm": 436.40868015860406
+    },
+    {
+      "index": 219,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 211.23557284896992,
+      "radius_cm": 634.4746660904486
+    },
+    {
+      "index": 220,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 251.80487865414358,
+      "radius_cm": 490.7139725235159
+    },
+    {
+      "index": 221,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 198.0230509446298,
+      "radius_cm": 422.0546240860766
+    },
+    {
+      "index": 222,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 295.71174215849874,
+      "radius_cm": 577.4428374430154
+    },
+    {
+      "index": 225,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 188.02171775570156,
+      "radius_cm": 684.6212468443679
+    },
+    {
+      "index": 226,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 322.76171490406676,
+      "radius_cm": 482.51045537425614
+    },
+    {
+      "index": 227,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 546.1759289124253,
+      "radius_cm": 558.7211382330888
+    },
+    {
+      "index": 228,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 685.8951002043536,
+      "radius_cm": 735.4681721764639
+    },
+    {
+      "index": 230,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 328.90932399368387,
+      "radius_cm": 652.0977385353239
+    },
+    {
+      "index": 231,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 464.7306242036078,
+      "radius_cm": 519.5135662510107
+    },
+    {
+      "index": 232,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 353.97125210897747,
+      "radius_cm": 574.7497273859113
+    },
+    {
+      "index": 233,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 215.78638132324824,
+      "radius_cm": 559.7588548626459
+    },
+    {
+      "index": 234,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 247.3878368089683,
+      "radius_cm": 685.5348988235371
+    },
+    {
+      "index": 237,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 503.57680823872647,
+      "radius_cm": 689.4529809019502
+    },
+    {
+      "index": 238,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 299.9752160698272,
+      "radius_cm": 484.9943943602906
+    },
+    {
+      "index": 239,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 300.6870493425267,
+      "radius_cm": 680.8144723244644
+    },
+    {
+      "index": 240,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 353.21779327877766,
+      "radius_cm": 665.7598020754365
+    },
+    {
+      "index": 241,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 417.6666037780062,
+      "radius_cm": 480.793366640302
+    },
+    {
+      "index": 242,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 640.3202724411573,
+      "radius_cm": 688.0263512699617
+    },
+    {
+      "index": 243,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 366.6852622640756,
+      "radius_cm": 490.14496896583387
+    },
+    {
+      "index": 244,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 350.1875633291602,
+      "radius_cm": 690.8824317281142
+    },
+    {
+      "index": 247,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 521.6422296346857,
+      "radius_cm": 484.000325098061
+    },
+    {
+      "index": 248,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 249.2180544036937,
+      "radius_cm": 662.0946161372507
+    },
+    {
+      "index": 249,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 464.03195449237217,
+      "radius_cm": 732.6272867478474
+    },
+    {
+      "index": 250,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 426.19440427193865,
+      "radius_cm": 570.7687461652098
+    },
+    {
+      "index": 251,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 342.4669034946555,
+      "radius_cm": 535.4676693351776
+    },
+    {
+      "index": 252,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 217.20701511513408,
+      "radius_cm": 803.4397222708276
+    },
+    {
+      "index": 253,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 213.10306810314125,
+      "radius_cm": 612.5969307640468
+    },
+    {
+      "index": 255,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 544.2245814743089,
+      "radius_cm": 581.8506252187342
+    },
+    {
+      "index": 257,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.2689661268596,
+      "radius_cm": 500.3670071348921
+    },
+    {
+      "index": 258,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 227.87848824663217,
+      "radius_cm": 706.6561036769008
+    },
+    {
+      "index": 260,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 441.9783852361876,
+      "radius_cm": 586.7246386005128
+    },
+    {
+      "index": 261,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 335.0129482540776,
+      "radius_cm": 533.8148420007008
+    },
+    {
+      "index": 262,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 234.41769820418142,
+      "radius_cm": 688.4906821160314
+    },
+    {
+      "index": 263,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 322.8175965601465,
+      "radius_cm": 642.6224443644818
+    },
+    {
+      "index": 264,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 297.2070138805148,
+      "radius_cm": 592.3157958827106
+    },
+    {
+      "index": 265,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 537.7151526824077,
+      "radius_cm": 538.2149260588607
+    },
+    {
+      "index": 266,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 203.8800701353647,
+      "radius_cm": 595.8653333343522
+    },
+    {
+      "index": 267,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 692.1990652896027,
+      "radius_cm": 699.3107731076275
+    },
+    {
+      "index": 268,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 220.16707047298007,
+      "radius_cm": 551.6101597677878
+    },
+    {
+      "index": 269,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 520.2708634820126,
+      "radius_cm": 488.8764651436231
+    },
+    {
+      "index": 271,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 376.1083355165707,
+      "radius_cm": 577.6759511055402
+    },
+    {
+      "index": 272,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 265.83731052093873,
+      "radius_cm": 439.2981423964028
+    },
+    {
+      "index": 273,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 301.52470379692215,
+      "radius_cm": 536.4835872379197
+    },
+    {
+      "index": 274,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 261.69924567475385,
+      "radius_cm": 458.1485398742348
+    },
+    {
+      "index": 275,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 440.3987027337073,
+      "radius_cm": 641.9548892743167
+    },
+    {
+      "index": 277,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 352.86198944636135,
+      "radius_cm": 677.8487372210483
+    },
+    {
+      "index": 278,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 588.796591780006,
+      "radius_cm": 531.4788643439862
+    },
+    {
+      "index": 279,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 216.24778126013206,
+      "radius_cm": 812.6437216274185
+    },
+    {
+      "index": 280,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 552.9618500036045,
+      "radius_cm": 600.6984571895689
+    },
+    {
+      "index": 281,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 377.79046733638586,
+      "radius_cm": 473.72443050758096
+    },
+    {
+      "index": 283,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 512.092127095701,
+      "radius_cm": 445.68995075196267
+    },
+    {
+      "index": 284,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 669.318634764443,
+      "radius_cm": 644.6101294153099
+    },
+    {
+      "index": 285,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 494.6307847026536,
+      "radius_cm": 496.1481696181862
+    },
+    {
+      "index": 286,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 334.21688955560944,
+      "radius_cm": 568.2256520466698
+    },
+    {
+      "index": 287,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 425.62266144353157,
+      "radius_cm": 673.9940799802494
+    },
+    {
+      "index": 288,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 546.1211647405207,
+      "radius_cm": 767.2060593310172
+    },
+    {
+      "index": 289,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 380.6104663665519,
+      "radius_cm": 467.59597511603835
+    },
+    {
+      "index": 294,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 538.4571387865818,
+      "radius_cm": 621.2417492831918
+    },
+    {
+      "index": 296,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 427.41112664191417,
+      "radius_cm": 541.7742271989433
+    },
+    {
+      "index": 297,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 631.2699499769485,
+      "radius_cm": 778.8956247536336
+    },
+    {
+      "index": 301,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 255.5052390977795,
+      "radius_cm": 541.1202594008795
+    },
+    {
+      "index": 302,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 256.94236974158156,
+      "radius_cm": 625.2076394662944
+    },
+    {
+      "index": 303,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 365.61291123347286,
+      "radius_cm": 786.7690499897914
+    },
+    {
+      "index": 306,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 549.1974933480325,
+      "radius_cm": 508.6478680790622
+    },
+    {
+      "index": 308,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 187.52413068519604,
+      "radius_cm": 425.9371843706726
+    },
+    {
+      "index": 310,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 467.9318885738627,
+      "radius_cm": 613.9882531498848
+    },
+    {
+      "index": 311,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 245.5028772389585,
+      "radius_cm": 423.5381920573225
+    },
+    {
+      "index": 312,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 291.6220842691057,
+      "radius_cm": 513.5882781652829
+    },
+    {
+      "index": 313,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 688.5075302420194,
+      "radius_cm": 669.6652204413592
+    },
+    {
+      "index": 317,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 315.8058311805401,
+      "radius_cm": 470.31780749561506
+    },
+    {
+      "index": 318,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 417.8970542287773,
+      "radius_cm": 799.0943608895024
+    },
+    {
+      "index": 319,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 406.6873549404088,
+      "radius_cm": 625.157447838874
+    },
+    {
+      "index": 320,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 723.2182455277673,
+      "radius_cm": 649.4598344380062
+    },
+    {
+      "index": 321,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 244.84877398931405,
+      "radius_cm": 528.7292855947918
+    },
+    {
+      "index": 322,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 360.5738769923041,
+      "radius_cm": 633.951006584546
+    },
+    {
+      "index": 323,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 471.75401296672123,
+      "radius_cm": 583.4147815296515
+    },
+    {
+      "index": 324,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 370.61366555797383,
+      "radius_cm": 617.9438861581103
+    },
+    {
+      "index": 325,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 454.6796590415802,
+      "radius_cm": 596.2802677930335
+    },
+    {
+      "index": 327,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 569.9030782615575,
+      "radius_cm": 754.6906472371442
+    },
+    {
+      "index": 328,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 249.44514320605794,
+      "radius_cm": 426.9754557167537
+    },
+    {
+      "index": 329,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 198.37277221741294,
+      "radius_cm": 683.0680298117012
+    },
+    {
+      "index": 330,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 267.05520100424474,
+      "radius_cm": 795.0156048393436
+    },
+    {
+      "index": 331,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 450.30440533343403,
+      "radius_cm": 690.2100525053319
+    },
+    {
+      "index": 332,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 183.26420098126528,
+      "radius_cm": 451.02091091922557
+    },
+    {
+      "index": 333,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 322.76078070772,
+      "radius_cm": 703.1584248136121
+    },
+    {
+      "index": 334,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 538.6452066803184,
+      "radius_cm": 630.1265375913197
+    },
+    {
+      "index": 338,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 478.46171904992946,
+      "radius_cm": 604.6625593086217
+    },
+    {
+      "index": 339,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 558.6865755921002,
+      "radius_cm": 739.9948779742955
+    },
+    {
+      "index": 340,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 498.8763340686562,
+      "radius_cm": 507.6499412636511
+    },
+    {
+      "index": 342,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 239.99755042087378,
+      "radius_cm": 579.9755714960052
+    },
+    {
+      "index": 343,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 211.00110568270492,
+      "radius_cm": 583.7607693482114
+    },
+    {
+      "index": 344,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 404.50062882734517,
+      "radius_cm": 548.778479319302
+    },
+    {
+      "index": 345,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 267.0164832828182,
+      "radius_cm": 543.7978277345605
+    },
+    {
+      "index": 346,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 207.95943840011233,
+      "radius_cm": 615.7202790975256
+    },
+    {
+      "index": 347,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 443.22005893859614,
+      "radius_cm": 432.8583618128701
+    },
+    {
+      "index": 348,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 225.79162134166035,
+      "radius_cm": 600.3403877501122
+    },
+    {
+      "index": 349,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 583.9765146420365,
+      "radius_cm": 651.1588319597388
+    },
+    {
+      "index": 351,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 242.9251167430013,
+      "radius_cm": 807.1678751403025
+    },
+    {
+      "index": 352,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 271.05652892629297,
+      "radius_cm": 642.6669158975296
+    },
+    {
+      "index": 354,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 279.429491999675,
+      "radius_cm": 682.4411261112236
+    },
+    {
+      "index": 357,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 281.50477074337437,
+      "radius_cm": 601.2222964972053
+    },
+    {
+      "index": 358,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 237.26951422524832,
+      "radius_cm": 645.7971675189139
+    },
+    {
+      "index": 359,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 306.7804334870799,
+      "radius_cm": 494.82681226355083
+    },
+    {
+      "index": 360,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 460.51247774314584,
+      "radius_cm": 755.6377366629066
+    },
+    {
+      "index": 361,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 489.0713825109947,
+      "radius_cm": 583.1309872957107
+    },
+    {
+      "index": 362,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 270.4178450361136,
+      "radius_cm": 601.7453992590364
+    },
+    {
+      "index": 363,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 197.70783469790263,
+      "radius_cm": 715.5465445729386
+    },
+    {
+      "index": 365,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 591.2022069426629,
+      "radius_cm": 526.213655171824
+    },
+    {
+      "index": 366,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 524.1559076371841,
+      "radius_cm": 702.5164345084688
+    },
+    {
+      "index": 367,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 403.3623507753782,
+      "radius_cm": 612.0749635818473
+    },
+    {
+      "index": 368,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 214.828051651838,
+      "radius_cm": 438.879336862352
+    },
+    {
+      "index": 370,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 523.7226247034148,
+      "radius_cm": 449.72930562822654
+    },
+    {
+      "index": 371,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 189.26953560453694,
+      "radius_cm": 660.6882496318133
+    },
+    {
+      "index": 372,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 257.14459199468445,
+      "radius_cm": 736.5501717825821
+    },
+    {
+      "index": 373,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 402.51099852293237,
+      "radius_cm": 577.9893031607767
+    },
+    {
+      "index": 374,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 311.0907356679675,
+      "radius_cm": 409.20815232584306
+    },
+    {
+      "index": 375,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 203.85484409360265,
+      "radius_cm": 506.00445911041476
+    },
+    {
+      "index": 376,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 475.41431455237046,
+      "radius_cm": 676.2515485212889
+    },
+    {
+      "index": 377,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 257.696667241014,
+      "radius_cm": 456.30324343059453
+    },
+    {
+      "index": 379,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 185.77666771141708,
+      "radius_cm": 531.7835187607259
+    },
+    {
+      "index": 381,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 392.0497529271845,
+      "radius_cm": 780.1154846418183
+    },
+    {
+      "index": 383,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 214.8802525151474,
+      "radius_cm": 676.0271494156536
+    },
+    {
+      "index": 384,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 509.04910928837796,
+      "radius_cm": 586.9691451070759
+    },
+    {
+      "index": 386,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 287.32543237950426,
+      "radius_cm": 609.7591955028334
+    },
+    {
+      "index": 387,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 559.1733790527422,
+      "radius_cm": 798.1973594359159
+    },
+    {
+      "index": 388,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 311.78883106553855,
+      "radius_cm": 685.1569913770509
+    },
+    {
+      "index": 389,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 478.6137960105158,
+      "radius_cm": 690.125139975742
+    },
+    {
+      "index": 391,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 500.54120662435355,
+      "radius_cm": 588.7846766948685
+    },
+    {
+      "index": 393,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 555.6815254439614,
+      "radius_cm": 619.076955796962
+    },
+    {
+      "index": 394,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 412.5353915110627,
+      "radius_cm": 409.0899527395322
+    },
+    {
+      "index": 395,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 648.2203624883473,
+      "radius_cm": 659.1811733277251
+    },
+    {
+      "index": 396,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 662.948912870188,
+      "radius_cm": 788.7989314353559
+    },
+    {
+      "index": 397,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 218.55747744616622,
+      "radius_cm": 656.4123075966312
+    },
+    {
+      "index": 398,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 604.8164735839316,
+      "radius_cm": 646.006303643464
+    },
+    {
+      "index": 399,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 307.59198201987095,
+      "radius_cm": 664.7439878746178
+    },
+    {
+      "index": 400,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 341.3076025992794,
+      "radius_cm": 634.8224351323328
+    },
+    {
+      "index": 401,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 230.71323092219995,
+      "radius_cm": 499.25964169812295
+    },
+    {
+      "index": 402,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 209.60780470964596,
+      "radius_cm": 612.1001976640288
+    },
+    {
+      "index": 404,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 270.85865361207004,
+      "radius_cm": 581.1732963206222
+    },
+    {
+      "index": 405,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 225.08066945071437,
+      "radius_cm": 648.5406237251588
+    },
+    {
+      "index": 406,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 582.9959961333874,
+      "radius_cm": 604.3888261492874
+    },
+    {
+      "index": 409,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 539.3072566068761,
+      "radius_cm": 580.0491657906429
+    },
+    {
+      "index": 410,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 236.8405646477613,
+      "radius_cm": 454.7769722516376
+    },
+    {
+      "index": 411,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 330.91355956990435,
+      "radius_cm": 776.809650667415
+    },
+    {
+      "index": 412,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 492.5708206723575,
+      "radius_cm": 690.6152692105906
+    },
+    {
+      "index": 413,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 199.72920781340923,
+      "radius_cm": 670.0686178689547
+    },
+    {
+      "index": 414,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 207.60911115488216,
+      "radius_cm": 534.1886366036513
+    },
+    {
+      "index": 415,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 248.3082250881235,
+      "radius_cm": 531.1748426568817
+    },
+    {
+      "index": 416,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 220.00727952881567,
+      "radius_cm": 643.4876280977942
+    },
+    {
+      "index": 417,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 221.84195119134296,
+      "radius_cm": 600.3886840397025
+    },
+    {
+      "index": 418,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 233.3001067791128,
+      "radius_cm": 533.9314170307692
+    },
+    {
+      "index": 419,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 532.2153593445163,
+      "radius_cm": 488.37854803758944
+    },
+    {
+      "index": 420,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 656.8473764070517,
+      "radius_cm": 749.2462072126151
+    },
+    {
+      "index": 421,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 458.2830836268455,
+      "radius_cm": 536.4287268993347
+    },
+    {
+      "index": 422,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 629.8202935930586,
+      "radius_cm": 649.4109074045255
+    },
+    {
+      "index": 423,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 621.9394381942868,
+      "radius_cm": 697.6509889945044
+    },
+    {
+      "index": 425,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 329.97162158557745,
+      "radius_cm": 502.5573983019507
+    },
+    {
+      "index": 426,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 243.36635196548121,
+      "radius_cm": 681.4045211156177
+    },
+    {
+      "index": 427,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 225.11262509167204,
+      "radius_cm": 442.5815188124866
+    },
+    {
+      "index": 429,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 238.0554003750782,
+      "radius_cm": 604.8230567800741
+    },
+    {
+      "index": 431,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 514.6112519308617,
+      "radius_cm": 582.7402380173894
+    },
+    {
+      "index": 432,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 218.30197667014153,
+      "radius_cm": 496.41636428933174
+    },
+    {
+      "index": 433,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 290.6784181638851,
+      "radius_cm": 416.9731807373481
+    },
+    {
+      "index": 434,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 195.41394638788438,
+      "radius_cm": 505.78909716500016
+    },
+    {
+      "index": 435,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 611.4094133665252,
+      "radius_cm": 738.7321295936214
+    },
+    {
+      "index": 436,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 218.66765384860992,
+      "radius_cm": 423.49429053123896
+    },
+    {
+      "index": 438,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 219.55655542895101,
+      "radius_cm": 804.7301069422737
+    },
+    {
+      "index": 441,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 646.1557383226022,
+      "radius_cm": 621.0120503679905
+    },
+    {
+      "index": 443,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 254.39711832178466,
+      "radius_cm": 568.6761014750663
+    },
+    {
+      "index": 444,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 397.8317804310674,
+      "radius_cm": 508.2649379441722
+    },
+    {
+      "index": 445,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 442.55393882469707,
+      "radius_cm": 665.5067593233049
+    },
+    {
+      "index": 446,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 364.8584326888064,
+      "radius_cm": 428.89061516097235
+    },
+    {
+      "index": 447,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 632.9314179363656,
+      "radius_cm": 773.5829713075204
+    },
+    {
+      "index": 448,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 345.139671279275,
+      "radius_cm": 630.5418385671995
+    },
+    {
+      "index": 449,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 268.6467776657333,
+      "radius_cm": 559.7944608523292
+    },
+    {
+      "index": 450,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 622.9017003239969,
+      "radius_cm": 614.1021775788896
+    },
+    {
+      "index": 451,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 365.81651196512746,
+      "radius_cm": 593.3094258948647
+    },
+    {
+      "index": 452,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 180.69930165588198,
+      "radius_cm": 587.5600896973732
+    },
+    {
+      "index": 453,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 692.0136970067155,
+      "radius_cm": 723.7080450585554
+    },
+    {
+      "index": 454,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 211.13807664788862,
+      "radius_cm": 651.6308791775733
+    },
+    {
+      "index": 455,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 486.7887131578897,
+      "radius_cm": 531.0767381473069
+    },
+    {
+      "index": 456,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 521.8019342903096,
+      "radius_cm": 567.5518716899315
+    },
+    {
+      "index": 457,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 251.97007505592762,
+      "radius_cm": 639.4849189845262
+    },
+    {
+      "index": 458,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 226.66950500734578,
+      "radius_cm": 562.0126916053985
+    },
+    {
+      "index": 459,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 432.15337050076346,
+      "radius_cm": 511.1581483937499
+    },
+    {
+      "index": 462,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.63530119062773,
+      "radius_cm": 676.0561896291117
+    },
+    {
+      "index": 463,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 413.51662236173104,
+      "radius_cm": 603.882672093093
+    },
+    {
+      "index": 465,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 287.8408714378206,
+      "radius_cm": 774.7278497392043
+    },
+    {
+      "index": 466,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 393.96792619951657,
+      "radius_cm": 542.5768625114035
+    },
+    {
+      "index": 469,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 480.94660898392056,
+      "radius_cm": 542.7431108899145
+    },
+    {
+      "index": 470,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 271.3560731683504,
+      "radius_cm": 503.5870036081928
+    },
+    {
+      "index": 471,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 493.94356253713613,
+      "radius_cm": 509.83604696469456
+    },
+    {
+      "index": 472,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 199.26184537795353,
+      "radius_cm": 438.6855875391125
+    },
+    {
+      "index": 473,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 256.6525388738433,
+      "radius_cm": 654.2284319619498
+    },
+    {
+      "index": 474,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 185.20363015402756,
+      "radius_cm": 759.185337871725
+    },
+    {
+      "index": 476,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 201.63734146133504,
+      "radius_cm": 517.6727650570916
+    },
+    {
+      "index": 477,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 370.6803618341782,
+      "radius_cm": 550.3051081095656
+    },
+    {
+      "index": 478,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 423.89193178380845,
+      "radius_cm": 624.0358341771071
+    },
+    {
+      "index": 479,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 299.0336864349889,
+      "radius_cm": 660.275044815805
+    },
+    {
+      "index": 480,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 249.49217519095077,
+      "radius_cm": 684.8226335996338
+    },
+    {
+      "index": 481,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 249.2986823071236,
+      "radius_cm": 485.04431096439066
+    },
+    {
+      "index": 482,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 585.8009441597429,
+      "radius_cm": 582.8594213547242
+    },
+    {
+      "index": 483,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 522.1304173133688,
+      "radius_cm": 600.0937956133946
+    },
+    {
+      "index": 484,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 495.4768083825868,
+      "radius_cm": 692.022319238847
+    },
+    {
+      "index": 485,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 315.97375477406115,
+      "radius_cm": 542.9482714540843
+    },
+    {
+      "index": 486,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 271.22802075341076,
+      "radius_cm": 575.2160763768462
+    },
+    {
+      "index": 487,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 249.10190372253845,
+      "radius_cm": 437.19107437156543
+    },
+    {
+      "index": 488,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 214.66830652899336,
+      "radius_cm": 463.25933722777864
+    },
+    {
+      "index": 489,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 570.8922837742873,
+      "radius_cm": 690.9820743504549
+    },
+    {
+      "index": 490,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 246.0762494578077,
+      "radius_cm": 495.1418487731849
+    },
+    {
+      "index": 491,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 275.3668455983837,
+      "radius_cm": 642.1856214269334
+    },
+    {
+      "index": 492,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 337.0800063715196,
+      "radius_cm": 640.7775517975857
+    },
+    {
+      "index": 493,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 269.9848696579124,
+      "radius_cm": 509.08756948385513
+    },
+    {
+      "index": 494,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 344.70594690234344,
+      "radius_cm": 539.424972947911
+    },
+    {
+      "index": 495,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 266.22957470352,
+      "radius_cm": 522.5273318759937
+    },
+    {
+      "index": 497,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 283.28933261217145,
+      "radius_cm": 614.9002094952752
+    },
+    {
+      "index": 498,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 496.1030741410724,
+      "radius_cm": 762.470592904022
+    },
+    {
+      "index": 499,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 218.6182589137279,
+      "radius_cm": 596.0241169274193
+    },
+    {
+      "index": 501,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 205.66291900249286,
+      "radius_cm": 597.7447317695542
+    },
+    {
+      "index": 502,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 576.9211143372332,
+      "radius_cm": 560.6749831180666
+    },
+    {
+      "index": 503,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 250.23578828903538,
+      "radius_cm": 652.8439443111569
+    },
+    {
+      "index": 507,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 449.2339934130989,
+      "radius_cm": 553.6409616312711
+    },
+    {
+      "index": 508,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 455.1308675750063,
+      "radius_cm": 494.65769687394095
+    },
+    {
+      "index": 509,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 197.24358913005386,
+      "radius_cm": 513.3613164583492
+    },
+    {
+      "index": 510,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 272.3320952229328,
+      "radius_cm": 590.54493364989
+    },
+    {
+      "index": 511,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 404.11771703959676,
+      "radius_cm": 678.9943380876304
+    },
+    {
+      "index": 512,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 338.7245889758123,
+      "radius_cm": 423.17870936115105
+    },
+    {
+      "index": 513,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 835.9793391094186,
+      "radius_cm": 810.2255194826711
+    },
+    {
+      "index": 515,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 416.14775695223955,
+      "radius_cm": 575.0301183579653
+    },
+    {
+      "index": 516,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 275.20148971818213,
+      "radius_cm": 487.78382998734065
+    },
+    {
+      "index": 517,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 578.2083595151911,
+      "radius_cm": 611.0613148610623
+    },
+    {
+      "index": 518,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 375.1901072242598,
+      "radius_cm": 576.1091680303471
+    },
+    {
+      "index": 519,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 601.0778377417165,
+      "radius_cm": 665.7378550345032
+    },
+    {
+      "index": 520,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 321.5390815007405,
+      "radius_cm": 503.15128989756926
+    },
+    {
+      "index": 521,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 248.09389966996991,
+      "radius_cm": 430.7401031859026
+    },
+    {
+      "index": 522,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 465.0697900841907,
+      "radius_cm": 488.80105869146723
+    },
+    {
+      "index": 524,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 632.1930720622959,
+      "radius_cm": 575.034975734745
+    },
+    {
+      "index": 525,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 377.94087812124803,
+      "radius_cm": 491.375494209692
+    },
+    {
+      "index": 527,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 224.4574706616537,
+      "radius_cm": 583.6204737003818
+    },
+    {
+      "index": 528,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 233.9375973853803,
+      "radius_cm": 639.8357821478322
+    },
+    {
+      "index": 529,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 247.75499260839075,
+      "radius_cm": 601.4869869367417
+    },
+    {
+      "index": 533,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 292.4418939319351,
+      "radius_cm": 566.5462821022558
+    },
+    {
+      "index": 534,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 401.4153929348271,
+      "radius_cm": 587.7415200484468
+    },
+    {
+      "index": 535,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 490.22217851152936,
+      "radius_cm": 608.5134491803886
+    },
+    {
+      "index": 536,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 192.58221587467108,
+      "radius_cm": 446.00631967522446
+    },
+    {
+      "index": 537,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 402.90089156278873,
+      "radius_cm": 655.0916698748597
+    },
+    {
+      "index": 541,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.71856384420425,
+      "radius_cm": 443.37186093845486
+    },
+    {
+      "index": 542,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 199.86925489283544,
+      "radius_cm": 407.7189110514446
+    },
+    {
+      "index": 543,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 390.61739685147506,
+      "radius_cm": 585.6558279562952
+    },
+    {
+      "index": 544,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 180.73023021946852,
+      "radius_cm": 434.43496850206395
+    },
+    {
+      "index": 545,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 501.795341126582,
+      "radius_cm": 584.3487861665471
+    },
+    {
+      "index": 548,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 291.4477856992934,
+      "radius_cm": 640.5191109712193
+    },
+    {
+      "index": 549,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 283.5745721854544,
+      "radius_cm": 655.4240667433761
+    },
+    {
+      "index": 550,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 198.09819296835866,
+      "radius_cm": 580.343581902152
+    },
+    {
+      "index": 552,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 299.1498142978752,
+      "radius_cm": 783.217985402793
+    },
+    {
+      "index": 554,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 477.42118014836,
+      "radius_cm": 426.3935906184745
+    },
+    {
+      "index": 555,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 195.26780916210805,
+      "radius_cm": 713.8272592059379
+    },
+    {
+      "index": 556,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 449.07322127670864,
+      "radius_cm": 653.7263611625622
+    },
+    {
+      "index": 557,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 286.197690390186,
+      "radius_cm": 680.8471927184261
+    },
+    {
+      "index": 558,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 322.94420973257576,
+      "radius_cm": 667.170408924651
+    },
+    {
+      "index": 559,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 208.77479705986542,
+      "radius_cm": 616.7348933925643
+    },
+    {
+      "index": 560,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 369.444582297484,
+      "radius_cm": 569.7134033639848
+    },
+    {
+      "index": 561,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 440.73311622004735,
+      "radius_cm": 521.0210592763135
+    },
+    {
+      "index": 562,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 337.8932943174141,
+      "radius_cm": 518.2131592388228
+    },
+    {
+      "index": 564,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 204.94329720835225,
+      "radius_cm": 657.4929472082457
+    },
+    {
+      "index": 565,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 295.4602818893794,
+      "radius_cm": 495.1546072502789
+    },
+    {
+      "index": 566,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 207.33724492256147,
+      "radius_cm": 578.619732743856
+    },
+    {
+      "index": 567,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 260.88242137209465,
+      "radius_cm": 539.7481879469626
+    },
+    {
+      "index": 568,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 330.4491140488518,
+      "radius_cm": 509.75418530302414
+    },
+    {
+      "index": 569,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 593.4585984377323,
+      "radius_cm": 551.4037076470307
+    },
+    {
+      "index": 570,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 216.03397102694225,
+      "radius_cm": 606.6583843984057
+    },
+    {
+      "index": 571,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 193.54564982382863,
+      "radius_cm": 475.31816728330546
+    },
+    {
+      "index": 572,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 417.92228750552033,
+      "radius_cm": 560.9983786603531
+    },
+    {
+      "index": 573,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 203.6800272554724,
+      "radius_cm": 762.127861895
+    },
+    {
+      "index": 574,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 216.34440928327518,
+      "radius_cm": 613.265186074549
+    },
+    {
+      "index": 576,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 270.5410276275683,
+      "radius_cm": 732.2636652174677
+    },
+    {
+      "index": 577,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 186.69311447870666,
+      "radius_cm": 615.4784173100019
+    },
+    {
+      "index": 578,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 180.9621852681774,
+      "radius_cm": 628.4010124219884
+    },
+    {
+      "index": 579,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 328.52194335602235,
+      "radius_cm": 506.27200230760087
+    },
+    {
+      "index": 580,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 276.06301912303036,
+      "radius_cm": 434.1776356704301
+    },
+    {
+      "index": 581,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 269.5098017966435,
+      "radius_cm": 515.8894812248695
+    },
+    {
+      "index": 582,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 184.4852519810014,
+      "radius_cm": 555.5346769762831
+    },
+    {
+      "index": 583,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 363.3603866131682,
+      "radius_cm": 502.1277655199122
+    },
+    {
+      "index": 584,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 539.1566147694386,
+      "radius_cm": 549.0773604748766
+    },
+    {
+      "index": 585,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 342.3236054902247,
+      "radius_cm": 677.7384808372296
+    },
+    {
+      "index": 586,
+      "reason": "crown_path_clearance",
+      "clearance_cm": 265.90040804088414,
+      "radius_cm": 429.19385355104004
+    }
+  ],
+  "scope": "Conservative canopy envelope vs mapped paths and native Landscape placement. Trunk collision, under-branch riding, PCG integration, native visual/performance acceptance remain pending.",
+  "accepted_for_main": false,
+  "review_findings": [
+    "Full-crown clearance removes 489 stations; replace with rider-height branch/trunk clearance before main integration.",
+    "Static capture has material/water issues and remote-control bind error; not whole-scene visual acceptance."
+  ]
+}

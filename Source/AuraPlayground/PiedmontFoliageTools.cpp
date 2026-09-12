@@ -10,6 +10,7 @@
 #include "Elements/PCGStaticMeshSpawner.h"
 #include "MeshSelectors/PCGMeshSelectorWeighted.h"
 #include "Components/SceneComponent.h"
+#include "Components/HierarchicalInstancedStaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
@@ -48,6 +49,21 @@ AActor* UPiedmontWorldTools::CreateParkFoliage(const TArray<FTransform>& Station
  auto* Root=NewObject<UBoxComponent>(Actor,TEXT("FoliageBounds"));Actor->SetRootComponent(Root);Actor->AddInstanceComponent(Root);Root->SetBoxExtent(Bounds.GetExtent());Root->SetRelativeLocation(Bounds.GetCenter());Root->SetCollisionEnabled(ECollisionEnabled::NoCollision);Root->SetCanEverAffectNavigation(false);Root->SetHiddenInGame(true);Root->RegisterComponent();
  auto* Component=NewObject<UPCGComponent>(Actor,TEXT("ParkCanopyPCG"));Actor->AddInstanceComponent(Component);Component->RegisterComponent();
  Component->GenerationTrigger=EPCGComponentGenerationTrigger::GenerateOnDemand;Component->SetGraph(Graph);Component->GenerateLocal(true);
+ return Actor;
+#else
+ return nullptr;
+#endif
+}
+
+// Independent review actor; never overwrites the saved geographic PCG assets.
+AActor* UPiedmontWorldTools::CreateFoliageReviewInstances(const TArray<FTransform>& Stations,UStaticMesh* Mesh){
+#if WITH_EDITOR
+ auto* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
+ if(!World||!Mesh||Stations.IsEmpty())return nullptr;
+ auto* Actor=World->SpawnActor<AActor>();Actor->SetActorLabel(TEXT("Detailed canopy review"));Actor->Tags.Add(TEXT("DetailedCanopyReview"));
+ auto* Instances=NewObject<UHierarchicalInstancedStaticMeshComponent>(Actor,TEXT("TreeInstances"));Actor->SetRootComponent(Instances);Actor->AddInstanceComponent(Instances);
+ Instances->SetStaticMesh(Mesh);Instances->SetCollisionEnabled(ECollisionEnabled::NoCollision);Instances->SetCanEverAffectNavigation(false);Instances->SetCullDistances(28000,35000);Instances->RegisterComponent();
+ for(const auto& Transform:Stations)Instances->AddInstance(Transform,true);
  return Actor;
 #else
  return nullptr;
