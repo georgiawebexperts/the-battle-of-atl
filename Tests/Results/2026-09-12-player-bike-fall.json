@@ -1,43 +1,49 @@
 {
   "exit_code": 0,
+  "skin": {
+    "min_clearance_cm": -17.67,
+    "below_vertices": 2231,
+    "vertices": 3273
+  },
   "physics": {
     "passed": true,
-    "hip_drop_cm": 83.271,
-    "max_limb_span_cm": 97.541,
-    "hip_floor_cm": 2.138,
-    "final_speed": 0.603
+    "hip_drop_cm": 99.812,
+    "max_limb_span_cm": 96.059,
+    "hip_floor_cm": 2.113,
+    "final_speed": 0.146
   },
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-fall-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-fall-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-fall-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-fall-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-recovery-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-recovery-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-recovery-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-recovery-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-recovery-5.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/324e740a95a84224b7d41851fbcf3994/player-recovery-6.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/0329fe460aff447e93b9b0bea5be1e17/player-recovery-6.png"
   ],
   "capture_passed": true,
   "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
   "transfer": {
-    "choice": 3,
+    "choice": 1,
     "max_transfer_error_cm": 0.0,
-    "initial_pose_rms_cm": 62.121
+    "initial_pose_rms_cm": 37.347
   },
   "recovery": {
     "passed": true,
-    "head_height": 157.886,
-    "left_foot_height": 3.256,
-    "right_foot_height": 2.875
+    "head_height": 157.796,
+    "left_foot_height": 3.182,
+    "right_foot_height": 2.788
   },
   "bike": {
     "passed": true,
-    "upright_dot": 0.201,
+    "upright_dot": 0.202,
     "speed": 0.0,
     "parts": 16
   },
+  "skin_clearance_passed": false,
   "visual_acceptance": false,
-  "visual_review": "Bike is side-down and no extraneous editor camera mesh remains; Ellison finishes beside it. Fall frame4 shows substantial body/road/bike clipping; recovery start has a noticeable pose displacement (62.121cm RMS). Numerical settling and final-standing checks do not accept this crash presentation."
+  "diagnosis": "Physics component transform mode corrected; floor ignores fallen bike. Native skin sample still has2231/3273 vertices below flat floor reference, minimum-17.67cm. Floor component reports QueryAndPhysics and blocks PhysicsBody. Need per-vertex floor and simple/complex surface comparison; no overall crash acceptance."
 }
