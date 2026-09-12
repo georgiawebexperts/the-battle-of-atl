@@ -1,0 +1,53 @@
+{
+  "main_map_saved": false,
+  "floor_samples_unchanged": 147,
+  "cleared_roof_sites": [
+    {
+      "xy": [
+        29707.83534118372,
+        115907.4909877077
+      ],
+      "surface": "Krog route SM_KrogRoute_Asphalt_7_2",
+      "z": 956.7514038085938
+    },
+    {
+      "xy": [
+        29722.998009924777,
+        115938.29937640889
+      ],
+      "surface": "Krog route SM_KrogRoute_Asphalt_7_2",
+      "z": 956.83642578125
+    },
+    {
+      "xy": [
+        29910.778057380332,
+        115654.24029100561
+      ],
+      "surface": "Krog route SM_KrogTunnel_Road",
+      "z": 944.8839111328125
+    },
+    {
+      "xy": [
+        30007.432246237127,
+        115628.65932934119
+      ],
+      "surface": "Krog route SM_KrogTunnel_Road",
+      "z": 945.0242919921875
+    },
+    {
+      "xy": [
+        30103.7016963433,
+        115601.60026475547
+      ],
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "z": 924.9978542000458
+    }
+  ],
+  "images": [
+    "../../../../Projects/AuraPlayground/work/krog-portal-review/approach.png",
+    "../../../../Projects/AuraPlayground/work/krog-portal-review/wide.png",
+    "../../../../Projects/AuraPlayground/work/krog-portal-review/portal.png"
+  ],
+  "visual_review": "Wide and portal views inspected: recessed structure visible, five cleared roof sites and147 unchanged floor probes. Bare concrete, segment seams, dark interior and missing surrounding streetscape remain; not final visual acceptance.",
+  "scope": "Transient portal replacement; no traffic, vehicle-width traversal or final scenery acceptance"
+}
