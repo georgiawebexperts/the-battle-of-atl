@@ -3,10 +3,13 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "PiedmontWorldTools.generated.h"
 class ALandscape;
+class UPhysicsAsset;
 UCLASS()
 class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary {
  GENERATED_BODY()
 public:
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Physics")
+ static UPhysicsAsset* CreatePlayerCrashPhysics();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
  static float GetTreeLowGeometryRadius(UStaticMesh* Mesh,float LocalHeightAboveBottom);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")

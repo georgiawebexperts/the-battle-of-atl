@@ -1,0 +1,31 @@
+{
+  "asset": "/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV2.PA_EllisonCrashCandidateV2",
+  "live_mesh_assignment_changed": false,
+  "main_map_changed": false,
+  "scope": "Auto-fitted capsules and joint constraints generated. Physical stability, body clearance, mounted pose transfer, recovery and gameplay integration unverified.",
+  "bodies": 20,
+  "constraints": 19,
+  "bone_names": [
+    "Hips",
+    "Abdomen",
+    "Torso",
+    "Chest",
+    "Neck",
+    "Head",
+    "Shoulder_L",
+    "UpperArm_L",
+    "LowerArm_L",
+    "Hand_L",
+    "Shoulder_R",
+    "UpperArm_R",
+    "LowerArm_R",
+    "Hand_R",
+    "UpperLeg_L",
+    "LowerLeg_L",
+    "Foot_L",
+    "UpperLeg_R",
+    "LowerLeg_R",
+    "Foot_R"
+  ],
+  "physics_simulation_accepted": false
+}

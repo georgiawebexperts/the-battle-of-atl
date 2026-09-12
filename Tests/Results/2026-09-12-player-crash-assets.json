@@ -1,0 +1,198 @@
+{
+  "riding_mesh": "/Game/PiedmontRide/Rider/Casual.Casual",
+  "skeleton": "/Game/PiedmontRide/Rider/Casual_Skeleton.Casual_Skeleton",
+  "physics_asset": null,
+  "bones": [
+    "CharacterArmature",
+    "Root",
+    "Hips",
+    "Abdomen",
+    "Torso",
+    "Chest",
+    "Neck",
+    "Head",
+    "Head_end",
+    "Shoulder_L",
+    "UpperArm_L",
+    "LowerArm_L",
+    "Hand_L",
+    "Index2_L",
+    "Index3_L",
+    "Index4_L",
+    "Index4_L_end",
+    "Middle2_L",
+    "Middle3_L",
+    "Middle4_L",
+    "Middle4_L_end",
+    "Ring2_L",
+    "Ring3_L",
+    "Ring4_L",
+    "Ring4_L_end",
+    "Pinky2_L",
+    "Pinky3_L",
+    "Pinky4_L",
+    "Pinky4_L_end",
+    "Thumb2_L",
+    "Thumb3_L",
+    "Thumb3_L_end",
+    "Shoulder_R",
+    "UpperArm_R",
+    "LowerArm_R",
+    "Hand_R",
+    "Index2_R",
+    "Index3_R",
+    "Index4_R",
+    "Index4_R_end",
+    "Middle2_R",
+    "Middle3_R",
+    "Middle4_R",
+    "Middle4_R_end",
+    "Ring2_R",
+    "Ring3_R",
+    "Ring4_R",
+    "Ring4_R_end",
+    "Pinky2_R",
+    "Pinky3_R",
+    "Pinky4_R",
+    "Pinky4_R_end",
+    "Thumb2_R",
+    "Thumb3_R",
+    "Thumb3_R_end",
+    "UpperLeg_L",
+    "LowerLeg_L",
+    "Foot_L",
+    "Foot_L_end",
+    "UpperLeg_R",
+    "LowerLeg_R",
+    "Foot_R",
+    "Foot_R_end"
+  ],
+  "bounds_extent": [
+    83.77335357666016,
+    18.891305923461914,
+    93.51813378930092
+  ],
+  "clips": [
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Death.Animations_CharacterArmature_Death",
+      "seconds": 1.0666667222976685,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Gun_Shoot.Animations_CharacterArmature_Gun_Shoot",
+      "seconds": 0.6000000238418579,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_HitRecieve.Animations_CharacterArmature_HitRecieve",
+      "seconds": 0.5666666626930237,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_HitRecieve_2.Animations_CharacterArmature_HitRecieve_2",
+      "seconds": 0.5666666626930237,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle.Animations_CharacterArmature_Idle",
+      "seconds": 1.6666666269302368,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Gun.Animations_CharacterArmature_Idle_Gun",
+      "seconds": 1.6666666269302368,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Gun_Pointing.Animations_CharacterArmature_Idle_Gun_Pointing",
+      "seconds": 1.6666666269302368,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Gun_Shoot.Animations_CharacterArmature_Idle_Gun_Shoot",
+      "seconds": 0.6666666865348816,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Neutral.Animations_CharacterArmature_Idle_Neutral",
+      "seconds": 1.6666666269302368,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle_Sword.Animations_CharacterArmature_Idle_Sword",
+      "seconds": 1.6666666269302368,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Interact.Animations_CharacterArmature_Interact",
+      "seconds": 1.2666666507720947,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Kick_Left.Animations_CharacterArmature_Kick_Left",
+      "seconds": 0.9333333373069763,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Kick_Right.Animations_CharacterArmature_Kick_Right",
+      "seconds": 0.9333333373069763,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Punch_Left.Animations_CharacterArmature_Punch_Left",
+      "seconds": 0.8333333134651184,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Punch_Right.Animations_CharacterArmature_Punch_Right",
+      "seconds": 0.8333333134651184,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Roll.Animations_CharacterArmature_Roll",
+      "seconds": 1.3333333730697632,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run.Animations_CharacterArmature_Run",
+      "seconds": 0.800000011920929,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Back.Animations_CharacterArmature_Run_Back",
+      "seconds": 0.8333333134651184,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Left.Animations_CharacterArmature_Run_Left",
+      "seconds": 0.800000011920929,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Right.Animations_CharacterArmature_Run_Right",
+      "seconds": 0.800000011920929,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run_Shoot.Animations_CharacterArmature_Run_Shoot",
+      "seconds": 0.8333333134651184,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Sword_Slash.Animations_CharacterArmature_Sword_Slash",
+      "seconds": 1.0333333015441895,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Walk.Animations_CharacterArmature_Walk",
+      "seconds": 1.3333333730697632,
+      "same_skeleton": true
+    },
+    {
+      "path": "/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Wave.Animations_CharacterArmature_Wave",
+      "seconds": 1.6666666269302368,
+      "same_skeleton": true
+    }
+  ],
+  "scope": "Asset compatibility only. No player crash state or physics integration changed."
+}
