@@ -349,3 +349,12 @@ Rebuilt only isolated PiedmontMonroeExtendedReview. Visible road/sidewalk review
 ## User-confirmed Irwin/Lake crossing — 2026-09-12 [codex-maclaptop]
 
 Elliott supplied a map screenshot identifying the previously unspecified dangerous crossing before DeKalb Avenue: the Atlanta BeltLine Eastside Trail crossing Irwin Street NE / Lake Avenue NE. Screenshot landmarks: Lingering Shade Social Club northwest, Icebox Cool Stuff northeast, BRASH Coffee southwest, Rowan Krog District southeast, Krog Street NE to the east. Treat this as a separate required road-traffic hazard from Monroe and the Krog Street/DeKalb Avenue tunnel approach. Preserve the trail continuation across the road and crosswalk placement when authoring geometry. Include crossing cars in gameplay; exact lane geometry, signal/stop behavior and native placement still need verification. User screenshot identifies the intended location; no real-world crash-rate claim is inferred.
+
+
+## Extended Monroe crossing and signal review — 2026-09-12 [codex-maclaptop]
+
+Built PiedmontMonroeExtendedCrossingReview using the repaired extended approaches. Shared crossing stop distances are now northbound 6151.613 cm and southbound 6447.545 cm, giving useful lead-in distance instead of the earlier 98 cm southern start. Native test passed both full routes with a stopped signal wait, support and endpoint stops (29494.279 cm combined); accelerated 2/1/6 cycle remains test-only.
+
+Surveyed five terrain support points per pole candidate, rejecting non-terrain sites and >8 cm variation. North signal (12898.872,11787.262,-316.091), yaw -76.800; south (11635.776,9677.731,-359.996), yaw 104.198. Initial approach images showed backs of lamps: corrected orientation to road heading, because this signal mesh faces local -X. Re-rendered and inspected both approaches; red lamps are visible on the right at 90-degree FOV, 140 cm eye height and 650 cm before stopping position. Narrow fixed-view acceptance only.
+
+Wide review shows missing Monroe lane markings/crosswalk paint and unfinished surroundings; do not claim overall landscape quality. Signals and crossing remain isolated, main unchanged. Next: markings, deliberate crossing-occupancy/rider interaction, live traffic and installation. Desktop remains 047.

@@ -1,0 +1,25 @@
+{
+  "bounds_xy": [
+    [
+      11747.156403384482,
+      10007.50598384378
+    ],
+    [
+      12673.162627130903,
+      11481.898085726425
+    ]
+  ],
+  "bindings": [
+    {
+      "car": "Monroe northbound",
+      "stop_distance_cm": 6151.613496504415
+    },
+    {
+      "car": "Monroe southbound",
+      "stop_distance_cm": 6447.545194175632
+    }
+  ],
+  "main_map_changed": false,
+  "signals_visible": false,
+  "scope": "Accelerated 2/1/6 test cycle, shared exclusive reservation. Live traffic timing and visible poles pending."
+}

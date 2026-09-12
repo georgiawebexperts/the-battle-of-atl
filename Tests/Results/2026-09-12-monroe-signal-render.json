@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/monroe-signal-review/1aaef37ef8ef4a349a03659610571ff7/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/monroe-signal-review/1aaef37ef8ef4a349a03659610571ff7/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/monroe-signal-review/1aaef37ef8ef4a349a03659610571ff7/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": true,
+  "scope": "Fixed approach cameras and wide view, forced red signals; no rider playthrough or production timing acceptance.",
+  "visual_review": "Corrected signal facing; inspected both approach images with red lamps visible on the right. Accepts these fixed daylight viewpoints only. Road markings, crosswalk paint, scenery, rider movement and night views remain incomplete."
+}
