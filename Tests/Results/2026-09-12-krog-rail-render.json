@@ -418,15 +418,16 @@
   "minimum_headroom_cm": 229.52545668837945,
   "visual_review": {
     "inspected": [
-      "rail-detail"
+      "wide"
     ],
     "accepted_for_final": false,
     "findings": [
-      "Procedural gravel, timber, concrete joints/streaks and rail wear visible.",
-      "Initial square rust blocks replaced with smooth patches; final close-up inspected.",
-      "Structural transitions, surrounding terrain and material performance still require work."
+      "Continuous yard covers previously exposed tunnel roof and gaps between rail strips.",
+      "Pixel-footprint gravel filtering reduces distant visual noise in final wide render.",
+      "Outer rail ends, structural detailing and surrounding terrain still unfinished."
     ],
     "shader_compile_errors_in_review_logs": false
   },
-  "material_script_sha256": "8dfebab5e9631954ee8590338bbd8affad762999bd6824f5bdc17cb58591b046"
+  "material_script_sha256": "2d8f625e5f35c8d01e087a3390f978f8ed3542a6dd994163288bc1d0925f02c5",
+  "rail_manifest_sha256": "db2af21e64b4d594b9f2f2fcecd57efbb5c28701b34c80e68e6cc2745d376c81"
 }

@@ -20,7 +20,13 @@ def ground(x,y):
  return a+(b-a)*dx+(d-b)*dy if dx>=dy else a+(d-c)*dx+(c-a)*dy
 rails=[r for r in network['railways'] if r['tunnel_crossings']]
 lines=[LineString(r['points_xy_cm']) for r in rails]
-deck=unary_union([line.buffer(95,cap_style=2,join_style=2) for line in lines])
+track_beds=unary_union([line.buffer(95,cap_style=2,join_style=2) for line in lines])
+# A continuous authored yard envelope avoids isolated strips above the underpass.
+# Its limits follow the outer mapped tracks, not surveyed property boundaries.
+deck=track_beds.convex_hull
+buildings=json.loads((root/'SourceAssets/Terrain/KrogBuildings/buildings.json').read_text())['buildings']
+for building in buildings:
+ assert deck.intersection(Polygon(building['footprint_xy']).buffer(30)).area<.01,building['osm_way']
 roof=json.loads((root/'SourceAssets/Terrain/KrogContinuousShell/manifest.json').read_text())
 tunnel=LineString([(p[0],-p[1]) for p in roof['roof_samples']])
 roads=json.loads((root/'SourceAssets/Terrain/KrogTraffic/network.json').read_text())['roads']
@@ -66,5 +72,5 @@ for mat,triangles in groups.items():
  for x,y,z in points:out.append(f'vt {x/100:.5f} {y/100:.5f}')
  for i in range(0,len(points),3):out.append('f '+' '.join(f'{j}/{j}' for j in [i+3,i+2,i+1]))
  name='KrogRail_'+mat+'.obj';(folder/name).write_text('\n'.join(out)+'\n');rows.append({'material':mat,'file':name,'triangles':len(triangles)})
-report={'author':'2026-09-12 [codex-maclaptop]','surfaces':rows,'rail_segments':len(rails),'sleepers':tie_count,'deck_height_cm':height,'deck_underside_cm':height-24,'retaining_fill_reserve_area_cm2':deck.intersection(reserve).area,'main_map_changed':False,'scope':'Static mapped rail corridor study. Authored level deck/elevation and retaining fill; not surveyed engineering. Tunnel and approach road reserves excluded from retaining walls. Ends and adjoining railway terrain need refinement. MARTA elevated line omitted pending separate support design. Native clearance and visuals pending.'}
+report={'author':'2026-09-12 [codex-maclaptop]','surfaces':rows,'yard_envelope_area_cm2':deck.area,'track_bed_area_cm2':track_beds.area,'rail_segments':len(rails),'sleepers':tie_count,'deck_height_cm':height,'deck_underside_cm':height-24,'retaining_fill_reserve_area_cm2':deck.intersection(reserve).area,'main_map_changed':False,'scope':'Static mapped rail corridor study. Authored continuous yard envelope, level deck/elevation and retaining fill; not surveyed engineering. Tunnel and approach road reserves excluded from retaining walls. Ends and adjoining railway terrain need refinement. MARTA elevated line omitted pending separate support design. Native clearance and visuals pending.'}
 (folder/'deck-manifest.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))

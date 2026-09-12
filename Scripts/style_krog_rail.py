@@ -13,7 +13,10 @@ float2 jitter=frac(sin(float2(dot(id,float2(127.1,311.7)),dot(id,float2(269.5,18
 float2 delta=g+jitter-f;float d=dot(delta,delta);
 if(d<nearest){nearest=d;shade=jitter.x;}}}
 float3 stone=lerp(float3(.075,.072,.064),float3(.24,.22,.185),shade);
-return stone*(.68+.32*saturate(1-nearest))*(.9+.16*fine);''',
+float3 detail=stone*(.68+.32*saturate(1-nearest))*(.9+.16*fine);
+float footprint=max(length(ddx(P)),length(ddy(P)));
+float detailWeight=saturate(4.5/max(4.5,footprint*2.0));
+return lerp(float3(.12,.111,.094),detail,detailWeight);''',
 'Retaining':'''float u=abs(N.x)>abs(N.y)?P.y:P.x;
 float2 panel=frac(float2(u/300.0,P.z/110.0));float2 edge=min(panel,1-panel);
 float joint=1-smoothstep(.003,.009,min(edge.x,edge.y));
