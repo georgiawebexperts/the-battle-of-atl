@@ -1,0 +1,28 @@
+{
+  "main_map_changed": true,
+  "previous_instances": 587,
+  "instances": 587,
+  "groups": [
+    {
+      "group": "Field",
+      "instances": 25,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "graph": "/Game/BattleForTheA/Environment/Park/Mixed/Field/PCG_ParkCanopy"
+    },
+    {
+      "group": "Forest",
+      "instances": 133,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "graph": "/Game/BattleForTheA/Environment/Park/Mixed/Forest/PCG_ParkCanopy"
+    },
+    {
+      "group": "Mature",
+      "instances": 429,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "graph": "/Game/BattleForTheA/Environment/Park/Mixed/Mature/PCG_ParkCanopy"
+    }
+  ],
+  "original_pcg_assets_preserved": true,
+  "desktop_build_updated": false,
+  "scope": "Editable PCG generation counts and same-world save verified. Native saved-world visual/water and traversal/performance checks pending; no trunk collision."
+}

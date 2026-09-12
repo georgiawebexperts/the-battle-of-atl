@@ -37,3 +37,10 @@ Native test now temporarily hides original PCG canopy and spawns measured HISM r
 Prepared deterministic mixed manifest at SourceAssets/Terrain/park-mixed-canopy.json:587 retained positions,158 detailed substitutions only at approved low-geometry-clear stations,429 existing mature trees. Native mixed p50 12.427/14.894/13.284 ms, p95 13.211/15.296/13.929 ms. Inspected lake views2/3: water visible, mature shade retained, finer trees add variety; accepted as integration candidate. Live actors vary and samples are short/fixed-view/editor-executable with unforced internal render scale, so not rigorous isolated GPU cost or sustained60FPS/1080p acceptance.
 
 Next persist mixed groups through editable PCG without replacing original assets blindly, verify main water and route traversal. Existing mature-tree low-branch clearance is unchanged, only substitutions carry new clearance filter. Trunk collision pending. Main/desktop048 still unchanged; full game remains unfinished.
+
+
+## Mixed PCG canopy persisted in main — 2026-09-12 [codex-maclaptop]
+
+Generalized PCG authoring helper to accept a new Park asset folder while preserving original entry point and refusing existing graphs. Installed three new editable graph/data groups under Environment/Park/Mixed:429 mature,133forest Hornbeam,25field Hornbeam;587total. Original graph/data assets remain preserved. Removed original canopy actor only after new group counts matched; saved main world in place. Fresh native launch lake view inspected: water remains visible, mixed canopy persists. Saved-main p50 11.992/15.538/14.536 ms,p95 12.559/16.006/15.051 ms across short fixed views; no sustained60FPS, full riding or collision acceptance.
+
+Main source map changed; desktop048 not repackaged. Detailed tree migration dependency remains local Content/EuropeanHornbeam (~2.4GiB), source manifest and migration/Mac-config scripts retained; not included in this narrow commit. PCG group assets are tracked. Trunk collision, slope-aware branch clearance, actual riding and remaining full game requirements pending.

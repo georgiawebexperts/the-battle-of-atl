@@ -12,6 +12,8 @@ public:
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
  static AActor* CreateFoliageReviewInstances(const TArray<FTransform>& Stations,UStaticMesh* Mesh);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
+ static AActor* CreateParkFoliageAtPath(const TArray<FTransform>& Stations,UStaticMesh* Mesh,const FString& AssetFolder);
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
  static AActor* CreateParkFoliage(const TArray<FTransform>& Stations,UStaticMesh* Mesh);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void FinishEditorAssetLoading();

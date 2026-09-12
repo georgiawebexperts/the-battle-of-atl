@@ -18,21 +18,24 @@
 #include "UObject/Package.h"
 #endif
 
-AActor* UPiedmontWorldTools::CreateParkFoliage(const TArray<FTransform>& Stations,UStaticMesh* Mesh){
+AActor* UPiedmontWorldTools::CreateParkFoliage(const TArray<FTransform>& Stations,UStaticMesh* Mesh){return CreateParkFoliageAtPath(Stations,Mesh,TEXT("/Game/BattleForTheA/Environment/Park"));}
+
+AActor* UPiedmontWorldTools::CreateParkFoliageAtPath(const TArray<FTransform>& Stations,UStaticMesh* Mesh,const FString& AssetFolder){
 #if WITH_EDITOR
  UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
  if(!World||!Mesh||Stations.Num()==0)return nullptr;
- const TCHAR* DataPath=TEXT("/Game/BattleForTheA/Environment/Park/DA_TreeStations");
- const TCHAR* GraphPath=TEXT("/Game/BattleForTheA/Environment/Park/PCG_ParkCanopy");
+ if(!AssetFolder.StartsWith(TEXT("/Game/BattleForTheA/Environment/Park")))return nullptr;
+ const FString DataPath=AssetFolder/TEXT("DA_TreeStations");
+ const FString GraphPath=AssetFolder/TEXT("PCG_ParkCanopy");
  // A prior generated asset must be reviewed rather than silently overwritten.
- if(LoadObject<UPCGGraph>(nullptr,TEXT("/Game/BattleForTheA/Environment/Park/PCG_ParkCanopy.PCG_ParkCanopy")))return nullptr;
- auto* Data=NewObject<UPCGDataAsset>(CreatePackage(DataPath),TEXT("DA_TreeStations"),RF_Public|RF_Standalone);
+ if(LoadObject<UPCGGraph>(nullptr,*(GraphPath+TEXT(".PCG_ParkCanopy"))))return nullptr;
+ auto* Data=NewObject<UPCGDataAsset>(CreatePackage(*DataPath),TEXT("DA_TreeStations"),RF_Public|RF_Standalone);
  auto* Points=NewObject<UPCGPointData>(Data,TEXT("GeographicTreeStations"),RF_Public);
  auto& Values=Points->GetMutablePoints();Values.Reserve(Stations.Num());
  for(int32 Index=0;Index<Stations.Num();++Index){FPCGPoint& Point=Values.AddDefaulted_GetRef();Point.Transform=Stations[Index];Point.Density=1;Point.Seed=Index+2701;}
  FPCGTaggedData& Tagged=Data->Data.TaggedData.AddDefaulted_GetRef();Tagged.Data=Points;Tagged.Pin=PCGPinConstants::DefaultOutputLabel;
  Data->Name=TEXT("Piedmont mapped and authored tree stations");Data->MarkPackageDirty();
- auto* Graph=NewObject<UPCGGraph>(CreatePackage(GraphPath),TEXT("PCG_ParkCanopy"),RF_Public|RF_Standalone);
+ auto* Graph=NewObject<UPCGGraph>(CreatePackage(*GraphPath),TEXT("PCG_ParkCanopy"),RF_Public|RF_Standalone);
  UPCGLoadDataAssetSettings* Load=nullptr;auto* LoadNode=Graph->AddNodeOfType(Load);
  Load->Asset=Data;Load->bSynchronousLoad=true;Load->UpdateFromData();LoadNode->UpdateAfterSettingsChangeDuringCreation();
  UPCGStaticMeshSpawnerSettings* Spawn=nullptr;auto* SpawnNode=Graph->AddNodeOfType(Spawn);

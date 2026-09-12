@@ -1,0 +1,39 @@
+{
+  "exit_code": 0,
+  "capture_passed": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/baseline-824c3ae975a84a69af1406dedd7b7013/canopy-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/baseline-824c3ae975a84a69af1406dedd7b7013/canopy-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/baseline-824c3ae975a84a69af1406dedd7b7013/canopy-3.png"
+  ],
+  "frames": [
+    {
+      "view": 1,
+      "samples": 335,
+      "p50_ms": 11.992,
+      "p95_ms": 12.559
+    },
+    {
+      "view": 2,
+      "samples": 258,
+      "p50_ms": 15.538,
+      "p95_ms": 16.006
+    },
+    {
+      "view": 3,
+      "samples": 277,
+      "p50_ms": 14.536,
+      "p95_ms": 15.051
+    }
+  ],
+  "baseline": true,
+  "transient_main_world_swap": false,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "scope": "Three fixed native-game cameras with active world, five seconds warmup then four seconds frame sampling per view. Editor executable, hidden stationary rider, no riding/collision/audio or sustained shipping performance acceptance.",
+  "saved_mixed_canopy": true,
+  "water_visible": true,
+  "visual_review": "Inspected lake view2: mixed trees persist and main water visible. Short fixed-camera sampling only; not sustained performance, riding or collision acceptance."
+}
