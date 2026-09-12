@@ -6,9 +6,17 @@ from shapely.ops import unary_union,triangulate
 from shapely import constrained_delaunay_triangles
 from shapely.geometry.polygon import orient
 root=Path(__file__).resolve().parents[1];ns=runpy.run_path(str(root/'Scripts/prepare_tenth_street.py'));data=ns['result'];height=ns['height'];folder=root/'SourceAssets/Terrain/TenthStreet'
-# Road widths are an initial playable interpretation of mapped lane counts in
-# this compressed world. Native width/vehicle clearance review remains required.
-roads=unary_union([LineString([p[:2] for p in row['points_cm']]).buffer(int(row['tags'].get('lanes','3'))*95,cap_style=2,join_style=2) for row in data['roads']+data['monroe_roads']])
+# Geography is compressed, but rider/vehicle bodies use gameplay scale. Keep
+# mapped cycle alignment and expand motor lanes south, away from the park and
+# apartment footprints. Lane counts are retained at 300 cm per motor lane.
+road_pieces=[]
+for row in data['roads']:
+ points=[p[:2] for p in row['points_cm']]
+ if points[0][0]>points[-1][0]:points.reverse()
+ road_pieces.append(LineString(points).buffer(int(row['tags'].get('lanes','3'))*300,single_sided=True,join_style=2))
+for row in data['monroe_roads']:
+ road_pieces.append(LineString([p[:2] for p in row['points_cm']]).buffer(int(row['tags'].get('lanes','3'))*150,cap_style=2,join_style=2))
+roads=unary_union(road_pieces)
 cycles=unary_union([LineString([p[:2] for p in row['points_cm']]).buffer(80,cap_style=2,join_style=2) for row in data['cycle_track']])
 # Keep the mapped cycle track distinct; motor-vehicle paving never covers it.
 junction=Point(data['monroe_crossing']['world_cm'][:2]).buffer(500)
@@ -61,4 +69,4 @@ for name,geometry in [('Road',roads),('CycleTrack',cycles),('Separator',separato
   nx=-(height(x+60,y)-height(x-60,y))/120;ny=(height(x,y+60)-height(x,y-60))/120;length=math.sqrt(nx*nx+ny*ny+1);lines.append(f'vn {nx/length:.6f} {ny/length:.6f} {1/length:.6f}')
  for i in range(0,len(verts),3):lines.append('f '+' '.join(f'{j}/{j}/{j}' for j in [i+3,i+2,i+1]))
  path=folder/('TenthStreet_'+name+'.obj');path.write_text('\n'.join(lines)+'\n');result.append({'file':path.name,'triangles':len(faces),'missing_area_cm2':missing,'bounds_cm':[[min(v[i] for v in verts) for i in range(3)],[max(v[i] for v in verts) for i in range(3)]]})
-(folder/'surfaces.json').write_text(json.dumps({'surfaces':result,'status':'Generated only; native import, width, continuity, collision and landscape clearance review pending.','road_lane_width_cm':190,'cycle_track_width_cm':160,'sources':'Mapped centerlines. Widths authored for first review in compressed geography.'},indent=2)+'\n');print(json.dumps(result))
+(folder/'surfaces.json').write_text(json.dumps({'surfaces':result,'status':'Generated only; native import, width, continuity, collision and landscape clearance review pending.','road_lane_width_cm':300,'cycle_track_width_cm':160,'sources':'Mapped cycle alignment and road topology; motor lanes expanded south to gameplay scale. Native vehicle and intersection review pending.'},indent=2)+'\n');print(json.dumps(result))

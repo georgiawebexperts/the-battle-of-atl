@@ -2,18 +2,18 @@
   "surfaces": [
     {
       "file": "TenthStreet_Road.obj",
-      "triangles": 7249,
-      "missing_area_cm2": 0.0,
+      "triangles": 9912,
+      "missing_area_cm2": 9.698908343125368e-13,
       "bounds_cm": [
         [
-          -30650.431179529223,
-          9112.74846452081,
-          -500.29587467798854
+          -30590.414,
+          9060.498154506542,
+          -546.8009611959321
         ],
         [
-          13048.580133716447,
-          14130.308116966447,
-          367.3127516793159
+          13262.28531639439,
+          14168.279605736498,
+          429.34770001010065
         ]
       ]
     },
@@ -36,41 +36,41 @@
     },
     {
       "file": "TenthStreet_Separator.obj",
-      "triangles": 3311,
+      "triangles": 437,
       "missing_area_cm2": 0.0,
       "bounds_cm": [
         [
-          -21674.13645272518,
+          -21495.09092199313,
           11317.01598608162,
-          -489.0637430383816
+          -366.22771216833996
         ],
         [
           11727.216899663852,
           12411.12827250084,
-          299.55988266764894
+          296.23220220203467
         ]
       ]
     },
     {
       "file": "TenthStreet_Sidewalk.obj",
-      "triangles": 6680,
+      "triangles": 6451,
       "missing_area_cm2": 0.0,
       "bounds_cm": [
         [
-          -30810.317215381416,
-          8952.899426468057,
-          -519.8376665843678
+          -30750.300035852193,
+          8900.64911645379,
+          -543.2632853100565
         ],
         [
-          13208.4291717692,
-          14290.205241539634,
-          400.9421461974672
+          13422.134354447142,
+          14328.176730309684,
+          446.23436017336525
         ]
       ]
     }
   ],
   "status": "Generated only; native import, width, continuity, collision and landscape clearance review pending.",
-  "road_lane_width_cm": 190,
+  "road_lane_width_cm": 300,
   "cycle_track_width_cm": 160,
-  "sources": "Mapped centerlines. Widths authored for first review in compressed geography."
+  "sources": "Mapped cycle alignment and road topology; motor lanes expanded south to gameplay scale. Native vehicle and intersection review pending."
 }
