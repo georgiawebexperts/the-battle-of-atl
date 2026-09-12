@@ -20,6 +20,7 @@ class AURAPLAYGROUND_API ABattleRoadCar : public AActor {
 public:
  ABattleRoadCar();
  virtual void Tick(float DeltaSeconds) override;
+ virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  UPROPERTY(EditAnywhere) TArray<FVector> Route;
  UPROPERTY(EditAnywhere) float CruiseSpeed=650.f;
  UPROPERTY(EditAnywhere) TArray<FBattleCarCrossing> Crossings;

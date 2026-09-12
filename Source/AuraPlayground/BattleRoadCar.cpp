@@ -44,7 +44,12 @@ void ABattleRoadCar::UpdateWheels(const TArray<FVector>& Contacts,float Travel,f
  WheelAngle=FMath::Fmod(WheelAngle+FMath::RadiansToDegrees(Travel/39.2669f),360.f);
  for(int32 I=0;I<4;++I){const bool Left=I%2==0;Wheels[I]->SetRelativeLocation(GetActorTransform().InverseTransformPosition(Contacts[I])+FVector(0,0,39.2669));Wheels[I]->SetRelativeRotation(FRotator(Left?WheelAngle:-WheelAngle,(Left?180.f:0.f)+(I<2?Steering:0.f),0));}
 }
+void ABattleRoadCar::EndPlay(const EEndPlayReason::Type Reason){
+ for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
+ Super::EndPlay(Reason);
+}
 bool ABattleRoadCar::StartRoute(){
+ for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
  bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();bWaitingForCrossing=false;
  if(Route.Num()<2)return false;
  Lengths.Add(0);for(int32 I=1;I<Route.Num();++I){const float L=FVector::Dist2D(Route[I],Route[I-1]);if(L<1)return false;Lengths.Add(Lengths.Last()+L);}
@@ -69,7 +74,7 @@ void ABattleRoadCar::Tick(float Dt){
    if(ClearedCrossings.Contains(I))continue;
    const auto& Gate=Crossings[I];const float Gap=Gate.StopDistance-RouteDistance;
    const bool Clear=IsValid(Gate.Crossing)&&Gate.Crossing->CanEnter(this);
-   if(Clear&&Gap<=Speed*Step+3.f){ClearedCrossings.Add(I);continue;}
+   if(Clear&&Gap<=Speed*Step+3.f&&Gate.Crossing->TryReserve(this)){ClearedCrossings.Add(I);continue;}
    if(!Clear){Available=FMath::Min(Available,FMath::Max(0.f,Gap));if(Gap<100)bWaitingForCrossing=true;}
   }
   const float Target=bObstacleAhead?0.f:FMath::Min(CruiseSpeed,FMath::Sqrt(2*900.f*FMath::Max(0.f,Available-2.f)));

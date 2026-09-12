@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "scope": "ownership, contention, red commitment, tail clearance and destruction"
+  },
+  "scope": "Native reservation API with two vehicle-sized blocking actors. Moving-car integration tested separately; signal visuals, map placement, natural traffic and packaged behavior unverified.",
+  "passed": true
+}
