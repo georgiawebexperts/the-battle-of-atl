@@ -1,0 +1,36 @@
+{
+  "source_manifest": "work/sleep-source-contact-0.0/manifest.json",
+  "target_manifest": "work/city-sleep-studio-review/manifest.json",
+  "first_sample_height_cm": {
+    "head": {
+      "source": 9.071613367339523,
+      "target": 10.589438915936626,
+      "difference": 1.5178255485971022
+    },
+    "pelvis": {
+      "source": 12.742307662963867,
+      "target": 11.718568112490175,
+      "difference": -1.0237395504736924
+    },
+    "left_foot": {
+      "source": 6.940003669951693,
+      "target": 7.174287602836557,
+      "difference": 0.23428393288486404
+    },
+    "right_foot": {
+      "source": 6.453641977068401,
+      "target": 2.985297380901102,
+      "difference": -3.4683445961672987
+    }
+  },
+  "near_loop_endpoint_displacement_cm": {
+    "head": 0.0008453053965367249,
+    "pelvis": 0.0005093759572861149,
+    "left_foot": 0.0007922122263866464,
+    "right_foot": 0.000484051581422745
+  },
+  "interpretation": "Source shares raised portions of the sleeping posture. Earlier visual gap diagnosis does not alone prove a retarget failure. Preserve zero global offset; -8 cm clips. Bone heights are not skin-surface contact evidence.",
+  "contact_accepted": false,
+  "loop_continuity_accepted": false,
+  "gameplay_installed": false
+}

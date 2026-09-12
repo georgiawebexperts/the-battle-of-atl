@@ -1,8 +1,9 @@
 """Transient flat-floor review of sleeping contact and recovery candidate poses."""
 import unreal,json,pathlib,os
 root=pathlib.Path(unreal.Paths.project_dir())
+reference=os.environ.get('BATTLE_SLEEP_REFERENCE')=='1'
 offset=float(os.environ.get('BATTLE_SLEEP_REVIEW_OFFSET','0'))
-out=root/('work/city-sleep-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
+out=root/('work/sleep-'+('source' if reference else 'city')+'-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 def vector_values(v):return [v.x,v.y,v.z]
@@ -21,6 +22,9 @@ variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/Battle
 for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
  origin=unreal.Vector(0,0,10005+offset);parts=[]
  paths=[base+sex+'/NormalWeight/Meshes/'+prefix+'_'+part for part in ['body',outfit,'jeans','loafers']]+[base+sex+'/'+face+'/Face/'+face+'_nrw_FaceMesh']
+ if reference:
+  paths=['/Game/BattleRetarget/Mixamo/SleepingReference/MixamoSleepReference']
+  clip='/Game/BattleRetarget/Mixamo/SleepingReference/MixamoSleepReference_Anim'
  for path in paths:
   actor=ea.spawn_actor_from_class(unreal.SkeletalMeshActor,origin,unreal.Rotator(yaw=-90));component=actor.skeletal_mesh_component
   component.set_editor_property('disable_post_process_blueprint',True)
@@ -32,10 +36,12 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
  body=parts[0][1]
  animation=unreal.load_asset(clip);assert animation
  for actor,component in parts[1:]:component.set_leader_pose_component(body,True,False)
- hair_actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,origin,unreal.Rotator(yaw=-90))
- hair_actor.static_mesh_component.set_static_mesh(unreal.load_asset(base+sex+'/'+face+'/Hair/Hair/'+hair+'_CardsMesh_Group0_LOD0'))
- hair_actor.static_mesh_component.set_mobility(unreal.ComponentMobility.MOVABLE)
- assert hair_actor.attach_to_component(body,'head',unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,False)
+ hair_actor=None
+ if not reference:
+  hair_actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,origin,unreal.Rotator(yaw=-90))
+  hair_actor.static_mesh_component.set_static_mesh(unreal.load_asset(base+sex+'/'+face+'/Hair/Hair/'+hair+'_CardsMesh_Group0_LOD0'))
+  hair_actor.static_mesh_component.set_mobility(unreal.ComponentMobility.MOVABLE)
+  assert hair_actor.attach_to_component(body,'head',unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,False)
  fill=ea.spawn_actor_from_class(unreal.PointLight,origin+unreal.Vector(220,-180,230))
  fill_component=fill.get_component_by_class(unreal.PointLightComponent)
  fill_component.set_intensity(40)
@@ -54,10 +60,10 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
   unreal.RenderingLibrary.export_render_target(world,t,str(out),name)
   assert (out/name).is_file(), "Use -AllowCommandletRendering"
   assert abs(body.get_position()-sample_time)<.01,'Preview did not evaluate requested animation time'
-  samples.append({'image':name,'animation_position':body.get_position(),'head':vector_values(body.get_socket_location('head')),'hair_origin':vector_values(hair_actor.get_actor_location()),'pelvis':vector_values(body.get_socket_location('pelvis')),'left_foot':vector_values(body.get_socket_location('foot_l')),'right_foot':vector_values(body.get_socket_location('foot_r'))})
+  samples.append({'image':name,'animation_position':body.get_position(),'head':vector_values(body.get_socket_location('Head' if reference else 'head')),'hair_origin':vector_values(hair_actor.get_actor_location()) if hair_actor else None,'pelvis':vector_values(body.get_socket_location('Hips' if reference else 'pelvis')),'left_foot':vector_values(body.get_socket_location('LeftFoot' if reference else 'foot_l')),'right_foot':vector_values(body.get_socket_location('RightFoot' if reference else 'foot_r'))})
  results.append({'sex':sex,'clip':clip,'samples':samples})
  for actor,component in parts:ea.destroy_actor(actor)
- ea.destroy_actor(hair_actor)
+ if hair_actor:ea.destroy_actor(hair_actor)
  ea.destroy_actor(fill)
 (out/'manifest.json').write_text(json.dumps({'map_saved':False,'flat_floor_z':10005,'candidate_mesh_offset_z':offset,'diagnostic_fill_light':{'intensity':40,'radius':1000},'explicit_sampled_pose_evaluation':True,'post_process_disabled_for_diagnostic':True,'hair_attached_to_head':True,'results':results,'scope':'Sleeping candidate poses only; no gameplay or transition acceptance'},indent=2)+'\n')
 print('BATTLE_SLEEP_RENDER_COMPLETE')
