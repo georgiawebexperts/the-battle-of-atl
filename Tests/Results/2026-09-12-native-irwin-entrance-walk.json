@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Ellison walked seven approaches in both directions with ground support",
+    "completed_legs": 14,
+    "route": 7
+  },
+  "scope": "Actual Ellison CharacterMovement over seven entrance approaches in both directions. Direct movement input, no keyboard/animation/render or main-world acceptance.",
+  "passed": true
+}

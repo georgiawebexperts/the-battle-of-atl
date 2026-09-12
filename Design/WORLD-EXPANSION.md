@@ -461,3 +461,10 @@ Pavement support now12575 pavement hits+16 expected landing overlays. Floor trac
 Added static walking-sized capsule sweeps (radius32/halfheight90, centre floor+95) every20 cm from40 to500 cm outward along all seven entrance approaches, with overhead rays at three lateral points to230 cm. Initial test found two landing drop snags (ways211061296 and211061637) at80/100 cm. Retained failure evidence as irwin-approach-before-aprons and added measured sloped aprons to Landing mesh. Short140 cm version retained abrupt descent and failed; final260 cm apron stays level initially and distributes descent through300 cm from door. Reimport road/trail support checks pass; all seven approach sweeps now pass.
 
 This is static geometry clearance only, not actual CharacterMovement, accessibility, side-edge comfort, complete foot traffic simulation or visual acceptance. Main/desktop047 unchanged. Final aprons need rendered review and actual walking before integrating the exterior study. Broader game requirements remain unfinished.
+
+
+## Irwin walking and first streetscape integration — 2026-09-12 [codex-maclaptop]
+
+Added BattleEntranceWalkAudit on actual ABattleRider after bike dismount: normal CharacterMovement with direct world movement input, seven measured500-to40 cm approaches and return. All14 legs pass, grounded at endpoints and no sustained fall/stall. Spawns frozen/nearby pedestrians removed for isolated traversal; no keyboard binding, animation, accessibility or busy-crowd acceptance. Json module dependency added for retained route input; editor build passes.
+
+Latest wide render e851ac66d8c549a091bbebdec0e68a21 reviewed. Integrated five exterior mesh groups plus roadside pavement into main PiedmontWorld (six actors), preserving original roads/trails: all7921 main car/trail samples pass. First architectural pass remains explicitly rough: generic facades, estimated heights, remaining grass approaches, missing business-specific frontage/props and broader scenery quality. Desktop047 unchanged. Main integration does not mean whole game or streetscape is finished; performance, packaged acceptance and original full-game requirements remain.
