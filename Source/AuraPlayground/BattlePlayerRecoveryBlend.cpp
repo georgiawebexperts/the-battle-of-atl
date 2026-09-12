@@ -28,12 +28,24 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
  const int32 Hip=Ref.FindBoneIndex(TEXT("Hips")),Head=Ref.FindBoneIndex(TEXT("Head"));if(Hip<0||Head<0)return false;
  TArray<FTransform> Landed;for(int32 I=0;I<Ref.GetNum();I++)Landed.Add(Display?Display->GetBoneTransform(I):Physics->GetBoneTransform(I));
  const FVector HipWorld=Landed[Hip].GetLocation(),Heading=(Landed[Head].GetLocation()-HipWorld).GetSafeNormal2D();
- float Best=TNumericLimits<float>::Max();FTransform Frame;
+ float Best=TNumericLimits<float>::Max(),HeadingBest=TNumericLimits<float>::Max();FTransform Frame;
+ TArray<int32> FitBones;for(const FName Name:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 Index=Ref.FindBoneIndex(Name);if(Index<0)return false;FitBones.Add(Index);}
  const TCHAR* Sides[]={TEXT("F"),TEXT("B"),TEXT("L"),TEXT("R")};
  for(int32 C=0;C<4;C++){
   UAnimSequence* Anim=LoadObject<UAnimSequence>(nullptr,*FString::Printf(TEXT("/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_%s.GetUp_%s"),Sides[C],Sides[C]));if(!Anim)continue;
   const auto Start=Sample(Anim,Ref,0,true);const FVector LocalHeading=(Start[Head].GetLocation()-Start[Hip].GetLocation()).GetSafeNormal2D();
-  const FRotator Rotation(0,Heading.Rotation().Yaw-LocalHeading.Rotation().Yaw,0);FVector Origin=HipWorld-Rotation.RotateVector(Start[Hip].GetLocation());
+  double Dot=0,Cross=0;
+  for(int32 I:FitBones){const FVector A=Start[I].GetLocation()-Start[Hip].GetLocation(),B=Landed[I].GetLocation()-HipWorld;Dot+=A.X*B.X+A.Y*B.Y;Cross+=A.X*B.Y-A.Y*B.X;}
+  const float HeadingYaw=Heading.Rotation().Yaw-LocalHeading.Rotation().Yaw;
+  const float FitYaw=FMath::Abs(Dot)+FMath::Abs(Cross)>UE_SMALL_NUMBER?FMath::RadiansToDegrees(FMath::Atan2(Cross,Dot)):HeadingYaw;
+  FVector LocalCenter=FVector::ZeroVector,WorldCenter=FVector::ZeroVector;
+  for(int32 I:FitBones){LocalCenter+=Start[I].GetLocation();WorldCenter+=Landed[I].GetLocation();}LocalCenter/=FitBones.Num();WorldCenter/=FitBones.Num();
+  double CenterDot=0,CenterCross=0;for(int32 I:FitBones){const FVector A=Start[I].GetLocation()-LocalCenter,B=Landed[I].GetLocation()-WorldCenter;CenterDot+=A.X*B.X+A.Y*B.Y;CenterCross+=A.X*B.Y-A.Y*B.X;}
+  const float CenterYaw=FMath::Abs(CenterDot)+FMath::Abs(CenterCross)>UE_SMALL_NUMBER?FMath::RadiansToDegrees(FMath::Atan2(CenterCross,CenterDot)):HeadingYaw;
+  // Compare the original candidate, hip-anchored rotation, and full planar rigid fit.
+  // Every candidate still requires floor support and standing capsule clearance.
+  for(int32 Fit=0;Fit<3;Fit++){
+  const FRotator Rotation(0,Fit==2?CenterYaw:Fit==1?FitYaw:HeadingYaw,0);FVector Origin=Fit==2?WorldCenter-Rotation.RotateVector(LocalCenter):HipWorld-Rotation.RotateVector(Start[Hip].GetLocation());
   const FVector BaseOrigin=Origin;
   for(const FVector Offset:{FVector::ZeroVector,FVector(80,0,0),FVector(-80,0,0),FVector(0,80,0),FVector(0,-80,0),FVector(160,0,0),FVector(-160,0,0),FVector(0,160,0),FVector(0,-160,0)}){
    Origin=BaseOrigin+Offset;
@@ -45,10 +57,13 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
    if(Bike->GetWorld()->OverlapAnyTestByObjectType(Origin+FVector(0,0,98),FQuat::Identity,Objects,FCollisionShape::MakeCapsule(30,96),ClearanceQuery))continue;
    const FTransform Candidate(Rotation,Origin);float Error=0;
    for(const FName Bone:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 I=Ref.FindBoneIndex(Bone);Error+=FVector::DistSquared(Candidate.TransformPosition(Start[I].GetLocation()),Landed[I].GetLocation());}
+   if(Fit==0)HeadingBest=FMath::Min(HeadingBest,Error);
    if(Error<Best){Best=Error;Choice=C;Frame=Candidate;Clip=Anim;FloorZ=Origin.Z;}
+  }
   }
  }
  if(Choice<0)return false;
+ UE_LOG(LogTemp,Display,TEXT("PlayerRecoveryFit: {\"heading_rms_cm\":%.3f,\"selected_rms_cm\":%.3f}"),HeadingBest<TNumericLimits<float>::Max()?FMath::Sqrt(HeadingBest/6):-1.f,FMath::Sqrt(Best/6));
  UPoseableMeshComponent* Body=NewObject<UPoseableMeshComponent>(Bike);Bike->AddInstanceComponent(Body);Body->SetSkinnedAssetAndUpdate(Mesh);Body->SetWorldTransform(Frame);Body->SetCollisionEnabled(ECollisionEnabled::NoCollision);Body->RegisterComponent();
  TArray<FTransform> Components;for(const FTransform& T:Landed)Components.Add(T.GetRelativeTransform(Frame));
  for(int32 I=0;I<Ref.GetNum();I++){const int32 Parent=Ref.GetParentIndex(I);LandedLocal.Add(Parent>=0?Components[I].GetRelativeTransform(Components[Parent]):Components[I]);}
