@@ -1,0 +1,132 @@
+{
+  "candidate_wake_clip": "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R",
+  "review_manifest": "work/sleep-recovery-contact-0.0/manifest.json",
+  "inspected_images": [
+    "male-L-0.png",
+    "male-R-0.png",
+    "male-R-1.png",
+    "male-R-3.png"
+  ],
+  "finding": "Right-side recovery starts in the same side-lying orientation as the Mixamo sleeping candidate and reaches standing. Left-side recovery faces the opposite side. This selects a transition development candidate only.",
+  "samples": [
+    {
+      "image": "male-R-0.png",
+      "animation_position": 0.0,
+      "head": [
+        6.750228749418959,
+        67.47966660840238,
+        10020.094169531441
+      ],
+      "hair_origin": [
+        -56.66797844047148,
+        -69.83783762731638,
+        10079.702373035412
+      ],
+      "pelvis": [
+        -13.955823898790094,
+        4.838707445682973,
+        10019.007056236267
+      ],
+      "left_foot": [
+        -21.806024215906866,
+        -72.86735235559638,
+        10014.46330488006
+      ],
+      "right_foot": [
+        -12.119392730966666,
+        -52.42963999556534,
+        10009.41538517525
+      ]
+    },
+    {
+      "image": "male-R-1.png",
+      "animation_position": 1.25,
+      "head": [
+        39.97183363524976,
+        46.00851055055502,
+        10058.041715133746
+      ],
+      "hair_origin": [
+        -71.31190831194905,
+        -71.9228516031992,
+        10046.242287399915
+      ],
+      "pelvis": [
+        6.016874791020182,
+        -8.44596767366513,
+        10070.631103515625
+      ],
+      "left_foot": [
+        2.117385109643383,
+        -16.57262648249543,
+        10016.604603540809
+      ],
+      "right_foot": [
+        -16.287538454044373,
+        -51.589545725416855,
+        10025.760313968613
+      ]
+    },
+    {
+      "image": "male-R-2.png",
+      "animation_position": 2.75,
+      "head": [
+        4.479524254750416,
+        -0.6758390869115138,
+        10167.530800340292
+      ],
+      "hair_origin": [
+        -11.112941418576881,
+        -0.797129314873549,
+        10005.703842757248
+      ],
+      "pelvis": [
+        0.09591801471004135,
+        -0.6570918559933983,
+        10100.887298583984
+      ],
+      "left_foot": [
+        1.0542307852092492,
+        -15.47165301372485,
+        10014.362598136078
+      ],
+      "right_foot": [
+        -9.01993132521398,
+        14.761774812805033,
+        10014.478321020342
+      ]
+    },
+    {
+      "image": "male-R-3.png",
+      "animation_position": 4.994999885559082,
+      "head": [
+        3.575596639448129,
+        0.3888282018305076,
+        10167.526766288558
+      ],
+      "hair_origin": [
+        -12.670456672291884,
+        -0.806034949301845,
+        10005.76848380658
+      ],
+      "pelvis": [
+        0.19885143639605157,
+        -0.19851791856722414,
+        10100.856643676758
+      ],
+      "left_foot": [
+        1.3286798338673727,
+        -15.417501775008564,
+        10014.459174557736
+      ],
+      "right_foot": [
+        -8.885228330010644,
+        14.781576459751266,
+        10014.47840721
+      ]
+    }
+  ],
+  "continuous_blend_verified": false,
+  "ground_contact_verified": false,
+  "gameplay_installed": false
+}
