@@ -11,7 +11,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
+void TickBattleGrassLinkAudit(APlayerController* PC,float Dt);
 void TickBattleSleeperChaseAudit(APlayerController* PC,float Dt){
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleGrassLinkAudit"))){TickBattleGrassLinkAudit(PC,Dt);return;}
 #if !UE_BUILD_SHIPPING
  struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<APiedmontPedestrian> Person,Target;int32 Phase=0;float Clock=0,Total=0,StartDistance=0,Closest=100000;bool Done=false;};
  static FState S;if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}

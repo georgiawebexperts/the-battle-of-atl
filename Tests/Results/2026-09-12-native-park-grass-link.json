@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Both walking legs completed",
+    "legs": 2,
+    "travel_cm": 711.34,
+    "samples": 3191,
+    "grounded": 3191
+  },
+  "scope": "Actual pedestrian capsule, CharacterMovement and AI path following across grass in both directions. Autonomous destination changes disabled. Animation and mixed crowd interactions not evaluated.",
+  "passed": true
+}
