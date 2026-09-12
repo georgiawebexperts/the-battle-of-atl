@@ -1,0 +1,15 @@
+{
+  "names": [
+    "PEACHES & GREENS",
+    "THE GARDEN PATCH",
+    "FRESH PICKED",
+    "ROOTS & SHOOTS",
+    "SUNDAY TOMATOES"
+  ],
+  "texture_size": [
+    1024,
+    144
+  ],
+  "source_font": "Arial Bold, macOS system font; rasterized lettering only",
+  "geometry": "SM_MarketSign.obj"
+}

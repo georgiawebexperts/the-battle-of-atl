@@ -18,14 +18,14 @@ for row in json.loads((folder/'Stall/manifest.json').read_text())['surfaces']:
  mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh);meshes[name]=mesh
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 unreal.PiedmontWorldTools.finish_editor_asset_loading();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
-text_material=unreal.load_asset(dest+'/M_MarketText')
-if not text_material:text_material=unreal.EditorAssetLibrary.duplicate_asset('/Engine/EngineMaterials/DefaultTextMaterialOpaque',dest+'/M_MarketText')
-text_material.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT)
-text_material.set_editor_property('two_sided',True)
-text_color=unreal.MaterialEditingLibrary.get_material_property_input_node(text_material,unreal.MaterialProperty.MP_EMISSIVE_COLOR)
-if not text_color:text_color=unreal.MaterialEditingLibrary.create_material_expression(text_material,unreal.MaterialExpressionVertexColor)
-unreal.MaterialEditingLibrary.connect_material_property(text_color,'RGB',unreal.MaterialProperty.MP_EMISSIVE_COLOR)
-unreal.MaterialEditingLibrary.recompile_material(text_material);unreal.EditorAssetLibrary.save_loaded_asset(text_material)
+sign_materials=[]
+for i in range(5):
+ task=unreal.AssetImportTask();task.filename=str(folder/'Stall'/f'T_MarketSign_{i}.png');task.destination_path=dest;task.destination_name=f'T_MarketSign_{i}';task.automated=True;task.save=True;task.replace_existing=True;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])
+ mat=unreal.load_asset(dest+f'/M_MarketSign_{i}')
+ if not mat:mat=unreal.AssetToolsHelpers.get_asset_tools().create_asset(f'M_MarketSign_{i}',dest,unreal.Material,unreal.MaterialFactoryNew())
+ unreal.MaterialEditingLibrary.delete_all_material_expressions(mat);mat.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT);mat.set_editor_property('two_sided',True)
+ sample=unreal.MaterialEditingLibrary.create_material_expression(mat,unreal.MaterialExpressionTextureSample);sample.set_editor_property('texture',unreal.load_asset(dest+f'/T_MarketSign_{i}'));unreal.MaterialEditingLibrary.connect_material_property(sample,'RGB',unreal.MaterialProperty.MP_EMISSIVE_COLOR);unreal.MaterialEditingLibrary.recompile_material(mat);unreal.EditorAssetLibrary.save_loaded_asset(mat);sign_materials.append(mat)
+task=unreal.AssetImportTask();task.filename=str(folder/'Stall/SM_MarketSign.obj');task.destination_path=dest;task.destination_name='SM_MarketSign';task.automated=True;task.save=True;task.replace_existing=True;task.options=opts;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task]);sign_mesh=unreal.load_asset(dest+'/SM_MarketSign');assert sign_mesh;sign_mesh.set_material(0,sign_materials[0]);unreal.EditorAssetLibrary.save_loaded_asset(sign_mesh)
 layout=json.loads((folder/'layout.json').read_text());survey=[]
 bounds=meshes['Wood'].get_bounding_box();table_sign=1 if bounds.min.y+bounds.max.y>0 else -1
 for index,row in enumerate(layout['stalls']):
@@ -46,13 +46,10 @@ for index,row in enumerate(layout['stalls']):
 
  for name,mesh in meshes.items():
   actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(*row['center_xy'],base),unreal.Rotator(yaw=yaw));actor.set_actor_label(f'Market review {index+1} {name}');actor.tags=[unreal.Name('MarketReview')];actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('BlockAll' if name in ['Wood','Metal'] else 'NoCollision')
- # Front valance label on the aisle side, in imported mesh coordinates.
- lx,ly=0,table_sign*155;sx,sy=cx+c*lx-s*ly,cy+s*lx+c*ly
+ # Baked sign panel on the aisle side; static mesh avoids text-component rendering.
  bx,by=cx-s*table_sign*151,cy+c*table_sign*151
  board=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(bx,by,base+202),unreal.Rotator(yaw=yaw));board.set_actor_scale3d(unreal.Vector(2.7,.02,.36));board.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));board.static_mesh_component.set_material(0,unreal.load_asset(dest+'/M_Cloth'));board.static_mesh_component.set_collision_profile_name('NoCollision');board.tags=[unreal.Name('MarketReview')]
- sign=ea.spawn_actor_from_class(unreal.TextRenderActor,unreal.Vector(sx,sy,base+202),unreal.Rotator(yaw=yaw+table_sign*90));sign.set_actor_rotation(unreal.Rotator(yaw=yaw+table_sign*90),False);sign.tags=[unreal.Name('MarketReview')]
- label=sign.get_component_by_class(unreal.TextRenderComponent);label.set_text(['PEACHES & GREENS','THE GARDEN PATCH','FRESH PICKED','ROOTS & SHOOTS','SUNDAY TOMATOES'][index//2]);label.set_text_material(text_material);label.set_world_size(23);label.set_horizontal_alignment(unreal.HorizTextAligment.EHTA_CENTER);label.set_vertical_alignment(unreal.VerticalTextAligment.EVRTA_TEXT_CENTER);label.set_text_render_color(unreal.Color(245,237,212,255))
- survey[-1]['sign_debug']={'actor_transform':str(sign.get_actor_transform()),'component_transform':str(label.get_world_transform()),'visible':label.is_visible(),'hidden_in_game':label.get_editor_property('hidden_in_game'),'text':str(label.get_editor_property('text'))}
+ sign=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(cx,cy,base),unreal.Rotator(yaw=yaw));sign.tags=[unreal.Name('MarketReview')];sign.static_mesh_component.set_static_mesh(sign_mesh);sign.static_mesh_component.set_material(0,sign_materials[index//2]);sign.static_mesh_component.set_collision_profile_name('NoCollision')
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8)
 for prop,value in [('texture_target',tex),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',70)]:cap.set_editor_property(prop,value)
@@ -62,6 +59,6 @@ for name,p,target in views:
  loc=unreal.Vector(*p);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
-result={'imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
+result={'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
 (root/'Tests/Results/2026-09-12-market-review.json').write_text(json.dumps(result,indent=2)+'\n')
 print('MARKET_REVIEW '+str(out))
