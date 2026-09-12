@@ -1,0 +1,8 @@
+{
+  "main_map_changed": false,
+  "before_triangles": 948,
+  "after_triangles": 948,
+  "floor_roof_sites": 50,
+  "maximum_height_change_cm": 0.0,
+  "scope": "Bounds and50 native floor/roof locations preserved. Reversed shell and column side-face winding only. Visual comparison pending; not full collision equivalence."
+}

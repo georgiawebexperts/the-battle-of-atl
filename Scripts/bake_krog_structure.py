@@ -5,7 +5,7 @@ from pathlib import Path
 import json,math,argparse,numpy as np
 from route_height_profiles import RouteHeightProfiles
 root=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path);parser.add_argument('--portal-setback-cm',type=float,default=0);parser.add_argument('--continuous-shell',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path);parser.add_argument('--portal-setback-cm',type=float,default=0);parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--outward-sides',action='store_true');args=parser.parse_args()
 out=args.output or root/'SourceAssets/Terrain/KrogRoute'
 assert 0<=args.portal_setback_cm<=2500
 out.mkdir(parents=True,exist_ok=True)
@@ -17,7 +17,7 @@ def beam(m,a,b,width,depth):
  a=np.array(a);b=np.array(b);d=b-a;side=np.array([-d[1],d[0],0.]);side=side/np.linalg.norm(side)*width/2
  v=[a-side,a+side,b+side,b-side];low=[x-np.array([0,0,depth]) for x in v]
  quad(m,list(reversed(v)));quad(m,low)
- for i in range(4):j=(i+1)%4;quad(m,[v[i],low[i],low[j],v[j]])
+ for i in range(4):j=(i+1)%4;quad(m,[v[i],v[j],low[j],low[i]] if args.outward_sides else [v[i],low[i],low[j],v[j]])
 def at(s,lateral=0,zoffset=0):
  q=np.array(line.interpolate(s).coords[0]);d=np.array(line.interpolate(s+1).coords[0])-np.array(line.interpolate(s-1).coords[0]);normal=np.array([-d[1],d[0]])/np.linalg.norm(d);q+=normal*lateral
  z=p['start_z_cm']+(p['end_z_cm']-p['start_z_cm'])*(s-p['blend_start_cm'])/(p['blend_end_cm']-p['blend_start_cm'])
@@ -28,7 +28,7 @@ def ribbon(m,a,b,left,right,top,bottom,cap_start=True,cap_end=True):
  quad(m,list(reversed(v)));quad(m,low)
  for i in range(4):
   if (i==0 and not cap_start) or (i==2 and not cap_end):continue
-  j=(i+1)%4;quad(m,[v[i],low[i],low[j],v[j]])
+  j=(i+1)%4;quad(m,[v[i],v[j],low[j],low[i]] if args.outward_sides else [v[i],low[i],low[j],v[j]])
 lo=p['bridge_start_cm'];hi=p['bridge_end_cm'];stations=np.linspace(lo,hi,math.ceil((hi-lo)/120)+1)
 meshes={k:{'v':[],'f':[]} for k in ['Road','Shell','Columns']}
 for a,b in zip(stations,stations[1:]):
@@ -48,6 +48,7 @@ for kind,m in meshes.items():
  (out/(name+'.obj')).write_text('\n'.join(lines)+'\n')
  manifest['chunks'].append({'file':name+'.obj','material':'Asphalt' if kind=='Road' else 'Concrete','structure':kind,'triangles':len(m['f']),'vertices':len(m['v']),'bounds_cm':[v.min(axis=0).tolist(),v.max(axis=0).tolist()]})
 manifest['continuous_shell']=args.continuous_shell
+manifest['outward_sides']=args.outward_sides
 manifest['triangle_count']=sum(c['triangles'] for c in manifest['chunks']);manifest['architecture_policy']='Authored 270 cm player headroom, 960 cm interior, lowered road and column line; mapped portals and floor grade, not measured or photo-matched dimensions.'
 manifest['dark_zones']=[{'a':at(a,-140,130).tolist(),'b':at(b,-140,130).tolist(),'half_width':480,'half_height':140} for a,b in zip(stations,stations[1:])]
 manifest['roof_samples']=[at(s).tolist() for s in np.linspace(lo+args.portal_setback_cm+10,hi-10,50)]

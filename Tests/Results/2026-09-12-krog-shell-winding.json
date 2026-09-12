@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "meshes": [
+    {
+      "mesh": "Shell",
+      "triangles": 780,
+      "physical_triangles_preserved": true
+    },
+    {
+      "mesh": "Columns",
+      "triangles": 168,
+      "physical_triangles_preserved": true
+    }
+  ],
+  "first_roof_strip_outward_dots": [
+    2418735.0236905436,
+    2418735.0336448937,
+    2418735.0258466233,
+    2418735.0314888875,
+    2418735.02976214,
+    2418735.029762251,
+    2418735.024785013,
+    2418735.0247849994,
+    2418735.03258324,
+    2418735.0325832036
+  ]
+}
