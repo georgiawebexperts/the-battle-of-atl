@@ -1,0 +1,11 @@
+{
+  "build_succeeded": true,
+  "automation_exit_code": 0,
+  "elapsed_seconds": 144,
+  "head": "73a20bc56d52b20b9bec377d3d419c2f309320df",
+  "working_tree_note": "Includes existing unstaged knife-audit/controller changes; not a pristine commit build.",
+  "packaged_health_report": "Tests/Results/2026-09-11-build044-graded-health.json",
+  "staged_app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app",
+  "desktop_replaced": false,
+  "presentation_accepted": false
+}
