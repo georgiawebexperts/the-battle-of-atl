@@ -41,7 +41,7 @@ for cx in [-73,0,73]:
    for lat in range(5):
     for lon in range(10):
      def point(i,j):
-      t=math.pi*i/5;a=math.tau*j/10;return(px+radius*math.sin(t)*math.cos(a),py+radius*math.sin(t)*math.sin(a),99+(7 if cx==0 else 5)*math.cos(t))
+      t=math.pi*i/5;a=math.tau*j/10;return(px+radius*math.sin(t)*math.cos(a),py+radius*math.sin(t)*math.sin(a),112+(7 if cx==0 else 5)*math.cos(t))
      face('Leaf' if cx==0 else 'Tomato',[point(lat,lon),point(lat+1,lon),point(lat+1,lon+1),point(lat,lon+1)])
 manifest=[]
 for name,triangles in groups.items():

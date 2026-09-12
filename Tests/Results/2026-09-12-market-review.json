@@ -1,4 +1,16 @@
 {
+  "lighting": [
+    {
+      "actor": "SkyLight",
+      "intensity": 1.0,
+      "mobility": "<ComponentMobility.MOVABLE: 2>",
+      "real_time_capture": true,
+      "source_type": "<SkyLightSourceType.SLS_CAPTURED_SCENE: 0>",
+      "review_recapture": true,
+      "review_real_time_capture": false
+    }
+  ],
+  "sign_implementation": "Textured static panels; five baked fictional labels",
   "imported_table_y_sign": 1,
   "stalls": [
     {
@@ -1373,16 +1385,14 @@
     }
   ],
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/a0180a5f961b455395e199ad39f44215/entrance.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/a0180a5f961b455395e199ad39f44215/stall.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/a0180a5f961b455395e199ad39f44215/wide.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/7e16e580a005491e96468f1077002171/entrance.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/7e16e580a005491e96468f1077002171/stall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/7e16e580a005491e96468f1077002171/wide.png"
   ],
   "main_map_saved": false,
   "visual_accepted": false,
   "scope": "Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.",
   "import_exit_code": 0,
   "capture_passed": true,
-  "sign_implementation": "Textured static panels; five baked fictional labels",
-  "sign_closeup_review_passed": true,
-  "review": "Inspected shaded stall close-up and entrance. First label clearly readable, panels face aisle on both rows. Full market art remains unaccepted: dark produce, repeated stalls and levelling blocks still rough."
+  "review": "Shaded close-up inspected: label readable; raised produce visible above crate rims. Static skylight recapture diagnostic restores ambient on canopy. Full art and native runtime lighting unaccepted."
 }

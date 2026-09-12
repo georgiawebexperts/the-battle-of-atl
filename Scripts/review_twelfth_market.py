@@ -26,6 +26,13 @@ for i in range(5):
  unreal.MaterialEditingLibrary.delete_all_material_expressions(mat);mat.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT);mat.set_editor_property('two_sided',True)
  sample=unreal.MaterialEditingLibrary.create_material_expression(mat,unreal.MaterialExpressionTextureSample);sample.set_editor_property('texture',unreal.load_asset(dest+f'/T_MarketSign_{i}'));unreal.MaterialEditingLibrary.connect_material_property(sample,'RGB',unreal.MaterialProperty.MP_EMISSIVE_COLOR);unreal.MaterialEditingLibrary.recompile_material(mat);unreal.EditorAssetLibrary.save_loaded_asset(mat);sign_materials.append(mat)
 task=unreal.AssetImportTask();task.filename=str(folder/'Stall/SM_MarketSign.obj');task.destination_path=dest;task.destination_name='SM_MarketSign';task.automated=True;task.save=True;task.replace_existing=True;task.options=opts;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task]);sign_mesh=unreal.load_asset(dest+'/SM_MarketSign');assert sign_mesh;sign_mesh.set_material(0,sign_materials[0]);unreal.EditorAssetLibrary.save_loaded_asset(sign_mesh)
+lighting=[]
+for sky_actor in ea.get_all_level_actors():
+ if isinstance(sky_actor,unreal.SkyLight):
+  sky=sky_actor.get_component_by_class(unreal.SkyLightComponent)
+  row={'actor':sky_actor.get_actor_label(),'intensity':sky.get_editor_property('intensity'),'mobility':str(sky.get_editor_property('mobility')),'real_time_capture':sky.get_editor_property('real_time_capture'),'source_type':str(sky.get_editor_property('source_type'))}
+  if '-MarketRecaptureSky' in unreal.SystemLibrary.get_command_line():sky.set_editor_property('real_time_capture',False);sky.recapture_sky();row['review_recapture']=True;row['review_real_time_capture']=False
+  lighting.append(row)
 layout=json.loads((folder/'layout.json').read_text());survey=[]
 bounds=meshes['Wood'].get_bounding_box();table_sign=1 if bounds.min.y+bounds.max.y>0 else -1
 for index,row in enumerate(layout['stalls']):
@@ -59,6 +66,6 @@ for name,p,target in views:
  loc=unreal.Vector(*p);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
-result={'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
+result={'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
 (root/'Tests/Results/2026-09-12-market-review.json').write_text(json.dumps(result,indent=2)+'\n')
 print('MARKET_REVIEW '+str(out))

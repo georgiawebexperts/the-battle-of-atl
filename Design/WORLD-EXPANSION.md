@@ -525,3 +525,10 @@ Added original deterministic512px wood/fabric textures via Scripts/texture_marke
 ## Market signage fixed — 2026-09-12 [codex-maclaptop]
 
 Replaced failed TextRender candidates with original baked lettering on a static sign panel, imported alongside stalls. Scripts/build_market_signs.py writes five1024x144PNG labels and270x36cm panel OBJ; no external photos or font files copied. Native review imports panel plus five unlit label materials. Import/render exits0. Capturesa0180a5f961b455395e199ad39f44215/stall.png and entrance.png inspected: PEACHES & GREENS clearly readable in shaded close-up, signs face aisle on both rows. This resolves that label presentation failure; full-market visual acceptance still false. Dark produce, repetitive stall contents, levelling blocks and market closure/gameplay work remain. Old M_MarketText asset is retained but no longer used by the review. Main map and desktop050 unchanged.
+
+
+## Market shade and produce visibility — 2026-09-12 [codex-maclaptop]
+
+Inspected current skylight: movable, intensity1, captured-scene source, real-time capture enabled. Recapture alone leaves static commandlet scene black in shadow. New optional -MarketRecaptureSky temporarily disables real-time capture and recaptures the existing skylight; canopy ambient becomes visible. This is a static-preview diagnostic, not a change to saved world lighting or proof of native game lighting. Review report records both original and diagnostic state.
+
+Produce centres were99cm while crate rims reach108.5cm, occluding fruit from rider-height view. Raised centres to112cm without changing collision-bearing table/crates. Native import/render exit0, shaded close-up7e16e580a005491e96468f1077002171 inspected: colored produce visible above rims and sign readable. Still low-detail/faceted, repeated stalls and dark crate fronts; full art acceptance false. No main save, no barrier, no desktop update.
