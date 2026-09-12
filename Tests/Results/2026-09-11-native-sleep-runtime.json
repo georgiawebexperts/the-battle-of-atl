@@ -3,8 +3,11 @@
   "checks": {
     "passed": false,
     "phase": 2,
-    "reason": "Sleeping head remains standing"
+    "reason": "Wake entry failed"
   },
   "scope": "Uncooked native runtime state/pose/interruption check, no rendered presentation or packaged acceptance",
-  "passed": false
+  "passed": false,
+  "sleep_head_height_cm": 8.575,
+  "previous_sleep_head_height_cm": 100.587,
+  "remaining_failure": "Standing clearance rejects wake at current test placement; wake and interruption phases remain unverified."
 }

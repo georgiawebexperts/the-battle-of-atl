@@ -87,7 +87,9 @@ void APiedmontExplorer::AnimateBody(float Dt){
   BodyHeight=-GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
   const auto* Movement=GetCharacterMovement();
   if(Movement->IsMovingOnGround()&&Movement->CurrentFloor.IsWalkableFloor())
-   BodyHeight=Movement->CurrentFloor.HitResult.ImpactPoint.Z-GetActorLocation().Z;
+   // A sweep can report an edge/contact point above the supporting plane.
+   // Floor distance is measured from the capsule base and remains valid there.
+   BodyHeight-=Movement->CurrentFloor.GetDistanceToFloor();
  }
  Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75):FVector(0,0,BodyHeight));
  Body->SetRelativeRotation(bSwimming?FRotator(0,-90,90):FRotator(0,-90,0));
