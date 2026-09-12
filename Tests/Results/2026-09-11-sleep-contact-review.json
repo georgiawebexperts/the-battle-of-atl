@@ -1,0 +1,17 @@
+{
+  "visual_acceptance": false,
+  "checks": [
+    {
+      "offset_cm": 0,
+      "manifest": "work/city-sleep-studio-review/manifest.json",
+      "finding": "Visible gap beneath portions of body; needs contact adjustment."
+    },
+    {
+      "offset_cm": -8,
+      "manifest": "work/city-sleep-contact-review/manifest.json",
+      "finding": "Rejected: lowering whole mesh clips forearm/hand through floor."
+    }
+  ],
+  "next_action": "Adjust retarget pose/contact per limb rather than accept global lowering. Check sleep-to-side-recovery alignment after contact is corrected.",
+  "gameplay_changed": false
+}

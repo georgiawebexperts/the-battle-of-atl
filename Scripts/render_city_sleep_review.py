@@ -1,6 +1,8 @@
-"""Transient native render of imported casual outfits with their matching walk clips."""
-import unreal,json,pathlib
-root=pathlib.Path(unreal.Paths.project_dir());out=root/'work/city-sleep-review';out.mkdir(parents=True,exist_ok=True)
+"""Transient flat-floor review of sleeping contact and recovery candidate poses."""
+import unreal,json,pathlib,os
+root=pathlib.Path(unreal.Paths.project_dir())
+offset=float(os.environ.get('BATTLE_SLEEP_REVIEW_OFFSET','0'))
+out=root/('work/city-sleep-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 def vector_values(v):return [v.x,v.y,v.z]
@@ -8,13 +10,16 @@ base='/Game/CitySampleCrowd/Character/'
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());c=cam.get_component_by_class(unreal.SceneCaptureComponent2D)
 t=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8)
 for prop,value in [('texture_target',t),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',50)]:c.set_editor_property(prop,value)
+floor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(0,0,10000))
+floor.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'))
+floor.set_actor_scale3d(unreal.Vector(100,100,.1))
+key=ea.spawn_actor_from_class(unreal.DirectionalLight,unreal.Vector(0,0,10500),unreal.Rotator(pitch=-45,yaw=-35))
+key.get_component_by_class(unreal.DirectionalLightComponent).set_intensity(12)
 results=[]
 variants=[]
 variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim')]
 for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
- x=-17400;y=-5200
- hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,7000),unreal.Vector(x,y,-7000),0);assert hit
- origin=hit[0];parts=[]
+ origin=unreal.Vector(0,0,10005+offset);parts=[]
  paths=[base+sex+'/NormalWeight/Meshes/'+prefix+'_'+part for part in ['body',outfit,'jeans','loafers']]+[base+sex+'/'+face+'/Face/'+face+'_nrw_FaceMesh']
  for path in paths:
   actor=ea.spawn_actor_from_class(unreal.SkeletalMeshActor,origin,unreal.Rotator(yaw=-90));component=actor.skeletal_mesh_component
@@ -26,9 +31,6 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
   parts.append((actor,component))
  body=parts[0][1]
  animation=unreal.load_asset(clip);assert animation
- body.set_animation_mode(unreal.AnimationMode.ANIMATION_SINGLE_NODE)
- body.set_animation(animation)
- body.play(True)
  for actor,component in parts[1:]:component.set_leader_pose_component(body,True,False)
  hair_actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,origin,unreal.Rotator(yaw=-90))
  hair_actor.static_mesh_component.set_static_mesh(unreal.load_asset(base+sex+'/'+face+'/Hair/Hair/'+hair+'_CardsMesh_Group0_LOD0'))
@@ -40,10 +42,10 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
  fill_component.set_editor_property('attenuation_radius',1000)
  fill_component.set_cast_shadows(False)
  unreal.PiedmontWorldTools.finish_editor_asset_loading()
- pos=origin+unreal.Vector(320,-280,160);target=origin+unreal.Vector(0,0,30)
+ pos=origin+unreal.Vector(320,-280,90);target=origin+unreal.Vector(0,0,30)
  cam.set_actor_location(pos,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(pos,target),False)
  samples=[]
- for phase,fraction in enumerate([.03,.25,.55,.95]):
+ for phase,fraction in enumerate([0,.25,.55,.999]):
   sample_time=animation.get_editor_property('sequence_length')*fraction
   body.set_animation_mode(unreal.AnimationMode.ANIMATION_CUSTOM_MODE)
   body.override_animation_data(animation,True,False,sample_time,1.0)
@@ -57,5 +59,5 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
  for actor,component in parts:ea.destroy_actor(actor)
  ea.destroy_actor(hair_actor)
  ea.destroy_actor(fill)
-(out/'manifest.json').write_text(json.dumps({'map_saved':False,'diagnostic_fill_light':{'intensity':40,'radius':1000},'explicit_sampled_pose_evaluation':True,'post_process_disabled_for_diagnostic':True,'hair_attached_to_head':True,'results':results,'scope':'Sleeping candidate poses only; no gameplay or transition acceptance'},indent=2)+'\n')
+(out/'manifest.json').write_text(json.dumps({'map_saved':False,'flat_floor_z':10005,'candidate_mesh_offset_z':offset,'diagnostic_fill_light':{'intensity':40,'radius':1000},'explicit_sampled_pose_evaluation':True,'post_process_disabled_for_diagnostic':True,'hair_attached_to_head':True,'results':results,'scope':'Sleeping candidate poses only; no gameplay or transition acceptance'},indent=2)+'\n')
 print('BATTLE_SLEEP_RENDER_COMPLETE')
