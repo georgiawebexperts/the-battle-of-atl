@@ -91,7 +91,7 @@ void ABattleBike::BeginPlay(){
 void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
  Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::J,IE_Pressed,this,&ABattleBike::HopBike);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::R,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Q,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
-void ABattleBike::ToggleCamera(){bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
+void ABattleBike::ToggleCamera(){if(bCrashActive)return;bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
  Super::Tick(Dt);UpdateHealth(Dt);UpdateStun(Dt);UpdateLights(Dt);UpdateRideFeedback(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);HornNoticeRemaining=FMath::Max(0.f,HornNoticeRemaining-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
  if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0){auto& Item=Inventory[0];const int32 Add=FMath::Min(BattleWeapons::Capacity(0)-PistolAmmo,Item.Reserve);PistolAmmo+=Add;Item.Reserve-=Add;Item.Magazine=PistolAmmo;}}
@@ -166,7 +166,7 @@ void ABattleLabMode::Tick(float Dt){
  AGameModeBase::Tick(Dt);ExpansionNoticeRemaining=FMath::Max(0.f,ExpansionNoticeRemaining-Dt);if(bTutorialActive)return;TickTrouble(Dt);TickDrones(Dt);TickKnife(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
  if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
- APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&Player->IsA<ABattleRider>()?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
+ APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&(Player->IsA<ABattleRider>()||(Cast<ABattleBike>(Player)&&Cast<ABattleBike>(Player)->bCrashActive))?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
 }
 void ABattleBike::RefreshRiderPose(){PoseRider(0);Rider->RefreshBoneTransforms();Rider->MarkRenderDynamicDataDirty();}
 void ABattleBike::PoseRider(float Dt){

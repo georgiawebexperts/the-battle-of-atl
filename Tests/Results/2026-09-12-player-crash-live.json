@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/18e177e660c64422a04fccce9750eb61/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/18e177e660c64422a04fccce9750eb61/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/18e177e660c64422a04fccce9750eb61/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/18e177e660c64422a04fccce9750eb61/live-remounted.png"
+  ],
+  "events": [
+    "started speed=1007.9",
+    "recovered on foot health=70.0 ammo=10",
+    "state=1 timer=1 elapsed=7.802 lost=9.723"
+  ],
+  "scope": "One keyboard collision fixture and live recovery/remount or death interruption. Full visuals, arbitrary terrain and other hazards not accepted.",
+  "passed": true
+}

@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Death interrupted crash and restored checkpoint control",
+    "stage": 5
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/ca25781f2e8d4d14b9a4612cc9947913/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/ca25781f2e8d4d14b9a4612cc9947913/live-death-return.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/ca25781f2e8d4d14b9a4612cc9947913/live-fall.png"
+  ],
+  "events": [
+    "started speed=1007.0"
+  ],
+  "scope": "One keyboard collision fixture and live recovery/remount or death interruption. Full visuals, arbitrary terrain and other hazards not accepted.",
+  "passed": true
+}

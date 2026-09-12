@@ -10,7 +10,7 @@
 
 float ABattleBike::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  // An empty parked bicycle cannot take damage on behalf of its rider.
- return bParked?0:ApplyRiderDamage(Amount);
+ return bParked&&!bCrashActive?0:ApplyRiderDamage(Amount);
 }
 float ABattleBike::ApplyRiderDamage(float Amount){
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
@@ -22,7 +22,7 @@ float ABattleBike::ApplyRiderDamage(float Amount){
  if(Person&&Person->ParkedBike==this)Person->Health=RiderHealth;
  if(RiderHealth<=0){
   ABattleSpirit::CancelForRider(this);
-  Deaths++;RespawnRemaining=2;
+  ClearPhysicalCrash();Deaths++;RespawnRemaining=2;
   if(auto* Park=Cast<ABattleParkMode>(Mode))if(Park->Quest)Park->Quest->ResetAfterDeath();
   if(Mode){Mode->TimeRemaining=FMath::Max(0.f,Mode->TimeRemaining-10);if(Mode->TimeRemaining<=0)Mode->bRunEnded=true;}
   // Override an in-progress water/traffic recovery so it cannot teleport later.
@@ -61,7 +61,7 @@ bool ABattleBike::RecoverAtCheckpoint(){
  FVector Location=CheckpointTransform.GetLocation();const FRotator Rotation=CheckpointTransform.Rotator();
  // Respect actual current capsule clearance (crowds can occupy the checkpoint).
  if(!GetWorld()->FindTeleportSpot(this,Location,Rotation))return false;
- Ride->StopMovementImmediately();Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->Recovery=0;Ride->BoostRemaining=0;
+ ClearPhysicalCrash();Ride->StopMovementImmediately();Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->Recovery=0;Ride->BoostRemaining=0;
  SetActorLocationAndRotation(Location,Rotation,false,nullptr,ETeleportType::TeleportPhysics);
  if(Person){Person->SaveWeapon();PC->Possess(this);Person->Destroy();}else if(PC->GetPawn()!=this)PC->Possess(this);
  bParked=false;LeanAngle=0;Ride->SmoothedSteer=0;StunRemaining=0;TaserGrace=FMath::Max(TaserGrace,2.f);RiderHealth=100;DamageGrace=2;HurtCooldown=5;RespawnRemaining=0;

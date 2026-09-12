@@ -37,11 +37,11 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
   const FVector BaseOrigin=Origin;
   for(const FVector Offset:{FVector::ZeroVector,FVector(80,0,0),FVector(-80,0,0),FVector(0,80,0),FVector(0,-80,0),FVector(160,0,0),FVector(-160,0,0),FVector(0,160,0),FVector(0,-160,0)}){
    Origin=BaseOrigin+Offset;
-   FHitResult Hit;FCollisionQueryParams FloorQuery;FloorQuery.bTraceComplex=true;FloorQuery.AddIgnoredActor(Bike);
+   FHitResult Hit;FCollisionQueryParams FloorQuery;FloorQuery.bTraceComplex=true;FloorQuery.AddIgnoredActor(Bike);FloorQuery.AddIgnoredActor(Physics->GetOwner());
    for(TActorIterator<ABattleFallenBike> It(Bike->GetWorld());It;++It)FloorQuery.AddIgnoredActor(*It);
    if(!Bike->GetWorld()->LineTraceSingleByChannel(Hit,Origin+FVector(0,0,200),Origin-FVector(0,0,400),ECC_WorldStatic,FloorQuery)||Hit.ImpactNormal.Z<.65f)continue;
    Origin.Z=Hit.ImpactPoint.Z;
-   FCollisionQueryParams ClearanceQuery;ClearanceQuery.AddIgnoredActor(Bike);FCollisionObjectQueryParams Objects;Objects.AddObjectTypesToQuery(ECC_WorldStatic);Objects.AddObjectTypesToQuery(ECC_WorldDynamic);Objects.AddObjectTypesToQuery(ECC_PhysicsBody);Objects.AddObjectTypesToQuery(ECC_Pawn);
+   FCollisionQueryParams ClearanceQuery;ClearanceQuery.AddIgnoredActor(Bike);ClearanceQuery.AddIgnoredActor(Physics->GetOwner());FCollisionObjectQueryParams Objects;Objects.AddObjectTypesToQuery(ECC_WorldStatic);Objects.AddObjectTypesToQuery(ECC_WorldDynamic);Objects.AddObjectTypesToQuery(ECC_PhysicsBody);Objects.AddObjectTypesToQuery(ECC_Pawn);
    if(Bike->GetWorld()->OverlapAnyTestByObjectType(Origin+FVector(0,0,98),FQuat::Identity,Objects,FCollisionShape::MakeCapsule(30,96),ClearanceQuery))continue;
    const FTransform Candidate(Rotation,Origin);float Error=0;
    for(const FName Bone:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 I=Ref.FindBoneIndex(Bone);Error+=FVector::DistSquared(Candidate.TransformPosition(Start[I].GetLocation()),Landed[I].GetLocation());}

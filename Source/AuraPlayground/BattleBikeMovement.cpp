@@ -26,6 +26,7 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
  SmoothedSteer=SteeringResponse(SmoothedSteer,Recovery>0?0.f:Steer,Dt);
  ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);BounceRemaining=FMath::Max(0.f,BounceRemaining-Dt);SlideRemaining=FMath::Max(0.f,SlideRemaining-Dt);
+ if(auto* Bike=Cast<ABattleBike>(CharacterOwner);Bike&&Bike->bCrashActive){Recovery=2;Speed=0;return;}
  if(Recovery>0){
   Recovery=FMath::Max(0.f,Recovery-Dt);Speed=0;
   if(Recovery==0){
@@ -64,9 +65,10 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(Pedal>0)Cadence+=Dt*FMath::Clamp(Speed/(Gear*100.f),.5f,2.f)*2*PI;
 }
 void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
- if(Recovery>0)return;BoostRemaining=0;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
+ if(Recovery>0)return;const FVector CrashVelocity=Velocity.IsNearlyZero()?CharacterOwner->GetActorForwardVector()*Speed:Velocity;BoostRemaining=0;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
  ReturnLocation=LastSafeLocation;if(Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))ReturnLocation=Bike->FindPathReturn();
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(Water?1.8f:1.0f,Water);
+ if(!Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->StartPhysicalCrash(CrashVelocity);
  Speed=0;StopMovementImmediately();
 }
 void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta){

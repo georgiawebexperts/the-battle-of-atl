@@ -39,4 +39,4 @@ void ABattleBike::UpdateRideFeedback(float Dt){
  if(!Sliding)HasTrackPoint=false;WasSliding=Sliding;
 }
 
-void ABattleBike::EndPlay(const EEndPlayReason::Type Reason){if(IsValid(RideEffects))RideEffects->Destroy();Super::EndPlay(Reason);}
+void ABattleBike::EndPlay(const EEndPlayReason::Type Reason){ClearPhysicalCrash();if(IsValid(RideEffects))RideEffects->Destroy();Super::EndPlay(Reason);}

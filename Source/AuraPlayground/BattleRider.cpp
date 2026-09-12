@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "BattlePlayerCrash.h"
 #include "BattleKnife.h"
 #include "Engine/SkeletalMesh.h"
 #include "Materials/MaterialInterface.h"
@@ -87,11 +88,13 @@ bool ABattleBike::Dismount(){
  ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
+ if(bCrashActive||StunRemaining>0||!IsValid(Person)||Person->ParkedBike!=this)return false;
+ if(IsValid(PlayerCrash)&&!PlayerCrash->PrepareRemount(Person))return false;
  if(StunRemaining>0||!IsValid(Person)||Person->ParkedBike!=this||!bParked||FVector::Dist(GetActorLocation(),Person->GetActorLocation())>240)return false;
  auto* PC=Cast<APlayerController>(Person->GetController());if(!PC)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleRemount),false,this);Q.AddIgnoredActor(Person);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))return false;
- Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
+ Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;ClearPhysicalCrash();Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetRelativeLocation(FVector::ZeroVector);Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
 }
 
 bool ABattleRider::Fire(){

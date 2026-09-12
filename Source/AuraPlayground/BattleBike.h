@@ -9,7 +9,7 @@
 class ABattleQuest;class ABattleEnemyDirector;class ABattlePickupDirector;
 class ABattleRideFX;class UAudioComponent;
 class USpotLightComponent;class UPointLightComponent;
-class ABattleRider;
+class ABattleRider;class ABattlePlayerCrash;
 class UPoseableMeshComponent;
 class UCameraComponent;
 class USpringArmComponent;
@@ -102,6 +102,10 @@ public:
  UFUNCTION(BlueprintCallable) bool Boost();
  void AwardEnemyKill(){EnemyKills++;Nitro=FMath::Min(100.f,Nitro+25);}
  UPROPERTY(BlueprintReadOnly) bool bParked=false;
+ UPROPERTY(BlueprintReadOnly) bool bCrashActive=false;
+ UPROPERTY() TObjectPtr<ABattlePlayerCrash> PlayerCrash;
+ bool StartPhysicalCrash(const FVector& Velocity);
+ void ClearPhysicalCrash();
  UPROPERTY(BlueprintReadOnly) float RiderHealth=100;
  UPROPERTY(BlueprintReadOnly) float HurtCooldown=0;
  UPROPERTY(BlueprintReadOnly) float RespawnRemaining=0;
