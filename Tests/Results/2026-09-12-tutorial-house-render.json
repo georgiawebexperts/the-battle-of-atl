@@ -1,0 +1,17 @@
+{
+  "exit_code": 0,
+  "opening": {
+    "passed": true,
+    "duration": 12.0,
+    "skipped": false,
+    "protected": true
+  },
+  "capture_passed": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/a5157c388faf4d6eb6200094970abfbe/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/a5157c388faf4d6eb6200094970abfbe/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/a5157c388faf4d6eb6200094970abfbe/opening2.png"
+  ],
+  "visual_review": "All three frames inspected: siding, cream window trim, glass and paneled door render correctly. Porch base intersects/blends into terrain and needs ground-fit correction; house/neighborhood not visually complete.",
+  "scope": "Starting-house material and detail review during opening; no whole-neighborhood or traversal acceptance."
+}

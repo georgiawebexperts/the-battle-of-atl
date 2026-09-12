@@ -18,6 +18,8 @@ ABattleTutorial::ABattleTutorial(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> White(TEXT("/Game/PiedmontRide/Materials/M_Concrete.M_Concrete")),Wood(TEXT("/Game/BattleForTheA/Furniture/M_BenchWood.M_BenchWood")),Dark(TEXT("/Game/BattleForTheA/Furniture/M_BenchFrame.M_BenchFrame")),Red(TEXT("/Game/BattleForTheA/Materials/M_ColaRed.M_ColaRed")),Asphalt(TEXT("/Game/PiedmontRide/Materials/M_Asphalt.M_Asphalt")),TextMat(TEXT("/Engine/EngineMaterials/UnlitText.UnlitText"));
  auto Group=[&](const TCHAR* N,UMaterialInterface* Mat){auto* M=CreateDefaultSubobject<UInstancedStaticMeshComponent>(N);M->SetupAttachment(RootComponent);M->SetStaticMesh(Cube.Object);M->SetMaterial(0,Mat);M->SetCollisionProfileName(TEXT("BlockAll"));return M;};
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> SidingMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Siding.M_Siding")),TrimMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Trim.M_Trim")),HouseDoorMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Door.M_Door")),GlassMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Glass.M_Glass"));
+ auto* Siding=Group(TEXT("BungalowSiding"),SidingMat.Object);auto* Trim=Group(TEXT("BungalowTrim"),TrimMat.Object);auto* HouseDoor=Group(TEXT("BungalowDoor"),HouseDoorMat.Object);auto* Glass=Group(TEXT("BungalowGlass"),GlassMat.Object);
  auto* Concrete=Group(TEXT("HouseStone"),White.Object);auto* Timber=Group(TEXT("Porch"),Wood.Object);auto* Iron=Group(TEXT("IronAndRoof"),Dark.Object);auto* Door=Group(TEXT("Door"),Red.Object);auto* Road=Group(TEXT("PracticeStreet"),Asphalt.Object);
  auto Part=[&](UInstancedStaticMeshComponent* M,FVector P,FVector Size,FRotator R=FRotator::ZeroRotator){M->AddInstance(FTransform(R,P,Size/100));};
  for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialData::Road);I++){const FVector A=BattleTutorialData::Road[I-1],B=BattleTutorialData::Road[I],D=B-A;Part(Road,(A+B)*.5f-FVector(0,0,12),FVector(D.Size()+3,450,24),D.Rotation());}
@@ -25,19 +27,38 @@ ABattleTutorial::ABattleTutorial(){
  for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialBlock::Alternate);I++)Span(BattleTutorialBlock::Alternate[I-1],BattleTutorialBlock::Alternate[I]);
  for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::StubEnds);I+=2)Span(BattleTutorialBlock::StubEnds[I],BattleTutorialBlock::StubEnds[I+1]);
  const FVector H=BattleTutorialData::Home;
- Part(Concrete,H+FVector(0,0,180),FVector(650,850,360));
- for(int Z=45;Z<345;Z+=22)Part(Concrete,H+FVector(0,-428,Z),FVector(650,10,5));
- for(int Side:{-1,1}){
-  Part(Iron,H+FVector(Side*170,-434,205),FVector(115,12,140));
-  for(int DX:{-1,1})Part(Concrete,H+FVector(Side*170+DX*64,-443,205),FVector(10,9,155));
-  for(int DZ:{-1,1})Part(Concrete,H+FVector(Side*170,-443,205+DZ*76),FVector(138,9,10));
-  Part(Concrete,H+FVector(Side*170,-446,205),FVector(6,10,138));
-  Part(Iron,H+FVector(Side*174,0,445),FVector(390,950,22),FRotator(-Side*25,0,0));
-  Part(Timber,H+FVector(Side*280,-520,160),FVector(18,18,290));
+ // The fictional bungalow has its own finishes, separate from street barriers and gate stone.
+ Part(Siding,H+FVector(0,0,180),FVector(650,850,360));
+ for(int Z=30;Z<355;Z+=18){
+  Part(Siding,H+FVector(0,-429,Z),FVector(650,12,14),FRotator(0,0,-7));
+  for(int Side:{-1,1})Part(Siding,H+FVector(Side*329,0,Z),FVector(12,850,14));
  }
- for(int Z=370;Z<526;Z+=12)for(int Side:{-1,1})Part(Concrete,H+FVector(0,Side*426,Z),FVector(FMath::Min(650.f,(527-Z)*2/FMath::Tan(FMath::DegreesToRadians(25.f))),12,12));
- Part(Door,H+FVector(0,-437,137),FVector(115,15,230));Part(Timber,H+FVector(0,-503,22),FVector(680,160,44));Part(Timber,H+FVector(0,-512,323),FVector(700,190,20));
- for(int Side:{-1,1})for(int X=160;X<=430;X+=35)Part(Concrete,H+FVector(Side*X,-600,70),FVector(14,14,140));
+ for(int Side:{-1,1}){
+  Part(Glass,H+FVector(Side*170,-438,205),FVector(115,12,140));
+  for(int DX:{-1,1})Part(Trim,H+FVector(Side*170+DX*64,-449,205),FVector(10,12,155));
+  for(int DZ:{-1,1})Part(Trim,H+FVector(Side*170,-449,205+DZ*76),FVector(138,12,10));
+  Part(Trim,H+FVector(Side*170,-451,205),FVector(6,12,138));
+  Part(Trim,H+FVector(Side*170,-451,210),FVector(120,12,6));
+  Part(Trim,H+FVector(Side*170,-457,124),FVector(145,26,12));
+  Part(Iron,H+FVector(Side*174,0,445),FVector(390,950,22),FRotator(-Side*25,0,0));
+  Part(Trim,H+FVector(Side*174,-482,445),FVector(390,16,25),FRotator(-Side*25,0,0));
+  Part(Trim,H+FVector(Side*320,-437,185),FVector(18,18,340));
+  Part(Trim,H+FVector(Side*280,-555,171),FVector(28,28,288));
+  Part(Concrete,H+FVector(Side*280,-555,55),FVector(48,48,66));
+  Part(Trim,H+FVector(Side*280,-555,312),FVector(44,44,18));
+ }
+ for(int Z=370;Z<526;Z+=12)for(int Side:{-1,1})Part(Siding,H+FVector(0,Side*426,Z),FVector(FMath::Min(650.f,(527-Z)*2/FMath::Tan(FMath::DegreesToRadians(25.f))),12,12));
+ Part(HouseDoor,H+FVector(0,-445,137),FVector(115,15,230));
+ for(int Side:{-1,1})Part(Trim,H+FVector(Side*64,-453,138),FVector(12,16,240));
+ Part(Trim,H+FVector(0,-453,260),FVector(140,16,15));
+ for(int Z:{85,155})for(int Side:{-1,1})Part(HouseDoor,H+FVector(Side*27,-456,Z),FVector(42,8,50));
+ Part(Glass,H+FVector(0,-456,218),FVector(83,8,34));
+ Part(Trim,H+FVector(43,-466,137),FVector(5,10,18));
+ Part(Timber,H+FVector(0,-515,22),FVector(680,180,44));
+ Part(Iron,H+FVector(0,-530,326),FVector(720,240,20));
+ Part(Trim,H+FVector(0,-653,317),FVector(720,14,25));
+ for(int I=0;I<3;I++)Part(Concrete,H+FVector(0,-625-I*30,18-I*6),FVector(145,40,36-I*12));
+ for(int Side:{-1,1})for(int X=160;X<=430;X+=35)Part(Trim,H+FVector(Side*X,-600,70),FVector(14,14,140));
  for(int Side:{-1,1})for(int Z:{35,105})Part(Timber,H+FVector(Side*290,-600,Z),FVector(300,12,12));
  Part(Timber,H+FVector(180,-625,70),FVector(14,14,140));Part(Iron,H+FVector(180,-625,145),FVector(100,45,45));
  auto Label=[&](const TCHAR* N,const TCHAR* T,FVector P,float Size,FRotator R){auto* C=CreateDefaultSubobject<UTextRenderComponent>(N);C->SetupAttachment(RootComponent);C->SetRelativeLocation(P);C->SetRelativeRotation(R);C->SetWorldSize(Size);C->SetText(FText::FromString(T));C->SetTextMaterial(TextMat.Object);C->SetTextRenderColor(FColor(255,229,183));C->SetHorizontalAlignment(EHTA_Center);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);};

@@ -1,0 +1,10 @@
+{
+  "created": [
+    "/Game/BattleForTheA/Environment/TutorialHouse/M_Siding",
+    "/Game/BattleForTheA/Environment/TutorialHouse/M_Trim",
+    "/Game/BattleForTheA/Environment/TutorialHouse/M_Door",
+    "/Game/BattleForTheA/Environment/TutorialHouse/M_Glass"
+  ],
+  "source": "Original authored PBR colors; no external assets or purchases.",
+  "visual_review": "Correct finishes visible in final three opening frames after enabling instanced mesh usage."
+}

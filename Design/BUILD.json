@@ -10,5 +10,8 @@
     "Verified DeKalb road-end construction fences and signs; main navigation rebuilt.",
     "Traffic spawns cycle through six visually reviewed paint colors on the existing car body.",
     "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; 481m main-world Krog route passes in realistic mode with cars and pedestrians active and a yielding test driver; mapped park-hill climb/descent passes; broader handling balance remains pending."
+  ],
+  "unreleased_code_changes": [
+    "Starting bungalow siding, trim, framed glazing, paneled door and porch details; final opening frames reviewed, porch ground fit still unfinished."
   ]
 }
