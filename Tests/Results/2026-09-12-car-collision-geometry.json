@@ -1,0 +1,5 @@
+{
+  "simple_shapes": 0,
+  "convex_hulls": 0,
+  "trace_flag": "<CollisionTraceFlag.CTF_USE_DEFAULT: 0>"
+}

@@ -1,0 +1,23 @@
+{
+  "route_distance_cm": 1748.804,
+  "impact_world_cm": [
+    11257.866,
+    16374.505,
+    -396.657
+  ],
+  "impact_local_cm": [
+    -237.83,
+    111.075,
+    -53.462
+  ],
+  "normal": [
+    -0.014,
+    0.011,
+    1.0
+  ],
+  "pitch_degrees": 4.084573,
+  "hit_time": 0.89361,
+  "start_penetrating": false,
+  "source_log": "work/monroe-road-contact.log",
+  "interpretation": "Rear lower corner against upward-facing road, not a vertical prop."
+}

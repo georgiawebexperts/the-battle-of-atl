@@ -326,3 +326,12 @@ Extended retained Monroe topology to 15591.150 cm, versus the old 4994.865 cm fr
 Full two-car driving test FAILED: southbound completed, but northbound stopped at route distance 1749.77 cm around (11203.452,16121.470,-326.555). The reported collision actor StaticMeshActor_132 was resolved in the editor to the new Monroe extended approaches mesh itself. This points to road/body clearance or local road profile, not an unrelated prop; investigate contact geometry before changing the car or terrain. Do not install this candidate. Source/footprint acceptance does not prove body clearance. Desktop/main-world approaches remain unchanged at 047.
 
 New scripts prepare_monroe_approaches.py, build_monroe_approaches.py, validate_monroe_approaches.py, test_native_monroe_approaches.py and inspect_monroe_blocker.py reproduce the candidate and failure. build_monroe_car_lanes.py --extended preserves the original shorter lane files. Results: monroe-extended-support, native-monroe-extended-lanes and monroe-blocker dated 2026-09-12.
+
+
+## Monroe body-contact diagnosis — 2026-09-12 [codex-maclaptop]
+
+Added opt-in BattleRoadContactAudit logging. First box contact at route distance 1748.804 cm is the rear lower corner, local (-237.830,111.075,-53.462), against road normal (-.014,.011,1), pitch 4.085 degrees; no starting penetration. This is road/underbody contact, not an unrelated prop. Centreline grades sampled over 1100–2300 cm are only 0.9–2.5%; compare all four wheel contacts and local lateral road profile before assuming a generally excessive road grade.
+
+Bundled sports body had zero collision shapes. Created separate SM_RoadCarHull by convex decomposition (3 hulls), preserving original. Added opt-in BattleBodyHull component sweep candidate with body collision; ordinary gameplay still uses the existing box. Candidate editor build succeeded but full extended Monroe route test FAILED at the same rise (northbound ~1747.90 cm; southbound finished). Do not promote this experimental collision or claim a road fix. It does not yet have bike-impact, crossing, or packaged regression acceptance.
+
+The asset-generation full editor completed its save and shutdown handler but remained alive; its owned process was terminated after confirming the generated report/asset. No user editor was touched. Next work: inspect native wheel-support positions versus local road mesh/terrain and repair the actual clearance transition. Desktop remains 047.

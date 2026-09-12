@@ -6,6 +6,9 @@
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 ABattleRoadCar::ABattleRoadCar(){
  PrimaryActorTick.bCanEverTick=true;Tags.Add(TEXT("RideVehicle"));
@@ -50,6 +53,12 @@ void ABattleRoadCar::EndPlay(const EEndPlayReason::Type Reason){
  Super::EndPlay(Reason);
 }
 bool ABattleRoadCar::StartRoute(){
+ bUseBodyHull=FParse::Param(FCommandLine::Get(),TEXT("BattleBodyHull"));
+ if(bUseBodyHull){
+  auto* Hull=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Traffic/SM_RoadCarHull.SM_RoadCarHull"));if(!Hull)return false;
+  Body->SetStaticMesh(Hull);Body->SetCollisionProfileName(TEXT("BlockAllDynamic"));Body->SetCollisionEnabled(ECollisionEnabled::QueryOnly);Collision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+ }
+
  for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
  bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();AmberStopping.Reset();bWaitingForCrossing=false;
  if(Route.Num()<2)return false;
@@ -89,8 +98,22 @@ void ABattleRoadCar::Tick(float Dt){
   FVector Heading=SampleRoute(FMath::Min(Lengths.Last(),RouteDistance+Travel+150))-Next;if(Heading.IsNearlyZero())Heading=GetActorForwardVector();
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
-  FHitResult Hit;SetActorLocationAndRotation(Pose.GetLocation(),Pose.GetRotation(),true,&Hit);
+  FHitResult Hit;
+  if(bUseBodyHull){
+   TArray<FHitResult> Hits;FComponentQueryParams Query(SCENE_QUERY_STAT(RoadCarBody),this);Query.bTraceComplex=false;
+   const FVector EndBody=Pose.TransformPosition(Body->GetRelativeLocation());
+   GetWorld()->ComponentSweepMulti(Hits,Body,Body->GetComponentLocation(),EndBody,Pose.GetRotation(),Query);
+   for(const auto& Candidate:Hits)if(Candidate.bBlockingHit&&(!Hit.bBlockingHit||Candidate.Time<Hit.Time))Hit=Candidate;
+   SetActorLocationAndRotation(FMath::Lerp(GetActorLocation(),Pose.GetLocation(),Hit.bBlockingHit?Hit.Time:1.f),Pose.GetRotation(),false);
+  }else SetActorLocationAndRotation(Pose.GetLocation(),Pose.GetRotation(),true,&Hit);
   if(Hit.bBlockingHit){
+#if !UE_BUILD_SHIPPING
+   if(FParse::Param(FCommandLine::Get(),TEXT("BattleRoadContactAudit"))){
+    const FVector Local=GetActorTransform().InverseTransformPosition(Hit.ImpactPoint);
+    UE_LOG(LogTemp,Display,TEXT("RoadContact: distance=%.3f point=%s local=%s normal=%s pose=%s time=%.5f penetrating=%d depth=%.3f"),RouteDistance,*Hit.ImpactPoint.ToString(),*Local.ToString(),*Hit.ImpactNormal.ToString(),*GetActorTransform().ToHumanReadableString(),Hit.Time,Hit.bStartPenetrating,Hit.PenetrationDepth);
+    UKismetSystemLibrary::QuitGame(this,nullptr,EQuitPreference::Quit,false);
+   }
+#endif
    // A swept move can stop part-way through the requested step. Keep route
    // progress and wheel travel aligned with the position actually reached.
    const float ActualTravel=Travel*FMath::Clamp(Hit.Time,0.f,1.f);
