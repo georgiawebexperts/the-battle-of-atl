@@ -42,6 +42,7 @@ private:
  bool bStarted=false;
  TArray<float> Lengths;
  TSet<int32> ClearedCrossings;
+ TSet<int32> AmberStopping;
  FVector SampleRoute(float Distance) const;
  bool GroundPose(FVector Point,FVector Direction,FTransform& Pose,TArray<FVector>& Contacts) const;
  void UpdateWheels(const TArray<FVector>& Contacts,float Travel,float Steering);

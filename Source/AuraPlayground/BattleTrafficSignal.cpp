@@ -27,9 +27,9 @@ void ABattleTrafficSignal::BeginPlay(){
 }
 void ABattleTrafficSignal::Tick(float Dt){Super::Tick(Dt);UpdateLamps();}
 void ABattleTrafficSignal::UpdateLamps(){
- const int32 Active=IsValid(Crossing)&&Crossing->bVehicleGreen?2:0;
+ const int32 Active=IsValid(Crossing)?(Crossing->bVehicleGreen?2:Crossing->bVehicleAmber?1:0):0;
  for(int32 I=0;I<LensMaterials.Num();++I)if(auto* Material=LensMaterials[I]){
-  const FLinearColor Lit=I==0?FLinearColor(.3,.001,.001):FLinearColor(.002,.3,.018);
+  const FLinearColor Lit=I==0?FLinearColor(.3,.001,.001):I==1?FLinearColor(.4,.17,.001):FLinearColor(.002,.3,.018);
   Material->SetVectorParameterValue(TEXT("Color"),I==Active?Lit:FLinearColor(.009,.012,.009));Material->SetScalarParameterValue(TEXT("Strength"),I==Active?1.5f:0.f);
  }
 }

@@ -1,14 +1,15 @@
 {
   "exit_code": 0,
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/b8d0cbc138e04850a6ca7cba20be1685/signal-red.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/b8d0cbc138e04850a6ca7cba20be1685/signal-green.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/2a9b53656d3f487881fb375019dbc331/signal-red.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/2a9b53656d3f487881fb375019dbc331/signal-amber.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/2a9b53656d3f487881fb375019dbc331/signal-green.png"
   ],
   "capture_passed": true,
   "visual_accepted": true,
-  "scope": "Native red/green traffic signal appearance. World placement, player approach visibility and packaged behavior pending",
+  "scope": "Native red/amber/green traffic signal appearance. World placement, player approach visibility and packaged behavior pending",
   "review": {
     "author": "2026-09-12 [codex-maclaptop]",
-    "observations": "Entire pole and head visible. Top red and bottom green switch with the linked crossing state; inactive lenses remain dark. Reduced emission to preserve saturated red/green. Acceptance covers this isolated daylight camera only."
+    "observations": "All three native frames inspected: red top, amber middle and green bottom are distinct with other lamps dark. Isolated daylight view only; actual street approach visibility is pending."
   }
 }

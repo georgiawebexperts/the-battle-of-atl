@@ -238,3 +238,12 @@ Editor build passed. Native API fixture with two vehicle-sized blocking actors p
 Added ABattleTrafficSignal: a metal pole and foot, dark housing/backplate, three lamp rims and visors, with dynamic red/green lenses bound to ABattleRoadCrossing::bVehicleGreen. Missing crossing defaults to red. Amber remains inactive pending the signal-phase controller. Pole blocks collision and actor carries RideBarrier; approach collision has not yet been tested. Uses authored housing/pole/lens materials in /Game/BattleForTheA/Traffic and bundled engine primitive meshes.
 
 Editor build and native red/green screenshot capture passed. The first review clipped the head and caught shaders compiling; the review now frames the complete signal and finishes editor shader compilation before capturing. Lamp intensity was reduced after inspection to preserve red/green color rather than orange/white highlights. Both revised frames inspected and accepted for isolated daylight appearance. The asset is not placed in the main world or desktop 046; street siting, approach visibility, amber/timing, live queues, population and packaged review remain pending.
+
+
+## Timed signals and amber decisions — 2026-09-12 [codex-maclaptop]
+
+Crossings can now run an optional repeating gameplay cycle: 18 seconds green, 3 amber, 9 red by default, with durations clamped to at least one second. These are tunable game timings, not measured Atlanta signal timings. Auto-cycle defaults off so existing manually controlled crossings remain unchanged. Signal lamps display the corresponding three states.
+
+On first observing amber, a car with enough stopping distance commits to braking for the remainder of that amber phase. A car already too close for the configured braking rate may reserve entry and clear; occupancy and exclusive ownership still apply. Stop decisions reset after amber ends. This prevents a distant car from changing its mind as it approaches the line while braking.
+
+Native test passed the repeating cycle, near-line amber clearance at 650 cm/s without braking, distant amber stop and two-second hold, and green resumption to route end. Three-state native screenshots inspected: red top, amber middle and green bottom, other lamps dark. Editor build passed. No signals or traffic population installed in the main map yet; real approach visibility, moving queues, crossing placement and packaging remain pending.

@@ -50,7 +50,7 @@ void ABattleRoadCar::EndPlay(const EEndPlayReason::Type Reason){
 }
 bool ABattleRoadCar::StartRoute(){
  for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
- bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();bWaitingForCrossing=false;
+ bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();AmberStopping.Reset();bWaitingForCrossing=false;
  if(Route.Num()<2)return false;
  Lengths.Add(0);for(int32 I=1;I<Route.Num();++I){const float L=FVector::Dist2D(Route[I],Route[I-1]);if(L<1)return false;Lengths.Add(Lengths.Last()+L);}
  for(const auto& Gate:Crossings)if(!IsValid(Gate.Crossing)||Gate.Crossing->GetWorld()!=GetWorld()||Gate.StopDistance<0||Gate.StopDistance>=Lengths.Last())return false;
@@ -73,8 +73,13 @@ void ABattleRoadCar::Tick(float Dt){
   for(int32 I=0;I<Crossings.Num();++I){
    if(ClearedCrossings.Contains(I))continue;
    const auto& Gate=Crossings[I];const float Gap=Gate.StopDistance-RouteDistance;
-   const bool Clear=IsValid(Gate.Crossing)&&Gate.Crossing->CanEnter(this);
-   if(Clear&&Gap<=Speed*Step+3.f&&Gate.Crossing->TryReserve(this)){ClearedCrossings.Add(I);continue;}
+   // On amber, commit only when comfortable braking cannot reach the line.
+   const bool Amber=IsValid(Gate.Crossing)&&!Gate.Crossing->bVehicleGreen&&Gate.Crossing->bVehicleAmber;
+   if(!Amber)AmberStopping.Remove(I);
+   const bool AmberCommit=Amber&&!AmberStopping.Contains(I)&&Speed>1&&Gap<Speed*Speed/(2*900.f);
+   if(Amber&&!AmberCommit)AmberStopping.Add(I);
+   const bool Clear=IsValid(Gate.Crossing)&&Gate.Crossing->CanEnter(this,AmberCommit);
+   if(Clear&&(AmberCommit||Gap<=Speed*Step+3.f)&&Gate.Crossing->TryReserve(this,AmberCommit)){ClearedCrossings.Add(I);continue;}
    if(!Clear){Available=FMath::Min(Available,FMath::Max(0.f,Gap));if(Gap<100)bWaitingForCrossing=true;}
   }
   const float Target=bObstacleAhead?0.f:FMath::Min(CruiseSpeed,FMath::Sqrt(2*900.f*FMath::Max(0.f,Available-2.f)));

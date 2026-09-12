@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Cycle timing, near-line amber clearance, distant amber stop, hold and green resume passed",
+    "minimum_committed_speed": 650.0
+  },
+  "scope": "Signal cycle and moving-car amber decisions; natural traffic, placement and packaged behavior pending.",
+  "passed": true
+}
