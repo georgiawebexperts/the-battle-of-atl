@@ -58,3 +58,21 @@ void ABattleParkFurniture::BeginPlay(){
  }
  UE_LOG(LogTemp,Display,TEXT("BattleBenches: count=%d wood_instances=%d frame_instances=%d"),Benches.Num(),Wood->GetInstanceCount(),Frame->GetInstanceCount());
 }
+
+
+bool ABattleParkFurniture::IsBenchAvailable(int32 Index) const{
+ if(!Benches.IsValidIndex(Index))return false;
+ const auto* Claim=Reservations.Find(Index);
+ return !Claim||!Claim->IsValid()||Claim->Get()->IsActorBeingDestroyed();
+}
+bool ABattleParkFurniture::ReserveBench(int32 Index,AActor* Claimant){
+ if(!IsValid(Claimant)||Claimant->IsActorBeingDestroyed()||Claimant->GetWorld()!=GetWorld()||!Benches.IsValidIndex(Index))return false;
+ const auto* Existing=Reservations.Find(Index);
+ if(Existing&&Existing->Get()==Claimant)return true;
+ if(!IsBenchAvailable(Index))return false;
+ Reservations.Add(Index,Claimant);return true;
+}
+void ABattleParkFurniture::ReleaseBench(int32 Index,AActor* Claimant){
+ const auto* Existing=Reservations.Find(Index);
+ if(Existing&&Existing->Get()==Claimant)Reservations.Remove(Index);
+}

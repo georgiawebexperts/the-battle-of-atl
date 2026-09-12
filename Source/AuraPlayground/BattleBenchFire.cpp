@@ -1,4 +1,6 @@
 #include "BattleBenchFire.h"
+#include "BattleParkFurniture.h"
+#include "EngineUtils.h"
 #include "Components/MaterialBillboardComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
@@ -34,4 +36,20 @@ void ABattleBenchFire::Tick(float Dt){
  for(int I=0;I<FlameMaterials.Num();++I)FlameMaterials[I]->SetScalarParameterValue(TEXT("Frame"),FMath::Fmod(Age*24+I*11,36.f));
  if(SmokeMaterial)SmokeMaterial->SetScalarParameterValue(TEXT("Frame"),FMath::Fmod(Age*12,64.f));
  Glow->SetIntensity(650+100*FMath::Sin(Age*13)+65*FMath::Sin(Age*21));
+}
+
+ABattleBenchFire* ABattleBenchFire::IgniteBench(ABattleParkFurniture* Furniture,int32 Index){
+ if(!IsValid(Furniture)||!Furniture->IsBenchAvailable(Index))return nullptr;
+ UWorld* World=Furniture->GetWorld();int32 Active=0;
+ for(TActorIterator<ABattleBenchFire> It(World);It;++It)if(!It->IsActorBeingDestroyed())++Active;
+ if(Active>=2)return nullptr;
+ const FTransform Transform=Furniture->Benches[Index];
+ auto* Fire=World->SpawnActorDeferred<ABattleBenchFire>(StaticClass(),Transform,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+ if(!Fire)return nullptr;
+ if(!Furniture->ReserveBench(Index,Fire)){Fire->Destroy();return nullptr;}
+ Fire->ReservedFurniture=Furniture;Fire->ReservedBench=Index;Fire->FinishSpawning(Transform);return Fire;
+}
+void ABattleBenchFire::EndPlay(const EEndPlayReason::Type Reason){
+ if(auto* Furniture=ReservedFurniture.Get())Furniture->ReleaseBench(ReservedBench,this);
+ Super::EndPlay(Reason);
 }

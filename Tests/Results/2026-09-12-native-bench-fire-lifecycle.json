@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "reservation ownership, duplicate rejection, two-fire cap, destruction and expiry passed"
+  },
+  "scope": "Native reservations, two-fire spawn API cap, destruction and expiry. No natural ignition, NPC, damage, rendered or packaged acceptance.",
+  "passed": true
+}

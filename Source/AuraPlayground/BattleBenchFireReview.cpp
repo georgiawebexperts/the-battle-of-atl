@@ -15,7 +15,7 @@ void TickBattleBenchFireReview(APlayerController* PC,float Dt){
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;S.Clock+=Dt;
  if(S.Phase==0){
   for(TActorIterator<ABattleParkFurniture> It(PC->GetWorld());It;++It)if(It->Benches.Num()){
-   const FTransform T=It->Benches[0];S.Fire=PC->GetWorld()->SpawnActor<ABattleBenchFire>(ABattleBenchFire::StaticClass(),T);
+   const FTransform T=It->Benches[0];S.Fire=ABattleBenchFire::IgniteBench(*It,0);
    auto* Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Look=T.GetLocation()+FVector(0,0,100),Offset=T.TransformVectorNoScale(FVector(230,420,180));
    Camera->GetCameraComponent()->SetFieldOfView(50);Camera->SetActorLocation(Look+Offset);Camera->SetActorRotation((-Offset).Rotation());PC->SetViewTarget(Camera);if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;
    S.Phase=1;S.Clock=0;break;

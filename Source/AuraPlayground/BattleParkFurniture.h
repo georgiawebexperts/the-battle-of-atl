@@ -13,4 +13,9 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UInstancedStaticMeshComponent> Frame;
  TArray<FTransform> Benches;
  void AddBench(const FTransform& Transform);
+ bool IsBenchAvailable(int32 Index) const;
+ bool ReserveBench(int32 Index,AActor* Claimant);
+ void ReleaseBench(int32 Index,AActor* Claimant);
+private:
+ TMap<int32,TWeakObjectPtr<AActor>> Reservations;
 };
