@@ -9,7 +9,7 @@
 void TickBattleVendorRegionAudit(ABattleEnemyDirector* Director,float Dt){
 #if !UE_BUILD_SHIPPING
  auto* World=Director->GetWorld();if(World->GetTimeSeconds()<5)return;
- static int Stage=0;static float Clock=0;static TWeakObjectPtr<ABattleZombie> Vendor,Punk;static FVector Inside,Outside;
+ static int Stage=0;static float Clock=0;static TWeakObjectPtr<ABattleZombie> Vendor,Punk;static FVector Inside,Outside,ChaseStart,ChaseGoal,Stopped;
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("VendorRegionAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Stage,Why);FPlatformMisc::RequestExit(false);};
  auto* Bike=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(World,0));if(!Bike)return;
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(World));if(!Mode)return;Mode->bTutorialActive=false;Mode->StartCountdown=0;Bike->Ride->DisableMovement();Bike->DamageGrace=100;
@@ -54,7 +54,33 @@ void TickBattleVendorRegionAudit(ABattleEnemyDirector* Director,float Dt){
   if(!Vendor.IsValid()||!BattleParkRegion::Contains(Vendor->GetActorLocation())||Vendor->Attacks){Finish(false,TEXT("Vendor escaped or attacked across boundary"));return;}
   // Exercise the character movement delegate with sustained outward velocity.
   Vendor->GetCharacterMovement()->Velocity=(Outside-Inside).GetSafeNormal()*500;
-  if(Clock>2){Finish(true,TEXT("Exterior selection, park vendor, outside attack cancellation and two-second outward movement containment pass"));Stage=2;}
+  if(Clock>2){
+   Vendor->Destroy();
+   // Retained OSM path centreline, converted from source ENU into world ESU.
+   ChaseStart=FVector(1832.877224,-5554.165366,-259.555339);
+   ChaseGoal=FVector(2930.763120,-5075.627776,-246.377848);
+   Bike->SetActorLocation(ChaseGoal,false,nullptr,ETeleportType::TeleportPhysics);
+   auto* Z=World->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),FTransform(ChaseStart),Director,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+   Z->VisualStyle=0;Z->Emergence=0;Z->FinishSpawning(FTransform(ChaseStart));Vendor=Z;
+   Stage=2;Clock=0;
+  }
+ }
+ else if(Stage==2&&Clock>4){
+  const float Travel=FVector::Dist2D(ChaseStart,Vendor->GetActorLocation());
+  const bool Approached=FVector::Dist2D(ChaseGoal,Vendor->GetActorLocation())<FVector::Dist2D(ChaseGoal,ChaseStart)-150;
+  UE_LOG(LogTemp,Display,TEXT("VendorRegionChase: travel_cm=%.2f approached=%d paths=%d"),Travel,Approached,Vendor->PathRequests);
+  if(Travel<150||!Approached||Vendor->VisualStyle!=0||!BattleParkRegion::Contains(Vendor->GetActorLocation())){Finish(false,TEXT("Vendor did not pursue normally inside park"));return;}
+  Bike->SetActorLocation(Outside,false,nullptr,ETeleportType::TeleportPhysics);Vendor->Tick(.01);Stopped=Vendor->GetActorLocation();Stage=3;Clock=0;
+ }
+ else if(Stage==3&&Clock>2){
+  if(FVector::Dist2D(Stopped,Vendor->GetActorLocation())>5||Vendor->bTelegraphing){Finish(false,TEXT("Vendor kept chasing after player left park"));return;}
+  Bike->SetActorLocation(ChaseGoal,false,nullptr,ETeleportType::TeleportPhysics);Stage=4;Clock=0;
+ }
+ else if(Stage==4&&Clock>3){
+  const float Resumed=FVector::Dist2D(Stopped,Vendor->GetActorLocation());
+  UE_LOG(LogTemp,Display,TEXT("VendorRegionResume: travel_cm=%.2f"),Resumed);
+  if(Resumed<100||!BattleParkRegion::Contains(Vendor->GetActorLocation())){Finish(false,TEXT("Vendor failed to resume in-park pursuit"));return;}
+  Finish(true,TEXT("Boundary containment, unrestricted punk, in-park pursuit, outside stop and re-entry pursuit pass"));Stage=5;
  }
 #endif
 }
