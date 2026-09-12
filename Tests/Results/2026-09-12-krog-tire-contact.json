@@ -1,0 +1,222 @@
+{
+  "samples": [
+    {
+      "view": 1,
+      "car": "BattleRoadCar_0",
+      "wheel": 0,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1538,
+      "maximum_gap_cm": 2.8386
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_0",
+      "wheel": 1,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1768,
+      "maximum_gap_cm": 2.7803
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_0",
+      "wheel": 2,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.061,
+      "maximum_gap_cm": 3.1742
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_0",
+      "wheel": 3,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.066,
+      "maximum_gap_cm": 3.1778
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_1",
+      "wheel": 0,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.0997,
+      "maximum_gap_cm": 2.9764
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_1",
+      "wheel": 1,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1031,
+      "maximum_gap_cm": 2.9828
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_1",
+      "wheel": 2,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1778,
+      "maximum_gap_cm": 2.6681
+    },
+    {
+      "view": 1,
+      "car": "BattleRoadCar_1",
+      "wheel": 3,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1999,
+      "maximum_gap_cm": 2.7225
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_0",
+      "wheel": 0,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1538,
+      "maximum_gap_cm": 2.8386
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_0",
+      "wheel": 1,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1768,
+      "maximum_gap_cm": 2.7803
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_0",
+      "wheel": 2,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.061,
+      "maximum_gap_cm": 3.1742
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_0",
+      "wheel": 3,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.066,
+      "maximum_gap_cm": 3.1778
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_1",
+      "wheel": 0,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.0997,
+      "maximum_gap_cm": 2.9764
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_1",
+      "wheel": 1,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1031,
+      "maximum_gap_cm": 2.9828
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_1",
+      "wheel": 2,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1778,
+      "maximum_gap_cm": 2.6681
+    },
+    {
+      "view": 2,
+      "car": "BattleRoadCar_1",
+      "wheel": 3,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1999,
+      "maximum_gap_cm": 2.7225
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_0",
+      "wheel": 0,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1538,
+      "maximum_gap_cm": 2.8386
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_0",
+      "wheel": 1,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1768,
+      "maximum_gap_cm": 2.7803
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_0",
+      "wheel": 2,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.061,
+      "maximum_gap_cm": 3.1742
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_0",
+      "wheel": 3,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.066,
+      "maximum_gap_cm": 3.1778
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_1",
+      "wheel": 0,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.0997,
+      "maximum_gap_cm": 2.9764
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_1",
+      "wheel": 1,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1031,
+      "maximum_gap_cm": 2.9828
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_1",
+      "wheel": 2,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1778,
+      "maximum_gap_cm": 2.6681
+    },
+    {
+      "view": 3,
+      "car": "BattleRoadCar_1",
+      "wheel": 3,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1999,
+      "maximum_gap_cm": 2.7225
+    }
+  ],
+  "passed": true,
+  "scope": "LOD0 visible lower tire vertices against native road in three fixed stopped-car snapshots. Not dynamic full-route tire acceptance."
+}
