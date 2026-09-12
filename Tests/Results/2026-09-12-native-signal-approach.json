@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/636f743e81f7487f81afa5d1e365a162/signal-approach.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": true,
+  "scope": "Native approach view from the mapped westbound car lane in the isolated signal crossing world",
+  "review": {
+    "author": "2026-09-12 [codex-maclaptop]",
+    "observations": "Red lamp is visible and distinct on the right of the westbound approach frame. Pole is on the grass strip beside the building, off the cycle/motor paving. This proves the sampled approach only; stop-line, night and full rider-camera visibility remain pending."
+  }
+}

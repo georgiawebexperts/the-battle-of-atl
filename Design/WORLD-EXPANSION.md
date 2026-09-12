@@ -247,3 +247,12 @@ Crossings can now run an optional repeating gameplay cycle: 18 seconds green, 3 
 On first observing amber, a car with enough stopping distance commits to braking for the remainder of that amber phase. A car already too close for the configured braking rate may reserve entry and clear; occupancy and exclusive ownership still apply. Stop decisions reset after amber ends. This prevents a distant car from changing its mind as it approaches the line while braking.
 
 Native test passed the repeating cycle, near-line amber clearance at 650 cm/s without braking, distant amber stop and two-second hold, and green resumption to route end. Three-state native screenshots inspected: red top, amber middle and green bottom, other lamps dark. Editor build passed. No signals or traffic population installed in the main map yet; real approach visibility, moving queues, crossing placement and packaging remain pending.
+
+
+## Mapped signal crossing installed — 2026-09-12 [codex-maclaptop]
+
+Surveyed 32 pole sites with five native terrain/path probes each. Rejected sites intersecting apartment roofs, cycle paving or mixed surface edges. Selected signal (-20800,12050,272.150), yaw 180, fully on the grass strip; 3.25 cm support variation is absorbed by the foot's placement. The mapped cycle crossing defines a volume centered (-21218.163,12580.8275,402.511), with a 90 cm horizontal margin. Westbound lane binds at route distance 31124.293 cm, 100 cm ahead of the first car-footprint crossing sample.
+
+In isolated PiedmontSignalCrossingReview, both complete routes passed native driving (81395.703 cm combined), including an actual stopped signal wait and resumed completion. A 90-degree, 140 cm-high camera at westbound route point 305 showed a readable red lamp at the right of the approach; frame inspected. This is one approach sample, not complete rider-camera/night/stop-line acceptance.
+
+Installed the crossing and linked signal into the main map, tagged TenthPiedmontBikeCrossing and TenthPiedmontBikeSignal, with the 18/3/9 gameplay cycle. Test cars remain only in the generated review map. Natural traffic spawning, multi-car queues, remaining junctions, full visibility review and packaged integration remain pending. Desktop stays 046. The review-builder removes these owned main-world actors transiently before rebuilding, avoiding duplicate signals on repeat runs.

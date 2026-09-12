@@ -33,3 +33,26 @@ void TickBattleTrafficSignalReview(APlayerController* PC,float Dt){
  if(S.Phase==6&&S.Clock>7){S.Phase=7;UE_LOG(LogTemp,Display,TEXT("TrafficSignalReview: complete"));PC->ConsoleCommand(TEXT("quit"));}
 #endif
 }
+
+#include "BattleRoadCar.h"
+#include "EngineUtils.h"
+void TickBattleSignalApproachReview(APlayerController* PC,float Dt){
+#if !UE_BUILD_SHIPPING
+ struct FState{TWeakObjectPtr<UWorld> World;float Clock=0;int Phase=0;};static FState S;
+ if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Phase==3||PC->GetWorld()->GetTimeSeconds()<5)return;S.Clock+=Dt;
+ if(S.Phase==0){
+  ABattleTrafficSignal* Signal=nullptr;ABattleRoadCar* Car=nullptr;
+  for(TActorIterator<ABattleTrafficSignal> I(PC->GetWorld());I;++I)Signal=*I;
+  for(TActorIterator<ABattleRoadCar> I(PC->GetWorld());I;++I)if(I->Crossings.Num()>0&&I->Route.Num()>306)Car=*I;
+  if(!Signal||!Car||!IsValid(Signal->Crossing)){S.Phase=3;PC->ConsoleCommand(TEXT("quit"));return;}
+  Signal->Crossing->bAutoCycle=false;Signal->Crossing->bVehicleGreen=false;Signal->Crossing->bVehicleAmber=false;
+  auto* Camera=PC->GetWorld()->SpawnActor<ACameraActor>();Camera->SetActorLocation(Car->Route[305]+FVector(0,0,140));FRotator Facing=(Car->Route[306]-Car->Route[305]).Rotation();Facing.Pitch=0;Facing.Roll=0;Camera->SetActorRotation(Facing);Camera->GetCameraComponent()->SetFieldOfView(90);PC->SetViewTarget(Camera);if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;
+  #if WITH_EDITOR
+  if(GShaderCompilingManager)GShaderCompilingManager->FinishAllCompilation();
+  #endif
+  S.Clock=0;S.Phase=1;
+ }
+ if(S.Phase==1&&S.Clock>2){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);IFileManager::Get().MakeDirectory(*Folder,true);FScreenshotRequest::RequestScreenshot(Folder/TEXT("signal-approach.png"),false,false);S.Phase=2;}
+ if(S.Phase==2&&S.Clock>3){S.Phase=3;UE_LOG(LogTemp,Display,TEXT("TrafficSignalApproachReview: complete"));PC->ConsoleCommand(TEXT("quit"));}
+#endif
+}

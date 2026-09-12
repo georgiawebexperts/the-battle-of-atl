@@ -1,0 +1,27 @@
+{
+  "signal_xyz": [
+    -20800,
+    12050,
+    272.1501361145647
+  ],
+  "support_z": [
+    273.5430903870406,
+    272.1501361145647,
+    273.48263275809495,
+    274.12866185825624,
+    275.39797616645683
+  ],
+  "crossing_center": [
+    -21218.163,
+    12580.8275,
+    402.511
+  ],
+  "bindings": [
+    {
+      "lane": "westbound",
+      "stop_distance_cm": 31124.293126427536
+    }
+  ],
+  "main_map_changed": false,
+  "approach_visibility_validated": false
+}

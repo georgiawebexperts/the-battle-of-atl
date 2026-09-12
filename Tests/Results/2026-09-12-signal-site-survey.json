@@ -1,0 +1,898 @@
+[
+  {
+    "xy": [
+      -20400,
+      12000
+    ],
+    "samples": [
+      {
+        "z": 1771.9759521484375,
+        "actor": "Fancy Roach Motel Roof"
+      },
+      {
+        "z": 1771.9759521484375,
+        "actor": "Fancy Roach Motel Roof"
+      },
+      {
+        "z": 1771.9759521484375,
+        "actor": "Fancy Roach Motel Roof"
+      },
+      {
+        "z": 279.1024943012144,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.40537460991027,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      12050
+    ],
+    "samples": [
+      {
+        "z": 280.0754962988458,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 278.8287689197241,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.1707528536235,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 281.0206643759552,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 281.4271076376299,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      12100
+    ],
+    "samples": [
+      {
+        "z": 283.2238416299401,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 281.60721877871856,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 282.0918692933815,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 299.36766212115026,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 300.0431188077441,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      12150
+    ],
+    "samples": [
+      {
+        "z": 302.9233932495117,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 300.4329056798201,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 301.10811870601856,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 304.6938799144996,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 305.36811829911767,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      12200
+    ],
+    "samples": [
+      {
+        "z": 308.24839274088527,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 305.7591234731699,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 306.43311819739256,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 309.9868386582193,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 310.7375458179026,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      13650
+    ],
+    "samples": [
+      {
+        "z": 392.78167602245276,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 390.88797321078937,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 392.3652338679599,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 393.16200743798254,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 394.6335943380109,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      13700
+    ],
+    "samples": [
+      {
+        "z": 395.69088466014546,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 393.7363942464194,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 395.2137095133462,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 396.1225873495264,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 397.6575520826932,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20400,
+      13750
+    ],
+    "samples": [
+      {
+        "z": 380.7514880080121,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 396.7285735028413,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 398.2681601841882,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 381.3451587733189,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 382.7879114726293,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      12000
+    ],
+    "samples": [
+      {
+        "z": 1771.9759521484375,
+        "actor": "Fancy Roach Motel Roof"
+      },
+      {
+        "z": 1771.9759521484375,
+        "actor": "Fancy Roach Motel Roof"
+      },
+      {
+        "z": 1771.9759521484375,
+        "actor": "Fancy Roach Motel Roof"
+      },
+      {
+        "z": 277.6650978179814,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 277.82390629022075,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      12050
+    ],
+    "samples": [
+      {
+        "z": 278.3294804203715,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 277.5477869411766,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 277.62978471583983,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.0014705551912,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.1418920771971,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      12100
+    ],
+    "samples": [
+      {
+        "z": 280.5208400670167,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.39111026605724,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.64884266754507,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 282.13411042222697,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 282.71064309178837,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      12150
+    ],
+    "samples": [
+      {
+        "z": 299.19674870531935,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 297.09129691012186,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 297.65940818941635,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 300.73408922122235,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 301.4162981373929,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      12200
+    ],
+    "samples": [
+      {
+        "z": 303.83547550512867,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 301.6269834495788,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 302.3852628182399,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 305.28568819201746,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 306.26112154162684,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      13650
+    ],
+    "samples": [
+      {
+        "z": 385.15743901544056,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 383.23421107307877,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 384.77777921844245,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 385.53709881243867,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 387.09959881243867,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      13700
+    ],
+    "samples": [
+      {
+        "z": 388.07070293741344,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 386.1175537109375,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 387.6800537109375,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 388.4382608856072,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 390.02385216388893,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20600,
+      13750
+    ],
+    "samples": [
+      {
+        "z": 372.99754289103294,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 389.00315126941814,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 390.6098009433322,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 373.33207845884954,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 375.00988822990985,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      12000
+    ],
+    "samples": [
+      {
+        "z": 273.1287096656324,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 272.9322086444449,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 274.3800256920249,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 272.30655062054075,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 273.6781508758422,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      12050
+    ],
+    "samples": [
+      {
+        "z": 273.5430903870406,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 272.1501361145647,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 273.48263275809495,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 274.12866185825624,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 275.39797616645683,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      12100
+    ],
+    "samples": [
+      {
+        "z": 276.0921058273789,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 274.6370090013397,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 275.8281160699371,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 277.6982595338336,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 278.7483592700578,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      12150
+    ],
+    "samples": [
+      {
+        "z": 294.6758648632235,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 292.7635705539401,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 293.5115798925967,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 295.8983228178804,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 296.9631087669536,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      12200
+    ],
+    "samples": [
+      {
+        "z": 299.0164183192019,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 296.76643350907625,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 297.8197574963119,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 300.23887627385875,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 301.2664031293275,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      13650
+    ],
+    "samples": [
+      {
+        "z": 377.3277572756424,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 375.42067674088776,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 376.98476030945494,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 377.6316150282955,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 379.23364546449375,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      13700
+    ],
+    "samples": [
+      {
+        "z": 380.0632617169508,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 378.1840515136719,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 379.7860819498701,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 380.340441484032,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 381.97831017559247,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -20800,
+      13750
+    ],
+    "samples": [
+      {
+        "z": 364.76466041884805,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 380.8849120834748,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 382.53199933378755,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 364.9728313427754,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 366.67331628573675,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      12000
+    ],
+    "samples": [
+      {
+        "z": 272.4296993524249,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 271.13485896512793,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 272.429699320302,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 272.07334608645397,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 273.3681863882807,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      12050
+    ],
+    "samples": [
+      {
+        "z": 274.2586952586671,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 272.30796786678593,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 273.6028081552754,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 274.49764096369836,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 275.8900033503137,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      12100
+    ],
+    "samples": [
+      {
+        "z": 277.14104432633576,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 275.0841953865388,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 276.4374541279217,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 277.62881553957504,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 278.6241889929329,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      12150
+    ],
+    "samples": [
+      {
+        "z": 293.360004738905,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 278.17486976707687,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 279.1702432124521,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 293.58915880640825,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 294.8164024931734,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      12200
+    ],
+    "samples": [
+      {
+        "z": 295.4669445161194,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 294.01054676185095,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 295.2336389149268,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 295.73072207012365,
+        "actor": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "z": 296.8774673119201,
+        "actor": "SM_TenthStreet_CycleTrack"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      13650
+    ],
+    "samples": [
+      {
+        "z": 369.66128775247853,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 367.81707383115145,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 369.2706464682278,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 370.00676763172305,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 371.4862761742256,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      13700
+    ],
+    "samples": [
+      {
+        "z": 372.40827641778924,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 370.5553741455078,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 372.0484263102212,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 372.73565290352735,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 374.2324980775138,
+        "actor": "SM_TenthStreet_Sidewalk"
+      }
+    ]
+  },
+  {
+    "xy": [
+      -21000,
+      13750
+    ],
+    "samples": [
+      {
+        "z": 357.17149233184637,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 373.28867873334684,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 374.786472104096,
+        "actor": "SM_TenthStreet_Sidewalk"
+      },
+      {
+        "z": 357.38063169169163,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "z": 358.798337450753,
+        "actor": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  }
+]

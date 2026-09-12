@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Both full lanes completed with stopped signal queue, support and endpoint stops",
+    "cars": 2,
+    "total_distance_cm": 81395.703
+  },
+  "scope": "Two opposing 10th Street lanes with mapped cycling signal, requiring an actual stopped queue and full completion. Natural population, driver visibility and packaged acceptance pending.",
+  "passed": true
+}
