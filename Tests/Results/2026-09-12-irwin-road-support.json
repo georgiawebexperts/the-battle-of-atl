@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "probes": 7875,
+  "probes": 9165,
   "hits": {
-    "Irwin Lake road approaches": 7875
+    "Irwin Lake road approaches": 9165
   },
   "failures": [],
   "trail_failures": [],

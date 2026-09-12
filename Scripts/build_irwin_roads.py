@@ -93,6 +93,43 @@ for x in range(math.floor(x0/100)*100,math.ceil(x1/100)*100,100):
         if patch.area<1e-5:continue
         for tri in constrained_delaunay_triangles(patch).geoms:
             if tri.area>1e-5:emit(list(orient(tri,sign=1).exterior.coords)[:3])
+# Adaptive subdivision must share boundary vertices with adjacent triangles.
+# Otherwise a newly sampled edge midpoint has a different height from its
+# unsplit neighbour, leaving a vertical crack despite complete XY coverage.
+xy_vertices=sorted({(round(p[0],5),round(p[1],5)) for f in faces for p in f})
+point_tree=STRtree([Point(p) for p in xy_vertices])
+conforming=[];split_edges=0;max_previous_gap=0
+for face in faces:
+    corners=[(round(p[0],5),round(p[1],5)) for p in face];ring=[]
+    for a,b in zip(corners,corners[1:]+corners[:1]):
+        line=LineString([a,b]);length=line.length
+        if length<1e-7:continue
+        candidates=[]
+        for i in point_tree.query(line.buffer(.00003)):
+            p=xy_vertices[int(i)];d=line.project(Point(p))
+            if d>1e-6 and d<length-1e-6 and line.distance(Point(p))<.00003:
+                candidates.append((d,p))
+                max_previous_gap=max(max_previous_gap,abs(height(*p)-((1-d/length)*height(*a)+d/length*height(*b))))
+        if candidates:split_edges+=1
+        ring.append(a);ring.extend(p for _,p in sorted(candidates))
+    polygon=Polygon(ring)
+    if polygon.area<1e-8:continue
+    assert polygon.is_valid
+    for tri in constrained_delaunay_triangles(polygon).geoms:
+        if tri.area>1e-8:
+            conforming.append([(x,y,height(x,y)) for x,y in list(orient(tri,sign=1).exterior.coords)[:3]])
+faces=conforming
+from collections import Counter
+edges=Counter()
+for face in faces:
+    pts=[(round(p[0],5),round(p[1],5)) for p in face]
+    for a,b in zip(pts,pts[1:]+pts[:1]):edges[tuple(sorted((a,b)))]+=1
+interior_open_edges=[]
+for (a,b),count in edges.items():
+    assert count<=2,(a,b,count)
+    if count==1 and geometry.boundary.distance(LineString([a,b]).interpolate(.5,normalized=True))>.001:
+        interior_open_edges.append([a,b])
+assert not interior_open_edges,interior_open_edges[:5]
 coverage=unary_union([Polygon([p[:2] for p in f]) for f in faces])
 missing=geometry.difference(coverage.buffer(.001)).area
 assert missing<1,missing
@@ -107,7 +144,7 @@ for i in range(0,len(vertices),3):lines.append('f '+' '.join(f'{j}/{j}/{j}' for 
 # Test actual native support later at triangle centroids, not only source bounds.
 probes=[{'xyz':[sum(p[k] for p in f)/3 for k in range(3)]} for f in faces]
 (folder/'road-probes.json').write_text(json.dumps({'samples':probes},indent=2)+'\n')
-report={'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
+report={'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
         'source_to_native_max_error_cm':max(errors),'native_reference_samples':len(errors),
         'main_map_changed':False,'scope':'Source candidate only; native collision, driving and appearance pending.'}
 (folder/'road-surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

@@ -1,0 +1,13 @@
+{
+  "main_map_changed": true,
+  "support_passed": true,
+  "support_probes": 6474,
+  "lanes": 2,
+  "max_irwin_cars": 6,
+  "other_traffic_retained": {
+    "TenthRoadTraffic": 1,
+    "MonroeRoadTraffic": 1
+  },
+  "desktop_build_updated": false,
+  "remaining": "Lane paint, landmarks, main rider playthrough, combined performance and packaged acceptance."
+}

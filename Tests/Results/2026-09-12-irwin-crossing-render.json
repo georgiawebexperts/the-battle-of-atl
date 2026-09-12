@@ -1,11 +1,14 @@
 {
   "exit_code": 0,
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/f52802db4bd54268bbfb85a59fdf80a9/monroe-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/f52802db4bd54268bbfb85a59fdf80a9/monroe-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/f52802db4bd54268bbfb85a59fdf80a9/monroe-3.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/3c49385304544adea9352905e5b7d1de/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/3c49385304544adea9352905e5b7d1de/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/3c49385304544adea9352905e5b7d1de/monroe-3.png"
   ],
   "capture_passed": true,
   "visual_accepted": false,
-  "scope": "Fixed road approach cameras and wide view; test cars stationary, no rider playthrough or traffic timing acceptance."
+  "landscape_hidden_diagnostic": false,
+  "scope": "Fixed road approach cameras and wide view; test cars stationary, no rider playthrough or traffic timing acceptance.",
+  "road_geometry_accepted_for_integration": true,
+  "review": "Both approach images inspected: prior thin cracks absent after conforming tessellation. Geometry acceptable for ongoing integration; visual_accepted remains false because markings, buildings, detailed roadside scenery and overall art quality are unfinished."
 }

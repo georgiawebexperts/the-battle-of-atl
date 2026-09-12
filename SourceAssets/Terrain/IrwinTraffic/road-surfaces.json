@@ -1,7 +1,10 @@
 {
-  "triangles": 7875,
-  "missing_area_cm2": 1.094982756254942e-06,
-  "protected_overlap_cm2": 8.33701996327818e-11,
+  "conformed_edges": 1200,
+  "max_previous_edge_height_gap_cm": 1.736401174634807,
+  "interior_open_edges": 0,
+  "triangles": 9165,
+  "missing_area_cm2": 1.0949585203222367e-06,
+  "protected_overlap_cm2": 0.0014062611660784667,
   "source_to_native_max_error_cm": 5.8828152873502404e-05,
   "native_reference_samples": 35,
   "main_map_changed": false,
