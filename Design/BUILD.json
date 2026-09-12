@@ -1,9 +1,9 @@
 {
-  "build": 53,
-  "version": "0.53.0-dev",
+  "build": 54,
+  "version": "0.54.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed signed Mac053; backup052 retained; full game unfinished",
-  "milestone": "Motion clarity and physical zombie deaths with fitted shoe support; full game acceptance unfinished",
+  "status": "Installed signed Mac054, backup053 retained; full game unfinished",
+  "milestone": "Physical knife encounters, distinct attacker outfit and recovery HUD; full game unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }

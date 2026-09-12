@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "reason": "Pursuit, first-hit dismount, remount escape, second-hit reset, obstruction/protection and actual G-draw/mouse-fire defense with ammo/heat pass",
+  "exit_code": 0,
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/knife-encounter-c7499803ddfa4858983ff8ab1de45cbe.log",
+  "difficulty": "Hard",
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleKnifeReview/94b6594914f74b758b927835312ec40c/windup.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleKnifeReview/94b6594914f74b758b927835312ec40c/first-stab.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleKnifeReview/94b6594914f74b758b927835312ec40c/defense.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleKnifeReview/94b6594914f74b758b927835312ec40c/defeated.png"
+  ],
+  "visual_review": "First-stab and defeated frames inspected: dedicated outfit and recovery HUD render, physical death visible; feet partly obscured, whole-body terrain contact not established"
+}
