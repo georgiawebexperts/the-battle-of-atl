@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Lost car or wheel support",
+    "cars": 2,
+    "total_distance_cm": 5049.904
+  },
+  "scope": "Two opposing Krog/Lake lanes in the isolated lane review map. Native motion and support, no signals, natural population or packaged acceptance.",
+  "passed": false
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "probes": 4264,
+  "hits": {
+    "Krog DeKalb road approaches": 4097,
+    "Krog route SM_KrogRoute_Concrete_7_2": 167
+  },
+  "failures": [],
+  "main_map_changed": false,
+  "scope": "Car footprint and wheel sample support only; actual movement tested separately."
+}

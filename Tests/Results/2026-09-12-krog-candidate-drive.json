@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48098.55,
+  "maxCenterlineErrorCm": 41.04,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 86772,
+    "paved": 86772
+  },
+  "lights": {
+    "lit_samples": 12802,
+    "unlit_samples": 0
+  },
+  "exit_code": 0,
+  "scope": "Isolated Krog road candidate map: Irwin through the complete Krog tunnel, both directions using real W/A/D input and CharacterMovement; crowds disabled to isolate terrain/decks; appearance unverified."
+}
