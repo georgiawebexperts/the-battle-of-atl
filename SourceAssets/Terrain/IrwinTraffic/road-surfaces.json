@@ -1,0 +1,9 @@
+{
+  "triangles": 7875,
+  "missing_area_cm2": 1.094982756254942e-06,
+  "protected_overlap_cm2": 8.33701996327818e-11,
+  "source_to_native_max_error_cm": 5.8828152873502404e-05,
+  "native_reference_samples": 35,
+  "main_map_changed": false,
+  "scope": "Source candidate only; native collision, driving and appearance pending."
+}

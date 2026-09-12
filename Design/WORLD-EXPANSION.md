@@ -381,3 +381,10 @@ Road geometry/traffic integration is now playable in the project, but three-lane
 ## Irwin/Lake source placement and surface survey — 2026-09-12 [codex-maclaptop]
 
 Matched retained OSM crossing way742982445/node69331892 to the screenshot at longitude -84.3648923, latitude33.7575617. Prepared eight nearby road segments in SourceAssets/Terrain/IrwinTraffic/network.json using the active tenth-graded heightmap. Native 231-point survey locates the installed Eastside asphalt centre at world (26082.2603,100847.4302,794.9536) cm. The preliminary terrain-following road centre is 11 cm higher: blend the eventual road to the installed trail before enabling traffic, rather than introducing a step. Scripts/prepare_irwin_crossing.py and survey_irwin_crossing.py reproduce placement and survey. This is preparation only; no Irwin road, controls or cars installed and desktop build047 is unchanged.
+
+
+## Irwin/Lake road candidate — 2026-09-12 [codex-maclaptop]
+
+Built 600 cm two-way road candidate across eight retained nearby segments, clipped to 6500 cm site radius. Existing Eastside/Krog asphalt and concrete footprints are subtracted. Road height blends to original trail triangles over 300 cm; source frame agrees with all 35 native trail reference samples within 0.000059 cm. Source mesh has 7875 triangles, negligible missing area and no meaningful overlap with preserved paths. Native import and all 7875 triangle-centre support checks pass; original trail probes retain their actor and height. Isolated map: /Game/PiedmontRide/Maps/PiedmontIrwinRoadReview. Main map and desktop047 unchanged. Scripts/build_irwin_roads.py requires Tools/road-geometry-venv (terrain venv lacks constrained triangulation); Scripts/validate_irwin_roads.py uses absolute project/script paths in editor commandlet.
+
+Still pending: actual lane/wheel-envelope traversal, traffic control consistent with mapped crossing, paint, curb/scenery, rider viewpoint and packaged acceptance. Import reports degenerate tangent/nearly-zero normal warnings on small clipped triangles: inspect and repair shading before accepting visuals. Do not infer playable crossing from support probes alone.

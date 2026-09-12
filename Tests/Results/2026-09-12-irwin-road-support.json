@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "probes": 7875,
+  "hits": {
+    "Irwin Lake road approaches": 7875
+  },
+  "failures": [],
+  "trail_failures": [],
+  "main_map_changed": false,
+  "scope": "Native surface support and original trail preservation only; no traffic or visual acceptance."
+}
