@@ -1,0 +1,71 @@
+{
+  "exit_code": 0,
+  "launch_speed_cm_s": 1500,
+  "launch_side": 1,
+  "skin": {
+    "min_clearance_cm": -15.918,
+    "below_vertices": 86,
+    "vertices": 3273
+  },
+  "physics": {
+    "passed": true,
+    "hip_drop_cm": 167.147,
+    "max_limb_span_cm": 113.315,
+    "hip_floor_cm": 8.076,
+    "final_speed": 4.631
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/080017f02cf148ad89cf881cb66006d3/player-recovery-6.png"
+  ],
+  "capture_passed": true,
+  "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
+  "actual_shape_diagnostics": [
+    "bone=Hips type=4 size=X=16.472 Y=18.982 Z=23.318 static_response=2 simulation=1",
+    "bone=Abdomen type=4 size=X=34.451 Y=21.186 Z=30.892 static_response=2 simulation=1",
+    "bone=Torso type=4 size=X=30.419 Y=20.086 Z=25.869 static_response=2 simulation=1",
+    "bone=Chest type=4 size=X=19.844 Y=20.836 Z=28.527 static_response=2 simulation=1",
+    "bone=Neck type=4 size=X=21.800 Y=9.599 Z=12.772 static_response=2 simulation=1",
+    "bone=Head type=4 size=X=25.686 Y=31.907 Z=28.881 static_response=2 simulation=1",
+    "bone=Shoulder_L type=4 size=X=21.690 Y=17.782 Z=24.129 static_response=2 simulation=1",
+    "bone=UpperArm_L type=4 size=X=13.716 Y=22.565 Z=16.823 static_response=2 simulation=1",
+    "bone=LowerArm_L type=4 size=X=14.351 Y=31.773 Z=13.520 static_response=2 simulation=1",
+    "bone=Hand_L type=4 size=X=21.261 Y=28.133 Z=8.993 static_response=2 simulation=1",
+    "bone=Shoulder_R type=4 size=X=21.690 Y=17.782 Z=24.129 static_response=2 simulation=1",
+    "bone=UpperArm_R type=4 size=X=13.716 Y=22.565 Z=16.823 static_response=2 simulation=1",
+    "bone=LowerArm_R type=4 size=X=14.351 Y=31.773 Z=13.520 static_response=2 simulation=1",
+    "bone=Hand_R type=4 size=X=21.261 Y=28.133 Z=8.993 static_response=2 simulation=1",
+    "bone=UpperLeg_L type=4 size=X=23.921 Y=54.877 Z=20.544 static_response=2 simulation=1",
+    "bone=LowerLeg_L type=4 size=X=12.632 Y=56.203 Z=14.928 static_response=2 simulation=1",
+    "bone=Foot_L type=4 size=X=13.309 Y=27.869 Z=14.349 static_response=2 simulation=1",
+    "bone=UpperLeg_R type=4 size=X=23.940 Y=54.879 Z=20.674 static_response=2 simulation=1",
+    "bone=LowerLeg_R type=4 size=X=12.632 Y=56.203 Z=14.928 static_response=2 simulation=1",
+    "bone=Foot_R type=4 size=X=13.309 Y=27.869 Z=14.349 static_response=2 simulation=1"
+  ],
+  "skin_clearance_passed": false,
+  "transfer": {
+    "choice": 2,
+    "max_transfer_error_cm": 0.0002,
+    "initial_pose_rms_cm": 59.667
+  },
+  "recovery": {
+    "passed": true,
+    "head_height": 157.792,
+    "left_foot_height": 3.179,
+    "right_foot_height": 2.795
+  },
+  "bike": {
+    "passed": true,
+    "upright_dot": 0.186,
+    "speed": 0.0,
+    "parts": 16
+  }
+}

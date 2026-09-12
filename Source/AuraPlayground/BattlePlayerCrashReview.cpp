@@ -25,10 +25,11 @@
 #include "UnrealClient.h"
 void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<USkeletalMeshComponent> Body;TWeakObjectPtr<UPoseableMeshComponent> Display;TWeakObjectPtr<ACameraActor> Camera;TWeakObjectPtr<ABattleFallenBike> FallenBike;FVector Hip;float Clock=0,MaxSpan=0;int Shot=0;bool Done=false,Recovering=false;FBattlePlayerRecoveryBlend Blend;int RecoveryShot=0;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<USkeletalMeshComponent> Body;TWeakObjectPtr<UPoseableMeshComponent> Display;TWeakObjectPtr<ACameraActor> Camera;TWeakObjectPtr<ABattleFallenBike> FallenBike;FVector Hip;float Clock=0,MaxSpan=0,Speed=300,Side=1;int Shot=0;bool Done=false,Recovering=false;FBattlePlayerRecoveryBlend Blend;int RecoveryShot=0;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike)return;
  if(!S.Body.IsValid()){
+  FParse::Value(FCommandLine::Get(),TEXT("BattleCrashSpeed="),S.Speed);FParse::Value(FCommandLine::Get(),TEXT("BattleCrashSide="),S.Side);S.Speed=FMath::Clamp(S.Speed,150.f,2200.f);S.Side=S.Side<0?-1.f:1.f;
   FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;Q.AddIgnoredActor(Bike);FVector P(-18000,13048,400);
   if(!PC->GetWorld()->LineTraceSingleByChannel(Hit,P+FVector(0,0,1000),P-FVector(0,0,1000),ECC_WorldStatic,Q)){S.Done=true;PC->ConsoleCommand(TEXT("quit"));return;}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashDoubleRoad")))if(auto* Road=Cast<UStaticMeshComponent>(Hit.GetComponent())){auto* Candidate=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Environment/CrashReview/SM_TenthRoadDoubleSided.SM_TenthRoadDoubleSided"));if(Candidate){Road->SetStaticMesh(Candidate);Road->RecreatePhysicsState();}}
@@ -37,12 +38,17 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
   auto* Mesh=Cast<USkeletalMesh>(Bike->Rider->GetSkinnedAsset());auto* Physics=LoadObject<UPhysicsAsset>(nullptr,TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));if(!Mesh||!Physics){S.Done=true;PC->ConsoleCommand(TEXT("quit"));return;}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashFreeJoints"))){Physics=DuplicateObject<UPhysicsAsset>(Physics,Bike);Physics->ConstraintSetup.Empty();}
   auto* Body=NewObject<USkeletalMeshComponent>(Bike);Bike->AddInstanceComponent(Body);Body->SetSkeletalMeshAsset(Mesh);Body->SetPhysicsAsset(Physics,true);Body->SetWorldTransform(Bike->Rider->GetComponentTransform());Body->SetCollisionProfileName(TEXT("Ragdoll"));Body->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);Body->SetCanEverAffectNavigation(false);Body->PhysicsTransformUpdateMode=EPhysicsTransformUpdateMode::ComponentTransformIsKinematic;Body->RegisterComponent();Body->RefreshBoneTransforms();Body->SetAllBodiesSimulatePhysics(true);Body->SetSimulatePhysics(true);
-  const auto& Ref=Mesh->GetRefSkeleton();for(int I=0;I<Ref.GetNum();I++)if(auto* B=Body->GetBodyInstance(Ref.GetBoneName(I)))B->SetBodyTransform(Bike->Rider->GetBoneTransform(I),ETeleportType::TeleportPhysics);
+  const auto& Ref=Mesh->GetRefSkeleton();for(int I=0;I<Ref.GetNum();I++)if(auto* B=Body->GetBodyInstance(Ref.GetBoneName(I))){B->SetBodyTransform(Bike->Rider->GetBoneTransform(I),ETeleportType::TeleportPhysics);B->SetUseCCD(true);}
   for(const auto& Setup:Physics->SkeletalBodySetups)for(const auto& Shape:Setup->AggGeom.SphylElems){const auto* B=Body->GetBodyInstance(Setup->BoneName);UE_LOG(LogTemp,Display,TEXT("CrashShape: %s radius=%.4f length=%.4f scale=%s"),*Setup->BoneName.ToString(),Shape.Radius,Shape.Length,B?*B->Scale3D.ToString():TEXT("missing"));}
-  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFallenBikeReview"))){S.FallenBike=PC->GetWorld()->SpawnActor<ABattleFallenBike>();S.FallenBike->InitializeFrom(Bike,FVector(220,-80,20));}
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFallenBikeReview"))){S.FallenBike=PC->GetWorld()->SpawnActor<ABattleFallenBike>();S.FallenBike->InitializeFrom(Bike,FVector(S.Speed*.73f,-S.Side*S.Speed*.27f,20));}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashPoseMirror"))){auto* Display=NewObject<UPoseableMeshComponent>(Bike);Bike->AddInstanceComponent(Display);Display->SetSkinnedAssetAndUpdate(Mesh);Display->SetWorldTransform(Body->GetComponentTransform());Display->SetCollisionEnabled(ECollisionEnabled::NoCollision);Display->RegisterComponent();S.Display=Display;Body->SetVisibility(false);Body->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;}
-  S.Hip=Bike->Rider->GetSocketLocation(TEXT("Hips"));Body->SetAllPhysicsLinearVelocity(FVector(300,90,60));Bike->Rider->SetVisibility(false);S.Body=Body;
+  S.Hip=Bike->Rider->GetSocketLocation(TEXT("Hips"));Body->SetAllPhysicsLinearVelocity(FVector(S.Speed,S.Side*S.Speed*.3f,60));Bike->Rider->SetVisibility(false);S.Body=Body;
   S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Target=Hit.ImpactPoint+FVector(160,0,70);const FVector Offset(-350,-600,280);S.Camera->SetActorLocationAndRotation(Target+Offset,(-Offset).Rotation());
+ }
+ if(S.Speed>600&&S.Camera.IsValid()){
+  FVector Center=S.Recovering&&S.Blend.Pose.IsValid()?S.Blend.Pose->GetSocketLocation(TEXT("Hips")):S.Body->GetBodyInstance(TEXT("Hips"))->GetUnrealWorldTransform().GetLocation();
+  float Distance=0;if(S.FallenBike.IsValid()){const FVector Other=S.FallenBike->GetActorLocation();Distance=FVector::Dist(Center,Other);Center=(Center+Other)*.5f;}
+  const FVector Offset(-350,-600,280);S.Camera->SetActorLocationAndRotation(Center+Offset*FMath::Max(1.f,Distance/500.f),(-Offset).Rotation());
  }
  PC->SetViewTarget(S.Camera.Get());if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;PC->PlayerCameraManager->UpdateCamera(0);
  if(S.Recovering){
@@ -52,11 +58,11 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
  }
  S.Clock+=Dt;
  if(S.Display.IsValid()){
-  const auto& Ref=S.Body->GetSkeletalMeshAsset()->GetRefSkeleton();TArray<FTransform> World,Local;const FTransform Frame=S.Display->GetComponentTransform();
+  const auto& Ref=S.Body->GetSkeletalMeshAsset()->GetRefSkeleton();TArray<FTransform> World,Local;if(auto* Pelvis=S.Body->GetBodyInstance(TEXT("Hips")))S.Display->SetWorldLocation(Pelvis->GetUnrealWorldTransform().GetLocation()-FVector(0,0,90));const FTransform Frame=S.Display->GetComponentTransform();
   for(int32 I=0;I<Ref.GetNum();I++){const int32 Parent=Ref.GetParentIndex(I);FTransform T;
    if(auto* Instance=S.Body->GetBodyInstance(Ref.GetBoneName(I))){T=Instance->GetUnrealWorldTransform();T.SetScale3D(Instance->Scale3D);}else T=Parent>=0?Ref.GetRefBonePose()[I]*World[Parent]:Ref.GetRefBonePose()[I]*Frame;
    World.Add(T);Local.Add(Parent>=0?T.GetRelativeTransform(World[Parent]):T.GetRelativeTransform(Frame));
-  }S.Display->BoneSpaceTransforms=Local;S.Display->MarkRefreshTransformDirty();S.Display->RefreshBoneTransforms();
+  }S.Display->BoneSpaceTransforms=Local;S.Display->MarkRefreshTransformDirty();S.Display->RefreshBoneTransforms();S.Display->UpdateBounds();
  }
  USkinnedMeshComponent* Visible=S.Display.IsValid()?static_cast<USkinnedMeshComponent*>(S.Display.Get()):S.Body.Get();
  const FVector Hip=Visible->GetSocketLocation(TEXT("Hips"));for(const FName Bone:{FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))})S.MaxSpan=FMath::Max(S.MaxSpan,float(FVector::Dist(Hip,Visible->GetSocketLocation(Bone))));
