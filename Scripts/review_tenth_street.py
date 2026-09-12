@@ -58,3 +58,16 @@ assert len(owned)==len(data['surfaces'])
 installed='-BattleInstallTenthStreet' in unreal.SystemLibrary.get_command_line()
 if installed:assert unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
 (out/'result.json').write_text(json.dumps({'map_saved':installed,'owned_actor_count':len(owned),'meshes':rows,'scope':'Static native import/placement review. Road, cycle track, separator, sidewalks and 10th lane paint present. Traffic, Monroe markings and crossing signals absent. Width and gameplay collision acceptance pending.'},indent=2)+'\n')
+
+if graded and '-BattleSaveGradedDriveMap' in unreal.SystemLibrary.get_command_line():
+ # Reuse the real keyboard-driven connector audit on a dedicated crossing fixture.
+ for actor in ea.get_all_level_actors():
+  actor.tags=[t for t in actor.tags if str(t) not in ['BattleConnector_0','BattleConnector_1']]
+ route=ea.spawn_actor_from_class(unreal.PiedmontPathSpline,unreal.Vector());route.set_actor_label('Graded Monroe drive fixture');route.tags=[unreal.Name('BattleConnector_0')]
+ points=[]
+ for i in range(81):
+  t=i/80;x=11592.015+(12569.534-11592.015)*t;y=13825.79+(9656.389-13825.79)*t
+  hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,1000),unreal.Vector(x,y,-1500));assert hit
+  points.append(hit[0])
+ route.set_centerline(points)
+ assert unreal.EditorLoadingAndSavingUtils.save_map(world,'/Game/PiedmontRide/Maps/PiedmontGradedDrive')

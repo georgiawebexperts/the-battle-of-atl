@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 8365.56,
+  "maxCenterlineErrorCm": 0.0,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "scope": "Uncooked native game world, isolated Monroe crossing, both directions via real keyboard and bike movement. Does not prove all road edges or packaged build."
+}
