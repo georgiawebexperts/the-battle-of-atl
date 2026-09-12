@@ -1,0 +1,22 @@
+{
+  "clip": "/Game/BattleRetarget/Mixamo/SleepCandidate/SleepToStand_R.SleepToStand_R",
+  "sleep_source": "/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim.MixamoSleepReference_Anim",
+  "wake_source": "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R.M_ragdoll_getup_stand_R",
+  "blend_seconds": 0.5,
+  "frames": 166,
+  "bones": 150,
+  "duration": 5.5,
+  "visual_acceptance": false,
+  "gameplay_installed": false,
+  "review": {
+    "manifest": "work/sleep-wake-contact-0.0/manifest.json",
+    "rendered_samples": 8,
+    "inspected_seconds": [
+      0.25,
+      5.499
+    ],
+    "finding": "Mid-blend remains side-lying with connected limbs; endpoint reaches standing. Continuous motion, skin contact, arbitrary sleep phase entry and gameplay remain unverified.",
+    "render_exit": 1,
+    "render_issue": "Occupied HTTP listener port 30010; eight captures and manifest completed."
+  }
+}

@@ -1,10 +1,11 @@
 """Transient flat-floor review of sleeping contact and recovery candidate poses."""
 import unreal,json,pathlib,os
 root=pathlib.Path(unreal.Paths.project_dir())
+baked=os.environ.get('BATTLE_SLEEP_WAKE')=='1'
 recovery=os.environ.get('BATTLE_SLEEP_RECOVERY')=='1'
 reference=os.environ.get('BATTLE_SLEEP_REFERENCE')=='1'
 offset=float(os.environ.get('BATTLE_SLEEP_REVIEW_OFFSET','0'))
-out=root/('work/sleep-'+('recovery' if recovery else ('source' if reference else 'city'))+'-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
+out=root/('work/sleep-'+('wake' if baked else ('recovery' if recovery else ('source' if reference else 'city')))+'-contact-'+str(offset));out.mkdir(parents=True,exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 def vector_values(v):return [v.x,v.y,v.z]
@@ -20,6 +21,8 @@ key.get_component_by_class(unreal.DirectionalLightComponent).set_intensity(12)
 results=[]
 variants=[]
 variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim')]
+if baked:
+ variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/Mixamo/SleepCandidate/SleepToStand_R')]
 if recovery:
  variants=[('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_'+side) for side in ['F','B','L','R']]
 for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
@@ -51,11 +54,11 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate(variants):
  fill_component.set_editor_property('attenuation_radius',1000)
  fill_component.set_cast_shadows(False)
  unreal.PiedmontWorldTools.finish_editor_asset_loading()
- pos=origin+(unreal.Vector(400,-340,180) if recovery else unreal.Vector(320,-280,90));target=origin+unreal.Vector(0,0,65 if recovery else 30)
+ pos=origin+(unreal.Vector(400,-340,180) if (recovery or baked) else unreal.Vector(320,-280,90));target=origin+unreal.Vector(0,0,65 if (recovery or baked) else 30)
  cam.set_actor_location(pos,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(pos,target),False)
  samples=[]
- for phase,fraction in enumerate([0,.25,.55,.999]):
-  sample_time=animation.get_editor_property('sequence_length')*fraction
+ times=[0,.125,.25,.375,.5,1,2,animation.get_editor_property('sequence_length')-.001] if baked else [animation.get_editor_property('sequence_length')*fraction for fraction in [0,.25,.55,.999]]
+ for phase,sample_time in enumerate(times):
   body.set_animation_mode(unreal.AnimationMode.ANIMATION_CUSTOM_MODE)
   body.override_animation_data(animation,True,False,sample_time,1.0)
   for frame in range(20):unreal.PiedmontWorldTools.tick_scene_review();c.capture_scene()
