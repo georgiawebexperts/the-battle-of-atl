@@ -36,3 +36,7 @@ Rendered four sample times for each existing City Sample male F/B/L/R recovery o
 ## Native runtime foundation — 2026-09-11 [codex-maclaptop]
 
 Added opt-in `APiedmontPedestrian::BeginSleeping()` and `WakeFromSleep()` for the male City body. Full-body sequence sampling bypasses locomotion blending, loops sleep, holds the wake endpoint until the state finishes, then restores normal pedestrian AI. Damage and bike impacts clear sleeping state; wake checks standing-capsule overlap. Editor target compiles successfully. No callers or map placements yet: proximity activation, short chase, authored stagger/settle, bench seating, lying collision volume and live transition/interruption acceptance remain required. This is runtime foundation, not the finished encounter.
+
+## Native state checks — 2026-09-12 [codex-maclaptop]
+
+`Scripts/test_native_sleep.py` now passes in the uncooked native game: sleeping head height 8.605 cm above capsule floor, blocked wake under a test roof, wake after removing the roof, completion to standing, repeat sleep, light bike-impact interruption/re-entry guard and death interruption. Initial clearance failure was a forced test spawn inside tutorial `IronAndRoof`; test now chooses a nonoverlapping standing location. Evidence: `Tests/Results/2026-09-12-native-sleep-runtime.json`. Rendered transition quality, ordinary walker regression after floor alignment, lying collision, chase and stagger/settle behavior, placement and packaged checks remain incomplete.

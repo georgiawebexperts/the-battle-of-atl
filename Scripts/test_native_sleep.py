@@ -7,6 +7,8 @@ with log.open('w') as stream:
  result=subprocess.run([engine,str(root/'AuraPlayground.uproject'),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-game','-nullrhi','-BattleSkipTutorial','-BattleSleeperAudit','-unattended','-nosound','-stdout'],stdout=stream,stderr=subprocess.STDOUT,timeout=90)
 rows=re.findall(r'BattleSleeperAudit: (\{[^\n]+\})',log.read_text())
 report={'exit_code':result.returncode,'checks':json.loads(rows[-1]) if rows else None,'scope':'Uncooked native runtime state/pose/interruption check, no rendered presentation or packaged acceptance'}
+heights=re.findall(r'SleeperPose: head_height=([0-9.]+)',log.read_text())
+report['sleep_head_height_cm']=float(heights[-1]) if heights else None
 report['passed']=result.returncode==0 and report['checks'] is not None and report['checks']['passed']
-(root/'Tests/Results/2026-09-11-native-sleep-runtime.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'Tests/Results/2026-09-12-native-sleep-runtime.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report));raise SystemExit(0 if report['passed'] else 1)

@@ -3,8 +3,9 @@
   "checks": {
     "passed": true,
     "phase": 5,
-    "reason": "sleep, wake, repeat, impact and death passed"
+    "reason": "sleep, blocked wake, clear wake, repeat, impact and death passed"
   },
   "scope": "Uncooked native runtime state/pose/interruption check, no rendered presentation or packaged acceptance",
+  "sleep_head_height_cm": 8.605,
   "passed": true
 }
