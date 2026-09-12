@@ -1,5 +1,5 @@
 """Import static rail study and verify the existing road remains clear."""
-import unreal,json
+import unreal,json,runpy
 from pathlib import Path
 root=Path(unreal.Paths.project_dir());folder=root/'SourceAssets/Terrain/KrogRailContext';dest='/Game/BattleForTheA/Environment/KrogRail'
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontKrogBuildingsReview')
@@ -19,6 +19,7 @@ for row in json.loads((folder/'deck-manifest.json').read_text())['surfaces']:
  unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task]);mesh=unreal.load_asset(dest+'/'+task.destination_name);assert mesh;mesh.set_material(0,mat)
  mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
  a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());a.set_actor_label('Krog railway '+name);a.tags=[unreal.Name('KrogRailReview'),unreal.Name('RideBarrier')];a.static_mesh_component.set_static_mesh(mesh);a.static_mesh_component.set_collision_profile_name('BlockAll')
+runpy.run_path(str(root/'Scripts/style_krog_rail.py'))
 unreal.PiedmontWorldTools.finish_editor_asset_loading();failures=[];minimum=10000;checked=0
 probes=json.loads((root/'SourceAssets/Terrain/KrogTraffic/car-lane-probes.json').read_text())['samples']
 for row in probes:

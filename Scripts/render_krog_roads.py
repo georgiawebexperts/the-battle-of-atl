@@ -37,6 +37,7 @@ cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get
 for prop,value in [('texture_target',tex),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',70)]:cap.set_editor_property(prop,value)
 x,y,z=network['crossing_xyz'];views=[('approach',[x-600,y-1000,z+180],[x+150,y+800,z+130]),('wide',[x-1500,y-1100,z+1400],[x+100,y+600,z]),('portal',[x+100,y+150,z+170],[x+500,y+1300,z+140])];images=[]
 if buildings:views.extend([('north',[x-600,y+500,z+180],[x-400,y-1500,z+260]),('south',[31500,120000,1250],[33000,121000,1200])])
+if rail:views.append(('rail-detail',[30200,116200,1500],[30202,116627,1301]))
 for name,location,target in views:
  loc=unreal.Vector(*location);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()

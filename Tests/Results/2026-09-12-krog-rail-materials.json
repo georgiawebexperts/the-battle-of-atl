@@ -1,0 +1,23 @@
+{
+  "materials": [
+    "Ballast",
+    "Retaining",
+    "Sleepers",
+    "Steel"
+  ],
+  "author": "2026-09-12 [codex-maclaptop]",
+  "scope": "Original procedural color/roughness/metallic surfaces; no displacement or collision changes. Visual acceptance pending.",
+  "visual_review": {
+    "inspected": [
+      "rail-detail"
+    ],
+    "accepted_for_final": false,
+    "findings": [
+      "Procedural gravel, timber, concrete joints/streaks and rail wear visible.",
+      "Initial square rust blocks replaced with smooth patches; final close-up inspected.",
+      "Structural transitions, surrounding terrain and material performance still require work."
+    ],
+    "shader_compile_errors_in_review_logs": false
+  },
+  "material_script_sha256": "8dfebab5e9631954ee8590338bbd8affad762999bd6824f5bdc17cb58591b046"
+}

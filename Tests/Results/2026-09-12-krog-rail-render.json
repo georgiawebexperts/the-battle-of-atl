@@ -2,7 +2,8 @@
   "images": [
     "../../../../Projects/AuraPlayground/work/krog-rail-review/approach.png",
     "../../../../Projects/AuraPlayground/work/krog-rail-review/wide.png",
-    "../../../../Projects/AuraPlayground/work/krog-rail-review/portal.png"
+    "../../../../Projects/AuraPlayground/work/krog-rail-review/portal.png",
+    "../../../../Projects/AuraPlayground/work/krog-rail-review/rail-detail.png"
   ],
   "main_map_changed": false,
   "transient_skylight_recapture": [
@@ -417,14 +418,15 @@
   "minimum_headroom_cm": 229.52545668837945,
   "visual_review": {
     "inspected": [
-      "wide"
+      "rail-detail"
     ],
     "accepted_for_final": false,
     "findings": [
-      "Mapped tracks now visibly cross over tunnel with supported retaining walls.",
-      "Plain retaining materials, abrupt corridor ends and narrow gaps between strips remain unfinished.",
-      "MARTA elevated line not included; no train motion or climb/exploration acceptance."
+      "Procedural gravel, timber, concrete joints/streaks and rail wear visible.",
+      "Initial square rust blocks replaced with smooth patches; final close-up inspected.",
+      "Structural transitions, surrounding terrain and material performance still require work."
     ],
-    "rail_manifest_sha256": "0582ba3a2c10d3f3abd9b36d3dd0a78b14ffea2681a5d135fbb9cef693b8274d"
-  }
+    "shader_compile_errors_in_review_logs": false
+  },
+  "material_script_sha256": "8dfebab5e9631954ee8590338bbd8affad762999bd6824f5bdc17cb58591b046"
 }
