@@ -408,5 +408,5 @@
     }
   ],
   "minimum_headroom_cm": 229.52545668837945,
-  "visual_review": "Portal frame inspected after original street-art material. Walls/columns carry paint; roof remains concrete. Deep interior shadows hide much of the art and wall geometry is visibly jagged. Full art not accepted."
+  "visual_review": "Portal render inspected at final8-candela setting: wall art and column faces readable, ceiling hotspots reduced from initial70-candela pass. Right side remains dark. Abrupt raised floor edge and jagged wall silhouette require geometry work. Lighting performance and headlight-on/off comparison not measured; full art not accepted."
 }

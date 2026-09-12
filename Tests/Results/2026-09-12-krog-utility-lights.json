@@ -1,0 +1,61 @@
+{
+  "lights": [
+    {
+      "xyz": [
+        30155.695333350348,
+        116511.79525281754,
+        1196.007710594306
+      ],
+      "candela": 8,
+      "radius_cm": 680
+    },
+    {
+      "xyz": [
+        30382.25470341968,
+        117071.98143725928,
+        1196.8794745450236
+      ],
+      "candela": 8,
+      "radius_cm": 680
+    },
+    {
+      "xyz": [
+        30608.814073489008,
+        117632.16762170101,
+        1197.751238495741
+      ],
+      "candela": 8,
+      "radius_cm": 680
+    },
+    {
+      "xyz": [
+        30835.43253595425,
+        118192.32986863055,
+        1198.6230024464585
+      ],
+      "candela": 8,
+      "radius_cm": 680
+    },
+    {
+      "xyz": [
+        31062.617807857223,
+        118752.26250889718,
+        1199.4947663971761
+      ],
+      "candela": 8,
+      "radius_cm": 680
+    },
+    {
+      "xyz": [
+        31289.8030797602,
+        119312.19514916383,
+        1200.3665303478936
+      ],
+      "candela": 8,
+      "radius_cm": 680
+    }
+  ],
+  "main_map_changed": false,
+  "scope": "Authored utility fixtures, not surveyed real lighting. Review-only, visual balance and performance pending.",
+  "visual_review": "Portal render inspected at final8-candela setting: wall art and column faces readable, ceiling hotspots reduced from initial70-candela pass. Right side remains dark. Abrupt raised floor edge and jagged wall silhouette require geometry work. Lighting performance and headlight-on/off comparison not measured; full art not accepted."
+}
