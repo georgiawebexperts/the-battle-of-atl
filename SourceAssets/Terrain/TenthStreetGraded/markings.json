@@ -1,0 +1,38 @@
+{
+  "surfaces": [
+    {
+      "file": "TenthStreet_WhitePaint.obj",
+      "triangles": 8721,
+      "bounds_cm": [
+        [
+          -30528.64130546017,
+          11685.523472618905,
+          -516.8947762045166
+        ],
+        [
+          11676.550869292638,
+          13946.493900987669,
+          401.2962542590191
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_YellowPaint.obj",
+      "triangles": 5213,
+      "bounds_cm": [
+        [
+          -30436.5989282569,
+          11963.753577351054,
+          -510.8916567500386
+        ],
+        [
+          11338.548226289726,
+          13383.974389504938,
+          363.63012839193453
+        ]
+      ]
+    }
+  ],
+  "paint_clearance_cm": 1,
+  "scope": "10th motor-lane markings only. Monroe signals, stop lines and cycle symbols pending."
+}

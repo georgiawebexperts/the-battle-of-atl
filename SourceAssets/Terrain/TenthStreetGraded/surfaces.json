@@ -1,0 +1,76 @@
+{
+  "surfaces": [
+    {
+      "file": "TenthStreet_Road.obj",
+      "triangles": 9861,
+      "missing_area_cm2": 9.698908343125368e-13,
+      "bounds_cm": [
+        [
+          -30590.414,
+          9060.498154506542,
+          -518.2109054574084
+        ],
+        [
+          13262.28531639439,
+          14168.279605736498,
+          401.2612702578771
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_CycleTrack.obj",
+      "triangles": 2426,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -21723.007140139413,
+          11251.981396913465,
+          -497.99353576716953
+        ],
+        [
+          12174.986936118416,
+          12832.442605440974,
+          328.1241586582495
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_Separator.obj",
+      "triangles": 437,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -21495.09092199313,
+          11317.01598608162,
+          -369.28370191232125
+        ],
+        [
+          11727.216899663852,
+          12411.12827250084,
+          331.83472712027856
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_Sidewalk.obj",
+      "triangles": 6445,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -30750.300035852193,
+          8900.64911645379,
+          -517.3742112888164
+        ],
+        [
+          13422.134354447142,
+          14328.176730309684,
+          415.1681501813367
+        ]
+      ]
+    }
+  ],
+  "status": "Generated only; native import, width, continuity, collision and landscape clearance review pending.",
+  "road_lane_width_cm": 300,
+  "cycle_track_width_cm": 160,
+  "sources": "Mapped cycle alignment and road topology; motor lanes expanded south to gameplay scale. Native vehicle and intersection review pending."
+}

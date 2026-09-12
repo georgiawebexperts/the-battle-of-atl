@@ -1,11 +1,11 @@
 """Author lane paint and drape it exactly onto the generated pavement triangles."""
-import json,math
+import json,math,os
 from pathlib import Path
 from shapely.geometry import LineString,Polygon
 from shapely.ops import substring,unary_union
 from shapely import constrained_delaunay_triangles
 from shapely.geometry.polygon import orient
-root=Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terrain/TenthStreet'
+root=Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terrain'/('TenthStreetGraded' if os.environ.get('BATTLE_TENTH_CANDIDATE')=='1' else 'TenthStreet')
 network=json.loads((folder/'network.json').read_text());white=[];yellow=[]
 # Authored road layout: four lanes have a divided center and dashed lane lines;
 # three lanes have a shared center turn lane, bounded by solid/dashed yellow.

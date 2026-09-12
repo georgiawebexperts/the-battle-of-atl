@@ -1,10 +1,10 @@
 """Sample actual authored road triangles along motor-lane centers."""
-import json,math
+import json,math,os
 from pathlib import Path
 from shapely.geometry import Polygon,Point,LineString
 from shapely.strtree import STRtree
 from shapely.ops import unary_union
-root=Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terrain/TenthStreet'
+root=Path(__file__).resolve().parents[1];candidate=os.environ.get('BATTLE_TENTH_CANDIDATE')=='1';folder=root/'SourceAssets/Terrain'/('TenthStreetGraded' if candidate else 'TenthStreet')
 vertices=[];faces=[]
 for line in (folder/'TenthStreet_Road.obj').read_text().splitlines():
  p=line.split()
@@ -37,5 +37,5 @@ for road in network['roads']:
   changes=[abs(b-a) for a,b in zip(grades,grades[1:])]
   rows.append({'osm_way':road['osm_way'],'lane_index':lane,'sample_count':len(samples),'cycle_crossing_samples':sum(v[3] is None and cycle_area.covers(Point(v[1:3])) for v in samples),'missing_pavement_samples':sum(v[3] is None and not cycle_area.covers(Point(v[1:3])) for v in samples),'max_grade_percent':round(max(map(abs,grades),default=0)*100,2),'max_grade_change_per_50cm_percentage_points':round(max(changes,default=0)*100,2)})
 result={'sampling_cm':50,'lanes':rows,'scope':'Mesh geometry only, not a native ride test. Grade changes identify profile roughness; thresholds are not road-engineering certification.','native_ride_verified':False}
-(root/'Tests/Results/2026-09-11-tenth-street-profile.json').write_text(json.dumps(result,indent=2)+'\n')
+(root/('Tests/Results/2026-09-11-tenth-street-graded-profile.json' if candidate else 'Tests/Results/2026-09-11-tenth-street-profile.json')).write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({'lanes':len(rows),'cycle_crossing_samples':sum(r['cycle_crossing_samples'] for r in rows),'missing':sum(r['missing_pavement_samples'] for r in rows),'max_grade_percent':max(r['max_grade_percent'] for r in rows),'max_grade_change_per_50cm_percentage_points':max(r['max_grade_change_per_50cm_percentage_points'] for r in rows)}))

@@ -5,7 +5,7 @@ from shapely.geometry import LineString,MultiPoint,Point,Polygon
 from shapely.ops import unary_union,triangulate
 from shapely import constrained_delaunay_triangles
 from shapely.geometry.polygon import orient
-root=Path(__file__).resolve().parents[1];ns=runpy.run_path(str(root/'Scripts/prepare_tenth_street.py'));data=ns['result'];height=ns['height'];folder=root/'SourceAssets/Terrain/TenthStreet'
+root=Path(__file__).resolve().parents[1];ns=runpy.run_path(str(root/'Scripts/prepare_tenth_street.py'));data=ns['result'];height=ns['height'];folder=ns['folder']
 # Geography is compressed, but rider/vehicle bodies use gameplay scale. Keep
 # mapped cycle alignment and expand motor lanes south, away from the park and
 # apartment footprints. Lane counts are retained at 300 cm per motor lane.

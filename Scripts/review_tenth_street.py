@@ -7,7 +7,17 @@ world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world
 # Replace only actors owned by this road installer, making repeated runs safe.
 for actor in ea.get_all_level_actors():
  if 'BattleTenthStreet' in [str(t) for t in actor.tags]:ea.destroy_actor(actor)
-folder=root/'SourceAssets/Terrain/TenthStreet';data=json.loads((folder/'surfaces.json').read_text());dest='/Game/BattleForTheA/Environment/TenthStreet';rows=[]
+graded='-BattleReviewGradedTenth' in unreal.SystemLibrary.get_command_line()
+assert not (graded and '-BattleInstallTenthStreet' in unreal.SystemLibrary.get_command_line()), 'Review candidate before installing terrain'
+if graded:
+ from battle_geography import import_source_landscape
+ old=next(a for a in ea.get_all_level_actors() if isinstance(a,unreal.Landscape))
+ old.set_actor_enable_collision(False)
+ new=import_source_landscape(root/'SourceAssets/Terrain/atlanta-height-tenth-graded.r16',json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text()))
+ assert new
+ new.set_editor_property('landscape_material',old.get_editor_property('landscape_material'));new.tags=list(old.tags)
+ label=old.get_actor_label();ea.destroy_actor(old);new.set_actor_label(label)
+folder=root/'SourceAssets/Terrain'/('TenthStreetGraded' if graded else 'TenthStreet');data=json.loads((folder/'surfaces.json').read_text());dest='/Game/BattleForTheA/Environment/'+('TenthStreetGraded' if graded else 'TenthStreet');rows=[]
 markings=folder/'markings.json'
 if markings.exists():data['surfaces']+=json.loads(markings.read_text())['surfaces']
 for kind,color in [('WhitePaint',(.8,.8,.76)),('YellowPaint',(.9,.58,.015))]:
@@ -30,7 +40,7 @@ for a in ea.get_all_level_actors():
   light=a.get_component_by_class(unreal.DirectionalLightComponent);original_lights.append((a,a.get_actor_rotation(),light.get_editor_property('intensity')))
   a.set_actor_rotation(unreal.Rotator(pitch=-35,yaw=-120),False);light.set_intensity(40)
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8);cap.texture_target=tex;cap.capture_source=unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR;cap.capture_every_frame=False;cap.capture_on_movement=False;cap.always_persist_rendering_state=True;cap.fov_angle=75
-out=root/'work/tenth-street-review';out.mkdir(parents=True,exist_ok=True)
+out=root/('work/tenth-street-graded-review' if graded else 'work/tenth-street-review');out.mkdir(parents=True,exist_ok=True)
 for name,pos,target in [('apartment-frontage',[-16500,15300,3800],[-19000,12300,350]),('monroe',[14800,14500,3000],[11900,11700,-300])]:
  cam.set_actor_location(unreal.Vector(*pos),False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(unreal.Vector(*pos),unreal.Vector(*target)),False)
  for _ in range(16):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()

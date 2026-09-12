@@ -1,0 +1,39 @@
+{
+  "map_saved": false,
+  "owned_actor_count": 6,
+  "meshes": [
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Road.SM_TenthStreet_Road",
+      "bounds_error_cm": 0.00030886149761499837
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_CycleTrack.SM_TenthStreet_CycleTrack",
+      "bounds_error_cm": 0.0006723605874867644
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Separator.SM_TenthStreet_Separator",
+      "bounds_error_cm": 0.0008748818690946791
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Sidewalk.SM_TenthStreet_Sidewalk",
+      "bounds_error_cm": 0.0007453978068951983
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_WhitePaint.SM_TenthStreet_WhitePaint",
+      "bounds_error_cm": 0.0006804601689509582
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_YellowPaint.SM_TenthStreet_YellowPaint",
+      "bounds_error_cm": 0.0006811181010561995
+    }
+  ],
+  "scope": "Static native import/placement review. Road, cycle track, separator, sidewalks and 10th lane paint present. Traffic, Monroe markings and crossing signals absent. Width and gameplay collision acceptance pending.",
+  "process_exit_code": 0,
+  "presentation_accepted": false,
+  "findings": [
+    "Native replacement landscape plus six matching road/paint meshes rendered at apartment and Monroe views.",
+    "Visibly smoother pavement; measured graded road max slope 8.94%, max slope change per 50 cm 0.67 percentage points.",
+    "Pre-existing park path surfaces are partly buried where new terrain rises, especially Monroe and apartment park connections. Must adapt those connections before installation.",
+    "Working map and original road assets unchanged; candidate assets imported separately into TenthStreetGraded."
+  ]
+}

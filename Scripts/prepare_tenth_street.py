@@ -1,5 +1,5 @@
 """Retain 10th Street, cycle track and Monroe crossing in the game terrain frame."""
-import json,math,xml.etree.ElementTree as ET
+import json,math,os,xml.etree.ElementTree as ET
 from pathlib import Path
 from pyproj import Transformer
 import numpy as np
@@ -8,7 +8,8 @@ from shapely.ops import unary_union
 root=Path(__file__).resolve().parents[1];meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text())
 project=Transformer.from_crs(4326,meta['crs'],always_xy=True);xml=ET.parse(root/'References/tenth-street-monroe.osm').getroot()
 nodes={n.get('id'):(float(n.get('lon')),float(n.get('lat'))) for n in xml.findall('node')}
-raw=np.fromfile(root/'SourceAssets/Terrain/atlanta-height-krog.r16',dtype='<u2').reshape(meta['size'][1],meta['size'][0])
+candidate=os.environ.get('BATTLE_TENTH_CANDIDATE')=='1'
+raw=np.fromfile(root/'SourceAssets/Terrain'/('atlanta-height-tenth-graded.r16' if candidate else 'atlanta-height-krog.r16'),dtype='<u2').reshape(meta['size'][1],meta['size'][0])
 def xy(p):
  e,n=project.transform(*p);return ((e-meta['origin_utm'][0])/.03,-(n-meta['origin_utm'][1])/.03)
 def height(x,y):
@@ -40,5 +41,5 @@ for w in roads+near_monroe+[w for w in ways if w['tags'].get('highway')=='cyclew
    x,y=line.interpolate(float(d)).coords[0];points.append([round(x,3),round(y,3),round(height(x,y)+12,3)])
   item={'osm_way':w['id'],'tags':w['tags'],'points_cm':points,'length_cm':round(line.length,3)}
   result['roads' if w in roads else 'monroe_roads' if w in near_monroe else 'cycle_track'].append(item)
-folder=root/'SourceAssets/Terrain/TenthStreet';folder.mkdir(parents=True,exist_ok=True);(folder/'network.json').write_text(json.dumps(result,indent=2)+'\n')
+folder=root/'SourceAssets/Terrain'/('TenthStreetGraded' if candidate else 'TenthStreet');folder.mkdir(parents=True,exist_ok=True);(folder/'network.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({'roads':len(result['roads']),'cycle_segments':len(result['cycle_track']),'monroe_crossing':result['monroe_crossing']}))
