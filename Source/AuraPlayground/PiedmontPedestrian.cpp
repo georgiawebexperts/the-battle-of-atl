@@ -149,6 +149,16 @@ bool APiedmontPedestrian::TickSleepBehavior(float Dt){
   if(SleepTarget.IsValid()){SleepPhase=3;ChaseClock=0;ChaseRepath=0;GetCharacterMovement()->MaxWalkSpeed=260;}
   else{CancelSleepBehavior();return false;}
  }
+ if(SleepPhase==4&&!IsBodySequencePlaying()){
+  // Keep the authored landed pose if a new obstacle occupies the landing area.
+  // Retry the handoff while the character remains down instead of teleporting through it.
+  if(!IsSettlePathClear(SleepLanding))return true;
+  auto* Sleep=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim"));
+  if(!Sleep)return true;
+  SetActorLocationAndRotation(SleepLanding,SleepLandingRotation,false,nullptr,ETeleportType::TeleportPhysics);
+  GetCharacterMovement()->bForceNextFloorCheck=true;
+  SetBodySequence(Sleep,true);SleepOrigin=SleepLanding;SleepPhase=1;AnimateBody(0);return true;
+ }
  if(SleepPhase==3){
   ChaseClock+=Dt;ChaseRepath-=Dt;
   auto* Target=SleepTarget.Get();
@@ -160,4 +170,33 @@ bool APiedmontPedestrian::TickSleepBehavior(float Dt){
   return true;
  }
  if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return true;
+}
+
+bool APiedmontPedestrian::IsSettlePathClear(const FVector& Landing) const{
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(SleeperFallSpace),false,this);FHitResult Hit;
+ const FVector Start=GetActorLocation()+FVector(0,0,15),End=Landing+FVector(0,0,15);
+ // Check a wider corridor for the spread arms and torso, not just the standing capsule.
+ if(GetWorld()->OverlapBlockingTestByChannel(Start,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(100),Q)||
+  GetWorld()->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(100),Q))return false;
+ const float Floor=GetActorLocation().Z-GetCapsuleComponent()->GetScaledCapsuleHalfHeight()-GetCharacterMovement()->CurrentFloor.GetDistanceToFloor();
+ for(int32 I=0;I<=6;++I){
+  const FVector P=FMath::Lerp(GetActorLocation(),Landing,float(I)/6.f);
+  if(!GetWorld()->LineTraceSingleByChannel(Hit,FVector(P.X,P.Y,Floor+50),FVector(P.X,P.Y,Floor-50),ECC_Visibility,Q)||
+   Hit.ImpactNormal.Z<.98f||FMath::Abs(Hit.ImpactPoint.Z-Floor)>5.f)return false;
+ }
+ return true;
+}
+bool APiedmontPedestrian::BeginSettling(){
+ if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||(SleepPhase!=0&&SleepPhase!=3))return false;
+ if(!Body->GetSkinnedAsset()||!Body->GetSkinnedAsset()->GetName().StartsWith(TEXT("m_tal_nrw")))return false;
+ // From the StumbleToSleep bake: mesh-local anchor of the aligned sleeping loop.
+ const FVector Offset=Body->GetComponentQuat().RotateVector(FVector(-261.387456,39.753575,0));
+ const FVector Landing=GetActorLocation()+Offset;
+ if(!IsSettlePathClear(Landing))return false;
+ auto* Fall=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/StumbleCandidate/StumbleToSleep"));
+ if(!Fall)return false;
+ if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+ GetCharacterMovement()->StopMovementImmediately();Configure(Kind);bHasDestination=false;SleepTarget.Reset();
+ SleepLanding=Landing;SleepLandingRotation=GetActorRotation()+FRotator(0,36.510763,0);
+ SetBodySequence(Fall,false);SleepPhase=4;return true;
 }

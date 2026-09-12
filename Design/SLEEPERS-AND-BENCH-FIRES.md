@@ -48,3 +48,7 @@ Opt-in `WakeAndChase(Target)` requires a valid nearby target (600 cm), line of s
 ## Native pursuit check — 2026-09-12 [codex-maclaptop]
 
 `Scripts/test_native_sleep_chase.py` passed: reachable target distance decreased from 364.742 to 77.992 cm, pursuit ended after its configured window with movement stopped and 135 cm/s normal speed restored, and destroying the target during a second pursuit cancelled cleanly. Evidence: `Tests/Results/2026-09-12-native-sleep-chase.json`. This does not verify presentation, distance-limit exits, failed paths, rare activation, stagger/settle or complete encounters; no world deployment.
+
+## Settle runtime candidate — 2026-09-12 [codex-maclaptop]
+
+Added opt-in `BeginSettling()`/phase 4. Checks a 100 cm sphere corridor to the baked landing offset and seven ground samples (near-level ground within 5 cm). Plays StumbleToSleep, rechecks space at the end, then relocates the actor by the baked mesh-local anchor and rotates 36.510763 degrees before switching to normal sleep. Refreshes the pose in that handoff frame. If an obstacle blocks the final handoff, holds the authored down pose and retries; this is not a reserved collision volume. Editor builds pass. Live settling/re-wake/interruptions, continuous collision during the fall and dynamic-obstacle behavior remain unverified. It is not connected automatically to chase completion or placed in the world yet.
