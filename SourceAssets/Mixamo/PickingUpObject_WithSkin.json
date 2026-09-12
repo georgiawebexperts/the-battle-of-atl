@@ -1,0 +1,15 @@
+{
+  "source": "https://www.mixamo.com/#/?page=1&query=picking+up",
+  "title": "Picking Up Object",
+  "description": "Picking Up An Object With One Hand",
+  "downloaded": "2026-09-12",
+  "author": "[codex-maclaptop]",
+  "settings": {
+    "format": "FBX Binary",
+    "skin": "With Skin",
+    "fps": 30,
+    "keyframe_reduction": "none"
+  },
+  "sha256": "5b33205fb10579a64e2d5fc032586e38403f46470c55592ab64ddfb871e26852",
+  "intended_use": "Candidate reaching interaction for bench scene; visual acceptance pending"
+}

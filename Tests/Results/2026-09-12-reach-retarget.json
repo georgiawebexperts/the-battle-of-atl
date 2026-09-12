@@ -1,0 +1,18 @@
+{
+  "clip": "/Game/BattleRetarget/Mixamo/ReachCandidate/MixamoReachReference_Anim.MixamoReachReference_Anim",
+  "duration": 3.433333396911621,
+  "rigs": [],
+  "retargeter": "/Game/BattleRetarget/Mixamo/SleepCandidate/RTG_SleepMixamoCity.RTG_SleepMixamoCity",
+  "visual_acceptance": false,
+  "gameplay_installed": false,
+  "editor_pose_review": {
+    "samples_inspected": [
+      "work/reach-review/male-m-1.png",
+      "work/reach-review/male-m-2.png"
+    ],
+    "finding": "Standing waist-height one-handed reach; unsuitable for low bench ignition without a different clip. Candidate for item interaction only.",
+    "commandlet_exit_code": 1,
+    "commandlet_error": "HttpListener unable to bind to 127.0.0.1:30010; Python script completed and images exported.",
+    "native_playback_verified": false
+  }
+}

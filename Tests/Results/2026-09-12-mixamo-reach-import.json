@@ -1,0 +1,26 @@
+{
+  "imported": [
+    {
+      "path": "/Game/BattleRetarget/Mixamo/ReachReference/Beta_HighLimbsGeoSG3.Beta_HighLimbsGeoSG3",
+      "type": "MaterialInstanceConstant"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/ReachReference/Beta_Joints_MAT1.Beta_Joints_MAT1",
+      "type": "MaterialInstanceConstant"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/ReachReference/MixamoReachReference_Skeleton.MixamoReachReference_Skeleton",
+      "type": "Skeleton"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/ReachReference/MixamoReachReference.MixamoReachReference",
+      "type": "SkeletalMesh"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/ReachReference/MixamoReachReference_Anim.MixamoReachReference_Anim",
+      "type": "AnimSequence"
+    }
+  ],
+  "retargeted": false,
+  "gameplay_installed": false
+}
