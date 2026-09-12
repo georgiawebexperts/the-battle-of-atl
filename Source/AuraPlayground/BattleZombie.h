@@ -25,6 +25,7 @@ public:
  void MirrorDeathPose();
  UPROPERTY() TObjectPtr<USkeletalMeshComponent> DeathPhysics;
  FTransform DeathFootFromLeg[2];
+ int32 DeathShoeBodies=0;
  UPROPERTY(BlueprintReadOnly) bool bSprinter=false;
  UPROPERTY(BlueprintReadOnly) bool bTelegraphing=false;
  UPROPERTY(BlueprintReadOnly) int32 Attacks=0;

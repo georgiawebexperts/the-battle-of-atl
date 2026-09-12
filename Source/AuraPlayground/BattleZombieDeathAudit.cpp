@@ -44,6 +44,7 @@ void TickBattleZombieDeathAudit(ABattleEnemyDirector* D,float Dt){
   const FVector Eye=Spot+FVector(-380,-420,220);auto* Cam=W->SpawnActor<ACameraActor>(Eye,(Spot-Eye).Rotation());UGameplayStatics::GetPlayerController(W,0)->SetViewTarget(Cam);Phase=1;Clock=0;
  }else if(Phase==1&&Clock>1.5f){
   HeadZ=Gun->Body->GetSocketLocation(TEXT("Head")).Z;UGameplayStatics::ApplyDamage(Gun,100,nullptr,UGameplayStatics::GetPlayerPawn(W,0),UDamageType::StaticClass());
+  CHECK_DEATH(Gun->DeathShoeBodies==2,"Shoe collision did not weld to shins");
   CHECK_DEATH(Gun->bDead&&Gun->DeathPhysics&&Gun->DeathPhysics->IsSimulatingPhysics(TEXT("Chest")),"Death did not enter physics");Phase=2;Clock=0;
  }else if(Phase==2){
   if(Clock>.3f&&!Falling&&!Dir.IsEmpty()){FScreenshotRequest::RequestScreenshot(Dir/TEXT("falling.png"),false,false);Falling=true;}

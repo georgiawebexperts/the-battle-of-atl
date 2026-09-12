@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "reason": "Body still moving too fast at end of fall",
+  "slope_degrees": 27.82,
+  "minimum_joint_clearance_cm": 7.48,
+  "minimum_skin_clearance_cm": 1.0,
+  "below_skin_vertices": 0,
+  "skin_samples": 11010,
+  "max_body_speed_cm_s": 65.34,
+  "penetrating_bones": [],
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible chest tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/97f4b4c1513147d483c6dfa9af45a706/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/97f4b4c1513147d483c6dfa9af45a706/settled.png"
+  ]
+}

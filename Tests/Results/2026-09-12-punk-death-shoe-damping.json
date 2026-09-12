@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "reason": "Fatal damage starts physics, visible chest follows body, head falls and dead zombie attack warning clears",
+  "slope_degrees": 27.82,
+  "minimum_joint_clearance_cm": 7.21,
+  "minimum_skin_clearance_cm": 0.97,
+  "below_skin_vertices": 0,
+  "skin_samples": 11010,
+  "max_body_speed_cm_s": 0.0,
+  "penetrating_bones": [],
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible chest tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/186e1d8b909c45898db219135fb91804/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/186e1d8b909c45898db219135fb91804/settled.png"
+  ],
+  "visual_review": {
+    "image_reviewed": "settled.png",
+    "observations": "Shoes stay connected and supported on slope; no deep shoe penetration visible.",
+    "limits": "One slope/direction per style at final damping values; other landing poses, obstacles, corpse performance and packaged build still require testing."
+  }
+}

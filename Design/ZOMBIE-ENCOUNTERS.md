@@ -107,3 +107,12 @@ Strengthened death fixture: sample all11010 punk rendered vertices against terra
 Three punk slope landings: first failed -16.06cm/184below-ground vertices with speed0; second passed -1.09cm/3vertices (Foot_L),speed2.93; third failed -11.96cm/140vertices,all Foot_L,speed0. This is intermittent actual shoe/terrain penetration, not unsettled motion. Visual shoe-to-shin attachment does not supply physical shoe support; imported asset lacks foot bodies. Need add compatible shoe collision/ankle support and rerun mesh contact, rather than lifting whole corpse or accepting a single good landing. Runtime source still has new falls; installed052 retains previous zombie death and is unchanged. Do not promote zombie falls on current evidence.
 
 Native build passes; mesh-contact fixtures intentionally report failures. Reproducer Scripts/test_zombie_death.py --render --punk --slope, with per-bone diagnostics retained in report. Full game remains unfinished.
+
+
+## Physical shoe support — 2026-09-12 [codex-maclaptop]
+
+Added fitted shoe boxes welded to physical LowerLeg_L/R at the animated death pose. Bounds exported from dominant shoe mesh vertices in bone-local coordinates:208vertices each vendor shoe,281each punk shoe; no runtime vertex scan needed. Generated BattleZombieShoeBounds.h via Scripts/prepare_zombie_shoe_bounds.py and editor helper InspectZombieShoeBounds. Two0.8kg boxes,0.8cm fit margin, CCD, same world collision/Pawn-Camera ignore policy as body. Audit asserts both weld parents are the intended shins.
+
+First punk support run passes skin contact(+1.97cm minimum); repeat also has no penetration(+1.00cm),but65.34cm/s peak body speed at3.8s fails settling check. Added linear damping.8/angular2 to physical bodies. Final punk passes+0.97cm minimum/speed0; vendor passes-0.81cm minimum/speed.78cm/s. No vertices more than1cm below terrain in final runs. Both final3.8second images inspected; no deep shoe clipping.
+
+Native build passes. This fixes the reproduced unsupported-shoe mechanism; one final landing per style on27.82degree slope is not proof for all terrain, obstacle contacts or corpse performance. Packaged acceptance pending, installed052 unchanged. Old failure evidence retained.

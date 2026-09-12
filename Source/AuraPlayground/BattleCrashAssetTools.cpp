@@ -44,3 +44,27 @@ UPhysicsAsset* UPiedmontWorldTools::CreatePlayerCrashPhysics(){
  return nullptr;
 #endif
 }
+
+FString UPiedmontWorldTools::InspectZombieShoeBounds(){
+#if WITH_EDITOR
+ FString Json=TEXT("[");bool First=true;
+ for(const TCHAR* Style:{TEXT("Farmer"),TEXT("Punk")}){
+  const FString Path=FString::Printf(TEXT("/Game/BattleForTheA/Zombies/%s/%s/SkeletalMeshes/%s.%s"),Style,Style,Style,Style);
+  auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*Path);if(!Mesh||!Mesh->GetImportedModel())return TEXT("[]");
+  const auto& Ref=Mesh->GetRefSkeleton();TArray<FTransform> Global;
+  for(int I=0;I<Ref.GetNum();I++){FTransform T=Ref.GetRefBonePose()[I];if(Ref.GetParentIndex(I)>=0)T=T*Global[Ref.GetParentIndex(I)];Global.Add(T);}
+  for(const TCHAR* Foot:{TEXT("Foot_L"),TEXT("Foot_R")}){
+   const int Bone=Ref.FindBoneIndex(Foot);if(Bone<0)return TEXT("[]");FBox Box(ForceInit);int Count=0;
+   for(const auto& Section:Mesh->GetImportedModel()->LODModels[0].Sections)for(const auto& Vertex:Section.SoftVertices){
+    int Strongest=0;for(int I=1;I<MAX_TOTAL_INFLUENCES;I++)if(Vertex.InfluenceWeights[I]>Vertex.InfluenceWeights[Strongest])Strongest=I;
+    if(Section.BoneMap[Vertex.InfluenceBones[Strongest]]==Bone){Box+=Global[Bone].InverseTransformPosition(FVector(Vertex.Position));Count++;}
+   }
+   if(Count<4)return TEXT("[]");const FVector C=Box.GetCenter(),E=Box.GetExtent();if(!First)Json+=TEXT(",");First=false;
+   Json+=FString::Printf(TEXT("{\"style\":\"%s\",\"foot\":\"%s\",\"vertices\":%d,\"centre\":[%.7f,%.7f,%.7f],\"extent\":[%.7f,%.7f,%.7f],\"scale\":%.7f}"),Style,Foot,Count,C.X,C.Y,C.Z,E.X,E.Y,E.Z,Global[Bone].GetScale3D().GetAbsMax());
+  }
+ }
+ return Json+TEXT("]");
+#else
+ return TEXT("[]");
+#endif
+}

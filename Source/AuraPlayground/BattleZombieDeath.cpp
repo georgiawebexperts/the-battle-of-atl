@@ -1,4 +1,6 @@
 #include "BattleZombie.h"
+#include "BattleZombieShoeBounds.h"
+#include "Components/BoxComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
@@ -17,7 +19,17 @@ bool ABattleZombie::BeginDeathPhysics(FVector Direction){
  DeathPhysics->SetVisibility(false);DeathPhysics->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;
  DeathPhysics->RegisterComponent();DeathPhysics->RefreshBoneTransforms();DeathPhysics->SetAllBodiesSimulatePhysics(true);DeathPhysics->SetSimulatePhysics(true);
  const auto& Ref=Mesh->GetRefSkeleton();
- for(int I=0;I<Ref.GetNum();I++)if(auto* Instance=DeathPhysics->GetBodyInstance(Ref.GetBoneName(I))){Instance->SetBodyTransform(Body->GetBoneTransform(I),ETeleportType::TeleportPhysics);Instance->SetUseCCD(true);}
+ for(int I=0;I<Ref.GetNum();I++)if(auto* Instance=DeathPhysics->GetBodyInstance(Ref.GetBoneName(I))){Instance->SetBodyTransform(Body->GetBoneTransform(I),ETeleportType::TeleportPhysics);Instance->SetUseCCD(true);Instance->LinearDamping=.8f;Instance->AngularDamping=2.f;Instance->UpdateDampingProperties();}
+ for(int Side=0;Side<2;Side++){
+  const FName Foot=Side==0?TEXT("Foot_L"):TEXT("Foot_R"),Leg=Side==0?TEXT("LowerLeg_L"):TEXT("LowerLeg_R");
+  const auto& Bounds=BattleZombieShoes::Bounds[FMath::Clamp(VisualStyle,0,1)][Side];
+  const FTransform FootWorld=Body->GetSocketTransform(Foot);FTransform ShapeWorld=FootWorld;ShapeWorld.SetLocation(FootWorld.TransformPosition(Bounds.Centre));
+  auto* Shoe=NewObject<UBoxComponent>(this);AddInstanceComponent(Shoe);Shoe->SetBoxExtent(Bounds.Extent+FVector(.8));Shoe->SetWorldTransform(ShapeWorld);
+  Shoe->SetCollisionProfileName(TEXT("Ragdoll"));Shoe->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);Shoe->SetCollisionResponseToChannel(ECC_Camera,ECR_Ignore);Shoe->SetCanEverAffectNavigation(false);Shoe->SetHiddenInGame(true);
+  Shoe->RegisterComponent();Shoe->SetMassOverrideInKg(NAME_None,.8f,true);Shoe->SetSimulatePhysics(true);Shoe->BodyInstance.SetUseCCD(true);
+  Shoe->AttachToComponent(DeathPhysics,FAttachmentTransformRules(EAttachmentRule::KeepWorld,true),Leg);
+  if(Shoe->BodyInstance.WeldParent==DeathPhysics->GetBodyInstance(Leg))DeathShoeBodies++;
+ }
  DeathPhysics->SetAllPhysicsLinearVelocity(Direction.GetSafeNormal2D()*120+FVector(0,0,15));
  DeathPhysics->AddImpulse(Direction.GetSafeNormal2D()*100,TEXT("Chest"),true);
  MirrorDeathPose();return true;

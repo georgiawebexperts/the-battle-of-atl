@@ -10,6 +10,8 @@ class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary 
 public:
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Physics")
  static UPhysicsAsset* CreatePlayerCrashPhysics();
+ UFUNCTION(BlueprintCallable,Category="Battle")
+ static FString InspectZombieShoeBounds();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
  static float GetTreeLowGeometryRadius(UStaticMesh* Mesh,float LocalHeightAboveBottom);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
