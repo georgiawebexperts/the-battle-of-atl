@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48101.27,
+  "maxCenterlineErrorCm": 41.71,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 80984,
+    "paved": 80984
+  },
+  "lights": {
+    "lit_samples": 10299,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 202,
+    "max_live_cars": 22,
+    "max_moving_cars": 20,
+    "nearby_samples": 10,
+    "nearest_car_cm": 210.72
+  },
+  "exit_code": 0,
+  "map": "PiedmontKrogWorldReview",
+  "rail_manifest_sha256": "db2af21e64b4d594b9f2f2fcecd57efbb5c28701b34c80e68e6cc2745d376c81",
+  "building_manifest_sha256": "aeb268ced9c2da2444d444b79f93769b19456c67a8dbb05c4ed190f1b423f8b5",
+  "scope": "Combined map: W/A/D ride on selected route with road traffic directors active. Pedestrian traffic disabled by existing route fixture; not a full mixed-crowd playthrough."
+}

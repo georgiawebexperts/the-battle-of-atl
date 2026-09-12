@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "old_zone_count": 36,
+  "new_zone_count": 32,
+  "covered_route_samples": 50,
+  "approach_inside_before": true,
+  "approach_inside_after": false,
+  "portal_setback_cm": 500.0,
+  "scope": "Bounds match current shell manifest; native riding light check remains separate. Main map unchanged."
+}
