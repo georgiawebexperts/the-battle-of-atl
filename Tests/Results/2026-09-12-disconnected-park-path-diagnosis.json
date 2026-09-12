@@ -1,0 +1,263 @@
+{
+  "scope": "Source topology diagnosis only. Does not prove paths should be connected or accept unreachable areas.",
+  "unreachable_sample_count": 33,
+  "paths": [
+    {
+      "osm_id": 182392760,
+      "tags": {
+        "highway": "footway",
+        "source": "bing_imagery",
+        "surface": "concrete"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [],
+      "interpretation": "No shared-node neighbor in retained source"
+    },
+    {
+      "osm_id": 182392761,
+      "tags": {
+        "highway": "footway",
+        "source": "bing_imagery",
+        "surface": "concrete"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [],
+      "interpretation": "No shared-node neighbor in retained source"
+    },
+    {
+      "osm_id": 182398937,
+      "tags": {
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [],
+      "interpretation": "No shared-node neighbor in retained source"
+    },
+    {
+      "osm_id": 182466135,
+      "tags": {
+        "highway": "footway",
+        "source": "bing_imagery",
+        "surface": "concrete"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [],
+      "interpretation": "No shared-node neighbor in retained source"
+    },
+    {
+      "osm_id": 226119770,
+      "tags": {
+        "abandoned:railway": "rail",
+        "bicycle": "designated",
+        "foot": "designated",
+        "highway": "cycleway",
+        "name": "Atlanta Beltline Northeast Trail",
+        "old_railway_operator": "Southern",
+        "oneway": "no",
+        "railway": "abandoned",
+        "segregated": "no",
+        "surface": "gravel"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [
+        {
+          "osm_id": 1387087345,
+          "tags": {
+            "abandoned:railway": "rail",
+            "bicycle": "designated",
+            "crossing": "marked",
+            "crossing:markings": "ladder:paired",
+            "cycleway": "crossing",
+            "foot": "designated",
+            "highway": "cycleway",
+            "name": "Interim BeltLine Northeast Trail",
+            "old_railway_operator": "Southern",
+            "railway": "abandoned",
+            "segregated": "no",
+            "surface": "gravel"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 8.550406219263376
+        },
+        {
+          "osm_id": 1396654833,
+          "tags": {
+            "bicycle": "designated",
+            "foot": "designated",
+            "highway": "cycleway",
+            "name": "Beltline Access Line"
+          },
+          "present_in_prepared_network": false,
+          "length_inside_preparation_boundary_m": 0.0
+        }
+      ],
+      "interpretation": "At least one mapped connection omitted from prepared network"
+    },
+    {
+      "osm_id": 442709517,
+      "tags": {
+        "highway": "footway"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [],
+      "interpretation": "No shared-node neighbor in retained source"
+    },
+    {
+      "osm_id": 1209254623,
+      "tags": {
+        "highway": "footway"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [
+        {
+          "osm_id": 185621232,
+          "tags": {
+            "highway": "footway",
+            "surface": "concrete"
+          },
+          "present_in_prepared_network": false,
+          "length_inside_preparation_boundary_m": 0.0
+        }
+      ],
+      "interpretation": "At least one mapped connection omitted from prepared network"
+    },
+    {
+      "osm_id": 1384353621,
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [
+        {
+          "osm_id": 1384353622,
+          "tags": {
+            "bridge": "yes",
+            "footway": "sidewalk",
+            "highway": "footway",
+            "layer": "1"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 20.62858410626697
+        },
+        {
+          "osm_id": 1384366242,
+          "tags": {
+            "bridge": "yes",
+            "footway": "sidewalk",
+            "highway": "footway",
+            "layer": "1"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 44.964730155424085
+        }
+      ],
+      "interpretation": "Mapped connections retained; inspect native geometry and grades"
+    },
+    {
+      "osm_id": 1384353622,
+      "tags": {
+        "bridge": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "layer": "1"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [
+        {
+          "osm_id": 1384353621,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 101.62385188779928
+        },
+        {
+          "osm_id": 1384353623,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          },
+          "present_in_prepared_network": false,
+          "length_inside_preparation_boundary_m": 0.0
+        }
+      ],
+      "interpretation": "At least one mapped connection omitted from prepared network"
+    },
+    {
+      "osm_id": 1384366241,
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [
+        {
+          "osm_id": 1384339890,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          },
+          "present_in_prepared_network": false,
+          "length_inside_preparation_boundary_m": 0.0
+        },
+        {
+          "osm_id": 1384366242,
+          "tags": {
+            "bridge": "yes",
+            "footway": "sidewalk",
+            "highway": "footway",
+            "layer": "1"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 44.964730155424085
+        }
+      ],
+      "interpretation": "At least one mapped connection omitted from prepared network"
+    },
+    {
+      "osm_id": 1384366242,
+      "tags": {
+        "bridge": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "layer": "1"
+      },
+      "unreachable_samples": 3,
+      "all_projected_to_navmesh": true,
+      "shared_node_neighbors": [
+        {
+          "osm_id": 1384353621,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 101.62385188779928
+        },
+        {
+          "osm_id": 1384366241,
+          "tags": {
+            "footway": "sidewalk",
+            "highway": "footway"
+          },
+          "present_in_prepared_network": true,
+          "length_inside_preparation_boundary_m": 2.372952687396821
+        }
+      ],
+      "interpretation": "Mapped connections retained; inspect native geometry and grades"
+    }
+  ]
+}
