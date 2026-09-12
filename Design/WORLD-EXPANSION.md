@@ -608,3 +608,8 @@ install_weathered_park_asphalt.py applies only22 Park pavement SM_Park_Asphalt_*
 Explicit InstallTwelfthMarket mode in review_twelfth_market.py saves only authored dressing, rejects diagnostic sky/shadow/fence flags. Replaces only prior TwelfthStreetMarket tagged actors; previews rebuild those transiently to avoid duplicate stalls. Saved ten stalls/150 actors under Piedmont/12th Street Market, before review camera creation. Main map has no temporary market closure.
 
 Install render process exits0; entrance image026305bee16f4e20b03183893f8dfc92 inspected with normal skylight. Shapes, produce and signs visible, but repeated stock, overlarge levelling blocks and general art quality remain rough. Fresh process verify_twelfth_market_install.py exits0:150 labels retained, ten each of six stall meshes and sign, metal/wood BlockAll, five aisle midpoint ground samples unobstructed by stalls. This is not full aisle player traversal. Closure activation and remaining perimeter tests pending; desktop050 unchanged.
+
+
+## Market support polish — 2026-09-12 [codex-maclaptop]
+
+Replaced conspicuous18cm-square wooden levelling blocks with metal leg continuations:4cm-square canopy adjusters and2.8cm-square folding-table adjusters, retaining measured support bottom/top elevations. Native normal-light entrance preview inspected; visible clutter reduced, stalls remain rough/repetitive overall. Reinstalled using explicit InstallTwelfthMarket; process exits0. Fresh-process persisted market verification passes after replacement (150 actors, same ten stalls/five aisle samples). No geometry or collision movement beyond narrower support cross-sections. Main map updated; desktop050 unchanged.

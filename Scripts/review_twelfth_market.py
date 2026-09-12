@@ -53,12 +53,12 @@ for index,row in enumerate(layout['stalls']):
   hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,1500),unreal.Vector(x,y,-1500));assert hit
   samples.append({'xy':[x,y],'z':hit[0].z,'actor':hit[1].get_actor_label()})
  base=max(s['z'] for s in samples);survey.append({'stall':index+1,'samples':samples,'base_z':base,'ground_spread_cm':base-min(s['z'] for s in samples)})
- # Grounded levelling blocks keep all eight legs supported on sloped pavement.
+ # Slim metal adjusters continue each leg down to the measured ground.
  supports=[]
- for sample in samples[1:]:
+ for foot_index,sample in enumerate(samples[1:]):
   height=base-sample['z']
   if height<.1:continue
-  x,y=sample['xy'];pad=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(x,y,sample['z']+height/2),unreal.Rotator(yaw=yaw));pad.set_actor_label(f'Market review {index+1} levelling block');pad.tags=[unreal.Name('MarketReview')];pad.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));pad.static_mesh_component.set_material(0,unreal.load_asset(dest+'/M_Wood'));pad.set_actor_scale3d(unreal.Vector(.18,.18,height/100));pad.static_mesh_component.set_collision_profile_name('BlockAll');supports.append({'xy':[x,y],'bottom_z':sample['z'],'top_z':base})
+  x,y=sample['xy'];pad=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(x,y,sample['z']+height/2),unreal.Rotator(yaw=yaw));pad.set_actor_label(f'Market review {index+1} adjustable foot');pad.tags=[unreal.Name('MarketReview')];pad.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));pad.static_mesh_component.set_material(0,unreal.load_asset(dest+'/M_Metal'));width=.04 if foot_index<4 else .028;pad.set_actor_scale3d(unreal.Vector(width,width,height/100));pad.static_mesh_component.set_collision_profile_name('BlockAll');supports.append({'xy':[x,y],'bottom_z':sample['z'],'top_z':base})
  survey[-1]['levelling_blocks']=supports
 
  for name,mesh in meshes.items():
