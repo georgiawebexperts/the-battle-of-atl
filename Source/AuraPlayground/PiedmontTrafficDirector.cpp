@@ -18,9 +18,9 @@ void APiedmontTrafficDirector::BeginPlay(){
 APiedmontPedestrian* APiedmontTrafficDirector::SpawnVisitor(FVector Location,bool Jogger){
  auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());FNavLocation Point;
  if(!Nav||!Nav->ProjectPointToNavigation(Location,Point,FVector(180,180,200)))return nullptr;
- FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
- auto* Visitor=GetWorld()->SpawnActor<APiedmontPedestrian>(Point.Location+FVector(0,0,92),FRotator(0,FMath::FRandRange(-180.f,180.f),0),Params);
- if(Visitor){Visitor->Configure(Jogger?EPiedmontPedestrianKind::Jogger:EPiedmontPedestrianKind::Walker);Visitors.Add(Visitor);TotalSpawned++;}
+ const FTransform SpawnTransform(FRotator(0,FMath::FRandRange(-180.f,180.f),0),Point.Location+FVector(0,0,92));
+ auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),SpawnTransform,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding);
+ if(Visitor){Visitor->Kind=Jogger?EPiedmontPedestrianKind::Jogger:EPiedmontPedestrianKind::Walker;Visitor->FinishSpawning(SpawnTransform);Visitors.Add(Visitor);TotalSpawned++;}
  return Visitor;
 }
 void APiedmontTrafficDirector::Tick(float Dt){

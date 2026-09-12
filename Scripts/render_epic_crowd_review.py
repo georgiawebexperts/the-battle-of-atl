@@ -1,8 +1,9 @@
 """Transient native render of imported casual outfits with their matching walk clips."""
 import unreal,json,pathlib
-root=pathlib.Path(unreal.Paths.project_dir());out=root/'work/epic-crowd-review';out.mkdir(parents=True,exist_ok=True)
+root=pathlib.Path(unreal.Paths.project_dir());out=root/'work/epic-crowd-attached-review';out.mkdir(parents=True,exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
+def vector_values(v):return [v.x,v.y,v.z]
 base='/Game/CitySampleCrowd/Character/'
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());c=cam.get_component_by_class(unreal.SceneCaptureComponent2D)
 t=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8)
@@ -31,6 +32,13 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate([
  for actor,component in parts[1:]:component.set_leader_pose_component(body,True,False)
  hair_actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,origin,unreal.Rotator(yaw=-90))
  hair_actor.static_mesh_component.set_static_mesh(unreal.load_asset(base+sex+'/'+face+'/Hair/Hair/'+hair+'_CardsMesh_Group0_LOD0'))
+ hair_actor.static_mesh_component.set_mobility(unreal.ComponentMobility.MOVABLE)
+ assert hair_actor.attach_to_component(body,'head',unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,False)
+ fill=ea.spawn_actor_from_class(unreal.PointLight,origin+unreal.Vector(220,-180,230))
+ fill_component=fill.get_component_by_class(unreal.PointLightComponent)
+ fill_component.set_intensity(40)
+ fill_component.set_editor_property('attenuation_radius',1000)
+ fill_component.set_cast_shadows(False)
  unreal.PiedmontWorldTools.finish_editor_asset_loading()
  pos=origin+unreal.Vector(340,-280,120);target=origin+unreal.Vector(0,0,95)
  cam.set_actor_location(pos,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(pos,target),False)
@@ -43,9 +51,10 @@ for index,(sex,prefix,outfit,face,hair,clip) in enumerate([
   name=sex.lower()+'-walk-'+str(phase)+'.png'
   unreal.RenderingLibrary.export_render_target(world,t,str(out),name)
   assert abs(body.get_position()-sample_time)<.01,'Preview did not evaluate requested animation time'
-  samples.append({'image':name,'animation_position':body.get_position(),'left_foot':str(body.get_socket_location('foot_l')),'right_foot':str(body.get_socket_location('foot_r'))})
+  samples.append({'image':name,'animation_position':body.get_position(),'head':vector_values(body.get_socket_location('head')),'hair_origin':vector_values(hair_actor.get_actor_location()),'left_foot':vector_values(body.get_socket_location('foot_l')),'right_foot':vector_values(body.get_socket_location('foot_r'))})
  results.append({'sex':sex,'clip':clip,'samples':samples})
  for actor,component in parts:ea.destroy_actor(actor)
  ea.destroy_actor(hair_actor)
-(out/'manifest.json').write_text(json.dumps({'map_saved':False,'lights_modified':False,'explicit_sampled_pose_evaluation':True,'post_process_disabled_for_diagnostic':True,'hair_static_for_diagnostic':True,'results':results,'scope':'Modular mesh and walk preview, not production animation or game acceptance'},indent=2)+'\n')
+ ea.destroy_actor(fill)
+(out/'manifest.json').write_text(json.dumps({'map_saved':False,'diagnostic_fill_light':{'intensity':40,'radius':1000},'explicit_sampled_pose_evaluation':True,'post_process_disabled_for_diagnostic':True,'hair_attached_to_head':True,'results':results,'scope':'Modular mesh and walk preview, not production animation or game acceptance'},indent=2)+'\n')
 print('BATTLE_CROWD_RENDER_COMPLETE')

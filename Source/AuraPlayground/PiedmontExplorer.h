@@ -20,6 +20,7 @@ public:
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontBike> Bike;
  UPROPERTY(BlueprintReadOnly) bool bSwimming=false;
  UPROPERTY(BlueprintReadOnly) bool bAuthoredLocomotion=false;
+ UPROPERTY(BlueprintReadOnly) bool bNativeCrowdRig=false;
  UPROPERTY(BlueprintReadOnly) bool bWeaponDrawn=false;
  UPROPERTY(BlueprintReadOnly) bool bAiming=false;
  UPROPERTY(BlueprintReadOnly) bool bDead=false;

@@ -1,0 +1,49 @@
+#include "PiedmontPedestrian.h"
+#include "Animation/AnimSequence.h"
+#include "Components/PoseableMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/SkeletalMesh.h"
+#include "Engine/StaticMesh.h"
+
+void APiedmontPedestrian::InitializeCityAppearance(){
+ // Specialized frisbee players and joggers retain their own animation sets until
+ // appropriate native clips are integrated. This applies to ordinary walkers.
+ if(GetClass()!=APiedmontPedestrian::StaticClass()||Kind!=EPiedmontPedestrianKind::Walker)return;
+ const bool Female=(GetUniqueID()&1)!=0;
+ const FString Base=TEXT("/Game/CitySampleCrowd/Character/");
+ const FString Gender=Female?TEXT("Female"):TEXT("Male");
+ const FString Prefix=Female?TEXT("f_tal_nrw"):TEXT("m_tal_nrw");
+ const FString Face=Female?TEXT("f_001"):TEXT("m_001");
+ const FString HairName=Female?TEXT("Hair_S_Coil"):TEXT("Hair_S_AfroFade");
+ const FString MeshRoot=Base+Gender+TEXT("/NormalWeight/Meshes/")+Prefix+TEXT("_");
+ const FString FaceRoot=Base+Gender+TEXT("/")+Face;
+ auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
+ const FString AnimRoot=Base+TEXT("Anims/Loco/");
+ auto* Idle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Idle_Base"):TEXT("MTN_N_Idle"))));
+ auto* Walk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F"):TEXT("MTN_N_Walk_InPlace"))));
+ auto* Quick=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F_Quickly"):TEXT("MTN_N_WalkQuickly_F"))));
+ TArray<USkeletalMesh*> Parts;
+ for(const FString& Path:TArray<FString>{MeshRoot+(Female?TEXT("scoopneck"):TEXT("crewneck")),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),FaceRoot+TEXT("/Face/")+Face+TEXT("_nrw_FaceMesh")}){
+  auto* Part=LoadObject<USkeletalMesh>(nullptr,*Path);if(!Part)return;Parts.Add(Part);
+ }
+ auto* HairMesh=LoadObject<UStaticMesh>(nullptr,*(FaceRoot+TEXT("/Hair/Hair/")+HairName+TEXT("_CardsMesh_Group0_LOD0")));
+ if(!Mesh||!Idle||!Walk||!Quick||!HairMesh)return;
+ Body->SetSkinnedAssetAndUpdate(Mesh);
+ SetLocomotionClips(Idle,Walk,Quick);bNativeCrowdRig=true;
+ for(int32 Index=0;Index<Parts.Num();++Index){
+  auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("CityOutfit%d"),Index));
+  AddInstanceComponent(Part);Part->SetupAttachment(Body);
+  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[Index]);
+  Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);
+  Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
+ }
+ auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("CityHair"));AddInstanceComponent(Hair);
+ Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);
+ Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);
+ Hair->SetupAttachment(Body);Hair->RegisterComponent();
+ // Hair cards are authored in body coordinates. Preserve that bind offset while
+ // attaching to the animated head, rather than leaving hair at the actor origin.
+ Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
+ UE_LOG(LogTemp,Display,TEXT("CityVisitor: %s rig=%s parts=%d"),*GetName(),*Gender,Parts.Num());
+}

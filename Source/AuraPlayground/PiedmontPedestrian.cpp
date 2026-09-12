@@ -16,7 +16,7 @@ APiedmontPedestrian::APiedmontPedestrian(){
  auto* Move=GetCharacterMovement();Move->bOrientRotationToMovement=true;Move->RotationRate=FRotator(0,360,0);
  Move->bUseRVOAvoidance=true;Move->AvoidanceConsiderationRadius=350;Move->AvoidanceWeight=.5f;
 }
-void APiedmontPedestrian::BeginPlay(){Super::BeginPlay();Configure(Kind);ThinkRemaining=FMath::FRandRange(.1f,.7f);}
+void APiedmontPedestrian::BeginPlay(){InitializeCityAppearance();Super::BeginPlay();Configure(Kind);ThinkRemaining=FMath::FRandRange(.1f,.7f);}
 void APiedmontPedestrian::Configure(EPiedmontPedestrianKind NewKind){
  Kind=NewKind;GetCharacterMovement()->MaxWalkSpeed=Kind==EPiedmontPedestrianKind::Jogger?310:135;
 }

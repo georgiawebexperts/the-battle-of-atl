@@ -33,6 +33,7 @@ protected:
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ void InitializeCityAppearance();
  bool MoveTo(FVector Goal);
  void ChooseDestination();
  void YieldTo(APawn* Source,bool Horn);

@@ -66,7 +66,7 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
   Pose[I].Blend(Sample(Idle,Bone,IdleClock/IdleAnimation->GetPlayLength()),Moving,MoveWeight);
   // The animation-only FBX uses different bind translations. Retarget translation
   // and scale to this mesh's skeleton while preserving the authored rotations.
-  Pose[I].SetTranslation(RestPose[I].GetTranslation());
+  if(!bNativeCrowdRig)Pose[I].SetTranslation(RestPose[I].GetTranslation());
   Pose[I].SetScale3D(RestPose[I].GetScale3D());
   if(I==RootIndex)AuthoredRootRotation=Pose[I].GetRotation();
   // CharacterMovement owns world travel; retain hip/knee/ankle animation above it.

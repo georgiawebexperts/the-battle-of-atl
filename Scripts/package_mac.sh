@@ -8,5 +8,6 @@ mkdir -p "$PROJECT_ROOT/work" "$ARCHIVE_ROOT"
  -project="$PROJECT_ROOT/AuraPlayground.uproject" -noP4 \
  -platform=Mac -clientconfig=Development -build -cook \
  -map=/Game/PiedmontRide/Maps/PiedmontWorld+/Game/BattleForTheA/Maps/ArcadeBikeLab \
+ -CookDir="$PROJECT_ROOT/Content/CitySampleCrowd" \
  -stage -pak -archive -archivedirectory="$ARCHIVE_ROOT" \
  -utf8output -unattended > "$PROJECT_ROOT/work/mac-package.log" 2>&1

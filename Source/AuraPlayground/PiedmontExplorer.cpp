@@ -120,7 +120,7 @@ void APiedmontExplorer::AnimateBody(float Dt){
  // Keep the support foot down after translation retargeting; fade this correction
  // out for running, where both feet may legitimately be airborne in the stride.
  float HeightTarget=0;
- if(bAuthoredLocomotion&&GetCharacterMovement()->IsMovingOnGround()){
+ if(bAuthoredLocomotion&&!bNativeCrowdRig&&GetCharacterMovement()->IsMovingOnGround()){
   float FootHeight=BIG_NUMBER;
   for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R"),TEXT("Foot_L_end"),TEXT("Foot_R_end")}){const int32 I=Index(Name);if(I>=0)FootHeight=FMath::Min(FootHeight,float(Pose[I].GetLocation().Z));}
   if(FootHeight<BIG_NUMBER)HeightTarget=FMath::Clamp(2.275f-FootHeight,-35.f,15.f)*(1.f-FMath::Clamp((LocomotionSpeed-180.f)/170.f,0.f,1.f));
