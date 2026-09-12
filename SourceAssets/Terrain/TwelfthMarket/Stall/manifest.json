@@ -1,0 +1,40 @@
+{
+  "status": "source geometry; native material/import/render/collision acceptance pending",
+  "dimensions_cm": [
+    300,
+    300,
+    285
+  ],
+  "surfaces": [
+    {
+      "file": "SM_MarketStall_Canvas.obj",
+      "material": "Canvas",
+      "triangles": 240
+    },
+    {
+      "file": "SM_MarketStall_Metal.obj",
+      "material": "Metal",
+      "triangles": 496
+    },
+    {
+      "file": "SM_MarketStall_Wood.obj",
+      "material": "Wood",
+      "triangles": 480
+    },
+    {
+      "file": "SM_MarketStall_Leaf.obj",
+      "material": "Leaf",
+      "triangles": 1200
+    },
+    {
+      "file": "SM_MarketStall_Tomato.obj",
+      "material": "Tomato",
+      "triangles": 2400
+    },
+    {
+      "file": "SM_MarketStall_Cloth.obj",
+      "material": "Cloth",
+      "triangles": 24
+    }
+  ]
+}
