@@ -1,9 +1,9 @@
 {
-  "build": 48,
-  "version": "0.48.0-dev",
+  "build": 49,
+  "version": "0.49.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "installed on desktop; narrow packaged recovery checks passed; full-game acceptance unfinished",
-  "milestone": "Monroe and Irwin traffic, first Irwin streetscape, one shallow pothole; full game and visual/performance acceptance remain unfinished",
+  "status": "installed on desktop; packaged repeat-crash, death, health and canopy checks passed; full-game acceptance unfinished",
+  "milestone": "Physical crash-to-foot recovery and remount, aligned get-up, mixed park canopy and trunk collisions; full-game acceptance unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }

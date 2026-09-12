@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "On-foot death cleaned up fallen bike and restored checkpoint control",
+    "stage": 5
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/855f1fe73ce548d1854dc2ea4483a82a/run.log",
+  "images": [],
+  "events": [
+    "started speed=1006.4",
+    "recovered on foot health=70.0 ammo=10",
+    "state=1 timer=1 elapsed=7.572 lost=9.438"
+  ],
+  "scope": "Collision, get-up and on-foot death; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "runtime": "packaged",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 151.327,
+      "selected_rms_cm": 90.88
+    }
+  ],
+  "pose_fit_nonregression": true,
+  "passed": true
+}

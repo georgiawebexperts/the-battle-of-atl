@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "frames": [
+    {
+      "view": 1,
+      "samples": 329,
+      "p50_ms": 12.117,
+      "p95_ms": 13.277
+    },
+    {
+      "view": 2,
+      "samples": 255,
+      "p50_ms": 15.722,
+      "p95_ms": 16.077
+    },
+    {
+      "view": 3,
+      "samples": 280,
+      "p50_ms": 14.296,
+      "p95_ms": 14.905
+    }
+  ],
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-packaged/ee8b8cab874048718106e11897224ee7/canopy-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-packaged/ee8b8cab874048718106e11897224ee7/canopy-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-packaged/ee8b8cab874048718106e11897224ee7/canopy-3.png"
+  ],
+  "scope": "Cooked main map as installed; no transient asset replacement. Three fixed cameras at1920x1080,5s warmup and4s frame samples; no sustained riding/combat/audio or full-game FPS acceptance."
+}

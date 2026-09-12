@@ -120,3 +120,14 @@ Recovery now evaluates three planar alignments per get-up clip: original head/hi
 Expanded actual keyboard collision audit to two cycles in one world, verifying restored health/ammo/control and zero remaining crash/fallen-bike actors after each remount, and to lethal damage after on-foot recovery with the fallen bike still present. Both latest reports pass. Initial repeat failed when ambient enemies reduced health70→50 (valid gameplay damage, invalid fixture assumption); fixture now uses DamageGrace100 until explicit lethal probe clears grace. A subsequent remount test pressed E at short XY distance while rider was still vertically out of range; approach now uses actual3D distance, matching interaction semantics. No production range relaxation. Latest build passes; Desktop048 unchanged.
 
 Still pending: transition video/contact polish (one selected RMS remains92cm), occupied/blocked get-up clearance, more terrain/directions/other hazards, packaged Mac validation and full-game visual/performance acceptance. Native source is committed groundwork for the next Mac playtest, not game completion.
+
+
+## Mac playtest049 installed — 2026-09-12 [codex-maclaptop]
+
+Built/cooked/staged049 successfully (AutomationTool exit0,221s), including V6 player physics/get-up clips and installed mixed canopy/hornbeam shaders. New test runner supports packaged executable and writes captures inside staged app's macOS sandbox container before copying results to project work. Initial packaged gameplay checks passed but screenshot files were absent due wrong writable directory; corrected capture location and required expected image count.
+
+Packaged two-cycle collision/recovery/E remount passes with six screenshots and zero leftover crash/fallen-bike actors. Post-get-up death cleanup passes. Packaged health/cardinal hunt/death/recollection/ordered checkpoint test passes. Three packaged as-installed canopy views capture at1920x1080; median frame times12.117/15.722/14.296ms, p9513.277/16.077/14.905ms. Inspected lake/canopy and crash/remount images; this proves installed assets/rendered frames and narrow state checks, not final animation realism, art quality or sustained gameplay FPS.
+
+Preserved old app as /Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build048.app. Finalized branded0.49.0 app, strict local signature verification and desktop symlink/version passed. Desktop /Users/elliottinspace/Desktop/The Battle of ATL.app points to external-drive /Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app. Re-ran health/checkpoint startup on the installed signed executable: pass, both deaths and two checkpoints.
+
+Full game remains incomplete: blocked get-up/more impacts, animation video/contact polish, other hazard integration, broader route/art/characters/combat/audio/performance and original full-scope acceptance. No Aura dependency added.
