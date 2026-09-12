@@ -1,0 +1,22 @@
+{
+  "clip": "/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim.MixamoSleepReference_Anim",
+  "duration": 6.866666793823242,
+  "rigs": [
+    "/Game/BattleRetarget/Mixamo/SleepCandidate/IK_SleepSource.IK_SleepSource",
+    "/Game/BattleRetarget/Mixamo/SleepCandidate/IK_SleepTarget.IK_SleepTarget"
+  ],
+  "retargeter": "/Game/BattleRetarget/Mixamo/SleepCandidate/RTG_SleepMixamoCity.RTG_SleepMixamoCity",
+  "visual_acceptance": false,
+  "gameplay_installed": false,
+  "review": {
+    "rendered_samples": 4,
+    "visually_inspected_samples": [
+      0,
+      3
+    ],
+    "finding": "Recognizable side-lying sleeping pose; feet remain attached. Ground contact, loop continuity, transitions and gameplay not accepted. Diagnostic world terrain rendering shows artifacts.",
+    "render_manifest": "work/city-sleep-review/manifest.json",
+    "render_process_exit": 1,
+    "render_process_issue": "HTTP listener port 30010 already bound; all four image exports and manifest completed."
+  }
+}
