@@ -41,7 +41,19 @@ void ABattleMacController::TickFinishAudit(float Dt){
  FCHECK(Home->TryFinish()&&Mode->bWon&&Mode->bRunEnded&&Mode->bRecordSaved&&!Home->TryFinish(),"Gate win not committed once");
  FCHECK(FMath::IsNearlyEqual(BattleRecords::Best(Mode->DifficultyName),123.4f)&&Mode->FinishKills==7&&Mode->FinishWipeouts==2&&Mode->FinishNearMisses==9,"Win stats or record incorrect");
  const float Before=Mode->TimeRemaining;Mode->Tick(.2f);FCHECK(Mode->TimeRemaining==Before&&!Mode->AdjustRunTime(30,TEXT("late reward")),"Finished timer changed");
- ShowMenu(TEXT("Win"));FCHECK(IsPaused()&&Menu.IsValid(),"Win menu missing");
+ const bool CelebrationReview=FParse::Param(FCommandLine::Get(),TEXT("BattleCelebrationReview"));
+ ShowMenu(CelebrationReview?TEXT("Celebration"):TEXT("Win"));FCHECK(IsPaused()&&Menu.IsValid(),"Win menu missing");
+ if(CelebrationReview){
+  FCHECK(CelebrationArt&&bCelebrating,"Celebration art or state missing");
+  FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);
+  auto Capture=[Dir](const TCHAR* Name,float Delay){const FString File=Dir/Name;FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([File](float){FScreenshotRequest::RequestScreenshot(File,true,false);return false;}),Delay);};
+  Capture(TEXT("celebration.png"),.5f);Capture(TEXT("morgan.png"),5.5f);Capture(TEXT("cheers.png"),9.f);Capture(TEXT("win.png"),13.5f);
+  FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){
+   const bool Pass=Weak.IsValid()&&!Weak->bCelebrating&&Weak->Menu.IsValid()&&Weak->IsPaused();
+   UE_LOG(LogTemp,Display,TEXT("BattleFinishAudit: {\"passed\":%s,\"reason\":\"Celebration and automatic results transition checked\"}"),Pass?TEXT("true"):TEXT("false"));
+   UGameplayStatics::DeleteGameInSlot(BattleRecords::Slot(),0);if(Weak.IsValid())Weak->ConsoleCommand(TEXT("quit"));return false;
+  }),15.f);return;
+ }
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFinishReview"))){FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Dir](float){FScreenshotRequest::RequestScreenshot(Dir/TEXT("win.png"),true,false);return false;}),.5f);FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){UE_LOG(LogTemp,Display,TEXT("BattleFinishAudit: {\"passed\":true,\"reason\":\"Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass\"}"));UGameplayStatics::DeleteGameInSlot(BattleRecords::Slot(),0);if(Weak.IsValid())Weak->ConsoleCommand(TEXT("quit"));return false;}),2.f);return;}
  End(true,TEXT("Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass"));
 #undef FCHECK
