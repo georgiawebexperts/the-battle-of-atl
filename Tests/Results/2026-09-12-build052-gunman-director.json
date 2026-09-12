@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "reason": "Search, practice, countdown and grace protected; real nav spawn behind view; arrival grace, rarity cooldown, single-shooter cap and escape cleanup verified",
+  "spawned": 1,
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "scope": "Native director with real nav placement and accelerated director ticks. Full-route balance, render, sound and statistical encounter distribution not accepted."
+}

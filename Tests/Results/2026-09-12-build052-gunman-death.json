@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "reason": "Fatal damage starts physics, visible hip follows body, head falls and dead shooter cannot fire",
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible hip tracking, collapse, dead shooting suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/5fa4a48349494e08b46577183da0ff7c/falling.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/5fa4a48349494e08b46577183da0ff7c/settled.png"
+  ]
+}

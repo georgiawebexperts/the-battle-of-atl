@@ -1,9 +1,9 @@
 {
-  "build": 51,
-  "version": "0.51.0-dev",
+  "build": 52,
+  "version": "0.52.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed on desktop; cooked direct/alternate tutorial and market captures pass, signed installed health pass; full game acceptance unfinished",
-  "milestone": "12th Street farmers market and tutorial closure, park-only vendor zombies, extended practice street and weathered park asphalt; full-game acceptance unfinished",
+  "status": "Installed on desktop; cooked gunman core/render/death/director and inventory pass; signed installed health pass; full game acceptance unfinished",
+  "milestone": "Incoming gunfire direction, rare shooter encounters, authored shooter stance, physical gunman death and confirmed player hits; full-game acceptance unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }
