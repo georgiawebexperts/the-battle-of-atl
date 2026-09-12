@@ -8,6 +8,14 @@ root=pathlib.Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terra
 data=json.loads((folder/'approaches-network.json').read_text());pieces=[]
 for row in data['roads']:
  pieces.append(LineString(row['points_cm']).buffer(int(row['tags'].get('lanes','3'))*150,cap_style=2,join_style=2))
+# Buffering separate road ways with flat caps leaves wedges at bends.
+# Join adjacent centreline segments at the shared minimum carriageway width.
+ordered=sorted(data['roads'],key=lambda r:-max(p[1] for p in r['points_cm']))
+for first,second in zip(ordered,ordered[1:]):
+ a=first['points_cm'];b=second['points_cm'];a=a if a[0][1]>a[-1][1] else a[::-1];b=b if b[0][1]>b[-1][1] else b[::-1]
+ if math.dist(a[-1],b[0])>.01:continue
+ width=min(int(first['tags'].get('lanes','3')),int(second['tags'].get('lanes','3')))*150
+ pieces.append(LineString([a[-2],a[-1],b[1]]).buffer(width,cap_style=2,join_style=2))
 covered=[]
 for path in [existing/f'TenthStreet_{name}.obj' for name in ['Road','RoadSeams','CycleTrack','Separator']]+[folder/'Monroe_RoadSeams.obj']:
  verts=[]

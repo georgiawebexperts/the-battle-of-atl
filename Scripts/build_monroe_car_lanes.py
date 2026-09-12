@@ -36,11 +36,10 @@ for name,offset,reverse in [('northbound',150,False),('southbound',-150,True)]:
   h=height(x,y)
   if not h:failures.append({'lane':name,'xy':[x,y],'kind':'centre'});continue
   points.append([x,y,h[0]])
-  for along in [-236,0,236]:
-   for across in [-114,0,114]:
-    px,py=x+dx*along-dy*across,y+dy*along+dx*across;hit=height(px,py)
-    if not hit:failures.append({'lane':name,'xy':[px,py],'kind':'footprint'})
-    else:probes.append({'lane':name,'xyz':[px,py,hit[0]],'source_surface':hit[1]})
+  for along,across in [(a,b) for a in [-236,0,236] for b in [-114,0,114]]+([(a,b) for a in [123,-141.2] for b in [-90,90]] if extended else []):
+   px,py=x+dx*along-dy*across,y+dy*along+dx*across;hit=height(px,py)
+   if not hit:failures.append({'lane':name,'xy':[px,py],'kind':'footprint'})
+   else:probes.append({'lane':name,'xyz':[px,py,hit[0]],'source_surface':hit[1]})
  if reverse:points.reverse()
  routes.append({'name':name,'points_cm':points,'speed_cm_s':500,'scope':'Monroe candidate; native support, crossing controls and endpoint visibility pending.'})
 report={'author':'2026-09-12 [codex-maclaptop]','source':'OpenStreetMap contributors, References/tenth-street-monroe.osm; installed TenthStreetGraded meshes','road_length_cm':line.length,'source_coverage_passed':not failures,'failures':failures,'routes':routes,'main_map_changed':False}

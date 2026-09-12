@@ -1,0 +1,19 @@
+{
+  "source_log": "work/monroe-wheel-query.log",
+  "road_surface_missing_at_xy": [
+    [
+      11084.373,
+      16233.117
+    ],
+    [
+      11259.542,
+      16274.541
+    ]
+  ],
+  "native_wheel_hits": "Landscape at both missing points, 14 cm below expected pavement",
+  "source_obj_height_query": "None at both points",
+  "cause": "Flat-capped separately buffered road ways leave wedges at a direction change. Coverage assertion only covered the already-gapped polygon.",
+  "fix": "Union connected three-point centreline buffers at adjacent shared endpoints using the minimum road width.",
+  "default_box_full_routes_passed": true,
+  "altered_terrain_or_vehicle_clearance": false
+}

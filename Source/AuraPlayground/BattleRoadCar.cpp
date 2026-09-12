@@ -110,6 +110,11 @@ void ABattleRoadCar::Tick(float Dt){
 #if !UE_BUILD_SHIPPING
    if(FParse::Param(FCommandLine::Get(),TEXT("BattleRoadContactAudit"))){
     const FVector Local=GetActorTransform().InverseTransformPosition(Hit.ImpactPoint);
+    for(int32 I=0;I<Contacts.Num();++I){
+     FHitResult V;FCollisionQueryParams Probe(SCENE_QUERY_STAT(RoadSupportDiagnostic),true,this);const FVector P=Contacts[I];
+     GetWorld()->LineTraceSingleByChannel(V,P+FVector(0,0,250),P-FVector(0,0,250),ECC_Visibility,Probe);
+     UE_LOG(LogTemp,Display,TEXT("RoadWheelContact: index=%d point=%s visibility=%s actor=%s type=%d"),I,*P.ToString(),*V.ImpactPoint.ToString(),V.GetActor()?*V.GetActor()->GetName():TEXT("none"),V.GetComponent()?int32(V.GetComponent()->GetCollisionObjectType()):-1);
+    }
     UE_LOG(LogTemp,Display,TEXT("RoadContact: distance=%.3f point=%s local=%s normal=%s pose=%s time=%.5f penetrating=%d depth=%.3f"),RouteDistance,*Hit.ImpactPoint.ToString(),*Local.ToString(),*Hit.ImpactNormal.ToString(),*GetActorTransform().ToHumanReadableString(),Hit.Time,Hit.bStartPenetrating,Hit.PenetrationDepth);
     UKismetSystemLibrary::QuitGame(this,nullptr,EQuitPreference::Quit,false);
    }

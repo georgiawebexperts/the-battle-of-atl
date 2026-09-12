@@ -335,3 +335,12 @@ Added opt-in BattleRoadContactAudit logging. First box contact at route distance
 Bundled sports body had zero collision shapes. Created separate SM_RoadCarHull by convex decomposition (3 hulls), preserving original. Added opt-in BattleBodyHull component sweep candidate with body collision; ordinary gameplay still uses the existing box. Candidate editor build succeeded but full extended Monroe route test FAILED at the same rise (northbound ~1747.90 cm; southbound finished). Do not promote this experimental collision or claim a road fix. It does not yet have bike-impact, crossing, or packaged regression acceptance.
 
 The asset-generation full editor completed its save and shutdown handler but remained alive; its owned process was terminated after confirming the generated report/asset. No user editor was touched. Next work: inspect native wheel-support positions versus local road mesh/terrain and repair the actual clearance transition. Desktop remains 047.
+
+
+## Extended Monroe snag resolved — 2026-09-12 [codex-maclaptop]
+
+Native wheel logs showed two contacts on Landscape, 14 cm below pavement, while the others hit road. Visibility and object-type traces agreed. Direct source OBJ height queries at (11084.373,16233.117) and (11259.542,16274.541) returned no triangle: the generator's separately buffered, flat-capped OSM ways left wedges at a bend. Existing coverage checks measured only the already-gapped polygon, and the earlier 9-point vehicle envelope sampling missed the actual wheel locations.
+
+Fixed the road generator by adding connected three-point buffers across adjacent shared nodes at their minimum lane width, before subtracting installed crossing surfaces. Expanded source/native validation to include the four real wheel offsets as well as the body envelope. All 7696 checks now pass. Both extended Monroe routes completed with the DEFAULT box collider, combined 29494.305 cm, including endpoint stops. No vehicle clearance or terrain flattening change was needed. The experimental body-hull option remains unnecessary/unaccepted and is not default.
+
+Rebuilt only isolated PiedmontMonroeExtendedReview. Visible road/sidewalk review, extended crossing controls, signals and live traffic installation remain pending; desktop stays 047. The earlier hypothesis of excessive road curvature is superseded by this verified source-geometry gap diagnosis.
