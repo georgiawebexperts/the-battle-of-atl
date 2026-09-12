@@ -1,0 +1,195 @@
+{
+  "name": "The Fancy Roach Motel",
+  "reference_name": "MAA Piedmont Park",
+  "address": "250 10th Street NE",
+  "official_reference": "https://www.maac.com/georgia/atlanta/maa-piedmont-park/",
+  "source": "OpenStreetMap contributors, ODbL; retained maa-piedmont-park.osm",
+  "site_way": 1436985590,
+  "world_frame": "Unreal east/south/up centimetres, same one-third geographic scale as existing terrain",
+  "buildings": [
+    {
+      "osm_way": 218548431,
+      "tags": {
+        "building": "yes",
+        "building:levels": "4",
+        "building:material": "brick",
+        "source": "bing_imagery"
+      },
+      "footprint_world_cm": [
+        [
+          -20757.304,
+          11940.707,
+          276.156
+        ],
+        [
+          -19592.915,
+          11916.99,
+          300.738
+        ],
+        [
+          -19593.978,
+          11875.211,
+          306.172
+        ],
+        [
+          -19465.835,
+          11872.689,
+          308.976
+        ],
+        [
+          -19464.816,
+          11924.829,
+          301.883
+        ],
+        [
+          -17738.754,
+          11890.137,
+          257.929
+        ],
+        [
+          -17739.405,
+          11852.417,
+          262.535
+        ],
+        [
+          -17651.406,
+          11850.546,
+          258.823
+        ],
+        [
+          -17693.911,
+          9744.286,
+          253.666
+        ],
+        [
+          -17801.987,
+          9746.298,
+          257.118
+        ],
+        [
+          -17802.638,
+          9708.578,
+          253.907
+        ],
+        [
+          -19537.951,
+          9743.505,
+          285.634
+        ],
+        [
+          -19534.952,
+          9897.706,
+          288.642
+        ],
+        [
+          -19799.555,
+          9903.702,
+          281.436
+        ],
+        [
+          -19905.559,
+          9805.028,
+          269.567
+        ],
+        [
+          -20801.895,
+          9824.513,
+          225.022
+        ],
+        [
+          -20781.979,
+          10764.836,
+          273.924
+        ],
+        [
+          -20767.699,
+          11423.016,
+          264.974
+        ],
+        [
+          -20765.23,
+          11544.303,
+          266.465
+        ],
+        [
+          -20757.304,
+          11940.707,
+          276.156
+        ]
+      ],
+      "base_height_cm": 225.022,
+      "levels": 4,
+      "height_note": "Floor count sourced; facade and roof heights must be authored from exterior reference."
+    },
+    {
+      "osm_way": 886024366,
+      "tags": {
+        "building": "apartments",
+        "building:levels": "4",
+        "building:material": "brick",
+        "source": "bing_imagery"
+      },
+      "footprint_world_cm": [
+        [
+          -22302.68,
+          11257.486,
+          221.242
+        ],
+        [
+          -22348.866,
+          12004.148,
+          236.147
+        ],
+        [
+          -21295.135,
+          11978.073,
+          268.655
+        ],
+        [
+          -21295.564,
+          11924.808,
+          270.293
+        ],
+        [
+          -21186.889,
+          11922.043,
+          270.74
+        ],
+        [
+          -21166.822,
+          11533.065,
+          276.444
+        ],
+        [
+          -21126.378,
+          11532.036,
+          275.767
+        ],
+        [
+          -21106.899,
+          10889.275,
+          282.766
+        ],
+        [
+          -21803.574,
+          10888.136,
+          242.266
+        ],
+        [
+          -21824.423,
+          11246.426,
+          239.231
+        ],
+        [
+          -22302.68,
+          11257.486,
+          221.242
+        ]
+      ],
+      "base_height_cm": 221.242,
+      "levels": 4,
+      "height_note": "Floor count sourced; facade and roof heights must be authored from exterior reference."
+    }
+  ],
+  "status": "Footprint/terrain preparation only. Building, road access, signage and nearby bench scene not yet installed."
+}
