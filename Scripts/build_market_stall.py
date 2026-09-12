@@ -46,6 +46,8 @@ for name,triangles in groups.items():
  lines=['# Original authored market stall geometry, centimetres']
  for tri in triangles:
   for p in tri:lines.append('v '+' '.join(f'{v:.4f}' for v in p))
- for i in range(len(triangles)):lines.append(f'f {i*3+1} {i*3+2} {i*3+3}')
+ for tri in triangles:
+  for p in tri:lines.append(f'vt {p[0]/300+.5:.6f} {p[1]/300+.5:.6f}')
+ for i in range(len(triangles)):lines.append('f '+' '.join(f'{j}/{j}' for j in [i*3+1,i*3+2,i*3+3]))
  file=f'SM_MarketStall_{name}.obj';(out/file).write_text('\n'.join(lines)+'\n');manifest.append({'file':file,'material':name,'triangles':len(triangles)})
 (out/'manifest.json').write_text(json.dumps({'status':'source geometry; native material/import/render/collision acceptance pending','dimensions_cm':[300,300,285],'surfaces':manifest},indent=2)+'\n');print(manifest)

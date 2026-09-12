@@ -1,0 +1,49 @@
+"""Import original stall parts, survey and render transient market. Never save map."""
+import unreal,json,math,pathlib,uuid
+root=pathlib.Path(unreal.Paths.project_dir()).resolve();folder=root/'SourceAssets/Terrain/TwelfthMarket';out=root/'work/market-review'/uuid.uuid4().hex;out.mkdir(parents=True)
+dest='/Game/BattleForTheA/Environment/TwelfthMarket';colors={'Canvas':(.73,.70,.61),'Metal':(.20,.22,.23),'Wood':(.27,.15,.065),'Leaf':(.15,.30,.035),'Tomato':(.55,.035,.018),'Cloth':(.12,.24,.15)};meshes={}
+for row in json.loads((folder/'Stall/manifest.json').read_text())['surfaces']:
+ name=row['material'];mat=unreal.load_asset(dest+'/M_'+name)
+ if not mat:mat=unreal.AssetToolsHelpers.get_asset_tools().create_asset('M_'+name,dest,unreal.Material,unreal.MaterialFactoryNew())
+ unreal.MaterialEditingLibrary.delete_all_material_expressions(mat)
+ c=unreal.MaterialEditingLibrary.create_material_expression(mat,unreal.MaterialExpressionConstant3Vector);c.set_editor_property('constant',unreal.LinearColor(*colors[name]));unreal.MaterialEditingLibrary.connect_material_property(c,'',unreal.MaterialProperty.MP_BASE_COLOR)
+ v=unreal.MaterialEditingLibrary.create_material_expression(mat,unreal.MaterialExpressionConstant);v.set_editor_property('r',.35 if name=='Metal' else .83);unreal.MaterialEditingLibrary.connect_material_property(v,'',unreal.MaterialProperty.MP_ROUGHNESS)
+ mat.set_editor_property('two_sided',name in ['Canvas','Cloth']);unreal.MaterialEditingLibrary.recompile_material(mat);unreal.EditorAssetLibrary.save_loaded_asset(mat)
+ opts=unreal.FbxImportUI();opts.import_as_skeletal=False;opts.import_materials=False;opts.import_textures=False;opts.automated_import_should_detect_type=False;opts.mesh_type_to_import=unreal.FBXImportType.FBXIT_STATIC_MESH;opts.static_mesh_import_data.combine_meshes=True;opts.static_mesh_import_data.auto_generate_collision=False
+ task=unreal.AssetImportTask();task.filename=str(folder/'Stall'/row['file']);task.destination_path=dest;task.destination_name='SM_MarketStall_'+name;task.automated=True;task.save=True;task.replace_existing=True;task.options=opts
+ unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task]);mesh=unreal.load_asset(dest+'/'+task.destination_name);assert mesh;mesh.set_material(0,mat)
+ mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh);meshes[name]=mesh
+assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
+unreal.PiedmontWorldTools.finish_editor_asset_loading();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
+layout=json.loads((folder/'layout.json').read_text());survey=[]
+bounds=meshes['Wood'].get_bounding_box();table_sign=1 if bounds.min.y+bounds.max.y>0 else -1
+for index,row in enumerate(layout['stalls']):
+ samples=[]
+ yaw=row['yaw_degrees']+(180 if row['side']==table_sign else 0);angle=math.radians(yaw);c,s=math.cos(angle),math.sin(angle);cx,cy=row['center_xy']
+ feet=row['footprint_xy']+[[cx+c*x-s*y,cy+s*x+c*y] for x in [-90,90] for y in [table_sign*80,table_sign*40]]
+ for x,y in [row['center_xy']]+feet:
+  hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,1500),unreal.Vector(x,y,-1500));assert hit
+  samples.append({'xy':[x,y],'z':hit[0].z,'actor':hit[1].get_actor_label()})
+ base=max(s['z'] for s in samples);survey.append({'stall':index+1,'samples':samples,'base_z':base,'ground_spread_cm':base-min(s['z'] for s in samples)})
+ # Grounded levelling blocks keep all eight legs supported on sloped pavement.
+ supports=[]
+ for sample in samples[1:]:
+  height=base-sample['z']
+  if height<.1:continue
+  x,y=sample['xy'];pad=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(x,y,sample['z']+height/2),unreal.Rotator(yaw=yaw));pad.set_actor_label(f'Market review {index+1} levelling block');pad.tags=[unreal.Name('MarketReview')];pad.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));pad.static_mesh_component.set_material(0,unreal.load_asset(dest+'/M_Wood'));pad.set_actor_scale3d(unreal.Vector(.18,.18,height/100));pad.static_mesh_component.set_collision_profile_name('BlockAll');supports.append({'xy':[x,y],'bottom_z':sample['z'],'top_z':base})
+ survey[-1]['levelling_blocks']=supports
+
+ for name,mesh in meshes.items():
+  actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(*row['center_xy'],base),unreal.Rotator(yaw=yaw));actor.set_actor_label(f'Market review {index+1} {name}');actor.tags=[unreal.Name('MarketReview')];actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('BlockAll' if name in ['Wood','Metal'] else 'NoCollision')
+unreal.PiedmontWorldTools.finish_editor_asset_loading()
+cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8)
+for prop,value in [('texture_target',tex),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',70)]:cap.set_editor_property(prop,value)
+gx,gy=layout['gate_xy'];base=survey[0]['base_z'];x,y=layout['stalls'][0]['center_xy']
+views=[('entrance',[gx-250,gy,base+165],[gx+1500,gy,base+120]),('stall',[x+100,y+500,base+150],[x,y-30,base+130]),('wide',[gx+600,gy-1600,base+1200],[gx+1000,gy,base])];images=[]
+for name,p,target in views:
+ loc=unreal.Vector(*p);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
+ for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
+ unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
+result={'imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
+(root/'Tests/Results/2026-09-12-market-review.json').write_text(json.dumps(result,indent=2)+'\n')
+print('MARKET_REVIEW '+str(out))
