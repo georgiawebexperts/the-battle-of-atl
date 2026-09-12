@@ -1,0 +1,14 @@
+{
+  "surfaces": [
+    {
+      "file": "Krog_WhitePaint.obj",
+      "triangles": 2449
+    },
+    {
+      "file": "Krog_YellowPaint.obj",
+      "triangles": 1983
+    }
+  ],
+  "scope": "Game-authored double yellow centre lines and white edges. Leave a600cm clear junction. Follows retained OSM roadway geometry; not a claim about current real-world paint. Visual review pending.",
+  "clearance_cm": 1
+}

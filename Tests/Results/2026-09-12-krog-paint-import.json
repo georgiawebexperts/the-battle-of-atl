@@ -1,0 +1,9 @@
+{
+  "assets": [
+    "/Game/BattleForTheA/Environment/KrogTraffic/SM_Krog_WhitePaint.SM_Krog_WhitePaint",
+    "/Game/BattleForTheA/Environment/KrogTraffic/SM_Krog_YellowPaint.SM_Krog_YellowPaint"
+  ],
+  "main_map_changed": false,
+  "visual_accepted": false,
+  "collision": "NoCollision"
+}
