@@ -2,6 +2,7 @@
 import json,math,pathlib,unreal
 root=pathlib.Path(unreal.Paths.project_dir())
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
+unreal.PiedmontWorldTools.finish_editor_asset_loading()
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 paths=[a for a in ea.get_all_level_actors() if isinstance(a,unreal.PiedmontPathSpline) and not a.get_editor_property('bBridge')]
 def ground(x,y):return unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,7000),unreal.Vector(x,y,-7000))
