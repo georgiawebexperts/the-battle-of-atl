@@ -1,0 +1,28 @@
+{
+  "reach_diagnostic": true,
+  "solid_diagnostic": false,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/d360a3569d38462c980a75a26f010b6e/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/d360a3569d38462c980a75a26f010b6e/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/d360a3569d38462c980a75a26f010b6e/fire-3.png"
+  ],
+  "captured": true,
+  "visual_accepted": false,
+  "scope": "Native reach playback beside first actual bench; no ignition, prop, natural trigger or packaged acceptance",
+  "capture_passed": true,
+  "playback_completed": true,
+  "pose_review": {
+    "inspected_samples": [
+      2,
+      3
+    ],
+    "finding": "Bends toward bench and returns to standing. Hand remains above/front of seat; prop contact and continuous motion still require review.",
+    "sample2_bench_local_hand_cm": [
+      23.535,
+      25.654,
+      59.406
+    ],
+    "interruption_tests_passed": false
+  }
+}

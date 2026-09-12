@@ -33,6 +33,8 @@ public:
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontPedestrian> GroupLeader;
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);
+ bool BeginBenchReach();
+ UPROPERTY(BlueprintReadOnly) bool bBenchReaching=false;
  void HearHorn(APawn* Source);
  void BikeImpact(float Speed,FVector Direction);
  // Opt-in until encounter placement and chase/settle behavior are complete.
@@ -50,6 +52,7 @@ protected:
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ void CancelBenchReach();
  FBattleSleeperTrigger SleeperTrigger;
  void TickSleeperTrigger(float Dt);
  void CancelSleepBehavior();
