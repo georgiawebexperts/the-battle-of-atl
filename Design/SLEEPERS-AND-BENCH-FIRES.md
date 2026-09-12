@@ -22,3 +22,9 @@ Add a rare scene of a character attempting to ignite a park bench, with no more 
 User requests the wide 10th Street park frontage, its bike lane, cars as moving obstacles, and Peachtree Road Race scenery. Model the Monroe trail crossing and crossings approaching Krog/tunnel from map evidence. Add a rare fallen scooter rider with bystanders assisting at the intersection immediately before the tunnel; preserve a navigable avoidance route. These additions are not yet implemented.
 
 Sources: Beltline January 2025 construction update confirms the 10th/Monroe intersection and bike-lane connection (https://beltline.org/blog/atlanta-beltline-design-and-construction-updates-january-2025/). Atlanta Track Club confirms the 2026 finish chute along 10th enters the park near Park Tavern (https://www.atlantatrackclub.org/press-center). Race set dressing and live vehicle gameplay need a coherent fictional event layout, not cars driven through a packed real-race course.
+
+## Sleeping rig inspection — 2026-09-11 [codex-maclaptop]
+
+Native commandlet inspection (`Scripts/audit_sleep_rigs.py`) confirms the imported Mixamo reference has 65 bones and continuous hip → thigh → calf → foot chains. Punk and Farmer each have 62 bones, with Foot_L/Foot_R parented to Root independently of their legs. City Sample male has 150 bones with conventional pelvis/thigh/calf/foot chains. Evidence: `Tests/Results/2026-09-11-sleep-rig-audit.json`.
+
+Use City Sample as the first sleeping retarget development target; preserve Punk's authored locomotion. Direct chain retargeting onto Punk/Farmer is not accepted without a separate solution for their independently animated feet. This inspection does not establish animation compatibility or visual acceptance, and sleeping encounters remain unimplemented.
