@@ -1,0 +1,76 @@
+{
+  "map_saved": false,
+  "lights_modified": false,
+  "explicit_sampled_pose_evaluation": true,
+  "post_process_disabled_for_diagnostic": true,
+  "hair_static_for_diagnostic": true,
+  "results": [
+    {
+      "sex": "Male",
+      "clip": "MTN_N_Walk_InPlace",
+      "samples": [
+        {
+          "image": "male-walk-0.png",
+          "animation_position": 0.1111111119389534,
+          "left_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -17407.803909, y: -5212.970526, z: 129.796286}>",
+          "right_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -17408.003117, y: -5186.240600, z: 125.898929}>",
+          "sha256": "dcdd9b1f6682472fcc826ecd55c9f6eb11b5abb9346eaf90c4b736d8941a1761"
+        },
+        {
+          "image": "male-walk-1.png",
+          "animation_position": 0.5555555820465088,
+          "left_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -17408.036890, y: -5213.360693, z: 126.321561}>",
+          "right_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -17408.097527, y: -5186.251438, z: 126.644148}>",
+          "sha256": "a76bb4481736d7d9749fecb9f84793d56253ba100ae95b8d2a42efe7b7294288"
+        },
+        {
+          "image": "male-walk-2.png",
+          "animation_position": 1.0,
+          "left_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -17408.031912, y: -5213.031368, z: 126.061718}>",
+          "right_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -17409.355258, y: -5186.116031, z: 129.344218}>",
+          "sha256": "7f7a7620faa20c460ae2b82ff6af9b38f0d16506f324c689846cbb714bfb90f9"
+        }
+      ]
+    },
+    {
+      "sex": "Female",
+      "clip": "FTN_Set/FTN_N_Walk_F",
+      "samples": [
+        {
+          "image": "female-walk-0.png",
+          "animation_position": 0.34166666865348816,
+          "left_foot": "<Struct 'Vector' (0x3f1d69910) {x: -16809.204313, y: -5204.237308, z: 115.038224}>",
+          "right_foot": "<Struct 'Vector' (0x3f1d69910) {x: -16789.125850, y: -5193.204618, z: 118.178098}>",
+          "sha256": "2e77f1d3c0291c492f6f6d2f7f16e6ec8f6db4ef06cd3a12e5e66c9f8f8d2162"
+        },
+        {
+          "image": "female-walk-1.png",
+          "animation_position": 1.7083332538604736,
+          "left_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -16821.433569, y: -5205.726717, z: 125.244311}>",
+          "right_foot": "<Struct 'Vector' (0x3f1d69b40) {x: -16782.385291, y: -5195.054843, z: 114.018055}>",
+          "sha256": "49e4a2ea9c4e18c656252532dcefdc79a7732931e069006f57a347a067721db8"
+        },
+        {
+          "image": "female-walk-2.png",
+          "animation_position": 3.0749998092651367,
+          "left_foot": "<Struct 'Vector' (0x3f925ae00) {x: -16763.233294, y: -5203.712302, z: 115.602843}>",
+          "right_foot": "<Struct 'Vector' (0x3f925ae00) {x: -16825.590735, y: -5194.712547, z: 115.581195}>",
+          "sha256": "2c777df62388aa4fdb955b6b1e81162d61a5ba2f2bae4c0e8b77783aea835a19"
+        }
+      ]
+    }
+  ],
+  "scope": "Modular mesh and walk preview, not production animation or game acceptance",
+  "acceptance": {
+    "assets_loaded": true,
+    "distinct_native_walk_poses": true,
+    "production_ready": false,
+    "findings": [
+      "Male and female clothing and body proportions render in native Metal.",
+      "Explicit sampled times evaluate different walking poses, with feet facing forward. This is not a continuous gait or ground-contact acceptance test.",
+      "Face is too dark in existing backlit park view for detailed review.",
+      "Hair remains static in the diagnostic and must attach to the animated head.",
+      "Postprocess is disabled for diagnostic; facial animation, crowd runtime transitions, hit/recovery and performance remain unfinished."
+    ]
+  }
+}

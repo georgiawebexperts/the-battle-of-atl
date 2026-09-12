@@ -1,0 +1,2533 @@
+{
+  "roots": [
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_loafers",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Face/m_001_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Hair/Hair/Hair_S_AfroFade_CardsMesh_Group0_LOD0",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_body",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_loafers",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Face/f_001_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Hair/Hair/Hair_S_Coil_CardsMesh_Group0_LOD0",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Idle",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_Phone_Talk_A",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly"
+  ],
+  "packages": [
+    "/Game/Character/Player/Female/Meshes/SKM_PlayerFemale_Preview",
+    "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic",
+    "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_VT_StaticLighting",
+    "/Game/CitySampleCrowd/Character/Anims/HandsClosed_MetaHuman",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Idle",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_Phone_Talk_A",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_scoopneck",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_base",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_body",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_loafers",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Rig/f_tal_nrw_body_skmesh_Physics",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_nrw_ao",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_nrw_bentNormal",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_tal_nrw_head_geomMask",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_AO",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_D",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_Mask",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_N",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_BN",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_N",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_PackedA",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_PackedB",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_l_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_l_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_r_anim",
+    "/Game/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_r_pose",
+    "/Game/CitySampleCrowd/Character/Female/Rig/f_tal_nrw_animbp",
+    "/Game/CitySampleCrowd/Character/Female/Textures/female_body_cavity_map",
+    "/Game/CitySampleCrowd/Character/Female/Textures/female_body_mask_map",
+    "/Game/CitySampleCrowd/Character/Female/Textures/female_body_normal_map",
+    "/Game/CitySampleCrowd/Character/Female/Textures/female_body_roughness_map",
+    "/Game/CitySampleCrowd/Character/Female/Textures/female_underwear_color_map",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Face/f_001_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Hair/Hair/Hair_S_Coil_CardsMesh_Group0_LOD0",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD1",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD2",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD3",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD4",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD5",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_BodySynthesized",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeLash_HigherLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeRefractive_Inst_L",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeRefractive_Inst_R",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_EyelashLowerLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_HeadSynthesized",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Materials/M_TeethCharacterCreator_Inst",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Textures/f_001_nrw_LODnormals",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Face/f_002_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD1",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD2",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD3",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD4",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD5",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeLash_HigherLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeRefractive_Inst_L",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeRefractive_Inst_R",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/M_EyelashLowerLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/M_HeadSynthesized",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Materials/M_TeethCharacterCreator_Inst",
+    "/Game/CitySampleCrowd/Character/Female/f_002/Textures/f_002_nrw_LODnormals",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_loafers",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_socks",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_loafers",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Rig/m_tal_nrw_body_Physics",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_N",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_PackedA",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_PackedB",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/unisexLoafers_BentN",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_nmw_ao",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_nmw_bentNormal",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_tal_nrw_head_geomMask",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_AO",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_D",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_Mask",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_N",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_tile_overlay_D",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_tile_overlay_N",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_BN",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_N",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_PackedA",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_PackedB",
+    "/Game/CitySampleCrowd/Character/Male/Textures/male_body_cavity_map",
+    "/Game/CitySampleCrowd/Character/Male/Textures/male_body_mask_map",
+    "/Game/CitySampleCrowd/Character/Male/Textures/male_body_normal_map",
+    "/Game/CitySampleCrowd/Character/Male/Textures/male_body_roughness_map",
+    "/Game/CitySampleCrowd/Character/Male/Textures/male_underwear_color_map",
+    "/Game/CitySampleCrowd/Character/Male/UnderWeight/Materials/M_BodySynthesized",
+    "/Game/CitySampleCrowd/Character/Male/UnderWeight/Meshes/m_tal_unw_body",
+    "/Game/CitySampleCrowd/Character/Male/UnderWeight/Rig/m_tal_unw_body_Physics",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Face/m_001_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Hair/Hair/Hair_S_AfroFade_CardsMesh_Group0_LOD0",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD1",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD2",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD3",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD4",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD5",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeLash_HigherLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeRefractive_Inst_L",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeRefractive_Inst_R",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/M_EyelashLowerLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/M_HeadSynthesized",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Materials/M_TeethCharacterCreator_Inst",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Textures/m_001_nrw_LODnormals",
+    "/Game/CitySampleCrowd/Character/Shared/Data/Crowd_LODSettings",
+    "/Game/CitySampleCrowd/Character/Shared/Data/Face_Crowd_Archetype_LODSettings",
+    "/Game/CitySampleCrowd/Character/Shared/MPC/MPC_GlobalTextureControls",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_AnimatedMaps",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_BakedGroomTextures",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_CloseCameraFade",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_CrowdBreakup",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_ErrorFunc",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_01",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_02",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_03",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_NormalStrength",
+    "/Game/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_RoughnessMult",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/MI_Clothing_Crowd",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/M_Clothing",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/MatLayerBlend_Aniso",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_FullPattern_Atlas",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_01",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_02",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_03",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_05",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_07",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_08",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_10",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_11",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_Array",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_SuitPattern_04",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_Grey",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_GreyLight",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/Clothing_Default_AO_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/Clothing_Default_Mask_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_127grey_Alpha_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_127grey_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_black_Alpha_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_packedA_Default",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_packedB_Default_Masks",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_white_Alpha_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_AoR_RT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_N",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_grayscaleDetails_M",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_D",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_N",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_aohc_M",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_D",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_N",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_aohca_M",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_knit_front_AOHCA_M",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oiztx2p_2K_Roughness",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AOR",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AO_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_Normal_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/T_macro_hthr_H",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/macro_linen_rbess3s_4K",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/memory_wrinkles_diffuse_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/memory_wrinkles_normal_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Displacement",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Normal",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_N",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_height",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/M_DebugPink",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_EyeRefraction",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_IrisGenerator",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_ParallaxOcclusionMappingEye",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_001/T_Iris_A_H",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_001/T_Iris_A_M",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_007/T_Iris_A_H",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_007/T_Iris_A_M",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_EyeMidPlaneDisplacement",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Eye_N",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Sclera_D",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Sclera_N",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_TilingNoise_001",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Veins_D",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/iris_color_picker",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/sclera_tint_picker",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/HairCards/MI_Hair_Cards_S_AfroFade",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/HairCards/MI_Hair_Cards_S_Coil",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/LODs/M_HeadSynthesized_LOD1",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/LODs/M_HeadSynthesized_LOD2",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MF_HairAnisotropic",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MF_Variation",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MI_Crowd_Hair_Cards",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MPC_HairColor",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_BodySynthesized",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Cartilage",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_EyeOcclusion",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_EyeRefractive",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Eyelashes_Cards",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Hair_Cards",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Head_v2",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Teeth",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_lacrimal_fluid",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeLash_HigherLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeOcclusion_Inst",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeRefractive_Inst_L",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeRefractive_Inst_R",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyelashLowerLODs_Inst",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Eyelashes_Cards",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_HeadSynthesized",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_TeethCharacterCreator_Inst",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_lacrimal_fluid_Inst",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Controls/DefaultGizmoLibrary",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Controls/M_RigControlActor_Black",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Controls/convergence_3l",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Controls/faceboard_2x",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Face_Archetype_Physics",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Face_Archetype_Skeleton",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Face_ControlBoard_CtrlRig",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Face_PostProcess_AnimBP",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/MetaHuman_ControlRig",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/Neck_CtrlRig",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/PA_Base",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_proc_ControlRig",
+    "/Game/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SP_Head",
+    "/Game/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SP_TeethCharacterCreator",
+    "/Game/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SSP_Eye_Inner",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/1x1_BakedGroomTextureBase",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/1x1_BakedGroomTextureBase_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm13_msk_01",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_01",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_02",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_03",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_04",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_01",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_02",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_03",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm3_msk_01",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm3_msk_02",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/EyeMakeup/T_EyeMakeup_005",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/EyeMakeup/T_EyeMakeup_006",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/Freckles/T_Freckles_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/Lipstick/T_Lipstick_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/SkinAccents/T_SkinAccentRegions_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/SkinAccents/T_SkinAccentRegions_002",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Atlases/BodyColorAtlas",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceCavityAtlas",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceColorAtlas",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceNormalAtlas",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceRoughnessAtlas",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_Linear_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/Default_3or4Channel_Linear_BC7_VT_Black",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/FlatNormal_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/T_DefaultMaskTexture",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/T_DefaultMaskTexture_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/T_Flat_Normal_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/DefaultTexture",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/DefaultTexture_LinearColor",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Beard_S_Stubble_baked/Beard_S_Stubble_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_Full_baked/Eyebrows_M_Full_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_Natural_baked/Eyebrows_M_Natural_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_SlightArch_baked/Eyebrows_M_SlightArch_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_L_SlightCurl_Cards/Eyelashes_L_SlightCurl_Coverage",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_L_ThickCurl_Cards/Eyelashes_L_ThickCurl_Coverage",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_S_Fine_Cards/Eyelashes_S_Fine_Coverage",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Attribute",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Coverage",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Depth",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Tangent",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_baked/Hair_S_AfroFade_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Attribute",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Coverage",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Depth",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Tangent",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_baked/Hair_S_Coil_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Hair/Mustache_S_Stubble_baked/Mustache_S_Stubble_baked",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/MH_head_bentNormal_map",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/MH_head_occlusion_map",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/NeckMasks/T_Player_Head_NeckMask",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/NeckMasks/T_Player_Head_NeckMask_NonVT",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessBake_Tex",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_002",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_003",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_004",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_005",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_006",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_007",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/Scratched_Polypropylene_Plastic_schbehmp_4K_Normal",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/schbehmp_4K_RAODM",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/schbehmp_4K_overlay",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/T_Black_Linear",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/T_FlatNormal",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/T_SkinMicroNormal",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/T_Teeth_mouthOcc",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/TeethGumsNormal",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/gums_color_picker",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/gums_div_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/plaque_color_picker",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_color_map_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_color_picker_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_masks_001",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_normal_map",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/TilingNoise05",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/lacrimal_h",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/skin_bar",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/skin_n",
+    "/Game/MetaHumans/Common/Common/f_med_nrw_preview",
+    "/Game/MetaHumans/Common/Common/m_tal_unw_body_preview",
+    "/Game/MetaHumans/Common/Face/Face_Archetype"
+  ],
+  "external_dependencies": [
+    "/ControlRig/Controls/ControlRigGizmoMaterial",
+    "/ControlRig/Controls/ControlRig_Arrow2_1mm",
+    "/ControlRig/Controls/ControlRig_Arrow2_3mm",
+    "/ControlRig/Controls/ControlRig_Arrow2_solid",
+    "/ControlRig/Controls/ControlRig_Arrow4_1mm",
+    "/ControlRig/Controls/ControlRig_Arrow4_3mm",
+    "/ControlRig/Controls/ControlRig_Arrow4_solid",
+    "/ControlRig/Controls/ControlRig_Arrow_1mm",
+    "/ControlRig/Controls/ControlRig_Arrow_3mm",
+    "/ControlRig/Controls/ControlRig_Arrow_solid",
+    "/ControlRig/Controls/ControlRig_Box_1mm",
+    "/ControlRig/Controls/ControlRig_Box_3mm",
+    "/ControlRig/Controls/ControlRig_Box_solid",
+    "/ControlRig/Controls/ControlRig_Circle_1mm",
+    "/ControlRig/Controls/ControlRig_Circle_3mm",
+    "/ControlRig/Controls/ControlRig_Circle_solid",
+    "/ControlRig/Controls/ControlRig_Diamond_1mm",
+    "/ControlRig/Controls/ControlRig_Diamond_3mm",
+    "/ControlRig/Controls/ControlRig_Diamond_solid",
+    "/ControlRig/Controls/ControlRig_HalfCircle_1mm",
+    "/ControlRig/Controls/ControlRig_HalfCircle_3mm",
+    "/ControlRig/Controls/ControlRig_HalfCircle_solid",
+    "/ControlRig/Controls/ControlRig_Hexagon_1mm",
+    "/ControlRig/Controls/ControlRig_Hexagon_3mm",
+    "/ControlRig/Controls/ControlRig_Hexagon_solid",
+    "/ControlRig/Controls/ControlRig_Line",
+    "/ControlRig/Controls/ControlRig_Octagon_1mm",
+    "/ControlRig/Controls/ControlRig_Octagon_3mm",
+    "/ControlRig/Controls/ControlRig_Octagon_solid",
+    "/ControlRig/Controls/ControlRig_Pyramid_1mm",
+    "/ControlRig/Controls/ControlRig_Pyramid_3mm",
+    "/ControlRig/Controls/ControlRig_Pyramid_solid",
+    "/ControlRig/Controls/ControlRig_QuarterCircle_1mm",
+    "/ControlRig/Controls/ControlRig_QuarterCircle_3mm",
+    "/ControlRig/Controls/ControlRig_QuarterCircle_solid",
+    "/ControlRig/Controls/ControlRig_RoundedSquare_1mm",
+    "/ControlRig/Controls/ControlRig_RoundedSquare_3mm",
+    "/ControlRig/Controls/ControlRig_RoundedSquare_solid",
+    "/ControlRig/Controls/ControlRig_RoundedTriangle_1mm",
+    "/ControlRig/Controls/ControlRig_RoundedTriangle_3mm",
+    "/ControlRig/Controls/ControlRig_RoundedTriangle_solid",
+    "/ControlRig/Controls/ControlRig_Sphere_1mm",
+    "/ControlRig/Controls/ControlRig_Sphere_3mm",
+    "/ControlRig/Controls/ControlRig_Sphere_solid",
+    "/ControlRig/Controls/ControlRig_Square_1mm",
+    "/ControlRig/Controls/ControlRig_Square_3mm",
+    "/ControlRig/Controls/ControlRig_Square_Joystick",
+    "/ControlRig/Controls/ControlRig_Square_solid",
+    "/ControlRig/Controls/ControlRig_Star4_1mm",
+    "/ControlRig/Controls/ControlRig_Star4_3mm",
+    "/ControlRig/Controls/ControlRig_Star4_solid",
+    "/ControlRig/Controls/ControlRig_Triangle_1mm",
+    "/ControlRig/Controls/ControlRig_Triangle_3mm",
+    "/ControlRig/Controls/ControlRig_Triangle_solid",
+    "/ControlRig/Controls/ControlRig_Wedge_1mm",
+    "/ControlRig/Controls/ControlRig_Wedge_3mm",
+    "/ControlRig/Controls/ControlRig_Wedge_solid",
+    "/ControlRig/Controls/DefaultGizmoLibrary",
+    "/Engine/Animation/DefaultAnimBoneCompressionSettings",
+    "/Engine/Animation/DefaultAnimCurveCompressionSettings",
+    "/Engine/EngineMaterials/Good64x64TilingNoiseHighFreq",
+    "/Engine/EngineMaterials/WorldGridMaterial",
+    "/Engine/EngineVolumetrics/Fogsheet/Materials/T_EV_BlankWhite_01",
+    "/Engine/Functions/Engine_MaterialFunctions01/Coordinates/WorldUnitsInPixel",
+    "/Engine/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient",
+    "/Engine/Functions/Engine_MaterialFunctions01/ImageAdjustment/CheapContrast",
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ComputeMipLevel",
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal",
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter",
+    "/Engine/Functions/Engine_MaterialFunctions02/Lerp_3Color",
+    "/Engine/Functions/Engine_MaterialFunctions02/Lerp_Multiple_Float",
+    "/Engine/Functions/Engine_MaterialFunctions02/Masking/ThresholdWithRange",
+    "/Engine/Functions/Engine_MaterialFunctions02/Math/AddComponents",
+    "/Engine/Functions/Engine_MaterialFunctions02/Math/CreateThirdOrthogonalVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/Math/Pi",
+    "/Engine/Functions/Engine_MaterialFunctions02/Math/TransformToZVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/SmoothStep",
+    "/Engine/Functions/Engine_MaterialFunctions02/TangentBasis",
+    "/Engine/Functions/Engine_MaterialFunctions02/Texturing/CustomRotator",
+    "/Engine/Functions/Engine_MaterialFunctions02/Texturing/HeightLerp",
+    "/Engine/Functions/Engine_MaterialFunctions02/Texturing/ScreenAlignedPixelToPixelUVs",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat3Components",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/CameraDirectionVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/CustomReflectionVector",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/DitherTemporalAA",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/MakeFloat2",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/MakeFloat3",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/MakeFloat4",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/VectorLength",
+    "/Engine/Functions/Engine_MaterialFunctions02/WorldPositionOffset/CameraOffset",
+    "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay",
+    "/Engine/Functions/Engine_MaterialFunctions03/Math/RemapValueRange",
+    "/Engine/MaterialTemplates/LayerBlends/T_DefaultMaskTexture",
+    "/Script/AnimGraph",
+    "/Script/AnimGraphRuntime",
+    "/Script/AnimationModifiers",
+    "/Script/ControlRig",
+    "/Script/ControlRigDeveloper",
+    "/Script/NavigationSystem",
+    "/Script/RigLogicModule",
+    "/Script/RigVM",
+    "/Script/RigVMDeveloper"
+  ],
+  "missing_optional_references": [
+    "/Game/Character/Player/Female/Meshes/SKM_PlayerFemale_Preview",
+    "/Game/MetaHumans/Common/Common/f_med_nrw_preview",
+    "/Game/MetaHumans/Common/Common/m_tal_unw_body_preview",
+    "/Game/MetaHumans/Common/Face/Face_Archetype"
+  ],
+  "files": [
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic.uasset",
+      "sha256": "774286e4ee297f1b310d04e591779a5677a8311c9cac9864705622a7005eb5d7",
+      "bytes": 6350
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_VT_StaticLighting.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_VT_StaticLighting.uasset",
+      "sha256": "48fe62c4046e74f5a7cc7cb5c7c72199e4a45c3762e324ffa63d8adc081651b9",
+      "bytes": 7158
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/HandsClosed_MetaHuman.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/HandsClosed_MetaHuman.uasset",
+      "sha256": "a8aa9452a0d4aede20968c6854b65f2ea732b4fa001886073026cd6a0c15bc18",
+      "bytes": 2045326
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base.uasset",
+      "sha256": "ae2564aaa57f0e3da342b9a0cfc2a21993bd51285c12aa218283d63477b590bd",
+      "bytes": 1278032
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F.uasset",
+      "sha256": "5bdce977c5c2d0aa2fcc55400feea3f2dc91ae98f40a5b51943aecd855119a08",
+      "bytes": 679875
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly.uasset",
+      "sha256": "5ff2a0067ce0158e8b4ff596f6d03d58c6104fe233bf27635d30baeb95cf7231",
+      "bytes": 650121
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Idle.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Idle.uasset",
+      "sha256": "078e2f6775a29d4e52b4b764173cc516cc344be8c2fbf3f759d14efeb1c3d297",
+      "bytes": 1884633
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F.uasset",
+      "sha256": "cea3fcea502944bdd5543074970986af0e3502269366786b364769c23f6e5fd1",
+      "bytes": 893000
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace.uasset",
+      "sha256": "3c733bcbcd6291db7c3a35df6234b578736535e65160a0a90b2813866e188f1c",
+      "bytes": 339236
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B.uasset",
+      "sha256": "72c2c37069e985518bc525a7320862f24c39f544bc4358a43779dd8b0a66c1fb",
+      "bytes": 6284312
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_Phone_Talk_A.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_Phone_Talk_A.uasset",
+      "sha256": "1648f84fc932669b9d8fb5dd7e8d7ef957bf99f0660853a080289a9a63e3894d",
+      "bytes": 10430740
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_jeans.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_jeans.uasset",
+      "sha256": "92de16fd164d31f07532e36a51d5deaffb50d6fead91838e20c27902a4b09bfc",
+      "bytes": 41062
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_scoopneck.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_scoopneck.uasset",
+      "sha256": "0fd03914683ea2e8816e94ae57cd9ccd401bcc60c54200364fa0c37663b6475b",
+      "bytes": 56086
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_base.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_base.uasset",
+      "sha256": "15ac6967471f58d7ea6ba679a6046babfbd31f46d1d6905f75bdb5913da25505",
+      "bytes": 101159
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_body.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_body.uasset",
+      "sha256": "893c97319068efb07c2caf66351598ce69dffd83451daf132ca8a2c4db45caf7",
+      "bytes": 4289289
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_jeans.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_jeans.uasset",
+      "sha256": "dc6e07a6a141130e158085ea723268c7fca862038a635a34ea87c029cba31db2",
+      "bytes": 6249809
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_loafers.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_loafers.uasset",
+      "sha256": "c5f65133ddb7d9fd0db2f2aa0fad2343a63961e3810bd565a4b2f958ff719054",
+      "bytes": 1722085
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck.uasset",
+      "sha256": "3f38c93a796f04a1310f55f3e5b6b90f66705b325595d1d2ddfd78dd999f1203",
+      "bytes": 4719763
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Rig/f_tal_nrw_body_skmesh_Physics.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Rig/f_tal_nrw_body_skmesh_Physics.uasset",
+      "sha256": "f912489054dac9cd2f0e69c4b8b2928f0d3fe291aa4e582a533c1d6ab14ed53a",
+      "bytes": 36706
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_nrw_ao.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_nrw_ao.uasset",
+      "sha256": "e46ece6207380e7f75e686fc709c1354b3fb9ad36cf7f5cdb1be5e7a958324a0",
+      "bytes": 116994
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_nrw_bentNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_nrw_bentNormal.uasset",
+      "sha256": "86d7b12778e311158081b8ad7816a360ec913f287f12d530a16011e879882c7d",
+      "bytes": 287629
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_tal_nrw_head_geomMask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/T_f_tal_nrw_head_geomMask.uasset",
+      "sha256": "f332c68e8fda5a9393f1700d0f5ede2624e7d9be6afec044970b197c595daf75",
+      "bytes": 14088
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_AO.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_AO.uasset",
+      "sha256": "9deec20eb6cba24376f9d70671a3962ccf7f4115cdcfabb41b88d5d89ae1ad8c",
+      "bytes": 1641044
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_D.uasset",
+      "sha256": "0d928e005795370a8f2438c6e5694b1bd3622044ec35d2e7a5263ed11fa1a297",
+      "bytes": 9854270
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_Mask.uasset",
+      "sha256": "8afb5d93ae42bc35b92f3687c54a3429dc184322999150e65c92c18f1f3af3cc",
+      "bytes": 5680394
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/jeans/btm_jeans_slm_N.uasset",
+      "sha256": "fe886286ea6391e94a1a274b8095a7c6c71f0c12094082bfe6c597782cbb2a6d",
+      "bytes": 3958922
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_BN.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_BN.uasset",
+      "sha256": "3c971498cad550496e90a2cb5799fc902bad5604e5922efc93ae728d07381f0d",
+      "bytes": 392382
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_N.uasset",
+      "sha256": "a279a25d7ea361541a200fc3a253a73d7b83576db0e446bd2ae63aa423fdd948",
+      "bytes": 2148504
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_PackedA.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_PackedA.uasset",
+      "sha256": "b7d12e516af83c3db3a4b1b1ef3279b4538178dbaadb7e6b4aba0c12092390a3",
+      "bytes": 667850
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_PackedB.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/NormalWeight/Textures/longSleevedTee/T_f_tall_longSleeve_Tee_PackedB.uasset",
+      "sha256": "052833f791a80ce25a82e698801d9f2fce67d0793a22d69103d7b282f0135be2",
+      "bytes": 59214
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_l_anim.uasset",
+      "sha256": "c6bfedad5b7988771150733207393574dc60e943ff0296703cfea4464780945f",
+      "bytes": 158943
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_l_pose.uasset",
+      "sha256": "a7b52dc3fe45973f9291038a1f03e9669e7248aeccf467b2c3a59a54f3b4cb82",
+      "bytes": 334367
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_r_anim.uasset",
+      "sha256": "26524649d1fc14116e6907e4b20a041cec3edc877e006d37078298eedc958d72",
+      "bytes": 158943
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_calf_r_pose.uasset",
+      "sha256": "a11d33d1a0327598f3256066a1a41d0bf2a729a4fefbd2fefbb2cbee7bfc12d7",
+      "bytes": 334367
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_l_anim.uasset",
+      "sha256": "93171d99078beb31a07f27e5f8a05a5511a4a79e067feccfc37478d399416478",
+      "bytes": 152127
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_l_pose.uasset",
+      "sha256": "82cad48936172b54bd6015121b6b2136bcb8a8f17e3b0fdbc5c8719a8e76d7cf",
+      "bytes": 289497
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_r_anim.uasset",
+      "sha256": "7f9a5b1c879b67ad4f83057cbcd478665e79acc758784e36d05f1b5e0c5d0f13",
+      "bytes": 152127
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_clavicle_r_pose.uasset",
+      "sha256": "ca5160398cf2d82d353d4d1c990ca56b052c4e516500cb469c262dd90569a8ee",
+      "bytes": 289497
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_l_anim.uasset",
+      "sha256": "65595a3d4942ba15cc55671ba88d440239f4f2a4861ecb24faf7ce963147166c",
+      "bytes": 138423
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_l_pose.uasset",
+      "sha256": "2e4b545a3ca07c8a3894aec8c3dd6148f1c8d92c0f6385a6a6daa06e1533ea18",
+      "bytes": 205469
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_r_anim.uasset",
+      "sha256": "fdd2e528f0e1369f6c4c166e1ef234fee9a3b44ef6bd9dd87a123f3b61918c98",
+      "bytes": 138423
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_foot_r_pose.uasset",
+      "sha256": "806aab0c7dd1a43e34d00d405fafbf1612f57258b48050c0fdc8875a52eaaf72",
+      "bytes": 205469
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_l_anim.uasset",
+      "sha256": "87cfeff1c19e1b5ce60538587d3e5a1dfd8e49ca0bc25108bd7f067094892847",
+      "bytes": 145263
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_l_pose.uasset",
+      "sha256": "98667b3e1d5aa9054574b15b9949e8a286e1829dd00388ee2db3ca73d654018a",
+      "bytes": 247434
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_r_anim.uasset",
+      "sha256": "4d1e0ed1a57a267b8304e938ba7a1f7b3eb26bc7ddd8a8c2b27af774a8025e47",
+      "bytes": 145263
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_hand_r_pose.uasset",
+      "sha256": "3def882d31ca7871142da349452f6791b0255063b1cf233e1c80f2ca006b211c",
+      "bytes": 247434
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_l_anim.uasset",
+      "sha256": "497a5432890bf03be8345da2db273e8f2c2f3be2e4aaba07d0dd6bb8ab0b2078",
+      "bytes": 186329
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_l_pose.uasset",
+      "sha256": "67369e673ea56b9ee8ee0233cf23d91a12df44fcbbaa212c00998ef722c33274",
+      "bytes": 507119
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_r_anim.uasset",
+      "sha256": "57fc2802e1951af720129fc49b3072671c4a7702a4dae39beb3ea18942cae942",
+      "bytes": 193170
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_lowerarm_r_pose.uasset",
+      "sha256": "0201f7bb7e8d96567ce556af76dd63b216b49afab22f85c8590fa57594165f64",
+      "bytes": 532256
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_l_anim.uasset",
+      "sha256": "02c404e2db64a849ec4bbe490f28dd1fd5b4ffaa6a85e5a64c22566f9cf03a98",
+      "bytes": 213673
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_l_pose.uasset",
+      "sha256": "124dfd66d4bf90582d9e94cee0ed22c6bee682b79f4d630d86b262b358664114",
+      "bytes": 685249
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_r_anim.uasset",
+      "sha256": "375093e2c384d3b3740f73aa8af3f953cc2a72121e18e0b5d9dddfcfa7be934a",
+      "bytes": 213673
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_thigh_r_pose.uasset",
+      "sha256": "33edf4caaf287562fec8ccd74294cd0bb8fdbada5b27fee9ca3eebb00bea4d36",
+      "bytes": 685249
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_l_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_l_anim.uasset",
+      "sha256": "adc8f931e8edc92fee0c7ea0fd0cb14b7c5cc2fdea71cb4683cd2b50fd6bbf32",
+      "bytes": 227371
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_l_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_l_pose.uasset",
+      "sha256": "2b719d7a4bb8c7a63f1e7d0f1eb97500c1a1eafa423b152bf1ee15290a0268f3",
+      "bytes": 767342
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_r_anim.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_r_anim.uasset",
+      "sha256": "8580bf2a6858f61c34a275d28c8e4697babe2fac3fa58a7213a70ea8c837a6d9",
+      "bytes": 234211
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_r_pose.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/Poses/f_tal_nrw_upperarm_r_pose.uasset",
+      "sha256": "8723e94e9616859c0dc0b3e9a01fec275d28efe9e1d5ecaccef49b026aff472c",
+      "bytes": 810216
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Rig/f_tal_nrw_animbp.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Rig/f_tal_nrw_animbp.uasset",
+      "sha256": "e25929b8e7c6524df78dc35efe534ee0216e99bf53ff2c3539eb7af68e773101",
+      "bytes": 508176
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Textures/female_body_cavity_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Textures/female_body_cavity_map.uasset",
+      "sha256": "b95d8530273e307ec316d3b1e2a966e266321588851d14417fd7bffaf3454d16",
+      "bytes": 67847289
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Textures/female_body_mask_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Textures/female_body_mask_map.uasset",
+      "sha256": "769a2996a1379b976d9c771c741fb04adfd478e7edd6b61b668ea1efee42c31a",
+      "bytes": 845498
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Textures/female_body_normal_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Textures/female_body_normal_map.uasset",
+      "sha256": "d1ae206c9afb4681dc352633d2833a87c2fec453d178e2718257d75e4d8ec7ea",
+      "bytes": 25264804
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Textures/female_body_roughness_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Textures/female_body_roughness_map.uasset",
+      "sha256": "528d504d9bd27137ed24a02317b398284ecb8e99db9e034a1eed092b64206200",
+      "bytes": 16655
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/Textures/female_underwear_color_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/Textures/female_underwear_color_map.uasset",
+      "sha256": "c2d36138382492408d8b03114cc870e398b312c7c637064f8b9bf0a15f153b39",
+      "bytes": 12733898
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Face/f_001_nrw_FaceMesh.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Face/f_001_nrw_FaceMesh.uasset",
+      "sha256": "395f3bc143d70822435c48d0dab8611fb02073cbb97ec2348676641ae65a532b",
+      "bytes": 91610206
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Hair/Hair/Hair_S_Coil_CardsMesh_Group0_LOD0.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Hair/Hair/Hair_S_Coil_CardsMesh_Group0_LOD0.uasset",
+      "sha256": "1021dd2f7f9d710930cf9015d441c657b0bcebbbfe0e723f7e2729ea2f2a75b2",
+      "bytes": 1229072
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD1.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD1.uasset",
+      "sha256": "ac35d94f0d415984c3abaff84d4a7567f415d26118f3aededab4c2dbc81054ac",
+      "bytes": 61220
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD2.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD2.uasset",
+      "sha256": "1bb85673707ea4056879113846f1bad5a4f95087f2a357f6001cdc1665466d12",
+      "bytes": 62508
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD3.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD3.uasset",
+      "sha256": "ced1052707479f1221a08ddbecc6fe4cfc74ccc05b5fe15573a930d215709368",
+      "bytes": 62568
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD4.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD4.uasset",
+      "sha256": "38205c5ceea3dd4571a50d805a8c34d012bba56fdb290865a1d71b9b2e6770f4",
+      "bytes": 62580
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD5.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/LODs/M_HeadSynthesized_LOD5.uasset",
+      "sha256": "9c5817ef17ba65c6931d9cd2ad2903564685f1675ed59d40f45ec47786356db7",
+      "bytes": 61165
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_BodySynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_BodySynthesized.uasset",
+      "sha256": "d9a5b8ab252b87fc8f7a41797a8be6a899b910e14292ad5e419c1ad9cdbea548",
+      "bytes": 21116
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeLash_HigherLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeLash_HigherLODs_Inst.uasset",
+      "sha256": "15d27f91e00f538c209236e59842fb805341e4e585ff81525a3db2d370d8751a",
+      "bytes": 10139
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeRefractive_Inst_L.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeRefractive_Inst_L.uasset",
+      "sha256": "5342e4cda574ba4eb48d2efa04ee9d97953a65b63bf05212e96bd1635089a971",
+      "bytes": 19265
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeRefractive_Inst_R.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyeRefractive_Inst_R.uasset",
+      "sha256": "70add285ced22f1ec80aa325126636e7d5c87d830b118e1693602706e02972f5",
+      "bytes": 18783
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyelashLowerLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_EyelashLowerLODs_Inst.uasset",
+      "sha256": "d804ea8624bf8feba69ee9f5c9c8a8e41d79f9b0b4a00db290777ebda834997c",
+      "bytes": 9571
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_HeadSynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_HeadSynthesized.uasset",
+      "sha256": "3ef6089c2d9606533ea59c3d884c2b68dccabe62da5adcbd82cfe1737c37ba5b",
+      "bytes": 61163
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_TeethCharacterCreator_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Materials/M_TeethCharacterCreator_Inst.uasset",
+      "sha256": "12e947bdbe5e2fa8786c1b465de47021554daa221dc578adbfaa340f04af85da",
+      "bytes": 17693
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_001/Textures/f_001_nrw_LODnormals.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_001/Textures/f_001_nrw_LODnormals.uasset",
+      "sha256": "52a6437a7512a887aac06b9ae940071383d5244d6857407537e75ff0db71b37b",
+      "bytes": 224837
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Face/f_002_nrw_FaceMesh.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Face/f_002_nrw_FaceMesh.uasset",
+      "sha256": "989b572472790d0a541e77cbb5b9f83b9e532e985ff80b30fff7538154abcdfb",
+      "bytes": 91588309
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD1.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD1.uasset",
+      "sha256": "a0531ee1d0e77b6b7a0e2aba278017c4dfe60c7f991b42efbda62c329c752b21",
+      "bytes": 63293
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD2.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD2.uasset",
+      "sha256": "86178cfe99f1b6a8b7b9c8a329d18a5c8d801095e6c1a56891773a683874cbf0",
+      "bytes": 64568
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD3.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD3.uasset",
+      "sha256": "a7dda5259855ac2740c2c2331d8d89ac1c2539a44a64007fedbbcf2c14b80db7",
+      "bytes": 64296
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD4.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD4.uasset",
+      "sha256": "efbe83ee56451ae03c6e382a8ff9099ff11a42861f9d211ea6b7e111b95c1c97",
+      "bytes": 64573
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD5.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/LODs/M_HeadSynthesized_LOD5.uasset",
+      "sha256": "38750d32934229e946ab657de8c95a7c61d3e830248e5b6a1cbbd7499565d2d5",
+      "bytes": 63383
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeLash_HigherLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeLash_HigherLODs_Inst.uasset",
+      "sha256": "554de55ad9f8f5abf33f5cd895de9f91a00dada2ebb5139a32b6aa80100f84e8",
+      "bytes": 9939
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeRefractive_Inst_L.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeRefractive_Inst_L.uasset",
+      "sha256": "c27c2f28a15a1ce5023084757dcc38a9cabeb04f108401999f14273530d5b9bb",
+      "bytes": 19814
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeRefractive_Inst_R.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyeRefractive_Inst_R.uasset",
+      "sha256": "ea0bfc4c1de659de29fc2cadaec094ed8db88911241722b4ff5a5bc97c845bdb",
+      "bytes": 19347
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyelashLowerLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_EyelashLowerLODs_Inst.uasset",
+      "sha256": "9ba86949e9335a30c0895b32adf57afbc004a68d3ad110cd4c500a5996905739",
+      "bytes": 9349
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_HeadSynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_HeadSynthesized.uasset",
+      "sha256": "2e9e8b423f0800dafe69945d8064f9debdd56c6e5099e55e872baa52825838be",
+      "bytes": 63277
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_TeethCharacterCreator_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Materials/M_TeethCharacterCreator_Inst.uasset",
+      "sha256": "998f8b70f596082fff97f1302f45c0ee627db7d2b61f05b998472064a6374e12",
+      "bytes": 17680
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Female/f_002/Textures/f_002_nrw_LODnormals.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Female/f_002/Textures/f_002_nrw_LODnormals.uasset",
+      "sha256": "a1880de879c7e1211c8f0166dbed0ddb5d77c7a1f0dbaf0de6bba55155d8979b",
+      "bytes": 223941
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_loafers.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_loafers.uasset",
+      "sha256": "dedf81e402737eb05a913bb316d8b94267ba7d141a55e0e7e1a056ed069182f5",
+      "bytes": 42315
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck.uasset",
+      "sha256": "eb18735dc1c19075c0c76eed12f3a9956e608c0e3770734986c256900e7bbfea",
+      "bytes": 53337
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_jeans.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_jeans.uasset",
+      "sha256": "79b195b934ae36c67478f1874ba458a465d08572ae2793cefe263ed925e152c8",
+      "bytes": 52996
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_socks.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_socks.uasset",
+      "sha256": "1ed717f5509027ca96ab76ebb03376d254ce04dda913d5f88feff432f3dacca0",
+      "bytes": 41118
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized.uasset",
+      "sha256": "df8964721746526d4b0bd9db008ed6e6f356d24bda0ad54a29637aa34a4a52b5",
+      "bytes": 22770
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body.uasset",
+      "sha256": "f16012edd526a8a1a1c41ff1c326392674c07640ad709d00790123f122ae5c7a",
+      "bytes": 4079832
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck.uasset",
+      "sha256": "7c8bf8a1b9c6f2f4f2233b56884e2f1e1df442ced1fa9d93834070e23dd3a61c",
+      "bytes": 4454339
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_jeans.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_jeans.uasset",
+      "sha256": "0ef5dc8e7a9da8f1a9e560c8c4a6f54406d75ae67cb3748c2fa8198d0c4204ae",
+      "bytes": 7805784
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_loafers.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_loafers.uasset",
+      "sha256": "0ceb51eff2d12154e750c74a8bf6fe2f2f4f8a93cb2facb5a6c9c6fa9d093e22",
+      "bytes": 1732093
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Rig/m_tal_nrw_body_Physics.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Rig/m_tal_nrw_body_Physics.uasset",
+      "sha256": "4d7f3b59c196700dd5fec3f02cac5aa21fac3975521b29feb7171b7f41fab4a4",
+      "bytes": 35368
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_N.uasset",
+      "sha256": "8151093a9f4be39da379af93bb9a2892801ef709affd28bad95476e661506707",
+      "bytes": 6463621
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_PackedA.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_PackedA.uasset",
+      "sha256": "89ab7af69aacbc221379923a21cf243d4abe7a9d388fec63e17bc6b51ad8c07d",
+      "bytes": 577847
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_PackedB.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/T_unisex_loafers_PackedB.uasset",
+      "sha256": "323fb56d509c72e3198cb84ffc3a9cd78b4a030313781ba6924163e69090e8e4",
+      "bytes": 1214736
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/unisexLoafers_BentN.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/Loafers/unisexLoafers_BentN.uasset",
+      "sha256": "86af194b0a57259dd20ae11686730b1210ada290ca17a39406c8e446dcdd4642",
+      "bytes": 405299
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_nmw_ao.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_nmw_ao.uasset",
+      "sha256": "670a6c3bd5ce9b8d4438522e415c8b55ae339c6122abf5edca5404f03bed8955",
+      "bytes": 118482
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_nmw_bentNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_nmw_bentNormal.uasset",
+      "sha256": "579735e75a7ae234f998628eb0e367af3858d3508969916ff9fb23d9329a9238",
+      "bytes": 292483
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_tal_nrw_head_geomMask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/T_m_tal_nrw_head_geomMask.uasset",
+      "sha256": "22e780059d4ec725b180857464f4833b2f1fc6a691d99f1530f3c5af34effe78",
+      "bytes": 9058
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_AO.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_AO.uasset",
+      "sha256": "1ad3e7311cc4d2fcbc65a21c2359e9a6841dc9f4a71031000e3c28c79c447c98",
+      "bytes": 1288196
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_D.uasset",
+      "sha256": "7ad5929aa35e144c5c6f1b572581ad4e076076dec7e01c781f986d0d464449db",
+      "bytes": 16553159
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_Mask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_Mask.uasset",
+      "sha256": "82ec7e8c1f1c1fb862e3cf99e275ec710854fc80fe1d7588611e9811f8d93a5e",
+      "bytes": 5624786
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_N.uasset",
+      "sha256": "cdcff47f57bbc64905b083ab10b96edba2e899ecbd795e6d639795e059b582b3",
+      "bytes": 5202949
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_tile_overlay_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_tile_overlay_D.uasset",
+      "sha256": "bdcd971e8d1593dfe53377065b752d483a87a84254efef955136fb8c102cfa75",
+      "bytes": 1258301
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_tile_overlay_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/jeans/btm_jeans_nrm_tile_overlay_N.uasset",
+      "sha256": "4c27cd6374ed1e0badfd85a167febf61e9924f398152bd47399edafdca1e3a61",
+      "bytes": 2885757
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_BN.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_BN.uasset",
+      "sha256": "ef9893dbd228643d8d6ccebcbfe208a1a8c331467fb5d4630769e61907ae8dbd",
+      "bytes": 151510
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_N.uasset",
+      "sha256": "85d30ce4f2806d40206b3b70ad5b1a588dbf2bbb4c7a13ef6835f95060cc0352",
+      "bytes": 1868170
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_PackedA.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_PackedA.uasset",
+      "sha256": "3a8c57e88a321280236e216e01fe91a39dd8f852fce8bc4a26e1dd3eb25f07f1",
+      "bytes": 442363
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_PackedB.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/longSleevedTee/T_m_tal_nrw_longSleeve_PackedB.uasset",
+      "sha256": "90759c522ad036fa3723e3172dc17c4abd6e8e5b564c9a52aa425257bff1d6fa",
+      "bytes": 80597
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/Textures/male_body_cavity_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/Textures/male_body_cavity_map.uasset",
+      "sha256": "bf77e27f5b3afa3a83f6d3a6c5f5737cf47ab1312ebca96dfa78c4189ac0117e",
+      "bytes": 78666514
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/Textures/male_body_mask_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/Textures/male_body_mask_map.uasset",
+      "sha256": "c50287f531f827020ec3ddf8bea7d1d2ff859f0ba0aedd8678641efa2242a94d",
+      "bytes": 2826654
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/Textures/male_body_normal_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/Textures/male_body_normal_map.uasset",
+      "sha256": "d581798f19c3a36b1a829adcf7d11591aa522ba44ac599c7398e92b0c31c8095",
+      "bytes": 95384349
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/Textures/male_body_roughness_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/Textures/male_body_roughness_map.uasset",
+      "sha256": "3e6528ed1ab4e8a4338a189a79e96a31b85682ee918c7b6e3ec10622cf45d883",
+      "bytes": 15090
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/Textures/male_underwear_color_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/Textures/male_underwear_color_map.uasset",
+      "sha256": "e8b2bd8bcf6b3d091cea1521093eff6d59105ccc798a61b0416dcc4c5a903e33",
+      "bytes": 8212
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/UnderWeight/Materials/M_BodySynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/UnderWeight/Materials/M_BodySynthesized.uasset",
+      "sha256": "8fda797df287f7d0c3d47e18e89f664b22c170f74ee7fd303f9982c9a4968176",
+      "bytes": 22017
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/UnderWeight/Meshes/m_tal_unw_body.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/UnderWeight/Meshes/m_tal_unw_body.uasset",
+      "sha256": "3ed9ca62911bb9c0cab524f967062893b1df0aa3a13cab0b3bdb7d461ed71087",
+      "bytes": 4233415
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/UnderWeight/Rig/m_tal_unw_body_Physics.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/UnderWeight/Rig/m_tal_unw_body_Physics.uasset",
+      "sha256": "5fa95496194dd79735922291573f532862eaead2ad54f2eb07eaac0d87d24785",
+      "bytes": 35159
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Face/m_001_nrw_FaceMesh.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Face/m_001_nrw_FaceMesh.uasset",
+      "sha256": "5d9291f9e2b8c4507f3ec81c8b02c6910cb20f6e57322825abac747aa0c7762d",
+      "bytes": 91627783
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Hair/Hair/Hair_S_AfroFade_CardsMesh_Group0_LOD0.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Hair/Hair/Hair_S_AfroFade_CardsMesh_Group0_LOD0.uasset",
+      "sha256": "d3f4bb4703a69ea64842ef53fb33706c4dec752d7bcfa5bf9409281adfe8fb75",
+      "bytes": 1032919
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD1.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD1.uasset",
+      "sha256": "08107538dc1df1238e8f3e0c706462611a58c718fd65a32ce1d69f4bb2902752",
+      "bytes": 60838
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD2.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD2.uasset",
+      "sha256": "d14e4c0eba8cf5e7b4e7a31551d0b94fff616c08226bfec4ebdba0649a61c7f3",
+      "bytes": 62034
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD3.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD3.uasset",
+      "sha256": "fadd6b2500427fa56fa42974d6b6688f53f8c5e5929fa3bcb00738b6e62935e6",
+      "bytes": 62159
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD4.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD4.uasset",
+      "sha256": "6d788f08cf93717c5b579574acc02163e80f6a1b3e9bd92db0fb722fce576b6f",
+      "bytes": 62143
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD5.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/LODs/M_HeadSynthesized_LOD5.uasset",
+      "sha256": "f1e32c9a1d4fec9129135a018fd7f63d694fddec61e8939bcc7ad2aa23380368",
+      "bytes": 61161
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeLash_HigherLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeLash_HigherLODs_Inst.uasset",
+      "sha256": "fd46912c5b7b57371306c9668b17d6c841e643b42c7d445c7e8948b799b8391c",
+      "bytes": 10136
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeRefractive_Inst_L.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeRefractive_Inst_L.uasset",
+      "sha256": "05782bd431a58333391c9fbcb8c22fed22f472bf84cf484bb469d53839c05b68",
+      "bytes": 23910
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeRefractive_Inst_R.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyeRefractive_Inst_R.uasset",
+      "sha256": "bcc7be879870af921ed2d0bca6266c102718dc4462fc63ea617b85af9dafdeb3",
+      "bytes": 18874
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyelashLowerLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_EyelashLowerLODs_Inst.uasset",
+      "sha256": "296b1c517de3c1b05a194c585038c575fedc4e7be64a582c3b5688bee60c16ee",
+      "bytes": 9562
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_HeadSynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_HeadSynthesized.uasset",
+      "sha256": "6ea1e0cfecdcb16aa4cc5f72c6321110892eaaaeee56ba960de986c54760480a",
+      "bytes": 58842
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_TeethCharacterCreator_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Materials/M_TeethCharacterCreator_Inst.uasset",
+      "sha256": "147234447502bfc1ee17d47454a98c46f8b3a9c9a0719d9c1b0be727fe77b2e2",
+      "bytes": 17687
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Male/m_001/Textures/m_001_nrw_LODnormals.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Male/m_001/Textures/m_001_nrw_LODnormals.uasset",
+      "sha256": "1f56cd2cad5d4123b6f93497dc02fc4832570324ba75b53f4bc32ea79b269da6",
+      "bytes": 233567
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Data/Crowd_LODSettings.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Data/Crowd_LODSettings.uasset",
+      "sha256": "4306059e34d1cb7ca8f8572b5f283e7465c097f3197f51a0ad106344ccbc64db",
+      "bytes": 24911
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Data/Face_Crowd_Archetype_LODSettings.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Data/Face_Crowd_Archetype_LODSettings.uasset",
+      "sha256": "1e54a55c301e83e1b1a6b69389831bf8b60f27e80c421bcd7ea769aa2e418e10",
+      "bytes": 360204
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MPC/MPC_GlobalTextureControls.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MPC/MPC_GlobalTextureControls.uasset",
+      "sha256": "10a7ae4c8adee8898c3dd0f63bf80344177994177759c591ae3e327127e30a92",
+      "bytes": 7359
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_AnimatedMaps.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_AnimatedMaps.uasset",
+      "sha256": "dcf08d0e8008732f073ed826671d5ea8280065056f9bc2d6053c464d34ce0342",
+      "bytes": 20686
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_BakedGroomTextures.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_BakedGroomTextures.uasset",
+      "sha256": "c806e56bc302bed8f6d11e626f1704fb29efc1ca889c6a8b85dbd62b7f8c3dda",
+      "bytes": 69397
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_CloseCameraFade.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_CloseCameraFade.uasset",
+      "sha256": "062104a47c351b0494e0874901734c0e350e4ae4c98025b45e4f2744bb894e05",
+      "bytes": 96679
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_CrowdBreakup.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_CrowdBreakup.uasset",
+      "sha256": "3b338e47411fff42d2c939fe573319c7451b8f4236d7237d5b6f4bcb4ec5e59a",
+      "bytes": 130000
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_ErrorFunc.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_ErrorFunc.uasset",
+      "sha256": "b9aa0cd28f6c3b1e698c342d0916d1d2cdac62a08fb28259d6da2d185264a12c",
+      "bytes": 98440
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_01.uasset",
+      "sha256": "54ad2bd9b697411417145b5c762404e94d94e9c5b6aeac1ac12964c0eb823903",
+      "bytes": 37563
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_02.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_02.uasset",
+      "sha256": "343a4db0157ba39013c7e9090263d16c33cd9ae004eb22cf0c481a3152698eb4",
+      "bytes": 23674
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_03.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_HeadMask_03.uasset",
+      "sha256": "b6745b4b098f4a8c03dde61fe9b4e222495ecd1314f4d977c00b6e8705832c42",
+      "bytes": 25767
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_NormalStrength.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_NormalStrength.uasset",
+      "sha256": "27a8fe050d01b6245a20b2569d3fd459e1f13df7e1687b9b0b41794bc275f6f6",
+      "bytes": 75954
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_RoughnessMult.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/MaterialFunctions/MF_RoughnessMult.uasset",
+      "sha256": "d2796d535f123386a165bcf0300df166f6e2d38f452d8c71917b83bf71392b78",
+      "bytes": 168710
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/MI_Clothing_Crowd.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/MI_Clothing_Crowd.uasset",
+      "sha256": "d83443ca7228e0c34ecbac7f79c3b9d7585df5c8e1e473c262ee29f69c1c82bc",
+      "bytes": 14252
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/M_Clothing.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/M_Clothing.uasset",
+      "sha256": "11402bd45fb3282ac107686f7e7a56428f2d855b73409af8b8263590f9bacf3c",
+      "bytes": 560497
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/MatLayerBlend_Aniso.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/MatLayerBlend_Aniso.uasset",
+      "sha256": "7535e55864550461c46e5008b0372c9f9e8ccd70aac819028e5fc4ac1136783d",
+      "bytes": 88318
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_FullPattern_Atlas.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_FullPattern_Atlas.uasset",
+      "sha256": "fcc389b939855f293ec43749005232de49e268375131205060a98c06a15525ee",
+      "bytes": 20042734
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_01.uasset",
+      "sha256": "2c3fa10f8a707d128b17a9da0a2016e4bf6f1430047549f9e2bb8e3a4e2a9da5",
+      "bytes": 5208
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_02.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_02.uasset",
+      "sha256": "bd4c0e29ae414b4037807d99ece17e80e1835ee4576ea73941e22bf5360af827",
+      "bytes": 89257
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_03.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_03.uasset",
+      "sha256": "c8d67a477bc59c1f55c798da8f37f6da05c3b7c318da4c1137a6b0d9357322eb",
+      "bytes": 68639
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_05.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_05.uasset",
+      "sha256": "2544114b8de3c25ec3dc7546dac60cfdc9f8868a66120c5e304c7e32358321c5",
+      "bytes": 17264
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_07.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_07.uasset",
+      "sha256": "3ae70e1065fdf12b4d45ffaa45bf3c55222ca059b50403fc8753f8d8703a256e",
+      "bytes": 10861
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_08.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_08.uasset",
+      "sha256": "bfa1c3ec23a79a8f1306e4fa6367b74accea9c644ef68277c3fc4c47f5b45bbf",
+      "bytes": 19356
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_10.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_10.uasset",
+      "sha256": "5ae300586895636af69b5c16a1c6dba2069523328f3cfc9bcc21e8a7fc1fd76f",
+      "bytes": 8682
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_11.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_11.uasset",
+      "sha256": "55cd9154dbccc5f0ad9ca41abaf752452640bd11ec14d2d3d0aa43de59ba07e8",
+      "bytes": 135597
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_Array.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_Array.uasset",
+      "sha256": "17e0d5fbfb1f2fec833cf1ac32bd923ab56f482684c58a208b245192d5592d62",
+      "bytes": 301380
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_SuitPattern_04.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_SuitPattern_04.uasset",
+      "sha256": "8389472d05f3897abc9f72b646eb8ab7a384a536ec0b15eaea237a4d2c0824e9",
+      "bytes": 24247
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_Grey.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_Grey.uasset",
+      "sha256": "6fb57537db7ec42284bf2f6410e9f350e05807a6f7f994fc52a677016c0b4dbd",
+      "bytes": 15606125
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_GreyLight.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_GreyLight.uasset",
+      "sha256": "8c70bccca894d9f53cac397da96b8973d6c8e5b52c9cc900c850f9d01b9bd3be",
+      "bytes": 11740748
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/Clothing_Default_AO_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/Clothing_Default_AO_VT.uasset",
+      "sha256": "c7278536d67335dd6669e4a7ee87f0bf375bb55f1bfc2a47be6942975c9eca0b",
+      "bytes": 20022
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/Clothing_Default_Mask_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/Clothing_Default_Mask_VT.uasset",
+      "sha256": "77565c8e4f41e17ef26add479cbf7d864b37be187a270d0aa59d051836eb9608",
+      "bytes": 11519
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_127grey_Alpha_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_127grey_Alpha_VT.uasset",
+      "sha256": "a685922fcb884940aac72466f9d16a9189ceb44b1ed7b8bd4a101bfdde980d91",
+      "bytes": 5334
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_127grey_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_127grey_VT.uasset",
+      "sha256": "32bca23f1a971a5d8f9af02aed4fc01093684e835d4dc1a198302e4ca287d3fe",
+      "bytes": 5063
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_black_Alpha_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_black_Alpha_VT.uasset",
+      "sha256": "ffb4f510764d04908a1ed0621a6f575bb7fb73f95915622eaefeb47a53394a7f",
+      "bytes": 6493
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_packedA_Default.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_packedA_Default.uasset",
+      "sha256": "4becbb8199e60f669d6582bdd07b9ee70db3094d9348a70efd66c87e970d3a51",
+      "bytes": 5492
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_packedB_Default_Masks.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_packedB_Default_Masks.uasset",
+      "sha256": "68f9b6095f66bbcdedafa2b4828484dcc39d33a43e2b41866e05b7940a6601d9",
+      "bytes": 5550
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_white_Alpha_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/default/crowd_white_Alpha_VT.uasset",
+      "sha256": "41ed1b2bbbbbe20f42eff4815ff40f3f66633c5c0d6b08a148a2224a57b59355",
+      "bytes": 6621
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_AoR_RT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_AoR_RT.uasset",
+      "sha256": "746d52dab02540d077783858778bc188c6653b651195f4de4b61b752fa1c89ab",
+      "bytes": 488584
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_N.uasset",
+      "sha256": "e6f40584cf1ca286314dca38d770309754579e63b84d0a45558be07c94a77881",
+      "bytes": 659746
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_grayscaleDetails_M.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/denim/T_jeans_denim_grayscaleDetails_M.uasset",
+      "sha256": "29447e17aa065ee93ca7132cb9d134d8eb3be872b5add82ae1d2c6532d3a20c4",
+      "bytes": 190580
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_D.uasset",
+      "sha256": "9b262078119c910e6921daba367b0f8a568337eb31b81bf325271a32b12bead9",
+      "bytes": 126129
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_N.uasset",
+      "sha256": "981cd84b05b99df513d1f8baba9c5a82e3ae34eaebbef66185c239ea48491935",
+      "bytes": 175559
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_aohc_M.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_3ribKnit_aohc_M.uasset",
+      "sha256": "f53f85cedaeb94c083756df400ddc83bcdee61f453c54d9612bd085db3470f82",
+      "bytes": 187593
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_D.uasset",
+      "sha256": "64a120dd7d9cf32c03ac6f84bf88dc9b46addebcd063e1e73d819a6e228932dd",
+      "bytes": 458203
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_N.uasset",
+      "sha256": "105decb2c1647b18a2f01ec08d249569eb4fc726af3b13f782b6f660440ce233",
+      "bytes": 148632
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_aohca_M.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_doubleKnit_front_aohca_M.uasset",
+      "sha256": "45e25165a2aa83618a66787100b2798bf098d598b1153e5008d11e108bace16d",
+      "bytes": 162734
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_knit_front_AOHCA_M.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/knit/T_hoodie_knit_front_AOHCA_M.uasset",
+      "sha256": "ba2b2c78f5e614314c94de36a4dc7a693f76236d06798ef71f4055e1075c5780",
+      "bytes": 148379
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oiztx2p_2K_Roughness.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oiztx2p_2K_Roughness.uasset",
+      "sha256": "1ddd88b7a13804243b60b2bab7e123a3a189f8c8c832625e524e75918f8a3a77",
+      "bytes": 4067442
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AOR.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AOR.uasset",
+      "sha256": "6fc6587d3aebe9fc69dee00d5d2c4514fbe4a75a3d6c34eaff47edb7b1e5884f",
+      "bytes": 8413009
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AO_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AO_VT.uasset",
+      "sha256": "dd91a1016ece44142f22e78d6bcbeefb95b6e1110dbc45615270750d59adde6b",
+      "bytes": 4968668
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_Normal_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_Normal_VT.uasset",
+      "sha256": "22e2f715937e428c4c2be612cf2b3d107c58ceb5318c22a79b1a40e8be9c285f",
+      "bytes": 11912962
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/T_macro_hthr_H.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/T_macro_hthr_H.uasset",
+      "sha256": "b9582d270cbe69b9ce979c8d8e64ec3e4d0ce5a348ffdadf407d94969cbf3345",
+      "bytes": 253542
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/macro_linen_rbess3s_4K.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/macro_linen_rbess3s_4K.uasset",
+      "sha256": "e878d4f51af8d3944a8faac4f7b63cfe216a2618101d1e84b34bd2c29f54faf8",
+      "bytes": 1241596
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/memory_wrinkles_diffuse_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/memory_wrinkles_diffuse_VT.uasset",
+      "sha256": "f0dc666385723df31588c61f3e712a4c3c991ae9e46e3f3778b1eb67c877dc54",
+      "bytes": 116577
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/memory_wrinkles_normal_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/memory_wrinkles_normal_VT.uasset",
+      "sha256": "4771e95be92839a476248c3df5a4157fdd0f45fb6c9feafc4cc6b0f55f4d7236",
+      "bytes": 327262
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Displacement.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Displacement.uasset",
+      "sha256": "501d47a1ab209c843dc1a1437fb202a3702c90b65fae70b146ef328d3cbad36c",
+      "bytes": 392104
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Normal.uasset",
+      "sha256": "f5bb1d4fc46711c87116f296d362f44421edbfc918f6dc59fa7659679fe103cd",
+      "bytes": 35861157
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_N.uasset",
+      "sha256": "236303c26e5775a66df339d4a7b78f0255110165c7bf769ed16b31b21371fd77",
+      "bytes": 107962
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_height.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_height.uasset",
+      "sha256": "17eec6066736fad59d2da10e771a9b50de49140bbe3c610fe0bd85adbfb28746",
+      "bytes": 144058
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/M_DebugPink.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/M_DebugPink.uasset",
+      "sha256": "4cd8b93bb73a2efb0207ae9c93b82f6d99706c179c51309659ea3bf205bd1ca1",
+      "bytes": 7486
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_EyeRefraction.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_EyeRefraction.uasset",
+      "sha256": "cdb06d1ca7831564c66e65db8abe085f1c7226c1a0ca0df840e099d2c728e32b",
+      "bytes": 41649
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_IrisGenerator.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_IrisGenerator.uasset",
+      "sha256": "0c6a9690ce889e1f52e8db7d966353bcea7bb142a6fe1c42ecdbb79800910fea",
+      "bytes": 43420
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_ParallaxOcclusionMappingEye.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Functions/MF_ParallaxOcclusionMappingEye.uasset",
+      "sha256": "940ef095671f5796791cc067176d1f0a0cbd5dfbf69907aee16c8f083c037df5",
+      "bytes": 75793
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_001/T_Iris_A_H.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_001/T_Iris_A_H.uasset",
+      "sha256": "53a719187f6b26e9fa26008313ff85f16ce58b36eca36043aee770b806464bc6",
+      "bytes": 14319
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_001/T_Iris_A_M.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_001/T_Iris_A_M.uasset",
+      "sha256": "8d9a33b2eab57ec8e7398b178228cadb30999c0df25a3a54414d37004aaad3e4",
+      "bytes": 1804411
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_007/T_Iris_A_H.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_007/T_Iris_A_H.uasset",
+      "sha256": "2c069d380f9d799d60c7d2d8adb798413c227b42382bd396e1a6c218d116a7f3",
+      "bytes": 13476
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_007/T_Iris_A_M.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/IrisTextures/iris_007/T_Iris_A_M.uasset",
+      "sha256": "491c55b8215bd78317872a2b425dbaa3c28b27dbd10fdf3877aafe744bf7d647",
+      "bytes": 1866093
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_EyeMidPlaneDisplacement.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_EyeMidPlaneDisplacement.uasset",
+      "sha256": "6b723b31b1c168269b1d0c429dc6e042075de382693f40b799a9fa9a7bc8ad31",
+      "bytes": 1105116
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Eye_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Eye_N.uasset",
+      "sha256": "2e047259dba5cca5066d5dda7dd59dc8f4722b7bb582b6e934eb2f79dcbce6f3",
+      "bytes": 261549
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Sclera_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Sclera_D.uasset",
+      "sha256": "f9781de3f7cba966848c57b82e393018f577beefe3b412e893e54a1701199efa",
+      "bytes": 198250
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Sclera_N.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Sclera_N.uasset",
+      "sha256": "85b60c2b5768b05cc22f06f8209927ead01643e5564bd41caccd4b10b0625edb",
+      "bytes": 140242
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_TilingNoise_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_TilingNoise_001.uasset",
+      "sha256": "75225178ea926135e53c73f2c81c32503f80937831c03f632c7e382e07d95d80",
+      "bytes": 122672
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Veins_D.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/T_Veins_D.uasset",
+      "sha256": "4b462d09d7af861dc3e35804e62feb26152ca919781e7775a7c009606e30f959",
+      "bytes": 5978039
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/iris_color_picker.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/iris_color_picker.uasset",
+      "sha256": "26a6e65fda42ac834ac6182eca9e6164c47f91fa8aad499b8cabdf5cd512be98",
+      "bytes": 109138
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/sclera_tint_picker.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/EyeMaterials/Textures/sclera_tint_picker.uasset",
+      "sha256": "fe717e29927d6c8632396d45e964efa5c464aad23f16e181586811261e9e938d",
+      "bytes": 37681
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/HairCards/MI_Hair_Cards_S_AfroFade.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/HairCards/MI_Hair_Cards_S_AfroFade.uasset",
+      "sha256": "47fe3ba7b891e420f26ca967498fbfddac10d83d07a5abb32297853d8a780fc5",
+      "bytes": 19089
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/HairCards/MI_Hair_Cards_S_Coil.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/HairCards/MI_Hair_Cards_S_Coil.uasset",
+      "sha256": "13fce0489ba45347e155636bfa34fe9bc0dd05e61ae423b250607b7312ff26b0",
+      "bytes": 18439
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/LODs/M_HeadSynthesized_LOD1.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/LODs/M_HeadSynthesized_LOD1.uasset",
+      "sha256": "632a1402c0d4a787cd9a96da2afc26805aaa374f43f82b7ffd0025b8cec46923",
+      "bytes": 14512
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/LODs/M_HeadSynthesized_LOD2.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/LODs/M_HeadSynthesized_LOD2.uasset",
+      "sha256": "1d211864a74bb7b5597b3d73254636d25b801f4754c4da68309256a8cf6d0688",
+      "bytes": 14502
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MF_HairAnisotropic.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MF_HairAnisotropic.uasset",
+      "sha256": "8f72ec2c3be20b09a1e7b3efb102575dbc22c741f7de82548f59d77af1718ce6",
+      "bytes": 64805
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MF_Variation.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MF_Variation.uasset",
+      "sha256": "e0967d6a0d974fd948959e196c9926fa05a2500db0594ed67cf7f025c58c99d0",
+      "bytes": 12201
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MI_Crowd_Hair_Cards.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MI_Crowd_Hair_Cards.uasset",
+      "sha256": "eceb5aee421015281669318f248d6bcada5f413b25e2f62d84ed775830ed174f",
+      "bytes": 10072
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MPC_HairColor.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/MPC_HairColor.uasset",
+      "sha256": "c4a5c39394ca4580bc5bcce2f4c3476668c5c00268a9494f62679d2213ecbaa1",
+      "bytes": 2712
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_BodySynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_BodySynthesized.uasset",
+      "sha256": "df4f097edbdf08bcfb010d71bf5196631be65068b110b21c58b122a3e5e9248c",
+      "bytes": 17609
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Cartilage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Cartilage.uasset",
+      "sha256": "e059d2ff06e358972e075bbce28d9727795dd98141881f36a91bdd931f91fe0b",
+      "bytes": 6473
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.uasset",
+      "sha256": "a97f6b3640cea7aa68f76d6c5e0b89c4c55eb333f7bae586fe974bbf44735929",
+      "bytes": 136054
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_EyeOcclusion.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_EyeOcclusion.uasset",
+      "sha256": "05422adcd725bb895b3553cb9771ba68516e3cb88a08e352ec0d812cfd8cb644",
+      "bytes": 103565
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_EyeRefractive.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_EyeRefractive.uasset",
+      "sha256": "c50111ba6211f64f37faa42edfbe67b6b581240127579d7724f8a0fa753991e9",
+      "bytes": 159763
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Eyelashes_Cards.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Eyelashes_Cards.uasset",
+      "sha256": "b97e65d2bec344b428de03f403a716d941ae7fb12536ef46f586f30b50fdcd33",
+      "bytes": 26134
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Hair_Cards.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Hair_Cards.uasset",
+      "sha256": "2c21bfd1fe0a86957ae79c5729ea37f3c98eeec28bdda20b1d4169f676dfe10a",
+      "bytes": 106402
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Head_v2.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Head_v2.uasset",
+      "sha256": "ad2e85b6363ebf76af4122de98ed323a43263dd47725f6d98c48a82b57336c28",
+      "bytes": 362514
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Teeth.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_Teeth.uasset",
+      "sha256": "7297aa7986fb23fa89093cf59d3b990561bda8033d3381571c14a599c0cf2e0d",
+      "bytes": 60402
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_lacrimal_fluid.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_lacrimal_fluid.uasset",
+      "sha256": "1230818647348e54552e8a17d73248f6ea9fdfba8a43af6c4ef2853b95502c9d",
+      "bytes": 37791
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeLash_HigherLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeLash_HigherLODs_Inst.uasset",
+      "sha256": "b0daef47042fb26a2efeb8e8de5416e2cbb81ee86b1b94f9cbbe15462582e3a5",
+      "bytes": 10062
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeOcclusion_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeOcclusion_Inst.uasset",
+      "sha256": "c709e670acf8103e0d213a00212ea02614f4f3e34525f2f2d72d4cbc6b724857",
+      "bytes": 70009
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeRefractive_Inst_L.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeRefractive_Inst_L.uasset",
+      "sha256": "ef239f5a35feca940fed63245877159559727bc8ff7ee0b945eb2053d12f12b8",
+      "bytes": 93076
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeRefractive_Inst_R.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyeRefractive_Inst_R.uasset",
+      "sha256": "4cd518bab4bf03c3a9aa87372f298bd8cd155ae54515a9e7c4f1ddb16a685eb6",
+      "bytes": 92152
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyelashLowerLODs_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_EyelashLowerLODs_Inst.uasset",
+      "sha256": "64f2411e1ecd477727405d6aee8b168d8f38ef03121234cf41cff1b8a577fa07",
+      "bytes": 10944
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Eyelashes_Cards.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Eyelashes_Cards.uasset",
+      "sha256": "edff88eff3681183345cf75ee2cda7fed1283c76a330b06bad7e27b879a8c529",
+      "bytes": 21622
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_HeadSynthesized.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_HeadSynthesized.uasset",
+      "sha256": "6283a810d7729d88b55f01889eb2cda1bc430aebf294642c86a7ba5fd6334c74",
+      "bytes": 33617
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_TeethCharacterCreator_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_TeethCharacterCreator_Inst.uasset",
+      "sha256": "59ddf4df48e5f765761c2404749194e260d53e41bd9ecb5440c0ebb1838b82b2",
+      "bytes": 16712
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_lacrimal_fluid_Inst.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_lacrimal_fluid_Inst.uasset",
+      "sha256": "71415e7e1f554a87d21e0147d4b8af2f6ab49c238864668ed47c4d5906e568c5",
+      "bytes": 74301
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Controls/DefaultGizmoLibrary.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Controls/DefaultGizmoLibrary.uasset",
+      "sha256": "05ac867838520e15e617ab0d91d3c7d104f35bc76849761a8adfe5a1f5ba7594",
+      "bytes": 32366
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Controls/M_RigControlActor_Black.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Controls/M_RigControlActor_Black.uasset",
+      "sha256": "a0a8271d1cef407da3a5aeac040bc9cdcccbc5b8deec66888577b9e755f4b25e",
+      "bytes": 6500
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Controls/convergence_3l.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Controls/convergence_3l.uasset",
+      "sha256": "0934c5ad8e63817cb461bed6568274f6dafbd63ae46b07ba7cbacf55993153cf",
+      "bytes": 194792
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Controls/faceboard_2x.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Controls/faceboard_2x.uasset",
+      "sha256": "edc6e572152aca88ba2d9d2effbbd3af2d81dae4cf87aa20541aa539fbbc1e59",
+      "bytes": 449042
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Face_Archetype_Physics.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Face_Archetype_Physics.uasset",
+      "sha256": "b339544f4e50086c6397619bd692a1f119af1da3db271a8a15bd28ed8764ab06",
+      "bytes": 14206
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Face_Archetype_Skeleton.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Face_Archetype_Skeleton.uasset",
+      "sha256": "6b38333417e7392595eaf558efd0f43fa65130c315891fd1dc854b73e06878d4",
+      "bytes": 275796
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Face_ControlBoard_CtrlRig.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Face_ControlBoard_CtrlRig.uasset",
+      "sha256": "b1aee6145c68da1dc30ccc12eac1985ed7a8bcb3146716ce690fdaa0b1ed7c84",
+      "bytes": 9955306
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Face_PostProcess_AnimBP.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Face_PostProcess_AnimBP.uasset",
+      "sha256": "67e67528b6c905152d168645fd43d9ffdf50e3915a7c0c78074c6ba55607eae2",
+      "bytes": 54847
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/MetaHuman_ControlRig.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/MetaHuman_ControlRig.uasset",
+      "sha256": "a3474197d7fe83caf5f629e25ba5625945a2ddd4e1b6eafe93219eeaba8050db",
+      "bytes": 7575304
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/Neck_CtrlRig.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/Neck_CtrlRig.uasset",
+      "sha256": "2aa9214b76d475514cc4fd2a3ae1d5b4ea52c09d7e6884fb299c5582e32e7f5d",
+      "bytes": 890954
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/PA_Base.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/PA_Base.uasset",
+      "sha256": "30b34316cdb4b5c9ea665ee0edaf96edb1bdaff81c65b7614989a44f15f02d8d",
+      "bytes": 132883
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/SK_Base.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/SK_Base.uasset",
+      "sha256": "e6c46e3e20ff75b2192b48b1f2f05c6716519446acb48834f42f40cec67b2adf",
+      "bytes": 277911
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.uasset",
+      "sha256": "03b5e510a1a0eb47a7807254d2f54857543f41f448442af182a31fd863a1184e",
+      "bytes": 375871
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Rig/metahuman_proc_ControlRig.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Rig/metahuman_proc_ControlRig.uasset",
+      "sha256": "764009ff5dc527967d4dc325b1e4407eb83545e7d3d0b445325059381ce57d0d",
+      "bytes": 2830108
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SP_Head.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SP_Head.uasset",
+      "sha256": "49658b8431162cf545bce9d28f71dae6fe878a82caa3ed815738db4a51b0e612",
+      "bytes": 3507
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SP_TeethCharacterCreator.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SP_TeethCharacterCreator.uasset",
+      "sha256": "8df838de784419ea212a7492d88b0ffd22eadf4edeb16bdf872090fc91402cde",
+      "bytes": 3163
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SSP_Eye_Inner.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/SubsurfaceProfiles/SSP_Eye_Inner.uasset",
+      "sha256": "c44aaf343f01544faf1bb216cbab30aa3959a44d924b5e6bf038d7000b1bb006",
+      "bytes": 3091
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/1x1_BakedGroomTextureBase.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/1x1_BakedGroomTextureBase.uasset",
+      "sha256": "10f5ded2c28f0fa00ec9abefce732b5dbbecd5c4d94eae47d78ec23d150f3c90",
+      "bytes": 6294
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/1x1_BakedGroomTextureBase_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/1x1_BakedGroomTextureBase_VT.uasset",
+      "sha256": "8197c2e39a8d0e8971115bd8c4388d08143623e2bce513bbdfb820431029a2c6",
+      "bytes": 6253
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm13_msk_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm13_msk_01.uasset",
+      "sha256": "6e5016e92f7d4502714a65ee38433c5a241bdb234d66a0c18f32961ce1f69810",
+      "bytes": 72176
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_01.uasset",
+      "sha256": "a2a57c247cadad2dd1018a231c42e2dcef76f24b27b7e7f258a2ae244b1e8d1f",
+      "bytes": 217784
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_02.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_02.uasset",
+      "sha256": "3a39feae9362b0b10a911297704f42822b6c442dc4f22dd3815da819dd7d9a8a",
+      "bytes": 361796
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_03.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_03.uasset",
+      "sha256": "2d2ed15617a701264eded206a248832ee800b4ec3a74d6c876b523ebed4515ee",
+      "bytes": 751943
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_04.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm1_msk_04.uasset",
+      "sha256": "11d18e3dac876cf8564cbf6bd5009882c2ef7322e310c9a6010fd0d72c119d0a",
+      "bytes": 172627
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_01.uasset",
+      "sha256": "07ccaf227c3889e86d399dc9ced0fc81e2c7a023d79a77b2c8cdd51e05e9963e",
+      "bytes": 284302
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_02.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_02.uasset",
+      "sha256": "13049eb8dedc40dc55a8620b36efa6233fe80a45544ffd20daa73335c26f0f50",
+      "bytes": 554459
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_03.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm2_msk_03.uasset",
+      "sha256": "dda9985f04b9bab5242237da234586990bd20bda18c9cb03838f5e8dd5b0eb54",
+      "bytes": 329596
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm3_msk_01.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm3_msk_01.uasset",
+      "sha256": "ffcff9cbc87257115654fb79eaa7e4c024e3ac2c2094dde6cb229f9a2995ee14",
+      "bytes": 213523
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm3_msk_02.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/AnimMasks/head_wm3_msk_02.uasset",
+      "sha256": "7bd4b06e63d1981b70245cc091af1496287ba8468c4d0463bc9b83cfa05a5b92",
+      "bytes": 449546
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/EyeMakeup/T_EyeMakeup_005.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/EyeMakeup/T_EyeMakeup_005.uasset",
+      "sha256": "9af403d135a64c0569486fdd92853d229dfd1b182303d612dd2c8fd9314d19e3",
+      "bytes": 51658
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/EyeMakeup/T_EyeMakeup_006.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/EyeMakeup/T_EyeMakeup_006.uasset",
+      "sha256": "c5be12bd489d3b21668d90173277c5047e1e3cb13f8e02b0806c7d45c9b8b91e",
+      "bytes": 35196
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/Freckles/T_Freckles_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/Freckles/T_Freckles_001.uasset",
+      "sha256": "c0a64ae13059546ea6ac25ada3f08f476320c0a55ae670d9c5d75ac6549cfc71",
+      "bytes": 1760664
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/Lipstick/T_Lipstick_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/Lipstick/T_Lipstick_001.uasset",
+      "sha256": "8d0b25c6c32767e9cd10fb5e6d0dcb953030225b9f42cc3c9bf9b71787979e07",
+      "bytes": 33730
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/SkinAccents/T_SkinAccentRegions_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/SkinAccents/T_SkinAccentRegions_001.uasset",
+      "sha256": "25e7214c9290927773d5298034bee46958d1c1a788dc3351cc85bfd0b4e6c4a6",
+      "bytes": 221536
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/SkinAccents/T_SkinAccentRegions_002.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/ArtistDelights/SkinAccents/T_SkinAccentRegions_002.uasset",
+      "sha256": "747de72e7123e2ef6d23e6e1dbcf5de0677eb04933e98aa42b3d748948ba219d",
+      "bytes": 308454
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/BodyColorAtlas.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/BodyColorAtlas.uasset",
+      "sha256": "44d14efc5034d6c52498602f0bd30e9b0016c2a29717b55670618c9fe3443212",
+      "bytes": 77678202
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceCavityAtlas.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceCavityAtlas.uasset",
+      "sha256": "30d053f4c8768fc259f4cbe1a6d10e61e64d51504acc59734e6674f7010807e4",
+      "bytes": 87366039
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceColorAtlas.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceColorAtlas.uasset",
+      "sha256": "180beb365620de307c53ecf5a5a0ba81a4a6a48fdf80eea4b6bb58f243a07df5",
+      "bytes": 56786311
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceNormalAtlas.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceNormalAtlas.uasset",
+      "sha256": "30ae00800b7ee81c5a2a445bd27a9fc35e93a3ed2b673abab9f75774d4648985",
+      "bytes": 95568861
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceRoughnessAtlas.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Atlases/FaceRoughnessAtlas.uasset",
+      "sha256": "98b239a8ed9216579ea764609307463a42adb36b3dfc3823f33b69491dae8fe8",
+      "bytes": 14824
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_Linear_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_Linear_VT.uasset",
+      "sha256": "ceac9a879be058db0a856696f96766ba1cf5ed5a893b6a117aaf5f39da3ac53c",
+      "bytes": 34726
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_VT.uasset",
+      "sha256": "2943139944a22ff6686f7ac07b1c5b04f4e0000d0e7b162d1ebac8ac4d291c54",
+      "bytes": 34695
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/Default_3or4Channel_Linear_BC7_VT_Black.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/Default_3or4Channel_Linear_BC7_VT_Black.uasset",
+      "sha256": "d938e2bcc531de1d4f3c43c97dc00253d0e0ee70977809a0a1d5e3eb104e7964",
+      "bytes": 5476
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/FlatNormal_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/FlatNormal_VT.uasset",
+      "sha256": "12182f82a494306d2ecd4a866b96492c6f3459f4cfe496808eca4a8262554369",
+      "bytes": 5007
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/T_DefaultMaskTexture.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/T_DefaultMaskTexture.uasset",
+      "sha256": "51fdef455cd44a49931da8e3da93430927e1cf1ad5882e9e0cae7658b6df2b84",
+      "bytes": 4054
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/T_DefaultMaskTexture_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/T_DefaultMaskTexture_VT.uasset",
+      "sha256": "104a0bb44ddbeac008d669478dd6028c9422ff3a642309da287c78b81e52db27",
+      "bytes": 5127
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Default/T_Flat_Normal_VT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Default/T_Flat_Normal_VT.uasset",
+      "sha256": "d87a237b934ceacd004ef71e23dbfa7b80989d7efa54413b14d4eebdf495872a",
+      "bytes": 6173
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/DefaultTexture.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/DefaultTexture.uasset",
+      "sha256": "97b2437fb4ce11101f60c947a27b72cf3951e1970c8111680470bf0ad1535028",
+      "bytes": 34036
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/DefaultTexture_LinearColor.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/DefaultTexture_LinearColor.uasset",
+      "sha256": "7a3a233f13d45aea372646450875064927d57c74c5125cc61d9522240859d1eb",
+      "bytes": 34100
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Beard_S_Stubble_baked/Beard_S_Stubble_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Beard_S_Stubble_baked/Beard_S_Stubble_baked.uasset",
+      "sha256": "cfef18ff3e309dc7b46342de560fd5bd6b2ef1c377e2edc3ef1b15786c9980bf",
+      "bytes": 2110590
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_Full_baked/Eyebrows_M_Full_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_Full_baked/Eyebrows_M_Full_baked.uasset",
+      "sha256": "bdae01e5de682ef60699f89e0a277acc4d1dc8231ec302aef21c9d8d81208100",
+      "bytes": 197452
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_Natural_baked/Eyebrows_M_Natural_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_Natural_baked/Eyebrows_M_Natural_baked.uasset",
+      "sha256": "1ce6709d1ed0265152994caa9934b1b1e038edb01b06990e3f6e702357143928",
+      "bytes": 142880
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_SlightArch_baked/Eyebrows_M_SlightArch_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyebrows_M_SlightArch_baked/Eyebrows_M_SlightArch_baked.uasset",
+      "sha256": "302b669405044984bc0e69f7d62a8518677ae70766c680148074767ac5a6d9fd",
+      "bytes": 135860
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_L_SlightCurl_Cards/Eyelashes_L_SlightCurl_Coverage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_L_SlightCurl_Cards/Eyelashes_L_SlightCurl_Coverage.uasset",
+      "sha256": "dd043a5af7f5e03261907bbc47c2246c773f25b9ee023f880fbe154dc9ae51e8",
+      "bytes": 1205942
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_L_ThickCurl_Cards/Eyelashes_L_ThickCurl_Coverage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_L_ThickCurl_Cards/Eyelashes_L_ThickCurl_Coverage.uasset",
+      "sha256": "02b57a7010ccb82a374780780acf27e5c41c4a8796805141e23e213f643d7207",
+      "bytes": 774845
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_S_Fine_Cards/Eyelashes_S_Fine_Coverage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Eyelashes_S_Fine_Cards/Eyelashes_S_Fine_Coverage.uasset",
+      "sha256": "fe5c18c364c36bc7cc4703cd255cd960c6bad34059ae414b2a0093580230a3b5",
+      "bytes": 1007131
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Attribute.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Attribute.uasset",
+      "sha256": "8b6ec3190a62063936768df40d585000bdf14d8c86c1b0a8a255123df523fbc3",
+      "bytes": 629793
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Coverage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Coverage.uasset",
+      "sha256": "6bd0647187d9f6d8972e655b15284f0066b1df99eec32acd301e3e2402858690",
+      "bytes": 1507891
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Depth.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Depth.uasset",
+      "sha256": "a22cd45c3bbc0c2823fb452504b88b21ed09555b0cd1a92ccc09bd91de9af8b7",
+      "bytes": 269232
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Tangent.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_Cards/Hair_S_AfroFade_CardsAtlas_Tangent.uasset",
+      "sha256": "5250b1a0c627ffcf1340121808fdfa04bdb92cc18a569326ecdcbd6491cfaaa8",
+      "bytes": 564363
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_baked/Hair_S_AfroFade_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_AfroFade_baked/Hair_S_AfroFade_baked.uasset",
+      "sha256": "fcffd90d9ea073eb8b76a37369c59e4a7bfbbf1c279fad71bbc4551eefae9615",
+      "bytes": 1005965
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Attribute.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Attribute.uasset",
+      "sha256": "7d98f3a4f96bed1e572907235cd95ec3bd29145b01ff939e9f9bbfe6c076c2b1",
+      "bytes": 759092
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Coverage.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Coverage.uasset",
+      "sha256": "55ad7278632e4ca45e7ac4e2ad21fb1c384581dd195e2e4c0bdea32f27fb651a",
+      "bytes": 1904413
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Depth.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Depth.uasset",
+      "sha256": "567eff3a742fa24acbccc77655f8c467357990344e15c8d6d7ad3c78912c1ee4",
+      "bytes": 300369
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Tangent.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_Cards/Hair_S_Coil_CardsAtlas_Tangent.uasset",
+      "sha256": "8106f12ef124f9f8c86757c30115cc551a3f3d913dc02965bfbe8dd8ff75a777",
+      "bytes": 573533
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_baked/Hair_S_Coil_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Hair_S_Coil_baked/Hair_S_Coil_baked.uasset",
+      "sha256": "9617627a37a36bdb1869ffe782b922c8f41ae091398c7f6f73ffb374f164f308",
+      "bytes": 924674
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Mustache_S_Stubble_baked/Mustache_S_Stubble_baked.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Hair/Mustache_S_Stubble_baked/Mustache_S_Stubble_baked.uasset",
+      "sha256": "c2747368155b87951305e006e2451f86a979a803845bc85a164c1b7402f29561",
+      "bytes": 129018
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/MH_head_bentNormal_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/MH_head_bentNormal_map.uasset",
+      "sha256": "3d6989ae73e1e27ae8eea6ad9d0a72ae73535ebec916ca7ede45a57db667bea3",
+      "bytes": 758083
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/MH_head_occlusion_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/MH_head_occlusion_map.uasset",
+      "sha256": "e863516797f50e256593d2e5b13765306a210187493427a10a5d7b29b0ce6989",
+      "bytes": 439698
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/NeckMasks/T_Player_Head_NeckMask.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/NeckMasks/T_Player_Head_NeckMask.uasset",
+      "sha256": "97ecb30bd2ba491bc0e67a22b0920b324cc44017934b1b461a17ce4380871277",
+      "bytes": 4549
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/NeckMasks/T_Player_Head_NeckMask_NonVT.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/NeckMasks/T_Player_Head_NeckMask_NonVT.uasset",
+      "sha256": "f062df1441bf6b2035944ca8bcef53ea70eaf8caede99613be1c4fc572b568f3",
+      "bytes": 4628
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessBake_Tex.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessBake_Tex.uasset",
+      "sha256": "878e86bdab792e994c8630f452ab1c6423fc2d260d980b1e6c1798e8fbcb6ab1",
+      "bytes": 375772
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_001.uasset",
+      "sha256": "5ad6e3bce6295ca6cae6fb92d351433a8078d92a127800dd2a245f808f8db5a6",
+      "bytes": 194772
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_002.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_002.uasset",
+      "sha256": "e36a3afe8cc35754dfd0286bdb3e887413e46d48be74a0ee41d9e9d5a688df10",
+      "bytes": 167389
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_003.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_003.uasset",
+      "sha256": "8714d98b39b34be234f0b3a2894ba83b40ed02c90339273bd56d918269550d3a",
+      "bytes": 40556
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_004.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_004.uasset",
+      "sha256": "54170c9681eb2509a52e9d3c72141d7198a599eb8152e874e8208b45dfa37023",
+      "bytes": 165738
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_005.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_005.uasset",
+      "sha256": "088fcee14fc283ee575014811d3fc1a7b19173123133f8e3ce0d76cd63a6ece9",
+      "bytes": 159306
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_006.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_006.uasset",
+      "sha256": "0d453459cf36017f0308a173735ef8c06e31870eed9e83c78899be7f6448702a",
+      "bytes": 48583
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_007.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/RoughnessRegionsMasks/T_RoughnessRegions_007.uasset",
+      "sha256": "722557b8c94b83bfa0219b446d9a0fa2d0f17c192dfd68209b1f715882ecde3b",
+      "bytes": 33829
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/Scratched_Polypropylene_Plastic_schbehmp_4K_Normal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/Scratched_Polypropylene_Plastic_schbehmp_4K_Normal.uasset",
+      "sha256": "02732b088f04402c735b88aab6cd62eff0871c028f079ec5b9f3caaf84b6a836",
+      "bytes": 7215
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/schbehmp_4K_RAODM.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/schbehmp_4K_RAODM.uasset",
+      "sha256": "bc22dc635759b539cd923aeea6317fb7e5472ec11a8256d21f601efb52362034",
+      "bytes": 14773944
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/schbehmp_4K_overlay.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Surfaces/Scratched_Polypropylene_Plastic_00/schbehmp_4K_overlay.uasset",
+      "sha256": "9ef14cfcababac0342bb57663a6ff5c5637cb7ef458de46a399549175b163370",
+      "bytes": 11205085
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/T_Black_Linear.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/T_Black_Linear.uasset",
+      "sha256": "44e5b376526fd72c578e19134245f623088ed7dcf93063c48e92201eb7501618",
+      "bytes": 3986
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/T_FlatNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/T_FlatNormal.uasset",
+      "sha256": "afdcc5b14bc577c2d79b8b36a27ca53a8f43b519149866a78f5c5d31cf476f04",
+      "bytes": 5334
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/T_SkinMicroNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/T_SkinMicroNormal.uasset",
+      "sha256": "466617d9573e43a75d795cb2998b581619137b4cd7b78126015e65987435bac9",
+      "bytes": 2634860
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/T_Teeth_mouthOcc.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/T_Teeth_mouthOcc.uasset",
+      "sha256": "88599c7dfa9a9e4bdc1aac920ddf8833e103b3662a8405d0a86f4ceaf2746bea",
+      "bytes": 278031
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/TeethGumsNormal.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/TeethGumsNormal.uasset",
+      "sha256": "0db8a4034ec49909083852ea2681871e76d82a32e595a40f51e57dfc4eaeada2",
+      "bytes": 1827782
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/gums_color_picker.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/gums_color_picker.uasset",
+      "sha256": "cfa7786cca6b3f703745af5807193b9779c8cce55f29568e06ad5647ab400835",
+      "bytes": 77693
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/gums_div_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/gums_div_001.uasset",
+      "sha256": "7f71092dfd3064da5594ad522aed9b0551a618859504f536310f206d8937affc",
+      "bytes": 285812
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/plaque_color_picker.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/plaque_color_picker.uasset",
+      "sha256": "daff2fdb2d5d98b8e698382ad9b6b89f4327d3d9ca1685bca5cc6b74b32c2da0",
+      "bytes": 80030
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_color_map_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_color_map_001.uasset",
+      "sha256": "bedc37c413cddb16bd811c69749791074064360ad1065e257d74d4ca1ea3ae27",
+      "bytes": 1221010
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_color_picker_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_color_picker_001.uasset",
+      "sha256": "00f1ca61a3935a68e584e5b1cd32a36c471054a41db8828a03bc816d108ec402",
+      "bytes": 126325
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_masks_001.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_masks_001.uasset",
+      "sha256": "3be2c174b34ab53a1347e1e4a1e0e0e44bfbe7a990a5e4b1b757fd32143ab720",
+      "bytes": 573463
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_normal_map.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/Teeth/teeth_normal_map.uasset",
+      "sha256": "b6cd7107dedd4df70160fffaabb45d76258999e546edde8240e7782f787cb38b",
+      "bytes": 919916
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/TilingNoise05.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/TilingNoise05.uasset",
+      "sha256": "1b7c92aebc1472a76ffd7610f103584907c449879346a429e46c37a7412a6537",
+      "bytes": 360463
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/lacrimal_h.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/lacrimal_h.uasset",
+      "sha256": "1ffd03e2a9fea353ab645ff48e808f14a3bd254f77a5e0f7c3343dd898dc619a",
+      "bytes": 613089
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/skin_bar.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/skin_bar.uasset",
+      "sha256": "ded7d2c9dcabd87fcd4d8229fb69d0fb57ace51d6168667ebf7ea5aa2741b972",
+      "bytes": 20718
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Shared/Textures/skin_n.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Shared/Textures/skin_n.uasset",
+      "sha256": "1bb1c0af682bc81cc48362ce6deb4040d57b519183cc50c29833c326c0f22b66",
+      "bytes": 1641128
+    }
+  ],
+  "total_bytes": 1239027797,
+  "status": "Copied with SHA256 verification; all selected assets loaded in game project; native visual review pending"
+}

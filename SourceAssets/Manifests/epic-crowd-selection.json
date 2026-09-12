@@ -1,0 +1,25 @@
+{
+  "purpose": "Two casual park pedestrians and matching native locomotion; first integration batch",
+  "roots": [
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_loafers",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Face/m_001_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Male/m_001/Hair/Hair/Hair_S_AfroFade_CardsMesh_Group0_LOD0",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_body",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_jeans",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_loafers",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Face/f_001_nrw_FaceMesh",
+    "/Game/CitySampleCrowd/Character/Female/f_001/Hair/Hair/Hair_S_Coil_CardsMesh_Group0_LOD0",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Idle",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_Phone_Talk_A",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly"
+  ]
+}
