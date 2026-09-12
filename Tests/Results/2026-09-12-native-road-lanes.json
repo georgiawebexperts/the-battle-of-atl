@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Both opposing 10th Street lanes traversed with wheel support and endpoint stops",
+    "cars": 2,
+    "total_distance_cm": 81395.797
+  },
+  "scope": "Two full opposing 10th Street lanes in the repair review map. Native motion and support, no signals, natural population or packaged acceptance.",
+  "passed": true
+}

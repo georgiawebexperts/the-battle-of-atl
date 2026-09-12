@@ -36,7 +36,7 @@ bool ABattleRoadCar::GroundPose(FVector Point,FVector Direction,FTransform& Pose
  if(Up.Z<.9f)return false;
  // Root is the collision-box centre; visuals retain the template body's origin.
  const FVector Ground=(Front+Back)*.5+Direction*9.1f;
- Pose=FTransform(FRotationMatrix::MakeFromXZ(Direction,Up).ToQuat(),Ground+Up*73.3f);
+ Pose=FTransform(FRotationMatrix::MakeFromZX(Up,Direction).ToQuat(),Ground+Up*73.3f);
  return true;
 }
 void ABattleRoadCar::UpdateWheels(const TArray<FVector>& Contacts,float Travel,float Steering){
@@ -60,6 +60,7 @@ void ABattleRoadCar::Tick(float Dt){
   const float StopDistance=Speed*Speed/(2*900.f)+100.f;
   FHitResult Ahead;FCollisionQueryParams Q(SCENE_QUERY_STAT(RoadCarAhead),false,this);
   bObstacleAhead=GetWorld()->SweepSingleByChannel(Ahead,GetActorLocation(),GetActorLocation()+GetActorForwardVector()*StopDistance,GetActorQuat(),ECC_WorldDynamic,FCollisionShape::MakeBox(FVector(236,114,45)),Q);
+  LastObstacle=Ahead.GetActor()?Ahead.GetActor()->GetName():TEXT("");
   const float ToEnd=Lengths.Last()-RouteDistance;
   const float Target=bObstacleAhead?0.f:FMath::Min(CruiseSpeed,FMath::Sqrt(2*900.f*FMath::Max(0.f,ToEnd-2.f)));
   Speed=FMath::FInterpConstantTo(Speed,Target,Step,Target<Speed?900.f:250.f);
@@ -68,7 +69,7 @@ void ABattleRoadCar::Tick(float Dt){
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
   FHitResult Hit;SetActorLocationAndRotation(Pose.GetLocation(),Pose.GetRotation(),true,&Hit);
-  if(Hit.bBlockingHit){Speed=0;break;}
+  if(Hit.bBlockingHit){LastObstacle=FString(TEXT("movement:"))+(Hit.GetActor()?Hit.GetActor()->GetName():TEXT("unknown"));Speed=0;break;}
   RouteDistance+=Travel;DistanceTravelled+=Travel;UpdateWheels(Contacts,Travel,FMath::Clamp(Turn*12.f,-25.f,25.f));
   if(ToEnd<3){bRouteFinished=true;Speed=0;break;}
  }

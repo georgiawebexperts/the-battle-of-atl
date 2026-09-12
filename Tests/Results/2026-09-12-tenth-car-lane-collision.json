@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "probes": 7344,
+  "failures": [],
+  "max_error_cm": 4.4276346784499765e-05,
+  "surface_hits": {
+    "SM_TenthStreet_Road": 7331,
+    "SM_TenthStreet_CycleTrack": 11,
+    "10th Street road join repairs": 2
+  },
+  "main_map_changed": false,
+  "scope": "Vertical footprint collision checks on candidate lanes and repair mesh. Actual driving, crossing controls and packaged behavior pending.",
+  "review_map": "/Game/PiedmontRide/Maps/PiedmontCarLaneReview"
+}

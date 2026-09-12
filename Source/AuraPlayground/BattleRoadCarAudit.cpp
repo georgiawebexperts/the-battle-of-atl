@@ -26,3 +26,27 @@ void TickBattleRoadCarAudit(APlayerController* PC,float Dt){
 #undef CHECK_CAR
 #endif
 }
+
+#include "EngineUtils.h"
+void TickBattleRoadLaneAudit(APlayerController* PC,float Dt){
+#if !UE_BUILD_SHIPPING
+ struct FState{TWeakObjectPtr<UWorld> World;TArray<TWeakObjectPtr<ABattleRoadCar>> Cars;float Clock=0,ProgressClock=0;bool Started=false,Done=false;};static FState S;
+ if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;S.Clock+=Dt;
+ auto Finish=[&](bool Pass,const TCHAR* Why){S.Done=true;float Travel=0;for(auto C:S.Cars)if(C.IsValid()){Travel+=C->DistanceTravelled;UE_LOG(LogTemp,Display,TEXT("RoadLaneCar: name=%s distance=%.3f position=%s speed=%.3f obstacle=%s finished=%d"),*C->GetName(),C->DistanceTravelled,*C->GetActorLocation().ToString(),C->Speed,*C->LastObstacle,C->bRouteFinished);}UE_LOG(LogTemp,Display,TEXT("RoadLaneAudit: {\"passed\":%s,\"reason\":\"%s\",\"cars\":%d,\"total_distance_cm\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Why,S.Cars.Num(),Travel);PC->ConsoleCommand(TEXT("quit"));};
+ if(S.Clock>110){Finish(false,TEXT("Full lane traversal timed out"));return;}
+ if(!S.Started){
+  for(TActorIterator<ABattleRoadCar> It(PC->GetWorld());It;++It)if(It->ActorHasTag(TEXT("TenthCarLaneReview")))S.Cars.Add(*It);
+  if(S.Cars.Num()!=2){Finish(false,TEXT("Expected opposing lane candidates"));return;}
+  for(auto C:S.Cars)if(!C->StartRoute()){Finish(false,TEXT("Lane start rejected"));return;}
+  S.Started=true;return;
+ }
+ S.ProgressClock+=Dt;if(S.ProgressClock>10){S.ProgressClock=0;for(auto C:S.Cars)if(C.IsValid())UE_LOG(LogTemp,Display,TEXT("RoadLaneProgress: %s d=%.2f p=%s speed=%.1f obstacle=%s"),*C->GetName(),C->DistanceTravelled,*C->GetActorLocation().ToString(),C->Speed,*C->LastObstacle);}
+ bool Finished=true;
+ for(auto C:S.Cars){
+  if(!C.IsValid()||!C->bGrounded){Finish(false,TEXT("Lost car or wheel support"));return;}
+  if(!C->bRouteFinished)Finished=false;
+  else if(C->DistanceTravelled<39000||C->Speed!=0){Finish(false,TEXT("Incomplete traversal or failed endpoint stop"));return;}
+ }
+ if(Finished)Finish(true,TEXT("Both opposing 10th Street lanes traversed with wheel support and endpoint stops"));
+#endif
+}

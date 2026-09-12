@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Full lane traversal timed out",
+    "cars": 2,
+    "total_distance_cm": 39642.73
+  },
+  "scope": "Two full opposing 10th Street lanes in the repair review map. Native motion and support, no signals, natural population or packaged acceptance.",
+  "passed": false,
+  "diagnosis": "Both cars stopped against SM_TenthStreet_Road on hills. MakeFromXZ preserved horizontal heading, preventing pitch. Corrected to MakeFromZX so road normal remains fixed."
+}

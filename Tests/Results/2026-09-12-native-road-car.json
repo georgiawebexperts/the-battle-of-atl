@@ -3,7 +3,7 @@
   "checks": {
     "passed": true,
     "reason": "Grounded travel, braking, stationary hold, resume and route end passed",
-    "distance": 3997.563
+    "distance": 3997.545
   },
   "scope": "Native road following, obstacle braking, hold, resume and endpoint. Traffic population, crossings, visual motion and packaged behavior unverified.",
   "passed": true

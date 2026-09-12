@@ -23,6 +23,7 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bObstacleAhead=false;
  UPROPERTY(BlueprintReadOnly) bool bRouteFinished=false;
  UPROPERTY(BlueprintReadOnly) bool bGrounded=false;
+ FString LastObstacle;
  bool StartRoute();
 private:
  float RouteDistance=0.f;
