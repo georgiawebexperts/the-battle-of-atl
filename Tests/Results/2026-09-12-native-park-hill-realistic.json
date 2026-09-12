@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 14476.03,
+  "maxCenterlineErrorCm": 39.8,
+  "wipeouts": 0,
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 457.37,
+    "max_grade": 0.3193
+  },
+  "ground_samples": {
+    "total": 46796,
+    "paved": 46796
+  },
+  "osm_way_id": "1278380268",
+  "exit_code": 0,
+  "scope": "Current main-world mapped park path, both directions with native realistic handling and W/A/D/Space test driver. Starting teleports; pedestrians disabled. Not whole-park, rendered, subjective balance or full tire simulation acceptance."
+}

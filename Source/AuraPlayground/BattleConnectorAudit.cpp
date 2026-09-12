@@ -19,10 +19,11 @@
 // the entire crossing is traversed through ordinary keyboard input and movement.
 void ABattleMacController::TickConnectorAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ FString HillPath;FParse::Value(FCommandLine::Get(),TEXT("BattleParkHillPath="),HillPath);const bool Hill=!HillPath.IsEmpty();
  const bool Spirit=FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"));
  const bool Home=Spirit||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"));
  const bool Krog=FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit"));
- const bool Eastside=Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
+ const bool Eastside=Hill||Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
  struct FTrafficObservation{TWeakObjectPtr<UWorld> World;float SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max(),MinZ=TNumericLimits<float>::Max(),MaxZ=-TNumericLimits<float>::Max(),MaxGrade=0;};static FTrafficObservation Traffic;
@@ -54,9 +55,10 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);
  };
  if(ConnectorPoints.IsEmpty()){
+  if(Hill)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->OsmWayId==HillPath){for(int I=0;I<It->Centerline->GetNumberOfSplinePoints();I++)ConnectorPoints.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));break;}
   if(Spirit){for(const FVector& P:BattleSpiritData::Ride)ConnectorPoints.Add(P);}
   else if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);
-  for(int32 Part=0;!Home&&Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
+  for(int32 Part=0;!Hill&&!Home&&Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
    for(int32 I=0;I<It->Centerline->GetNumberOfSplinePoints();I++){
     const FVector P=It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World);
     if(ConnectorPoints.IsEmpty()||!ConnectorPoints.Last().Equals(P,1))ConnectorPoints.Add(P);
@@ -92,7 +94,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  if(ConnectorElapsed>(Eastside?180:30)||Best>180||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
  if(ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100){
   FlushPressedKeys();ConnectorLeg++;
-  if(ConnectorLeg==2){float Expected=0;for(int I=1;I<ConnectorPoints.Num();I++)Expected+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);Finish(ConnectorTravel>(Home?Expected*1.75f:Krog?47000:(Eastside?200000:4500)));return;}
+  if(ConnectorLeg==2){float Expected=0;for(int I=1;I<ConnectorPoints.Num();I++)Expected+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);Finish(ConnectorTravel>((Home||Hill)?Expected*1.75f:Krog?47000:(Eastside?200000:4500)));return;}
   Algo::Reverse(ConnectorPoints);ConnectorElapsed=0;return;
  }
  FVector Target=Closest;float Remaining=Bike->Ride->bRealHandling?180:Home?180:Eastside?350:180;
