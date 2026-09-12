@@ -1,0 +1,13 @@
+{
+  "assets": [
+    "/Game/BattleForTheA/Environment/KrogBuildings/SM_KrogBuildings_Brick.SM_KrogBuildings_Brick",
+    "/Game/BattleForTheA/Environment/KrogBuildings/SM_KrogBuildings_Roof.SM_KrogBuildings_Roof",
+    "/Game/BattleForTheA/Environment/KrogBuildings/SM_KrogBuildings_Glass.SM_KrogBuildings_Glass",
+    "/Game/BattleForTheA/Environment/KrogBuildings/SM_KrogBuildings_Stucco.SM_KrogBuildings_Stucco",
+    "/Game/BattleForTheA/Environment/KrogBuildings/SM_KrogBuildings_Landing.SM_KrogBuildings_Landing"
+  ],
+  "road_probes": 4264,
+  "road_clear": true,
+  "main_map_changed": false,
+  "visual_accepted": false
+}

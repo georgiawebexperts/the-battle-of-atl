@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 4010.89,
+  "maxCenterlineErrorCm": 22.17,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 13172,
+    "paved": 13172
+  },
+  "lights": {},
+  "exit_code": 0,
+  "map": "PiedmontKrogBuildingsReview",
+  "scope": "Krog southern exit along Wylie Street to 98 Estoria patio, both directions with real W/A/D input; crowds disabled; appearance and quest completion unverified."
+}

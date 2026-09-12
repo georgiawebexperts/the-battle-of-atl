@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "probes": 187,
+  "failures": [],
+  "scope": "Before/after native floor support; no full body or entrance traversal acceptance."
+}

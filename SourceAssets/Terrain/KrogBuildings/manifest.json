@@ -1,0 +1,107 @@
+{
+  "buildings": 8,
+  "window_bays": 169,
+  "entrances": [
+    {
+      "osm_way": 270876505,
+      "xyz": [
+        32004.74124523995,
+        120931.99281066633,
+        1055.54901585722
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 270876511,
+      "xyz": [
+        32962.80248169142,
+        121401.0583408129,
+        1089.3515469005492
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 270876514,
+      "xyz": [
+        33041.64172244426,
+        120671.15191634289,
+        1111.218513701467
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 270876730,
+      "xyz": [
+        28949.543664130055,
+        114786.92899032685,
+        1067.6919121586204
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 270876869,
+      "xyz": [
+        31731.0436106468,
+        114547.02827200439,
+        1132.7749477228222
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 665450797,
+      "xyz": [
+        27867.44858910544,
+        114914.7984479682,
+        995.3832231364624
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 1051356939,
+      "xyz": [
+        32857.700704019895,
+        120496.21247395538,
+        1093.6609700210226
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    },
+    {
+      "osm_way": 1051356941,
+      "xyz": [
+        33475.637845879806,
+        120530.00059996125,
+        1124.997871869386
+      ],
+      "scope": "Closed exterior door at estimated foundation height; native entrance approach unverified."
+    }
+  ],
+  "aprons": [],
+  "surfaces": [
+    {
+      "material": "Brick",
+      "file": "KrogBuildings_Brick.obj",
+      "triangles": 118
+    },
+    {
+      "material": "Roof",
+      "file": "KrogBuildings_Roof.obj",
+      "triangles": 2875
+    },
+    {
+      "material": "Glass",
+      "file": "KrogBuildings_Glass.obj",
+      "triangles": 2028
+    },
+    {
+      "material": "Stucco",
+      "file": "KrogBuildings_Stucco.obj",
+      "triangles": 5256
+    },
+    {
+      "material": "Landing",
+      "file": "KrogBuildings_Landing.obj",
+      "triangles": 96
+    }
+  ],
+  "scope": "Mapped footprint exterior study; estimated heights and generic facade treatment, not photo-matched or main-installed."
+}
