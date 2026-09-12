@@ -1,0 +1,973 @@
+{
+  "obstacles": [
+    {
+      "name": "StaticMeshActor_294",
+      "label": "Krog DeKalb road approaches",
+      "location": "<Struct 'Vector' (0x3abebd730) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+    }
+  ],
+  "scope": "Native heights and finite-difference slopes, not exact triangle normals.",
+  "worst": [
+    {
+      "lane": "eastbound",
+      "distance_cm": 2566.589,
+      "wheel": 1,
+      "xy": [
+        28376.151129560105,
+        116454.23197226594
+      ],
+      "normal_z_estimate": 0.8998988634719245,
+      "hits": [
+        {
+          "z": 1039.5311580124676,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.456140922624,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.6068968467182,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.0524476853193,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.009868339616,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2560.589,
+      "wheel": 1,
+      "xy": [
+        28370.4466897085,
+        116456.09190935614
+      ],
+      "normal_z_estimate": 0.8999186401074075,
+      "hits": [
+        {
+          "z": 1039.9935986285338,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.91858153869,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.0686157183775,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.5148883013853,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.4723089556824,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2562.589,
+      "wheel": 1,
+      "xy": [
+        28372.348169659035,
+        116455.47193032608
+      ],
+      "normal_z_estimate": 0.8999186401074075,
+      "hits": [
+        {
+          "z": 1039.839451756514,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.7644346666702,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.9144688463577,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.3607414293656,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.3181620836626,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2563.589,
+      "wheel": 1,
+      "xy": [
+        28373.2989096343,
+        116455.16194081104
+      ],
+      "normal_z_estimate": 0.8999186401074075,
+      "hits": [
+        {
+          "z": 1039.7623783205006,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.6873612306567,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.8373954103442,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.283667993352,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.2410886476491,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2565.589,
+      "wheel": 1,
+      "xy": [
+        28375.200389584836,
+        116454.54196178098
+      ],
+      "normal_z_estimate": 0.8999186401074075,
+      "hits": [
+        {
+          "z": 1039.6082314484809,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.5332143586372,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.6832485383247,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.1295211213323,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.0869417756294,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2559.589,
+      "wheel": 1,
+      "xy": [
+        28369.495949733235,
+        116456.40189887116
+      ],
+      "normal_z_estimate": 0.8999186401074136,
+      "hits": [
+        {
+          "z": 1040.0706720645403,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.9956549746967,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.145689154384,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.5919617373918,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.5493823916888,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2558.589,
+      "wheel": 1,
+      "xy": [
+        28368.54520975797,
+        116456.7118883862
+      ],
+      "normal_z_estimate": 0.8999186401074473,
+      "hits": [
+        {
+          "z": 1040.1477455005538,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.07272841071,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.2227625903975,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.6690351734053,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.626455827702,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2561.589,
+      "wheel": 1,
+      "xy": [
+        28371.39742968377,
+        116455.7819198411
+      ],
+      "normal_z_estimate": 0.8999186401074473,
+      "hits": [
+        {
+          "z": 1039.9165251925206,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.841508102677,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.9915422823644,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.4378148653723,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.395235519669,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2564.589,
+      "wheel": 1,
+      "xy": [
+        28374.24964960957,
+        116454.851951296
+      ],
+      "normal_z_estimate": 0.8999186401074473,
+      "hits": [
+        {
+          "z": 1039.6853048844873,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.6102877946437,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.7603219743312,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.206594557339,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.1640152116358,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2557.589,
+      "wheel": 1,
+      "xy": [
+        28367.5944697827,
+        116457.02187790124
+      ],
+      "normal_z_estimate": 0.9008484979203204,
+      "hits": [
+        {
+          "z": 1040.2235650773696,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.141255507057,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.2998360264107,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.7461086094186,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.6968060441664,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2550.589,
+      "wheel": 1,
+      "xy": [
+        28360.939289955833,
+        116459.19180450645
+      ],
+      "normal_z_estimate": 0.9014014973358597,
+      "hits": [
+        {
+          "z": 1040.7026782499986,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.620368679686,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.784987820311,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.2294372832016,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1041.1759192167954,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2552.589,
+      "wheel": 1,
+      "xy": [
+        28362.840769906365,
+        116458.57182547639
+      ],
+      "normal_z_estimate": 0.9014014973358597,
+      "hits": [
+        {
+          "z": 1040.5657887721054,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.4834792017928,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.6480983424178,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.0925478053084,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1041.0390297389022,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2553.589,
+      "wheel": 1,
+      "xy": [
+        28363.791509881634,
+        116458.26183596136
+      ],
+      "normal_z_estimate": 0.9014014973358597,
+      "hits": [
+        {
+          "z": 1040.4973440331555,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.415034462843,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.5796536034682,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.0241030663587,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.9705849999525,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2554.589,
+      "wheel": 1,
+      "xy": [
+        28364.7422498569,
+        116457.95184644632
+      ],
+      "normal_z_estimate": 0.9014014973358597,
+      "hits": [
+        {
+          "z": 1040.4288992942056,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.346589723893,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.511208864518,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.9556583274086,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.9021402610024,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2555.589,
+      "wheel": 1,
+      "xy": [
+        28365.69298983217,
+        116457.6418569313
+      ],
+      "normal_z_estimate": 0.9014014973358597,
+      "hits": [
+        {
+          "z": 1040.3604545552625,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.2781449849501,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.4427641255752,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.8872135884658,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.8336955220595,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2556.589,
+      "wheel": 1,
+      "xy": [
+        28366.643729807434,
+        116457.33186741626
+      ],
+      "normal_z_estimate": 0.9014014973358597,
+      "hits": [
+        {
+          "z": 1040.2920098163127,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.209700246,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.374319386625,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.8187688495157,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.7652507831094,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2551.589,
+      "wheel": 1,
+      "xy": [
+        28361.8900299311,
+        116458.88181499142
+      ],
+      "normal_z_estimate": 0.9014014973359061,
+      "hits": [
+        {
+          "z": 1040.6342335110485,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.551923940736,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.716543081361,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.1609925442517,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1041.1074744778452,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2567.589,
+      "wheel": 1,
+      "xy": [
+        28377.101869535363,
+        116453.92198275092
+      ],
+      "normal_z_estimate": 0.9015125477046274,
+      "hits": [
+        {
+          "z": 1039.456977806639,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.3790674866168,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.5525320058578,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.9885360341782,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.932794903609,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2537.589,
+      "wheel": 1,
+      "xy": [
+        28348.579670277362,
+        116463.22166820186
+      ],
+      "normal_z_estimate": 0.9016512743510501,
+      "hits": [
+        {
+          "z": 1040.9309289944879,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.8331189358942,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1041.0287390530816,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1040.4613725166232,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1041.4004854723526,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2579.589,
+      "wheel": 1,
+      "xy": [
+        28388.510749238572,
+        116450.20210857053
+      ],
+      "normal_z_estimate": 0.9021197280467699,
+      "hits": [
+        {
+          "z": 1038.8007480441418,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.709045517051,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.8922910128917,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.3313034640637,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.2701926242198,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2581.589,
+      "wheel": 1,
+      "xy": [
+        28390.412229189107,
+        116449.58212954047
+      ],
+      "normal_z_estimate": 0.9021250921869721,
+      "hits": [
+        {
+          "z": 1038.6837693684088,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.5922263996586,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.7753123371588,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.2143247883305,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.1532139484868,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2584.589,
+      "wheel": 1,
+      "xy": [
+        28393.264449114908,
+        116448.65216099538
+      ],
+      "normal_z_estimate": 0.9021250921869798,
+      "hits": [
+        {
+          "z": 1038.5083013548056,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.4167583860556,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.5998443235555,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.0388567747273,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.9777459348836,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2585.589,
+      "wheel": 1,
+      "xy": [
+        28394.215189090177,
+        116448.34217148036
+      ],
+      "normal_z_estimate": 0.9021250921869798,
+      "hits": [
+        {
+          "z": 1038.4498120169426,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.3582690481926,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.5413549856926,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1037.9803674368643,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.9192565970206,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2586.589,
+      "wheel": 1,
+      "xy": [
+        28395.165929065442,
+        116448.03218196532
+      ],
+      "normal_z_estimate": 0.9021250921869798,
+      "hits": [
+        {
+          "z": 1038.3913226790723,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.2997797103224,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.4828656478223,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1037.9218780989943,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.8607672591506,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2588.589,
+      "wheel": 1,
+      "xy": [
+        28397.067409015977,
+        116447.41220293526
+      ],
+      "normal_z_estimate": 0.9021250921869798,
+      "hits": [
+        {
+          "z": 1038.2743440033394,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.1828010345894,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.3658869720894,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1037.804899423261,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.7437885834174,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2589.589,
+      "wheel": 1,
+      "xy": [
+        28398.018148991243,
+        116447.10221342022
+      ],
+      "normal_z_estimate": 0.9021250921869798,
+      "hits": [
+        {
+          "z": 1038.2158546654691,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.1243116967191,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.3073976342191,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1037.746410085391,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.6852992455474,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2590.589,
+      "wheel": 1,
+      "xy": [
+        28398.96888896651,
+        116446.7922239052
+      ],
+      "normal_z_estimate": 0.9021250921869798,
+      "hits": [
+        {
+          "z": 1038.157365327606,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.065822358856,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.248908296356,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1037.6879207475276,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.626809907684,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2580.589,
+      "wheel": 1,
+      "xy": [
+        28389.46148921384,
+        116449.89211905551
+      ],
+      "normal_z_estimate": 0.902125092187019,
+      "hits": [
+        {
+          "z": 1038.7422587062788,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.6507157375288,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.8338016750288,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.2728141262007,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.2117032863569,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2582.589,
+      "wheel": 1,
+      "xy": [
+        28391.362969164365,
+        116449.27214002545
+      ],
+      "normal_z_estimate": 0.902125092187019,
+      "hits": [
+        {
+          "z": 1038.6252800305447,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.5337370617947,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.7168229992947,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.1558354504666,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.0947246106227,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    },
+    {
+      "lane": "eastbound",
+      "distance_cm": 2583.589,
+      "wheel": 1,
+      "xy": [
+        28392.313709139642,
+        116448.96215051042
+      ],
+      "normal_z_estimate": 0.902125092187019,
+      "hits": [
+        {
+          "z": 1038.5667906926756,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.4752477239256,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.6583336614256,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1038.0973461125975,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "z": 1039.0362352727536,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ]
+    }
+  ],
+  "samples": 488
+}
