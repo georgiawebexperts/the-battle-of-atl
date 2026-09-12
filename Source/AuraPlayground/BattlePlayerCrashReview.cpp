@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattlePlayerRecoveryBlend.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -15,7 +16,7 @@
 #include "UnrealClient.h"
 void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<USkeletalMeshComponent> Body;TWeakObjectPtr<ACameraActor> Camera;FVector Hip;float Clock=0,MaxSpan=0;int Shot=0;bool Done=false;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<USkeletalMeshComponent> Body;TWeakObjectPtr<ACameraActor> Camera;FVector Hip;float Clock=0,MaxSpan=0;int Shot=0;bool Done=false,Recovering=false;FBattlePlayerRecoveryBlend Blend;int RecoveryShot=0;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike)return;
  if(!S.Body.IsValid()){
@@ -29,13 +30,19 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
   S.Hip=Bike->Rider->GetSocketLocation(TEXT("Hips"));Body->SetAllPhysicsLinearVelocity(FVector(300,90,60));Bike->Rider->SetVisibility(false);S.Body=Body;
   S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Target=Hit.ImpactPoint+FVector(160,0,70);const FVector Offset(-350,-600,280);S.Camera->SetActorLocationAndRotation(Target+Offset,(-Offset).Rotation());
  }
- S.Clock+=Dt;PC->SetViewTarget(S.Camera.Get());if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;PC->PlayerCameraManager->UpdateCamera(0);
+ PC->SetViewTarget(S.Camera.Get());if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;PC->PlayerCameraManager->UpdateCamera(0);
+ if(S.Recovering){
+  const bool Finished=S.Blend.Tick(Dt);const float Times[]={.01f,.18f,.36f,1.8f,3.5f,5.4f};
+  if(S.RecoveryShot<6&&S.Blend.Clock>Times[S.RecoveryShot]){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);FScreenshotRequest::RequestScreenshot(Folder/FString::Printf(TEXT("player-recovery-%d.png"),++S.RecoveryShot),false,false);}
+  if(Finished){const float Head=S.Blend.Pose->GetSocketLocation(TEXT("Head")).Z-S.Blend.FloorZ,Left=S.Blend.Pose->GetSocketLocation(TEXT("Foot_L")).Z-S.Blend.FloorZ,Right=S.Blend.Pose->GetSocketLocation(TEXT("Foot_R")).Z-S.Blend.FloorZ;const bool Pass=S.Blend.TransferError<1&&Head>130&&Head<200&&Left>-2&&Left<10&&Right>-2&&Right<10;UE_LOG(LogTemp,Display,TEXT("PlayerRecoveryComplete: {\"passed\":%s,\"head_height\":%.3f,\"left_foot_height\":%.3f,\"right_foot_height\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Head,Left,Right);S.Done=true;PC->ConsoleCommand(TEXT("quit"));}return;
+ }
+ S.Clock+=Dt;
  const FVector Hip=S.Body->GetSocketLocation(TEXT("Hips"));for(const FName Bone:{FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))})S.MaxSpan=FMath::Max(S.MaxSpan,float(FVector::Dist(Hip,S.Body->GetSocketLocation(Bone))));
  const float Times[]={.15f,.7f,1.6f,3.5f};if(S.Shot<4&&S.Clock>Times[S.Shot]){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);IFileManager::Get().MakeDirectory(*Folder,true);FScreenshotRequest::RequestScreenshot(Folder/FString::Printf(TEXT("player-fall-%d.png"),++S.Shot),false,false);}
  if(S.Clock>4.5f){
   FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;Q.AddIgnoredActor(Bike);const bool Floor=PC->GetWorld()->LineTraceSingleByChannel(Hit,Hip+FVector(0,0,100),Hip-FVector(0,0,300),ECC_WorldStatic,Q);
   const float Drop=S.Hip.Z-Hip.Z,Clearance=Floor?Hip.Z-Hit.ImpactPoint.Z:-999,Speed=S.Body->GetPhysicsLinearVelocity(TEXT("Hips")).Size();const bool Pass=Floor&&Drop>35&&S.MaxSpan<300&&Clearance>=0&&Clearance<100&&Speed<150;
-  UE_LOG(LogTemp,Display,TEXT("PlayerCrashReview: {\"passed\":%s,\"hip_drop_cm\":%.3f,\"max_limb_span_cm\":%.3f,\"hip_floor_cm\":%.3f,\"final_speed\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Drop,S.MaxSpan,Clearance,Speed);S.Done=true;PC->ConsoleCommand(TEXT("quit"));
+  UE_LOG(LogTemp,Display,TEXT("PlayerCrashReview: {\"passed\":%s,\"hip_drop_cm\":%.3f,\"max_limb_span_cm\":%.3f,\"hip_floor_cm\":%.3f,\"final_speed\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Drop,S.MaxSpan,Clearance,Speed);if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerRecoveryBlend"))&&Pass&&S.Blend.Begin(Bike,S.Body.Get()))S.Recovering=true;else{S.Done=true;PC->ConsoleCommand(TEXT("quit"));}
  }
 #endif
 }

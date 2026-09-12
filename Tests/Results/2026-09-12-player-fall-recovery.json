@@ -1,0 +1,36 @@
+{
+  "exit_code": 0,
+  "physics": {
+    "passed": true,
+    "hip_drop_cm": 71.312,
+    "max_limb_span_cm": 98.538,
+    "hip_floor_cm": 39.661,
+    "final_speed": 1.106
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/65b35458d1164286bda0ad97f98a3600/player-recovery-6.png"
+  ],
+  "capture_passed": true,
+  "scope": "Mounted fall, pose transfer and get-up review; no production trigger, bike fall or final visual acceptance.",
+  "transfer": {
+    "choice": 3,
+    "max_transfer_error_cm": 0.0,
+    "initial_pose_rms_cm": 46.089
+  },
+  "recovery": {
+    "passed": true,
+    "head_height": 157.886,
+    "left_foot_height": 3.256,
+    "right_foot_height": 2.875
+  },
+  "visual_review": "Inspected recovery frames 1,3,6: connected landed pose, side get-up start, standing beside bike. No temporal video, all impact directions, ground contact, production input or bike fall acceptance."
+}
