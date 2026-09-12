@@ -1,0 +1,41 @@
+{
+  "exit_code": 0,
+  "physics": {
+    "passed": true,
+    "hip_drop_cm": 77.698,
+    "max_limb_span_cm": 97.267,
+    "hip_floor_cm": 5.224,
+    "final_speed": 0.091
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/153817ccac19405f90d61bb66d758161/player-recovery-6.png"
+  ],
+  "capture_passed": true,
+  "scope": "Mounted fall, pose transfer and get-up review; no production trigger, bike fall or final visual acceptance.",
+  "transfer": {
+    "choice": 2,
+    "max_transfer_error_cm": 0.0,
+    "initial_pose_rms_cm": 36.227
+  },
+  "recovery": {
+    "passed": true,
+    "head_height": 157.792,
+    "left_foot_height": 3.179,
+    "right_foot_height": 2.795
+  },
+  "bike": {
+    "passed": true,
+    "upright_dot": 0.2,
+    "speed": 0.0,
+    "parts": 17
+  }
+}

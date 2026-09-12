@@ -1,0 +1,14 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "BattleFallenBike.generated.h"
+class UBoxComponent;class ABattleBike;
+UCLASS()
+class AURAPLAYGROUND_API ABattleFallenBike : public AActor {
+ GENERATED_BODY()
+public:
+ ABattleFallenBike();
+ bool InitializeFrom(ABattleBike* Bike,const FVector& Velocity);
+ UPROPERTY() TObjectPtr<UBoxComponent> Frame;
+ int32 PartCount=0;
+};

@@ -1,5 +1,7 @@
 #include "BattlePlayerRecoveryBlend.h"
 #include "BattleBike.h"
+#include "BattleFallenBike.h"
+#include "EngineUtils.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimSequence.h"
@@ -26,11 +28,19 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
   UAnimSequence* Anim=LoadObject<UAnimSequence>(nullptr,*FString::Printf(TEXT("/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_%s.GetUp_%s"),Sides[C],Sides[C]));if(!Anim)continue;
   const auto Start=Sample(Anim,Ref,0,true);const FVector LocalHeading=(Start[Head].GetLocation()-Start[Hip].GetLocation()).GetSafeNormal2D();
   const FRotator Rotation(0,Heading.Rotation().Yaw-LocalHeading.Rotation().Yaw,0);FVector Origin=HipWorld-Rotation.RotateVector(Start[Hip].GetLocation());
-  FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;Q.AddIgnoredActor(Bike);
-  if(!Bike->GetWorld()->LineTraceSingleByChannel(Hit,Origin+FVector(0,0,200),Origin-FVector(0,0,400),ECC_WorldStatic,Q)||Hit.ImpactNormal.Z<.65f)continue;
-  Origin.Z=Hit.ImpactPoint.Z;const FTransform Candidate(Rotation,Origin);float Error=0;
-  for(const FName Bone:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 I=Ref.FindBoneIndex(Bone);Error+=FVector::DistSquared(Candidate.TransformPosition(Start[I].GetLocation()),Landed[I].GetLocation());}
-  if(Error<Best){Best=Error;Choice=C;Frame=Candidate;Clip=Anim;FloorZ=Origin.Z;}
+  const FVector BaseOrigin=Origin;
+  for(const FVector Offset:{FVector::ZeroVector,FVector(80,0,0),FVector(-80,0,0),FVector(0,80,0),FVector(0,-80,0),FVector(160,0,0),FVector(-160,0,0),FVector(0,160,0),FVector(0,-160,0)}){
+   Origin=BaseOrigin+Offset;
+   FHitResult Hit;FCollisionQueryParams FloorQuery;FloorQuery.bTraceComplex=true;FloorQuery.AddIgnoredActor(Bike);
+   for(TActorIterator<ABattleFallenBike> It(Bike->GetWorld());It;++It)FloorQuery.AddIgnoredActor(*It);
+   if(!Bike->GetWorld()->LineTraceSingleByChannel(Hit,Origin+FVector(0,0,200),Origin-FVector(0,0,400),ECC_WorldStatic,FloorQuery)||Hit.ImpactNormal.Z<.65f)continue;
+   Origin.Z=Hit.ImpactPoint.Z;
+   FCollisionQueryParams ClearanceQuery;ClearanceQuery.AddIgnoredActor(Bike);FCollisionObjectQueryParams Objects;Objects.AddObjectTypesToQuery(ECC_WorldStatic);Objects.AddObjectTypesToQuery(ECC_WorldDynamic);Objects.AddObjectTypesToQuery(ECC_PhysicsBody);Objects.AddObjectTypesToQuery(ECC_Pawn);
+   if(Bike->GetWorld()->OverlapAnyTestByObjectType(Origin+FVector(0,0,98),FQuat::Identity,Objects,FCollisionShape::MakeCapsule(30,96),ClearanceQuery))continue;
+   const FTransform Candidate(Rotation,Origin);float Error=0;
+   for(const FName Bone:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 I=Ref.FindBoneIndex(Bone);Error+=FVector::DistSquared(Candidate.TransformPosition(Start[I].GetLocation()),Landed[I].GetLocation());}
+   if(Error<Best){Best=Error;Choice=C;Frame=Candidate;Clip=Anim;FloorZ=Origin.Z;}
+  }
  }
  if(Choice<0)return false;
  UPoseableMeshComponent* Body=NewObject<UPoseableMeshComponent>(Bike);Bike->AddInstanceComponent(Body);Body->SetSkinnedAssetAndUpdate(Mesh);Body->SetWorldTransform(Frame);Body->SetCollisionEnabled(ECollisionEnabled::NoCollision);Body->RegisterComponent();
