@@ -3,6 +3,8 @@ import runpy,json,math
 from pathlib import Path
 from shapely.geometry import LineString,MultiPoint,Point,Polygon
 from shapely.ops import unary_union,triangulate
+from shapely import constrained_delaunay_triangles
+from shapely.geometry.polygon import orient
 root=Path(__file__).resolve().parents[1];ns=runpy.run_path(str(root/'Scripts/prepare_tenth_street.py'));data=ns['result'];height=ns['height'];folder=root/'SourceAssets/Terrain/TenthStreet'
 # Road widths are an initial playable interpretation of mapped lane counts in
 # this compressed world. Native width/vehicle clearance review remains required.
@@ -44,12 +46,19 @@ for name,geometry in [('Road',roads),('CycleTrack',cycles),('Separator',separato
     assert clearance>0,(name,clearance,coords)
     faces.append(points)
   for tri in triangulate(MultiPoint(sites)):
-   if poly.buffer(.01).covers(tri):terrain_face(list(tri.exterior.coords)[:3])
+   # Clipping must retain boundary-crossing triangle portions. Dropping the
+   # entire triangle leaves holes at curved/nonconvex road edges.
+   clipped=tri.intersection(poly)
+   if clipped.area>1e-6:
+    for part in constrained_delaunay_triangles(clipped).geoms:
+     if part.area>1e-6:terrain_face(list(orient(part,sign=1).exterior.coords)[:3])
+ coverage=unary_union([Polygon([p[:2] for p in f]) for f in faces]);missing=geometry.difference(coverage.buffer(.001)).area
+ assert missing<1,(name,missing)
  verts=[p for f in faces for p in f];lines=['o TenthStreet_'+name]
  for x,y,z in verts:lines.append(f'v {x:.4f} {-y:.4f} {z:.4f}')
  for x,y,z in verts:lines.append(f'vt {x/200:.5f} {y/200:.5f}')
  for x,y,z in verts:
   nx=-(height(x+60,y)-height(x-60,y))/120;ny=(height(x,y+60)-height(x,y-60))/120;length=math.sqrt(nx*nx+ny*ny+1);lines.append(f'vn {nx/length:.6f} {ny/length:.6f} {1/length:.6f}')
  for i in range(0,len(verts),3):lines.append('f '+' '.join(f'{j}/{j}/{j}' for j in [i+3,i+2,i+1]))
- path=folder/('TenthStreet_'+name+'.obj');path.write_text('\n'.join(lines)+'\n');result.append({'file':path.name,'triangles':len(faces),'bounds_cm':[[min(v[i] for v in verts) for i in range(3)],[max(v[i] for v in verts) for i in range(3)]]})
+ path=folder/('TenthStreet_'+name+'.obj');path.write_text('\n'.join(lines)+'\n');result.append({'file':path.name,'triangles':len(faces),'missing_area_cm2':missing,'bounds_cm':[[min(v[i] for v in verts) for i in range(3)],[max(v[i] for v in verts) for i in range(3)]]})
 (folder/'surfaces.json').write_text(json.dumps({'surfaces':result,'status':'Generated only; native import, width, continuity, collision and landscape clearance review pending.','road_lane_width_cm':190,'cycle_track_width_cm':160,'sources':'Mapped centerlines. Widths authored for first review in compressed geography.'},indent=2)+'\n');print(json.dumps(result))

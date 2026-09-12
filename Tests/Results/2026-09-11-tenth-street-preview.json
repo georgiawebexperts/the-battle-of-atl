@@ -18,14 +18,84 @@
       "bounds_error_cm": 0.0008091314157354645
     }
   ],
-  "scope": "Static native import/placement review. Traffic, paint, sidewalks and crossing signals absent. Width and gameplay collision acceptance pending.",
+  "scope": "Static native import and placement review. Road, cycle track, separator and sidewalks present; traffic, paint and crossing signals absent.",
   "process_exit_code": 0,
   "presentation_accepted": false,
   "findings": [
-    "Monroe cross-street and sidewalks now present in preview.",
-    "Cycle separator added with mapped crossing openings.",
-    "Smooth terrain-derived vertex normals reduce faceted shading.",
-    "Grass-shaped gaps persist after adaptive terrain subdivision; cause not yet proven. Need triangle coverage and actual native height audit.",
-    "No map save. Width/vehicle clearance, signals, traffic and race details unverified or absent."
+    "Boundary-crossing Delaunay triangles were being discarded. Clipping and constrained triangulation now retain their inside portions, with counterclockwise winding.",
+    "All four generated surfaces report zero uncovered polygon area at 0.001 cm tolerance.",
+    "Native Monroe and apartment-frontage captures inspected after successful commandlet exit: major irregular road holes removed.",
+    "Small edge artifacts and fragmented separator ends remain visible; road presentation is not accepted.",
+    "No map save. Vehicle clearance, collision gameplay, traffic, signals and race details remain pending."
+  ],
+  "surface_coverage": [
+    {
+      "file": "TenthStreet_Road.obj",
+      "triangles": 7249,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -30650.431179529223,
+          9112.74846452081,
+          -500.29587467798854
+        ],
+        [
+          13048.580133716447,
+          14130.308116966447,
+          367.3127516793159
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_CycleTrack.obj",
+      "triangles": 2426,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -21723.007140139413,
+          11251.981396913465,
+          -496.6146939840269
+        ],
+        [
+          12174.986936118416,
+          12832.442605440974,
+          303.51394033805445
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_Separator.obj",
+      "triangles": 3311,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -21674.13645272518,
+          11317.01598608162,
+          -489.0637430383816
+        ],
+        [
+          11727.216899663852,
+          12411.12827250084,
+          299.55988266764894
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_Sidewalk.obj",
+      "triangles": 6680,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -30810.317215381416,
+          8952.899426468057,
+          -519.8376665843678
+        ],
+        [
+          13208.4291717692,
+          14290.205241539634,
+          400.9421461974672
+        ]
+      ]
+    }
   ]
 }

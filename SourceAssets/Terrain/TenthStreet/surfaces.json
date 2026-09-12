@@ -2,7 +2,8 @@
   "surfaces": [
     {
       "file": "TenthStreet_Road.obj",
-      "triangles": 6989,
+      "triangles": 7249,
+      "missing_area_cm2": 0.0,
       "bounds_cm": [
         [
           -30650.431179529223,
@@ -12,13 +13,14 @@
         [
           13048.580133716447,
           14130.308116966447,
-          366.47078608442973
+          367.3127516793159
         ]
       ]
     },
     {
       "file": "TenthStreet_CycleTrack.obj",
-      "triangles": 2332,
+      "triangles": 2426,
+      "missing_area_cm2": 0.0,
       "bounds_cm": [
         [
           -21723.007140139413,
@@ -34,7 +36,8 @@
     },
     {
       "file": "TenthStreet_Separator.obj",
-      "triangles": 3184,
+      "triangles": 3311,
+      "missing_area_cm2": 0.0,
       "bounds_cm": [
         [
           -21674.13645272518,
@@ -44,13 +47,14 @@
         [
           11727.216899663852,
           12411.12827250084,
-          299.4814555962754
+          299.55988266764894
         ]
       ]
     },
     {
       "file": "TenthStreet_Sidewalk.obj",
-      "triangles": 6528,
+      "triangles": 6680,
+      "missing_area_cm2": 0.0,
       "bounds_cm": [
         [
           -30810.317215381416,
