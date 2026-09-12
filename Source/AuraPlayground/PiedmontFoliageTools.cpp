@@ -2,6 +2,7 @@
 #if WITH_EDITOR
 #include "Editor.h"
 #include "MeshDescription.h"
+#include "PhysicsEngine/BodySetup.h"
 #include "PCGComponent.h"
 #include "PCGGraph.h"
 #include "PCGNode.h"
@@ -91,5 +92,27 @@ float UPiedmontWorldTools::GetTreeLowGeometryRadius(UStaticMesh* Mesh,float Loca
  return FMath::Sqrt(RadiusSquared);
 #else
  return -1;
+#endif
+}
+
+bool UPiedmontWorldTools::EnableParkTrunkCollision(AActor* Actor){
+#if WITH_EDITOR
+ if(!Actor||!Actor->ActorHasTag(TEXT("BattleMixedCanopy")))return false;
+ auto* Component=Actor->FindComponentByClass<UPCGComponent>();auto* Graph=Component?Component->GetGraph():nullptr;if(!Graph)return false;
+ bool Updated=false;
+ for(auto* Node:Graph->GetNodes())if(auto* Settings=Cast<UPCGStaticMeshSpawnerSettings>(Node->GetSettings())){
+  auto* Selector=Cast<UPCGMeshSelectorWeighted>(Settings->MeshSelectorParameters);if(!Selector)return false;
+  for(auto& Entry:Selector->MeshEntries)Entry.Descriptor.BodyInstance.SetCollisionProfileName(TEXT("BlockAll"));Updated=true;
+ }
+ if(!Updated)return false;
+ TArray<UInstancedStaticMeshComponent*> Instances;Actor->GetComponents(Instances);
+ for(auto* Instance:Instances){UStaticMesh* Mesh=Instance->GetStaticMesh();auto* Body=Mesh?Mesh->GetBodySetup():nullptr;
+  if(!Body||Body->AggGeom.SphylElems.Num()!=1||Body->AggGeom.GetElementCount()!=1||Body->CollisionTraceFlag!=CTF_UseSimpleAsComplex)return false;
+ }
+ Graph->MarkPackageDirty();Actor->Tags.AddUnique(TEXT("RideTree"));
+ for(auto* Instance:Instances){Instance->SetCollisionProfileName(TEXT("BlockAll"));Instance->RecreatePhysicsState();}
+ Actor->MarkPackageDirty();return true;
+#else
+ return false;
 #endif
 }

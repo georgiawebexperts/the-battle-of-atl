@@ -1,0 +1,7 @@
+{
+  "instances": 587,
+  "failures": [],
+  "passed": true,
+  "main_map_changed": true,
+  "scope": "Native horizontal trunk hit and adjacent miss probes for all instances. No physical bike/walking traversal, slope/path or collision animation acceptance."
+}

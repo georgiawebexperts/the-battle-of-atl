@@ -1,0 +1,50 @@
+[
+  {
+    "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+    "shapes": {
+      "box_elems": [],
+      "sphere_elems": [],
+      "sphyl_elems": [
+        {
+          "center": "<Struct 'Vector' (0xa0645941120) {x: -18.000000, y: 0.000000, z: 300.000000}>",
+          "rotation": "<Struct 'Rotator' (0xa0645941138) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+          "radius": "32.0",
+          "length": "557.01513671875"
+        }
+      ],
+      "convex_elems": []
+    }
+  },
+  {
+    "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+    "shapes": {
+      "box_elems": [],
+      "sphere_elems": [],
+      "sphyl_elems": [
+        {
+          "center": "<Struct 'Vector' (0xa064594c7a0) {x: 0.000000, y: 0.000000, z: 350.000000}>",
+          "rotation": "<Struct 'Rotator' (0xa064594c7b8) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+          "radius": "40.0",
+          "length": "800.0"
+        }
+      ],
+      "convex_elems": []
+    }
+  },
+  {
+    "mesh": "/Game/SampleScene/Tree/HillTree_02",
+    "shapes": {
+      "box_elems": [],
+      "sphere_elems": [],
+      "sphyl_elems": [
+        {
+          "center": "<Struct 'Vector' (0xa064594da60) {x: -7.727674, y: 20.137896, z: 268.501038}>",
+          "rotation": "<Struct 'Rotator' (0xa064594da78) {pitch: 0.402080, yaw: 0.005506, roll: 4.573692}>",
+          "radius": "29.579532623291016",
+          "length": "549.502685546875"
+        }
+      ],
+      "convex_elems": []
+    }
+  }
+]

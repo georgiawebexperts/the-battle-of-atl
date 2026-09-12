@@ -44,3 +44,10 @@ Next persist mixed groups through editable PCG without replacing original assets
 Generalized PCG authoring helper to accept a new Park asset folder while preserving original entry point and refusing existing graphs. Installed three new editable graph/data groups under Environment/Park/Mixed:429 mature,133forest Hornbeam,25field Hornbeam;587total. Original graph/data assets remain preserved. Removed original canopy actor only after new group counts matched; saved main world in place. Fresh native launch lake view inspected: water remains visible, mixed canopy persists. Saved-main p50 11.992/15.538/14.536 ms,p95 12.559/16.006/15.051 ms across short fixed views; no sustained60FPS, full riding or collision acceptance.
 
 Main source map changed; desktop048 not repackaged. Detailed tree migration dependency remains local Content/EuropeanHornbeam (~2.4GiB), source manifest and migration/Mac-config scripts retained; not included in this narrow commit. PCG group assets are tracked. Trunk collision, slope-aware branch clearance, actual riding and remaining full game requirements pending.
+
+
+## Tree trunk collision enabled — 2026-09-12 [codex-maclaptop]
+
+Inspected all three mesh body setups: each already supplies one narrow capsule and no box/sphere/convex hull. Used these existing shapes, set game-copy meshes to simple-as-complex so leaf triangles do not block movement or traces, and enabled BlockAll in both mixed PCG graph descriptors and generated instance components. Added RideTree tag. Original source Fab assets unchanged.
+
+Native editor build passes. Before saving main, probed every one of587 instances through capsule centre and beside radius+30 cm:587 trunk hits,587 adjacent passes,0failures. Saved graph profiles and main. Existing bike nontraffic impact response remains speed-stop/bounce (no new realistic crash or tree wipeout claim). Actual bike/on-foot interaction, slope/path clearance and navigation/performance remain pending. Desktop048 unchanged. Installer script reproduces body flags; migrated Hornbeam asset files remain local dependency rather than newly tracked whole pack.
