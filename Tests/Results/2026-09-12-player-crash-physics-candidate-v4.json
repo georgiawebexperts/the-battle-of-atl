@@ -1,0 +1,28 @@
+{
+  "asset": "/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV4.PA_EllisonCrashCandidateV4",
+  "live_mesh_assignment_changed": false,
+  "main_map_changed": false,
+  "scope": "Capsules fitted to imported weighted vertices including descendants without physics bodies; 1.5cm contact margin; auto-generated constraints retained. Physical stability, body clearance, mounted pose transfer, recovery and gameplay integration unverified.",
+  "fitted_bodies": [
+    "Hips vertices=71 radius_cm=17.00 length_cm=0.00",
+    "Abdomen vertices=160 radius_cm=20.51 length_cm=0.00",
+    "Torso vertices=60 radius_cm=22.27 length_cm=6.54",
+    "Chest vertices=172 radius_cm=16.50 length_cm=0.00",
+    "Neck vertices=164 radius_cm=12.97 length_cm=0.00",
+    "Head vertices=982 radius_cm=17.30 length_cm=3.63",
+    "Shoulder_L vertices=86 radius_cm=20.41 length_cm=0.00",
+    "UpperArm_L vertices=83 radius_cm=17.56 length_cm=4.31",
+    "LowerArm_L vertices=102 radius_cm=9.95 length_cm=17.78",
+    "Hand_L vertices=464 radius_cm=14.40 length_cm=2.03",
+    "Shoulder_R vertices=86 radius_cm=20.41 length_cm=0.00",
+    "UpperArm_R vertices=83 radius_cm=17.56 length_cm=4.31",
+    "LowerArm_R vertices=102 radius_cm=9.95 length_cm=17.78",
+    "Hand_R vertices=464 radius_cm=14.40 length_cm=2.03",
+    "UpperLeg_L vertices=162 radius_cm=20.97 length_cm=23.77",
+    "LowerLeg_L vertices=160 radius_cm=17.36 length_cm=35.64",
+    "Foot_L vertices=115 radius_cm=11.51 length_cm=9.83",
+    "UpperLeg_R vertices=162 radius_cm=20.97 length_cm=23.77",
+    "LowerLeg_R vertices=160 radius_cm=17.36 length_cm=35.64",
+    "Foot_R vertices=115 radius_cm=11.51 length_cm=9.83"
+  ]
+}
