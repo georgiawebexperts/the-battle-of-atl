@@ -5,7 +5,7 @@ from pathlib import Path
 from shapely.geometry import Point, Polygon, LineString, box
 from shapely.geometry.polygon import orient
 from shapely.ops import unary_union, nearest_points
-from shapely import STRtree, constrained_delaunay_triangles
+from shapely import STRtree, constrained_delaunay_triangles, set_precision
 
 root = Path(__file__).resolve().parents[1]
 folder = root / 'SourceAssets/Terrain/KrogTraffic'
@@ -69,9 +69,10 @@ def approach_height(x,y):
     p = Point(x,y); i = int(index.nearest(p)); q = nearest_points(p,polys[i])[1]
     distance = p.distance(q); blend = max(0, 1-distance/300)
     if blend==0:return terrain(x,y)+14
-    if args.junction_table and distance<.00001:
-        covering=index.query(p,predicate='intersects')
-        if len(covering):return max(terrain(x,y)+3,max(plane(int(j),x,y) for j in covering))
+    if args.junction_table and distance<.02:
+        # Exported shared edges differ by micrometres; include touching top faces.
+        covering=[int(j) for j in index.query(p.buffer(.02)) if polys[int(j)].distance(p)<.02]
+        if covering:return max(terrain(x,y)+3,max(plane(j,x,y) for j in covering))
     # Blend the nearest point of each distinct surface, not triangle density.
     # A hard nearest-triangle choice jumps by the curb height along its bisector.
     nearest={}
@@ -106,6 +107,8 @@ for sample in survey['samples']:
     assert len(candidates), sample
     errors.append(abs(max(plane(int(i),x,y) for i in candidates)-sample['height']))
 assert errors and max(errors)<.25, max(errors)
+surface_regions=[set_precision(unary_union([poly for poly,name in zip(polys,surface_names) if name==key]),.01) for key in sorted(set(surface_names))]
+geometry=set_precision(geometry,.01)
 faces=[]
 def emit(coords, depth=0):
     points = [(x,y,height(x,y)) for x,y in coords]
@@ -126,8 +129,18 @@ for x in range(math.floor(x0/100)*100,math.ceil(x1/100)*100,100):
     for y in range(math.floor(y0/100)*100,math.ceil(y1/100)*100,100):
         patch=geometry.intersection(box(x,y,x+100,y+100))
         if patch.area<1e-5:continue
-        for tri in constrained_delaunay_triangles(patch).geoms:
-            if tri.area>1e-5:emit(list(orient(tri,sign=1).exterior.coords)[:3])
+        pieces=[patch]
+        # Honor existing curb outlines instead of triangulating across a height step.
+        if args.junction_table:
+            for region in surface_regions:
+                partition=[]
+                for piece in pieces:
+                    if not piece.intersects(region):partition.append(piece);continue
+                    partition.extend(part for part in [piece.intersection(region),piece.difference(region)] if part.area>1e-5)
+                pieces=partition
+        for piece in pieces:
+            for tri in constrained_delaunay_triangles(piece).geoms:
+                if tri.area>1e-5:emit(list(orient(tri,sign=1).exterior.coords)[:3])
 # Adaptive subdivision must share boundary vertices with adjacent triangles.
 # Otherwise a newly sampled edge midpoint has a different height from its
 # unsplit neighbour, leaving a vertical crack despite complete XY coverage.
@@ -162,7 +175,7 @@ for face in faces:
 interior_open_edges=[]
 for (a,b),count in edges.items():
     assert count<=2,(a,b,count)
-    if count==1 and geometry.boundary.distance(LineString([a,b]).interpolate(.5,normalized=True))>.001:
+    if count==1 and geometry.boundary.distance(LineString([a,b]).interpolate(.5,normalized=True))>.02:
         interior_open_edges.append([a,b])
 assert not interior_open_edges,interior_open_edges[:5]
 coverage=unary_union([Polygon([p[:2] for p in f]) for f in faces])
