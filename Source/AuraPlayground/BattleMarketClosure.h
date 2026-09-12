@@ -9,4 +9,8 @@ public:
  ABattleMarketClosure();
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
+ UFUNCTION(BlueprintCallable) bool BuildGroundedReturn();
+ UPROPERTY(BlueprintReadOnly) TArray<FVector> ReturnGround;
+private:
+ bool bReturnBuilt=false;
 };
