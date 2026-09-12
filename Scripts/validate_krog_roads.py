@@ -28,6 +28,10 @@ for kind in ['Shell','Columns']:
  actors=[a for a in ea.get_all_level_actors() if a.get_actor_label()=='Krog route SM_KrogTunnel_'+kind];assert len(actors)==1
  actors[0].static_mesh_component.set_static_mesh(unreal.load_asset('/Game/BattleForTheA/Environment/KrogPortalCandidate/SM_KrogPortal_'+kind))
 
+if surface_meta.get('level_tunnel_floor'):
+ from krog_floor_tools import apply_level_floor
+ apply_level_floor(root,ea)
+
 assert not any(a.actor_has_tag('KrogRoad') for a in ea.get_all_level_actors())
 opts=unreal.FbxImportUI();opts.import_as_skeletal=False;opts.import_materials=False;opts.import_textures=False
 opts.automated_import_should_detect_type=False;opts.mesh_type_to_import=unreal.FBXImportType.FBXIT_STATIC_MESH
@@ -63,9 +67,12 @@ unreal.PiedmontWorldTools.finish_editor_asset_loading()
 failures=[];counts={}
 probes=json.loads((folder/'road-probes.json').read_text())['samples']
 for row in probes:
- x,y,z=row['xyz'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+250),unreal.Vector(x,y,z-250))
+ # Start below the tunnel roof: this checks the floor, while the separate
+ # render/headroom audit checks overhead clearance. A +250cm start can hit
+ # the roof before reaching a valid floor with 220-250cm of headroom.
+ x,y,z=row['xyz'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+100),unreal.Vector(x,y,z-250))
  label=hit[1].get_actor_label() if hit else None;counts[label]=counts.get(label,0)+1
- if not hit or (hit[1]!=a and not (table and hit[1].get_actor_label().startswith('Krog route SM_KrogRoute_'))) or abs(hit[0].z-z)>.25:failures.append({'xyz':row['xyz'],'actor':label,'z':hit[0].z if hit else None})
+ if not hit or (hit[1]!=a and not (table and (hit[1].get_actor_label().startswith('Krog route SM_KrogRoute_') or (surface_meta.get('level_tunnel_floor') and hit[1].get_actor_label()=='Krog route SM_KrogTunnel_Road')))) or abs(hit[0].z-z)>.25:failures.append({'xyz':row['xyz'],'actor':label,'z':hit[0].z if hit else None})
 # Preserve distant installed walking/riding surfaces.
 trail_failures=[];changed_crossing_samples=[]
 crown_points=[s['centre_cm'] for s in json.loads((folder/'dekalb-cross-section.json').read_text())['stations']] if surface_meta.get('crowned_dekalb') else []

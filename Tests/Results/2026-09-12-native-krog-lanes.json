@@ -4,7 +4,7 @@
     "passed": true,
     "reason": "Both opposing road lanes traversed with wheel support and endpoint stops",
     "cars": 2,
-    "total_distance_cm": 16294.166
+    "total_distance_cm": 16294.236
   },
   "scope": "Two opposing Krog/DeKalb lanes in the isolated lane review map. Native motion and support, no signals, natural population or packaged acceptance.",
   "passed": true,

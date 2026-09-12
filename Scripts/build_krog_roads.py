@@ -12,7 +12,7 @@ folder = root / 'SourceAssets/Terrain/KrogTraffic'
 data = json.loads((folder / 'network.json').read_text())
 meta = json.loads((root / 'SourceAssets/Terrain/terrain-georeference.json').read_text())
 assert meta['active_heightmap'] == data['active_heightmap']
-parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);parser.add_argument('--junction-table',action='store_true');parser.add_argument('--crowned-dekalb',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);parser.add_argument('--junction-table',action='store_true');parser.add_argument('--crowned-dekalb',action='store_true');parser.add_argument('--level-tunnel-floor',action='store_true');args=parser.parse_args()
 heightmap=(args.heightmap or root/'SourceAssets/Terrain'/meta['active_heightmap']).resolve()
 raw = array.array('H')
 raw.frombytes(heightmap.read_bytes())
@@ -39,7 +39,10 @@ for directory in ['EastsideTrail', 'KrogRoute']:
             fields = line.split()
             # These older source meshes receive source-to-world placement after
             # Unreal OBJ import; raw OBJ coordinates already match world ESU.
-            if fields and fields[0] == 'v': vertices.append(tuple(map(float, fields[1:4])))
+            if fields and fields[0] == 'v':
+                v=tuple(map(float, fields[1:4]))
+                if args.level_tunnel_floor and path.stem=='KrogTunnel_Road':v=(v[0],v[1],v[2]+12)
+                vertices.append(v)
             elif fields and fields[0] == 'f':
                 face = [vertices[int(s.split('/')[0])-1] for s in fields[1:]]
                 poly = Polygon([p[:2] for p in face])
@@ -120,7 +123,7 @@ for sample in survey['samples']:
     x,y = sample['xy']; p = Point(x,y)
     candidates = index.query(p, predicate='intersects')
     assert len(candidates), sample
-    errors.append(abs(max(plane(int(i),x,y) for i in candidates)-sample['height']))
+    errors.append(abs(max(plane(int(i),x,y)-(12 if args.level_tunnel_floor and surface_names[int(i)]=='KrogTunnel_Road' else 0) for i in candidates)-sample['height']))
 assert errors and max(errors)<.25, max(errors)
 surface_regions=[set_precision(unary_union([poly for poly,name in zip(polys,surface_names) if name==key]),.01) for key in sorted(set(surface_names))]
 geometry=set_precision(geometry,.01)
@@ -220,7 +223,7 @@ for x,y,z in vertices:
         gap=abs(z-plane(i,q.x,q.y));seam_gaps.append(gap)
         if gap>.25:seam_locations.append({"xyz":[x,y,z],"existing_z":plane(i,q.x,q.y),"terrain_z":terrain(x,y),"gap_cm":gap})
 (folder/'join-conflicts.json').write_text(json.dumps(sorted(seam_locations,key=lambda r:-r['gap_cm']),indent=2)+'\n')
-report={'crowned_dekalb':args.crowned_dekalb,'removed_degenerate_faces':len(degenerate_faces),'removed_area_cm2':degenerate_area,'degenerate_boundary_edges':len(numerical_open_edges),'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
+report={'level_tunnel_floor':args.level_tunnel_floor,'crowned_dekalb':args.crowned_dekalb,'removed_degenerate_faces':len(degenerate_faces),'removed_area_cm2':degenerate_area,'degenerate_boundary_edges':len(numerical_open_edges),'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
         'source_to_native_max_error_cm':max(errors),'native_reference_samples':len(errors),
         'main_map_changed':False,'scope':'Source candidate only; native collision, driving and appearance pending.'}
 (folder/'road-surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

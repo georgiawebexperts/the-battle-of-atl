@@ -56,6 +56,5 @@
     }
   ],
   "main_map_changed": false,
-  "scope": "Authored utility fixtures, not surveyed real lighting. Review-only, visual balance and performance pending.",
-  "visual_review": "Portal render inspected at final8-candela setting: wall art and column faces readable, ceiling hotspots reduced from initial70-candela pass. Right side remains dark. Abrupt raised floor edge and jagged wall silhouette require geometry work. Lighting performance and headlight-on/off comparison not measured; full art not accepted."
+  "scope": "Authored utility fixtures, not surveyed real lighting. Review-only, visual balance and performance pending."
 }

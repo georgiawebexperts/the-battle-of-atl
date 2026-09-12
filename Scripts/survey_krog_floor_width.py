@@ -18,4 +18,9 @@ for i in range(1,len(points)-1,2):
   actors[label]=actors.get(label,0)+1
   samples.append({'offset_cm':offset,'xyz':[x,y,hit[0].z if hit else None],'actor':label,'above_profile_cm':hit[0].z-p[2] if hit else None})
  rows.append({'station_index':i,'profile_z':p[2],'samples':samples})
-(root/'Tests/Results/2026-09-12-krog-floor-width.json').write_text(json.dumps({'actors':actors,'stations':rows,'scope':'Native floor traces below ceiling, not a full body clearance test.','main_map_changed':False},indent=2)+'\n')
+level=json.loads((root/'SourceAssets/Terrain/KrogTraffic/road-surfaces.json').read_text()).get('level_tunnel_floor',False)
+deep=[s for row in rows if row['station_index']>=21 for s in row['samples'] if -300<=s['offset_cm']<=600]
+flat=all(s['above_profile_cm'] is not None and abs(s['above_profile_cm'])<.25 for s in deep)
+name='2026-09-12-krog-level-merged-width.json' if level else '2026-09-12-krog-floor-width.json'
+(root/'Tests/Results'/name).write_text(json.dumps({'actors':actors,'stations':rows,'deep_floor_samples':len(deep),'deep_floor_matches_profile':flat,'scope':'Native floor traces below ceiling, not a full body clearance test.','main_map_changed':False},indent=2)+'\n')
+if level:assert flat,'Deep tunnel floor differs from authored level profile'

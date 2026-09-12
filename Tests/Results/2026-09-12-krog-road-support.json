@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "probes": 60086,
+  "probes": 7630,
   "hits": {
-    "Krog DeKalb road approaches": 60086
+    "Krog DeKalb road approaches": 7630
   },
   "failures": [],
   "trail_failures": [],

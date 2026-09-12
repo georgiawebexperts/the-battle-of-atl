@@ -1,7 +1,7 @@
 {
   "source_triangles": 8795,
   "triangles": 2754,
-  "removed_overlap_area_cm2": 1127905.202827557,
+  "removed_overlap_area_cm2": 1127905.202827553,
   "seam_samples": 552,
   "maximum_source_seam_gap_cm": 7.190354767772078e-05,
   "main_map_changed": false,

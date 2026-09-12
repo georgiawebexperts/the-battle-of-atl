@@ -114,9 +114,9 @@
       "xyz": [
         30410.574624678346,
         117142.00471031449,
-        958.9884033203125
+        958.9884643554688
       ],
-      "headroom_cm": 270.0
+      "headroom_cm": 269.99993896484375
     },
     {
       "xyz": [
@@ -130,9 +130,9 @@
       "xyz": [
         30467.214467195678,
         117282.05125642492,
-        959.2064208984375
+        959.2063598632812
       ],
-      "headroom_cm": 269.9998779296875
+      "headroom_cm": 269.99993896484375
     },
     {
       "xyz": [
@@ -218,17 +218,17 @@
       "xyz": [
         30778.733601041004,
         118052.3072600323,
-        960.405029296875
+        960.4049682617188
       ],
-      "headroom_cm": 270.0001220703125
+      "headroom_cm": 270.00018310546875
     },
     {
       "xyz": [
         30807.05352229967,
         118122.33053308753,
-        960.5140380859375
+        960.5138549804688
       ],
-      "headroom_cm": 270.0003662109375
+      "headroom_cm": 270.00054931640625
     },
     {
       "xyz": [
@@ -306,9 +306,9 @@
       "xyz": [
         31091.015966845094,
         118822.25408893052,
-        961.603759765625
+        961.6036987304688
       ],
-      "headroom_cm": 270.0
+      "headroom_cm": 270.00006103515625
     },
     {
       "xyz": [
@@ -330,9 +330,9 @@
       "xyz": [
         31176.21044380871,
         119032.22882903052,
-        961.9306640625
+        961.9306030273438
       ],
-      "headroom_cm": 270.0
+      "headroom_cm": 270.00006103515625
     },
     {
       "xyz": [
@@ -354,9 +354,9 @@
       "xyz": [
         31261.404920772326,
         119242.2035691305,
-        962.257568359375
+        962.2575073242188
       ],
-      "headroom_cm": 270.0
+      "headroom_cm": 270.00006103515625
     },
     {
       "xyz": [
@@ -370,9 +370,9 @@
       "xyz": [
         31318.20123874807,
         119382.18672919716,
-        962.4755249023438
+        962.4754638671875
       ],
-      "headroom_cm": 269.99993896484375
+      "headroom_cm": 270.0
     },
     {
       "xyz": [
@@ -408,5 +408,5 @@
     }
   ],
   "minimum_headroom_cm": 229.52545668837945,
-  "visual_review": "Portal render inspected at final8-candela setting: wall art and column faces readable, ceiling hotspots reduced from initial70-candela pass. Right side remains dark. Abrupt raised floor edge and jagged wall silhouette require geometry work. Lighting performance and headlight-on/off comparison not measured; full art not accepted."
+  "visual_review": "Portal frame inspected after entrance rebuilt against level floor: foreground ridge and overlapping strip artifacts are gone. Walls remain jagged; exterior/context and full lighting quality/performance still unaccepted."
 }
