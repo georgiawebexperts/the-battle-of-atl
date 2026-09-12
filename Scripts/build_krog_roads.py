@@ -46,7 +46,7 @@ for directory in ['EastsideTrail', 'KrogRoute']:
                 if path.stem=='KrogTunnel_Road':
                     a,b,c=face
                     if (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])<=0:continue
-                if poly.area > 1e-5 and poly.distance(road) < 350:
+                if poly.area > 1e-5 and (poly.distance(road) < 350 or (args.junction_table and poly.distance(site)<1500)):
                     assert len(face) == 3
                     polys.append(poly); triangles.append(face); surface_names.append(path.stem)
 assert polys
@@ -54,7 +54,8 @@ index = STRtree(polys); protected = unary_union(polys)
 # Coalesce sub-millimetre gaps between independently exported pavement chunks.
 # Otherwise their 12cm curb-height difference creates near-vertical sliver faces.
 protected = protected.buffer(.1,join_style=2).buffer(-.1,join_style=2)
-geometry = road.difference(protected.difference(site.buffer(1500)) if args.junction_table else protected)
+geometry = road.difference(protected)
+if args.junction_table:geometry=geometry.union(protected.intersection(site.buffer(1500)))
 
 def plane(i,x,y):
     a,b,c = triangles[i]
@@ -68,6 +69,9 @@ def approach_height(x,y):
     p = Point(x,y); i = int(index.nearest(p)); q = nearest_points(p,polys[i])[1]
     distance = p.distance(q); blend = max(0, 1-distance/300)
     if blend==0:return terrain(x,y)+14
+    if args.junction_table and distance<.00001:
+        covering=index.query(p,predicate='intersects')
+        if len(covering):return max(terrain(x,y)+3,max(plane(int(j),x,y) for j in covering))
     # Blend the nearest point of each distinct surface, not triangle density.
     # A hard nearest-triangle choice jumps by the curb height along its bisector.
     nearest={}

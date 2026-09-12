@@ -9,6 +9,7 @@ sys.path.insert(0,str(root/'Scripts'))
 from battle_geography import import_source_landscape,source_vector
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text())
+network=json.loads((folder/'network.json').read_text());junction=network['crossing_xyz'];table=json.loads((folder/'road-surfaces.json').read_text()).get('junction_table',False)
 baseline=[]
 for filename in ['park-path-network.json','eastside-trail-network.json','krog-route-network.json']:
  for path in json.loads((root/'SourceAssets/Terrain'/filename).read_text())['paths']:
@@ -43,7 +44,7 @@ nanite=mesh.get_editor_property('nanite_settings');nanite.enabled=True;nanite.po
 nanite.fallback_target=unreal.NaniteFallbackTarget.PERCENT_TRIANGLES;nanite.fallback_relative_error=0;nanite.fallback_percent_triangles=1
 mesh.set_editor_property('nanite_settings',nanite)
 unreal.EditorAssetLibrary.save_loaded_asset(mesh)
-a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());a.set_actor_label('Krog Lake road approaches')
+a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());a.set_actor_label('Krog DeKalb road approaches')
 a.tags=[unreal.Name('KrogRoad'),unreal.Name('RidePath')];a.set_folder_path('Eastside/KrogLake')
 a.static_mesh_component.set_static_mesh(mesh);a.static_mesh_component.set_collision_profile_name('BlockAll')
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
@@ -52,13 +53,15 @@ probes=json.loads((folder/'road-probes.json').read_text())['samples']
 for row in probes:
  x,y,z=row['xyz'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+250),unreal.Vector(x,y,z-250))
  label=hit[1].get_actor_label() if hit else None;counts[label]=counts.get(label,0)+1
- if not hit or hit[1]!=a or abs(hit[0].z-z)>.25:failures.append({'xyz':row['xyz'],'actor':label,'z':hit[0].z if hit else None})
+ if not hit or (hit[1]!=a and not (table and hit[1].get_actor_label().startswith('Krog route SM_KrogRoute_'))) or abs(hit[0].z-z)>.25:failures.append({'xyz':row['xyz'],'actor':label,'z':hit[0].z if hit else None})
 # Preserve distant installed walking/riding surfaces.
-trail_failures=[]
+trail_failures=[];changed_crossing_samples=[]
 for v,z in baseline:
  hit=unreal.PiedmontWorldTools.trace_world_surface(v+unreal.Vector(0,0,150),v-unreal.Vector(0,0,150))
+ if hit and hit[1]==a and table and ((v.x-junction[0])**2+(v.y-junction[1])**2)**.5<=1500:
+  changed_crossing_samples.append({'xyz':[v.x,v.y,z],'new_z':hit[0].z});continue
  if not hit or abs(hit[0].z-z)>.5:trail_failures.append({'xyz':[v.x,v.y,z],'new_z':hit[0].z if hit else None})
 passed=not failures and not trail_failures
 if passed:assert unreal.EditorLoadingAndSavingUtils.save_map(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world(),'/Game/PiedmontRide/Maps/PiedmontKrogRoadReview')
-report={'passed':passed,'probes':len(probes),'hits':counts,'failures':failures,'trail_failures':trail_failures,'main_map_changed':False,'preserved_path_probes':len(baseline),'scope':'Native surface support and original trail preservation only; no traffic or visual acceptance.'}
+report={'passed':passed,'probes':len(probes),'hits':counts,'failures':failures,'trail_failures':trail_failures,'main_map_changed':False,'preserved_path_probes':len(baseline)-len(changed_crossing_samples),'raised_crossing_samples':changed_crossing_samples,'scope':'Native surface support and original trail preservation only; no traffic or visual acceptance.'}
 (root/'Tests/Results/2026-09-12-krog-road-support.json').write_text(json.dumps(report,indent=2)+'\n')
