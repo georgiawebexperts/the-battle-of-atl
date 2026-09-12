@@ -1,0 +1,34 @@
+{
+  "map_saved": true,
+  "meshes": [
+    {
+      "asset": "/Game/BattleForTheA/Environment/FancyRoachMotel/SM_FancyRoach_Brick.SM_FancyRoach_Brick",
+      "axis_error_cm": 0.0006409228772099596
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/FancyRoachMotel/SM_FancyRoach_Stucco.SM_FancyRoach_Stucco",
+      "axis_error_cm": 0.0008817781636025757
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/FancyRoachMotel/SM_FancyRoach_Trim.SM_FancyRoach_Trim",
+      "axis_error_cm": 0.0009013040944410022
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/FancyRoachMotel/SM_FancyRoach_Glass.SM_FancyRoach_Glass",
+      "axis_error_cm": 0.00027223567303735763
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/FancyRoachMotel/SM_FancyRoach_Roof.SM_FancyRoach_Roof",
+      "axis_error_cm": 0.0005809885769849643
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/FancyRoachMotel/SM_FancyRoach_WarmGlass.SM_FancyRoach_WarmGlass",
+      "axis_error_cm": 0.0005374234169721603
+    }
+  ],
+  "scope": "Static native Metal preview with diagnostic light restored before map save. Procedural brick/stucco and emissive text verified; entrances, street and bench scene remain incomplete.",
+  "process_exit_code": 0,
+  "presentation_accepted": false,
+  "sign_review": "Close render confirms readable bright lettering.",
+  "desktop_installed": false
+}

@@ -1,4 +1,4 @@
-"""Import and render landmark placement without saving the game map."""
+"""Import and render landmark; save only with -BattleInstallLandmark."""
 import unreal,json,pathlib,sys
 root=pathlib.Path(unreal.Paths.project_dir());sys.path.insert(0,str(root/'Scripts'))
 from battle_geography import require_converted_world
@@ -23,18 +23,30 @@ for row in data['meshes']:
   lib.recompile_material(mat);unreal.EditorAssetLibrary.save_loaded_asset(mat)
  mesh.set_material(0,mat);mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
  actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());actor.set_actor_label('Fancy Roach Motel '+kind);actor.tags=[unreal.Name('FancyRoachMotel')];actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('BlockAll');rows.append({'asset':mesh.get_path_name(),'axis_error_cm':error})
+exec(compile((root/'Scripts/style_fancy_roach_motel.py').read_text(),'style_fancy_roach_motel.py','exec'))
 sign=ea.spawn_actor_from_class(unreal.TextRenderActor,unreal.Vector(*data['sign']['position_world_cm']));sign.set_actor_rotation(unreal.Rotator(yaw=data['sign']['yaw']),False);text=sign.get_component_by_class(unreal.TextRenderComponent);text.set_text(data['sign']['text']);text.set_world_size(34);text.set_horizontal_alignment(unreal.HorizTextAligment.EHTA_CENTER);text.set_vertical_alignment(unreal.VerticalTextAligment.EVRTA_TEXT_CENTER);text.set_text_render_color(unreal.Color(255,233,188,255));sign.tags=[unreal.Name('FancyRoachMotel')]
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
-# Transient facade-review lighting; does not change the saved world's lighting.
+# Transient facade-review lighting; restore before any requested map save.
+original_lights=[]
 for light in ea.get_all_level_actors():
  if isinstance(light,unreal.DirectionalLight):
+  original_lights.append((light,light.get_actor_rotation(),light.get_component_by_class(unreal.DirectionalLightComponent).get_editor_property("intensity")))
   light.set_actor_rotation(unreal.Rotator(pitch=-35,yaw=-120),False)
   light.get_component_by_class(unreal.DirectionalLightComponent).set_intensity(40)
-text.set_text_material(unreal.load_asset('/Engine/EngineMaterials/UnlitText.UnlitText'))
+text.set_text_material(unreal.load_asset(dest+'/M_LandmarkLettering'))
 out=root/'work/fancy-roach-review';out.mkdir(parents=True,exist_ok=True)
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());capture=cam.get_component_by_class(unreal.SceneCaptureComponent2D);texture=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8);capture.texture_target=texture;capture.capture_source=unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR;capture.capture_every_frame=False;capture.capture_on_movement=False;capture.always_persist_rendering_state=True;capture.fov_angle=70
-for name,pos,target in [('street',[-18200,14200,600],[-18600,12000,1050]),('aerial',[-16000,14000,4300],[-19000,10900,600])]:
+for name,pos,target in [('sign-close',[-18400,13000,720],[-18600,12000,650]),('street',[-18200,14200,600],[-18600,12000,1050]),('aerial',[-16000,14000,4300],[-19000,10900,600])]:
  cam.set_actor_location(unreal.Vector(*pos),False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(unreal.Vector(*pos),unreal.Vector(*target)),False)
  for _ in range(16):unreal.PiedmontWorldTools.tick_scene_review();capture.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,texture,str(out),name+'.png')
-(out/'result.json').write_text(json.dumps({'map_saved':False,'meshes':rows,'scope':'Static native Metal preview. Materials remain basic; road and bench scene absent. Not final visual acceptance.'},indent=2)+'\n')
+installed='-BattleInstallLandmark' in unreal.SystemLibrary.get_command_line()
+if installed:
+ for light,rotation,intensity in original_lights:
+  light.set_actor_rotation(rotation,False);light.get_component_by_class(unreal.DirectionalLightComponent).set_intensity(intensity)
+ ea.destroy_actor(cam)
+ sign.set_actor_label('The Fancy Roach Motel sign')
+ for a in ea.get_all_level_actors():
+  if 'FancyRoachMotel' in [str(t) for t in a.tags]:a.set_folder_path('Midtown/FancyRoachMotel')
+ assert unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
+(out/'result.json').write_text(json.dumps({'map_saved':installed,'meshes':rows,'scope':'Static native Metal preview with diagnostic light restored before map save. Procedural brick/stucco and emissive text verified; entrances, street and bench scene remain incomplete.'},indent=2)+'\n')
