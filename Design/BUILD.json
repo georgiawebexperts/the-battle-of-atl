@@ -1,8 +1,9 @@
 {
-  "build": 17,
-  "version": "0.17.0-dev",
-  "name": "BATTLE FOR THE A",
+  "build": 48,
+  "version": "0.48.0-dev",
+  "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "milestone": "Sourced 3.1 km Eastside Trail through three bridge crossings to Irwin, canonical gold return route and full two-way native ride pass; tunnel, Cabbagetown and full V3 remain unfinished",
-  "author": "2026-09-11 [codex-maclaptop]"
+  "status": "packaging; desktop remains 047",
+  "milestone": "Monroe and Irwin traffic, first Irwin streetscape, one shallow pothole; full game and visual/performance acceptance remain unfinished",
+  "author": "2026-09-12 [codex-maclaptop]"
 }
