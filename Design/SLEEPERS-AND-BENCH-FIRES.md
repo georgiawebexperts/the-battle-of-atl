@@ -44,3 +44,7 @@ Added opt-in `APiedmontPedestrian::BeginSleeping()` and `WakeFromSleep()` for th
 ## Bounded chase implementation — 2026-09-12 [codex-maclaptop]
 
 Opt-in `WakeAndChase(Target)` requires a valid nearby target (600 cm), line of sight and standing clearance. After the get-up clip, phase 3 follows navigation at 260 cm/s for at most six seconds, with 900 cm self/1200 cm target distance limits from the sleeping origin. Failed paths, missing targets, swimming, run end, damage and bike impacts cancel behavior and restore ordinary movement speed. Existing sleep/wake/clearance/impact/death native audit still passes after the change. Actual pursuit movement/timeout/target-loss cases are not yet verified. Ending pursuit currently pauses normal AI for two seconds; authored stagger/settle and return to sleep are still pending, so this is not placed in the world.
+
+## Native pursuit check — 2026-09-12 [codex-maclaptop]
+
+`Scripts/test_native_sleep_chase.py` passed: reachable target distance decreased from 364.742 to 77.992 cm, pursuit ended after its configured window with movement stopped and 135 cm/s normal speed restored, and destroying the target during a second pursuit cancelled cleanly. Evidence: `Tests/Results/2026-09-12-native-sleep-chase.json`. This does not verify presentation, distance-limit exits, failed paths, rare activation, stagger/settle or complete encounters; no world deployment.
