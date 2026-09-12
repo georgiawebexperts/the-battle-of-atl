@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "phase": 3,
+    "reason": "Placed ambient startup, wake, fall and landing re-wake passed"
+  },
+  "scope": "Uncooked review-map ambient BeginPlay, runtime wake/fall clearance and re-wake; does not test automatic proximity selection, pursuit or rendered quality",
+  "passed": true
+}

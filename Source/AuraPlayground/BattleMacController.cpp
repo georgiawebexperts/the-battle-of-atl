@@ -48,11 +48,13 @@ void ABattleMacController::BeginPlay(){
 void TickBattleSleeperAudit(APlayerController* PC,float Dt);
 void TickBattleSleeperChaseAudit(APlayerController* PC,float Dt);
 void TickBattleSleeperSettleAudit(APlayerController* PC,float Dt);
+void TickBattleAmbientSleeperAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperSettleAudit")))TickBattleSleeperSettleAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmbientSleeperAudit")))TickBattleAmbientSleeperAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperChaseAudit")))TickBattleSleeperChaseAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperAudit")))TickBattleSleeperAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);

@@ -68,3 +68,8 @@ Added opt-in `bReturnToSleepAfterChase`. Pursuit termination tries the authored 
 ## Initial ground site review — 2026-09-12 [codex-maclaptop]
 
 Native editor scan tested1,994 path-side samples. One candidate met navigation proximity, level-ground/fall-corridor checks, water exclusion and clearance from all path centerlines: [1517.605213,-18065.288175,-178.127952], yaw180, beside OSM path503237947 part147. Earlier coarse candidate was rejected by stronger path-corridor screening. Created isolated local `/Game/PiedmontRide/Maps/PiedmontSleeperReview` with an ambient sleeper at that site (+90cm capsule height), tagAmbientSleeperReview. Main map unchanged. Scripts and reports reproduce the review map; live initialization/trigger, runtime furniture overlap, visuals and final placement remain pending.
+
+
+## Placed actor runtime validation — 2026-09-12 [codex-maclaptop]
+
+Native editor build passed (21.79 seconds). `Scripts/test_native_ambient_sleeper.py` ran `/Game/PiedmontRide/Maps/PiedmontSleeperReview` with normal runtime props/crowd. The tagged level actor initialized asleep, woke, accepted its actual-ground fall corridor, completed the fall back to sleep and woke again at the landing. Exit 0 and all assertions passed; report `Tests/Results/2026-09-12-native-ambient-sleeper.json`. The dedicated nonshipping audit does not relocate the actor or construct a platform. Automatic probability/proximity activation, pursuit at this location, continuous rendered quality, rough wardrobe and main-map deployment remain unverified/pending. Installed build remains 044.
