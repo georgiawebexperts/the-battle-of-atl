@@ -10,41 +10,41 @@
       "xyz": [
         30042.415648315684,
         116231.70216059667,
-        1000.0
+        993.7271898249015
       ],
-      "headroom_cm": 227.57177734375
+      "headroom_cm": 233.84458751884847
     },
     {
       "xyz": [
         30070.73556957435,
         116301.7254336519,
-        999.9970660045445
+        996.0798765419719
       ],
-      "headroom_cm": 227.68372012826796
+      "headroom_cm": 231.60090959084062
     },
     {
       "xyz": [
         30099.055490833016,
         116371.7487067071,
-        999.8779956684045
+        998.2643382334956
       ],
-      "headroom_cm": 227.91179925347046
+      "headroom_cm": 229.52545668837945
     },
     {
       "xyz": [
         30127.375412091682,
         116441.77197976231,
-        997.8767184326518
+        998.2616123674414
       ],
-      "headroom_cm": 230.02208527828566
+      "headroom_cm": 229.63719134349606
     },
     {
       "xyz": [
         30155.695333350348,
         116511.79525281754,
-        994.8633405084745
+        994.9903802117365
       ],
-      "headroom_cm": 233.144349921213
+      "headroom_cm": 233.01731021795104
     },
     {
       "xyz": [
@@ -407,6 +407,6 @@
       "headroom_cm": 270.0
     }
   ],
-  "minimum_headroom_cm": 227.57177734375,
-  "visual_review": "Wide view inspected: approach now extends into tunnel;50 headroom samples minimum227.57cm. Dark unfinished materials and visible green terrain patches remain; not final scenery acceptance or riding proof."
+  "minimum_headroom_cm": 229.52545668837945,
+  "visual_review": "Wide and approach frames inspected. Road surface is continuous with no visible grass flecks in these views. Art not accepted: nearly black unmarked asphalt, steep uniform grass banks, bare tunnel shell with visible faceted edge, no convincing urban context. Portal closeup not inspected this turn."
 }

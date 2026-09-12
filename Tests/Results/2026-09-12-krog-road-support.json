@@ -1,506 +1,31 @@
 {
-  "passed": false,
+  "passed": true,
   "probes": 60086,
   "hits": {
-    "Krog DeKalb road approaches": 60028,
-    "Krog route SM_KrogRoute_Concrete_7_2": 58
+    "Krog DeKalb road approaches": 60086
   },
-  "failures": [
+  "failures": [],
+  "trail_failures": [],
+  "main_map_changed": false,
+  "preserved_path_probes": 2749,
+  "raised_crossing_samples": [
     {
       "xyz": [
-        27595.64333333333,
-        115954.07333333332,
-        982.1402487230301
+        26426.817267469596,
+        116234.63141925944,
+        989.4710693359375
       ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 982.89453125
+      "new_z": 998.067626953125,
+      "reason": "Matches authored concrete transition triangle within 0.25cm"
     },
-    {
-      "xyz": [
-        27575.440000000002,
-        115960.65999999999,
-        982.5899984251009
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 983.2258911132812
-    },
-    {
-      "xyz": [
-        27611.486666666664,
-        115948.90666666666,
-        981.8187808439258
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 982.5180053710938
-    },
-    {
-      "xyz": [
-        27694.0,
-        115934.07666666666,
-        980.569837421123
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 981.6843872070312
-    },
-    {
-      "xyz": [
-        27644.819999999996,
-        115972.58,
-        982.0285983074997
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 983.3744506835938
-    },
-    {
-      "xyz": [
-        27672.153333333332,
-        115939.98999999999,
-        980.9065058293927
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 981.9849853515625
-    },
-    {
-      "xyz": [
-        27666.666666666668,
-        116066.66666666667,
-        984.1434387175786
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 984.5942993164062
-    },
-    {
-      "xyz": [
-        27633.333333333332,
-        116033.33333333333,
-        983.7179008521039
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 984.1883544921875
-    },
-    {
-      "xyz": [
-        27743.176666666666,
-        115895.57666666666,
-        979.2992233395429
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 980.106689453125
-    },
-    {
-      "xyz": [
-        27776.51,
-        115883.49333333333,
-        978.6765176483659
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.9536743164062
-    },
-    {
-      "xyz": [
-        27709.843333333334,
-        115894.36333333333,
-        979.5689999059196
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.8557739257812
-    },
-    {
-      "xyz": [
-        27766.666666666668,
-        115966.66666666667,
-        980.7706358989582
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 982.1126098632812
-    },
-    {
-      "xyz": [
-        27733.333333333332,
-        115933.33333333333,
-        980.2266525467127
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 981.366943359375
-    },
-    {
-      "xyz": [
-        27766.666666666668,
-        116066.66666666667,
-        983.2267065194173
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 983.7505493164062
-    },
-    {
-      "xyz": [
-        27733.333333333332,
-        116033.33333333333,
-        982.66145111695
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 983.4302368164062
-    },
-    {
-      "xyz": [
-        27808.203333333335,
-        115873.15999999999,
-        977.9811894008004
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.8352661132812
-    },
-    {
-      "xyz": [
-        27890.72333333333,
-        115857.11666666665,
-        976.2558160672864
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.1713256835938
-    },
-    {
-      "xyz": [
-        27865.593333333334,
-        115865.31333333334,
-        976.862009196832
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.4957275390625
-    },
-    {
-      "xyz": [
-        27841.536666666667,
-        115885.24333333333,
-        977.7694466901663
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.9392700195312
-    },
-    {
-      "xyz": [
-        27866.666666666668,
-        115966.66666666667,
-        979.486102813779
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 981.231201171875
-    },
-    {
-      "xyz": [
-        27833.333333333332,
-        115933.33333333333,
-        979.1566135485212
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 980.948486328125
-    },
-    {
-      "xyz": [
-        27852.24,
-        116032.37333333334,
-        981.4512426193372
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 981.969970703125
-    },
-    {
-      "xyz": [
-        27998.50333333333,
-        115799.51333333332,
-        973.098874868038
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 978.4508056640625
-    },
-    {
-      "xyz": [
-        27939.903333333332,
-        115874.90333333334,
-        975.9261677680242
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.1331176757812
-    },
-    {
-      "xyz": [
-        27998.50333333333,
-        115833.33333333333,
-        973.9685615228836
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 978.129638671875
-    },
-    {
-      "xyz": [
-        27906.569999999996,
-        115851.95,
-        975.8377418748396
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 978.9668579101562
-    },
-    {
-      "xyz": [
-        27971.74,
-        115841.57,
-        974.5639710332052
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 978.4879760742188
-    },
-    {
-      "xyz": [
-        27966.666666666668,
-        115966.66666666667,
-        977.9115679221271
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.4730224609375
-    },
-    {
-      "xyz": [
-        27933.333333333332,
-        115933.33333333333,
-        977.581168719063
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 979.8489990234375
-    },
-    {
-      "xyz": [
-        28004.926666666666,
-        115797.42,
-        972.9528679901445
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 978.3499145507812
-    },
-    {
-      "xyz": [
-        28087.440000000002,
-        115781.38333333335,
-        971.801058144339
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.867919921875
-    },
-    {
-      "xyz": [
-        28038.26,
-        115797.90666666666,
-        972.6628273587536
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 977.75439453125
-    },
-    {
-      "xyz": [
-        28059.033333333336,
-        115790.64666666667,
-        972.2239383582037
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 977.4613037109375
-    },
-    {
-      "xyz": [
-        28066.666666666668,
-        115866.66666666667,
-        974.0674955190025
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.96435546875
-    },
-    {
-      "xyz": [
-        28033.333333333332,
-        115833.33333333333,
-        973.6445286308068
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 977.5853881835938
-    },
-    {
-      "xyz": [
-        28066.666666666668,
-        115966.66666666667,
-        976.4786305075127
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.8718872070312
-    },
-    {
-      "xyz": [
-        28033.333333333332,
-        115933.33333333333,
-        976.0841243489623
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 977.8333740234375
-    },
-    {
-      "xyz": [
-        28128.36,
-        115688.00666666667,
-        971.5606583983908
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 977.230712890625
-    },
-    {
-      "xyz": [
-        28121.960000000003,
-        115689.90333333332,
-        971.5971591395887
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 977.3916015625
-    },
-    {
-      "xyz": [
-        28196.38333333333,
-        115675.64333333333,
-        971.7056828385879
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 975.462890625
-    },
-    {
-      "xyz": [
-        28181.27,
-        115680.11666666665,
-        971.567959729941
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 975.8910522460938
-    },
-    {
-      "xyz": [
-        28139.08666666667,
-        115684.83666666667,
-        971.531497542579
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.9708251953125
-    },
-    {
-      "xyz": [
-        28158.663333333334,
-        115691.76000000001,
-        971.4856783489367
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.3272705078125
-    },
-    {
-      "xyz": [
-        28103.286666666667,
-        115776.21666666667,
-        971.6641840663897
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.536865234375
-    },
-    {
-      "xyz": [
-        28173.826666666664,
-        115752.97666666667,
-        971.691566276345
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 975.2657470703125
-    },
-    {
-      "xyz": [
-        28147.096666666668,
-        115709.27666666667,
-        971.4058320907067
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.3699340820312
-    },
-    {
-      "xyz": [
-        28110.446666666667,
-        115773.88333333335,
-        971.6097282550855
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.3872680664062
-    },
-    {
-      "xyz": [
-        28147.146666666667,
-        115728.92,
-        971.3368357880836
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 976.0615234375
-    },
-    {
-      "xyz": [
-        28140.493333333332,
-        115786.31,
-        971.9507278054699
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 975.6563110351562
-    },
-    {
-      "xyz": [
-        28166.666666666668,
-        115866.66666666667,
-        973.6666424035058
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 974.7277221679688
-    },
-    {
-      "xyz": [
-        28133.333333333332,
-        115833.33333333333,
-        972.975560046431
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 975.4788818359375
-    },
-    {
-      "xyz": [
-        28211.983333333334,
-        115671.02999999998,
-        972.0564275030151
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 974.9255981445312
-    },
-    {
-      "xyz": [
-        28245.316666666666,
-        115683.74333333333,
-        972.6544780021835
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 973.7521362304688
-    },
-    {
-      "xyz": [
-        28233.333333333332,
-        115733.33333333333,
-        972.5195574787793
-      ],
-      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
-      "z": 973.8894653320312
-    }
-  ],
-  "trail_failures": [
     {
       "xyz": [
         26686.07759557975,
         116256.06915932149,
         987.285888671875
       ],
-      "new_z": 1001.5953838421464
+      "new_z": 1001.5953838421464,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -508,7 +33,8 @@
         116200.82087161331,
         987.4186401367188
       ],
-      "new_z": 996.8234580676783
+      "new_z": 996.8234580676783,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -516,7 +42,8 @@
         116126.4444286935,
         985.8639526367188
       ],
-      "new_z": 992.1348071109536
+      "new_z": 992.1348071109536,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -524,19 +51,44 @@
         116052.00905137075,
         984.7938842773438
       ],
-      "new_z": 986.566139422369
-    }
-  ],
-  "main_map_changed": false,
-  "preserved_path_probes": 2757,
-  "raised_crossing_samples": [
+      "new_z": 986.566139422369,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
+    },
+    {
+      "xyz": [
+        27696.80596320735,
+        115977.57367404799,
+        982.8787841796875
+      ],
+      "new_z": 981.5737497995908,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
+    },
+    {
+      "xyz": [
+        27948.424927936867,
+        115903.13829670972,
+        979.3182983398438
+      ],
+      "new_z": 976.5576522407697,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
+    },
+    {
+      "xyz": [
+        28200.04389267027,
+        115828.70291938695,
+        974.4442749023438
+      ],
+      "new_z": 972.9233928231063,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
+    },
     {
       "xyz": [
         28451.66285740367,
         115754.26754206419,
         970.44775390625
       ],
-      "new_z": 981.4942293255002
+      "new_z": 981.4942293255002,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -544,7 +96,8 @@
         115679.83216474144,
         966.387939453125
       ],
-      "new_z": 992.1258242238566
+      "new_z": 992.1258242238566,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -552,7 +105,8 @@
         115605.39678741868,
         964.064697265625
       ],
-      "new_z": 993.2476890309035
+      "new_z": 993.2476890309035,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -560,7 +114,8 @@
         115530.96141009592,
         961.5233154296875
       ],
-      "new_z": 993.3934607751047
+      "new_z": 993.3934607751047,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -568,7 +123,8 @@
         115581.75900221492,
         954.3438110351562
       ],
-      "new_z": 995.5442711318017
+      "new_z": 995.5442711318017,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -576,7 +132,8 @@
         115616.50814957297,
         951.1725463867188
       ],
-      "new_z": 996.5971121042403
+      "new_z": 996.5971121042403,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -584,7 +141,8 @@
         115651.25729694653,
         951.30078125
       ],
-      "new_z": 997.659174886217
+      "new_z": 997.659174886217,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -592,7 +150,8 @@
         115686.00644430457,
         952.5481567382812
       ],
-      "new_z": 998.7186339641848
+      "new_z": 998.7186339641848,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -608,7 +167,8 @@
         115752.26570465602,
         955.4432373046875
       ],
-      "new_z": 999.2017628437903
+      "new_z": 999.2017628437903,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -616,7 +176,8 @@
         115782.94755867682,
         956.3817138671875
       ],
-      "new_z": 998.3785313375146
+      "new_z": 998.3785313375146,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -624,7 +185,8 @@
         115813.62941271316,
         956.8229370117188
       ],
-      "new_z": 997.5233312589023
+      "new_z": 997.5233312589023,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -632,7 +194,8 @@
         115844.31126673396,
         956.9220581054688
       ],
-      "new_z": 996.6425246543632
+      "new_z": 996.6425246543632,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -640,7 +203,8 @@
         115874.99312075476,
         957.0154418945312
       ],
-      "new_z": 995.7657104787949
+      "new_z": 995.7657104787949,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -648,7 +212,8 @@
         115874.99312075476,
         957.0154418945312
       ],
-      "new_z": 995.7657104787949
+      "new_z": 995.7657104787949,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [
@@ -656,7 +221,8 @@
         116058.59900799891,
         957.302490234375
       ],
-      "new_z": 991.9000248338033
+      "new_z": 991.9000248338033,
+      "reason": "Matches authored crowned DeKalb cross section within 0.5cm"
     },
     {
       "xyz": [

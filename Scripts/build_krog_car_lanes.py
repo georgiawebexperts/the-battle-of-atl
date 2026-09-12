@@ -9,8 +9,9 @@ line=linemerge([LineString([p[:2] for p in row['points_cm']]) for row in network
 if line.coords[0][0]>line.coords[-1][0]:line=LineString(list(line.coords)[::-1])
 triangles=[];grid=collections.defaultdict(list)
 meshes=[(out/'Krog_Road.obj',-1)]
+reconciled=json.loads((out/'road-surfaces.json').read_text()).get('crowned_dekalb',False)
 for directory in ['EastsideTrail','KrogRoute']:
- meshes += [(p,1) for p in (root/'SourceAssets/Terrain'/directory).glob('*.obj') if any(t in p.stem for t in ['Asphalt','Concrete'])]
+ meshes += [(out/'KrogRoute_Concrete_7_2_Reconciled.obj' if reconciled and p.stem=='KrogRoute_Concrete_7_2' else p,1) for p in (root/'SourceAssets/Terrain'/directory).glob('*.obj') if any(t in p.stem for t in ['Asphalt','Concrete'])]
 for mesh_path,sign in meshes:
  vertices=[];name=mesh_path.stem
  for row in mesh_path.read_text().splitlines():

@@ -1,0 +1,9 @@
+{
+  "source_triangles": 8795,
+  "triangles": 2754,
+  "removed_overlap_area_cm2": 1127905.202827557,
+  "seam_samples": 552,
+  "maximum_source_seam_gap_cm": 7.190354767772078e-05,
+  "main_map_changed": false,
+  "scope": "Source clipping and seam vertex heights. Native support, tessellation continuity and bike traversal pending."
+}
