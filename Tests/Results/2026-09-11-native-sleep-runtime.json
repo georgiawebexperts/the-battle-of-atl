@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "phase": 2,
+    "reason": "Sleeping head remains standing"
+  },
+  "scope": "Uncooked native runtime state/pose/interruption check, no rendered presentation or packaged acceptance",
+  "passed": false
+}

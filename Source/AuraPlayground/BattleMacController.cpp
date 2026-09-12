@@ -45,10 +45,12 @@ void ABattleMacController::BeginPlay(){
 #endif
  }
 }
+void TickBattleSleeperAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperAudit")))TickBattleSleeperAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);

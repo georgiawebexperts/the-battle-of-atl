@@ -55,7 +55,8 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
   for(int32 I=0;I<Pose.Num();++I){
    const int32 Bone=Ref.FindBoneIndex(Bones[I]);
    if(Bone>=0)Pose[I]=Sample(Data,Bone,FMath::Min(Time/Duration,.999999f));
-   if(Parents[I]<0)Pose[I]=RestPose[I];
+   // Stationary full-body clips carry posture in the root (including lying down).
+   // Unlike walking, their authored root transform must remain on the visual mesh.
   }
   return true;
  }
