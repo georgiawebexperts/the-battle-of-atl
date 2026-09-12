@@ -1,0 +1,72 @@
+{
+  "exit_code": 0,
+  "skin": {
+    "min_clearance_cm": 3.426,
+    "below_vertices": 0,
+    "vertices": 3273
+  },
+  "physics": {
+    "passed": true,
+    "hip_drop_cm": 79.257,
+    "max_limb_span_cm": 101.0,
+    "hip_floor_cm": 19.908,
+    "final_speed": 0.106
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/95708358753f450e9c601cce8c179d55/player-recovery-6.png"
+  ],
+  "capture_passed": true,
+  "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
+  "actual_shape_diagnostics": [
+    "bone=Hips type=3 size=X=29.286 Y=46.083 Z=29.286 static_response=2 simulation=1",
+    "bone=Abdomen type=3 size=X=36.017 Y=54.975 Z=36.017 static_response=2 simulation=1",
+    "bone=Torso type=3 size=X=33.308 Y=51.495 Z=33.308 static_response=2 simulation=1",
+    "bone=Chest type=3 size=X=30.255 Y=48.972 Z=30.255 static_response=2 simulation=1",
+    "bone=Neck type=3 size=X=22.487 Y=30.023 Z=22.487 static_response=2 simulation=1",
+    "bone=Head type=3 size=X=29.593 Y=58.657 Z=29.593 static_response=2 simulation=1",
+    "bone=Shoulder_L type=3 size=X=26.271 Y=42.156 Z=26.271 static_response=2 simulation=1",
+    "bone=UpperArm_L type=3 size=X=23.415 Y=43.284 Z=23.415 static_response=2 simulation=1",
+    "bone=LowerArm_L type=3 size=X=16.411 Y=45.345 Z=16.411 static_response=2 simulation=1",
+    "bone=Hand_L type=3 size=X=30.806 Y=50.535 Z=26.206 static_response=2 simulation=1",
+    "bone=Shoulder_R type=3 size=X=26.271 Y=42.156 Z=26.271 static_response=2 simulation=1",
+    "bone=UpperArm_R type=3 size=X=23.415 Y=43.284 Z=23.415 static_response=2 simulation=1",
+    "bone=LowerArm_R type=3 size=X=16.411 Y=45.345 Z=16.411 static_response=2 simulation=1",
+    "bone=Hand_R type=3 size=X=30.806 Y=50.535 Z=26.206 static_response=2 simulation=1",
+    "bone=UpperLeg_L type=3 size=X=34.655 Y=86.629 Z=34.655 static_response=2 simulation=1",
+    "bone=LowerLeg_L type=3 size=X=24.440 Y=77.696 Z=24.440 static_response=2 simulation=1",
+    "bone=Foot_L type=3 size=X=21.915 Y=46.974 Z=21.915 static_response=2 simulation=1",
+    "bone=UpperLeg_R type=3 size=X=34.975 Y=86.949 Z=34.975 static_response=2 simulation=1",
+    "bone=LowerLeg_R type=3 size=X=24.440 Y=77.696 Z=24.440 static_response=2 simulation=1",
+    "bone=Foot_R type=3 size=X=21.915 Y=46.974 Z=21.915 static_response=2 simulation=1"
+  ],
+  "skin_clearance_passed": true,
+  "transfer": {
+    "choice": 2,
+    "max_transfer_error_cm": 0.0001,
+    "initial_pose_rms_cm": 72.653
+  },
+  "recovery": {
+    "passed": true,
+    "head_height": 157.792,
+    "left_foot_height": 3.179,
+    "right_foot_height": 2.795
+  },
+  "bike": {
+    "passed": true,
+    "upright_dot": 0.309,
+    "speed": 0.0,
+    "parts": 16
+  },
+  "physics_asset": "/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV5",
+  "visual_acceptance": false,
+  "visual_review": "Fall4 inspected: no gross road burial. Conservative capsule fit is oversized along some axes (head~59cm, hand~50cm, thigh~87cm total shape extent), so clearance success is not contact realism acceptance. Recovery RMS72.653cm remains large."
+}

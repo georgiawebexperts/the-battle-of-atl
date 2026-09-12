@@ -1,0 +1,28 @@
+{
+  "asset": "/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6",
+  "live_mesh_assignment_changed": false,
+  "main_map_changed": false,
+  "scope": "Convex hulls fitted to imported dominant-weight vertices including descendants without physics bodies; 1.5cm radial expansion; auto-generated constraints retained. Physical stability, body clearance, mounted pose transfer, recovery and gameplay integration unverified.",
+  "fitted_bodies": [
+    "Hips vertices=36 hull_size_cm=X=16.472 Y=18.982 Z=23.318",
+    "Abdomen vertices=116 hull_size_cm=X=34.451 Y=21.186 Z=30.892",
+    "Torso vertices=24 hull_size_cm=X=30.419 Y=20.086 Z=25.869",
+    "Chest vertices=135 hull_size_cm=X=19.844 Y=20.836 Z=28.527",
+    "Neck vertices=56 hull_size_cm=X=21.800 Y=9.599 Z=12.772",
+    "Head vertices=966 hull_size_cm=X=25.686 Y=31.907 Z=28.881",
+    "Shoulder_L vertices=43 hull_size_cm=X=21.690 Y=17.782 Z=24.129",
+    "UpperArm_L vertices=51 hull_size_cm=X=13.716 Y=22.565 Z=16.823",
+    "LowerArm_L vertices=86 hull_size_cm=X=14.351 Y=31.773 Z=13.520",
+    "Hand_L vertices=450 hull_size_cm=X=21.261 Y=28.133 Z=8.993",
+    "Shoulder_R vertices=43 hull_size_cm=X=21.690 Y=17.782 Z=24.129",
+    "UpperArm_R vertices=51 hull_size_cm=X=13.716 Y=22.565 Z=16.823",
+    "LowerArm_R vertices=86 hull_size_cm=X=14.351 Y=31.773 Z=13.520",
+    "Hand_R vertices=450 hull_size_cm=X=21.261 Y=28.133 Z=8.993",
+    "UpperLeg_L vertices=124 hull_size_cm=X=23.921 Y=54.877 Z=20.544",
+    "LowerLeg_L vertices=128 hull_size_cm=X=12.632 Y=56.203 Z=14.928",
+    "Foot_L vertices=87 hull_size_cm=X=13.309 Y=27.869 Z=14.349",
+    "UpperLeg_R vertices=126 hull_size_cm=X=23.940 Y=54.879 Z=20.674",
+    "LowerLeg_R vertices=128 hull_size_cm=X=12.632 Y=56.203 Z=14.928",
+    "Foot_R vertices=87 hull_size_cm=X=13.309 Y=27.869 Z=14.349"
+  ]
+}
