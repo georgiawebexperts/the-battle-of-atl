@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleCrashCamera.h"
 #include "Rendering/SkinWeightVertexBuffer.h"
 #include "Physics/PhysicsInterfaceCore.h"
 #include "Chaos/ImplicitObject.h"
@@ -45,10 +46,9 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
   S.Hip=Bike->Rider->GetSocketLocation(TEXT("Hips"));Body->SetAllPhysicsLinearVelocity(FVector(S.Speed,S.Side*S.Speed*.3f,60));Bike->Rider->SetVisibility(false);S.Body=Body;
   S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Target=Hit.ImpactPoint+FVector(160,0,70);const FVector Offset(-350,-600,280);S.Camera->SetActorLocationAndRotation(Target+Offset,(-Offset).Rotation());
  }
- if(S.Speed>600&&S.Camera.IsValid()){
-  FVector Center=S.Recovering&&S.Blend.Pose.IsValid()?S.Blend.Pose->GetSocketLocation(TEXT("Hips")):S.Body->GetBodyInstance(TEXT("Hips"))->GetUnrealWorldTransform().GetLocation();
-  float Distance=0;if(S.FallenBike.IsValid()){const FVector Other=S.FallenBike->GetActorLocation();Distance=FVector::Dist(Center,Other);Center=(Center+Other)*.5f;}
-  const FVector Offset(-350,-600,280);S.Camera->SetActorLocationAndRotation(Center+Offset*FMath::Max(1.f,Distance/500.f),(-Offset).Rotation());
+ if(S.Camera.IsValid()){
+  const FVector Pelvis=S.Recovering&&S.Blend.Pose.IsValid()?S.Blend.Pose->GetSocketLocation(TEXT("Hips")):S.Body->GetBodyInstance(TEXT("Hips"))->GetUnrealWorldTransform().GetLocation();
+  UpdateBattleCrashCamera(S.Camera.Get(),Bike,S.FallenBike.Get(),Pelvis+FVector(0,0,25),Dt);
  }
  PC->SetViewTarget(S.Camera.Get());if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;PC->PlayerCameraManager->UpdateCamera(0);
  if(S.Recovering){

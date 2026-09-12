@@ -3,28 +3,28 @@
   "launch_speed_cm_s": 1500,
   "launch_side": -1,
   "skin": {
-    "min_clearance_cm": 0.314,
+    "min_clearance_cm": 0.299,
     "below_vertices": 0,
     "vertices": 3273
   },
   "physics": {
     "passed": true,
-    "hip_drop_cm": 180.293,
-    "max_limb_span_cm": 100.694,
-    "hip_floor_cm": 9.974,
-    "final_speed": 0.469
+    "hip_drop_cm": 200.609,
+    "max_limb_span_cm": 101.078,
+    "hip_floor_cm": 7.03,
+    "final_speed": 0.32
   },
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-fall-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-fall-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-fall-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-fall-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-recovery-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-recovery-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-recovery-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-recovery-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-recovery-5.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fd3ffb00129c4873a2db9ff8dfee5a05/player-recovery-6.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-6.png"
   ],
   "capture_passed": true,
   "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
@@ -53,8 +53,8 @@
   "skin_clearance_passed": true,
   "transfer": {
     "choice": 0,
-    "max_transfer_error_cm": 0.0003,
-    "initial_pose_rms_cm": 20.828
+    "max_transfer_error_cm": 0.0001,
+    "initial_pose_rms_cm": 36.968
   },
   "recovery": {
     "passed": true,
@@ -64,8 +64,12 @@
   },
   "bike": {
     "passed": true,
-    "upright_dot": 0.259,
+    "upright_dot": 0.245,
     "speed": 0.0,
     "parts": 16
-  }
+  },
+  "ccd_enabled": true,
+  "camera": "Rider-focused fixed-distance boom, interpolated with sphere-sweep obstruction handling.",
+  "visual_review": "Fall4 and recovery6 inspected: rider visible, close framing, grounded landing and standing. No dynamic wall-occlusion fixture or full video acceptance.",
+  "visual_acceptance": false
 }
