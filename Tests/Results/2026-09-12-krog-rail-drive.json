@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48100.02,
+  "maxCenterlineErrorCm": 41.19,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 87785,
+    "paved": 87785
+  },
+  "lights": {
+    "lit_samples": 13213,
+    "unlit_samples": 0
+  },
+  "exit_code": 0,
+  "map": "PiedmontKrogRailReview",
+  "rail_manifest_sha256": "0582ba3a2c10d3f3abd9b36d3dd0a78b14ffea2681a5d135fbb9cef693b8274d",
+  "building_manifest_sha256": "aeb268ced9c2da2444d444b79f93769b19456c67a8dbb05c4ed190f1b423f8b5",
+  "scope": "Isolated Krog road candidate map: Irwin through the complete Krog tunnel, both directions using real W/A/D input and CharacterMovement; crowds disabled to isolate terrain/decks; appearance unverified."
+}

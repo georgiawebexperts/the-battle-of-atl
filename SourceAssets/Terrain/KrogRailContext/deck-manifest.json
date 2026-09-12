@@ -1,0 +1,32 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "surfaces": [
+    {
+      "material": "Ballast",
+      "file": "KrogRail_Ballast.obj",
+      "triangles": 35
+    },
+    {
+      "material": "Retaining",
+      "file": "KrogRail_Retaining.obj",
+      "triangles": 1197
+    },
+    {
+      "material": "Sleepers",
+      "file": "KrogRail_Sleepers.obj",
+      "triangles": 13692
+    },
+    {
+      "material": "Steel",
+      "file": "KrogRail_Steel.obj",
+      "triangles": 2544
+    }
+  ],
+  "rail_segments": 6,
+  "sleepers": 1141,
+  "deck_height_cm": 1301.826416015625,
+  "deck_underside_cm": 1277.826416015625,
+  "retaining_fill_reserve_area_cm2": 1456545.102729846,
+  "main_map_changed": false,
+  "scope": "Static mapped rail corridor study. Authored level deck/elevation and retaining fill; not surveyed engineering. Tunnel and approach road reserves excluded from retaining walls. Ends and adjoining railway terrain need refinement. MARTA elevated line omitted pending separate support design. Native clearance and visuals pending."
+}

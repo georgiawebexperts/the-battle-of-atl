@@ -3,11 +3,12 @@ import unreal,json,pathlib,os
 level_floor=os.environ.get('BATTLE_KROG_LEVEL_FLOOR')=='1'
 continuous_shell=os.environ.get('BATTLE_KROG_CONTINUOUS_SHELL')=='1'
 buildings=os.environ.get('BATTLE_KROG_BUILDINGS')=='1'
-assert sum([level_floor,continuous_shell,buildings])<=1
-suffix='buildings' if buildings else ('continuous-shell' if continuous_shell else ('level-floor' if level_floor else 'road'))
+rail=os.environ.get('BATTLE_KROG_RAIL')=='1'
+assert sum([level_floor,continuous_shell,buildings,rail])<=1
+suffix='rail' if rail else 'buildings' if buildings else ('continuous-shell' if continuous_shell else ('level-floor' if level_floor else 'road'))
 root=pathlib.Path(unreal.Paths.project_dir());out=root/f'work/krog-{suffix}-review';out.mkdir(exist_ok=True)
 assert json.loads((root/'Tests/Results/2026-09-12-krog-road-support.json').read_text())['passed']
-map_name='PiedmontKrogBuildingsReview' if buildings else ('PiedmontKrogShellReview' if continuous_shell else ('PiedmontKrogFloorReview' if level_floor else 'PiedmontKrogRoadReview'))
+map_name='PiedmontKrogRailReview' if rail else 'PiedmontKrogBuildingsReview' if buildings else ('PiedmontKrogShellReview' if continuous_shell else ('PiedmontKrogFloorReview' if level_floor else 'PiedmontKrogRoadReview'))
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/'+map_name)
 sky_review=[]
 for actor in unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_actors():

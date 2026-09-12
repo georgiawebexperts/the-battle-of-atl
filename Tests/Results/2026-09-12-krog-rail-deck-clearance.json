@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "road_probes": 4264,
+  "minimum_required_overhead_cm": 220,
+  "failures": [],
+  "main_map_changed": false,
+  "scope": "Road floor and overhead reserve only. Full bike route and visual acceptance pending."
+}
