@@ -1,0 +1,16 @@
+{
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/a6d20a726ea84975b26792b47af9c7c0/scene-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/a6d20a726ea84975b26792b47af9c7c0/scene-1.png"
+  ],
+  "map_saved": false,
+  "diagnostic_fill_light": true,
+  "hair_omitted_for_pose_review": true,
+  "visual_review": "Both views inspected. Reclined rider and kneeling helper communicate assistance better than low-reach alone. Not accepted for gameplay: ground alignment, duplicated outfits, primitive dark scooter, animation transitions and native hair attachment remain unfinished.",
+  "scope": "Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.",
+  "placement": {
+    "back_from_portal_cm": 1900,
+    "lateral_offset_cm": -1100,
+    "earlier_candidate_rejected": "Building collision had not finished loading before initial survey; now explicitly waits."
+  }
+}

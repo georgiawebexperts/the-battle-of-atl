@@ -3,6 +3,58 @@
   "candidates": [
     {
       "back_from_portal_cm": 1100,
+      "lateral_offset_cm": -1100,
+      "center_xy": [
+        30649.746425981673,
+        114799.51874828538
+      ],
+      "samples": [
+        {
+          "xy": [
+            30649.746425981673,
+            114799.51874828538
+          ],
+          "z": 1016.3078308235863,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30469.746425981673,
+            114659.51874828538
+          ],
+          "z": 1087.3082336458128,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30469.746425981673,
+            114939.51874828538
+          ],
+          "z": 985.1095549873489,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30829.746425981673,
+            114659.51874828538
+          ],
+          "z": 1067.6512117381899,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30829.746425981673,
+            114939.51874828538
+          ],
+          "z": 1014.2261030678319,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ],
+      "height_spread_cm": 102.1986786584639,
+      "conservative_road_edge_clearance_cm": -53.63
+    },
+    {
+      "back_from_portal_cm": 1100,
       "lateral_offset_cm": -850,
       "center_xy": [
         30417.98344984789,
@@ -14,7 +66,7 @@
             30417.98344984789,
             114893.25200222235
           ],
-          "z": 997.4571598170037,
+          "z": 997.4571598170032,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -30,7 +82,7 @@
             30237.98344984789,
             115033.25200222235
           ],
-          "z": 979.4662848146395,
+          "z": 979.46628481464,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -38,7 +90,7 @@
             30597.98344984789,
             114753.25200222235
           ],
-          "z": 1036.8259363886666,
+          "z": 1036.8259363886664,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -46,12 +98,116 @@
             30597.98344984789,
             115033.25200222235
           ],
-          "z": 985.1315515190425,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 997.0922666571605,
+          "actor": "Krog DeKalb road approaches"
         }
       ],
-      "height_spread_cm": 98.8659130328283,
+      "height_spread_cm": 98.86591303282785,
       "conservative_road_edge_clearance_cm": -81.15
+    },
+    {
+      "back_from_portal_cm": 1100,
+      "lateral_offset_cm": -600,
+      "center_xy": [
+        30186.220473714107,
+        114986.98525615931
+      ],
+      "samples": [
+        {
+          "xy": [
+            30186.220473714107,
+            114986.98525615931
+          ],
+          "z": 989.5837596643105,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30006.220473714107,
+            114846.98525615931
+          ],
+          "z": 1063.5241308330687,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30006.220473714107,
+            115126.98525615931
+          ],
+          "z": 979.0650630463606,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30366.220473714107,
+            114846.98525615931
+          ],
+          "z": 1018.9111266679201,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30366.220473714107,
+            115126.98525615931
+          ],
+          "z": 992.4946999888753,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ],
+      "height_spread_cm": 84.45906778670815,
+      "conservative_road_edge_clearance_cm": -108.68
+    },
+    {
+      "back_from_portal_cm": 1100,
+      "lateral_offset_cm": 600,
+      "center_xy": [
+        29073.758188271953,
+        115436.90487505675
+      ],
+      "samples": [
+        {
+          "xy": [
+            29073.758188271953,
+            115436.90487505675
+          ],
+          "z": 991.5654687314245,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "xy": [
+            28893.758188271953,
+            115296.90487505675
+          ],
+          "z": 974.6028260601488,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28893.758188271953,
+            115576.90487505675
+          ],
+          "z": 992.3500958924196,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "xy": [
+            29253.758188271953,
+            115296.90487505675
+          ],
+          "z": 992.1049277339944,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "xy": [
+            29253.758188271953,
+            115576.90487505675
+          ],
+          "z": 994.5656022817784,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ],
+      "height_spread_cm": 19.96277622162961,
+      "conservative_road_edge_clearance_cm": -217.07
     },
     {
       "back_from_portal_cm": 1100,
@@ -66,15 +222,15 @@
             28841.995212138172,
             115530.63812899371
           ],
-          "z": 963.525945326506,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 991.4172734696995,
+          "actor": "Krog DeKalb road approaches"
         },
         {
           "xy": [
             28661.995212138172,
             115390.63812899371
           ],
-          "z": 967.0534823488127,
+          "z": 967.0534823488124,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -82,15 +238,15 @@
             28661.995212138172,
             115670.63812899371
           ],
-          "z": 963.8595419364075,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 990.5210713082288,
+          "actor": "Krog DeKalb road approaches"
         },
         {
           "xy": [
             29021.995212138172,
             115390.63812899371
           ],
-          "z": 964.0519441068765,
+          "z": 964.0519441068764,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -98,12 +254,116 @@
             29021.995212138172,
             115670.63812899371
           ],
-          "z": 958.4123026470601,
+          "z": 994.9042282931941,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ],
+      "height_spread_cm": 30.852284186317775,
+      "conservative_road_edge_clearance_cm": -234.34
+    },
+    {
+      "back_from_portal_cm": 1100,
+      "lateral_offset_cm": 1100,
+      "center_xy": [
+        28610.232236004387,
+        115624.37138293068
+      ],
+      "samples": [
+        {
+          "xy": [
+            28610.232236004387,
+            115624.37138293068
+          ],
+          "z": 988.386635072563,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "xy": [
+            28430.232236004387,
+            115484.37138293068
+          ],
+          "z": 967.4610294553722,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28430.232236004387,
+            115764.37138293068
+          ],
+          "z": 980.4824535037915,
+          "actor": "Krog DeKalb road approaches"
+        },
+        {
+          "xy": [
+            28790.232236004387,
+            115484.37138293068
+          ],
+          "z": 964.1268641733323,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28790.232236004387,
+            115764.37138293068
+          ],
+          "z": 994.8938931187231,
+          "actor": "Krog DeKalb road approaches"
+        }
+      ],
+      "height_spread_cm": 30.767028945390848,
+      "conservative_road_edge_clearance_cm": -251.62
+    },
+    {
+      "back_from_portal_cm": 1500,
+      "lateral_offset_cm": -1100,
+      "center_xy": [
+        30499.773219682527,
+        114428.69798647134
+      ],
+      "samples": [
+        {
+          "xy": [
+            30499.773219682527,
+            114428.69798647134
+          ],
+          "z": 1112.9212379559794,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30319.773219682527,
+            114288.69798647134
+          ],
+          "z": 1119.607163472986,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30319.773219682527,
+            114568.69798647134
+          ],
+          "z": 1108.8331938352676,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30679.773219682527,
+            114288.69798647134
+          ],
+          "z": 1114.7791044980113,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30679.773219682527,
+            114568.69798647134
+          ],
+          "z": 1098.7323204421473,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         }
       ],
-      "height_spread_cm": 8.641179701752662,
-      "conservative_road_edge_clearance_cm": -234.34
+      "height_spread_cm": 20.874843030838747,
+      "conservative_road_edge_clearance_cm": 343.94
     },
     {
       "back_from_portal_cm": 1500,
@@ -118,7 +378,7 @@
             30268.010243548742,
             114522.4312404083
           ],
-          "z": 1112.9561279729676,
+          "z": 1112.9561279729678,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -126,7 +386,7 @@
             30088.010243548742,
             114382.4312404083
           ],
-          "z": 1129.5054687859333,
+          "z": 1129.5054687859329,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -134,7 +394,7 @@
             30088.010243548742,
             114662.4312404083
           ],
-          "z": 1106.945401308136,
+          "z": 1106.9454013081368,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -142,7 +402,7 @@
             30448.010243548742,
             114382.4312404083
           ],
-          "z": 1117.1090325050438,
+          "z": 1117.1090325050445,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -154,8 +414,112 @@
           "actor": "USGS Atlanta terrain + authored underwater basin"
         }
       ],
-      "height_spread_cm": 41.79226965013868,
+      "height_spread_cm": 41.79226965013822,
       "conservative_road_edge_clearance_cm": 316.41
+    },
+    {
+      "back_from_portal_cm": 1500,
+      "lateral_offset_cm": -600,
+      "center_xy": [
+        30036.24726741496,
+        114616.16449434527
+      ],
+      "samples": [
+        {
+          "xy": [
+            30036.24726741496,
+            114616.16449434527
+          ],
+          "z": 1110.1357592608374,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29856.24726741496,
+            114476.16449434527
+          ],
+          "z": 1126.176351244755,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29856.24726741496,
+            114756.16449434527
+          ],
+          "z": 1091.9779165661412,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30216.24726741496,
+            114476.16449434527
+          ],
+          "z": 1118.4728093946642,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30216.24726741496,
+            114756.16449434527
+          ],
+          "z": 1080.2800479074758,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 45.89630333727928,
+      "conservative_road_edge_clearance_cm": 143.52
+    },
+    {
+      "back_from_portal_cm": 1500,
+      "lateral_offset_cm": 600,
+      "center_xy": [
+        28923.784981972807,
+        115066.0841132427
+      ],
+      "samples": [
+        {
+          "xy": [
+            28923.784981972807,
+            115066.0841132427
+          ],
+          "z": 991.2061897349995,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28743.784981972807,
+            114926.0841132427
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28743.784981972807,
+            115206.0841132427
+          ],
+          "z": 986.9130949182718,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29103.784981972807,
+            114926.0841132427
+          ],
+          "z": 989.7699530365126,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29103.784981972807,
+            115206.0841132427
+          ],
+          "z": 972.1497357844264,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 775.5421587468236,
+      "conservative_road_edge_clearance_cm": -11.85
     },
     {
       "back_from_portal_cm": 1500,
@@ -170,7 +534,7 @@
             28692.022005839026,
             115159.81736717967
           ],
-          "z": 990.4888915494811,
+          "z": 990.4888915494812,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -178,8 +542,8 @@
             28512.022005839026,
             115019.81736717967
           ],
-          "z": 995.742059155401,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 1771.69189453125,
+          "actor": "Krog buildings Roof"
         },
         {
           "xy": [
@@ -194,7 +558,7 @@
             28872.022005839026,
             115019.81736717967
           ],
-          "z": 993.1109150020872,
+          "z": 993.1109150020866,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -202,12 +566,116 @@
             28872.022005839026,
             115299.81736717967
           ],
-          "z": 976.0688072360558,
+          "z": 976.0688072360563,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         }
       ],
-      "height_spread_cm": 19.673251919345148,
+      "height_spread_cm": 795.6230872951937,
       "conservative_road_edge_clearance_cm": 164.7
+    },
+    {
+      "back_from_portal_cm": 1500,
+      "lateral_offset_cm": 1100,
+      "center_xy": [
+        28460.25902970524,
+        115253.55062111664
+      ],
+      "samples": [
+        {
+          "xy": [
+            28460.25902970524,
+            115253.55062111664
+          ],
+          "z": 988.7507109425969,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28280.25902970524,
+            115113.55062111664
+          ],
+          "z": 1747.691894531251,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28280.25902970524,
+            115393.55062111664
+          ],
+          "z": 1771.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28640.25902970524,
+            115113.55062111664
+          ],
+          "z": 992.6032177459165,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28640.25902970524,
+            115393.55062111664
+          ],
+          "z": 967.2484232988927,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 804.4434712323573,
+      "conservative_road_edge_clearance_cm": 147.43
+    },
+    {
+      "back_from_portal_cm": 1900,
+      "lateral_offset_cm": -1100,
+      "center_xy": [
+        30349.80001338338,
+        114057.87722465728
+      ],
+      "samples": [
+        {
+          "xy": [
+            30349.80001338338,
+            114057.87722465728
+          ],
+          "z": 1110.5081879850204,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30169.80001338338,
+            113917.87722465728
+          ],
+          "z": 1113.485914852793,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30169.80001338338,
+            114197.87722465728
+          ],
+          "z": 1121.7289373233343,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30529.80001338338,
+            113917.87722465728
+          ],
+          "z": 1107.145333334146,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30529.80001338338,
+            114197.87722465728
+          ],
+          "z": 1114.4712434997664,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 14.583603989188305,
+      "conservative_road_edge_clearance_cm": 572.34
     },
     {
       "back_from_portal_cm": 1900,
@@ -230,7 +698,7 @@
             29938.037037249596,
             114011.61047859424
           ],
-          "z": 1129.72246312153,
+          "z": 1129.7224631215295,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -238,7 +706,7 @@
             29938.037037249596,
             114291.61047859424
           ],
-          "z": 1129.9408854319558,
+          "z": 1129.9408854319554,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -246,7 +714,7 @@
             30298.037037249596,
             114011.61047859424
           ],
-          "z": 1109.9262591250993,
+          "z": 1109.926259125099,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
@@ -254,12 +722,116 @@
             30298.037037249596,
             114291.61047859424
           ],
-          "z": 1120.0103205382902,
+          "z": 1120.0103205382893,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         }
       ],
-      "height_spread_cm": 20.0146263068566,
+      "height_spread_cm": 20.01462630685637,
       "conservative_road_edge_clearance_cm": 326.12
+    },
+    {
+      "back_from_portal_cm": 1900,
+      "lateral_offset_cm": -600,
+      "center_xy": [
+        29886.274061115815,
+        114245.34373253121
+      ],
+      "samples": [
+        {
+          "xy": [
+            29886.274061115815,
+            114245.34373253121
+          ],
+          "z": 1128.5581876827864,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29706.274061115815,
+            114105.34373253121
+          ],
+          "z": 1129.8889429555693,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29706.274061115815,
+            114385.34373253121
+          ],
+          "z": 1123.3737219450313,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30066.274061115815,
+            114105.34373253121
+          ],
+          "z": 1129.417391324052,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30066.274061115815,
+            114385.34373253121
+          ],
+          "z": 1130.2747783205523,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 6.901056375520966,
+      "conservative_road_edge_clearance_cm": 79.9
+    },
+    {
+      "back_from_portal_cm": 1900,
+      "lateral_offset_cm": 600,
+      "center_xy": [
+        28773.81177567366,
+        114695.26335142864
+      ],
+      "samples": [
+        {
+          "xy": [
+            28773.81177567366,
+            114695.26335142864
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28593.81177567366,
+            114555.26335142864
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28593.81177567366,
+            114835.26335142864
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28953.81177567366,
+            114555.26335142864
+          ],
+          "z": 1009.6352077886304,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28953.81177567366,
+            114835.26335142864
+          ],
+          "z": 1320.69189453125,
+          "actor": "Krog buildings Roof"
+        }
+      ],
+      "height_spread_cm": 738.0566867426196,
+      "conservative_road_edge_clearance_cm": 46.04
     },
     {
       "back_from_portal_cm": 1900,
@@ -274,50 +846,413 @@
             28542.04879953988,
             114788.99660536561
           ],
-          "z": 1002.0856791234141,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
         },
         {
           "xy": [
             28362.04879953988,
             114648.99660536561
           ],
-          "z": 999.7746794788513,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
         },
         {
           "xy": [
             28362.04879953988,
             114928.99660536561
           ],
-          "z": 993.3016110753227,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
         },
         {
           "xy": [
             28722.04879953988,
             114648.99660536561
           ],
-          "z": 1012.9662003637306,
-          "actor": "USGS Atlanta terrain + authored underwater basin"
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
         },
         {
           "xy": [
             28722.04879953988,
             114928.99660536561
           ],
-          "z": 997.9137558885536,
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        }
+      ],
+      "height_spread_cm": 0.0,
+      "conservative_road_edge_clearance_cm": 293.18
+    },
+    {
+      "back_from_portal_cm": 1900,
+      "lateral_offset_cm": 1100,
+      "center_xy": [
+        28310.285823406095,
+        114882.72985930258
+      ],
+      "samples": [
+        {
+          "xy": [
+            28310.285823406095,
+            114882.72985930258
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28130.285823406095,
+            114742.72985930258
+          ],
+          "z": 1747.691894531251,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28130.285823406095,
+            115022.72985930258
+          ],
+          "z": 1747.691894531251,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28490.285823406095,
+            114742.72985930258
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28490.285823406095,
+            115022.72985930258
+          ],
+          "z": 1771.69189453125,
+          "actor": "Krog buildings Roof"
+        }
+      ],
+      "height_spread_cm": 24.0,
+      "conservative_road_edge_clearance_cm": 540.31
+    },
+    {
+      "back_from_portal_cm": 2300,
+      "lateral_offset_cm": -1100,
+      "center_xy": [
+        30199.826807084235,
+        113687.05646284323
+      ],
+      "samples": [
+        {
+          "xy": [
+            30199.826807084235,
+            113687.05646284323
+          ],
+          "z": 1103.093514336496,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30019.826807084235,
+            113547.05646284323
+          ],
+          "z": 1113.6721496765667,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30019.826807084235,
+            113827.05646284323
+          ],
+          "z": 1126.9249694833115,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30379.826807084235,
+            113547.05646284323
+          ],
+          "z": 1097.1718684108228,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30379.826807084235,
+            113827.05646284323
+          ],
+          "z": 1104.3394861564948,
           "actor": "USGS Atlanta terrain + authored underwater basin"
         }
       ],
-      "height_spread_cm": 19.66458928840791,
-      "conservative_road_edge_clearance_cm": 293.18
+      "height_spread_cm": 29.75310107248879,
+      "conservative_road_edge_clearance_cm": 503.05
+    },
+    {
+      "back_from_portal_cm": 2300,
+      "lateral_offset_cm": -850,
+      "center_xy": [
+        29968.06383095045,
+        113780.7897167802
+      ],
+      "samples": [
+        {
+          "xy": [
+            29968.06383095045,
+            113780.7897167802
+          ],
+          "z": 1128.6351457928695,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29788.06383095045,
+            113640.7897167802
+          ],
+          "z": 1131.573308224155,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29788.06383095045,
+            113920.7897167802
+          ],
+          "z": 1128.3289026878238,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30148.06383095045,
+            113640.7897167802
+          ],
+          "z": 1103.9267847142264,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            30148.06383095045,
+            113920.7897167802
+          ],
+          "z": 1115.9681386792117,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 27.646523509928556,
+      "conservative_road_edge_clearance_cm": 256.83
+    },
+    {
+      "back_from_portal_cm": 2300,
+      "lateral_offset_cm": -600,
+      "center_xy": [
+        29736.30085481667,
+        113874.52297071717
+      ],
+      "samples": [
+        {
+          "xy": [
+            29736.30085481667,
+            113874.52297071717
+          ],
+          "z": 1130.3039666108916,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29556.30085481667,
+            113734.52297071717
+          ],
+          "z": 1113.20923913749,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29556.30085481667,
+            114014.52297071717
+          ],
+          "z": 1117.00567578153,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29916.30085481667,
+            113734.52297071717
+          ],
+          "z": 1130.4891608808657,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            29916.30085481667,
+            114014.52297071717
+          ],
+          "z": 1129.0717281390162,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "height_spread_cm": 17.27992174337578,
+      "conservative_road_edge_clearance_cm": 10.61
+    },
+    {
+      "back_from_portal_cm": 2300,
+      "lateral_offset_cm": 600,
+      "center_xy": [
+        28623.838569374515,
+        114324.4425896146
+      ],
+      "samples": [
+        {
+          "xy": [
+            28623.838569374515,
+            114324.4425896146
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28443.838569374515,
+            114184.4425896146
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28443.838569374515,
+            114464.4425896146
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28803.838569374515,
+            114184.4425896146
+          ],
+          "z": 1665.691894531251,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28803.838569374515,
+            114464.4425896146
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        }
+      ],
+      "height_spread_cm": 81.99999999999909,
+      "conservative_road_edge_clearance_cm": 115.18
+    },
+    {
+      "back_from_portal_cm": 2300,
+      "lateral_offset_cm": 850,
+      "center_xy": [
+        28392.075593240734,
+        114418.17584355157
+      ],
+      "samples": [
+        {
+          "xy": [
+            28392.075593240734,
+            114418.17584355157
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28212.075593240734,
+            114278.17584355157
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28212.075593240734,
+            114558.17584355157
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28572.075593240734,
+            114278.17584355157
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28572.075593240734,
+            114558.17584355157
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        }
+      ],
+      "height_spread_cm": 0.0,
+      "conservative_road_edge_clearance_cm": 361.4
+    },
+    {
+      "back_from_portal_cm": 2300,
+      "lateral_offset_cm": 1100,
+      "center_xy": [
+        28160.31261710695,
+        114511.90909748853
+      ],
+      "samples": [
+        {
+          "xy": [
+            28160.31261710695,
+            114511.90909748853
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            27980.31261710695,
+            114371.90909748853
+          ],
+          "z": 1747.691894531251,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            27980.31261710695,
+            114651.90909748853
+          ],
+          "z": 983.381338350232,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xy": [
+            28340.31261710695,
+            114371.90909748853
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        },
+        {
+          "xy": [
+            28340.31261710695,
+            114651.90909748853
+          ],
+          "z": 1747.69189453125,
+          "actor": "Krog buildings Roof"
+        }
+      ],
+      "height_spread_cm": 764.3105561810189,
+      "conservative_road_edge_clearance_cm": 607.62
     }
   ],
-  "scope": "Ground survey only. Road-lane clearance, pedestrian nav, pose/scene footprint and rarity behavior not yet verified. No actors or map changes. Conservative scene bounding-circle clearance from source road widths included; does not replace native body sweeps.",
   "preferred_candidate": {
     "back_from_portal_cm": 1900,
-    "lateral_offset_cm": 850,
-    "reason": "Approximately293cm conservative road clearance with about20cm footprint grade variation; native body/pose checks still required."
-  }
+    "lateral_offset_cm": -1100
+  },
+  "scope": "Ground survey only. Source-road-width bounding-circle clearance included; native lane/body clearance, pedestrian nav, pose footprint and rarity behavior not yet verified. No actors or map changes."
 }
