@@ -8,4 +8,5 @@ class AURAPLAYGROUND_API ABattleMarketClosure: public AActor {
 public:
  ABattleMarketClosure();
  virtual void BeginPlay() override;
+ virtual void Tick(float Dt) override;
 };

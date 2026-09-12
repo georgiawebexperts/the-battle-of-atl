@@ -1,10 +1,13 @@
 #include "BattleMarketClosure.h"
+#include "BattleBike.h"
+#include "Kismet/GameplayStatics.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleMarketClosure::ABattleMarketClosure(){
+ PrimaryActorTick.bCanEverTick=true;
  RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("MarketClosureRoot"));Tags.Add(TEXT("RideBarrier"));Tags.Add(TEXT("MarketSetupClosure"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Metal(TEXT("/Game/BattleForTheA/Furniture/M_BenchFrame.M_BenchFrame")),Timber(TEXT("/Game/BattleForTheA/Furniture/M_BenchWood.M_BenchWood")),Red(TEXT("/Game/BattleForTheA/Materials/M_ColaRed.M_ColaRed")),Text(TEXT("/Engine/EngineMaterials/UnlitText.UnlitText"));
@@ -23,4 +26,12 @@ void ABattleMarketClosure::BeginPlay(){
  Super::BeginPlay();FHitResult Floor;FCollisionQueryParams Q;Q.AddIgnoredActor(this);
  const FVector P=GetActorLocation();
  if(GetWorld()->LineTraceSingleByChannel(Floor,P+FVector(0,0,1000),P-FVector(0,0,1000),ECC_Visibility,Q))SetActorLocation(Floor.ImpactPoint,false,nullptr,ETeleportType::TeleportPhysics);
+}
+
+void ABattleMarketClosure::Tick(float Dt){
+ Super::Tick(Dt);
+ if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));Mode&&!Mode->bTutorialActive){
+  UE_LOG(LogTemp,Display,TEXT("MarketClosure: tutorial ended; clearing entrance"));
+  Destroy();
+ }
 }

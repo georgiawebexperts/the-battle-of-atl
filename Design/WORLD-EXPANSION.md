@@ -544,3 +544,8 @@ ABattleMarketClosure creates a360cm-high,1640cm-wide visible welded-mesh fence, 
 Native build passes.237 sphere30cm sweeps across fence width at90/180/300cm pass. Initial test hit the adjacent tutorial street fence atY+600 instead of market fence; isolated sweeps now ignore that actor to test market geometry. Actual keyboard market approach still includes both fences and passes4471.1cm, maxerror4.3cm, untimed/no wipeout. Scripts/test_tutorial_routes.py --closure market reproduces; report2026-09-12-market-closure-market.json. Previous extension-only report preserved.
 
 Static entrance renderbe8eaec49a83433bbdcf072f2ec764d7 inspected: sign readable, market visible behind. Fence deliberately prototype quality. Ground end fit, side bypasses, actual collision/jump attempts, and post-tutorial lifecycle not verified; do not treat as complete access restriction. Normal gameplay/main map/desktop050 unchanged.
+
+
+## Tutorial-only market fence lifecycle — 2026-09-12 [codex-maclaptop]
+
+ABattleMarketClosure now ticks and destroys itself once the active park mode leaves tutorial state. It does not evaluate lifecycle in BeginPlay, because the tutorial spawns it before setting initial practice state. Static editor art study is unaffected (no gameplay mode). Native build and Scripts/test_tutorial_routes.py --closure direct pass: fence present and237 isolated crossing sweeps pass during practice; actual7692cm keyboard gate route with max11.8cm centreline error; after real gateway start no market closure actor remains and countdown/single-start timer pass. Report2026-09-12-market-closure-direct.json. Still opt-in prototype: jumping, around-end bypasses and full closure design remain; desktop050 unchanged.

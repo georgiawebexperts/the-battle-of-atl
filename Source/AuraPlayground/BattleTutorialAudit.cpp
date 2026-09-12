@@ -65,6 +65,10 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   Key(EKeys::W,true);Key(EKeys::A,Error< -2);Key(EKeys::D,Error>2);
  }else if(TutorialStage==2){
   TutorialClock+=Dt;if(TutorialClock<4.2f)return;
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview"))){
+   TActorIterator<ABattleMarketClosure> Closure(GetWorld());TCHECK(!Closure,"Market setup fence remained after tutorial");
+   UE_LOG(LogTemp,Display,TEXT("MarketClosureAudit: removed after gateway start"));
+  }
   TCHECK(M->StartCountdown==0&&M->RunElapsed>0&&M->TimeRemaining<M->Difficulty.TimeLimitSeconds,"Timer did not start after gateway countdown");
   const float Left=M->TimeRemaining;TCHECK(!T->TryStart(BattleTutorialData::Gate-FVector(100,0,0),BattleTutorialData::Gate+FVector(100,0,98))&&M->TimeRemaining==Left,"Crossing gate again reset the run");
   End(true,TEXT("Untimed practice, protected clock/health, dismount/remount, actual W/A/D road ride, one-way gate countdown and single-start timer pass"));
