@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48130.91,
+  "maxCenterlineErrorCm": 155.38,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 56668,
+    "paved": 56668
+  },
+  "lights": {
+    "lit_samples": 17433,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 935,
+    "max_live_cars": 24,
+    "max_moving_cars": 22,
+    "nearby_samples": 117,
+    "nearest_car_cm": 261.09
+  },
+  "crowd_observed": {
+    "max_live_people": 26,
+    "max_walking_people": 22,
+    "nearby_samples": 858,
+    "nearest_person_cm": 62.0
+  },
+  "exit_code": 0,
+  "map": "PiedmontKrogWorldReview",
+  "rail_manifest_sha256": "db2af21e64b4d594b9f2f2fcecd57efbb5c28701b34c80e68e6cc2745d376c81",
+  "building_manifest_sha256": "aeb268ced9c2da2444d444b79f93769b19456c67a8dbb05c4ed190f1b423f8b5",
+  "scope": "Selected bidirectional route with live cars and autonomous pedestrians retained. Test rider brakes for people ahead using Space; no steering avoidance or rendered performance evaluation."
+}

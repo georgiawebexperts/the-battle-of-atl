@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "completedLegs": 0,
+  "travelCm": 7375.86,
+  "maxCenterlineErrorCm": 10.19,
+  "wipeouts": 1,
+  "ground_samples": {
+    "total": 6480,
+    "paved": 6480
+  },
+  "lights": {
+    "lit_samples": 0,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 34,
+    "max_live_cars": 12,
+    "max_moving_cars": 11,
+    "nearby_samples": 0,
+    "nearest_car_cm": 4933.23
+  },
+  "crowd_observed": {
+    "max_live_people": 26,
+    "max_walking_people": 22,
+    "nearby_samples": 5,
+    "nearest_person_cm": 113.81
+  },
+  "exit_code": 0,
+  "map": "PiedmontKrogWorldReview",
+  "rail_manifest_sha256": "db2af21e64b4d594b9f2f2fcecd57efbb5c28701b34c80e68e6cc2745d376c81",
+  "building_manifest_sha256": "aeb268ced9c2da2444d444b79f93769b19456c67a8dbb05c4ed190f1b423f8b5",
+  "scope": "Selected bidirectional route with live road traffic and autonomous pedestrians retained; no player avoidance decisions or rendered performance evaluation."
+}

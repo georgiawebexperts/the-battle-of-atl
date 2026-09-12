@@ -25,7 +25,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  const bool Eastside=Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
- struct FTrafficObservation{TWeakObjectPtr<UWorld> World;float SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0;};static FTrafficObservation Traffic;
+ struct FTrafficObservation{TWeakObjectPtr<UWorld> World;float SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max();};static FTrafficObservation Traffic;
  if(Traffic.World!=GetWorld()){Traffic=FTrafficObservation();Traffic.World=GetWorld();}
  Traffic.SinceSample+=Dt;
  if(Traffic.SinceSample>=.25f){
@@ -33,9 +33,15 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car)if(!Car->IsActorBeingDestroyed()){
    ++Live;if(Car->Speed>1)++Moving;const float Distance=FVector::Dist2D(Car->GetActorLocation(),Bike->GetActorLocation());Traffic.Nearest=FMath::Min(Traffic.Nearest,Distance);Nearby|=Distance<1000;
   }
+  int People=0,Walking=0;bool PersonNearby=false;
+  for(TActorIterator<APiedmontPedestrian> Person(GetWorld());Person;++Person)if(!Person->IsActorBeingDestroyed()){
+   ++People;if(Person->GetVelocity().Size2D()>1)++Walking;const float Distance=FVector::Dist2D(Person->GetActorLocation(),Bike->GetActorLocation());Traffic.NearestPerson=FMath::Min(Traffic.NearestPerson,Distance);PersonNearby|=Distance<1000;
+  }
+  Traffic.MaxPeople=FMath::Max(Traffic.MaxPeople,People);Traffic.MaxWalking=FMath::Max(Traffic.MaxWalking,Walking);if(PersonNearby)++Traffic.PeopleNearby;
   Traffic.MaxLive=FMath::Max(Traffic.MaxLive,Live);Traffic.MaxMoving=FMath::Max(Traffic.MaxMoving,Moving);if(Nearby)++Traffic.NearbySamples;
  }
  auto Finish=[&](bool Passed){
+  UE_LOG(LogTemp,Display,TEXT("CrowdRideAudit: {\"max_live_people\":%d,\"max_walking_people\":%d,\"nearby_samples\":%d,\"nearest_person_cm\":%.2f}"),Traffic.MaxPeople,Traffic.MaxWalking,Traffic.PeopleNearby,Traffic.MaxPeople?Traffic.NearestPerson:-1.f);
   UE_LOG(LogTemp,Display,TEXT("TrafficRideAudit: {\"samples\":%d,\"max_live_cars\":%d,\"max_moving_cars\":%d,\"nearby_samples\":%d,\"nearest_car_cm\":%.2f}"),Traffic.Samples,Traffic.MaxLive,Traffic.MaxMoving,Traffic.NearbySamples,Traffic.MaxLive?Traffic.Nearest:-1.f);
   UE_LOG(LogTemp,Display,TEXT("Connector state: key=%d pedal=%.1f speed=%.1f movement=%d tick=%d"),IsInputKeyDown(EKeys::W),Bike->Ride->Pedal,Bike->Ride->Speed,int32(Bike->Ride->MovementMode),Bike->IsActorTickEnabled());
   UE_LOG(LogTemp,Display,TEXT("TrailGroundAudit: samples=%d paved=%d"),TrailGroundSamples,TrailPavedSamples);
@@ -56,7 +62,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   }
   if(ConnectorPoints.Num()<2){Finish(false);return;}
   ConnectorWipeouts=Bike->Ride->Wipeouts;
-  if(Eastside){for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();}
+  if(Eastside&&!FParse::Param(FCommandLine::Get(),TEXT("BattleKeepCrowds"))){for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();}
  }
  if(ConnectorElapsed==0){
   FlushPressedKeys();Bike->Ride->Gear=Home?2:Eastside?3:1;Bike->Ride->Speed=0;Bike->Ride->Velocity=FVector::ZeroVector;
@@ -94,6 +100,16 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  }
  const float Error=FMath::FindDeltaAngleDegrees(Bike->GetActorRotation().Yaw,(Target-Position).Rotation().Yaw);
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
- Key(EKeys::W,true);Key(EKeys::A,Error < -2);Key(EKeys::D,Error > 2);
+ bool Yield=false;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleKeepCrowds"))){
+  const FVector Forward=Bike->GetActorForwardVector().GetSafeNormal2D();
+  const float LookAhead=FMath::Max(420.f,Bike->Ride->Speed*Bike->Ride->Speed/1000.f+Bike->Ride->Speed*.5f+200.f);
+  for(TActorIterator<APiedmontPedestrian> Person(GetWorld());Person;++Person){
+   const FVector Offset=Person->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);
+   const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);
+   if(Ahead>0&&Ahead<LookAhead&&Side<220&&FMath::Abs(Offset.Z)<160){Yield=true;break;}
+  }
+ }
+ Key(EKeys::SpaceBar,Yield);Key(EKeys::W,!Yield);Key(EKeys::A,Error < -2);Key(EKeys::D,Error > 2);
 #endif
 }
