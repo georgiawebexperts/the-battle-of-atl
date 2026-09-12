@@ -1,47 +1,10 @@
 {
-  "passed": false,
-  "probes": 25810,
+  "passed": true,
+  "probes": 18936,
   "hits": {
-    "Krog Lake road approaches": 25810
+    "Krog Lake road approaches": 18936
   },
-  "failures": [
-    {
-      "xyz": [
-        29645.80556333333,
-        115932.96584,
-        952.3035024529275
-      ],
-      "actor": "Krog Lake road approaches",
-      "z": 951.9618279677125
-    },
-    {
-      "xyz": [
-        29644.72719,
-        115934.29593000001,
-        948.5064961748641
-      ],
-      "actor": "Krog Lake road approaches",
-      "z": 948.1854764302437
-    },
-    {
-      "xyz": [
-        29650.165353333334,
-        115932.42131666666,
-        952.4598826967258
-      ],
-      "actor": "Krog Lake road approaches",
-      "z": 952.0668564909992
-    },
-    {
-      "xyz": [
-        29649.01947666667,
-        115933.7157,
-        948.6275876083623
-      ],
-      "actor": "Krog Lake road approaches",
-      "z": 948.2254470339456
-    }
-  ],
+  "failures": [],
   "trail_failures": [],
   "main_map_changed": false,
   "preserved_path_probes": 2778,

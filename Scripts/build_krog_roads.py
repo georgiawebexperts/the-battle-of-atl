@@ -1,5 +1,6 @@
 """Build Krog/DeKalb road surfaces with joins to the installed BeltLine meshes."""
 import array, json, math, sys, argparse
+from functools import lru_cache
 from pathlib import Path
 from shapely.geometry import Point, Polygon, LineString, box
 from shapely.geometry.polygon import orient
@@ -29,7 +30,7 @@ def terrain(x, y):
 site = Point(data['crossing_xyz'][:2]); limit = site.buffer(4500)
 road = unary_union([LineString(r['points_cm']).buffer(450 if r['tags']['name']=='DeKalb Avenue Northeast' else 300, join_style=2)
                     for r in data['roads']]).intersection(limit)
-polys, triangles = [], []
+polys, triangles, surface_names = [], [], []
 for directory in ['EastsideTrail', 'KrogRoute']:
     for path in (root/'SourceAssets/Terrain'/directory).glob('*.obj'):
         if not any(s in path.stem for s in ['Asphalt','Concrete']) and path.stem!='KrogTunnel_Road': continue
@@ -47,7 +48,7 @@ for directory in ['EastsideTrail', 'KrogRoute']:
                     if (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])<=0:continue
                 if poly.area > 1e-5 and poly.distance(road) < 350:
                     assert len(face) == 3
-                    polys.append(poly); triangles.append(face)
+                    polys.append(poly); triangles.append(face); surface_names.append(path.stem)
 assert polys
 index = STRtree(polys); protected = unary_union(polys)
 # Coalesce sub-millimetre gaps between independently exported pavement chunks.
@@ -62,12 +63,23 @@ def plane(i,x,y):
     v = ((c[1]-a[1])*(x-c[0])+(a[0]-c[0])*(y-c[1]))/den
     return u*a[2]+v*b[2]+(1-u-v)*c[2]
 
+@lru_cache(maxsize=500000)
 def height(x,y):
     p = Point(x,y); i = int(index.nearest(p)); q = nearest_points(p,polys[i])[1]
     distance = p.distance(q); blend = max(0, 1-distance/300)
-    # Match existing triangle exactly at the seam; fade elevation correction
-    # over three game metres without changing the active landscape.
-    return max(terrain(x,y)+3,terrain(x,y)+14 + blend*(plane(i,q.x,q.y)-terrain(q.x,q.y)-14))
+    if blend==0:return terrain(x,y)+14
+    # Blend the nearest point of each distinct surface, not triangle density.
+    # A hard nearest-triangle choice jumps by the curb height along its bisector.
+    nearest={}
+    for candidate in index.query(p.buffer(distance+80)):
+        j=int(candidate);d=polys[j].distance(p);name=surface_names[j]
+        if d<distance+80 and (name not in nearest or d<nearest[name][0]):nearest[name]=(d,j)
+    total=correction=0.
+    for d,j in nearest.values():
+        point=nearest_points(p,polys[j])[1]
+        weight=(max(0,1-(d-distance)/80)**2)/max(d,.00001)**2
+        correction+=weight*(plane(j,point.x,point.y)-terrain(point.x,point.y)-14);total+=weight
+    return max(terrain(x,y)+3,terrain(x,y)+14+blend*correction/total)
 
 # Confirm source frame against actual installed hits before generating pavement.
 survey = json.loads((root/'Tests/Results/2026-09-12-krog-crossing-survey.json').read_text())

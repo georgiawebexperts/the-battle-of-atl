@@ -1,0 +1,9 @@
+{
+  "images": [
+    "../../../../Projects/AuraPlayground/work/krog-road-review/approach.png",
+    "../../../../Projects/AuraPlayground/work/krog-road-review/wide.png",
+    "../../../../Projects/AuraPlayground/work/krog-road-review/portal.png"
+  ],
+  "main_map_changed": false,
+  "visual_review": "Wide image inspected after transient explicit Nanite material flags. Checkerboard corrected; dark asphalt, uneven approach shaping, two curb-corner steps and unfinished tunnel/streetscape remain. Not accepted for installation."
+}
