@@ -108,7 +108,7 @@ bool APiedmontPedestrian::BeginSleeping(){
  if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||SleepPhase)return false;
  // The initial candidate was authored for the male City skeleton only.
  if(!Body->GetSkinnedAsset()||!Body->GetSkinnedAsset()->GetName().StartsWith(TEXT("m_tal_nrw")))return false;
- auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim"));
+ auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/SleepingBaked"));
  if(!Animation)return false;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;
@@ -153,7 +153,7 @@ bool APiedmontPedestrian::TickSleepBehavior(float Dt){
   // Keep the authored landed pose if a new obstacle occupies the landing area.
   // Retry the handoff while the character remains down instead of teleporting through it.
   if(!IsSettlePathClear(SleepLanding))return true;
-  auto* Sleep=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim"));
+  auto* Sleep=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/SleepingBaked"));
   if(!Sleep)return true;
   SetActorLocationAndRotation(SleepLanding,SleepLandingRotation,false,nullptr,ETeleportType::TeleportPhysics);
   GetCharacterMovement()->bForceNextFloorCheck=true;

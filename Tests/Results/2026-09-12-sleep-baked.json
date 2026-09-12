@@ -1,0 +1,7 @@
+{
+  "path": "/Game/BattleRetarget/Mixamo/SleepCandidate/SleepingBaked.SleepingBaked",
+  "source": "/Game/BattleRetarget/Mixamo/SleepCandidate/MixamoSleepReference_Anim.MixamoSleepReference_Anim",
+  "frames": 207,
+  "runtime_seam_verified": true,
+  "verification_scope": "Head position at native flat-platform fall-to-sleep handoff; gap0.0041cm. Not full rendered pose/contact acceptance."
+}

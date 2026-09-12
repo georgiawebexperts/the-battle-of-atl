@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "phase": 5,
+    "reason": "blocked start, blocked landing, continuous handoff and re-wake passed",
+    "handoff_head_jump_cm": 0.0041
+  },
+  "scope": "Isolated flat-platform uncooked native settle clearance, head-position handoff and re-wake check; no rendered or packaged acceptance",
+  "passed": true
+}
