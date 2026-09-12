@@ -5,6 +5,7 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "NavigationSystem.h"
+#include "Misc/CommandLine.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
@@ -17,7 +18,8 @@ void TickBattleSleeperChaseAudit(APlayerController* PC,float Dt){
  if(S.Done||PC->GetWorld()->GetTimeSeconds()<6)return;S.Clock+=Dt;S.Total+=Dt;
  auto Finish=[&](bool Pass,const TCHAR* Reason){S.Done=true;UE_LOG(LogTemp,Display,TEXT("BattleSleeperChaseAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"start_distance\":%.3f,\"closest_distance\":%.3f}"),Pass?TEXT("true"):TEXT("false"),S.Phase,Reason,S.StartDistance,S.Closest);UKismetSystemLibrary::QuitGame(PC,PC,EQuitPreference::Quit,false);};
 #define CHECK_CHASE(C,R) if(!(C)){Finish(false,TEXT(R));return;}
- CHECK_CHASE(S.Total<40,"Timed out");
+ const bool FullCycle=FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperFullCycle"));
+ CHECK_CHASE(S.Total<60,"Timed out");
  if(S.Phase==0){
   auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(PC->GetWorld());CHECK_CHASE(Nav,"Navigation missing");
   for(TActorIterator<APiedmontTrafficDirector> It(PC->GetWorld());It;++It)It->SetActorTickEnabled(false);
@@ -47,8 +49,12 @@ void TickBattleSleeperChaseAudit(APlayerController* PC,float Dt){
   if(S.Clock>11.8f){CHECK_CHASE(Person->SleepPhase==0&&Person->GetVelocity().Size()<1&&Person->GetCharacterMovement()->MaxWalkSpeed==135,"Chase did not stop and restore speed");
    CHECK_CHASE(Person->BeginSleeping(),"Repeat sleep failed");S.Phase=4;S.Clock=0;return;}
  }
- if(S.Phase==4&&S.Clock>.5f){CHECK_CHASE(Person->WakeAndChase(S.Target.Get()),"Second chase wake rejected");S.Phase=5;S.Clock=0;return;}
+ if(S.Phase==4&&S.Clock>.5f){Person->bReturnToSleepAfterChase=FullCycle;CHECK_CHASE(Person->WakeAndChase(S.Target.Get()),"Second chase wake rejected");S.Phase=5;S.Clock=0;return;}
  if(S.Phase==5&&S.Clock>5.7f){CHECK_CHASE(Person->SleepPhase==3,"Second chase did not start");S.Target->Destroy();S.Phase=6;S.Clock=0;return;}
+ if(S.Phase==6&&FullCycle){
+  if(Person->SleepPhase==1){Person->Body->RefreshBoneTransforms();Finish(true,TEXT("approach, timeout, target loss and return to sleep passed"));return;}
+  CHECK_CHASE(S.Clock<17,"Full cycle failed to settle back to sleep");return;
+ }
  if(S.Phase==6&&S.Clock>.2f){CHECK_CHASE(Person->SleepPhase==0&&Person->GetVelocity().Size()<1,"Lost target did not cancel pursuit");Finish(true,TEXT("approach, timeout, speed restoration and target loss passed"));}
 #undef CHECK_CHASE
 #endif

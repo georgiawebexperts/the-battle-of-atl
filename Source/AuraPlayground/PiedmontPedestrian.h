@@ -39,6 +39,7 @@ public:
  UFUNCTION(BlueprintCallable) bool WakeFromSleep();
  UFUNCTION(BlueprintCallable) bool WakeAndChase(APawn* Target);
  UFUNCTION(BlueprintCallable) bool BeginSettling();
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bReturnToSleepAfterChase=false;
  UPROPERTY(BlueprintReadOnly) int32 SleepPhase=0;
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
@@ -47,13 +48,14 @@ protected:
  virtual bool CanUseWeapon() const override {return false;}
 private:
  void CancelSleepBehavior();
+ void FinishSleeperChase();
  bool TickSleepBehavior(float Dt);
  TWeakObjectPtr<APawn> SleepTarget;
  FVector SleepOrigin;
  FVector SleepLanding;
  FRotator SleepLandingRotation;
  bool IsSettlePathClear(const FVector& Landing) const;
- float ChaseClock=0,ChaseRepath=0;
+ float ChaseClock=0,ChaseRepath=0,ReturnClock=0;
  bool BeginKnockdown(float Speed,FVector Direction);
  void TickKnockdown(float Dt);
  bool BeginRecovery();

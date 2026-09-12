@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "phase": 6,
+    "reason": "approach, timeout, target loss and return to sleep passed",
+    "start_distance": 472.171,
+    "closest_distance": 77.983
+  },
+  "scope": "Uncooked native chase approach, timeout and automatic return to sleep after target loss check; no rendered or packaged acceptance",
+  "passed": true
+}

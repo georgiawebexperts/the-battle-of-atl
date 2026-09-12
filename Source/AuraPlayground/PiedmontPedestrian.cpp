@@ -164,9 +164,21 @@ bool APiedmontPedestrian::TickSleepBehavior(float Dt){
   auto* Target=SleepTarget.Get();
   if(!AI||!IsValid(Target)||Target->IsActorBeingDestroyed()||ChaseClock>=6.f||
    FVector::Dist2D(GetActorLocation(),SleepOrigin)>900||FVector::Dist2D(Target->GetActorLocation(),SleepOrigin)>1200){
-   CancelSleepBehavior();PauseRemaining=2;return true;
+   FinishSleeperChase();return true;
   }
-  if(ChaseRepath<=0){ChaseRepath=.35f;if(!MoveTo(Target->GetActorLocation())){CancelSleepBehavior();PauseRemaining=2;}}
+  if(ChaseRepath<=0){ChaseRepath=.35f;if(!MoveTo(Target->GetActorLocation()))FinishSleeperChase();}
+  return true;
+ }
+ if(SleepPhase==5){
+  ReturnClock+=Dt;ChaseRepath-=Dt;
+  if(!AI||ReturnClock>10.f){CancelSleepBehavior();PauseRemaining=5;return true;}
+  if(FVector::Dist2D(GetActorLocation(),SleepOrigin)<75){
+   AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();
+   if(ChaseRepath<=0){ChaseRepath=.5f;BeginSettling();}
+  }else if(ChaseRepath<=0){
+   ChaseRepath=.5f;
+   if(!MoveTo(SleepOrigin)){CancelSleepBehavior();PauseRemaining=5;}
+  }
   return true;
  }
  if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return true;
@@ -187,7 +199,7 @@ bool APiedmontPedestrian::IsSettlePathClear(const FVector& Landing) const{
  return true;
 }
 bool APiedmontPedestrian::BeginSettling(){
- if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||(SleepPhase!=0&&SleepPhase!=3))return false;
+ if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||(SleepPhase!=0&&SleepPhase!=3&&SleepPhase!=5))return false;
  if(!Body->GetSkinnedAsset()||!Body->GetSkinnedAsset()->GetName().StartsWith(TEXT("m_tal_nrw")))return false;
  // From the StumbleToSleep bake: mesh-local anchor of the aligned sleeping loop.
  const FVector Offset=Body->GetComponentQuat().RotateVector(FVector(-261.387456,39.753575,0));
@@ -199,4 +211,13 @@ bool APiedmontPedestrian::BeginSettling(){
  GetCharacterMovement()->StopMovementImmediately();Configure(Kind);bHasDestination=false;SleepTarget.Reset();
  SleepLanding=Landing;SleepLandingRotation=GetActorRotation()+FRotator(0,36.510763,0);
  SetBodySequence(Fall,false);SleepPhase=4;return true;
+}
+
+void APiedmontPedestrian::FinishSleeperChase(){
+ if(!bReturnToSleepAfterChase){CancelSleepBehavior();PauseRemaining=2;return;}
+ SleepTarget.Reset();
+ if(BeginSettling())return;
+ if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+ GetCharacterMovement()->StopMovementImmediately();Configure(Kind);bHasDestination=false;
+ SleepPhase=5;ReturnClock=0;ChaseRepath=0;
 }
