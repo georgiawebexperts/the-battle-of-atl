@@ -1,0 +1,11 @@
+{
+  "trace": [
+    "[2026.09.12-15.55.13:485][859]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17584.492 Y=-4006.157 Z=199.211 yaw=-101.62 target=X=-17580.831 Y=-4176.176 Z=105.728 speed=700.0 steer=0.124 floor=BattleTutorial_0",
+    "[2026.09.12-15.55.13:735][874]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17599.275 Y=-4179.564 Z=204.198 yaw=-80.36 target=X=-17610.785 Y=-4340.500 Z=110.972 speed=700.0 steer=0.522 floor=BattleTutorial_0",
+    "[2026.09.12-15.55.13:985][889]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17578.653 Y=-4352.929 Z=209.103 yaw=-93.69 target=X=-17691.007 Y=-4486.807 Z=116.547 speed=700.0 steer=-0.794 floor=BattleTutorial_0",
+    "[2026.09.12-15.55.14:235][904]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17620.062 Y=-4519.956 Z=214.753 yaw=-125.44 target=X=-17766.260 Y=-4631.849 Z=121.794 speed=700.0 steer=-0.972 floor=BattleTutorial_0",
+    "[2026.09.12-15.55.14:485][919]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17740.801 Y=-4643.166 Z=219.869 yaw=-142.35 target=X=-17742.357 Y=-4808.550 Z=124.277 speed=700.0 steer=0.359 floor=BattleTutorial_0",
+    "[2026.09.12-15.55.14:735][934]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17861.799 Y=-4767.138 Z=225.089 yaw=-116.66 target=X=-17696.339 Y=-4893.282 Z=125.945 speed=700.0 steer=0.913 floor=BattleTutorial_0",
+    "[2026.09.12-15.55.14:985][949]LogTemp: Display: Tutorial deviation: position=X=-17908.559 Y=-4932.041 Z=224.816 segment=70"
+  ]
+}

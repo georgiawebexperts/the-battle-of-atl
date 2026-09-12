@@ -29,6 +29,7 @@ void ABattleMacController::TickTutorialAudit(float Dt){
    TActorIterator<ABattleMarketClosure> It(GetWorld());TCHECK(It,"Market closure missing");auto* Closure=*It;
    for(int Y=-780;Y<=780;Y+=20)for(float Z:{90.f,180.f,300.f}){
     const FVector C=Closure->GetActorLocation()+FVector(0,Y,Z);FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(B);Q.AddIgnoredActor(T);
+    for(TActorIterator<APawn> Pawn(GetWorld());Pawn;++Pawn)Q.AddIgnoredActor(*Pawn);
     const bool Blocked=GetWorld()->SweepSingleByChannel(Hit,C-FVector(150,0,0),C+FVector(150,0,0),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(30),Q);
     if(!Blocked||Hit.GetActor()!=Closure)UE_LOG(LogTemp,Display,TEXT("MarketClosureMiss: y=%d z=%.0f closure=%s hit=%s point=%s"),Y,Z,*Closure->GetActorLocation().ToString(),*GetNameSafe(Hit.GetActor()),*Hit.ImpactPoint.ToString());
     TCHECK(Blocked&&Hit.GetActor()==Closure,"Gap in market gate fence");
@@ -58,11 +59,15 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   float Best=MAX_flt;int Segment=0;FVector Closest;
   for(int I=1;I<Points.Num();I++){FVector A=Points[I-1],C=Points[I],V=P;A.Z=C.Z=V.Z=0;const FVector Q=FMath::ClosestPointOnSegment(V,A,C);const float D=FVector::Dist2D(V,Q);if(D<Best){Best=D;Segment=I-1;Closest=Q;}}
   TutorialMaxError=FMath::Max(TutorialMaxError,Best);if(Best>=200)UE_LOG(LogTemp,Display,TEXT("Tutorial deviation: position=%s segment=%d"),*P.ToString(),Segment);TCHECK(Best<200,"Practice steering left the road");
-  FVector Target=Closest;float Ahead=170;
+  // Account for travel and eased-steering response before the next correction.
+  // Still drives real keys; no position/yaw writes or relaxed route bounds.
+  FVector Target=Closest;float Ahead=170+B->Ride->Speed*.125f;
   for(int I=Segment+1;I<Points.Num();I++){const float D=FVector::Dist2D(Target,Points[I]);if(D>=Ahead){Target=FMath::Lerp(Target,Points[I],Ahead/D);break;}Target=Points[I];Ahead-=D;}
   static double NextTrace=0;
   if(P.Y< -4000&&GetWorld()->GetTimeSeconds()>=NextTrace){NextTrace=GetWorld()->GetTimeSeconds()+.25;UE_LOG(LogTemp,Display,TEXT("TutorialSteering: dt=%.4f position=%s yaw=%.2f target=%s speed=%.1f steer=%.3f floor=%s"),Dt,*P.ToString(),B->GetActorRotation().Yaw,*Target.ToString(),B->Ride->Speed,B->Ride->SmoothedSteer,*GetNameSafe(B->Ride->CurrentFloor.HitResult.GetActor()));}
-  const float Error=FMath::FindDeltaAngleDegrees(B->GetActorRotation().Yaw,(Target-P).Rotation().Yaw);
+  const float TurnRate=FMath::Lerp(180.f,85.f,FMath::Clamp(B->Ride->Speed/1600.f,0.f,1.f));
+  const float PredictedYaw=B->GetActorRotation().Yaw+B->Ride->SmoothedSteer*TurnRate*.1f;
+  const float Error=FMath::FindDeltaAngleDegrees(PredictedYaw,(Target-P).Rotation().Yaw);
   auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
   Key(EKeys::W,true);Key(EKeys::A,Error< -2);Key(EKeys::D,Error>2);
  }else if(TutorialStage==2){
