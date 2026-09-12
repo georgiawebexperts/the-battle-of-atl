@@ -1,0 +1,25 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build044-packaged-1280-tutorial/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2bf41dc02797e308ca5738e2036d44116f7321a69acedb1e89bff9e7cd3d2f2c"
+    },
+    {
+      "file": "work/build044-packaged-1280-tutorial/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e1417b804e6f78b1b994271bd9110fb367bbce69fd510f2b1c83975dc339404b"
+    }
+  ],
+  "visual_review": "Inspected bike and foot PNGs. Tutorial footer fits inside its panel; bike ammo has a dark backing and is readable over bright grass. Main prompts readable at 1280x720. Environment/animation quality and full HUD-state coverage not accepted.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}
