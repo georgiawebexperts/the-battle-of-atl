@@ -1,0 +1,24 @@
+{
+  "clip": "/Game/BattleRetarget/Mixamo/StumbleCandidate/MixamoStumbleReference_Anim.MixamoStumbleReference_Anim",
+  "duration": 4.933333396911621,
+  "rigs": [],
+  "retargeter": "/Game/BattleRetarget/Mixamo/SleepCandidate/RTG_SleepMixamoCity.RTG_SleepMixamoCity",
+  "visual_acceptance": false,
+  "gameplay_installed": false,
+  "review": {
+    "manifest": "work/sleep-stumble-contact-0.0/manifest.json",
+    "rendered_samples": 4,
+    "inspected_samples": [
+      0,
+      3
+    ],
+    "finding": "Begins standing off balance and ends curled on right side with connected limbs; candidate for transition to sleeping loop. Ground contact and continuous motion remain unaccepted.",
+    "pelvis_displacement_cm": [
+      38.48238827970519,
+      262.88133489271627,
+      -65.82807915556805
+    ],
+    "render_exit": 1,
+    "render_issue": "HTTP listener port 30010 occupied; all four captures and manifest exported."
+  }
+}

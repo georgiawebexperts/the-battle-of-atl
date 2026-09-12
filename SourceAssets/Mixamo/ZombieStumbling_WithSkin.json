@@ -1,0 +1,19 @@
+{
+  "title": "Zombie Stumbling",
+  "description": "Zombie Stumble To The Right And Fall",
+  "source": "https://www.mixamo.com/#/?page=1&query=stumble",
+  "downloaded": "2026-09-12",
+  "settings": {
+    "format": "FBX Binary",
+    "skin": "With Skin",
+    "fps": 30,
+    "keyframe_reduction": "none",
+    "arms_variation": 100,
+    "overdrive": 50,
+    "arm_space": 50,
+    "mirror": false
+  },
+  "bytes": 2055280,
+  "sha256": "c2790fea89419c15995309ffffb48657bbdea51e03678cd6cb3f7e5a50afe16d",
+  "status": "Source candidate; not gameplay installed"
+}
