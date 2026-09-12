@@ -56,5 +56,5 @@ void ABattleLabMode::TickDrones(float Dt){
 bool ABattleBike::ApplyDroneStrike(){
  if(bParked||StunRemaining>0||Ride->Recovery>0||ApplyRiderDamage(15)<=0)return false;
  if(RiderHealth<=0)return true;
- Dismount();StunRemaining=2;StunLabel=TEXT("DRONE IMPACT");Ride->Speed=Ride->Pedal=Ride->Steer=0;Ride->StopMovementImmediately();Ride->BoostRemaining=0;UpdateStun(0);RideImpact(.8f);return true;
+ Ride->Wipeout(TEXT("Drone impact"));StunRemaining=2;StunLabel=TEXT("DRONE IMPACT");Ride->Speed=Ride->Pedal=Ride->Steer=0;Ride->StopMovementImmediately();Ride->BoostRemaining=0;UpdateStun(0);RideImpact(.8f);return true;
 }

@@ -37,7 +37,7 @@ void ABattleLabMode::TickTrouble(float Dt){
 bool ABattleBike::ApplyTaser(){
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
  if(!Mode||Mode->StartCountdown>0||Mode->bRunEnded||UGameplayStatics::IsGamePaused(this)||RiderHealth<=0||RespawnRemaining>0||StunRemaining>0||TaserGrace>0||Ride->Recovery>0)return false;
- if(!bParked)Dismount();
+ if(!bParked)Ride->Wipeout(TEXT("Taser impact"));
  StunLabel=TEXT("TASED");StunRemaining=3;TaserGrace=12;TaserHits++;ReloadTimer=0;Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();
  if(auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0))){Person->ReloadRemaining=0;Person->GetCharacterMovement()->StopMovementImmediately();Person->GetCharacterMovement()->DisableMovement();}
  Mode->AdjustRunTime(-10,TEXT("TASED"));RideImpact(.8f);

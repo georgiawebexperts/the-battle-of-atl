@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "stage": 4,
+    "reason": "Warning, swept rider hit, 15 harm, knockoff/recovery/remount, wall obstruction and destruction pass",
+    "health": 100.0
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hazard-regressions/34ba7acfcea94fb3888bdb0cab715fe1/run.log",
+  "runtime": "editor-game",
+  "scope": "Native headless hazard logic, physical recovery and obstruction fixtures; no rendered appearance or full game acceptance.",
+  "passed": true
+}

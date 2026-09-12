@@ -9,3 +9,8 @@ Two-second HUD warning precedes a swoop toward the rider's position at commitmen
 Mechanical model has a body, four arms/motors, spinning propellers and a warning lamp. 40 health permits shooting it down; no zombie time reward. Dedicated rotor audio, destruction effects and authored rider impact/get-up animation remain unfinished. Model and warning require native visual inspection; this is not final art or balance acceptance.
 
 Native audit covers warning timing, actual swept impact, damage/knockoff/action lock/recovery/remount, a physical blocking wall and damage/destruction. Fixed test placement does not prove all world spawn locations or dodge balance.
+
+
+## Physical recovery update — 2026-09-12 [codex-maclaptop]
+
+Post049 source now uses the shared physical rider/bike fall on a successful mounted drone hit. The two-second stun is a minimum lock; physical settling and the get-up clip take additional time before on-foot control.15 damage, warning, committed dive, collision sweep, repeat protection and spawn rarity are preserved. Native rendered hit/recovery/remount and broader headless wall/destruction checks pass. Not yet packaged; visual motion/audio and broad balance acceptance remain unfinished.

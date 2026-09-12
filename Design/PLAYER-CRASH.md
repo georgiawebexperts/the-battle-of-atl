@@ -131,3 +131,14 @@ Packaged two-cycle collision/recovery/E remount passes with six screenshots and 
 Preserved old app as /Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build048.app. Finalized branded0.49.0 app, strict local signature verification and desktop symlink/version passed. Desktop /Users/elliottinspace/Desktop/The Battle of ATL.app points to external-drive /Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app. Re-ran health/checkpoint startup on the installed signed executable: pass, both deaths and two checkpoints.
 
 Full game remains incomplete: blocked get-up/more impacts, animation video/contact polish, other hazard integration, broader route/art/characters/combat/audio/performance and original full-scope acceptance. No Aura dependency added.
+
+
+## Drone and taser physical knockdowns — 2026-09-12 [codex-maclaptop]
+
+Mounted drone and taser hits now call the shared non-water Wipeout/physical crash flow rather than safe dismount. Preserved drone15 damage, two-second minimum stun, taser three-second minimum stun, -10s penalty,12s taser grace and repeat-hit guards. Actual fall/settle/get-up adds recovery time before on-foot control; these stun values are not a promise of total recovery duration. On-foot taser behavior remains its existing stun. Knife-specific chase and water flows remain separate.
+
+Native rendered integration fixtures use actual warned police firing and drone swept contact. Both pass physical fall, disabled mounted actions/repeat hits, expected health, timer multiplier, holstered on-foot recovery and E remount. Taser health100/ammo10 retained; drone85/ammo10 retained in fixture with regeneration held. New hazard regression runner explicitly skips damage-free tutorial; first drone regression timed out with health100 because tutorial protection was still active. Corrected fixture, not gameplay protections.
+
+Broader native headless drone audit passes warning/contact/damage, physical recovery/remount, wall obstruction and shooting/destruction. Updated police audit waits for physical recovery after initial person impact, explicitly draws its gun for the existing police-shot test, and waits/approaches before remount. Full police audit passes:3 distinct people alert police, navigation pursuit683.8cm, real cop-shot -60s, artifact escalation, wall-blocked taser, windup, local physical knockoff, grace, and death during another stun with checkpoint return. Build passes. Reports: player-crash-live-{taser,drone}.json and native-{drone,trouble}-physical-regression.json dated2026-09-12.
+
+These are post049 source changes; Desktop049 remains installed and does not yet include physical drone/taser falls. Need packaged verification, animation/contact/video polish, moving target/hill hazard cases and broader original game scope. Full goal incomplete.
