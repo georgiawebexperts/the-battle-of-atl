@@ -192,3 +192,10 @@ Reviewed isolated PiedmontMotelBenchReview native --ignite --motel: build/render
 ## Mac build046 installed — 2026-09-12 [codex-maclaptop]
 
 Packaged new asphalt surfaces, bench reach/prop/fire/retreat, rare director and Motel pad/anchor; BuildCookRun exit0 in140.72sec. Packaged ambient forced0/1 lifecycle, sleeper approach/chase/return/cooldown and health/cardinal/death/checkpoints passed. Packaged native render confirmed Motel scene assets and241.397cm retreat; final fire frame inspected. Initial capture wrote no project-folder images under app sandbox; harness now uses bundle container Documents and copies images back. Strict ad-hoc codesign passes, desktop resolves to version0.46.0. Retained TheBattleOfATL-build045.app rollback. Installed-app health/checkpoints also pass. Fullgame/visual/performance/rarity acceptance remains incomplete; see PLAYTEST-046.md.
+
+
+## Vehicle asset review — 2026-09-12 [codex-maclaptop]
+
+Imported 55 bundled UE 5.8 vehicle assets (39 MB) on the external project drive, with source hashes. The sports-car skeletal mesh is a rig; visible body, glass and four wheels require separate static mesh components. Native Mac review now shows the assembled car on the graded 10th Street road. Editor build and offscreen native capture passed. Static body bounds are approximately 471 x 228 cm; wheel radius 39.27 cm. Do not size traffic using padded skeletal bounds.
+
+This is an asset candidate, not installed moving traffic. Lane routes, slope and four-wheel contact, wheel rotation/steering, swept collision, braking, intersection behavior and packaged verification remain pending. Desktop build remains 046. Review command: python3 Scripts/render_native_car.py.

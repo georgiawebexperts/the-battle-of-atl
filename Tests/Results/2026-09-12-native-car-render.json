@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-car-review/c856d64d5e354f3a87aa71eb631bd2e0/car.png",
+  "capture_passed": true,
+  "visual_accepted": false,
+  "scope": "Native static car candidate; traffic, wheel contact, collision and packaged behavior unverified",
+  "visual_review": {
+    "reviewer": "2026-09-12 [codex-maclaptop]",
+    "visible_assembly_accepted": true,
+    "observations": "Native capture shows orange body, glass and near-side wheels correctly assembled on the actual 10th Street road. Static candidate only; all-wheel terrain contact, far-side wheel orientation and motion remain unverified."
+  }
+}

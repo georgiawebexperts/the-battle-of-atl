@@ -1,0 +1,284 @@
+{
+  "source": "/Volumes/Adam Assets/Unreal/UE_5.8/Templates/TemplateResources/Standard/Vehicles/Content",
+  "provider": "Epic Games Unreal Engine5.8 bundled vehicle template",
+  "author": "2026-09-12 [codex-maclaptop]",
+  "purpose": "Local vehicle candidates for traffic; not assigned to gameplay",
+  "files": [
+    {
+      "file": "Content/Vehicles/PhysicsMaterials/Slippery.uasset",
+      "bytes": 1530,
+      "sha256": "2ad4c95f85b3dc02ad270754547015d7d479dad71bae2af041eaaaef01e7d92b"
+    },
+    {
+      "file": "Content/Vehicles/PhysicsMaterials/NonSlippery.uasset",
+      "bytes": 1542,
+      "sha256": "b6b7b6ca1447595c9e82f515ad48748e8251df9477043b4cf2e205f59c62034d"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/SKM_SportsCar.uasset",
+      "bytes": 40444,
+      "sha256": "8b744436944a752078761a41da3417750bbfd690a23a3d952a455e5a86f655a0"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/ABP_SportsCar.uasset",
+      "bytes": 68751,
+      "sha256": "026c37fdbf481f3de46c7b0c94dde299a6f48346b8541bffea0eea9d4e611df0"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/SM_SportsCar_Wheel.uasset",
+      "bytes": 180169,
+      "sha256": "613e216e1045dbbac9b953d798472d07c9d577673e7c22c9ab32586d97abd407"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/SM_SportsCar.uasset",
+      "bytes": 2229299,
+      "sha256": "252ce0c2b6ac12871ebcb96277ea947be63df5a72ff7684cb438b6aa6b148e2d"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/SM_SportsCar_Glass.uasset",
+      "bytes": 65735,
+      "sha256": "19d9aabc8f0526630fc24ae63a952599993c8dcd801cbade536f093337551347"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/PA_SportsCar.uasset",
+      "bytes": 16969,
+      "sha256": "961dc40ef1df7affbc40e5b0ead66016d2e0e79fe481057712d370d0ae380ce0"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/SK_SportsCar.uasset",
+      "bytes": 13598,
+      "sha256": "40775c02d8a5729aa8e2fb1b522eb30e42546c301be0a6c883185992d3a70294"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/CtrlRig_SportsCar.uasset",
+      "bytes": 246099,
+      "sha256": "c7aff7346c3294e9763e7864be0653a54ea7f664bc273b022e857e306d8cb1e5"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/MI_SportsCar_Tire.uasset",
+      "bytes": 14751,
+      "sha256": "2050fb2c1fa654e605cc198297415503438abe84e338dc6dcb8549414517a10c"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/M_SportsCarChasis.uasset",
+      "bytes": 20659,
+      "sha256": "576e736e52c9d4213f42c9858a27c7ae1d93e7ab5d2d2aee792fed000ebd4984"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/M_SportsCarBase.uasset",
+      "bytes": 33804,
+      "sha256": "fe532f3a813078c06d8b7af9690e4d18295623af9e430c2a87303cda4017f650"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/M_SportsCar_Wheel.uasset",
+      "bytes": 30050,
+      "sha256": "94b93a621d266572534efc6bfcec704ee1d68058b80d4f0630de254edf4df65c"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/MI_SportsCarBody.uasset",
+      "bytes": 13396,
+      "sha256": "1b7f5dbde81698b4749f324c49dc775b1494869978e8f7cf1565a6987acf4b09"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/MI_SportsCar_Wheel.uasset",
+      "bytes": 11894,
+      "sha256": "1fb21efd86a4660060b97d0c3def7d02ab21a803a87977ec80034393d96891e8"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/M_SportsCar_Lights.uasset",
+      "bytes": 18156,
+      "sha256": "78f1cba4d16df99171d1c44777cf0e35d4427dce8088f0bb4803c6e34726f984"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Wheel_M.uasset",
+      "bytes": 233371,
+      "sha256": "fe073038230e3de4d5028946241cb49b9cdb5f92f691968d062ba09d45df75ab"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Tire_N.uasset",
+      "bytes": 347246,
+      "sha256": "57042c69cd95b5f2fc57a30e8f650debe8613d9b3db5d1512d0edd4b9b5db04f"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Lights_M.uasset",
+      "bytes": 12617,
+      "sha256": "ccb3ad40c848f3b041337a8def50d1c0f36a14d3738010a1b0cbb369fc92e4fd"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Tire_M_TGA.uasset",
+      "bytes": 427080,
+      "sha256": "41c44b8d3047eabdbbd331d0e5995abca701d9bb9ccbac9c09a8b403d1c40957"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Chasis_MRA.uasset",
+      "bytes": 1622176,
+      "sha256": "686288896eff28bdbe396caef2736f9421a0e556ecac8533519f78475d1aa0cf"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Wheel_BC.uasset",
+      "bytes": 95100,
+      "sha256": "ee658e55a0079ba14c7034c04c46fc6e2e41a3ad74948e3d9de581094b86899c"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Body_BotN.uasset",
+      "bytes": 559302,
+      "sha256": "1ed05ffb599f7aaad6d8be32060b8b3ed184e3f7d97aef1f9a47900a429c5c82"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Body_MRA.uasset",
+      "bytes": 889570,
+      "sha256": "27181bf95b9ed2587798f73a4531c89622672177e602635c5522f4da6f07871a"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Wheel_N.uasset",
+      "bytes": 251120,
+      "sha256": "6720f7ded69aed2525628513957499456127896237f6e0cce9e34291a6036723"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Chasis_N.uasset",
+      "bytes": 1431292,
+      "sha256": "2e0f4797876ff668824c6f54afe2515950f060718ba332fbbc2290afced0a872"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Body_D.uasset",
+      "bytes": 733351,
+      "sha256": "7effd0cc8d1453f082e7b8a75a4e2eae4f4f8abc90817db06d2867d6354a9633"
+    },
+    {
+      "file": "Content/Vehicles/SportsCar/Materials/Textures/T_SportsCar_Chasis_D.uasset",
+      "bytes": 1568245,
+      "sha256": "34467d77bd30b74b2d7965fb6f6901c9842b0b68fa7a547af188ba0e2dc388f8"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/SKM_Offroad_Skeleton.uasset",
+      "bytes": 15833,
+      "sha256": "9d2cfba43ca61e1060a4a6a2ff2578c26d2cfcd9959dc5d45c1a450634b8349c"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Offroad_CtrlRig.uasset",
+      "bytes": 1495781,
+      "sha256": "d3a7ddb2088f02f25acca5b102fafae59e2a5e76b75fcaec8a2fe8270846c099"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/SKM_Offroad_PhysicsAsset.uasset",
+      "bytes": 15876,
+      "sha256": "41ad56e18d9d6eae85c70a5fecfbe58fca3f19bdf8aa93c5f247b2792994eda8"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/SM_Offroad_Body.uasset",
+      "bytes": 2835903,
+      "sha256": "30273c0d1d5d6786f7c5c8abf4c3eb8cca4ecee00af0437d3cc7533d6ac263d4"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/SKM_Offroad.uasset",
+      "bytes": 8905356,
+      "sha256": "286b2ddb6094603f7cf689b9b6a1bf6269d52068468fd1c1cfdef659c2e4ccea"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Offroad_AnimBP.uasset",
+      "bytes": 66921,
+      "sha256": "c8583cfb0703f2c3237c93c7af3ea04ef2d521d1eaf74e1ba99bccdadb98df7b"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/SM_Offroad_Tire.uasset",
+      "bytes": 872928,
+      "sha256": "fa6b0da9cd211ef7535c41f9af9facb023edfafb154d4e3b5bac5b49547a47c0"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/M_OffroadCar_Wheel.uasset",
+      "bytes": 28085,
+      "sha256": "2b832dea8500b051e49cd18bce0b87e4403e2007ce315b1b21667fdd3e7f5328"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/MI_OffroadCar_Main.uasset",
+      "bytes": 16922,
+      "sha256": "aa3107fa5abaf82211097a8cd3fec37197f04de17f12ece552d3b33a751bd048"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/MI_OffroadCar_Suspension.uasset",
+      "bytes": 16139,
+      "sha256": "9a6e64fb07c41c0563573515ed785db76926ff4e5831fa5eeaafa8e92bae3617"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/MI_OffroadCar_Wheel.uasset",
+      "bytes": 14279,
+      "sha256": "681740bcfdd25953ef97114d1000d9ddaac86a1d26e2d038146ed439b499fb8b"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/MI_OffroadCar_Seats.uasset",
+      "bytes": 13456,
+      "sha256": "c443b55a6dfc927926681ddc9dc82a4506a1fb14dbda339cefeb225eff4a23aa"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/MI_OffroadCar_Lights.uasset",
+      "bytes": 8996,
+      "sha256": "67a54c5c419bae2ed953ee0d56b99569aaeeb89c56f612d343a6de4ca1b4d6bb"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Seats_N.uasset",
+      "bytes": 1137510,
+      "sha256": "80a7cddac69735db73f3edc3f3b9c395fe1eb0ce7ea0a5685408873e4167c29b"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Body_MRA.uasset",
+      "bytes": 966989,
+      "sha256": "62e50e1f9102c430cca5734a92c8179adc18f7ea73d7ea1508000da8f29b35cc"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Body_D.uasset",
+      "bytes": 1055677,
+      "sha256": "c4d13241d0cfb1e401e7ed0d146d133484326b5ee0cc1c6449c41b84d3042e19"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Seats_D.uasset",
+      "bytes": 657733,
+      "sha256": "f6dc76b13cc45c8988a56f27d1242baccc00bb3b418950cfe4940764c268aa8d"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_Vehicle_Light_M.uasset",
+      "bytes": 6959,
+      "sha256": "94c240a90cb68acd5fb6ffc37251c053b19bf26fc83e3e52e215eec11f4b7fe1"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Seats_MRA.uasset",
+      "bytes": 469338,
+      "sha256": "ddfa819c3bede7bb2df736edcb21106f8285d2797af3979dbf94f3bab3f7a6a5"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_Offroad_Body_N.uasset",
+      "bytes": 1291789,
+      "sha256": "eddd3e2c626b38c492c4e358d498cf7d57c9b25510ebfa82dd49a506e3802264"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Wheels_N.uasset",
+      "bytes": 2226551,
+      "sha256": "e1cdc26df949c83cb5b7494fc3e08eccfb58877c39f9653af716205135c72200"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Sus_MRA.uasset",
+      "bytes": 675408,
+      "sha256": "4f6fffd9bc1a9d0fb2af31fd216add978fa623e8968132ab457aa975576cd39b"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Sus_D.uasset",
+      "bytes": 995798,
+      "sha256": "fab72a7ebb1cc1af44b5ba9a6f647e1bd034068140573751a50617708eecbd42"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Wheels_RMA.uasset",
+      "bytes": 1786545,
+      "sha256": "2e77a27994c06fa42b7503ec6d9b5fe700d2ba2eca3bae5afe7f4e4ebbe594f0"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Sus_N.uasset",
+      "bytes": 1173678,
+      "sha256": "9cb362aaa6b690cdfebd1f1afb727d8fab942b3d5ec7028469fb5466fe86d4c3"
+    },
+    {
+      "file": "Content/Vehicles/OffroadCar/Materials/Textures/T_OffroadCar_Wheels_D.uasset",
+      "bytes": 1067629,
+      "sha256": "a69046823108e0b4dcf5df98c0db053f3b1769a36c89c7cc8daf83e104bb7145"
+    }
+  ],
+  "bytes": 38995395
+}

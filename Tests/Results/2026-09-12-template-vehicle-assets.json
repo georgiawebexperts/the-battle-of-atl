@@ -1,0 +1,164 @@
+{
+  "assets": [
+    {
+      "path": "/Game/Vehicles/SportsCar/SM_SportsCar",
+      "class": "StaticMesh",
+      "bounds_origin": [
+        12.092376708984375,
+        0.0,
+        59.266059041023254
+      ],
+      "size_cm": [
+        470.8474426269531,
+        228.1608428955078,
+        123.36618208885193
+      ],
+      "materials": [
+        "/Game/Vehicles/SportsCar/Materials/M_SportsCarChasis.M_SportsCarChasis",
+        "/Game/Vehicles/SportsCar/Materials/MI_SportsCarBody.MI_SportsCarBody"
+      ]
+    },
+    {
+      "path": "/Game/Vehicles/SportsCar/SM_SportsCar_Wheel",
+      "class": "StaticMesh",
+      "bounds_origin": [
+        0.0,
+        9.64208173751831,
+        0.0
+      ],
+      "size_cm": [
+        78.5337905883789,
+        34.97214603424072,
+        78.53386688232422
+      ],
+      "materials": [
+        "/Game/Vehicles/SportsCar/Materials/M_SportsCar_Wheel.M_SportsCar_Wheel",
+        "/Game/Vehicles/SportsCar/Materials/MI_SportsCar_Tire.MI_SportsCar_Tire"
+      ]
+    },
+    {
+      "path": "/Game/Vehicles/SportsCar/SM_SportsCar_Glass",
+      "class": "StaticMesh",
+      "bounds_origin": [
+        1.204803466796875,
+        9.918212890625e-05,
+        40.85982966423035
+      ],
+      "size_cm": [
+        435.00115966796875,
+        189.40267944335938,
+        66.14884042739868
+      ],
+      "materials": [
+        "/Game/Vehicles/SportsCar/Materials/M_SportsCar_Lights.M_SportsCar_Lights"
+      ]
+    },
+    {
+      "path": "/Game/Vehicles/SportsCar/SKM_SportsCar",
+      "class": "SkeletalMesh",
+      "bones": [
+        "Root",
+        "Phys_Wheel_FL",
+        "Phys_Wheel_FL_end",
+        "Phys_Wheel_BL",
+        "Phys_Wheel_BL_end",
+        "Phys_Wheel_FR",
+        "Phys_Wheel_FR_end",
+        "Phys_Wheel_BR",
+        "Phys_Wheel_BR_end",
+        "Axle_Front",
+        "Axle_Damper_FL",
+        "Axle_Damper_FL_end",
+        "Axle_Damper_FR",
+        "Axle_Damper_FR_end",
+        "Axle_Back",
+        "Axle_Damper_BL",
+        "Axle_Damper_BL_end",
+        "Axle_Damper_BR",
+        "Axle_Damper_BR_end",
+        "Damper_FL",
+        "Damper_FL_end",
+        "Damper_FR",
+        "Damper_FR_end",
+        "Damper_BL",
+        "Damper_BL_end",
+        "Damper_BR",
+        "Damper_BR_end"
+      ]
+    },
+    {
+      "path": "/Game/Vehicles/OffroadCar/SM_Offroad_Body",
+      "class": "StaticMesh",
+      "bounds_origin": [
+        10.694618225097656,
+        -5.340576171875e-05,
+        99.46305847167969
+      ],
+      "size_cm": [
+        370.34800720214844,
+        179.1340789794922,
+        116.48065185546875
+      ],
+      "materials": [
+        "/Game/Vehicles/OffroadCar/Materials/MI_OffroadCar_Main.MI_OffroadCar_Main",
+        "/Game/Vehicles/OffroadCar/Materials/MI_OffroadCar_Lights.MI_OffroadCar_Lights",
+        "/Game/Vehicles/OffroadCar/Materials/MI_OffroadCar_Seats.MI_OffroadCar_Seats",
+        "/Game/Vehicles/OffroadCar/Materials/MI_OffroadCar_Suspension.MI_OffroadCar_Suspension"
+      ]
+    },
+    {
+      "path": "/Game/Vehicles/OffroadCar/SKM_Offroad",
+      "class": "SkeletalMesh",
+      "bones": [
+        "OffroadCar",
+        "PhysWheel_FR",
+        "PhysWheel_FL",
+        "PhysWheel_BR",
+        "PhysWheel_BL",
+        "UpperControlArm_FR",
+        "UpperControlArm_End_FR",
+        "LowerControlArm_FR",
+        "SpringDamper_Mount_FR",
+        "LowerControlArm_End_FR",
+        "SpringDamper_FR",
+        "SpringDamper_End_FR",
+        "HUB_FR",
+        "HUB_Upper_FR",
+        "VisWheel_FR",
+        "UpperControlArm_FL",
+        "UpperControlArm_End_FL",
+        "LowerControlArm_FL",
+        "SpringDamper_Mount_FL",
+        "LowerControlArm_End_FL",
+        "SpringDamper_FL",
+        "SpringDamper_End_FL",
+        "HUB_FL",
+        "HUB_Upper_FL",
+        "VisWheel_FL",
+        "LowerControlArm_BL",
+        "LowerControlArm_End_BL",
+        "SpringDamper_Mount_BL",
+        "HUB_BL",
+        "VisWheel_BL",
+        "HUB_Upper_Mnt_BL",
+        "UpperControlArm_BL",
+        "UpperControlArm_End_BL",
+        "SpringDamper_BL",
+        "SpringDamper_End_BL",
+        "LowerControlArm_BR",
+        "LowerControlArm_End_BR",
+        "SpringDamper_Mount_BR",
+        "HUB_BR",
+        "VisWheel_BR",
+        "HUB_Upper_Mnt_BR",
+        "UpperControlArm_BR",
+        "UpperControlArm_End_BR",
+        "SpringDamper_BR",
+        "SpringDamper_End_BR",
+        "Root"
+      ]
+    }
+  ],
+  "gameplay_installed": false,
+  "visual_acceptance": false
+}
