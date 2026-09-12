@@ -1,0 +1,9 @@
+{
+  "version": "0.46.0",
+  "desktop": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "target": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "rollback": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build045.app",
+  "codesign_verified": true,
+  "packaged_checks_passed": true,
+  "full_game_acceptance": false
+}

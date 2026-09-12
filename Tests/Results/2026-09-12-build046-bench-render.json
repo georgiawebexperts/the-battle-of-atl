@@ -1,0 +1,46 @@
+{
+  "packaged": true,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "close_diagnostic": false,
+  "ignition_diagnostic": true,
+  "reach_diagnostic": false,
+  "solid_diagnostic": false,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/7ecf06282fa345d7a81b2a9eee95fc28/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/7ecf06282fa345d7a81b2a9eee95fc28/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/7ecf06282fa345d7a81b2a9eee95fc28/fire-3.png"
+  ],
+  "captured": true,
+  "visual_accepted": false,
+  "scope": "Packaged combined reach/ignition/retreat candidate; full route and visual-quality acceptance pending",
+  "capture_passed": true,
+  "visitor_positions": {
+    "1": [
+      0.0,
+      55.0,
+      90.0
+    ],
+    "2": [
+      0.0,
+      55.0,
+      90.0
+    ],
+    "3": [
+      -0.0,
+      296.397,
+      49.88
+    ]
+  },
+  "retreat_verified": true,
+  "ignition_contact": {
+    "age": 2.21,
+    "tip_local_cm": [
+      22.434,
+      24.055,
+      47.909
+    ],
+    "nearest_slat_top_error_cm": 1.158999999999999
+  },
+  "review_notes": "Final burning frame inspected: Motel building, authored bench/pad, flames and smoke present. Position records show241.397cm retreat. Not full-game visual acceptance."
+}

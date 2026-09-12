@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "phase": 10,
+  "reason": "Cardinal hunt, both death resets, recollection, health and ordered checkpoints pass",
+  "deaths": 2,
+  "checkpoints": 2,
+  "health": 100.0,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}
