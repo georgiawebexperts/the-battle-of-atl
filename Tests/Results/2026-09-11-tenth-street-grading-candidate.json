@@ -1,0 +1,19 @@
+{
+  "comparison": [
+    {
+      "source": "atlanta-height-krog.r16",
+      "max_grade_percent": 48.4704800470231,
+      "max_grade_change_per_50cm_percentage_points": 30.224242331262758,
+      "p95_grade_change_per_50cm_percentage_points": 5.6955656366290865
+    },
+    {
+      "source": "atlanta-height-tenth-graded.r16",
+      "max_grade_percent": 8.954171371860639,
+      "max_grade_change_per_50cm_percentage_points": 0.773837592799282,
+      "p95_grade_change_per_50cm_percentage_points": 0.36254619198795274
+    }
+  ],
+  "native_verified": false,
+  "accepted": false,
+  "scope": "Same lane tracks sampled against source/candidate terrain. Final road mesh and terrain transitions not yet reviewed."
+}
