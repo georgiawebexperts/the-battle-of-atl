@@ -1,5 +1,5 @@
 """Build Krog/DeKalb road surfaces with joins to the installed BeltLine meshes."""
-import array, json, math, sys, argparse
+import array, bisect, json, math, sys, argparse
 from functools import lru_cache
 from pathlib import Path
 from shapely.geometry import Point, Polygon, LineString, box
@@ -12,7 +12,7 @@ folder = root / 'SourceAssets/Terrain/KrogTraffic'
 data = json.loads((folder / 'network.json').read_text())
 meta = json.loads((root / 'SourceAssets/Terrain/terrain-georeference.json').read_text())
 assert meta['active_heightmap'] == data['active_heightmap']
-parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);parser.add_argument('--junction-table',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);parser.add_argument('--junction-table',action='store_true');parser.add_argument('--crowned-dekalb',action='store_true');args=parser.parse_args()
 heightmap=(args.heightmap or root/'SourceAssets/Terrain'/meta['active_heightmap']).resolve()
 raw = array.array('H')
 raw.frombytes(heightmap.read_bytes())
@@ -56,6 +56,13 @@ index = STRtree(polys); protected = unary_union(polys)
 protected = protected.buffer(.1,join_style=2).buffer(-.1,join_style=2)
 geometry = road.difference(protected)
 if args.junction_table:geometry=geometry.union(protected.intersection(site.buffer(1500)))
+if args.crowned_dekalb:
+    assert args.junction_table and args.heightmap
+    crown=json.loads((folder/'dekalb-cross-section.json').read_text())
+    crown_points=[s['centre_cm'] for s in crown['stations']]
+    crown_line=LineString([p[:2] for p in crown_points]);crown_lengths=[0.]
+    for a,b in zip(crown_points,crown_points[1:]):crown_lengths.append(crown_lengths[-1]+math.hypot(b[0]-a[0],b[1]-a[1]))
+    geometry=geometry.union(crown_line.buffer(450,cap_style=2,join_style=2))
 
 def plane(i,x,y):
     a,b,c = triangles[i]
@@ -91,10 +98,18 @@ def height(x,y):
     z=approach_height(x,y)
     if not args.junction_table:return z
     distance=math.hypot(x-site.x,y-site.y)
-    if distance>=1500:return z
     # Raised crossing joins the trail and roadway; ease over a 7m approach.
     weight=max(0,min(1,(1500-distance)/700));weight=weight*weight*(3-2*weight)
-    return max(terrain(x,y)+3,z+(1000-z)*weight)
+    z=max(terrain(x,y)+3,z+(1000-z)*weight)
+    if args.crowned_dekalb:
+        p=Point(x,y);across=crown_line.distance(p)
+        if across<850:
+            along=crown_line.project(p);i=min(len(crown_lengths)-2,max(0,bisect.bisect_right(crown_lengths,along)-1))
+            t=(along-crown_lengths[i])/(crown_lengths[i+1]-crown_lengths[i])
+            target=crown_points[i][2]*(1-t)+crown_points[i+1][2]*t-.02*min(across,450)
+            blend=max(0,min(1,(850-across)/400));blend=blend*blend*(3-2*blend)
+            z=max(terrain(x,y)+3,z+(target-z)*blend)
+    return z
 
 # Confirm source frame against actual installed hits before generating pavement.
 survey = json.loads((root/'Tests/Results/2026-09-12-krog-crossing-survey.json').read_text())
@@ -205,7 +220,7 @@ for x,y,z in vertices:
         gap=abs(z-plane(i,q.x,q.y));seam_gaps.append(gap)
         if gap>.25:seam_locations.append({"xyz":[x,y,z],"existing_z":plane(i,q.x,q.y),"terrain_z":terrain(x,y),"gap_cm":gap})
 (folder/'join-conflicts.json').write_text(json.dumps(sorted(seam_locations,key=lambda r:-r['gap_cm']),indent=2)+'\n')
-report={'removed_degenerate_faces':len(degenerate_faces),'removed_area_cm2':degenerate_area,'degenerate_boundary_edges':len(numerical_open_edges),'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
+report={'crowned_dekalb':args.crowned_dekalb,'removed_degenerate_faces':len(degenerate_faces),'removed_area_cm2':degenerate_area,'degenerate_boundary_edges':len(numerical_open_edges),'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
         'source_to_native_max_error_cm':max(errors),'native_reference_samples':len(errors),
         'main_map_changed':False,'scope':'Source candidate only; native collision, driving and appearance pending.'}
 (folder/'road-surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

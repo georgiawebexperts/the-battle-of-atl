@@ -9,7 +9,7 @@ sys.path.insert(0,str(root/'Scripts'))
 from battle_geography import import_source_landscape,source_vector
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text())
-network=json.loads((folder/'network.json').read_text());junction=network['crossing_xyz'];table=json.loads((folder/'road-surfaces.json').read_text()).get('junction_table',False)
+network=json.loads((folder/'network.json').read_text());junction=network['crossing_xyz'];surface_meta=json.loads((folder/'road-surfaces.json').read_text());table=surface_meta.get('junction_table',False)
 baseline=[]
 for filename in ['park-path-network.json','eastside-trail-network.json','krog-route-network.json']:
  for path in json.loads((root/'SourceAssets/Terrain'/filename).read_text())['paths']:
@@ -20,7 +20,7 @@ for filename in ['park-path-network.json','eastside-trail-network.json','krog-ro
    hit=unreal.PiedmontWorldTools.trace_world_surface(v+unreal.Vector(0,0,150),v-unreal.Vector(0,0,150))
    if hit:baseline.append((v,hit[0].z))
 old=[a for a in ea.get_all_level_actors() if isinstance(a,unreal.Landscape)];assert len(old)==1
-land=import_source_landscape(folder/'atlanta-height-krog-join-candidate.r16',meta);assert land
+land=import_source_landscape(root/surface_meta['heightmap'],meta);assert land
 land.set_editor_property('landscape_material',old[0].get_editor_property('landscape_material'));land.tags=list(old[0].tags)
 label=old[0].get_actor_label();assert ea.destroy_actor(old[0]);land.set_actor_label(label)
 assert unreal.PiedmontWorldTools.refresh_landscape_collision(land)
