@@ -274,3 +274,10 @@ Captured and inspected three native main-world frames of naturally spawned traff
 Fixed road cars missing the RideVehicle tag, which had caused the bike to treat them as ordinary walls. Review builders now preserve constructor tags. Native keyboard-driven bike impact against a stationary road car passed with exactly one Traffic impact wipeout. This does not validate car-initiated impacts, glances, injury or realistic crash animation; the existing recovery pose remains rudimentary. Editor build succeeded. Desktop remains 046; no packaging performed.
 
 Keep the requested Monroe, pre-Krog and Krog tunnel road crossings, occasional fallen scooter rider with helpers, and 10th Street Peachtree race dressing with active cars in remaining scope.
+
+
+## Moving car collision — 2026-09-12 [codex-maclaptop]
+
+Road-car swept impacts now compute closing speed against the bike and trigger the existing Traffic impact recovery above 500 cm/s, only for a mounted living rider. This covers late cut-ins where braking cannot prevent contact. Normal forward braking remains in place. Partial swept travel now advances route distance and wheel rotation by the completed fraction, avoiding a stale route position after emergency contact.
+
+Editor build passed. Native late cut-in fixture at 650 cm/s caused exactly one wipeout; normal road-car obstruction test also passed braking, stationary hold, resume and endpoint at 3997.578 cm. The cut-in is a deliberately placed fixture, not a rider-controlled crossing or visual crash-quality test. Physical rider ejection, health damage, on-foot collision response, glance tuning and packaging remain unfinished. Desktop remains 046.

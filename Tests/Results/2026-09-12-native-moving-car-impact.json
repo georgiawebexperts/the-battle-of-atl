@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Moving car late cut-in entered traffic recovery",
+    "wipeouts": 1
+  },
+  "scope": "Late cut-in fixture in front of a moving car on the real road. Recovery classification only; animation and injury remain unverified.",
+  "passed": true
+}

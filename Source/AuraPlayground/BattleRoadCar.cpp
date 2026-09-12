@@ -1,4 +1,5 @@
 #include "BattleRoadCar.h"
+#include "BattleBike.h"
 #include "BattleRoadCrossing.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -89,7 +90,19 @@ void ABattleRoadCar::Tick(float Dt){
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
   FHitResult Hit;SetActorLocationAndRotation(Pose.GetLocation(),Pose.GetRotation(),true,&Hit);
-  if(Hit.bBlockingHit){LastObstacle=FString(TEXT("movement:"))+(Hit.GetActor()?Hit.GetActor()->GetName():TEXT("unknown"));Speed=0;break;}
+  if(Hit.bBlockingHit){
+   // A swept move can stop part-way through the requested step. Keep route
+   // progress and wheel travel aligned with the position actually reached.
+   const float ActualTravel=Travel*FMath::Clamp(Hit.Time,0.f,1.f);
+   RouteDistance+=ActualTravel;DistanceTravelled+=ActualTravel;
+   UpdateWheels(Contacts,ActualTravel,FMath::Clamp(Turn*12.f,-25.f,25.f));
+   if(auto* Bike=Cast<ABattleBike>(Hit.GetActor())){
+    const FVector RelativeVelocity=GetActorForwardVector()*Speed-Bike->GetVelocity();
+    const float ClosingSpeed=-FVector::DotProduct(RelativeVelocity,Hit.ImpactNormal);
+    if(!Bike->bParked&&Bike->RiderHealth>0&&ClosingSpeed>500.f)Bike->Ride->Wipeout(TEXT("Traffic impact"));
+   }
+   LastObstacle=FString(TEXT("movement:"))+(Hit.GetActor()?Hit.GetActor()->GetName():TEXT("unknown"));Speed=0;break;
+  }
   RouteDistance+=Travel;DistanceTravelled+=Travel;UpdateWheels(Contacts,Travel,FMath::Clamp(Turn*12.f,-25.f,25.f));
   if(ToEnd<3){bRouteFinished=true;Speed=0;break;}
  }
