@@ -103,7 +103,8 @@ bool ABattleRider::Fire(){
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->RecordGunfire();
  Ammo--;ShotsFired++;ShotCooldown=CurrentWeapon==1?.85f:CurrentWeapon==2?.085f:CurrentWeapon==4?.12f:.22f;Kick=CurrentWeapon==1?2:1;SaveWeapon();
  const auto Shot=CurrentWeapon==0?FireBattlePistol(this,Weapon,bAiming?.1f:.4f):FireBattleLongGun(this,LongGun,CurrentWeapon,bAiming);
- LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;
+ LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.35f;
+ if(IsValid(ParkedBike)&&!Shot.HitLabel.IsEmpty()){ParkedBike->ShotNotice=Shot.HitLabel;ParkedBike->ShotNoticeRemaining=.75f;}
  if(IsValid(ParkedBike))for(int32 I=0;I<Shot.Kills;I++)ParkedBike->AwardEnemyKill();return true;
 }
 

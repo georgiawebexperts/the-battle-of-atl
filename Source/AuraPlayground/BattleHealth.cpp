@@ -40,6 +40,7 @@ float ABattleBike::RestoreRiderHealth(float Amount){
  return Applied;
 }
 void ABattleBike::UpdateHealth(float Dt){
+ ShotNoticeRemaining=FMath::Max(0.f,ShotNoticeRemaining-Dt);
  PickupNoticeRemaining=FMath::Max(0.f,PickupNoticeRemaining-Dt);
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
  if(Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded))return;

@@ -1,5 +1,6 @@
 #include "BattleShot.h"
 #include "BattleBike.h"
+#include "BattleZombie.h"
 #include "PiedmontCombat.h"
 #include "PiedmontExplorer.h"
 #include "Components/StaticMeshComponent.h"
@@ -11,6 +12,13 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "UObject/ConstructorHelpers.h"
+static FString ConfirmedHitLabel(const APiedmontExplorer* Victim){
+ if(!Victim)return TEXT("TARGET HIT");
+ if(Victim->IsA<ABattleZombie>())return Victim->bDead?TEXT("ZOMBIE DOWN"):TEXT("ZOMBIE HIT");
+ if(Victim->ActorHasTag(TEXT("BattlePolice")))return TEXT("POLICE HIT");
+ if(Victim->ActorHasTag(TEXT("PiedmontHostile")))return Victim->bDead?TEXT("ATTACKER DOWN"):TEXT("ATTACKER HIT");
+ return TEXT("PERSON HIT");
+}
 ABattleShotFX::ABattleShotFX(){
  RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("ShotOrigin"));InitialLifeSpan=.085f;
  Tracer=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisibleTracer"));Tracer->SetupAttachment(RootComponent);
@@ -36,6 +44,7 @@ FBattleShotResult FireBattlePistol(APawn* Shooter,USceneComponent* Gun,float Spr
  Result.End=Hit.bBlockingHit?Hit.ImpactPoint:Target;
  auto* Victim=Cast<APiedmontExplorer>(Hit.GetActor());const bool Alive=Victim&&!Victim->bDead;
  if(Hit.GetActor()){const float Applied=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),34,(Result.End-Muzzle).GetSafeNormal(),Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());Result.Damage=Hit.GetActor()->IsA<APawn>()?Applied:0;if(Alive&&Applied>0)if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
+ if(Alive&&Result.Damage>0)Result.HitLabel=ConfirmedHitLabel(Victim);
  Result.EnemyKilled=Alive&&Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile"));
  Result.Kills=Result.EnemyKilled?1:0;
  if(auto* FX=Shooter->GetWorld()->SpawnActorDeferred<ABattleShotFX>(ABattleShotFX::StaticClass(),FTransform(Muzzle),Shooter,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){FX->Start=Muzzle;FX->End=Result.End;FX->FinishSpawning(FTransform(Muzzle));}
@@ -59,11 +68,13 @@ FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Sl
   if(Hit.GetActor()){
    const float Falloff=Shotgun?FMath::GetMappedRangeValueClamped(FVector2D(400,2400),FVector2D(1,.15),FVector::Distance(Eye,Result.End)):1;
    const float Damage=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),(Shotgun?18:Slot==4?28:14)*Falloff,Aim,Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());
+   if(Alive&&Damage>0)Result.HitLabel=ConfirmedHitLabel(Victim);
    if(Alive&&Damage>0&&!TimedVictims.Contains(Victim)){TimedVictims.Add(Victim);if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
    if(Alive){Result.Damage+=Damage;if(Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile")))Result.Kills++;else if(Shotgun)if(auto* Z=Cast<ABattleZombie>(Victim)){Z->bTelegraphing=false;Z->LaunchCharacter(View.Vector()*650+FVector(0,0,120),true,true);}}
   }
   if(auto* FX=Shooter->GetWorld()->SpawnActorDeferred<ABattleShotFX>(ABattleShotFX::StaticClass(),FTransform(Muzzle),Shooter,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){FX->Start=Muzzle;FX->End=Result.End;FX->FinishSpawning(FTransform(Muzzle));}
  }
+ if(TimedVictims.Num()>1)Result.HitLabel=FString::Printf(TEXT("%d TARGETS HIT"),TimedVictims.Num());
  Result.EnemyKilled=Result.Kills>0;
  const TCHAR* SoundPath=Shotgun?TEXT("/Game/BattleForTheA/Audio/S_Shotgun.S_Shotgun"):TEXT("/Game/BattleForTheA/Audio/S_SMG.S_SMG");
  if(auto* Sound=LoadObject<USoundBase>(nullptr,SoundPath))UGameplayStatics::PlaySoundAtLocation(Shooter,Sound,Muzzle);

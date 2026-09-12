@@ -204,7 +204,7 @@ bool ABattleBike::FirePistol(){
  if(PistolAmmo<=0){if(Inventory[0].Reserve>0)ReloadTimer=1.5f;return false;}
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->RecordGunfire();
  PistolAmmo--;Inventory[0].Magazine=PistolAmmo;ShotsFired++;ShotCooldown=.25f;GunHold=.8f;PistolSpread=FMath::Lerp(.15f,3.f,FMath::Clamp(Ride->Speed/1600.f,0.f,1.f));
- const auto Shot=FireBattlePistol(this,Pistol,PistolSpread);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.2f;if(Shot.EnemyKilled)AwardEnemyKill();return true;
+ const auto Shot=FireBattlePistol(this,Pistol,PistolSpread);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.35f;if(!Shot.HitLabel.IsEmpty()){ShotNotice=Shot.HitLabel;ShotNoticeRemaining=.75f;}if(Shot.EnemyKilled)AwardEnemyKill();return true;
 }
 bool ABattleBike::Boost(){
  if(!GetController()||bParked||Ride->Recovery>0||Ride->BoostRemaining>0||Nitro<100)return false;

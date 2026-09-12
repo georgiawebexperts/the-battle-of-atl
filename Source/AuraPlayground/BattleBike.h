@@ -93,6 +93,8 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 EnemyKills=0;
  UPROPERTY(BlueprintReadOnly) int32 ShotsFired=0;
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
+ UPROPERTY(BlueprintReadOnly) FString ShotNotice;
+ UPROPERTY(BlueprintReadOnly) float ShotNoticeRemaining=0;
  UPROPERTY(BlueprintReadOnly) float PistolSpread=0;
  UPROPERTY(BlueprintReadOnly) float LeanAngle=0;
  UPROPERTY(BlueprintReadOnly) float SurfacePitch=0;

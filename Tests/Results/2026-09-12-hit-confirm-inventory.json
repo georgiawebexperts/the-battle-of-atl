@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "phase": 15,
+  "reason": "Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "exit_code": 0,
+  "scope": "Native editor-game real-shot inventory fixture now also asserts shotgun zombie-down confirmation, nonlethal SMG zombie-hit confirmation and expiry. Multi-target/friendly feedback and rendered presentation remain unverified.",
+  "installed": false
+}

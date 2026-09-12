@@ -48,3 +48,10 @@ human aim, sound quality and frame rate are outside the headless test's scope.
 Build 024 adds slot 4, moving ricocheting discs and enemy weapon drops; see
 Design/FRISBEE-LAUNCHER.md. The Meadow ammo source and final weapon presentation
 still require work. The broader game remains unfinished.
+
+
+## Hit confirmation — 2026-09-12 [codex-maclaptop]
+
+Added confirmed-hit labels to real pistol/long-gun results: Zombie hit/down, police hit, attacker hit/down, person hit; multi-victim shotgun reports target count. Applied damage/previously-live target required, so world impacts do not produce these labels. Shared bike state retains last confirmation .75seconds across rider possession; hit X persists .35seconds. HUD puts message beneath aim target label.
+
+Editor build and real-shot inventory fixture pass with added assertions for shotgun kill message, expiry, and first nonlethal SMG hit. Existing reload/ammo/death/zoom/remount assertions also pass. Friendly/multi-target rendered feedback still needs review; source-only, installed051 unchanged. Investigation also finds old APiedmontThreat gunman spawning belongs to APiedmontRideMode; current ABattleEnemyDirector handles zombies and does not integrate that gunman. Incoming-fire awareness therefore needs actual current-mode shooter integration, not merely a HUD overlay.
