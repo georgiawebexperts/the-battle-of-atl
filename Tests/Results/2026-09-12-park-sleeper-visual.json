@@ -1,0 +1,184 @@
+{
+  "map_saved": false,
+  "site": {
+    "path": "OSM path 503237947 part 147",
+    "xyz": [
+      1517.6052126081668,
+      -18065.288175357957,
+      -178.12795190589168
+    ],
+    "yaw": 180,
+    "landing_xyz": [
+      1477.8516376081668,
+      -18326.675631357957,
+      -178.12795190589168
+    ],
+    "ground_samples": [
+      [
+        1517.604898039216,
+        -18065.28815961388,
+        -178.127954110475
+      ],
+      [
+        1510.9793026594516,
+        -18108.852732631574,
+        -178.69729516555435
+      ],
+      [
+        1504.353707279688,
+        -18152.417305649273,
+        -178.4318799256971
+      ],
+      [
+        1497.7281118999226,
+        -18195.981878666964,
+        -178.62403415806966
+      ],
+      [
+        1491.1025165201572,
+        -18239.546451684662,
+        -178.98086014506316
+      ],
+      [
+        1484.4769211403946,
+        -18283.111024702357,
+        -178.8427405266084
+      ],
+      [
+        1477.85132576063,
+        -18326.675597720056,
+        -178.7514323939822
+      ]
+    ],
+    "surface": "USGS Atlanta terrain + authored underwater basin"
+  },
+  "results": [
+    {
+      "sex": "Male",
+      "clip": "/Game/BattleRetarget/Mixamo/SleepCandidate/SleepingBaked",
+      "samples": [
+        {
+          "contacts": [
+            {
+              "bone": "head",
+              "height_over_surface_cm": 11.255813787754875
+            },
+            {
+              "bone": "pelvis",
+              "height_over_surface_cm": 8.739663951366282
+            },
+            {
+              "bone": "foot_l",
+              "height_over_surface_cm": 2.758557261899824
+            },
+            {
+              "bone": "foot_r",
+              "height_over_surface_cm": -0.8306067105337434
+            },
+            {
+              "bone": "hand_l",
+              "height_over_surface_cm": 5.014073240378025
+            },
+            {
+              "bone": "hand_r",
+              "height_over_surface_cm": 6.35238182516693
+            }
+          ],
+          "image": "male-d-0.png",
+          "animation_position": 0.0,
+          "head": [
+            1483.4832340450594,
+            -18123.99545596915,
+            -167.53768964817212
+          ],
+          "hair_origin": [
+            1513.625323935776,
+            -17964.539686804168,
+            -157.71836454638265
+          ],
+          "pelvis": [
+            1516.1381250491393,
+            -18067.005739621938,
+            -166.40938390019622
+          ],
+          "left_foot": [
+            1526.2804962207822,
+            -17989.78076176802,
+            -170.95650011114705
+          ],
+          "right_foot": [
+            1535.7073664670772,
+            -18020.18666509605,
+            -175.13955141268218
+          ]
+        },
+        {
+          "contacts": [
+            {
+              "bone": "head",
+              "height_over_surface_cm": 10.810432990541955
+            },
+            {
+              "bone": "pelvis",
+              "height_over_surface_cm": 9.160181351516798
+            },
+            {
+              "bone": "foot_l",
+              "height_over_surface_cm": 3.0647145038115866
+            },
+            {
+              "bone": "foot_r",
+              "height_over_surface_cm": -0.6392153525368371
+            },
+            {
+              "bone": "hand_l",
+              "height_over_surface_cm": 4.5006047440958525
+            },
+            {
+              "bone": "hand_r",
+              "height_over_surface_cm": 5.745658446686747
+            }
+          ],
+          "image": "male-d-1.png",
+          "animation_position": 3.7766666412353516,
+          "head": [
+            1483.380924868281,
+            -18124.140832574743,
+            -167.98273504393694
+          ],
+          "hair_origin": [
+            1513.501125457392,
+            -17964.682968773726,
+            -158.13031246103927
+          ],
+          "pelvis": [
+            1516.068946473073,
+            -18067.186087842234,
+            -165.99222343363945
+          ],
+          "left_foot": [
+            1526.2698454496056,
+            -17989.653031367645,
+            -170.64782516903998
+          ],
+          "right_foot": [
+            1535.501364211831,
+            -18020.26692599398,
+            -174.9497317099587
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Posed City sleeper in actual terrain and existing editor lighting; not runtime crowd, trigger or animation continuity acceptance",
+  "visual_accepted": false,
+  "diagnostic_directional_light_lux": 8,
+  "process_exit_code": 1,
+  "process_error": "HttpListener could not bind 127.0.0.1:30010; both image files and manifest produced",
+  "findings": [
+    "Right foot joint falls 0.64\u20130.83 cm below traced surface in sampled poses; sole penetration likely worse.",
+    "Rendered silhouette is partly buried and hair attachment is visibly offset.",
+    "Preview uses skeletal mesh components, not runtime poseable body; runtime visual comparison required before changing shared animation.",
+    "Background surface appearance is poor; screenshot is not visual acceptance of the park."
+  ]
+}
