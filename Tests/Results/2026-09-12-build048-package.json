@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "version": "0.48.0",
+  "zen_recovery": "Cook-owned Zen service exited before staging read; restarted same data store for live AutomationTool owner; original job completed.",
+  "installed": true,
+  "scope": "Build cook stage archive success, not gameplay acceptance.",
+  "desktop_version": "0.48.0",
+  "previous_build_preserved": true,
+  "strict_codesign_passed": true
+}

@@ -607,3 +607,10 @@ GameMode spawning or HUD. It is not native gameplay/physical input/audio/FPS
 acceptance. Water is not visible in these captures and needs diagnosis; foliage,
 landmarks, materials and other full V3 work remain. Full goal stays active. See
 Design/STATIC-SCENE-REVIEW.md. User-facing previews are in the task outputs folder.
+
+
+## Mac build048 installed — 2026-09-12 [codex-maclaptop]
+
+Packaging completed after recovering the same Zen data store when cook-owned service exited before staging read; original AutomationTool job succeeded. Packaged stationary-car and moving-car recovery each produced one wipeout; health test passed both death resets, phone recollection and two ordered checkpoints. Finalized app0.48.0, strict ad-hoc signature validation passed, desktop symlink/version verified. Previous app preserved as TheBattleOfATL-build047.app beside installed app on external drive.
+
+Build048 includes Monroe/Irwin traffic, first Irwin buildings/sidewalks and one shallow pothole. No full-game completion, combined traffic performance, packaged visual polish or realistic crash animation acceptance is implied. Many original requirements remain. See Design/PLAYTEST-048.md and build048 results.

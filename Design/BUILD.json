@@ -3,7 +3,7 @@
   "version": "0.48.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "packaging; desktop remains 047",
+  "status": "installed on desktop; narrow packaged recovery checks passed; full-game acceptance unfinished",
   "milestone": "Monroe and Irwin traffic, first Irwin streetscape, one shallow pothole; full game and visual/performance acceptance remain unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }

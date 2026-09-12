@@ -1,0 +1,11 @@
+{
+  "packaged": true,
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Keyboard-driven direct bike/car impact entered traffic recovery",
+    "wipeouts": 1
+  },
+  "scope": "Keyboard-driven bike into a stationary car on the real road. Recovery classification only; crash animation, injury, glancing and moving-car impacts remain unverified.",
+  "passed": true
+}
