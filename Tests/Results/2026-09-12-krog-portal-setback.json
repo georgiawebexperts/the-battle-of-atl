@@ -1,0 +1,21 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "original_portal_station_cm": 19606.96645224921,
+  "candidate_portal_station_cm": 20106.96645224921,
+  "setback_game_cm": 500.0,
+  "remaining_tunnel_cm": 3721.1308244129214,
+  "road_half_width_cm": 450,
+  "minimum_clearance_cm": 80,
+  "candidate_cross_section_enu": [
+    [
+      29426.812061165398,
+      -116469.88743194586
+    ],
+    [
+      30390.946041881336,
+      -116079.95709556658
+    ]
+  ],
+  "main_map_changed": false,
+  "scope": "Geometric proposal, not installed; verify shell and columns against road envelope and preserve floor/sidewalk before adoption"
+}

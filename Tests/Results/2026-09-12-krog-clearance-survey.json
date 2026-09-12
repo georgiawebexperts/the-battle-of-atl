@@ -1,0 +1,206 @@
+{
+  "main_map_changed": false,
+  "sites": [
+    {
+      "sample": {
+        "osm_way": 9267901,
+        "xyz": [
+          29707.83534118372,
+          115907.4909877077,
+          938.7360554488891
+        ],
+        "hit_z": 1267.103759765625,
+        "offset_cm": 328.36770431673585,
+        "actor": "Krog route SM_KrogTunnel_Shell"
+      },
+      "probes": [
+        {
+          "start_above_plan_cm": 40,
+          "hit_z": 956.7514038085938,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 100,
+          "hit_z": 956.7514038085938,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 180,
+          "hit_z": 956.7514038085938,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 240,
+          "hit_z": 956.7514038085938,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 400,
+          "hit_z": 1267.103759765625,
+          "actor": "Krog route SM_KrogTunnel_Shell"
+        }
+      ]
+    },
+    {
+      "sample": {
+        "osm_way": 9267901,
+        "xyz": [
+          29722.998009924777,
+          115938.29937640889,
+          938.7416120517149
+        ],
+        "hit_z": 1267.119873046875,
+        "offset_cm": 328.3782609951601,
+        "actor": "Krog route SM_KrogTunnel_Shell"
+      },
+      "probes": [
+        {
+          "start_above_plan_cm": 40,
+          "hit_z": 956.83642578125,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 100,
+          "hit_z": 956.83642578125,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 180,
+          "hit_z": 956.83642578125,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 240,
+          "hit_z": 956.83642578125,
+          "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+        },
+        {
+          "start_above_plan_cm": 400,
+          "hit_z": 1267.119873046875,
+          "actor": "Krog route SM_KrogTunnel_Shell"
+        }
+      ]
+    },
+    {
+      "sample": {
+        "osm_way": 1378256293,
+        "xyz": [
+          29910.778057380332,
+          115654.24029100561,
+          938.9542945287549
+        ],
+        "hit_z": 1266.8839111328125,
+        "offset_cm": 327.9296166040576,
+        "actor": "Krog route SM_KrogTunnel_Shell"
+      },
+      "probes": [
+        {
+          "start_above_plan_cm": 40,
+          "hit_z": 944.8839111328125,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 100,
+          "hit_z": 944.8839111328125,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 180,
+          "hit_z": 944.8839111328125,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 240,
+          "hit_z": 944.8839111328125,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 400,
+          "hit_z": 1266.8839111328125,
+          "actor": "Krog route SM_KrogTunnel_Shell"
+        }
+      ]
+    },
+    {
+      "sample": {
+        "osm_way": 1378256293,
+        "xyz": [
+          30007.432246237127,
+          115628.65932934119,
+          939.0000000000001
+        ],
+        "hit_z": 1267.0350341796875,
+        "offset_cm": 328.0350341796874,
+        "actor": "Krog route SM_KrogTunnel_Shell"
+      },
+      "probes": [
+        {
+          "start_above_plan_cm": 40,
+          "hit_z": 945.0242919921875,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 100,
+          "hit_z": 945.0242919921875,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 180,
+          "hit_z": 945.0242919921875,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 240,
+          "hit_z": 945.0242919921875,
+          "actor": "Krog route SM_KrogTunnel_Road"
+        },
+        {
+          "start_above_plan_cm": 400,
+          "hit_z": 1267.0350341796875,
+          "actor": "Krog route SM_KrogTunnel_Shell"
+        }
+      ]
+    },
+    {
+      "sample": {
+        "osm_way": 1378256293,
+        "xyz": [
+          30103.7016963433,
+          115601.60026475547,
+          939.0000000000001
+        ],
+        "hit_z": 1267.040283203125,
+        "offset_cm": 328.0402832031249,
+        "actor": "Krog route SM_KrogTunnel_Shell"
+      },
+      "probes": [
+        {
+          "start_above_plan_cm": 40,
+          "hit_z": 924.9978542000458,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "start_above_plan_cm": 100,
+          "hit_z": 924.9978542000458,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "start_above_plan_cm": 180,
+          "hit_z": 924.9978542000458,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "start_above_plan_cm": 240,
+          "hit_z": 924.9978542000458,
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "start_above_plan_cm": 400,
+          "hit_z": 1267.040283203125,
+          "actor": "Krog route SM_KrogTunnel_Shell"
+        }
+      ]
+    }
+  ],
+  "scope": "Layered vertical traces only. Does not establish car-width clearance or traversable grade."
+}

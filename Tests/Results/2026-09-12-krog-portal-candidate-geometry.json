@@ -1,0 +1,15 @@
+{
+  "floor_byte_identical": true,
+  "main_map_changed": false,
+  "components": {
+    "Shell": {
+      "road_overlapping_triangles": 0,
+      "minimum_clearance_cm": 88.23712399452718
+    },
+    "Columns": {
+      "road_overlapping_triangles": 0,
+      "minimum_clearance_cm": 221.9911587162405
+    }
+  },
+  "scope": "Source triangle envelope only; candidate not imported or rendered yet"
+}
