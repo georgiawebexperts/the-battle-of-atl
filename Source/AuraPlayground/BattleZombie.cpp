@@ -127,12 +127,14 @@ void ABattleEnemyDirector::BeginPlay(){
 void ABattleEnemyDirector::Tick(float Dt){
  Super::Tick(Dt);
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanDirectorAudit"))){extern void TickBattleGunmanDirectorAudit(ABattleEnemyDirector*,float);TickBattleGunmanDirectorAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanAudit"))){extern void TickBattleGunmanAudit(ABattleEnemyDirector*,float);TickBattleGunmanAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleVendorRegionAudit"))){extern void TickBattleVendorRegionAudit(ABattleEnemyDirector*,float);TickBattleVendorRegionAudit(this,Dt);return;}
 #endif
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
  if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies+FMath::CeilToInt(Mode->Trouble*.5f)+(Mode->Quest&&Mode->Quest->bCollected?6:0);LiveZombies=0;
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;}
+ TickGunmen(Dt);
  if(bFreezeSpawns||Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)return;
  bool InTunnel=false;for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(Pawn->GetActorLocation())){InTunnel=true;break;}
  WaveDelay=FMath::Max(0.f,WaveDelay-Dt);

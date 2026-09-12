@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "PiedmontExplorer.h"
 #include "BattleZombie.generated.h"
-class UMaterialInstanceDynamic;class AAIController;class ABattleWeaponCrate;
+class UMaterialInstanceDynamic;class AAIController;class ABattleWeaponCrate;class ABattleGunman;
 UCLASS()
 class AURAPLAYGROUND_API ABattleZombie : public APiedmontExplorer {
  GENERATED_BODY()
@@ -59,4 +59,10 @@ public:
 private:
  float SpawnDelay=5,WaveDelay=0;
  bool SpawnZombie(bool Wave);
+public:
+ void TickGunmen(float Dt);
+ bool SpawnGunman();
+ UPROPERTY(BlueprintReadOnly) int32 GunmenSpawned=0;
+ UPROPERTY(BlueprintReadOnly) float GunmanDelay=60;
+ UPROPERTY() TWeakObjectPtr<ABattleGunman> ActiveGunman;
 };

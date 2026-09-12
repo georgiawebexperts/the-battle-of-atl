@@ -69,3 +69,12 @@ Editor build passes after removing duplicate inherited ShotsFired/LastShotEnd de
 Added camera-relative chevron for nearest active gunman within 3000cm: amber while aiming, red for 1.1seconds after firing. It sits on a ring at 34% viewport height, away from the crosshair, notice and bottom controls at reviewed 1280x720. Existing notice priority is retained.
 
 Native editor build and rendered gunman contract pass. Inspected front amber, rear amber and front post-shot red captures. Rear review uses an explicit camera actor and asserts >150degree separation from threat; controller yaw alone did not turn the chase camera, so the initial misleading capture was rejected. Screenshot fixture extends only its first windup to3.8seconds for camera settling; production windup remains1.8. Cover, locked-aim dodge and fatal-hit checks still pass. This verifies these fixed views, not all angles, resolutions, sound quality or multiple threats. Gunman remains fixture-spawned only. Installed051 unchanged.
+
+
+## Rare gunmen in the current director — 2026-09-12 [codex-maclaptop]
+
+Connected ABattleGunman to ABattleEnemyDirector in normal gameplay. Eligible after phone collection or Trouble>=3, never during practice/countdown/end/pause, death, respawn or damage grace. First60 eligible seconds are quiet. On subsequent45–75second eligible intervals, chance is35% plus2.5percentage points per trouble point capped65%. Successful spawn starts150–210second cooldown. At most one managed gunman;35second encounter lifetime, retirement beyond4500cm and cleanup on death/end/practice.
+
+Placement uses actual reachable navigation points1200–2000cm from player, rejects water/capsule obstruction, and restricts arrival to behind camera (horizontal dot<=-.15). Three-second arrival cooldown precedes normal1.8second locked-aim warning. Gunman can be escaped or shot. No chase introduced.
+
+Editor build and Scripts/test_gunman_director.py pass: quiet search/practice/countdown/grace suppression, first quiet interval, real nav placement/range/behind-camera direction, arrival grace/lifetime/cooldown, single-shooter cap, escape retirement and dead-player suppression. Director time is accelerated by the fixture; this does not prove full-route encounter frequency, human reaction balance, animation quality or packaged behavior. Existing core shot contract remains unchanged. Installed051 unchanged; next acceptance requires actual route encounters and gunman art/death improvements.
