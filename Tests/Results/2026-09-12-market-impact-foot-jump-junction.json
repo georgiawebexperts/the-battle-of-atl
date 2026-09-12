@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "jump": true,
+  "on_foot": true,
+  "reason": "Real W approach remained outside gate; foot mode sprints; jump requires airtime",
+  "offset_cm": 0.0,
+  "closest_cm": 35.0,
+  "peak_cm": 94.37,
+  "airborne": true,
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-impact-foot-jump-junction.log",
+  "scope": "South-junction24.12-degree sprint approach; dismount at normal start, reposition for fixture, jump at450cm X gap. One approach only.",
+  "requested_mode_covered": true,
+  "junction_requested": true
+}

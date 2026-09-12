@@ -613,3 +613,10 @@ Install render process exits0; entrance image026305bee16f4e20b03183893f8dfc92 in
 ## Market support polish — 2026-09-12 [codex-maclaptop]
 
 Replaced conspicuous18cm-square wooden levelling blocks with metal leg continuations:4cm-square canopy adjusters and2.8cm-square folding-table adjusters, retaining measured support bottom/top elevations. Native normal-light entrance preview inspected; visible clutter reduced, stalls remain rough/repetitive overall. Reinstalled using explicit InstallTwelfthMarket; process exits0. Fresh-process persisted market verification passes after replacement (150 actors, same ten stalls/five aisle samples). No geometry or collision movement beyond narrower support cross-sections. Main map updated; desktop050 unchanged.
+
+
+## South-junction sprint jump — 2026-09-12 [codex-maclaptop]
+
+Extended actual keyboard impact fixture with --offset and --junction. Offset550 test crosses fence but starts beyond existing street closure, so retained failure does not demonstrate a reachable tutorial bypass. Corrected junction fixture approaches24.12degrees, from1000cm behind target at marketY+640, inside street boundary. Dismount at that narrow fixture position failed; normal practice-start dismount succeeds, then fixture repositions the possessed rider on the approach.
+
+Native editor build and --foot --jump --junction pass:94.37cm rise, airborne true, closest35cm to market plane, no crossing or tutorial timer start. This covers one inside-angle sprint jump at south junction; not exhaustive perimeter closure or gate-pier freeform bypass. No production behavior changed. Desktop050 unchanged.

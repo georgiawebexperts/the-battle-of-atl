@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "jump": true,
+  "on_foot": true,
+  "reason": "Player crossed market fence",
+  "offset_cm": 550.0,
+  "closest_cm": -0.12,
+  "peak_cm": 99.18,
+  "airborne": true,
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-impact-foot-jump-offset550.log",
+  "scope": "Single direct W approach with optional jump at450cm; foot mode dismounts and sprints. No side bypass, alternate timing or rendered acceptance.",
+  "requested_mode_covered": true
+}
