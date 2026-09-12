@@ -8,6 +8,9 @@
 #include "Engine/SkeletalMesh.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PhysicsEngine/BodyInstance.h"
+#include "PhysicsEngine/PhysicsAsset.h"
+#include "PhysicsEngine/SkeletalBodySetup.h"
+#include "Misc/CommandLine.h"
 
 void APiedmontPedestrian::AnimateBody(float Dt){if(KnockdownPhase!=1)Super::AnimateBody(Dt);}
 
@@ -26,10 +29,28 @@ bool APiedmontPedestrian::BeginKnockdown(float Speed,FVector Direction){
  if(!bNativeCrowdRig||KnockdownPhase||RecoveryClips.Num()!=4)return false;
  for(const auto& Clip:RecoveryClips)if(!Clip)return false;
  auto* Mesh=Cast<USkeletalMesh>(Body->GetSkinnedAsset());if(!Mesh||!Mesh->GetPhysicsAsset())return false;
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityKnockdownReview"))){
+  auto* Asset=Mesh->GetPhysicsAsset();
+  UE_LOG(LogTemp,Display,TEXT("CityPhysicsAsset: asset=%s bodies=%d constraints=%d"),*Asset->GetName(),Asset->SkeletalBodySetups.Num(),Asset->ConstraintSetup.Num());
+  for(const auto& Setup:Asset->SkeletalBodySetups){
+   UE_LOG(LogTemp,Display,TEXT("CityPhysicsShape: bone=%s capsules=%d spheres=%d boxes=%d"),*Setup->BoneName.ToString(),Setup->AggGeom.SphylElems.Num(),Setup->AggGeom.SphereElems.Num(),Setup->AggGeom.BoxElems.Num());
+   for(const auto& Shape:Setup->AggGeom.SphylElems)UE_LOG(LogTemp,Display,TEXT("CityPhysicsCapsule: bone=%s radius=%.3f length=%.3f center=%s"),*Setup->BoneName.ToString(),Shape.Radius,Shape.Length,*Shape.Center.ToString());
+  }
+ }
+#endif
  PlayBodyAction(nullptr);bPlayingBumpReaction=false;
  StandingPelvis=Body->GetSocketQuaternion(TEXT("pelvis"));StandingForward=GetActorForwardVector();StandingRight=GetActorRightVector();
  PhysicsBody=NewObject<USkeletalMeshComponent>(this);AddInstanceComponent(PhysicsBody);
  PhysicsBody->SetSkeletalMeshAsset(Mesh);PhysicsBody->SetDisablePostProcessBlueprint(true);
+ // The source collision hull fits the underlying body closely. Add garment/face
+ // clearance to this ragdoll instance, without changing shared downloaded assets.
+ auto* CollisionAsset=DuplicateObject<UPhysicsAsset>(Mesh->GetPhysicsAsset(),this,MakeUniqueObjectName(this,UPhysicsAsset::StaticClass(),TEXT("CityRagdollPhysics")));
+ for(const auto& Setup:CollisionAsset->SkeletalBodySetups){
+  const float Padding=Setup->BoneName==TEXT("head")?2.f:((Setup->BoneName==TEXT("pelvis")||Setup->BoneName==TEXT("spine_02")||Setup->BoneName==TEXT("spine_05"))?1.5f:0.f);
+  for(auto& Shape:Setup->AggGeom.SphylElems)Shape.Radius+=Padding;
+ }
+ PhysicsBody->SetPhysicsAsset(CollisionAsset,true);
  PhysicsBody->SetWorldTransform(Body->GetComponentTransform());
  PhysicsBody->SetCollisionProfileName(TEXT("Ragdoll"));
  PhysicsBody->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);
@@ -56,6 +77,21 @@ bool APiedmontPedestrian::BeginKnockdown(float Speed,FVector Direction){
 bool APiedmontPedestrian::BeginRecovery(){
  if(!PhysicsBody)return false;
  const FVector Pelvis=PhysicsBody->GetSocketLocation(TEXT("pelvis"));
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityKnockdownReview"))){
+  for(const FName Bone:{FName(TEXT("pelvis")),FName(TEXT("spine_02")),FName(TEXT("spine_05")),FName(TEXT("head"))}){
+   const FVector Point=PhysicsBody->GetSocketLocation(Bone);
+   for(bool Complex:{false,true}){
+    FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(CityPhysicsFloor),Complex,this);
+    if(GetWorld()->LineTraceSingleByChannel(Hit,Point+FVector(0,0,150),Point-FVector(0,0,250),ECC_Visibility,Q)){
+     auto* Instance=PhysicsBody->GetBodyInstance(Bone);float ShapeBottom=99999;
+     if(Instance)if(auto* Setup=Cast<UBodySetup>(Instance->BodySetup.Get()))ShapeBottom=Setup->AggGeom.CalcAABB(Instance->GetUnrealWorldTransform()).Min.Z;
+     UE_LOG(LogTemp,Display,TEXT("CityPhysicsFloor: bone=%s complex=%d bone_z=%.3f shape_bottom=%.3f floor_z=%.3f actor=%s component=%s collision=%d"),*Bone.ToString(),Complex,Point.Z,ShapeBottom,Hit.ImpactPoint.Z,*GetNameSafe(Hit.GetActor()),*GetNameSafe(Hit.GetComponent()),Hit.GetComponent()?int32(Hit.GetComponent()->GetCollisionEnabled()):-1);
+    }
+   }
+  }
+ }
+#endif
  const FQuat RotationDelta=PhysicsBody->GetSocketQuaternion(TEXT("pelvis"))*StandingPelvis.Inverse();
  const float Facing=RotationDelta.RotateVector(StandingForward).Z;
  const float Side=RotationDelta.RotateVector(StandingRight).Z;

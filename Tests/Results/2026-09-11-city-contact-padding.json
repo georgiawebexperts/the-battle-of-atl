@@ -1,0 +1,149 @@
+{
+  "padding_cm": {
+    "head": 2,
+    "pelvis": 1.5,
+    "spine_02": 1.5,
+    "spine_05": 1.5
+  },
+  "scope": "Instance-only collision capsule expansion. Source assets unchanged. Forward fall on current path only.",
+  "results": [
+    {
+      "sex": "male",
+      "samples": [
+        {
+          "bone": "pelvis",
+          "complex": 0,
+          "bone_clearance_cm": 13.545999999999992,
+          "shape_floor_gap_cm": -0.07699999999999818,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "pelvis",
+          "complex": 1,
+          "bone_clearance_cm": 13.545999999999992,
+          "shape_floor_gap_cm": -0.07699999999999818,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_02",
+          "complex": 0,
+          "bone_clearance_cm": 13.056999999999988,
+          "shape_floor_gap_cm": -0.3359999999999985,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_02",
+          "complex": 1,
+          "bone_clearance_cm": 13.056999999999988,
+          "shape_floor_gap_cm": -0.3359999999999985,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_05",
+          "complex": 0,
+          "bone_clearance_cm": 10.888000000000005,
+          "shape_floor_gap_cm": 0.12000000000000455,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_05",
+          "complex": 1,
+          "bone_clearance_cm": 10.888000000000005,
+          "shape_floor_gap_cm": 0.12000000000000455,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 0,
+          "bone_clearance_cm": 11.458999999999989,
+          "shape_floor_gap_cm": -0.1460000000000008,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 1,
+          "bone_clearance_cm": 11.458999999999989,
+          "shape_floor_gap_cm": -0.1460000000000008,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "samples": [
+        {
+          "bone": "pelvis",
+          "complex": 0,
+          "bone_clearance_cm": 14.358000000000004,
+          "shape_floor_gap_cm": -0.11400000000000432,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "pelvis",
+          "complex": 1,
+          "bone_clearance_cm": 14.358000000000004,
+          "shape_floor_gap_cm": -0.11400000000000432,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_02",
+          "complex": 0,
+          "bone_clearance_cm": 10.137999999999991,
+          "shape_floor_gap_cm": -0.4300000000000068,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_02",
+          "complex": 1,
+          "bone_clearance_cm": 10.137999999999991,
+          "shape_floor_gap_cm": -0.4300000000000068,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_05",
+          "complex": 0,
+          "bone_clearance_cm": 14.584999999999994,
+          "shape_floor_gap_cm": 0.17399999999999238,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_05",
+          "complex": 1,
+          "bone_clearance_cm": 14.584999999999994,
+          "shape_floor_gap_cm": 0.17399999999999238,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 0,
+          "bone_clearance_cm": 16.75399999999999,
+          "shape_floor_gap_cm": -0.04800000000000182,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 1,
+          "bone_clearance_cm": 16.75399999999999,
+          "shape_floor_gap_cm": -0.04800000000000182,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        }
+      ]
+    }
+  ]
+}

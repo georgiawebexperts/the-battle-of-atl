@@ -1,0 +1,135 @@
+{
+  "finding": "Simple and complex surface heights agree. Head/pelvis shapes reach the path with sub-centimeter contact penetration; visual mesh clearance remains candidate for padding.",
+  "samples": [
+    {
+      "sex": "male",
+      "floor_samples": [
+        {
+          "bone": "pelvis",
+          "complex": 0,
+          "bone_z": 94.829,
+          "shape_bottom": 83.383,
+          "floor_z": 83.519,
+          "shape_floor_gap": -0.1360000000000099,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "pelvis",
+          "complex": 1,
+          "bone_z": 94.829,
+          "shape_bottom": 83.383,
+          "floor_z": 83.519,
+          "shape_floor_gap": -0.1360000000000099,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_03",
+          "complex": 0,
+          "bone_z": 92.617,
+          "shape_bottom": 99999.0,
+          "floor_z": 82.877,
+          "shape_floor_gap": null,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_03",
+          "complex": 1,
+          "bone_z": 92.617,
+          "shape_bottom": 99999.0,
+          "floor_z": 82.877,
+          "shape_floor_gap": null,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 0,
+          "bone_z": 91.081,
+          "shape_bottom": 80.942,
+          "floor_z": 81.262,
+          "shape_floor_gap": -0.3200000000000074,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 1,
+          "bone_z": 91.081,
+          "shape_bottom": 80.942,
+          "floor_z": 81.262,
+          "shape_floor_gap": -0.3200000000000074,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "floor_samples": [
+        {
+          "bone": "pelvis",
+          "complex": 0,
+          "bone_z": 95.147,
+          "shape_bottom": 82.793,
+          "floor_z": 82.867,
+          "shape_floor_gap": -0.07399999999999807,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "pelvis",
+          "complex": 1,
+          "bone_z": 95.147,
+          "shape_bottom": 82.793,
+          "floor_z": 82.867,
+          "shape_floor_gap": -0.07399999999999807,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_03",
+          "complex": 0,
+          "bone_z": 90.783,
+          "shape_bottom": 99999.0,
+          "floor_z": 82.497,
+          "shape_floor_gap": null,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "spine_03",
+          "complex": 1,
+          "bone_z": 90.783,
+          "shape_bottom": 99999.0,
+          "floor_z": 82.497,
+          "shape_floor_gap": null,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 0,
+          "bone_z": 95.819,
+          "shape_bottom": 81.09,
+          "floor_z": 81.207,
+          "shape_floor_gap": -0.11699999999999022,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        },
+        {
+          "bone": "Head",
+          "complex": 1,
+          "bone_z": 95.819,
+          "shape_bottom": 81.09,
+          "floor_z": 81.207,
+          "shape_floor_gap": -0.11699999999999022,
+          "actor": "StaticMeshActor_19",
+          "collision": 3
+        }
+      ]
+    }
+  ]
+}
