@@ -31,11 +31,12 @@ for kind,grid in [('Fire',6),('Smoke',8)]:
   sample=n(unreal.MaterialExpressionTextureSample,texture=tex,sampler_type=unreal.MaterialSamplerType.SAMPLERTYPE_COLOR);wire(coords,sample,'UVs');samples.append(sample)
  blend=n(unreal.MaterialExpressionLinearInterpolate);wire(samples[0],blend,'A','RGB' if kind=='Fire' else 'A');wire(samples[1],blend,'B','RGB' if kind=='Fire' else 'A');wire(alpha,blend,'Alpha')
  tint=n(unreal.MaterialExpressionConstant3Vector,constant=unreal.LinearColor(2.8,.6,.025) if kind=='Fire' else unreal.LinearColor(.065,.06,.055))
- color=mul(blend,tint) if kind=='Fire' else tint
+ strength=n(unreal.MaterialExpressionScalarParameter,parameter_name='Strength',default_value=1)
+ color=mul(mul(blend,tint),strength) if kind=='Fire' else tint
  assert lib.connect_material_property(color,'',unreal.MaterialProperty.MP_EMISSIVE_COLOR)
  opacity=c(1) if kind=='Fire' else mul(blend,c(1.0))
  fade=n(unreal.MaterialExpressionDepthFade,fade_distance_default=12);wire(opacity,fade,'Opacity')
- assert lib.connect_material_property(fade,'',unreal.MaterialProperty.MP_OPACITY)
+ assert lib.connect_material_property(fade if kind=='Fire' else mul(fade,strength),'',unreal.MaterialProperty.MP_OPACITY)
  lib.recompile_material(m);assert unreal.EditorAssetLibrary.save_loaded_asset(m)
  results.append({'material':m.get_path_name(),'grid':grid,'interpolated':True})
 (root/'Tests/Results/2026-09-12-bench-fire-materials.json').write_text(json.dumps({'materials':results,'visual_verified':False},indent=2)+'\n')

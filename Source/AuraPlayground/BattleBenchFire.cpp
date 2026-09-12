@@ -22,23 +22,29 @@ ABattleBenchFire::ABattleBenchFire(){
  Tags.Add(TEXT("BattleBenchFire"));
 }
 void ABattleBenchFire::BeginPlay(){
- Super::BeginPlay();SetLifeSpan(FMath::Max(1.f,Duration));
+ Super::BeginPlay();Duration=FMath::Max(1.f,Duration);SetLifeSpan(Duration);
  for(auto C:Flames){
 #if !UE_BUILD_SHIPPING
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleBenchFireSolidReview")))C->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/EngineMaterials/DefaultMaterial.DefaultMaterial")));
   UE_LOG(LogTemp,Display,TEXT("BenchFlameState: visible=%d hidden=%d elements=%d location=%s material=%s"),C->IsVisible(),C->bHiddenInGame,C->Elements.Num(),*C->GetComponentLocation().ToString(),*GetNameSafe(C->GetMaterial(0)));
 #endif
   auto* M=UMaterialInstanceDynamic::Create(C->GetMaterial(0),this);C->SetMaterial(0,M);FlameMaterials.Add(M);}
- SmokeMaterial=UMaterialInstanceDynamic::Create(Smoke->GetMaterial(0),this);Smoke->SetMaterial(0,SmokeMaterial);
+ SmokeMaterial=UMaterialInstanceDynamic::Create(Smoke->GetMaterial(0),this);Smoke->SetMaterial(0,SmokeMaterial);UpdateVisuals();
 }
 void ABattleBenchFire::Tick(float Dt){
- Super::Tick(Dt);Age+=Dt;
- for(int I=0;I<FlameMaterials.Num();++I)FlameMaterials[I]->SetScalarParameterValue(TEXT("Frame"),FMath::Fmod(Age*24+I*11,36.f));
- if(SmokeMaterial)SmokeMaterial->SetScalarParameterValue(TEXT("Frame"),FMath::Fmod(Age*12,64.f));
- Glow->SetIntensity(650+100*FMath::Sin(Age*13)+65*FMath::Sin(Age*21));
+ Super::Tick(Dt);Age+=Dt;UpdateVisuals();
+}
+void ABattleBenchFire::UpdateVisuals(){
+ auto Ease=[](float T){T=FMath::Clamp(T,0.f,1.f);return T*T*(3.f-2.f*T);};
+ const float Remaining=FMath::Max(0.f,Duration-Age);
+ FlameStrength=Ease(Age/FMath::Min(1.5f,Duration*.15f))*Ease(Remaining/FMath::Min(4.f,Duration*.25f));
+ SmokeStrength=Ease(Age/FMath::Min(3.f,Duration*.2f))*Ease(Remaining/FMath::Min(2.f,Duration*.15f));
+ for(int I=0;I<FlameMaterials.Num();++I){FlameMaterials[I]->SetScalarParameterValue(TEXT("Frame"),FMath::Fmod(Age*24+I*11,36.f));FlameMaterials[I]->SetScalarParameterValue(TEXT("Strength"),FlameStrength);}
+ if(SmokeMaterial){SmokeMaterial->SetScalarParameterValue(TEXT("Frame"),FMath::Fmod(Age*12,64.f));SmokeMaterial->SetScalarParameterValue(TEXT("Strength"),SmokeStrength);}
+ Glow->SetIntensity(FlameStrength*(650+100*FMath::Sin(Age*13)+65*FMath::Sin(Age*21)));
 }
 
-ABattleBenchFire* ABattleBenchFire::IgniteBench(ABattleParkFurniture* Furniture,int32 Index){
+ABattleBenchFire* ABattleBenchFire::IgniteBench(ABattleParkFurniture* Furniture,int32 Index,float BurnSeconds){
  if(!IsValid(Furniture)||!Furniture->IsBenchAvailable(Index))return nullptr;
  UWorld* World=Furniture->GetWorld();int32 Active=0;
  for(TActorIterator<ABattleBenchFire> It(World);It;++It)if(!It->IsActorBeingDestroyed())++Active;
@@ -47,7 +53,7 @@ ABattleBenchFire* ABattleBenchFire::IgniteBench(ABattleParkFurniture* Furniture,
  auto* Fire=World->SpawnActorDeferred<ABattleBenchFire>(StaticClass(),Transform,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
  if(!Fire)return nullptr;
  if(!Furniture->ReserveBench(Index,Fire)){Fire->Destroy();return nullptr;}
- Fire->ReservedFurniture=Furniture;Fire->ReservedBench=Index;Fire->FinishSpawning(Transform);return Fire;
+ Fire->ReservedFurniture=Furniture;Fire->ReservedBench=Index;Fire->Duration=BurnSeconds;Fire->FinishSpawning(Transform);return Fire;
 }
 void ABattleBenchFire::EndPlay(const EEndPlayReason::Type Reason){
  if(auto* Furniture=ReservedFurniture.Get())Furniture->ReleaseBench(ReservedBench,this);

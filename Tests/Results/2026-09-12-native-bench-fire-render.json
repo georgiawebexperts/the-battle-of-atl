@@ -1,19 +1,35 @@
 {
+  "solid_diagnostic": false,
   "exit_code": 0,
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/53a1087633b649ac8bceac576432b16d/fire-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/53a1087633b649ac8bceac576432b16d/fire-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/53a1087633b649ac8bceac576432b16d/fire-3.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/a5fbf02efc9e4d41aa816cd0f4c149dc/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/a5fbf02efc9e4d41aa816cd0f4c149dc/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/a5fbf02efc9e4d41aa816cd0f4c149dc/fire-3.png"
   ],
   "captured": true,
   "visual_accepted": false,
-  "scope": "Native visual candidate on first actual bench; no rare-event logic, ignition NPC, damage or packaged acceptance",
+  "scope": "Native six-second fade/expiry visual candidate on first actual bench; no rare-event logic, ignition NPC, damage or packaged acceptance",
   "capture_passed": true,
-  "solid_diagnostic": false,
-  "visual_inspection": {
-    "flames_visible": true,
-    "smoke_visible": "Thin plume visible above bench",
-    "frame_inspected": "fire-3.png",
-    "polish_complete": false
-  }
+  "fade_samples": [
+    {
+      "sample": 1,
+      "age": 0.123,
+      "flame": 0.0514,
+      "smoke": 0.0296
+    },
+    {
+      "sample": 2,
+      "age": 2.001,
+      "flame": 1.0,
+      "smoke": 1.0
+    },
+    {
+      "sample": 3,
+      "age": 5.853,
+      "flame": 0.0268,
+      "smoke": 0.0709
+    }
+  ],
+  "visual_inspection": "Full-burn and near-expiry stills inspected: flames diminish visibly, with residual smoke. Continuous/multi-angle quality remains pending.",
+  "expiry_verified": true
 }

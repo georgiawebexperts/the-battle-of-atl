@@ -111,3 +111,10 @@ Latest native build9.06sec passed, native render exit0 with3 images. Inspected f
 ABattleParkFurniture now exposes owner-specific ReserveBench/ReleaseBench/IsBenchAvailable. Invalid indices/claimants and cross-world claimants are rejected; repeated claims by the same owner are idempotent. Weak ownership makes destroyed claimants available again. ABattleBenchFire::IgniteBench uses real furniture transforms, rejects occupied benches, caps this spawn path at2live fires per world, reserves before FinishSpawning and releases in EndPlay. Native render review now uses this same API. No normal-play ignition director yet.
 
 `Scripts/test_native_bench_fire.py` passed with exit0: invalid index, same-owner re-claim, duplicate ignition rejection, wrong-owner release rejection, two-fire cap, destruction freeing capacity and timed expiry freeing the bench. Evidence Tests/Results/2026-09-12-native-bench-fire-lifecycle.json. This validates the spawn API rather than arbitrary external spawning. No new rendered acceptance, natural ignition, ignition NPC, hazard damage, scorch, apartment-side placement or packaged verification. Desktop remains045.
+
+
+## Fire appearance/disappearance — 2026-09-12 [codex-maclaptop]
+
+Added scalar Strength to flame emissive and smoke opacity. ABattleBenchFire initializes strength/light at zero, eases into the fire, and fades flame/light before the final smoke fade. Normal35sec duration uses1.5sec flame rise/4sec fall and3sec smoke rise/2sec fall, scaled down for shorter review durations. IgniteBench accepts optional BurnSeconds.
+
+Native6sec rendered review captured strengths at0.123sec (flame.0514/smoke.0296),2.001sec (1/1),5.853sec (.0268/.0709), then confirmed actor expired. Full-burn and near-expiry stills inspected. Reservation/cap/destruction/expiry regression passes again. Evidence Tests/Results/2026-09-12-native-bench-fire-render.json. Rare natural triggering, ignition NPC, hazard/scorch behavior, multi-angle/continuous polish and packaged verification remain pending. Desktop045 unchanged.
