@@ -575,3 +575,10 @@ Added market-end and gate-end camera views to Scripts/review_twelfth_market.py. 
 ## Market return to stone pier — 2026-09-12 [codex-maclaptop]
 
 Extended north return323.71cm to actual14th gate south stone-pier centre, Gate+(0,360), with40cm sampling. New connection retains311.62cm minimum distance from both tutorial road centrelines; generator asserts greater than300cm and exact final pier coordinate. Total192 samples. Native editor build passes. Both actual keyboard gate routes pass with opt-in closure: direct7693.8cm/maxerror12.2cm, alternate25020.9cm/maxerror13.2cm. Gate starts once and removes closure on both. This closes the geometric separation identified in static view; standing/jumping around the pier and south end still require native verification. No new render acceptance or path surface repair claimed. Desktop050 unchanged.
+
+
+## On-foot market impact — 2026-09-12 [codex-maclaptop]
+
+Extended test_market_impact.py with --foot: normal Dismount creates/possesses Ellison, actual W+Shift input sprints at the barrier, Space initiates jump450cm before it. First fixture released Space in the same frame and failed airtime; corrected to200ms hold rather than relaxing acceptance. Native editor rebuild and --foot --jump now pass:112.81cm observed rise, airborne true, closest fence gap53cm, no crossing or practice countdown. This covers one central sprint-jump, not freeform perimeter containment.
+
+South-end layout investigation: market fence and existing south street barrier intersect at(-19107.993785,3887.443844); market fence continues100cm beyond that crossing. No additional south return needed based on XY layout alone. Vertical/capsule traversal at junction, gate-pier bypass and overlapping path visuals still pending. Source-only; desktop050 unchanged.

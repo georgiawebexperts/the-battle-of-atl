@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "jump": true,
+  "on_foot": true,
+  "reason": "Real W approach remained outside gate; foot mode sprints; jump requires airtime",
+  "closest_cm": 53.0,
+  "peak_cm": 112.81,
+  "airborne": true,
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-impact-foot-jump.log",
+  "scope": "Single direct W approach with optional jump at450cm; foot mode dismounts and sprints. No side bypass, alternate timing or rendered acceptance.",
+  "requested_mode_covered": true
+}
