@@ -1,0 +1,30 @@
+{
+  "capture_passed": true,
+  "runs": [
+    {
+      "mode": "arcade",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/6ca5566bc3034fa0b31107e4cfbcfc28/arcade/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/6ca5566bc3034fa0b31107e4cfbcfc28/arcade/foot.png"
+      ],
+      "completed": true
+    },
+    {
+      "mode": "realistic",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/6ca5566bc3034fa0b31107e4cfbcfc28/realistic/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/6ca5566bc3034fa0b31107e4cfbcfc28/realistic/foot.png"
+      ],
+      "completed": true
+    }
+  ],
+  "visual_review": "passed: both final mounted mode labels have clear padding at1280x720; on-foot HUD inspected in first capture before label-only shortening",
+  "scope": "1280x720 mounted arcade/realistic labels and on-foot HUD. No whole-game art acceptance.",
+  "on_foot_review_images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/6b1e62a13bee4c45a8cefc4ceb9bd7f4/arcade/foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/6b1e62a13bee4c45a8cefc4ceb9bd7f4/realistic/foot.png"
+  ],
+  "art_limitations": "Generic repeated pedestrians, rough path intersections and scenery remain unfinished."
+}
