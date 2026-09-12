@@ -50,6 +50,9 @@ for directory in ['EastsideTrail', 'KrogRoute']:
                     polys.append(poly); triangles.append(face)
 assert polys
 index = STRtree(polys); protected = unary_union(polys)
+# Coalesce sub-millimetre gaps between independently exported pavement chunks.
+# Otherwise their 12cm curb-height difference creates near-vertical sliver faces.
+protected = protected.buffer(.1,join_style=2).buffer(-.1,join_style=2)
 geometry = road.difference(protected)
 
 def plane(i,x,y):
