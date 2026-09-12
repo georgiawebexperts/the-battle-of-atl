@@ -46,6 +46,7 @@ FTransform Sample(const FCrowdClip& Data,int32 Bone,float Phase){
 
 bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  if(!IdleAnimation||!WalkAnimation||!RunAnimation)return false;
+ if(BodyAction){BodyActionClock+=Dt;if(BodyActionClock>=BodyAction->GetPlayLength())BodyAction=nullptr;else Clip(BodyAction);}
  // Fill the cache before retaining references: a TMap growth may relocate values.
  Clip(IdleAnimation);Clip(WalkAnimation);Clip(RunAnimation);
  const auto& Idle=Clip(IdleAnimation);const auto& Walk=Clip(WalkAnimation);const auto& Run=Clip(RunAnimation);
@@ -64,6 +65,15 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
   const int32 Bone=Skeleton.FindBoneIndex(Bones[I]);if(Bone<0)continue;
   FTransform Moving;Moving.Blend(Sample(Walk,Bone,LocomotionPhase),Sample(Run,Bone,LocomotionPhase),RunWeight);
   Pose[I].Blend(Sample(Idle,Bone,IdleClock/IdleAnimation->GetPlayLength()),Moving,MoveWeight);
+  if(BodyAction){
+   const int32 ActionBone=BodyAction->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(Bones[I]);
+   if(ActionBone>=0){
+    const float Duration=BodyAction->GetPlayLength();
+    const float Weight=FMath::Min(FMath::Clamp(BodyActionClock/.12f,0.f,1.f),FMath::Clamp((Duration-BodyActionClock)/.25f,0.f,1.f));
+    FTransform ActionPose=Sample(Clip(BodyAction),ActionBone,FMath::Min(BodyActionClock/Duration,.99999f));
+    FTransform Blended;Blended.Blend(Pose[I],ActionPose,Weight);Pose[I]=Blended;
+   }
+  }
   // The animation-only FBX uses different bind translations. Retarget translation
   // and scale to this mesh's skeleton while preserving the authored rotations.
   if(!bNativeCrowdRig)Pose[I].SetTranslation(RestPose[I].GetTranslation());
@@ -90,3 +100,5 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
 }
 
 void APiedmontExplorer::SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run){IdleAnimation=Idle;WalkAnimation=Walk;RunAnimation=Run;}
+
+void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation){BodyAction=Animation;BodyActionClock=0;}

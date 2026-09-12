@@ -20,13 +20,17 @@
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
-    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F"
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry"
   ],
   "packages": [
     "/Game/Character/Player/Female/Meshes/SKM_PlayerFemale_Preview",
     "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic",
     "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_VT_StaticLighting",
     "/Game/CitySampleCrowd/Character/Anims/HandsClosed_MetaHuman",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
@@ -500,6 +504,18 @@
       "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/HandsClosed_MetaHuman.uasset",
       "sha256": "a8aa9452a0d4aede20968c6854b65f2ea732b4fa001886073026cd6a0c15bc18",
       "bytes": 2045326
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact.uasset",
+      "sha256": "57a860cd87038f40bc037e3696643c46aa66309261ee5ef19d0f1745db46c90e",
+      "bytes": 453234
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry.uasset",
+      "sha256": "ceafdac9605b405ffe9a9c870a4359cf9e910620b17bf75ca85dd91426c273b2",
+      "bytes": 478644
     },
     {
       "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base.uasset",
@@ -2536,6 +2552,6 @@
       "bytes": 1641128
     }
   ],
-  "total_bytes": 1240498811,
+  "total_bytes": 1241430689,
   "status": "copied; native render acceptance pending"
 }

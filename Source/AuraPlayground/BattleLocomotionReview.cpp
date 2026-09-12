@@ -52,10 +52,28 @@ void ABattleMacController::TickLocomotionReview(float Dt){
  }
  auto* Person=Cast<APiedmontExplorer>(LocoPerson.Get());if(!Person||!LocoCamera.IsValid())return;
  Person->GetCharacterMovement()->MaxWalkSpeed=Person->bNativeCrowdRig?135:(LocoClock<3?140:350);
- if(LocoClock<6)Person->AddMovementInput(FVector::ForwardVector,1,true);
+ if(LocoClock<6&&!FParse::Param(FCommandLine::Get(),TEXT("BattleCityBumpReview")))Person->AddMovementInput(FVector::ForwardVector,1,true);
  const FVector Look=Person->GetActorLocation()+FVector(0,0,5);
  const FVector CameraPosition=Look+FVector(170,-390,35);
  LocoCamera->SetActorLocation(CameraPosition);LocoCamera->SetActorRotation((Look-CameraPosition).Rotation());
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityBumpReview"))){
+  auto* Visitor=Cast<APiedmontPedestrian>(Person);if(!Visitor){ConsoleCommand(TEXT("quit"));return;}
+  if(LocoStage==1){Visitor->GetCharacterMovement()->StopMovementImmediately();Visitor->BikeImpact(220,FVector::ForwardVector);LocoClock=0;LocoStage=2;}
+  const float HandHeight=FMath::Max(Person->Body->GetSocketLocation(TEXT("hand_l")).Z,Person->Body->GetSocketLocation(TEXT("hand_r")).Z)-Person->GetActorLocation().Z;
+  LocoKneeMotion=FMath::Max(LocoKneeMotion,HandHeight);
+  const float Times[]={.3f,1.1f,2.f,3.6f};
+  if(LocoStage>=2&&LocoStage<=5&&LocoClock>Times[LocoStage-2]){
+   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);
+   FScreenshotRequest::RequestScreenshot(Folder/FString::Printf(TEXT("bump-%d.png"),LocoStage-2),false,false);LocoStage++;
+  }
+  if(LocoStage==6&&LocoClock>4){
+   const float Travel=FVector::Dist2D(LocoStart,Person->GetActorLocation());
+   const bool Pass=Person->bNativeCrowdRig&&Visitor->BikeContacts==1&&Visitor->StumbleRemaining==0&&LocoKneeMotion>30&&HandHeight<15&&Travel<35&&FMath::Abs(Person->Body->GetRelativeRotation().Roll)<1;
+   UE_LOG(LogTemp,Display,TEXT("CityBumpReview: pass=%d contacts=%d remaining=%.3f hand_peak=%.3f hand_end=%.3f travel=%.3f"),Pass,Visitor->BikeContacts,Visitor->StumbleRemaining,LocoKneeMotion,HandHeight,Travel);
+   ConsoleCommand(TEXT("quit"));LocoStage=7;
+  }
+  return;
+ }
  const int32 Knee=Person->Body->GetBoneIndex(Person->bNativeCrowdRig?TEXT("calf_l"):TEXT("LowerLeg_L"));
  if(Knee>=0){
   const FQuat Rotation=Person->Body->BoneSpaceTransforms[Knee].GetRotation();

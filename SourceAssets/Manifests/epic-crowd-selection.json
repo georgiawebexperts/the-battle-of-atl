@@ -21,6 +21,8 @@
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
-    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F"
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry"
   ]
 }

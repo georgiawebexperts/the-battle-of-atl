@@ -29,6 +29,7 @@ void APiedmontPedestrian::InitializeCityAppearance(){
  }
  auto* HairMesh=LoadObject<UStaticMesh>(nullptr,*(FaceRoot+TEXT("/Hair/Hair/")+HairName+TEXT("_CardsMesh_Group0_LOD0")));
  if(!Mesh||!Idle||!Walk||!Quick||!HairMesh)return;
+ BumpReaction=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("FTN_Set/FTN_N_BlockReact_Angry")));
  Body->SetSkinnedAssetAndUpdate(Mesh);
  SetLocomotionClips(Idle,Walk,Quick);bNativeCrowdRig=true;
  for(int32 Index=0;Index<Parts.Num();++Index){

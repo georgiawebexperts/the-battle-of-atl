@@ -1,4 +1,5 @@
 #include "PiedmontPedestrian.h"
+#include "Animation/AnimSequence.h"
 #include "PiedmontBike.h"
 #include "PiedmontBlood.h"
 #include "AIController.h"
@@ -56,16 +57,25 @@ void APiedmontPedestrian::HearHorn(APawn* Source){YieldTo(Source,true);}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
  if(bDead||StumbleRemaining>0)return;BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
- LaunchCharacter(Direction.GetSafeNormal2D()*FMath::Clamp(Speed*.25f,60.f,240.f)+FVector(0,0,60),true,true);
+ // A light contact makes visitors stop and raise their hands. Keep severe
+ // impacts on the existing fall path until a true knockdown/recovery is integrated.
+ bPlayingBumpReaction=bNativeCrowdRig&&BumpReaction&&Speed<=330;
+ if(bPlayingBumpReaction){
+  GetCharacterMovement()->StopMovementImmediately();
+  PlayBodyAction(BumpReaction);StumbleRemaining=BumpReaction->GetPlayLength();
+  UE_LOG(LogTemp,Display,TEXT("CityBump: actor=%s clip=%s duration=%.3f"),*GetName(),*BumpReaction->GetName(),StumbleRemaining);
+ }else LaunchCharacter(Direction.GetSafeNormal2D()*FMath::Clamp(Speed*.25f,60.f,240.f)+FVector(0,0,60),true,true);
 }
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
  if(bDead){Body->SetRelativeRotation(FRotator(0,-90,85));return;}
+ if(StumbleRemaining>0){StumbleRemaining=FMath::Max(0.f,StumbleRemaining-Dt);if(!bPlayingBumpReaction)Body->SetRelativeRotation(FRotator(0,-90,FMath::Sin(StumbleRemaining*5)*22));
+  if(StumbleRemaining<=0)bPlayingBumpReaction=false;return;}
  auto* AI=Cast<AAIController>(GetController());if(!AI)return;
  auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
  if(!Mode||Mode->bRunEnded||bSwimming){AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return;}
  YieldCooldown=FMath::Max(0.f,YieldCooldown-Dt);ThinkRemaining-=Dt;
- if(StumbleRemaining>0){StumbleRemaining=FMath::Max(0.f,StumbleRemaining-Dt);Body->SetRelativeRotation(FRotator(0,-90,FMath::Sin(StumbleRemaining*5)*22));return;}
+
  if(PauseRemaining>0){PauseRemaining=FMath::Max(0.f,PauseRemaining-Dt);AI->StopMovement();bHasDestination=false;return;}
  if(YieldRemaining>0){YieldRemaining-=Dt;return;}
  if(ThinkRemaining>0)return;ThinkRemaining=.65f;

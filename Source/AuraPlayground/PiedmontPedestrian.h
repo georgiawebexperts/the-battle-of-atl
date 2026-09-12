@@ -34,6 +34,8 @@ protected:
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ UPROPERTY() TObjectPtr<UAnimSequence> BumpReaction;
+ bool bPlayingBumpReaction=false;
  void InitializeCityAppearance();
  bool MoveTo(FVector Goal);
  void ChooseDestination();

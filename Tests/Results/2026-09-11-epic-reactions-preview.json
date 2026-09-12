@@ -1,0 +1,10 @@
+{
+  "scope": "Sampled native Metal reaction preview; no saved map changes",
+  "clips": [
+    "FTN_N_BlockReact",
+    "FTN_N_BlockReact_Angry"
+  ],
+  "images": "work/epic-crowd-reaction-review",
+  "finding": "Angry variant raises hands and is a candidate for light contact surprise. No hard crash or fall acceptance.",
+  "rendering": "Required -AllowCommandletRendering; first attempt had no images. Second produced six images but commandlet exited 1 due unrelated HttpListener port 30010 bind error; not a clean process pass."
+}
