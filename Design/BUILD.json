@@ -11,6 +11,6 @@
   ],
   "unreleased_code_changes": [
     "Traffic spawns cycle through six visually reviewed paint colors on the existing car body.",
-    "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; actual-world hill balance pending."
+    "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; 481m main-world Krog route passes in realistic mode with car-yielding test driver; park-hill and full handling balance remain pending."
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "completedLegs": 0,
+  "travelCm": 19265.62,
+  "maxCenterlineErrorCm": 75.62,
+  "wipeouts": 1,
+  "ground_samples": {
+    "total": 44034,
+    "paved": 44034
+  },
+  "lights": {
+    "lit_samples": 0,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 101,
+    "max_live_cars": 21,
+    "max_moving_cars": 20,
+    "nearby_samples": 17,
+    "nearest_car_cm": 184.33
+  },
+  "crowd_observed": {
+    "max_live_people": 0,
+    "max_walking_people": 0,
+    "nearby_samples": 0,
+    "nearest_person_cm": -1.0
+  },
+  "exit_code": 0,
+  "map": "PiedmontWorld",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 206.07,
+    "max_grade": 0.0793
+  },
+  "scope": "Combined map: W/A/D ride on selected route with road traffic directors active. Pedestrian traffic disabled by existing route fixture; not a full mixed-crowd playthrough."
+}

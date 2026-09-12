@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48152.98,
+  "maxCenterlineErrorCm": 35.2,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 99343,
+    "paved": 99343
+  },
+  "lights": {
+    "lit_samples": 9675,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 255,
+    "max_live_cars": 23,
+    "max_moving_cars": 20,
+    "nearby_samples": 33,
+    "nearest_car_cm": 468.7
+  },
+  "crowd_observed": {
+    "max_live_people": 0,
+    "max_walking_people": 0,
+    "nearby_samples": 0,
+    "nearest_person_cm": -1.0
+  },
+  "exit_code": 0,
+  "map": "PiedmontWorld",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 206.16,
+    "max_grade": 0.2031
+  },
+  "scope": "Combined map: W/A/D ride on selected route with road traffic directors active. Pedestrian traffic disabled by existing route fixture; not a full mixed-crowd playthrough. Realistic handling; test-only driver uses Space braking before mapped bends and nearby cars. No pedestrian or rendered performance acceptance."
+}
