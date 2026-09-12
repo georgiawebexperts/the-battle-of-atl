@@ -1,8 +1,9 @@
 """Render the joined Krog/DeKalb road candidate after native support acceptance."""
-import unreal,json,pathlib
-root=pathlib.Path(unreal.Paths.project_dir());out=root/'work/krog-road-review';out.mkdir(exist_ok=True)
+import unreal,json,pathlib,os
+level_floor=os.environ.get('BATTLE_KROG_LEVEL_FLOOR')=='1'
+root=pathlib.Path(unreal.Paths.project_dir());out=root/('work/krog-level-floor-review' if level_floor else 'work/krog-road-review');out.mkdir(exist_ok=True)
 assert json.loads((root/'Tests/Results/2026-09-12-krog-road-support.json').read_text())['passed']
-assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontKrogRoadReview')
+assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/'+('PiedmontKrogFloorReview' if level_floor else 'PiedmontKrogRoadReview'))
 for material_path in ['/Game/PiedmontRide/Materials/M_ParkAsphaltWorld','/Game/PiedmontRide/Materials/M_ParkConcreteWorld']:
  material=unreal.load_asset(material_path);assert material
  material.set_editor_property('used_with_nanite',True)
@@ -25,4 +26,4 @@ for name,location,target in views:
  loc=unreal.Vector(*location);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
-(root/'Tests/Results/2026-09-12-krog-road-render.json').write_text(json.dumps({'images':images,'main_map_changed':False,'headroom_samples':clearance,'minimum_headroom_cm':min(p['headroom_cm'] for p in clearance),'visual_review':'pending'},indent=2)+'\n')
+(root/'Tests/Results'/('2026-09-12-krog-level-floor-render.json' if level_floor else '2026-09-12-krog-road-render.json')).write_text(json.dumps({'images':images,'main_map_changed':False,'headroom_samples':clearance,'minimum_headroom_cm':min(p['headroom_cm'] for p in clearance),'visual_review':'pending'},indent=2)+'\n')

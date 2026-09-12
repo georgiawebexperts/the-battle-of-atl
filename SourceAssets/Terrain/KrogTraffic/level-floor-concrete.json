@@ -1,0 +1,17 @@
+{
+  "surfaces": [
+    {
+      "source": "KrogRoute_Concrete_7_1",
+      "source_triangles": 3632,
+      "remaining_triangles": 0,
+      "removed_overlap_cm2": 294783.8930269589
+    },
+    {
+      "source": "KrogRoute_Concrete_8_1",
+      "source_triangles": 11808,
+      "remaining_triangles": 2311,
+      "removed_overlap_cm2": 777835.5468337876
+    }
+  ],
+  "scope": "Source clipping only; native import, seam and traversal validation pending."
+}
