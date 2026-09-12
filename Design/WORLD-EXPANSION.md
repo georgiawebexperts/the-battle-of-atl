@@ -317,3 +317,12 @@ Retained four individual OSM crossing ways (1396654821, 1396654823, 231270041, 1
 Created isolated PiedmontMonroeCrossingReview, binding the two cars to a shared ABattleRoadCrossing with accelerated 2/1/6 green/amber/red timing. Body-envelope entry determines stop distance with a further 100 cm buffer: northbound 1950.460 cm; southbound only 98.482 cm from its candidate start. The very short southern lead-in confirms production approaches need extension before live spawning.
 
 Native test passed both route completions (8294.221 cm combined), wheel support, endpoint stops and at least one actual stopped signal wait. Underlying crossing occupancy/reservation behavior was previously unit-fixture tested; this run did not deliberately place a pedestrian inside this specific Monroe envelope. Visible signals, player crossing interactions, approach extensions, production traffic timing and packaging remain pending. No crossing controller installed in main world yet; desktop remains 047.
+
+
+## Extended Monroe approaches candidate — 2026-09-12 [codex-maclaptop]
+
+Extended retained Monroe topology to 15591.150 cm, versus the old 4994.865 cm frontage. Generated 2756 terrain-following approach triangles while subtracting installed road/cycle/separator coverage. Native checks initially found 96 samples on obsolete sidewalk end caps; generated a trimmed sidewalk candidate (8714 triangles) retaining the parallel sidewalks, and replaced it only in the isolated review map. All 5328 native footprint checks then passed.
+
+Full two-car driving test FAILED: southbound completed, but northbound stopped at route distance 1749.77 cm around (11203.452,16121.470,-326.555). The reported collision actor StaticMeshActor_132 was resolved in the editor to the new Monroe extended approaches mesh itself. This points to road/body clearance or local road profile, not an unrelated prop; investigate contact geometry before changing the car or terrain. Do not install this candidate. Source/footprint acceptance does not prove body clearance. Desktop/main-world approaches remain unchanged at 047.
+
+New scripts prepare_monroe_approaches.py, build_monroe_approaches.py, validate_monroe_approaches.py, test_native_monroe_approaches.py and inspect_monroe_blocker.py reproduce the candidate and failure. build_monroe_car_lanes.py --extended preserves the original shorter lane files. Results: monroe-extended-support, native-monroe-extended-lanes and monroe-blocker dated 2026-09-12.

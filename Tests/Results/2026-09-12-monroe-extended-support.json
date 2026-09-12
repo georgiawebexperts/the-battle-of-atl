@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "probes": 5328,
+  "failures": [],
+  "hits": {
+    "Monroe extended approaches": 3528,
+    "SM_TenthStreet_Road": 1766,
+    "Monroe road join repairs": 3,
+    "SM_TenthStreet_CycleTrack": 31
+  },
+  "main_map_changed": false,
+  "scope": "Native footprint support only; routes, signals and actual car movement unverified."
+}

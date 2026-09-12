@@ -1,0 +1,12 @@
+[
+  {
+    "name": "StaticMeshActor_132",
+    "label": "Monroe extended approaches",
+    "location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mesh": "/Game/BattleForTheA/Environment/MonroeTraffic/SM_Monroe_Approaches.SM_Monroe_Approaches"
+  }
+]

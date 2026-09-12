@@ -1,15 +1,17 @@
 """Prepare Monroe opposing lanes against installed road geometry, without changing the map."""
-import json,math,collections
+import json,math,collections,sys
 from pathlib import Path
 from shapely.geometry import LineString
 from shapely.ops import linemerge
 root=Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terrain/TenthStreetGraded';out=root/'SourceAssets/Terrain/MonroeTraffic';out.mkdir(exist_ok=True)
-network=json.loads((folder/'network.json').read_text());line=linemerge([LineString([p[:2] for p in row['points_cm']]) for row in network['monroe_roads']]);assert line.geom_type=='LineString'
+extended='--extended' in sys.argv
+network=json.loads(((out/'approaches-network.json') if extended else (folder/'network.json')).read_text());line=linemerge([LineString([p[:2] for p in row['points_cm']]) for row in network['roads' if extended else 'monroe_roads']]);assert line.geom_type=='LineString'
 if line.coords[0][1]<line.coords[-1][1]:line=LineString(list(line.coords)[::-1])
 triangles=[];grid=collections.defaultdict(list)
-for name in ['Road','RoadSeams','CycleTrack','MonroeSeams']:
+for name in ['Road','RoadSeams','CycleTrack','MonroeSeams']+(['Approaches'] if extended else []):
  vertices=[]
  mesh_path=out/'Monroe_RoadSeams.obj' if name=='MonroeSeams' else folder/f'TenthStreet_{name}.obj'
+ if name=='Approaches':mesh_path=out/'Monroe_Approaches.obj'
  if not mesh_path.exists():continue
  for row in mesh_path.read_text().splitlines():
   values=row.split()
@@ -40,6 +42,6 @@ for name,offset,reverse in [('northbound',150,False),('southbound',-150,True)]:
     if not hit:failures.append({'lane':name,'xy':[px,py],'kind':'footprint'})
     else:probes.append({'lane':name,'xyz':[px,py,hit[0]],'source_surface':hit[1]})
  if reverse:points.reverse()
- routes.append({'name':name,'points_cm':points,'speed_cm_s':500,'scope':'Short installed Monroe frontage candidate; native support, crossing controls and endpoint visibility pending.'})
+ routes.append({'name':name,'points_cm':points,'speed_cm_s':500,'scope':'Monroe candidate; native support, crossing controls and endpoint visibility pending.'})
 report={'author':'2026-09-12 [codex-maclaptop]','source':'OpenStreetMap contributors, References/tenth-street-monroe.osm; installed TenthStreetGraded meshes','road_length_cm':line.length,'source_coverage_passed':not failures,'failures':failures,'routes':routes,'main_map_changed':False}
-(out/'car-lanes.json').write_text(json.dumps(report,indent=2)+'\n');(out/'car-lane-probes.json').write_text(json.dumps({'samples':probes})+'\n');print(json.dumps({'road_length_cm':line.length,'routes':len(routes),'probes':len(probes),'failures':len(failures)}))
+(out/('extended-car-lanes.json' if extended else 'car-lanes.json')).write_text(json.dumps(report,indent=2)+'\n');(out/('extended-car-lane-probes.json' if extended else 'car-lane-probes.json')).write_text(json.dumps({'samples':probes})+'\n');print(json.dumps({'road_length_cm':line.length,'routes':len(routes),'probes':len(probes),'failures':len(failures)}))

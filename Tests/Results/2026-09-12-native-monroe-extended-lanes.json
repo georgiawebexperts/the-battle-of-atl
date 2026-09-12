@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Full lane traversal timed out",
+    "cars": 2,
+    "total_distance_cm": 16495.471
+  },
+  "scope": "Two opposing extended Monroe lanes in the repair review map. Native motion and support, no signals, natural population or packaged acceptance.",
+  "passed": false
+}

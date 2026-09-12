@@ -1,0 +1,40 @@
+{
+  "surfaces": [
+    {
+      "file": "Monroe_Approaches.obj",
+      "triangles": 2756,
+      "missing_area_cm2": 1.0695565233552807e-05,
+      "bounds_cm": [
+        [
+          10109.622430811325,
+          2862.3708954263093,
+          -483.4965518693706
+        ],
+        [
+          14733.817375323655,
+          18276.052170273615,
+          -89.36535610192831
+        ]
+      ]
+    },
+    {
+      "file": "Monroe_SidewalkTrim.obj",
+      "triangles": 8714,
+      "missing_area_cm2": 0.0,
+      "bounds_cm": [
+        [
+          -30750.3,
+          8900.6491,
+          -517.3742117977213
+        ],
+        [
+          13422.1344,
+          14328.1767,
+          415.17311585109354
+        ]
+      ]
+    }
+  ],
+  "main_map_changed": false,
+  "scope": "Extended Monroe pavement candidate; native collision and visual review pending."
+}
