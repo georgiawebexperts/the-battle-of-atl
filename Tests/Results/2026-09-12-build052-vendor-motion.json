@@ -1,0 +1,20 @@
+{
+  "style": "vendor",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "exit_code": 0,
+  "measurements": [
+    "[2026.09.12-16.51.04:597][807]LogTemp: Display: LocoReview: idle_foot_gap_cm=1.672",
+    "[2026.09.12-16.51.04:597][807]LogTemp: Display: LocoReview: foot_L_forward_dot=0.5181",
+    "[2026.09.12-16.51.04:597][807]LogTemp: Display: LocoReview: foot_R_forward_dot=0.9933",
+    "[2026.09.12-16.51.04:597][807]LogTemp: Display: LocoReview: pass=1 knee_motion_deg=103.492 travel_cm=1440.094 grounded=1"
+  ],
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/59b91c56bf314d5baddbdc3bb37418fa/walk.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/59b91c56bf314d5baddbdc3bb37418fa/walk-step.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/59b91c56bf314d5baddbdc3bb37418fa/run.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/59b91c56bf314d5baddbdc3bb37418fa/idle.png"
+  ],
+  "visual_review": "Inspected running frame: vendor model confirmed, forward shoes. Other captures not inspected.",
+  "scope": "Fixed walking/running/idle capture; fixture metrics include idle toe orientation, not all moving foot orientations.",
+  "passed": true
+}

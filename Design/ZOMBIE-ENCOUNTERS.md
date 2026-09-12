@@ -66,3 +66,10 @@ Native build passed. Scripts/test_vendor_region.py passed exterior selection, in
 ## In-park pursuit verification — 2026-09-12 [codex-maclaptop]
 
 Expanded the native vendor fixture beyond containment: spawn an actual vendor on a retained OSM park path, position Ellison about12m down that path, and allow normal AI/navigation ticks. Requires more than150cm approach within4seconds. Move Ellison outside: vendor must stop within5cm for2seconds with no attack telegraph. Return Ellison inside: vendor must move at least100cm again within3seconds. All stages and the existing vendor/punk comparative movement checks pass; native build succeeds. Fixture uses a stationary, damage-protected bike and one path; it does not establish crowd behavior, all routes, animated appearance or packaged acceptance. Desktop050 remains unchanged.
+
+
+## Installed locomotion and motion clarity — 2026-09-12 [codex-maclaptop]
+
+Captured installed052 punk/vendor walk, walk-step, run and idle. Fixture metrics pass: ~1440cm movement,~103degree knee motion, idle ankle gap~1.7cm; idle bind-forward dots left.518/right.993. Inspected punk walk-step/run/idle and vendor run: shoes not reversed in these frames. This does not prove every pose, view, or other character rig. No bone orientation changes justified.
+
+Compared punk walk-step with motion blur disabled, and with blur disabled plus FXAA. FXAA variant is visibly noisier and rejected. Blur-only-off variant sharpens fingers/shoes while retaining temporal smoothing. Set r.MotionBlurQuality=0 at player controller BeginPlay with game-setting priority; editor build passes. Console-override comparison verified rendering effect in installed052; new default itself is source-only until next package. Full-motion quality, grainy materials and broader character art remain unfinished. Reproducer Scripts/review_zombie_locomotion.py, --punk, --no-motion-blur, diagnostic --sharp.

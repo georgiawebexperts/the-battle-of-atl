@@ -1,3 +1,4 @@
+#include "HAL/IConsoleManager.h"
 #include "BattleMacController.h"
 #include "BattleRunRecords.h"
 #include "BattleBike.h"
@@ -34,6 +35,8 @@ ABattleMacController::ABattleMacController(){
 
 void ABattleMacController::BeginPlay(){
  Super::BeginPlay();
+ // Keep moving silhouettes readable; temporal antialiasing remains enabled.
+ if(auto* Blur=IConsoleManager::Get().FindConsoleVariable(TEXT("r.MotionBlurQuality")))Blur->Set(0,ECVF_SetByGameSetting);
  if(GetWorld()->WorldType==EWorldType::Game){
   const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
   if(Mode&&UGameplayStatics::HasOption(Mode->OptionsString,TEXT("AutoStart")))ResumeRide();else ShowMenu();

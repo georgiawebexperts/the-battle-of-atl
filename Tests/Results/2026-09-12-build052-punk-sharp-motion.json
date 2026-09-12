@@ -1,0 +1,20 @@
+{
+  "style": "punk-sharp",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "exit_code": 0,
+  "measurements": [
+    "[2026.09.12-16.52.13:489][800]LogTemp: Display: LocoReview: idle_foot_gap_cm=1.866",
+    "[2026.09.12-16.52.13:489][800]LogTemp: Display: LocoReview: foot_L_forward_dot=0.5181",
+    "[2026.09.12-16.52.13:489][800]LogTemp: Display: LocoReview: foot_R_forward_dot=0.9933",
+    "[2026.09.12-16.52.13:489][800]LogTemp: Display: LocoReview: pass=1 knee_motion_deg=103.334 travel_cm=1438.151 grounded=1"
+  ],
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/7a6e651d51624b809d1b4f0c64f91376/walk.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/7a6e651d51624b809d1b4f0c64f91376/walk-step.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/7a6e651d51624b809d1b4f0c64f91376/run.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/7a6e651d51624b809d1b4f0c64f91376/idle.png"
+  ],
+  "visual_review": "Inspected walk-step: disabling motion blur plus temporal AA makes hands sharper but adds objectionable scene noise; rejected as default.",
+  "scope": "Fixed walking/running/idle capture; fixture metrics include idle toe orientation, not all moving foot orientations.",
+  "passed": true
+}
