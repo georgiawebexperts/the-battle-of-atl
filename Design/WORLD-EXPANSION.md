@@ -601,3 +601,10 @@ review_gate_pavement_materials.py temporarily replaces concrete with cyan and as
 Created original M_ParkAsphaltWeatheredCandidate with world-space aggregate variation, base linear(.13,.135,.14), roughness .85–.93, low specular and explicit Nanite usage. Native lit gate render inspected: previously near-black strips now read as gray asphalt with aggregate and retained tree shadows. No unlit production surface or geometry/collision adjustment. Reproducer create_weathered_asphalt.py; review_gate_pavement_materials.py -WeatheredAsphaltReview, result2026-09-12-gate-weathered.json. Initial material pin-name assertion corrected to unnamed unary inputs; final commandlet exits0.
 
 install_weathered_park_asphalt.py applies only22 Park pavement SM_Park_Asphalt_* actor overrides in main PiedmontWorld, saves and reloads, verifies all22 material assignments; exits0. Road corridor actors excluded by exact label prefix. New material/map staged for next package; desktop050 unchanged. Whole-park motion/night appearance not yet accepted. Gate path dead ends/parallel layout still need authored cleanup separately.
+
+
+## Market dressing saved to main park — 2026-09-12 [codex-maclaptop]
+
+Explicit InstallTwelfthMarket mode in review_twelfth_market.py saves only authored dressing, rejects diagnostic sky/shadow/fence flags. Replaces only prior TwelfthStreetMarket tagged actors; previews rebuild those transiently to avoid duplicate stalls. Saved ten stalls/150 actors under Piedmont/12th Street Market, before review camera creation. Main map has no temporary market closure.
+
+Install render process exits0; entrance image026305bee16f4e20b03183893f8dfc92 inspected with normal skylight. Shapes, produce and signs visible, but repeated stock, overlarge levelling blocks and general art quality remain rough. Fresh process verify_twelfth_market_install.py exits0:150 labels retained, ten each of six stall meshes and sign, metal/wood BlockAll, five aisle midpoint ground samples unobstructed by stalls. This is not full aisle player traversal. Closure activation and remaining perimeter tests pending; desktop050 unchanged.

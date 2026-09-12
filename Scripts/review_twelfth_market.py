@@ -1,6 +1,8 @@
-"""Import original stall parts, survey and render transient market. Never save map."""
+"""Import original stall parts, survey and render transient market. Preview by default; explicit InstallTwelfthMarket saves only market dressing."""
 import unreal,json,math,pathlib,uuid
 root=pathlib.Path(unreal.Paths.project_dir()).resolve();folder=root/'SourceAssets/Terrain/TwelfthMarket';out=root/'work/market-review'/uuid.uuid4().hex;out.mkdir(parents=True)
+install='-InstallTwelfthMarket' in unreal.SystemLibrary.get_command_line()
+if install:assert not any(flag in unreal.SystemLibrary.get_command_line() for flag in ['-MarketClosurePreview','-MarketRecaptureSky','-MarketPathShadowReview'])
 dest='/Game/BattleForTheA/Environment/TwelfthMarket';colors={'Canvas':(.73,.70,.61),'Metal':(.20,.22,.23),'Wood':(.27,.15,.065),'Leaf':(.15,.30,.035),'Tomato':(.55,.035,.018),'Cloth':(.12,.24,.15)};meshes={}
 for row in json.loads((folder/'Stall/manifest.json').read_text())['surfaces']:
  name=row['material'];mat=unreal.load_asset(dest+'/M_'+name)
@@ -18,6 +20,9 @@ for row in json.loads((folder/'Stall/manifest.json').read_text())['surfaces']:
  mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh);meshes[name]=mesh
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 unreal.PiedmontWorldTools.finish_editor_asset_loading();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
+# Rebuild only this authored market; previews remove it transiently to avoid duplicates.
+for actor in ea.get_all_level_actors():
+ if unreal.Name('TwelfthStreetMarket') in actor.tags:ea.destroy_actor(actor)
 sign_materials=[]
 for i in range(5):
  task=unreal.AssetImportTask();task.filename=str(folder/'Stall'/f'T_MarketSign_{i}.png');task.destination_path=dest;task.destination_name=f'T_MarketSign_{i}';task.automated=True;task.save=True;task.replace_existing=True;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])
@@ -63,6 +68,15 @@ for index,row in enumerate(layout['stalls']):
  board=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(bx,by,base+202),unreal.Rotator(yaw=yaw));board.set_actor_scale3d(unreal.Vector(2.7,.02,.36));board.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));board.static_mesh_component.set_material(0,unreal.load_asset(dest+'/M_Cloth'));board.static_mesh_component.set_collision_profile_name('NoCollision');board.tags=[unreal.Name('MarketReview')]
  sign=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(cx,cy,base),unreal.Rotator(yaw=yaw));sign.tags=[unreal.Name('MarketReview')];sign.static_mesh_component.set_static_mesh(sign_mesh);sign.static_mesh_component.set_material(0,sign_materials[index//2]);sign.static_mesh_component.set_collision_profile_name('NoCollision')
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
+if install:
+ installed=[]
+ for actor in ea.get_all_level_actors():
+  if unreal.Name('MarketReview') not in actor.tags:continue
+  actor.tags=[unreal.Name('TwelfthStreetMarket')];actor.set_folder_path('Piedmont/12th Street Market')
+  actor.set_actor_label(actor.get_actor_label().replace('Market review','12th Street market'));installed.append(actor.get_actor_label())
+ assert len(installed)>=80
+ assert unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
+ (root/'Tests/Results/2026-09-12-twelfth-market-install.json').write_text(json.dumps({'actors':installed,'stalls':len(survey),'main_map_saved':True,'closure_installed':False,'scope':'Market dressing only; no diagnostic lighting or temporary fence saved'},indent=2))
 if '-MarketClosurePreview' in unreal.SystemLibrary.get_command_line():
  gx,gy=layout['gate_xy'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(gx,gy,1000),unreal.Vector(gx,gy,-1000));assert hit
  closure=ea.spawn_actor_from_class(unreal.BattleMarketClosure,hit[0]);closure.tags=list(closure.tags)+[unreal.Name('MarketReview')];assert closure.build_grounded_return()
@@ -85,6 +99,6 @@ for name,p,target in views:
  loc=unreal.Vector(*p);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
-result={'path_shadow_diagnostic':'-MarketPathShadowReview' in unreal.SystemLibrary.get_command_line(),'return_report':return_report if '-MarketClosurePreview' in unreal.SystemLibrary.get_command_line() else None,'closure_preview':'-MarketClosurePreview' in unreal.SystemLibrary.get_command_line(),'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
+result={'path_shadow_diagnostic':'-MarketPathShadowReview' in unreal.SystemLibrary.get_command_line(),'return_report':return_report if '-MarketClosurePreview' in unreal.SystemLibrary.get_command_line() else None,'closure_preview':'-MarketClosurePreview' in unreal.SystemLibrary.get_command_line(),'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':install,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
 (root/'Tests/Results/2026-09-12-market-review.json').write_text(json.dumps(result,indent=2)+'\n')
 print('MARKET_REVIEW '+str(out))

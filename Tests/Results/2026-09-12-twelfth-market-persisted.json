@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "actor_count": 150,
+  "mesh_counts": {
+    "Cube": 80,
+    "SM_MarketStall_Canvas": 10,
+    "SM_MarketStall_Metal": 10,
+    "SM_MarketStall_Wood": 10,
+    "SM_MarketStall_Leaf": 10,
+    "SM_MarketStall_Tomato": 10,
+    "SM_MarketStall_Cloth": 10,
+    "SM_MarketSign": 10
+  },
+  "aisle_ground_samples": [
+    {
+      "xy": [
+        -18708.125263047677,
+        3197.6988351619516
+      ],
+      "ground_actor": "Park pavement SM_Park_Asphalt_2_15",
+      "z": -171.73440551757812
+    },
+    {
+      "xy": [
+        -18308.256740721954,
+        3207.9538267778903
+      ],
+      "ground_actor": "Park pavement SM_Park_Asphalt_2_15",
+      "z": -178.57211303710938
+    },
+    {
+      "xy": [
+        -17909.134809485924,
+        3230.5793087891643
+      ],
+      "ground_actor": "Park pavement SM_Park_Asphalt_2_15",
+      "z": -185.34417724609375
+    },
+    {
+      "xy": [
+        -17513.16691996268,
+        3284.2813765207397
+      ],
+      "ground_actor": "Park pavement SM_Park_Asphalt_2_15",
+      "z": -192.33575439453125
+    },
+    {
+      "xy": [
+        -17123.34834321716,
+        3371.877789739294
+      ],
+      "ground_actor": "Park pavement SM_Park_Asphalt_2_15",
+      "z": -201.17417907714844
+    }
+  ],
+  "scope": "Fresh process verifies saved parts and collision profiles; five aisle ground probes, not player traversal or full art acceptance"
+}
