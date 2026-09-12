@@ -485,3 +485,10 @@ Elliott reiterated potholes should be occasional, not everywhere. Keep deliberat
 ## Pothole surface revision — 2026-09-12 [codex-maclaptop]
 
 Replaced brown flat fill with procedural neutral asphalt aggregate and radial broken-wear rim; centred UVs at0.5 to tolerate importer V flip. First aggregate render was too bright and rejected. Final b603eef3e7754eb694d7ed48bcdc99ee approach1/2 inspected: dark interior and lighter irregular edge readable, suitable for actual traversal testing. Full visual acceptance remains false: close-up fracture detail, speed-dependent avoidance and gameplay/packaging pending. Geometry unchanged from9269-probe passing road. Scripts compile and native import/render exit0. One candidate only in review, main and desktop047 unchanged.
+
+
+## Shallow pothole riding and main installation — 2026-09-12 [codex-maclaptop]
+
+Added opt-in BattlePotholeRideAudit, normal W keyboard input and bike movement across the authored review road. Starts are teleported; contact actor is reset between passes and camera fixture cars removed. Near pass at130 cm lateral offset triggers zero contacts; direct pass triggers exactly one, no wipeout, grounded endpoint. Native editor build and test pass. This does not verify jump/deep recovery, busy traffic, real-physics mode or packaged feel.
+
+Installed one shallow pothole near Irwin into main PiedmontWorld, replacing only Irwin road mesh with physically depressed alternative and adding one contact/visual actor. All9269 native road surface probes pass; original trail samples preserved. Sparse requirement retained. Desktop047 is still unchanged. Broader game, scenery, crash animations and remaining requirements remain unfinished.

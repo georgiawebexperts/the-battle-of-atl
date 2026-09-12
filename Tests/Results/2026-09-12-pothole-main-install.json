@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "probes": 9269,
+  "hits": {
+    "Irwin road": 9269
+  },
+  "failures": [],
+  "trail_failures": [],
+  "main_map_changed": true,
+  "potholes": 1,
+  "desktop_build_updated": false,
+  "scope": "Native surface support and original trail preservation only; no traffic or visual acceptance."
+}

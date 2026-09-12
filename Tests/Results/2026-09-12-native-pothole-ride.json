@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Keyboard near miss and shallow crossing passed with one contact and no wipeout",
+    "phase": 2,
+    "contacts": 1
+  },
+  "scope": "Native keyboard riding beside and across one authored shallow pothole. Test contact actor reset between passes; no traffic, deep-hole, jump, visual-speed or packaged acceptance.",
+  "passed": true
+}
