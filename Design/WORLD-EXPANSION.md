@@ -395,3 +395,19 @@ Still pending: actual lane/wheel-envelope traversal, traffic control consistent 
 Generated opposing east/west routes along connected Irwin/Lake ways (13243.463 cm source centreline), 150 cm lateral offsets, 400 cm endpoint insets, 500 cm/s cruise. All 6474 native body/wheel support probes pass on road and retained trail surfaces. Native drive completes both lanes with support and endpoint stops, 24794.055 cm combined. Evidence: 2026-09-12-irwin-lane-support and native-irwin-lanes.
 
 Source crossing tags indicate continuous/unmarked cycle crossing with traffic-calming table. Review control therefore remains eligible when clear and yields when occupied; no invented signal cycle/poles. Conservative shared crossing reservation bounds X25704.161..26458.188, Y100302.902..101355.387. Stop distances5399.260/5496.782 cm. Native character-capsule fixture holds both cars for2.002 seconds, then cars complete after removal. This is collision-occupancy evidence, not player walking or animation acceptance. Reuses existing Monroe audit tags only in isolated review maps. Scripts/create_irwin_lane_review.py and create_irwin_crossing_review.py reproduce the maps. Main and desktop047 unchanged. Next: natural traffic population, visual surface repair/review, player crossing and main integration.
+
+
+## Road potholes requested — 2026-09-12 [codex-maclaptop]
+
+Elliott explicitly requests potholes to reflect Atlanta road conditions. Add authored, visible and avoidable road depressions on street approaches, distinct from accidental mesh cracks. Proposed gameplay: shallow potholes jolt/scrub speed; deeper potholes can cause a high-speed wipeout. Preserve a navigable line through each road and intersection, including cycle access. Tune against both arcade and real-physics modes, verify actual wheel traversal and rider-visible warning/readability, and avoid random invisible penalties. Hazard placement, modelling, response and verification remain pending.
+
+2026-09-12 [codex-maclaptop] — Elliott clarified potholes should be sparse, not everywhere. Use a few scattered trouble spots with long stretches of clean roadway, not a dense obstacle course.
+
+
+## Irwin population and visual diagnosis — 2026-09-12 [codex-maclaptop]
+
+Native recurring traffic passed8 spawned/2 recycled/peak6/observed stopped crossing wait. Generic population audit has an Irwin offscreen camera and allows occupancy proof to remain in its separate fixture rather than requiring a forced signal phase; other corridor requirements unchanged. Editor build passed.
+
+Rendered road rejected: visible thin cracks and patchy shading. Added explicit normals and Nanite position precision8/full fallback matching existing trail; 7875 support checks still pass, but cracks remain. Hide-landscape render shows black gaps in same places, pointing to road mesh discontinuities rather than only terrain intersection. Likely next diagnosis: build_irwin_roads.py adaptive per-triangle subdivision introduces T-junctions with nonlinear height on subdivided edge, while unsplit neighbours interpolate straight edges. Make tessellation conforming and recheck rendering/support before installation; source 2D coverage alone cannot prove 3D watertightness.
+
+Main is unchanged and desktop remains047. install_irwin_traffic.py is prepared but guarded by road_geometry_accepted_for_integration, currently absent/false; do not bypass. Review images before precision68e7c4c59ac546cf8196088c64056953, afterf52802db4bd54268bbfb85a59fdf80a9, landscape-hidden6108b02cf9b04322a61e15b22c6aab3a under work/irwin-crossing-review. Landmarks, paint and scenery remain unbuilt here.

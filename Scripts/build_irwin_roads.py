@@ -99,7 +99,10 @@ assert missing<1,missing
 vertices=[p for f in faces for p in f]
 lines=['o Irwin_Road']+[f'v {x:.5f} {-y:.5f} {z:.5f}' for x,y,z in vertices]
 lines += [f'vt {x/200:.5f} {y/200:.5f}' for x,y,z in vertices]
-for i in range(0,len(vertices),3):lines.append('f '+' '.join(f'{j}/{j}' for j in [i+3,i+2,i+1]))
+for x,y,z in vertices:
+    nx=-(height(x+1,y)-height(x-1,y))/2;ny=(height(x,y+1)-height(x,y-1))/2
+    length=math.sqrt(nx*nx+ny*ny+1);lines.append(f'vn {nx/length:.8f} {ny/length:.8f} {1/length:.8f}')
+for i in range(0,len(vertices),3):lines.append('f '+' '.join(f'{j}/{j}/{j}' for j in [i+3,i+2,i+1]))
 (folder/'Irwin_Road.obj').write_text('\n'.join(lines)+'\n')
 # Test actual native support later at triangle centroids, not only source bounds.
 probes=[{'xyz':[sum(p[k] for p in f)/3 for k in range(3)]} for f in faces]

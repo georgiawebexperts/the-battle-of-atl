@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/6108b02cf9b04322a61e15b22c6aab3a/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/6108b02cf9b04322a61e15b22c6aab3a/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/6108b02cf9b04322a61e15b22c6aab3a/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": false,
+  "landscape_hidden_diagnostic": true,
+  "scope": "Fixed road approach cameras and wide view; test cars stationary, no rider playthrough or traffic timing acceptance.",
+  "observed": "Cracks persist as black gaps with landscape hidden; indicates road mesh discontinuities rather than solely terrain poking through."
+}

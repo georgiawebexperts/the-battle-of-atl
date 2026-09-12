@@ -39,6 +39,7 @@ void TickBattleTrafficPopulationAudit(APlayerController* PC,float Dt){
   for(TActorIterator<ABattleRoadTrafficDirector> I(PC->GetWorld());I;++I)if(I->ActorHasTag(TEXT("TenthRoadTrafficReview")))S.Director=*I;
   if(!S.Director.IsValid()){Finish(false,TEXT("Review director missing"));return;}
   S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();S.Camera->SetActorLocation(FVector(-9000,21000,1800));S.Camera->SetActorRotation(FRotator(0,90,0));
+  if(S.Director->ActorHasTag(TEXT("IrwinTrafficReview"))){S.Camera->SetActorLocation(FVector(13000,100850,2500));S.Camera->SetActorRotation(FRotator(0,180,0));}
  }
  // Keep the controlled observation direction through the game's respawn flow.
  PC->SetViewTarget(S.Camera.Get());PC->PlayerCameraManager->UpdateCamera(0);
@@ -48,7 +49,7 @@ void TickBattleTrafficPopulationAudit(APlayerController* PC,float Dt){
   S.SawWait|=I->bWaitingForCrossing&&I->Speed<1.f;
  }
  S.ProgressClock+=Dt;if(S.ProgressClock>20){S.ProgressClock=0;UE_LOG(LogTemp,Display,TEXT("TrafficPopulationProgress: spawned=%d removed=%d live=%d peak=%d waited=%d"),D->TotalSpawned,D->TotalRemoved,D->LiveCars,D->PeakCars,S.SawWait);}
- if(D->TotalSpawned>=8&&D->TotalRemoved>=2&&S.SawWait){Finish(true,TEXT("Automatic opposing traffic, signal wait, bounded population and endpoint recycling passed"));return;}
+ if(D->TotalSpawned>=8&&D->TotalRemoved>=2&&(S.SawWait||D->ActorHasTag(TEXT("IrwinTrafficReview")))){Finish(true,TEXT("Automatic opposing traffic, required crossing checks, bounded population and endpoint recycling passed"));return;}
  if(S.Clock>140)Finish(false,TEXT("Traffic population/recycling timed out"));
 #endif
 }

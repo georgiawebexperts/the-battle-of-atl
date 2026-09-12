@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/f52802db4bd54268bbfb85a59fdf80a9/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/f52802db4bd54268bbfb85a59fdf80a9/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/f52802db4bd54268bbfb85a59fdf80a9/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": false,
+  "scope": "Fixed road approach cameras and wide view; test cars stationary, no rider playthrough or traffic timing acceptance."
+}
