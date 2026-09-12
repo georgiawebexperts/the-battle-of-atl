@@ -7,7 +7,8 @@ ABattleFallenBike::ABattleFallenBike(){
  Frame->SetBoxExtent(FVector(45,7,28));Frame->SetCollisionProfileName(TEXT("PhysicsActor"));Frame->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);Frame->SetLinearDamping(.4f);Frame->SetAngularDamping(1.5f);Frame->BodyInstance.bUseCCD=true;
 }
 bool ABattleFallenBike::InitializeFrom(ABattleBike* Bike,const FVector& Velocity){
- if(!Bike)return false;
+ if(!IsValid(Bike)||bInitialized)return false;
+ bInitialized=true;SetOwner(Bike);
  const FTransform Source=Bike->Visual->GetComponentTransform();SetActorLocationAndRotation(Source.TransformPosition(FVector(0,0,60)),Source.GetRotation(),false,nullptr,ETeleportType::TeleportPhysics);
  Frame->SetSimulatePhysics(true);
  auto Hull=[&](const TCHAR* Name,FVector Position,FVector Extent){
@@ -22,7 +23,15 @@ bool ABattleFallenBike::InitializeFrom(ABattleBike* Bike,const FVector& Velocity
   if(Original==Bike->Pistol||!Original->GetStaticMesh()||Original->GetAttachParent()!=Bike->Visual)continue;
   UStaticMeshComponent* Copy=NewObject<UStaticMeshComponent>(this);AddInstanceComponent(Copy);Copy->SetStaticMesh(Original->GetStaticMesh());Copy->SetCollisionEnabled(ECollisionEnabled::NoCollision);
   for(int32 I=0;I<Original->GetNumMaterials();I++)Copy->SetMaterial(I,Original->GetMaterial(I));
-  Copy->SetWorldTransform(Original->GetComponentTransform());Copy->RegisterComponent();Copy->AttachToComponent(Frame,FAttachmentTransformRules::KeepWorldTransform);Original->SetVisibility(false);PartCount++;
+  Copy->SetWorldTransform(Original->GetComponentTransform());Copy->RegisterComponent();Copy->AttachToComponent(Frame,FAttachmentTransformRules::KeepWorldTransform);SourceVisibility.Add(Original,Original->IsVisible());Original->SetVisibility(false);PartCount++;
  }
  Frame->SetMassOverrideInKg(NAME_None,22,true);Frame->SetPhysicsLinearVelocity(Velocity);Frame->SetPhysicsAngularVelocityInDegrees(Source.TransformVectorNoScale(FVector(130,0,20)));return PartCount>0;
+}
+
+void ABattleFallenBike::RestoreSourceVisibility(){
+ for(const auto& Entry:SourceVisibility)if(Entry.Key.IsValid())Entry.Key->SetVisibility(Entry.Value);
+ SourceVisibility.Empty();
+}
+void ABattleFallenBike::EndPlay(const EEndPlayReason::Type Reason){
+ RestoreSourceVisibility();Super::EndPlay(Reason);
 }

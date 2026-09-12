@@ -3,28 +3,28 @@
   "launch_speed_cm_s": 1500,
   "launch_side": -1,
   "skin": {
-    "min_clearance_cm": 0.299,
+    "min_clearance_cm": 0.376,
     "below_vertices": 0,
     "vertices": 3273
   },
   "physics": {
     "passed": true,
-    "hip_drop_cm": 200.609,
-    "max_limb_span_cm": 101.078,
-    "hip_floor_cm": 7.03,
-    "final_speed": 0.32
+    "hip_drop_cm": 195.322,
+    "max_limb_span_cm": 101.379,
+    "hip_floor_cm": 13.689,
+    "final_speed": 2.761
   },
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-fall-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-3.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-4.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-5.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/f0227d7dbe084b239d237b328a299f5a/player-recovery-6.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/fbbdee54017f4ce588af8fabe4df0f30/player-recovery-6.png"
   ],
   "capture_passed": true,
   "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
@@ -51,25 +51,29 @@
     "bone=Foot_R type=4 size=X=13.309 Y=27.869 Z=14.349 static_response=2 simulation=1"
   ],
   "skin_clearance_passed": true,
+  "lifecycle": {
+    "passed": true,
+    "duplicate_rejected": true,
+    "visibility_restored": true,
+    "fresh_recovery": true,
+    "interruption_cleanup": true,
+    "null_rejected": true
+  },
   "transfer": {
-    "choice": 0,
-    "max_transfer_error_cm": 0.0001,
-    "initial_pose_rms_cm": 36.968
+    "choice": 2,
+    "max_transfer_error_cm": 0.0005,
+    "initial_pose_rms_cm": 35.214
   },
   "recovery": {
     "passed": true,
-    "head_height": 157.809,
-    "left_foot_height": 3.176,
-    "right_foot_height": 2.804
+    "head_height": 157.792,
+    "left_foot_height": 3.179,
+    "right_foot_height": 2.795
   },
   "bike": {
     "passed": true,
-    "upright_dot": 0.245,
+    "upright_dot": 0.24,
     "speed": 0.0,
     "parts": 16
-  },
-  "ccd_enabled": true,
-  "camera": "Rider-focused fixed-distance boom, interpolated with sphere-sweep obstruction handling.",
-  "visual_review": "Fall4 and recovery6 inspected: rider visible, close framing, grounded landing and standing. No dynamic wall-occlusion fixture or full video acceptance.",
-  "visual_acceptance": false
+  }
 }

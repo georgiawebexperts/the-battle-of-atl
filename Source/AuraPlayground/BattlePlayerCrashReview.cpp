@@ -26,7 +26,7 @@
 #include "UnrealClient.h"
 void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<USkeletalMeshComponent> Body;TWeakObjectPtr<UPoseableMeshComponent> Display;TWeakObjectPtr<ACameraActor> Camera;TWeakObjectPtr<ABattleFallenBike> FallenBike;FVector Hip;float Clock=0,MaxSpan=0,Speed=300,Side=1;int Shot=0;bool Done=false,Recovering=false;FBattlePlayerRecoveryBlend Blend;int RecoveryShot=0;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<USkeletalMeshComponent> Body;TWeakObjectPtr<UPoseableMeshComponent> Display;TWeakObjectPtr<ACameraActor> Camera;TWeakObjectPtr<ABattleFallenBike> FallenBike;FVector Hip;float Clock=0,MaxSpan=0,Speed=300,Side=1;int Shot=0;bool Done=false,Recovering=false;FBattlePlayerRecoveryBlend Blend;int RecoveryShot=0;TMap<TWeakObjectPtr<UStaticMeshComponent>,bool> SourceVisibility;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike)return;
  if(!S.Body.IsValid()){
@@ -41,7 +41,7 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
   auto* Body=NewObject<USkeletalMeshComponent>(Bike);Bike->AddInstanceComponent(Body);Body->SetSkeletalMeshAsset(Mesh);Body->SetPhysicsAsset(Physics,true);Body->SetWorldTransform(Bike->Rider->GetComponentTransform());Body->SetCollisionProfileName(TEXT("Ragdoll"));Body->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);Body->SetCanEverAffectNavigation(false);Body->PhysicsTransformUpdateMode=EPhysicsTransformUpdateMode::ComponentTransformIsKinematic;Body->RegisterComponent();Body->RefreshBoneTransforms();Body->SetAllBodiesSimulatePhysics(true);Body->SetSimulatePhysics(true);
   const auto& Ref=Mesh->GetRefSkeleton();for(int I=0;I<Ref.GetNum();I++)if(auto* B=Body->GetBodyInstance(Ref.GetBoneName(I))){B->SetBodyTransform(Bike->Rider->GetBoneTransform(I),ETeleportType::TeleportPhysics);B->SetUseCCD(true);}
   for(const auto& Setup:Physics->SkeletalBodySetups)for(const auto& Shape:Setup->AggGeom.SphylElems){const auto* B=Body->GetBodyInstance(Setup->BoneName);UE_LOG(LogTemp,Display,TEXT("CrashShape: %s radius=%.4f length=%.4f scale=%s"),*Setup->BoneName.ToString(),Shape.Radius,Shape.Length,B?*B->Scale3D.ToString():TEXT("missing"));}
-  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFallenBikeReview"))){S.FallenBike=PC->GetWorld()->SpawnActor<ABattleFallenBike>();S.FallenBike->InitializeFrom(Bike,FVector(S.Speed*.73f,-S.Side*S.Speed*.27f,20));}
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFallenBikeReview"))){TArray<UStaticMeshComponent*> Parts;Bike->GetComponents(Parts);for(auto* Part:Parts)if(Part!=Bike->Pistol&&Part->GetStaticMesh()&&Part->GetAttachParent()==Bike->Visual)S.SourceVisibility.Add(Part,Part->IsVisible());S.FallenBike=PC->GetWorld()->SpawnActor<ABattleFallenBike>();S.FallenBike->InitializeFrom(Bike,FVector(S.Speed*.73f,-S.Side*S.Speed*.27f,20));}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashPoseMirror"))){auto* Display=NewObject<UPoseableMeshComponent>(Bike);Bike->AddInstanceComponent(Display);Display->SetSkinnedAssetAndUpdate(Mesh);Display->SetWorldTransform(Body->GetComponentTransform());Display->SetCollisionEnabled(ECollisionEnabled::NoCollision);Display->RegisterComponent();S.Display=Display;Body->SetVisibility(false);Body->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;}
   S.Hip=Bike->Rider->GetSocketLocation(TEXT("Hips"));Body->SetAllPhysicsLinearVelocity(FVector(S.Speed,S.Side*S.Speed*.3f,60));Bike->Rider->SetVisibility(false);S.Body=Body;
   S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Target=Hit.ImpactPoint+FVector(160,0,70);const FVector Offset(-350,-600,280);S.Camera->SetActorLocationAndRotation(Target+Offset,(-Offset).Rotation());
@@ -54,7 +54,21 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
  if(S.Recovering){
   const bool Finished=S.Blend.Tick(Dt);const float Times[]={.01f,.18f,.36f,1.8f,3.5f,5.4f};
   if(S.RecoveryShot<6&&S.Blend.Clock>Times[S.RecoveryShot]){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);FScreenshotRequest::RequestScreenshot(Folder/FString::Printf(TEXT("player-recovery-%d.png"),++S.RecoveryShot),false,false);}
-  if(Finished){if(S.FallenBike.IsValid()){const float Up=FMath::Abs(S.FallenBike->GetActorUpVector().Z),Speed=S.FallenBike->Frame->GetPhysicsLinearVelocity().Size();UE_LOG(LogTemp,Display,TEXT("FallenBikeReview: {\"passed\":%s,\"upright_dot\":%.3f,\"speed\":%.3f,\"parts\":%d}"),Up<.5f&&Speed<20&&S.FallenBike->PartCount>10?TEXT("true"):TEXT("false"),Up,Speed,S.FallenBike->PartCount);}const float Head=S.Blend.Pose->GetSocketLocation(TEXT("Head")).Z-S.Blend.FloorZ,Left=S.Blend.Pose->GetSocketLocation(TEXT("Foot_L")).Z-S.Blend.FloorZ,Right=S.Blend.Pose->GetSocketLocation(TEXT("Foot_R")).Z-S.Blend.FloorZ;const bool Pass=S.Blend.TransferError<1&&Head>130&&Head<200&&Left>-2&&Left<10&&Right>-2&&Right<10;UE_LOG(LogTemp,Display,TEXT("PlayerRecoveryComplete: {\"passed\":%s,\"head_height\":%.3f,\"left_foot_height\":%.3f,\"right_foot_height\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Head,Left,Right);S.Done=true;PC->ConsoleCommand(TEXT("quit"));}return;
+  if(Finished){if(S.FallenBike.IsValid()){const float Up=FMath::Abs(S.FallenBike->GetActorUpVector().Z),Speed=S.FallenBike->Frame->GetPhysicsLinearVelocity().Size();UE_LOG(LogTemp,Display,TEXT("FallenBikeReview: {\"passed\":%s,\"upright_dot\":%.3f,\"speed\":%.3f,\"parts\":%d}"),Up<.5f&&Speed<20&&S.FallenBike->PartCount>10?TEXT("true"):TEXT("false"),Up,Speed,S.FallenBike->PartCount);}const float Head=S.Blend.Pose->GetSocketLocation(TEXT("Head")).Z-S.Blend.FloorZ,Left=S.Blend.Pose->GetSocketLocation(TEXT("Foot_L")).Z-S.Blend.FloorZ,Right=S.Blend.Pose->GetSocketLocation(TEXT("Foot_R")).Z-S.Blend.FloorZ;const bool Pass=S.Blend.TransferError<1&&Head>130&&Head<200&&Left>-2&&Left<10&&Right>-2&&Right<10;UE_LOG(LogTemp,Display,TEXT("PlayerRecoveryComplete: {\"passed\":%s,\"head_height\":%.3f,\"left_foot_height\":%.3f,\"right_foot_height\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Head,Left,Right);
+   bool DuplicateRejected=true,VisibilityRestored=true;
+   if(S.FallenBike.IsValid()){
+    DuplicateRejected=!S.FallenBike->InitializeFrom(Bike,FVector::ZeroVector);
+    S.FallenBike->Destroy();
+    for(const auto& Entry:S.SourceVisibility)VisibilityRestored&=Entry.Key.IsValid()&&Entry.Key->IsVisible()==Entry.Value;
+   }
+   TWeakObjectPtr<UPoseableMeshComponent> OldPose=S.Blend.Pose;
+   const bool Restarted=S.Blend.Begin(Bike,S.Body.Get(),S.Display.Get());
+   const bool FreshState=Restarted&&S.Blend.Clock==0&&S.Blend.LandedLocal.Num()==S.Body->GetSkeletalMeshAsset()->GetRefSkeleton().GetNum()&&(!OldPose.IsValid()||!OldPose->IsRegistered());
+   TWeakObjectPtr<UPoseableMeshComponent> NewPose=S.Blend.Pose;S.Blend.Tick(.1f);S.Blend.Reset();S.Blend.Reset();
+   const bool Clean=!S.Blend.Pose.IsValid()&&!S.Blend.Clip.IsValid()&&S.Blend.LandedLocal.IsEmpty()&&S.Blend.Clock==0&&S.Blend.Choice==-1&&(!NewPose.IsValid()||!NewPose->IsRegistered());
+   const bool NullRejected=!S.Blend.Begin(nullptr,nullptr);
+   UE_LOG(LogTemp,Display,TEXT("CrashLifecycle: {\"passed\":%s,\"duplicate_rejected\":%s,\"visibility_restored\":%s,\"fresh_recovery\":%s,\"interruption_cleanup\":%s,\"null_rejected\":%s}"),DuplicateRejected&&VisibilityRestored&&FreshState&&Clean&&NullRejected?TEXT("true"):TEXT("false"),DuplicateRejected?TEXT("true"):TEXT("false"),VisibilityRestored?TEXT("true"):TEXT("false"),FreshState?TEXT("true"):TEXT("false"),Clean?TEXT("true"):TEXT("false"),NullRejected?TEXT("true"):TEXT("false"));
+   S.Done=true;PC->ConsoleCommand(TEXT("quit"));}return;
  }
  S.Clock+=Dt;
  if(S.Display.IsValid()){

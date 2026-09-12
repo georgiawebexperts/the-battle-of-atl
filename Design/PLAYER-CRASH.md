@@ -95,3 +95,10 @@ Latest1500/+1 CCD run clears3273vertices, min0.250cm, limbspan114.673cm, physica
 Added reusable UpdateBattleCrashCamera helper. Focuses pelvis+25cm, fixed(-320,-420,300) offset, smooth interpolation12/s; sphere12cm sweep onCamera channel shortens boom around blocking scenery, ignores rider owner/fallen bike. Clamps both target and smoothed position to avoid interpolation through walls. Replaces old zoom-to-fit rider+bike review framing.
 
 Native build and latest1500/-1 mirrored V6+CCD fall pass:0/3273 below, min0.299cm, body settles, recovery and bike settle pass. Inspected fall4/recovery6: rider clearly visible at useful framing, standing at correct height. This validates that camera view in this fixture, not arbitrary wall occlusion or full motion/video. +1 last test used older camera. Next connect sequence to actual collision triggers and controllable on-foot recovery/remount, with damage/death interruptions and cleanup; wall-occlusion and camera transitions need runtime coverage. Desktop048 unchanged. Full game incomplete.
+
+
+## Crash lifecycle cleanup — 2026-09-12 [codex-maclaptop]
+
+Fallen-bike actor now remembers each source part's original visibility, restores it on EndPlay, and rejects repeated initialization. Recovery Reset destroys its owned pose component and clears clip, pose samples, timing and selection; Begin resets prior state and rejects invalid owners/physics. These are preparation for production collision integration, which remains unfinished.
+
+Native Mac build and 1500cm/s left-side mirrored crash fixture pass: all3273 skin samples clear the road (minimum0.376cm), standing recovery and fallen-bike settle gates pass. New native lifecycle gate verifies duplicate initialization rejected, exact original part visibility restored after actor destruction, second recovery begins with fresh bone array/clock and old pose unregistered, interruption followed by repeated Reset leaves no registered pose, and null Begin fails safely. Does not yet prove production death/camera/controller cleanup, actual collision-triggered falls or remount. Desktop048 unchanged.

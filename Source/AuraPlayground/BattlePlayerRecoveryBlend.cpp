@@ -17,7 +17,13 @@ TArray<FTransform> Sample(UAnimSequence* Clip,const FReferenceSkeleton& Ref,floa
  }return Result;
 }
 }
+void FBattlePlayerRecoveryBlend::Reset(){
+ if(Pose.IsValid())Pose->DestroyComponent();
+ Pose.Reset();Clip.Reset();LandedLocal.Empty();Clock=TransferError=FloorZ=0;Choice=-1;
+}
 bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent* Physics,UPoseableMeshComponent* Display){
+ Reset();
+ if(!IsValid(Bike)||!IsValid(Physics)||!Bike->GetWorld())return false;
  USkeletalMesh* Mesh=Physics->GetSkeletalMeshAsset();if(!Mesh)return false;const auto& Ref=Mesh->GetRefSkeleton();
  const int32 Hip=Ref.FindBoneIndex(TEXT("Hips")),Head=Ref.FindBoneIndex(TEXT("Head"));if(Hip<0||Head<0)return false;
  TArray<FTransform> Landed;for(int32 I=0;I<Ref.GetNum();I++)Landed.Add(Display?Display->GetBoneTransform(I):Physics->GetBoneTransform(I));

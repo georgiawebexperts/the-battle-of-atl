@@ -8,6 +8,7 @@ struct FBattlePlayerRecoveryBlend {
  TArray<FTransform> LandedLocal;
  float Clock=0,TransferError=0,FloorZ=0;
  int32 Choice=-1;
+ void Reset();
  bool Begin(ABattleBike* Bike,USkeletalMeshComponent* Physics,UPoseableMeshComponent* Display=nullptr);
  bool Tick(float Dt);
 };
