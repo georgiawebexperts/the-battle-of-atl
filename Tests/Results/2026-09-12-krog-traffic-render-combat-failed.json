@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-traffic-review/f4efcee0cd124518aceba7d7ba79be3c/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-traffic-review/f4efcee0cd124518aceba7d7ba79be3c/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-traffic-review/f4efcee0cd124518aceba7d7ba79be3c/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": false,
+  "scope": "Actual native car movement, fixed approach cameras and wide view with forced crossing hold. No visible traffic signals are implied; not a rider playthrough or production timing test.",
+  "visual_failure": "Third screenshot hijacked by combat against unattended player at park start; car approach shots captured."
+}

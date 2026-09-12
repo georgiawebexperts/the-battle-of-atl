@@ -1,0 +1,27 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-traffic-review/3e546995ca9b4c5aaa8d8bf0599381cd/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-traffic-review/3e546995ca9b4c5aaa8d8bf0599381cd/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-traffic-review/3e546995ca9b4c5aaa8d8bf0599381cd/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": false,
+  "scope": "Actual native car movement, fixed approach cameras and wide view with forced crossing hold. No visible traffic signals are implied; not a rider playthrough or production timing test.",
+  "visual_review": {
+    "inspected": [
+      1,
+      2,
+      3
+    ],
+    "camera_isolation_passed": true,
+    "final_art_accepted": false,
+    "findings": [
+      "Both opposing cars visible on their respective road lanes, stopped before the shared crossing.",
+      "Wide shot now remains at Krog; unattended pawn removed only in opt-in scenery review.",
+      "Repeated orange sports car and bare surroundings remain unfinished.",
+      "Exact tire contact and dynamic motion quality need closer review; these stills do not prove them."
+    ]
+  },
+  "native_build_passed": true
+}
