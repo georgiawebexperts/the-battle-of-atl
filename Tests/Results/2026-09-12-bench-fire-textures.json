@@ -1,0 +1,21 @@
+{
+  "textures": [
+    {
+      "source": "/NetworkPredictionExtras/Art/Effects/Proto/Shared/Textures/Fire/T_Fire_SubUV",
+      "target": "/Game/BattleForTheA/Effects/BenchFire/T_Fire_SubUV",
+      "width": 1024,
+      "height": 1024,
+      "exported": true
+    },
+    {
+      "source": "/NetworkPredictionExtras/Art/Effects/Proto/Shared/Textures/Smoke/T_Smoke_SubUV",
+      "target": "/Game/BattleForTheA/Effects/BenchFire/T_Smoke_SubUV",
+      "width": 1024,
+      "height": 1024,
+      "exported": true
+    }
+  ],
+  "source": "Bundled Epic UE 5.8 NetworkPredictionExtras sample textures; for this Unreal project.",
+  "plugin_runtime_required": false,
+  "fire_scene_implemented": false
+}

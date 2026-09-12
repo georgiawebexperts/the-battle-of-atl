@@ -1,0 +1,15 @@
+{
+  "materials": [
+    {
+      "material": "/Game/BattleForTheA/Effects/BenchFire/M_BenchFire.M_BenchFire",
+      "grid": 6,
+      "interpolated": true
+    },
+    {
+      "material": "/Game/BattleForTheA/Effects/BenchFire/M_BenchSmoke.M_BenchSmoke",
+      "grid": 8,
+      "interpolated": true
+    }
+  ],
+  "visual_verified": false
+}
