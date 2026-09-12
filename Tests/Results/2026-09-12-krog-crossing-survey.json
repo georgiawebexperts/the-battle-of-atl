@@ -1,0 +1,6636 @@
+{
+  "junction_xyz": [
+    29619.957011519,
+    115727.83186833064,
+    936.4255582999529
+  ],
+  "samples": [
+    {
+      "xy": [
+        28419.957011519,
+        114527.83186833064
+      ],
+      "height": 1006.2590118643325,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        114627.83186833064
+      ],
+      "height": 1002.8852502660341,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        114727.83186833064
+      ],
+      "height": 999.3731323135737,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        114827.83186833064
+      ],
+      "height": 995.9620757274231,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        114927.83186833064
+      ],
+      "height": 994.7719159708677,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115027.83186833064
+      ],
+      "height": 995.1948497952746,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115127.83186833064
+      ],
+      "height": 993.763359580666,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115227.83186833064
+      ],
+      "height": 990.3804787417755,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115327.83186833064
+      ],
+      "height": 984.9363066456542,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115427.83186833064
+      ],
+      "height": 971.579696897953,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115527.83186833064
+      ],
+      "height": 966.7950778961224,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115627.83186833064
+      ],
+      "height": 970.3375854492188,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115727.83186833064
+      ],
+      "height": 971.50927734375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115827.83186833064
+      ],
+      "height": 970.6411743164062,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        115927.83186833064
+      ],
+      "height": 970.0689697265625,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116027.83186833064
+      ],
+      "height": 963.6755017255834,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116127.83186833064
+      ],
+      "height": 966.0508822861375,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116227.83186833064
+      ],
+      "height": 967.3654643874315,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116327.83186833064
+      ],
+      "height": 977.196016923572,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116427.83186833064
+      ],
+      "height": 1019.132435263085,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116527.83186833064
+      ],
+      "height": 1066.3365285372279,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116627.83186833064
+      ],
+      "height": 1107.5205851980206,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116727.83186833064
+      ],
+      "height": 1126.9799161437284,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116827.83186833064
+      ],
+      "height": 1125.2847894543797,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28419.957011519,
+        116927.83186833064
+      ],
+      "height": 1118.5510031594997,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        114527.83186833064
+      ],
+      "height": 1010.0591737629447,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        114627.83186833064
+      ],
+      "height": 1006.7778188229606,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        114727.83186833064
+      ],
+      "height": 1003.2794419058096,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        114827.83186833064
+      ],
+      "height": 1000.0078999230145,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        114927.83186833064
+      ],
+      "height": 996.9166672691929,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115027.83186833064
+      ],
+      "height": 995.6179384839011,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115127.83186833064
+      ],
+      "height": 993.2501656601694,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115227.83186833064
+      ],
+      "height": 989.723148302556,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115327.83186833064
+      ],
+      "height": 982.6516748722624,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115427.83186833064
+      ],
+      "height": 966.7859630275759,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115527.83186833064
+      ],
+      "height": 964.9672074898087,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115627.83186833064
+      ],
+      "height": 969.6134643554688,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115727.83186833064
+      ],
+      "height": 969.3667602539062,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115827.83186833064
+      ],
+      "height": 968.9248046875,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        115927.83186833064
+      ],
+      "height": 964.9202200420605,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116027.83186833064
+      ],
+      "height": 962.0839696846615,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116127.83186833064
+      ],
+      "height": 964.9418731075339,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116227.83186833064
+      ],
+      "height": 965.4260508999132,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116327.83186833064
+      ],
+      "height": 985.8446437263176,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116427.83186833064
+      ],
+      "height": 1032.5566122805774,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116527.83186833064
+      ],
+      "height": 1081.2278188468986,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116627.83186833064
+      ],
+      "height": 1115.9687894755657,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116727.83186833064
+      ],
+      "height": 1129.3308360069025,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116827.83186833064
+      ],
+      "height": 1122.8566933554098,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28519.957011519,
+        116927.83186833064
+      ],
+      "height": 1116.8822381480388,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        114527.83186833064
+      ],
+      "height": 1014.2150737435979,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        114627.83186833064
+      ],
+      "height": 1010.6978694505056,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        114727.83186833064
+      ],
+      "height": 1007.1857514980456,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        114827.83186833064
+      ],
+      "height": 1003.2141236803614,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        114927.83186833064
+      ],
+      "height": 999.1938103589127,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115027.83186833064
+      ],
+      "height": 994.9394944359333,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115127.83186833064
+      ],
+      "height": 992.2921409389232,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115227.83186833064
+      ],
+      "height": 989.1901387330427,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115327.83186833064
+      ],
+      "height": 979.4042717240916,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115427.83186833064
+      ],
+      "height": 964.8615424406319,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115527.83186833064
+      ],
+      "height": 964.4363141454603,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115627.83186833064
+      ],
+      "height": 967.4964599609375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115727.83186833064
+      ],
+      "height": 967.2459106445312,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115827.83186833064
+      ],
+      "height": 966.7822265625,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        115927.83186833064
+      ],
+      "height": 961.7442443399646,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116027.83186833064
+      ],
+      "height": 961.039492046769,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116127.83186833064
+      ],
+      "height": 963.1694565068244,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116227.83186833064
+      ],
+      "height": 964.8094378622852,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116327.83186833064
+      ],
+      "height": 996.9518705692085,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116427.83186833064
+      ],
+      "height": 1045.559671482305,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116527.83186833064
+      ],
+      "height": 1093.0258350322272,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116627.83186833064
+      ],
+      "height": 1121.9167159201368,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116727.83186833064
+      ],
+      "height": 1129.6589899513094,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116827.83186833064
+      ],
+      "height": 1121.1120833676853,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28619.957011519,
+        116927.83186833064
+      ],
+      "height": 1114.8293886320337,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        114527.83186833064
+      ],
+      "height": 1017.8717929740535,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        114627.83186833064
+      ],
+      "height": 1013.8828900413369,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        114727.83186833064
+      ],
+      "height": 1009.0341743871531,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        114827.83186833064
+      ],
+      "height": 1003.596259163884,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        114927.83186833064
+      ],
+      "height": 998.0220938371087,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115027.83186833064
+      ],
+      "height": 994.3848103983303,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115127.83186833064
+      ],
+      "height": 991.1766605787375,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115227.83186833064
+      ],
+      "height": 987.6722740302487,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115327.83186833064
+      ],
+      "height": 973.6061192090206,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115427.83186833064
+      ],
+      "height": 964.4168112419679,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115527.83186833064
+      ],
+      "height": 967.2163696289062,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115627.83186833064
+      ],
+      "height": 966.5889892578125,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115727.83186833064
+      ],
+      "height": 965.9339599609375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115827.83186833064
+      ],
+      "height": 964.8133544921875,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        115927.83186833064
+      ],
+      "height": 958.8110422613231,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116027.83186833064
+      ],
+      "height": 959.8416893469312,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116127.83186833064
+      ],
+      "height": 960.6263689594878,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116227.83186833064
+      ],
+      "height": 966.7466483889334,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116327.83186833064
+      ],
+      "height": 1009.8291121717978,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116427.83186833064
+      ],
+      "height": 1060.5688797431042,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116527.83186833064
+      ],
+      "height": 1103.6368535674935,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116627.83186833064
+      ],
+      "height": 1126.8219135522495,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116727.83186833064
+      ],
+      "height": 1127.400317089675,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116827.83186833064
+      ],
+      "height": 1120.2463040353948,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28719.957011519,
+        116927.83186833064
+      ],
+      "height": 1112.7214370161958,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        114527.83186833064
+      ],
+      "height": 1017.5732677928384,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        114627.83186833064
+      ],
+      "height": 1011.7609116228166,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        114727.83186833064
+      ],
+      "height": 1006.0174078788777,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        114827.83186833064
+      ],
+      "height": 999.9220942375657,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        114927.83186833064
+      ],
+      "height": 995.1266120955481,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115027.83186833064
+      ],
+      "height": 993.3008873032343,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115127.83186833064
+      ],
+      "height": 989.3853493961567,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115227.83186833064
+      ],
+      "height": 984.2497478580331,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115327.83186833064
+      ],
+      "height": 972.6415951359222,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115427.83186833064
+      ],
+      "height": 964.9442614941404,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115527.83186833064
+      ],
+      "height": 966.7093505859375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115627.83186833064
+      ],
+      "height": 965.5945434570312,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115727.83186833064
+      ],
+      "height": 964.6456909179688,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115827.83186833064
+      ],
+      "height": 959.9283328662675,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        115927.83186833064
+      ],
+      "height": 956.8051963060684,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116027.83186833064
+      ],
+      "height": 958.0893602918004,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116127.83186833064
+      ],
+      "height": 958.3627742554631,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116227.83186833064
+      ],
+      "height": 975.2419252217403,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116327.83186833064
+      ],
+      "height": 1023.7799233921787,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116427.83186833064
+      ],
+      "height": 1075.0735138078066,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116527.83186833064
+      ],
+      "height": 1113.5736444554436,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116627.83186833064
+      ],
+      "height": 1130.1752398118797,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116727.83186833064
+      ],
+      "height": 1124.3399453351117,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116827.83186833064
+      ],
+      "height": 1118.6039620661122,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28819.957011519,
+        116927.83186833064
+      ],
+      "height": 1110.6942299693205,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        114527.83186833064
+      ],
+      "height": 1013.1066571239894,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        114627.83186833064
+      ],
+      "height": 1007.1009373777438,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        114727.83186833064
+      ],
+      "height": 1000.9820696238055,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        114827.83186833064
+      ],
+      "height": 996.3064760367965,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        114927.83186833064
+      ],
+      "height": 994.4396523421533,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115027.83186833064
+      ],
+      "height": 992.550159550389,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115127.83186833064
+      ],
+      "height": 988.2506375469641,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115227.83186833064
+      ],
+      "height": 979.423291767899,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115327.83186833064
+      ],
+      "height": 970.3494794186797,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115427.83186833064
+      ],
+      "height": 964.7790190869869,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115527.83186833064
+      ],
+      "height": 965.84521484375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115627.83186833064
+      ],
+      "height": 964.0458984375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115727.83186833064
+      ],
+      "height": 962.0355224609375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115827.83186833064
+      ],
+      "height": 955.9669796623043,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        115927.83186833064
+      ],
+      "height": 954.9278940003153,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116027.83186833064
+      ],
+      "height": 956.0104322805764,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116127.83186833064
+      ],
+      "height": 958.9265664478085,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116227.83186833064
+      ],
+      "height": 988.3195370135711,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116327.83186833064
+      ],
+      "height": 1039.2164184263122,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116427.83186833064
+      ],
+      "height": 1089.2862698202246,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116527.83186833064
+      ],
+      "height": 1119.3477870677134,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116627.83186833064
+      ],
+      "height": 1130.4964385435958,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116727.83186833064
+      ],
+      "height": 1122.6341466128256,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116827.83186833064
+      ],
+      "height": 1115.9397421081749,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        28919.957011519,
+        116927.83186833064
+      ],
+      "height": 1109.4654184128271,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        114527.83186833064
+      ],
+      "height": 1007.7643455472526,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        114627.83186833064
+      ],
+      "height": 1001.9776615232572,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        114727.83186833064
+      ],
+      "height": 997.4714155009699,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        114827.83186833064
+      ],
+      "height": 994.591713878355,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        114927.83186833064
+      ],
+      "height": 991.794446090006,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115027.83186833064
+      ],
+      "height": 990.5889468054299,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115127.83186833064
+      ],
+      "height": 986.8894953031947,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115227.83186833064
+      ],
+      "height": 971.6583892996007,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115327.83186833064
+      ],
+      "height": 964.6705071506874,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115427.83186833064
+      ],
+      "height": 966.7093505859375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115527.83186833064
+      ],
+      "height": 964.6969604492188,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115627.83186833064
+      ],
+      "height": 962.7438354492188,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115727.83186833064
+      ],
+      "height": 959.4276123046875,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115827.83186833064
+      ],
+      "height": 952.7711558603553,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        115927.83186833064
+      ],
+      "height": 953.106791644879,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116027.83186833064
+      ],
+      "height": 953.8566423874224,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116127.83186833064
+      ],
+      "height": 959.6913108656502,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116227.83186833064
+      ],
+      "height": 999.4591199963993,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116327.83186833064
+      ],
+      "height": 1052.6350791050565,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116427.83186833064
+      ],
+      "height": 1102.1580007523137,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116527.83186833064
+      ],
+      "height": 1125.4984291759033,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116627.83186833064
+      ],
+      "height": 1128.7437523946166,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116727.83186833064
+      ],
+      "height": 1120.800542257676,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116827.83186833064
+      ],
+      "height": 1113.6221025814007,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29019.957011519,
+        116927.83186833064
+      ],
+      "height": 1109.4038932291403,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        114527.83186833064
+      ],
+      "height": 1002.6145104704694,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        114627.83186833064
+      ],
+      "height": 998.6275329181444,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        114727.83186833064
+      ],
+      "height": 995.3748181107301,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        114827.83186833064
+      ],
+      "height": 991.8576135904395,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        114927.83186833064
+      ],
+      "height": 989.4267525249747,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115027.83186833064
+      ],
+      "height": 988.1181779681392,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115127.83186833064
+      ],
+      "height": 983.6992061630926,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115227.83186833064
+      ],
+      "height": 967.665720336254,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115327.83186833064
+      ],
+      "height": 964.2043931501601,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115427.83186833064
+      ],
+      "height": 966.33251953125,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115527.83186833064
+      ],
+      "height": 963.3158569335938,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115627.83186833064
+      ],
+      "height": 960.6939086914062,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115727.83186833064
+      ],
+      "height": 954.6300254035641,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115827.83186833064
+      ],
+      "height": 950.6894923634693,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        115927.83186833064
+      ],
+      "height": 951.4370562261088,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116027.83186833064
+      ],
+      "height": 951.385873805534,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116127.83186833064
+      ],
+      "height": 967.7748185894297,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116227.83186833064
+      ],
+      "height": 1014.6887492894186,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116327.83186833064
+      ],
+      "height": 1067.0717232366856,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116427.83186833064
+      ],
+      "height": 1110.683229611522,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116527.83186833064
+      ],
+      "height": 1129.3522935433691,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116627.83186833064
+      ],
+      "height": 1126.1899457911688,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116727.83186833064
+      ],
+      "height": 1119.1397613016957,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116827.83186833064
+      ],
+      "height": 1112.2694126932258,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29119.957011519,
+        116927.83186833064
+      ],
+      "height": 1110.3578248337296,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        114527.83186833064
+      ],
+      "height": 997.6029975414258,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        114627.83186833064
+      ],
+      "height": 994.5894736888026,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        114727.83186833064
+      ],
+      "height": 992.1312532165416,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        114827.83186833064
+      ],
+      "height": 989.0570027815425,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        114927.83186833064
+      ],
+      "height": 986.6296756900363,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115027.83186833064
+      ],
+      "height": 984.8258484872374,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115127.83186833064
+      ],
+      "height": 977.8992054102034,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115227.83186833064
+      ],
+      "height": 966.1715033212097,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115327.83186833064
+      ],
+      "height": 964.3478360713686,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115427.83186833064
+      ],
+      "height": 964.9158325195312,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115527.83186833064
+      ],
+      "height": 961.2660522460938,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115627.83186833064
+      ],
+      "height": 958.4705810546875,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115727.83186833064
+      ],
+      "height": 952.3246666653235,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115827.83186833064
+      ],
+      "height": 936.839200937226,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        115927.83186833064
+      ],
+      "height": 936.1284568227154,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116027.83186833064
+      ],
+      "height": 936.2307996361399,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116127.83186833064
+      ],
+      "height": 942.8854607487285,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116227.83186833064
+      ],
+      "height": 965.1829375718398,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116327.83186833064
+      ],
+      "height": 981.6088336367075,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116427.83186833064
+      ],
+      "height": 1034.483593855309,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116527.83186833064
+      ],
+      "height": 1089.3545917559723,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116627.83186833064
+      ],
+      "height": 1112.595282234755,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116727.83186833064
+      ],
+      "height": 1115.7968504258486,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116827.83186833064
+      ],
+      "height": 1111.2110679119114,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29219.957011519,
+        116927.83186833064
+      ],
+      "height": 1110.3833625733519,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        114527.83186833064
+      ],
+      "height": 995.0731577332051,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        114627.83186833064
+      ],
+      "height": 992.2959449750947,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        114727.83186833064
+      ],
+      "height": 989.0275639110189,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        114827.83186833064
+      ],
+      "height": 984.1732332122574,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        114927.83186833064
+      ],
+      "height": 980.3494251965119,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115027.83186833064
+      ],
+      "height": 977.8805357491387,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115127.83186833064
+      ],
+      "height": 973.7994560123977,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115227.83186833064
+      ],
+      "height": 967.1195247084684,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115327.83186833064
+      ],
+      "height": 963.8324945139746,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115427.83186833064
+      ],
+      "height": 962.8364868164062,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115527.83186833064
+      ],
+      "height": 958.6480712890625,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115627.83186833064
+      ],
+      "height": 955.779541015625,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115727.83186833064
+      ],
+      "height": 951.736572265625,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115827.83186833064
+      ],
+      "height": 918.4794814218985,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        115927.83186833064
+      ],
+      "height": 919.549663828227,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116027.83186833064
+      ],
+      "height": 921.2250505589216,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116127.83186833064
+      ],
+      "height": 938.725542512303,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116227.83186833064
+      ],
+      "height": 953.4745013684185,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116327.83186833064
+      ],
+      "height": 962.8663604257849,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116427.83186833064
+      ],
+      "height": 937.0382136699284,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116527.83186833064
+      ],
+      "height": 972.0257956302273,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116627.83186833064
+      ],
+      "height": 1021.3190074058668,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116727.83186833064
+      ],
+      "height": 1066.847611441439,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116827.83186833064
+      ],
+      "height": 1100.5748976087398,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29319.957011519,
+        116927.83186833064
+      ],
+      "height": 1111.2841231517825,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        114527.83186833064
+      ],
+      "height": 995.799005530215,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        114627.83186833064
+      ],
+      "height": 992.4376323587408,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        114727.83186833064
+      ],
+      "height": 987.9236441524413,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        114827.83186833064
+      ],
+      "height": 982.4005928069621,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        114927.83186833064
+      ],
+      "height": 978.5314553515141,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115027.83186833064
+      ],
+      "height": 975.2465658766271,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115127.83186833064
+      ],
+      "height": 971.318974730623,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115227.83186833064
+      ],
+      "height": 965.6127663610339,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115327.83186833064
+      ],
+      "height": 961.6260136699486,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115427.83186833064
+      ],
+      "height": 960.7490844726562,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115527.83186833064
+      ],
+      "height": 955.1957397460938,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115627.83186833064
+      ],
+      "height": 951.5353393554688,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115727.83186833064
+      ],
+      "height": 949.9750366210938,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115827.83186833064
+      ],
+      "height": 919.4328160199282,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        115927.83186833064
+      ],
+      "height": 920.2674188172841,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116027.83186833064
+      ],
+      "height": 925.2311148938163,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116127.83186833064
+      ],
+      "height": 939.3131964254867,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.22998046875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.3636474609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.4974365234375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116527.83186833064
+      ],
+      "height": 926.3329303516753,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116627.83186833064
+      ],
+      "height": 934.4641181341647,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116727.83186833064
+      ],
+      "height": 962.2740214163018,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116827.83186833064
+      ],
+      "height": 995.4142995575955,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29419.957011519,
+        116927.83186833064
+      ],
+      "height": 1040.5367119057419,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        114527.83186833064
+      ],
+      "height": 1018.9583460440099,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        114627.83186833064
+      ],
+      "height": 1009.629899360745,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        114727.83186833064
+      ],
+      "height": 996.3895681942186,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        114827.83186833064
+      ],
+      "height": 985.0975901027987,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        114927.83186833064
+      ],
+      "height": 978.4511031762304,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115027.83186833064
+      ],
+      "height": 974.3717520810471,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115127.83186833064
+      ],
+      "height": 969.4896370156312,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115227.83186833064
+      ],
+      "height": 938.2146115711882,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115327.83186833064
+      ],
+      "height": 930.9024696960082,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115427.83186833064
+      ],
+      "height": 926.5146489733677,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115527.83186833064
+      ],
+      "height": 953.83349609375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115627.83186833064
+      ],
+      "height": 951.898681640625,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115727.83186833064
+      ],
+      "height": 952.0115356445312,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115827.83186833064
+      ],
+      "height": 953.2240600585938,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        115927.83186833064
+      ],
+      "height": 922.3675512211621,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116027.83186833064
+      ],
+      "height": 927.8432758923807,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.1666259765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.2840576171875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.417724609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.551513671875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116527.83186833064
+      ],
+      "height": 1267.685302734375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116627.83186833064
+      ],
+      "height": 1267.819091796875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116727.83186833064
+      ],
+      "height": 926.3025405394887,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116827.83186833064
+      ],
+      "height": 927.0809789129844,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29519.957011519,
+        116927.83186833064
+      ],
+      "height": 937.7195294383407,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        114527.83186833064
+      ],
+      "height": 1082.1798384566246,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        114627.83186833064
+      ],
+      "height": 1060.9160709924936,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        114727.83186833064
+      ],
+      "height": 1029.6809431397091,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        114827.83186833064
+      ],
+      "height": 1010.0996186983841,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        114927.83186833064
+      ],
+      "height": 999.4388885047867,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115027.83186833064
+      ],
+      "height": 991.315468472355,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115127.83186833064
+      ],
+      "height": 962.0903588062354,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115227.83186833064
+      ],
+      "height": 941.0995269828352,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115327.83186833064
+      ],
+      "height": 932.942408318353,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115427.83186833064
+      ],
+      "height": 926.3892376229837,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115527.83186833064
+      ],
+      "height": 922.8346459764189,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115627.83186833064
+      ],
+      "height": 953.9690551757812,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115727.83186833064
+      ],
+      "height": 954.4024047851562,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115827.83186833064
+      ],
+      "height": 955.0690307617188,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        115927.83186833064
+      ],
+      "height": 924.2145584627174,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.2044677734375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.338134765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.471923828125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.6055908203125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116527.83186833064
+      ],
+      "height": 1267.7393798828125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116627.83186833064
+      ],
+      "height": 1267.8731689453125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.0068359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29619.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.2744140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        114527.83186833064
+      ],
+      "height": 1120.5872946493982,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        114627.83186833064
+      ],
+      "height": 1096.6216401920753,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        114727.83186833064
+      ],
+      "height": 1060.0156976917053,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        114827.83186833064
+      ],
+      "height": 1039.831961313685,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        114927.83186833064
+      ],
+      "height": 1029.6333175318641,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115027.83186833064
+      ],
+      "height": 1021.5525519716655,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115127.83186833064
+      ],
+      "height": 997.1786001839953,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115227.83186833064
+      ],
+      "height": 961.855477153533,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115327.83186833064
+      ],
+      "height": 942.9091249104383,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115427.83186833064
+      ],
+      "height": 930.9676025071576,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115527.83186833064
+      ],
+      "height": 924.663220160073,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115627.83186833064
+      ],
+      "height": 955.6525268554688,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115727.83186833064
+      ],
+      "height": 956.1174926757812,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115827.83186833064
+      ],
+      "height": 956.5067749023438,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.11474609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.1583251953125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.258544921875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.3922119140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.5260009765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.6597900390625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116527.83186833064
+      ],
+      "height": 1267.79345703125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116627.83186833064
+      ],
+      "height": 1267.92724609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.0609130859375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.1947021484375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29719.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.3284912109375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        114527.83186833064
+      ],
+      "height": 1121.5429171329297,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        114627.83186833064
+      ],
+      "height": 1105.177608818559,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        114727.83186833064
+      ],
+      "height": 1086.4235332778908,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        114827.83186833064
+      ],
+      "height": 1070.7460237576188,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        114927.83186833064
+      ],
+      "height": 1059.5265563231126,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115027.83186833064
+      ],
+      "height": 1052.0989233365276,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115127.83186833064
+      ],
+      "height": 1032.3474815382956,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115227.83186833064
+      ],
+      "height": 989.6821976138301,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115327.83186833064
+      ],
+      "height": 950.0293230305454,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115427.83186833064
+      ],
+      "height": 931.0353333952628,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115527.83186833064
+      ],
+      "height": 925.2461838400709,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115627.83186833064
+      ],
+      "height": 924.5989361312165,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115727.83186833064
+      ],
+      "height": 956.810302734375,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115827.83186833064
+      ],
+      "height": 1267.0887451171875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.13232421875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.1788330078125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.3125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.4462890625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.580078125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.7138671875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116527.83186833064
+      ],
+      "height": 1267.84765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116627.83186833064
+      ],
+      "height": 1267.9813232421875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.114990234375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.248779296875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29819.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.382568359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        114527.83186833064
+      ],
+      "height": 1118.0575620525153,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        114627.83186833064
+      ],
+      "height": 1107.4886181268048,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        114727.83186833064
+      ],
+      "height": 1100.3489409073836,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        114827.83186833064
+      ],
+      "height": 1087.2238105224744,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        114927.83186833064
+      ],
+      "height": 1074.495920913427,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115027.83186833064
+      ],
+      "height": 1068.851969725604,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115127.83186833064
+      ],
+      "height": 1055.4109371820823,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115227.83186833064
+      ],
+      "height": 1015.4958520412404,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115327.83186833064
+      ],
+      "height": 950.2903079290099,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115427.83186833064
+      ],
+      "height": 926.4424563335449,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115527.83186833064
+      ],
+      "height": 924.8818938555587,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115627.83186833064
+      ],
+      "height": 1266.8778076171875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115727.83186833064
+      ],
+      "height": 1267.0628662109375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115827.83186833064
+      ],
+      "height": 1267.1064453125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.14990234375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.23291015625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.3665771484375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.5003662109375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.6341552734375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.7679443359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116527.83186833064
+      ],
+      "height": 1267.901611328125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.035400390625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.1690673828125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.3028564453125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        29919.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.4366455078125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        114527.83186833064
+      ],
+      "height": 1118.7813937996107,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        114627.83186833064
+      ],
+      "height": 1109.0602407422678,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        114727.83186833064
+      ],
+      "height": 1100.4633809644215,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        114827.83186833064
+      ],
+      "height": 1085.996802943705,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        114927.83186833064
+      ],
+      "height": 1073.5397840739995,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115027.83186833064
+      ],
+      "height": 1069.5814578553914,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115127.83186833064
+      ],
+      "height": 1060.2206061295553,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115227.83186833064
+      ],
+      "height": 1037.2741570978756,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115327.83186833064
+      ],
+      "height": 975.338456644585,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115427.83186833064
+      ],
+      "height": 928.0378778599827,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115527.83186833064
+      ],
+      "height": 1266.9378662109375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115627.83186833064
+      ],
+      "height": 1267.036865234375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115727.83186833064
+      ],
+      "height": 1267.0804443359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115827.83186833064
+      ],
+      "height": 1267.1240234375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.1676025390625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.2869873046875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.4207763671875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.554443359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.688232421875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.822021484375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116527.83186833064
+      ],
+      "height": 1267.9556884765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.0894775390625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.2232666015625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.35693359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30019.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.49072265625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        114527.83186833064
+      ],
+      "height": 1117.6660163309184,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        114627.83186833064
+      ],
+      "height": 1109.5658015642307,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        114727.83186833064
+      ],
+      "height": 1098.8544963976428,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        114827.83186833064
+      ],
+      "height": 1083.9178751612453,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        114927.83186833064
+      ],
+      "height": 1072.3732680510884,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115027.83186833064
+      ],
+      "height": 1069.7944487348273,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115127.83186833064
+      ],
+      "height": 1064.2859328939016,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115227.83186833064
+      ],
+      "height": 1046.1432262032954,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115327.83186833064
+      ],
+      "height": 1005.4179181907457,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115427.83186833064
+      ],
+      "height": 942.0900426568678,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115527.83186833064
+      ],
+      "height": 924.997854200046,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115627.83186833064
+      ],
+      "height": 1267.0545654296875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115727.83186833064
+      ],
+      "height": 1267.0980224609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115827.83186833064
+      ],
+      "height": 1267.1416015625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.2073974609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.341064453125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.474853515625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.608642578125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.742431640625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.8760986328125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116527.83186833064
+      ],
+      "height": 1268.009765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.1435546875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.27734375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.4111328125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30119.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.5447998046875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        114527.83186833064
+      ],
+      "height": 1113.1950856220312,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        114627.83186833064
+      ],
+      "height": 1106.702417678129,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        114727.83186833064
+      ],
+      "height": 1094.8715809675527,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        114827.83186833064
+      ],
+      "height": 1081.7539895906282,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        114927.83186833064
+      ],
+      "height": 1071.4448744347562,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115027.83186833064
+      ],
+      "height": 1069.7767022252515,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115127.83186833064
+      ],
+      "height": 1066.4865379927644,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115227.83186833064
+      ],
+      "height": 1051.1688520966673,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115327.83186833064
+      ],
+      "height": 1014.3400690037379,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115427.83186833064
+      ],
+      "height": 966.3104841743634,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115527.83186833064
+      ],
+      "height": 936.1612906201503,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115627.83186833064
+      ],
+      "height": 925.2185248359317,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115727.83186833064
+      ],
+      "height": 924.9978542000458,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115827.83186833064
+      ],
+      "height": 1267.1593017578125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.261474609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.3951416015625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.5289306640625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.6627197265625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.7965087890625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.93017578125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116527.83186833064
+      ],
+      "height": 1268.0638427734375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.1976318359375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.3314208984375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.4652099609375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30219.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.598876953125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        114527.83186833064
+      ],
+      "height": 1112.0129482368973,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        114627.83186833064
+      ],
+      "height": 1103.2819412773533,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        114727.83186833064
+      ],
+      "height": 1089.8481050783766,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        114827.83186833064
+      ],
+      "height": 1076.6361275880486,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        114927.83186833064
+      ],
+      "height": 1070.5359494884892,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115027.83186833064
+      ],
+      "height": 1069.7767022116718,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115127.83186833064
+      ],
+      "height": 1068.6005561389607,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115227.83186833064
+      ],
+      "height": 1055.9422767201575,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115327.83186833064
+      ],
+      "height": 1034.0564664442786,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115427.83186833064
+      ],
+      "height": 1006.123696443045,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115527.83186833064
+      ],
+      "height": 960.3588504562001,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115627.83186833064
+      ],
+      "height": 930.5873632841954,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115727.83186833064
+      ],
+      "height": 924.9978542000458,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115827.83186833064
+      ],
+      "height": 925.2435161374256,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        115927.83186833064
+      ],
+      "height": 1267.3155517578125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116027.83186833064
+      ],
+      "height": 1267.44921875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116127.83186833064
+      ],
+      "height": 1267.5830078125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.716796875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.8505859375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116427.83186833064
+      ],
+      "height": 1267.9842529296875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116527.83186833064
+      ],
+      "height": 1268.1180419921875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.251708984375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.385498046875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.519287109375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30319.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.6529541015625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        114527.83186833064
+      ],
+      "height": 1109.2338118256218,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        114627.83186833064
+      ],
+      "height": 1098.6950729302941,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        114727.83186833064
+      ],
+      "height": 1085.3635240191109,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        114827.83186833064
+      ],
+      "height": 1073.5376359547633,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        114927.83186833064
+      ],
+      "height": 1070.3644850355504,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115027.83186833064
+      ],
+      "height": 1069.3640429638494,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115127.83186833064
+      ],
+      "height": 1068.1815592024434,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115227.83186833064
+      ],
+      "height": 1053.4182096975583,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115327.83186833064
+      ],
+      "height": 1028.8987025190477,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115427.83186833064
+      ],
+      "height": 1006.0598698413412,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115527.83186833064
+      ],
+      "height": 978.9566713721194,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115627.83186833064
+      ],
+      "height": 957.6999771669282,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115727.83186833064
+      ],
+      "height": 954.9705228398884,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115827.83186833064
+      ],
+      "height": 951.4699121504293,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        115927.83186833064
+      ],
+      "height": 942.8728128201799,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116027.83186833064
+      ],
+      "height": 928.5117814355872,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116127.83186833064
+      ],
+      "height": 925.6348948718896,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116227.83186833064
+      ],
+      "height": 1267.7708740234375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116327.83186833064
+      ],
+      "height": 1267.9046630859375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116427.83186833064
+      ],
+      "height": 1268.038330078125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116527.83186833064
+      ],
+      "height": 1268.172119140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.305908203125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.4395751953125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.5733642578125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30419.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.70703125,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        114527.83186833064
+      ],
+      "height": 1106.5169870518253,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        114627.83186833064
+      ],
+      "height": 1097.2667692278328,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        114727.83186833064
+      ],
+      "height": 1082.747625001147,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        114827.83186833064
+      ],
+      "height": 1072.6764393534202,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        114927.83186833064
+      ],
+      "height": 1070.0439623295108,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115027.83186833064
+      ],
+      "height": 1066.8657148597795,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115127.83186833064
+      ],
+      "height": 1059.5877734942674,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115227.83186833064
+      ],
+      "height": 1034.9537305327358,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115327.83186833064
+      ],
+      "height": 1007.779660474099,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115427.83186833064
+      ],
+      "height": 992.985366169602,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115527.83186833064
+      ],
+      "height": 987.5177296037039,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115627.83186833064
+      ],
+      "height": 984.8655862630635,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115727.83186833064
+      ],
+      "height": 1000.9103827597903,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115827.83186833064
+      ],
+      "height": 1027.2443684759073,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        115927.83186833064
+      ],
+      "height": 1025.1890927348484,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116027.83186833064
+      ],
+      "height": 994.0197156329061,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116127.83186833064
+      ],
+      "height": 952.418397380962,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116227.83186833064
+      ],
+      "height": 926.9423490367353,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116327.83186833064
+      ],
+      "height": 926.0405540296533,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116427.83186833064
+      ],
+      "height": 1268.0924072265625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116527.83186833064
+      ],
+      "height": 1268.2261962890625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116627.83186833064
+      ],
+      "height": 1268.3599853515625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.4937744140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.62744140625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30519.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.7611083984375,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        114527.83186833064
+      ],
+      "height": 1103.273736902263,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        114627.83186833064
+      ],
+      "height": 1096.6123898693168,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        114727.83186833064
+      ],
+      "height": 1083.0853485471564,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        114827.83186833064
+      ],
+      "height": 1072.936708982733,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        114927.83186833064
+      ],
+      "height": 1068.7891235285115,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115027.83186833064
+      ],
+      "height": 1061.0466207687944,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115127.83186833064
+      ],
+      "height": 1047.036595119146,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115227.83186833064
+      ],
+      "height": 1022.5774739066139,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115327.83186833064
+      ],
+      "height": 999.2601387927764,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115427.83186833064
+      ],
+      "height": 992.7763339270391,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115527.83186833064
+      ],
+      "height": 992.2398831615342,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115627.83186833064
+      ],
+      "height": 991.812276214391,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115727.83186833064
+      ],
+      "height": 1017.7711407807708,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115827.83186833064
+      ],
+      "height": 1059.211389376787,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        115927.83186833064
+      ],
+      "height": 1094.9724655926136,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116027.83186833064
+      ],
+      "height": 1105.099630611624,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116127.83186833064
+      ],
+      "height": 1073.3926899301846,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116227.83186833064
+      ],
+      "height": 1022.2614500645691,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116327.83186833064
+      ],
+      "height": 977.9644227712392,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116427.83186833064
+      ],
+      "height": 943.354076458643,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116527.83186833064
+      ],
+      "height": 931.2347309452027,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116627.83186833064
+      ],
+      "height": 926.4204710570989,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116727.83186833064
+      ],
+      "height": 1268.5478515625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116827.83186833064
+      ],
+      "height": 1268.6815185546875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30619.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.815185546875,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        114527.83186833064
+      ],
+      "height": 1101.5119454769242,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        114627.83186833064
+      ],
+      "height": 1096.0226274232443,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        114727.83186833064
+      ],
+      "height": 1086.7215838167908,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        114827.83186833064
+      ],
+      "height": 1075.5552241799446,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        114927.83186833064
+      ],
+      "height": 1066.0983823148342,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115027.83186833064
+      ],
+      "height": 1052.8278620896926,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115127.83186833064
+      ],
+      "height": 1034.932584665538,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115227.83186833064
+      ],
+      "height": 1015.6554038083952,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115327.83186833064
+      ],
+      "height": 1001.1109351560012,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115427.83186833064
+      ],
+      "height": 997.7995826478,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115527.83186833064
+      ],
+      "height": 996.9645379329618,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115627.83186833064
+      ],
+      "height": 999.5960626454362,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115727.83186833064
+      ],
+      "height": 1031.8396872563665,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115827.83186833064
+      ],
+      "height": 1072.4530838550736,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        115927.83186833064
+      ],
+      "height": 1111.1964900038834,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116027.83186833064
+      ],
+      "height": 1131.9316183020733,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116127.83186833064
+      ],
+      "height": 1134.318992832831,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116227.83186833064
+      ],
+      "height": 1123.4935439862177,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116327.83186833064
+      ],
+      "height": 1089.6181748347292,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116427.83186833064
+      ],
+      "height": 1041.549578663463,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116527.83186833064
+      ],
+      "height": 991.4932766917818,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116627.83186833064
+      ],
+      "height": 947.8188408446115,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116727.83186833064
+      ],
+      "height": 928.4319975907242,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116827.83186833064
+      ],
+      "height": 926.8081809842113,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30719.957011519,
+        116927.83186833064
+      ],
+      "height": 1268.869384765625,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        114527.83186833064
+      ],
+      "height": 1105.2587655719901,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        114627.83186833064
+      ],
+      "height": 1101.3674978339295,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        114727.83186833064
+      ],
+      "height": 1094.7636701842698,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        114827.83186833064
+      ],
+      "height": 1084.7322690105354,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        114927.83186833064
+      ],
+      "height": 1070.1557351106806,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115027.83186833064
+      ],
+      "height": 1057.4870704273242,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115127.83186833064
+      ],
+      "height": 1041.2460622873475,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115227.83186833064
+      ],
+      "height": 1016.2341363836313,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115327.83186833064
+      ],
+      "height": 1006.1902932501673,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115427.83186833064
+      ],
+      "height": 1002.7023165685748,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115527.83186833064
+      ],
+      "height": 1002.0173763453477,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115627.83186833064
+      ],
+      "height": 1008.740649962434,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115727.83186833064
+      ],
+      "height": 1044.8675473884741,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115827.83186833064
+      ],
+      "height": 1084.9937479294922,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        115927.83186833064
+      ],
+      "height": 1118.898361016563,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116027.83186833064
+      ],
+      "height": 1135.5093407906027,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116127.83186833064
+      ],
+      "height": 1133.7568338759056,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116227.83186833064
+      ],
+      "height": 1125.5049720284012,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116327.83186833064
+      ],
+      "height": 1117.107934425394,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116427.83186833064
+      ],
+      "height": 1112.5673790484643,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116527.83186833064
+      ],
+      "height": 1089.3205361776384,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116627.83186833064
+      ],
+      "height": 1062.181732304073,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116727.83186833064
+      ],
+      "height": 1015.8690683306943,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116827.83186833064
+      ],
+      "height": 970.4942319906938,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xy": [
+        30819.957011519,
+        116927.83186833064
+      ],
+      "height": 948.0004942188436,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    }
+  ],
+  "road_samples": [
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25344.443960043227,
+        117119.96525843216,
+        1024.327503927353
+      ],
+      "hit_z": 1010.3252748133941,
+      "offset_cm": -14.002229113958947,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25439.637226499137,
+        117089.33452188448,
+        1023.1682672849132
+      ],
+      "hit_z": 1009.1661093214902,
+      "offset_cm": -14.002157963422974,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25534.83049295505,
+        117058.70378533678,
+        1021.9778493118135
+      ],
+      "hit_z": 1007.9748083751856,
+      "offset_cm": -14.00304093662794,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25630.02375941096,
+        117028.0730487891,
+        1021.168460656426
+      ],
+      "hit_z": 1007.1641788368092,
+      "offset_cm": -14.004281819616722,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25725.217025866874,
+        116997.4423122414,
+        1020.0915132805676
+      ],
+      "hit_z": 1006.0856151467947,
+      "offset_cm": -14.005898133772916,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25820.410292322784,
+        116966.81157569372,
+        1019.1109907222947
+      ],
+      "hit_z": 1005.1078341997518,
+      "offset_cm": -14.003156522542895,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        25915.603558778694,
+        116936.18083914604,
+        1017.8124594958996
+      ],
+      "hit_z": 1003.8093354771413,
+      "offset_cm": -14.003124018758285,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26010.796825234607,
+        116905.55010259834,
+        1017.1837521873048
+      ],
+      "hit_z": 1003.1799874542548,
+      "offset_cm": -14.003764733049934,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26105.990091690517,
+        116874.91936605066,
+        1016.4930734530907
+      ],
+      "hit_z": 1002.4899115189946,
+      "offset_cm": -14.003161934096056,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26201.38082055981,
+        116844.90956657665,
+        1016.183084810604
+      ],
+      "hit_z": 1002.1784049283795,
+      "offset_cm": -14.004679882224536,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26296.78121492792,
+        116814.93016107204,
+        1015.7343742665315
+      ],
+      "hit_z": 1001.7312807256321,
+      "offset_cm": -14.003093540899386,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26392.181609296025,
+        116784.95075556745,
+        1015.18870162499
+      ],
+      "hit_z": 1001.183084462453,
+      "offset_cm": -14.005617162536964,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26487.582003664134,
+        116754.97135006284,
+        1014.7377560658176
+      ],
+      "hit_z": 1000.7330118699083,
+      "offset_cm": -14.004744195909325,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26582.982398032244,
+        116724.99194455823,
+        1013.638405930663
+      ],
+      "hit_z": 999.63412432625,
+      "offset_cm": -14.004281604412995,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26678.382792400353,
+        116695.01253905364,
+        1013.1126736245027
+      ],
+      "hit_z": 999.108978333772,
+      "offset_cm": -14.003695290730661,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26773.78318676846,
+        116665.03313354903,
+        1012.1876034664278
+      ],
+      "hit_z": 998.1831545946034,
+      "offset_cm": -14.00444887182448,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26869.183581136567,
+        116635.05372804443,
+        1011.103032607567
+      ],
+      "hit_z": 997.0987653250338,
+      "offset_cm": -14.004267282533192,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        26964.583975504676,
+        116605.07432253983,
+        1009.299635599773
+      ],
+      "hit_z": 995.298113404742,
+      "offset_cm": -14.00152219503093,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27059.984369872785,
+        116575.09491703523,
+        1007.4239847561597
+      ],
+      "hit_z": 993.4192407353885,
+      "offset_cm": -14.004744020771227,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27155.384764240895,
+        116545.11551153062,
+        1005.450392679399
+      ],
+      "hit_z": 991.4486728155312,
+      "offset_cm": -14.001719863867834,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27250.785158609004,
+        116515.13610602602,
+        1003.7355680259914
+      ],
+      "hit_z": 989.7324514855527,
+      "offset_cm": -14.003116540438668,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27346.1625358152,
+        116485.0848115708,
+        1001.8595896283518
+      ],
+      "hit_z": 987.8582988943103,
+      "offset_cm": -14.001290734041504,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27441.234439408265,
+        116454.0794386946,
+        999.7129640214133
+      ],
+      "hit_z": 985.7113973649923,
+      "offset_cm": -14.001566656421005,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27536.306343001324,
+        116423.07406581842,
+        997.9539227497941
+      ],
+      "hit_z": 983.9500011622342,
+      "offset_cm": -14.00392158755983,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27631.378246594388,
+        116392.06869294224,
+        996.0014182632215
+      ],
+      "hit_z": 982.0001423995011,
+      "offset_cm": -14.001275863720366,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27726.450150187447,
+        116361.06332006604,
+        994.308672537903
+      ],
+      "hit_z": 980.3043861929602,
+      "offset_cm": -14.004286344942784,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27821.52205378051,
+        116330.05794718985,
+        992.4785739613437
+      ],
+      "hit_z": 978.4766758942978,
+      "offset_cm": -14.001898067045886,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        27916.59395737357,
+        116299.05257431367,
+        990.8928616332018
+      ],
+      "hit_z": 976.8923267995083,
+      "offset_cm": -14.000534833693564,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        28011.665860966634,
+        116268.04720143747,
+        988.6975001674075
+      ],
+      "hit_z": 974.6957682000718,
+      "offset_cm": -14.001731967335672,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9243844,
+      "xyz": [
+        28012.847407282487,
+        116267.66186904474,
+        988.6731174889046
+      ],
+      "hit_z": 974.6714215977302,
+      "offset_cm": -14.00169589117445,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 9267901,
+      "xyz": [
+        29619.957011519,
+        115727.83186833064,
+        936.4255582999529
+      ],
+      "hit_z": 954.4024047851562,
+      "offset_cm": 17.976846485203396,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 9267901,
+      "xyz": [
+        29663.896176351358,
+        115817.66142801917,
+        937.739130834867
+      ],
+      "hit_z": 955.7664184570312,
+      "offset_cm": 18.027287622164295,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 9267901,
+      "xyz": [
+        29707.83534118372,
+        115907.4909877077,
+        938.7360554488891
+      ],
+      "hit_z": 1267.103759765625,
+      "offset_cm": 328.36770431673585,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "osm_way": 9267901,
+      "xyz": [
+        29722.998009924777,
+        115938.29937640889,
+        938.7416120517149
+      ],
+      "hit_z": 1267.119873046875,
+      "offset_cm": 328.3782609951601,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29619.957011519,
+        115727.83186833064,
+        936.4255582999529
+      ],
+      "hit_z": 954.4024047851562,
+      "offset_cm": 17.976846485203396,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29594.857795260734,
+        115631.03295643996,
+        935.465738357584
+      ],
+      "hit_z": 953.512939453125,
+      "offset_cm": 18.047201095541027,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29570.52395545227,
+        115534.03992141073,
+        936.1100624735506
+      ],
+      "hit_z": 954.1137084960938,
+      "offset_cm": 18.003646022543194,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29546.61342130003,
+        115436.94057366427,
+        939.8303022522379
+      ],
+      "hit_z": 925.8287489905626,
+      "offset_cm": -14.001553261675213,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29522.720823254826,
+        115339.83679537191,
+        944.3991110849612
+      ],
+      "hit_z": 930.3950352191869,
+      "offset_cm": -14.004075865774325,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29498.82822520962,
+        115242.73301707956,
+        959.2751823006904
+      ],
+      "hit_z": 945.2729377284763,
+      "offset_cm": -14.002244572214067,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29474.935627164414,
+        115145.62923878721,
+        983.0478018213672
+      ],
+      "hit_z": 969.0450331836321,
+      "offset_cm": -14.00276863773513,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29451.04302911921,
+        115048.52546049486,
+        988.3557010204931
+      ],
+      "hit_z": 974.3525504226866,
+      "offset_cm": -14.003150597806552,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29427.150431074002,
+        114951.4216822025,
+        991.7821939991455
+      ],
+      "hit_z": 977.7791455014926,
+      "offset_cm": -14.003048497652912,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29403.257833028798,
+        114854.31790391015,
+        995.5505282452995
+      ],
+      "hit_z": 981.5475755626373,
+      "offset_cm": -14.002952682662112,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29379.36523498359,
+        114757.2141256178,
+        1000.7396698407974
+      ],
+      "hit_z": 986.7382528807809,
+      "offset_cm": -14.001416960016513,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29355.472636938386,
+        114660.11034732545,
+        1005.1602675395726
+      ],
+      "hit_z": 991.1579059887447,
+      "offset_cm": -14.002361550827914,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29332.397249155994,
+        114562.81889132693,
+        1007.7238515760463
+      ],
+      "hit_z": 993.7234111412747,
+      "offset_cm": -14.000440434771576,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29311.529280405823,
+        114465.02048704422,
+        1011.8121466304789
+      ],
+      "hit_z": 997.8097516585706,
+      "offset_cm": -14.002394971908302,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29290.66131165565,
+        114367.22208276152,
+        1016.2115411091166
+      ],
+      "hit_z": 1002.2086825846027,
+      "offset_cm": -14.002858524513954,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29269.79334290548,
+        114269.42367847882,
+        1020.3156176746816
+      ],
+      "hit_z": 1006.3117658732449,
+      "offset_cm": -14.003851801436667,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29248.925374155308,
+        114171.62527419614,
+        1025.0346996823632
+      ],
+      "hit_z": 1011.0329687495091,
+      "offset_cm": -14.001730932854116,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29228.057405405136,
+        114073.82686991344,
+        1029.1673030116572
+      ],
+      "hit_z": 1015.163886857661,
+      "offset_cm": -14.003416153996113,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29207.189436654964,
+        113976.02846563073,
+        1033.3227920610586
+      ],
+      "hit_z": 1019.3189903553359,
+      "offset_cm": -14.003801705722708,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29186.321467904792,
+        113878.23006134805,
+        1036.9198755320338
+      ],
+      "hit_z": 1022.9161363831313,
+      "offset_cm": -14.003739148902469,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29165.45349915462,
+        113780.43165706535,
+        1040.0396953126622
+      ],
+      "hit_z": 1026.038128227833,
+      "offset_cm": -14.001567084829048,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29144.58553040445,
+        113682.63325278265,
+        1042.31179540923
+      ],
+      "hit_z": 1028.3106559091445,
+      "offset_cm": -14.0011395000854,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29123.717561654277,
+        113584.83484849994,
+        1044.9597584070202
+      ],
+      "hit_z": 1030.9557788773218,
+      "offset_cm": -14.003979529698427,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29102.849592904106,
+        113487.03644421726,
+        1047.897694782148
+      ],
+      "hit_z": 1033.8963338328574,
+      "offset_cm": -14.001360949290529,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29081.981624153934,
+        113389.23803993456,
+        1049.0667442637205
+      ],
+      "hit_z": 1035.0635755039716,
+      "offset_cm": -14.00316875974886,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29061.113655403762,
+        113291.43963565186,
+        1049.4323429992105
+      ],
+      "hit_z": 1035.428153200343,
+      "offset_cm": -14.004189798867401,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29040.24568665359,
+        113193.64123136917,
+        1048.8264810988906
+      ],
+      "hit_z": 1034.8242428936624,
+      "offset_cm": -14.002238205228196,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        29019.37771790342,
+        113095.84282708647,
+        1047.9380901474096
+      ],
+      "hit_z": 1033.934223697672,
+      "offset_cm": -14.003866449737643,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28998.509749153247,
+        112998.04442280377,
+        1046.6458829794549
+      ],
+      "hit_z": 1032.6445058183147,
+      "offset_cm": -14.001377161140226,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28977.641780403075,
+        112900.24601852107,
+        1045.0962281662594
+      ],
+      "hit_z": 1031.092534579288,
+      "offset_cm": -14.003693586971394,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28956.773811652904,
+        112802.44761423838,
+        1042.883340768193
+      ],
+      "hit_z": 1028.8816767549247,
+      "offset_cm": -14.001664013268282,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28935.905842902732,
+        112704.64920995568,
+        1041.3156850859798
+      ],
+      "hit_z": 1027.312665572825,
+      "offset_cm": -14.003019513154868,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28915.03787415256,
+        112606.85080567298,
+        1039.350896208978
+      ],
+      "hit_z": 1025.3474821677974,
+      "offset_cm": -14.003414041180577,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28894.16990540239,
+        112509.05240139028,
+        1036.8284777932336
+      ],
+      "hit_z": 1022.827150448358,
+      "offset_cm": -14.001327344875563,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28873.301936652217,
+        112411.25399710759,
+        1034.7009929912288
+      ],
+      "hit_z": 1020.6962365732122,
+      "offset_cm": -14.004756418016541,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28852.433967902045,
+        112313.45559282489,
+        1032.73808629117
+      ],
+      "hit_z": 1018.7335003060132,
+      "offset_cm": -14.004585985156837,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28831.565999151873,
+        112215.65718854219,
+        1030.1704876765357
+      ],
+      "hit_z": 1016.1684338042317,
+      "offset_cm": -14.002053872304032,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28810.6980304017,
+        112117.8587842595,
+        1028.5552873108404
+      ],
+      "hit_z": 1014.5520604045357,
+      "offset_cm": -14.00322690630469,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28789.83006165153,
+        112020.0603799768,
+        1027.3597112844361
+      ],
+      "hit_z": 1013.3587117548486,
+      "offset_cm": -14.000999529587489,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28768.630243112115,
+        111922.34609958896,
+        1026.1588233105094
+      ],
+      "hit_z": 1012.156661921515,
+      "offset_cm": -14.00216138899441,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28740.38830424837,
+        111826.41699613638,
+        1026.499798762265
+      ],
+      "hit_z": 1012.4966179496455,
+      "offset_cm": -14.003180812619576,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28712.146365384626,
+        111730.48789268378,
+        1027.563773626724
+      ],
+      "hit_z": 1013.5593938880911,
+      "offset_cm": -14.004379738632906,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28684.96677050952,
+        111634.26251404251,
+        1027.7874642388233
+      ],
+      "hit_z": 1013.7837169185834,
+      "offset_cm": -14.003747320239881,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28659.486892642024,
+        111537.56310440699,
+        1025.6287434038613
+      ],
+      "hit_z": 1011.6258904566516,
+      "offset_cm": -14.002852947209703,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28634.00701477453,
+        111440.86369477147,
+        1022.9338164505801
+      ],
+      "hit_z": 1008.9320601801926,
+      "offset_cm": -14.001756270387546,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 44062160,
+      "xyz": [
+        28614.861333945413,
+        111346.1573497324,
+        1020.3980509024086
+      ],
+      "hit_z": 1006.3948358566311,
+      "offset_cm": -14.003215045777551,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33283.493420858096,
+        114708.05137745726,
+        1137.7817113387187
+      ],
+      "hit_z": 1123.778707927466,
+      "offset_cm": -14.003003411252621,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33380.76049265033,
+        114684.83248978012,
+        1140.4175325805882
+      ],
+      "hit_z": 1126.4163030556285,
+      "offset_cm": -14.001229524959626,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33478.02756444258,
+        114661.613602103,
+        1142.5829829680654
+      ],
+      "hit_z": 1128.580055360629,
+      "offset_cm": -14.002927607436277,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33575.294636234816,
+        114638.39471442586,
+        1144.278970219445
+      ],
+      "hit_z": 1130.277937324777,
+      "offset_cm": -14.001032894668015,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33672.56170802705,
+        114615.17582674873,
+        1145.7721309897076
+      ],
+      "hit_z": 1131.7709055817586,
+      "offset_cm": -14.00122540794905,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33769.82877981929,
+        114591.95693907159,
+        1147.137998451754
+      ],
+      "hit_z": 1133.134740462537,
+      "offset_cm": -14.00325798921699,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33867.095851611535,
+        114568.73805139445,
+        1148.567097668519
+      ],
+      "hit_z": 1134.566260328487,
+      "offset_cm": -14.000837340031921,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1334179572,
+      "xyz": [
+        33957.64280154019,
+        114547.12334231396,
+        1149.8975310286874
+      ],
+      "hit_z": 1135.8955011099665,
+      "offset_cm": -14.002029918720837,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        31972.701875349354,
+        115076.42091466114,
+        1080.7102978480516
+      ],
+      "hit_z": 1066.7085973018397,
+      "offset_cm": -14.00170054621185,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32068.972529751485,
+        115049.36613502822,
+        1085.4313177869114
+      ],
+      "hit_z": 1071.429634748067,
+      "offset_cm": -14.001683038844476,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32165.243184153613,
+        115022.31135539532,
+        1090.3903860927685
+      ],
+      "hit_z": 1076.3883493776502,
+      "offset_cm": -14.002036715118265,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32261.513838555744,
+        114995.2565757624,
+        1094.9741679136844
+      ],
+      "hit_z": 1080.9704486095748,
+      "offset_cm": -14.003719304109609,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32357.784492957875,
+        114968.20179612948,
+        1099.1381828047088
+      ],
+      "hit_z": 1085.1351361255963,
+      "offset_cm": -14.003046679112458,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32454.055147360006,
+        114941.14701649656,
+        1103.7545352660093
+      ],
+      "hit_z": 1089.7519016458998,
+      "offset_cm": -14.002633620109464,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32550.325801762134,
+        114914.09223686365,
+        1108.3368286685811
+      ],
+      "hit_z": 1094.3353511474354,
+      "offset_cm": -14.001477521145716,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32646.596456164265,
+        114887.03745723073,
+        1112.9585274973135
+      ],
+      "hit_z": 1098.9556132140447,
+      "offset_cm": -14.002914283268865,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32742.867110566396,
+        114859.98267759781,
+        1117.411253719565
+      ],
+      "hit_z": 1103.4084167099575,
+      "offset_cm": -14.002837009607447,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32839.137764968524,
+        114832.92789796491,
+        1121.8243701851939
+      ],
+      "hit_z": 1107.8230895092652,
+      "offset_cm": -14.001280675928683,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        32935.40841937066,
+        114805.87311833199,
+        1126.2728823819868
+      ],
+      "hit_z": 1112.2705151785153,
+      "offset_cm": -14.002367203471522,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        33031.679073772786,
+        114778.81833869907,
+        1130.0395547146327
+      ],
+      "hit_z": 1116.0377807939603,
+      "offset_cm": -14.001773920672349,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        33127.94972817491,
+        114751.76355906615,
+        1133.4709521665936
+      ],
+      "hit_z": 1119.4701795256299,
+      "offset_cm": -14.00077264096376,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        33224.22038257705,
+        114724.70877943325,
+        1136.0720236609545
+      ],
+      "hit_z": 1122.0691532166943,
+      "offset_cm": -14.002870444260225,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256292,
+      "xyz": [
+        33283.493420858096,
+        114708.05137745726,
+        1137.7817113387187
+      ],
+      "hit_z": 1123.778707927466,
+      "offset_cm": -14.003003411252621,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        29619.957011519,
+        115727.83186833064,
+        936.4255582999529
+      ],
+      "hit_z": 954.4024047851562,
+      "offset_cm": 17.976846485203396,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        29716.73879785529,
+        115702.66669728897,
+        937.9048736015989
+      ],
+      "hit_z": 955.971923828125,
+      "offset_cm": 18.067050226526135,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        29813.533078472483,
+        115677.55153458488,
+        938.7395833333334
+      ],
+      "hit_z": 956.7177124023438,
+      "offset_cm": 17.97812906901038,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        29910.778057380332,
+        115654.24029100561,
+        938.9542945287549
+      ],
+      "hit_z": 1266.8839111328125,
+      "offset_cm": 327.9296166040576,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30007.432246237127,
+        115628.65932934119,
+        939.0000000000001
+      ],
+      "hit_z": 1267.0350341796875,
+      "offset_cm": 328.0350341796874,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30103.7016963433,
+        115601.60026475547,
+        939.0000000000001
+      ],
+      "hit_z": 1267.040283203125,
+      "offset_cm": 328.0402832031249,
+      "actor": "Krog route SM_KrogTunnel_Shell"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30199.97114644948,
+        115574.54120016974,
+        939.6766138602317
+      ],
+      "hit_z": 925.6742936964813,
+      "offset_cm": -14.002320163750369,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30296.240596555654,
+        115547.48213558401,
+        960.3109556289517
+      ],
+      "hit_z": 946.3088531525059,
+      "offset_cm": -14.00210247644577,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30392.51004666183,
+        115520.4230709983,
+        995.6120940925588
+      ],
+      "hit_z": 981.6099422792845,
+      "offset_cm": -14.002151813274281,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30488.779496768006,
+        115493.36400641256,
+        1002.9495497145119
+      ],
+      "hit_z": 988.9463751339358,
+      "offset_cm": -14.003174580576115,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30585.048946874183,
+        115466.30494182683,
+        1004.9698170992419
+      ],
+      "hit_z": 990.9665077151283,
+      "offset_cm": -14.003309384113663,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30681.318396980358,
+        115439.24587724112,
+        1009.7957052807751
+      ],
+      "hit_z": 995.7929396045572,
+      "offset_cm": -14.002765676217905,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30777.587847086535,
+        115412.18681265539,
+        1014.7995402682857
+      ],
+      "hit_z": 1000.7984655898213,
+      "offset_cm": -14.00107467846442,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30873.857297192713,
+        115385.12774806966,
+        1020.5372064790067
+      ],
+      "hit_z": 1006.5353758858307,
+      "offset_cm": -14.00183059317601,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        30970.126747298887,
+        115358.06868348394,
+        1025.5210420182211
+      ],
+      "hit_z": 1011.5190079881581,
+      "offset_cm": -14.002034030062987,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31066.396197405065,
+        115331.00961889821,
+        1030.2216971223497
+      ],
+      "hit_z": 1016.2188798362729,
+      "offset_cm": -14.002817286076834,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31162.66564751124,
+        115303.95055431248,
+        1034.5534567516418
+      ],
+      "hit_z": 1020.5496231192953,
+      "offset_cm": -14.003833632346414,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31258.935097617417,
+        115276.89148972677,
+        1040.29503315341
+      ],
+      "hit_z": 1026.2934689837246,
+      "offset_cm": -14.00156416968548,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31355.20454772359,
+        115249.83242514104,
+        1045.8654492665391
+      ],
+      "hit_z": 1031.8631809380965,
+      "offset_cm": -14.002268328442597,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31451.47399782977,
+        115222.77336055531,
+        1051.3634276440894
+      ],
+      "hit_z": 1037.3627745291,
+      "offset_cm": -14.00065311498929,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31547.749120280918,
+        115195.73448780671,
+        1057.0891068133606
+      ],
+      "hit_z": 1043.087658505299,
+      "offset_cm": -14.001448308061526,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31644.026273717885,
+        115168.70284475501,
+        1062.3294517262293
+      ],
+      "hit_z": 1048.3271761967815,
+      "offset_cm": -14.002275529447843,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31740.30342715485,
+        115141.6712017033,
+        1067.4287991169463
+      ],
+      "hit_z": 1053.4264147006404,
+      "offset_cm": -14.002384416305858,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31836.580580591817,
+        115114.6395586516,
+        1072.5939398076189
+      ],
+      "hit_z": 1058.59218265063,
+      "offset_cm": -14.001757156988788,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31932.857734028785,
+        115087.60791559989,
+        1078.3136618007359
+      ],
+      "hit_z": 1064.3111618985804,
+      "offset_cm": -14.002499902155478,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378256293,
+      "xyz": [
+        31972.701875349354,
+        115076.42091466114,
+        1080.7102978480516
+      ],
+      "hit_z": 1066.7085973018397,
+      "offset_cm": -14.00170054621185,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28012.847407282487,
+        116267.66186904474,
+        988.6731174889046
+      ],
+      "hit_z": 974.6714215977302,
+      "offset_cm": -14.00169589117445,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28107.921404809185,
+        116236.6629175416,
+        986.6699371128427
+      ],
+      "hit_z": 972.6669270957279,
+      "offset_cm": -14.003010017114775,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28202.99540233588,
+        116205.66396603847,
+        984.4428632500811
+      ],
+      "hit_z": 970.4388969309937,
+      "offset_cm": -14.003966319087453,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28298.06939986258,
+        116174.66501453535,
+        982.6924408581917
+      ],
+      "hit_z": 968.6896520807047,
+      "offset_cm": -14.002788777487012,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28393.143397389278,
+        116143.66606303221,
+        980.7594809031145
+      ],
+      "hit_z": 966.7556955837381,
+      "offset_cm": -14.003785319376448,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28488.217394915977,
+        116112.66711152908,
+        978.9908211531762
+      ],
+      "hit_z": 964.9878888979963,
+      "offset_cm": -14.002932255179871,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28583.291392442672,
+        116081.66816002595,
+        977.0989654789719
+      ],
+      "hit_z": 963.0952731141817,
+      "offset_cm": -14.00369236479014,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28678.36538996937,
+        116050.66920852281,
+        974.8652713003098
+      ],
+      "hit_z": 960.8623739350587,
+      "offset_cm": -14.002897365251101,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28773.43938749607,
+        116019.6702570197,
+        972.8711950028929
+      ],
+      "hit_z": 958.8698053849425,
+      "offset_cm": -14.001389617950394,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28868.513385022765,
+        115988.67130551656,
+        970.5929122682229
+      ],
+      "hit_z": 956.590770527238,
+      "offset_cm": -14.00214174098494,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        28963.587382549464,
+        115957.67235401343,
+        968.5560931103197
+      ],
+      "hit_z": 954.552258173645,
+      "offset_cm": -14.003834936674707,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29058.661380076162,
+        115926.67340251029,
+        966.4863675702586
+      ],
+      "hit_z": 952.48386731816,
+      "offset_cm": -14.00250025209857,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29153.73537760286,
+        115895.67445100716,
+        964.4127825215451
+      ],
+      "hit_z": 950.4109200972484,
+      "offset_cm": -14.001862424296633,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29248.809375129556,
+        115864.67549950404,
+        936.5465021989872
+      ],
+      "hit_z": 922.5434194811032,
+      "offset_cm": -14.003082717884013,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29343.883372656255,
+        115833.6765480009,
+        932.6929544171272
+      ],
+      "hit_z": 918.6900887519421,
+      "offset_cm": -14.00286566518514,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29438.485079306665,
+        115801.38426711367,
+        933.3129301944463
+      ],
+      "hit_z": 951.2389526367188,
+      "offset_cm": 17.926022442272483,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29531.162082625342,
+        115763.82134582325,
+        934.7661788433745
+      ],
+      "hit_z": 952.6631469726562,
+      "offset_cm": 17.89696812928173,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    },
+    {
+      "osm_way": 1378258205,
+      "xyz": [
+        29619.957011519,
+        115727.83186833064,
+        936.4255582999529
+      ],
+      "hit_z": 954.4024047851562,
+      "offset_cm": 17.976846485203396,
+      "actor": "Krog route SM_KrogRoute_Asphalt_7_2"
+    }
+  ],
+  "surface_counts": {
+    "USGS Atlanta terrain + authored underwater basin": 450,
+    "Krog route SM_KrogRoute_Concrete_7_2": 39,
+    "Krog route SM_KrogRoute_Asphalt_7_2": 10,
+    "Krog route SM_KrogTunnel_Shell": 126
+  },
+  "main_map_changed": false,
+  "scope": "Native topmost collision surfaces, not a drivable-road or tunnel-clearance acceptance test"
+}
