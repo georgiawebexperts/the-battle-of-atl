@@ -71,7 +71,9 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
     const float Duration=BodyAction->GetPlayLength();
     const float Weight=FMath::Min(FMath::Clamp(BodyActionClock/.12f,0.f,1.f),FMath::Clamp((Duration-BodyActionClock)/.25f,0.f,1.f));
     FTransform ActionPose=Sample(Clip(BodyAction),ActionBone,FMath::Min(BodyActionClock/Duration,.99999f));
-    FTransform Blended;Blended.Blend(Pose[I],ActionPose,Weight);Pose[I]=Blended;
+    if(BodyActionFromPose.IsValidIndex(I)&&BodyActionClock<.3f){
+     FTransform Blended;Blended.Blend(BodyActionFromPose[I],ActionPose,FMath::Clamp(BodyActionClock/.3f,0.f,1.f));Pose[I]=Blended;
+    }else{FTransform Blended;Blended.Blend(Pose[I],ActionPose,Weight);Pose[I]=Blended;}
    }
   }
   // The animation-only FBX uses different bind translations. Retarget translation
@@ -101,4 +103,4 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
 
 void APiedmontExplorer::SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run){IdleAnimation=Idle;WalkAnimation=Walk;RunAnimation=Run;}
 
-void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation){BodyAction=Animation;BodyActionClock=0;}
+void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose){BodyAction=Animation;BodyActionClock=0;BodyActionFromPose=FromPose;}

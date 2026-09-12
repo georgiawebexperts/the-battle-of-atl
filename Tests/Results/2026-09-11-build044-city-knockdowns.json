@@ -1,0 +1,26 @@
+[
+  {
+    "variant": "male",
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 physics=1 drop=96.646 recovered=1 phase=0 direction=F"
+    ],
+    "missing_captures": [],
+    "visual_review": "Inspected fall, recovery and standing captures. Body, clothes and hair remain together; actual physics fall and get-up visible. Fallen torso/head may clip the visible path surface; collision-shape/ground contact needs investigation before full presentation acceptance.",
+    "scope": "Direct 650 cm/s forward impact on both outfits. Both selected front recovery. Other landing directions, clearance obstruction, live AI resumption, repeated impacts, fatal hits and actual riding contact remain unverified.",
+    "presentation_accepted": false
+  },
+  {
+    "variant": "female",
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 physics=1 drop=96.073 recovered=1 phase=0 direction=F"
+    ],
+    "missing_captures": [],
+    "visual_review": "Inspected fall, recovery and standing captures. Body, clothes and hair remain together; actual physics fall and get-up visible. Fallen torso/head may clip the visible path surface; collision-shape/ground contact needs investigation before full presentation acceptance.",
+    "scope": "Direct 650 cm/s forward impact on both outfits. Both selected front recovery. Other landing directions, clearance obstruction, live AI resumption, repeated impacts, fatal hits and actual riding contact remain unverified.",
+    "presentation_accepted": false
+  }
+]

@@ -57,8 +57,8 @@ void APiedmontPedestrian::HearHorn(APawn* Source){YieldTo(Source,true);}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
  if(bDead||StumbleRemaining>0)return;BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
- // A light contact makes visitors stop and raise their hands. Keep severe
- // impacts on the existing fall path until a true knockdown/recovery is integrated.
+ if(Speed>330&&BeginKnockdown(Speed,Direction))return;
+ // Light contact plays an authored surprise; unavailable rigs retain the fallback.
  bPlayingBumpReaction=bNativeCrowdRig&&BumpReaction&&Speed<=330;
  if(bPlayingBumpReaction){
   GetCharacterMovement()->StopMovementImmediately();
@@ -68,6 +68,7 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
 }
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
+ if(KnockdownPhase){TickKnockdown(Dt);return;}
  if(bDead){Body->SetRelativeRotation(FRotator(0,-90,85));return;}
  if(StumbleRemaining>0){StumbleRemaining=FMath::Max(0.f,StumbleRemaining-Dt);if(!bPlayingBumpReaction)Body->SetRelativeRotation(FRotator(0,-90,FMath::Sin(StumbleRemaining*5)*22));
   if(StumbleRemaining<=0)bPlayingBumpReaction=false;return;}
@@ -89,7 +90,10 @@ void APiedmontPedestrian::Tick(float Dt){
 float APiedmontPedestrian::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  if(bDead||Amount<=0)return 0;
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,30),FVector::UpVector);bDead=true;
- if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();SetLifeSpan(15);return Amount;
+ if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+ if(KnockdownPhase==2)KnockdownPhase=0;
+ if(KnockdownPhase==0)BeginKnockdown(100,Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal2D():GetActorForwardVector());
+ GetCharacterMovement()->DisableMovement();SetLifeSpan(15);return Amount;
 }
 bool APiedmontPedestrian::SetDestinationForValidation(FVector Goal){
 #if WITH_EDITOR

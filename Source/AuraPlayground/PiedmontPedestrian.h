@@ -3,6 +3,7 @@
 #include "PiedmontExplorer.h"
 #include "PiedmontPedestrian.generated.h"
 class APiedmontBike;
+class USkeletalMeshComponent;
 UENUM(BlueprintType)
 enum class EPiedmontPedestrianKind : uint8 { Walker, Jogger };
 
@@ -15,6 +16,10 @@ public:
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
+ UPROPERTY(BlueprintReadOnly) int32 KnockdownPhase=0;
+ UPROPERTY(BlueprintReadOnly) int32 CompletedRecoveries=0;
+ UPROPERTY(BlueprintReadOnly) FString RecoveryDirection;
+ UPROPERTY(Transient) TObjectPtr<USkeletalMeshComponent> PhysicsBody;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 CityAppearanceVariant=-1;
  UPROPERTY(BlueprintReadOnly) EPiedmontPedestrianKind Kind=EPiedmontPedestrianKind::Walker;
  UPROPERTY(BlueprintReadOnly) FVector Destination;
@@ -31,9 +36,18 @@ public:
  void BikeImpact(float Speed,FVector Direction);
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
+ virtual void AnimateBody(float Dt) override;
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ bool BeginKnockdown(float Speed,FVector Direction);
+ void TickKnockdown(float Dt);
+ bool BeginRecovery();
+ void AttachCityParts(class USkinnedMeshComponent* Leader);
+ float KnockdownClock=0,RecoveryRetry=0;
+ FQuat StandingPelvis;
+ FVector StandingForward,StandingRight;
+ UPROPERTY() TArray<TObjectPtr<UAnimSequence>> RecoveryClips;
  UPROPERTY() TObjectPtr<UAnimSequence> BumpReaction;
  bool bPlayingBumpReaction=false;
  void InitializeCityAppearance();

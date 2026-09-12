@@ -44,7 +44,7 @@ private:
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
 protected:
  virtual float AimedFieldOfView() const{return 65.f;}
- void PlayBodyAction(UAnimSequence* Animation);
+ void PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose=TArray<FTransform>());
  void SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run);
  virtual bool CanUseWeapon() const;
  virtual FVector AdjustVisitorHand(int32 Side,FVector Target) const {return Target;}
@@ -62,6 +62,7 @@ private:
  float Gait=0;
  UPROPERTY() TObjectPtr<UAnimSequence> BodyAction;
  float BodyActionClock=0;
+ TArray<FTransform> BodyActionFromPose;
  UPROPERTY() TObjectPtr<UAnimSequence> IdleAnimation;
  UPROPERTY() TObjectPtr<UAnimSequence> WalkAnimation;
  UPROPERTY() TObjectPtr<UAnimSequence> RunAnimation;

@@ -58,7 +58,29 @@ void ABattleMacController::TickLocomotionReview(float Dt){
  LocoCamera->SetActorLocation(CameraPosition);LocoCamera->SetActorRotation((Look-CameraPosition).Rotation());
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityBumpReview"))){
   auto* Visitor=Cast<APiedmontPedestrian>(Person);if(!Visitor){ConsoleCommand(TEXT("quit"));return;}
-  if(LocoStage==1){Visitor->GetCharacterMovement()->StopMovementImmediately();Visitor->BikeImpact(220,FVector::ForwardVector);LocoClock=0;LocoStage=2;}
+  const bool Hard=FParse::Param(FCommandLine::Get(),TEXT("BattleCityKnockdownReview"));
+  if(LocoStage==1){Visitor->GetCharacterMovement()->StopMovementImmediately();Visitor->BikeImpact(Hard?650:220,FVector::ForwardVector);LocoClock=0;LocoStage=2;}
+  if(Hard){
+   static bool SawPhysics=false;
+   if(Visitor->PhysicsBody){
+    SawPhysics|=Visitor->PhysicsBody->IsSimulatingPhysics(TEXT("pelvis"));
+    const FVector Hip=Visitor->PhysicsBody->GetSocketLocation(TEXT("pelvis"));
+    LocoKneeMotion=FMath::Max(LocoKneeMotion,float(LocoStart.Z+10-Hip.Z));
+    const FVector Target=Hip+FVector(0,0,35),Offset(230,-500,180);
+    LocoCamera->SetActorLocation(Target+Offset);LocoCamera->SetActorRotation((-Offset).Rotation());
+   }
+   const float Times[]={.3f,1.2f,3.5f,8.5f};
+   if(LocoStage>=2&&LocoStage<=5&&LocoClock>Times[LocoStage-2]){
+    FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);
+    FScreenshotRequest::RequestScreenshot(Folder/FString::Printf(TEXT("bump-%d.png"),LocoStage-2),false,false);LocoStage++;
+   }
+   if(LocoStage==6&&LocoClock>11){
+    const bool Pass=SawPhysics&&LocoKneeMotion>40&&Visitor->CompletedRecoveries==1&&Visitor->KnockdownPhase==0&&Visitor->PhysicsBody==nullptr&&Visitor->Body->IsVisible()&&Visitor->GetCharacterMovement()->IsMovingOnGround();
+    UE_LOG(LogTemp,Display,TEXT("CityKnockdownReview: pass=%d physics=%d drop=%.3f recovered=%d phase=%d direction=%s"),Pass,SawPhysics,LocoKneeMotion,Visitor->CompletedRecoveries,Visitor->KnockdownPhase,*Visitor->RecoveryDirection);
+    ConsoleCommand(TEXT("quit"));LocoStage=7;
+   }
+   return;
+  }
   const float HandHeight=FMath::Max(Person->Body->GetSocketLocation(TEXT("hand_l")).Z,Person->Body->GetSocketLocation(TEXT("hand_r")).Z)-Person->GetActorLocation().Z;
   LocoKneeMotion=FMath::Max(LocoKneeMotion,HandHeight);
   const float Times[]={.3f,1.1f,2.f,3.6f};
