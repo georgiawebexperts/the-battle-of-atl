@@ -28,7 +28,12 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   TCHECK(!T->TryStart(G-FVector(200,0,-500),G+FVector(200,0,500)),"Started above gate");
   TCHECK(!T->TryStart(G-FVector(200,-500,0),G+FVector(200,500,0)),"Started beside gate");
   TCHECK(B->Dismount(),"Practice dismount failed");auto* Foot=Cast<ABattleRider>(GetPawn());TCHECK(Foot&&Foot->MountBike(),"Practice remount failed");
-  B=Cast<ABattleBike>(GetPawn());TCHECK(B,"Bike possession lost");B->Ride->Gear=2;TutorialPrevious=B->GetActorLocation();TutorialStage=1;
+  B=Cast<ABattleBike>(GetPawn());TCHECK(B,"Bike possession lost");B->Ride->Gear=2;
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialMarket"))){
+   const FVector A=BattleTutorialBlock::MarketApproach[0],D=BattleTutorialBlock::MarketApproach[1]-A;
+   B->SetActorLocationAndRotation(A+FVector(0,0,98),D.Rotation(),false,nullptr,ETeleportType::TeleportPhysics);B->Ride->StopMovementImmediately();B->Ride->Speed=0;B->Ride->bForceNextFloorCheck=true;
+  }
+  TutorialPrevious=B->GetActorLocation();TutorialStage=1;
  }
  if(TutorialStage==1){
   TutorialClock+=Dt;TCHECK(TutorialClock<180,"Practice route timed out");
@@ -36,7 +41,9 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   TCHECK(B->Ride->Wipeouts==0,"Practice route caused a wipeout");
   if(!M->bTutorialActive){FlushPressedKeys();TCHECK(TutorialDistance>7000&&M->StartCountdown>0&&B->HornUses==5&&B->PistolAmmo==10,"Gate crossing or starting supplies incorrect");TutorialStage=2;TutorialClock=0;return;}
   TCHECK(M->RunElapsed==0&&M->TimeRemaining==M->Difficulty.TimeLimitSeconds,"Clock changed during actual practice ride");
-  TArray<FVector> Points;if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAlternate"))){for(const FVector& Q:BattleTutorialBlock::Alternate)Points.Add(Q);}else{for(const FVector& Q:BattleTutorialData::Road)Points.Add(Q);}Points.Add(BattleTutorialData::Gate+FVector(600,0,0));
+  const bool Market=FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialMarket"));
+  if(Market&&FVector::Dist2D(P,BattleTutorialBlock::MarketApproach[UE_ARRAY_COUNT(BattleTutorialBlock::MarketApproach)-1])<130){TCHECK(TutorialDistance>3000&&M->bTutorialActive&&M->RunElapsed==0,"Market ride failed to preserve practice state");End(true,TEXT("Actual keyboard ride down mapped market approach preserves untimed practice"));return;}
+  TArray<FVector> Points;if(Market){for(const FVector& Q:BattleTutorialBlock::MarketApproach)Points.Add(Q);}else if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAlternate"))){for(const FVector& Q:BattleTutorialBlock::Alternate)Points.Add(Q);}else{for(const FVector& Q:BattleTutorialData::Road)Points.Add(Q);}if(!Market)Points.Add(BattleTutorialData::Gate+FVector(600,0,0));
   float Best=MAX_flt;int Segment=0;FVector Closest;
   for(int I=1;I<Points.Num();I++){FVector A=Points[I-1],C=Points[I],V=P;A.Z=C.Z=V.Z=0;const FVector Q=FMath::ClosestPointOnSegment(V,A,C);const float D=FVector::Dist2D(V,Q);if(D<Best){Best=D;Segment=I-1;Closest=Q;}}
   TutorialMaxError=FMath::Max(TutorialMaxError,Best);if(Best>=200)UE_LOG(LogTemp,Display,TEXT("Tutorial deviation: position=%s segment=%d"),*P.ToString(),Segment);TCHECK(Best<200,"Practice steering left the road");

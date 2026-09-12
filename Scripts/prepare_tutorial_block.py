@@ -2,6 +2,7 @@
 import json,math,heapq,xml.etree.ElementTree as ET
 from pathlib import Path
 from shapely.geometry import LineString,Point
+from shapely.ops import substring
 root=Path(__file__).resolve().parents[1]
 ns={'__file__':str(root/'Scripts/prepare_cabbagetown.py')};exec((root/'Scripts/prepare_cabbagetown.py').read_text().split('krog=json.loads')[0],ns);xy,height=ns['xy'],ns['height']
 r=json.loads((root/'SourceAssets/Terrain/Tutorial/route.json').read_text())
@@ -49,11 +50,27 @@ r['alternate']=sampled(pts)
 def corner(one,two):
  a={n for name,s in ways if name==one for n in s};b={n for name,s in ways if name==two for n in s};both=a&b;assert both,(one,two);return nodes[min(both,key=lambda n:math.dist(nodes[n],r['gate'][:2]))]
 j13=corner('13th Street Northeast','Juniper Street Northeast');j14=corner('14th Street Northeast','Juniper Street Northeast');p13=corner('13th Street Northeast','Piedmont Avenue Northeast');p14=corner('14th Street Northeast','Piedmont Avenue Northeast')
+# Extend the existing south branch along mapped Piedmont Avenue to the market.
+market_osm=ET.parse(root/'References/twelfth-market.osm').getroot()
+market_nodes={int(n.get('id')):xy({'lon':float(n.get('lon')),'lat':float(n.get('lat'))}) for n in market_osm.findall('node')}
+avenue_way=next(w for w in market_osm.findall('way') if w.get('id')=='9272986')
+avenue=LineString([market_nodes[int(n.get('ref'))] for n in avenue_way.findall('nd')])
+market_gate=market_nodes[316638596];south_stop=Point(market_gate[0],market_gate[1]+700)
+market_branch=list(substring(avenue,avenue.project(Point(p13)),avenue.project(south_stop)).coords)
+assert math.dist(market_branch[0],p13)<50
+market_branch[0]=p13
+r['market_approach']=sampled(market_branch)
+r['market_approach_source']='OSM way9272986 and gate316638596; authored expansion stop700cm south of gate'
 barriers=[];stubs=[]
 for p,d in [(j13,(-1,0)),(j13,(0,1)),(j14,(-1,0)),(j14,(0,-1)),(p13,(0,1)),(p14,(0,-1))]:
- end=(p[0]+d[0]*650,p[1]+d[1]*650);stub=sampled([p,end]);stubs+=list(zip(stub,stub[1:]));barriers.append({'center':stub[-1],'outward':[d[0],d[1],0]})
+ if p==p13 and d==(0,1):
+  stub=r['market_approach'];dx,dy=stub[-1][0]-stub[-2][0],stub[-1][1]-stub[-2][1];length=math.hypot(dx,dy);d=(dx/length,dy/length)
+ else:
+  end=(p[0]+d[0]*650,p[1]+d[1]*650);stub=sampled([p,end])
+ stubs+=list(zip(stub,stub[1:]));barriers.append({'center':stub[-1],'outward':[d[0],d[1],0]})
 r['barriers']=barriers;r['stubs']=stubs;r['alternate_length']=LineString([p[:2] for p in r['alternate']]).length;r['source']+='; alternate from OSM /api/0.6/map bbox -84.383,33.7852,-84.3778,33.7868';r['policy']+='; both street approaches enabled for game practice; street one-way traffic restrictions are not a real-world navigation recommendation'
 (root/'SourceAssets/Terrain/Tutorial/block.json').write_text(json.dumps(r,indent=2)+'\n')
 h=['#pragma once','namespace BattleTutorialBlock {','inline const FVector Alternate[] = {']+['FVector('+','.join(f'{v:.5f}' for v in p)+'),' for p in r['alternate']]+['};','inline const FVector StubEnds[] = {']+['FVector('+','.join(f'{v:.5f}' for v in p)+'),' for pair in stubs for p in pair]+['};']
 for n,k in [('BarrierCenters','center'),('BarrierDirections','outward')]:h+=['inline const FVector '+n+'[] = {']+['FVector('+','.join(f'{v:.5f}' for v in b[k])+'),' for b in barriers]+['};']
+h+=['inline const FVector MarketApproach[] = {']+['FVector('+','.join(f'{v:.5f}' for v in p)+'),' for p in r['market_approach'][:-4]]+['};']
 h+=['}'];(root/'Source/AuraPlayground/BattleTutorialBlock.h').write_text('\n'.join(h)+'\n');print({'alternate_points':len(r['alternate']),'alternate_length':r['alternate_length'],'barriers':len(barriers),'corners':[j13,j14,p13,p14]})

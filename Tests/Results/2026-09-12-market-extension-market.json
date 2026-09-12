@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "reason": "Actual keyboard ride down mapped market approach preserves untimed practice",
+  "distance_cm": 4470.2,
+  "max_error_cm": 4.3,
+  "exit_code": 0,
+  "route": "market",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-route-market.log",
+  "scope": "Keyboard-controlled native route fixture; scenery, market closure and freeform bypass checks unaccepted."
+}

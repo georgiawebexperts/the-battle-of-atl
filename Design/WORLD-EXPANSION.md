@@ -532,3 +532,6 @@ Replaced failed TextRender candidates with original baked lettering on a static 
 Inspected current skylight: movable, intensity1, captured-scene source, real-time capture enabled. Recapture alone leaves static commandlet scene black in shadow. New optional -MarketRecaptureSky temporarily disables real-time capture and recaptures the existing skylight; canopy ambient becomes visible. This is a static-preview diagnostic, not a change to saved world lighting or proof of native game lighting. Review report records both original and diagnostic state.
 
 Produce centres were99cm while crate rims reach108.5cm, occluding fruit from rider-height view. Raised centres to112cm without changing collision-bearing table/crates. Native import/render exit0, shaded close-up7e16e580a005491e96468f1077002171 inspected: colored produce visible above rims and sign readable. Still low-detail/faceted, repeated stalls and dark crate fronts; full art acceptance false. No main save, no barrier, no desktop update.
+
+
+2026-09-12 [codex-maclaptop] Market access prerequisite fixed in source: old13th Street south expansion fence made12th market unreachable. Extended mapped Piedmont branch to market corner and moved south expansion stop beyond it. Native keyboard approach and both14th gate routes pass; see STORY-AND-TUTORIAL.md. Market entrance barrier and installed stalls still pending.
