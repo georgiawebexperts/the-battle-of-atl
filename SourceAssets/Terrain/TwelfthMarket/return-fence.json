@@ -1,5 +1,5 @@
 {
-  "source": "Retained OSM park polygon; authored fence tracing nearest boundary, ends400cm south of14th gate reference",
+  "source": "Retained OSM park polygon; authored fence tracing nearest boundary, joins14th gate south stone pier via road-cleared return",
   "points_xy": [
     [
       -19037.993785,
@@ -732,9 +732,45 @@
     [
       -17447.24735095922,
       -4689.6516657900065
+    ],
+    [
+      -17407.553899069077,
+      -4694.594324694378
+    ],
+    [
+      -17367.860447178937,
+      -4699.5369835987485
+    ],
+    [
+      -17328.166995288793,
+      -4704.47964250312
+    ],
+    [
+      -17288.47354339865,
+      -4709.4223014074905
+    ],
+    [
+      -17248.78009150851,
+      -4714.364960311862
+    ],
+    [
+      -17209.086639618366,
+      -4719.3076192162325
+    ],
+    [
+      -17169.393187728223,
+      -4724.250278120604
+    ],
+    [
+      -17129.699735838083,
+      -4729.1929370249745
+    ],
+    [
+      -17126.01578181299,
+      -4729.6516657900065
     ]
   ],
-  "length_cm": 7422.086399651284,
+  "length_cm": 7745.798804443175,
   "maximum_parkward_adjustment_cm": 490.0,
   "road_clearance_cm": 310.0506326838891,
   "status": "Candidate closure return; native ground and route tests required",
@@ -743,7 +779,8 @@
     2387.443844
   ],
   "finish": [
-    -17687.24735095922,
-    -4689.6516657900065
-  ]
+    -17126.01578181299,
+    -4729.6516657900065
+  ],
+  "connection_length_cm": 323.7124047918928
 }

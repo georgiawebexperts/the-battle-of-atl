@@ -1,8 +1,8 @@
 {
   "passed": true,
   "reason": "Untimed practice, protected clock/health, dismount/remount, actual W/A/D road ride, one-way gate countdown and single-start timer pass",
-  "distance_cm": 25013.9,
-  "max_error_cm": 11.6,
+  "distance_cm": 25020.9,
+  "max_error_cm": 13.2,
   "exit_code": 0,
   "route": "alternate",
   "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-route-alternate.log",

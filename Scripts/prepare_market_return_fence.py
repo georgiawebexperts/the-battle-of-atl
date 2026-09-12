@@ -22,9 +22,17 @@ for p in pts:
  original=p[0]
  while roads.distance(Point(p))<310:p[0]+=10
  offsets.append(p[0]-original)
+# Join the south stone pier rather than leaving an open walk-around end.
+# Its centre is360cm south of the gate, outside the270cm timer opening.
+pier=(gate[0],gate[1]+360)
+connection=LineString([pts[-1],pier])
+assert connection.distance(roads)>300
+for i in range(1,math.ceil(connection.length/40)+1):
+ pts.append(list(connection.interpolate(min(i*40,connection.length)).coords[0]))
+assert math.dist(pts[-1],pier)<.001
 assert max(offsets)<1500
 assert LineString(pts).distance(roads)>300
 assert len(pts)>100
-r={'source':'Retained OSM park polygon; authored fence tracing nearest boundary, ends400cm south of14th gate reference','points_xy':pts,'length_cm':LineString(pts).length,'maximum_parkward_adjustment_cm':max(offsets),'road_clearance_cm':LineString(pts).distance(roads),'status':'Candidate closure return; native ground and route tests required','start':start,'finish':list(finish.coords)[0]}
+r={'source':'Retained OSM park polygon; authored fence tracing nearest boundary, joins14th gate south stone pier via road-cleared return','points_xy':pts,'length_cm':LineString(pts).length,'maximum_parkward_adjustment_cm':max(offsets),'road_clearance_cm':LineString(pts).distance(roads),'status':'Candidate closure return; native ground and route tests required','start':start,'finish':list(pier),'connection_length_cm':connection.length}
 (root/'SourceAssets/Terrain/TwelfthMarket/return-fence.json').write_text(json.dumps(r,indent=2)+'\n')
 h=['#pragma once','namespace BattleMarketReturn {','inline const FVector2D Points[]={']+[f'FVector2D({x:.6f},{y:.6f}),' for x,y in pts]+['};','}'];(root/'Source/AuraPlayground/BattleMarketReturn.h').write_text('\n'.join(h)+'\n');print({'length_cm':line.length,'posts':len(pts),'finish':r['finish']})
