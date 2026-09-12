@@ -31,6 +31,7 @@ public:
  float MoveSpeed=140,AttackDamage=20,WarningSeconds=.9f;
  float Emergence=1;
  void Speak(bool Charge=false);
+ FString CharacterName() const{return VisualStyle==0?TEXT("Farmers Market Vendor"):TEXT("Punk");}
 protected:
  virtual bool CanUseWeapon() const override{return false;}
 private:

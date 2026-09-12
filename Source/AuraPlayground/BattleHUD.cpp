@@ -95,6 +95,6 @@ void ABattleLabHUD::DrawHUD(){
  if(auto* Viewer=GetOwningPawn()){
   const ABattleZombie* Speaking=nullptr;float Best=2500;
   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->SubtitleRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Speaking=*It;}}
-  if(Speaking){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(Speaking->Subtitle,H-M-159*S,24);}
+  if(Speaking){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(Speaking->CharacterName()+TEXT(": ")+Speaking->Subtitle,H-M-159*S,24);}
  }
 }
