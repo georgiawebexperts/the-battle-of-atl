@@ -1,0 +1,10 @@
+{
+  "before_cm": 363.6216735839844,
+  "after_cm": 363.6216735839844,
+  "reverse_cm": 363.6216735839844,
+  "ground_samples": 21,
+  "clearance_sweeps": 60,
+  "passed": true,
+  "scope": "Ground/clearance and bidirectional native navigation. Actual NPC traversal remains unverified. Main map unchanged.",
+  "newly_reachable_samples_vs_original": 3
+}
