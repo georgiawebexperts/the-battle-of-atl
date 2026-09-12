@@ -4,7 +4,7 @@ root=pathlib.Path(unreal.Paths.project_dir());folder=root/'SourceAssets/Terrain/
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 for existing in ea.get_all_level_actors():
- if existing.actor_has_tag('MonroeApproaches'):ea.destroy_actor(existing)
+ if any(existing.actor_has_tag(tag) for tag in ['MonroeApproaches','MonroeInstalledSurface','MonroeRoadTraffic','MonroeCrossing','MonroeSignal']):ea.destroy_actor(existing)
 dest='/Game/BattleForTheA/Environment/MonroeTraffic';name='SM_Monroe_Approaches'
 opts=unreal.FbxImportUI();opts.import_as_skeletal=False;opts.import_materials=False;opts.import_textures=False;opts.automated_import_should_detect_type=False;opts.mesh_type_to_import=unreal.FBXImportType.FBXIT_STATIC_MESH;opts.static_mesh_import_data.combine_meshes=True;opts.static_mesh_import_data.auto_generate_collision=False
 task=unreal.AssetImportTask();task.filename=str(folder/'Monroe_Approaches.obj');task.destination_path=dest;task.destination_name=name;task.automated=True;task.save=True;task.replace_existing=True;task.options=opts;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])

@@ -367,3 +367,12 @@ Generated non-colliding white/yellow paint draped 1 cm over pavement triangles: 
 Imported only into PiedmontMonroeExtendedCrossingReview with tag MonroePaintReview. Latest white mesh 4062 triangles, yellow 1818. Wide native image inspected; lines/stop bars/stripes visible, but overall crossing-layout fidelity, three-lane turn-lane detailing and rider readability are still unfinished. No collision or gameplay changes from the paint. Main and desktop remain unchanged (047).
 
 render_monroe_crossing.py now accepts --report to preserve historical signal evidence. Paint results are separate from the previously accepted signal-facing report.
+
+
+## Monroe traffic installed in main world — 2026-09-12 [codex-maclaptop]
+
+Native occupancy fixture placed an actual ACharacter capsule in the crossing on green. Both opposing cars held before their stop distances together for 2.001 seconds, then completed after fixture removal. This tests collision occupancy, not animated pedestrians or a player-controlled crossing.
+
+Automatic director test with 18/3/9 gameplay timing passed: 8 spawned, 2 recycled, peak 6, stopped signal queue observed. Isolated test removed 10th traffic and used a controlled offscreen observer. Installed Monroe approaches, trimmed obsolete sidewalk caps, non-colliding paint, two signals, shared crossing control and two-lane director into PiedmontWorld. All 7696 support probes passed again in main world; existing 10th director retained. Main tags: MonroeInstalledSurface, MonroeCrossing, MonroeSignal, MonroeRoadTraffic. Each director caps at six; combined performance is unverified.
+
+Road geometry/traffic integration is now playable in the project, but three-lane detailing, overall scenery, main-world rider interaction and combined traffic performance remain unfinished. Desktop remains 047 until packaging. Review rebuild removes owned installed Monroe actors transiently, preserving main map.

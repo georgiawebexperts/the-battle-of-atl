@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Automatic opposing traffic, signal wait, bounded population and endpoint recycling passed",
+    "spawned": 8,
+    "removed": 2,
+    "peak": 6,
+    "saw_signal_wait": true
+  },
+  "scope": "Automatic director on the real lanes and signal, with controlled offscreen observation. Rider interaction, visible traffic motion and packaged behavior pending.",
+  "passed": true
+}

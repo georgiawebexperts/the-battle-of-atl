@@ -1,0 +1,12 @@
+{
+  "lanes": 2,
+  "max_cars": 6,
+  "interval_seconds": 8,
+  "signal_cycle": [
+    18,
+    3,
+    9
+  ],
+  "main_map_changed": false,
+  "other_traffic_removed_for_isolated_test": true
+}

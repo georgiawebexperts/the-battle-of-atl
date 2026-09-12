@@ -1,0 +1,11 @@
+{
+  "main_map_changed": true,
+  "support_probes": 7696,
+  "support_passed": true,
+  "signals": 2,
+  "lanes": 2,
+  "max_monroe_cars": 6,
+  "tenth_traffic_retained": true,
+  "desktop_build_updated": false,
+  "remaining": "Main-world rider playthrough, full lane detailing, scenery polish, performance and packaged acceptance."
+}
