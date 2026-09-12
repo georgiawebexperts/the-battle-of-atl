@@ -13,6 +13,7 @@ public:
  bool ResolveShot();
  UPROPERTY(BlueprintReadOnly) bool bWarning=false;
  UPROPERTY(BlueprintReadOnly) float WindupRemaining=0;
+ UPROPERTY(BlueprintReadOnly) float ShotAlertRemaining=0;
  float Health=80,Cooldown=2;
 private:
  FVector AimPoint;

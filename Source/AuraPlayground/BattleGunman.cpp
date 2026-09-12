@@ -25,7 +25,7 @@ bool ABattleGunman::TryAim(APawn* Target){
 }
 bool ABattleGunman::ResolveShot(){
  if(!CanAttack()||!bWarning||WindupRemaining>0)return false;
- bWarning=false;Cooldown=4;ShotsFired++;
+ bWarning=false;Cooldown=4;ShotsFired++;ShotAlertRemaining=1.1f;
  const FVector Muzzle=GetActorLocation()+GetActorForwardVector()*48+FVector(0,0,42);
  const FVector End=AimPoint+(AimPoint-Muzzle).GetSafeNormal()*80;FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(this);
  // Check the barrel path too, so a muzzle cannot protrude through cover.
@@ -38,6 +38,7 @@ bool ABattleGunman::ResolveShot(){
  return true;
 }
 void ABattleGunman::Tick(float Dt){
+ ShotAlertRemaining=FMath::Max(0.f,ShotAlertRemaining-Dt);
  bWeaponDrawn=bWarning;Super::Tick(Dt);
  if(!CanAttack()){bWarning=false;WindupRemaining=0;return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);

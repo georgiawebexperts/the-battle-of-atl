@@ -62,3 +62,10 @@ Editor build and real-shot inventory fixture pass with added assertions for shot
 Added ABattleGunman using current shared rider-health system, existing character/pistol art and real tracer/muzzle flash/gunshot.1.8s warning before shot, aim locks at warning start;2200cm acquisition range,4s shot cooldown. Visibility trace checks both barrel path and shot. Successful uncovered player hit applies fatal shared damage; practice/countdown/end/pause prohibit acquisition/firing. Damage interrupts warning, gunman health80. HUD warning says GUNMAN AIMING—MOVE TO COVER. No natural spawn yet; only audit creates this prototype.
 
 Editor build passes after removing duplicate inherited ShotsFired/LastShotEnd declarations. Native test GunmanAudit passes practice suppression, minimum windup, cover introduced after aim blocking shot, relocation dodging locked aim, stationary fatal hit/death count. Scope is one stationary fixture; rare spawn director integration, direction/audio/render/animation quality and broader death/reset rules remain. Existing character death presentation remains rough. Installed051 unchanged. Reproducer Scripts/test_gunman_core.py.
+
+
+## Gunfire direction feedback — 2026-09-12 [codex-maclaptop]
+
+Added camera-relative chevron for nearest active gunman within 3000cm: amber while aiming, red for 1.1seconds after firing. It sits on a ring at 34% viewport height, away from the crosshair, notice and bottom controls at reviewed 1280x720. Existing notice priority is retained.
+
+Native editor build and rendered gunman contract pass. Inspected front amber, rear amber and front post-shot red captures. Rear review uses an explicit camera actor and asserts >150degree separation from threat; controller yaw alone did not turn the chase camera, so the initial misleading capture was rejected. Screenshot fixture extends only its first windup to3.8seconds for camera settling; production windup remains1.8. Cover, locked-aim dodge and fatal-hit checks still pass. This verifies these fixed views, not all angles, resolutions, sound quality or multiple threats. Gunman remains fixture-spawned only. Installed051 unchanged.

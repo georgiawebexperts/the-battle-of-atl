@@ -94,7 +94,19 @@ void ABattleLabHUD::DrawHUD(){
  else if(Owner->HornNoticeRemaining>0)Notice=Owner->HornNotice;
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
  if(Notice.IsEmpty())for(TActorIterator<ABattleKnife> It(GetWorld());It;++It)if(!It->bDead&&!It->bEscaped&&FVector::Dist2D(It->GetActorLocation(),GetOwningPawn()->GetActorLocation())<1400){Notice=It->bWindingUp?TEXT("KNIFE STRIKE — MOVE!"):It->Stabs>0?TEXT("KNIFE CHASE — RUN, DEFEND OR REMOUNT"):TEXT("KNIFE ATTACKER — RUN OR G TO DRAW");break;}
- if(Notice.IsEmpty())for(TActorIterator<ABattleGunman> It(GetWorld());It;++It)if(It->bWarning&&!It->bDead){Notice=TEXT("GUNMAN AIMING — MOVE TO COVER!");break;}
+ if(auto* PC=GetOwningPlayerController()){
+  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
+  const ABattleGunman* Active=nullptr;float Nearest=3000;
+  for(TActorIterator<ABattleGunman> It(GetWorld());It;++It)if(!It->bDead&&(It->bWarning||It->ShotAlertRemaining>0)){const float Distance=FVector::Dist2D(Eye,It->GetActorLocation());if(Distance<Nearest){Nearest=Distance;Active=*It;}}
+  if(Active){
+   const float Angle=FMath::DegreesToRadians(FMath::FindDeltaAngleDegrees(View.Yaw,(Active->GetActorLocation()-Eye).Rotation().Yaw));
+   const FVector2D Direction(FMath::Sin(Angle),-FMath::Cos(Angle)),Across(-Direction.Y,Direction.X),Centre(CX,CY);
+   const FVector2D Tip=Centre+Direction*(H*.34f),Base=Centre+Direction*(H*.34f-21*S);
+   const FLinearColor Color=Active->bWarning?Peach:FLinearColor(1,.12,.08);
+   for(int Side:{-1,1}){const FVector2D Wing=Base+Across*Side*13*S;DrawLine(Tip.X,Tip.Y,Wing.X,Wing.Y,Color,5*S);}
+   if(Notice.IsEmpty())Notice=Active->bWarning?TEXT("GUNMAN AIMING — MOVE TO COVER!"):TEXT("GUNFIRE — FIND COVER!");
+  }
+ }
  if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
  if(Notice.IsEmpty())for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("DRONE SWOOP — KEEP MOVING!");break;}
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
