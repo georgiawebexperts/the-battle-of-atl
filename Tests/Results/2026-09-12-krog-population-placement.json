@@ -1,0 +1,9 @@
+{
+  "lanes": 2,
+  "max_cars": 6,
+  "interval_seconds": 8,
+  "control": "Yield to occupied crossing; no timed signal",
+  "main_map_changed": false,
+  "other_traffic_removed_for_isolated_test": true,
+  "audit_camera": "Existing Irwin fixture at (13000,100850,2500), facing west; Krog is behind the view"
+}

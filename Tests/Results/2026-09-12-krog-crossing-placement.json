@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "probes": 4264,
+  "hits": {
+    "Krog DeKalb road approaches": 4264
+  },
+  "failures": [],
+  "main_map_changed": false,
+  "bindings": [
+    {
+      "lane": "eastbound",
+      "stop_distance_cm": 3150.7740935662705
+    },
+    {
+      "lane": "westbound",
+      "stop_distance_cm": 3157.935282779848
+    }
+  ],
+  "scope": "Two opposing DeKalb cars bound to one authored occupancy-yield region. No real-world signal timing claimed; runtime verification pending."
+}

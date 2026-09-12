@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Traffic population/recycling timed out",
+    "spawned": 0,
+    "removed": 0,
+    "peak": 0,
+    "saw_signal_wait": false
+  },
+  "scope": "Initial inherited generic camera points toward Krog. No cars spawned; this failed run does not establish recycling or offscreen spawning.",
+  "passed": false
+}
