@@ -1,4 +1,5 @@
 #include "BattleMarketClosure.h"
+#include "BattleMarketReturn.h"
 #include "BattleBike.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/CommandLine.h"
@@ -27,6 +28,20 @@ void ABattleMarketClosure::BeginPlay(){
  Super::BeginPlay();FHitResult Floor;FCollisionQueryParams Q;Q.AddIgnoredActor(this);
  const FVector P=GetActorLocation();
  if(GetWorld()->LineTraceSingleByChannel(Floor,P+FVector(0,0,1000),P-FVector(0,0,1000),ECC_Visibility,Q))SetActorLocation(Floor.ImpactPoint,false,nullptr,ETeleportType::TeleportPhysics);
+ auto* Mesh=Cast<UInstancedStaticMeshComponent>(GetDefaultSubobjectByName(TEXT("MarketFence")));if(!Mesh)return;
+ TArray<FVector> Ground;
+ for(const FVector2D XY:BattleMarketReturn::Points){
+  FHitResult Hit;const FVector Probe(XY,0);
+  if(!GetWorld()->LineTraceSingleByChannel(Hit,Probe+FVector(0,0,1500),Probe-FVector(0,0,1500),ECC_Visibility,Q)){UE_LOG(LogTemp,Error,TEXT("MarketReturn: missing ground"));return;}
+  Ground.Add(Hit.ImpactPoint-GetActorLocation());
+ }
+ for(const FVector Base:Ground)Mesh->AddInstance(FTransform(FQuat::Identity,Base+FVector(0,0,180),FVector(.10,.06,3.6)));
+ for(int I=1;I<Ground.Num();I++){
+  const FVector A=Ground[I-1],B=Ground[I],D=B-A;
+  for(int Z=20;Z<=360;Z+=40)Mesh->AddInstance(FTransform(D.Rotation(),(A+B)*.5+FVector(0,0,Z),FVector((D.Size()+8)/100,.06,.05)));
+ }
+ UE_LOG(LogTemp,Display,TEXT("MarketReturn: grounded posts=%d"),Ground.Num());
+
 }
 
 void ABattleMarketClosure::Tick(float Dt){
