@@ -79,7 +79,7 @@ void ABattleLabHUD::DrawHUD(){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){
    auto* Target=Cast<APiedmontExplorer>(Hit.GetActor());
-   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->ActorHasTag(TEXT("BattlePolice"))?TEXT("POLICE -60s"):Target->IsA<ABattleZombie>()?TEXT("ZOMBIE +10s"):Target->IsA<ABattleKnife>()?TEXT("KNIFE ATTACKER"):TEXT("PERSON -10s");Panel(CX-115*S,CY+32*S,230*S,38*S);Center(Name,CY+36*S,22,Aim);}
+   if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->ActorHasTag(TEXT("BattlePolice"))?TEXT("POLICE -60s"):Target->IsA<ABattleZombie>()?TEXT("ZOMBIE +10s"):Target->IsA<ABattleKnife>()?TEXT("KNIFE ATTACKER"):Target->IsA<ABattleGunman>()?TEXT("GUNMAN"):TEXT("PERSON -10s");Panel(CX-115*S,CY+32*S,230*S,38*S);Center(Name,CY+36*S,22,Aim);}
   }
  }
  DrawLine(CX-15*S,CY,CX-5*S,CY,Aim,2*S);DrawLine(CX+5*S,CY,CX+15*S,CY,Aim,2*S);DrawLine(CX,CY-15*S,CX,CY-5*S,Aim,2*S);DrawLine(CX,CY+5*S,CX,CY+15*S,Aim,2*S);
@@ -104,6 +104,12 @@ void ABattleLabHUD::DrawHUD(){
    const FVector2D Tip=Centre+Direction*(H*.34f),Base=Centre+Direction*(H*.34f-21*S);
    const FLinearColor Color=Active->bWarning?Peach:FLinearColor(1,.12,.08);
    for(int Side:{-1,1}){const FVector2D Wing=Base+Across*Side*13*S;DrawLine(Tip.X,Tip.Y,Wing.X,Wing.Y,Color,5*S);}
+   const FVector Head=Active->GetActorLocation()+FVector(0,0,110);FVector2D Label;
+   FHitResult Sight;FCollisionQueryParams Query(SCENE_QUERY_STAT(GunmanLabel),false,GetOwningPawn());Query.AddIgnoredActor(Owner);
+   const bool Clear=!GetWorld()->LineTraceSingleByChannel(Sight,Eye,Head,ECC_Visibility,Query)||Sight.GetActor()==Active;
+   if(Clear&&PC->ProjectWorldLocationToScreen(Head,Label)&&Label.X>65*S&&Label.X<W-65*S&&Label.Y>125*S&&Label.Y<H-170*S){
+    Panel(Label.X-57*S,Label.Y-26*S,114*S,27*S);Text(TEXT("GUNMAN"),Label.X-46*S,Label.Y-22*S,19,Color);
+   }
    if(Notice.IsEmpty())Notice=Active->bWarning?TEXT("GUNMAN AIMING — MOVE TO COVER!"):TEXT("GUNFIRE — FIND COVER!");
   }
  }

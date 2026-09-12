@@ -85,3 +85,10 @@ Editor build and Scripts/test_gunman_director.py pass: quiet search/practice/cou
 Fatal gunman damage now starts the Casual rig's existing V6 physics asset at the current visible bone transforms. Initial velocity/upper-body impulse follow the damage-causer direction. Hidden skeletal simulation drives the visible poseable mesh after physics, retaining BodyInstance scale and updating bounds. Collision ignores pawns/camera, blocks world and visibility. Corpse lasts8seconds; cannot fire. Physics asset is constructor-referenced for cooking. Existing blood burst retained.
 
 Native build and rendered death fixture pass physical Hips simulation, visible hip tracking within10cm, head height drop>60cm, and dead-fire suppression. Initial test incorrectly queried nonphysical root; replaced with Hips query. Inspected .3s and2.5s captures: body transitions from upright to a prone ground-contact pose. Only one flat-pavement direction reviewed; arbitrary terrain, slopes, shot animation and packaged behavior remain unaccepted. Art remains stylized and blood effect rough; no claim of GTA-quality animation. Installed051 unchanged. Reproducer Scripts/test_gunman_death.py --render.
+
+
+## Visible shooter identification — 2026-09-12 [codex-maclaptop]
+
+Corrected crosshair target classification: ABattleGunman displays GUNMAN instead of PERSON -10s. Active visible shooter also has a compact GUNMAN marker above the head, with visibility trace to prevent showing through cover and screen margins to avoid major HUD panels. No scoring changes.
+
+Editor build and rendered core fixture pass. Added visible-shooter.png close view after cover removal, inspected at1280x720: both labels readable and target correctly identified. This close view exposes an awkward procedural arm/pistol-grip pose that remains unfinished. Existing initial cover/dodge/fatal hit contract still passes. The HUD correction does not establish visual combat quality. Installed051 unchanged.

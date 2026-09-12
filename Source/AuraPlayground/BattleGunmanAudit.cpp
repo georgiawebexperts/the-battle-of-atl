@@ -19,7 +19,7 @@ void TickBattleGunmanAudit(ABattleEnemyDirector* D,float Dt){
 #define GUN_CHECK(C,R) if(!(C)){End(false,TEXT(R));return;}
  FString ReviewDir;FParse::Value(FCommandLine::Get(),TEXT("GunmanReviewDir="),ReviewDir);
  static ACameraActor* RearCamera=nullptr;
- static bool CapturedWarning=false,CapturedShot=false,CapturedBehind=false;
+ static bool CapturedWarning=false,CapturedShot=false,CapturedBehind=false,CapturedShooter=false;
  if(!ReviewDir.IsEmpty()&&Phase==1){
   if(Clock>1&&!CapturedWarning){FScreenshotRequest::RequestScreenshot(ReviewDir/TEXT("warning.png"),false,false);CapturedWarning=true;}
   if(Clock>1.3f&&Clock<2.7f&&!RearCamera){RearCamera=W->SpawnActor<ACameraActor>(Origin+FVector(0,0,180),FRotator(0,180,0));UGameplayStatics::GetPlayerController(W,0)->SetViewTarget(RearCamera);}
@@ -27,6 +27,7 @@ void TickBattleGunmanAudit(ABattleEnemyDirector* D,float Dt){
   if(Clock>=2.7f)UGameplayStatics::GetPlayerController(W,0)->SetViewTarget(B);
   if(Gun&&Gun->ShotAlertRemaining>0&&!CapturedShot){FScreenshotRequest::RequestScreenshot(ReviewDir/TEXT("covered-shot.png"),false,false);CapturedShot=true;}
  }
+ if(!ReviewDir.IsEmpty()&&Phase==2&&Clock>.6f&&!CapturedShooter){FScreenshotRequest::RequestScreenshot(ReviewDir/TEXT("visible-shooter.png"),false,false);CapturedShooter=true;}
  Clock+=Dt;
  if(Phase==0){
   B->DamageGrace=0;B->Ride->StopMovementImmediately();Origin=B->GetActorLocation();
@@ -39,7 +40,7 @@ void TickBattleGunmanAudit(ABattleEnemyDirector* D,float Dt){
   Phase=1;Clock=0;
  }else if(Phase==1&&Clock>(ReviewDir.IsEmpty()?2.1f:4.1f)){
   GUN_CHECK(Gun->ShotsFired==1&&B->RiderHealth==100,"Cover did not stop warned shot");Cover->Destroy();Gun->Cooldown=0;
-  GUN_CHECK(Gun->TryAim(B),"Could not aim after cover removed");B->SetActorLocation(Origin+FVector(0,400,0),false,nullptr,ETeleportType::TeleportPhysics);Phase=2;Clock=0;
+  GUN_CHECK(Gun->TryAim(B),"Could not aim after cover removed");B->SetActorLocation(Origin+FVector(0,400,0),false,nullptr,ETeleportType::TeleportPhysics);if(!ReviewDir.IsEmpty()){const FVector Eye=Gun->GetActorLocation()+FVector(-450,-280,130);auto* Cam=W->SpawnActor<ACameraActor>(Eye,(Gun->GetActorLocation()+FVector(0,0,25)-Eye).Rotation());UGameplayStatics::GetPlayerController(W,0)->SetViewTarget(Cam);}Phase=2;Clock=0;
  }else if(Phase==2&&Clock>2.1f){
   GUN_CHECK(Gun->ShotsFired==2&&B->RiderHealth==100,"Shot tracked player after aim lock");
   B->SetActorLocation(Origin,false,nullptr,ETeleportType::TeleportPhysics);Gun->Cooldown=0;GUN_CHECK(Gun->TryAim(B),"Could not aim at stationary target");Phase=3;Clock=0;

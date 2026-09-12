@@ -9,5 +9,5 @@ with log.open('w') as f:
 rows=re.findall(r'GunmanAudit: (\{[^\n]+\})',log.read_text());r=json.loads(rows[-1]) if rows else {'passed':False,'reason':'Missing audit'}
 r.update(exit_code=run.returncode,scope='Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.');r['passed']=r['passed'] and run.returncode==0
 if args.render:
- r['images']=[str(capture/name) for name in ['warning.png','behind-warning.png','covered-shot.png']];r['passed']=r['passed'] and all(pathlib.Path(p).is_file() for p in r['images'])
+ r['images']=[str(capture/name) for name in ['warning.png','behind-warning.png','covered-shot.png','visible-shooter.png']];r['passed']=r['passed'] and all(pathlib.Path(p).is_file() for p in r['images'])
 (root/'Tests/Results'/('2026-09-12-gunman-render.json' if args.render else '2026-09-12-gunman-core.json')).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r));raise SystemExit(0 if r['passed'] else 1)
