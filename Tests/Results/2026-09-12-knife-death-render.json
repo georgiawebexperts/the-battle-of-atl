@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "reason": "Pursuit, first-hit dismount, remount escape, second-hit reset, obstruction/protection and actual G-draw/mouse-fire defense with ammo/heat pass",
+  "runtime": "native editor game",
+  "physics_assertion": "Actual pistol kill enters Hips simulation",
+  "visual_review": "2.5s defeated frame inspected; attacker on side, knife hidden, outfit retained; feet partly offscreen, full skin/terrain clearance not established",
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/knife-death-review/defeated.png",
+  "installed": "053 unchanged"
+}

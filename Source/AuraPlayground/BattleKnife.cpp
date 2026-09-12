@@ -8,10 +8,13 @@
 #include "Components/PoseableMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Materials/MaterialInterface.h"
+#include "PhysicsEngine/PhysicsAsset.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleKnife::ABattleKnife(){
+ PrimaryActorTick.TickGroup=TG_PostPhysics;
+ static ConstructorHelpers::FObjectFinder<UPhysicsAsset> Collision(TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));DeathAsset=Collision.Object;
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Top(TEXT("/Game/BattleForTheA/Hostiles/Knife/M_KnifeTop.M_KnifeTop"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Shorts(TEXT("/Game/BattleForTheA/Hostiles/Knife/M_KnifeShorts.M_KnifeShorts"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Hair(TEXT("/Game/BattleForTheA/Hostiles/Knife/M_KnifeHair.M_KnifeHair"));
@@ -51,7 +54,7 @@ bool ABattleKnife::ResolveStrike(){
 }
 void ABattleKnife::Tick(float Dt){
  Super::Tick(Dt);Weapon->SetVisibility(false);
- if(bDead){Blade->SetVisibility(false);DeathTime+=Dt;Body->SetRelativeRotation(FRotator(0,-90,FMath::Min(90.f,DeathTime*120)));return;}
+ if(bDead){Blade->SetVisibility(false);if(DeathPhysics){MirrorDeathPose();return;}DeathTime+=Dt;Body->SetRelativeRotation(FRotator(0,-90,FMath::Min(90.f,DeathTime*120)));return;}
  StrikePose=FMath::Max(0.f,StrikePose-Dt);
  const FVector Direction=bWindingUp?FVector::UpVector:GetActorForwardVector();const FVector Hand=Body->GetBoneLocationByName(TEXT("Hand_R"),EBoneSpaces::WorldSpace);
  Blade->SetWorldLocationAndRotation(Hand+Direction*5,FQuat::FindBetweenNormals(FVector::UpVector,Direction));
@@ -71,6 +74,6 @@ float ABattleKnife::TakeDamage(float Amount,const FDamageEvent& Event,AControlle
  if(bDead||!FMath::IsFinite(Amount)||Amount<=0)return 0;
  const float Applied=FMath::Min(Health,Amount);Health-=Applied;bWindingUp=false;Cooldown=FMath::Max(Cooldown,.7f);
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,30),Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal():FVector::UpVector);
- if(Health<=0){bDead=true;if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);SetLifeSpan(8);}
+ if(Health<=0){bDead=true;if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Blade->SetVisibility(false);BeginDeathPhysics(Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal2D():GetActorForwardVector());SetLifeSpan(8);}
  return Applied;
 }
