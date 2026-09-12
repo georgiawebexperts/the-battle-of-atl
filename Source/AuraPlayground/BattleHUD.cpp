@@ -1,4 +1,5 @@
 #include "BattleGunman.h"
+#include "BattlePlayerCrash.h"
 #include "BattleBike.h"
 #include "BattleHome.h"
 #include "BattleRider.h"
@@ -29,6 +30,7 @@ void ABattleLabHUD::DrawHUD(){
  auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  auto* Bike=Cast<ABattleBike>(GetOwningPawn());auto* Person=Cast<ABattleRider>(GetOwningPawn());auto* Owner=Bike?Bike:Person?Person->ParkedBike.Get():nullptr;
  if(!Owner)return;
+ const bool GettingUp=Owner->bCrashActive&&IsValid(Owner->PlayerCrash)&&Owner->PlayerCrash->GetRecoveryPose()!=nullptr;
  Panel(M,M,470*S,106*S);DrawRect(Peach,M,M,5*S,106*S);
  Text(Park&&Park->bTutorialActive?TEXT("FREE RIDE • MIDTOWN"):Park&&Park->Quest&&Park->Quest->bCollected?TEXT("MEET MORGAN"):TEXT("FIND MY LOST PHONE"),M+20*S,M+15*S,25,Peach);
  FString Objective=Park&&Park->Quest?Park->Quest->SearchDirection(GetOwningPawn()->GetActorLocation()):TEXT("Search the park");
@@ -56,7 +58,7 @@ void ABattleLabHUD::DrawHUD(){
  }
  if(Park&&Park->ExpansionNoticeRemaining>0){Panel(W*.5f-340*S,H*.48f,680*S,110*S);Center(TEXT("MIDTOWN EXPANSION COMING SOON"),H*.48f+12*S,26,Peach);Center(TEXT("The Battle of ATL • Follow the route to Piedmont Park"),H*.48f+59*S,20);}
  Panel(W-M-300*S,M,300*S,106*S);
- if(Owner->bCrashActive){Text(TEXT("KNOCKED OFF"),W-M-280*S,M+12*S,28,Peach);Text(TEXT("Getting back up"),W-M-280*S,M+65*S,23,Muted);}
+ if(Owner->bCrashActive){Text(TEXT("KNOCKED OFF"),W-M-280*S,M+12*S,28,Peach);Text(GettingUp?TEXT("Getting back up"):TEXT("Recovering"),W-M-280*S,M+65*S,23,Muted);}
  else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
  else{Text(Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);Text(Person->bWeaponDrawn?FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()):TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,Person->bWeaponDrawn?30:20);}
  if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){Panel(M,M+118*S,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,M+128*S,18,Peach);}}
@@ -70,11 +72,12 @@ void ABattleLabHUD::DrawHUD(){
  FString Prompt=TEXT("E  GET OFF THE BIKE");
  FString Help=TEXT("W/UP pedal   S/DOWN brake   J jump");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
- if(Owner->bCrashActive){Prompt=TEXT("GETTING BACK UP");Help=TEXT("Return to your bike, then press E to ride");}
+ if(Owner->bCrashActive){Prompt=GettingUp?TEXT("GETTING BACK UP"):TEXT("KNOCKED OFF YOUR BIKE");Help=TEXT("Recovery is automatic — clock keeps running");}
  Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
  if(Bike){Panel(M,Bottom-58*S,310*S,50*S);Text(FString::Printf(TEXT("PISTOL  %d / %d"),Bike->PistolAmmo,Bike->Inventory[0].Reserve),M+20*S,Bottom-48*S,27,Peach);}
  const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;
+ if(!Owner->bCrashActive){
  if(auto* PC=GetOwningPlayerController()){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){
@@ -85,15 +88,17 @@ void ABattleLabHUD::DrawHUD(){
  DrawLine(CX-15*S,CY,CX-5*S,CY,Aim,2*S);DrawLine(CX+5*S,CY,CX+15*S,CY,Aim,2*S);DrawLine(CX,CY-15*S,CX,CY-5*S,Aim,2*S);DrawLine(CX,CY+5*S,CX,CY+15*S,Aim,2*S);
  if((Person?Person->HitFeedback:Bike->HitFeedback)>0){for(int SX:{-1,1})for(int SY:{-1,1})DrawLine(CX+SX*8*S,CY+SY*8*S,CX+SX*19*S,CY+SY*19*S,Peach,3*S);}
  if(Owner->ShotNoticeRemaining>0){Panel(CX-130*S,CY+78*S,260*S,34*S);Center(Owner->ShotNotice,CY+81*S,22,Peach);}
+ }
  FString Notice;
  if(Owner->RespawnRemaining>0)Notice=TEXT("RECOVERING AT CHECKPOINT  |  -10 SECONDS");
+ else if(Owner->bCrashActive)Notice=Owner->StunRemaining>0?Owner->StunLabel:TEXT("");
  else if(Owner->StunRemaining>0)Notice=FString::Printf(TEXT("%s  %.1fs  |  GET UP, THEN E TO REMOUNT"),*Owner->StunLabel,Owner->StunRemaining);
- else if(Owner->bCrashActive)Notice=TEXT("KNOCKED OFF  |  CLOCK RUNNING");
+
  else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
  else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
  else if(Owner->HornNoticeRemaining>0)Notice=Owner->HornNotice;
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
- if(Notice.IsEmpty())for(TActorIterator<ABattleKnife> It(GetWorld());It;++It)if(!It->bDead&&!It->bEscaped&&FVector::Dist2D(It->GetActorLocation(),GetOwningPawn()->GetActorLocation())<1400){Notice=It->bWindingUp?TEXT("KNIFE STRIKE — MOVE!"):It->Stabs>0?TEXT("KNIFE CHASE — RUN, DEFEND OR REMOUNT"):TEXT("KNIFE ATTACKER — RUN OR G TO DRAW");break;}
+ if(!Owner->bCrashActive&&Notice.IsEmpty())for(TActorIterator<ABattleKnife> It(GetWorld());It;++It)if(!It->bDead&&!It->bEscaped&&FVector::Dist2D(It->GetActorLocation(),GetOwningPawn()->GetActorLocation())<1400){Notice=It->bWindingUp?TEXT("KNIFE STRIKE — MOVE!"):It->Stabs>0?TEXT("KNIFE CHASE — RUN, DEFEND OR REMOUNT"):TEXT("KNIFE ATTACKER — RUN OR G TO DRAW");break;}
  if(auto* PC=GetOwningPlayerController()){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
   const ABattleGunman* Active=nullptr;float Nearest=3000;
