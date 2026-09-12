@@ -142,3 +142,12 @@ Native rendered integration fixtures use actual warned police firing and drone s
 Broader native headless drone audit passes warning/contact/damage, physical recovery/remount, wall obstruction and shooting/destruction. Updated police audit waits for physical recovery after initial person impact, explicitly draws its gun for the existing police-shot test, and waits/approaches before remount. Full police audit passes:3 distinct people alert police, navigation pursuit683.8cm, real cop-shot -60s, artifact escalation, wall-blocked taser, windup, local physical knockoff, grace, and death during another stun with checkpoint return. Build passes. Reports: player-crash-live-{taser,drone}.json and native-{drone,trouble}-physical-regression.json dated2026-09-12.
 
 These are post049 source changes; Desktop049 remains installed and does not yet include physical drone/taser falls. Need packaged verification, animation/contact/video polish, moving target/hill hazard cases and broader original game scope. Full goal incomplete.
+
+
+## Lamps follow the fallen bicycle — 2026-09-12 [codex-maclaptop]
+
+Fixed automatic head/rear lamps remaining attached to the rider capsule while the separate bike frame fell. ABattleFallenBike temporarily reparents the two real lamp components to its physical Frame with world transforms preserved, recording original parent/socket/local transform. EndPlay restores both attachments/transforms, including remount and death cleanup. No duplicate lights are spawned. Automatic dark-zone detection uses the actual headlamp location rather than the rider actor location, so lamps stay responsive to where the bicycle is.
+
+Native build passes. Rendered collision/get-up/light fixture places a small dark zone around the fallen headlamp while the bike actor origin remains outside: both lamps attached to Frame, lamp-only dark probe and visible automatic lights pass. After E remount, exact original parent/local transforms and delayed daylight switch-off pass, with no crash actors left. Mid-fall death fixture also passes restored lamp parents/local transforms and checkpoint control. Reports2026-09-12-player-crash-live-lights.json and player-crash-lights-death.json. This is attachment/state/cleanup evidence, not full nighttime visual acceptance.
+
+Post049 source only; desktop049 unchanged. Pending packaged update with physical drone/taser falls, blocked recovery and animation/video/night-scene polish, plus the wider original game scope. Goal incomplete.

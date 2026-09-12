@@ -1,6 +1,8 @@
 #include "BattleFallenBike.h"
 #include "BattleBike.h"
 #include "Components/BoxComponent.h"
+#include "Components/SpotLightComponent.h"
+#include "Components/PointLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 ABattleFallenBike::ABattleFallenBike(){
  PrimaryActorTick.bCanEverTick=false;Frame=CreateDefaultSubobject<UBoxComponent>(TEXT("FallenFrame"));SetRootComponent(Frame);
@@ -25,6 +27,11 @@ bool ABattleFallenBike::InitializeFrom(ABattleBike* Bike,const FVector& Velocity
   for(int32 I=0;I<Original->GetNumMaterials();I++)Copy->SetMaterial(I,Original->GetMaterial(I));
   Copy->SetWorldTransform(Original->GetComponentTransform());Copy->RegisterComponent();Copy->AttachToComponent(Frame,FAttachmentTransformRules::KeepWorldTransform);SourceVisibility.Add(Original,Original->IsVisible());Original->SetVisibility(false);PartCount++;
  }
+ // Move the actual lamps with the frame; the bike still owns their automatic-light state.
+ for(USceneComponent* Light:{static_cast<USceneComponent*>(Bike->Headlight.Get()),static_cast<USceneComponent*>(Bike->TailLight.Get())})if(IsValid(Light)){
+  LightAttachments.Add({Light,Light->GetAttachParent(),Light->GetRelativeTransform(),Light->GetAttachSocketName()});
+  Light->AttachToComponent(Frame,FAttachmentTransformRules::KeepWorldTransform);
+ }
  Frame->SetMassOverrideInKg(NAME_None,22,true);Frame->SetPhysicsLinearVelocity(Velocity);Frame->SetPhysicsAngularVelocityInDegrees(Source.TransformVectorNoScale(FVector(130,0,20)));return PartCount>0;
 }
 
@@ -33,5 +40,9 @@ void ABattleFallenBike::RestoreSourceVisibility(){
  SourceVisibility.Empty();
 }
 void ABattleFallenBike::EndPlay(const EEndPlayReason::Type Reason){
- RestoreSourceVisibility();Super::EndPlay(Reason);
+ for(const auto& Mount:LightAttachments)if(Mount.Light.IsValid()){
+  if(Mount.Parent.IsValid()){Mount.Light->AttachToComponent(Mount.Parent.Get(),FAttachmentTransformRules::KeepRelativeTransform,Mount.Socket);Mount.Light->SetRelativeTransform(Mount.Relative);}
+  else Mount.Light->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+ }
+ LightAttachments.Empty();RestoreSourceVisibility();Super::EndPlay(Reason);
 }

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "BattleFallenBike.generated.h"
-class UBoxComponent;class UStaticMeshComponent;class ABattleBike;
+class USceneComponent;class UBoxComponent;class UStaticMeshComponent;class ABattleBike;
 UCLASS()
 class AURAPLAYGROUND_API ABattleFallenBike : public AActor {
  GENERATED_BODY()
@@ -15,5 +15,7 @@ public:
  int32 PartCount=0;
 private:
  TMap<TWeakObjectPtr<UStaticMeshComponent>,bool> SourceVisibility;
+ struct FLightAttachment{TWeakObjectPtr<USceneComponent> Light,Parent;FTransform Relative;FName Socket;};
+ TArray<FLightAttachment> LightAttachments;
  bool bInitialized=false;
 };

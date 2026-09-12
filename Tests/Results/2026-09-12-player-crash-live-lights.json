@@ -1,0 +1,36 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/04daf54aa22041e5acd3fafa507665f9/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/04daf54aa22041e5acd3fafa507665f9/fallen-lights.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/04daf54aa22041e5acd3fafa507665f9/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/04daf54aa22041e5acd3fafa507665f9/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/04daf54aa22041e5acd3fafa507665f9/live-remounted.png"
+  ],
+  "events": [
+    "started speed=1008.2",
+    "recovered on foot health=70.0 ammo=10",
+    "state=1 timer=1 elapsed=6.957 lost=8.666",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Collision and remount; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "runtime": "editor-game",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 40.077,
+      "selected_rms_cm": 37.289
+    }
+  ],
+  "light_events": [
+    "attached=1 lamp_only_zone=1 lit=1",
+    "mount=1 daylight_off=1"
+  ],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "passed": true
+}
