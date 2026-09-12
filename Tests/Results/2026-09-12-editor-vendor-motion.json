@@ -1,0 +1,34 @@
+{
+  "style": "vendor",
+  "app": "editor",
+  "exit_code": 0,
+  "measurements": [
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: style=0 bodies=13 constraints=12",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Root parent=none capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Body parent=Root capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Abdomen parent=Hips capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Chest parent=Torso capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Head parent=Neck capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=UpperArm_L parent=Shoulder_L capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Wrist_L parent=LowerArm_L capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=UpperArm_R parent=Shoulder_R capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=Wrist_R parent=LowerArm_R capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=UpperLeg_L parent=Body capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=LowerLeg_L parent=UpperLeg_L capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=UpperLeg_R parent=Body capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.50:722][495]LogTemp: Display: ZombiePhysicsReview: bone=LowerLeg_R parent=UpperLeg_R capsules=1 boxes=0 convex=0 spheres=0",
+    "[2026.09.12-17.03.59:413][ 53]LogTemp: Display: LocoReview: idle_foot_gap_cm=1.581",
+    "[2026.09.12-17.03.59:413][ 53]LogTemp: Display: LocoReview: foot_L_forward_dot=0.5181",
+    "[2026.09.12-17.03.59:414][ 53]LogTemp: Display: LocoReview: foot_R_forward_dot=0.9933",
+    "[2026.09.12-17.03.59:414][ 53]LogTemp: Display: LocoReview: pass=1 knee_motion_deg=96.706 travel_cm=1443.293 grounded=1"
+  ],
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/c1eb348ab6d24997bb0889a3ef53a70c/walk.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/c1eb348ab6d24997bb0889a3ef53a70c/walk-step.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/c1eb348ab6d24997bb0889a3ef53a70c/run.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/ZombieMotionReview/c1eb348ab6d24997bb0889a3ef53a70c/idle.png"
+  ],
+  "visual_review": "pending",
+  "scope": "Fixed walking/running/idle capture; fixture metrics include idle toe orientation, not all moving foot orientations.",
+  "passed": true
+}

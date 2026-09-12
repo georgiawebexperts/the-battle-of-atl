@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "reason": "Fatal damage starts physics, visible chest follows body, head falls and dead zombie attack warning clears",
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible chest tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/6cb0312138e84248854c9a5ac7c82a19/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/6cb0312138e84248854c9a5ac7c82a19/settled.png"
+  ],
+  "visual_review": {
+    "settled_image_reviewed": true,
+    "observations": "Full-body prone pose; shoes follow lower legs after root-parented shoe correction.",
+    "limits": "One flat-ground fall direction; slopes, obstacles and multi-corpse performance not accepted."
+  }
+}

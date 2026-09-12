@@ -68,6 +68,7 @@ void ABattleZombie::Tick(float Dt){
  auto* AI=Cast<AAIController>(GetController());
  EnforceParkBoundary(Dt,FVector::ZeroVector,FVector::ZeroVector);
  if(bDead){
+  if(DeathPhysics){MirrorDeathPose();return;}
   DeathTime+=Dt;Body->SetRelativeRotation(FRotator(0,-90,FMath::Min(90.f,DeathTime*160)));Body->SetRelativeLocation(FVector(0,0,-85));
   if(Skin)Skin->SetScalarParameterValue(TEXT("Dissolve"),FMath::Clamp((DeathTime-3.5f)/1.5f,0.f,1.f));return;
  }
@@ -113,7 +114,9 @@ float ABattleZombie::TakeDamage(float Amount,const FDamageEvent& Event,AControll
  if(Event.IsOfType(FPointDamageEvent::ClassID)){const auto& Point=static_cast<const FPointDamageEvent&>(Event);HitPoint=Point.HitInfo.ImpactPoint;Head=HitPoint.Z>GetActorLocation().Z+45;}
  const float Applied=FMath::Min(Health,Amount*(Head?3.f:1.f));Health-=Applied;if(Head)Headshots++;
  APiedmontBlood::Burst(GetWorld(),HitPoint,Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal():FVector::UpVector);Flinch=.3f;
- if(Health<=0){bDead=true;bTelegraphing=false;SubtitleRemaining=0;if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);LeftEye->SetVisibility(false);RightEye->SetVisibility(false);DropWeapon();SetLifeSpan(5);}
+ if(Health<=0){bDead=true;bTelegraphing=false;SubtitleRemaining=0;if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);LeftEye->SetVisibility(false);RightEye->SetVisibility(false);DropWeapon();
+BeginDeathPhysics(Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal2D():GetActorForwardVector());
+ SetLifeSpan(5);}
  return Applied;
 }
 ABattleEnemyDirector::ABattleEnemyDirector(){PrimaryActorTick.bCanEverTick=true;}
@@ -127,6 +130,7 @@ void ABattleEnemyDirector::BeginPlay(){
 void ABattleEnemyDirector::Tick(float Dt){
  Super::Tick(Dt);
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieDeathAudit"))){extern void TickBattleZombieDeathAudit(ABattleEnemyDirector*,float);TickBattleZombieDeathAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanDeathAudit"))){extern void TickBattleGunmanDeathAudit(ABattleEnemyDirector*,float);TickBattleGunmanDeathAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanDirectorAudit"))){extern void TickBattleGunmanDirectorAudit(ABattleEnemyDirector*,float);TickBattleGunmanDirectorAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGunmanAudit"))){extern void TickBattleGunmanAudit(ABattleEnemyDirector*,float);TickBattleGunmanAudit(this,Dt);return;}

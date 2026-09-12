@@ -82,3 +82,12 @@ Current zombie death still rotates whole visible body sideways and removes it af
 Punk imported asset reports13 capsule bodies/12constraints: Root, Hips, Torso, Chest, Head, UpperArm_L/R, Wrist_L/R, UpperLeg_L/R, LowerLeg_L/R. Hips and upper legs parent to Body; no separate foot bodies listed. This is not the Casual rider physics hierarchy, so copying V6 unchanged is not justified. Need inspect capsule fit/constraint mapping and shoe behavior, then build a zombie-specific physical fall or compatible authored death animation. This inspection does not prove imported asset unusable or establish death quality. Farmer physics layout has not yet been natively inspected.
 
 Scripts/review_zombie_locomotion.py now supports --editor and retains native body inventory. Installed052 unchanged.
+
+
+## Physical zombie death — 2026-09-12 [codex-maclaptop]
+
+Enabled current-pose physical death for both vendor and punk using their own mesh physics assets. Visible poseable body mirrors physical transforms after physics, retaining BodyInstance scale; world/visibility collision and Pawn/Camera ignore. Existing5second lifetime, weapon-drop and score logic unchanged; missing physics falls back to old animation.
+
+Initial punk trial exposed root-parented shoes drifting away from shins. Capture each animated shoe-to-lower-leg transform at death and reconstruct shoe world transforms from physical shins, then recompute local pose. Vendor asset has Body/Abdomen bodies instead of punk Hips/Torso; both have Chest. Changed tracking anchor and test to Chest rather than assuming a physical Hips body. Both have13capsules/12constraints.
+
+Build passes. Rendered punk integrated normal death path and vendor candidate tests pass physical chest tracking within10cm, head drop>60cm and canceled attack warning. Settled frames inspected for both: prone body, shoes attached. Prototype failures retained as evidence; vendor initial failure was an invalid hip-body test assumption. Full slopes/obstacles/multi-corpse performance, exact fit and packaged acceptance remain. Installed052 unchanged. Scripts/test_zombie_death.py --render [--punk] exercises actual fatal damage; no feature-enabling flag now required.

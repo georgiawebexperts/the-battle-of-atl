@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "PiedmontExplorer.h"
 #include "BattleZombie.generated.h"
-class UMaterialInstanceDynamic;class AAIController;class ABattleWeaponCrate;class ABattleGunman;
+class USkeletalMeshComponent;class UMaterialInstanceDynamic;class AAIController;class ABattleWeaponCrate;class ABattleGunman;
 UCLASS()
 class AURAPLAYGROUND_API ABattleZombie : public APiedmontExplorer {
  GENERATED_BODY()
@@ -21,6 +21,10 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float WeaponDropChance=.25f;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<ABattleWeaponCrate> DroppedWeapon;
  void DropWeapon();
+ bool BeginDeathPhysics(FVector Direction);
+ void MirrorDeathPose();
+ UPROPERTY() TObjectPtr<USkeletalMeshComponent> DeathPhysics;
+ FTransform DeathFootFromLeg[2];
  UPROPERTY(BlueprintReadOnly) bool bSprinter=false;
  UPROPERTY(BlueprintReadOnly) bool bTelegraphing=false;
  UPROPERTY(BlueprintReadOnly) int32 Attacks=0;
