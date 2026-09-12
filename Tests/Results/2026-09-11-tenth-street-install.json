@@ -1,0 +1,29 @@
+{
+  "map_reloaded": true,
+  "actors": [
+    {
+      "label": "SM_TenthStreet_Road",
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Road.SM_TenthStreet_Road",
+      "collision": "BlockAll / complex as simple"
+    },
+    {
+      "label": "SM_TenthStreet_CycleTrack",
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_CycleTrack.SM_TenthStreet_CycleTrack",
+      "collision": "BlockAll / complex as simple"
+    },
+    {
+      "label": "SM_TenthStreet_Separator",
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Separator.SM_TenthStreet_Separator",
+      "collision": "BlockAll / complex as simple"
+    },
+    {
+      "label": "SM_TenthStreet_Sidewalk",
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Sidewalk.SM_TenthStreet_Sidewalk",
+      "collision": "BlockAll / complex as simple"
+    }
+  ],
+  "review_camera_absent": true,
+  "desktop_build_updated": false,
+  "presentation_accepted": false,
+  "limitations": "Persistence and collision configuration only. Ride clearance, traffic and crossing gameplay are not verified."
+}
