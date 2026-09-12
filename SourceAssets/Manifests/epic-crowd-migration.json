@@ -22,9 +22,25 @@
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact",
-    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry"
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_F",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_L",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_F",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_B",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_L",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_R"
   ],
   "packages": [
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_B",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_F",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_L",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_R",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_F",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_L",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R",
     "/Game/Character/Player/Female/Meshes/SKM_PlayerFemale_Preview",
     "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic",
     "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_VT_StaticLighting",
@@ -375,6 +391,8 @@
     "/Game/MetaHumans/Common/Face/Face_Archetype"
   ],
   "external_dependencies": [
+    "/ACLPlugin/ACLAnimBoneCompressionSettings",
+    "/ACLPlugin/ACLAnimCurveCompressionSettings",
     "/ControlRig/Controls/ControlRigGizmoMaterial",
     "/ControlRig/Controls/ControlRig_Arrow2_1mm",
     "/ControlRig/Controls/ControlRig_Arrow2_3mm",
@@ -435,6 +453,7 @@
     "/ControlRig/Controls/DefaultGizmoLibrary",
     "/Engine/Animation/DefaultAnimBoneCompressionSettings",
     "/Engine/Animation/DefaultAnimCurveCompressionSettings",
+    "/Engine/Animation/DefaultVariableFrameStrippingSettings",
     "/Engine/EngineMaterials/Good64x64TilingNoiseHighFreq",
     "/Engine/EngineMaterials/WorldGridMaterial",
     "/Engine/EngineVolumetrics/Fogsheet/Materials/T_EV_BlankWhite_01",
@@ -472,9 +491,12 @@
     "/Engine/MaterialTemplates/LayerBlends/T_DefaultMaskTexture",
     "/Script/AnimGraph",
     "/Script/AnimGraphRuntime",
+    "/Script/AnimationData",
     "/Script/AnimationModifiers",
     "/Script/ControlRig",
     "/Script/ControlRigDeveloper",
+    "/Script/InterchangeEngine",
+    "/Script/MovieScene",
     "/Script/NavigationSystem",
     "/Script/RigLogicModule",
     "/Script/RigVM",
@@ -487,6 +509,54 @@
     "/Game/MetaHumans/Common/Face/Face_Archetype"
   ],
   "files": [
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_B.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_B.uasset",
+      "sha256": "ced58fb0553dd3208a1425949e75059efddd24ed92b2d69d7abc471dd119b66d",
+      "bytes": 1517101
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_F.uasset",
+      "sha256": "f1acdd6a97682249d54191418855f694eb430315455f9e29918bd58b11800a20",
+      "bytes": 1519251
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_L.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_L.uasset",
+      "sha256": "c6edb909296aad820514c1d36ba08f7de967ba6acba30e3183c9013ed1ca85a0",
+      "bytes": 1519767
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_R.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Female/M_ragdoll_getup_stand_R.uasset",
+      "sha256": "516d2f2a416fb8bbbd472a691ca114d5fa7090fea6fd5df47f908155de6f815e",
+      "bytes": 1505991
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_B.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_B.uasset",
+      "sha256": "eafd51f040d575a7606afa6c18afdbadedd4f3842e846f4f22e056d84621efc1",
+      "bytes": 1536419
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_F.uasset",
+      "sha256": "178603f5d7e367750d0944f50a8da96f2c25a20ac7e4625ea260c3a5ac967d28",
+      "bytes": 1533737
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_L.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_L.uasset",
+      "sha256": "14ca597717452ea1d37858fefc117c6fd4d762084aa361a657a69b679974046b",
+      "bytes": 1548749
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_R.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/City/Male/M_ragdoll_getup_stand_R.uasset",
+      "sha256": "7eec098a0a7e76373b2abe163e9da7427be19fe9987f8083a3055e837729bee3",
+      "bytes": 1539805
+    },
     {
       "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic.uasset",
       "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_RigLogic.uasset",
@@ -2552,6 +2622,6 @@
       "bytes": 1641128
     }
   ],
-  "total_bytes": 1241430689,
+  "total_bytes": 1253651509,
   "status": "copied; native render acceptance pending"
 }

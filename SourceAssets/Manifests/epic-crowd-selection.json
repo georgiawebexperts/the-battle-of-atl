@@ -23,6 +23,14 @@
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact",
-    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry"
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_BlockReact_Angry",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_F",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_L",
+    "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_F",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_B",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_L",
+    "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_R"
   ]
 }

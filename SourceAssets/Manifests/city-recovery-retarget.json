@@ -1,0 +1,55 @@
+{
+  "source": "/Game/Characters/UEFN_Mannequin/Meshes/SKM_UEFN_Mannequin.SKM_UEFN_Mannequin",
+  "retargeter": "/Game/MetaHumans/Common/Common/Rigs/RTG_UEFN_to_Metahuman_nrw.RTG_UEFN_to_Metahuman_nrw",
+  "exports": [
+    {
+      "sex": "Male",
+      "path": "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_F.M_ragdoll_getup_stand_F",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Male",
+      "path": "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B.M_ragdoll_getup_stand_B",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Male",
+      "path": "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_L.M_ragdoll_getup_stand_L",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Male",
+      "path": "/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_R.M_ragdoll_getup_stand_R",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Female",
+      "path": "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_F.M_ragdoll_getup_stand_F",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Female",
+      "path": "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_B.M_ragdoll_getup_stand_B",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Female",
+      "path": "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_L.M_ragdoll_getup_stand_L",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    },
+    {
+      "sex": "Female",
+      "path": "/Game/BattleRetarget/City/Female/M_ragdoll_getup_stand_R.M_ragdoll_getup_stand_R",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 5.0
+    }
+  ],
+  "status": "exported; visual and runtime acceptance pending"
+}

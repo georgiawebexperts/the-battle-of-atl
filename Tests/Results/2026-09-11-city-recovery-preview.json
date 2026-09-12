@@ -1,0 +1,10 @@
+{
+  "clips": 8,
+  "images": 32,
+  "pose_samples_verified": true,
+  "review": "Sampled front/back/left/right poses inspected across both outfits. Body and clothing remain coherent through prone, kneeling and standing poses. Wider camera fixes the initial foot crop. Hand/sole contact and continuous transition quality are not accepted from these views.",
+  "editor_exit_code": 1,
+  "editor_error": "HttpListener could not bind local port 30010; Python rendering completed and all images exist. Not a clean process pass.",
+  "gameplay_integrated": false,
+  "remaining": "Physics fall, settled orientation selection, capsule clearance, pose blending, navigation recovery and packaged Mac verification."
+}
