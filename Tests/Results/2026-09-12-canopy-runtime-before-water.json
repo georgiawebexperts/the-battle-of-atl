@@ -1,0 +1,37 @@
+{
+  "exit_code": 0,
+  "capture_passed": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/detailed-ce4b775f34344707b02de76236be56d0/canopy-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/detailed-ce4b775f34344707b02de76236be56d0/canopy-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/detailed-ce4b775f34344707b02de76236be56d0/canopy-3.png"
+  ],
+  "frames": [
+    {
+      "view": 1,
+      "samples": 256,
+      "p50_ms": 15.675,
+      "p95_ms": 16.118
+    },
+    {
+      "view": 2,
+      "samples": 286,
+      "p50_ms": 13.965,
+      "p95_ms": 14.323
+    },
+    {
+      "view": 3,
+      "samples": 262,
+      "p50_ms": 15.359,
+      "p95_ms": 15.765
+    }
+  ],
+  "baseline": false,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "scope": "Three fixed native-game cameras with active world, five seconds warmup then four seconds frame sampling per view. Editor executable, hidden stationary rider, no riding/collision/audio or sustained shipping performance acceptance.",
+  "comparison_valid": false,
+  "review_findings": "Native detailed map is missing visible lake water. Frame-time delta cannot isolate canopy cost. Regenerate review water and recapture before comparing."
+}

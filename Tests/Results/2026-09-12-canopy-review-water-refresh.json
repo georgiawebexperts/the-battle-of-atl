@@ -1,0 +1,7 @@
+{
+  "main_map_changed": false,
+  "lakes_refreshed": 1,
+  "zones_rebound": 1,
+  "runtime_water_visible": false,
+  "scope": "Derived geometry regeneration after SaveAs; runtime appearance must be checked."
+}

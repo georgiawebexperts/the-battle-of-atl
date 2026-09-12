@@ -67,6 +67,7 @@ void TickBattleRoadTrafficAudit(APlayerController* PC,float Dt);
 void TickBattleTrafficPopulationAudit(APlayerController* PC,float Dt);
 void TickBattleTrafficReview(APlayerController* PC,float Dt);
 void TickBattleMonroeReview(APlayerController* PC,float Dt);
+void TickBattleCanopyReview(APlayerController* PC,float Dt);
 void TickBattleMonroeOccupancyAudit(APlayerController* PC,float Dt);
 void TickBattleBikeCarAudit(APlayerController* PC,float Dt);
 void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt);
@@ -92,6 +93,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTrafficPopulationAudit")))TickBattleTrafficPopulationAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMonroeOccupancyAudit")))TickBattleMonroeOccupancyAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMonroeReview")))TickBattleMonroeReview(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleCanopyReview")))TickBattleCanopyReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTrafficReview")))TickBattleTrafficReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleBikeCarAudit")))TickBattleBikeCarAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleEntranceWalkAudit")))TickBattleEntranceWalkAudit(this,Dt);
