@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "version": "0.53.0",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "desktop": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "backup": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build052.app",
+  "signature": "strict ad-hoc verification passed",
+  "scope": "Installation identity only; gameplay evidence in separate reports"
+}

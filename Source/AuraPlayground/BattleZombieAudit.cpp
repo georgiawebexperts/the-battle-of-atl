@@ -45,7 +45,9 @@ void ABattleMacController::TickZombieAudit(float Dt){
   Z->SetActorTickEnabled(false);if(auto* AI=Cast<AAIController>(Z->GetController()))AI->StopMovement();ZombiePhase=4;ZombieAuditClock=0;
  }
  else if(ZombiePhase==4&&ZombieAuditClock>2.2f){
-  VERIFY_ZOMBIE(Bike->Dismount(),"Dismount after zombie hit failed");Person=Cast<ABattleRider>(GetPawn());VERIFY_ZOMBIE(Person,"Missing FPS pawn");
+  if(Bike->bCrashActive)return; // Current physical fall/get-up can take several seconds.
+  if(!Person){VERIFY_ZOMBIE(Bike->Dismount(),"Dismount after zombie recovery failed");Person=Cast<ABattleRider>(GetPawn());}VERIFY_ZOMBIE(Person,"Missing FPS pawn");
+  if(!Person->bWeaponDrawn)Person->ToggleWeapon();
   const FVector Desired=Person->GetActorLocation()+Bike->GetActorForwardVector()*700;
   FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(ZombieFixture),false,Person);Q.AddIgnoredActor(Z);Q.AddIgnoredActor(Bike);
   VERIFY_ZOMBIE(GetWorld()->LineTraceSingleByChannel(Ground,Desired+FVector(0,0,300),Desired-FVector(0,0,600),ECC_Visibility,Q),"No firing fixture ground");
@@ -56,7 +58,7 @@ void ABattleMacController::TickZombieAudit(float Dt){
   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((Z->GetActorLocation()+FVector(0,0,10)-Eye).Rotation());
   if(ZombieAuditClock>.35f){VERIFY_ZOMBIE(Person&&Person->Fire(),"Pistol did not fire");ZombieShots++;ZombieAuditClock=0;
    if(ZombieShots==3){VERIFY_ZOMBIE(Z->bDead&&Bike->EnemyKills==1&&Bike->Nitro==25,"Three body hits did not kill/reward");Z->SetActorTickEnabled(true);ZombieAuditCorpse=Z;
-    const FVector Spot=Z->GetActorLocation();auto* Head=GetWorld()->SpawnActor<ABattleZombie>(Spot,FRotator::ZeroRotator);VERIFY_ZOMBIE(Head,"Headshot fixture spawn failed");Head->Emergence=0;Head->SetActorTickEnabled(false);ZombieAuditTarget=Head;ZombiePhase=6;ZombieAuditClock=0;
+    const FVector Spot=Z->GetActorLocation()+Bike->GetActorRightVector()*350;auto* Head=GetWorld()->SpawnActor<ABattleZombie>(Spot,FRotator::ZeroRotator);VERIFY_ZOMBIE(Head,"Headshot fixture spawn failed");Head->Emergence=0;Head->SetActorTickEnabled(false);ZombieAuditTarget=Head;ZombiePhase=6;ZombieAuditClock=0;
    }
   }
  }

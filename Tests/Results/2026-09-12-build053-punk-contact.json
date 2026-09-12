@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "reason": "Fatal damage starts physics, visible chest follows body, head falls and dead zombie attack warning clears",
+  "slope_degrees": 27.82,
+  "minimum_joint_clearance_cm": 3.69,
+  "minimum_skin_clearance_cm": 0.92,
+  "below_skin_vertices": 0,
+  "skin_samples": 11010,
+  "max_body_speed_cm_s": 3.33,
+  "penetrating_bones": [],
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible chest tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/2ee700df785c4ea4ab6a1a420dd84e82/falling.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/2ee700df785c4ea4ab6a1a420dd84e82/settled.png"
+  ]
+}

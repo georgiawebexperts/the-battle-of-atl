@@ -8,7 +8,7 @@ app=root/'Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlaygroun
 log=root/'work/mac-zombie-combat.log'
 with log.open('w') as stream:
     run=subprocess.run([str(app),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1',
-        '-nullrhi','-unattended','-nosound','-BattleZombieAudit','-stdout'],stdout=stream,stderr=subprocess.STDOUT,timeout=90)
+        '-nullrhi','-unattended','-nosound','-BattleZombieAudit','-BattleSkipTutorial','-stdout'],stdout=stream,stderr=subprocess.STDOUT,timeout=90)
 matches=re.findall(r'BattleZombieAudit: (\{[^\n]+\})',log.read_text())
 result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
 result['exit_code']=run.returncode
