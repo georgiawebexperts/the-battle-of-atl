@@ -7,10 +7,17 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Materials/MaterialInterface.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleKnife::ABattleKnife(){
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> Top(TEXT("/Game/BattleForTheA/Hostiles/Knife/M_KnifeTop.M_KnifeTop"));
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> Shorts(TEXT("/Game/BattleForTheA/Hostiles/Knife/M_KnifeShorts.M_KnifeShorts"));
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> Hair(TEXT("/Game/BattleForTheA/Hostiles/Knife/M_KnifeHair.M_KnifeHair"));
+ if(Top.Succeeded())Body->SetMaterial(Body->GetMaterialIndex(TEXT("Purple")),Top.Object);
+ if(Shorts.Succeeded())Body->SetMaterial(Body->GetMaterialIndex(TEXT("LightBlue")),Shorts.Object);
+ if(Hair.Succeeded())Body->SetMaterial(Body->GetMaterialIndex(TEXT("Hair")),Hair.Object);
  Tags.Add(TEXT("PiedmontHostile"));Tags.Add(TEXT("BattleHostile"));Tags.Add(TEXT("BattleKnife"));
  AIControllerClass=AAIController::StaticClass();AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;bUseControllerRotationYaw=false;
  GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->MaxWalkSpeed=680;GetCharacterMovement()->RotationRate=FRotator(0,420,0);
