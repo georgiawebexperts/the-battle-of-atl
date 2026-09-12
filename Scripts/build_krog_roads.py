@@ -166,17 +166,22 @@ for face in faces:
     for tri in constrained_delaunay_triangles(polygon).geoms:
         if tri.area>1e-8:
             conforming.append([(x,y,height(x,y)) for x,y in list(orient(tri,sign=1).exterior.coords)[:3]])
-faces=conforming
+degenerate_faces=[f for f in conforming if Polygon([p[:2] for p in f]).area<.001]
+faces=[f for f in conforming if Polygon([p[:2] for p in f]).area>=.001]
+degenerate_area=sum(Polygon([p[:2] for p in f]).area for f in degenerate_faces)
+assert degenerate_area<1,degenerate_area
+degenerate_region=unary_union([Polygon([p[:2] for p in f]) for f in degenerate_faces])
 from collections import Counter
 edges=Counter()
 for face in faces:
     pts=[(round(p[0],5),round(p[1],5)) for p in face]
     for a,b in zip(pts,pts[1:]+pts[:1]):edges[tuple(sorted((a,b)))]+=1
-interior_open_edges=[]
+interior_open_edges=[];numerical_open_edges=[]
 for (a,b),count in edges.items():
     assert count<=2,(a,b,count)
     if count==1 and geometry.boundary.distance(LineString([a,b]).interpolate(.5,normalized=True))>.02:
-        interior_open_edges.append([a,b])
+        if degenerate_region.buffer(.00003).covers(LineString([a,b])):numerical_open_edges.append([a,b])
+        else:interior_open_edges.append([a,b])
 assert not interior_open_edges,interior_open_edges[:5]
 coverage=unary_union([Polygon([p[:2] for p in f]) for f in faces])
 missing=geometry.difference(coverage.buffer(.001)).area
@@ -200,7 +205,7 @@ for x,y,z in vertices:
         gap=abs(z-plane(i,q.x,q.y));seam_gaps.append(gap)
         if gap>.25:seam_locations.append({"xyz":[x,y,z],"existing_z":plane(i,q.x,q.y),"terrain_z":terrain(x,y),"gap_cm":gap})
 (folder/'join-conflicts.json').write_text(json.dumps(sorted(seam_locations,key=lambda r:-r['gap_cm']),indent=2)+'\n')
-report={'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
+report={'removed_degenerate_faces':len(degenerate_faces),'removed_area_cm2':degenerate_area,'degenerate_boundary_edges':len(numerical_open_edges),'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
         'source_to_native_max_error_cm':max(errors),'native_reference_samples':len(errors),
         'main_map_changed':False,'scope':'Source candidate only; native collision, driving and appearance pending.'}
 (folder/'road-surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

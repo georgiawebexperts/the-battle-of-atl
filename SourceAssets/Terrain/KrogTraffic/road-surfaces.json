@@ -1,17 +1,20 @@
 {
+  "removed_degenerate_faces": 386,
+  "removed_area_cm2": 0.03130525459835213,
   "junction_table": true,
   "junction_table_height_cm": 1000,
   "heightmap": "SourceAssets/Terrain/KrogTraffic/atlanta-height-krog-join-candidate.r16",
   "maximum_join_step_cm": 55.07652945048608,
-  "join_samples": 568,
+  "join_samples": 549,
   "conformed_edges": 8474,
   "max_previous_edge_height_gap_cm": 3.08883772723334,
   "interior_open_edges": 0,
-  "triangles": 68196,
-  "missing_area_cm2": 0.0,
-  "protected_overlap_cm2": 1821863.1129590706,
+  "triangles": 67810,
+  "missing_area_cm2": 0.002250000000025466,
+  "protected_overlap_cm2": 1821863.088204005,
   "source_to_native_max_error_cm": 0.0002703928388427812,
   "native_reference_samples": 49,
   "main_map_changed": false,
-  "scope": "Source candidate only; native collision, driving and appearance pending."
+  "scope": "Source candidate only; native collision, driving and appearance pending.",
+  "degenerate_boundary_edges": 501
 }
