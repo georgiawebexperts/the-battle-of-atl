@@ -582,3 +582,10 @@ Extended north return323.71cm to actual14th gate south stone-pier centre, Gate+(
 Extended test_market_impact.py with --foot: normal Dismount creates/possesses Ellison, actual W+Shift input sprints at the barrier, Space initiates jump450cm before it. First fixture released Space in the same frame and failed airtime; corrected to200ms hold rather than relaxing acceptance. Native editor rebuild and --foot --jump now pass:112.81cm observed rise, airborne true, closest fence gap53cm, no crossing or practice countdown. This covers one central sprint-jump, not freeform perimeter containment.
 
 South-end layout investigation: market fence and existing south street barrier intersect at(-19107.993785,3887.443844); market fence continues100cm beyond that crossing. No additional south return needed based on XY layout alone. Vertical/capsule traversal at junction, gate-pier bypass and overlapping path visuals still pending. Source-only; desktop050 unchanged.
+
+
+## Gate path surface investigation — 2026-09-12 [codex-maclaptop]
+
+Added read-only survey_market_path_seams.py, loads main map and finishes asset loading before sampling.88 vertical samples:43 terrain,33 concrete,12 asphalt. All45 pavement hits lie3.00–3.01cm above landscape. Component bounds inventory finds only those two pavement chunks and three canopy groups here. Initial survey before finish_editor_asset_loading was incomplete and replaced; disabling actor collision was not reliable, so final survey traces downward below each hit without scene mutation.
+
+Transient MarketPathShadowReview disables shadow casting on those two chunks. Commandlet exits0, but inspected fa6ed518deec45f4931134cff1aa3c7a/return_gate_end.png still has the large dark shapes. Do not apply a blanket no-shadow or geometry-height fix from this evidence. Earlier description as raised overlapping paths was an unverified visual interpretation: sampled colliding surfaces are grounded. Next inspect concrete/asphalt material and rendered geometry correspondence. No saved map changes; desktop050 unchanged.

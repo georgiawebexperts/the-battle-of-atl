@@ -915,6 +915,51 @@
         -17447.248046875,
         -4689.65185546875,
         108.17972564697266
+      ],
+      [
+        -17407.5546875,
+        -4694.59423828125,
+        107.77201080322266
+      ],
+      [
+        -17367.861328125,
+        -4699.537109375,
+        108.21726989746094
+      ],
+      [
+        -17328.16796875,
+        -4704.4794921875,
+        108.74845886230469
+      ],
+      [
+        -17288.47265625,
+        -4709.42236328125,
+        109.42662811279297
+      ],
+      [
+        -17248.779296875,
+        -4714.36474609375,
+        109.60724639892578
+      ],
+      [
+        -17209.0859375,
+        -4719.3076171875,
+        109.61821746826172
+      ],
+      [
+        -17169.392578125,
+        -4724.25048828125,
+        109.11156463623047
+      ],
+      [
+        -17129.69921875,
+        -4729.19287109375,
+        108.7223129272461
+      ],
+      [
+        -17126.015625,
+        -4729.65185546875,
+        108.69532775878906
       ]
     ],
     "checks": [
@@ -5285,6 +5330,222 @@
         ],
         "height": 300,
         "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17427.4013671875,
+          -4692.123046875
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17427.4013671875,
+          -4692.123046875
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17427.4013671875,
+          -4692.123046875
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17387.7080078125,
+          -4697.065673828125
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17387.7080078125,
+          -4697.065673828125
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17387.7080078125,
+          -4697.065673828125
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17348.0146484375,
+          -4702.00830078125
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17348.0146484375,
+          -4702.00830078125
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17348.0146484375,
+          -4702.00830078125
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17308.3203125,
+          -4706.950927734375
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17308.3203125,
+          -4706.950927734375
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17308.3203125,
+          -4706.950927734375
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17268.6259765625,
+          -4711.8935546875
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17268.6259765625,
+          -4711.8935546875
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17268.6259765625,
+          -4711.8935546875
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17228.9326171875,
+          -4716.836181640625
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17228.9326171875,
+          -4716.836181640625
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17228.9326171875,
+          -4716.836181640625
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17189.2392578125,
+          -4721.779052734375
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17189.2392578125,
+          -4721.779052734375
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17189.2392578125,
+          -4721.779052734375
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17149.5458984375,
+          -4726.7216796875
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17149.5458984375,
+          -4726.7216796875
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17149.5458984375,
+          -4726.7216796875
+        ],
+        "height": 300,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17127.857421875,
+          -4729.42236328125
+        ],
+        "height": 90,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17127.857421875,
+          -4729.42236328125
+        ],
+        "height": 180,
+        "blocked_by_return": true
+      },
+      {
+        "xy": [
+          -17127.857421875,
+          -4729.42236328125
+        ],
+        "height": 300,
+        "blocked_by_return": true
       }
     ],
     "passed": true,
@@ -6677,14 +6938,15 @@
     }
   ],
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/6775dbca06e84fd8ab2a68d0698a0428/entrance.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/6775dbca06e84fd8ab2a68d0698a0428/stall.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/6775dbca06e84fd8ab2a68d0698a0428/wide.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/6775dbca06e84fd8ab2a68d0698a0428/return.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/6775dbca06e84fd8ab2a68d0698a0428/return_market_end.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/6775dbca06e84fd8ab2a68d0698a0428/return_gate_end.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/fa6ed518deec45f4931134cff1aa3c7a/entrance.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/fa6ed518deec45f4931134cff1aa3c7a/stall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/fa6ed518deec45f4931134cff1aa3c7a/wide.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/fa6ed518deec45f4931134cff1aa3c7a/return.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/fa6ed518deec45f4931134cff1aa3c7a/return_market_end.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/fa6ed518deec45f4931134cff1aa3c7a/return_gate_end.png"
   ],
   "main_map_saved": false,
   "visual_accepted": false,
-  "scope": "Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending."
+  "scope": "Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.",
+  "path_shadow_diagnostic": true
 }

@@ -1,0 +1,1471 @@
+{
+  "scope": "Transient vertical surface stack; no map saved",
+  "samples": [
+    {
+      "xy": [
+        -18400,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 167.87193608974258
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 149.52620197716624
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 123.66971035556185
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 121.37188354068712
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 121.42747781955518
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 129.52879580072567
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 134.40622678537898
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18400,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 139.35591459318812
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 160.1010096255768
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 144.18958000596444
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 122.27172374731526
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 118.95915312860166
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 119.04430883688497
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 124.87717395978416
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 132.72765050849057
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18200,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 136.34885034928152
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 145.04169919481342
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 129.7570010988386
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 118.94507451673076
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 116.93590021412297
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 117.0508804321289
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 114.04631398685399
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 122.98775482177734
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 119.98285158705855
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 129.6107177734375
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 126.60906996372417
+        }
+      ]
+    },
+    {
+      "xy": [
+        -18000,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 131.9624481201172
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 128.95978384128802
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 132.4596709648738
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 122.11247454913496
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 118.29953454283009
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 116.79191487984144
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 115.4692153930664
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 112.4650241766468
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 113.91870880126953
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 110.91755770292713
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 108.41317749023438
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 105.40927460772227
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17800,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 100.17156982421875
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 97.16728579719133
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 129.19810485839844
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 126.19490504089487
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 126.06149291992188
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 123.05847461189158
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 121.95954132080078
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 118.95615544227321
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 114.5872701021949
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 114.46055603027344
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 111.45990384717197
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 109.03421020507812
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 106.02932002682874
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 100.5474946983943
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17600,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 94.59989418603891
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 128.20823669433594
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 125.20248961040605
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 123.20852661132812
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 120.20531021315678
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 118.83363342285156
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 115.82958358575115
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 115.14161682128906
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 112.13781599812262
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 110.11827850341797
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 107.11734456289331
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 105.785400390625
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 102.78303479731227
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 103.10111999511719
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 100.09577963327632
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17400,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 98.35582733154297
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 95.35290003984156
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 129.56979370117188
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 126.5648358406359
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 124.00361633300781
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 121.0001626253542
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 113.00387573242188
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 110.00250955168073
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 109.15202331542969
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 106.14822114463502
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 109.41399383544922
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 106.40968278946521
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 107.21598815917969
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 104.21415880105191
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 102.8373031616211
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 99.8332296147918
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17200,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 95.6750717163086
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 92.6734553824861
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 115.68393424437954
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 118.16641235351562
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 115.16338055955148
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 109.1928939819336
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 106.18667947805379
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 104.23019409179688
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 101.2259657782
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 108.84697723388672
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 105.84430351042145
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 103.01221368531037
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 97.36734547494916
+        }
+      ]
+    },
+    {
+      "xy": [
+        -17000,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 91.99535573150251
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 111.3789142431815
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 110.19368743896484
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 107.19088112871871
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 104.55471801757812
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 101.55209963900802
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 97.25674438476562
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 94.2513745558741
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 102.92903900146484
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 99.92745109646745
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 99.38068377039008
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 91.50608635476078
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16800,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 87.53887522454511
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 104.72390976732845
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 105.31649017333984
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 102.31345285291341
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 96.35612487792969
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 93.35136881576219
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 90.48968505859375
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 87.48500339911362
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 96.22798919677734
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 93.22520071490828
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 89.55748542644233
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 83.19633548391448
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16600,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 80.60165436146895
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -5600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 97.1130464737837
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -5400
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 95.94396209716797
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 92.94018901837842
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -5200
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 89.26577758789062
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 86.26068847346025
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -5000
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Asphalt_2_16",
+          "class": "StaticMeshActor",
+          "z": 82.33979797363281
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 79.33723609674352
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -4800
+      ],
+      "surfaces": [
+        {
+          "actor": "Park pavement SM_Park_Concrete_2_16",
+          "class": "StaticMeshActor",
+          "z": 83.75654602050781
+        },
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 80.75285684835848
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -4600
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 80.61162844383148
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -4400
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 73.08175828784533
+        }
+      ]
+    },
+    {
+      "xy": [
+        -16400,
+        -4200
+      ],
+      "surfaces": [
+        {
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "class": "Landscape",
+          "z": 68.12215068885007
+        }
+      ]
+    }
+  ],
+  "visual_components": [
+    {
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "component": "StaticMeshComponent0",
+      "class": "StaticMeshComponent",
+      "mesh": "/Game/PiedmontRide/Environment/Park/Paths/SM_Park_Concrete_2_16.SM_Park_Concrete_2_16",
+      "visible": true,
+      "hidden_in_game": false,
+      "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+      "origin": [
+        -16758.5888671875,
+        -5034.3240966796875,
+        88.25291633605957
+      ],
+      "extent": [
+        1946.1728515625,
+        3999.0206298828125,
+        133.04511833190918
+      ]
+    },
+    {
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "component": "StaticMeshComponent0",
+      "class": "StaticMeshComponent",
+      "mesh": "/Game/PiedmontRide/Environment/Park/Paths/SM_Park_Asphalt_2_16.SM_Park_Asphalt_2_16",
+      "visible": true,
+      "hidden_in_game": false,
+      "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+      "origin": [
+        -15429.11328125,
+        -5235.3035888671875,
+        30.9014892578125
+      ],
+      "extent": [
+        2657.458984375,
+        4200.0001220703125,
+        92.7452392578125
+      ]
+    },
+    {
+      "actor": "Piedmont mixed canopy Field",
+      "component": "ISM_SM_EuropeanHornbeam_Field_01_0",
+      "class": "InstancedStaticMeshComponent",
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "visible": true,
+      "hidden_in_game": false,
+      "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+      "origin": [
+        -2413.935661765636,
+        -16457.94225643302,
+        170.00946508303753
+      ],
+      "extent": [
+        16088.748991283237,
+        24563.33979877797,
+        1193.6162035137793
+      ]
+    },
+    {
+      "actor": "Piedmont mixed canopy Forest",
+      "component": "ISM_SM_EuropeanHornbeam_Forest_01_0",
+      "class": "InstancedStaticMeshComponent",
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "visible": true,
+      "hidden_in_game": false,
+      "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+      "origin": [
+        -2691.5844113539533,
+        -13995.35201566112,
+        262.0898575103206
+      ],
+      "extent": [
+        15601.616936922725,
+        25654.694208723267,
+        1300.8870390041825
+      ]
+    },
+    {
+      "actor": "Piedmont mixed canopy Mature",
+      "component": "ISM_HillTree_02_0",
+      "class": "InstancedStaticMeshComponent",
+      "mesh": "/Game/SampleScene/Tree/HillTree_02.HillTree_02",
+      "visible": true,
+      "hidden_in_game": false,
+      "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+      "origin": [
+        -2538.3614184159833,
+        -14857.140752825042,
+        297.6387191128779
+      ],
+      "extent": [
+        16206.397336308268,
+        26685.324421863545,
+        1353.440024928649
+      ]
+    }
+  ]
+}

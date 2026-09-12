@@ -33,6 +33,11 @@ for sky_actor in ea.get_all_level_actors():
   row={'actor':sky_actor.get_actor_label(),'intensity':sky.get_editor_property('intensity'),'mobility':str(sky.get_editor_property('mobility')),'real_time_capture':sky.get_editor_property('real_time_capture'),'source_type':str(sky.get_editor_property('source_type'))}
   if '-MarketRecaptureSky' in unreal.SystemLibrary.get_command_line():sky.set_editor_property('real_time_capture',False);sky.recapture_sky();row['review_recapture']=True;row['review_real_time_capture']=False
   lighting.append(row)
+# Thin ground-following pavement should not project detached shadows onto terrain.
+if '-MarketPathShadowReview' in unreal.SystemLibrary.get_command_line():
+ for actor in ea.get_all_level_actors():
+  if actor.get_actor_label() in ['Park pavement SM_Park_Concrete_2_16','Park pavement SM_Park_Asphalt_2_16']:
+   actor.static_mesh_component.set_cast_shadow(False)
 layout=json.loads((folder/'layout.json').read_text());survey=[]
 bounds=meshes['Wood'].get_bounding_box();table_sign=1 if bounds.min.y+bounds.max.y>0 else -1
 for index,row in enumerate(layout['stalls']):
@@ -80,6 +85,6 @@ for name,p,target in views:
  loc=unreal.Vector(*p);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
-result={'return_report':return_report if '-MarketClosurePreview' in unreal.SystemLibrary.get_command_line() else None,'closure_preview':'-MarketClosurePreview' in unreal.SystemLibrary.get_command_line(),'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
+result={'path_shadow_diagnostic':'-MarketPathShadowReview' in unreal.SystemLibrary.get_command_line(),'return_report':return_report if '-MarketClosurePreview' in unreal.SystemLibrary.get_command_line() else None,'closure_preview':'-MarketClosurePreview' in unreal.SystemLibrary.get_command_line(),'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
 (root/'Tests/Results/2026-09-12-market-review.json').write_text(json.dumps(result,indent=2)+'\n')
 print('MARKET_REVIEW '+str(out))
