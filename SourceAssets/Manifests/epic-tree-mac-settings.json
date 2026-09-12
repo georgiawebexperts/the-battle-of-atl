@@ -1,0 +1,140 @@
+{
+  "meshes": [
+    {
+      "path": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01",
+      "nanite_before": true,
+      "nanite_enabled": false
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01",
+      "nanite_before": true,
+      "nanite_enabled": false
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Sapling_01",
+      "nanite_before": true,
+      "nanite_enabled": false
+    }
+  ],
+  "textures": [
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Albedo",
+      "previous_cap": 0,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Mask",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Normal",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Summer",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Winter",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Summer",
+      "previous_cap": 2048,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Winter",
+      "previous_cap": 2048,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Summer",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Winter",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Summer",
+      "previous_cap": 2048,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Winter",
+      "previous_cap": 2048,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Albedo",
+      "previous_cap": 0,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Mask",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Normal",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Albedo",
+      "previous_cap": 0,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Mask",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Normal",
+      "previous_cap": 4096,
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Albedo",
+      "previous_cap": 4096,
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Mask",
+      "previous_cap": 4096,
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Normal",
+      "previous_cap": 4096,
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Albedo",
+      "previous_cap": 0,
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Mask",
+      "previous_cap": 4096,
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Normal",
+      "previous_cap": 4096,
+      "max_texture_size": 4096
+    }
+  ],
+  "map_saved": false,
+  "scope": "Saved renderer and texture settings only; fresh-process render and gameplay performance pending",
+  "source_pack_untouched": true,
+  "automatic_lod_native_preview_passed": true
+}

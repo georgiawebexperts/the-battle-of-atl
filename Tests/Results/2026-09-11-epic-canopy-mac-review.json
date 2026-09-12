@@ -1,0 +1,127 @@
+{
+  "map_saved": false,
+  "mesh_settings_reloaded": true,
+  "texture_checks": [
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Albedo",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Mask",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Decoration/T_EuropeanHornbeam_Decoration_Normal",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Summer",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_BaseColor_Field_01_Winter",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Summer",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Field/Field_01/T_Impostor_Normal_Field_01_Winter",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Summer",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_BaseColor_Forest_01_Winter",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Summer",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Impostor/Forest/Forest_01/T_Impostor_Normal_Forest_01_Winter",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Albedo",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Mask",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Tileable/T_EuropeanHornbeam_Tileable_Normal",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Albedo",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Mask",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/Trunk/Trunk_01/T_EuropeanHornbeam_Trunk_01_Normal",
+      "max_texture_size": 2048
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Albedo",
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Mask",
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Summer/T_EuropeanHornbeam_TwoSided_Summer_Normal",
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Albedo",
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Mask",
+      "max_texture_size": 4096
+    },
+    {
+      "path": "/Game/EuropeanHornbeam/Textures/TwoSided/Winter/T_EuropeanHornbeam_TwoSided_Winter_Normal",
+      "max_texture_size": 4096
+    }
+  ],
+  "instances": 587,
+  "rejected_indices": [],
+  "automatic_lod": true,
+  "lights_modified": false,
+  "scope": "Transient static geographic canopy appearance only; PCG integration, trunk collision and gameplay performance pending",
+  "visual_review": {
+    "tree_geometry": "accepted for integration: detailed branches and leaf silhouettes with standard renderer and automatic LOD",
+    "whole_scene_accepted": false,
+    "findings": [
+      "Gate view shows natural tree forms and open lawn; existing global lighting/terrain/pavement/water remain visibly rough.",
+      "Shoreline camera intersects close branches; review trunk/path clearance and low branch placement before saving a canopy replacement.",
+      "All 587 existing geographic stations trace to Landscape. This is not a collision or riding test."
+    ],
+    "desktop_build_updated": false
+  },
+  "images": [
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/epic-canopy-review/gate-oblique.png",
+      "sha256": "7ba3481311b5b963ff83c8225def3c5729def6580f3a288da01865c01455497e"
+    },
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/epic-canopy-review/lakeshore.png",
+      "sha256": "538d1afe000b7004b85a56bf06bfe415105b21585e56b36efa690ece4c390753"
+    },
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/epic-canopy-review/park-aerial.png",
+      "sha256": "ef28aae494002a64cb6af685fe3b3de26ba6339a68b499fe629e9a6aca04352f"
+    }
+  ]
+}
