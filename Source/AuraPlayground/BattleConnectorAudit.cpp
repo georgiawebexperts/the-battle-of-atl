@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "BattleRoadCar.h"
 #include "BattleHomeData.h"
 #include "BattleSpiritData.h"
 #include "PiedmontPathSpline.h"
@@ -24,7 +25,18 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  const bool Eastside=Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
+ struct FTrafficObservation{TWeakObjectPtr<UWorld> World;float SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0;};static FTrafficObservation Traffic;
+ if(Traffic.World!=GetWorld()){Traffic=FTrafficObservation();Traffic.World=GetWorld();}
+ Traffic.SinceSample+=Dt;
+ if(Traffic.SinceSample>=.25f){
+  Traffic.SinceSample=0;++Traffic.Samples;int Live=0,Moving=0;bool Nearby=false;
+  for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car)if(!Car->IsActorBeingDestroyed()){
+   ++Live;if(Car->Speed>1)++Moving;const float Distance=FVector::Dist2D(Car->GetActorLocation(),Bike->GetActorLocation());Traffic.Nearest=FMath::Min(Traffic.Nearest,Distance);Nearby|=Distance<1000;
+  }
+  Traffic.MaxLive=FMath::Max(Traffic.MaxLive,Live);Traffic.MaxMoving=FMath::Max(Traffic.MaxMoving,Moving);if(Nearby)++Traffic.NearbySamples;
+ }
  auto Finish=[&](bool Passed){
+  UE_LOG(LogTemp,Display,TEXT("TrafficRideAudit: {\"samples\":%d,\"max_live_cars\":%d,\"max_moving_cars\":%d,\"nearby_samples\":%d,\"nearest_car_cm\":%.2f}"),Traffic.Samples,Traffic.MaxLive,Traffic.MaxMoving,Traffic.NearbySamples,Traffic.MaxLive?Traffic.Nearest:-1.f);
   UE_LOG(LogTemp,Display,TEXT("Connector state: key=%d pedal=%.1f speed=%.1f movement=%d tick=%d"),IsInputKeyDown(EKeys::W),Bike->Ride->Pedal,Bike->Ride->Speed,int32(Bike->Ride->MovementMode),Bike->IsActorTickEnabled());
   UE_LOG(LogTemp,Display,TEXT("TrailGroundAudit: samples=%d paved=%d"),TrailGroundSamples,TrailPavedSamples);
   if(Eastside)Passed=Passed&&TrailGroundSamples>100&&TrailPavedSamples>=TrailGroundSamples*.99f;

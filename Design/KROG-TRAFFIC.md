@@ -172,3 +172,11 @@ Native Krog population test --world passes with other directors present:8spawned
 Scripts/test_krog_world_finish.py verifies native phone/checkpoint triggers, ordered tunnel traversal guards, alive/timer/pause/height guards, one-time win/stats, frozen clock and saved records in KrogWorldReview. Easy mounted and Hard on-foot finishes pass. Uses teleports for trigger fixtures; not a full route playthrough. Verified BattleFinish.cpp selects audit-only record slot for these flags, leaving player records separate.
 
 Extended opt-in finish audit with BattleCelebrationReview: captures actual celebration at0.5/5.5/9seconds and results at13.5seconds, asserts automatic transition by15seconds. Native build/capture passes. Inspected all four frames: phone recovered, Morgan greeting, Ellison toast at98Estoria and readable results/buttons at1280x720. This is existing still-image art with timed dialogue, not an animated cutscene. No normal gameplay/menu logic changed. Main map and installed054 unchanged.
+
+
+## Combined-world ride with observed traffic — 2026-09-12 [codex-maclaptop]
+Extended candidate drive harness with --world and added quarter-second traffic observations to the opt-in connector audit: live/moving car peaks, nearby samples(<1000cm) and closest car-center distance. No ordinary riding behavior changed. Native build passes. Initial combined bidirectional route passed; repeated with telemetry to avoid treating enabled-but-empty directors as traffic interaction evidence.
+
+Observed run passes48102.50cm, maxroute error41.90cm, zero wipeouts,81563/81563paved samples,12138lit/0unlit tunnel samples.202traffic samples:22live peak,20moving peak,11nearby samples, nearest car centre213.33cm. Actual W/A/D follows Irwin through full tunnel in both directions; pedestrians disabled by existing fixture. Not a full mixed-crowd quest playthrough or GPU performance measurement.
+
+Before main integration: rebuild navigation in combined candidate around changed road/building/rail geometry. Current BuildParkNavigation helper accepts only PiedmontWorld/ArcadeBikeLab; review map still carries inherited navigation. Add explicitly scoped review support and verify it, rather than assuming new obstacles updated navigation. Installed054/main unchanged.
