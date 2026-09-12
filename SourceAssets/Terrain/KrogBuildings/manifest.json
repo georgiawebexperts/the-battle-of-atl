@@ -1,5 +1,55 @@
 {
   "buildings": 8,
+  "roof_styles": [
+    {
+      "osm_way": 270876505,
+      "style": "flat",
+      "rise_cm": 0,
+      "surveyed": false
+    },
+    {
+      "osm_way": 270876511,
+      "style": "authored gable",
+      "rise_cm": 64.00476164095396,
+      "surveyed": false
+    },
+    {
+      "osm_way": 270876514,
+      "style": "authored gable",
+      "rise_cm": 90.85329903458494,
+      "surveyed": false
+    },
+    {
+      "osm_way": 270876730,
+      "style": "flat",
+      "rise_cm": 0,
+      "surveyed": false
+    },
+    {
+      "osm_way": 270876869,
+      "style": "authored gable",
+      "rise_cm": 89.0266849467835,
+      "surveyed": false
+    },
+    {
+      "osm_way": 665450797,
+      "style": "flat",
+      "rise_cm": 0,
+      "surveyed": false
+    },
+    {
+      "osm_way": 1051356939,
+      "style": "authored gable",
+      "rise_cm": 109.28348404428515,
+      "surveyed": false
+    },
+    {
+      "osm_way": 1051356941,
+      "style": "authored gable",
+      "rise_cm": 90.85100203633775,
+      "surveyed": false
+    }
+  ],
   "window_bays": 169,
   "entrances": [
     {
@@ -80,12 +130,12 @@
     {
       "material": "Brick",
       "file": "KrogBuildings_Brick.obj",
-      "triangles": 118
+      "triangles": 162
     },
     {
       "material": "Roof",
       "file": "KrogBuildings_Roof.obj",
-      "triangles": 2875
+      "triangles": 2573
     },
     {
       "material": "Glass",
@@ -95,7 +145,7 @@
     {
       "material": "Stucco",
       "file": "KrogBuildings_Stucco.obj",
-      "triangles": 5256
+      "triangles": 4944
     },
     {
       "material": "Landing",

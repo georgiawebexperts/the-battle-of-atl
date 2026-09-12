@@ -419,16 +419,14 @@
   "minimum_headroom_cm": 229.52545668837945,
   "visual_review": {
     "inspected": [
-      "north",
-      "wide",
       "south"
     ],
     "accepted_for_final": false,
     "findings": [
-      "Explicit transient skylight capture restores readable shaded facade detail.",
-      "Generic repeated facades and flat roofs do not yet match local architecture.",
-      "Missing surrounding streetscape and railway embankment remain conspicuous.",
-      "South view verifies building exteriors, not runtime-spawned 98 Estoria celebration."
-    ]
+      "Five house footprints now use authored pitched gable roofs and smaller windows; larger buildings retain flat roofs.",
+      "South-side roof silhouettes improved; repetitive brick, missing residential landscaping and sparse street context remain.",
+      "Roof styles and heights are estimates, not photo-matched."
+    ],
+    "building_manifest_sha256": "aeb268ced9c2da2444d444b79f93769b19456c67a8dbb05c4ed190f1b423f8b5"
   }
 }
