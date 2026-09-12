@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "main_map_changed": true,
+  "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/pre-krog-20260912-171541/PiedmontWorld.umap",
+  "backup_sha256": "baea27e1cd9500c8cccd3f7ce150b98f21254dadefdc6661a9d53f438fc9d35a",
+  "main_sha256": "9f139231e389162d640f881423c0432fbd47206a6a9562172c80c21a5a4c29fb",
+  "preserved_original_traffic_directors": 3,
+  "traffic_directors": 4,
+  "reachable_samples_verified": 796,
+  "main_actor_count": 632,
+  "scope": "Candidate promoted and reloaded; inventory, original traffic lanes/settings, corrected assets and persisted navigation checked. Installed app not replaced."
+}

@@ -1,9 +1,9 @@
 {
-  "build": 54,
-  "version": "0.54.0-dev",
+  "build": 55,
+  "version": "0.55.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed signed Mac054, backup053 retained; full game unfinished",
-  "milestone": "Physical knife encounters, distinct attacker outfit and recovery HUD; full game unfinished",
+  "status": "Installed signed Mac055; backup054 retained; full game unfinished",
+  "milestone": "Integrated Krog roads, tunnel, scenery and traffic; corrected mesh faces and lighting; park walking connection",
   "author": "2026-09-12 [codex-maclaptop]"
 }
