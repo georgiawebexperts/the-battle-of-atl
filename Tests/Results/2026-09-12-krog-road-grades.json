@@ -1,0 +1,68 @@
+{
+  "roads": [
+    {
+      "osm_way": 9243844,
+      "name": "DeKalb Avenue Northeast",
+      "samples": 279,
+      "missing": 0,
+      "maximum_grade_percent": 2.929234367004483,
+      "over_12_percent": 0,
+      "worst": []
+    },
+    {
+      "osm_way": 9267901,
+      "name": "Krog Street Southeast",
+      "samples": 22,
+      "missing": 0,
+      "maximum_grade_percent": 1.1368683772161603e-12,
+      "over_12_percent": 0,
+      "worst": []
+    },
+    {
+      "osm_way": 44062160,
+      "name": "Krog Street Northeast",
+      "samples": 448,
+      "missing": 0,
+      "maximum_grade_percent": 5.989572653345476,
+      "over_12_percent": 0,
+      "worst": []
+    },
+    {
+      "osm_way": 1334179572,
+      "name": "DeKalb Avenue Northeast",
+      "samples": 68,
+      "missing": 0,
+      "maximum_grade_percent": 3.7412974405879136,
+      "over_12_percent": 0,
+      "worst": []
+    },
+    {
+      "osm_way": 1378256292,
+      "name": "DeKalb Avenue Northeast",
+      "samples": 135,
+      "missing": 0,
+      "maximum_grade_percent": 6.216359486920737,
+      "over_12_percent": 0,
+      "worst": []
+    },
+    {
+      "osm_way": 1378256293,
+      "name": "DeKalb Avenue Northeast",
+      "samples": 243,
+      "missing": 0,
+      "maximum_grade_percent": 9.762764718578865,
+      "over_12_percent": 0,
+      "worst": []
+    },
+    {
+      "osm_way": 1378258205,
+      "name": "DeKalb Avenue Northeast",
+      "samples": 168,
+      "missing": 0,
+      "maximum_grade_percent": 5.644292210461117,
+      "over_12_percent": 0,
+      "worst": []
+    }
+  ],
+  "scope": "10cm centreline source-triangle measurements;12percent is a design review threshold, not a claim about real streets. No main-map changes."
+}

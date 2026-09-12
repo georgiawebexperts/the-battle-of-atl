@@ -12,7 +12,7 @@ folder = root / 'SourceAssets/Terrain/KrogTraffic'
 data = json.loads((folder / 'network.json').read_text())
 meta = json.loads((root / 'SourceAssets/Terrain/terrain-georeference.json').read_text())
 assert meta['active_heightmap'] == data['active_heightmap']
-parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);parser.add_argument('--junction-table',action='store_true');args=parser.parse_args()
 heightmap=(args.heightmap or root/'SourceAssets/Terrain'/meta['active_heightmap']).resolve()
 raw = array.array('H')
 raw.frombytes(heightmap.read_bytes())
@@ -54,7 +54,7 @@ index = STRtree(polys); protected = unary_union(polys)
 # Coalesce sub-millimetre gaps between independently exported pavement chunks.
 # Otherwise their 12cm curb-height difference creates near-vertical sliver faces.
 protected = protected.buffer(.1,join_style=2).buffer(-.1,join_style=2)
-geometry = road.difference(protected)
+geometry = road.difference(protected.difference(site.buffer(1500)) if args.junction_table else protected)
 
 def plane(i,x,y):
     a,b,c = triangles[i]
@@ -64,7 +64,7 @@ def plane(i,x,y):
     return u*a[2]+v*b[2]+(1-u-v)*c[2]
 
 @lru_cache(maxsize=500000)
-def height(x,y):
+def approach_height(x,y):
     p = Point(x,y); i = int(index.nearest(p)); q = nearest_points(p,polys[i])[1]
     distance = p.distance(q); blend = max(0, 1-distance/300)
     if blend==0:return terrain(x,y)+14
@@ -80,6 +80,16 @@ def height(x,y):
         weight=(max(0,1-(d-distance)/80)**2)/max(d,.00001)**2
         correction+=weight*(plane(j,point.x,point.y)-terrain(point.x,point.y)-14);total+=weight
     return max(terrain(x,y)+3,terrain(x,y)+14+blend*correction/total)
+
+@lru_cache(maxsize=500000)
+def height(x,y):
+    z=approach_height(x,y)
+    if not args.junction_table:return z
+    distance=math.hypot(x-site.x,y-site.y)
+    if distance>=1500:return z
+    # Raised crossing joins the trail and roadway; ease over a 7m approach.
+    weight=max(0,min(1,(1500-distance)/700));weight=weight*weight*(3-2*weight)
+    return max(terrain(x,y)+3,z+(1000-z)*weight)
 
 # Confirm source frame against actual installed hits before generating pavement.
 survey = json.loads((root/'Tests/Results/2026-09-12-krog-crossing-survey.json').read_text())
@@ -173,7 +183,7 @@ for x,y,z in vertices:
         gap=abs(z-plane(i,q.x,q.y));seam_gaps.append(gap)
         if gap>.25:seam_locations.append({"xyz":[x,y,z],"existing_z":plane(i,q.x,q.y),"terrain_z":terrain(x,y),"gap_cm":gap})
 (folder/'join-conflicts.json').write_text(json.dumps(sorted(seam_locations,key=lambda r:-r['gap_cm']),indent=2)+'\n')
-report={'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
+report={'junction_table':args.junction_table,'junction_table_height_cm':1000 if args.junction_table else None,'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
         'source_to_native_max_error_cm':max(errors),'native_reference_samples':len(errors),
         'main_map_changed':False,'scope':'Source candidate only; native collision, driving and appearance pending.'}
 (folder/'road-surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
