@@ -1,0 +1,36 @@
+{
+  "exit_code": 0,
+  "capture_passed": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/main-swap-ab02f16a3c2a4c72b797f110bb806570/canopy-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/main-swap-ab02f16a3c2a4c72b797f110bb806570/canopy-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/canopy-runtime/main-swap-ab02f16a3c2a4c72b797f110bb806570/canopy-3.png"
+  ],
+  "frames": [
+    {
+      "view": 1,
+      "samples": 256,
+      "p50_ms": 15.704,
+      "p95_ms": 16.076
+    },
+    {
+      "view": 2,
+      "samples": 244,
+      "p50_ms": 16.475,
+      "p95_ms": 16.883
+    },
+    {
+      "view": 3,
+      "samples": 214,
+      "p50_ms": 18.768,
+      "p95_ms": 19.089
+    }
+  ],
+  "baseline": false,
+  "transient_main_world_swap": true,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "scope": "Three fixed native-game cameras with active world, five seconds warmup then four seconds frame sampling per view. Editor executable, hidden stationary rider, no riding/collision/audio or sustained shipping performance acceptance."
+}

@@ -28,3 +28,12 @@ Review now retains383/587 stations (335forest,48field), minimum low-band path ma
 Added native three-camera capture and four-second wall-frame sampling after five-second warmup per view,1080p output, uncapped/VSync off, hidden stationary player and live world. Baseline main captured water and current trees: p50 11.279/12.421/13.698 ms. Detailed review captured finer thinner trees but NO lake water; its performance figures are not a valid isolated canopy comparison. RefreshWaterBody plus zone rebind/rebuild saved successfully but fresh native rerender still lacks water. No main/desktop changes.
 
 Next use actual main world and transiently replace original canopy at runtime for comparison, avoiding SaveAs-derived water mismatch. Do not promote detailed review or claim60FPS based on these short mismatched runs. Native helper builds, captures complete; snapshots/JSON evidence retained including failed first water comparison. Review cameras are fixed geographic views, not full riding/path coverage; two shoreline views are off-path. Whole game remains unfinished.
+
+
+## Main-world canopy comparison and mixed candidate — 2026-09-12 [codex-maclaptop]
+
+Native test now temporarily hides original PCG canopy and spawns measured HISM replacements inside actual main world. Lake remains visible, resolving review-map mismatch for this comparison. All-detailed383-tree swap p50 15.704/16.475/18.768 ms and p95 16.076/16.883/19.089 ms; loses mature broad canopy and exceeds16.67 ms in one view. Not chosen for integration.
+
+Prepared deterministic mixed manifest at SourceAssets/Terrain/park-mixed-canopy.json:587 retained positions,158 detailed substitutions only at approved low-geometry-clear stations,429 existing mature trees. Native mixed p50 12.427/14.894/13.284 ms, p95 13.211/15.296/13.929 ms. Inspected lake views2/3: water visible, mature shade retained, finer trees add variety; accepted as integration candidate. Live actors vary and samples are short/fixed-view/editor-executable with unforced internal render scale, so not rigorous isolated GPU cost or sustained60FPS/1080p acceptance.
+
+Next persist mixed groups through editable PCG without replacing original assets blindly, verify main water and route traversal. Existing mature-tree low-branch clearance is unchanged, only substitutions carry new clearance filter. Trunk collision pending. Main/desktop048 still unchanged; full game remains unfinished.

@@ -10,10 +10,43 @@
 #include "HAL/FileManager.h"
 #include "HAL/PlatformTime.h"
 #include "UnrealClient.h"
+#include "EngineUtils.h"
+#include "Engine/StaticMesh.h"
+#include "Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "Misc/FileHelper.h"
+#include "Misc/Paths.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
+#include "Dom/JsonObject.h"
+
+#if !UE_BUILD_SHIPPING
+static bool InstallRuntimeCanopy(UWorld* World){
+ auto Read=[](const TCHAR* File,TSharedPtr<FJsonObject>& Result){FString Text;return FFileHelper::LoadFileToString(Text,*(FPaths::ProjectDir()/File))&&FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text),Result)&&Result.IsValid();};
+ TSharedPtr<FJsonObject> Placement,Stations;
+ if(!Read(FParse::Param(FCommandLine::Get(),TEXT("BattleMixedCanopy"))?TEXT("SourceAssets/Terrain/park-mixed-canopy.json"):TEXT("Tests/Results/2026-09-12-detailed-canopy-low-clearance.json"),Placement)||!Read(TEXT("SourceAssets/Terrain/park-tree-stations.json"),Stations))return false;
+ const auto& Trees=Stations->GetArrayField(TEXT("trees"));TMap<FString,UHierarchicalInstancedStaticMeshComponent*> Groups;int Count=0;
+ for(const auto& Value:Placement->GetArrayField(TEXT("accepted"))){
+  const auto Row=Value->AsObject();const int Index=Row->GetIntegerField(TEXT("index"));if(!Trees.IsValidIndex(Index))return false;const FString Path=Row->GetStringField(TEXT("mesh"));
+  UHierarchicalInstancedStaticMeshComponent* Instances=Groups.FindRef(Path);
+  if(!Instances){auto* Mesh=LoadObject<UStaticMesh>(nullptr,*Path);if(!Mesh)return false;auto* Actor=World->SpawnActor<AActor>();Instances=NewObject<UHierarchicalInstancedStaticMeshComponent>(Actor);Actor->SetRootComponent(Instances);Actor->AddInstanceComponent(Instances);Instances->SetStaticMesh(Mesh);Instances->SetCollisionEnabled(ECollisionEnabled::NoCollision);Instances->SetCanEverAffectNavigation(false);Instances->SetCullDistances(28000,35000);Instances->RegisterComponent();Groups.Add(Path,Instances);}
+  const auto Station=Trees[Index]->AsObject();const auto& XY=Station->GetArrayField(TEXT("xy_cm"));const FVector Point(XY[0]->AsNumber(),XY[1]->AsNumber(),0);FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;
+  if(!World->LineTraceSingleByChannel(Hit,Point+FVector(0,0,7000),Point-FVector(0,0,7000),ECC_WorldStatic,Q))return false;
+  const auto Bounds=Instances->GetStaticMesh()->GetBounds();const float Scale=Station->GetNumberField(TEXT("height_game_cm"))/(2*Bounds.BoxExtent.Z);
+  const FVector Location=Hit.ImpactPoint-FVector(0,0,(Bounds.Origin.Z-Bounds.BoxExtent.Z)*Scale);
+  Instances->AddInstance(FTransform(FRotator(0,Station->GetNumberField(TEXT("yaw")),0),Location,FVector(Scale)),true);++Count;
+ }
+ if(Count!=Placement->GetIntegerField(TEXT("instances")))return false;
+ for(auto& Pair:Groups)Pair.Value->BuildTreeIfOutdated(false,true);
+ for(TActorIterator<AActor> It(World);It;++It)if(It->ActorHasTag(TEXT("BattleParkCanopy")))It->SetActorHiddenInGame(true);
+ UE_LOG(LogTemp,Display,TEXT("CanopySwap: %d instances"),Count);return true;
+}
+#endif
+
 void TickBattleCanopyReview(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ACameraActor> Camera;int Phase=0;double Start=0,Previous=0;TArray<double> Frames;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ACameraActor> Camera;int Phase=0;double Start=0,Previous=0;TArray<double> Frames;bool Prepared=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Phase==4||PC->GetWorld()->GetTimeSeconds()<5)return;
+ if(!S.Prepared){S.Prepared=true;if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedCanopy"))&&!InstallRuntimeCanopy(PC->GetWorld())){S.Phase=4;UE_LOG(LogTemp,Error,TEXT("CanopyRuntime: replacement failed"));PC->ConsoleCommand(TEXT("quit"));return;}}
  const double Now=FPlatformTime::Seconds();
  if(S.Phase==3){if(Now-S.Start>2){S.Phase=4;UE_LOG(LogTemp,Display,TEXT("CanopyRuntime: complete"));PC->ConsoleCommand(TEXT("quit"));}return;}
  if(!S.Camera.IsValid())S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();

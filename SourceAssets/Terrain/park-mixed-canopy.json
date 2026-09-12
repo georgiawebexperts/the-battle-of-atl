@@ -1,0 +1,2943 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "instances": 587,
+  "detailed_instances": 158,
+  "accepted": [
+    {
+      "index": 0,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 1,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 2,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 3,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 4,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 5,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 6,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 7,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 8,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 9,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 10,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 11,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 12,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 13,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 14,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 15,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 16,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 17,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 18,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 19,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 20,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 21,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 22,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 23,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 24,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 25,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 26,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 27,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 28,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 29,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 30,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 31,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 32,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 33,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 34,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 35,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 36,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 37,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 38,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 39,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 40,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 41,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 42,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 43,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 44,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 45,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 46,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 47,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 48,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 49,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 50,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 51,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 52,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 53,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 54,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 55,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 56,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 57,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 58,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 59,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 60,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 61,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 62,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 63,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 64,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 65,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 66,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 67,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 68,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 69,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 70,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 71,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 72,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 73,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 74,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 75,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 76,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 77,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 78,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 79,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 80,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 81,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 82,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 83,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 84,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 85,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 86,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 87,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 88,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 89,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 90,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 91,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 92,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 93,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 94,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 95,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 96,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 97,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 98,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 99,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 100,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 101,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 102,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 103,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 104,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 105,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 106,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 107,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 108,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 109,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 110,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 111,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 112,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 113,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 114,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 115,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 116,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 117,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 118,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 119,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 120,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 121,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 122,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 123,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 124,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 125,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 126,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 127,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 128,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 129,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 130,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 131,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 132,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 133,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 134,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 135,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 136,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 137,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 138,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 139,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 140,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 141,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 142,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 143,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 144,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 145,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 146,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 147,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 148,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 149,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 150,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 151,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 152,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 153,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 154,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 155,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 156,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 157,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 158,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 159,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 160,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 161,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 162,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 163,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 164,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 165,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 166,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 167,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 168,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 169,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 170,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 171,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 172,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 173,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 174,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 175,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 176,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 177,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 178,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 179,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 180,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 181,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 182,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 183,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 184,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 185,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 186,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 187,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 188,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 189,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 190,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 191,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 192,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 193,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 194,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 195,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 196,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 197,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 198,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 199,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 200,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 201,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 202,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 203,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 204,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 205,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 206,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 207,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 208,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 209,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 210,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 211,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 212,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 213,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 214,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 215,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 216,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 217,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 218,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 219,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 220,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 221,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 222,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 223,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 224,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 225,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 226,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 227,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 228,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 229,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 230,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 231,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 232,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 233,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 234,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 235,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 236,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 237,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 238,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 239,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 240,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 241,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 242,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 243,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 244,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 245,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 246,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 247,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 248,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 249,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 250,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 251,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 252,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 253,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 254,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 255,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 256,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 257,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 258,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 259,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 260,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 261,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 262,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 263,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 264,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 265,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 266,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 267,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 268,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 269,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 270,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 271,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 272,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 273,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 274,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 275,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 276,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 277,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 278,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 279,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 280,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 281,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 282,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 283,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 284,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 285,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 286,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 287,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 288,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 289,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 290,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 291,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 292,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 293,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 294,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 295,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 296,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 297,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 298,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 299,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 300,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 301,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 302,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 303,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 304,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 305,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 306,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 307,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 308,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 309,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 310,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 311,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 312,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 313,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 314,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 315,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 316,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 317,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 318,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 319,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 320,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 321,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 322,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 323,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 324,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 325,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 326,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 327,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 328,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 329,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 330,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 331,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 332,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 333,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 334,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 335,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 336,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 337,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 338,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 339,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 340,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 341,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 342,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 343,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 344,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 345,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 346,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 347,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 348,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 349,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 350,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 351,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 352,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 353,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 354,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 355,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 356,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 357,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 358,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 359,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 360,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 361,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 362,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 363,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 364,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 365,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 366,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 367,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 368,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 369,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 370,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 371,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 372,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 373,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 374,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 375,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 376,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 377,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 378,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 379,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 380,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 381,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 382,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 383,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 384,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 385,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 386,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 387,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 388,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 389,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 390,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 391,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 392,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 393,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 394,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 395,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 396,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 397,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 398,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 399,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 400,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 401,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 402,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 403,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 404,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 405,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 406,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 407,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 408,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 409,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 410,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 411,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 412,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 413,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 414,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 415,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 416,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 417,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 418,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 419,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 420,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 421,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 422,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 423,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 424,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 425,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 426,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 427,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 428,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 429,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 430,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 431,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 432,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 433,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 434,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 435,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 436,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 437,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 438,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 439,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 440,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 441,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 442,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 443,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 444,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 445,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 446,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 447,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 448,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 449,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 450,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 451,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 452,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 453,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 454,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 455,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 456,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 457,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 458,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 459,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 460,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 461,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 462,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 463,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 464,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 465,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 466,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 467,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 468,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 469,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 470,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 471,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 472,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 473,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 474,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 475,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 476,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 477,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 478,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 479,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 480,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 481,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 482,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 483,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 484,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 485,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 486,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 487,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 488,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 489,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 490,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 491,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 492,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 493,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 494,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 495,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 496,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 497,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 498,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 499,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 500,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 501,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 502,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 503,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 504,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 505,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 506,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 507,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 508,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 509,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 510,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 511,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 512,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 513,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 514,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 515,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 516,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 517,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 518,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 519,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 520,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 521,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 522,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 523,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 524,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 525,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 526,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 527,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 528,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 529,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 530,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 531,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 532,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 533,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 534,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 535,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 536,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 537,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 538,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 539,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 540,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 541,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 542,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 543,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 544,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 545,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 546,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "detailed": true
+    },
+    {
+      "index": 547,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 548,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 549,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 550,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 551,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 552,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 553,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 554,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 555,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 556,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 557,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 558,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 559,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 560,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 561,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 562,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 563,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 564,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 565,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 566,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 567,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 568,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 569,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 570,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 571,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 572,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 573,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 574,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 575,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 576,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 577,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 578,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 579,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 580,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 581,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    },
+    {
+      "index": 582,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 583,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 584,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 585,
+      "mesh": "/Game/SampleScene/Tree/HillTree_02",
+      "detailed": false
+    },
+    {
+      "index": 586,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "detailed": true
+    }
+  ],
+  "scope": "Existing mature trees retained; detailed substitutions only at approved low-geometry-clear stations. Existing-tree clearance unchanged, trunk collision pending."
+}
