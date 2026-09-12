@@ -15,6 +15,7 @@ class AURAPLAYGROUND_API APiedmontPedestrian : public APiedmontExplorer {
 public:
  APiedmontPedestrian();
  virtual void BeginPlay() override;
+ virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  UPROPERTY(BlueprintReadOnly) int32 KnockdownPhase=0;
@@ -34,6 +35,8 @@ public:
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);
  bool BeginBenchReach();
+ bool BeginBenchIgnition(class ABattleParkFurniture* Furniture,int32 Index);
+ UPROPERTY(BlueprintReadOnly) int32 BenchesIgnited=0;
  UPROPERTY(BlueprintReadOnly) bool bBenchReaching=false;
  void HearHorn(APawn* Source);
  void BikeImpact(float Speed,FVector Direction);
@@ -53,6 +56,11 @@ protected:
  virtual bool CanUseWeapon() const override {return false;}
 private:
  void CancelBenchReach();
+ void TickBenchIgnition(float Dt);
+ bool IsAtIgnitionBench(class ABattleParkFurniture* Furniture,int32 Index) const;
+ TWeakObjectPtr<class ABattleParkFurniture> IgnitionFurniture;
+ int32 IgnitionBench=INDEX_NONE;
+ float BenchReachClock=0;
  FBattleSleeperTrigger SleeperTrigger;
  void TickSleeperTrigger(float Dt);
  void CancelSleepBehavior();

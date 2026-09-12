@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "delay, occupancy, horn cancellation, single ignition, reservation transfer and destruction passed"
+  },
+  "scope": "Native delayed ignition and reservation handoff. No natural encounter, prop contact, visual or packaged acceptance.",
+  "passed": true
+}

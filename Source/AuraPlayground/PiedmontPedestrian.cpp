@@ -1,4 +1,6 @@
 #include "PiedmontPedestrian.h"
+#include "BattleParkFurniture.h"
+#include "BattleBenchFire.h"
 #include "Animation/AnimSequence.h"
 #include "PiedmontBike.h"
 #include "BattleBike.h"
@@ -63,9 +65,35 @@ bool APiedmontPedestrian::BeginBenchReach(){
  if(bDead||bSwimming||SleepPhase||KnockdownPhase||StumbleRemaining>0||bBenchReaching||CityAppearanceVariant!=0||!bNativeCrowdRig)return false;
  auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/LowReachCandidate/MixamoLowReachReference_Anim.MixamoLowReachReference_Anim"));if(!Clip)return false;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
- GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;SetBodySequence(Clip,false);bBenchReaching=true;return true;
+ GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;SetBodySequence(Clip,false);BenchReachClock=0;bBenchReaching=true;return true;
 }
-void APiedmontPedestrian::CancelBenchReach(){if(bBenchReaching){bBenchReaching=false;StopBodySequence();}}
+bool APiedmontPedestrian::IsAtIgnitionBench(ABattleParkFurniture* Furniture,int32 Index) const{
+ if(!IsValid(Furniture)||Furniture->GetWorld()!=GetWorld()||!Furniture->Benches.IsValidIndex(Index))return false;
+ const FTransform& Bench=Furniture->Benches[Index];const FVector Local=Bench.InverseTransformPosition(GetActorLocation());
+ const FVector Facing=Bench.TransformVectorNoScale(FVector(0,-1,0));
+ return FMath::Abs(Local.X)<25&&Local.Y>=40&&Local.Y<=75&&Local.Z>=65&&Local.Z<=120&&FVector::DotProduct(GetActorForwardVector(),Facing)>.9f;
+}
+bool APiedmontPedestrian::BeginBenchIgnition(ABattleParkFurniture* Furniture,int32 Index){
+ if(bBenchReaching||!IsAtIgnitionBench(Furniture,Index)||!Furniture->ReserveBench(Index,this))return false;
+ if(!BeginBenchReach()){Furniture->ReleaseBench(Index,this);return false;}
+ IgnitionFurniture=Furniture;IgnitionBench=Index;return true;
+}
+void APiedmontPedestrian::TickBenchIgnition(float Dt){
+ if(IgnitionBench==INDEX_NONE)return;
+ auto* Furniture=IgnitionFurniture.Get();
+ if(!IsAtIgnitionBench(Furniture,IgnitionBench)){CancelBenchReach();return;}
+ BenchReachClock+=Dt;if(BenchReachClock<2.2f)return;
+ const int32 Index=IgnitionBench;
+ // Release and acquire on the game thread; the fire now owns the reservation.
+ Furniture->ReleaseBench(Index,this);IgnitionFurniture.Reset();IgnitionBench=INDEX_NONE;
+ if(ABattleBenchFire::IgniteBench(Furniture,Index))++BenchesIgnited;
+}
+void APiedmontPedestrian::CancelBenchReach(){
+ if(auto* Furniture=IgnitionFurniture.Get())Furniture->ReleaseBench(IgnitionBench,this);
+ IgnitionFurniture.Reset();IgnitionBench=INDEX_NONE;
+ if(bBenchReaching){bBenchReaching=false;StopBodySequence();}
+}
+void APiedmontPedestrian::EndPlay(const EEndPlayReason::Type Reason){CancelBenchReach();Super::EndPlay(Reason);}
 void APiedmontPedestrian::HearHorn(APawn* Source){CancelBenchReach();YieldTo(Source,true);}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
  if(bDead||StumbleRemaining>0)return;CancelBenchReach();CancelSleepBehavior();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
@@ -85,7 +113,7 @@ void APiedmontPedestrian::Tick(float Dt){
  if(bBenchReaching){
   auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
   if(bDead||bSwimming||!Mode||Mode->bRunEnded||!IsBodySequencePlaying())CancelBenchReach();
-  else return;
+  else{TickBenchIgnition(Dt);return;}
  }
  if(bAmbientSleeper)TickSleeperTrigger(Dt);
  if(TickSleepBehavior(Dt))return;

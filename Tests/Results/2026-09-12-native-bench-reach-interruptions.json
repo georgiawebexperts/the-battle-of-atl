@@ -4,7 +4,6 @@
     "passed": true,
     "reason": "duplicate, sleep conflict, horn, impact, stumble, run end, restart and damage guards passed"
   },
-  "scope": "Native start guards and interruption checks. Run-end uses explicit visitor Tick before the pausing loss menu; no full loss-menu lifecycle, ignition, visual or packaged acceptance.",
-  "passed": true,
-  "initial_fixture_timeout": "Setting run-ended across frames opened loss menu and paused test. Fixed fixture to exercise visitor Tick before controller menu."
+  "scope": "Native reach start guards and interruption checks; run-end uses an explicit visitor Tick before the pausing loss menu. No ignition, visual or packaged acceptance.",
+  "passed": true
 }
