@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/b603eef3e7754eb694d7ed48bcdc99ee/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/b603eef3e7754eb694d7ed48bcdc99ee/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/b603eef3e7754eb694d7ed48bcdc99ee/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": false,
+  "landscape_hidden_diagnostic": false,
+  "scope": "Fixed road approach cameras and wide view; test cars stationary, no rider playthrough or traffic timing acceptance.",
+  "shallow_surface_readable": true,
+  "review_notes": "Both riding-height approaches inspected: dark centre with lighter irregular aggregate edge now distinguishable from surrounding asphalt. Suitable for traversal testing. Close-up fracture detail, actual speed/avoidance readability and overall game visuals are not accepted."
+}

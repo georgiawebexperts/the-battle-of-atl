@@ -1,0 +1,6 @@
+{
+  "main_map_changed": false,
+  "potholes": 1,
+  "depth_cm": 8,
+  "scope": "Shallow visual/physical candidate and contact actor; fictitious gate/car fixtures only provide existing camera review positions."
+}

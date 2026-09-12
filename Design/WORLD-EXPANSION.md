@@ -475,3 +475,13 @@ Latest wide render e851ac66d8c549a091bbebdec0e68a21 reviewed. Integrated five ex
 Added ABattlePothole contact controller, not yet placed. Sweeps approximate front-wheel trajectory (bike forward80 cm), radius65 cm, vertical guard180 cm; ignores airborne, parked, recovery and speeds below150 cm/s. Shallow/slow deep contact keeps72% speed and gives existing RideImpact feedback. Deep contact at1000 cm/s invokes existing2-second wipeout recovery; no separate time/health deduction. Latches until leaving radius+100 cm; large teleports excluded. Settings are initial gameplay values, not accepted balance.
 
 Editor build passes; native contact fixture passes fast segment crossing, near miss, airborne/parked exclusions, duplicate prevention and exit/re-entry deep recovery. Test does not prove actual road riding, visible depression, wheel geometry or real/arcade-mode feel. No pothole actor is placed in main world, no purchased assets, desktop047 unchanged. Next requires visible authored sparse depressions, actual traversal/render/balance checks and placement with a clear avoidance line. Existing crash animation limitations remain.
+
+
+## Sparse pothole visual candidate — 2026-09-12 [codex-maclaptop]
+
+Elliott reiterated potholes should be occasional, not everywhere. Keep deliberately authored road hazards with a clear route around each, rather than blanket/random coverage. One shallow 8 cm depression is isolated in PiedmontPotholeVisualReview near Irwin; original main road and desktop047 remain unchanged. Alternate road passes9269 surface checks, preserves crossing trail, and has zero open internal mesh edges. A noncolliding dark surface overlay follows the colliding depression. Approach renders inspected: currently looks too much like a flat brown patch and has faceted shading; visual acceptance remains false. Actual bike traversal, improved asphalt edge detail and final sparse placement remain pending. Runtime contact fixture from previous entry is not a riding playtest.
+
+
+## Pothole surface revision — 2026-09-12 [codex-maclaptop]
+
+Replaced brown flat fill with procedural neutral asphalt aggregate and radial broken-wear rim; centred UVs at0.5 to tolerate importer V flip. First aggregate render was too bright and rejected. Final b603eef3e7754eb694d7ed48bcdc99ee approach1/2 inspected: dark interior and lighter irregular edge readable, suitable for actual traversal testing. Full visual acceptance remains false: close-up fracture detail, speed-dependent avoidance and gameplay/packaging pending. Geometry unchanged from9269-probe passing road. Scripts compile and native import/render exit0. One candidate only in review, main and desktop047 unchanged.

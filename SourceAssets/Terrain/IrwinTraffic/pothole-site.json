@@ -1,0 +1,13 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "xyz": [
+    23186.442453061285,
+    101022.99870884669,
+    886.9602220237442
+  ],
+  "radius_cm": 90,
+  "contact_radius_cm": 65,
+  "depth_cm": 8,
+  "deep": false,
+  "scope": "One shallow road candidate away from crossing. Not installed; additional sparse sites pending."
+}
