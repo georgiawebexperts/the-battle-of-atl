@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Both cars held on green for character capsule, then completed after clearance",
+    "both_stopped_seconds": 2.002
+  },
+  "scope": "Two opposing cars held on green by stationary character-capsule fixture, then resumed after removal. No player-controlled crossing or animation acceptance.",
+  "passed": true
+}

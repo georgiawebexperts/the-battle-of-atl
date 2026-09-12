@@ -1,0 +1,25 @@
+{
+  "bounds_xy": [
+    [
+      25704.161339998245,
+      100302.9021825952
+    ],
+    [
+      26458.18790420502,
+      101355.38665469116
+    ]
+  ],
+  "bindings": [
+    {
+      "car": "Irwin Lake eastbound",
+      "stop_distance_cm": 5399.260205276481
+    },
+    {
+      "car": "Irwin Lake westbound",
+      "stop_distance_cm": 5496.78211327898
+    }
+  ],
+  "main_map_changed": false,
+  "signals_visible": false,
+  "scope": "Always eligible when clear, occupied crossing yields. Shared conservative vehicle reservation; no invented signal timing. Main unchanged."
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "probes": 6474,
+  "hits": {
+    "Irwin Lake road approaches": 6307,
+    "Eastside trail SM_EastsideTrail_Asphalt_7_3": 102,
+    "Krog route SM_KrogRoute_Concrete_7_3": 10,
+    "Eastside trail SM_EastsideTrail_Concrete_7_3": 55
+  },
+  "failures": [],
+  "main_map_changed": false,
+  "scope": "Car footprint and wheel sample support only; actual movement tested separately."
+}
