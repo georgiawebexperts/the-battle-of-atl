@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Red stop, occupied-green hold, clear release and committed crossing exit passed",
+    "distance_cm": 3997.573
+  },
+  "scope": "Controlled red stop, crossing occupancy, release and committed exit. Signal visuals, map placement, multi-car traffic and packaged behavior unverified.",
+  "passed": true
+}

@@ -1,4 +1,5 @@
 #include "BattleRoadCar.h"
+#include "BattleRoadCrossing.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -44,9 +45,10 @@ void ABattleRoadCar::UpdateWheels(const TArray<FVector>& Contacts,float Travel,f
  for(int32 I=0;I<4;++I){const bool Left=I%2==0;Wheels[I]->SetRelativeLocation(GetActorTransform().InverseTransformPosition(Contacts[I])+FVector(0,0,39.2669));Wheels[I]->SetRelativeRotation(FRotator(Left?WheelAngle:-WheelAngle,(Left?180.f:0.f)+(I<2?Steering:0.f),0));}
 }
 bool ABattleRoadCar::StartRoute(){
- bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();
+ bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();bWaitingForCrossing=false;
  if(Route.Num()<2)return false;
  Lengths.Add(0);for(int32 I=1;I<Route.Num();++I){const float L=FVector::Dist2D(Route[I],Route[I-1]);if(L<1)return false;Lengths.Add(Lengths.Last()+L);}
+ for(const auto& Gate:Crossings)if(!IsValid(Gate.Crossing)||Gate.Crossing->GetWorld()!=GetWorld()||Gate.StopDistance<0||Gate.StopDistance>=Lengths.Last())return false;
  FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Route[0],Route[1]-Route[0],Pose,Contacts);if(!bGrounded)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(RoadCarSpawn),false,this);
  if(GetWorld()->OverlapBlockingTestByChannel(Pose.GetLocation(),Pose.GetRotation(),ECC_WorldDynamic,FCollisionShape::MakeBox(Collision->GetUnscaledBoxExtent()),Q))return false;
@@ -62,9 +64,17 @@ void ABattleRoadCar::Tick(float Dt){
   bObstacleAhead=GetWorld()->SweepSingleByChannel(Ahead,GetActorLocation(),GetActorLocation()+GetActorForwardVector()*StopDistance,GetActorQuat(),ECC_WorldDynamic,FCollisionShape::MakeBox(FVector(236,114,45)),Q);
   LastObstacle=Ahead.GetActor()?Ahead.GetActor()->GetName():TEXT("");
   const float ToEnd=Lengths.Last()-RouteDistance;
-  const float Target=bObstacleAhead?0.f:FMath::Min(CruiseSpeed,FMath::Sqrt(2*900.f*FMath::Max(0.f,ToEnd-2.f)));
+  float Available=ToEnd;bWaitingForCrossing=false;
+  for(int32 I=0;I<Crossings.Num();++I){
+   if(ClearedCrossings.Contains(I))continue;
+   const auto& Gate=Crossings[I];const float Gap=Gate.StopDistance-RouteDistance;
+   const bool Clear=IsValid(Gate.Crossing)&&Gate.Crossing->CanEnter(this);
+   if(Clear&&Gap<=Speed*Step+3.f){ClearedCrossings.Add(I);continue;}
+   if(!Clear){Available=FMath::Min(Available,FMath::Max(0.f,Gap));if(Gap<100)bWaitingForCrossing=true;}
+  }
+  const float Target=bObstacleAhead?0.f:FMath::Min(CruiseSpeed,FMath::Sqrt(2*900.f*FMath::Max(0.f,Available-2.f)));
   Speed=FMath::FInterpConstantTo(Speed,Target,Step,Target<Speed?900.f:250.f);
-  const float Travel=FMath::Min(ToEnd,Speed*Step);const FVector Next=SampleRoute(RouteDistance+Travel);
+  const float Travel=FMath::Min(Available,Speed*Step);const FVector Next=SampleRoute(RouteDistance+Travel);
   FVector Heading=SampleRoute(FMath::Min(Lengths.Last(),RouteDistance+Travel+150))-Next;if(Heading.IsNearlyZero())Heading=GetActorForwardVector();
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
