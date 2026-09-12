@@ -138,3 +138,8 @@ Surface scan initially returned168 Landscape samples because collision assets we
 ## Reaching animation candidate — 2026-09-12 [codex-maclaptop]
 
 Downloaded free Mixamo Picking Up Object with source rig, provenance and hash; imported ReachReference and retargeted ReachCandidate to City male with existing Mixamo retargeter (3.433 seconds). Two editor poses inspected: standing waist-height reach, so reject it for low bench ignition and retain only as a potential item interaction. No runtime assignment or map change. Import and retarget exit0; editor render script completed with four images, but commandlet exit1 from occupied HttpListener port30010. No native playback, full animation or bench alignment acceptance. Next bench scene step needs a lower crouching reach, then contact placement and native review.
+
+
+## Low reaching variant — 2026-09-12 [codex-maclaptop]
+
+Mixamo Picking Up Object exposes Object Height. Downloaded a distinct variant at0 (other controls default), imported LowReachReference and retargeted LowReachCandidate to City male:4.0sec. Two editor poses show a bend and low reach. Bone trajectory sampled30fps gives lowest right hand at2.2sec: component XYZ(-16.29,19.09,54.21)cm. Existing bench seat45cm; account for body rotation, actor floor position and a held prop before contact, do not force lower body into floor. Native playback, actual bench placement, ignition timing, interruption and rare encounter remain pending; candidate unassigned. SourceFBX and settings/hash kept on external drive. Import/retarget/trajectory audit exit0. Editor render exported four frames but exit1 from occupied HttpListener30010, even with ModelContextProtocol disabled for that invocation. No project plugin settings changed.

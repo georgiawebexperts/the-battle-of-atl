@@ -1,0 +1,26 @@
+{
+  "clip": "/Game/BattleRetarget/Mixamo/LowReachCandidate/MixamoLowReachReference_Anim.MixamoLowReachReference_Anim",
+  "duration": 4.0,
+  "rigs": [],
+  "retargeter": "/Game/BattleRetarget/Mixamo/SleepCandidate/RTG_SleepMixamoCity.RTG_SleepMixamoCity",
+  "visual_acceptance": false,
+  "gameplay_installed": false,
+  "editor_pose_review": {
+    "images": [
+      "work/low_reach-review/male-m-1.png",
+      "work/low_reach-review/male-m-2.png"
+    ],
+    "finding": "Visible bend and low right-handed reach; retain as bench interaction candidate.",
+    "render_exit_code": 1,
+    "render_error": "HttpListener port30010 occupied; Python render completed and exported four frames.",
+    "trajectory_audit_exit_code": 0,
+    "lowest_right_hand_cm": [
+      -16.2899,
+      19.0942,
+      54.2095
+    ],
+    "lowest_right_hand_time_seconds": 2.2,
+    "bench_seat_height_cm": 45,
+    "contact_verified": false
+  }
+}
