@@ -23,9 +23,9 @@ APiedmontPedestrian::APiedmontPedestrian(){
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> PropHandleMaterial(TEXT("/Game/PiedmontRide/Materials/M_Safety.M_Safety"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> PropMetalMaterial(TEXT("/Game/PiedmontRide/Materials/M_GunMetal.M_GunMetal"));
  BenchLighterHandle=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BenchLighterHandle"));BenchLighterHandle->SetupAttachment(Body,TEXT("hand_r"));
- BenchLighterHandle->SetStaticMesh(PropCube.Object);BenchLighterHandle->SetMaterial(0,PropHandleMaterial.Object);BenchLighterHandle->SetRelativeLocation(FVector(-4,0,0));BenchLighterHandle->SetRelativeScale3D(FVector(.02,.02,.05));
+ BenchLighterHandle->SetStaticMesh(PropCube.Object);BenchLighterHandle->SetMaterial(0,PropHandleMaterial.Object);BenchLighterHandle->SetRelativeLocation(FVector(-6.4,0,0));BenchLighterHandle->SetRelativeScale3D(FVector(.02,.02,.05));
  BenchLighterStem=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BenchLighterStem"));BenchLighterStem->SetupAttachment(Body,TEXT("hand_r"));
- BenchLighterStem->SetStaticMesh(PropCylinder.Object);BenchLighterStem->SetMaterial(0,PropMetalMaterial.Object);BenchLighterStem->SetRelativeLocation(FVector(-4,0,-6));BenchLighterStem->SetRelativeScale3D(FVector(.008,.008,.07));
+ BenchLighterStem->SetStaticMesh(PropCylinder.Object);BenchLighterStem->SetMaterial(0,PropMetalMaterial.Object);BenchLighterStem->SetRelativeLocation(FVector(-6.4,0,-6.75));BenchLighterStem->SetRelativeScale3D(FVector(.008,.008,.085));
  for(auto* Part:{BenchLighterHandle.Get(),BenchLighterStem.Get()}){Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetVisibility(false);}
 
  AIControllerClass=AAIController::StaticClass();AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;
@@ -97,6 +97,10 @@ void APiedmontPedestrian::TickBenchIgnition(float Dt){
  if(!IsAtIgnitionBench(Furniture,IgnitionBench)){CancelBenchReach();return;}
  BenchReachClock+=Dt;if(BenchReachClock<2.2f)return;
  const int32 Index=IgnitionBench;
+#if !UE_BUILD_SHIPPING
+ const FVector Tip=Furniture->Benches[Index].InverseTransformPosition(BenchLighterStem->GetComponentTransform().TransformPosition(FVector(0,0,-50)));
+ UE_LOG(LogTemp,Display,TEXT("BenchIgnitionContact: age=%.3f tip_local=%s"),BenchReachClock,*Tip.ToString());
+#endif
  // Release and acquire on the game thread; the fire now owns the reservation.
  Furniture->ReleaseBench(Index,this);IgnitionFurniture.Reset();IgnitionBench=INDEX_NONE;
  if(ABattleBenchFire::IgniteBench(Furniture,Index)){++BenchesIgnited;bBenchRetreatPending=true;BenchRetreatTarget=Furniture->Benches[Index].TransformPosition(FVector(0,260,0));}

@@ -1,0 +1,44 @@
+{
+  "close_diagnostic": true,
+  "ignition_diagnostic": true,
+  "reach_diagnostic": false,
+  "solid_diagnostic": false,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/e433be304f7e42db9c72801ba8c0fd6d/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/e433be304f7e42db9c72801ba8c0fd6d/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/e433be304f7e42db9c72801ba8c0fd6d/fire-3.png"
+  ],
+  "captured": true,
+  "visual_accepted": false,
+  "scope": "Combined native character reach and delayed ignition; prop contact, natural trigger and packaged acceptance pending",
+  "capture_passed": true,
+  "visitor_positions": {
+    "1": [
+      -0.0,
+      55.0,
+      89.072
+    ],
+    "2": [
+      -0.0,
+      55.0,
+      89.072
+    ],
+    "3": [
+      0.0,
+      297.395,
+      47.705
+    ]
+  },
+  "retreat_verified": true,
+  "ignition_contact": {
+    "age": 2.206,
+    "tip_local_cm": [
+      22.705,
+      24.151,
+      46.797
+    ],
+    "nearest_slat_top_error_cm": 0.047
+  },
+  "pose_review": "Closeup inspected: stem meets front slat edge. Verified one native fixture at ignition, not continuous/all-site contact or natural encounter acceptance."
+}

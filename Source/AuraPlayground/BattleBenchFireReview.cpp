@@ -26,8 +26,8 @@ void TickBattleBenchFireReview(APlayerController* PC,float Dt){
     Visitor->CityAppearanceVariant=0;UGameplayStatics::FinishSpawningActor(Visitor,Spawn);Visitor->PauseRemaining=12;S.Visitor=Visitor;
     UE_LOG(LogTemp,Display,TEXT("BenchReachReview: started=%d"),bIgnition?Visitor->BeginBenchIgnition(*It,0):Visitor->BeginBenchReach());
    }else S.Fire=ABattleBenchFire::IgniteBench(*It,0,6.f);
-   auto* Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Look=T.GetLocation()+FVector(0,0,100),Offset=T.TransformVectorNoScale(FVector(230,420,180));
-   Camera->GetCameraComponent()->SetFieldOfView(50);Camera->SetActorLocation(Look+Offset);Camera->SetActorRotation((-Offset).Rotation());PC->SetViewTarget(Camera);if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;
+   auto* Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const bool bClose=FParse::Param(FCommandLine::Get(),TEXT("BattleBenchCloseReview"));const FVector Look=bClose?T.TransformPosition(FVector(20,15,60)):T.GetLocation()+FVector(0,0,100),Offset=T.TransformVectorNoScale(bClose?FVector(200,40,90):FVector(230,420,180));
+   Camera->GetCameraComponent()->SetFieldOfView(FParse::Param(FCommandLine::Get(),TEXT("BattleBenchCloseReview"))?35:50);Camera->SetActorLocation(Look+Offset);Camera->SetActorRotation((-Offset).Rotation());PC->SetViewTarget(Camera);if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;
    S.Phase=1;S.Clock=0;break;
   }
  }
