@@ -4152,6 +4152,408 @@
       "length_cm": 319.845
     }
   ],
+  "monroe_roads": [
+    {
+      "osm_way": 75359074,
+      "tags": {
+        "highway": "secondary",
+        "maxlength:hgv": "30'",
+        "maxspeed": "30 mph",
+        "maxweight:hgv": "18 st",
+        "name": "Monroe Drive Northeast",
+        "sidewalk:both": "separate",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "Monroe",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30324",
+        "tiger:zip_right": "30324"
+      },
+      "points_cm": [
+        [
+          11535.511,
+          14064.721,
+          -366.725
+        ],
+        [
+          11554.345,
+          13985.077,
+          -365.775
+        ],
+        [
+          11573.18,
+          13905.434,
+          -364.609
+        ],
+        [
+          11592.015,
+          13825.79,
+          -363.444
+        ]
+      ],
+      "length_cm": 245.521
+    },
+    {
+      "osm_way": 569578148,
+      "tags": {
+        "highway": "secondary",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Monroe Drive Northeast",
+        "sidewalk:both": "separate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "Monroe",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30324",
+        "tiger:zip_right": "30324"
+      },
+      "points_cm": [
+        [
+          12569.534,
+          9656.389,
+          -300.851
+        ],
+        [
+          12591.438,
+          9565.691,
+          -298.413
+        ],
+        [
+          12613.342,
+          9474.994,
+          -295.666
+        ],
+        [
+          12635.246,
+          9384.297,
+          -292.296
+        ],
+        [
+          12657.293,
+          9293.634,
+          -288.899
+        ],
+        [
+          12679.453,
+          9202.999,
+          -285.924
+        ]
+      ],
+      "length_cm": 466.524
+    },
+    {
+      "osm_way": 971881792,
+      "tags": {
+        "highway": "secondary",
+        "lanes": "4",
+        "lanes:backward": "2",
+        "lanes:forward": "2",
+        "maxlength:hgv": "30'",
+        "maxspeed": "30 mph",
+        "maxweight:hgv": "18 st",
+        "name": "Monroe Drive Northeast",
+        "sidewalk:both": "separate",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "Monroe",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30324",
+        "tiger:zip_right": "30324",
+        "turn:lanes:forward": "left;through|through"
+      },
+      "points_cm": [
+        [
+          11592.015,
+          13825.79,
+          -363.444
+        ],
+        [
+          11614.661,
+          13730.548,
+          -362.14
+        ],
+        [
+          11637.308,
+          13635.305,
+          -361.092
+        ],
+        [
+          11659.954,
+          13540.062,
+          -359.602
+        ],
+        [
+          11682.601,
+          13444.82,
+          -358.47
+        ],
+        [
+          11705.247,
+          13349.577,
+          -356.976
+        ],
+        [
+          11727.893,
+          13254.334,
+          -355.307
+        ],
+        [
+          11750.54,
+          13159.091,
+          -353.776
+        ],
+        [
+          11773.186,
+          13063.849,
+          -352.112
+        ],
+        [
+          11795.833,
+          12968.606,
+          -350.561
+        ],
+        [
+          11818.511,
+          12873.371,
+          -349.461
+        ],
+        [
+          11841.334,
+          12778.17,
+          -348.167
+        ],
+        [
+          11864.156,
+          12682.97,
+          -347.199
+        ],
+        [
+          11886.979,
+          12587.769,
+          -346.253
+        ],
+        [
+          11909.802,
+          12492.569,
+          -345.299
+        ],
+        [
+          11932.624,
+          12397.368,
+          -344.426
+        ],
+        [
+          11955.447,
+          12302.167,
+          -343.375
+        ],
+        [
+          11978.27,
+          12206.967,
+          -342.188
+        ],
+        [
+          12001.053,
+          12111.757,
+          -341.206
+        ],
+        [
+          12023.408,
+          12016.445,
+          -340.072
+        ],
+        [
+          12045.763,
+          11921.134,
+          -338.755
+        ],
+        [
+          12068.118,
+          11825.822,
+          -338.232
+        ],
+        [
+          12090.473,
+          11730.511,
+          -337.959
+        ],
+        [
+          12112.828,
+          11635.199,
+          -336.814
+        ]
+      ],
+      "length_cm": 2251.655
+    },
+    {
+      "osm_way": 1301929031,
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Monroe Drive Northeast",
+        "sidewalk:both": "separate",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "Monroe",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30324",
+        "tiger:zip_right": "30324"
+      },
+      "points_cm": [
+        [
+          12112.828,
+          11635.199,
+          -336.814
+        ],
+        [
+          12130.871,
+          11546.999,
+          -336.212
+        ],
+        [
+          12148.914,
+          11458.8,
+          -335.256
+        ],
+        [
+          12166.957,
+          11370.6,
+          -333.617
+        ],
+        [
+          12185.105,
+          11282.422,
+          -331.666
+        ],
+        [
+          12203.346,
+          11194.263,
+          -329.369
+        ],
+        [
+          12221.586,
+          11106.103,
+          -327.199
+        ],
+        [
+          12241.148,
+          11018.228,
+          -324.68
+        ],
+        [
+          12260.777,
+          10930.368,
+          -322.331
+        ],
+        [
+          12280.405,
+          10842.507,
+          -320.581
+        ]
+      ],
+      "length_cm": 810.238
+    },
+    {
+      "osm_way": 1355126853,
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Monroe Drive Northeast",
+        "sidewalk:both": "separate",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Fulton, GA",
+        "tiger:name_base": "Monroe",
+        "tiger:name_direction_suffix": "NE",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "30324",
+        "tiger:zip_right": "30324"
+      },
+      "points_cm": [
+        [
+          12280.405,
+          10842.507,
+          -320.581
+        ],
+        [
+          12301.191,
+          10750.918,
+          -318.726
+        ],
+        [
+          12321.977,
+          10659.33,
+          -317.401
+        ],
+        [
+          12342.764,
+          10567.741,
+          -316.522
+        ],
+        [
+          12363.55,
+          10476.152,
+          -316.019
+        ],
+        [
+          12385.246,
+          10384.781,
+          -315.223
+        ],
+        [
+          12408.282,
+          10293.732,
+          -314.232
+        ],
+        [
+          12431.318,
+          10202.683,
+          -312.276
+        ],
+        [
+          12454.354,
+          10111.634,
+          -310.133
+        ],
+        [
+          12477.39,
+          10020.585,
+          -307.983
+        ],
+        [
+          12500.426,
+          9929.536,
+          -305.764
+        ],
+        [
+          12523.462,
+          9838.487,
+          -304.218
+        ],
+        [
+          12546.498,
+          9747.438,
+          -302.886
+        ],
+        [
+          12569.534,
+          9656.389,
+          -300.851
+        ]
+      ],
+      "length_cm": 1220.934
+    }
+  ],
   "monroe_crossing": {
     "node": "69614574",
     "lon_lat": [

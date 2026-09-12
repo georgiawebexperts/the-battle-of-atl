@@ -26,10 +26,11 @@ roadnodes={n for w in roads for n in w['nodes']};crossnodes=roadnodes&{n for w i
 cross=min(crossnodes,key=lambda n:abs(nodes[n][1]-33.782));crossxy=xy(nodes[cross])
 # Preserve mapped road topology; keep the requested frontage from Juniper to Monroe.
 west=xy((-84.3825,33.782))[0];east=crossxy[0]+50;clip=box(west,-100000,east,100000)
-result={'source':'OpenStreetMap contributors ODbL; tenth-street-monroe.osm','frame':'Unreal ESU cm at current one-third geographic scale','roads':[],'cycle_track':[],'monroe_crossing':{'node':cross,'lon_lat':nodes[cross],'world_cm':[*crossxy,height(*crossxy)]},'status':'Mapped geometry only; road surfaces, traffic, markings, crossing controls and race scenery not yet installed.'}
-for w in roads+[w for w in ways if w['tags'].get('highway')=='cycleway' and any(w['line'].distance(r['line'])<350 for r in roads)]:
- geom=w['line'].intersection(clip)
- if w not in roads:geom=geom.intersection(unary_union([r['line'].buffer(650) for r in roads]))
+result={'source':'OpenStreetMap contributors ODbL; tenth-street-monroe.osm','frame':'Unreal ESU cm at current one-third geographic scale','roads':[],'cycle_track':[],'monroe_roads':[],'monroe_crossing':{'node':cross,'lon_lat':nodes[cross],'world_cm':[*crossxy,height(*crossxy)]},'status':'Mapped geometry only; road surfaces, traffic, markings, crossing controls and race scenery not yet installed.'}
+near_monroe=[w for w in monroe if w['line'].distance(Point(crossxy))<2500]
+for w in roads+near_monroe+[w for w in ways if w['tags'].get('highway')=='cycleway' and any(w['line'].distance(r['line'])<350 for r in roads)]:
+ geom=w['line'].intersection(Point(crossxy).buffer(2500) if w in near_monroe else clip)
+ if w not in roads and w not in near_monroe:geom=geom.intersection(unary_union([r['line'].buffer(650) for r in roads]))
  if geom.is_empty:continue
  lines=[geom] if geom.geom_type=='LineString' else [g for g in geom.geoms if g.geom_type=='LineString']
  for line in lines:
@@ -38,6 +39,6 @@ for w in roads+[w for w in ways if w['tags'].get('highway')=='cycleway' and any(
   for d in np.linspace(0,line.length,max(2,math.ceil(line.length/100)+1)):
    x,y=line.interpolate(float(d)).coords[0];points.append([round(x,3),round(y,3),round(height(x,y)+12,3)])
   item={'osm_way':w['id'],'tags':w['tags'],'points_cm':points,'length_cm':round(line.length,3)}
-  result['roads' if w in roads else 'cycle_track'].append(item)
+  result['roads' if w in roads else 'monroe_roads' if w in near_monroe else 'cycle_track'].append(item)
 folder=root/'SourceAssets/Terrain/TenthStreet';folder.mkdir(parents=True,exist_ok=True);(folder/'network.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({'roads':len(result['roads']),'cycle_segments':len(result['cycle_track']),'monroe_crossing':result['monroe_crossing']}))

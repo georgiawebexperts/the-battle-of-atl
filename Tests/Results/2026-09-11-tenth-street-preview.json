@@ -3,22 +3,29 @@
   "meshes": [
     {
       "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Road.SM_TenthStreet_Road",
-      "bounds_error_cm": 0.00046109577669994906
+      "bounds_error_cm": 0.0004997789474145975
     },
     {
       "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_CycleTrack.SM_TenthStreet_CycleTrack",
       "bounds_error_cm": 0.0006723605874867644
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Separator.SM_TenthStreet_Separator",
+      "bounds_error_cm": 0.00036108162021264434
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Sidewalk.SM_TenthStreet_Sidewalk",
+      "bounds_error_cm": 0.0008091314157354645
     }
   ],
   "scope": "Static native import/placement review. Traffic, paint, sidewalks and crossing signals absent. Width and gameplay collision acceptance pending.",
   "process_exit_code": 0,
   "presentation_accepted": false,
   "findings": [
-    "Mapped road/cycle surfaces import in correct frame.",
-    "Cycle separator currently unfinished grass sliver; requires curb/separator treatment.",
-    "Monroe cross street missing; road terminus needs intersection geometry connecting trail.",
-    "Some pavement triangles visibly faceted.",
-    "Road lane width190cm and cycle width160cm are initial compressed-world interpretation; native vehicle/bike clearance unverified.",
-    "No lane markings, signals, moving cars, race dressing or sidewalk network."
+    "Monroe cross-street and sidewalks now present in preview.",
+    "Cycle separator added with mapped crossing openings.",
+    "Smooth terrain-derived vertex normals reduce faceted shading.",
+    "Grass-shaped gaps persist after adaptive terrain subdivision; cause not yet proven. Need triangle coverage and actual native height audit.",
+    "No map save. Width/vehicle clearance, signals, traffic and race details unverified or absent."
   ]
 }
