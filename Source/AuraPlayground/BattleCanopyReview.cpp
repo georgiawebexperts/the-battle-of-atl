@@ -51,10 +51,22 @@ void TickBattleCanopyReview(APlayerController* PC,float Dt){
  if(S.Phase==3){if(Now-S.Start>2){S.Phase=4;UE_LOG(LogTemp,Display,TEXT("CanopyRuntime: complete"));PC->ConsoleCommand(TEXT("quit"));}return;}
  if(!S.Camera.IsValid())S.Camera=PC->GetWorld()->SpawnActor<ACameraActor>();
  if(S.Start==0){
-  const FVector XY[]={FVector(-17400,-5200,0),FVector(-6000,2000,0),FVector(0,-4000,0)};
-  const FVector Target[]={FVector(-14000,-5200,0),FVector(0,-4000,0),FVector(-6000,2000,0)};
+  FVector XY[]={FVector(-17400,-5200,0),FVector(-6000,2000,0),FVector(0,-4000,0)};
+  FVector Target[]={FVector(-14000,-5200,0),FVector(0,-4000,0),FVector(-6000,2000,0)};
+  const bool Krog=FParse::Param(FCommandLine::Get(),TEXT("BattleKrogSceneryReview"));
+  if(Krog){
+   FString Text;TSharedPtr<FJsonObject> Manifest;
+   if(!FFileHelper::LoadFileToString(Text,*(FPaths::ProjectDir()/TEXT("SourceAssets/Terrain/KrogContinuousShell/manifest.json")))||!FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text),Manifest)||!Manifest.IsValid()){S.Phase=4;PC->ConsoleCommand(TEXT("quit"));return;}
+   const auto& Points=Manifest->GetArrayField(TEXT("roof_samples"));
+   if(Points.Num()<3){S.Phase=4;PC->ConsoleCommand(TEXT("quit"));return;}
+   auto Point=[&](int Index){const auto& V=Points[Index]->AsArray();return FVector(V[0]->AsNumber(),-V[1]->AsNumber(),V[2]->AsNumber());};
+   const FVector A=Point(0),B=Point(Points.Num()-1),Direction=(B-A).GetSafeNormal2D();
+   XY[0]=A-Direction*600;Target[0]=A+Direction*500;
+   XY[1]=Point(Points.Num()/2);Target[1]=XY[1]+Direction*600;
+   XY[2]=B+Direction*600;Target[2]=B-Direction*500;
+  }
   FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;if(PC->GetPawn())Q.AddIgnoredActor(PC->GetPawn());
-  if(!PC->GetWorld()->LineTraceSingleByChannel(Hit,XY[S.Phase]+FVector(0,0,7000),XY[S.Phase]-FVector(0,0,7000),ECC_WorldStatic,Q)){S.Phase=4;UE_LOG(LogTemp,Error,TEXT("CanopyRuntime: missing floor"));PC->ConsoleCommand(TEXT("quit"));return;}
+  if(!PC->GetWorld()->LineTraceSingleByChannel(Hit,XY[S.Phase]+FVector(0,0,Krog?100:7000),XY[S.Phase]-FVector(0,0,Krog?200:7000),ECC_WorldStatic,Q)){S.Phase=4;UE_LOG(LogTemp,Error,TEXT("CanopyRuntime: missing floor"));PC->ConsoleCommand(TEXT("quit"));return;}
   FVector Position=Hit.ImpactPoint+FVector(0,0,170);FVector Look=Target[S.Phase];Look.Z=Position.Z;
   S.Camera->SetActorLocationAndRotation(Position,(Look-Position).Rotation());S.Camera->GetCameraComponent()->SetFieldOfView(85);
   if(APawn* Pawn=PC->GetPawn()){Pawn->SetActorLocation(Hit.ImpactPoint+FVector(0,0,98),false,nullptr,ETeleportType::TeleportPhysics);Pawn->SetActorHiddenInGame(true);if(auto* Character=Cast<ACharacter>(Pawn))Character->GetCharacterMovement()->DisableMovement();}
