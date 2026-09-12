@@ -1,0 +1,9 @@
+{
+  "installed": true,
+  "version": "0.51.0",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "desktop": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "backup": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build050.app",
+  "strict_codesign_verified": true,
+  "installed_health_report": "2026-09-12-build051-installed-health.json"
+}

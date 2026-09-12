@@ -1,0 +1,26 @@
+{
+  "market_review": true,
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build051-packaged-1280-tutorial/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ad4bd18ec74ed1e06858240ef09157b328ef872dc52c761c675940034e85a756"
+    },
+    {
+      "file": "work/build051-packaged-1280-tutorial/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "568b47bc7baa030348a06ee81155cde37b56a04101998cf14f8e082d3edfe837"
+    }
+  ],
+  "visual_review": "Inspected: market stalls and closure sign visible, bike and on-foot instructions readable. Art polish/full performance not accepted.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

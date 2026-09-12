@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "reason": "Untimed practice, protected clock/health, dismount/remount, actual W/A/D road ride, one-way gate countdown and single-start timer pass",
+  "distance_cm": 25018.4,
+  "max_error_cm": 24.6,
+  "fps_cap_requested": null,
+  "exit_code": 0,
+  "route": "alternate",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-route-alternate.log",
+  "scope": "Keyboard-controlled native route fixture; scenery, market closure and freeform bypass checks unaccepted.",
+  "market_fence_sweeps": true,
+  "closure_removed_after_start": true
+}

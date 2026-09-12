@@ -39,6 +39,10 @@ void ABattleMacController::TickHUDReview(float Dt){
   if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->Quest){M->Quest->bCollected=true;M->Quest->NextCheckpoint=2;}for(TActorIterator<ABattleHome> It(GetWorld());It;++It){It->bTunnelEntered=false;It->bTunnelExited=false;}
   const FVector Eye=BattleHomeData::Home-BattleHomeData::South*1600+FVector(600,0,800),Target=BattleHomeData::Home+FVector(0,0,170);if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation()))SetViewTarget(Cam);
  }
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleMarketReview"))){
+  if(auto* Bike=Cast<ABattleBike>(GetPawn())){const FVector XY(-20108,3187,0);FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);if(GetWorld()->LineTraceSingleByChannel(Ground,XY+FVector(0,0,1000),XY-FVector(0,0,1000),ECC_Visibility,Q)){Bike->SetActorLocationAndRotation(Ground.ImpactPoint+FVector(0,0,98),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->StopMovementImmediately();Bike->Ride->bForceNextFloorCheck=true;SetControlRotation(FRotator::ZeroRotator);}}
+  const FVector Eye(-20000,2450,650),Target(-18700,3187,20);if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation()))SetViewTarget(Cam);
+ }
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))){

@@ -3,7 +3,7 @@
   "version": "0.51.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Mac package built; cooked vendor and health tests pass; cooked direct tutorial route fails, so desktop remains050",
+  "status": "Installed on desktop; cooked direct/alternate tutorial and market captures pass, signed installed health pass; full game acceptance unfinished",
   "milestone": "12th Street farmers market and tutorial closure, park-only vendor zombies, extended practice street and weathered park asphalt; full-game acceptance unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }
