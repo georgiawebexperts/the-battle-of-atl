@@ -49,3 +49,8 @@ Medium and Hard populations, validate their applied tuning, then trigger and
 check a covered Hard tunnel wave, a timed repeat wave, and normal spawning after
 leaving a partially spawned wave. Neither establishes visual crowd density,
 real-world game balance, audio quality, human keyboard input or frame rate.
+
+
+## Geographic restriction — 2026-09-12 [codex-maclaptop]
+
+New user requirement, not implemented: Farmers Market Vendor zombies appear only inside Piedmont Park, including pursuit boundaries. Homeless-themed and punk-rocker variants can appear anywhere in the playable world. Market beside Billy’s at 12th Street motivates the vendor variant. See WORLD-EXPANSION.md, Farmers market at 12th Street, for reference photos and tutorial entrance blocking.

@@ -1,9 +1,9 @@
 {
-  "build": 49,
-  "version": "0.49.0-dev",
+  "build": 50,
+  "version": "0.50.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "installed on desktop; packaged repeat-crash, death, health and canopy checks passed; full-game acceptance unfinished",
-  "milestone": "Physical crash-to-foot recovery and remount, aligned get-up, mixed park canopy and trunk collisions; full-game acceptance unfinished",
+  "status": "installed on desktop; packaged hazard, obstruction, lights and death checks passed; full-game acceptance unfinished",
+  "milestone": "Physical drone and taser falls, fallen-bike lights, and safe recovery around late obstructions; full-game acceptance unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }

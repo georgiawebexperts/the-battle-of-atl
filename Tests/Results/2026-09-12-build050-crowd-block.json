@@ -1,0 +1,40 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/21601123142a4baab2356dc0bd08ba5c/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/21601123142a4baab2356dc0bd08ba5c/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/21601123142a4baab2356dc0bd08ba5c/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/21601123142a4baab2356dc0bd08ba5c/live-remounted.png"
+  ],
+  "events": [
+    "started speed=1006.2",
+    "recovered on foot health=70.0 ammo=10",
+    "state=1 timer=1 elapsed=8.040 lost=10.019",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Late crowd obstruction during get-up; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "runtime": "packaged",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 151.58,
+      "selected_rms_cm": 90.219
+    }
+  ],
+  "space_checks": [
+    {
+      "passed": true,
+      "shift_cm": 70.001,
+      "solid_hold_verified": false
+    }
+  ],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true
+}

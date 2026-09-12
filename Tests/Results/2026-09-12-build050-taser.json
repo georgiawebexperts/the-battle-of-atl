@@ -1,0 +1,34 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Warned police taser, -10 seconds, physical fall, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/a5138374031e41ef959b03a2d74611ce/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/a5138374031e41ef959b03a2d74611ce/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/a5138374031e41ef959b03a2d74611ce/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/a5138374031e41ef959b03a2d74611ce/live-remounted.png"
+  ],
+  "events": [
+    "started speed=0.0",
+    "recovered on foot health=100.0 ammo=10",
+    "state=1 timer=1 elapsed=7.249 lost=9.032",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Police taser physical knockdown; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "runtime": "packaged",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 108.233,
+      "selected_rms_cm": 67.934
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true
+}
