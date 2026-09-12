@@ -10,6 +10,7 @@
     "Verified DeKalb road-end construction fences and signs; main navigation rebuilt."
   ],
   "unreleased_code_changes": [
-    "Traffic spawns cycle through six visually reviewed paint colors on the existing car body."
+    "Traffic spawns cycle through six visually reviewed paint colors on the existing car body.",
+    "P toggles arcade/realistic handling with HUD indicator; native input checks pass, hill/high-speed/visual balance still pending."
   ]
 }

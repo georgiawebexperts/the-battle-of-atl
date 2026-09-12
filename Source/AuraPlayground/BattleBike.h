@@ -32,6 +32,8 @@ public:
  virtual void HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta) override;
  UPROPERTY(BlueprintReadOnly) float Speed=0;
  UPROPERTY(BlueprintReadOnly) float SmoothedSteer=0;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bRealHandling=false;
+ UPROPERTY(BlueprintReadOnly) float TurnRateDegrees=0;
  static float SteeringResponse(float Current,float Target,float Dt){return FMath::Lerp(Current,FMath::Clamp(Target,-1.f,1.f),1.f-FMath::Exp(-8.f*FMath::Max(0.f,Dt)));}
  UPROPERTY(BlueprintReadOnly) int32 Gear=1;
  UPROPERTY(BlueprintReadOnly) float Recovery=0;
@@ -154,6 +156,7 @@ private:
  TMap<TWeakObjectPtr<AActor>,float> RewardTimes;
  float ShotCooldown=0,ReloadTimer=0,GunHold=0;
  void PoseRider(float Dt);
+ void ToggleHandling(){Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;}
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;
  TArray<FTransform> ReferencePose;TArray<int32> Parents;TArray<FName> BoneNames;

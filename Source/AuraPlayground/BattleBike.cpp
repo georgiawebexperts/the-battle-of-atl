@@ -89,7 +89,7 @@ void ABattleBike::BeginPlay(){
  }
 }
 void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
- Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::J,IE_Pressed,this,&ABattleBike::HopBike);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::R,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Q,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
+ Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::P,IE_Pressed,this,&ABattleBike::ToggleHandling);I->BindKey(EKeys::J,IE_Pressed,this,&ABattleBike::HopBike);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::R,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Q,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
 void ABattleBike::ToggleCamera(){if(bCrashActive)return;bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson);}
 void ABattleBike::Tick(float Dt){
@@ -107,7 +107,7 @@ void ABattleBike::Tick(float Dt){
  }
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded||RiderHealth<=0||StunRemaining>0)Ride->Pedal=Ride->Steer=0;
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;
- LeanAngle=FMath::Lerp(LeanAngle,Ride->SmoothedSteer*FMath::Min(24.f,Ride->Speed*.035f),1.f-FMath::Exp(-10.f*Dt));
+ LeanAngle=FMath::Lerp(LeanAngle,(Ride->bRealHandling?FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan(Ride->Speed*FMath::DegreesToRadians(Ride->TurnRateDegrees)/980.f)),-35.f,35.f):Ride->SmoothedSteer*FMath::Min(24.f,Ride->Speed*.035f)),1.f-FMath::Exp(-10.f*Dt));
  float TargetPitch=0;
  if(!bParked&&Fall<=0){if(Ride->IsMovingOnGround()){const FVector N=Ride->CurrentFloor.HitResult.ImpactNormal;TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(-FVector::DotProduct(GetActorForwardVector(),N),N.Z));}else if(Ride->IsFalling())TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(Ride->Velocity.Z,FMath::Max(400.f,Ride->Speed)));}
  SurfacePitch=FMath::Lerp(SurfacePitch,FMath::Clamp(TargetPitch,-40.f,40.f),1.f-FMath::Exp(-12.f*Dt));

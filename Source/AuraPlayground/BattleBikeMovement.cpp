@@ -39,10 +39,18 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&(Floor->ActorHasTag(TEXT("RideGrass"))||(CurrentFloor.HitResult.GetComponent()&&CurrentFloor.HitResult.GetComponent()->ComponentHasTag(TEXT("RideGrass"))));
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
-   Heading.Yaw+=SmoothedSteer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f)*Dt;CharacterOwner->SetActorRotation(Heading);
+   TurnRateDegrees=SmoothedSteer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f);
+   if(bRealHandling){
+    // Bicycle model: yaw = speed / wheelbase * tan(front-wheel angle).
+    const float Requested=Speed/110.f*FMath::Tan(FMath::DegreesToRadians(SmoothedSteer*32.f));
+    const float Grip=(bGrass?350.f:680.f)*(Brake>.5f?.65f:1.f);
+    const float Limit=Grip/FMath::Max(Speed,50.f);
+    TurnRateDegrees=IsMovingOnGround()?FMath::RadiansToDegrees(FMath::Clamp(Requested,-Limit,Limit)):0.f;
+   }
+   Heading.Yaw+=TurnRateDegrees*Dt;CharacterOwner->SetActorRotation(Heading);
    const bool BrakeTurn=Brake>.5f&&PreviousBrake<=.5f&&FMath::Abs(Steer)>.3f&&Speed>800;
    const bool FastTurn=FMath::Abs(Steer)>.8f&&FMath::Abs(PreviousSteer)<=.8f&&Speed>1350;
-   if(BrakeTurn||FastTurn)SlideRemaining=.65f;
+   if(!bRealHandling&&(BrakeTurn||FastTurn))SlideRemaining=.65f;
    if(Floor&&(Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))))LastSafeLocation=CharacterOwner->GetActorLocation();
   }
  }
@@ -58,8 +66,17 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  static const float Caps[]={420,700,1000,1300,1600};static const float Accel[]={640,500,420,360,320};
  const float Cap=(BoostRemaining>0?1800.f:Caps[Gear-1])*(bGrass?.75f:1.f);
  const float Drag=Speed>0?22.f+Speed*.012f:0;
- if(BoostRemaining>0&&Brake<=0)Speed=Cap;
- Speed=FMath::Clamp(Speed+(Pedal*Accel[Gear-1]-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
+ if(BoostRemaining>0&&Brake<=0&&(!bRealHandling||IsMovingOnGround()))Speed=Cap;
+ if(bRealHandling){
+  if(IsMovingOnGround()){
+   const FVector Normal=CurrentFloor.HitResult.ImpactNormal.GetSafeNormal();
+   const FVector Tangent=FVector::VectorPlaneProject(CharacterOwner->GetActorForwardVector(),Normal).GetSafeNormal();
+   const float GradeForce=-980.f*Tangent.Z;
+   const float Resistance=Speed>0?(bGrass?65.f:12.f)+.000025f*Speed*Speed:0.f;
+   const float Motor=Pedal*Accel[Gear-1]*FMath::Clamp((Cap-Speed)/150.f,0.f,1.f);
+   Speed=FMath::Clamp(Speed+(Motor+GradeForce-Resistance-Brake*(bGrass?450.f:850.f))*Dt,0.f,2200.f);
+  }
+ }else Speed=FMath::Clamp(Speed+(Pedal*Accel[Gear-1]-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
  const FVector Horizontal=FMath::Lerp(FVector(Velocity.X,Velocity.Y,0),Desired,1.f-FMath::Exp(-(SlideRemaining>0?2.3f:18.f)*Dt));
  Velocity.X=Horizontal.X;Velocity.Y=Horizontal.Y;
