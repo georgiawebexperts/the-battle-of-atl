@@ -14,7 +14,7 @@ void TickBattlePotholeRideAudit(APlayerController* PC,float Dt){
  auto Finish=[&](bool Pass,const TCHAR* Why){Key(false);S.Done=true;UE_LOG(LogTemp,Display,TEXT("PotholeRideAudit: {\"passed\":%s,\"reason\":\"%s\",\"phase\":%d,\"contacts\":%d}"),Pass?TEXT("true"):TEXT("false"),Why,S.Phase,S.Contact.IsValid()?S.Contact->Contacts:-1);PC->ConsoleCommand(TEXT("quit"));};
  auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike){Finish(false,TEXT("Missing mounted bike"));return;}auto* Move=Bike->Ride.Get();
  if(S.Phase==0){
-  bool Found=false;for(TActorIterator<ABattlePothole> It(PC->GetWorld());It;++It)if(It->ActorHasTag(TEXT("PotholeReview"))){S.Site=It->GetActorLocation();It->SetActorTickEnabled(false);Found=true;break;}
+  bool Found=false;for(TActorIterator<ABattlePothole> It(PC->GetWorld());It;++It)if(It->ActorHasTag(TEXT("PotholeReview"))||It->ActorHasTag(TEXT("AuthoredPothole"))){S.Site=It->GetActorLocation();It->SetActorTickEnabled(false);Found=true;break;}
   if(!Found){Finish(false,TEXT("Missing authored candidate"));return;}
   for(TActorIterator<ABattleRoadCar> It(PC->GetWorld());It;++It)It->Destroy();S.Phase=1;
  }
