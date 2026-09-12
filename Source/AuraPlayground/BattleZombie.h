@@ -38,6 +38,8 @@ private:
  UPROPERTY() TObjectPtr<UStaticMeshComponent> LeftEye;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> RightEye;
  UPROPERTY() TObjectPtr<UMaterialInstanceDynamic> Skin;
+ UFUNCTION() void EnforceParkBoundary(float Dt,FVector OldLocation,FVector OldVelocity);
+ FVector LastParkPosition;
  float AttackDelay=1,WarningRemaining=0,PathDelay=0,DeathTime=0,Flinch=0,SpeechDelay=12;
 };
 UCLASS()

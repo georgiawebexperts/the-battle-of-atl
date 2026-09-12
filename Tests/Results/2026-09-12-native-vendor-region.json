@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "stage": 1,
+  "reason": "Exterior selection, park vendor, outside attack cancellation and two-second outward movement containment pass",
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/vendor-region-audit.log",
+  "scope": "Native boundary fixture; full pursuit routes, visuals and market installation remain unaccepted.",
+  "movement_guard_verified": true
+}

@@ -1,4 +1,6 @@
 #include "BattleZombie.h"
+#include "BattleParkRegion.h"
+#include "NavigationPath.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
@@ -42,7 +44,10 @@ ABattleZombie::ABattleZombie(){
  int32 Side=-1;for(auto* Eye:{LeftEye.Get(),RightEye.Get()}){Eye->SetupAttachment(GetCapsuleComponent());Eye->SetStaticMesh(Sphere.Object);Eye->SetRelativeLocation(FVector(10,Side*4,64));Eye->SetRelativeScale3D(FVector(.035));Eye->SetCollisionEnabled(ECollisionEnabled::NoCollision);Eye->SetCastShadow(false);Eye->SetCanEverAffectNavigation(false);Side=1;}
 }
 void ABattleZombie::BeginPlay(){
- VisualStyle=VisualStyle<0?FMath::RandHelper(2):FMath::Clamp(VisualStyle,0,1);Body->SetSkinnedAssetAndUpdate(VisualStyle==0?CoatMesh:JacketMesh);SetLocomotionClips(StyleIdle[VisualStyle],StyleWalk[VisualStyle],StyleRun[VisualStyle]);
+ VisualStyle=VisualStyle<0?FMath::RandHelper(2):FMath::Clamp(VisualStyle,0,1);
+ if(VisualStyle==0&&!BattleParkRegion::Contains(GetActorLocation()))VisualStyle=1;
+ LastParkPosition=GetActorLocation();
+ OnCharacterMovementUpdated.AddDynamic(this,&ABattleZombie::EnforceParkBoundary);Body->SetSkinnedAssetAndUpdate(VisualStyle==0?CoatMesh:JacketMesh);SetLocomotionClips(StyleIdle[VisualStyle],StyleWalk[VisualStyle],StyleRun[VisualStyle]);
  Super::BeginPlay();Weapon->SetVisibility(false);GetCharacterMovement()->MaxWalkSpeed=MoveSpeed;
  for(auto* Eye:{LeftEye.Get(),RightEye.Get()})Eye->SetVisibility(false);
  Speak();
@@ -51,9 +56,17 @@ void ABattleZombie::Speak(bool Charge){
  Subtitle=Charge?TEXT("RUNNER! AAAAAH!"):BattleZombieLines::Lines[FMath::RandHelper(UE_ARRAY_COUNT(BattleZombieLines::Lines))];SubtitleRemaining=3;
  if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_ZombieGrowl.S_ZombieGrowl")))UGameplayStatics::PlaySoundAtLocation(this,Sound,GetActorLocation(),.6f,Charge?1.5f:FMath::FRandRange(.8f,1.1f));
 }
+void ABattleZombie::EnforceParkBoundary(float Dt,FVector OldLocation,FVector OldVelocity){
+ if(VisualStyle!=0||bDead)return;
+ if(!BattleParkRegion::ContainsSegment(LastParkPosition,GetActorLocation())){
+  SetActorLocation(LastParkPosition,false,nullptr,ETeleportType::TeleportPhysics);
+  GetCharacterMovement()->StopMovementImmediately();if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+ }else LastParkPosition=GetActorLocation();
+}
 void ABattleZombie::Tick(float Dt){
  Super::Tick(Dt);Weapon->SetVisibility(false);SubtitleRemaining=FMath::Max(0.f,SubtitleRemaining-Dt);
  auto* AI=Cast<AAIController>(GetController());
+ EnforceParkBoundary(Dt,FVector::ZeroVector,FVector::ZeroVector);
  if(bDead){
   DeathTime+=Dt;Body->SetRelativeRotation(FRotator(0,-90,FMath::Min(90.f,DeathTime*160)));Body->SetRelativeLocation(FVector(0,0,-85));
   if(Skin)Skin->SetScalarParameterValue(TEXT("Dissolve"),FMath::Clamp((DeathTime-3.5f)/1.5f,0.f,1.f));return;
@@ -62,6 +75,10 @@ void ABattleZombie::Tick(float Dt){
  if(!Mode||Mode->bRunEnded||Mode->bTutorialActive||Mode->StartCountdown>0){if(AI)AI->StopMovement();return;}
  if(Emergence>0){Emergence=FMath::Max(0.f,Emergence-Dt);Body->AddLocalOffset(FVector(0,0,-130*Emergence));if(AI)AI->StopMovement();return;}
  auto* Target=UGameplayStatics::GetPlayerPawn(this,0);if(!Target)return;
+ if(VisualStyle==0&&!BattleParkRegion::Contains(Target->GetActorLocation())){
+  bTelegraphing=false;WarningRemaining=0;
+  if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return;
+ }
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Foot=Cast<ABattleRider>(Target))Bike=Foot->ParkedBike;
  if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||bSwimming){if(AI)AI->StopMovement();return;}
  Flinch=FMath::Max(0.f,Flinch-Dt);AttackDelay=FMath::Max(0.f,AttackDelay-Dt);PathDelay-=Dt;
@@ -78,7 +95,15 @@ void ABattleZombie::Tick(float Dt){
  }
  if(Flinch>0){if(AI)AI->StopMovement();Body->AddLocalRotation(FRotator(0,0,-20*Flinch));return;}
  if(Distance<120&&FMath::Abs(Delta.Z)<130&&Clear&&AttackDelay<=0){bTelegraphing=true;WarningRemaining=WarningSeconds;if(AI)AI->StopMovement();return;}
- if(AI&&PathDelay<=0){PathDelay=.6f;PathRequests++;AI->MoveToActor(Target,75,true,true,true,nullptr,true);}
+ if(AI&&PathDelay<=0){
+  PathDelay=.6f;PathRequests++;
+  if(VisualStyle==0){
+   auto* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,GetActorLocation(),Target->GetActorLocation(),this);
+   bool Safe=Path&&Path->IsValid()&&!Path->IsPartial()&&Path->PathPoints.Num()>1;
+   if(Safe)for(int I=1;I<Path->PathPoints.Num();I++)if(!BattleParkRegion::ContainsSegment(Path->PathPoints[I-1],Path->PathPoints[I])){Safe=false;break;}
+   if(Safe)AI->MoveToLocation(Target->GetActorLocation(),75,true,true,false,true,nullptr,false);else AI->StopMovement();
+  }else AI->MoveToActor(Target,75,true,true,true,nullptr,true);
+ }
  // Twitch the shoulders while retaining the existing moving, articulated body.
  Body->AddLocalRotation(FRotator(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*13)*3));
 }
@@ -100,7 +125,11 @@ void ABattleEnemyDirector::BeginPlay(){
  #endif
 }
 void ABattleEnemyDirector::Tick(float Dt){
- Super::Tick(Dt);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
+ Super::Tick(Dt);
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleVendorRegionAudit"))){extern void TickBattleVendorRegionAudit(ABattleEnemyDirector*,float);TickBattleVendorRegionAudit(this,Dt);return;}
+#endif
+ auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
  if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies+FMath::CeilToInt(Mode->Trouble*.5f)+(Mode->Quest&&Mode->Quest->bCollected?6:0);LiveZombies=0;
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;}
  if(bFreezeSpawns||Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)return;

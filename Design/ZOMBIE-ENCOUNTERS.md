@@ -54,3 +54,10 @@ real-world game balance, audio quality, human keyboard input or frame rate.
 ## Geographic restriction — 2026-09-12 [codex-maclaptop]
 
 New user requirement, not implemented: Farmers Market Vendor zombies appear only inside Piedmont Park, including pursuit boundaries. Homeless-themed and punk-rocker variants can appear anywhere in the playable world. Market beside Billy’s at 12th Street motivates the vendor variant. See WORLD-EXPANSION.md, Farmers market at 12th Street, for reference photos and tutorial entrance blocking.
+
+
+## Vendor park boundary implementation — 2026-09-12 [codex-maclaptop]
+
+Source now uses the retained OSM Piedmont Park polygon (way 208357832), converted through the terrain georeference to Unreal ESU at the existing 1:3 geographic scale. Scripts/generate_park_region.py regenerates BattleParkRegion.h and SourceAssets/Terrain/park-region.json; use Tools/terrain-venv/bin/python. A 35 cm inward margin keeps the vendor capsule inside. Exterior vendor choices become punk before mesh setup. Vendor pursuit requests reject partial or boundary-crossing navigation paths; attacks cancel when the player leaves the park. Character movement updates also reject crossing segments, restoring the last valid position. Punk behavior is unrestricted; other actor classes are unchanged.
+
+Native build passed. Scripts/test_vendor_region.py passed exterior selection, interior vendor selection, cancellation of a pending attack on an outside player, and containment. Identical forced character movement stayed inside for the vendor and crossed outside for the punk. Collision/ground effects are disabled only in that comparative fixture. No rendered appearance, exhaustive boundary traversal, long in-park pursuit or packaged verification is claimed. Paths are sampled at 20 cm with a 35 cm margin. Full market geometry, tutorial closure and surrounding dressing remain pending. Desktop050 does not contain this source change.
