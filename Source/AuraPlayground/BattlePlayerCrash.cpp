@@ -54,17 +54,44 @@ void ABattlePlayerCrash::Tick(float Dt){
  Clock+=Dt;
  if(!bGettingUp){MirrorPose();Settled=Physics->GetPhysicsLinearVelocity(TEXT("Hips")).Size()<100?Settled+Dt:0;
   if(Clock>1.2f&&Settled>.5f){bGettingUp=Recovery.Begin(Bike,Physics,Display);if(!bGettingUp)Settled=0;}
- }else if(Recovery.Tick(Dt)&&FinishRecovery())return;
+ }else if(Recovery.Tick(Dt)&&FinishRecovery(Dt))return;
  const FVector Hip=bGettingUp&&Recovery.Pose.IsValid()?Recovery.Pose->GetSocketLocation(TEXT("Hips")):Display->GetSocketLocation(TEXT("Hips"));
  // Keep the player target at the body so enemies pursue the fallen rider.
  Bike->SetActorLocation(Hip+FVector(0,0,25),false,nullptr,ETeleportType::TeleportPhysics);
  if(Camera){UpdateBattleCrashCamera(Camera,Bike,Fallen,Hip+FVector(0,0,25),Dt);PC->SetViewTarget(Camera);}
 }
-bool ABattlePlayerCrash::FinishRecovery(){
+UPoseableMeshComponent* ABattlePlayerCrash::GetRecoveryPose() const{return Recovery.Pose.Get();}
+float ABattlePlayerCrash::GetRecoveryTime() const{return Recovery.Clock;}
+bool ABattlePlayerCrash::FinishRecovery(float Dt){
  auto* PC=Cast<APlayerController>(Bike->GetController());if(!PC||!Recovery.Pose.IsValid())return false;
- const FVector Position=Recovery.Pose->GetComponentLocation()+FVector(0,0,90);const FRotator Rotation(0,Recovery.Pose->GetComponentRotation().Yaw+90,0);
+ FVector Position=Recovery.Pose->GetComponentLocation()+FVector(0,0,90);const FRotator Rotation(0,Recovery.Pose->GetComponentRotation().Yaw+90,0);
  FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);Q.AddIgnoredActor(this);if(Fallen)Q.AddIgnoredActor(Fallen);
- if(GetWorld()->OverlapBlockingTestByChannel(Position,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))return false;
+ const auto Shape=FCollisionShape::MakeCapsule(30,88);
+ auto Occupied=[&](const FVector& P){return GetWorld()->OverlapBlockingTestByChannel(P,FQuat::Identity,ECC_Pawn,Shape,Q);};
+ FCollisionObjectQueryParams Geometry;Geometry.AddObjectTypesToQuery(ECC_WorldStatic);Geometry.AddObjectTypesToQuery(ECC_WorldDynamic);Geometry.AddObjectTypesToQuery(ECC_PhysicsBody);
+ auto ClearPath=[&](const FVector& A,const FVector& B){FHitResult Hit;return !GetWorld()->SweepSingleByObjectType(Hit,A,B,FQuat::Identity,Geometry,Shape,Q);};
+ if(Occupied(Position)&&!bExitReposition){
+  if(Clock<NextExitSearch)return false;NextExitSearch=Clock+.25f;
+  // A crowd member may enter after the original get-up clearance check. Resolve
+  // locally, preserving solid geometry and floor support rather than teleporting.
+  for(float Radius:{70.f,110.f})for(int Direction=0;Direction<8&&!bExitReposition;Direction++){
+   const float Angle=Direction*PI/4;const FVector Probe=Position+FVector(FMath::Cos(Angle)*Radius,FMath::Sin(Angle)*Radius,0);FHitResult Floor;
+   FCollisionObjectQueryParams Ground;Ground.AddObjectTypesToQuery(ECC_WorldStatic);
+   if(!GetWorld()->LineTraceSingleByObjectType(Floor,Probe+FVector(0,0,30),Probe-FVector(0,0,130),Ground,Q)||Floor.ImpactNormal.Z<.65f)continue;
+   const FVector Candidate=Floor.ImpactPoint+FVector(0,0,90);
+   if(FMath::Abs(Candidate.Z-Position.Z)>25||Occupied(Candidate)||!ClearPath(Position,Candidate))continue;
+   ExitTarget=Candidate;bExitReposition=true;UE_LOG(LogTemp,Display,TEXT("PlayerRecoverySpace: moving_to_clearance_cm=%.2f"),FVector::Dist(Position,Candidate));
+  }
+  if(!bExitReposition)return false;
+ }
+ if(bExitReposition){
+  if(Occupied(ExitTarget)||!ClearPath(Position,ExitTarget)){bExitReposition=false;return false;}
+  const FVector Next=FMath::VInterpConstantTo(Position,ExitTarget,Dt,140.f);
+  Recovery.Pose->SetWorldLocation(Next-FVector(0,0,90));Position=Next;
+  if(!Position.Equals(ExitTarget,.1f))return false;bExitReposition=false;
+  if(Occupied(Position))return false;
+ }
+
  FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
  auto* Person=GetWorld()->SpawnActor<ABattleRider>(Position,Rotation,Params);if(!Person)return false;
  Person->ParkedBike=Bike;Person->Health=Bike->RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(Bike,true);

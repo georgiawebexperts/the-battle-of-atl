@@ -20,7 +20,7 @@
 #include "EngineUtils.h"
 void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleBike> Bike;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ABattlePolice> Officer;TWeakObjectPtr<ABattleDrone> Drone;TWeakObjectPtr<APiedmontDarkZone> LightZone;TWeakObjectPtr<USceneComponent> HeadParent,TailParent;FTransform HeadRelative,TailRelative;bool LightChecked=false;float LightClock=0;float ExpectedHealth=70;bool Taser=false,DroneMode=false,WarningSeen=false;float Clock=0,CrashTime=0,StartTime=0,Elapsed=0;int Stage=0,Wipeouts=0,Ammo=0,Cycles=0;bool Done=false,FallShot=false,FootShot=false,Death=false;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleBike> Bike;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ABattlePolice> Officer;TWeakObjectPtr<ABattleDrone> Drone;TWeakObjectPtr<AActor> RecoveryBlocker;FVector RecoveryAnchor,HoldHead;float BlockClock=0;bool BlockPlaced=false,BlockReleased=false,HoldSample=false,HoldVerified=false;TWeakObjectPtr<APiedmontDarkZone> LightZone;TWeakObjectPtr<USceneComponent> HeadParent,TailParent;FTransform HeadRelative,TailRelative;bool LightChecked=false;float LightClock=0;float ExpectedHealth=70;bool Taser=false,DroneMode=false,WarningSeen=false;float Clock=0,CrashTime=0,StartTime=0,Elapsed=0;int Stage=0,Wipeouts=0,Ammo=0,Cycles=0;bool Done=false,FallShot=false,FootShot=false,Death=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Shot=[&](const TCHAR* Name){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);FScreenshotRequest::RequestScreenshot(Folder/(S.Cycles?FString::Printf(TEXT("cycle%d-%s"),S.Cycles+1,Name):FString(Name)),false,false);};
@@ -54,9 +54,32 @@ void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
   Key(EKeys::W,false);S.Stage=2;S.CrashTime=S.Clock;S.StartTime=Mode?Mode->TimeRemaining:0;S.Elapsed=0;}
  if(S.Stage==2){
   S.Elapsed+=Dt;
+  const bool CrowdBlock=FParse::Param(FCommandLine::Get(),TEXT("BattleCrashCrowdBlock")),SolidBlock=FParse::Param(FCommandLine::Get(),TEXT("BattleCrashSolidBlock"));
+  if((CrowdBlock||SolidBlock)&&IsValid(B->PlayerCrash)){
+   auto* Pose=B->PlayerCrash->GetRecoveryPose();const float Progress=B->PlayerCrash->GetRecoveryTime();
+   if(!S.BlockPlaced&&Pose&&Progress>4){
+    S.RecoveryAnchor=Pose->GetComponentLocation()+FVector(0,0,90);S.RecoveryBlocker=PC->GetWorld()->SpawnActor<AActor>();
+    auto* Box=NewObject<UBoxComponent>(S.RecoveryBlocker.Get());S.RecoveryBlocker->AddInstanceComponent(Box);S.RecoveryBlocker->SetRootComponent(Box);Box->SetBoxExtent(SolidBlock?FVector(180,180,100):FVector(25,25,88));Box->SetCollisionEnabled(ECollisionEnabled::QueryOnly);Box->SetCollisionObjectType(SolidBlock?ECC_WorldStatic:ECC_Pawn);Box->SetCollisionResponseToAllChannels(ECR_Block);Box->SetWorldLocation(S.RecoveryAnchor);Box->RegisterComponent();S.BlockClock=S.Clock;S.BlockPlaced=true;
+   }
+   if(SolidBlock&&S.RecoveryBlocker.IsValid()){
+    if(Cast<ABattleRider>(PC->GetPawn())){Finish(false,TEXT("Recovered inside solid blocker"));return;}
+    if(Pose&&Progress>5.7f){
+     if(!S.HoldSample){S.HoldHead=Pose->GetSocketLocation(TEXT("Head"));S.HoldSample=true;}
+     if(Progress>6.7f){if(FVector::Dist(S.HoldHead,Pose->GetSocketLocation(TEXT("Head")))>.1f){Finish(false,TEXT("Blocked final pose moved"));return;}S.HoldVerified=true;}
+    }
+    if(S.Clock-S.BlockClock>3.5f){S.RecoveryBlocker->Destroy();S.BlockReleased=true;}
+   }
+  }
   if(!S.FallShot&&S.Clock-S.CrashTime>1){Shot(TEXT("live-fall.png"));S.FallShot=true;}
   if(S.Death&&!FParse::Param(FCommandLine::Get(),TEXT("BattleCrashDeathOnFoot"))&&S.Clock-S.CrashTime>1.5f){B->DamageGrace=0;B->ApplyRiderDamage(1000);S.Stage=5;return;}
   if(auto* Person=Cast<ABattleRider>(PC->GetPawn())){
+   if(CrowdBlock||SolidBlock){
+    const float Shift=FVector::Dist(Person->GetActorLocation(),S.RecoveryAnchor);
+    bool Clear=true;if(S.RecoveryBlocker.IsValid()){FCollisionQueryParams Q;Q.AddIgnoredActor(B);Q.AddIgnoredActor(Person);Clear=!PC->GetWorld()->OverlapBlockingTestByChannel(Person->GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q);}
+    const bool SpacePass=S.BlockPlaced&&Clear&&(CrowdBlock?(Shift>=60&&Shift<=115):(S.BlockReleased&&S.HoldVerified&&Shift<5));
+    UE_LOG(LogTemp,Display,TEXT("RecoverySpaceAudit: {\"passed\":%s,\"shift_cm\":%.3f,\"solid_hold_verified\":%s}"),SpacePass?TEXT("true"):TEXT("false"),Shift,S.HoldVerified?TEXT("true"):TEXT("false"));
+    if(!SpacePass){Finish(false,TEXT("Recovery obstacle resolution failed"));return;}if(S.RecoveryBlocker.IsValid())S.RecoveryBlocker->Destroy();
+   }
    const bool State=B->bParked&&!B->bCrashActive&&IsValid(B->PlayerCrash)&&B->PlayerCrash->bRecovered&&Person->ParkedBike==B&&!Person->bWeaponDrawn&&Person->Health==S.ExpectedHealth&&B->PistolAmmo==S.Ammo;
    const float Lost=Mode?S.StartTime-Mode->TimeRemaining:0;const bool Timer=Mode&&FMath::Abs(Lost-S.Elapsed*Mode->FootTimeMultiplier)<.2f;
    UE_LOG(LogTemp,Display,TEXT("PlayerCrashFoot: state=%d timer=%d elapsed=%.3f lost=%.3f"),State,Timer,S.Elapsed,Lost);

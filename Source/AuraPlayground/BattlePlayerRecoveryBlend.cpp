@@ -74,7 +74,7 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
 }
 bool FBattlePlayerRecoveryBlend::Tick(float Dt){
  if(!Pose.IsValid()||!Clip.IsValid())return false;Clock+=Dt;const auto& Ref=Cast<USkeletalMesh>(Pose->GetSkinnedAsset())->GetRefSkeleton();
- auto Local=Sample(Clip.Get(),Ref,FMath::Max(0.f,Clock-.35f),false);const float Alpha=FMath::SmoothStep(0.f,1.f,FMath::Clamp(Clock/.35f,0.f,1.f));
+ auto Local=Sample(Clip.Get(),Ref,FMath::Clamp(Clock-.35f,0.f,Clip->GetPlayLength()),false);const float Alpha=FMath::SmoothStep(0.f,1.f,FMath::Clamp(Clock/.35f,0.f,1.f));
  for(int32 I=0;I<Local.Num();I++){FTransform T;T.Blend(LandedLocal[I],Local[I],Alpha);Local[I]=T;}
  Pose->BoneSpaceTransforms=Local;Pose->MarkRefreshTransformDirty();Pose->RefreshBoneTransforms();return Clock>=Clip->GetPlayLength()+.5f;
 }

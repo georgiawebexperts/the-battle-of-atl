@@ -151,3 +151,12 @@ Fixed automatic head/rear lamps remaining attached to the rider capsule while th
 Native build passes. Rendered collision/get-up/light fixture places a small dark zone around the fallen headlamp while the bike actor origin remains outside: both lamps attached to Frame, lamp-only dark probe and visible automatic lights pass. After E remount, exact original parent/local transforms and delayed daylight switch-off pass, with no crash actors left. Mid-fall death fixture also passes restored lamp parents/local transforms and checkpoint control. Reports2026-09-12-player-crash-live-lights.json and player-crash-lights-death.json. This is attachment/state/cleanup evidence, not full nighttime visual acceptance.
 
 Post049 source only; desktop049 unchanged. Pending packaged update with physical drone/taser falls, blocked recovery and animation/video/night-scene polish, plus the wider original game scope. Goal incomplete.
+
+
+## Late get-up obstruction handling — 2026-09-12 [codex-maclaptop]
+
+A pedestrian entering after initial clearance could previously prevent on-foot possession indefinitely. FinishRecovery now searches nearby70/110cm offsets when its standing capsule is occupied, requiring static floor support, normal>=.65, height change<=25cm, unoccupied destination and a capsule sweep clear of solid static/dynamic/physics geometry. Pawn crowd overlap can be resolved outward; solid geometry is not bypassed. The recovery display moves gradually at140cm/s to the selected spot, continuously rechecking route/destination before possession. Solid blockage waits and retries every.25s. Animation sampling is clamped to clip duration so delayed recovery holds its final pose.
+
+Native build and rendered late-obstruction fixtures pass. Pawn-type blocker inserted4s into get-up: moves70.095cm, ends with a clear capsule, then E remount completes. Large solid blocker inserted at the same stage: cannot escape through geometry, final head pose stable within.1cm after clip end, recovers with0cm shift after blocker removal, then remounts. Timer continues at1.25 throughout. Reports2026-09-12-player-crash-{crowd,solid}-space.json. Runner now requires actual requested obstruction/hazard evidence so older packaged binaries cannot silently pass an unsupported flag.
+
+This is post049 source, not installed. Local reposition still needs motion/video polish; permanently blocked solid geometry, steeper/sloped support, moving vehicles and broad world cases remain unaccepted. Full game goal incomplete.

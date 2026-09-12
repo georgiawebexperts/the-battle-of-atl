@@ -13,6 +13,8 @@ public:
  virtual void Tick(float Dt) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
+ UPoseableMeshComponent* GetRecoveryPose() const;
+ float GetRecoveryTime() const;
  bool PrepareRemount(class ABattleRider* Person);
  UPROPERTY() TObjectPtr<ABattleBike> Bike;
  UPROPERTY() TObjectPtr<ABattleFallenBike> Fallen;
@@ -22,7 +24,10 @@ public:
  bool bRecovered=false;
 private:
  void MirrorPose();
- bool FinishRecovery();
+ bool FinishRecovery(float Dt);
+ FVector ExitTarget;
+ bool bExitReposition=false;
+ float NextExitSearch=0;
  FBattlePlayerRecoveryBlend Recovery;
  float Clock=0,Settled=0;
  bool bGettingUp=false;
