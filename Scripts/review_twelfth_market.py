@@ -58,14 +58,17 @@ for index,row in enumerate(layout['stalls']):
  board=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(bx,by,base+202),unreal.Rotator(yaw=yaw));board.set_actor_scale3d(unreal.Vector(2.7,.02,.36));board.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));board.static_mesh_component.set_material(0,unreal.load_asset(dest+'/M_Cloth'));board.static_mesh_component.set_collision_profile_name('NoCollision');board.tags=[unreal.Name('MarketReview')]
  sign=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(cx,cy,base),unreal.Rotator(yaw=yaw));sign.tags=[unreal.Name('MarketReview')];sign.static_mesh_component.set_static_mesh(sign_mesh);sign.static_mesh_component.set_material(0,sign_materials[index//2]);sign.static_mesh_component.set_collision_profile_name('NoCollision')
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
+if '-MarketClosurePreview' in unreal.SystemLibrary.get_command_line():
+ gx,gy=layout['gate_xy'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(gx,gy,1000),unreal.Vector(gx,gy,-1000));assert hit
+ closure=ea.spawn_actor_from_class(unreal.BattleMarketClosure,hit[0]);closure.tags=[unreal.Name('MarketReview')]
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8)
 for prop,value in [('texture_target',tex),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',70)]:cap.set_editor_property(prop,value)
 gx,gy=layout['gate_xy'];base=survey[0]['base_z'];x,y=layout['stalls'][0]['center_xy']
-views=[('entrance',[gx-250,gy,base+165],[gx+1500,gy,base+120]),('stall',[x+100,y+500,base+150],[x,y-30,base+130]),('wide',[gx+600,gy-1600,base+1200],[gx+1000,gy,base])];images=[]
+views=[('entrance',[gx-1000,gy,base+165],[gx+1500,gy,base+120]),('stall',[x+100,y+500,base+150],[x,y-30,base+130]),('wide',[gx+600,gy-1600,base+1200],[gx+1000,gy,base])];images=[]
 for name,p,target in views:
  loc=unreal.Vector(*p);cam.set_actor_location(loc,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(loc,unreal.Vector(*target)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png');images.append(str(out/(name+'.png')))
-result={'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
+result={'closure_preview':'-MarketClosurePreview' in unreal.SystemLibrary.get_command_line(),'lighting':lighting,'sign_implementation':'Textured static panels; five baked fictional labels','imported_table_y_sign':table_sign,'stalls':survey,'images':images,'main_map_saved':False,'visual_accepted':False,'scope':'Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.'}
 (root/'Tests/Results/2026-09-12-market-review.json').write_text(json.dumps(result,indent=2)+'\n')
 print('MARKET_REVIEW '+str(out))

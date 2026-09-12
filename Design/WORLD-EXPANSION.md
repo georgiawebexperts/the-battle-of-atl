@@ -535,3 +535,12 @@ Produce centres were99cm while crate rims reach108.5cm, occluding fruit from rid
 
 
 2026-09-12 [codex-maclaptop] Market access prerequisite fixed in source: old13th Street south expansion fence made12th market unreachable. Extended mapped Piedmont branch to market corner and moved south expansion stop beyond it. Native keyboard approach and both14th gate routes pass; see STORY-AND-TUTORIAL.md. Market entrance barrier and installed stalls still pending.
+
+
+## Market gate closure prototype — 2026-09-12 [codex-maclaptop]
+
+ABattleMarketClosure creates a360cm-high,1640cm-wide visible welded-mesh fence, feet and a readable FARMERS MARKET SETUP / PARK ENTRY:14TH STREET sign using engine UnlitText. Root grounds by native trace at mapped gate(-19107.993785,3187.443844). Only spawns under nonshipping BattleMarketClosureReview; not normal gameplay. Static review optional MarketClosurePreview places it transiently with market stalls.
+
+Native build passes.237 sphere30cm sweeps across fence width at90/180/300cm pass. Initial test hit the adjacent tutorial street fence atY+600 instead of market fence; isolated sweeps now ignore that actor to test market geometry. Actual keyboard market approach still includes both fences and passes4471.1cm, maxerror4.3cm, untimed/no wipeout. Scripts/test_tutorial_routes.py --closure market reproduces; report2026-09-12-market-closure-market.json. Previous extension-only report preserved.
+
+Static entrance renderbe8eaec49a83433bbdcf072f2ec764d7 inspected: sign readable, market visible behind. Fence deliberately prototype quality. Ground end fit, side bypasses, actual collision/jump attempts, and post-tutorial lifecycle not verified; do not treat as complete access restriction. Normal gameplay/main map/desktop050 unchanged.

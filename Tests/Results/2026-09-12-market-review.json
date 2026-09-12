@@ -1385,14 +1385,15 @@
     }
   ],
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/7e16e580a005491e96468f1077002171/entrance.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/7e16e580a005491e96468f1077002171/stall.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/7e16e580a005491e96468f1077002171/wide.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/be8eaec49a83433bbdcf072f2ec764d7/entrance.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/be8eaec49a83433bbdcf072f2ec764d7/stall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/market-review/be8eaec49a83433bbdcf072f2ec764d7/wide.png"
   ],
   "main_map_saved": false,
   "visual_accepted": false,
   "scope": "Transient static market study. Measured levelling blocks included. Collision/closure, tutorial routes, detailed materials and gameplay acceptance pending.",
+  "closure_preview": true,
   "import_exit_code": 0,
   "capture_passed": true,
-  "review": "Shaded close-up inspected: label readable; raised produce visible above crate rims. Static skylight recapture diagnostic restores ambient on canopy. Full art and native runtime lighting unaccepted."
+  "review": "Entrance fence/sign inspected in be8eaec49a83433bbdcf072f2ec764d7. Text readable; crude fence appearance and side bypass/ground fit remain unaccepted. Static sky diagnostic active."
 }

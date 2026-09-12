@@ -1,4 +1,5 @@
 #include "BattleTutorial.h"
+#include "BattleMarketClosure.h"
 #include "BattleTutorialData.h"
 #include "BattleTutorialBlock.h"
 #include "BattleBike.h"
@@ -64,7 +65,11 @@ ABattleTutorial::ABattleTutorial(){
  Label(TEXT("GateName"),TEXT("14TH STREET"),G+FVector(-88,-360,244),16,FRotator(0,180,0));
 }
 void ABattleTutorial::BeginPlay(){
- Super::BeginPlay();auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* B=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(this,0));if(!M||!B)return;
+ Super::BeginPlay();
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview")))GetWorld()->SpawnActor<ABattleMarketClosure>(FVector(-19107.993785,3187.443844,0),FRotator::ZeroRotator);
+#endif
+ auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* B=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(this,0));if(!M||!B)return;
 #if !UE_BUILD_SHIPPING
  for(const TCHAR* Flag:{TEXT("BattleSkipTutorial"),TEXT("BattleFinishAudit"),TEXT("BattleHealthAudit"),TEXT("BattleHomeDriveAudit"),TEXT("BattleHUDReview")})if(FParse::Param(FCommandLine::Get(),Flag)){if(FString(Flag)==TEXT("BattleHUDReview")&&FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialReview")))continue;M->bTutorialActive=false;return;}
 #endif

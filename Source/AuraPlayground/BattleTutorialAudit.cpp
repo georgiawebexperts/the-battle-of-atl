@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "BattleTutorial.h"
+#include "BattleMarketClosure.h"
 #include "BattleTutorialData.h"
 #include "BattleTutorialBlock.h"
 #include "Misc/CommandLine.h"
@@ -23,6 +24,16 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::BarrierCenters);I++){
    const FVector C=BattleTutorialBlock::BarrierCenters[I]+FVector(0,0,98),D=BattleTutorialBlock::BarrierDirections[I];FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(PracticeFence),false,B);
    TCHECK(GetWorld()->SweepSingleByChannel(Hit,C-D*220,C+D*220,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(32),Q)&&Hit.GetActor()==T,"Construction fence does not physically block the road");
+  }
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview"))){
+   TActorIterator<ABattleMarketClosure> It(GetWorld());TCHECK(It,"Market closure missing");auto* Closure=*It;
+   for(int Y=-780;Y<=780;Y+=20)for(float Z:{90.f,180.f,300.f}){
+    const FVector C=Closure->GetActorLocation()+FVector(0,Y,Z);FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(B);Q.AddIgnoredActor(T);
+    const bool Blocked=GetWorld()->SweepSingleByChannel(Hit,C-FVector(150,0,0),C+FVector(150,0,0),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(30),Q);
+    if(!Blocked||Hit.GetActor()!=Closure)UE_LOG(LogTemp,Display,TEXT("MarketClosureMiss: y=%d z=%.0f closure=%s hit=%s point=%s"),Y,Z,*Closure->GetActorLocation().ToString(),*GetNameSafe(Hit.GetActor()),*Hit.ImpactPoint.ToString());
+    TCHECK(Blocked&&Hit.GetActor()==Closure,"Gap in market gate fence");
+   }
+   UE_LOG(LogTemp,Display,TEXT("MarketClosureAudit: 237 fence crossing sweeps passed"));
   }
   const FVector G=BattleTutorialData::Gate;
   TCHECK(!T->TryStart(G-FVector(200,0,-500),G+FVector(200,0,500)),"Started above gate");

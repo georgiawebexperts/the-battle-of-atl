@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "reason": "Actual keyboard ride down mapped market approach preserves untimed practice",
+  "distance_cm": 4471.1,
+  "max_error_cm": 4.3,
+  "exit_code": 0,
+  "route": "market",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-route-market.log",
+  "scope": "237 isolated sphere sweeps across market fence; existing street fence ignored in sweeps. Actual keyboard ride with both fences enabled; side bypasses and jumping not verified.",
+  "market_fence_sweeps": true
+}
