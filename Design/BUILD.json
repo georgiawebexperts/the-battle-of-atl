@@ -1,9 +1,9 @@
 {
-  "build": 50,
-  "version": "0.50.0-dev",
+  "build": 51,
+  "version": "0.51.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "installed on desktop; packaged hazard, obstruction, lights and death checks passed; full-game acceptance unfinished",
-  "milestone": "Physical drone and taser falls, fallen-bike lights, and safe recovery around late obstructions; full-game acceptance unfinished",
+  "status": "Mac package built; cooked vendor and health tests pass; cooked direct tutorial route fails, so desktop remains050",
+  "milestone": "12th Street farmers market and tutorial closure, park-only vendor zombies, extended practice street and weathered park asphalt; full-game acceptance unfinished",
   "author": "2026-09-12 [codex-maclaptop]"
 }

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Boundary containment, unrestricted punk, in-park pursuit, outside stop and re-entry pursuit pass",
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/vendor-region-audit.log",
+  "scope": "Native boundary fixture; full pursuit routes, visuals and market installation remain unaccepted.",
+  "pursuit_events": [
+    "travel_cm=556.63 approached=1 paths=7",
+    "travel_cm=388.37"
+  ],
+  "movement_guard_verified": true,
+  "pursuit_verified": true
+}

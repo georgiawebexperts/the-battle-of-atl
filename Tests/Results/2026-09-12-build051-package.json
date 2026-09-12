@@ -1,0 +1,8 @@
+{
+  "build": 51,
+  "packaging_exit_code": 0,
+  "log": "work/mac-package.log",
+  "installed": false,
+  "hold_reason": "Cooked direct tutorial driving test failed; investigate before installation",
+  "desktop_build": 50
+}
