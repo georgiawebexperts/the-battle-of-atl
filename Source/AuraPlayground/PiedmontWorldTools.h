@@ -8,6 +8,8 @@ class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary 
  GENERATED_BODY()
 public:
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
+ static float GetTreeLowGeometryRadius(UStaticMesh* Mesh,float LocalHeightAboveBottom);
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
  static AActor* CreateFoliageReviewInstances(const TArray<FTransform>& Stations,UStaticMesh* Mesh);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Foliage")
  static AActor* CreateParkFoliage(const TArray<FTransform>& Stations,UStaticMesh* Mesh);

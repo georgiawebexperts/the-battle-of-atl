@@ -1,4 +1,4 @@
-"""Save an instanced Hornbeam review with conservative whole-crown path clearance."""
+"""Save an instanced Hornbeam review with conservative rider-height geometry clearance."""
 import json,math
 from pathlib import Path
 import unreal
@@ -18,16 +18,17 @@ def distance(x,y,s):
 rows=json.loads((root/'SourceAssets/Terrain/park-tree-stations.json').read_text())['trees'];groups=[[],[]];kept=[];rejected=[]
 for index,row in enumerate(rows):
  x,y=row['xy_cm'];choice=1 if row['placement']=='mapped_tree' or index%3==0 else 0;mesh=meshes[choice];b=mesh.get_bounds();scale=row['height_game_cm']/(2*b.box_extent.z)
- # Rotationally invariant envelope includes off-centre branches. This is deliberately
- # conservative: no canopy projected over the mapped path plus an 80 cm margin.
- radius=(math.hypot(b.box_extent.x,b.box_extent.y)+math.hypot(b.origin.x,b.origin.y))*scale
+ # 300 cm rider/camera envelope plus 80 cm lateral margin. All triangles
+ # entering the band contribute their complete extent; higher overhang is allowed.
+ radius=unreal.PiedmontWorldTools.get_tree_low_geometry_radius(mesh,300/scale)*scale
+ assert radius>0
  clearance=min(distance(x,y,s) for s in segments)
- if clearance<radius+80:rejected.append({'index':index,'reason':'crown_path_clearance','clearance_cm':clearance,'radius_cm':radius});continue
+ if clearance<radius+80:rejected.append({'index':index,'reason':'low_geometry_path_clearance','clearance_cm':clearance,'radius_cm':radius});continue
  hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,7000),unreal.Vector(x,y,-7000),0)
  if not hit or not isinstance(hit[1],unreal.Landscape):rejected.append({'index':index,'reason':'not_landscape'});continue
  location=unreal.Vector(x,y,hit[0].z-(b.origin.z-b.box_extent.z)*scale)
  groups[choice].append(unreal.Transform(location=location,rotation=unreal.Rotator(yaw=row['yaw']),scale=unreal.Vector(scale,scale,scale)))
- kept.append({'index':index,'mesh':mesh.get_path_name(),'path_margin_cm':clearance-radius})
+ kept.append({'index':index,'mesh':mesh.get_path_name(),'path_margin_cm':clearance-radius,'low_geometry_radius_cm':radius})
 assert kept
 counts=[]
 for mesh,transforms in zip(meshes,groups):
@@ -36,5 +37,5 @@ for mesh,transforms in zip(meshes,groups):
  component=actor.get_component_by_class(unreal.HierarchicalInstancedStaticMeshComponent);assert component.get_instance_count()==len(transforms);counts.append(len(transforms))
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 assert unreal.EditorLoadingAndSavingUtils.save_map(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world(),'/Game/PiedmontRide/Maps/PiedmontDetailedCanopyReview')
-report={'main_map_changed':False,'instances':sum(counts),'groups':counts,'accepted':kept,'rejected':rejected,'scope':'Conservative canopy envelope vs mapped paths and native Landscape placement. Trunk collision, under-branch riding, PCG integration, native visual/performance acceptance remain pending.'}
-(root/'Tests/Results/2026-09-12-detailed-canopy-placement.json').write_text(json.dumps(report,indent=2)+'\n');print('DETAILED_CANOPY_REVIEW',sum(counts),len(rejected))
+report={'main_map_changed':False,'instances':sum(counts),'groups':counts,'accepted':kept,'rejected':rejected,'height_band_cm':300,'scope':'LOD0 triangles within rider-height band vs mapped paths and native Landscape placement. Trunk collision, under-branch riding, PCG integration, native visual/performance acceptance remain pending.'}
+(root/'Tests/Results/2026-09-12-detailed-canopy-low-clearance.json').write_text(json.dumps(report,indent=2)+'\n');print('DETAILED_CANOPY_REVIEW',sum(counts),len(rejected))

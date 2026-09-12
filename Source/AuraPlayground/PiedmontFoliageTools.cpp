@@ -1,6 +1,7 @@
 #include "PiedmontWorldTools.h"
 #if WITH_EDITOR
 #include "Editor.h"
+#include "MeshDescription.h"
 #include "PCGComponent.h"
 #include "PCGGraph.h"
 #include "PCGNode.h"
@@ -64,8 +65,28 @@ AActor* UPiedmontWorldTools::CreateFoliageReviewInstances(const TArray<FTransfor
  auto* Instances=NewObject<UHierarchicalInstancedStaticMeshComponent>(Actor,TEXT("TreeInstances"));Actor->SetRootComponent(Instances);Actor->AddInstanceComponent(Instances);
  Instances->SetStaticMesh(Mesh);Instances->SetCollisionEnabled(ECollisionEnabled::NoCollision);Instances->SetCanEverAffectNavigation(false);Instances->SetCullDistances(28000,35000);Instances->RegisterComponent();
  for(const auto& Transform:Stations)Instances->AddInstance(Transform,true);
+ Instances->BuildTreeIfOutdated(false,true);
  return Actor;
 #else
  return nullptr;
+#endif
+}
+
+float UPiedmontWorldTools::GetTreeLowGeometryRadius(UStaticMesh* Mesh,float LocalHeightAboveBottom){
+#if WITH_EDITOR
+ if(!Mesh||LocalHeightAboveBottom<=0)return -1;
+ const FMeshDescription* Description=Mesh->GetMeshDescription(0);if(!Description)return -1;
+ const auto Positions=Description->GetVertexPositions();const auto Bounds=Mesh->GetBounds();
+ const float Cut=Bounds.Origin.Z-Bounds.BoxExtent.Z+LocalHeightAboveBottom;float RadiusSquared=0;
+ // Include every triangle that enters the height band, not just its low vertices.
+ // Including its upper vertices overestimates clearance instead of missing a branch.
+ for(const FTriangleID Id:Description->Triangles().GetElementIDs()){
+  const auto Vertices=Description->GetTriangleVertices(Id);bool InBand=false;
+  for(const auto Vertex:Vertices)InBand|=Positions[Vertex].Z<=Cut;
+  if(InBand)for(const auto Vertex:Vertices){const auto P=Positions[Vertex];RadiusSquared=FMath::Max(RadiusSquared,P.X*P.X+P.Y*P.Y);}
+ }
+ return FMath::Sqrt(RadiusSquared);
+#else
+ return -1;
 #endif
 }

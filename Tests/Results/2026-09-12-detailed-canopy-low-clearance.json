@@ -1,0 +1,3538 @@
+{
+  "main_map_changed": false,
+  "instances": 383,
+  "groups": [
+    335,
+    48
+  ],
+  "accepted": [
+    {
+      "index": 5,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 211.5596662667714,
+      "low_geometry_radius_cm": 548.043982866574
+    },
+    {
+      "index": 9,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 177.5778857724572,
+      "low_geometry_radius_cm": 547.9128589348419
+    },
+    {
+      "index": 10,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 707.3499884252157,
+      "low_geometry_radius_cm": 176.04368901108103
+    },
+    {
+      "index": 11,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 153.72474253568456,
+      "low_geometry_radius_cm": 67.83919531144036
+    },
+    {
+      "index": 13,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 233.74082247386085,
+      "low_geometry_radius_cm": 61.628430091009044
+    },
+    {
+      "index": 15,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 418.9278738414086,
+      "low_geometry_radius_cm": 492.3956233905083
+    },
+    {
+      "index": 16,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 337.783409435572,
+      "low_geometry_radius_cm": 65.94716529150368
+    },
+    {
+      "index": 17,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 121.69191810948669,
+      "low_geometry_radius_cm": 165.42214806642548
+    },
+    {
+      "index": 18,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 411.4839823664188,
+      "low_geometry_radius_cm": 393.7150486374795
+    },
+    {
+      "index": 19,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 292.6339774650273,
+      "low_geometry_radius_cm": 67.31771984811621
+    },
+    {
+      "index": 20,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 194.60083217656097,
+      "low_geometry_radius_cm": 59.39249116670233
+    },
+    {
+      "index": 22,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 537.9806992093637,
+      "low_geometry_radius_cm": 69.09121013680655
+    },
+    {
+      "index": 23,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 86.56469754483109,
+      "low_geometry_radius_cm": 167.99290934835133
+    },
+    {
+      "index": 25,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 252.0131456619427,
+      "low_geometry_radius_cm": 68.77780210896908
+    },
+    {
+      "index": 26,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 211.9258436747681,
+      "low_geometry_radius_cm": 60.594272689433026
+    },
+    {
+      "index": 29,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 176.8375535229743,
+      "low_geometry_radius_cm": 172.3235740968998
+    },
+    {
+      "index": 32,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 380.53423633588045,
+      "low_geometry_radius_cm": 167.92013273217353
+    },
+    {
+      "index": 34,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 358.0012351941191,
+      "low_geometry_radius_cm": 60.98309224621768
+    },
+    {
+      "index": 35,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 801.190123099236,
+      "low_geometry_radius_cm": 142.2211480024455
+    },
+    {
+      "index": 37,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 373.6215651185697,
+      "low_geometry_radius_cm": 170.5833548802673
+    },
+    {
+      "index": 38,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 465.1224501325125,
+      "low_geometry_radius_cm": 65.40013252967054
+    },
+    {
+      "index": 40,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 428.9055489123357,
+      "low_geometry_radius_cm": 162.8125705671747
+    },
+    {
+      "index": 41,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 174.47274802531024,
+      "low_geometry_radius_cm": 74.6577481720541
+    },
+    {
+      "index": 43,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 644.5925292944552,
+      "low_geometry_radius_cm": 59.71787080308463
+    },
+    {
+      "index": 44,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 129.4607869360709,
+      "low_geometry_radius_cm": 176.84221942385355
+    },
+    {
+      "index": 46,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 839.1359561801223,
+      "low_geometry_radius_cm": 164.92368633867798
+    },
+    {
+      "index": 47,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 209.52638969050028,
+      "low_geometry_radius_cm": 66.32357421940506
+    },
+    {
+      "index": 49,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 321.3254703510721,
+      "low_geometry_radius_cm": 74.576047950055
+    },
+    {
+      "index": 50,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 647.2508690686119,
+      "low_geometry_radius_cm": 177.32298345439816
+    },
+    {
+      "index": 52,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 205.7622936027071,
+      "low_geometry_radius_cm": 172.61950206737814
+    },
+    {
+      "index": 53,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 88.02610672114858,
+      "low_geometry_radius_cm": 169.12840519357874
+    },
+    {
+      "index": 55,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 134.17493251056453,
+      "low_geometry_radius_cm": 174.69821022386049
+    },
+    {
+      "index": 56,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 317.26710815989475,
+      "low_geometry_radius_cm": 67.41573032464679
+    },
+    {
+      "index": 58,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 255.44421466363923,
+      "low_geometry_radius_cm": 59.12997643503512
+    },
+    {
+      "index": 59,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 285.34120493696236,
+      "low_geometry_radius_cm": 68.24211468131513
+    },
+    {
+      "index": 61,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 230.68543065777388,
+      "low_geometry_radius_cm": 65.22761670592311
+    },
+    {
+      "index": 62,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 622.7840253626496,
+      "low_geometry_radius_cm": 67.21925766669875
+    },
+    {
+      "index": 64,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 91.29750722388519,
+      "low_geometry_radius_cm": 167.09962055555832
+    },
+    {
+      "index": 65,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 118.33115608396082,
+      "low_geometry_radius_cm": 68.64634933019994
+    },
+    {
+      "index": 67,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1020.005546167058,
+      "low_geometry_radius_cm": 64.79288283454305
+    },
+    {
+      "index": 70,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 477.55919449433895,
+      "low_geometry_radius_cm": 67.78727473722596
+    },
+    {
+      "index": 71,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 182.98547666326922,
+      "low_geometry_radius_cm": 172.50856590971622
+    },
+    {
+      "index": 73,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 253.2600205265597,
+      "low_geometry_radius_cm": 58.375738619701146
+    },
+    {
+      "index": 74,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 678.8718663616579,
+      "low_geometry_radius_cm": 67.46386520852299
+    },
+    {
+      "index": 77,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 467.52621015842226,
+      "low_geometry_radius_cm": 162.71356113277162
+    },
+    {
+      "index": 79,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 129.56861956792815,
+      "low_geometry_radius_cm": 65.70520879908972
+    },
+    {
+      "index": 80,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 96.35560614476577,
+      "low_geometry_radius_cm": 174.29799426786047
+    },
+    {
+      "index": 85,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 128.43927639354874,
+      "low_geometry_radius_cm": 59.88461469149993
+    },
+    {
+      "index": 86,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 138.01403029449588,
+      "low_geometry_radius_cm": 67.76335181147564
+    },
+    {
+      "index": 88,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 285.3456315009754,
+      "low_geometry_radius_cm": 172.59283460407417
+    },
+    {
+      "index": 89,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 178.513970902987,
+      "low_geometry_radius_cm": 67.02605719892038
+    },
+    {
+      "index": 90,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 150.54502441334023,
+      "low_geometry_radius_cm": 427.5058636187663
+    },
+    {
+      "index": 91,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 260.056696166373,
+      "low_geometry_radius_cm": 74.11099642178561
+    },
+    {
+      "index": 95,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 651.9076152923238,
+      "low_geometry_radius_cm": 63.07470755908068
+    },
+    {
+      "index": 97,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 595.6551717907147,
+      "low_geometry_radius_cm": 62.48299916135277
+    },
+    {
+      "index": 98,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 168.93154900143332,
+      "low_geometry_radius_cm": 68.49908896229311
+    },
+    {
+      "index": 100,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 112.37791570321104,
+      "low_geometry_radius_cm": 165.29867686875212
+    },
+    {
+      "index": 101,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 176.42259743838986,
+      "low_geometry_radius_cm": 73.88265512994343
+    },
+    {
+      "index": 103,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 296.13674390508515,
+      "low_geometry_radius_cm": 75.42636467768095
+    },
+    {
+      "index": 104,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 125.699483145844,
+      "low_geometry_radius_cm": 164.05099882765688
+    },
+    {
+      "index": 107,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 540.4332579585183,
+      "low_geometry_radius_cm": 68.85831668626518
+    },
+    {
+      "index": 109,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 470.01353457945754,
+      "low_geometry_radius_cm": 171.08725237188307
+    },
+    {
+      "index": 110,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 269.9927586954519,
+      "low_geometry_radius_cm": 66.35666306784728
+    },
+    {
+      "index": 112,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 501.86968412859926,
+      "low_geometry_radius_cm": 60.69436248524781
+    },
+    {
+      "index": 113,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 327.0409296284905,
+      "low_geometry_radius_cm": 172.2048488991743
+    },
+    {
+      "index": 115,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 250.11323784438622,
+      "low_geometry_radius_cm": 66.87045414150793
+    },
+    {
+      "index": 116,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 343.14238288335343,
+      "low_geometry_radius_cm": 61.14858561387656
+    },
+    {
+      "index": 118,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 171.27975914565658,
+      "low_geometry_radius_cm": 175.31588511472833
+    },
+    {
+      "index": 119,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 125.07228843520586,
+      "low_geometry_radius_cm": 68.94879435877122
+    },
+    {
+      "index": 122,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 362.92269010826004,
+      "low_geometry_radius_cm": 58.56960219211766
+    },
+    {
+      "index": 123,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 110.24619456737861,
+      "low_geometry_radius_cm": 440.3437877007411
+    },
+    {
+      "index": 124,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 352.92024630618846,
+      "low_geometry_radius_cm": 67.9208562897829
+    },
+    {
+      "index": 125,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 238.45332774680745,
+      "low_geometry_radius_cm": 64.45624685068404
+    },
+    {
+      "index": 127,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 96.45924422311248,
+      "low_geometry_radius_cm": 165.78938123574244
+    },
+    {
+      "index": 128,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 247.50422398949198,
+      "low_geometry_radius_cm": 177.30899281614856
+    },
+    {
+      "index": 129,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 110.89349187161736,
+      "low_geometry_radius_cm": 495.2281093086166
+    },
+    {
+      "index": 130,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 398.9428996716088,
+      "low_geometry_radius_cm": 64.30901106489789
+    },
+    {
+      "index": 131,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 89.633827712633,
+      "low_geometry_radius_cm": 164.66930853889957
+    },
+    {
+      "index": 133,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 157.39091997248212,
+      "low_geometry_radius_cm": 134.29024268363654
+    },
+    {
+      "index": 134,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 95.54031476264592,
+      "low_geometry_radius_cm": 163.6658673812046
+    },
+    {
+      "index": 136,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 497.6425207309363,
+      "low_geometry_radius_cm": 68.83452472111016
+    },
+    {
+      "index": 137,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 128.75421235595192,
+      "low_geometry_radius_cm": 67.4039671764024
+    },
+    {
+      "index": 139,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 160.21613075835504,
+      "low_geometry_radius_cm": 67.67877455739338
+    },
+    {
+      "index": 142,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 108.26054721936791,
+      "low_geometry_radius_cm": 171.75346406786335
+    },
+    {
+      "index": 143,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 426.0031835877758,
+      "low_geometry_radius_cm": 67.37144692108352
+    },
+    {
+      "index": 146,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 260.8001957043344,
+      "low_geometry_radius_cm": 165.34730314153825
+    },
+    {
+      "index": 148,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 150.09231479506957,
+      "low_geometry_radius_cm": 69.03327089830344
+    },
+    {
+      "index": 149,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 389.86858938587363,
+      "low_geometry_radius_cm": 63.05008695014751
+    },
+    {
+      "index": 151,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 195.72349253022335,
+      "low_geometry_radius_cm": 174.2713441120134
+    },
+    {
+      "index": 152,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 283.4646452732502,
+      "low_geometry_radius_cm": 62.59864869179595
+    },
+    {
+      "index": 154,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 160.8243296627142,
+      "low_geometry_radius_cm": 60.86961515922422
+    },
+    {
+      "index": 155,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 273.0692660821458,
+      "low_geometry_radius_cm": 68.5155162299123
+    },
+    {
+      "index": 156,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 261.6541484998133,
+      "low_geometry_radius_cm": 401.15572465088945
+    },
+    {
+      "index": 158,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 525.42901716415,
+      "low_geometry_radius_cm": 69.18414802611244
+    },
+    {
+      "index": 160,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 129.19538945143705,
+      "low_geometry_radius_cm": 67.93942293114752
+    },
+    {
+      "index": 163,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 147.72020065107705,
+      "low_geometry_radius_cm": 74.45327387892222
+    },
+    {
+      "index": 164,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 166.5262930713732,
+      "low_geometry_radius_cm": 165.81722186011618
+    },
+    {
+      "index": 166,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 184.11666133273363,
+      "low_geometry_radius_cm": 165.2508841910621
+    },
+    {
+      "index": 169,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 129.9967231611006,
+      "low_geometry_radius_cm": 67.11398381738151
+    },
+    {
+      "index": 170,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 440.59296697412185,
+      "low_geometry_radius_cm": 67.49555348664059
+    },
+    {
+      "index": 173,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 311.6033729613787,
+      "low_geometry_radius_cm": 57.96209129673446
+    },
+    {
+      "index": 175,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 257.6083939538163,
+      "low_geometry_radius_cm": 65.92215430417434
+    },
+    {
+      "index": 178,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 174.61108407578502,
+      "low_geometry_radius_cm": 65.67874182561464
+    },
+    {
+      "index": 179,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 173.13427445718284,
+      "low_geometry_radius_cm": 64.00409647436678
+    },
+    {
+      "index": 182,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 255.0760112897621,
+      "low_geometry_radius_cm": 68.32440686621014
+    },
+    {
+      "index": 185,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 248.59374306703722,
+      "low_geometry_radius_cm": 63.96143793431866
+    },
+    {
+      "index": 187,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 154.06161998831632,
+      "low_geometry_radius_cm": 63.62067109792529
+    },
+    {
+      "index": 190,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 119.83323313554229,
+      "low_geometry_radius_cm": 66.13975240779382
+    },
+    {
+      "index": 191,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 95.29927520759176,
+      "low_geometry_radius_cm": 164.37661383915432
+    },
+    {
+      "index": 193,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 167.53296514725773,
+      "low_geometry_radius_cm": 66.85721047139478
+    },
+    {
+      "index": 194,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 145.6224560653043,
+      "low_geometry_radius_cm": 63.77993591139451
+    },
+    {
+      "index": 196,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 80.23127555741317,
+      "low_geometry_radius_cm": 141.8726158930676
+    },
+    {
+      "index": 197,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 82.50704651162124,
+      "low_geometry_radius_cm": 163.00994993898905
+    },
+    {
+      "index": 200,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 141.00188473806048,
+      "low_geometry_radius_cm": 68.30235607740524
+    },
+    {
+      "index": 202,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 173.97058304385246,
+      "low_geometry_radius_cm": 63.98860258213983
+    },
+    {
+      "index": 203,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 127.45937179640146,
+      "low_geometry_radius_cm": 165.18466063250776
+    },
+    {
+      "index": 205,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 669.1373810635774,
+      "low_geometry_radius_cm": 67.09501058572145
+    },
+    {
+      "index": 206,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 316.9344994408072,
+      "low_geometry_radius_cm": 60.67333063781774
+    },
+    {
+      "index": 208,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 182.64940695293586,
+      "low_geometry_radius_cm": 58.87240718449671
+    },
+    {
+      "index": 209,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 152.99700222857933,
+      "low_geometry_radius_cm": 66.08038968241539
+    },
+    {
+      "index": 211,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 119.73965412718033,
+      "low_geometry_radius_cm": 69.13523583102526
+    },
+    {
+      "index": 214,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 388.86071763430715,
+      "low_geometry_radius_cm": 62.56018790618869
+    },
+    {
+      "index": 223,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 478.5602695958623,
+      "low_geometry_radius_cm": 134.32395450726364
+    },
+    {
+      "index": 224,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 379.808268684004,
+      "low_geometry_radius_cm": 160.8006003712887
+    },
+    {
+      "index": 226,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 150.21626324015395,
+      "low_geometry_radius_cm": 172.54545166391281
+    },
+    {
+      "index": 227,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 478.9165151358894,
+      "low_geometry_radius_cm": 67.25941377653587
+    },
+    {
+      "index": 228,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 153.48042836821344,
+      "low_geometry_radius_cm": 532.4146718361402
+    },
+    {
+      "index": 229,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1222.374204415836,
+      "low_geometry_radius_cm": 64.42447044186555
+    },
+    {
+      "index": 230,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 263.27569505109057,
+      "low_geometry_radius_cm": 65.6336289425933
+    },
+    {
+      "index": 231,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 82.88364324376573,
+      "low_geometry_radius_cm": 381.8469809598421
+    },
+    {
+      "index": 232,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 296.1226994873521,
+      "low_geometry_radius_cm": 57.848552621625345
+    },
+    {
+      "index": 233,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 148.4020461728927,
+      "low_geometry_radius_cm": 67.38433515035553
+    },
+    {
+      "index": 235,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1417.6261571312327,
+      "low_geometry_radius_cm": 142.2909795023738
+    },
+    {
+      "index": 236,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 504.9015520317375,
+      "low_geometry_radius_cm": 178.19806604510183
+    },
+    {
+      "index": 238,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 129.19710016317956,
+      "low_geometry_radius_cm": 170.77811590664763
+    },
+    {
+      "index": 239,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 232.16308151577607,
+      "low_geometry_radius_cm": 68.5239678267506
+    },
+    {
+      "index": 241,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 245.73518202338795,
+      "low_geometry_radius_cm": 171.93142175461827
+    },
+    {
+      "index": 242,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 571.0704290918956,
+      "low_geometry_radius_cm": 69.24984334926175
+    },
+    {
+      "index": 244,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 280.6502555187555,
+      "low_geometry_radius_cm": 69.53730781040467
+    },
+    {
+      "index": 245,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1135.6873073580266,
+      "low_geometry_radius_cm": 160.82400034775384
+    },
+    {
+      "index": 246,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 315.961953589559,
+      "low_geometry_radius_cm": 483.64802828582935
+    },
+    {
+      "index": 247,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 351.2141492700121,
+      "low_geometry_radius_cm": 170.42808036467358
+    },
+    {
+      "index": 248,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 182.57823985986965,
+      "low_geometry_radius_cm": 66.63981454382407
+    },
+    {
+      "index": 250,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 357.4846873092972,
+      "low_geometry_radius_cm": 68.70971696264147
+    },
+    {
+      "index": 251,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 206.99990629810998,
+      "low_geometry_radius_cm": 135.46699719654555
+    },
+    {
+      "index": 253,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 151.44519495141435,
+      "low_geometry_radius_cm": 61.657873151726896
+    },
+    {
+      "index": 254,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 680.482958351952,
+      "low_geometry_radius_cm": 177.52353136039713
+    },
+    {
+      "index": 255,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 116.55932104101032,
+      "low_geometry_radius_cm": 427.6652604332986
+    },
+    {
+      "index": 256,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 947.4565605581984,
+      "low_geometry_radius_cm": 134.3236594977887
+    },
+    {
+      "index": 259,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1219.0694781993604,
+      "low_geometry_radius_cm": 68.59566989927148
+    },
+    {
+      "index": 260,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 382.92455795582015,
+      "low_geometry_radius_cm": 59.05382728036743
+    },
+    {
+      "index": 262,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 165.12111996127322,
+      "low_geometry_radius_cm": 69.29657824290821
+    },
+    {
+      "index": 263,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 258.13765585319686,
+      "low_geometry_radius_cm": 64.67994070694967
+    },
+    {
+      "index": 265,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 463.72528741467926,
+      "low_geometry_radius_cm": 73.98986526772849
+    },
+    {
+      "index": 266,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 143.90623204835674,
+      "low_geometry_radius_cm": 59.973838087007934
+    },
+    {
+      "index": 267,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 181.79124096828644,
+      "low_geometry_radius_cm": 510.40782432131624
+    },
+    {
+      "index": 268,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 152.6519470686245,
+      "low_geometry_radius_cm": 67.51512340435558
+    },
+    {
+      "index": 269,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 348.1257776847784,
+      "low_geometry_radius_cm": 172.14508579723417
+    },
+    {
+      "index": 270,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 469.725598425601,
+      "low_geometry_radius_cm": 526.4727729128033
+    },
+    {
+      "index": 271,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 317.9652585154428,
+      "low_geometry_radius_cm": 58.14307700112789
+    },
+    {
+      "index": 272,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 101.93968259856905,
+      "low_geometry_radius_cm": 163.89762792236968
+    },
+    {
+      "index": 274,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 90.76872793601288,
+      "low_geometry_radius_cm": 170.93051773874097
+    },
+    {
+      "index": 275,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 375.78595143794166,
+      "low_geometry_radius_cm": 64.61275129576562
+    },
+    {
+      "index": 276,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 744.0968477643689,
+      "low_geometry_radius_cm": 501.09652544051363
+    },
+    {
+      "index": 277,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 284.63652281938005,
+      "low_geometry_radius_cm": 68.22546662698132
+    },
+    {
+      "index": 278,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 454.3387151438674,
+      "low_geometry_radius_cm": 134.45787663613862
+    },
+    {
+      "index": 280,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 492.5015580631307,
+      "low_geometry_radius_cm": 60.46029194047381
+    },
+    {
+      "index": 281,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 201.04874467504334,
+      "low_geometry_radius_cm": 176.74172266134252
+    },
+    {
+      "index": 282,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 335.34686703776293,
+      "low_geometry_radius_cm": 384.98747370063865
+    },
+    {
+      "index": 283,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 345.8097810821145,
+      "low_geometry_radius_cm": 166.2823460135865
+    },
+    {
+      "index": 284,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 604.4386335828568,
+      "low_geometry_radius_cm": 64.88000118158621
+    },
+    {
+      "index": 285,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 129.95757309701258,
+      "low_geometry_radius_cm": 364.67321160564103
+    },
+    {
+      "index": 286,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 265.81331282623796,
+      "low_geometry_radius_cm": 68.40357672937147
+    },
+    {
+      "index": 287,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 357.7851660179406,
+      "low_geometry_radius_cm": 67.83749542559096
+    },
+    {
+      "index": 289,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 206.15520750863595,
+      "low_geometry_radius_cm": 174.45525885791596
+    },
+    {
+      "index": 290,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 877.520577237934,
+      "low_geometry_radius_cm": 67.31267858695918
+    },
+    {
+      "index": 291,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 441.9032746505536,
+      "low_geometry_radius_cm": 369.16890226251337
+    },
+    {
+      "index": 292,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 487.98623647110315,
+      "low_geometry_radius_cm": 171.46132959781318
+    },
+    {
+      "index": 293,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 604.6747278014025,
+      "low_geometry_radius_cm": 165.321443327112
+    },
+    {
+      "index": 294,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 81.8390602215614,
+      "low_geometry_radius_cm": 456.6180785650204
+    },
+    {
+      "index": 295,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1368.0615308538981,
+      "low_geometry_radius_cm": 61.117665515112336
+    },
+    {
+      "index": 296,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 352.9319545953299,
+      "low_geometry_radius_cm": 74.4791720465843
+    },
+    {
+      "index": 297,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 80.96384210789381,
+      "low_geometry_radius_cm": 550.3061078690547
+    },
+    {
+      "index": 298,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 559.9360615597874,
+      "low_geometry_radius_cm": 168.0020951504802
+    },
+    {
+      "index": 299,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 629.1831262742401,
+      "low_geometry_radius_cm": 57.98660084975018
+    },
+    {
+      "index": 300,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 583.2855754597737,
+      "low_geometry_radius_cm": 449.32768346012733
+    },
+    {
+      "index": 301,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 181.11596977764407,
+      "low_geometry_radius_cm": 74.38926932013543
+    },
+    {
+      "index": 302,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 194.01522892221098,
+      "low_geometry_radius_cm": 62.92714081937058
+    },
+    {
+      "index": 304,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 439.81549211386607,
+      "low_geometry_radius_cm": 168.92853046999264
+    },
+    {
+      "index": 305,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 692.025837941193,
+      "low_geometry_radius_cm": 67.50064156692913
+    },
+    {
+      "index": 306,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 175.33689486693925,
+      "low_geometry_radius_cm": 373.86059848109323
+    },
+    {
+      "index": 307,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 396.5444937386705,
+      "low_geometry_radius_cm": 171.69131364925585
+    },
+    {
+      "index": 309,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 688.6833727353742,
+      "low_geometry_radius_cm": 516.5784677183121
+    },
+    {
+      "index": 310,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 406.13397884201095,
+      "low_geometry_radius_cm": 61.79790973185172
+    },
+    {
+      "index": 313,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 621.1057344729834,
+      "low_geometry_radius_cm": 67.40179576903599
+    },
+    {
+      "index": 314,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1189.297676279084,
+      "low_geometry_radius_cm": 66.78031829830748
+    },
+    {
+      "index": 315,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 317.0245571112873,
+      "low_geometry_radius_cm": 408.25824950114054
+    },
+    {
+      "index": 316,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 858.5798852170968,
+      "low_geometry_radius_cm": 59.29773512805458
+    },
+    {
+      "index": 317,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 140.3350845989989,
+      "low_geometry_radius_cm": 175.47074658154122
+    },
+    {
+      "index": 319,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 343.7652659076884,
+      "low_geometry_radius_cm": 62.922089032720415
+    },
+    {
+      "index": 320,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 657.850121598423,
+      "low_geometry_radius_cm": 65.36812392934425
+    },
+    {
+      "index": 322,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 296.7667163856588,
+      "low_geometry_radius_cm": 63.807160606645326
+    },
+    {
+      "index": 323,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 413.033322757692,
+      "low_geometry_radius_cm": 58.720690209029215
+    },
+    {
+      "index": 325,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 394.664057806677,
+      "low_geometry_radius_cm": 60.01560123490315
+    },
+    {
+      "index": 326,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 742.2974173150652,
+      "low_geometry_radius_cm": 141.86026408553843
+    },
+    {
+      "index": 328,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 81.63366794569967,
+      "low_geometry_radius_cm": 167.81147526035826
+    },
+    {
+      "index": 329,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 129.6219838587428,
+      "low_geometry_radius_cm": 68.75078835867014
+    },
+    {
+      "index": 331,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 380.83477248309885,
+      "low_geometry_radius_cm": 69.46963285033516
+    },
+    {
+      "index": 334,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 475.22297882833607,
+      "low_geometry_radius_cm": 63.4222278519824
+    },
+    {
+      "index": 335,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 523.8147091200068,
+      "low_geometry_radius_cm": 164.04385299616038
+    },
+    {
+      "index": 336,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 356.67620927487746,
+      "low_geometry_radius_cm": 564.183658775801
+    },
+    {
+      "index": 337,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 459.35572337208646,
+      "low_geometry_radius_cm": 175.1463870265086
+    },
+    {
+      "index": 338,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 417.60244028248576,
+      "low_geometry_radius_cm": 60.85927876744371
+    },
+    {
+      "index": 340,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 320.1206587098134,
+      "low_geometry_radius_cm": 178.75567535884278
+    },
+    {
+      "index": 341,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1213.934563874415,
+      "low_geometry_radius_cm": 171.1245140187441
+    },
+    {
+      "index": 343,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 152.24559180421625,
+      "low_geometry_radius_cm": 58.755513878488685
+    },
+    {
+      "index": 344,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 329.05856324958097,
+      "low_geometry_radius_cm": 75.4420655777642
+    },
+    {
+      "index": 346,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 145.98720027905054,
+      "low_geometry_radius_cm": 61.97223812106179
+    },
+    {
+      "index": 347,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 281.72504705330755,
+      "low_geometry_radius_cm": 161.49501188528856
+    },
+    {
+      "index": 349,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 518.4373866341223,
+      "low_geometry_radius_cm": 65.53912800791421
+    },
+    {
+      "index": 350,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 726.9345858650648,
+      "low_geometry_radius_cm": 66.70127739501301
+    },
+    {
+      "index": 352,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 206.3721121601177,
+      "low_geometry_radius_cm": 64.68441676617527
+    },
+    {
+      "index": 353,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 846.0991516471247,
+      "low_geometry_radius_cm": 174.40941139436703
+    },
+    {
+      "index": 355,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 542.6390389450546,
+      "low_geometry_radius_cm": 162.38428517838662
+    },
+    {
+      "index": 356,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 751.4627332869395,
+      "low_geometry_radius_cm": 66.58724570061814
+    },
+    {
+      "index": 358,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 172.27003767389982,
+      "low_geometry_radius_cm": 64.9994765513485
+    },
+    {
+      "index": 359,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 132.54008827664742,
+      "low_geometry_radius_cm": 174.24034521043248
+    },
+    {
+      "index": 361,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 430.37925618793804,
+      "low_geometry_radius_cm": 58.69212632305662
+    },
+    {
+      "index": 362,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 209.85217838989988,
+      "low_geometry_radius_cm": 60.56566664621372
+    },
+    {
+      "index": 364,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1044.322981984371,
+      "low_geometry_radius_cm": 59.20028129423801
+    },
+    {
+      "index": 365,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 424.798966033393,
+      "low_geometry_radius_cm": 166.40324090926987
+    },
+    {
+      "index": 367,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 341.75701361378316,
+      "low_geometry_radius_cm": 61.60533716159505
+    },
+    {
+      "index": 369,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 619.2637921826754,
+      "low_geometry_radius_cm": 441.8220028614216
+    },
+    {
+      "index": 370,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 355.9332368458887,
+      "low_geometry_radius_cm": 167.78938785752607
+    },
+    {
+      "index": 371,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 122.77127183128063,
+      "low_geometry_radius_cm": 66.49826377325631
+    },
+    {
+      "index": 373,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 344.3363826415011,
+      "low_geometry_radius_cm": 58.17461588143131
+    },
+    {
+      "index": 374,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 144.50372794205543,
+      "low_geometry_radius_cm": 166.5870077259121
+    },
+    {
+      "index": 376,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 407.34960494734537,
+      "low_geometry_radius_cm": 68.06470960502512
+    },
+    {
+      "index": 377,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 87.45461066506417,
+      "low_geometry_radius_cm": 170.24205657594982
+    },
+    {
+      "index": 378,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 1195.0866784201717,
+      "low_geometry_radius_cm": 458.1876791873492
+    },
+    {
+      "index": 380,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 461.9490467757514,
+      "low_geometry_radius_cm": 174.35473123977877
+    },
+    {
+      "index": 382,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 381.52308166470266,
+      "low_geometry_radius_cm": 166.6765505204055
+    },
+    {
+      "index": 383,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 146.83812867719976,
+      "low_geometry_radius_cm": 68.04212383794763
+    },
+    {
+      "index": 385,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 367.2513301001864,
+      "low_geometry_radius_cm": 164.28670080958165
+    },
+    {
+      "index": 386,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 225.95317724508584,
+      "low_geometry_radius_cm": 61.37225513441844
+    },
+    {
+      "index": 388,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 242.82778875235624,
+      "low_geometry_radius_cm": 68.9610423131823
+    },
+    {
+      "index": 389,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 409.1527096051847,
+      "low_geometry_radius_cm": 69.46108640533107
+    },
+    {
+      "index": 390,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 655.9440557535738,
+      "low_geometry_radius_cm": 493.33127140573237
+    },
+    {
+      "index": 391,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 441.2800365364551,
+      "low_geometry_radius_cm": 59.26117008789846
+    },
+    {
+      "index": 392,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 374.5321193920569,
+      "low_geometry_radius_cm": 166.99647176432615
+    },
+    {
+      "index": 393,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 100.65458888334246,
+      "low_geometry_radius_cm": 455.02693656061894
+    },
+    {
+      "index": 394,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 245.99650236559933,
+      "low_geometry_radius_cm": 166.53888914546337
+    },
+    {
+      "index": 395,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 581.8737859255893,
+      "low_geometry_radius_cm": 66.34657656275797
+    },
+    {
+      "index": 396,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 108.0817596098965,
+      "low_geometry_radius_cm": 554.8671532602915
+    },
+    {
+      "index": 397,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 152.48958718340165,
+      "low_geometry_radius_cm": 66.06789026276456
+    },
+    {
+      "index": 398,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 539.7959474843543,
+      "low_geometry_radius_cm": 65.02052609957734
+    },
+    {
+      "index": 400,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 277.4127327205794,
+      "low_geometry_radius_cm": 63.89486987869998
+    },
+    {
+      "index": 403,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 695.9155204265991,
+      "low_geometry_radius_cm": 176.38293214222344
+    },
+    {
+      "index": 404,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 212.36356886031504,
+      "low_geometry_radius_cm": 58.495084751755
+    },
+    {
+      "index": 406,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 522.1642686048874,
+      "low_geometry_radius_cm": 60.83172752850001
+    },
+    {
+      "index": 407,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 438.2359352542521,
+      "low_geometry_radius_cm": 161.23418136788962
+    },
+    {
+      "index": 408,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 317.246631484025,
+      "low_geometry_radius_cm": 553.8927005761878
+    },
+    {
+      "index": 409,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 480.9253155784123,
+      "low_geometry_radius_cm": 58.381941028463736
+    },
+    {
+      "index": 412,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 423.06040276588334,
+      "low_geometry_radius_cm": 69.51041790647417
+    },
+    {
+      "index": 413,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 132.2868100985075,
+      "low_geometry_radius_cm": 67.44239771490174
+    },
+    {
+      "index": 415,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 113.92726234873948,
+      "low_geometry_radius_cm": 134.38096273938402
+    },
+    {
+      "index": 416,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 155.24025809030735,
+      "low_geometry_radius_cm": 64.76702143850831
+    },
+    {
+      "index": 418,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 98.22176327453127,
+      "low_geometry_radius_cm": 135.07834350458154
+    },
+    {
+      "index": 419,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 360.2456020587761,
+      "low_geometry_radius_cm": 171.96975728574017
+    },
+    {
+      "index": 420,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 126.30325006850842,
+      "low_geometry_radius_cm": 530.5441263385433
+    },
+    {
+      "index": 421,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 322.57295021535157,
+      "low_geometry_radius_cm": 135.71013341149393
+    },
+    {
+      "index": 422,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 564.4570941690008,
+      "low_geometry_radius_cm": 65.36319942405777
+    },
+    {
+      "index": 423,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 112.74304494281898,
+      "low_geometry_radius_cm": 509.19639325146784
+    },
+    {
+      "index": 424,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 938.7146367948446,
+      "low_geometry_radius_cm": 66.71691988555223
+    },
+    {
+      "index": 425,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 153.00915229733266,
+      "low_geometry_radius_cm": 176.9624692882448
+    },
+    {
+      "index": 428,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 791.4903390562379,
+      "low_geometry_radius_cm": 167.20876905821208
+    },
+    {
+      "index": 430,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 568.7197804333267,
+      "low_geometry_radius_cm": 166.45319026899165
+    },
+    {
+      "index": 431,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 455.95845451761016,
+      "low_geometry_radius_cm": 58.65279741325157
+    },
+    {
+      "index": 433,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 126.79807406757976,
+      "low_geometry_radius_cm": 163.88034409630535
+    },
+    {
+      "index": 437,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 743.358522862719,
+      "low_geometry_radius_cm": 170.47478934357204
+    },
+    {
+      "index": 439,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1123.8324930986234,
+      "low_geometry_radius_cm": 63.56320450597993
+    },
+    {
+      "index": 440,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 807.9171680610984,
+      "low_geometry_radius_cm": 68.89402816361596
+    },
+    {
+      "index": 441,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 189.70649045421277,
+      "low_geometry_radius_cm": 456.4492478683895
+    },
+    {
+      "index": 442,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 815.2328212657198,
+      "low_geometry_radius_cm": 61.23662579947705
+    },
+    {
+      "index": 443,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 185.9393160361979,
+      "low_geometry_radius_cm": 68.45780228558675
+    },
+    {
+      "index": 445,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 375.57069211336466,
+      "low_geometry_radius_cm": 66.98324671133243
+    },
+    {
+      "index": 446,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 196.2942543693141,
+      "low_geometry_radius_cm": 168.56417831949227
+    },
+    {
+      "index": 447,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 86.37881123932266,
+      "low_geometry_radius_cm": 546.552606697043
+    },
+    {
+      "index": 448,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 281.67564338944607,
+      "low_geometry_radius_cm": 63.464027889828905
+    },
+    {
+      "index": 449,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 201.25815623045105,
+      "low_geometry_radius_cm": 67.38862143528222
+    },
+    {
+      "index": 450,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 171.53126893844768,
+      "low_geometry_radius_cm": 451.37043138554924
+    },
+    {
+      "index": 451,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 306.09992592881935,
+      "low_geometry_radius_cm": 59.71658603630811
+    },
+    {
+      "index": 452,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 121.56138623342993,
+      "low_geometry_radius_cm": 59.13791542245205
+    },
+    {
+      "index": 453,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 163.7989705544462,
+      "low_geometry_radius_cm": 528.2147264522692
+    },
+    {
+      "index": 454,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 145.5514370936097,
+      "low_geometry_radius_cm": 65.58663955427892
+    },
+    {
+      "index": 455,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 352.43256970094717,
+      "low_geometry_radius_cm": 134.35614345694248
+    },
+    {
+      "index": 456,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 104.64638182452956,
+      "low_geometry_radius_cm": 417.1555524657801
+    },
+    {
+      "index": 457,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 187.60592623785723,
+      "low_geometry_radius_cm": 64.36414881807039
+    },
+    {
+      "index": 458,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 159.01385071817091,
+      "low_geometry_radius_cm": 67.65565428917486
+    },
+    {
+      "index": 460,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 734.963474437386,
+      "low_geometry_radius_cm": 68.71907167865241
+    },
+    {
+      "index": 461,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 766.717649993342,
+      "low_geometry_radius_cm": 163.8356266276179
+    },
+    {
+      "index": 463,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 352.7358392324351,
+      "low_geometry_radius_cm": 60.78078312929589
+    },
+    {
+      "index": 464,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 644.1746235235206,
+      "low_geometry_radius_cm": 165.70378694362384
+    },
+    {
+      "index": 466,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 319.37841370016383,
+      "low_geometry_radius_cm": 74.58951249935271
+    },
+    {
+      "index": 467,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 798.8204426076945,
+      "low_geometry_radius_cm": 171.1026403395895
+    },
+    {
+      "index": 468,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 568.3174964505051,
+      "low_geometry_radius_cm": 369.08595546907253
+    },
+    {
+      "index": 469,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 406.33424186918757,
+      "low_geometry_radius_cm": 74.612367114733
+    },
+    {
+      "index": 470,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 94.03105524784885,
+      "low_geometry_radius_cm": 177.32501792050155
+    },
+    {
+      "index": 471,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 119.2096422608239,
+      "low_geometry_radius_cm": 374.73392027631223
+    },
+    {
+      "index": 473,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 190.80445566544054,
+      "low_geometry_radius_cm": 65.84808320840276
+    },
+    {
+      "index": 475,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 513.8376437399157,
+      "low_geometry_radius_cm": 165.7888442618134
+    },
+    {
+      "index": 478,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 361.0827331516263,
+      "low_geometry_radius_cm": 62.809198632182145
+    },
+    {
+      "index": 479,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 232.57701172111516,
+      "low_geometry_radius_cm": 66.45667471387375
+    },
+    {
+      "index": 482,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 527.1361509451314,
+      "low_geometry_radius_cm": 58.664793214611564
+    },
+    {
+      "index": 483,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 81.05626827566499,
+      "low_geometry_radius_cm": 441.07414903770376
+    },
+    {
+      "index": 484,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 425.824770908982,
+      "low_geometry_radius_cm": 69.65203747360482
+    },
+    {
+      "index": 485,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 241.33318368027403,
+      "low_geometry_radius_cm": 74.64057109378712
+    },
+    {
+      "index": 487,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 85.99040125305152,
+      "low_geometry_radius_cm": 163.11150246948694
+    },
+    {
+      "index": 491,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 210.73087111444386,
+      "low_geometry_radius_cm": 64.63597448393982
+    },
+    {
+      "index": 493,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 90.72297104850088,
+      "low_geometry_radius_cm": 179.2618986094115
+    },
+    {
+      "index": 494,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 270.54973320770665,
+      "low_geometry_radius_cm": 74.15621369463679
+    },
+    {
+      "index": 496,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 884.8161225271785,
+      "low_geometry_radius_cm": 60.11954148139788
+    },
+    {
+      "index": 497,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 221.39963448596086,
+      "low_geometry_radius_cm": 61.889698126210575
+    },
+    {
+      "index": 499,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 158.62843926013312,
+      "low_geometry_radius_cm": 59.989819653594786
+    },
+    {
+      "index": 500,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 731.4992771620053,
+      "low_geometry_radius_cm": 59.16508056671095
+    },
+    {
+      "index": 502,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 509.42649474409006,
+      "low_geometry_radius_cm": 67.49461959314318
+    },
+    {
+      "index": 503,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 184.52705374476363,
+      "low_geometry_radius_cm": 65.70873454427175
+    },
+    {
+      "index": 504,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 475.3791956757931,
+      "low_geometry_radius_cm": 544.2023895361168
+    },
+    {
+      "index": 505,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1028.823954669817,
+      "low_geometry_radius_cm": 66.95507949497384
+    },
+    {
+      "index": 506,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 923.5830721422058,
+      "low_geometry_radius_cm": 134.84098449327328
+    },
+    {
+      "index": 508,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 280.95007193451573,
+      "low_geometry_radius_cm": 174.18079564049054
+    },
+    {
+      "index": 511,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 335.776945700223,
+      "low_geometry_radius_cm": 68.34077133937373
+    },
+    {
+      "index": 512,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 172.40532503250392,
+      "low_geometry_radius_cm": 166.31926394330839
+    },
+    {
+      "index": 513,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 266.04001797453213,
+      "low_geometry_radius_cm": 569.9393211348864
+    },
+    {
+      "index": 514,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1631.9460904081309,
+      "low_geometry_radius_cm": 166.33344755177174
+    },
+    {
+      "index": 515,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 358.27098298290645,
+      "low_geometry_radius_cm": 57.87677396933309
+    },
+    {
+      "index": 517,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 516.705046084222,
+      "low_geometry_radius_cm": 61.50331343096907
+    },
+    {
+      "index": 518,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 317.2047269193691,
+      "low_geometry_radius_cm": 57.98538030489071
+    },
+    {
+      "index": 519,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 111.75473519008705,
+      "low_geometry_radius_cm": 489.32310255162946
+    },
+    {
+      "index": 520,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 144.36748878976766,
+      "low_geometry_radius_cm": 177.17159271097285
+    },
+    {
+      "index": 521,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 87.38918833635722,
+      "low_geometry_radius_cm": 160.7047113336127
+    },
+    {
+      "index": 522,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 105.79676878809238,
+      "low_geometry_radius_cm": 359.2730212960983
+    },
+    {
+      "index": 523,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 987.8082772650089,
+      "low_geometry_radius_cm": 61.3792313595975
+    },
+    {
+      "index": 524,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 574.3158091980528,
+      "low_geometry_radius_cm": 57.87726286424309
+    },
+    {
+      "index": 526,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 927.1356446837638,
+      "low_geometry_radius_cm": 66.18043900965135
+    },
+    {
+      "index": 527,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 165.716077538303,
+      "low_geometry_radius_cm": 58.741393123350676
+    },
+    {
+      "index": 529,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 187.215335159071,
+      "low_geometry_radius_cm": 60.53965744931973
+    },
+    {
+      "index": 530,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 469.92155630211647,
+      "low_geometry_radius_cm": 170.10206410257757
+    },
+    {
+      "index": 531,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 402.40820800961103,
+      "low_geometry_radius_cm": 378.91245914540934
+    },
+    {
+      "index": 532,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 344.48215703910756,
+      "low_geometry_radius_cm": 167.18177995329387
+    },
+    {
+      "index": 533,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 224.2404814491723,
+      "low_geometry_radius_cm": 68.2014124827628
+    },
+    {
+      "index": 535,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 428.9753077283396,
+      "low_geometry_radius_cm": 61.246870783189756
+    },
+    {
+      "index": 538,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 429.1941281087662,
+      "low_geometry_radius_cm": 177.78136106014915
+    },
+    {
+      "index": 539,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 760.6101334483697,
+      "low_geometry_radius_cm": 171.59713195620677
+    },
+    {
+      "index": 540,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 826.3437618830496,
+      "low_geometry_radius_cm": 450.7903680297777
+    },
+    {
+      "index": 545,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 442.9806433629393,
+      "low_geometry_radius_cm": 58.81469776364267
+    },
+    {
+      "index": 546,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Field_01.SM_EuropeanHornbeam_Field_01",
+      "path_margin_cm": 725.4748904950405,
+      "low_geometry_radius_cm": 476.44430061312767
+    },
+    {
+      "index": 547,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 518.5072197240156,
+      "low_geometry_radius_cm": 168.59593647117336
+    },
+    {
+      "index": 548,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 226.97954547114927,
+      "low_geometry_radius_cm": 64.4682402281441
+    },
+    {
+      "index": 550,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 139.68661896208255,
+      "low_geometry_radius_cm": 58.4115740062761
+    },
+    {
+      "index": 551,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 834.7980576544375,
+      "low_geometry_radius_cm": 166.13874373128795
+    },
+    {
+      "index": 553,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 1045.21957901544,
+      "low_geometry_radius_cm": 174.29774342367392
+    },
+    {
+      "index": 554,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 309.83839166434313,
+      "low_geometry_radius_cm": 167.5827884840169
+    },
+    {
+      "index": 556,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 383.2756714877653,
+      "low_geometry_radius_cm": 65.79754978894337
+    },
+    {
+      "index": 557,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 217.67042925620666,
+      "low_geometry_radius_cm": 68.52726113397931
+    },
+    {
+      "index": 559,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 146.7004380231415,
+      "low_geometry_radius_cm": 62.07435903672392
+    },
+    {
+      "index": 560,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 300.86190856497365,
+      "low_geometry_radius_cm": 68.58267373251032
+    },
+    {
+      "index": 562,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 171.38100748080626,
+      "low_geometry_radius_cm": 166.5122868366078
+    },
+    {
+      "index": 563,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 617.3622741256147,
+      "low_geometry_radius_cm": 174.50918019024914
+    },
+    {
+      "index": 565,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 121.10451223097803,
+      "low_geometry_radius_cm": 174.35576965840139
+    },
+    {
+      "index": 566,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 149.09917631175372,
+      "low_geometry_radius_cm": 58.23806861080774
+    },
+    {
+      "index": 568,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 150.9524840797482,
+      "low_geometry_radius_cm": 179.49662996910362
+    },
+    {
+      "index": 569,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 525.9687440393282,
+      "low_geometry_radius_cm": 67.48985439840423
+    },
+    {
+      "index": 572,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 350.38873723103416,
+      "low_geometry_radius_cm": 67.53355027448615
+    },
+    {
+      "index": 574,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 154.6192762431964,
+      "low_geometry_radius_cm": 61.7251330400788
+    },
+    {
+      "index": 575,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 400.0361448506992,
+      "low_geometry_radius_cm": 167.63986255124394
+    },
+    {
+      "index": 577,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 124.74521974342838,
+      "low_geometry_radius_cm": 61.94789473527828
+    },
+    {
+      "index": 578,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 117.71363150215237,
+      "low_geometry_radius_cm": 63.248553766025026
+    },
+    {
+      "index": 580,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 114.07579970266198,
+      "low_geometry_radius_cm": 161.98721942036838
+    },
+    {
+      "index": 581,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 103.74415933422262,
+      "low_geometry_radius_cm": 165.76564246242089
+    },
+    {
+      "index": 583,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 186.5492012941846,
+      "low_geometry_radius_cm": 176.8111853189836
+    },
+    {
+      "index": 584,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 463.67346118879436,
+      "low_geometry_radius_cm": 75.48315358064431
+    },
+    {
+      "index": 586,
+      "mesh": "/Game/EuropeanHornbeam/Geometry/SimpleWind/SM_EuropeanHornbeam_Forest_01.SM_EuropeanHornbeam_Forest_01",
+      "path_margin_cm": 97.21704984603483,
+      "low_geometry_radius_cm": 168.68335819484932
+    }
+  ],
+  "rejected": [
+    {
+      "index": 0,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 244.94646096039736,
+      "radius_cm": 566.3502279938289
+    },
+    {
+      "index": 1,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 419.57535089480723,
+      "radius_cm": 462.4292944403859
+    },
+    {
+      "index": 2,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 341.4997323815457,
+      "radius_cm": 559.847230842984
+    },
+    {
+      "index": 3,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 280.5293951870521,
+      "radius_cm": 508.551204515313
+    },
+    {
+      "index": 4,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 353.57271973797066,
+      "radius_cm": 519.449223358334
+    },
+    {
+      "index": 6,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 210.90413306333113,
+      "radius_cm": 498.9165903799678
+    },
+    {
+      "index": 7,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 420.33981863458393,
+      "radius_cm": 366.419700614511
+    },
+    {
+      "index": 8,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 238.9969315221491,
+      "radius_cm": 440.0771687134492
+    },
+    {
+      "index": 12,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 244.67065878824496,
+      "radius_cm": 531.1442768867005
+    },
+    {
+      "index": 14,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 188.90552097184622,
+      "radius_cm": 169.23776993571983
+    },
+    {
+      "index": 21,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 215.7988124498629,
+      "radius_cm": 528.5273546573168
+    },
+    {
+      "index": 24,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 244.84378737074633,
+      "radius_cm": 547.6255912792373
+    },
+    {
+      "index": 27,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 184.3248484798607,
+      "radius_cm": 419.8882697300708
+    },
+    {
+      "index": 28,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 227.42802099409266,
+      "radius_cm": 160.54714481754866
+    },
+    {
+      "index": 30,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 371.02862838671916,
+      "radius_cm": 419.8385377536168
+    },
+    {
+      "index": 31,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.1772704726339,
+      "radius_cm": 164.56691057063642
+    },
+    {
+      "index": 33,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 192.71463448327728,
+      "radius_cm": 445.4605199827244
+    },
+    {
+      "index": 36,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 195.05245271951458,
+      "radius_cm": 553.1906484257216
+    },
+    {
+      "index": 39,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 354.3031947746271,
+      "radius_cm": 433.8981197724274
+    },
+    {
+      "index": 42,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 262.855033332844,
+      "radius_cm": 564.871428875879
+    },
+    {
+      "index": 45,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 566.406983353804,
+      "radius_cm": 531.8470905912495
+    },
+    {
+      "index": 48,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 461.43564643186266,
+      "radius_cm": 470.82057609154157
+    },
+    {
+      "index": 51,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 181.42358590829252,
+      "radius_cm": 552.6450810699858
+    },
+    {
+      "index": 54,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 210.80265142589525,
+      "radius_cm": 552.1315299456606
+    },
+    {
+      "index": 57,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 428.730369866926,
+      "radius_cm": 489.47561633998646
+    },
+    {
+      "index": 60,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 195.03221391684298,
+      "radius_cm": 549.1339899065067
+    },
+    {
+      "index": 63,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 433.7750455464686,
+      "radius_cm": 381.01074369583665
+    },
+    {
+      "index": 66,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 207.96885004872416,
+      "radius_cm": 413.65566368388494
+    },
+    {
+      "index": 68,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 215.0854151776344,
+      "radius_cm": 135.13321553630036
+    },
+    {
+      "index": 69,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 241.8888356468221,
+      "radius_cm": 352.9902378774751
+    },
+    {
+      "index": 72,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.18989754204426,
+      "radius_cm": 492.0561435829004
+    },
+    {
+      "index": 75,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 373.28934080973613,
+      "radius_cm": 465.6812323149027
+    },
+    {
+      "index": 76,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 218.80620567724048,
+      "radius_cm": 167.85120786343285
+    },
+    {
+      "index": 78,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 430.70171880848807,
+      "radius_cm": 540.1130875132181
+    },
+    {
+      "index": 81,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 186.8843055009155,
+      "radius_cm": 362.40495055059046
+    },
+    {
+      "index": 82,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 192.1478331964217,
+      "radius_cm": 172.57818062041463
+    },
+    {
+      "index": 83,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 183.32673962358086,
+      "radius_cm": 134.81796891367193
+    },
+    {
+      "index": 84,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 477.05672999037984,
+      "radius_cm": 495.3036267747766
+    },
+    {
+      "index": 87,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 202.80725192592848,
+      "radius_cm": 482.0023789651512
+    },
+    {
+      "index": 92,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 182.05612660958656,
+      "radius_cm": 163.07335444928054
+    },
+    {
+      "index": 93,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 232.27118712316212,
+      "radius_cm": 401.8803454191302
+    },
+    {
+      "index": 94,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 197.503339456984,
+      "radius_cm": 134.88338599600718
+    },
+    {
+      "index": 96,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 432.6374044797807,
+      "radius_cm": 524.2021862270193
+    },
+    {
+      "index": 99,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 327.59053506198484,
+      "radius_cm": 386.43633724455356
+    },
+    {
+      "index": 102,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 235.0383384619027,
+      "radius_cm": 370.13347056200234
+    },
+    {
+      "index": 105,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 476.5443130469406,
+      "radius_cm": 483.98449958922356
+    },
+    {
+      "index": 106,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 227.65025542227608,
+      "radius_cm": 161.7700457875242
+    },
+    {
+      "index": 108,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 432.94764815528663,
+      "radius_cm": 449.8266856839336
+    },
+    {
+      "index": 111,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 320.5793339420031,
+      "radius_cm": 418.10552065597943
+    },
+    {
+      "index": 114,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 222.1291784875175,
+      "radius_cm": 353.5123906391793
+    },
+    {
+      "index": 117,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 238.69210982446208,
+      "radius_cm": 522.7106589358046
+    },
+    {
+      "index": 120,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 369.91792164326546,
+      "radius_cm": 499.8971018570546
+    },
+    {
+      "index": 121,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 196.57250985466328,
+      "radius_cm": 135.46165405419507
+    },
+    {
+      "index": 126,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 246.01865870031452,
+      "radius_cm": 476.0939706170115
+    },
+    {
+      "index": 132,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 374.06765880458227,
+      "radius_cm": 411.51307488178793
+    },
+    {
+      "index": 135,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 495.7933855004061,
+      "radius_cm": 569.0438111660417
+    },
+    {
+      "index": 138,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 415.48895855840465,
+      "radius_cm": 382.6622673480459
+    },
+    {
+      "index": 140,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 213.77506311657186,
+      "radius_cm": 177.24964086652417
+    },
+    {
+      "index": 141,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 211.92135138710887,
+      "radius_cm": 432.63617912763056
+    },
+    {
+      "index": 144,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 449.7715635363918,
+      "radius_cm": 391.8970498732615
+    },
+    {
+      "index": 145,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 212.45719308945496,
+      "radius_cm": 173.1631973829515
+    },
+    {
+      "index": 147,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 334.37314444776445,
+      "radius_cm": 547.5051810095147
+    },
+    {
+      "index": 150,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 443.6893721526842,
+      "radius_cm": 461.51069107622834
+    },
+    {
+      "index": 153,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 273.3563754239667,
+      "radius_cm": 535.2477716113547
+    },
+    {
+      "index": 157,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 220.0522448178191,
+      "radius_cm": 162.94938178599898
+    },
+    {
+      "index": 159,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 359.8772736762018,
+      "radius_cm": 433.5622347835294
+    },
+    {
+      "index": 161,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 182.7410207561981,
+      "radius_cm": 177.78103563785922
+    },
+    {
+      "index": 162,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 183.87147134878347,
+      "radius_cm": 560.4459419755121
+    },
+    {
+      "index": 165,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 339.7308378520491,
+      "radius_cm": 364.3888235674852
+    },
+    {
+      "index": 167,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 221.33944867915483,
+      "radius_cm": 165.310800645259
+    },
+    {
+      "index": 168,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 186.0390594588539,
+      "radius_cm": 373.188566768334
+    },
+    {
+      "index": 171,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 282.04385628289754,
+      "radius_cm": 530.1192774715139
+    },
+    {
+      "index": 172,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 200.1662885891846,
+      "radius_cm": 171.50184140147823
+    },
+    {
+      "index": 174,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 193.44876298755884,
+      "radius_cm": 509.8614659997174
+    },
+    {
+      "index": 176,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 210.1529496880451,
+      "radius_cm": 165.92939595598128
+    },
+    {
+      "index": 177,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 226.84848954489019,
+      "radius_cm": 470.9349329199448
+    },
+    {
+      "index": 180,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 373.66831364969664,
+      "radius_cm": 527.1817514483862
+    },
+    {
+      "index": 181,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 191.00616993824286,
+      "radius_cm": 134.7385037842727
+    },
+    {
+      "index": 183,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 464.03491005331614,
+      "radius_cm": 540.1142308406249
+    },
+    {
+      "index": 184,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 185.5881530993583,
+      "radius_cm": 160.9663426162913
+    },
+    {
+      "index": 186,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 238.41538136092777,
+      "radius_cm": 559.612228235124
+    },
+    {
+      "index": 188,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.73593805767666,
+      "radius_cm": 134.23698415294353
+    },
+    {
+      "index": 189,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 199.78597364442044,
+      "radius_cm": 437.64156570184343
+    },
+    {
+      "index": 192,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 220.0705890312775,
+      "radius_cm": 414.2108047841874
+    },
+    {
+      "index": 195,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 189.23442413945787,
+      "radius_cm": 473.31816387694835
+    },
+    {
+      "index": 198,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 198.096320777706,
+      "radius_cm": 414.6507807859965
+    },
+    {
+      "index": 199,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 234.70552765447968,
+      "radius_cm": 166.20872846971193
+    },
+    {
+      "index": 201,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 209.09211981241737,
+      "radius_cm": 552.4078376778785
+    },
+    {
+      "index": 204,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 207.58371148452062,
+      "radius_cm": 545.9969047348065
+    },
+    {
+      "index": 207,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 443.4351710924773,
+      "radius_cm": 526.8399865952244
+    },
+    {
+      "index": 210,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 236.80772012593638,
+      "radius_cm": 434.73862531238905
+    },
+    {
+      "index": 212,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 215.3682075524393,
+      "radius_cm": 164.80594929784556
+    },
+    {
+      "index": 213,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 244.19360042222593,
+      "radius_cm": 474.3722516118664
+    },
+    {
+      "index": 215,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 201.3571545409008,
+      "radius_cm": 166.16840540730067
+    },
+    {
+      "index": 216,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 247.48542253595002,
+      "radius_cm": 499.94961241483475
+    },
+    {
+      "index": 217,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 197.44343323199752,
+      "radius_cm": 165.12808106290603
+    },
+    {
+      "index": 218,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 191.6974794310225,
+      "radius_cm": 162.8195992192136
+    },
+    {
+      "index": 219,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 211.23557284896992,
+      "radius_cm": 466.34438728994473
+    },
+    {
+      "index": 220,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 251.80487865414358,
+      "radius_cm": 172.79211605562833
+    },
+    {
+      "index": 221,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 198.0230509446298,
+      "radius_cm": 165.87747178452486
+    },
+    {
+      "index": 222,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 295.71174215849874,
+      "radius_cm": 424.4254981552588
+    },
+    {
+      "index": 225,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 188.02171775570156,
+      "radius_cm": 499.68634049943427
+    },
+    {
+      "index": 234,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 247.3878368089683,
+      "radius_cm": 500.3531901130936
+    },
+    {
+      "index": 237,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 503.57680823872647,
+      "radius_cm": 503.21289115883656
+    },
+    {
+      "index": 240,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 353.21779327877766,
+      "radius_cm": 489.3392338172321
+    },
+    {
+      "index": 243,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 366.6852622640756,
+      "radius_cm": 360.2608070139016
+    },
+    {
+      "index": 249,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 464.03195449237217,
+      "radius_cm": 530.3581190981408
+    },
+    {
+      "index": 252,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 217.20701511513408,
+      "radius_cm": 565.1659678359846
+    },
+    {
+      "index": 257,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.2689661268596,
+      "radius_cm": 176.19118021571393
+    },
+    {
+      "index": 258,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 227.87848824663217,
+      "radius_cm": 515.7689803894876
+    },
+    {
+      "index": 261,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 335.0129482540776,
+      "radius_cm": 392.3585427816075
+    },
+    {
+      "index": 264,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 297.2070138805148,
+      "radius_cm": 435.35725171681037
+    },
+    {
+      "index": 273,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 301.52470379692215,
+      "radius_cm": 394.32009369766314
+    },
+    {
+      "index": 279,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 216.24778126013206,
+      "radius_cm": 571.6403641847576
+    },
+    {
+      "index": 288,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 546.1211647405207,
+      "radius_cm": 542.0471845345766
+    },
+    {
+      "index": 303,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 365.61291123347286,
+      "radius_cm": 553.4392677824211
+    },
+    {
+      "index": 308,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 187.52413068519604,
+      "radius_cm": 167.4034100098301
+    },
+    {
+      "index": 311,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 245.5028772389585,
+      "radius_cm": 166.46054916419732
+    },
+    {
+      "index": 312,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 291.6220842691057,
+      "radius_cm": 377.4918427809109
+    },
+    {
+      "index": 318,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 417.8970542287773,
+      "radius_cm": 562.1092974939548
+    },
+    {
+      "index": 321,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 244.84877398931405,
+      "radius_cm": 388.6206146768407
+    },
+    {
+      "index": 324,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 370.61366555797383,
+      "radius_cm": 454.1941205401731
+    },
+    {
+      "index": 327,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 569.9030782615575,
+      "radius_cm": 534.3993552985435
+    },
+    {
+      "index": 330,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 267.05520100424474,
+      "radius_cm": 559.2401661244733
+    },
+    {
+      "index": 332,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 183.26420098126528,
+      "radius_cm": 168.2712725344153
+    },
+    {
+      "index": 333,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 322.76078070772,
+      "radius_cm": 513.216120162764
+    },
+    {
+      "index": 339,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 558.6865755921002,
+      "radius_cm": 535.6916111695164
+    },
+    {
+      "index": 342,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 239.99755042087378,
+      "radius_cm": 426.2870796702275
+    },
+    {
+      "index": 345,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 267.0164832828182,
+      "radius_cm": 399.69612395575865
+    },
+    {
+      "index": 348,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 225.79162134166035,
+      "radius_cm": 441.25539639879486
+    },
+    {
+      "index": 351,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 242.9251167430013,
+      "radius_cm": 567.7884733784813
+    },
+    {
+      "index": 354,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 279.429491999675,
+      "radius_cm": 498.0951299490561
+    },
+    {
+      "index": 357,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 281.50477074337437,
+      "radius_cm": 441.90360698353425
+    },
+    {
+      "index": 360,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 460.51247774314584,
+      "radius_cm": 535.0699929702707
+    },
+    {
+      "index": 363,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 197.70783469790263,
+      "radius_cm": 522.2578702643553
+    },
+    {
+      "index": 366,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 524.1559076371841,
+      "radius_cm": 512.7475489817033
+    },
+    {
+      "index": 368,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 214.828051651838,
+      "radius_cm": 163.74137587628258
+    },
+    {
+      "index": 372,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 257.14459199468445,
+      "radius_cm": 533.1979449769934
+    },
+    {
+      "index": 375,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 203.85484409360265,
+      "radius_cm": 371.9176699423753
+    },
+    {
+      "index": 379,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 185.77666771141708,
+      "radius_cm": 134.53495060601927
+    },
+    {
+      "index": 381,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 392.0497529271845,
+      "radius_cm": 551.1679644848559
+    },
+    {
+      "index": 384,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 509.04910928837796,
+      "radius_cm": 431.42741698380115
+    },
+    {
+      "index": 387,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 559.1733790527422,
+      "radius_cm": 561.4783171221685
+    },
+    {
+      "index": 399,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 307.59198201987095,
+      "radius_cm": 488.59260156160525
+    },
+    {
+      "index": 401,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 230.71323092219995,
+      "radius_cm": 175.8012503833062
+    },
+    {
+      "index": 402,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 209.60780470964596,
+      "radius_cm": 449.8989587694473
+    },
+    {
+      "index": 405,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 225.08066945071437,
+      "radius_cm": 476.68298825446317
+    },
+    {
+      "index": 410,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 236.8405646477613,
+      "radius_cm": 169.67262046490063
+    },
+    {
+      "index": 411,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 330.91355956990435,
+      "radius_cm": 548.8323233926485
+    },
+    {
+      "index": 414,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 207.60911115488216,
+      "radius_cm": 392.6332850595922
+    },
+    {
+      "index": 417,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 221.84195119134296,
+      "radius_cm": 441.2908945908916
+    },
+    {
+      "index": 426,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 243.36635196548121,
+      "radius_cm": 497.3385402884442
+    },
+    {
+      "index": 427,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 225.11262509167204,
+      "radius_cm": 165.12262196226433
+    },
+    {
+      "index": 429,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 238.0554003750782,
+      "radius_cm": 444.5501970487284
+    },
+    {
+      "index": 432,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 218.30197667014153,
+      "radius_cm": 364.87033701706287
+    },
+    {
+      "index": 434,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 195.41394638788438,
+      "radius_cm": 178.10042768410875
+    },
+    {
+      "index": 435,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 611.4094133665252,
+      "radius_cm": 534.7774917145321
+    },
+    {
+      "index": 436,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 218.66765384860992,
+      "radius_cm": 166.4432948237906
+    },
+    {
+      "index": 438,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 219.55655542895101,
+      "radius_cm": 566.0736669221802
+    },
+    {
+      "index": 444,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 397.8317804310674,
+      "radius_cm": 373.5791415078298
+    },
+    {
+      "index": 459,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 432.15337050076346,
+      "radius_cm": 375.70567630349467
+    },
+    {
+      "index": 462,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.63530119062773,
+      "radius_cm": 496.9071680495092
+    },
+    {
+      "index": 465,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 287.8408714378206,
+      "radius_cm": 547.3614873399692
+    },
+    {
+      "index": 472,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 199.26184537795353,
+      "radius_cm": 163.66908999244686
+    },
+    {
+      "index": 474,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 185.20363015402756,
+      "radius_cm": 537.5820630559269
+    },
+    {
+      "index": 476,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 201.63734146133504,
+      "radius_cm": 166.33864734214683
+    },
+    {
+      "index": 477,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 370.6803618341782,
+      "radius_cm": 404.4790315194359
+    },
+    {
+      "index": 480,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 249.49217519095077,
+      "radius_cm": 499.83332718912254
+    },
+    {
+      "index": 481,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 249.2986823071236,
+      "radius_cm": 170.79569273578173
+    },
+    {
+      "index": 486,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 271.22802075341076,
+      "radius_cm": 422.7888094416772
+    },
+    {
+      "index": 488,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 214.66830652899336,
+      "radius_cm": 172.83730377354715
+    },
+    {
+      "index": 489,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 570.8922837742873,
+      "radius_cm": 504.32893468375903
+    },
+    {
+      "index": 490,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 246.0762494578077,
+      "radius_cm": 174.35127709373407
+    },
+    {
+      "index": 492,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 337.0800063715196,
+      "radius_cm": 470.97706299844083
+    },
+    {
+      "index": 495,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 266.22957470352,
+      "radius_cm": 384.0621248559387
+    },
+    {
+      "index": 498,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 496.1030741410724,
+      "radius_cm": 538.7014781066987
+    },
+    {
+      "index": 501,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 205.66291900249286,
+      "radius_cm": 439.3475667208543
+    },
+    {
+      "index": 507,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 449.2339934130989,
+      "radius_cm": 406.9309128155869
+    },
+    {
+      "index": 509,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 197.24358913005386,
+      "radius_cm": 164.95329239128148
+    },
+    {
+      "index": 510,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 272.3320952229328,
+      "radius_cm": 434.0556526032819
+    },
+    {
+      "index": 516,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 275.20148971818213,
+      "radius_cm": 358.5253493682612
+    },
+    {
+      "index": 525,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 377.94087812124803,
+      "radius_cm": 361.16525375001453
+    },
+    {
+      "index": 528,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 233.9375973853803,
+      "radius_cm": 470.28485413060884
+    },
+    {
+      "index": 534,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 401.4153929348271,
+      "radius_cm": 431.9951192704995
+    },
+    {
+      "index": 536,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 192.58221587467108,
+      "radius_cm": 166.40038001160912
+    },
+    {
+      "index": 537,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 402.90089156278873,
+      "radius_cm": 481.4980640424615
+    },
+    {
+      "index": 541,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.71856384420425,
+      "radius_cm": 165.41749049730228
+    },
+    {
+      "index": 542,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 199.86925489283544,
+      "radius_cm": 165.98074353915558
+    },
+    {
+      "index": 543,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 390.61739685147506,
+      "radius_cm": 430.4621174774046
+    },
+    {
+      "index": 544,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 180.73023021946852,
+      "radius_cm": 162.08322765855772
+    },
+    {
+      "index": 549,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 283.5745721854544,
+      "radius_cm": 481.7423786262739
+    },
+    {
+      "index": 552,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 299.1498142978752,
+      "radius_cm": 553.3599463938219
+    },
+    {
+      "index": 555,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 195.26780916210805,
+      "radius_cm": 521.0030108551992
+    },
+    {
+      "index": 558,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 322.94420973257576,
+      "radius_cm": 490.37604209652466
+    },
+    {
+      "index": 561,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 440.73311622004735,
+      "radius_cm": 382.95500141960383
+    },
+    {
+      "index": 564,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 204.94329720835225,
+      "radius_cm": 483.26302372737894
+    },
+    {
+      "index": 567,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 260.88242137209465,
+      "radius_cm": 396.71960355797955
+    },
+    {
+      "index": 570,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 216.03397102694225,
+      "radius_cm": 445.8991787802152
+    },
+    {
+      "index": 571,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 193.54564982382863,
+      "radius_cm": 177.33632949407112
+    },
+    {
+      "index": 573,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 203.6800272554724,
+      "radius_cm": 538.4593314549176
+    },
+    {
+      "index": 576,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 270.5410276275683,
+      "radius_cm": 530.094888893091
+    },
+    {
+      "index": 579,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 328.52194335602235,
+      "radius_cm": 372.11431651478165
+    },
+    {
+      "index": 582,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 184.4852519810014,
+      "radius_cm": 408.3228100330327
+    },
+    {
+      "index": 585,
+      "reason": "low_geometry_path_clearance",
+      "clearance_cm": 342.3236054902247,
+      "radius_cm": 494.66279766538804
+    }
+  ],
+  "height_band_cm": 300,
+  "scope": "LOD0 triangles within rider-height band vs mapped paths and native Landscape placement. Trunk collision, under-branch riding, PCG integration, native visual/performance acceptance remain pending.",
+  "static_lakeshore_review": "Fuller canopy, open riding-height view; not whole-scene visual or native gameplay acceptance.",
+  "accepted_for_main": false
+}
