@@ -1,0 +1,10 @@
+{
+  "material": "/Game/BattleForTheA/Environment/KrogArt/M_KrogOriginalStreetArt_v1.M_KrogOriginalStreetArt_v1",
+  "actors": [
+    "Krog route SM_KrogTunnel_Shell",
+    "Krog route SM_KrogTunnel_Columns"
+  ],
+  "main_map_changed": false,
+  "visual_review": "Portal frame inspected: texture visible on walls and columns. Partial material improvement; stretched projection on narrow faces, jagged wall silhouette and deep interior shadows remain. Full art not accepted.",
+  "scope": "Original generated texture and review-only material overrides, no collision changes."
+}
