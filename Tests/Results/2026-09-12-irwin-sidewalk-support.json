@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "probes": 12591,
+  "hits": {
+    "Irwin Lake roadside pavement": 12591
+  },
+  "failures": [],
+  "trail_failures": [],
+  "main_map_changed": false,
+  "scope": "Native surface support and original trail preservation only; no traffic or visual acceptance."
+}

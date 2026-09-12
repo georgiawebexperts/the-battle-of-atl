@@ -1,0 +1,13 @@
+{
+  "conformed_edges": 1658,
+  "max_previous_edge_height_gap_cm": 2.6325905814994712,
+  "interior_open_edges": 1,
+  "max_open_edge_cm": 0.04669198003861994,
+  "triangles": 12591,
+  "missing_area_cm2": 0.0026875882203396175,
+  "protected_overlap_cm2": 0.0034847405011398614,
+  "source_to_native_max_error_cm": 5.8828152873502404e-05,
+  "native_reference_samples": 35,
+  "main_map_changed": false,
+  "scope": "Flush roadside pavement candidate; native support, edge transitions and appearance pending. Door landings not included."
+}
