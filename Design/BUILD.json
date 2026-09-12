@@ -12,6 +12,6 @@
     "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; 481m main-world Krog route passes in realistic mode with cars and pedestrians active and a yielding test driver; mapped park-hill climb/descent passes; broader handling balance remains pending."
   ],
   "unreleased_code_changes": [
-    "Starting bungalow siding, trim, framed glazing, paneled door and porch details; final opening frames reviewed, porch ground fit still unfinished."
+    "Starting bungalow finishes/details, elevated foundation and four steps fitted to surveyed ground; opening reviewed and direct tutorial ride passes. Still not final neighborhood art."
   ]
 }

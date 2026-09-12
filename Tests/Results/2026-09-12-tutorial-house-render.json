@@ -2,16 +2,16 @@
   "exit_code": 0,
   "opening": {
     "passed": true,
-    "duration": 12.0,
+    "duration": 12.01,
     "skipped": false,
     "protected": true
   },
   "capture_passed": true,
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/a5157c388faf4d6eb6200094970abfbe/opening0.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/a5157c388faf4d6eb6200094970abfbe/opening1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/a5157c388faf4d6eb6200094970abfbe/opening2.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/e7d1273f670942bcb43924dc50719678/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/e7d1273f670942bcb43924dc50719678/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/tutorial-house/e7d1273f670942bcb43924dc50719678/opening2.png"
   ],
-  "visual_review": "All three frames inspected: siding, cream window trim, glass and paneled door render correctly. Porch base intersects/blends into terrain and needs ground-fit correction; house/neighborhood not visually complete.",
+  "visual_review": "Foundation pass: all three initial raised-house views inspected; final opening2 inspected after shortening rails and removing overlapping foundation faces. Porch/steps clear grass, rails supported, base no longer stippled. Neighborhood remains visually unfinished.",
   "scope": "Starting-house material and detail review during opening; no whole-neighborhood or traversal acceptance."
 }

@@ -1,0 +1,370 @@
+{
+  "home": [
+    -21251.03436,
+    193.42769,
+    -94.51732
+  ],
+  "samples": [
+    {
+      "offset": [
+        -325,
+        -750
+      ],
+      "height_relative_home": 2.1746519580456862,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -750
+      ],
+      "height_relative_home": 31.4410982405404,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -750
+      ],
+      "height_relative_home": 25.79522496077807,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -750
+      ],
+      "height_relative_home": 15.933830507883002,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -750
+      ],
+      "height_relative_home": 15.697245915789225,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        -700
+      ],
+      "height_relative_home": 12.769101014763535,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -700
+      ],
+      "height_relative_home": 42.183998033591664,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -700
+      ],
+      "height_relative_home": 35.38540052373294,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -700
+      ],
+      "height_relative_home": 21.849727364484878,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -700
+      ],
+      "height_relative_home": 19.126007447593068,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        -650
+      ],
+      "height_relative_home": 31.516395523069676,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -650
+      ],
+      "height_relative_home": 52.05248444241222,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -650
+      ],
+      "height_relative_home": 44.93921098282574,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -650
+      ],
+      "height_relative_home": 29.44232105582803,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -650
+      ],
+      "height_relative_home": 23.90199610027885,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        -600
+      ],
+      "height_relative_home": 46.344236803302536,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -600
+      ],
+      "height_relative_home": 59.4810479247371,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -600
+      ],
+      "height_relative_home": 52.60209017635846,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -600
+      ],
+      "height_relative_home": 35.60912559690708,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -600
+      ],
+      "height_relative_home": 28.274463034851536,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        -550
+      ],
+      "height_relative_home": 58.3251309666601,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -550
+      ],
+      "height_relative_home": 64.58714338250225,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -550
+      ],
+      "height_relative_home": 58.57819849158223,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -550
+      ],
+      "height_relative_home": 40.25069050117061,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -550
+      ],
+      "height_relative_home": 33.093030246154925,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        -500
+      ],
+      "height_relative_home": 66.66957408306105,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -500
+      ],
+      "height_relative_home": 67.90365592157475,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -500
+      ],
+      "height_relative_home": 63.26683662334331,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -500
+      ],
+      "height_relative_home": 44.933674996743164,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -500
+      ],
+      "height_relative_home": 38.47268150289706,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        -425
+      ],
+      "height_relative_home": 63.0271730509365,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        -425
+      ],
+      "height_relative_home": 66.72175358810553,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        -425
+      ],
+      "height_relative_home": 63.51166323640287,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        -425
+      ],
+      "height_relative_home": 45.820872536242135,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        -425
+      ],
+      "height_relative_home": 47.538666567186354,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        0
+      ],
+      "height_relative_home": 0.39110471478086595,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        0
+      ],
+      "height_relative_home": -15.228640750730776,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        0
+      ],
+      "height_relative_home": -12.008010439880351,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        0
+      ],
+      "height_relative_home": -15.992102576744557,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        0
+      ],
+      "height_relative_home": 9.037774996238525,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -325,
+        425
+      ],
+      "height_relative_home": -8.21899916879913,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        -160,
+        425
+      ],
+      "height_relative_home": -28.340205347327398,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        0,
+        425
+      ],
+      "height_relative_home": -46.983939853960734,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        160,
+        425
+      ],
+      "height_relative_home": -63.74506666103211,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "offset": [
+        325,
+        425
+      ],
+      "height_relative_home": -70.17700951898864,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    }
+  ],
+  "scope": "Ground survey; no map mutation."
+}

@@ -26,7 +26,11 @@ ABattleTutorial::ABattleTutorial(){
  auto Span=[&](FVector A,FVector B){const FVector D=B-A;Part(Road,(A+B)*.5f-FVector(0,0,12),FVector(D.Size()+3,450,24),D.Rotation());};
  for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialBlock::Alternate);I++)Span(BattleTutorialBlock::Alternate[I-1],BattleTutorialBlock::Alternate[I]);
  for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::StubEnds);I+=2)Span(BattleTutorialBlock::StubEnds[I],BattleTutorialBlock::StubEnds[I+1]);
- const FVector H=BattleTutorialData::Home;
+ const FVector H=BattleTutorialData::Home+FVector(0,0,80);
+ // Native terrain peaks 68 cm above the original base at the porch.
+ // A solid foundation spans the lower rear grade without exposing a floating floor.
+ Part(Concrete,H+FVector(0,0,-75),FVector(650,850,150));
+ Part(Concrete,H+FVector(0,-515,-75),FVector(680,180,150));
  // The fictional bungalow has its own finishes, separate from street barriers and gate stone.
  Part(Siding,H+FVector(0,0,180),FVector(650,850,360));
  for(int Z=30;Z<355;Z+=18){
@@ -57,9 +61,9 @@ ABattleTutorial::ABattleTutorial(){
  Part(Timber,H+FVector(0,-515,22),FVector(680,180,44));
  Part(Iron,H+FVector(0,-530,326),FVector(720,240,20));
  Part(Trim,H+FVector(0,-653,317),FVector(720,14,25));
- for(int I=0;I<3;I++)Part(Concrete,H+FVector(0,-625-I*30,18-I*6),FVector(145,40,36-I*12));
- for(int Side:{-1,1})for(int X=160;X<=430;X+=35)Part(Trim,H+FVector(Side*X,-600,70),FVector(14,14,140));
- for(int Side:{-1,1})for(int Z:{35,105})Part(Timber,H+FVector(Side*290,-600,Z),FVector(300,12,12));
+ for(int I=0;I<4;I++)Part(Concrete,H+FVector(0,-625-I*30,-36-I*9),FVector(145,40,128-I*18));
+ for(int Side:{-1,1})for(int X=160;X<=300;X+=35)Part(Trim,H+FVector(Side*X,-600,70),FVector(14,14,140));
+ for(int Side:{-1,1})for(int Z:{35,105})Part(Timber,H+FVector(Side*225,-600,Z),FVector(170,12,12));
  Part(Timber,H+FVector(180,-625,70),FVector(14,14,140));Part(Iron,H+FVector(180,-625,145),FVector(100,45,45));
  auto Label=[&](const TCHAR* N,const TCHAR* T,FVector P,float Size,FRotator R){auto* C=CreateDefaultSubobject<UTextRenderComponent>(N);C->SetupAttachment(RootComponent);C->SetRelativeLocation(P);C->SetRelativeRotation(R);C->SetWorldSize(Size);C->SetText(FText::FromString(T));C->SetTextMaterial(TextMat.Object);C->SetTextRenderColor(FColor(255,229,183));C->SetHorizontalAlignment(EHTA_Center);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);};
  Label(TEXT("Mailbox"),TEXT("ELLISON"),H+FVector(180,-650,140),16,FRotator(0,-90,0));
