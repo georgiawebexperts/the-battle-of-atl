@@ -32,7 +32,7 @@ void TickBattleBenchFireReview(APlayerController* PC,float Dt){
   }
  }
  const bool bReach=FParse::Param(FCommandLine::Get(),TEXT("BattleBenchReachReview"));
- const float CaptureTimes[]={bIgnition?1.5f:.12f,bIgnition?3.f:(bReach?2.2f:2.f),5.85f};
+ const float CaptureTimes[]={bIgnition?1.5f:.12f,bIgnition?2.2f:(bReach?2.2f:2.f),5.85f};
  if(S.Phase>=1&&S.Phase<=3&&S.Clock>CaptureTimes[S.Phase-1]){
   if(S.Fire.IsValid())UE_LOG(LogTemp,Display,TEXT("BenchFireEnvelope: sample=%d age=%.3f flame=%.4f smoke=%.4f"),S.Phase,S.Clock,S.Fire->FlameStrength,S.Fire->SmokeStrength);
   if(S.Visitor.IsValid()){const FVector Hand=S.Bench.InverseTransformPosition(S.Visitor->Body->GetSocketLocation(TEXT("hand_r")));UE_LOG(LogTemp,Display,TEXT("BenchReachReview: sample=%d reaching=%d hand_local=%s"),S.Phase,S.Visitor->bBenchReaching,*Hand.ToString());}

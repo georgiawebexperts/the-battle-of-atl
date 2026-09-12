@@ -1,4 +1,5 @@
 #include "PiedmontPedestrian.h"
+#include "Components/StaticMeshComponent.h"
 #include "BattleParkFurniture.h"
 #include "BattleBenchFire.h"
 #include "EngineUtils.h"
@@ -22,6 +23,7 @@ void TickBattleBenchIgnitionAudit(APlayerController* PC,float Dt){
   CHECK_IGNITION(!V->BeginBenchIgnition(S.Furniture.Get(),-1),"Invalid bench accepted");
   CHECK_IGNITION(V->BeginBenchIgnition(S.Furniture.Get(),0),"Ignition did not start");
   CHECK_IGNITION(!S.Furniture->IsBenchAvailable(0),"No animation reservation");
+  CHECK_IGNITION(V->BenchLighterHandle->IsVisible()&&V->BenchLighterStem->IsVisible(),"Ignition prop hidden during reach");
   CHECK_IGNITION(!ABattleBenchFire::IgniteBench(S.Furniture.Get(),0),"Fire stole occupied bench");
   CHECK_IGNITION(FireCount()==0,"Immediate fire before reach");S.Phase=1;S.Clock=0;return;
  }
@@ -29,7 +31,8 @@ void TickBattleBenchIgnitionAudit(APlayerController* PC,float Dt){
  if(S.Phase==1&&S.Clock>.6f){
   CHECK_IGNITION(FireCount()==0,"Fire before ignition delay");V->HearHorn(PC->GetPawn());
   CHECK_IGNITION(!V->bBenchReaching&&S.Furniture->IsBenchAvailable(0),"Horn left reservation");
-  CHECK_IGNITION(FireCount()==0,"Horn caused fire");V->Destroy();
+  CHECK_IGNITION(FireCount()==0,"Horn caused fire");
+  CHECK_IGNITION(!V->BenchLighterHandle->IsVisible()&&!V->BenchLighterStem->IsVisible(),"Horn left prop visible");V->Destroy();
   S.Visitor=Spawn();CHECK_IGNITION(S.Visitor->BeginBenchIgnition(S.Furniture.Get(),0),"Restart ignition failed");S.Phase=2;S.Clock=0;return;
  }
  if(S.Phase==2&&S.Clock>3.f){

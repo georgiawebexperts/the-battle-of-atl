@@ -37,6 +37,8 @@ public:
  bool BeginBenchReach();
  bool BeginBenchIgnition(class ABattleParkFurniture* Furniture,int32 Index);
  UPROPERTY(BlueprintReadOnly) int32 BenchesIgnited=0;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<class UStaticMeshComponent> BenchLighterHandle;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<class UStaticMeshComponent> BenchLighterStem;
  UPROPERTY(BlueprintReadOnly) bool bBenchReaching=false;
  void HearHorn(APawn* Source);
  void BikeImpact(float Speed,FVector Direction);

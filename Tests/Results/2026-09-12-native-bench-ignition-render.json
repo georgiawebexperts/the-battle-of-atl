@@ -4,9 +4,9 @@
   "solid_diagnostic": false,
   "exit_code": 0,
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/16338e4358e04714a6e0a514f063283c/fire-1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/16338e4358e04714a6e0a514f063283c/fire-2.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/16338e4358e04714a6e0a514f063283c/fire-3.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/58b95a1a8ef041939463bb95b1bdc995/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/58b95a1a8ef041939463bb95b1bdc995/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/58b95a1a8ef041939463bb95b1bdc995/fire-3.png"
   ],
   "captured": true,
   "visual_accepted": false,
@@ -14,16 +14,21 @@
   "capture_passed": true,
   "visitor_positions": {
     "1": [
-      0,
-      55,
+      -0.0,
+      55.0,
+      89.072
+    ],
+    "2": [
+      -0.0,
+      55.0,
       89.072
     ],
     "3": [
-      0,
-      296.396,
-      48.001
+      -0.0,
+      297.321,
+      47.808
     ]
   },
   "retreat_verified": true,
-  "pose_review": "Fire remains burning; visitor moves out of fixed camera frame. Position delta241.396cm along bench front. Continuous movement, prop/contact and blocked-retreat cases not accepted."
+  "prop_review": "Sample2 inspected: narrow stem visible below right hand toward seat; grip partly occluded. Close-up contact and continuous attachment not accepted. Retreat241+cm still verified."
 }

@@ -1,6 +1,9 @@
 #include "PiedmontPedestrian.h"
 #include "BattleParkFurniture.h"
 #include "BattleBenchFire.h"
+#include "Components/StaticMeshComponent.h"
+#include "Materials/MaterialInterface.h"
+#include "UObject/ConstructorHelpers.h"
 #include "Animation/AnimSequence.h"
 #include "PiedmontBike.h"
 #include "BattleBike.h"
@@ -15,6 +18,16 @@
 #include "Engine/World.h"
 
 APiedmontPedestrian::APiedmontPedestrian(){
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> PropCube(TEXT("/Engine/BasicShapes/Cube.Cube"));
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> PropCylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> PropHandleMaterial(TEXT("/Game/PiedmontRide/Materials/M_Safety.M_Safety"));
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> PropMetalMaterial(TEXT("/Game/PiedmontRide/Materials/M_GunMetal.M_GunMetal"));
+ BenchLighterHandle=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BenchLighterHandle"));BenchLighterHandle->SetupAttachment(Body,TEXT("hand_r"));
+ BenchLighterHandle->SetStaticMesh(PropCube.Object);BenchLighterHandle->SetMaterial(0,PropHandleMaterial.Object);BenchLighterHandle->SetRelativeLocation(FVector(-4,0,0));BenchLighterHandle->SetRelativeScale3D(FVector(.02,.02,.05));
+ BenchLighterStem=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BenchLighterStem"));BenchLighterStem->SetupAttachment(Body,TEXT("hand_r"));
+ BenchLighterStem->SetStaticMesh(PropCylinder.Object);BenchLighterStem->SetMaterial(0,PropMetalMaterial.Object);BenchLighterStem->SetRelativeLocation(FVector(-4,0,-6));BenchLighterStem->SetRelativeScale3D(FVector(.008,.008,.07));
+ for(auto* Part:{BenchLighterHandle.Get(),BenchLighterStem.Get()}){Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetVisibility(false);}
+
  AIControllerClass=AAIController::StaticClass();AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;
  bUseControllerRotationYaw=false;Tags.Add(TEXT("PiedmontTraffic"));
  auto* Move=GetCharacterMovement();Move->bOrientRotationToMovement=true;Move->RotationRate=FRotator(0,360,0);
@@ -76,7 +89,7 @@ bool APiedmontPedestrian::IsAtIgnitionBench(ABattleParkFurniture* Furniture,int3
 bool APiedmontPedestrian::BeginBenchIgnition(ABattleParkFurniture* Furniture,int32 Index){
  if(bBenchReaching||!IsAtIgnitionBench(Furniture,Index)||!Furniture->ReserveBench(Index,this))return false;
  if(!BeginBenchReach()){Furniture->ReleaseBench(Index,this);return false;}
- IgnitionFurniture=Furniture;IgnitionBench=Index;return true;
+ IgnitionFurniture=Furniture;IgnitionBench=Index;BenchLighterHandle->SetVisibility(true);BenchLighterStem->SetVisibility(true);return true;
 }
 void APiedmontPedestrian::TickBenchIgnition(float Dt){
  if(IgnitionBench==INDEX_NONE)return;
@@ -90,6 +103,7 @@ void APiedmontPedestrian::TickBenchIgnition(float Dt){
 }
 void APiedmontPedestrian::CancelBenchReach(){
  bBenchRetreatPending=false;BenchRetreatRemaining=0;
+ BenchLighterHandle->SetVisibility(false);BenchLighterStem->SetVisibility(false);
  if(auto* Furniture=IgnitionFurniture.Get())Furniture->ReleaseBench(IgnitionBench,this);
  IgnitionFurniture.Reset();IgnitionBench=INDEX_NONE;
  if(bBenchReaching){bBenchReaching=false;StopBodySequence();}
