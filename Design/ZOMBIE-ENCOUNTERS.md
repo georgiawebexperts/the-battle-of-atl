@@ -91,3 +91,10 @@ Enabled current-pose physical death for both vendor and punk using their own mes
 Initial punk trial exposed root-parented shoes drifting away from shins. Capture each animated shoe-to-lower-leg transform at death and reconstruct shoe world transforms from physical shins, then recompute local pose. Vendor asset has Body/Abdomen bodies instead of punk Hips/Torso; both have Chest. Changed tracking anchor and test to Chest rather than assuming a physical Hips body. Both have13capsules/12constraints.
 
 Build passes. Rendered punk integrated normal death path and vendor candidate tests pass physical chest tracking within10cm, head drop>60cm and canceled attack warning. Settled frames inspected for both: prone body, shoes attached. Prototype failures retained as evidence; vendor initial failure was an invalid hip-body test assumption. Full slopes/obstacles/multi-corpse performance, exact fit and packaged acceptance remain. Installed052 unchanged. Scripts/test_zombie_death.py --render [--punk] exercises actual fatal damage; no feature-enabling flag now required.
+
+
+## Sloped terrain death checks — 2026-09-12 [codex-maclaptop]
+
+Added --slope to zombie death fixture: scan real Landscape inside mapped park for an8–31.8degree slope, spawn and kill the model there, then inspect eight visible joint positions against terrain (Head, Chest, wrists, shins, shoes). Weapon drops disabled only in fixture to keep the view clear. Captures precede clearance assertion so failed contact remains reviewable.
+
+Editor build and both vendor/punk runs pass on27.82degree slope. Minimum sampled joint clearance punk5.75cm/vendor3.34cm; required >=-15cm. Chest tracking/head drop/canceled attack warning also pass. Inspected both2.5second frames: slope-conforming bodies, attached shoes, but awkward limb poses remain. Joint clearance does not measure mesh skin penetration, and fixed2.5second image does not prove fully settled physics. Need closer contact/settling and scenery-obstacle tests before broader visual acceptance. Installed052 unchanged.

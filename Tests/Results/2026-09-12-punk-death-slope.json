@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "reason": "Fatal damage starts physics, visible chest follows body, head falls and dead zombie attack warning clears",
+  "slope_degrees": 27.82,
+  "minimum_joint_clearance_cm": 5.75,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible chest tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/f60ce6483fa845ccbfd53a492accaff9/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/f60ce6483fa845ccbfd53a492accaff9/settled.png"
+  ],
+  "visual_review": {
+    "image_reviewed": "settled.png",
+    "observations": "Body follows slope, shoes remain connected; some awkward limb poses remain.",
+    "limits": "Capture at2.5seconds does not prove fully settled physics; joint clearance is not whole-mesh penetration measurement. One slope/direction only."
+  }
+}

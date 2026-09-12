@@ -1,6 +1,6 @@
 """Native zombie physical death and rendered pose checks."""
 import pathlib,subprocess,re,json,argparse,uuid,plistlib
-parser=argparse.ArgumentParser();parser.add_argument('--render',action='store_true');parser.add_argument('--punk',action='store_true');parser.add_argument('--app');parser.add_argument('--report');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--render',action='store_true');parser.add_argument('--punk',action='store_true');parser.add_argument('--slope',action='store_true');parser.add_argument('--app');parser.add_argument('--report');args=parser.parse_args()
 root=pathlib.Path(__file__).resolve().parents[1];log=root/'work/zombie-death-audit.log'
 capture=root/'work/zombie-death-review'/uuid.uuid4().hex
 if args.app:
@@ -8,7 +8,7 @@ if args.app:
  capture=pathlib.Path.home()/'Library/Containers'/bundle/'Data/Documents/BattleGunmanReview'/uuid.uuid4().hex
 if args.render:capture.mkdir(parents=True)
 with log.open('w') as f:
- run=subprocess.run([*([args.app] if args.app else ['/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd',str(root/'AuraPlayground.uproject')]),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-game',*(['-RenderOffscreen','-ResX=1280','-ResY=720','-ForceRes','-NoTextureStreaming',f'-GunmanReviewDir={capture}','-ExecCmds=r.ScreenshotDelegate 0'] if args.render else ['-nullrhi']),'-BattleSkipTutorial','-BattleZombieDeathAudit',*(['-BattlePunkReview'] if args.punk else []),'-unattended','-nosound','-stdout'],stdout=f,stderr=subprocess.STDOUT,timeout=90)
+ run=subprocess.run([*([args.app] if args.app else ['/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd',str(root/'AuraPlayground.uproject')]),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-game',*(['-RenderOffscreen','-ResX=1280','-ResY=720','-ForceRes','-NoTextureStreaming',f'-GunmanReviewDir={capture}','-ExecCmds=r.ScreenshotDelegate 0'] if args.render else ['-nullrhi']),'-BattleSkipTutorial','-BattleZombieDeathAudit',*(['-BattleDeathSlope'] if args.slope else []),*(['-BattlePunkReview'] if args.punk else []),'-unattended','-nosound','-stdout'],stdout=f,stderr=subprocess.STDOUT,timeout=90)
 rows=re.findall(r'ZombieDeathAudit: (\{[^\n]+\})',log.read_text());r=json.loads(rows[-1]) if rows else {'passed':False,'reason':'Missing audit'}
 r.update(app=args.app,exit_code=run.returncode,scope='Native fatal damage physics fixture; visible chest tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.');r['passed']=r['passed'] and run.returncode==0
 if args.render:
