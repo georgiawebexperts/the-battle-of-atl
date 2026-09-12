@@ -8,12 +8,21 @@ world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world
 for actor in ea.get_all_level_actors():
  if 'BattleTenthStreet' in [str(t) for t in actor.tags]:ea.destroy_actor(actor)
 folder=root/'SourceAssets/Terrain/TenthStreet';data=json.loads((folder/'surfaces.json').read_text());dest='/Game/BattleForTheA/Environment/TenthStreet';rows=[]
+markings=folder/'markings.json'
+if markings.exists():data['surfaces']+=json.loads(markings.read_text())['surfaces']
+for kind,color in [('WhitePaint',(.8,.8,.76)),('YellowPaint',(.9,.58,.015))]:
+ mat=unreal.load_asset(dest+'/M_'+kind)
+ if not mat:mat=unreal.AssetToolsHelpers.get_asset_tools().create_asset('M_'+kind,dest,unreal.Material,unreal.MaterialFactoryNew())
+ lib=unreal.MaterialEditingLibrary;lib.delete_all_material_expressions(mat)
+ node=lib.create_material_expression(mat,unreal.MaterialExpressionConstant3Vector);node.set_editor_property('constant',unreal.LinearColor(*color));lib.connect_material_property(node,'',unreal.MaterialProperty.MP_BASE_COLOR)
+ rough=lib.create_material_expression(mat,unreal.MaterialExpressionConstant);rough.set_editor_property('r',.9);lib.connect_material_property(rough,'',unreal.MaterialProperty.MP_ROUGHNESS)
+ lib.recompile_material(mat);unreal.EditorAssetLibrary.save_loaded_asset(mat)
 for row in data['surfaces']:
  name='SM_'+pathlib.Path(row['file']).stem;opts=unreal.FbxImportUI();opts.import_as_skeletal=False;opts.import_materials=False;opts.import_textures=False;opts.automated_import_should_detect_type=False;opts.mesh_type_to_import=unreal.FBXImportType.FBXIT_STATIC_MESH;opts.static_mesh_import_data.combine_meshes=True;opts.static_mesh_import_data.auto_generate_collision=False
  task=unreal.AssetImportTask();task.filename=str(folder/row['file']);task.destination_path=dest;task.destination_name=name;task.automated=True;task.save=True;task.replace_existing=True;task.options=opts;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])
  mesh=unreal.load_asset(dest+'/'+name);assert mesh;b=mesh.get_bounding_box();bounds=[[b.min.x,b.min.y,b.min.z],[b.max.x,b.max.y,b.max.z]];error=max(abs(bounds[i][j]-row['bounds_cm'][i][j]) for i in range(2) for j in range(3));assert error<.1
- mesh.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_Concrete' if any(k in name for k in ['Separator','Sidewalk']) else '/Game/PiedmontRide/Materials/M_Asphalt'));mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
- actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());actor.set_actor_label(name);actor.tags=[unreal.Name('BattleTenthStreet')];actor.set_folder_path('Midtown/TenthStreet');actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('BlockAll');rows.append({'asset':mesh.get_path_name(),'bounds_error_cm':error})
+ mesh.set_material(0,unreal.load_asset(dest+'/M_'+name.removeprefix('SM_TenthStreet_') if 'Paint' in name else '/Game/PiedmontRide/Materials/M_Concrete' if any(k in name for k in ['Separator','Sidewalk']) else '/Game/PiedmontRide/Materials/M_Asphalt'));mesh.get_editor_property('body_setup').set_editor_property('collision_trace_flag',unreal.CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
+ actor=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector());actor.set_actor_label(name);actor.tags=[unreal.Name('BattleTenthStreet')];actor.set_folder_path('Midtown/TenthStreet');actor.static_mesh_component.set_static_mesh(mesh);actor.static_mesh_component.set_collision_profile_name('NoCollision' if 'Paint' in name else 'BlockAll');rows.append({'asset':mesh.get_path_name(),'bounds_error_cm':error})
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 original_lights=[]
 for a in ea.get_all_level_actors():
@@ -34,4 +43,4 @@ owned=[a for a in ea.get_all_level_actors() if 'BattleTenthStreet' in [str(t) fo
 assert len(owned)==len(data['surfaces'])
 installed='-BattleInstallTenthStreet' in unreal.SystemLibrary.get_command_line()
 if installed:assert unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
-(out/'result.json').write_text(json.dumps({'map_saved':installed,'owned_actor_count':len(owned),'meshes':rows,'scope':'Static native import/placement review. Road, cycle track, separator and sidewalks present. Traffic, paint and crossing signals absent. Width and gameplay collision acceptance pending.'},indent=2)+'\n')
+(out/'result.json').write_text(json.dumps({'map_saved':installed,'owned_actor_count':len(owned),'meshes':rows,'scope':'Static native import/placement review. Road, cycle track, separator, sidewalks and 10th lane paint present. Traffic, Monroe markings and crossing signals absent. Width and gameplay collision acceptance pending.'},indent=2)+'\n')

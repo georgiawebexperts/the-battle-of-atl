@@ -4,22 +4,32 @@
     {
       "label": "SM_TenthStreet_Road",
       "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Road.SM_TenthStreet_Road",
-      "collision": "BlockAll / complex as simple"
+      "collision": "BlockAll"
     },
     {
       "label": "SM_TenthStreet_CycleTrack",
       "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_CycleTrack.SM_TenthStreet_CycleTrack",
-      "collision": "BlockAll / complex as simple"
+      "collision": "BlockAll"
     },
     {
       "label": "SM_TenthStreet_Separator",
       "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Separator.SM_TenthStreet_Separator",
-      "collision": "BlockAll / complex as simple"
+      "collision": "BlockAll"
     },
     {
       "label": "SM_TenthStreet_Sidewalk",
       "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_Sidewalk.SM_TenthStreet_Sidewalk",
-      "collision": "BlockAll / complex as simple"
+      "collision": "BlockAll"
+    },
+    {
+      "label": "SM_TenthStreet_WhitePaint",
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_WhitePaint.SM_TenthStreet_WhitePaint",
+      "collision": "NoCollision"
+    },
+    {
+      "label": "SM_TenthStreet_YellowPaint",
+      "asset": "/Game/BattleForTheA/Environment/TenthStreet/SM_TenthStreet_YellowPaint.SM_TenthStreet_YellowPaint",
+      "collision": "NoCollision"
     }
   ],
   "review_camera_absent": true,

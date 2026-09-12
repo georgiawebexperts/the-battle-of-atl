@@ -1,5 +1,5 @@
 {
-  "map_saved": false,
+  "map_saved": true,
   "owned_actor_count": 4,
   "meshes": [
     {
@@ -27,6 +27,8 @@
     "All 40 frontage samples have 900\u20131200 cm contiguous pavement, zero mapped apartment overlap.",
     "Native apartment-frontage and Monroe images inspected: wider road and separated cycle route visible.",
     "Undulating surface/shading and small edge seams remain. Markings, actual vehicle clearance, traffic and signals pending.",
-    "Mesh assets reimported and saved; existing working-map actors reference these updated assets. No actor/map resave or desktop package this run."
+    "Mesh assets reimported and saved; existing working-map actors reference these updated assets. No actor/map resave or desktop package this run.",
+    "10th motor-lane markings rendered and inspected at apartment frontage and Monroe. White dashes/edges and yellow center lines follow actual pavement triangles at 1 cm offset.",
+    "Paint installed in working map; fresh reload verified NoCollision on both paint components. Six road-related actors now installed. Monroe paint/signals and pavement profile smoothing remain pending."
   ]
 }
