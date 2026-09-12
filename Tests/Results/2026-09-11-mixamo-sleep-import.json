@@ -1,0 +1,26 @@
+{
+  "imported": [
+    {
+      "path": "/Game/BattleRetarget/Mixamo/SleepingReference/Beta_HighLimbsGeoSG3.Beta_HighLimbsGeoSG3",
+      "type": "MaterialInstanceConstant"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/SleepingReference/Beta_Joints_MAT1.Beta_Joints_MAT1",
+      "type": "MaterialInstanceConstant"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/SleepingReference/MixamoSleepReference_Skeleton.MixamoSleepReference_Skeleton",
+      "type": "Skeleton"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/SleepingReference/MixamoSleepReference.MixamoSleepReference",
+      "type": "SkeletalMesh"
+    },
+    {
+      "path": "/Game/BattleRetarget/Mixamo/SleepingReference/MixamoSleepReference_Anim.MixamoSleepReference_Anim",
+      "type": "AnimSequence"
+    }
+  ],
+  "retargeted": false,
+  "gameplay_installed": false
+}

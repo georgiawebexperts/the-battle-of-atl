@@ -17,3 +17,6 @@ Sources: https://www.fab.com/listings/343098bf-bcfa-4d3a-8260-96e9c77b8635 ; htt
 
 
 2026-09-11 [codex-maclaptop]: Added Epic City Sample Vehicles (free) to the Fab library; product page now shows View in My Library and View in Launcher. Listing includes 13 vehicles and Mac as a target platform, package versions UE 5.0–5.3. Actual UE 5.8/Mac integration remains unverified. https://www.fab.com/listings/2909157b-ddfa-4cef-a925-69dc2467021f . Download not started: native UI unavailable while Mac locked. Do not count library acquisition as downloaded content.
+
+
+2026-09-11 [codex-maclaptop]: First verified Mixamo motion acquired: Sleeping Idle (Sleeping Deeply), Default Character, FBX Binary with skin,30fps, no keyframe reduction,207 displayed frames. SourceAssets/Mixamo/SleepingIdle_WithSkin.fbx (2,323,904 bytes, provenance JSON beside it). Imported reference mesh/skeleton/animation at /Game/BattleRetarget/Mixamo/SleepingReference using Scripts/import_mixamo_sleep_reference.py; not retargeted or wired to gameplay. Native Launcher remains locked; Mixamo browser session works.

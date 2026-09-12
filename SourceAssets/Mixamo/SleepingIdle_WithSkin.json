@@ -1,0 +1,15 @@
+{
+  "source": "https://www.mixamo.com/#/?page=1&query=sleep",
+  "title": "Sleeping Idle",
+  "description": "Sleeping Deeply",
+  "character": "Default Character",
+  "format": "FBX Binary",
+  "skin": "With Skin",
+  "fps": 30,
+  "keyframe_reduction": "none",
+  "frames_shown": 207,
+  "file": "SleepingIdle_WithSkin.fbx",
+  "bytes": 2323904,
+  "sha256": "881668b7dbfa9d3731d7d0d1444399bb93bc419cc4ba4f4430707323df1d7185",
+  "unreal_imported": false
+}
