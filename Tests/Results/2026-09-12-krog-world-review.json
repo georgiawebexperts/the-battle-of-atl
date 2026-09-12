@@ -1,0 +1,35 @@
+{
+  "restored_traffic": [
+    {
+      "label": "10th Street live road traffic",
+      "lanes": 2,
+      "MaxCars": 6,
+      "MaxCarsPerLane": 3,
+      "SpawnInterval": 8.0
+    },
+    {
+      "label": "Monroe road traffic",
+      "lanes": 2,
+      "MaxCars": 6,
+      "MaxCarsPerLane": 3,
+      "SpawnInterval": 8.0
+    },
+    {
+      "label": "Irwin Lake road traffic",
+      "lanes": 2,
+      "MaxCars": 6,
+      "MaxCarsPerLane": 3,
+      "SpawnInterval": 8.0
+    }
+  ],
+  "directors_total": 4,
+  "main_labels_missing_in_candidate": [
+    {
+      "label": "Krog route SM_KrogRoute_Concrete_7_1",
+      "class": "StaticMeshActor"
+    }
+  ],
+  "main_label_class_changes": [],
+  "main_map_changed": false,
+  "scope": "Combined candidate with original traffic settings and gate references restored. Label inventory is a diagnostic, not full property equivalence. Runtime and performance pending."
+}
