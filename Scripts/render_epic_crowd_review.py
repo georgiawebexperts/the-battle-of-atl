@@ -1,6 +1,6 @@
 """Transient native render of imported casual outfits with their matching walk clips."""
 import unreal,json,pathlib
-root=pathlib.Path(unreal.Paths.project_dir());out=root/'work/epic-crowd-attached-review';out.mkdir(parents=True,exist_ok=True)
+root=pathlib.Path(unreal.Paths.project_dir());out=root/'work/epic-crowd-forward-review';out.mkdir(parents=True,exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 def vector_values(v):return [v.x,v.y,v.z]
@@ -10,7 +10,7 @@ t=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRe
 for prop,value in [('texture_target',t),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',45)]:c.set_editor_property(prop,value)
 results=[]
 for index,(sex,prefix,outfit,face,hair,clip) in enumerate([
- ('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','MTN_N_Walk_InPlace'),
+ ('Male','m_tal_nrw','crewneck','m_001','Hair_S_AfroFade','MTN_N_Walk_F'),
  ('Female','f_tal_nrw','scoopneck','f_001','Hair_S_Coil','FTN_Set/FTN_N_Walk_F')]):
  x=-17400+index*600;y=-5200
  hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,7000),unreal.Vector(x,y,-7000),0);assert hit

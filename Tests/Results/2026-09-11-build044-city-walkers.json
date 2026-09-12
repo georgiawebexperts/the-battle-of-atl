@@ -4,10 +4,11 @@
     "passed": true,
     "exit_code": 0,
     "measurements": [
-      "pass=1 parts=4 hair=1 foot_gap=2.741 foot_dot=0.889 knee_motion=22.016 travel=809.989"
+      "pass=1 parts=4 hair=1 foot_gap=0.482 foot_dot=0.889 knee_motion=68.235 travel=809.605"
     ],
     "missing_captures": [],
-    "visual_review": "Outfit, face, hair and forward-facing feet verified in native game screenshots. Movement polish not accepted: male stride looks stiff; sole ground contact needs closer review. Numeric pass is structural validation, not final animation acceptance.",
+    "visual_review": "Reviewed native walk and idle images. Forward shoes and attached modular outfit/hair confirmed; male forward clip now shows a full stride and arm swing. Floor-origin alignment removes the inherited placement offset. Male run.png is obscured by crossing crowd; it does not prove gait quality.",
+    "scope": "Flat-ground casual walker improvement only. Continuous foot sliding, slope IK, crowd collision/reactions, quick-walk blending and performance remain unverified.",
     "presentation_accepted": false
   },
   {
@@ -15,10 +16,11 @@
     "passed": true,
     "exit_code": 0,
     "measurements": [
-      "pass=1 parts=4 hair=1 foot_gap=3.040 foot_dot=0.879 knee_motion=56.021 travel=807.613"
+      "pass=1 parts=4 hair=1 foot_gap=0.826 foot_dot=0.879 knee_motion=56.208 travel=808.580"
     ],
     "missing_captures": [],
-    "visual_review": "Outfit, face, hair and forward-facing feet verified in native game screenshots. Movement polish not accepted: male stride looks stiff; sole ground contact needs closer review. Numeric pass is structural validation, not final animation acceptance.",
+    "visual_review": "Reviewed native walk and idle images. Forward shoes and attached modular outfit/hair confirmed; male forward clip now shows a full stride and arm swing. Floor-origin alignment removes the inherited placement offset. Male run.png is obscured by crossing crowd; it does not prove gait quality.",
+    "scope": "Flat-ground casual walker improvement only. Continuous foot sliding, slope IK, crowd collision/reactions, quick-walk blending and performance remain unverified.",
     "presentation_accepted": false
   }
 ]

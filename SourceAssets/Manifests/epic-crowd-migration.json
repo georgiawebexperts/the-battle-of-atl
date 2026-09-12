@@ -19,7 +19,8 @@
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base",
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F",
-    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly"
+    "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F"
   ],
   "packages": [
     "/Game/Character/Player/Female/Meshes/SKM_PlayerFemale_Preview",
@@ -31,6 +32,7 @@
     "/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Walk_F_Quickly",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Idle",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F",
+    "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_N_Idle_B",
     "/Game/CitySampleCrowd/Character/Anims/Loco/MTN_Set/MTN_Phone_Talk_A",
@@ -528,6 +530,12 @@
       "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_WalkQuickly_F.uasset",
       "sha256": "cea3fcea502944bdd5543074970986af0e3502269366786b364769c23f6e5fd1",
       "bytes": 893000
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_F.uasset",
+      "sha256": "9c03dc65899ee4f8c55dc64b37f6c07abdcce51afea4319005d10993d36640a2",
+      "bytes": 1471014
     },
     {
       "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/CitySampleCrowd/Character/Anims/Loco/MTN_N_Walk_InPlace.uasset",
@@ -2528,6 +2536,6 @@
       "bytes": 1641128
     }
   ],
-  "total_bytes": 1239027797,
-  "status": "Copied with SHA256 verification; all selected assets loaded in game project; native visual review pending"
+  "total_bytes": 1240498811,
+  "status": "copied; native render acceptance pending"
 }

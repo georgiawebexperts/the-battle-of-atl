@@ -80,7 +80,16 @@ void APiedmontExplorer::Tick(float Dt){
 }
 void APiedmontExplorer::AnimateBody(float Dt){
  if(RestPose.IsEmpty())return;
- Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75):FVector(0,0,-88));
+ // Native crowd meshes place their origin at the soles. Align that origin to
+ // CharacterMovement's actual floor; the legacy mesh uses its own pose correction.
+ float BodyHeight=-88.f;
+ if(bNativeCrowdRig){
+  BodyHeight=-GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+  const auto* Movement=GetCharacterMovement();
+  if(Movement->IsMovingOnGround()&&Movement->CurrentFloor.IsWalkableFloor())
+   BodyHeight=Movement->CurrentFloor.HitResult.ImpactPoint.Z-GetActorLocation().Z;
+ }
+ Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75):FVector(0,0,BodyHeight));
  Body->SetRelativeRotation(bSwimming?FRotator(0,-90,90):FRotator(0,-90,0));
  Gait+=bSwimming?Dt*3.f:GetVelocity().Size2D()*Dt/85.f;
  const float Blend=FMath::Clamp(GetVelocity().Size2D()/220.f,0.f,1.f);

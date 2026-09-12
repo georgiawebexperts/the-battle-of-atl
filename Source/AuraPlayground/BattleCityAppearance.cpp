@@ -21,7 +21,7 @@ void APiedmontPedestrian::InitializeCityAppearance(){
  auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
  const FString AnimRoot=Base+TEXT("Anims/Loco/");
  auto* Idle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Idle_Base"):TEXT("MTN_N_Idle"))));
- auto* Walk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F"):TEXT("MTN_N_Walk_InPlace"))));
+ auto* Walk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F"):TEXT("MTN_N_Walk_F"))));
  auto* Quick=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F_Quickly"):TEXT("MTN_N_WalkQuickly_F"))));
  TArray<USkeletalMesh*> Parts;
  for(const FString& Path:TArray<FString>{MeshRoot+(Female?TEXT("scoopneck"):TEXT("crewneck")),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),FaceRoot+TEXT("/Face/")+Face+TEXT("_nrw_FaceMesh")}){
