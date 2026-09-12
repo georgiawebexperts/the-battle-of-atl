@@ -231,3 +231,10 @@ Native Mac fixture passed a red stop, green-with-occupant hold (occupant was lat
 Crossings now grant an exclusive reservation when a car commits at its stop line. Competing entry requests are denied even before the first car's body reaches the occupancy volume. Ownership survives a red transition; it releases after the owner's collision bounds have entered and then cleared the volume. Vehicle destruction and route restart release reservations, and wrong-owner releases are ignored.
 
 Editor build passed. Native API fixture with two vehicle-sized blocking actors passed ownership, contention, idempotence, red commitment, tail clearance and destroyed-owner cleanup. The moving-car crossing fixture also passed again (3997.549 cm), covering the actual car's reservation call alongside red/occupied-green stopping and subsequent exit. Full moving queues, fair scheduling, visible signals, world placement and traffic spawning remain unverified/unimplemented; no desktop update.
+
+
+## Visible traffic signal candidate — 2026-09-12 [codex-maclaptop]
+
+Added ABattleTrafficSignal: a metal pole and foot, dark housing/backplate, three lamp rims and visors, with dynamic red/green lenses bound to ABattleRoadCrossing::bVehicleGreen. Missing crossing defaults to red. Amber remains inactive pending the signal-phase controller. Pole blocks collision and actor carries RideBarrier; approach collision has not yet been tested. Uses authored housing/pole/lens materials in /Game/BattleForTheA/Traffic and bundled engine primitive meshes.
+
+Editor build and native red/green screenshot capture passed. The first review clipped the head and caught shaders compiling; the review now frames the complete signal and finishes editor shader compilation before capturing. Lamp intensity was reduced after inspection to preserve red/green color rather than orange/white highlights. Both revised frames inspected and accepted for isolated daylight appearance. The asset is not placed in the main world or desktop 046; street siting, approach visibility, amber/timing, live queues, population and packaged review remain pending.

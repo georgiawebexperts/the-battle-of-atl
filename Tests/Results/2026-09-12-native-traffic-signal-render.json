@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/b8d0cbc138e04850a6ca7cba20be1685/signal-red.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-signal-review/b8d0cbc138e04850a6ca7cba20be1685/signal-green.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": true,
+  "scope": "Native red/green traffic signal appearance. World placement, player approach visibility and packaged behavior pending",
+  "review": {
+    "author": "2026-09-12 [codex-maclaptop]",
+    "observations": "Entire pole and head visible. Top red and bottom green switch with the linked crossing state; inactive lenses remain dark. Reduced emission to preserve saturated red/green. Acceptance covers this isolated daylight camera only."
+  }
+}
