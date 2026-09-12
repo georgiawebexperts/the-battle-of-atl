@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PiedmontExplorer.h"
+#include "BattleSleeperTrigger.h"
 #include "PiedmontPedestrian.generated.h"
 class APiedmontBike;
 class USkeletalMeshComponent;
@@ -40,6 +41,7 @@ public:
  UFUNCTION(BlueprintCallable) bool WakeAndChase(APawn* Target);
  UFUNCTION(BlueprintCallable) bool BeginSettling();
  UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bReturnToSleepAfterChase=false;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bAmbientSleeper=false;
  UPROPERTY(BlueprintReadOnly) int32 SleepPhase=0;
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
@@ -47,6 +49,8 @@ protected:
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ FBattleSleeperTrigger SleeperTrigger;
+ void TickSleeperTrigger(float Dt);
  void CancelSleepBehavior();
  void FinishSleeperChase();
  bool TickSleepBehavior(float Dt);

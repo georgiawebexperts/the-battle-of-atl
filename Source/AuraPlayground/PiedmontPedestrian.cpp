@@ -1,6 +1,7 @@
 #include "PiedmontPedestrian.h"
 #include "Animation/AnimSequence.h"
 #include "PiedmontBike.h"
+#include "BattleBike.h"
 #include "PiedmontBlood.h"
 #include "AIController.h"
 #include "NavigationSystem.h"
@@ -17,7 +18,11 @@ APiedmontPedestrian::APiedmontPedestrian(){
  auto* Move=GetCharacterMovement();Move->bOrientRotationToMovement=true;Move->RotationRate=FRotator(0,360,0);
  Move->bUseRVOAvoidance=true;Move->AvoidanceConsiderationRadius=350;Move->AvoidanceWeight=.5f;
 }
-void APiedmontPedestrian::BeginPlay(){InitializeCityAppearance();Super::BeginPlay();Configure(Kind);ThinkRemaining=FMath::FRandRange(.1f,.7f);}
+void APiedmontPedestrian::BeginPlay(){
+ if(bAmbientSleeper){CityAppearanceVariant=0;bReturnToSleepAfterChase=true;}
+ InitializeCityAppearance();Super::BeginPlay();Configure(Kind);ThinkRemaining=FMath::FRandRange(.1f,.7f);
+ if(bAmbientSleeper)BeginSleeping();
+}
 void APiedmontPedestrian::Configure(EPiedmontPedestrianKind NewKind){
  Kind=NewKind;GetCharacterMovement()->MaxWalkSpeed=Kind==EPiedmontPedestrianKind::Jogger?310:135;
 }
@@ -69,6 +74,7 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
  if(KnockdownPhase){TickKnockdown(Dt);return;}
+ if(bAmbientSleeper)TickSleeperTrigger(Dt);
  if(TickSleepBehavior(Dt))return;
  if(bDead){Body->SetRelativeRotation(FRotator(0,-90,85));return;}
  if(StumbleRemaining>0){StumbleRemaining=FMath::Max(0.f,StumbleRemaining-Dt);if(!bPlayingBumpReaction)Body->SetRelativeRotation(FRotator(0,-90,FMath::Sin(StumbleRemaining*5)*22));
@@ -220,4 +226,19 @@ void APiedmontPedestrian::FinishSleeperChase(){
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  GetCharacterMovement()->StopMovementImmediately();Configure(Kind);bHasDestination=false;
  SleepPhase=5;ReturnClock=0;ChaseRepath=0;
+}
+
+void APiedmontPedestrian::TickSleeperTrigger(float Dt){
+ auto* Target=UGameplayStatics::GetPlayerPawn(this,0);
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
+ const auto* Lab=Cast<ABattleLabMode>(Mode);
+ bool Eligible=SleepPhase==1&&!bDead&&!bSwimming&&Mode&&!Mode->bRunEnded&&Mode->StartCountdown<=0&&(!Lab||!Lab->bTutorialActive)&&IsValid(Target);
+ if(const auto* Person=Cast<APiedmontExplorer>(Target))Eligible=Eligible&&!Person->bDead;
+ if(const auto* BikePawn=Cast<ABattleBike>(Target))Eligible=Eligible&&BikePawn->RiderHealth>0;
+ const float Distance=IsValid(Target)?FVector::Dist2D(GetActorLocation(),Target->GetActorLocation()):BIG_NUMBER;
+ if(IsValid(Target)&&FMath::Abs(GetActorLocation().Z-Target->GetActorLocation().Z)>140)Eligible=false;
+ if(SleeperTrigger.Observe(Distance,Dt,Eligible)){
+  const bool Woke=FMath::FRand()<.18f&&WakeAndChase(Target);
+  SleeperTrigger.Attempted(Woke);
+ }
 }
