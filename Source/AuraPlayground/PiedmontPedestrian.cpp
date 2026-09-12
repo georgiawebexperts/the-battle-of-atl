@@ -86,9 +86,10 @@ void APiedmontPedestrian::TickBenchIgnition(float Dt){
  const int32 Index=IgnitionBench;
  // Release and acquire on the game thread; the fire now owns the reservation.
  Furniture->ReleaseBench(Index,this);IgnitionFurniture.Reset();IgnitionBench=INDEX_NONE;
- if(ABattleBenchFire::IgniteBench(Furniture,Index))++BenchesIgnited;
+ if(ABattleBenchFire::IgniteBench(Furniture,Index)){++BenchesIgnited;bBenchRetreatPending=true;BenchRetreatTarget=Furniture->Benches[Index].TransformPosition(FVector(0,260,0));}
 }
 void APiedmontPedestrian::CancelBenchReach(){
+ bBenchRetreatPending=false;BenchRetreatRemaining=0;
  if(auto* Furniture=IgnitionFurniture.Get())Furniture->ReleaseBench(IgnitionBench,this);
  IgnitionFurniture.Reset();IgnitionBench=INDEX_NONE;
  if(bBenchReaching){bBenchReaching=false;StopBodySequence();}
@@ -112,8 +113,22 @@ void APiedmontPedestrian::Tick(float Dt){
  if(KnockdownPhase){TickKnockdown(Dt);return;}
  if(bBenchReaching){
   auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
-  if(bDead||bSwimming||!Mode||Mode->bRunEnded||!IsBodySequencePlaying())CancelBenchReach();
+  if(bDead||bSwimming||!Mode||Mode->bRunEnded)CancelBenchReach();
+  else if(!IsBodySequencePlaying()){
+   const bool bRetreat=bBenchRetreatPending;const FVector Goal=BenchRetreatTarget;CancelBenchReach();
+   if(bRetreat){
+    BenchRetreatDirection=(Goal-GetActorLocation()).GetSafeNormal2D();BenchRetreatRemaining=1.8f;PauseRemaining=0;
+    GetCharacterMovement()->StopMovementImmediately();
+   }
+  }
   else{TickBenchIgnition(Dt);return;}
+ }
+ if(BenchRetreatRemaining>0){
+  auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
+  const FVector Probe=GetActorLocation()+BenchRetreatDirection*80;FHitResult Floor;FCollisionQueryParams Params(SCENE_QUERY_STAT(BenchRetreatFloor),false,this);
+  const bool bGround=GetWorld()->LineTraceSingleByChannel(Floor,Probe,Probe-FVector(0,0,150),ECC_Visibility,Params)&&Floor.ImpactNormal.Z>.8f;
+  if(bDead||bSwimming||StumbleRemaining>0||!Mode||Mode->bRunEnded||!bGround){BenchRetreatRemaining=0;GetCharacterMovement()->StopMovementImmediately();}
+  else{BenchRetreatRemaining=FMath::Max(0.f,BenchRetreatRemaining-Dt);AddMovementInput(BenchRetreatDirection);return;}
  }
  if(bAmbientSleeper)TickSleeperTrigger(Dt);
  if(TickSleepBehavior(Dt))return;

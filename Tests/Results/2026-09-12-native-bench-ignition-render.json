@@ -1,0 +1,29 @@
+{
+  "ignition_diagnostic": true,
+  "reach_diagnostic": false,
+  "solid_diagnostic": false,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/16338e4358e04714a6e0a514f063283c/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/16338e4358e04714a6e0a514f063283c/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/16338e4358e04714a6e0a514f063283c/fire-3.png"
+  ],
+  "captured": true,
+  "visual_accepted": false,
+  "scope": "Combined native character reach and delayed ignition; prop contact, natural trigger and packaged acceptance pending",
+  "capture_passed": true,
+  "visitor_positions": {
+    "1": [
+      0,
+      55,
+      89.072
+    ],
+    "3": [
+      0,
+      296.396,
+      48.001
+    ]
+  },
+  "retreat_verified": true,
+  "pose_review": "Fire remains burning; visitor moves out of fixed camera frame. Position delta241.396cm along bench front. Continuous movement, prop/contact and blocked-retreat cases not accepted."
+}

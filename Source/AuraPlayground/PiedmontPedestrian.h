@@ -61,6 +61,10 @@ private:
  TWeakObjectPtr<class ABattleParkFurniture> IgnitionFurniture;
  int32 IgnitionBench=INDEX_NONE;
  float BenchReachClock=0;
+ bool bBenchRetreatPending=false;
+ FVector BenchRetreatTarget;
+ float BenchRetreatRemaining=0;
+ FVector BenchRetreatDirection;
  FBattleSleeperTrigger SleeperTrigger;
  void TickSleeperTrigger(float Dt);
  void CancelSleepBehavior();
