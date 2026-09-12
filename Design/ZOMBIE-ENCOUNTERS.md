@@ -73,3 +73,12 @@ Expanded the native vendor fixture beyond containment: spawn an actual vendor on
 Captured installed052 punk/vendor walk, walk-step, run and idle. Fixture metrics pass: ~1440cm movement,~103degree knee motion, idle ankle gap~1.7cm; idle bind-forward dots left.518/right.993. Inspected punk walk-step/run/idle and vendor run: shoes not reversed in these frames. This does not prove every pose, view, or other character rig. No bone orientation changes justified.
 
 Compared punk walk-step with motion blur disabled, and with blur disabled plus FXAA. FXAA variant is visibly noisier and rejected. Blur-only-off variant sharpens fingers/shoes while retaining temporal smoothing. Set r.MotionBlurQuality=0 at player controller BeginPlay with game-setting priority; editor build passes. Console-override comparison verified rendering effect in installed052; new default itself is source-only until next package. Full-motion quality, grainy materials and broader character art remain unfinished. Reproducer Scripts/review_zombie_locomotion.py, --punk, --no-motion-blur, diagnostic --sharp.
+
+
+## Zombie death physics inspection — 2026-09-12 [codex-maclaptop]
+
+Current zombie death still rotates whole visible body sideways and removes it after5seconds; this needs replacement. Located Farmer_PhysicsAsset and Punk_PhysicsAsset. Python PhysicsAsset interface did not expose skeletal_body_setups; added native opt-in review inventory instead. Editor build and punk locomotion fixture pass.
+
+Punk imported asset reports13 capsule bodies/12constraints: Root, Hips, Torso, Chest, Head, UpperArm_L/R, Wrist_L/R, UpperLeg_L/R, LowerLeg_L/R. Hips and upper legs parent to Body; no separate foot bodies listed. This is not the Casual rider physics hierarchy, so copying V6 unchanged is not justified. Need inspect capsule fit/constraint mapping and shoe behavior, then build a zombie-specific physical fall or compatible authored death animation. This inspection does not prove imported asset unusable or establish death quality. Farmer physics layout has not yet been natively inspected.
+
+Scripts/review_zombie_locomotion.py now supports --editor and retains native body inventory. Installed052 unchanged.

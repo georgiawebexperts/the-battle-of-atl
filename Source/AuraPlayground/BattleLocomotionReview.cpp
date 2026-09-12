@@ -1,3 +1,5 @@
+#include "PhysicsEngine/PhysicsAsset.h"
+#include "PhysicsEngine/SkeletalBodySetup.h"
 #include "BattleMacController.h"
 #include "PiedmontExplorer.h"
 #include "PiedmontPedestrian.h"
@@ -43,6 +45,12 @@ void ABattleMacController::TickLocomotionReview(float Dt){
    auto* Zombie=GetWorld()->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),T,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
    Zombie->VisualStyle=FParse::Param(FCommandLine::Get(),TEXT("BattlePunkReview"))?1:0;
    Zombie->FinishSpawning(T);if(auto* AI=Cast<AAIController>(Zombie->GetController())){AI->StopMovement();AI->UnPossess();}
+   if(auto* Mesh=Cast<USkeletalMesh>(Zombie->Body->GetSkinnedAsset()))if(auto* Asset=Mesh->GetPhysicsAsset()){
+    UE_LOG(LogTemp,Display,TEXT("ZombiePhysicsReview: style=%d bodies=%d constraints=%d"),Zombie->VisualStyle,Asset->SkeletalBodySetups.Num(),Asset->ConstraintSetup.Num());
+    for(const auto& Setup:Asset->SkeletalBodySetups){const int Bone=Mesh->GetRefSkeleton().FindBoneIndex(Setup->BoneName);const int Parent=Bone>=0?Mesh->GetRefSkeleton().GetParentIndex(Bone):-1;
+     UE_LOG(LogTemp,Display,TEXT("ZombiePhysicsReview: bone=%s parent=%s capsules=%d boxes=%d convex=%d spheres=%d"),*Setup->BoneName.ToString(),Parent>=0?*Mesh->GetRefSkeleton().GetBoneName(Parent).ToString():TEXT("none"),Setup->AggGeom.SphylElems.Num(),Setup->AggGeom.BoxElems.Num(),Setup->AggGeom.ConvexElems.Num(),Setup->AggGeom.SphereElems.Num());
+    }
+   }
    Person=Zombie;
   }else if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityReview"))){
    const FTransform T(FRotator::ZeroRotator,Ground.ImpactPoint+FVector(0,0,92));
