@@ -17,10 +17,10 @@ TArray<FTransform> Sample(UAnimSequence* Clip,const FReferenceSkeleton& Ref,floa
  }return Result;
 }
 }
-bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent* Physics){
+bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent* Physics,UPoseableMeshComponent* Display){
  USkeletalMesh* Mesh=Physics->GetSkeletalMeshAsset();if(!Mesh)return false;const auto& Ref=Mesh->GetRefSkeleton();
  const int32 Hip=Ref.FindBoneIndex(TEXT("Hips")),Head=Ref.FindBoneIndex(TEXT("Head"));if(Hip<0||Head<0)return false;
- TArray<FTransform> Landed;for(int32 I=0;I<Ref.GetNum();I++)Landed.Add(Physics->GetBoneTransform(I));
+ TArray<FTransform> Landed;for(int32 I=0;I<Ref.GetNum();I++)Landed.Add(Display?Display->GetBoneTransform(I):Physics->GetBoneTransform(I));
  const FVector HipWorld=Landed[Hip].GetLocation(),Heading=(Landed[Head].GetLocation()-HipWorld).GetSafeNormal2D();
  float Best=TNumericLimits<float>::Max();FTransform Frame;
  const TCHAR* Sides[]={TEXT("F"),TEXT("B"),TEXT("L"),TEXT("R")};
@@ -48,7 +48,7 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
  for(int32 I=0;I<Ref.GetNum();I++){const int32 Parent=Ref.GetParentIndex(I);LandedLocal.Add(Parent>=0?Components[I].GetRelativeTransform(Components[Parent]):Components[I]);}
  Body->BoneSpaceTransforms=LandedLocal;Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
  for(int32 I=0;I<Ref.GetNum();I++)TransferError=FMath::Max(TransferError,float(FVector::Dist(Body->GetBoneTransform(I).GetLocation(),Landed[I].GetLocation())));
- Physics->SetSimulatePhysics(false);Physics->SetVisibility(false);Physics->SetCollisionEnabled(ECollisionEnabled::NoCollision);Pose=Body;
+ if(Display)Display->SetVisibility(false);Physics->SetSimulatePhysics(false);Physics->SetVisibility(false);Physics->SetCollisionEnabled(ECollisionEnabled::NoCollision);Pose=Body;
  UE_LOG(LogTemp,Display,TEXT("PlayerRecoveryTransfer: {\"choice\":%d,\"max_transfer_error_cm\":%.4f,\"initial_pose_rms_cm\":%.3f}"),Choice,TransferError,FMath::Sqrt(Best/6));return true;
 }
 bool FBattlePlayerRecoveryBlend::Tick(float Dt){

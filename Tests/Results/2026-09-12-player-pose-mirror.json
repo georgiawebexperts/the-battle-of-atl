@@ -1,0 +1,71 @@
+{
+  "exit_code": 0,
+  "skin": {
+    "min_clearance_cm": -2.811,
+    "below_vertices": 63,
+    "vertices": 3273
+  },
+  "physics": {
+    "passed": true,
+    "hip_drop_cm": 97.25,
+    "max_limb_span_cm": 96.191,
+    "hip_floor_cm": 15.179,
+    "final_speed": 0.977
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-fall-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-recovery-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-recovery-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-recovery-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-recovery-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-recovery-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/e42b90a7869c4ecb9fc3c4f9b5e43df3/player-recovery-6.png"
+  ],
+  "capture_passed": true,
+  "scope": "Combined player and bike fall with aligned recovery; no production input, camera, remount or final visual acceptance.",
+  "actual_shape_diagnostics": [
+    "bone=Hips type=3 size=X=26.000 Y=26.100 Z=26.000 static_response=2 simulation=1",
+    "bone=Abdomen type=3 size=X=22.000 Y=22.100 Z=22.000 static_response=2 simulation=1",
+    "bone=Torso type=3 size=X=22.000 Y=22.100 Z=22.000 static_response=2 simulation=1",
+    "bone=Chest type=3 size=X=26.000 Y=26.100 Z=26.000 static_response=2 simulation=1",
+    "bone=Neck type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2 simulation=1",
+    "bone=Head type=3 size=X=20.000 Y=25.427 Z=20.000 static_response=2 simulation=1",
+    "bone=Shoulder_L type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2 simulation=1",
+    "bone=UpperArm_L type=3 size=X=8.000 Y=18.191 Z=8.000 static_response=2 simulation=1",
+    "bone=LowerArm_L type=3 size=X=8.000 Y=23.528 Z=8.000 static_response=2 simulation=1",
+    "bone=Hand_L type=3 size=X=9.343 Y=15.074 Z=8.006 static_response=2 simulation=1",
+    "bone=Shoulder_R type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2 simulation=1",
+    "bone=UpperArm_R type=3 size=X=8.000 Y=18.191 Z=8.000 static_response=2 simulation=1",
+    "bone=LowerArm_R type=3 size=X=8.000 Y=23.528 Z=8.000 static_response=2 simulation=1",
+    "bone=Hand_R type=3 size=X=9.343 Y=15.074 Z=8.006 static_response=2 simulation=1",
+    "bone=UpperLeg_L type=3 size=X=12.000 Y=43.298 Z=12.000 static_response=2 simulation=1",
+    "bone=LowerLeg_L type=3 size=X=12.000 Y=51.112 Z=12.000 static_response=2 simulation=1",
+    "bone=Foot_L type=3 size=X=10.000 Y=17.734 Z=10.000 static_response=2 simulation=1",
+    "bone=UpperLeg_R type=3 size=X=12.000 Y=43.298 Z=12.000 static_response=2 simulation=1",
+    "bone=LowerLeg_R type=3 size=X=12.000 Y=51.112 Z=12.000 static_response=2 simulation=1",
+    "bone=Foot_R type=3 size=X=10.000 Y=17.734 Z=10.000 static_response=2 simulation=1"
+  ],
+  "skin_clearance_passed": false,
+  "transfer": {
+    "choice": 3,
+    "max_transfer_error_cm": 0.0001,
+    "initial_pose_rms_cm": 73.728
+  },
+  "recovery": {
+    "passed": true,
+    "head_height": 157.886,
+    "left_foot_height": 3.256,
+    "right_foot_height": 2.875
+  },
+  "bike": {
+    "passed": true,
+    "upright_dot": 0.2,
+    "speed": 0.0,
+    "parts": 16
+  },
+  "visual_acceptance": false,
+  "visual_review": "Fall4 inspected: torso now above road, limbs connected; remaining skin penetration63vertices/min-2.811cm fails unchanged clearance threshold. Recovery pose RMS73.728cm still needs improvement."
+}

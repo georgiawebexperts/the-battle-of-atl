@@ -1,0 +1,46 @@
+{
+  "exit_code": 0,
+  "skin": {
+    "min_clearance_cm": -39.46,
+    "below_vertices": 3033,
+    "vertices": 3273
+  },
+  "physics": {
+    "passed": false,
+    "hip_drop_cm": 99.651,
+    "max_limb_span_cm": 511.928,
+    "hip_floor_cm": 2.163,
+    "final_speed": 189.438
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b9e493d4885940659edf7715b39f3b04/player-fall-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b9e493d4885940659edf7715b39f3b04/player-fall-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b9e493d4885940659edf7715b39f3b04/player-fall-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-runtime/b9e493d4885940659edf7715b39f3b04/player-fall-4.png"
+  ],
+  "capture_passed": true,
+  "scope": "Mounted-pose candidate physics only. No production trigger, bike fall, recovery, or visual acceptance.",
+  "actual_shape_diagnostics": [
+    "bone=Hips type=3 size=X=26.000 Y=26.100 Z=26.000 static_response=2 simulation=1",
+    "bone=Abdomen type=3 size=X=22.000 Y=22.100 Z=22.000 static_response=2 simulation=1",
+    "bone=Torso type=3 size=X=22.000 Y=22.100 Z=22.000 static_response=2 simulation=1",
+    "bone=Chest type=3 size=X=26.000 Y=26.100 Z=26.000 static_response=2 simulation=1",
+    "bone=Neck type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2 simulation=1",
+    "bone=Head type=3 size=X=20.000 Y=25.427 Z=20.000 static_response=2 simulation=1",
+    "bone=Shoulder_L type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2 simulation=1",
+    "bone=UpperArm_L type=3 size=X=8.000 Y=18.191 Z=8.000 static_response=2 simulation=1",
+    "bone=LowerArm_L type=3 size=X=8.000 Y=23.528 Z=8.000 static_response=2 simulation=1",
+    "bone=Hand_L type=3 size=X=9.343 Y=15.074 Z=8.006 static_response=2 simulation=1",
+    "bone=Shoulder_R type=3 size=X=10.000 Y=10.100 Z=10.000 static_response=2 simulation=1",
+    "bone=UpperArm_R type=3 size=X=8.000 Y=18.191 Z=8.000 static_response=2 simulation=1",
+    "bone=LowerArm_R type=3 size=X=8.000 Y=23.528 Z=8.000 static_response=2 simulation=1",
+    "bone=Hand_R type=3 size=X=9.343 Y=15.074 Z=8.006 static_response=2 simulation=1",
+    "bone=UpperLeg_L type=3 size=X=12.000 Y=43.298 Z=12.000 static_response=2 simulation=1",
+    "bone=LowerLeg_L type=3 size=X=12.000 Y=51.112 Z=12.000 static_response=2 simulation=1",
+    "bone=Foot_L type=3 size=X=10.000 Y=17.734 Z=10.000 static_response=2 simulation=1",
+    "bone=UpperLeg_R type=3 size=X=12.000 Y=43.298 Z=12.000 static_response=2 simulation=1",
+    "bone=LowerLeg_R type=3 size=X=12.000 Y=51.112 Z=12.000 static_response=2 simulation=1",
+    "bone=Foot_R type=3 size=X=10.000 Y=17.734 Z=10.000 static_response=2 simulation=1"
+  ],
+  "skin_clearance_passed": false
+}
