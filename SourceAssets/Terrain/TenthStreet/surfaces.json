@@ -1,0 +1,40 @@
+{
+  "surfaces": [
+    {
+      "file": "TenthStreet_Road.obj",
+      "triangles": 6278,
+      "bounds_cm": [
+        [
+          -30650.431179529223,
+          11445.49813698217,
+          -499.98704404468936
+        ],
+        [
+          12117.939900620338,
+          13161.841513366595,
+          366.11753883541286
+        ]
+      ]
+    },
+    {
+      "file": "TenthStreet_CycleTrack.obj",
+      "triangles": 2332,
+      "bounds_cm": [
+        [
+          -21723.007140139413,
+          11251.981396913465,
+          -496.6146939840269
+        ],
+        [
+          12174.986936118416,
+          12832.442605440974,
+          303.51394033805445
+        ]
+      ]
+    }
+  ],
+  "status": "Generated only; native import, width, continuity, collision and landscape clearance review pending.",
+  "road_lane_width_cm": 190,
+  "cycle_track_width_cm": 160,
+  "sources": "Mapped centerlines. Widths authored for first review in compressed geography."
+}
