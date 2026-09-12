@@ -1,0 +1,1595 @@
+{
+  "passed": false,
+  "routes": [
+    {
+      "osm_way": 211061295,
+      "passed": true,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            27073.435527282847,
+            100435.07757163001,
+            761.7933959960938
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            27073.38207941311,
+            100455.07750021301,
+            761.7933959960938
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            27073.328631543372,
+            100475.07742879601,
+            762.1189533248577
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            27073.275183673635,
+            100495.07735737902,
+            763.8456820521733
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            27073.221735803898,
+            100515.07728596202,
+            764.5309501439837
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            27073.16828793416,
+            100535.07721454502,
+            765.2402825028034
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            27073.114840064423,
+            100555.07714312803,
+            765.9310954306027
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            27073.061392194686,
+            100575.07707171103,
+            765.667339095655
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            27073.00794432495,
+            100595.07700029403,
+            765.0690344827041
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            27072.95449645521,
+            100615.07692887704,
+            764.3785152864582
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            27072.901048585474,
+            100635.07685746004,
+            763.6031580842644
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            27072.847600715737,
+            100655.07678604304,
+            762.8278008820706
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            27072.794152846,
+            100675.07671462605,
+            762.0636976679494
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            27072.740704976262,
+            100695.07664320905,
+            761.3872120325191
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            27072.687257106525,
+            100715.07657179204,
+            761.610287205606
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            27072.633809236788,
+            100735.07650037506,
+            762.1271200629056
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            27072.58036136705,
+            100755.07642895805,
+            762.6439529202048
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            27072.526913497313,
+            100775.07635754105,
+            763.1567011274706
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            27072.473465627576,
+            100795.07628612407,
+            763.6414050094354
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            27072.42001775784,
+            100815.07621470706,
+            763.7530314688638
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            27072.3665698881,
+            100835.07614329006,
+            763.74281524312
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            27072.313122018364,
+            100855.07607187307,
+            763.7325990173763
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            27072.259674148627,
+            100875.07600045607,
+            763.727111620778
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            27072.20622627889,
+            100895.07592903907,
+            763.7505665611851
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        }
+      ],
+      "failures": [],
+      "min_detected_headroom_cm": null
+    },
+    {
+      "osm_way": 211061296,
+      "passed": false,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            25780.22543884071,
+            100016.2446647987,
+            790.7273559570312
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            25800.218901881035,
+            100015.7333570096,
+            790.7273559570312
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            25820.212364921357,
+            100015.22204922051,
+            772.0095914030373
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            25840.205827961683,
+            100014.71074143141,
+            765.0592791117225
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            25860.199291002005,
+            100014.19943364231,
+            759.6166774230508
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            25880.19275404233,
+            100013.68812585322,
+            759.8256081817907
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            25900.186217082653,
+            100013.17681806412,
+            760.5828784498449
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            25920.17968012298,
+            100012.66551027504,
+            761.3401487179001
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            25940.173143163305,
+            100012.15420248594,
+            764.3098826207422
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            25960.166606203627,
+            100011.64289469684,
+            767.3587233654983
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            25980.160069243953,
+            100011.13158690775,
+            770.3899943003348
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            26000.153532284276,
+            100010.62027911865,
+            772.4317293799785
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            26020.1469953246,
+            100010.10897132957,
+            773.5888247099275
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            26040.140458364924,
+            100009.59766354047,
+            774.6691358353138
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            26060.13392140525,
+            100009.08635575137,
+            775.5980656021228
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            26080.12738444557,
+            100008.57504796228,
+            778.9766235351562
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            26100.120847485898,
+            100008.06374017318,
+            779.2789306640625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            26120.11431052622,
+            100007.5524323841,
+            779.5814208984375
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            26140.107773566546,
+            100007.041124595,
+            780.2969360351562
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            26160.10123660687,
+            100006.5298168059,
+            781.01806640625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            26180.094699647194,
+            100006.01850901681,
+            781.712890625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            26200.08816268752,
+            100005.50720122771,
+            782.4078369140625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            26220.081625727842,
+            100004.99589343862,
+            783.0848388671875
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            26240.075088768168,
+            100004.48458564952,
+            783.7036743164062
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_3"
+        }
+      ],
+      "failures": [
+        {
+          "distance_cm": 80,
+          "kind": "capsule_blocked"
+        },
+        {
+          "distance_cm": 100,
+          "kind": "capsule_blocked"
+        }
+      ],
+      "min_detected_headroom_cm": null
+    },
+    {
+      "osm_way": 211061297,
+      "passed": true,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            25844.681342242522,
+            103821.20282454789,
+            831.6787109375
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            25824.886624995215,
+            103818.34464871371,
+            831.6787109375
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            25805.091907747905,
+            103815.48647287954,
+            830.1704711914062
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            25785.297190500594,
+            103812.62829704536,
+            829.8984375
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            25765.502473253284,
+            103809.77012121119,
+            829.1907348632812
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            25745.707756005977,
+            103806.91194537701,
+            828.4970092773438
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            25725.913038758667,
+            103804.05376954284,
+            828.0545654296875
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            25706.118321511356,
+            103801.19559370866,
+            827.676025390625
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            25686.323604264046,
+            103798.33741787449,
+            827.3207397460938
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            25666.52888701674,
+            103795.47924204031,
+            827.0440673828125
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            25646.73416976943,
+            103792.62106620613,
+            826.73193359375
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            25626.939452522118,
+            103789.76289037196,
+            826.3929443359375
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            25607.144735274807,
+            103786.90471453778,
+            826.1275024414062
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            25587.3500180275,
+            103784.04653870361,
+            826.0302734375
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            25567.55530078019,
+            103781.18836286943,
+            827.7998046875
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            25547.76058353288,
+            103778.33018703526,
+            830.1865234375
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            25527.96586628557,
+            103775.47201120108,
+            832.5730590820312
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            25508.17114903826,
+            103772.61383536691,
+            837.0523681640625
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            25488.37643179095,
+            103769.75565953273,
+            839.386577891441
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            25468.58171454364,
+            103766.89748369856,
+            844.7227425910819
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            25448.78699729633,
+            103764.03930786438,
+            850.3778272747767
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            25428.99228004902,
+            103761.18113203021,
+            856.5968347754315
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            25409.197562801714,
+            103758.32295619603,
+            862.8158422760853
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            25389.402845554403,
+            103755.46478036186,
+            868.9994569808366
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "failures": [],
+      "min_detected_headroom_cm": null
+    },
+    {
+      "osm_way": 211061298,
+      "passed": true,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            26815.4793501523,
+            99008.46005845904,
+            686.5402221679688
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            26795.628650213883,
+            99006.02085531973,
+            686.5402221679688
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            26775.777950275464,
+            99003.58165218041,
+            686.8141875881859
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            26755.92725033704,
+            99001.1424490411,
+            689.313136264554
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            26736.076550398622,
+            98998.7032459018,
+            693.2994670511861
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            26716.225850460203,
+            98996.26404276247,
+            698.1735929381763
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            26696.375150521784,
+            98993.82483962316,
+            704.4306663419346
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            26676.524450583365,
+            98991.38563648384,
+            711.2916213701775
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            26656.673750644946,
+            98988.94643334454,
+            718.2473812943658
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            26636.823050706527,
+            98986.50723020521,
+            726.7588938284085
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            26616.97235076811,
+            98984.0680270659,
+            734.7307479891311
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            26597.121650829686,
+            98981.6288239266,
+            745.6187744140625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            26577.270950891267,
+            98979.18962078728,
+            753.4103393554688
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            26557.420250952848,
+            98976.75041764797,
+            759.75732421875
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            26537.56955101443,
+            98974.31121450865,
+            765.9196166992188
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            26517.71885107601,
+            98971.87201136934,
+            771.1900024414062
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            26497.86815113759,
+            98969.43280823003,
+            772.5439453125
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            26478.01745119917,
+            98966.99360509071,
+            773.7655639648438
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            26458.166751260753,
+            98964.5544019514,
+            774.9927368164062
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            26438.316051322334,
+            98962.11519881208,
+            774.4800415039062
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            26418.46535138391,
+            98959.67599567278,
+            773.7440795898438
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            26398.614651445492,
+            98957.23679253345,
+            773.008056640625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            26378.763951507073,
+            98954.79758939415,
+            771.66943359375
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            26358.913251568654,
+            98952.35838625484,
+            769.9744873046875
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        }
+      ],
+      "failures": [],
+      "min_detected_headroom_cm": null
+    },
+    {
+      "osm_way": 211061637,
+      "passed": false,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            25857.01437452244,
+            99065.92566650124,
+            824.1133422851562
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            25876.97188943329,
+            99067.22858575555,
+            824.1133422851562
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            25896.92940434414,
+            99068.53150500986,
+            813.6971127118672
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            25916.88691925499,
+            99069.83442426418,
+            810.0670506622896
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            25936.844434165836,
+            99071.1373435185,
+            805.3122137415514
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            25956.801949076686,
+            99072.4402627728,
+            800.3239863841072
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            25976.759463987535,
+            99073.74318202712,
+            795.6289925945225
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            25996.71697889838,
+            99075.04610128143,
+            790.8463999631633
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            26016.67449380923,
+            99076.34902053574,
+            786.0573997098205
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            26036.63200872008,
+            99077.65193979006,
+            781.6291742270472
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            26056.58952363093,
+            99078.95485904436,
+            777.2374469881881
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            26076.547038541776,
+            99080.25777829868,
+            773.7809202898286
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            26096.504553452625,
+            99081.560697553,
+            770.538551578108
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            26116.462068363475,
+            99082.8636168073,
+            767.296182866387
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            26136.41958327432,
+            99084.16653606162,
+            765.5769788544657
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            26156.37709818517,
+            99085.46945531592,
+            764.5976766455353
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            26176.33461309602,
+            99086.77237457024,
+            763.6183744366056
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            26196.29212800687,
+            99088.07529382456,
+            763.058257994998
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            26216.249642917715,
+            99089.37821307886,
+            763.3215526594054
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            26236.207157828565,
+            99090.68113233318,
+            763.5958024016456
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            26256.164672739415,
+            99091.9840515875,
+            766.8969116210938
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            26276.12218765026,
+            99093.2869708418,
+            768.2630615234375
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            26296.07970256111,
+            99094.58989009612,
+            769.629150390625
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            26316.03721747196,
+            99095.89280935042,
+            770.9949340820312
+          ],
+          "floor_actor": "Eastside trail SM_EastsideTrail_Concrete_7_4"
+        }
+      ],
+      "failures": [
+        {
+          "distance_cm": 80,
+          "kind": "capsule_blocked"
+        },
+        {
+          "distance_cm": 100,
+          "kind": "capsule_blocked"
+        }
+      ],
+      "min_detected_headroom_cm": null
+    },
+    {
+      "osm_way": 1139043893,
+      "passed": true,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            26169.57485224727,
+            101680.03825159415,
+            788.1559448242188
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            26149.729559732667,
+            101677.55543766438,
+            788.89385803664
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            26129.884267218065,
+            101675.07262373461,
+            793.4495649927293
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            26110.03897470346,
+            101672.58980980485,
+            799.0855712890625
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            26090.19368218886,
+            101670.10699587509,
+            800.61669921875
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            26070.348389674255,
+            101667.62418194531,
+            801.9617919921875
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            26050.503097159653,
+            101665.14136801555,
+            802.7125854492188
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            26030.65780464505,
+            101662.65855408578,
+            802.0438842773438
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            26010.812512130447,
+            101660.17574015602,
+            801.56494140625
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            25990.967219615843,
+            101657.69292622626,
+            801.1580200195312
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            25971.12192710124,
+            101655.21011229648,
+            800.6806030273438
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            25951.276634586637,
+            101652.72729836672,
+            800.3250122070312
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            25931.431342072035,
+            101650.24448443695,
+            800.014892578125
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            25911.58604955743,
+            101647.76167050719,
+            800.1728515625
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            25891.74075704283,
+            101645.27885657742,
+            800.7155151367188
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            25871.895464528225,
+            101642.79604264765,
+            801.2581787109375
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            25852.050172013624,
+            101640.31322871789,
+            802.0799560546875
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            25832.20487949902,
+            101637.83041478811,
+            804.2963256835938
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            25812.359586984418,
+            101635.34760085835,
+            806.5735473632812
+          ],
+          "floor_actor": "Krog route SM_KrogRoute_Concrete_7_3"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            25792.514294469813,
+            101632.86478692859,
+            805.848120522079
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            25772.66900195521,
+            101630.38197299882,
+            808.2349829921912
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            25752.823709440607,
+            101627.89915906906,
+            810.6185867947722
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            25732.978416926006,
+            101625.41634513928,
+            813.0021905973526
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            25713.1331244114,
+            101622.93353120952,
+            815.5141783318124
+          ],
+          "floor_actor": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "failures": [],
+      "min_detected_headroom_cm": null
+    },
+    {
+      "osm_way": 1396654871,
+      "passed": true,
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xyz": [
+            24744.570535973915,
+            101277.91780107097,
+            901.1903686523438
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 60,
+          "xyz": [
+            24744.491871377264,
+            101257.91795577455,
+            901.1903686523438
+          ],
+          "floor_actor": "Irwin buildings Landing"
+        },
+        {
+          "distance_cm": 80,
+          "xyz": [
+            24744.41320678061,
+            101237.91811047812,
+            898.0483836635581
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 100,
+          "xyz": [
+            24744.33454218396,
+            101217.91826518168,
+            898.4733597929662
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 120,
+          "xyz": [
+            24744.255877587308,
+            101197.91841988525,
+            898.8622896608182
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 140,
+          "xyz": [
+            24744.177212990653,
+            101177.91857458881,
+            898.9409329013171
+          ],
+          "floor_actor": "Irwin Lake roadside pavement"
+        },
+        {
+          "distance_cm": 160,
+          "xyz": [
+            24744.098548394002,
+            101157.91872929239,
+            898.0802301119303
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 180,
+          "xyz": [
+            24744.019883797348,
+            101137.91888399595,
+            895.0825957697738
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 200,
+          "xyz": [
+            24743.941219200697,
+            101117.91903869952,
+            892.1577571743611
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 220,
+          "xyz": [
+            24743.862554604046,
+            101097.91919340308,
+            888.6696165076064
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 240,
+          "xyz": [
+            24743.78389000739,
+            101077.91934810665,
+            881.2680113252289
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 260,
+          "xyz": [
+            24743.70522541074,
+            101057.91950281023,
+            873.7874177879642
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 280,
+          "xyz": [
+            24743.626560814086,
+            101037.91965751379,
+            866.6891149794795
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 300,
+          "xyz": [
+            24743.547896217435,
+            101017.91981221735,
+            860.6222388994622
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 320,
+          "xyz": [
+            24743.469231620784,
+            100997.91996692092,
+            855.8968789857316
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 340,
+          "xyz": [
+            24743.39056702413,
+            100977.9201216245,
+            851.2899490809702
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 360,
+          "xyz": [
+            24743.31190242748,
+            100957.92027632806,
+            848.006554267706
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 380,
+          "xyz": [
+            24743.233237830824,
+            100937.92043103163,
+            847.3674053451647
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 400,
+          "xyz": [
+            24743.154573234173,
+            100917.92058573519,
+            846.7251319416081
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 420,
+          "xyz": [
+            24743.075908637522,
+            100897.92074043876,
+            846.0732478003456
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 440,
+          "xyz": [
+            24742.997244040867,
+            100877.92089514234,
+            845.3425769305868
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 460,
+          "xyz": [
+            24742.918579444216,
+            100857.9210498459,
+            844.6178034521345
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 480,
+          "xyz": [
+            24742.839914847562,
+            100837.92120454946,
+            843.9073141677729
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        },
+        {
+          "distance_cm": 500,
+          "xyz": [
+            24742.76125025091,
+            100817.92135925303,
+            843.2403928486037
+          ],
+          "floor_actor": "Irwin Lake road approaches"
+        }
+      ],
+      "failures": [],
+      "min_detected_headroom_cm": null
+    }
+  ],
+  "capsule_radius_cm": 32,
+  "capsule_half_height_cm": 90,
+  "main_map_changed": false,
+  "scope": "Static walking-sized capsule sweeps and sampled headroom only. CharacterMovement traversal, accessibility and continuous surface comfort unverified."
+}

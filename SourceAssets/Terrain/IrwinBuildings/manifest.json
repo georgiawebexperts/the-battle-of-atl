@@ -66,6 +66,20 @@
       "scope": "Closed exterior door with measured threshold and small landing; connecting public approach pending."
     }
   ],
+  "aprons": [
+    {
+      "osm_way": 211061296,
+      "length_cm": 260,
+      "width_cm": 170,
+      "scope": "Survey-based sloped apron; native clearance pending."
+    },
+    {
+      "osm_way": 211061637,
+      "length_cm": 260,
+      "width_cm": 170,
+      "scope": "Survey-based sloped apron; native clearance pending."
+    }
+  ],
   "surfaces": [
     {
       "material": "Brick",
@@ -90,7 +104,7 @@
     {
       "material": "Landing",
       "file": "IrwinBuildings_Landing.obj",
-      "triangles": 84
+      "triangles": 136
     }
   ],
   "scope": "Mapped footprint exterior study; estimated heights and generic facade treatment, not photo-matched or main-installed."

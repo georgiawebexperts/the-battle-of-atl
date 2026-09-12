@@ -48,6 +48,25 @@ for row in data['buildings']:
      for side in [-1,1]:part('Stucco',d+side*12,entry_base+105,4,8,26,25)
     windows+=1
  for tri in constrained_delaunay_triangles(poly).geoms:face('Roof',[(x,y,roof) for x,y in list(orient(tri,sign=1).exterior.coords)[:3]])
+# Two surveyed landing drops need sloped exterior aprons.
+apron_source=root/'Tests/Results/2026-09-12-irwin-approach-before-aprons.json'
+aprons=[]
+if apron_source.exists():
+    measured={r['osm_way']:r for r in json.loads(apron_source.read_text())['routes']}
+    directions={r['osm_way']:r['outward_xy'] for r in json.loads((root/'Tests/Results/2026-09-12-irwin-entrance-landings.json').read_text())['entrances']}
+    for entry in entrances:
+        if entry['osm_way'] not in [211061296,211061637]:continue
+        route=measured[entry['osm_way']];sample={r['distance_cm']:r['xyz'][2] for r in route['samples']}
+        x,y,z=entry['xyz'];ox,oy=directions[entry['osm_way']];stations=[]
+        for d in range(40,301,20):
+            f=max(0,(d-80)/220);h=max(z+(sample[300]-z)*f,sample[d])+.2
+            stations.append([(x+ox*d-oy*w,y+oy*d+ox*w,h) for w in [-85,85]])
+        for a,b in zip(stations,stations[1:]):
+            # Plan winding is normalised before the common OBJ handedness flip.
+            pts=[a[0],b[0],b[1],a[1]]
+            if (pts[1][0]-pts[0][0])*(pts[2][1]-pts[0][1])-(pts[1][1]-pts[0][1])*(pts[2][0]-pts[0][0])<0:pts.reverse()
+            face('Landing',pts)
+        aprons.append({'osm_way':entry['osm_way'],'length_cm':260,'width_cm':170,'scope':'Survey-based sloped apron; native clearance pending.'})
 results=[]
 for mat,faces in groups.items():
  lines=['o IrwinBuildings_'+mat];vertices=[p for f in faces for p in f]
@@ -55,4 +74,4 @@ for mat,faces in groups.items():
  for x,y,z in vertices:lines.append(f'vt {x/200:.5f} {z/200:.5f}')
  for i in range(0,len(vertices),3):lines.append('f '+' '.join(f'{j}/{j}' for j in [i+3,i+2,i+1]))
  name='IrwinBuildings_'+mat+'.obj';(folder/name).write_text('\n'.join(lines)+'\n');results.append({'material':mat,'file':name,'triangles':len(faces)})
-(folder/'manifest.json').write_text(json.dumps({'buildings':len(data['buildings']),'window_bays':windows,'entrances':entrances,'surfaces':results,'scope':'Mapped footprint exterior study; estimated heights and generic facade treatment, not photo-matched or main-installed.'},indent=2)+'\n');print(results,windows)
+(folder/'manifest.json').write_text(json.dumps({'buildings':len(data['buildings']),'window_bays':windows,'entrances':entrances,'aprons':aprons,'surfaces':results,'scope':'Mapped footprint exterior study; estimated heights and generic facade treatment, not photo-matched or main-installed.'},indent=2)+'\n');print(results,windows)
