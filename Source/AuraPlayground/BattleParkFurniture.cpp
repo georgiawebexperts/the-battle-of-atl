@@ -1,6 +1,10 @@
 #include "BattleParkFurniture.h"
 #include "PiedmontPathSpline.h"
 #include "PiedmontBike.h"
+#include "BattleBike.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/PlayerController.h"
+#include "Components/CapsuleComponent.h"
 #include "PiedmontPedestrian.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/SplineComponent.h"
@@ -9,6 +13,7 @@
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleParkFurniture::ABattleParkFurniture(){
+ PrimaryActorTick.bCanEverTick=true;PrimaryActorTick.TickInterval=.5f;
  RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("FurnitureRoot"));
  Wood=CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("WoodenSlats"));Frame=CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("IronFrame"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
@@ -75,4 +80,51 @@ bool ABattleParkFurniture::ReserveBench(int32 Index,AActor* Claimant){
 void ABattleParkFurniture::ReleaseBench(int32 Index,AActor* Claimant){
  const auto* Existing=Reservations.Find(Index);
  if(Existing&&Existing->Get()==Claimant)Reservations.Remove(Index);
+}
+
+void ABattleParkFurniture::Tick(float Dt){
+ Super::Tick(Dt);
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));auto* PC=UGameplayStatics::GetPlayerController(this,0);APawn* Player=PC?PC->GetPawn():nullptr;
+ if(!Mode||!Player)return;
+ if(EncounterRun!=Mode->RunNumber){
+  if(EncounterVisitor.IsValid())EncounterVisitor->Destroy();EncounterVisitor.Reset();EncounterBench=INDEX_NONE;
+  EncounterRun=Mode->RunNumber;EncounterEligibleTime=0;EncounterWait=0;bEncounterRolled=false;bEncounterAllowed=false;BenchEncounterAttempts=0;
+ }
+ const auto* Lab=Cast<ABattleLabMode>(Mode);
+ bool Eligible=bAmbientBenchFire&&!Mode->bRunEnded&&Mode->StartCountdown<=0&&(!Lab||!Lab->bTutorialActive);
+ if(auto* Person=Cast<APiedmontExplorer>(Player))Eligible=Eligible&&!Person->bDead&&!Person->bSwimming;
+ if(auto* Bike=Cast<ABattleBike>(Player))Eligible=Eligible&&Bike->RiderHealth>0;
+ if(!Eligible){
+  if(EncounterBench!=INDEX_NONE&&EncounterVisitor.IsValid())EncounterVisitor->Destroy();EncounterVisitor.Reset();EncounterBench=INDEX_NONE;return;
+ }
+ EncounterEligibleTime+=Dt;if(EncounterEligibleTime<45)return;
+ if(!bEncounterRolled){bEncounterRolled=true;bEncounterAllowed=FMath::FRand()<FMath::Clamp(BenchFireRunChance,0.f,1.f);}
+ if(!bEncounterAllowed)return;
+ if(EncounterBench!=INDEX_NONE){
+  auto* Visitor=EncounterVisitor.Get();if(!Visitor){EncounterBench=INDEX_NONE;return;}
+  EncounterWait+=Dt;
+  if(Visitor->bDead||Visitor->StumbleRemaining>0||Visitor->HornReactions>0){ReleaseBench(EncounterBench,Visitor);EncounterBench=INDEX_NONE;return;}
+  if(FVector::Dist2D(Player->GetActorLocation(),Visitor->GetActorLocation())<650&&FMath::Abs(Player->GetActorLocation().Z-Visitor->GetActorLocation().Z)<140){
+   const int32 Index=EncounterBench;EncounterBench=INDEX_NONE;
+   if(!Visitor->BeginBenchIgnition(this,Index)){ReleaseBench(Index,Visitor);Visitor->PauseRemaining=0;}
+   return;
+  }
+  if(EncounterWait>60){ReleaseBench(EncounterBench,Visitor);Visitor->PauseRemaining=0;EncounterBench=INDEX_NONE;}
+  return;
+ }
+ if(BenchEncounterAttempts>0)return;
+ FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
+ for(int32 Index=0;Index<Benches.Num();++Index){
+  if(!IsBenchAvailable(Index))continue;const auto& T=Benches[Index];const FVector Position=T.TransformPosition(FVector(0,55,90));
+  const float Distance=FVector::Dist2D(Player->GetActorLocation(),Position);
+  if(Distance<900||Distance>1700||FMath::Abs(Player->GetActorLocation().Z-Position.Z)>200)continue;
+  if(FVector::DotProduct((Position-Eye).GetSafeNormal(),View.Vector())>-.1f)continue;
+  const FTransform Spawn(T.TransformVectorNoScale(FVector(0,-1,0)).Rotation(),Position);
+  auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),Spawn,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding);
+  if(!Visitor)continue;
+  Visitor->CityAppearanceVariant=0;Visitor->Tags.Add(TEXT("AmbientBenchIgniter"));UGameplayStatics::FinishSpawningActor(Visitor,Spawn);
+  if(!IsValid(Visitor)||Visitor->IsActorBeingDestroyed())continue;
+  if(!ReserveBench(Index,Visitor)){Visitor->Destroy();continue;}
+  Visitor->PauseRemaining=65;EncounterVisitor=Visitor;EncounterBench=Index;EncounterWait=0;++BenchEncounterAttempts;break;
+ }
 }

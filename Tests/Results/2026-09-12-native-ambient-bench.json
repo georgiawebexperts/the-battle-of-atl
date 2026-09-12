@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "zero chance, quiet period, offscreen spawn, approach ignition and one-attempt cap passed"
+  },
+  "scope": "Native encounter lifecycle with forced 0/1 probability and accelerated eligible clock; no statistical rarity, rendered or packaged acceptance.",
+  "passed": true
+}

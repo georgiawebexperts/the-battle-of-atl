@@ -9,6 +9,10 @@ class AURAPLAYGROUND_API ABattleParkFurniture : public AActor {
 public:
  ABattleParkFurniture();
  virtual void BeginPlay() override;
+ virtual void Tick(float Dt) override;
+ UPROPERTY(EditAnywhere) bool bAmbientBenchFire=true;
+ UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) float BenchFireRunChance=.2f;
+ UPROPERTY(BlueprintReadOnly) int32 BenchEncounterAttempts=0;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UInstancedStaticMeshComponent> Wood;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UInstancedStaticMeshComponent> Frame;
  TArray<FTransform> Benches;
@@ -18,4 +22,8 @@ public:
  void ReleaseBench(int32 Index,AActor* Claimant);
 private:
  TMap<int32,TWeakObjectPtr<AActor>> Reservations;
+ TWeakObjectPtr<class APiedmontPedestrian> EncounterVisitor;
+ int32 EncounterBench=INDEX_NONE,EncounterRun=INDEX_NONE;
+ float EncounterEligibleTime=0,EncounterWait=0;
+ bool bEncounterRolled=false,bEncounterAllowed=false;
 };
