@@ -1,0 +1,64 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "source": "SourceAssets/Terrain/KrogTraffic/atlanta-height-krog-join-candidate.r16",
+  "source_sha256": "0ca90ef202d711bd3fb82ad8695939499e9b9e75c3bdcfce0a3e0cee04a780d1",
+  "output": "SourceAssets/Terrain/KrogTraffic/atlanta-height-dekalb-crowned-candidate.r16",
+  "changed_samples": 2811,
+  "maximum_lowering_cm": 160.41666666666669,
+  "outside_850cm_identical": true,
+  "legacy_path_vertex_conflicts": [
+    {
+      "source": "SourceAssets/Terrain/KrogRoute/KrogRoute_Concrete_7_2.obj",
+      "vertices": 30,
+      "worst": [
+        {
+          "xyz": [
+            28122.478658,
+            115764.696489,
+            976.177083
+          ],
+          "proposed_z": 971.40552384471,
+          "protrusion_cm": 4.771559155289992
+        },
+        {
+          "xyz": [
+            27989.145325,
+            115831.363156,
+            978.260417
+          ],
+          "proposed_z": 974.0521879190683,
+          "protrusion_cm": 4.208229080931687
+        },
+        {
+          "xyz": [
+            28055.811991,
+            115831.363156,
+            977.21875
+          ],
+          "proposed_z": 973.1708041273666,
+          "protrusion_cm": 4.047945872633363
+        },
+        {
+          "xyz": [
+            27922.478658,
+            115831.363156,
+            978.520833
+          ],
+          "proposed_z": 975.0074397013724,
+          "protrusion_cm": 3.5133932986276477
+        },
+        {
+          "xyz": [
+            28189.145325,
+            115764.696489,
+            974.875
+          ],
+          "proposed_z": 971.6489858760523,
+          "protrusion_cm": 3.2260141239477207
+        }
+      ]
+    }
+  ],
+  "scope": "Separate terrain candidate only. Legacy overlap check samples vertices, not triangle interiors; native support and joins remain unverified.",
+  "main_map_changed": false
+}
