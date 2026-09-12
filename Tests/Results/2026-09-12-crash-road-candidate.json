@@ -1,0 +1,7 @@
+{
+  "source": "/Game/BattleForTheA/Environment/TenthStreetGraded/SM_TenthStreet_Road",
+  "candidate": "/Game/BattleForTheA/Environment/CrashReview/SM_TenthRoadDoubleSided",
+  "source_double_sided": false,
+  "candidate_double_sided": true,
+  "main_changed": false
+}
