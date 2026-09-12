@@ -1,5 +1,5 @@
 """Build Krog/DeKalb road surfaces with joins to the installed BeltLine meshes."""
-import array, json, math, sys
+import array, json, math, sys, argparse
 from pathlib import Path
 from shapely.geometry import Point, Polygon, LineString, box
 from shapely.geometry.polygon import orient
@@ -11,8 +11,10 @@ folder = root / 'SourceAssets/Terrain/KrogTraffic'
 data = json.loads((folder / 'network.json').read_text())
 meta = json.loads((root / 'SourceAssets/Terrain/terrain-georeference.json').read_text())
 assert meta['active_heightmap'] == data['active_heightmap']
+parser=argparse.ArgumentParser();parser.add_argument('--heightmap',type=Path);args=parser.parse_args()
+heightmap=(args.heightmap or root/'SourceAssets/Terrain'/meta['active_heightmap']).resolve()
 raw = array.array('H')
-raw.frombytes((root / 'SourceAssets/Terrain' / meta['active_heightmap']).read_bytes())
+raw.frombytes(heightmap.read_bytes())
 if sys.byteorder != 'little': raw.byteswap()
 
 def terrain(x, y):
@@ -148,13 +150,15 @@ for i in range(0,len(vertices),3):lines.append('f '+' '.join(f'{j}/{j}/{j}' for 
 # Test actual native support later at triangle centroids, not only source bounds.
 probes=[{'xyz':[sum(p[k] for p in f)/3 for k in range(3)]} for f in faces]
 (folder/'road-probes.json').write_text(json.dumps({'samples':probes},indent=2)+'\n')
-seam_gaps=[]
+seam_gaps=[];seam_locations=[]
 for x,y,z in vertices:
     point=Point(x,y)
     if protected.boundary.distance(point)<.001:
         i=int(index.nearest(point));q=nearest_points(point,polys[i])[1]
-        seam_gaps.append(abs(z-plane(i,q.x,q.y)))
-report={'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
+        gap=abs(z-plane(i,q.x,q.y));seam_gaps.append(gap)
+        if gap>.25:seam_locations.append({"xyz":[x,y,z],"existing_z":plane(i,q.x,q.y),"terrain_z":terrain(x,y),"gap_cm":gap})
+(folder/'join-conflicts.json').write_text(json.dumps(sorted(seam_locations,key=lambda r:-r['gap_cm']),indent=2)+'\n')
+report={'heightmap':str(heightmap.relative_to(root)),'maximum_join_step_cm':max(seam_gaps,default=0),'join_samples':len(seam_gaps),'conformed_edges':split_edges,'max_previous_edge_height_gap_cm':max_previous_gap,'interior_open_edges':len(interior_open_edges),'triangles':len(faces),'missing_area_cm2':missing,'protected_overlap_cm2':coverage.intersection(protected).area,
         'source_to_native_max_error_cm':max(errors),'native_reference_samples':len(errors),
         'main_map_changed':False,'scope':'Source candidate only; native collision, driving and appearance pending.'}
 (folder/'road-surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
