@@ -27,21 +27,23 @@ a.static_mesh_component.set_static_mesh(mesh);a.static_mesh_component.set_collis
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 cars=[car for car in ea.get_all_level_actors() if isinstance(car,unreal.BattleRoadCar)]
 for car in cars:car.set_actor_enable_collision(False)
+landings=json.loads((root/'SourceAssets/Terrain/IrwinBuildings/manifest.json').read_text()).get('entrances',[])
 failures=[];counts={}
 probes=json.loads((folder/'sidewalk-probes.json').read_text())['samples']
 for row in probes:
- x,y,z=row['xyz'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+250),unreal.Vector(x,y,z-250))
+ x,y,z=row['xyz'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+100),unreal.Vector(x,y,z-100))
  label=hit[1].get_actor_label() if hit else None;counts[label]=counts.get(label,0)+1
- if not hit or hit[1]!=a or abs(hit[0].z-z)>.25:failures.append({'xyz':row['xyz'],'actor':label,'z':hit[0].z if hit else None})
+ landing_hit=hit and label=='Irwin buildings Landing' and any(abs(hit[0].z-e['xyz'][2])<.25 and (x-e['xyz'][0])**2+(y-e['xyz'][1])**2<120**2 for e in landings)
+ if not landing_hit and (not hit or hit[1]!=a or abs(hit[0].z-z)>.25):failures.append({'xyz':row['xyz'],'actor':label,'z':hit[0].z if hit else None})
 # Original trail probes must stay exactly on the same installed surfaces.
 trail_failures=[]
 survey=json.loads((root/'Tests/Results/2026-09-12-irwin-crossing-survey.json').read_text())
 for row in survey['samples']:
  if not row['actor'] or not row['actor'].startswith(('Eastside trail','Krog route')):continue
- x,y=row['xy'];z=row['height'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+250),unreal.Vector(x,y,z-250))
+ x,y=row['xy'];z=row['height'];hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+100),unreal.Vector(x,y,z-100))
  if not hit or hit[1].get_actor_label()!=row['actor'] or abs(hit[0].z-z)>.25:trail_failures.append(row)
 for car in cars:car.set_actor_enable_collision(True)
 passed=not failures and not trail_failures
 if passed:assert unreal.EditorLoadingAndSavingUtils.save_map(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world(),'/Game/PiedmontRide/Maps/PiedmontIrwinSidewalkReview')
-report={'passed':passed,'probes':len(probes),'hits':counts,'failures':failures,'trail_failures':trail_failures,'main_map_changed':False,'scope':'Native surface support and original trail preservation only; no traffic or visual acceptance.'}
+report={'passed':passed,'probes':len(probes),'hits':counts,'failures':failures,'trail_failures':trail_failures,'main_map_changed':False,'scope':'Native pavement support including expected door-landing overlays, plus original trail preservation. No walking or visual acceptance.'}
 (root/'Tests/Results/2026-09-12-irwin-sidewalk-support.json').write_text(json.dumps(report,indent=2)+'\n')

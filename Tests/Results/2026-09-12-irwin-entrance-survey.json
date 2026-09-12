@@ -1,0 +1,453 @@
+{
+  "entrances": [
+    {
+      "osm_way": 211061295,
+      "door_xyz": [
+        27073.54242302232,
+        100395.077714464,
+        794.3276364559462
+      ],
+      "outward_xy": [
+        -0.0026723934868636535,
+        0.9999964291501502
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            27073.435527282847,
+            100435.07757163001
+          ],
+          "surface_z": 757.7934073141868,
+          "actor": "Irwin Lake roadside pavement",
+          "door_above_surface_cm": 36.5342291417594
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            27073.275183673635,
+            100495.07735737902
+          ],
+          "surface_z": 763.8456820521733,
+          "actor": "Irwin Lake roadside pavement",
+          "door_above_surface_cm": 30.481954403772875
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            27073.061392194686,
+            100575.07707171103
+          ],
+          "surface_z": 765.667339095655,
+          "actor": "Irwin Lake road approaches",
+          "door_above_surface_cm": 28.66029736029111
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            27072.740704976262,
+            100695.07664320905
+          ],
+          "surface_z": 761.3872120325191,
+          "actor": "Irwin Lake road approaches",
+          "door_above_surface_cm": 32.94042442342709
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            27072.20622627889,
+            100895.07592903907
+          ],
+          "surface_z": 763.7505665611851,
+          "actor": "Irwin Lake road approaches",
+          "door_above_surface_cm": 30.577069894761053
+        }
+      ]
+    },
+    {
+      "osm_way": 211061296,
+      "door_xyz": [
+        25740.23851276006,
+        100017.26728037688,
+        827.1173306169901
+      ],
+      "outward_xy": [
+        0.9996731520162122,
+        -0.025565389454714725
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            25780.22543884071,
+            100016.2446647987
+          ],
+          "surface_z": 786.7273395102342,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 40.38999110675593
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            25840.205827961683,
+            100014.71074143141
+          ],
+          "surface_z": 765.0592791117225,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 62.0580515052676
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            25920.17968012298,
+            100012.66551027504
+          ],
+          "surface_z": 761.3401487179001,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 65.77718189909001
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            26040.140458364924,
+            100009.59766354047
+          ],
+          "surface_z": 774.6691358353138,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 52.44819478167631
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            26240.075088768168,
+            100004.48458564952
+          ],
+          "surface_z": 783.7036743164062,
+          "actor": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+          "door_above_surface_cm": 43.41365630058385
+        }
+      ]
+    },
+    {
+      "osm_way": 211061297,
+      "door_xyz": [
+        25884.270776737143,
+        103826.91917621624,
+        866.4547729647636
+      ],
+      "outward_xy": [
+        -0.9897358623654811,
+        -0.14290879170875906
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            25844.681342242522,
+            103821.20282454789
+          ],
+          "surface_z": 827.67874264775,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 38.77603031701358
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            25785.297190500594,
+            103812.62829704536
+          ],
+          "surface_z": 829.8984375,
+          "actor": "Krog route SM_KrogRoute_Concrete_7_3",
+          "door_above_surface_cm": 36.556335464763606
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            25706.118321511356,
+            103801.19559370866
+          ],
+          "surface_z": 827.676025390625,
+          "actor": "Krog route SM_KrogRoute_Concrete_7_3",
+          "door_above_surface_cm": 38.778747574138606
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            25587.3500180275,
+            103784.04653870361
+          ],
+          "surface_z": 826.0302734375,
+          "actor": "Krog route SM_KrogRoute_Concrete_7_3",
+          "door_above_surface_cm": 40.424499527263606
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            25389.402845554403,
+            103755.46478036186
+          ],
+          "surface_z": 868.9994569808366,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": -2.544684016073006
+        }
+      ]
+    },
+    {
+      "osm_way": 211061298,
+      "door_xyz": [
+        26855.18075002914,
+        99013.33846473767,
+        674.41995550877
+      ],
+      "outward_xy": [
+        -0.9925349969209705,
+        -0.1219601569656631
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            26815.4793501523,
+            99008.46005845904
+          ],
+          "surface_z": 682.5402507971003,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": -8.120295288330226
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            26755.92725033704,
+            99001.1424490411
+          ],
+          "surface_z": 689.313136264554,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": -14.893180755783987
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            26676.524450583365,
+            98991.38563648384
+          ],
+          "surface_z": 711.2916213701775,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": -36.87166586140745
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            26557.420250952848,
+            98976.75041764797
+          ],
+          "surface_z": 759.75732421875,
+          "actor": "Eastside trail SM_EastsideTrail_Concrete_7_4",
+          "door_above_surface_cm": -85.33736870997996
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            26358.913251568654,
+            98952.35838625484
+          ],
+          "surface_z": 769.9744873046875,
+          "actor": "Eastside trail SM_EastsideTrail_Concrete_7_4",
+          "door_above_surface_cm": -95.55453179591746
+        }
+      ]
+    },
+    {
+      "osm_way": 211061637,
+      "door_xyz": [
+        25817.099344700746,
+        99063.31982799261,
+        830.2397609323563
+      ],
+      "outward_xy": [
+        0.9978757455424269,
+        0.06514596271562548
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            25857.01437452244,
+            99065.92566650124
+          ],
+          "surface_z": 820.1133164880263,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 10.12644444432999
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            25916.88691925499,
+            99069.83442426418
+          ],
+          "surface_z": 810.0670506622896,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 20.17271027006666
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            25996.71697889838,
+            99075.04610128143
+          ],
+          "surface_z": 790.8463999631633,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 39.39336096919294
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            26116.462068363475,
+            99082.8636168073
+          ],
+          "surface_z": 767.296182866387,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 62.94357806596929
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            26316.03721747196,
+            99095.89280935042
+          ],
+          "surface_z": 770.9949340820312,
+          "actor": "Eastside trail SM_EastsideTrail_Concrete_7_4",
+          "door_above_surface_cm": 59.24482685032501
+        }
+      ]
+    },
+    {
+      "osm_way": 1139043893,
+      "door_xyz": [
+        26209.265437276477,
+        101685.00387945368,
+        813.9721634293846
+      ],
+      "outward_xy": [
+        -0.9922646257301503,
+        -0.12414069648831866
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            26169.57485224727,
+            101680.03825159415
+          ],
+          "surface_z": 784.1559572691413,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": 29.816206160243382
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            26110.03897470346,
+            101672.58980980485
+          ],
+          "surface_z": 799.0855712890625,
+          "actor": "Krog route SM_KrogRoute_Concrete_7_3",
+          "door_above_surface_cm": 14.886592140322136
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            26030.65780464505,
+            101662.65855408578
+          ],
+          "surface_z": 802.0438842773438,
+          "actor": "Krog route SM_KrogRoute_Concrete_7_3",
+          "door_above_surface_cm": 11.928279152040886
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            25911.58604955743,
+            101647.76167050719
+          ],
+          "surface_z": 800.1728515625,
+          "actor": "Krog route SM_KrogRoute_Concrete_7_3",
+          "door_above_surface_cm": 13.799311866884636
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            25713.1331244114,
+            101622.93353120952
+          ],
+          "surface_z": 815.5141783318124,
+          "actor": "USGS Atlanta terrain + authored underwater basin",
+          "door_above_surface_cm": -1.542014902427809
+        }
+      ]
+    },
+    {
+      "osm_way": 1396654871,
+      "door_xyz": [
+        24744.72786516722,
+        101317.91749166384,
+        1023.8721541959366
+      ],
+      "outward_xy": [
+        -0.00393322983261837,
+        -0.9999922648216254
+      ],
+      "samples": [
+        {
+          "distance_cm": 40,
+          "xy": [
+            24744.570535973915,
+            101277.91780107097
+          ],
+          "surface_z": 897.190391750376,
+          "actor": "Irwin Lake roadside pavement",
+          "door_above_surface_cm": 126.6817624455606
+        },
+        {
+          "distance_cm": 100,
+          "xy": [
+            24744.33454218396,
+            101217.91826518168
+          ],
+          "surface_z": 898.4733597929662,
+          "actor": "Irwin Lake roadside pavement",
+          "door_above_surface_cm": 125.39879440297034
+        },
+        {
+          "distance_cm": 180,
+          "xy": [
+            24744.019883797348,
+            101137.91888399595
+          ],
+          "surface_z": 895.0825957697738,
+          "actor": "Irwin Lake road approaches",
+          "door_above_surface_cm": 128.78955842616278
+        },
+        {
+          "distance_cm": 300,
+          "xy": [
+            24743.547896217435,
+            101017.91981221735
+          ],
+          "surface_z": 860.6222388994622,
+          "actor": "Irwin Lake road approaches",
+          "door_above_surface_cm": 163.24991529647434
+        },
+        {
+          "distance_cm": 500,
+          "xy": [
+            24742.76125025091,
+            100817.92135925303
+          ],
+          "surface_z": 843.2403928486037,
+          "actor": "Irwin Lake road approaches",
+          "door_above_surface_cm": 180.63176134733283
+        }
+      ]
+    }
+  ],
+  "main_map_changed": false
+}

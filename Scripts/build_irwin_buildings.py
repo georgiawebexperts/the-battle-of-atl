@@ -5,7 +5,7 @@ from shapely.geometry import Polygon,LineString,Point
 from shapely.geometry.polygon import orient
 from shapely import constrained_delaunay_triangles
 root=Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terrain/IrwinBuildings';data=json.loads((folder/'buildings.json').read_text())
-groups={k:[] for k in ['Brick','Roof','Glass','Stucco']}
+groups={k:[] for k in ['Brick','Roof','Glass','Stucco','Landing']}
 def face(mat,points):
  for i in range(1,len(points)-1):groups[mat].append([points[0],points[i],points[i+1]])
 def box(mat,center,size,yaw):
@@ -15,6 +15,8 @@ def box(mat,center,size,yaw):
    a,b=x*size[0]/2,y*size[1]/2;v.append([center[0]+c*a-s*b,center[1]+s*a+c*b,center[2]+z*size[2]/2])
  for ids in [(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]:face(mat,[v[i] for i in ids])
 windows=0;entrances=[]
+survey_path=root/'Tests/Results/2026-09-12-irwin-entrance-survey.json'
+thresholds={r['osm_way']:r['samples'][0]['surface_z']+4 for r in json.loads(survey_path.read_text())['entrances']} if survey_path.exists() else {}
 for row in data['buildings']:
  poly=orient(Polygon(row['footprint_xy']),sign=1);ring=list(poly.exterior.coords);base=row['base_z_cm'];roof=base+row['storeys']*row['storey_height_cm'];bottom=row['foundation_z_cm']
  # Choose a substantial facade facing the crossing for a closed shop entrance.
@@ -34,14 +36,16 @@ for row in data['buildings']:
     width=min(145,length/count-55);d=(i+.5)*length/count;z=base+level*340+165;tall=220 if level==0 else 170
     is_entry=level==0 and edge_index==entry_edge and i==count//2
     if is_entry:
-     z=base+115;tall=230;width=min(140,width)
-     part('Roof',d,base+246,width+50,130,14,55)
-     entrances.append({'osm_way':row['osm_way'],'xyz':[a[0]+ux*d+ox*25,a[1]+uy*d+oy*25,base],'scope':'Closed exterior door; thresholds and public approach paving not yet authored.'})
+     entry_base=thresholds.get(row['osm_way'],base)
+     z=entry_base+115;tall=230;width=min(140,width)
+     part('Roof',d,entry_base+246,width+50,90,14,35)
+     part('Landing',d,entry_base-4,width+40,70,8,60)
+     entrances.append({'osm_way':row['osm_way'],'xyz':[a[0]+ux*d+ox*25,a[1]+uy*d+oy*25,entry_base],'scope':'Closed exterior door with measured threshold and small landing; connecting public approach pending.'})
     part('Roof',d,z,width+16,12,tall+16,7);part('Glass',d,z,width,8,tall,15)
     part('Stucco',d,z,5,8,tall,20)
     if not is_entry:part('Stucco',d,z,width,8,5,20)
     else:
-     for side in [-1,1]:part('Stucco',d+side*12,base+105,4,8,26,25)
+     for side in [-1,1]:part('Stucco',d+side*12,entry_base+105,4,8,26,25)
     windows+=1
  for tri in constrained_delaunay_triangles(poly).geoms:face('Roof',[(x,y,roof) for x,y in list(orient(tri,sign=1).exterior.coords)[:3]])
 results=[]

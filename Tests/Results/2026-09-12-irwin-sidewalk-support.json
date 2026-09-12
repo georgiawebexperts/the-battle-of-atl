@@ -2,10 +2,11 @@
   "passed": true,
   "probes": 12591,
   "hits": {
-    "Irwin Lake roadside pavement": 12591
+    "Irwin Lake roadside pavement": 12575,
+    "Irwin buildings Landing": 16
   },
   "failures": [],
   "trail_failures": [],
   "main_map_changed": false,
-  "scope": "Native surface support and original trail preservation only; no traffic or visual acceptance."
+  "scope": "Native pavement support including expected door-landing overlays, plus original trail preservation. No walking or visual acceptance."
 }
