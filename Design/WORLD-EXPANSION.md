@@ -308,3 +308,12 @@ Generated centred road-join repairs from adjacent Monroe OSM segments at their s
 All 1512 native footprint samples now pass (1481 road, 30 crossing pavement, 1 repair). Both candidate lanes then completed native vehicle traversal and endpoint stops, 8294.260 cm combined. The generic lane audit now accepts an explicit Monroe mode with the appropriate short-route threshold while preserving 10th Street checks. No traffic controls or production cars were added.
 
 Installed only the repair in PiedmontWorld, tag MonroeRoadSeams. Re-probed the discovered gap at (12371.346,11688.619): it now hits repair Z=-327.558 instead of terrain. Desktop remains 047; packaging, crossing signal logic, longer approach routes and visual rider-level review remain pending. Scripts regenerate isolated review map PiedmontMonroeTrafficReview.
+
+
+## Monroe crossing control candidate — 2026-09-12 [codex-maclaptop]
+
+Retained four individual OSM crossing ways (1396654821, 1396654823, 231270041, 1387296277) in MonroeTraffic/crossings.json. A conservative shared vehicle-control envelope spans XY (11747.156,10007.506) to (12673.163,11481.898), with a 100 cm margin around those alignments. This groups vehicle reservations without changing path geometry; it is not a claim about real-world traffic timing.
+
+Created isolated PiedmontMonroeCrossingReview, binding the two cars to a shared ABattleRoadCrossing with accelerated 2/1/6 green/amber/red timing. Body-envelope entry determines stop distance with a further 100 cm buffer: northbound 1950.460 cm; southbound only 98.482 cm from its candidate start. The very short southern lead-in confirms production approaches need extension before live spawning.
+
+Native test passed both route completions (8294.221 cm combined), wheel support, endpoint stops and at least one actual stopped signal wait. Underlying crossing occupancy/reservation behavior was previously unit-fixture tested; this run did not deliberately place a pedestrian inside this specific Monroe envelope. Visible signals, player crossing interactions, approach extensions, production traffic timing and packaging remain pending. No crossing controller installed in main world yet; desktop remains 047.

@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Both full lanes completed with stopped signal queue, support and endpoint stops",
+    "cars": 2,
+    "total_distance_cm": 8294.221
+  },
+  "scope": "Two opposing Monroe lanes with shared crossing reservation and stopped signal wait; accelerated cycle. Visible signals, production population and packaging pending.",
+  "passed": true
+}

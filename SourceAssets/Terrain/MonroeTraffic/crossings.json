@@ -1,0 +1,122 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "source": "OpenStreetMap contributors, References/tenth-street-monroe.osm",
+  "crossings": [
+    {
+      "osm_way": 231270041,
+      "tags": {
+        "bicycle": "yes",
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "crossing:markings": "ladder:paired",
+        "crossing:signals": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "lit": "no",
+        "name": "Atlanta BeltLine Eastside Trail",
+        "oneway": "no",
+        "rcn": "yes",
+        "surface": "asphalt"
+      },
+      "points_cm": [
+        [
+          12222.46485525975,
+          11101.858239636447
+        ],
+        [
+          12426.009542657994,
+          11148.45272138094
+        ]
+      ]
+    },
+    {
+      "osm_way": 1387296277,
+      "tags": {
+        "bicycle": "yes",
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "crossing:markings": "ladder:paired",
+        "crossing:signals": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "lit": "yes",
+        "name": "Interim BeltLine Eastside Trail",
+        "oneway": "no",
+        "surface": "asphalt"
+      },
+      "points_cm": [
+        [
+          12002.443871224144,
+          11051.245006313547
+        ],
+        [
+          12222.46485525975,
+          11101.858239636447
+        ]
+      ]
+    },
+    {
+      "osm_way": 1396654821,
+      "tags": {
+        "bicycle": "designated",
+        "cycleway": "crossing",
+        "foot": "designated",
+        "highway": "cycleway"
+      },
+      "points_cm": [
+        [
+          12573.162627130903,
+          10729.21397308819
+        ],
+        [
+          12375.92385452396,
+          10421.628430594381
+        ],
+        [
+          12173.884349619038,
+          10107.50598384378
+        ]
+      ]
+    },
+    {
+      "osm_way": 1396654823,
+      "tags": {
+        "bicycle": "designated",
+        "cycleway": "crossing",
+        "foot": "designated",
+        "highway": "cycleway",
+        "sidewalk": "yes",
+        "surface": "asphalt"
+      },
+      "points_cm": [
+        [
+          12364.626768852275,
+          11297.270079345133
+        ],
+        [
+          12175.443902227562,
+          11329.112503506865
+        ],
+        [
+          11869.561859270714,
+          11376.145950021844
+        ],
+        [
+          11847.156403384482,
+          11381.898085726425
+        ]
+      ]
+    }
+  ],
+  "control_bounds_xy": [
+    [
+      11747.156403384482,
+      10007.50598384378
+    ],
+    [
+      12673.162627130903,
+      11481.898085726425
+    ]
+  ],
+  "scope": "Individual alignments preserved. Shared conservative vehicle conflict area is gameplay control, not a real-world signal timing claim."
+}
