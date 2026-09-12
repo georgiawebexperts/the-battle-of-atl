@@ -1,0 +1,9 @@
+{
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-construction-render/closure-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-construction-render/closure-1.png"
+  ],
+  "visual_review": "Both signs inspected and readable at1280x720; orange panel and white markings visible on lit side, opposite face is shaded. Full perimeter and gameplay traversal remain pending.",
+  "main_map_changed": false,
+  "scope": "Fixed editor views; no live traffic or gameplay traversal."
+}
