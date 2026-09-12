@@ -15,6 +15,7 @@ public:
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 CityAppearanceVariant=-1;
  UPROPERTY(BlueprintReadOnly) EPiedmontPedestrianKind Kind=EPiedmontPedestrianKind::Walker;
  UPROPERTY(BlueprintReadOnly) FVector Destination;
  UPROPERTY(BlueprintReadOnly) bool bHasDestination=false;

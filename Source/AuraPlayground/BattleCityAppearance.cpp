@@ -10,7 +10,7 @@ void APiedmontPedestrian::InitializeCityAppearance(){
  // Specialized frisbee players and joggers retain their own animation sets until
  // appropriate native clips are integrated. This applies to ordinary walkers.
  if(GetClass()!=APiedmontPedestrian::StaticClass()||Kind!=EPiedmontPedestrianKind::Walker)return;
- const bool Female=(GetUniqueID()&1)!=0;
+ const bool Female=CityAppearanceVariant>=0?CityAppearanceVariant%2!=0:FMath::RandBool();
  const FString Base=TEXT("/Game/CitySampleCrowd/Character/");
  const FString Gender=Female?TEXT("Female"):TEXT("Male");
  const FString Prefix=Female?TEXT("f_tal_nrw"):TEXT("m_tal_nrw");

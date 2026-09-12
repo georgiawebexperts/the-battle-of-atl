@@ -1,5 +1,9 @@
 #include "BattleMacController.h"
 #include "PiedmontExplorer.h"
+#include "PiedmontPedestrian.h"
+#include "AIController.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "BattleBike.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
@@ -31,7 +35,14 @@ void ABattleMacController::TickLocomotionReview(float Dt){
   const FVector Point=Player->GetActorLocation()+FVector(350,0,0);
   if(!GetWorld()->LineTraceSingleByChannel(Ground,Point+FVector(0,0,400),Point-FVector(0,0,800),ECC_Visibility,Query)){ConsoleCommand(TEXT("quit"));return;}
   FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-  auto* Person=GetWorld()->SpawnActor<APiedmontExplorer>(Ground.ImpactPoint+FVector(0,0,92),FRotator::ZeroRotator,Params);
+  APiedmontExplorer* Person=nullptr;
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityReview"))){
+   const FTransform T(FRotator::ZeroRotator,Ground.ImpactPoint+FVector(0,0,92));
+   auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),T,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+   Visitor->CityAppearanceVariant=FParse::Param(FCommandLine::Get(),TEXT("BattleCityFemale"))?1:0;
+   Visitor->FinishSpawning(T);if(auto* AI=Cast<AAIController>(Visitor->GetController())){AI->StopMovement();AI->UnPossess();}
+   Person=Visitor;
+  }else Person=GetWorld()->SpawnActor<APiedmontExplorer>(Ground.ImpactPoint+FVector(0,0,92),FRotator::ZeroRotator,Params);
   Person->GetCharacterMovement()->bRunPhysicsWithNoController=true;
   Person->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
   LocoPerson=Person;LocoStart=Person->GetActorLocation();
@@ -40,12 +51,12 @@ void ABattleMacController::TickLocomotionReview(float Dt){
   LocoClock=0;LocoStage=1;
  }
  auto* Person=Cast<APiedmontExplorer>(LocoPerson.Get());if(!Person||!LocoCamera.IsValid())return;
- Person->GetCharacterMovement()->MaxWalkSpeed=LocoClock<3?140:350;
+ Person->GetCharacterMovement()->MaxWalkSpeed=Person->bNativeCrowdRig?135:(LocoClock<3?140:350);
  if(LocoClock<6)Person->AddMovementInput(FVector::ForwardVector,1,true);
  const FVector Look=Person->GetActorLocation()+FVector(0,0,5);
  const FVector CameraPosition=Look+FVector(170,-390,35);
  LocoCamera->SetActorLocation(CameraPosition);LocoCamera->SetActorRotation((Look-CameraPosition).Rotation());
- const int32 Knee=Person->Body->GetBoneIndex(TEXT("LowerLeg_L"));
+ const int32 Knee=Person->Body->GetBoneIndex(Person->bNativeCrowdRig?TEXT("calf_l"):TEXT("LowerLeg_L"));
  if(Knee>=0){
   const FQuat Rotation=Person->Body->BoneSpaceTransforms[Knee].GetRotation();
   if(LocoClock<.1f)LocoInitialKnee=Rotation;
@@ -61,11 +72,20 @@ void ABattleMacController::TickLocomotionReview(float Dt){
  if(LocoStage==4&&LocoClock>7){Capture(TEXT("idle.png"));LocoStage=5;}
  if(LocoStage==5&&LocoClock>8){
   const float Distance=FVector::Dist2D(LocoStart,Person->GetActorLocation());
-  const float FootGap=FMath::Min(Person->Body->GetSocketLocation(TEXT("Foot_L")).Z,Person->Body->GetSocketLocation(TEXT("Foot_R")).Z)-Person->GetCharacterMovement()->CurrentFloor.HitResult.ImpactPoint.Z-2.275f;
+  const float FootGap=FMath::Min(Person->Body->GetSocketLocation(Person->bNativeCrowdRig?TEXT("ball_l"):TEXT("Foot_L")).Z,Person->Body->GetSocketLocation(Person->bNativeCrowdRig?TEXT("ball_r"):TEXT("Foot_R")).Z)-Person->GetCharacterMovement()->CurrentFloor.HitResult.ImpactPoint.Z-2.275f;
   UE_LOG(LogTemp,Display,TEXT("LocoReview: idle_foot_gap_cm=%.3f"),FootGap);
   float MinimumIdleFootDot=1;
-  for(const TCHAR* Side:{TEXT("L"),TEXT("R")}){const FVector Ankle=Person->Body->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side));const FVector Toe=Person->Body->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side+TEXT("_end")));const float FootDot=FVector::DotProduct((Toe-Ankle).GetSafeNormal(),Person->GetActorForwardVector());MinimumIdleFootDot=FMath::Min(MinimumIdleFootDot,FootDot);UE_LOG(LogTemp,Display,TEXT("LocoReview: foot_%s_forward_dot=%.4f"),Side,FootDot);}
+  for(const TCHAR* Side:{TEXT("L"),TEXT("R")}){const FVector Ankle=Person->Body->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side));const FVector Toe=Person->Body->GetSocketLocation(Person->bNativeCrowdRig?FName(FString(TEXT("ball_"))+Side):FName(FString(TEXT("Foot_"))+Side+TEXT("_end")));const float FootDot=FVector::DotProduct((Toe-Ankle).GetSafeNormal(),Person->GetActorForwardVector());MinimumIdleFootDot=FMath::Min(MinimumIdleFootDot,FootDot);UE_LOG(LogTemp,Display,TEXT("LocoReview: foot_%s_forward_dot=%.4f"),Side,FootDot);}
 
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityReview"))){
+   int32 Parts=0;TArray<USkeletalMeshComponent*> Meshes;Person->GetComponents(Meshes);
+   for(auto* M:Meshes)if(M->GetName().StartsWith(TEXT("CityOutfit"))&&M->LeaderPoseComponent.Get()==Person->Body)Parts++;
+   bool HairAttached=false;TArray<UStaticMeshComponent*> Props;Person->GetComponents(Props);
+   for(auto* M:Props)if(M->GetName()==TEXT("CityHair"))HairAttached=M->GetAttachParent()==Person->Body&&M->GetAttachSocketName()==TEXT("head");
+   const bool NativePass=Person->bNativeCrowdRig&&Parts==4&&HairAttached&&MinimumIdleFootDot>.5f&&FMath::Abs(FootGap)<12&&Person->bAuthoredLocomotion&&LocoKneeMotion>15&&Distance>400&&Person->GetCharacterMovement()->IsMovingOnGround();
+   UE_LOG(LogTemp,Display,TEXT("CityLocoReview: pass=%d parts=%d hair=%d foot_gap=%.3f foot_dot=%.3f knee_motion=%.3f travel=%.3f"),NativePass,Parts,HairAttached,FootGap,MinimumIdleFootDot,LocoKneeMotion,Distance);
+   ConsoleCommand(TEXT("quit"));LocoStage=6;return;
+  }
   const bool Pass=MinimumIdleFootDot>.5f&&FMath::Abs(FootGap)<6&&Person->bAuthoredLocomotion&&LocoKneeMotion>15&&Distance>400&&Person->GetCharacterMovement()->IsMovingOnGround();
   UE_LOG(LogTemp,Display,TEXT("LocoReview: pass=%d knee_motion_deg=%.3f travel_cm=%.3f grounded=%d"),Pass,LocoKneeMotion,Distance,Person->GetCharacterMovement()->IsMovingOnGround());
   ConsoleCommand(TEXT("quit"));LocoStage=6;
