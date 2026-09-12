@@ -1,0 +1,21 @@
+{
+  "materials": [
+    {
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "material": "/Game/PiedmontRide/Materials/M_ParkConcreteWorld.M_ParkConcreteWorld",
+      "base": "MaterialExpressionMultiply",
+      "emissive": null,
+      "offset": null
+    },
+    {
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "material": "/Game/PiedmontRide/Materials/M_ParkAsphaltWorld.M_ParkAsphaltWorld",
+      "base": "MaterialExpressionMultiply",
+      "emissive": null,
+      "offset": null
+    }
+  ],
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gate-materials/e5b956964ac847239b5543c3346d2d9d/identity.png",
+  "map_saved": false,
+  "legend": "magenta=asphalt, cyan=concrete; transient unlit replacements"
+}
