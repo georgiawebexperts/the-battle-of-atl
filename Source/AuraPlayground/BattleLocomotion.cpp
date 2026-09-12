@@ -78,7 +78,9 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
   }
   // The animation-only FBX uses different bind translations. Retarget translation
   // and scale to this mesh's skeleton while preserving the authored rotations.
-  if(!bNativeCrowdRig)Pose[I].SetTranslation(RestPose[I].GetTranslation());
+  // Native zombie glTF clips animate root-parented feet in translation; resetting
+  // those tracks pins the shoes at rest while the shins continue moving.
+  if(!bNativeCrowdRig&&!WalkAnimation->GetPathName().StartsWith(TEXT("/Game/BattleForTheA/Zombies/")))Pose[I].SetTranslation(RestPose[I].GetTranslation());
   Pose[I].SetScale3D(RestPose[I].GetScale3D());
   if(I==RootIndex)AuthoredRootRotation=Pose[I].GetRotation();
   // CharacterMovement owns world travel; retain hip/knee/ankle animation above it.

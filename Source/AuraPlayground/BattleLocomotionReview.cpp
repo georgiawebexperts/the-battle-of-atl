@@ -5,6 +5,8 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "BattleBike.h"
+#include "BattleZombie.h"
+#include "Engine/SkeletalMesh.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -36,7 +38,13 @@ void ABattleMacController::TickLocomotionReview(float Dt){
   if(!GetWorld()->LineTraceSingleByChannel(Ground,Point+FVector(0,0,400),Point-FVector(0,0,800),ECC_Visibility,Query)){ConsoleCommand(TEXT("quit"));return;}
   FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
   APiedmontExplorer* Person=nullptr;
-  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityReview"))){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieReview"))){
+   const FTransform T(FRotator::ZeroRotator,Ground.ImpactPoint+FVector(0,0,92));
+   auto* Zombie=GetWorld()->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),T,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+   Zombie->VisualStyle=FParse::Param(FCommandLine::Get(),TEXT("BattlePunkReview"))?1:0;
+   Zombie->FinishSpawning(T);if(auto* AI=Cast<AAIController>(Zombie->GetController())){AI->StopMovement();AI->UnPossess();}
+   Person=Zombie;
+  }else if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityReview"))){
    const FTransform T(FRotator::ZeroRotator,Ground.ImpactPoint+FVector(0,0,92));
    auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),T,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
    Visitor->CityAppearanceVariant=FParse::Param(FCommandLine::Get(),TEXT("BattleCityFemale"))?1:0;
@@ -115,7 +123,26 @@ void ABattleMacController::TickLocomotionReview(float Dt){
   const float FootGap=FMath::Min(Person->Body->GetSocketLocation(Person->bNativeCrowdRig?TEXT("ball_l"):TEXT("Foot_L")).Z,Person->Body->GetSocketLocation(Person->bNativeCrowdRig?TEXT("ball_r"):TEXT("Foot_R")).Z)-Person->GetCharacterMovement()->CurrentFloor.HitResult.ImpactPoint.Z-2.275f;
   UE_LOG(LogTemp,Display,TEXT("LocoReview: idle_foot_gap_cm=%.3f"),FootGap);
   float MinimumIdleFootDot=1;
-  for(const TCHAR* Side:{TEXT("L"),TEXT("R")}){const FVector Ankle=Person->Body->GetSocketLocation(FName(FString(TEXT("Foot_"))+Side));const FVector Toe=Person->Body->GetSocketLocation(Person->bNativeCrowdRig?FName(FString(TEXT("ball_"))+Side):FName(FString(TEXT("Foot_"))+Side+TEXT("_end")));const float FootDot=FVector::DotProduct((Toe-Ankle).GetSafeNormal(),Person->GetActorForwardVector());MinimumIdleFootDot=FMath::Min(MinimumIdleFootDot,FootDot);UE_LOG(LogTemp,Display,TEXT("LocoReview: foot_%s_forward_dot=%.4f"),Side,FootDot);}
+  for(const TCHAR* Side:{TEXT("L"),TEXT("R")}){
+   const FName FootName(Person->bNativeCrowdRig?FString(TEXT("foot_"))+FString(Side).ToLower():FString(TEXT("Foot_"))+Side);
+   const FName ToeName(Person->bNativeCrowdRig?FString(TEXT("ball_"))+FString(Side).ToLower():FString(TEXT("Foot_"))+Side+TEXT("_end"));
+   FVector Direction;
+   if(Person->Body->GetBoneIndex(ToeName)>=0){
+    Direction=(Person->Body->GetSocketLocation(ToeName)-Person->Body->GetSocketLocation(FootName)).GetSafeNormal();
+   }else{
+    // glTF shoes have no toe-end joint. Measure the shoe's bind-forward axis
+    // through its current bone transform, rather than a missing socket fallback.
+    const auto* Mesh=Cast<USkeletalMesh>(Person->Body->GetSkinnedAsset());
+    const auto& Ref=Mesh->GetRefSkeleton();const int32 Foot=Ref.FindBoneIndex(FootName);
+    if(Foot<0){MinimumIdleFootDot=-1;continue;}
+    FTransform Bind=Ref.GetRefBonePose()[Foot];
+    for(int32 Parent=Ref.GetParentIndex(Foot);Parent>=0;Parent=Ref.GetParentIndex(Parent))Bind=Bind*Ref.GetRefBonePose()[Parent];
+    const FVector LocalForward=Bind.InverseTransformVectorNoScale(FVector(0,1,0));
+    Direction=Person->Body->GetSocketTransform(FootName).TransformVectorNoScale(LocalForward).GetSafeNormal();
+   }
+   const float FootDot=FVector::DotProduct(Direction,Person->GetActorForwardVector());MinimumIdleFootDot=FMath::Min(MinimumIdleFootDot,FootDot);
+   UE_LOG(LogTemp,Display,TEXT("LocoReview: foot_%s_forward_dot=%.4f"),Side,FootDot);
+  }
 
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityReview"))){
    int32 Parts=0;TArray<USkeletalMeshComponent*> Meshes;Person->GetComponents(Meshes);

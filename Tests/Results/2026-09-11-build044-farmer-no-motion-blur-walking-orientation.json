@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "idle_toe_forward_dot": {
+    "L": 0.5181,
+    "R": 0.9933
+  },
+  "visual_review": "Reviewed running capture: shoes retain shape and ankle connection. Punk walking comparison also reviewed; prior stretched-shoe defect absent. Full continuous-motion and physics-transition acceptance outstanding.",
+  "no_motion_blur": true,
+  "fxaa": false,
+  "measurement": "Foot bone bind-forward axis when no toe-end joint exists; actual toe joints otherwise.",
+  "presentation_accepted": false
+}
