@@ -2,11 +2,12 @@
 import json,re,subprocess,argparse
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');args=parser.parse_args()
+assert not(args.level_floor and args.continuous_shell)
 assert Path(args.report).name==args.report
 app=Path('/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd')
-log=root/('work/krog-level-floor-drive.log' if args.level_floor else 'work/krog-candidate-drive.log')
-map_name='PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview'
+log=root/('work/krog-continuous-shell-drive.log' if args.continuous_shell else ('work/krog-level-floor-drive.log' if args.level_floor else 'work/krog-candidate-drive.log'))
+map_name='PiedmontKrogShellReview' if args.continuous_shell else ('PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview')
 with log.open('w') as stream:
     run=subprocess.run([str(app),str(root/'AuraPlayground.uproject'),f'/Game/PiedmontRide/Maps/{map_name}?Difficulty=Easy?AutoStart=1','-game','-BattleSkipTutorial','-RCWebControlDisable',
         '-nullrhi','-unattended','-nosound','-BattleKrogAudit','-stdout'],stdout=stream,stderr=subprocess.STDOUT,timeout=600)
