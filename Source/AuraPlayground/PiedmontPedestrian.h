@@ -37,6 +37,7 @@ public:
  // Opt-in until encounter placement and chase/settle behavior are complete.
  UFUNCTION(BlueprintCallable) bool BeginSleeping();
  UFUNCTION(BlueprintCallable) bool WakeFromSleep();
+ UFUNCTION(BlueprintCallable) bool WakeAndChase(APawn* Target);
  UPROPERTY(BlueprintReadOnly) int32 SleepPhase=0;
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
@@ -44,6 +45,11 @@ protected:
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ void CancelSleepBehavior();
+ bool TickSleepBehavior(float Dt);
+ TWeakObjectPtr<APawn> SleepTarget;
+ FVector SleepOrigin;
+ float ChaseClock=0,ChaseRepath=0;
  bool BeginKnockdown(float Speed,FVector Direction);
  void TickKnockdown(float Dt);
  bool BeginRecovery();

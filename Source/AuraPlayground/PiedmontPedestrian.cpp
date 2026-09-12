@@ -55,7 +55,7 @@ void APiedmontPedestrian::YieldTo(APawn* Source,bool Horn){
 }
 void APiedmontPedestrian::HearHorn(APawn* Source){YieldTo(Source,true);}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
- if(bDead||StumbleRemaining>0)return;SleepPhase=0;StopBodySequence();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
+ if(bDead||StumbleRemaining>0)return;CancelSleepBehavior();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
  if(Speed>330&&BeginKnockdown(Speed,Direction))return;
  // Light contact plays an authored surprise; unavailable rigs retain the fallback.
@@ -69,11 +69,7 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
  if(KnockdownPhase){TickKnockdown(Dt);return;}
- if(SleepPhase){
-  if(bDead){SleepPhase=0;StopBodySequence();}
-  else if(SleepPhase==2&&!IsBodySequencePlaying()){SleepPhase=0;StopBodySequence();}
-  else{if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return;}
- }
+ if(TickSleepBehavior(Dt))return;
  if(bDead){Body->SetRelativeRotation(FRotator(0,-90,85));return;}
  if(StumbleRemaining>0){StumbleRemaining=FMath::Max(0.f,StumbleRemaining-Dt);if(!bPlayingBumpReaction)Body->SetRelativeRotation(FRotator(0,-90,FMath::Sin(StumbleRemaining*5)*22));
   if(StumbleRemaining<=0)bPlayingBumpReaction=false;return;}
@@ -94,7 +90,7 @@ void APiedmontPedestrian::Tick(float Dt){
 }
 float APiedmontPedestrian::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  if(bDead||Amount<=0)return 0;
- SleepPhase=0;StopBodySequence();
+ CancelSleepBehavior();
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,30),FVector::UpVector);bDead=true;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  if(KnockdownPhase==2)KnockdownPhase=0;
@@ -116,6 +112,7 @@ bool APiedmontPedestrian::BeginSleeping(){
  if(!Animation)return false;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;
+ SleepOrigin=GetActorLocation();SleepTarget.Reset();
  SetBodySequence(Animation,true);SleepPhase=1;return true;
 }
 bool APiedmontPedestrian::WakeFromSleep(){
@@ -127,4 +124,40 @@ bool APiedmontPedestrian::WakeFromSleep(){
  auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/SleepToStand_R"));
  if(!Animation)return false;
  SetBodySequence(Animation,false);SleepPhase=2;return true;
+}
+
+bool APiedmontPedestrian::WakeAndChase(APawn* Target){
+ if(!IsValid(Target)||Target==this||Target->GetWorld()!=GetWorld()||FVector::Dist2D(Target->GetActorLocation(),GetActorLocation())>600)return false;
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(SleeperNotice),false,this);Q.AddIgnoredActor(Target);FHitResult Hit;
+ if(GetWorld()->LineTraceSingleByChannel(Hit,GetActorLocation(),Target->GetActorLocation(),ECC_Visibility,Q))return false;
+ if(!WakeFromSleep())return false;
+ SleepTarget=Target;return true;
+}
+void APiedmontPedestrian::CancelSleepBehavior(){
+ if(!SleepPhase)return;
+ SleepPhase=0;SleepTarget.Reset();StopBodySequence();ChaseClock=0;ChaseRepath=0;
+ if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+ GetCharacterMovement()->StopMovementImmediately();Configure(Kind);bHasDestination=false;
+}
+bool APiedmontPedestrian::TickSleepBehavior(float Dt){
+ if(!SleepPhase)return false;
+ auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
+ if(bDead||bSwimming||!Mode||Mode->bRunEnded){CancelSleepBehavior();return false;}
+ auto* AI=Cast<AAIController>(GetController());
+ if(SleepPhase==2&&!IsBodySequencePlaying()){
+  StopBodySequence();
+  if(SleepTarget.IsValid()){SleepPhase=3;ChaseClock=0;ChaseRepath=0;GetCharacterMovement()->MaxWalkSpeed=260;}
+  else{CancelSleepBehavior();return false;}
+ }
+ if(SleepPhase==3){
+  ChaseClock+=Dt;ChaseRepath-=Dt;
+  auto* Target=SleepTarget.Get();
+  if(!AI||!IsValid(Target)||Target->IsActorBeingDestroyed()||ChaseClock>=6.f||
+   FVector::Dist2D(GetActorLocation(),SleepOrigin)>900||FVector::Dist2D(Target->GetActorLocation(),SleepOrigin)>1200){
+   CancelSleepBehavior();PauseRemaining=2;return true;
+  }
+  if(ChaseRepath<=0){ChaseRepath=.35f;if(!MoveTo(Target->GetActorLocation())){CancelSleepBehavior();PauseRemaining=2;}}
+  return true;
+ }
+ if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return true;
 }
