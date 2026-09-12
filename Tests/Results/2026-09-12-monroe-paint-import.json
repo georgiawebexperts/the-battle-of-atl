@@ -1,0 +1,9 @@
+{
+  "assets": [
+    "/Game/BattleForTheA/Environment/MonroeTraffic/SM_Monroe_WhitePaint.SM_Monroe_WhitePaint",
+    "/Game/BattleForTheA/Environment/MonroeTraffic/SM_Monroe_YellowPaint.SM_Monroe_YellowPaint"
+  ],
+  "main_map_changed": false,
+  "visual_accepted": false,
+  "collision": "NoCollision"
+}

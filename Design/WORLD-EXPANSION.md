@@ -358,3 +358,12 @@ Built PiedmontMonroeExtendedCrossingReview using the repaired extended approache
 Surveyed five terrain support points per pole candidate, rejecting non-terrain sites and >8 cm variation. North signal (12898.872,11787.262,-316.091), yaw -76.800; south (11635.776,9677.731,-359.996), yaw 104.198. Initial approach images showed backs of lamps: corrected orientation to road heading, because this signal mesh faces local -X. Re-rendered and inspected both approaches; red lamps are visible on the right at 90-degree FOV, 140 cm eye height and 650 cm before stopping position. Narrow fixed-view acceptance only.
 
 Wide review shows missing Monroe lane markings/crosswalk paint and unfinished surroundings; do not claim overall landscape quality. Signals and crossing remain isolated, main unchanged. Next: markings, deliberate crossing-occupancy/rider interaction, live traffic and installation. Desktop remains 047.
+
+
+## Monroe road paint candidate — 2026-09-12 [codex-maclaptop]
+
+Generated non-colliding white/yellow paint draped 1 cm over pavement triangles: road centre and edge lines, four-lane dashed dividers, approach stop bars at car-centre stop +270 cm, and stripes along the retained mapped crossing alignments. Crossing segments are merged before stripe spacing; the initial independent-segment version overlapped into a solid white band and was rejected in screenshots. Rebuilt version preserves stripe gaps.
+
+Imported only into PiedmontMonroeExtendedCrossingReview with tag MonroePaintReview. Latest white mesh 4062 triangles, yellow 1818. Wide native image inspected; lines/stop bars/stripes visible, but overall crossing-layout fidelity, three-lane turn-lane detailing and rider readability are still unfinished. No collision or gameplay changes from the paint. Main and desktop remain unchanged (047).
+
+render_monroe_crossing.py now accepts --report to preserve historical signal evidence. Paint results are separate from the previously accepted signal-facing report.

@@ -1,0 +1,14 @@
+{
+  "surfaces": [
+    {
+      "file": "Monroe_WhitePaint.obj",
+      "triangles": 4062
+    },
+    {
+      "file": "Monroe_YellowPaint.obj",
+      "triangles": 1818
+    }
+  ],
+  "scope": "Gameplay candidate. Centre/edge lines, four-lane dashes, mapped crossing stripes, stop bars. Three-lane turn-lane detailing and visual acceptance pending.",
+  "clearance_cm": 1
+}
