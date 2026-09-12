@@ -1,0 +1,45 @@
+{
+  "map": "/Game/PiedmontRide/Maps/PiedmontMotelBenchReview",
+  "close_diagnostic": false,
+  "ignition_diagnostic": true,
+  "reach_diagnostic": false,
+  "solid_diagnostic": false,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/d5c38af3c99d4124a71904b2f3026955/fire-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/d5c38af3c99d4124a71904b2f3026955/fire-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-fire-review/d5c38af3c99d4124a71904b2f3026955/fire-3.png"
+  ],
+  "captured": true,
+  "visual_accepted": false,
+  "scope": "Combined native character reach and delayed ignition; prop contact, natural trigger and packaged acceptance pending",
+  "capture_passed": true,
+  "visitor_positions": {
+    "1": [
+      0.0,
+      55.0,
+      90.0
+    ],
+    "2": [
+      0.0,
+      55.0,
+      90.0
+    ],
+    "3": [
+      0.0,
+      296.494,
+      49.923
+    ]
+  },
+  "retreat_verified": true,
+  "ignition_contact": {
+    "age": 2.204,
+    "tip_local_cm": [
+      22.646,
+      24.13,
+      47.882
+    ],
+    "nearest_slat_top_error_cm": 1.131999999999998
+  },
+  "review": "Inspected pre-ignition and burning frames: bench beside east wall on level pad, adjacent paths visibly separate. Native retreat241.494cm. Broad ride/collision acceptance pending."
+}

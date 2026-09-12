@@ -1,0 +1,726 @@
+{
+  "candidates": [
+    {
+      "xyz": [
+        -17500.00016275817,
+        11450.00029537153,
+        292.5679256615076
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 21.486160661338545,
+      "support": [
+        {
+          "xyz": [
+            -17535.00016036217,
+            11360.000301532666,
+            300.81372823573474
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17535.00016036217,
+            11540.000289210391,
+            284.87706231684115
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11360.000301532666,
+            294.2412345156208
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11540.000289210391,
+            279.3275675743962
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17445.00016652331,
+            11450.00029537153,
+            285.9401648562598
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17500.000162758173,
+        11550.000288525822,
+        280.0019560008177
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 27.863096579606463,
+      "support": [
+        {
+          "xyz": [
+            -17535.00016036217,
+            11460.000294686957,
+            295.8289065226945
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17535.00016036217,
+            11640.000282364683,
+            272.208470608457
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11460.000294686959,
+            288.99086928024917
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11640.000282364683,
+            267.96580994308806
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17445.00016652331,
+            11550.00028852582,
+            274.76041914384314
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17500.000162758173,
+        11650.000281680113,
+        268.98310097553895
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 18.18844497709688,
+      "support": [
+        {
+          "xyz": [
+            -17535.00016036217,
+            11560.000287841249,
+            281.4476064961191
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17535.00016036217,
+            11740.000275518974,
+            265.847342813011
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11560.000287841249,
+            276.20055293080713
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11740.000275518974,
+            263.2591615190222
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17445.00016652331,
+            11650.000281680113,
+            265.46962480002367
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17500.00016275817,
+        11750.000274834405,
+        263.7107324163235
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 13.771609049877043,
+      "support": [
+        {
+          "xyz": [
+            -17535.000160362175,
+            11660.00028099554,
+            270.95698642214575
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17535.00016036217,
+            11840.000268673266,
+            257.8701570849498
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11660.000280995542,
+            267.185752032814
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17475.0001644696,
+            11840.000268673266,
+            257.1853773722687
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17445.00016652331,
+            11750.000274834405,
+            261.00678300056734
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17400.000169603878,
+        11450.00029537153,
+        280.1563468086333
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 21.042061599789122,
+      "support": [
+        {
+          "xyz": [
+            -17435.00016720788,
+            11360.000301532666,
+            289.7101158029345
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17435.00016720788,
+            11540.000289210391,
+            275.1131410306143
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315307,
+            11360.000301532666,
+            281.54415300284927
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315303,
+            11540.000289210391,
+            268.6680542031454
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17345.00017336902,
+            11450.000295371528,
+            272.5604673801108
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17400.000169603878,
+        11550.000288525822,
+        270.3874263243588
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 22.859600576151934,
+      "support": [
+        {
+          "xyz": [
+            -17435.00016720788,
+            11460.000294686957,
+            283.8647179536265
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17435.00016720788,
+            11640.000282364683,
+            265.15760169251826
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315307,
+            11460.000294686957,
+            275.9007920299582
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315307,
+            11640.000282364683,
+            261.00511737747456
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17345.00017336902,
+            11550.000288525822,
+            264.87968629219995
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17400.00016960388,
+        11650.000281680113,
+        262.45076803857864
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 14.722496033201423,
+      "support": [
+        {
+          "xyz": [
+            -17435.00016720788,
+            11560.000287841249,
+            272.6915700430882
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17435.00016720788,
+            11740.000275518974,
+            260.9677801408325
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315303,
+            11560.00028784125,
+            266.95192683940695
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315307,
+            11740.000275518974,
+            257.96907400988675
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17345.00017336902,
+            11650.000281680112,
+            258.9307843545421
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17400.000169603878,
+        11750.000274834405,
+        258.72511382568246
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 9.963632365826925,
+      "support": [
+        {
+          "xyz": [
+            -17435.00016720788,
+            11660.00028099554,
+            264.4118171947712
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17435.00016720788,
+            11840.000268673266,
+            256.2493079856722
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315307,
+            11660.00028099554,
+            260.37767948360306
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17375.000171315307,
+            11840.000268673266,
+            254.44818482894425
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17345.00017336902,
+            11750.000274834405,
+            256.13593806171957
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17300.000176449586,
+        11450.00029537153,
+        263.3032067216909
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 22.987239892231628,
+      "support": [
+        {
+          "xyz": [
+            -17335.000174053588,
+            11360.000301532666,
+            274.70753769776366
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17335.000174053588,
+            11540.000289210391,
+            263.9726131139105
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.000178161015,
+            11360.000301532666,
+            260.8015860608002
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.00017816101,
+            11540.000289210391,
+            254.90076460870387
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17245.000180214727,
+            11450.000295371528,
+            251.72029780553203
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17300.000176449586,
+        11550.000288525822,
+        258.0679339553535
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 20.21312884591498,
+      "support": [
+        {
+          "xyz": [
+            -17335.000174053588,
+            11460.000294686957,
+            269.8853687281053
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17335.000174053588,
+            11640.000282364683,
+            258.2525177385951
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.00017816101,
+            11460.000294686959,
+            258.0879439287428
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.00017816101,
+            11640.000282364683,
+            253.40372599410603
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17245.000180214727,
+            11550.00028852582,
+            249.6722398821903
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17300.000176449586,
+        11650.000281680113,
+        255.26286117868494
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 12.18752683304865,
+      "support": [
+        {
+          "xyz": [
+            -17335.000174053588,
+            11560.000287841249,
+            262.4659340043063
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17335.000174053588,
+            11740.000275518974,
+            255.91620229998625
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.000178161015,
+            11560.000287841249,
+            254.1173150595041
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.000178161015,
+            11740.000275518974,
+            252.65771543525352
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17245.000180214727,
+            11650.000281680113,
+            250.27840717125764
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "USGS Atlanta terrain + authored underwater basin",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    },
+    {
+      "xyz": [
+        -17300.000176449586,
+        11750.000274834405,
+        253.73568675160004
+      ],
+      "yaw": -90,
+      "surface": "USGS Atlanta terrain + authored underwater basin",
+      "support_height_span_cm": 8.364029932454287,
+      "support": [
+        {
+          "xyz": [
+            -17335.000174053588,
+            11660.00028099554,
+            258.01850032374387
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17335.000174053588,
+            11840.000268673266,
+            252.9502167963492
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.00017816101,
+            11660.000280995542,
+            253.48173170812152
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17275.000178161015,
+            11840.000268673266,
+            250.5604504662988
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "xyz": [
+            -17245.000180214727,
+            11750.000274834405,
+            249.65447039128958
+          ],
+          "surface": "USGS Atlanta terrain + authored underwater basin"
+        }
+      ],
+      "retreat_surfaces": [
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14",
+        "Park pavement SM_Park_Asphalt_2_14"
+      ],
+      "retreat_blocked": false,
+      "candidate": false
+    }
+  ],
+  "map_saved": false,
+  "scope": "Collision survey only; no authored bench, runtime actors or final clearance acceptance"
+}

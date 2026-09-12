@@ -1,5 +1,6 @@
 #include "BattleParkFurniture.h"
 #include "PiedmontPathSpline.h"
+#include "Engine/TargetPoint.h"
 #include "PiedmontBike.h"
 #include "BattleBike.h"
 #include "Kismet/GameplayStatics.h"
@@ -39,6 +40,7 @@ void ABattleParkFurniture::AddBench(const FTransform& T){
 }
 void ABattleParkFurniture::BeginPlay(){
  Super::BeginPlay();
+ for(TActorIterator<ATargetPoint> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("AuthoredParkBench")))AddBench(It->GetActorTransform());
  TArray<APiedmontPathSpline*> Paths;for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)Paths.Add(*It);
  Paths.Sort([](const APiedmontPathSpline& A,const APiedmontPathSpline& B){return A.OsmWayId<B.OsmWayId;});
  TArray<FTransform> Candidates;
