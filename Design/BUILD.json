@@ -1,15 +1,13 @@
 {
-  "build": 55,
-  "version": "0.55.0-dev",
+  "build": 56,
+  "version": "0.56.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed signed Mac055; backup054 retained; full game unfinished",
-  "milestone": "Integrated Krog roads, tunnel, scenery and traffic; corrected mesh faces and lighting; park walking connection",
+  "status": "Installed signed Mac056; backup055 retained; full game unfinished",
+  "milestone": "Optional realistic handling, six traffic colors, DeKalb construction closures",
   "author": "2026-09-12 [codex-maclaptop]",
-  "unreleased_main_map_changes": [
-    "Verified DeKalb road-end construction fences and signs; main navigation rebuilt."
-  ],
-  "unreleased_code_changes": [
+  "included_changes": [
+    "Verified DeKalb road-end construction fences and signs; main navigation rebuilt.",
     "Traffic spawns cycle through six visually reviewed paint colors on the existing car body.",
     "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; 481m main-world Krog route passes in realistic mode with cars and pedestrians active and a yielding test driver; mapped park-hill climb/descent passes; broader handling balance remains pending."
   ]

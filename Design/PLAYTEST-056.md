@@ -1,6 +1,6 @@
-# The Battle of ATL — next Mac playtest (not yet packaged)
+# The Battle of ATL — Mac playtest056
 
-This draft describes unreleased work after installed build055. It is not confirmation that build056 exists.
+Build056 is installed and locally signed. The desktop app link opens it; build055 is retained as a backup. Packaged arcade/realistic controls, Easy/Hard finish guards and opening checks pass.
 
 - Press **P while riding** to switch between arcade and realistic handling. The current mode appears below the horn counter. Arcade remains the default.
 - In realistic mode, ease off and brake before tight turns. Downhill coasting can carry you above the selected gear's assisted speed. Grass has less grip, and steering in the air does not rotate the bike. Space or S/down brakes; WASD and arrows still work.

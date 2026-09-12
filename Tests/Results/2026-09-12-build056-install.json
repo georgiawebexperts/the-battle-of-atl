@@ -1,0 +1,14 @@
+{
+  "installed_path": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "version": "0.56.0",
+  "signature_verified": true,
+  "exit_code": 0,
+  "opening": {
+    "passed": true,
+    "duration": 12.0,
+    "skipped": false,
+    "protected": true
+  },
+  "passed": true,
+  "backup": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build055.app"
+}
