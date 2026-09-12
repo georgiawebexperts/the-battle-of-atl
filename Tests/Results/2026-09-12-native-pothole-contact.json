@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Swept hit, near miss, airborne/parked exclusion, latch and deep-speed recovery passed",
+    "contacts": 2
+  },
+  "scope": "Native pothole contact-decision fixture only. Authored visual depressions, actual riding traversal, placement and packaged behavior unverified.",
+  "passed": true
+}

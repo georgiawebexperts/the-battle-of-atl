@@ -70,6 +70,7 @@ void TickBattleMonroeReview(APlayerController* PC,float Dt);
 void TickBattleMonroeOccupancyAudit(APlayerController* PC,float Dt);
 void TickBattleBikeCarAudit(APlayerController* PC,float Dt);
 void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt);
+void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
 #if !UE_BUILD_SHIPPING
@@ -93,6 +94,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTrafficReview")))TickBattleTrafficReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleBikeCarAudit")))TickBattleBikeCarAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleEntranceWalkAudit")))TickBattleEntranceWalkAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePotholeAudit")))TickBattlePotholeAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmbientBenchAudit")))TickBattleAmbientBenchAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleBenchIgnitionAudit")))TickBattleBenchIgnitionAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleBenchReachAudit")))TickBattleBenchReachAudit(this,Dt);
