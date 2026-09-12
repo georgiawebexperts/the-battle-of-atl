@@ -1,0 +1,27 @@
+{
+  "buildings": 7,
+  "window_bays": 275,
+  "surfaces": [
+    {
+      "material": "Brick",
+      "file": "IrwinBuildings_Brick.obj",
+      "triangles": 350
+    },
+    {
+      "material": "Roof",
+      "file": "IrwinBuildings_Roof.obj",
+      "triangles": 5561
+    },
+    {
+      "material": "Glass",
+      "file": "IrwinBuildings_Glass.obj",
+      "triangles": 3300
+    },
+    {
+      "material": "Stucco",
+      "file": "IrwinBuildings_Stucco.obj",
+      "triangles": 10272
+    }
+  ],
+  "scope": "Mapped footprint exterior study; estimated heights and generic facade treatment, not photo-matched or main-installed."
+}

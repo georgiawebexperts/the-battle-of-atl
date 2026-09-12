@@ -1,0 +1,12 @@
+{
+  "assets": [
+    "/Game/BattleForTheA/Environment/IrwinBuildings/SM_IrwinBuildings_Brick.SM_IrwinBuildings_Brick",
+    "/Game/BattleForTheA/Environment/IrwinBuildings/SM_IrwinBuildings_Roof.SM_IrwinBuildings_Roof",
+    "/Game/BattleForTheA/Environment/IrwinBuildings/SM_IrwinBuildings_Glass.SM_IrwinBuildings_Glass",
+    "/Game/BattleForTheA/Environment/IrwinBuildings/SM_IrwinBuildings_Stucco.SM_IrwinBuildings_Stucco"
+  ],
+  "road_probes": 6474,
+  "road_clear": true,
+  "main_map_changed": false,
+  "visual_accepted": false
+}
