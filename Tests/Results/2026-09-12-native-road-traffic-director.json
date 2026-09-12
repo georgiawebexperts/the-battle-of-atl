@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Visibility, proximity, overlap rejection, spacing, cap, retention, removal and teardown passed"
+  },
+  "scope": "Director API and lifecycle with controlled camera and completed-car fixture. Natural map population and packaged behavior pending.",
+  "passed": true
+}

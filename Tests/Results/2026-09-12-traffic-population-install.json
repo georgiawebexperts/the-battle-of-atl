@@ -1,0 +1,9 @@
+{
+  "lanes": 2,
+  "max_cars": 6,
+  "max_per_lane": 3,
+  "spawn_interval_seconds": 8,
+  "main_map_changed": true,
+  "desktop_build_updated": false,
+  "review_population_validated": true
+}
