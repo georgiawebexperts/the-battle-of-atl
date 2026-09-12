@@ -288,3 +288,14 @@ Editor build passed. Native late cut-in fixture at 650 cm/s caused exactly one w
 BuildCookRun succeeded in 152 seconds. Packaged main-world traffic captured six live cars in three frames; frames 1 and 3 inspected for assembled bodies/wheels and opposing-lane placement. Packaged bike-to-car and late-cut-in moving-car tests passed with one recovery each. Health/checkpoint test passed two death resets, phone recollection and ordered checkpoints.
 
 Installed branded version 0.47.0 with strict ad-hoc signature verification at the existing desktop link. Previous 046 is retained in Builds/BattleForTheA/Mac/TheBattleOfATL-build046.app. New render/collision scripts accept explicit app and report paths, preserving historical reports. This is narrow packaged integration evidence, not full game/visual/performance acceptance. See PLAYTEST-047.md for remaining limitations.
+
+
+## Monroe traffic lane preparation — 2026-09-12 [codex-maclaptop]
+
+Prepared two opposing candidate lanes on the existing 4994.865 cm Monroe frontage, inset 400 cm from endpoints and offset 150 cm either side of its mapped centreline. Short frontage is insufficient for natural traffic lifecycle without further extension/visibility review. Lane generation uses installed road/cycle/seam triangles and preserves the main world.
+
+Native collision audit checked 1512 footprint samples: 1481 hit road and 30 hit cycle crossing pavement; one fell through a road seam onto Landscape at (12371.346,11688.619,-341.566). Source mesh coverage independently misses that point. Candidate is explicitly failed; no cars or controls were installed. Repair the junction seam, repeat native coverage, then test driven traversal and author signal/conflict areas before production traffic.
+
+OSM source retains multiple crossings, including the angled cycle crossing way 1396654821 and cycletrack connection way 1396654823, plus older signalized footway crossing segments 231270041/1387296277. Do not collapse these into one line or assume every source footway remains the primary BeltLine alignment. Official project description confirms realigned trail, raised crossing and improved signals: https://beltline.org/blog/construction-to-begin-on-10th-and-monroe-intersection-project/ . Current topology still requires full native/visual comparison.
+
+Evidence: SourceAssets/Terrain/MonroeTraffic/car-lanes.json, car-lane-probes.json and Tests/Results/2026-09-12-monroe-car-support.json. Desktop stays 047.
