@@ -1,0 +1,9 @@
+{
+  "assets": [
+    "/Game/BattleForTheA/Environment/IrwinTraffic/SM_Irwin_WhitePaint.SM_Irwin_WhitePaint",
+    "/Game/BattleForTheA/Environment/IrwinTraffic/SM_Irwin_YellowPaint.SM_Irwin_YellowPaint"
+  ],
+  "main_map_changed": false,
+  "visual_accepted": false,
+  "collision": "NoCollision"
+}

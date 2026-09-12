@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/38516b7bc5e9448492a56956da0b9977/monroe-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/38516b7bc5e9448492a56956da0b9977/monroe-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/irwin-crossing-review/38516b7bc5e9448492a56956da0b9977/monroe-3.png"
+  ],
+  "capture_passed": true,
+  "visual_accepted": false,
+  "landscape_hidden_diagnostic": false,
+  "scope": "Fixed road approach cameras and wide view; test cars stationary, no rider playthrough or traffic timing acceptance.",
+  "paint_accepted_for_integration": true,
+  "review": "Inspected both approach images: white edges and double yellow lines readable, crossing area clear. Overall visual acceptance remains false: streetscape, buildings, surface detail and potholes unfinished."
+}

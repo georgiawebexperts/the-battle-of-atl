@@ -1,0 +1,14 @@
+{
+  "surfaces": [
+    {
+      "file": "Irwin_WhitePaint.obj",
+      "triangles": 6028
+    },
+    {
+      "file": "Irwin_YellowPaint.obj",
+      "triangles": 3816
+    }
+  ],
+  "scope": "Double yellow centre lines and white road edges, cleared at trail and Krog junction. No zebra stripes or signals inferred at the source-unmarked crossing; visual review pending.",
+  "clearance_cm": 1
+}
