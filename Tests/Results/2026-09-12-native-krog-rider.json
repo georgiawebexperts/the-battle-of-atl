@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Cars held for mounted rider; W/A/D ride cleared crossing and cars completed",
+    "travel_cm": 1356.56,
+    "max_error_cm": 20.86,
+    "held_seconds": 2.0,
+    "ground_samples": 2433,
+    "paved_samples": 2433
+  },
+  "scope": "Mounted rider starts inside crossing as an occupancy fixture, holds two cars, then uses real W/A/D movement into the tunnel. Cars must finish after rider clears. No full approach, visual or mixed crowd acceptance.",
+  "passed": true
+}

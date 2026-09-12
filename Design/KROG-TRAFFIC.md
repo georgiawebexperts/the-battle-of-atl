@@ -154,3 +154,9 @@ Final three frames inspected; both opposing cars visible in their lanes and wide
 
 ## Visible tire contact measurement — 2026-09-12 [codex-maclaptop]
 Added opt-in BattleTireContactReview within the existing editor-only traffic review. At each of three camera snapshots it transforms LOD0 wheel mesh vertices, finds the lowest3cm band, and traces each sample to native static road. Final capture/build pass:24wheel snapshots,468vertex probes,0misses. Each wheel’s minimum gap ranges0.061–0.1999cm (0.6–2.0mm); none penetrates the road. Acceptance requires each snapshot minimum within[-1,1.5]cm. This resolves the suspected stopped-car floating in the approach views without altering car geometry or wheel offsets. It does not prove all tire vertices/full-route contact during suspension motion. No gameplay or installed054 change.
+
+
+## Mounted rider crossing interaction — 2026-09-12 [codex-maclaptop]
+Added opt-in BattleKrogRiderAudit through the existing occupancy-audit dispatch. Uses actual mounted Ellison, two bound DeKalb cars and retained route points from ways1353860787/722838795. Scripts/prepare_krog_rider_route.py regenerates the23point header. Only initial rider placement is teleported: starts inside the crossing to establish occupancy; holds both cars for2seconds, then W/A/D drives along mapped route into tunnel. Cars must remain grounded and complete after clearing; rider must retain paved support and avoid wipeout/death.
+
+Native build and test pass:1356.56cm travelled,20.86cm max route error,2433/2433paved samples,2second hold, both cars completed. Report2026-09-12-native-krog-rider.json. No changes to normal gameplay logic. This is one direction from an inside-crossing fixture; approach timing, reverse movement, rendered mixed traffic/crowds and impact cases remain unverified. Main map and installed054 unchanged.

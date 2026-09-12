@@ -6,8 +6,12 @@
 #include "GameFramework/PlayerController.h"
 #include "EngineUtils.h"
 #include "Engine/World.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
+void TickBattleKrogRiderAudit(APlayerController*,float);
 void TickBattleMonroeOccupancyAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleKrogRiderAudit"))){TickBattleKrogRiderAudit(PC,Dt);return;}
  struct FState{TWeakObjectPtr<UWorld> World;TArray<TWeakObjectPtr<ABattleRoadCar>> Cars;TWeakObjectPtr<ABattleRoadCrossing> Gate;TWeakObjectPtr<ACharacter> Occupant;float Clock=0,Hold=0;int Phase=0;bool Done=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;S.Clock+=Dt;
  auto Finish=[&](bool Pass,const TCHAR* Why){S.Done=true;if(S.Occupant.IsValid())S.Occupant->Destroy();UE_LOG(LogTemp,Display,TEXT("MonroeOccupancy: {\"passed\":%s,\"reason\":\"%s\",\"both_stopped_seconds\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Why,S.Hold);PC->ConsoleCommand(TEXT("quit"));};
