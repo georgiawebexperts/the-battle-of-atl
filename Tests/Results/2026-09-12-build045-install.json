@@ -1,0 +1,9 @@
+{
+  "desktop_link": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "target": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "version": "0.45.0",
+  "rollback": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build044.app",
+  "package_seconds": 136.6,
+  "codesign_strict_verification": "passed in finalize_mac_app.py",
+  "status": "installed; health/death-reset/checkpoint verification passed"
+}
