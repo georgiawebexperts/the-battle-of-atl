@@ -1,0 +1,28 @@
+[
+  {
+    "variant": "male",
+    "impact_yaw": 90,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 physics=1 drop=84.688 recovered=1 phase=0 direction=F"
+    ],
+    "missing_captures": [],
+    "visual_review": "Representative rear and side impact captures inspected across both outfits. Back recovery visibly completes. Rear fall can overlap the nearby bicycle because physics currently ignores Pawn collisions; not final presentation acceptance.",
+    "scope": "Direct impact direction coverage on current path, not full riding collision, slope or side-settled-pose coverage.",
+    "presentation_accepted": false
+  },
+  {
+    "variant": "female",
+    "impact_yaw": 90,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 physics=1 drop=82.507 recovered=1 phase=0 direction=F"
+    ],
+    "missing_captures": [],
+    "visual_review": "Representative rear and side impact captures inspected across both outfits. Back recovery visibly completes. Rear fall can overlap the nearby bicycle because physics currently ignores Pawn collisions; not final presentation acceptance.",
+    "scope": "Direct impact direction coverage on current path, not full riding collision, slope or side-settled-pose coverage.",
+    "presentation_accepted": false
+  }
+]

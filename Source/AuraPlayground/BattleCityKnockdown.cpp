@@ -67,7 +67,7 @@ bool APiedmontPedestrian::BeginKnockdown(float Speed,FVector Direction){
  for(int32 I=0;I<Ref.GetNum();++I)if(auto* Instance=PhysicsBody->GetBodyInstance(Ref.GetBoneName(I)))
   Instance->SetBodyTransform(Body->GetBoneTransform(I),ETeleportType::TeleportPhysics);
  PhysicsBody->SetAllPhysicsLinearVelocity(Direction.GetSafeNormal2D()*FMath::Clamp(Speed*.45f,180.f,500.f)+FVector(0,0,80));
- PhysicsBody->AddImpulse(Direction.GetSafeNormal2D()*100.f,TEXT("spine_03"),true);
+ PhysicsBody->AddImpulse(Direction.GetSafeNormal2D()*100.f,TEXT("spine_05"),true);
  AttachCityParts(PhysicsBody);Body->SetVisibility(false,false);
  KnockdownPhase=1;KnockdownClock=0;RecoveryRetry=0;StumbleRemaining=10;
  UE_LOG(LogTemp,Display,TEXT("CityKnockdown: started actor=%s speed=%.1f"),*GetName(),Speed);

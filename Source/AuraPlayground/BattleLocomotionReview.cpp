@@ -59,7 +59,7 @@ void ABattleMacController::TickLocomotionReview(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCityBumpReview"))){
   auto* Visitor=Cast<APiedmontPedestrian>(Person);if(!Visitor){ConsoleCommand(TEXT("quit"));return;}
   const bool Hard=FParse::Param(FCommandLine::Get(),TEXT("BattleCityKnockdownReview"));
-  if(LocoStage==1){Visitor->GetCharacterMovement()->StopMovementImmediately();Visitor->BikeImpact(Hard?650:220,FVector::ForwardVector);LocoClock=0;LocoStage=2;}
+  if(LocoStage==1){float ImpactYaw=0;FParse::Value(FCommandLine::Get(),TEXT("BattleImpactYaw="),ImpactYaw);Visitor->GetCharacterMovement()->StopMovementImmediately();Visitor->BikeImpact(Hard?650:220,FRotator(0,ImpactYaw,0).Vector());LocoClock=0;LocoStage=2;}
   if(Hard){
    static bool SawPhysics=false;
    if(Visitor->PhysicsBody){
