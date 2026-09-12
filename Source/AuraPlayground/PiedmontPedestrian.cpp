@@ -26,10 +26,10 @@ void APiedmontPedestrian::BeginPlay(){
 void APiedmontPedestrian::Configure(EPiedmontPedestrianKind NewKind){
  Kind=NewKind;GetCharacterMovement()->MaxWalkSpeed=Kind==EPiedmontPedestrianKind::Jogger?310:135;
 }
-bool APiedmontPedestrian::MoveTo(FVector Goal){
+bool APiedmontPedestrian::MoveTo(FVector Goal,float AcceptanceRadius){
  if(bHasDestination&&FVector::Dist2D(Destination,Goal)<60)return true;
  auto* AI=Cast<AAIController>(GetController());if(!AI)return false;
- FAIMoveRequest Request;Request.SetGoalLocation(Goal);Request.SetAcceptanceRadius(45);Request.SetUsePathfinding(true);Request.SetAllowPartialPath(false);Request.SetProjectGoalLocation(true);
+ FAIMoveRequest Request;Request.SetGoalLocation(Goal);Request.SetAcceptanceRadius(AcceptanceRadius);Request.SetUsePathfinding(true);Request.SetAllowPartialPath(false);Request.SetProjectGoalLocation(true);
  const auto Result=AI->MoveTo(Request);bHasDestination=Result.Code!=EPathFollowingRequestResult::Failed;
  if(bHasDestination)Destination=Goal;return bHasDestination;
 }
@@ -118,7 +118,7 @@ bool APiedmontPedestrian::BeginSleeping(){
  if(!Animation)return false;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;
- SleepOrigin=GetActorLocation();SleepTarget.Reset();
+ SleepOrigin=GetActorLocation();SleepOriginRotation=GetActorRotation();SleepTarget.Reset();
  SetBodySequence(Animation,true);SleepPhase=1;return true;
 }
 bool APiedmontPedestrian::WakeFromSleep(){
@@ -163,7 +163,7 @@ bool APiedmontPedestrian::TickSleepBehavior(float Dt){
   if(!Sleep)return true;
   SetActorLocationAndRotation(SleepLanding,SleepLandingRotation,false,nullptr,ETeleportType::TeleportPhysics);
   GetCharacterMovement()->bForceNextFloorCheck=true;
-  SetBodySequence(Sleep,true);SleepOrigin=SleepLanding;SleepPhase=1;AnimateBody(0);return true;
+  SetBodySequence(Sleep,true);SleepOrigin=SleepLanding;SleepOriginRotation=SleepLandingRotation;SleepPhase=1;AnimateBody(0);return true;
  }
  if(SleepPhase==3){
   ChaseClock+=Dt;ChaseRepath-=Dt;
@@ -178,12 +178,21 @@ bool APiedmontPedestrian::TickSleepBehavior(float Dt){
  if(SleepPhase==5){
   ReturnClock+=Dt;ChaseRepath-=Dt;
   if(!AI||ReturnClock>10.f){CancelSleepBehavior();PauseRemaining=5;return true;}
-  if(FVector::Dist2D(GetActorLocation(),SleepOrigin)<75){
+  const float HomeDistance=FVector::Dist2D(GetActorLocation(),SleepOrigin);
+  if(HomeDistance<12){
    AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();
-   if(ChaseRepath<=0){ChaseRepath=.5f;BeginSettling();}
+   // Returning navigation changes facing. Restore the checked resting direction
+   // gradually so the authored lateral fall uses its original clear corridor.
+   SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(),SleepOriginRotation,Dt,180.f));
+   if(FMath::Abs(FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,SleepOriginRotation.Yaw))<1.f&&ChaseRepath<=0){ChaseRepath=.5f;BeginSettling();}
+  }else if(HomeDistance<200){
+   // Grass rest points can lie just beyond the projected navigation goal.
+   // Walk the final short segment through CharacterMovement collision/floor checks.
+   AI->StopMovement();bHasDestination=false;
+   AddMovementInput((SleepOrigin-GetActorLocation()).GetSafeNormal2D(),1.f,true);
   }else if(ChaseRepath<=0){
    ChaseRepath=.5f;
-   if(!MoveTo(SleepOrigin)){CancelSleepBehavior();PauseRemaining=5;}
+   if(!MoveTo(SleepOrigin,10.f)){CancelSleepBehavior();PauseRemaining=5;}
   }
   return true;
  }
@@ -238,7 +247,7 @@ void APiedmontPedestrian::TickSleeperTrigger(float Dt){
  const float Distance=IsValid(Target)?FVector::Dist2D(GetActorLocation(),Target->GetActorLocation()):BIG_NUMBER;
  if(IsValid(Target)&&FMath::Abs(GetActorLocation().Z-Target->GetActorLocation().Z)>140)Eligible=false;
  if(SleeperTrigger.Observe(Distance,Dt,Eligible)){
-  const bool Woke=FMath::FRand()<.18f&&WakeAndChase(Target);
+  const bool Woke=FMath::FRand()<FMath::Clamp(AmbientWakeChance,0.f,1.f)&&WakeAndChase(Target);
   SleeperTrigger.Attempted(Woke);
  }
 }

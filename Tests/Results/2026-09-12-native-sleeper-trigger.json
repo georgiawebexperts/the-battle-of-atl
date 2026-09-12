@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "phase": 9,
+    "reason": "height gate, fresh approach, automatic chase, sleep return and cooldown passed",
+    "start_distance": 397.146,
+    "closest_distance": 77.967
+  },
+  "scope": "Uncooked placed sleeper: real player proximity gates, chase and return. Test forces wake probability to 1; normal default remains 0.18. No rendered or packaged acceptance.",
+  "passed": true
+}

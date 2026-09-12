@@ -42,6 +42,7 @@ public:
  UFUNCTION(BlueprintCallable) bool BeginSettling();
  UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bReturnToSleepAfterChase=false;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bAmbientSleeper=false;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly,meta=(ClampMin="0.0",ClampMax="1.0")) float AmbientWakeChance=.18f;
  UPROPERTY(BlueprintReadOnly) int32 SleepPhase=0;
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
 protected:
@@ -56,6 +57,7 @@ private:
  bool TickSleepBehavior(float Dt);
  TWeakObjectPtr<APawn> SleepTarget;
  FVector SleepOrigin;
+ FRotator SleepOriginRotation;
  FVector SleepLanding;
  FRotator SleepLandingRotation;
  bool IsSettlePathClear(const FVector& Landing) const;
@@ -71,7 +73,7 @@ private:
  UPROPERTY() TObjectPtr<UAnimSequence> BumpReaction;
  bool bPlayingBumpReaction=false;
  void InitializeCityAppearance();
- bool MoveTo(FVector Goal);
+ bool MoveTo(FVector Goal,float AcceptanceRadius=45.f);
  void ChooseDestination();
  void YieldTo(APawn* Source,bool Horn);
  float ThinkRemaining=0,YieldRemaining=0;
