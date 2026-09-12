@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "reason": "Uphill downhill braking road grass and airborne fixtures passed",
+  "phase": 5,
+  "samples": [
+    {
+      "phase": 0,
+      "speed": 411.264,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 619,
+      "samples": 619,
+      "passed": true
+    },
+    {
+      "phase": 1,
+      "speed": 746.847,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 600,
+      "samples": 600,
+      "passed": true
+    },
+    {
+      "phase": 2,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 613,
+      "samples": 613,
+      "passed": true
+    },
+    {
+      "phase": 3,
+      "speed": 1526.836,
+      "max_lateral": 679.951,
+      "yaw": 24.817,
+      "ground": 602,
+      "samples": 602,
+      "passed": true
+    },
+    {
+      "phase": 4,
+      "speed": 1475.806,
+      "max_lateral": 349.956,
+      "yaw": 13.015,
+      "ground": 594,
+      "samples": 594,
+      "passed": true
+    },
+    {
+      "phase": 5,
+      "speed": 600.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 0,
+      "samples": 122,
+      "passed": true
+    }
+  ],
+  "exit_code": 0,
+  "scope": "Native movement on controlled 10-degree incline and flat road/grass planes. Initial positions/speeds injected; braking and steering keyboard input. No actual-world hills, visual, tire simulation, packaged or whole-route acceptance."
+}

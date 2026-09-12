@@ -8,8 +8,10 @@
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
 #include "Kismet/GameplayStatics.h"
+void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickSteeringAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleHandlingSlopeAudit"))){TickBattleHandlingSlopeAudit(this,Dt);return;}
  if(GetWorld()->GetTimeSeconds()<5||SteeringStage==99)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());if(!Bike)return;SteeringClock+=Dt;
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
