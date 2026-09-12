@@ -43,3 +43,10 @@ First capture exposed copied editor camera mesh and floor query hitting fallen b
 Added native per-body transform/AABB and CPU skin-position diagnostics to crash review. Initial GetCPUSkinnedVertices diagnostic was unsuitable because it refreshes animated bones; replaced with GetSkinnedVertexPosition against current transforms. ComponentTransformIsKinematic prevents simulated root updating the component frame and reduced a uniform26.7cm displayed/physical bone discrepancy to~0.35cm. Floor query now ignores fallen bike. Latest floor StaticMeshActor_123/StaticMeshComponent0 is QueryAndPhysics and blocks PhysicsBody, yet skin extends17.67cm below hip's flat floor reference (2231/3273 vertices); stricter skin clearance gate now fails the test despite old settling/recovery predicates passing. Candidate still clips and is not live. Next inspect road simple vs complex contact and sample floor per vertex; no blind body-padding acceptance. Native build passes. Desktop048 unchanged.
 
 Elliott asked whether Aura was being used. Answered candidly: current crash work uses Unreal C++/assets directly, not Aura; this is not evidence of Aura's usefulness, which remains unestablished. User did not cancel ongoing game work.
+
+
+## Per-vertex road clearance and tool preference — 2026-09-12 [codex-maclaptop]
+
+Elliott explicitly says continue with whatever is most effective and forget Aura if not needed. Direct Unreal development remains authorized; no need to spend time on Aura evaluation.
+
+Crash review now compares each CPU-skinned vertex against its own downward complex floor trace, ignoring rider and fallen bike, rather than assuming a flat floor. Still fails1976/3273 vertices, minimum-18.339cm. Simple and complex collision query both report road324.092 (SM_TenthStreet_Road, UseComplexAsSimple); actual physics body bounds extend to~304–307 while pelvis326.65. Native build passes; stricter visual clearance test correctly exits1. Road query agreement does not prove physics contacts; next inspect triangle sidedness and collision filtering. No game crash fix accepted or packaged. Desktop048 unchanged; goal incomplete.

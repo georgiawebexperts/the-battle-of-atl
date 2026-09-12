@@ -1,4 +1,6 @@
 #include "BattleBike.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 #include "Rendering/SkeletalMeshRenderData.h"
 #include "Rendering/SkeletalMeshLODRenderData.h"
 #include "BattleFallenBike.h"
@@ -47,12 +49,14 @@ void TickBattlePlayerCrashReview(APlayerController* PC,float Dt){
  if(S.Clock>4.5f){
   FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;Q.AddIgnoredActor(Bike);if(S.FallenBike.IsValid())Q.AddIgnoredActor(S.FallenBike.Get());const bool Floor=PC->GetWorld()->LineTraceSingleByChannel(Hit,Hip+FVector(0,0,100),Hip-FVector(0,0,300),ECC_WorldStatic,Q);
   UE_LOG(LogTemp,Display,TEXT("CrashFloor: actor=%s component=%s collision=%d physics_response=%d"),*GetNameSafe(Hit.GetActor()),*GetNameSafe(Hit.GetComponent()),Hit.GetComponent()?int32(Hit.GetComponent()->GetCollisionEnabled()):-1,Hit.GetComponent()?int32(Hit.GetComponent()->GetCollisionResponseToChannel(ECC_PhysicsBody)):-1);
+  if(auto* Road=Cast<UStaticMeshComponent>(Hit.GetComponent()))UE_LOG(LogTemp,Display,TEXT("CrashRoadMesh: %s traceflag=%d"),*GetNameSafe(Road->GetStaticMesh()),Road->GetStaticMesh()&&Road->GetStaticMesh()->GetBodySetup()?int32(Road->GetStaticMesh()->GetBodySetup()->CollisionTraceFlag):-1);
+  Q.bTraceComplex=false;FHitResult Simple;PC->GetWorld()->LineTraceSingleByChannel(Simple,Hip+FVector(0,0,100),Hip-FVector(0,0,300),ECC_WorldStatic,Q);UE_LOG(LogTemp,Display,TEXT("CrashRoadSurfaces: simple=%.3f complex=%.3f actor=%s"),Simple.ImpactPoint.Z,Hit.ImpactPoint.Z,*GetNameSafe(Simple.GetActor()));Q.bTraceComplex=true;
   for(const auto& Setup:S.Body->GetPhysicsAsset()->SkeletalBodySetups){if(auto* Instance=S.Body->GetBodyInstance(Setup->BoneName)){
    FTransform T=Instance->GetUnrealWorldTransform();T.SetScale3D(Instance->Scale3D);const FBox Bounds=Setup->AggGeom.CalcAABB(T);
-   UE_LOG(LogTemp,Display,TEXT("CrashClearance: bone=%s bone_z=%.3f body_z=%.3f bottom=%.3f floor=%.3f scale=%s collision=%d"),*Setup->BoneName.ToString(),S.Body->GetSocketLocation(Setup->BoneName).Z,T.GetLocation().Z,Bounds.Min.Z,Hit.ImpactPoint.Z,*Instance->Scale3D.ToString(),int32(Instance->GetCollisionEnabled()));
+   UE_LOG(LogTemp,Display,TEXT("CrashClearance: bone=%s bone_z=%.3f body_z=%.3f bottom=%.3f floor=%.3f scale=%s collision=%d actual_min=%.3f actual_max=%.3f"),*Setup->BoneName.ToString(),S.Body->GetSocketLocation(Setup->BoneName).Z,T.GetLocation().Z,Bounds.Min.Z,Hit.ImpactPoint.Z,*Instance->Scale3D.ToString(),int32(Instance->GetCollisionEnabled()),Instance->GetBodyBounds().Min.Z,Instance->GetBodyBounds().Max.Z);
   }}
   float MinSkin=TNumericLimits<float>::Max();int32 Below=0;const auto& LOD=S.Body->GetSkeletalMeshAsset()->GetResourceForRendering()->LODRenderData[0];const auto* Weights=S.Body->GetSkinWeightBuffer(0);
-  for(uint32 I=0;Weights&&I<LOD.GetNumVertices();I++){const FVector Point=S.Body->GetComponentTransform().TransformPosition(FVector(USkeletalMeshComponent::GetSkinnedVertexPosition(S.Body.Get(),I,LOD,*Weights)));MinSkin=FMath::Min(MinSkin,float(Point.Z-Hit.ImpactPoint.Z));if(Point.Z<Hit.ImpactPoint.Z-1)Below++;}
+  for(uint32 I=0;Weights&&I<LOD.GetNumVertices();I++){const FVector Point=S.Body->GetComponentTransform().TransformPosition(FVector(USkeletalMeshComponent::GetSkinnedVertexPosition(S.Body.Get(),I,LOD,*Weights)));FHitResult Surface;if(PC->GetWorld()->LineTraceSingleByChannel(Surface,Point+FVector(0,0,100),Point-FVector(0,0,200),ECC_WorldStatic,Q)){MinSkin=FMath::Min(MinSkin,float(Point.Z-Surface.ImpactPoint.Z));if(Point.Z<Surface.ImpactPoint.Z-1)Below++;}}
   UE_LOG(LogTemp,Display,TEXT("CrashSkin: {\"min_clearance_cm\":%.3f,\"below_vertices\":%d,\"vertices\":%d}"),MinSkin,Below,LOD.GetNumVertices());
   const float Drop=S.Hip.Z-Hip.Z,Clearance=Floor?Hip.Z-Hit.ImpactPoint.Z:-999,Speed=S.Body->GetPhysicsLinearVelocity(TEXT("Hips")).Size();const bool Pass=Floor&&Drop>35&&S.MaxSpan<300&&Clearance>=0&&Clearance<100&&Speed<150;
   UE_LOG(LogTemp,Display,TEXT("PlayerCrashReview: {\"passed\":%s,\"hip_drop_cm\":%.3f,\"max_limb_span_cm\":%.3f,\"hip_floor_cm\":%.3f,\"final_speed\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Drop,S.MaxSpan,Clearance,Speed);if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerRecoveryBlend"))&&Pass&&S.Blend.Begin(Bike,S.Body.Get()))S.Recovering=true;else{S.Done=true;PC->ConsoleCommand(TEXT("quit"));}
