@@ -9,7 +9,7 @@ root=Path(__file__).resolve().parents[1];meta=json.loads((root/'SourceAssets/Ter
 project=Transformer.from_crs(4326,meta['crs'],always_xy=True);xml=ET.parse(root/'References/tenth-street-monroe.osm').getroot()
 nodes={n.get('id'):(float(n.get('lon')),float(n.get('lat'))) for n in xml.findall('node')}
 candidate=os.environ.get('BATTLE_TENTH_CANDIDATE')=='1'
-raw=np.fromfile(root/'SourceAssets/Terrain'/('atlanta-height-tenth-graded.r16' if candidate else 'atlanta-height-krog.r16'),dtype='<u2').reshape(meta['size'][1],meta['size'][0])
+raw=np.fromfile(root/'SourceAssets/Terrain'/('atlanta-height-tenth-graded.r16' if candidate else meta.get('active_heightmap','atlanta-height-krog.r16')),dtype='<u2').reshape(meta['size'][1],meta['size'][0])
 def xy(p):
  e,n=project.transform(*p);return ((e-meta['origin_utm'][0])/.03,-(n-meta['origin_utm'][1])/.03)
 def height(x,y):

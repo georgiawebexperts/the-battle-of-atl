@@ -8,7 +8,8 @@
   "gaussian_sigma_cm": 800.0,
   "terrain_blend_width_cm": 600.0,
   "building_protection_cm": 80,
-  "native_installed": false,
+  "native_installed": true,
   "accepted": false,
-  "limitations": "Candidate only. Must regenerate matching road meshes, preview terrain transitions, and test native collision and riding before installation."
+  "limitations": "Installed into working map and verified by fresh reload. Packaged build and broad gameplay/presentation remain unverified.",
+  "installation_report": "Tests/Results/2026-09-11-graded-install.json"
 }

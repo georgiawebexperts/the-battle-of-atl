@@ -8,6 +8,11 @@ world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world
 for actor in ea.get_all_level_actors():
  if 'BattleTenthStreet' in [str(t) for t in actor.tags]:ea.destroy_actor(actor)
 graded='-BattleReviewGradedTenth' in unreal.SystemLibrary.get_command_line()
+install_graded='-BattleInstallGradedTenth' in unreal.SystemLibrary.get_command_line()
+assert not install_graded or graded
+if install_graded:
+ for name in ['graded-monroe-drive','graded-apartment-drive']:
+  assert json.loads((root/('Tests/Results/2026-09-11-'+name+'.json')).read_text())['passed']
 assert not (graded and '-BattleInstallTenthStreet' in unreal.SystemLibrary.get_command_line()), 'Review candidate before installing terrain'
 if graded:
  from battle_geography import import_source_landscape
@@ -55,8 +60,14 @@ for light,rotation,intensity in original_lights:
 ea.destroy_actor(cam)
 owned=[a for a in ea.get_all_level_actors() if 'BattleTenthStreet' in [str(t) for t in a.tags]]
 assert len(owned)==len(data['surfaces'])
-installed='-BattleInstallTenthStreet' in unreal.SystemLibrary.get_command_line()
+installed='-BattleInstallTenthStreet' in unreal.SystemLibrary.get_command_line() or install_graded
+if install_graded:
+ assert json.loads((root/'Tests/Results/2026-09-11-graded-native-collision.json').read_text())['passed']
+ assert not any('fixture' in a.get_actor_label().lower() for a in ea.get_all_level_actors() if isinstance(a,unreal.PiedmontPathSpline))
+ world.get_world_settings().tags=list(world.get_world_settings().tags)+[unreal.Name('TenthStreetGraded_v1')]
 if installed:assert unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
+if install_graded:
+ meta_path=root/'SourceAssets/Terrain/terrain-georeference.json';meta=json.loads(meta_path.read_text());meta['active_heightmap']='atlanta-height-tenth-graded.r16';meta_path.write_text(json.dumps(meta,indent=2)+'\n')
 (out/'result.json').write_text(json.dumps({'map_saved':installed,'owned_actor_count':len(owned),'meshes':rows,'scope':'Static native import/placement review. Road, cycle track, separator, sidewalks and 10th lane paint present. Traffic, Monroe markings and crossing signals absent. Width and gameplay collision acceptance pending.'},indent=2)+'\n')
 
 if graded and '-BattleSaveGradedDriveMap' in unreal.SystemLibrary.get_command_line():

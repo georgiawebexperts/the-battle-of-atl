@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "fresh_map_reload": true,
+  "road_actors": 6,
+  "adjusted_routes": 23,
+  "collision_probes": 900,
+  "collision_failures": 0,
+  "saved_navigation_routes": [
+    {
+      "label": "OSM path 28798697 part 1",
+      "length_cm": 809.3078002929688
+    },
+    {
+      "label": "OSM path 61490788 part 10",
+      "length_cm": 793.830322265625
+    },
+    {
+      "label": "OSM path 61490789 part 11",
+      "length_cm": 1009.8635864257812
+    },
+    {
+      "label": "OSM path 102679931 part 27",
+      "length_cm": 806.8228149414062
+    },
+    {
+      "label": "OSM path 102679940 part 31",
+      "length_cm": 122.49979400634766
+    },
+    {
+      "label": "OSM path 102679946 part 34",
+      "length_cm": 12865.2626953125
+    },
+    {
+      "label": "OSM path 146304979 part 39",
+      "length_cm": 758.6734619140625
+    },
+    {
+      "label": "OSM path 146304987 part 45",
+      "length_cm": 142.1395721435547
+    },
+    {
+      "label": "OSM path 182395365 part 84",
+      "length_cm": 2931.66357421875
+    },
+    {
+      "label": "OSM path 741964052 part 156",
+      "length_cm": 9483.2578125
+    },
+    {
+      "label": "OSM path 741964056 part 157",
+      "length_cm": 26742.515625
+    },
+    {
+      "label": "OSM path 1035389486 part 175",
+      "length_cm": 16821.0625
+    },
+    {
+      "label": "OSM path 1035815115 part 180",
+      "length_cm": 178.66941833496094
+    },
+    {
+      "label": "OSM path 1035815117 part 181",
+      "length_cm": 175.53042602539062
+    },
+    {
+      "label": "OSM path 1035815123 part 182",
+      "length_cm": 216.91351318359375
+    },
+    {
+      "label": "OSM path 1035815127 part 184",
+      "length_cm": 498.38623046875
+    },
+    {
+      "label": "OSM path 1035815128 part 185",
+      "length_cm": 554.2105102539062
+    },
+    {
+      "label": "OSM path 1035815129 part 186",
+      "length_cm": 546.0237426757812
+    },
+    {
+      "label": "OSM path 1035815130 part 187",
+      "length_cm": 246.07896423339844
+    },
+    {
+      "label": "OSM path 1035815134 part 188",
+      "length_cm": 225.68484497070312
+    },
+    {
+      "label": "Eastside connector spline 0",
+      "length_cm": 1403.585205078125
+    },
+    {
+      "label": "Eastside connector spline 1",
+      "length_cm": 738.9744262695312
+    },
+    {
+      "label": "Eastside trail spline 0",
+      "length_cm": 1530.469482421875
+    }
+  ],
+  "fixture_absent": true,
+  "desktop_updated": false
+}

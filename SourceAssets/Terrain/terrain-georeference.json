@@ -81,5 +81,6 @@
     3025,
     1513
   ],
-  "landscape_rotation_yaw": -90
+  "landscape_rotation_yaw": -90,
+  "active_heightmap": "atlanta-height-tenth-graded.r16"
 }

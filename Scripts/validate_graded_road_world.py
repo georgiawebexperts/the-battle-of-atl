@@ -14,11 +14,11 @@ def delta(x,y):
  return a+(b-a)*dx+(d-b)*dy if dx>=dy else a+(d-c)*dx+(c-a)*dy
 routes=[]
 for actor in ea.get_all_level_actors():
- if not isinstance(actor,unreal.PiedmontPathSpline) or actor.get_editor_property("bBridge"):continue
+ if not isinstance(actor,unreal.PiedmontPathSpline) or actor.get_editor_property("bBridge") or 'TenthStreetGraded_v1' in [str(t) for t in actor.tags]:continue
  points=[];changes=[]
  for i in range(actor.centerline.get_number_of_spline_points()):
   p=actor.centerline.get_location_at_spline_point(i,unreal.SplineCoordinateSpace.WORLD);dz=delta(p.x,p.y);points.append(unreal.Vector(p.x,p.y,p.z+dz));changes.append(abs(dz))
- if max(changes,default=0)>.001:actor.set_centerline(points);routes.append({'label':actor.get_actor_label(),'changed_points':sum(d>.001 for d in changes),'max_shift_cm':max(changes)})
+ if max(changes,default=0)>.001:actor.set_centerline(points);actor.tags=list(actor.tags)+[unreal.Name('TenthStreetGraded_v1')];routes.append({'label':actor.get_actor_label(),'changed_points':sum(d>.001 for d in changes),'max_shift_cm':max(changes)})
 results=[]
 for probe in json.loads((terrain/'TenthStreetGraded/collision-samples.json').read_text())['samples']:
  x,y,z=probe['xyz'];top=unreal.Vector(x,y,z+150);bottom=unreal.Vector(x,y,z-150)
