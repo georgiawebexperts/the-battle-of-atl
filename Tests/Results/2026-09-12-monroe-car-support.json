@@ -1,22 +1,11 @@
 {
-  "passed": false,
+  "passed": true,
   "probes": 1512,
-  "failures": [
-    {
-      "xyz": [
-        12371.345555267493,
-        11688.619391160613,
-        -350
-      ],
-      "actor": "USGS Atlanta terrain + authored underwater basin",
-      "height": -341.56553726552863,
-      "source_surface": "MISSING"
-    }
-  ],
+  "failures": [],
   "hits": {
     "SM_TenthStreet_Road": 1481,
-    "SM_TenthStreet_CycleTrack": 30,
-    "USGS Atlanta terrain + authored underwater basin": 1
+    "Monroe road join repairs": 1,
+    "SM_TenthStreet_CycleTrack": 30
   },
   "main_map_changed": false,
   "scope": "Native footprint support only; routes, signals and actual car movement unverified."

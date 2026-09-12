@@ -299,3 +299,12 @@ Native collision audit checked 1512 footprint samples: 1481 hit road and 30 hit 
 OSM source retains multiple crossings, including the angled cycle crossing way 1396654821 and cycletrack connection way 1396654823, plus older signalized footway crossing segments 231270041/1387296277. Do not collapse these into one line or assume every source footway remains the primary BeltLine alignment. Official project description confirms realigned trail, raised crossing and improved signals: https://beltline.org/blog/construction-to-begin-on-10th-and-monroe-intersection-project/ . Current topology still requires full native/visual comparison.
 
 Evidence: SourceAssets/Terrain/MonroeTraffic/car-lanes.json, car-lane-probes.json and Tests/Results/2026-09-12-monroe-car-support.json. Desktop stays 047.
+
+
+## Monroe pavement repair installed — 2026-09-12 [codex-maclaptop]
+
+Generated centred road-join repairs from adjacent Monroe OSM segments at their shared minimum lane width. Total 4473.446 cm² (0.447 m²), 182 terrain-following triangles; zero protected cycle-track/separator overlap. Imported SM_Monroe_RoadSeams with existing world asphalt and complex collision.
+
+All 1512 native footprint samples now pass (1481 road, 30 crossing pavement, 1 repair). Both candidate lanes then completed native vehicle traversal and endpoint stops, 8294.260 cm combined. The generic lane audit now accepts an explicit Monroe mode with the appropriate short-route threshold while preserving 10th Street checks. No traffic controls or production cars were added.
+
+Installed only the repair in PiedmontWorld, tag MonroeRoadSeams. Re-probed the discovered gap at (12371.346,11688.619): it now hits repair Z=-327.558 instead of terrain. Desktop remains 047; packaging, crossing signal logic, longer approach routes and visual rider-level review remain pending. Scripts regenerate isolated review map PiedmontMonroeTrafficReview.

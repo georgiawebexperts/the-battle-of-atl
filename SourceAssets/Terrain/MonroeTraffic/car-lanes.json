@@ -2,17 +2,8 @@
   "author": "2026-09-12 [codex-maclaptop]",
   "source": "OpenStreetMap contributors, References/tenth-street-monroe.osm; installed TenthStreetGraded meshes",
   "road_length_cm": 4994.864599280645,
-  "source_coverage_passed": false,
-  "failures": [
-    {
-      "lane": "northbound",
-      "xy": [
-        12371.345555267493,
-        11688.619391160613
-      ],
-      "kind": "footprint"
-    }
-  ],
+  "source_coverage_passed": true,
+  "failures": [],
   "routes": [
     {
       "name": "northbound",

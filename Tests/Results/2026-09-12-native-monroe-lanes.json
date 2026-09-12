@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Both opposing road lanes traversed with wheel support and endpoint stops",
+    "cars": 2,
+    "total_distance_cm": 8294.26
+  },
+  "scope": "Two opposing short Monroe lanes in the repair review map. Native motion and support, no signals, natural population or packaged acceptance.",
+  "passed": true
+}

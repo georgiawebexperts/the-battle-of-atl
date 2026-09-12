@@ -35,8 +35,9 @@ void TickBattleRoadLaneAudit(APlayerController* PC,float Dt){
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;S.Clock+=Dt;
  auto Finish=[&](bool Pass,const TCHAR* Why){S.Done=true;float Travel=0;for(auto C:S.Cars)if(C.IsValid()){Travel+=C->DistanceTravelled;UE_LOG(LogTemp,Display,TEXT("RoadLaneCar: name=%s distance=%.3f position=%s speed=%.3f obstacle=%s finished=%d"),*C->GetName(),C->DistanceTravelled,*C->GetActorLocation().ToString(),C->Speed,*C->LastObstacle,C->bRouteFinished);}UE_LOG(LogTemp,Display,TEXT("RoadLaneAudit: {\"passed\":%s,\"reason\":\"%s\",\"cars\":%d,\"total_distance_cm\":%.3f}"),Pass?TEXT("true"):TEXT("false"),Why,S.Cars.Num(),Travel);PC->ConsoleCommand(TEXT("quit"));};
  if(S.Clock>110){Finish(false,TEXT("Full lane traversal timed out"));return;}
+ const bool Monroe=FParse::Param(FCommandLine::Get(),TEXT("BattleMonroeLanes"));
  if(!S.Started){
-  for(TActorIterator<ABattleRoadCar> It(PC->GetWorld());It;++It)if(It->ActorHasTag(TEXT("TenthCarLaneReview")))S.Cars.Add(*It);
+  for(TActorIterator<ABattleRoadCar> It(PC->GetWorld());It;++It)if(It->ActorHasTag(Monroe?TEXT("MonroeCarLaneReview"):TEXT("TenthCarLaneReview")))S.Cars.Add(*It);
   if(S.Cars.Num()!=2){Finish(false,TEXT("Expected opposing lane candidates"));return;}
   for(auto C:S.Cars)if(!C->StartRoute()){Finish(false,TEXT("Lane start rejected"));return;}
   S.Started=true;return;
@@ -47,8 +48,8 @@ void TickBattleRoadLaneAudit(APlayerController* PC,float Dt){
   if(!C.IsValid()||!C->bGrounded){Finish(false,TEXT("Lost car or wheel support"));return;}
   S.SawSignalWait|=C->bWaitingForCrossing&&C->Speed<1.f;
   if(!C->bRouteFinished)Finished=false;
-  else if(C->DistanceTravelled<39000||C->Speed!=0){Finish(false,TEXT("Incomplete traversal or failed endpoint stop"));return;}
+  else if(C->DistanceTravelled<(Monroe?3900.f:39000.f)||C->Speed!=0){Finish(false,TEXT("Incomplete traversal or failed endpoint stop"));return;}
  }
- if(Finished){if(FParse::Param(FCommandLine::Get(),TEXT("BattleRequireSignalWait"))&&!S.SawSignalWait)Finish(false,TEXT("No stopped signal queue observed"));else Finish(true,S.SawSignalWait?TEXT("Both full lanes completed with stopped signal queue, support and endpoint stops"):TEXT("Both opposing 10th Street lanes traversed with wheel support and endpoint stops"));}
+ if(Finished){if(FParse::Param(FCommandLine::Get(),TEXT("BattleRequireSignalWait"))&&!S.SawSignalWait)Finish(false,TEXT("No stopped signal queue observed"));else Finish(true,S.SawSignalWait?TEXT("Both full lanes completed with stopped signal queue, support and endpoint stops"):TEXT("Both opposing road lanes traversed with wheel support and endpoint stops"));}
 #endif
 }

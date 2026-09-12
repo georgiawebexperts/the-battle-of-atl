@@ -7,9 +7,11 @@ root=Path(__file__).resolve().parents[1];folder=root/'SourceAssets/Terrain/Tenth
 network=json.loads((folder/'network.json').read_text());line=linemerge([LineString([p[:2] for p in row['points_cm']]) for row in network['monroe_roads']]);assert line.geom_type=='LineString'
 if line.coords[0][1]<line.coords[-1][1]:line=LineString(list(line.coords)[::-1])
 triangles=[];grid=collections.defaultdict(list)
-for name in ['Road','RoadSeams','CycleTrack']:
+for name in ['Road','RoadSeams','CycleTrack','MonroeSeams']:
  vertices=[]
- for row in (folder/f'TenthStreet_{name}.obj').read_text().splitlines():
+ mesh_path=out/'Monroe_RoadSeams.obj' if name=='MonroeSeams' else folder/f'TenthStreet_{name}.obj'
+ if not mesh_path.exists():continue
+ for row in mesh_path.read_text().splitlines():
   values=row.split()
   if values and values[0]=='v':vertices.append([float(values[1]),-float(values[2]),float(values[3])])
   elif values and values[0]=='f':
