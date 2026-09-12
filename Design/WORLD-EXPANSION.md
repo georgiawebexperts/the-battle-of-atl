@@ -594,3 +594,10 @@ Transient MarketPathShadowReview disables shadow casting on those two chunks. Co
 ## Gate pavement identity resolved — 2026-09-12 [codex-maclaptop]
 
 review_gate_pavement_materials.py temporarily replaces concrete with cyan and asphalt with magenta unlit materials, without saving assets/map. Explicit used_with_nanite avoids late usage compilation displaying checker fallback; final commandlet exits0 and both colors render correctly. Inspected image in Tests/Results/2026-09-12-gate-materials.json: previously dark detached-looking strips exactly match asphalt geometry. Original materials are M_ParkConcreteWorld and M_ParkAsphaltWorld, neither has a world-position-offset input. Combined with previous3cm ground survey, evidence rejects large floating/duplicated-shadow interpretation in this sampled gate area. Next improve asphalt readability and authored parallel path/end layout; no geometry lowering or shadow-disable fix warranted. Desktop050 unchanged.
+
+
+## Weathered park asphalt applied — 2026-09-12 [codex-maclaptop]
+
+Created original M_ParkAsphaltWeatheredCandidate with world-space aggregate variation, base linear(.13,.135,.14), roughness .85–.93, low specular and explicit Nanite usage. Native lit gate render inspected: previously near-black strips now read as gray asphalt with aggregate and retained tree shadows. No unlit production surface or geometry/collision adjustment. Reproducer create_weathered_asphalt.py; review_gate_pavement_materials.py -WeatheredAsphaltReview, result2026-09-12-gate-weathered.json. Initial material pin-name assertion corrected to unnamed unary inputs; final commandlet exits0.
+
+install_weathered_park_asphalt.py applies only22 Park pavement SM_Park_Asphalt_* actor overrides in main PiedmontWorld, saves and reloads, verifies all22 material assignments; exits0. Road corridor actors excluded by exact label prefix. New material/map staged for next package; desktop050 unchanged. Whole-park motion/night appearance not yet accepted. Gate path dead ends/parallel layout still need authored cleanup separately.

@@ -1,6 +1,7 @@
 """Transient gate material identity comparison, without saving world or assets."""
 import unreal,json,pathlib,uuid
-root=pathlib.Path(unreal.Paths.project_dir()).resolve();out=root/'work/gate-materials'/uuid.uuid4().hex;out.mkdir(parents=True)
+root=pathlib.Path(unreal.Paths.project_dir()).resolve();candidate='-WeatheredAsphaltReview' in unreal.SystemLibrary.get_command_line();out=root/'work/gate-materials'/uuid.uuid4().hex;out.mkdir(parents=True)
+if candidate:exec((root/'Scripts/create_weathered_asphalt.py').read_text())
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();rows=[]
@@ -15,6 +16,9 @@ for a in ea.get_all_level_actors():
    for name,prop in [('base',unreal.MaterialProperty.MP_BASE_COLOR),('emissive',unreal.MaterialProperty.MP_EMISSIVE_COLOR),('offset',unreal.MaterialProperty.MP_WORLD_POSITION_OFFSET)]:
     node=unreal.MaterialEditingLibrary.get_material_property_input_node(m,prop);row[name]=node.get_class().get_name() if node else None
   rows.append(row)
+  if candidate:
+   if kind=='Asphalt':c.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_ParkAsphaltWeatheredCandidate'))
+   continue
   diag=unreal.AssetToolsHelpers.get_asset_tools().create_asset('GateDiagnostic'+kind+uuid.uuid4().hex,'/Game/BattleForTheA/Review',unreal.Material,unreal.MaterialFactoryNew())
   diag.set_editor_property('used_with_nanite',True)
   diag.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT)
@@ -25,4 +29,4 @@ cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.Render
 for prop,val in [('texture_target',tex),('capture_source',unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR),('always_persist_rendering_state',True),('capture_every_frame',False),('capture_on_movement',False),('fov_angle',70)]:cap.set_editor_property(prop,val)
 for _ in range(32):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
 unreal.RenderingLibrary.export_render_target(world,tex,str(out),'identity.png')
-(root/'Tests/Results/2026-09-12-gate-materials.json').write_text(json.dumps({'materials':rows,'image':str(out/'identity.png'),'map_saved':False,'legend':'magenta=asphalt, cyan=concrete; transient unlit replacements'},indent=2))
+(root/'Tests/Results'/('2026-09-12-gate-weathered.json' if candidate else '2026-09-12-gate-materials.json')).write_text(json.dumps({'materials':rows,'image':str(out/'identity.png'),'map_saved':False,'legend':'Weathered lit asphalt candidate; original concrete' if candidate else 'magenta=asphalt, cyan=concrete; transient unlit replacements'},indent=2))

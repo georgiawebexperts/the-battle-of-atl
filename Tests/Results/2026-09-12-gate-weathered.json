@@ -1,0 +1,21 @@
+{
+  "materials": [
+    {
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "material": "/Game/PiedmontRide/Materials/M_ParkConcreteWorld.M_ParkConcreteWorld",
+      "base": "MaterialExpressionMultiply",
+      "emissive": null,
+      "offset": null
+    },
+    {
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "material": "/Game/PiedmontRide/Materials/M_ParkAsphaltWorld.M_ParkAsphaltWorld",
+      "base": "MaterialExpressionMultiply",
+      "emissive": null,
+      "offset": null
+    }
+  ],
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gate-materials/77f74c1f945b4e888a2ec5dff1c31ab4/identity.png",
+  "map_saved": false,
+  "legend": "Weathered lit asphalt candidate; original concrete"
+}
