@@ -28,3 +28,23 @@ for probe in json.loads((terrain/'TenthStreetGraded/collision-samples.json').rea
 failures=[r for r in results if r['height_error_cm'] is None or abs(r['height_error_cm'])>8 or not r['capsule_hit']]
 report={'route_updates':routes,'probe_count':len(results),'failures':failures,'passed':not failures,'scope':'Vertical native line/capsule probes and transient route-point adjustment. Moving bike and rebuilt navmesh not verified.','map_saved':False}
 (root/'Tests/Results/2026-09-11-graded-native-collision.json').write_text(json.dumps(report,indent=2)+'\n')
+# Rebuild actual path navigation after geometry and source routes agree.
+route_points=[a.centerline.get_location_at_spline_point(i,unreal.SplineCoordinateSpace.WORLD) for a in ea.get_all_level_actors() if isinstance(a,unreal.PiedmontPathSpline) for i in range(a.centerline.get_number_of_spline_points())]
+lo=[min(getattr(p,k) for p in route_points) for k in ['x','y','z']];hi=[max(getattr(p,k) for p in route_points) for k in ['x','y','z']]
+nav_started=unreal.PiedmontWorldTools.build_park_navigation(unreal.Vector(*[(a+b)/2 for a,b in zip(lo,hi)]),unreal.Vector(*[(b-a)/2+500 for a,b in zip(lo,hi)]))
+nav_finished=nav_started and unreal.PiedmontWorldTools.finish_park_navigation_build()
+nav_rows=[]
+for actor in ea.get_all_level_actors():
+ if not isinstance(actor,unreal.PiedmontPathSpline) or actor.get_editor_property('bBridge'):continue
+ points=[actor.centerline.get_location_at_spline_point(i,unreal.SplineCoordinateSpace.WORLD) for i in range(actor.centerline.get_number_of_spline_points())]
+ affected=[p for p in points if abs(delta(p.x,p.y))>.01]
+ if len(affected)<2:continue
+ start=affected[0];end=affected[-1]
+ if (start-end).length()<100:continue
+ start_nav=unreal.PiedmontWorldTools.project_park_navigation(start);end_nav=unreal.PiedmontWorldTools.project_park_navigation(end)
+ length=unreal.PiedmontWorldTools.park_route_length(start,end) if start_nav and end_nav else -1
+ nav_rows.append({'label':actor.get_actor_label(),'start':[start.x,start.y,start.z],'end':[end.x,end.y,end.z],'start_projected':bool(start_nav),'end_projected':bool(end_nav),'route_length_cm':length})
+report['navigation']={'build_started':nav_started,'build_finished':nav_finished,'routes':nav_rows,'failed_routes':sum(r['route_length_cm']<0 for r in nav_rows)}
+report['passed']=not failures and nav_finished and bool(nav_rows) and all(r['route_length_cm']>=0 for r in nav_rows)
+report['scope']='Vertical native collision probes, route-height updates and rebuilt navigation. Moving bike transitions remain unverified.'
+(root/'Tests/Results/2026-09-11-graded-native-collision.json').write_text(json.dumps(report,indent=2)+'\n')

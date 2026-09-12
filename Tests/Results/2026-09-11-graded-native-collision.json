@@ -119,6 +119,381 @@
   "probe_count": 900,
   "failures": [],
   "passed": true,
-  "scope": "Vertical native line/capsule probes and transient route-point adjustment. Moving bike and rebuilt navmesh not verified.",
-  "map_saved": false
+  "scope": "Vertical native collision probes, route-height updates and rebuilt navigation. Moving bike transitions remain unverified.",
+  "map_saved": false,
+  "navigation": {
+    "build_started": true,
+    "build_finished": true,
+    "routes": [
+      {
+        "label": "OSM path 28798697 part 1",
+        "start": [
+          -659.2250518073948,
+          11847.23427000766,
+          -212.9714605628326
+        ],
+        "end": [
+          -541.5281654451974,
+          11047.696335396418,
+          -239.62927306208428
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 809.3078002929688
+      },
+      {
+        "label": "OSM path 61490788 part 10",
+        "start": [
+          2366.347953650014,
+          11073.505704166988,
+          -405.7085239513424
+        ],
+        "end": [
+          2738.0654810229316,
+          11774.755540350452,
+          -419.62779425850584
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 793.830322265625
+      },
+      {
+        "label": "OSM path 61490789 part 11",
+        "start": [
+          8180.967442970723,
+          10859.141631470993,
+          -475.1192410196431
+        ],
+        "end": [
+          8815.06070398027,
+          11645.057989346484,
+          -482.67207248003564
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 1009.8635864257812
+      },
+      {
+        "label": "OSM path 102679931 part 27",
+        "start": [
+          -17148.808453426074,
+          12197.969165584072,
+          251.35232672394358
+        ],
+        "end": [
+          -16821.893577735562,
+          11462.07965759871,
+          215.12758660137004
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 806.8228149414062
+      },
+      {
+        "label": "OSM path 102679940 part 31",
+        "start": [
+          -951.7455763920831,
+          11177.786287867153,
+          -186.25392841868813
+        ],
+        "end": [
+          -998.9092147055393,
+          11064.792050591981,
+          -182.5757313592525
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 122.49979400634766
+      },
+      {
+        "label": "OSM path 102679946 part 34",
+        "start": [
+          -13627.252086135559,
+          11533.851739608994,
+          107.82256607574503
+        ],
+        "end": [
+          -829.4888104661368,
+          11610.492232053852,
+          -201.28896252318012
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 12865.2626953125
+      },
+      {
+        "label": "OSM path 146304979 part 39",
+        "start": [
+          1961.1577376335238,
+          11040.719262572626,
+          -386.5935796616564
+        ],
+        "end": [
+          1203.4684678190388,
+          11035.479758415991,
+          -349.13274814826303
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 758.6734619140625
+      },
+      {
+        "label": "OSM path 146304987 part 45",
+        "start": [
+          2532.4392568552867,
+          11202.085908610994,
+          -411.80049378565167
+        ],
+        "end": [
+          2552.0177692679376,
+          11061.367284459993,
+          -417.16645477997383
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 142.1395721435547
+      },
+      {
+        "label": "OSM path 182395365 part 84",
+        "start": [
+          -16098.950910944646,
+          11440.30720939239,
+          200.7301583199126
+        ],
+        "end": [
+          -13604.804801188098,
+          12122.5878948501,
+          118.14407502913855
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 2931.66357421875
+      },
+      {
+        "label": "OSM path 741964052 part 156",
+        "start": [
+          9193.29548862297,
+          11407.58907495377,
+          -475.3888340782757
+        ],
+        "end": [
+          -285.1975697286737,
+          11596.235099419331,
+          -242.522010848617
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 9483.2578125
+      },
+      {
+        "label": "OSM path 741964056 part 157",
+        "start": [
+          9147.977826728797,
+          11488.78927853269,
+          -476.8761680355709
+        ],
+        "end": [
+          -17573.52559248684,
+          12127.380293452492,
+          267.47393505198687
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 26742.515625
+      },
+      {
+        "label": "OSM path 1035389486 part 175",
+        "start": [
+          -829.4888104661368,
+          11610.492232053852,
+          -201.28896252318012
+        ],
+        "end": [
+          -17639.25108817639,
+          12023.652309551835,
+          256.4130038845754
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 16821.0625
+      },
+      {
+        "label": "OSM path 1035815115 part 180",
+        "start": [
+          -15856.128196398882,
+          12170.473742329827,
+          198.0372357950681
+        ],
+        "end": [
+          -15868.329416863466,
+          11992.347419277454,
+          195.83597208835644
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 178.66941833496094
+      },
+      {
+        "label": "OSM path 1035815117 part 181",
+        "start": [
+          -12003.701886162162,
+          11913.515731335307,
+          79.31745552980979
+        ],
+        "end": [
+          -11995.478518113183,
+          12088.357382640243,
+          86.59206383723503
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 175.53042602539062
+      },
+      {
+        "label": "OSM path 1035815123 part 182",
+        "start": [
+          -929.4888348667882,
+          11852.98280455172,
+          -191.70584759619692
+        ],
+        "end": [
+          -887.1134777436964,
+          11640.45014437288,
+          -196.5893674804386
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 216.91351318359375
+      },
+      {
+        "label": "OSM path 1035815127 part 184",
+        "start": [
+          -1748.5951172265534,
+          11222.163445983702,
+          -110.99729805934987
+        ],
+        "end": [
+          -1287.0977004407905,
+          11038.446318684146,
+          -152.19144560724587
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 498.38623046875
+      },
+      {
+        "label": "OSM path 1035815128 part 185",
+        "start": [
+          -285.1975697286737,
+          11596.235099419331,
+          -242.522010848617
+        ],
+        "end": [
+          -277.0885397408468,
+          11042.27494012254,
+          -250.24188359700213
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 554.2105102539062
+      },
+      {
+        "label": "OSM path 1035815129 part 186",
+        "start": [
+          -285.1975697286737,
+          11596.235099419331,
+          -242.522010848617
+        ],
+        "end": [
+          -829.4888104661368,
+          11610.492232053852,
+          -201.28896252318012
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 546.0237426757812
+      },
+      {
+        "label": "OSM path 1035815130 part 187",
+        "start": [
+          -316.4494096379106,
+          11839.943401825925,
+          -239.20363103977445
+        ],
+        "end": [
+          -285.1975697286737,
+          11596.235099419331,
+          -242.522010848617
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 246.07896423339844
+      },
+      {
+        "label": "OSM path 1035815134 part 188",
+        "start": [
+          3749.182846668797,
+          11753.175887698308,
+          -469.78603779524695
+        ],
+        "end": [
+          3747.766654593094,
+          11527.715406225374,
+          -469.5583154635385
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 225.68484497070312
+      },
+      {
+        "label": "Eastside connector spline 0",
+        "start": [
+          11358.968115411699,
+          8986.856258924428,
+          -346.6103681991522
+        ],
+        "end": [
+          12173.884349619038,
+          10107.505983843777,
+          -334.28474030388816
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 1403.585205078125
+      },
+      {
+        "label": "Eastside connector spline 1",
+        "start": [
+          12173.884349619038,
+          10107.505983843777,
+          -334.28474030388816
+        ],
+        "end": [
+          12573.162627130901,
+          10729.21397308819,
+          -322.40954937773415
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 738.9744262695312
+      },
+      {
+        "label": "Eastside trail spline 0",
+        "start": [
+          12573.162627130903,
+          10729.21397308819,
+          -322.40954937773387
+        ],
+        "end": [
+          13405.93835915206,
+          12013.257415623715,
+          -324.0421955653544
+        ],
+        "start_projected": true,
+        "end_projected": true,
+        "route_length_cm": 1530.469482421875
+      }
+    ],
+    "failed_routes": 0
+  }
 }
