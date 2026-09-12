@@ -98,3 +98,12 @@ Build passes. Rendered punk integrated normal death path and vendor candidate te
 Added --slope to zombie death fixture: scan real Landscape inside mapped park for an8–31.8degree slope, spawn and kill the model there, then inspect eight visible joint positions against terrain (Head, Chest, wrists, shins, shoes). Weapon drops disabled only in fixture to keep the view clear. Captures precede clearance assertion so failed contact remains reviewable.
 
 Editor build and both vendor/punk runs pass on27.82degree slope. Minimum sampled joint clearance punk5.75cm/vendor3.34cm; required >=-15cm. Chest tracking/head drop/canceled attack warning also pass. Inspected both2.5second frames: slope-conforming bodies, attached shoes, but awkward limb poses remain. Joint clearance does not measure mesh skin penetration, and fixed2.5second image does not prove fully settled physics. Need closer contact/settling and scenery-obstacle tests before broader visual acceptance. Installed052 unchanged.
+
+
+## Settling and mesh-contact failure — 2026-09-12 [codex-maclaptop]
+
+Strengthened death fixture: sample all11010 punk rendered vertices against terrain at3.8seconds, report per-bone penetration and maximum physical-body linear speed. Accept mesh penetration no worse than3cm and speed<40cm/s. Capture remains before assertion. These checks supersede confidence from joint-only clearance.
+
+Three punk slope landings: first failed -16.06cm/184below-ground vertices with speed0; second passed -1.09cm/3vertices (Foot_L),speed2.93; third failed -11.96cm/140vertices,all Foot_L,speed0. This is intermittent actual shoe/terrain penetration, not unsettled motion. Visual shoe-to-shin attachment does not supply physical shoe support; imported asset lacks foot bodies. Need add compatible shoe collision/ankle support and rerun mesh contact, rather than lifting whole corpse or accepting a single good landing. Runtime source still has new falls; installed052 retains previous zombie death and is unchanged. Do not promote zombie falls on current evidence.
+
+Native build passes; mesh-contact fixtures intentionally report failures. Reproducer Scripts/test_zombie_death.py --render --punk --slope, with per-bone diagnostics retained in report. Full game remains unfinished.
