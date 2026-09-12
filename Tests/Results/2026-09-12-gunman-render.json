@@ -5,16 +5,16 @@
   "exit_code": 0,
   "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/ccfad9139f0d447fa24870b3938ae284/warning.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/ccfad9139f0d447fa24870b3938ae284/behind-warning.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/ccfad9139f0d447fa24870b3938ae284/covered-shot.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/ccfad9139f0d447fa24870b3938ae284/visible-shooter.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/0ebd3353f64a42599f2db8e7e574c2fe/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/0ebd3353f64a42599f2db8e7e574c2fe/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/0ebd3353f64a42599f2db8e7e574c2fe/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/0ebd3353f64a42599f2db8e7e574c2fe/visible-shooter.png"
   ],
   "visual_review": {
     "reviewed_images": [
       "visible-shooter.png"
     ],
-    "observations": "Gunman head marker and crosshair classification readable. Arms/grip visibly awkward; needs authored or corrected aiming pose.",
-    "limits": "Close fixed view only; other newly generated frames not reinspected this turn."
+    "observations": "Authored one-handed aiming stance; pistol follows hand rather than fixed chest location. Labels readable.",
+    "limits": "Approximate grip; fixed frontal view only; no full motion/art acceptance. Ambient pedestrians removed at fixture start."
   }
 }

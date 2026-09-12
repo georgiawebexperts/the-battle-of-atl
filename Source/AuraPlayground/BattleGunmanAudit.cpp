@@ -1,4 +1,6 @@
 #include "BattleGunman.h"
+#include "PiedmontPedestrian.h"
+#include "EngineUtils.h"
 #include "Camera/CameraActor.h"
 #include "BattleZombie.h"
 #include "BattleBike.h"
@@ -30,6 +32,7 @@ void TickBattleGunmanAudit(ABattleEnemyDirector* D,float Dt){
  if(!ReviewDir.IsEmpty()&&Phase==2&&Clock>.6f&&!CapturedShooter){FScreenshotRequest::RequestScreenshot(ReviewDir/TEXT("visible-shooter.png"),false,false);CapturedShooter=true;}
  Clock+=Dt;
  if(Phase==0){
+  for(TActorIterator<APiedmontPedestrian> It(W);It;++It)It->Destroy(); // Isolate this cover/aim fixture from random crowd occlusion.
   B->DamageGrace=0;B->Ride->StopMovementImmediately();Origin=B->GetActorLocation();
   Gun=W->SpawnActor<ABattleGunman>(Origin+FVector(500,0,0),FRotator(0,180,0));GUN_CHECK(Gun,"Gunman spawn failed");Gun->Cooldown=0;UGameplayStatics::GetPlayerController(W,0)->SetControlRotation(FRotator(0,0,0));
   M->bTutorialActive=true;GUN_CHECK(!Gun->TryAim(B),"Gunman attacked during practice");M->bTutorialActive=false;M->StartCountdown=0;

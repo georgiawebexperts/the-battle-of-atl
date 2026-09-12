@@ -92,3 +92,10 @@ Native build and rendered death fixture pass physical Hips simulation, visible h
 Corrected crosshair target classification: ABattleGunman displays GUNMAN instead of PERSON -10s. Active visible shooter also has a compact GUNMAN marker above the head, with visibility trace to prevent showing through cover and screen margins to avoid major HUD panels. No scoring changes.
 
 Editor build and rendered core fixture pass. Added visible-shooter.png close view after cover removal, inspected at1280x720: both labels readable and target correctly identified. This close view exposes an awkward procedural arm/pistol-grip pose that remains unfinished. Existing initial cover/dodge/fatal hit contract still passes. The HUD correction does not establish visual combat quality. Installed051 unchanged.
+
+
+## Authored shooter stance and hand-following pistol — 2026-09-12 [codex-maclaptop]
+
+Gunman now uses existing Idle_Gun_Shoot animation while aiming and during post-shot alert, retaining normal idle otherwise. Generic weapon hand IK is bypassed for this authored stance; local bone transforms blend exponentially at14/s. Pistol follows Hand_R with an approximate grip offset instead of remaining fixed on the chest. Tracer/muzzle source follows visible weapon bounds plus barrel offset; cover trace still checks body-to-muzzle and muzzle-to-target.
+
+Editor build and rendered core contract pass after fixture isolation: ambient APiedmontPedestrian actors present at fixture start are removed only under the audit flag. Prior random pedestrian crossing obscured capture and a fatal-shot assertion failed; no direct hit-actor diagnostic proved that cause, but isolated rerun passed. New close view inspected: one-handed authored stance replaces crossed procedural arms, pistol moves with hand. Exact finger grip and broader motion still not final art acceptance. Installed051 unchanged.

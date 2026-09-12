@@ -19,6 +19,10 @@ public:
  float Health=80,Cooldown=2;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> DeathPhysics;
  UPROPERTY() TObjectPtr<UPhysicsAsset> DeathAsset;
+ UPROPERTY() TObjectPtr<UAnimSequence> GunIdle;
+ UPROPERTY() TObjectPtr<UAnimSequence> RelaxedIdle;
+ UPROPERTY() TObjectPtr<UAnimSequence> GunWalk;
+ UPROPERTY() TObjectPtr<UAnimSequence> GunRun;
 private:
  FVector AimPoint;
  TWeakObjectPtr<APawn> AimTarget;
@@ -26,5 +30,6 @@ private:
  bool BeginDeathPhysics(FVector Direction);
  void MirrorDeathPose();
 protected:
+ virtual void AnimateBody(float Dt) override;
  virtual bool CanUseWeapon() const override{return !bDead;}
 };
