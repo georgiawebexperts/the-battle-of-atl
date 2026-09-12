@@ -1,0 +1,284 @@
+{
+  "author": "2026-09-12 [codex-maclaptop]",
+  "source": "OpenStreetMap contributors, ODbL; retained References/krog-railways-osm.json",
+  "frame": "World east/south centimetres, one-third geographic scale",
+  "railways": [
+    {
+      "osm_way": 9260538,
+      "tags": {
+        "electrified": "no",
+        "gauge": "1435",
+        "operator": "CSX Transportation",
+        "operator:wikidata": "Q856783",
+        "railway": "rail",
+        "service": "siding",
+        "tiger:reviewed": "no"
+      },
+      "points_xy_cm": [
+        [
+          32610.847749582565,
+          115914.49848992453
+        ],
+        [
+          31142.45197948767,
+          116325.97085852176
+        ],
+        [
+          29977.66044883756,
+          116699.84505164127
+        ],
+        [
+          28757.653655682225,
+          117089.92595655534
+        ],
+        [
+          27809.856073703922,
+          117379.37754871823
+        ]
+      ],
+      "tunnel_crossings": [
+        {
+          "xy_cm": [
+            30202.554635607215,
+            116627.65862994842
+          ],
+          "distance_from_portal_cm": 427.1135924695647
+        }
+      ]
+    },
+    {
+      "osm_way": 9260640,
+      "tags": {
+        "electrified": "no",
+        "gauge": "1435",
+        "operator": "CSX Transportation",
+        "operator:wikidata": "Q856783",
+        "railway": "rail",
+        "railway:freight": "intermodal",
+        "service": "spur"
+      },
+      "points_xy_cm": [
+        [
+          28616.41268297402,
+          119372.7056706708
+        ],
+        [
+          29554.530741472263,
+          119077.74604827477
+        ],
+        [
+          31547.26933022806,
+          118511.02369615498
+        ],
+        [
+          33453.64734238519,
+          117995.8307166675
+        ]
+      ],
+      "tunnel_crossings": [
+        {
+          "xy_cm": [
+            31025.002224159958,
+            118659.55318439585
+          ],
+          "distance_from_portal_cm": 2619.148405433284
+        }
+      ]
+    },
+    {
+      "osm_way": 46226105,
+      "tags": {
+        "bridge": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "level": "3",
+        "maxspeed": "70 mph",
+        "name": "MARTA East Line",
+        "operator": "Metropolitan Atlanta Rapid Transit Authority",
+        "operator:short": "MARTA",
+        "railway": "subway",
+        "railway:atc": "yes",
+        "railway:ato": "sto",
+        "railway:preferred_direction": "forward",
+        "railway:track_ref": "ER",
+        "usage": "main",
+        "voltage": "750"
+      },
+      "points_xy_cm": [
+        [
+          31572.357765409026,
+          115612.9387352962
+        ],
+        [
+          32404.750786147186,
+          115404.90724443085
+        ]
+      ],
+      "tunnel_crossings": []
+    },
+    {
+      "osm_way": 54052151,
+      "tags": {
+        "electrified": "no",
+        "gauge": "1435",
+        "maxspeed": "10 mph",
+        "operator": "CSX Transportation",
+        "operator:wikidata": "Q856783",
+        "railway": "rail",
+        "railway:freight": "intermodal",
+        "service": "spur"
+      },
+      "points_xy_cm": [
+        [
+          33560.75874148924,
+          118259.82304328539
+        ],
+        [
+          30889.36869913402,
+          118996.24067797947
+        ],
+        [
+          29263.709538856834,
+          119488.0840551729
+        ],
+        [
+          28731.775156878175,
+          119657.03402549669
+        ]
+      ],
+      "tunnel_crossings": [
+        {
+          "xy_cm": [
+            31134.222164638217,
+            118928.7423317798
+          ],
+          "distance_from_portal_cm": 2909.6510602703306
+        }
+      ]
+    },
+    {
+      "osm_way": 144595771,
+      "tags": {
+        "electrified": "no",
+        "gauge": "1435",
+        "maxspeed": "25 mph",
+        "name": "Atlanta Terminal Subdivision",
+        "old_railway_operator": "Georgia",
+        "operator": "CSX Transportation",
+        "operator:wikidata": "Q856783",
+        "railway": "rail",
+        "railway:traffic_mode": "freight",
+        "railway_milepost": "YYG",
+        "usage": "main"
+      },
+      "points_xy_cm": [
+        [
+          32489.834862211905,
+          115615.28443568479
+        ],
+        [
+          29913.511738635134,
+          116306.35671947773
+        ],
+        [
+          29691.64497774027,
+          116373.56639140335
+        ]
+      ],
+      "tunnel_crossings": [
+        {
+          "xy_cm": [
+            30057.038063572585,
+            116267.85725322242
+          ],
+          "distance_from_portal_cm": 39.00007372713104
+        }
+      ]
+    },
+    {
+      "osm_way": 293644052,
+      "tags": {
+        "electrified": "no",
+        "gauge": "1435",
+        "operator": "CSX Transportation",
+        "operator:wikidata": "Q856783",
+        "railway": "rail",
+        "railway:freight": "intermodal",
+        "service": "spur"
+      },
+      "points_xy_cm": [
+        [
+          28671.712588699214,
+          119509.00069525509
+        ],
+        [
+          29971.74487373171,
+          119126.26851516156
+        ],
+        [
+          32184.39579442687,
+          118482.14173809005
+        ],
+        [
+          33510.54309555936,
+          118136.05894989725
+        ]
+      ],
+      "tunnel_crossings": [
+        {
+          "xy_cm": [
+            31083.098893549573,
+            118802.74125820688
+          ],
+          "distance_from_portal_cm": 2773.673637922611
+        }
+      ]
+    },
+    {
+      "osm_way": 539939093,
+      "tags": {
+        "electrified": "no",
+        "gauge": "1435",
+        "maxspeed": "25 mph",
+        "name": "Atlanta Terminal Subdivision",
+        "old_railway_operator": "Georgia",
+        "operator": "CSX Transportation",
+        "operator:wikidata": "Q856783",
+        "railway": "rail",
+        "railway:traffic_mode": "freight",
+        "railway_milepost": "YYG",
+        "usage": "main"
+      },
+      "points_xy_cm": [
+        [
+          32542.85728749894,
+          115746.38662802537
+        ],
+        [
+          31758.09413820195,
+          115952.82560617974
+        ],
+        [
+          29305.266043543816,
+          116630.47275220355
+        ],
+        [
+          28266.09098518122,
+          116950.11151787025
+        ]
+      ],
+      "tunnel_crossings": [
+        {
+          "xy_cm": [
+            30113.396909157207,
+            116407.20901191563
+          ],
+          "distance_from_portal_cm": 189.31717896310542
+        }
+      ]
+    }
+  ],
+  "scope": "Plan alignment only. Rail elevation, deck support, terrain joins and present-day operational status are not verified. No main-map changes."
+}
