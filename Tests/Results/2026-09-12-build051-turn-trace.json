@@ -1,0 +1,12 @@
+{
+  "trace": [
+    "[2026.09.12-15.51.41:233][879]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17602.580 Y=-4009.346 Z=199.176 yaw=-93.26 target=X=-17580.721 Y=-4178.495 Z=105.794 speed=700.0 steer=0.609 floor=BattleTutorial_2147482119",
+    "[2026.09.12-15.51.41:483][894]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17586.096 Y=-4181.796 Z=204.182 yaw=-72.72 target=X=-17612.054 Y=-4343.062 Z=111.066 speed=700.0 steer=-0.090 floor=BattleTutorial_2147482119",
+    "[2026.09.12-15.51.41:733][909]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17553.733 Y=-4352.840 Z=208.675 yaw=-94.61 target=X=-17685.593 Y=-4477.072 Z=116.272 speed=700.0 steer=-0.877 floor=BattleTutorial_2147482119",
+    "[2026.09.12-15.51.41:983][924]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17598.888 Y=-4518.415 Z=214.442 yaw=-127.52 target=X=-17765.300 Y=-4620.385 Z=121.609 speed=700.0 steer=-0.983 floor=BattleTutorial_2147482119",
+    "[2026.09.12-15.51.42:233][939]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17725.212 Y=-4635.323 Z=219.955 yaw=-147.71 target=X=-17744.700 Y=-4800.583 Z=124.157 speed=700.0 steer=0.265 floor=BattleTutorial_2147482119",
+    "[2026.09.12-15.51.42:483][954]LogTemp: Display: TutorialSteering: dt=0.0167 position=X=-17858.642 Y=-4746.635 Z=225.108 yaw=-123.37 target=X=-17705.527 Y=-4876.904 Z=125.617 speed=700.0 steer=0.901 floor=BattleTutorial_2147482119",
+    "[2026.09.12-15.51.42:733][969]LogTemp: Display: Tutorial deviation: position=X=-17924.582 Y=-4904.934 Z=224.770 segment=69"
+  ],
+  "scope": "Packaged direct tutorial failure. No impact lines observed; steering oscillation at60fps. Cause of editor/cooked difference still pending."
+}

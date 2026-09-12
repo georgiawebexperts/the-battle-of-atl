@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "Misc/CommandLine.h"
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
 #include "Engine/World.h"
@@ -73,6 +74,12 @@ void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
 }
 void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta){
  Super::HandleImpact(Hit,TimeSlice,MoveDelta);
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit"))&&CharacterOwner&&Hit.ImpactNormal.Z<.6f){
+  UE_LOG(LogTemp,Display,TEXT("TutorialImpact: actor=%s component=%s point=%s normal=%s bike=%s speed=%.1f"),*GetNameSafe(Hit.GetActor()),*GetNameSafe(Hit.GetComponent()),*Hit.ImpactPoint.ToString(),*Hit.ImpactNormal.ToString(),*CharacterOwner->GetActorLocation().ToString(),Speed);
+ }
+#endif
+
  if(!CharacterOwner||Recovery>0||ContactCooldown>0||Hit.ImpactNormal.Z>.45f)return;
  const bool Traffic=Hit.GetActor()&&(Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic"))||Hit.GetActor()->ActorHasTag(TEXT("PiedmontHostile"))||Hit.GetActor()->ActorHasTag(TEXT("RideVehicle")));
  if(Traffic){

@@ -60,6 +60,8 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   TutorialMaxError=FMath::Max(TutorialMaxError,Best);if(Best>=200)UE_LOG(LogTemp,Display,TEXT("Tutorial deviation: position=%s segment=%d"),*P.ToString(),Segment);TCHECK(Best<200,"Practice steering left the road");
   FVector Target=Closest;float Ahead=170;
   for(int I=Segment+1;I<Points.Num();I++){const float D=FVector::Dist2D(Target,Points[I]);if(D>=Ahead){Target=FMath::Lerp(Target,Points[I],Ahead/D);break;}Target=Points[I];Ahead-=D;}
+  static double NextTrace=0;
+  if(P.Y< -4000&&GetWorld()->GetTimeSeconds()>=NextTrace){NextTrace=GetWorld()->GetTimeSeconds()+.25;UE_LOG(LogTemp,Display,TEXT("TutorialSteering: dt=%.4f position=%s yaw=%.2f target=%s speed=%.1f steer=%.3f floor=%s"),Dt,*P.ToString(),B->GetActorRotation().Yaw,*Target.ToString(),B->Ride->Speed,B->Ride->SmoothedSteer,*GetNameSafe(B->Ride->CurrentFloor.HitResult.GetActor()));}
   const float Error=FMath::FindDeltaAngleDegrees(B->GetActorRotation().Yaw,(Target-P).Rotation().Yaw);
   auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
   Key(EKeys::W,true);Key(EKeys::A,Error< -2);Key(EKeys::D,Error>2);
