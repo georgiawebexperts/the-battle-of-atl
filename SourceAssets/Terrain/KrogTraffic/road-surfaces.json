@@ -1,0 +1,14 @@
+{
+  "maximum_join_step_cm": 7.465247165150686,
+  "join_samples": 2638,
+  "conformed_edges": 4019,
+  "max_previous_edge_height_gap_cm": 2.711792994064581,
+  "interior_open_edges": 0,
+  "triangles": 25044,
+  "missing_area_cm2": 2.644770498827498e-06,
+  "protected_overlap_cm2": 0.00450349951997747,
+  "source_to_native_max_error_cm": 0.0002703928388427812,
+  "native_reference_samples": 49,
+  "main_map_changed": false,
+  "scope": "Source candidate only; native collision, driving and appearance pending."
+}
