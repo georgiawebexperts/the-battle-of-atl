@@ -65,6 +65,7 @@ private:
  float ShotCooldown=0,Kick=0;
  FRotator GunRestRotation;
  void PoseArms(float Dt);
+ void InitializeDetailedArmsPreview();
  TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;
  float SwayTime=0;
  float AimBlend=0,ArmPoseBlend=0,EmptyArmMotion=0;

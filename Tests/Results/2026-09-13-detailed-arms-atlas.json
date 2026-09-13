@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 30.7,
+  "exit_code": 0,
+  "images": [],
+  "visual_review": "Rejected gray hands; shared capture paths subsequently overwritten, do not cite them. Runtime later established hands used WorldGridMaterial, so atlas parameters did not reach skin shader.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "detailed_arms_loaded": true,
+  "functional_passed": true
+}

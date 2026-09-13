@@ -1,0 +1,24 @@
+[
+  {
+    "name": "body",
+    "mesh": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body",
+    "file": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Rider/DetailedArms/body.fbx",
+    "materials": [
+      {
+        "slot": "lambert1",
+        "asset": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized.M_BodySynthesized"
+      }
+    ]
+  },
+  {
+    "name": "crewneck",
+    "mesh": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck",
+    "file": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Rider/DetailedArms/crewneck.fbx",
+    "materials": [
+      {
+        "slot": "M_Crewneck",
+        "asset": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck.MI_m_nrw_crewneck"
+      }
+    ]
+  }
+]

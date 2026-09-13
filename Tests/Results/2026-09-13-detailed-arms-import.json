@@ -1,0 +1,27 @@
+{
+  "assets": [
+    {
+      "asset": "/Game/BattleForTheA/Rider/Detailed/SK_DetailedHands",
+      "source": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Rider/DetailedArms/body_arms.fbx",
+      "materials": [
+        {
+          "slot": "lambert1",
+          "asset": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized.M_BodySynthesized"
+        }
+      ],
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel"
+    },
+    {
+      "asset": "/Game/BattleForTheA/Rider/Detailed/SK_DetailedSleeves",
+      "source": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Rider/DetailedArms/crewneck_arms.fbx",
+      "materials": [
+        {
+          "slot": "M_Crewneck",
+          "asset": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck.MI_m_nrw_crewneck"
+        }
+      ],
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base.SK_Base"
+    }
+  ],
+  "scope": "Imported derivatives only; pose/render validation pending."
+}

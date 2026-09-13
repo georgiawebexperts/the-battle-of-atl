@@ -1,0 +1,42 @@
+{
+  "material": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized",
+  "parent": "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_BodySynthesized.M_BodySynthesized",
+  "vectors": {},
+  "scalars": {
+    "Specular": 0.38999998569488525,
+    "GlobalRoughness": 0.5,
+    "MicroNormalTiling": 33.0,
+    "MicroNormalIntensity": 0.27000001072883606,
+    "CavityMapPower": 1.0,
+    "MinRoughness": 0.39899998903274536,
+    "MaxRoughness": 0.949999988079071,
+    "FresnelRoughness": 1.0,
+    "FresnelRoughnessExponent": 4.199999809265137,
+    "SkinScattering": 1.0,
+    "UnderwearCavityMapPower": 4.0,
+    "UnderwearRoughness": 1.9500000476837158,
+    "NormalIntensity": 1.0,
+    "UnderwearNormalIntensity": 1.5,
+    "AlbedoVariationAmount": 1.0,
+    "SourceU": 0.5,
+    "SourceV": 0.5,
+    "MelaninRandomSeed": 0.5,
+    "RednessRandomSeed": 0.5,
+    "FadeOpacity": 1.0,
+    "AlbedoDataMult": 1.0,
+    "BentNormalStrength": 50.0,
+    "BentNormalNear": 200.0,
+    "BentNormalFar": 600.0,
+    "BentNormalMix": 0.75,
+    "AtlasSelector": 0.0
+  },
+  "textures": {
+    "Color_MAIN": "/Game/CitySampleCrowd/Character/Shared/Textures/Default/DefaultTexture_VT.DefaultTexture_VT",
+    "Cavity_MAIN": "/Game/CitySampleCrowd/Character/Male/Textures/male_body_cavity_map.male_body_cavity_map",
+    "Roughness_MAIN": "/Game/CitySampleCrowd/Character/Male/Textures/male_body_roughness_map.male_body_roughness_map",
+    "Normal_MAIN": "/Game/CitySampleCrowd/Character/Male/Textures/male_body_normal_map.male_body_normal_map",
+    "UnderwearMask": "/Game/CitySampleCrowd/Character/Male/Textures/male_body_mask_map.male_body_mask_map",
+    "Color_UNDERWEAR": "/Game/CitySampleCrowd/Character/Male/Textures/male_underwear_color_map.male_underwear_color_map",
+    "Color_MainAtlas": "/Game/CitySampleCrowd/Character/Shared/Textures/Atlases/BodyColorAtlas.BodyColorAtlas"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 30.7,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-arms-material/idle.png",
+    "work/detailed-arms-material/drawn.png",
+    "work/detailed-arms-material/walk-a.png",
+    "work/detailed-arms-material/walk-b.png",
+    "work/detailed-arms-material/run.png",
+    "work/detailed-arms-material/jump.png",
+    "work/detailed-arms-material/crouch.png"
+  ],
+  "visual_review": "Skin appears after explicit skin material binding; run and drawn views inspected. Experimental atlas override and sleeve default material not final.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "detailed_arms_loaded": true
+}

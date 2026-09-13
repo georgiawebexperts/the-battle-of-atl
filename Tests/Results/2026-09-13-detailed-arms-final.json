@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 30.7,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-arms-final/idle.png",
+    "work/detailed-arms-final/drawn.png",
+    "work/detailed-arms-final/walk-a.png",
+    "work/detailed-arms-final/walk-b.png",
+    "work/detailed-arms-final/run.png",
+    "work/detailed-arms-final/jump.png",
+    "work/detailed-arms-final/crouch.png"
+  ],
+  "visual_review": "Rejected gray hand/sleeve appearance. Later runtime logging proved imported material binding was WorldGridMaterial; importer struct array assignment corrected and source materials explicitly bound. See detailed-arms-verified report.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "detailed_arms_loaded": true,
+  "functional_passed": true
+}
