@@ -1,0 +1,20 @@
+{
+  "compiled": true,
+  "runtime_verified": false,
+  "installed": false,
+  "log": "work/third-person-first-build.log",
+  "changes": [
+    "Third-person shoulder camera and visible full body; first-person arm rig hidden",
+    "Holstered movement faces travel direction; drawn weapon uses camera-facing movement",
+    "Arcade gear caps 650/950/1300/1650/1950 cm/s with 2200 boost",
+    "Jump minimum speed reduced from 500 to 150 cm/s; arcade lift 750 cm/s",
+    "Opaque dark HUD panels, brighter secondary text, gear/jump/boost/horn hints"
+  ],
+  "required_review": [
+    "Camera obstruction and crouch/swim transitions",
+    "Weapon alignment and aim tracing in third person for all guns",
+    "Free rotation, strafing, animations and mouse sensitivity",
+    "Slope/ramp jumps and steering at new speeds",
+    "HUD hints fit at normal Mac window size"
+  ]
+}

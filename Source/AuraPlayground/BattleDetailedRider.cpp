@@ -91,12 +91,12 @@ void ABattleRider::InitializeDetailedBodyPreview(){
  if(!DetailedLandStand||!DetailedLandRun)return;
  if(!Mesh||!HairMesh||!DetailedIdle||!DetailedWalk||!DetailedRun||!DetailedCrouchIdle||!DetailedCrouchWalk||!DetailedFall)return;
  bDetailedBodyReview=FParse::Param(FCommandLine::Get(),TEXT("BattleFootBodyReview"));
- Body->SetSkinnedAssetAndUpdate(Mesh);Body->SetOwnerNoSee(!bDetailedBodyReview);Body->RefreshBoneTransforms();
+ Body->SetSkinnedAssetAndUpdate(Mesh);Body->SetOwnerNoSee(false);Body->RefreshBoneTransforms();
  for(int I=0;I<Parts.Num();I++){
   auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("DetailedFootPart%d"),I));AddInstanceComponent(Part);Part->SetupAttachment(Body);
-  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetOwnerNoSee(!bDetailedBodyReview);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
+  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetOwnerNoSee(false);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
  }
- auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedFootHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetOwnerNoSee(!bDetailedBodyReview);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
+ auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedFootHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetOwnerNoSee(false);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
  GetCharacterMovement()->MaxWalkSpeed=200;GetCharacterMovement()->MaxWalkSpeedCrouched=150;
  bNativeCrowdRig=bDetailedPlayerRig=true;SetLocomotionClips(DetailedIdle,DetailedWalk,DetailedRun);
  if(bDetailedBodyReview){CameraArm->SetComponentTickEnabled(true);Camera->AttachToComponent(CameraArm,FAttachmentTransformRules::SnapToTargetNotIncludingScale,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;}

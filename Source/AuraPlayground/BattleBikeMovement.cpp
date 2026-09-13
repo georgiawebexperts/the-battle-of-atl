@@ -74,7 +74,8 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(Recovery>0){Velocity.X=Velocity.Y=0;return;}
  if(BounceRemaining>0){Velocity.X=BounceDirection.X*140;Velocity.Y=BounceDirection.Y*140;return;}
  static const float Caps[]={420,700,1000,1300,1600};static const float Accel[]={640,500,420,360,320};
- const float Cap=(BoostRemaining>0?1800.f:Caps[Gear-1])*(bGrass?.75f:1.f);
+ static const float ArcadeCaps[]={650,950,1300,1650,1950};
+ const float Cap=(BoostRemaining>0?(bRealHandling?1800.f:2200.f):(bRealHandling?Caps[Gear-1]:ArcadeCaps[Gear-1]))*(bGrass?.85f:1.f);
  const float Drag=Speed>0?22.f+Speed*.012f:0;
  if(BoostRemaining>0&&Brake<=0&&(!bRealHandling||IsMovingOnGround()))Speed=Cap;
  if(bRealHandling){
@@ -131,8 +132,8 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
 
 bool UBattleBikeMovement::Hop(){
  auto* Bike=Cast<ABattleBike>(CharacterOwner);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||!IsMovingOnGround()||Speed<500)return false;
- Velocity.Z=650;SetMovementMode(MOVE_Falling);return true;
+ if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||!IsMovingOnGround()||Speed<150)return false;
+ Velocity.Z=FMath::Max(0.f,Velocity.Z)+(bRealHandling?650.f:750.f);SetMovementMode(MOVE_Falling);return true;
 }
 void UBattleBikeMovement::OnMovementModeChanged(EMovementMode Previous,uint8 Custom){
  Super::OnMovementModeChanged(Previous,Custom);

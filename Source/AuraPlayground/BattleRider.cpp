@@ -16,8 +16,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 ABattleRider::ABattleRider(){
- Camera->SetupAttachment(GetCapsuleComponent());Camera->SetRelativeLocation(FVector(0,0,64));Camera->bUsePawnControlRotation=true;
- CameraArm->SetComponentTickEnabled(false);Body->SetOwnerNoSee(true);
+ Camera->SetupAttachment(CameraArm,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;
+ CameraArm->SetComponentTickEnabled(true);CameraArm->bDoCollisionTest=true;Body->SetOwnerNoSee(false);
  GetCharacterMovement()->MaxWalkSpeed=520;GetCharacterMovement()->JumpZVelocity=560;GetCharacterMovement()->AirControl=.8f;GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch=true;GetCharacterMovement()->CrouchedHalfHeight=48;GetCharacterMovement()->MaxWalkSpeedCrouched=240;GetCharacterMovement()->GravityScale=1.4f;
  FirstPersonArms=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("FirstPersonArms"));FirstPersonArms->SetupAttachment(Camera);FirstPersonArms->SetRelativeLocation(FVector(22,0,-175));FirstPersonArms->SetRelativeRotation(FRotator(0,-90,0));FirstPersonArms->SetOnlyOwnerSee(true);FirstPersonArms->SetBoundsScale(10);FirstPersonArms->SetCastShadow(false);FirstPersonArms->SetCollisionEnabled(ECollisionEnabled::NoCollision);FirstPersonArms->SetCanEverAffectNavigation(false);
  Weapon->SetupAttachment(Camera);bWeaponDrawn=false;BuildMeleeVisual();BuildLongGun();
@@ -56,6 +56,9 @@ void ABattleRider::Tick(float Dt){
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
+ bUseControllerRotationYaw=bWeaponDrawn;
+ GetCharacterMovement()->bOrientRotationToMovement=!bWeaponDrawn;
+ GetCharacterMovement()->RotationRate=FRotator(0,540,0);
  // Exponential smoothing gives the view rig the same response at different frame rates.
  AimBlend=FMath::Lerp(AimBlend,bAiming?1.f:0.f,1.f-FMath::Exp(-12.f*Dt));
  const FVector ViewPosition=FMath::Lerp(GunRestPosition,CurrentWeapon==1?FVector(65,-1.28f,-9.5f):GunAimPosition,AimBlend);
@@ -68,8 +71,14 @@ void ABattleRider::Tick(float Dt){
  }
  Super::Tick(Dt);
  const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
- if(!bDetailedBodyReview)Camera->SetRelativeLocation(FVector(0,0,FMath::FInterpTo(Camera->GetRelativeLocation().Z,bSwimming?-7.f:(Stunned?8.f:(bIsCrouched?38.f:64.f)),Dt,8)));
- UpdateMelee(Dt);UpdateWeaponModel();UpdateDetailedPistol();PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
+ Camera->SetRelativeLocation(FVector::ZeroVector);CameraArm->SetRelativeLocation(FVector(0,0,FMath::FInterpTo(CameraArm->GetRelativeLocation().Z,bSwimming?20.f:(Stunned?25.f:(bIsCrouched?38.f:64.f)),Dt,8)));
+ UpdateMelee(Dt);UpdateWeaponModel();UpdateDetailedPistol();PoseArms(Dt);
+ FirstPersonArms->SetHiddenInGame(true,true);
+ // The camera follows Ellison; weapons stay with his body rather than the lens.
+ const FName Hand=bDetailedPlayerRig?FName(TEXT("hand_r")):FName(TEXT("Hand_R"));
+ const FVector Grip=Body->GetSocketLocation(Hand);
+ Weapon->SetWorldLocation(Grip);Weapon->SetWorldRotation(GetActorRotation()+GunRestRotation);
+ if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return (!ParkedBike||ParkedBike->StunRemaining<=0)&&Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}
 float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
