@@ -22,7 +22,7 @@
 void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  auto* W=PC->GetWorld();if(W->GetTimeSeconds()<5)return;
- struct FState{int Stage=0,Edge=0;float ViewMin=MAX_flt,ViewMax=-MAX_flt,EntryBankDistance=0,NextIdleLog=0,Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start,RouteLast;TArray<FVector> Route;TArray<bool> RouteSwim;int RouteIndex=0;float RouteDistance=0;bool TaserPassed=false,AwayShore=false,Shot=false;};static FState S;
+ struct FState{int Stage=0,Edge=0;float ViewMin=MAX_flt,ViewMax=-MAX_flt,EntryBankDistance=0,NextIdleLog=0,Clock=0,SwimReadyClock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start,RouteLast;TArray<FVector> Route;TArray<bool> RouteSwim;int RouteIndex=0;float RouteDistance=0;bool TaserPassed=false,AwayShore=false,Shot=false;};static FState S;
  if(S.Stage<0)return;S.Clock+=Dt;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.:0.,false,0));};
  auto End=[&](bool Pass,const TCHAR* Reason){Key(EKeys::W,false);
@@ -81,7 +81,13 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   const FVector Eye=P->GetActorLocation()+P->GetActorRightVector()*310+P->GetActorForwardVector()*80+FVector(0,0,90),Target=P->GetActorLocation()+FVector(0,0,-20);
   Camera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());PC->SetViewTarget(Camera.Get());
  }
- if(S.Stage==1){if(!P)return;SWIM_CHECK(S.Bike.IsValid()&&S.Bike->bParked,"Lake did not park bike");S.Bank=S.Bike->GetActorLocation();S.Start=P->GetActorLocation();S.EntryBankDistance=FVector::Dist2D(S.Bank,S.Start);if(FParse::Param(FCommandLine::Get(),TEXT("BattleSwimDeepDrop"))){SWIM_CHECK(S.EntryBankDistance>600,"Deep drop fixture was too close to bank");}Key(EKeys::W,true);S.Stage=2;S.Clock=0;return;}
+ if(S.Stage==1){if(!P)return;Key(EKeys::W,true);
+  if(S.EntryBankDistance==0&&S.Bike.IsValid()){S.Bank=S.Bike->GetActorLocation();S.Start=P->GetActorLocation();S.EntryBankDistance=FVector::Dist2D(S.Bank,S.Start);}
+  // Shallow entry may legitimately wade before reaching swimming depth.
+  // Require continuous surface-swim mode before measuring a full stroke.
+  if(!P->bSwimming||P->GetCharacterMovement()->MovementMode!=MOVE_Flying){S.SwimReadyClock=0;return;}
+  S.SwimReadyClock+=Dt;if(S.SwimReadyClock<.35f)return;
+  SWIM_CHECK(S.Bike.IsValid()&&S.Bike->bParked,"Lake did not park bike");if(FParse::Param(FCommandLine::Get(),TEXT("BattleSwimDeepDrop"))){SWIM_CHECK(S.EntryBankDistance>600,"Deep drop fixture was too close to bank");}Key(EKeys::W,true);S.Stage=2;S.Clock=0;return;}
  SWIM_CHECK(P&&S.Bike.IsValid(),"Lost swimmer or parked bike");
  S.Drift=FMath::Max(S.Drift,float(FVector::Distance(S.Bank,S.Bike->GetActorLocation())));
  SWIM_CHECK(S.Drift<1,"Parked bike moved during swimming");
@@ -95,6 +101,7 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   Capture(TEXT("shore-exit"));S.Stage=3;S.Clock=0;
  }
  if(S.Stage==2){
+  if(P->GetCharacterMovement()->MovementMode!=MOVE_Flying)UE_LOG(LogTemp,Display,TEXT("SwimModeFailure: mode=%d swimming=%d location=%s clock=%.3f"),int(P->GetCharacterMovement()->MovementMode),P->bSwimming,*P->GetActorLocation().ToString(),S.Clock);
   SWIM_CHECK(P->GetCharacterMovement()->MovementMode==MOVE_Flying,"Swimmer lost surface movement mode after possession");
   const FName Hand=BattleUseDetailedRider()?FName(TEXT("hand_l")):FName(TEXT("Hand_L"));
   const float Z=P->Body->GetBoneLocationByName(Hand,EBoneSpaces::ComponentSpace).Z;S.MinHand=FMath::Min(S.MinHand,Z);S.MaxHand=FMath::Max(S.MaxHand,Z);

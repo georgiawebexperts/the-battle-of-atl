@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 648.93,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 103.43,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": false,
+  "entry_bank_distance_cm": 529.73,
+  "deep_drop": false,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-64b89b8b201d49eca508672424491393/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-64b89b8b201d49eca508672424491393/stroke-middle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-64b89b8b201d49eca508672424491393/treading.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-64b89b8b201d49eca508672424491393/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-64b89b8b201d49eca508672424491393/returned.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-64b89b8b201d49eca508672424491393/stroke-late.png"
+  ],
+  "runtime": "editor-game",
+  "third_person_view_review": false,
+  "stop_diagnostics": [
+    "t=0.000 dt=0.024 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=200.00 position=X=-2632.856 Y=-1546.724 Z=-386.334",
+    "t=0.265 dt=0.026 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334",
+    "t=0.524 dt=0.025 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334",
+    "t=0.780 dt=0.022 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334",
+    "t=1.187 dt=0.186 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334",
+    "t=1.437 dt=0.022 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334",
+    "t=1.705 dt=0.022 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334",
+    "t=1.967 dt=0.023 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2650.804 Y=-1561.202 Z=-386.334"
+  ],
+  "view_diagnostics": [
+    "third_person=1 camera_distance_cm=326.57 eye_above_surface_cm=70.00 body_stroke_cm=103.43"
+  ],
+  "bank_support_diagnostics": [
+    "offset=-60 simple=1 z=-340.86 actor=StaticMeshActor_9 complex=1 z=-340.86 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=0 simple=1 z=-341.38 actor=StaticMeshActor_9 complex=1 z=-341.38 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=60 simple=1 z=-342.26 actor=StaticMeshActor_9 complex=1 z=-342.26 actor=StaticMeshActor_9 tire_z=-339.38"
+  ]
+}
