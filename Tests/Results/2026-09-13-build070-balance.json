@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.012,
+  "pedal_error_cm": 0.0,
+  "grip_error_cm": 0.0,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-9.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/depart-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/depart-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-8.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/depart-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/depart-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/stopped-again.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-10.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-11.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-6.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-7.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/brake-4.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-50559dd5cfa94bd2b014fc83cb543db0/run.log",
+  "exit_code": 0,
+  "packaged": true,
+  "visual_review": {
+    "accepted": true,
+    "scope": "Stopped-again view shows relaxed elbows and clear saddle. Pedaling capture occluded by pedestrian; numerical wrist/pedal checks pass, not full motion/camera acceptance."
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "build": 69,
-  "version": "0.69.0",
+  "build": 70,
+  "version": "0.70.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; corrected saddle height and stopped straddle pose",
+  "status": "Early playtest; live aerial lake opening and relaxed stopped arms",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -21,7 +21,8 @@
     "Build066: rifles, shotguns and SMGs use body-relative weapon-specific wrist positions and closer shoulder stance; corrected camera-floating long guns. Skatepark concrete detail and bank guidance paint. Packaged aim, inventory and both-mode skatepark checks pass.",
     "Build067: gradual arcade corner speed assist and glancing rail slide; six spare bikes with E exchange and watch markers; 102 pistol reserve; supplied music with M/Options toggle; revised swimming pose and shotgun stance.",
     "Build068: riding-speed tree/person/solid impacts cause physical fall, harm and -10 seconds; stopped rider plants feet and returns them to pedals; HUD exposes M music toggle; recovered crashes can switch to spare bikes.",
-    "Build069: saddle and frame seat junction lowered 10cm; rider steps 35cm ahead of saddle before lowering at stop, rises before returning to riding pose."
+    "Build069: saddle and frame seat junction lowered 10cm; rider steps 35cm ahead of saddle before lowering at stop, rises before returning to riding pose.",
+    "Build070: live eight-second Piedmont lake/bridge flyover then four-second home story; rider/time protected, immediate skip restoration; relaxed stopped elbows with preserved grips."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -70,38 +71,38 @@
     "2026-09-13 [codex-maclaptop] Gate scenery repair: native survey found fixed-height 14th Street iron uprights floating up to16.97cm above pavement. Compiled constructor now uses per-post surveyed bases4cm into pavement, lower rail and strengthened end posts/base plates. Reproducible survey generates BattleGateSupport.h. Native check verifies all16 actual post bases against adjacent pavement; editor rendered police scene inspected and encounter regression passes. Source-only: desktop/share remain062; include in next grouped scenery build. Whole entrance accuracy, world art and movement/animation acceptance remain unfinished.",
     "2026-09-13 [codex-maclaptop] Airborne rider development: bike visual flight pitch reduced to40percent trajectory angle, capped18deg; smoothed9cm saddle lift/forward5cm and extra8deg torso lean; touchdown compression8cm over.33s. Existing IK keeps both wrists on grips (native side-review0.000cm error both), feet retain pedal targets. Cadence advances only grounded, stopping midair pedalling. Arcade downhill rendered native jump/reward/guards and realistic uphill regression pass. Air/landing side frames inspected; continuous motion/shoe contact not accepted. Source-only, desktop063 unchanged. Constructor inspection confirms bike has no visible crank arms/pedals despite leg pedalling targets; prioritize actual pedal/crank geometry and sole contact next, then package combined improvement. Whole game remains unfinished.",
     "2026-09-13 [codex-maclaptop] Skatepark presentation improved: detailed concrete material derived from existing project aggregate/slab shader;69-triangle noncolliding, surface-following bank edge lines and directional arrows. Existing concrete/berm collision geometry retained. Native realistic overview/airborne frames inspected. Modernized skate audit with editor/packaged, actual handling mode and rendered output; isolated landing reward from automatic ramp +30 pickup to remove timer confound. Native arcade and realistic runs pass trail entry/return, automatic bank launch (~143.49cm peak), exactly one +10 landing reward and separate single-use bowl +30 pickup. Failed unbuilt audit launch retained as invalid; corrected build succeeds. Source-only, desktop/share065 unchanged. Next combined package must verify skate art and both handling modes in cooked app; skatepark architecture, surroundings, motion/freeplay/performance and wider whole-game requirements remain incomplete.",
-    "2026-09-13 [codex-maclaptop] Continued native gameplay work, desktop/share066 unchanged. Re-ran actual solid-wall input/collision escape in arcade and realistic modes: both pass (2026-09-13-wall-recovery-current.json). Unreleased long guns now parent to rider root instead of camera (frisbee retains camera parent), avoiding late camera motion after body hand placement. Shotgun body support arm follows pump/reload target, belt reach deepened, reload lead waits an additional .25s after pump; wrist offset revised to (-39,4,-3), right shoulder reach0. Rendered inventory/shell interruption/remount check passes with maximum support wrist error2.677cm and44.77cm reload travel. Aim audit now records support-hand travel as well as right-hand travel, because current shotgun stance pivots near right wrist; gun pitch remains checked. Shotgun/rifle/pistol native aim checks pass; support palm orientation/curl added for shotgun and curl axis follows aim. IMPORTANT: raised shotgun firing-hand contact still visibly appears separated despite mathematical passes; appearance NOT accepted, no new package. Next work should resolve this pose/model contact, inspect continuous reload and retest before releasing. Early attempt ended initial ownership incorrect and emitted -inf audit travel; empty-sample diagnostic now emits finite0. Source build and Python syntax/diff checks pass. Full game goal remains incomplete."
-  ],
-  "unreleased_code_changes": [
+    "2026-09-13 [codex-maclaptop] Continued native gameplay work, desktop/share066 unchanged. Re-ran actual solid-wall input/collision escape in arcade and realistic modes: both pass (2026-09-13-wall-recovery-current.json). Unreleased long guns now parent to rider root instead of camera (frisbee retains camera parent), avoiding late camera motion after body hand placement. Shotgun body support arm follows pump/reload target, belt reach deepened, reload lead waits an additional .25s after pump; wrist offset revised to (-39,4,-3), right shoulder reach0. Rendered inventory/shell interruption/remount check passes with maximum support wrist error2.677cm and44.77cm reload travel. Aim audit now records support-hand travel as well as right-hand travel, because current shotgun stance pivots near right wrist; gun pitch remains checked. Shotgun/rifle/pistol native aim checks pass; support palm orientation/curl added for shotgun and curl axis follows aim. IMPORTANT: raised shotgun firing-hand contact still visibly appears separated despite mathematical passes; appearance NOT accepted, no new package. Next work should resolve this pose/model contact, inspect continuous reload and retest before releasing. Early attempt ended initial ownership incorrect and emitted -inf audit travel; empty-sample diagnostic now emits finite0. Source build and Python syntax/diff checks pass. Full game goal remains incomplete.",
     "2026-09-13 [codex-maclaptop] Continued rider polish after069: stopped arm IK now blends elbows down toward ribs instead of wide raised riding bend, while retaining exact wrist targets. Editor build succeeded and rendered stop/start/brake audit passed: max wrist target error0.000cm, pedal error0.000cm, ground1.025cm; lowered pelvis saddle guard passed. Stopped/departure side views inspected. Source-only next-build improvement; installed/share069 remains unchanged, no running player session interrupted. Full animation, aerial intro, world/gameplay quality and finish-the-game goal remain incomplete.",
     "2026-09-13 [codex-maclaptop] Aerial intro investigation: actual lake/hazard world bounds agree and shore actor is hidden; normal live aerial renders water, paused intro does not. Warmup-before-pause still failed. Unreleased opening now keeps world rendering while disabling only rider actor/movement ticks, with tutorial health/time protection; weak keyed hold releases immediately on finish/skip and on ticker cancellation. Eight-second lake/bridge flyover then four-second home story. Native natural completion, Enter and Escape pass including restored tick state, camera/input and unchanged timer/player location. Rendered6s water and10s home good; cold-editor2s still lacks water while shaders compile, so visual acceptance remains false pending cooked startup review/loading treatment. Desktop/share069 unchanged. Previous relaxed elbows retained. Full Atlanta skyline/world, swimming/combat animation and finish-the-game goal incomplete."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068/The Battle of ATL.app",
-  "compiled_source": "ca50e204d42814bbb2e9736c7e83bc4062628bf7",
-  "installation_report": "Tests/Results/2026-09-13-build069-install.json",
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 070/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069/The Battle of ATL.app",
+  "compiled_source": "d3eb75c1ce9c260936334701a4dee58e73337709",
+  "installation_report": "Tests/Results/2026-09-13-build070-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 69,
-    "version": "0.69.0",
-    "source_commit": "ca50e204d42814bbb2e9736c7e83bc4062628bf7",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068/The Battle of ATL.app",
+    "build": 70,
+    "version": "0.70.0",
+    "source_commit": "d3eb75c1ce9c260936334701a4dee58e73337709",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 070/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "d9fd57877b047b47675d4b35d6d0ba6eb88d9b1b323ebcffef080292a168cbb3",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069.zip",
-    "zip_sha256": "4cf2c04383f611750285644c81b2c9b2dfeb1205f5dfb5dc2d8e0858e6f12524",
-    "zip_bytes": 1323298326,
+    "machine_code_sha256": "94ed9945c185b7c185a0ea9ee1ca434b36b110bea3d9a564409c15745ccdc86b",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 070.zip",
+    "zip_sha256": "e748de81b5bba6d084ee273753f50cdf9cd637f09ab7c1e7c8b451f4c8d6babf",
+    "zip_bytes": 1323306026,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged stopped, moving and braking foot contact; lowered pelvis saddle clearance; rendered views inspected",
-      "Packaged jump and pedal/grip regression",
-      "ZIP CRC, local signature and staged/installed code match"
+      "Cooked2s and6s aerial lake/bridge and10s home/story views inspected",
+      "Packaged natural intro completion, Enter and Escape preserve timer/location and restore camera/input/rider ticks",
+      "Packaged relaxed elbows, wrist targets, saddle guard, stop/pedal/brake foot contact",
+      "ZIP CRC, signature and staged/installed code match"
     ],
     "remaining": [
       "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
@@ -113,8 +114,10 @@
       "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress"
     ],
     "reports": [
-      "2026-09-13-build069-balance.json",
-      "2026-09-13-build069-jump.json"
+      "2026-09-13-cooked-aerial-review.json",
+      "2026-09-13-cooked-aerial-skip.json",
+      "2026-09-13-cooked-aerial-escape.json",
+      "2026-09-13-build070-balance.json"
     ]
   },
   "latest_wall_fix_playtest": {

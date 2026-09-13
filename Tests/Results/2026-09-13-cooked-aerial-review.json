@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-5946de6df69748479c205a39759e86c5/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-5946de6df69748479c205a39759e86c5/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-5946de6df69748479c205a39759e86c5/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-5946de6df69748479c205a39759e86c5/opening2.png"
+  ],
+  "visual_review": {
+    "accepted": true,
+    "scope": "Cooked2s and6s aerial captures show lake/bridge;10s home/story view inspected. Exact first frame, full skyline and overall world art are not covered."
+  },
+  "editor": false,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "duration": 2.02,
+  "skipped": true,
+  "protected": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-escape-5db7d731cf944794adc62ed6fc42cbfd/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "editor": false,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}
