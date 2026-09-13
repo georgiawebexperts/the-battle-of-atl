@@ -18,7 +18,7 @@ bool ABattleGunman::BeginDeathPhysics(FVector Direction){
  const auto& Ref=Mesh->GetRefSkeleton();
  for(int I=0;I<Ref.GetNum();I++)if(auto* Instance=DeathPhysics->GetBodyInstance(Ref.GetBoneName(I))){Instance->SetBodyTransform(Body->GetBoneTransform(I),ETeleportType::TeleportPhysics);Instance->SetUseCCD(true);}
  DeathPhysics->SetAllPhysicsLinearVelocity(Direction.GetSafeNormal2D()*120+FVector(0,0,15));
- DeathPhysics->AddImpulse(Direction.GetSafeNormal2D()*100,BattleDetailedBone(TEXT("Chest"),bDetailedPlayerRig),true);
+ DeathPhysics->AddImpulse(Direction.GetSafeNormal2D()*100,bDetailedPlayerRig?FName(TEXT("spine_03")):FName(TEXT("Chest")),true);
  MirrorDeathPose();return true;
 }
 void ABattleGunman::MirrorDeathPose(){
