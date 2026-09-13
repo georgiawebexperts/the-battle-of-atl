@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/476701a5f8c54f38b30231a4252e26a9/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/476701a5f8c54f38b30231a4252e26a9/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/476701a5f8c54f38b30231a4252e26a9/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/476701a5f8c54f38b30231a4252e26a9/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/476701a5f8c54f38b30231a4252e26a9/visible-shooter.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "inspected": [
+      "visible-shooter.png",
+      "covered-shot.png"
+    ],
+    "observations": [
+      "Visible shooter label and countdown fit padded panel at1280x720.",
+      "Covered-shot capture shows red front arrow and readable GUNFIRE AHEAD notice; occluded head label is absent.",
+      "Earlier countdown report behind-warning.png inspected: readable GUNMAN BEHIND and1.3s countdown."
+    ],
+    "limitations": [
+      "First rendered warning extended to3.8seconds solely for camera settling; ordinary warning checked before override, later shots use1.8seconds.",
+      "Left/right screen-edge cases, continuous combat, incidental-message priority in play, sound and packaged app not verified.",
+      "Character art and animation remain rough; these captures do not accept overall visual quality."
+    ]
+  }
+}

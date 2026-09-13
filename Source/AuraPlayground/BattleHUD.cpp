@@ -115,15 +115,22 @@ void ABattleLabHUD::DrawHUD(){
    const float Angle=FMath::DegreesToRadians(FMath::FindDeltaAngleDegrees(View.Yaw,(Active->GetActorLocation()-Eye).Rotation().Yaw));
    const FVector2D Direction(FMath::Sin(Angle),-FMath::Cos(Angle)),Across(-Direction.Y,Direction.X),Centre(CX,CY);
    const FVector2D Tip=Centre+Direction*(H*.34f),Base=Centre+Direction*(H*.34f-21*S);
-   const FLinearColor Color=Active->bWarning?Peach:FLinearColor(1,.12,.08);
+   const float Urgency=1.f-FMath::Clamp(Active->WindupRemaining/1.8f,0.f,1.f);
+   const FLinearColor Color=Active->bWarning?FMath::Lerp(Peach,FLinearColor(1,.12,.08),Urgency):FLinearColor(1,.12,.08);
+   const float Bearing=FMath::RadiansToDegrees(Angle);
+   const TCHAR* BearingLabel=FMath::Abs(Bearing)>135?TEXT("BEHIND"):Bearing>45?TEXT("RIGHT"):Bearing< -45?TEXT("LEFT"):TEXT("AHEAD");
    for(int Side:{-1,1}){const FVector2D Wing=Base+Across*Side*13*S;DrawLine(Tip.X,Tip.Y,Wing.X,Wing.Y,Color,5*S);}
    const FVector Head=Active->GetActorLocation()+FVector(0,0,110);FVector2D Label;
    FHitResult Sight;FCollisionQueryParams Query(SCENE_QUERY_STAT(GunmanLabel),false,GetOwningPawn());Query.AddIgnoredActor(Owner);
    const bool Clear=!GetWorld()->LineTraceSingleByChannel(Sight,Eye,Head,ECC_Visibility,Query)||Sight.GetActor()==Active;
    if(Clear&&PC->ProjectWorldLocationToScreen(Head,Label)&&Label.X>65*S&&Label.X<W-65*S&&Label.Y>125*S&&Label.Y<H-170*S){
-    Panel(Label.X-57*S,Label.Y-26*S,114*S,27*S);Text(TEXT("GUNMAN"),Label.X-46*S,Label.Y-22*S,19,Color);
+    Label.X=FMath::Clamp(Label.X,130*S,W-130*S);
+    Panel(Label.X-130*S,Label.Y-34*S,260*S,37*S);
+    Text(Active->bWarning?FString::Printf(TEXT("GUNMAN  |  %.1fs"),FMath::Max(.1f,Active->WindupRemaining)):TEXT("GUNMAN  |  FIRING"),Label.X-119*S,Label.Y-31*S,21,Color);
+    if(Active->bWarning){DrawRect(FLinearColor(.15,.19,.2),Label.X-119*S,Label.Y-4*S,238*S,3*S);DrawRect(Color,Label.X-119*S,Label.Y-4*S,238*S*Urgency,3*S);}
    }
-   if(Notice.IsEmpty())Notice=Active->bWarning?TEXT("GUNMAN AIMING — MOVE TO COVER!"):TEXT("GUNFIRE — FIND COVER!");
+   // Imminent gunfire takes priority over incidental pickup/horn notices.
+   if(Owner->RespawnRemaining<=0&&!Owner->bCrashActive)Notice=Active->bWarning?FString::Printf(TEXT("GUNMAN %s  |  %.1fs  |  MOVE TO COVER"),BearingLabel,FMath::Max(.1f,Active->WindupRemaining)):FString::Printf(TEXT("GUNFIRE %s  |  FIND COVER"),BearingLabel);
   }
  }
  if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
