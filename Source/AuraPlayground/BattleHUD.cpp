@@ -61,7 +61,7 @@ void ABattleLabHUD::DrawHUD(){
  Panel(W-M-300*S,M,300*S,106*S);
  if(Owner->StunRemaining>0){Text(Owner->StunLabel,W-M-280*S,M+12*S,28,Peach);Text(FString::Printf(TEXT("Recovering  %.1fs"),Owner->StunRemaining),W-M-280*S,M+55*S,20,Muted);}
  else if(Owner->bCrashActive){Text(TEXT("KNOCKED OFF"),W-M-280*S,M+12*S,28,Peach);Text(GettingUp?TEXT("Getting back up"):TEXT("Recovering"),W-M-280*S,M+65*S,23,Muted);}
- else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
+ else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),(Bike->Ride->Speed+Bike->Ride->ReverseSpeed)*.0223694f),W-M-280*S,M+12*S,38);Text((Bike->Ride->ReverseSpeed>1?FString::Printf(TEXT("REVERSE  |  GEAR %d"),Bike->Ride->Gear):FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear)),W-M-280*S,M+65*S,23,Muted);}
  else if(Person->bSwimming){Text(TEXT("SWIMMING"),W-M-280*S,M+12*S,28,Peach);Text(TEXT("Bike stays at the bank"),W-M-280*S,M+55*S,20,Muted);}
  else{Text(Person->ReloadRemaining>0?TEXT("RELOADING"):Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);Text(Person->bWeaponDrawn?FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()):TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,Person->bWeaponDrawn?30:20);}
  if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){Panel(M,M+118*S,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,M+128*S,18,Peach);}}
@@ -73,7 +73,7 @@ void ABattleLabHUD::DrawHUD(){
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+50*S,274*S,18*S);DrawRect(Owner->RiderHealth<25?FLinearColor(1,.15,.1):FLinearColor(.3,.9,.62),M+18*S,Bottom+50*S,FMath::Clamp(Owner->RiderHealth/100.f,0.f,1.f)*274*S,18*S);
  Text(FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);
- FString Prompt=TEXT("E  GET OFF THE BIKE");
+ FString Prompt=Bike&&Bike->Ride->Speed<20?TEXT("E DISMOUNT  |  S/DOWN BACK UP"):TEXT("E  GET OFF THE BIKE");
  FString Help=TEXT("Q/R gears   J jump   SHIFT boost   H horn");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
  if(Person&&Person->bSwimming){Prompt=TEXT("EXPLORE THE LAKE");Help=TEXT("WASD / arrows swim   E remount by bike");}

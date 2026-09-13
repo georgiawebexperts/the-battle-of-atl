@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "packaged": false,
+  "runs": [
+    {
+      "passed": true,
+      "phase": 7,
+      "reason": "Solid wall contact, reverse escape, reverse steering, brake-only stop and forward departure pass",
+      "reverse_speed": 0.0,
+      "mode": "arcade",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-41cb47421105481eba1f0da2011a9fd1.log",
+      "exit_code": 0
+    },
+    {
+      "passed": true,
+      "phase": 7,
+      "reason": "Solid wall contact, reverse escape, reverse steering, brake-only stop and forward departure pass",
+      "reverse_speed": 0.0,
+      "mode": "realistic",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-62c6bb6db42544e98aadf5b90545fdb1.log",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Actual key input and collision on isolated floor/wall fixture. Does not prove all world corners, slopes, or visual handling feel."
+}

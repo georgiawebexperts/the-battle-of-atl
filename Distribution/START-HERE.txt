@@ -1,4 +1,4 @@
-THE BATTLE OF ATL — MAC PLAYTEST 059
+THE BATTLE OF ATL — MAC PLAYTEST {{BUILD}}
 Early, unfinished playtest • September 13, 2026
 
 WHAT YOU NEED
@@ -53,8 +53,10 @@ Contains fictional violence and blood.
 BIKE CONTROLS
 W / Up arrow             Pedal
 A / D or Left / Right    Steer
-S / Down arrow or Space  Brake
+S / Down arrow           Brake, then slowly reverse while held
+Space                    Brake only (no reverse)
 Q / R                    Lower / higher gear (five gears)
+A / D while reversing    Steer backward away from walls
 J                        Jump while moving
 Left Shift               Boost
 H                        Horn (limited uses)
@@ -91,7 +93,7 @@ Real-world hill/ramp riding, camera transitions and performance need testing.
 The app is locally signed only; Apple has not notarized or reviewed it.
 
 SEND FEEDBACK
-Tell Elliott your Mac model, chip, RAM, macOS version and “Playtest 059”.
+Tell Elliott your Mac model, chip, RAM, macOS version and “Playtest {{BUILD}}”.
 Describe what you were doing, which key/button you pressed, what you
 expected and what happened. A short video is especially useful for jerky
 movement, awkward aiming or crashes. Include any exact error message.

@@ -10,8 +10,10 @@
 #include "Kismet/GameplayStatics.h"
 void TickBattleIncidentBikeAudit(APlayerController* PC,float Dt);
 void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt);
+void TickBattleWallRecoveryAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickSteeringAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleWallRecoveryAudit"))){TickBattleWallRecoveryAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleIncidentBikeAudit"))){TickBattleIncidentBikeAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHandlingSlopeAudit"))){TickBattleHandlingSlopeAudit(this,Dt);return;}
  if(GetWorld()->GetTimeSeconds()<5||SteeringStage==99)return;

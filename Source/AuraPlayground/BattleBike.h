@@ -32,6 +32,8 @@ public:
  FVector AirOrigin;
  virtual void HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta) override;
  UPROPERTY(BlueprintReadOnly) float Speed=0;
+ UPROPERTY(BlueprintReadOnly) float ReverseSpeed=0;
+ bool bReverseRequested=false;
  UPROPERTY(BlueprintReadOnly) float SmoothedSteer=0;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bRealHandling=false;
  UPROPERTY(BlueprintReadOnly) float TurnRateDegrees=0;

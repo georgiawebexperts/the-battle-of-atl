@@ -12,6 +12,7 @@ UBattleBikeMovement::UBattleBikeMovement(){
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
+ if(Recovery>0||MovementMode==MOVE_None){ReverseSpeed=0;bReverseRequested=false;}
  JumpGraceRemaining=IsMovingOnGround()?.12f:FMath::Max(0.f,JumpGraceRemaining-Dt);
  if(IsFalling()){AirSeconds+=Dt;if(CharacterOwner)AirPeak=FMath::Max(AirPeak,float(CharacterOwner->GetActorLocation().Z-AirOrigin.Z));}
  RampLaunchGrace=FMath::Max(0.f,RampLaunchGrace-Dt);
@@ -39,15 +40,16 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&(Floor->ActorHasTag(TEXT("RideGrass"))||(CurrentFloor.HitResult.GetComponent()&&CurrentFloor.HitResult.GetComponent()->ComponentHasTag(TEXT("RideGrass"))));
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
-   float DesiredTurnRate=SmoothedSteer*FMath::Lerp(105.f,55.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f);
+   const float SignedSpeed=Speed-ReverseSpeed;
+   float DesiredTurnRate=SmoothedSteer*FMath::Lerp(105.f,55.f,FMath::Clamp(FMath::Abs(SignedSpeed)/1600.f,0.f,1.f))*FMath::Clamp(SignedSpeed/250.f,-1.f,1.f);
    if(bRealHandling){
     // Bicycle model: yaw = speed / wheelbase * tan(front-wheel angle).
-    const float Requested=Speed/110.f*FMath::Tan(FMath::DegreesToRadians(SmoothedSteer*32.f));
+    const float Requested=SignedSpeed/110.f*FMath::Tan(FMath::DegreesToRadians(SmoothedSteer*32.f));
     const float Grip=(bGrass?350.f:680.f)*(Brake>.5f?.65f:1.f);
-    const float Limit=Grip/FMath::Max(Speed,50.f);
+    const float Limit=Grip/FMath::Max(FMath::Abs(SignedSpeed),50.f);
     DesiredTurnRate=IsMovingOnGround()?FMath::RadiansToDegrees(FMath::Clamp(Requested,-Limit,Limit)):0.f;
    }
-   TurnRateDegrees=(Speed<=1.f||(bRealHandling&&!IsMovingOnGround()))?0.f:FMath::Lerp(TurnRateDegrees,DesiredTurnRate,1.f-FMath::Exp(-6.f*Dt));
+   TurnRateDegrees=(FMath::Abs(SignedSpeed)<=1.f||(bRealHandling&&!IsMovingOnGround()))?0.f:FMath::Lerp(TurnRateDegrees,DesiredTurnRate,1.f-FMath::Exp(-6.f*Dt));
    Heading.Yaw+=TurnRateDegrees*Dt;CharacterOwner->SetActorRotation(Heading);
    const bool BrakeTurn=Brake>.5f&&PreviousBrake<=.5f&&FMath::Abs(Steer)>.3f&&Speed>800;
    // Drifting requires a deliberate brake input, never ordinary steering.
@@ -74,6 +76,14 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(!CharacterOwner)return;
  if(Recovery>0){Velocity.X=Velocity.Y=0;return;}
  if(BounceRemaining>0){Velocity.X=BounceDirection.X*140;Velocity.Y=BounceDirection.Y*140;return;}
+ // S/Down brakes to a stop, then walks the bike backward. Space never reverses.
+ const bool Reverse=bReverseRequested&&Pedal<=0&&Speed<20&&IsMovingOnGround();
+ ReverseSpeed=FMath::FInterpConstantTo(ReverseSpeed,Reverse?180.f:0.f,Dt,Reverse?400.f:650.f);
+ if(ReverseSpeed>.1f){
+  Speed=0;BoostRemaining=0;
+  const FVector Backward=-CharacterOwner->GetActorForwardVector()*ReverseSpeed;
+  Velocity.X=Backward.X;Velocity.Y=Backward.Y;return;
+ }
  static const float Caps[]={420,700,1000,1300,1600};static const float Accel[]={640,500,420,360,320};
  static const float ArcadeCaps[]={650,950,1300,1650,1950};
  const float Cap=(BoostRemaining>0?(bRealHandling?1800.f:2200.f):(bRealHandling?Caps[Gear-1]:ArcadeCaps[Gear-1]))*(bGrass?.85f:1.f);
@@ -128,7 +138,7 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
  if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree")))++TreeContacts;
  // Terrain, walls and fences never enter the wipeout state.
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>100)Bike->RideImpact(.45f);
- BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=0;
+ BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=ReverseSpeed=0;
 }
 
 bool UBattleBikeMovement::Hop(){
