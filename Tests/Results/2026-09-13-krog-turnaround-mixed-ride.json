@@ -1,0 +1,83 @@
+{
+  "passed": false,
+  "completedLegs": 1,
+  "travelCm": 34455.2,
+  "maxCenterlineErrorCm": 35.64,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 35666,
+    "paved": 35666
+  },
+  "lights": {
+    "lit_samples": 18352,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 1115,
+    "max_live_cars": 24,
+    "max_moving_cars": 22,
+    "nearby_samples": 169,
+    "nearest_car_cm": 164.69
+  },
+  "crowd_observed": {
+    "max_live_people": 29,
+    "max_walking_people": 24,
+    "nearby_samples": 1064,
+    "nearest_person_cm": 62.0
+  },
+  "yield_diagnostics": [
+    "leg=0 elapsed=60.8 position=X=27685.840 Y=115982.713 Z=1080.013 reason=car=BattleRoadCar_3 ahead=132.8 side=168.4 speed=0.0 crossing=0 obstacle=PiedmontPedestrian_104",
+    "leg=0 elapsed=85.7 position=X=30798.507 Y=118095.351 Z=1058.619 reason=person=PiedmontPedestrian_95 ahead=207.0 side=156.2 speed=0.0 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=1 elapsed=36.8 position=X=26361.754 Y=116204.660 Z=1089.612 reason=person=PiedmontPedestrian_101 ahead=416.5 side=161.1 speed=0.0 pause=0.1 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=59.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=64.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=69.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=74.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=79.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=84.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=89.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=94.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=99.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=104.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=109.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=114.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=119.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=124.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=129.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=134.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=139.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=144.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=149.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=154.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=159.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=164.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=169.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=174.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=179.5 position=X=25095.387 Y=114535.900 Z=1053.057 reason=person=PiedmontPedestrian_103 ahead=356.0 side=188.3 speed=0.0 pause=0.0 posed=0 dead=0 destination=0"
+  ],
+  "queue_diagnostics": [
+    "car=BattleRoadCar_3 position=X=27862.099 Y=116104.923 Z=1055.859 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=PiedmontPedestrian_104",
+    "car=BattleRoadCar_4 position=X=29022.580 Y=115726.529 Z=1069.280 speed=23.4 finished=0 crossing=0 grounded=1 obstacle=",
+    "car=BattleRoadCar_3 position=X=27147.639 Y=116758.739 Z=1073.644 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleRoadCar_48",
+    "car=BattleRoadCar_4 position=X=26543.598 Y=116948.548 Z=1083.393 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=PiedmontPedestrian_106",
+    "car=BattleRoadCar_37 position=X=28782.786 Y=116228.511 Z=1063.846 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_41 position=X=28237.262 Y=116406.411 Z=1051.587 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleRoadCar_37",
+    "car=BattleRoadCar_48 position=X=27693.374 Y=116583.754 Z=1062.183 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleRoadCar_41"
+  ],
+  "diagnostic_probe_only": false,
+  "exit_code": 0,
+  "map": "PiedmontKrogTurnaroundReview",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 206.18,
+    "max_grade": 0.2067
+  },
+  "scope": "Selected bidirectional route with live cars and autonomous pedestrians retained. Test rider brakes for people ahead using Space; no steering avoidance or rendered performance evaluation. Realistic handling uses test-driver Space braking before mapped bends and nearby cars; this is not player autopilot or complete handling acceptance. Forced scooter scene assembled before route traversal in navigation review map; normal random selection and rendered appearance unverified.",
+  "scooter_scene": {
+    "passed": true,
+    "ready": true,
+    "visit_started": true,
+    "nearest_scene_cm": 1806.37,
+    "participants": 3
+  }
+}

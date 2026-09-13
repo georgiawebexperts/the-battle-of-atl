@@ -3,7 +3,7 @@ import json,shutil,datetime,hashlib
 from pathlib import Path
 import unreal
 root=Path(unreal.Paths.project_dir()).resolve()
-for name in ['2026-09-13-scooter-navigation-regression.json','2026-09-13-native-scooter-visit-nav-review.json','2026-09-13-krog-turnaround-mixed-ride.json']:
+for name in ['2026-09-13-scooter-navigation-regression.json','2026-09-13-native-scooter-visit-nav-review.json','2026-09-13-krog-turnaround-mixed-clearance.json']:
     assert json.loads((root/'Tests/Results'/name).read_text())['passed'],name
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 unreal.PiedmontWorldTools.finish_editor_asset_loading()

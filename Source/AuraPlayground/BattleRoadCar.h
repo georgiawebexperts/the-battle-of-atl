@@ -44,6 +44,7 @@ public:
 private:
  float RouteDistance=0.f;
  float WheelAngle=0.f;
+ float SteeringAngle=0.f;
  bool bStarted=false;
  bool bUseBodyHull=false;
  TArray<float> Lengths;

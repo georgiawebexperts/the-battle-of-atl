@@ -129,8 +129,14 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   const float LookAhead=FMath::Max(420.f,Bike->Ride->Speed*Bike->Ride->Speed/1000.f+Bike->Ride->Speed*.5f+200.f);
   for(TActorIterator<APiedmontPedestrian> Person(GetWorld());Person;++Person){
    const FVector Offset=Person->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);
-   const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);
-   if(Ahead>0&&Ahead<LookAhead&&Side<220&&FMath::Abs(Offset.Z)<160){Yield=true;YieldReason=FString::Printf(TEXT("person=%s ahead=%.1f side=%.1f speed=%.1f pause=%.1f posed=%d dead=%d destination=%d"),*Person->GetName(),Ahead,Side,Person->GetVelocity().Size2D(),Person->PauseRemaining,Person->bIncidentPosing,Person->bDead,Person->bHasDestination);break;}
+   const float SignedSide=Offset.X*Forward.Y-Offset.Y*Forward.X;
+   const float Side=FMath::Abs(SignedSide);
+   const FVector Velocity=Person->GetVelocity();
+   const float Arrival=FMath::Clamp(Ahead/FMath::Max(100.f,Bike->Ride->Speed),0.f,2.f);
+   const float FutureSide=SignedSide+(Velocity.X*Forward.Y-Velocity.Y*Forward.X)*Arrival;
+   const float ClosestSide=SignedSide*FutureSide<=0?0.f:FMath::Min(Side,FMath::Abs(FutureSide));
+   const float Clearance=FMath::Max(100.f,float(Person->GetComponentsBoundingBox(true).GetExtent().Size2D()+50.f));
+   if(Ahead>0&&Ahead<LookAhead&&ClosestSide<Clearance&&FMath::Abs(Offset.Z)<160){Yield=true;YieldReason=FString::Printf(TEXT("person=%s ahead=%.1f side=%.1f speed=%.1f pause=%.1f posed=%d dead=%d destination=%d"),*Person->GetName(),Ahead,Side,Person->GetVelocity().Size2D(),Person->PauseRemaining,Person->bIncidentPosing,Person->bDead,Person->bHasDestination);break;}
   }
  }
  static float YieldAge=0;

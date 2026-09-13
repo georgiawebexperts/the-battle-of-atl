@@ -52,8 +52,9 @@ bool ABattleRoadCar::GroundPose(FVector Point,FVector Direction,FTransform& Pose
  return true;
 }
 void ABattleRoadCar::UpdateWheels(const TArray<FVector>& Contacts,float Travel,float Steering){
+ if(Travel>SMALL_NUMBER)SteeringAngle=FMath::Lerp(SteeringAngle,Steering,1.f-FMath::Exp(-12.f*Travel/FMath::Max(1.f,Speed)));
  WheelAngle=FMath::Fmod(WheelAngle+FMath::RadiansToDegrees(Travel/39.2669f),360.f);
- for(int32 I=0;I<4;++I){const bool Left=I%2==0;Wheels[I]->SetRelativeLocation(GetActorTransform().InverseTransformPosition(Contacts[I])+FVector(0,0,39.2669));Wheels[I]->SetRelativeRotation(FRotator(Left?WheelAngle:-WheelAngle,(Left?180.f:0.f)+(I<2?Steering:0.f),0));}
+ for(int32 I=0;I<4;++I){const bool Left=I%2==0;Wheels[I]->SetRelativeLocation(GetActorTransform().InverseTransformPosition(Contacts[I])+FVector(0,0,39.2669));Wheels[I]->SetRelativeRotation(FRotator(Left?WheelAngle:-WheelAngle,(Left?180.f:0.f)+(I<2?SteeringAngle:0.f),0));}
 }
 void ABattleRoadCar::EndPlay(const EEndPlayReason::Type Reason){
  for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
@@ -67,7 +68,7 @@ bool ABattleRoadCar::StartRoute(){
  }
 
  for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
- bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();AmberStopping.Reset();bWaitingForCrossing=false;
+ bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;SteeringAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();AmberStopping.Reset();bWaitingForCrossing=false;
  CompletedLoops=0;
  if(Route.Num()<2)return false;
  if(bLoopRoute&&(Route.Num()<4||!Route[0].Equals(Route.Last(),.1f)||FVector::DotProduct((Route[1]-Route[0]).GetSafeNormal2D(),(Route.Last()-Route[Route.Num()-2]).GetSafeNormal2D())<.95f))return false;
@@ -107,6 +108,8 @@ void ABattleRoadCar::Tick(float Dt){
   FVector Heading=SampleRoute(FMath::Min(Lengths.Last(),RouteDistance+Travel+150))-Next;if(Heading.IsNearlyZero())Heading=GetActorForwardVector();
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
+  // Steering follows curvature and wheelbase, not degrees rotated per rendered frame.
+  const float WheelSteer=Travel>KINDA_SMALL_NUMBER?FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan(264.2f*FMath::DegreesToRadians(Turn)/Travel)),-55.f,55.f):SteeringAngle;
   FHitResult Hit;
   if(bUseBodyHull){
    TArray<FHitResult> Hits;FComponentQueryParams Query(SCENE_QUERY_STAT(RoadCarBody),this);Query.bTraceComplex=false;
@@ -132,7 +135,7 @@ void ABattleRoadCar::Tick(float Dt){
    // progress and wheel travel aligned with the position actually reached.
    const float ActualTravel=Travel*FMath::Clamp(Hit.Time,0.f,1.f);
    RouteDistance+=ActualTravel;DistanceTravelled+=ActualTravel;
-   UpdateWheels(Contacts,ActualTravel,FMath::Clamp(Turn*12.f,-25.f,25.f));
+   UpdateWheels(Contacts,ActualTravel,WheelSteer);
    if(auto* Bike=Cast<ABattleBike>(Hit.GetActor())){
     const FVector RelativeVelocity=GetActorForwardVector()*Speed-Bike->GetVelocity();
     const float ClosingSpeed=-FVector::DotProduct(RelativeVelocity,Hit.ImpactNormal);
@@ -140,7 +143,7 @@ void ABattleRoadCar::Tick(float Dt){
    }
    LastObstacle=FString(TEXT("movement:"))+(Hit.GetActor()?Hit.GetActor()->GetName():TEXT("unknown"));Speed=0;break;
   }
-  RouteDistance+=Travel;DistanceTravelled+=Travel;UpdateWheels(Contacts,Travel,FMath::Clamp(Turn*12.f,-25.f,25.f));
+  RouteDistance+=Travel;DistanceTravelled+=Travel;UpdateWheels(Contacts,Travel,WheelSteer);
   if(Lengths.Last()-RouteDistance<.01f&&bLoopRoute){
    RouteDistance=0;++CompletedLoops;ClearedCrossings.Reset();AmberStopping.Reset();
    for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
