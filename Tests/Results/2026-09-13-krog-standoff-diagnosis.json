@@ -1,0 +1,182 @@
+{
+  "incident_car_xyz": [
+    29278.283,
+    115643.17,
+    1069.333
+  ],
+  "incident_rider_xyz": [
+    28896.426,
+    115622.833,
+    1091.286
+  ],
+  "car_heading_degrees_inferred_from_saved_lane": 161.55711048791204,
+  "car_half_extents_cm": [
+    236,
+    114,
+    55
+  ],
+  "nearby_route_points": [
+    {
+      "xyz": [
+        28891.99604568615,
+        115624.00563174549,
+        964.5574924624522
+      ],
+      "car_forward_cm": 360.3842237190534,
+      "car_side_cm": 140.38552410444026,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        28954.90078686659,
+        115605.39678741868,
+        964.0647088130764
+      ],
+      "car_forward_cm": 294.8232239652093,
+      "car_side_cm": 138.13811194067785,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29017.80552805091,
+        115586.78794309187,
+        963.5790439486856
+      ],
+      "car_forward_cm": 229.2622242076828,
+      "car_side_cm": 135.8906997756874,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29080.71026923523,
+        115568.17909874953,
+        962.8623524607622
+      ],
+      "car_forward_cm": 163.70122444524424,
+      "car_side_cm": 133.6432876254264,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29143.61501041567,
+        115549.57025442272,
+        962.2335456451411
+      ],
+      "car_forward_cm": 98.1402246914001,
+      "car_side_cm": 131.395875461664,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29206.51975159999,
+        115530.96141009592,
+        961.5234168919819
+      ],
+      "car_forward_cm": 32.57922493387361,
+      "car_side_cm": 129.14846329667358,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29268.46324564346,
+        115523.43423084046,
+        960.1935128420283
+      ],
+      "car_forward_cm": -28.56411068929239,
+      "car_side_cm": 116.69264575104563,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29327.224208973348,
+        115552.59661652769,
+        957.6569058898359
+      ],
+      "car_forward_cm": -75.08128912817806,
+      "car_side_cm": 70.43848204103686,
+      "inside_car_box_2d": true
+    },
+    {
+      "xyz": [
+        29385.98517230324,
+        115581.75900221492,
+        954.342321246895
+      ],
+      "car_forward_cm": -121.59846756706719,
+      "car_side_cm": 24.184318331026915,
+      "inside_car_box_2d": true
+    },
+    {
+      "xyz": [
+        29385.98517230324,
+        115581.75900221492,
+        954.342321246895
+      ],
+      "car_forward_cm": -121.59846756706719,
+      "car_side_cm": 24.184318331026915,
+      "inside_car_box_2d": true
+    },
+    {
+      "xyz": [
+        29441.644530103076,
+        115616.50814957297,
+        951.1686633858243
+      ],
+      "car_forward_cm": -163.40591691482047,
+      "car_side_cm": -26.388446393044443,
+      "inside_car_box_2d": true
+    },
+    {
+      "xyz": [
+        29497.303887899034,
+        115651.25729694653,
+        951.3004356958551
+      ],
+      "car_forward_cm": -205.21336625398735,
+      "car_side_cm": -76.96121113060455,
+      "inside_car_box_2d": true
+    },
+    {
+      "xyz": [
+        29552.963245698873,
+        115686.00644430457,
+        952.5485290746482
+      ],
+      "car_forward_cm": -247.02081560174406,
+      "car_side_cm": -127.53397585467707,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29608.62260349483,
+        115720.7555916626,
+        954.0929648417944
+      ],
+      "car_forward_cm": -288.8282649458231,
+      "car_side_cm": -178.10674057750776,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29666.146583800826,
+        115752.26570465602,
+        955.4458858589961
+      ],
+      "car_forward_cm": -333.42926724246,
+      "car_side_cm": -226.19672004556347,
+      "inside_car_box_2d": false
+    },
+    {
+      "xyz": [
+        29724.147369887214,
+        115782.94755867682,
+        956.3828909799242
+      ],
+      "car_forward_cm": -378.74461369920135,
+      "car_side_cm": -273.6518222822922,
+      "inside_car_box_2d": false
+    }
+  ],
+  "route_points_inside_car_box_2d": 5,
+  "scope": "Native-saved map path/lane export; observed failed-run car/rider positions. Car yaw inferred from nearest lane tangent, not an exact runtime collision replay. This diagnoses a route/lane overlap; no fix or successful route acceptance claimed."
+}
