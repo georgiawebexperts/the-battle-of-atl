@@ -1,0 +1,2392 @@
+{
+  "samples": [
+    {
+      "index": 0,
+      "side_cm": -325,
+      "xyz": [
+        -21265.893181893294,
+        -1131.2324645554022,
+        -86.34366057956436
+      ],
+      "ground_above_road_cm": -6.255227603609711,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 0,
+      "side_cm": -225,
+      "xyz": [
+        -21261.32123759404,
+        -1031.3370326011607,
+        -90.55208137866225
+      ],
+      "ground_above_road_cm": -10.463648402707605,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 0,
+      "side_cm": -150,
+      "xyz": [
+        -21257.892279369597,
+        -956.4154586354795,
+        -94.20011631485727
+      ],
+      "ground_above_road_cm": -14.111683338902623,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 0,
+      "side_cm": 0,
+      "xyz": [
+        -21251.034362920716,
+        -806.5723107041171,
+        -92.09306622580812
+      ],
+      "ground_above_road_cm": -12.00463324985347,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 0,
+      "side_cm": 150,
+      "xyz": [
+        -21244.176446471836,
+        -656.7291627727546,
+        -83.68300249457616
+      ],
+      "ground_above_road_cm": -3.594569518621512,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 0,
+      "side_cm": 225,
+      "xyz": [
+        -21240.747488247394,
+        -581.8075888070734,
+        -73.98692029600852
+      ],
+      "ground_above_road_cm": 6.101512679946126,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 0,
+      "side_cm": 325,
+      "xyz": [
+        -21236.17554394814,
+        -481.91215685283186,
+        -55.99663433295677
+      ],
+      "ground_above_road_cm": 24.091798642997873,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": -325,
+      "xyz": [
+        -21165.99774993905,
+        -1135.8044088546567,
+        -91.68898773085084
+      ],
+      "ground_above_road_cm": -13.000778791908644,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": -225,
+      "xyz": [
+        -21161.425805639796,
+        -1035.908976900415,
+        -90.7046346350885
+      ],
+      "ground_above_road_cm": -12.0164256961463,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": -150,
+      "xyz": [
+        -21157.996847415354,
+        -960.9874029347338,
+        -92.80900554918844
+      ],
+      "ground_above_road_cm": -14.120796610246245,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": 0,
+      "xyz": [
+        -21151.138930966474,
+        -811.1442550033714,
+        -90.68951507453494
+      ],
+      "ground_above_road_cm": -12.001306135592742,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": 150,
+      "xyz": [
+        -21144.281014517594,
+        -661.301107072009,
+        -86.33583423849791
+      ],
+      "ground_above_road_cm": -7.647625299555713,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": 225,
+      "xyz": [
+        -21140.85205629315,
+        -586.3795331063278,
+        -81.00112125436522
+      ],
+      "ground_above_road_cm": -2.31291231542302,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 1,
+      "side_cm": 325,
+      "xyz": [
+        -21136.280111993896,
+        -486.4841011520862,
+        -66.81369134333318
+      ],
+      "ground_above_road_cm": 11.87451759560902,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": -325,
+      "xyz": [
+        -21066.102317984813,
+        -1140.376353153911,
+        -87.50041764393154
+      ],
+      "ground_above_road_cm": -11.099439662583023,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": -225,
+      "xyz": [
+        -21061.530373685557,
+        -1040.4809211996694,
+        -87.25008016396146
+      ],
+      "ground_above_road_cm": -10.849102182612938,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": -150,
+      "xyz": [
+        -21058.101415461115,
+        -965.5593472339882,
+        -90.19255037631456
+      ],
+      "ground_above_road_cm": -13.791572394966039,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": 0,
+      "xyz": [
+        -21051.243499012235,
+        -815.7161993026258,
+        -88.40490627725035
+      ],
+      "ground_above_road_cm": -12.00392829590183,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": 150,
+      "xyz": [
+        -21044.385582563355,
+        -665.8730513712634,
+        -85.36084122441525
+      ],
+      "ground_above_road_cm": -8.959863243066735,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": 225,
+      "xyz": [
+        -21040.956624338913,
+        -590.9514774055822,
+        -81.89942918044608
+      ],
+      "ground_above_road_cm": -5.498451199097559,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 2,
+      "side_cm": 325,
+      "xyz": [
+        -21036.384680039657,
+        -491.0560454513406,
+        -72.42485620833622
+      ],
+      "ground_above_road_cm": 3.976121773012295,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": -325,
+      "xyz": [
+        -20966.20688603057,
+        -1144.9482974531654,
+        -68.51682262185977
+      ],
+      "ground_above_road_cm": 5.70363138010336,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": -225,
+      "xyz": [
+        -20961.634941731314,
+        -1045.052865498924,
+        -80.68429786726574
+      ],
+      "ground_above_road_cm": -6.463843865302607,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": -150,
+      "xyz": [
+        -20958.205983506872,
+        -970.1312915332426,
+        -85.98104520216248
+      ],
+      "ground_above_road_cm": -11.760591200199343,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": 0,
+      "xyz": [
+        -20951.348067057992,
+        -820.2881436018802,
+        -86.22687598542052
+      ],
+      "ground_above_road_cm": -12.006421983457386,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": 150,
+      "xyz": [
+        -20944.490150609112,
+        -670.4449956705178,
+        -84.94321059507138
+      ],
+      "ground_above_road_cm": -10.722756593108244,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": 225,
+      "xyz": [
+        -20941.06119238467,
+        -595.5234217048366,
+        -81.47610960772681
+      ],
+      "ground_above_road_cm": -7.255655605763678,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 3,
+      "side_cm": 325,
+      "xyz": [
+        -20936.489248085414,
+        -495.62798975059496,
+        -74.55244765411385
+      ],
+      "ground_above_road_cm": -0.3319936521507145,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": -325,
+      "xyz": [
+        -20866.311454076327,
+        -1149.5202417524197,
+        -52.59318083360449
+      ],
+      "ground_above_road_cm": 19.533081401867847,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": -225,
+      "xyz": [
+        -20861.73950977707,
+        -1049.6248097981781,
+        -74.4985585987065
+      ],
+      "ground_above_road_cm": -2.372296363234156,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": -150,
+      "xyz": [
+        -20858.31055155263,
+        -974.703235832497,
+        -81.85448284739482
+      ],
+      "ground_above_road_cm": -9.728220611922481,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": 0,
+      "xyz": [
+        -20851.45263510375,
+        -824.8600879011345,
+        -84.13169075335168
+      ],
+      "ground_above_road_cm": -12.005428517879338,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": 150,
+      "xyz": [
+        -20844.59471865487,
+        -675.0169399697721,
+        -83.80965412620617
+      ],
+      "ground_above_road_cm": -11.68339189073383,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": 225,
+      "xyz": [
+        -20841.165760430427,
+        -600.0953660040909,
+        -81.09370132469303
+      ],
+      "ground_above_road_cm": -8.96743908922069,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 4,
+      "side_cm": 325,
+      "xyz": [
+        -20836.59381613117,
+        -500.19993404984933,
+        -73.69764125938059
+      ],
+      "ground_above_road_cm": -1.57137902390825,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": -325,
+      "xyz": [
+        -20766.416022122085,
+        -1154.0921860516742,
+        -44.977650091995656
+      ],
+      "ground_above_road_cm": 24.942963274548774,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": -225,
+      "xyz": [
+        -20761.84407782283,
+        -1054.1967540974324,
+        -68.71370559651177
+      ],
+      "ground_above_road_cm": 1.2069077700326574,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": -150,
+      "xyz": [
+        -20758.415119598387,
+        -979.2751801317513,
+        -77.44344039526982
+      ],
+      "ground_above_road_cm": -7.522827028725388,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": 0,
+      "xyz": [
+        -20751.557203149507,
+        -829.4320322003889,
+        -81.92328800502742
+      ],
+      "ground_above_road_cm": -12.002674638482986,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": 150,
+      "xyz": [
+        -20744.699286700627,
+        -679.5888842690265,
+        -81.52553008223845
+      ],
+      "ground_above_road_cm": -11.604916715694017,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": 225,
+      "xyz": [
+        -20741.270328476185,
+        -604.6673103033453,
+        -79.5099196438041
+      ],
+      "ground_above_road_cm": -9.589306277259666,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 5,
+      "side_cm": 325,
+      "xyz": [
+        -20736.69838417693,
+        -504.7718783491037,
+        -72.4221688388252
+      ],
+      "ground_above_road_cm": -2.5015554722807707,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": -325,
+      "xyz": [
+        -20666.520590167846,
+        -1158.6641303509284,
+        -38.88244800032112
+      ],
+      "ground_above_road_cm": 27.711142218415162,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": -225,
+      "xyz": [
+        -20661.94864586859,
+        -1058.768698396687,
+        -63.93267371833031
+      ],
+      "ground_above_road_cm": 2.6609165004059747,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": -150,
+      "xyz": [
+        -20658.519687644148,
+        -983.8471244310057,
+        -75.59775382453336
+      ],
+      "ground_above_road_cm": -9.004163605797075,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": 0,
+      "xyz": [
+        -20651.661771195268,
+        -834.0039764996433,
+        -78.60007651769934
+      ],
+      "ground_above_road_cm": -12.006486298963054,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": 150,
+      "xyz": [
+        -20644.803854746388,
+        -684.1608285682809,
+        -78.22073415158593
+      ],
+      "ground_above_road_cm": -11.627143932849648,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": 225,
+      "xyz": [
+        -20641.374896521946,
+        -609.2392546025997,
+        -76.63445360037827
+      ],
+      "ground_above_road_cm": -10.040863381641984,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 6,
+      "side_cm": 325,
+      "xyz": [
+        -20636.80295222269,
+        -509.34382264835807,
+        -70.5347481019885
+      ],
+      "ground_above_road_cm": -3.9411578832522167,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": -325,
+      "xyz": [
+        -20560.216545596915,
+        -1163.4660468608372,
+        -35.51247498414864
+      ],
+      "ground_above_road_cm": 28.29227543780827,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": -225,
+      "xyz": [
+        -20557.616482102796,
+        -1063.499854226394,
+        -63.27687793845803
+      ],
+      "ground_above_road_cm": 0.5278724834988822,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": -150,
+      "xyz": [
+        -20555.666434482206,
+        -988.525209750562,
+        -75.48329977228241
+      ],
+      "ground_above_road_cm": -11.678549350325497,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": 0,
+      "xyz": [
+        -20551.766339241025,
+        -838.5759207988976,
+        -75.80716697176263
+      ],
+      "ground_above_road_cm": -12.002416549805716,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": 150,
+      "xyz": [
+        -20547.866243999844,
+        -688.6266318472333,
+        -75.68416959566298
+      ],
+      "ground_above_road_cm": -11.879419173706069,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": 225,
+      "xyz": [
+        -20545.916196379254,
+        -613.6519873714011,
+        -75.59975293796583
+      ],
+      "ground_above_road_cm": -11.795002516008921,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 7,
+      "side_cm": 325,
+      "xyz": [
+        -20543.316132885135,
+        -513.6857947369582,
+        -73.89096458675158
+      ],
+      "ground_above_road_cm": -10.086214164794669,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": -325,
+      "xyz": [
+        -20454.465988953845,
+        -1166.1647366647435,
+        -39.6086738401616
+      ],
+      "ground_above_road_cm": 21.8073899841374,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": -225,
+      "xyz": [
+        -20453.65114797927,
+        -1066.1680565489207,
+        -64.03941389098577
+      ],
+      "ground_above_road_cm": -2.6233500666867684,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": -150,
+      "xyz": [
+        -20453.04001724834,
+        -991.1705464620538,
+        -73.81396089358896
+      ],
+      "ground_above_road_cm": -12.397897069289954,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": 0,
+      "xyz": [
+        -20451.817755786476,
+        -841.1755262883199,
+        -73.41980286655644
+      ],
+      "ground_above_road_cm": -12.003739042257436,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": 150,
+      "xyz": [
+        -20450.595494324614,
+        -691.180506114586,
+        -73.75961190092517
+      ],
+      "ground_above_road_cm": -12.343548076626163,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": 225,
+      "xyz": [
+        -20449.98436359368,
+        -616.182996027719,
+        -74.18761938449325
+      ],
+      "ground_above_road_cm": -12.771555560194244,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 8,
+      "side_cm": 325,
+      "xyz": [
+        -20449.169522619108,
+        -516.1863159118964,
+        -77.09823158855693
+      ],
+      "ground_above_road_cm": -15.682167764257926,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": -325,
+      "xyz": [
+        -20354.469308838023,
+        -1166.979577639319,
+        -45.85416945787256
+      ],
+      "ground_above_road_cm": 12.797649885588541,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": -225,
+      "xyz": [
+        -20353.65446786345,
+        -1066.9828975234961,
+        -62.574575995640544
+      ],
+      "ground_above_road_cm": -3.9227566521794444,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": -150,
+      "xyz": [
+        -20353.043337132516,
+        -991.9853874366293,
+        -70.92120958547275
+      ],
+      "ground_above_road_cm": -12.269390242011653,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": 0,
+      "xyz": [
+        -20351.821075670654,
+        -841.9903672628953,
+        -70.65872211633746
+      ],
+      "ground_above_road_cm": -12.006902772876359,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": 150,
+      "xyz": [
+        -20350.59881420879,
+        -691.9953470891614,
+        -71.20851455631077
+      ],
+      "ground_above_road_cm": -12.556695212849675,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": 225,
+      "xyz": [
+        -20349.98768347786,
+        -616.9978370022944,
+        -70.08622012505498
+      ],
+      "ground_above_road_cm": -11.43440078159388,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 9,
+      "side_cm": 325,
+      "xyz": [
+        -20349.172842503285,
+        -517.0011568864718,
+        -72.96166178740577
+      ],
+      "ground_above_road_cm": -14.309842443944675,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": -325,
+      "xyz": [
+        -20252.962036973553,
+        -1167.803217111375,
+        -48.25653256794908
+      ],
+      "ground_above_road_cm": 7.547235213436451,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": -225,
+      "xyz": [
+        -20252.611993460097,
+        -1067.8038297655582,
+        -60.42509780159321
+      ],
+      "ground_above_road_cm": -4.6213300202076795,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": -150,
+      "xyz": [
+        -20252.34946082501,
+        -992.8042892561957,
+        -67.21502069148619
+      ],
+      "ground_above_road_cm": -11.411252910100657,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": 0,
+      "xyz": [
+        -20251.82439555483,
+        -842.8052082374707,
+        -67.80526171679821
+      ],
+      "ground_above_road_cm": -12.001493935412682,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": 150,
+      "xyz": [
+        -20251.29933028465,
+        -692.8061272187456,
+        -68.22282763061344
+      ],
+      "ground_above_road_cm": -12.419059849227907,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": 225,
+      "xyz": [
+        -20251.036797649565,
+        -617.806586709383,
+        -67.08424076367032
+      ],
+      "ground_above_road_cm": -11.280472982284792,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 10,
+      "side_cm": 325,
+      "xyz": [
+        -20250.68675413611,
+        -517.8071993635663,
+        -69.16239092894511
+      ],
+      "ground_above_road_cm": -13.358623147559584,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": -325,
+      "xyz": [
+        -20151.6348548546,
+        -1168.1551922394538,
+        -46.79275715673589
+      ],
+      "ground_above_road_cm": 6.122109766115983,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": -225,
+      "xyz": [
+        -20151.693655936266,
+        -1068.1552095272912,
+        -57.83306959919469
+      ],
+      "ground_above_road_cm": -4.9182026763428155,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": -150,
+      "xyz": [
+        -20151.737756747512,
+        -993.1552224931693,
+        -64.01435847292532
+      ],
+      "ground_above_road_cm": -11.099491550073452,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": 0,
+      "xyz": [
+        -20151.825958370006,
+        -843.1552484249256,
+        -64.91966492421284
+      ],
+      "ground_above_road_cm": -12.004798001360967,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": 150,
+      "xyz": [
+        -20151.9141599925,
+        -693.155274356682,
+        -65.74106983201796
+      ],
+      "ground_above_road_cm": -12.826202909166085,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": 225,
+      "xyz": [
+        -20151.958260803745,
+        -618.1552873225601,
+        -64.48148118502877
+      ],
+      "ground_above_road_cm": -11.566614262176898,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 11,
+      "side_cm": 325,
+      "xyz": [
+        -20152.01706188541,
+        -518.1553046103976,
+        -63.45888664482595
+      ],
+      "ground_above_road_cm": -10.544019721974081,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": -325,
+      "xyz": [
+        -20051.634872142437,
+        -1168.0963911577908,
+        -45.76080842526676
+      ],
+      "ground_above_road_cm": 4.679181870065264,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": -225,
+      "xyz": [
+        -20051.693673224097,
+        -1068.0964084456284,
+        -56.87978629308259
+      ],
+      "ground_above_road_cm": -6.439795997750565,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": -150,
+      "xyz": [
+        -20051.737774035348,
+        -993.0964214115065,
+        -62.311085432083246
+      ],
+      "ground_above_road_cm": -11.871095136751222,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": 0,
+      "xyz": [
+        -20051.82597565784,
+        -843.0964473432628,
+        -62.4452924554555
+      ],
+      "ground_above_road_cm": -12.005302160123478,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": 150,
+      "xyz": [
+        -20051.914177280334,
+        -693.096473275019,
+        -63.23038602253223
+      ],
+      "ground_above_road_cm": -12.790395727200206,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": 225,
+      "xyz": [
+        -20051.958278091584,
+        -618.0964862408972,
+        -61.45125241748292
+      ],
+      "ground_above_road_cm": -11.011262122150896,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 12,
+      "side_cm": 325,
+      "xyz": [
+        -20052.017079173245,
+        -518.0965035287347,
+        -59.71953523900288
+      ],
+      "ground_above_road_cm": -9.279544943670857,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": -325,
+      "xyz": [
+        -19951.634889430276,
+        -1168.0375900761278,
+        -41.89217528231029
+      ],
+      "ground_above_road_cm": 5.812521718835043,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": -225,
+      "xyz": [
+        -19951.69369051194,
+        -1068.0376073639654,
+        -55.1784260890754
+      ],
+      "ground_above_road_cm": -7.473729087930067,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": -150,
+      "xyz": [
+        -19951.737791323187,
+        -993.0376203298435,
+        -59.673062879120835
+      ],
+      "ground_above_road_cm": -11.9683658779755,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": 0,
+      "xyz": [
+        -19951.82599294568,
+        -843.0376462615998,
+        -59.70678733224668
+      ],
+      "ground_above_road_cm": -12.002090331101343,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": 150,
+      "xyz": [
+        -19951.914194568173,
+        -693.037672193356,
+        -60.94008461951762
+      ],
+      "ground_above_road_cm": -13.235387618372286,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": 225,
+      "xyz": [
+        -19951.95829537942,
+        -618.0376851592342,
+        -58.81833144645066
+      ],
+      "ground_above_road_cm": -11.113634445305323,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 13,
+      "side_cm": 325,
+      "xyz": [
+        -19952.017096461084,
+        -518.0377024470718,
+        -56.729993862312995
+      ],
+      "ground_above_road_cm": -9.02529686116766,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": -325,
+      "xyz": [
+        -19851.634906718115,
+        -1167.978788994465,
+        -36.99685550599702
+      ],
+      "ground_above_road_cm": 7.902157586596367,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": -225,
+      "xyz": [
+        -19851.69370779978,
+        -1067.9788062823025,
+        -49.634796684731555
+      ],
+      "ground_above_road_cm": -4.735783592138169,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": -150,
+      "xyz": [
+        -19851.737808611026,
+        -992.9788192481806,
+        -56.241904640330176
+      ],
+      "ground_above_road_cm": -11.34289154773679,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": 0,
+      "xyz": [
+        -19851.82601023352,
+        -842.9788451799369,
+        -56.90161441646069
+      ],
+      "ground_above_road_cm": -12.002601323867303,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": 150,
+      "xyz": [
+        -19851.914211856012,
+        -692.9788711116933,
+        -58.2918592277631
+      ],
+      "ground_above_road_cm": -13.392846135169712,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": 225,
+      "xyz": [
+        -19851.95831266726,
+        -617.9788840775714,
+        -56.27028679343766
+      ],
+      "ground_above_road_cm": -11.371273700844277,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 14,
+      "side_cm": 325,
+      "xyz": [
+        -19852.017113748923,
+        -517.9789013654089,
+        -53.362775355146596
+      ],
+      "ground_above_road_cm": -8.46376226255321,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": -325,
+      "xyz": [
+        -19751.63492400595,
+        -1167.919987912802,
+        -36.022131623432415
+      ],
+      "ground_above_road_cm": 6.211894861661989,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": -225,
+      "xyz": [
+        -19751.693725087614,
+        -1067.9200052006397,
+        -47.58694433007827
+      ],
+      "ground_above_road_cm": -5.352917844983864,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": -150,
+      "xyz": [
+        -19751.73782589886,
+        -992.9200181665178,
+        -53.34171605170491
+      ],
+      "ground_above_road_cm": -11.107689566610503,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": 0,
+      "xyz": [
+        -19751.826027521354,
+        -842.920044098274,
+        -54.23627783865413
+      ],
+      "ground_above_road_cm": -12.002251353559728,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": 150,
+      "xyz": [
+        -19751.914229143847,
+        -692.9200700300303,
+        -54.16929303325014
+      ],
+      "ground_above_road_cm": -11.935266548155738,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": 225,
+      "xyz": [
+        -19751.958329955094,
+        -617.9200829959085,
+        -52.57059205541805
+      ],
+      "ground_above_road_cm": -10.336565570323643,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 15,
+      "side_cm": 325,
+      "xyz": [
+        -19752.01713103676,
+        -517.920100283746,
+        -48.569201585287146
+      ],
+      "ground_above_road_cm": -6.3351751001927425,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": -325,
+      "xyz": [
+        -19651.63494129379,
+        -1167.861186831139,
+        -37.012884692806665
+      ],
+      "ground_above_road_cm": 2.4564100339559047,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": -225,
+      "xyz": [
+        -19651.69374237545,
+        -1067.8612041189767,
+        -46.69988224161557
+      ],
+      "ground_above_road_cm": -7.230587514852999,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": -150,
+      "xyz": [
+        -19651.7378431867,
+        -992.8612170848548,
+        -51.213597222184035
+      ],
+      "ground_above_road_cm": -11.744302495421465,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": 0,
+      "xyz": [
+        -19651.826044809193,
+        -842.8612430166112,
+        -51.47059625586985
+      ],
+      "ground_above_road_cm": -12.00130152910728,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": 150,
+      "xyz": [
+        -19651.914246431686,
+        -692.8612689483675,
+        -50.473174839054764
+      ],
+      "ground_above_road_cm": -11.003880112292194,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": 225,
+      "xyz": [
+        -19651.958347242937,
+        -617.8612819142456,
+        -48.83795839539539
+      ],
+      "ground_above_road_cm": -9.36866366863282,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 16,
+      "side_cm": 325,
+      "xyz": [
+        -19652.017148324598,
+        -517.8612992020832,
+        -45.144837271740926
+      ],
+      "ground_above_road_cm": -5.675542544978356,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": -325,
+      "xyz": [
+        -19551.634958581624,
+        -1167.8023857494763,
+        -36.61860927858015
+      ],
+      "ground_above_road_cm": -0.37483189513596216,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": -225,
+      "xyz": [
+        -19551.69375966329,
+        -1067.8024030373138,
+        -43.50831838010936
+      ],
+      "ground_above_road_cm": -7.264540996665168,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": -150,
+      "xyz": [
+        -19551.737860474535,
+        -992.8024160031919,
+        -47.027914136908294
+      ],
+      "ground_above_road_cm": -10.784136753464104,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": 0,
+      "xyz": [
+        -19551.82606209703,
+        -842.8024419349482,
+        -48.24867616897427
+      ],
+      "ground_above_road_cm": -12.00489878553008,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": 150,
+      "xyz": [
+        -19551.914263719522,
+        -692.8024678667045,
+        -48.020798064841756
+      ],
+      "ground_above_road_cm": -11.777020681397566,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": 225,
+      "xyz": [
+        -19551.95836453077,
+        -617.8024808325827,
+        -46.28735377044927
+      ],
+      "ground_above_road_cm": -10.043576387005082,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 17,
+      "side_cm": 325,
+      "xyz": [
+        -19552.017165612433,
+        -517.8024981204202,
+        -44.477672495693696
+      ],
+      "ground_above_road_cm": -8.233895112249506,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": -325,
+      "xyz": [
+        -19449.161556111365,
+        -1167.7327180785437,
+        -35.71755831521364
+      ],
+      "ground_above_road_cm": -2.3411426571133447,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": -225,
+      "xyz": [
+        -19449.98140942629,
+        -1067.7360789323104,
+        -40.44308673035948
+      ],
+      "ground_above_road_cm": -7.06667107225919,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": -150,
+      "xyz": [
+        -19450.596299412482,
+        -992.7385995726354,
+        -44.5695355502462
+      ],
+      "ground_above_road_cm": -11.193119892145909,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": 0,
+      "xyz": [
+        -19451.826079384868,
+        -842.7436408532853,
+        -45.38041351633751
+      ],
+      "ground_above_road_cm": -12.00399785823722,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": 150,
+      "xyz": [
+        -19453.055859357253,
+        -692.7486821339353,
+        -45.24119755710899
+      ],
+      "ground_above_road_cm": -11.864781899008698,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": 225,
+      "xyz": [
+        -19453.670749343444,
+        -617.7512027742603,
+        -44.03300687835008
+      ],
+      "ground_above_road_cm": -10.656591220249787,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 18,
+      "side_cm": 325,
+      "xyz": [
+        -19454.49060265837,
+        -517.754563628027,
+        -42.59511603523288
+      ],
+      "ground_above_road_cm": -9.218700377132585,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": -325,
+      "xyz": [
+        -19348.20067348408,
+        -1166.9035251691118,
+        -35.995631033395284
+      ],
+      "ground_above_road_cm": -4.927151706952621,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": -225,
+      "xyz": [
+        -19349.31756489671,
+        -1066.9097625957772,
+        -41.047595590243645
+      ],
+      "ground_above_road_cm": -9.979116263800982,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": -150,
+      "xyz": [
+        -19350.155233456186,
+        -991.9144406657765,
+        -44.28322544070693
+      ],
+      "ground_above_road_cm": -13.214746114264265,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": 0,
+      "xyz": [
+        -19351.830570575134,
+        -841.9237968057747,
+        -43.070128664208596
+      ],
+      "ground_above_road_cm": -12.001649337765933,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": 150,
+      "xyz": [
+        -19353.50590769408,
+        -691.9331529457729,
+        -43.36884252267623
+      ],
+      "ground_above_road_cm": -12.300363196233569,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": 225,
+      "xyz": [
+        -19354.343576253556,
+        -616.9378310157721,
+        -41.54366567555712
+      ],
+      "ground_above_road_cm": -10.475186349114459,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 19,
+      "side_cm": 325,
+      "xyz": [
+        -19355.460467666187,
+        -516.9440684424376,
+        -38.62839346685814
+      ],
+      "ground_above_road_cm": -7.559914140415479,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": -325,
+      "xyz": [
+        -19248.206910910747,
+        -1165.7866337564797,
+        -35.73952722002764
+      ],
+      "ground_above_road_cm": -6.806272672276698,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": -225,
+      "xyz": [
+        -19249.32380232338,
+        -1065.792871183145,
+        -39.08676866425026
+      ],
+      "ground_above_road_cm": -10.153514116499316,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": -150,
+      "xyz": [
+        -19250.161470882853,
+        -990.7975492531443,
+        -41.01466741935451
+      ],
+      "ground_above_road_cm": -12.081412871603568,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": 0,
+      "xyz": [
+        -19251.8368080018,
+        -840.8069053931425,
+        -40.93952128864271
+      ],
+      "ground_above_road_cm": -12.006266740891768,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": 150,
+      "xyz": [
+        -19253.51214512075,
+        -690.8162615331407,
+        -38.977093574365426
+      ],
+      "ground_above_road_cm": -10.043839026614485,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": 225,
+      "xyz": [
+        -19254.349813680223,
+        -615.8209396031399,
+        -37.54827161429807
+      ],
+      "ground_above_road_cm": -8.615017066547132,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 20,
+      "side_cm": 325,
+      "xyz": [
+        -19255.466705092855,
+        -515.8271770298054,
+        -36.79798951157386
+      ],
+      "ground_above_road_cm": -7.864734963822919,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": -325,
+      "xyz": [
+        -19148.21314833741,
+        -1164.6697423438472,
+        -31.813187310625608
+      ],
+      "ground_above_road_cm": -5.548767008513643,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": -225,
+      "xyz": [
+        -19149.330039750042,
+        -1064.6759797705129,
+        -34.598841359906146
+      ],
+      "ground_above_road_cm": -8.33442105779418,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": -150,
+      "xyz": [
+        -19150.167708309516,
+        -989.6806578405119,
+        -36.66819058071064
+      ],
+      "ground_above_road_cm": -10.403770278598678,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": 0,
+      "xyz": [
+        -19151.843045428464,
+        -839.6900139805102,
+        -38.27260980114443
+      ],
+      "ground_above_road_cm": -12.008189499032461,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": 150,
+      "xyz": [
+        -19153.518382547412,
+        -689.6993701205085,
+        -36.92889361157995
+      ],
+      "ground_above_road_cm": -10.664473309467986,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": 225,
+      "xyz": [
+        -19154.356051106886,
+        -614.7040481905076,
+        -35.396539634447436
+      ],
+      "ground_above_road_cm": -9.13211933233547,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 21,
+      "side_cm": 325,
+      "xyz": [
+        -19155.47294251952,
+        -514.7102856171732,
+        -35.55916791655909
+      ],
+      "ground_above_road_cm": -9.294747614447125,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": -325,
+      "xyz": [
+        -19048.219385764078,
+        -1163.552850931215,
+        -21.126427920595006
+      ],
+      "ground_above_road_cm": 2.083557870045148,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": -225,
+      "xyz": [
+        -19049.33627717671,
+        -1063.5590883578807,
+        -25.36624335070428
+      ],
+      "ground_above_road_cm": -2.1562575600641267,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": -150,
+      "xyz": [
+        -19050.173945736184,
+        -988.5637664278797,
+        -29.444191894766163
+      ],
+      "ground_above_road_cm": -6.2342061041260095,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": 0,
+      "xyz": [
+        -19051.84928285513,
+        -838.573122567878,
+        -35.21600952285985
+      ],
+      "ground_above_road_cm": -12.006023732219695,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": 150,
+      "xyz": [
+        -19053.52461997408,
+        -688.5824787078764,
+        -35.02537775675842
+      ],
+      "ground_above_road_cm": -11.815391966118263,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": 225,
+      "xyz": [
+        -19054.362288533554,
+        -613.5871567778754,
+        -33.59368774200425
+      ],
+      "ground_above_road_cm": -10.383701951364095,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 22,
+      "side_cm": 325,
+      "xyz": [
+        -19055.479179946185,
+        -513.593394204541,
+        -34.32523684299417
+      ],
+      "ground_above_road_cm": -11.115251052354019,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": -325,
+      "xyz": [
+        -18948.22562319074,
+        -1162.4359595185829,
+        -10.605844958471607
+      ],
+      "ground_above_road_cm": 10.092309421831736,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": -225,
+      "xyz": [
+        -18949.342514603373,
+        -1062.4421969452485,
+        -18.552041270417476
+      ],
+      "ground_above_road_cm": 2.1461131098858672,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": -150,
+      "xyz": [
+        -18950.180183162847,
+        -987.4468750152475,
+        -24.71544777040549
+      ],
+      "ground_above_road_cm": -4.017293390102147,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": 0,
+      "xyz": [
+        -18951.855520281795,
+        -837.4562311552459,
+        -32.6992967091594
+      ],
+      "ground_above_road_cm": -12.001142328856055,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": 150,
+      "xyz": [
+        -18953.530857400743,
+        -687.4655872952442,
+        -32.48450211656791
+      ],
+      "ground_above_road_cm": -11.786347736264567,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": 225,
+      "xyz": [
+        -18954.368525960217,
+        -612.4702653652432,
+        -32.68636735720543
+      ],
+      "ground_above_road_cm": -11.988212976902084,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 23,
+      "side_cm": 325,
+      "xyz": [
+        -18955.48541737285,
+        -512.4765027919088,
+        -33.873777479058845
+      ],
+      "ground_above_road_cm": -13.175623098755501,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": -325,
+      "xyz": [
+        -18848.23186061741,
+        -1161.3190681059507,
+        -9.864219788762966
+      ],
+      "ground_above_road_cm": 8.716340125996236,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": -225,
+      "xyz": [
+        -18849.34875203004,
+        -1061.3253055326163,
+        -18.01964590949524
+      ],
+      "ground_above_road_cm": 0.5609140052639638,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": -150,
+      "xyz": [
+        -18850.186420589514,
+        -986.3299836026154,
+        -23.88019336457978
+      ],
+      "ground_above_road_cm": -5.299633449820579,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": 0,
+      "xyz": [
+        -18851.861757708462,
+        -836.3393397426137,
+        -30.58314530141388
+      ],
+      "ground_above_road_cm": -12.002585386654676,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": 150,
+      "xyz": [
+        -18853.53709482741,
+        -686.348695882612,
+        -30.72527243280706
+      ],
+      "ground_above_road_cm": -12.144712518047857,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": 225,
+      "xyz": [
+        -18854.374763386884,
+        -611.353373952611,
+        -32.49036875140882
+      ],
+      "ground_above_road_cm": -13.90980883664962,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 24,
+      "side_cm": 325,
+      "xyz": [
+        -18855.491654799516,
+        -511.3596113792766,
+        -34.63886884886756
+      ],
+      "ground_above_road_cm": -16.058308934108357,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": -325,
+      "xyz": [
+        -18751.002870493878,
+        -1160.2212968807955,
+        -10.061360038761222
+      ],
+      "ground_above_road_cm": 6.272689641992358,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": -225,
+      "xyz": [
+        -18751.269062691183,
+        -1060.2216511728527,
+        -17.87534474793597
+      ],
+      "ground_above_road_cm": -1.5412950671823893,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": -150,
+      "xyz": [
+        -18751.468706839165,
+        -985.2219168918956,
+        -23.901285740902267
+      ],
+      "ground_above_road_cm": -7.567236060148687,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": 0,
+      "xyz": [
+        -18751.867995135126,
+        -835.2224483299814,
+        -28.336087176992123
+      ],
+      "ground_above_road_cm": -12.002037496238543,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": 150,
+      "xyz": [
+        -18752.267283431087,
+        -685.2229797680671,
+        -29.30104360035716
+      ],
+      "ground_above_road_cm": -12.966993919603581,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": 225,
+      "xyz": [
+        -18752.46692757907,
+        -610.22324548711,
+        -31.67732662068761
+      ],
+      "ground_above_road_cm": -15.343276939934029,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 25,
+      "side_cm": 325,
+      "xyz": [
+        -18752.733119776374,
+        -510.22359977916716,
+        -34.93816805986785
+      ],
+      "ground_above_road_cm": -18.60411837911427,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 26,
+      "side_cm": -325,
+      "xyz": [
+        -18694.26797979747,
+        -1157.1786751195,
+        -10.079579069317106
+      ],
+      "ground_above_road_cm": 3.722829316033927,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 26,
+      "side_cm": -225,
+      "xyz": [
+        -18681.221996421915,
+        -1058.0333155822793,
+        -14.612767219543457
+      ],
+      "ground_above_road_cm": -0.8103588341924244,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 26,
+      "side_cm": -150,
+      "xyz": [
+        -18671.43750889025,
+        -983.674295929364,
+        -23.008873411833747
+      ],
+      "ground_above_road_cm": -9.206465026482714,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 26,
+      "side_cm": 0,
+      "xyz": [
+        -18651.868533826913,
+        -834.9562566235332,
+        -25.806800555038308
+      ],
+      "ground_above_road_cm": -12.004392169687275,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 26,
+      "side_cm": 150,
+      "xyz": [
+        -18632.299558763578,
+        -686.2382173177025,
+        -27.867572537646083
+      ],
+      "ground_above_road_cm": -14.06516415229505,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 26,
+      "side_cm": 225,
+      "xyz": [
+        -18622.515071231912,
+        -611.8791976647872,
+        -30.346490202202176
+      ],
+      "ground_above_road_cm": -16.544081816851143,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 26,
+      "side_cm": 325,
+      "xyz": [
+        -18609.469087856356,
+        -512.7338381275666,
+        -33.431504864797034
+      ],
+      "ground_above_road_cm": -19.629096479446,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 27,
+      "side_cm": -325,
+      "xyz": [
+        -18628.595444779246,
+        -1164.034479834139,
+        -5.327437877655029
+      ],
+      "ground_above_road_cm": 5.710961140550317,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 27,
+      "side_cm": -225,
+      "xyz": [
+        -18605.28598998379,
+        -1066.789072142369,
+        -12.638806343078613
+      ],
+      "ground_above_road_cm": -1.6004073248732666,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 27,
+      "side_cm": -150,
+      "xyz": [
+        -18587.803898887196,
+        -993.8550163735413,
+        -17.369491577148438
+      ],
+      "ground_above_road_cm": -6.331092558943091,
+      "actor": "Park pavement SM_Park_Concrete_2_15"
+    },
+    {
+      "index": 27,
+      "side_cm": 0,
+      "xyz": [
+        -18552.839716694012,
+        -847.9869048358863,
+        -23.044342824650585
+      ],
+      "ground_above_road_cm": -12.005943806445238,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 27,
+      "side_cm": 150,
+      "xyz": [
+        -18517.87553450083,
+        -702.1187932982314,
+        -24.026914219365835
+      ],
+      "ground_above_road_cm": -12.988515201160489,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 27,
+      "side_cm": 225,
+      "xyz": [
+        -18500.393443404235,
+        -629.1847375294037,
+        -25.393293599091294
+      ],
+      "ground_above_road_cm": -14.354894580885947,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 27,
+      "side_cm": 325,
+      "xyz": [
+        -18477.083988608778,
+        -531.9393298376337,
+        -27.844977780519002
+      ],
+      "ground_above_road_cm": -16.806578762313656,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 28,
+      "side_cm": -325,
+      "xyz": [
+        -18609.930962410133,
+        -1157.6336685641327,
+        -5.436644554138184
+      ],
+      "ground_above_road_cm": 0.3380290846123941,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 28,
+      "side_cm": -225,
+      "xyz": [
+        -18562.775020507204,
+        -1069.4502396035423,
+        -11.489025115966797
+      ],
+      "ground_above_road_cm": -5.714351477216219,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 28,
+      "side_cm": -150,
+      "xyz": [
+        -18527.408064080006,
+        -1003.3126678830993,
+        -15.152222633361816
+      ],
+      "ground_above_road_cm": -9.377548994611239,
+      "actor": "Park pavement SM_Park_Concrete_2_15"
+    },
+    {
+      "index": 28,
+      "side_cm": 0,
+      "xyz": [
+        -18456.674151225612,
+        -871.0375244422136,
+        -17.782084176552644
+      ],
+      "ground_above_road_cm": -12.007410537802066,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 28,
+      "side_cm": 150,
+      "xyz": [
+        -18385.94023837122,
+        -738.7623810013279,
+        -18.727360527473138
+      ],
+      "ground_above_road_cm": -12.95268688872256,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 28,
+      "side_cm": 225,
+      "xyz": [
+        -18350.57328194402,
+        -672.624809280885,
+        -20.17175240878055
+      ],
+      "ground_above_road_cm": -14.397078770029971,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 28,
+      "side_cm": 325,
+      "xyz": [
+        -18303.41734004109,
+        -584.4413803202945,
+        -22.963901141755287
+      ],
+      "ground_above_road_cm": -17.18922750300471,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 29,
+      "side_cm": -325,
+      "xyz": [
+        -18564.175800369565,
+        -1177.6782447180158,
+        -3.11061954498291
+      ],
+      "ground_above_road_cm": -1.8688644439041777,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 29,
+      "side_cm": -225,
+      "xyz": [
+        -18503.965007106628,
+        -1097.8367744494396,
+        -8.326038360595703
+      ],
+      "ground_above_road_cm": -7.084283259516971,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 29,
+      "side_cm": -150,
+      "xyz": [
+        -18458.806912159427,
+        -1037.9556717480075,
+        -11.040175437927246
+      ],
+      "ground_above_road_cm": -9.798420336848514,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 29,
+      "side_cm": 0,
+      "xyz": [
+        -18368.49072226502,
+        -918.1934663451433,
+        -13.249759490795668
+      ],
+      "ground_above_road_cm": -12.008004389716936,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 29,
+      "side_cm": 150,
+      "xyz": [
+        -18278.174532370616,
+        -798.4312609422791,
+        -15.085845838493242
+      ],
+      "ground_above_road_cm": -13.84409073741451,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 29,
+      "side_cm": 225,
+      "xyz": [
+        -18233.016437423415,
+        -738.5501582408469,
+        -16.687209480995307
+      ],
+      "ground_above_road_cm": -15.445454379916574,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 29,
+      "side_cm": 325,
+      "xyz": [
+        -18172.80564416048,
+        -658.7086879722708,
+        -16.898712158203125
+      ],
+      "ground_above_road_cm": -15.656957057124393,
+      "actor": "Park pavement SM_Park_Concrete_2_15"
+    },
+    {
+      "index": 30,
+      "side_cm": -325,
+      "xyz": [
+        -18530.795001641676,
+        -1195.5939207864355,
+        -1.618170142173767
+      ],
+      "ground_above_road_cm": -3.7251719558449157,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 30,
+      "side_cm": -225,
+      "xyz": [
+        -18456.64802569726,
+        -1128.4952921991212,
+        -5.871500015258789
+      ],
+      "ground_above_road_cm": -7.978501828929938,
+      "actor": "Park pavement SM_Park_Concrete_2_16"
+    },
+    {
+      "index": 30,
+      "side_cm": -150,
+      "xyz": [
+        -18401.03779373895,
+        -1078.1713207586354,
+        -10.842113832281939
+      ],
+      "ground_above_road_cm": -12.949115645953087,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 30,
+      "side_cm": 0,
+      "xyz": [
+        -18289.817329822326,
+        -977.5233778776638,
+        -9.898290347895909
+      ],
+      "ground_above_road_cm": -12.005292161567057,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 30,
+      "side_cm": 150,
+      "xyz": [
+        -18178.596865905703,
+        -876.8754349966923,
+        -12.086846744394734
+      ],
+      "ground_above_road_cm": -14.193848558065882,
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "index": 30,
+      "side_cm": 225,
+      "xyz": [
+        -18122.986633947392,
+        -826.5514635562065,
+        -11.037235260009766
+      ],
+      "ground_above_road_cm": -13.144237073680914,
+      "actor": "Park pavement SM_Park_Concrete_2_15"
+    },
+    {
+      "index": 30,
+      "side_cm": 325,
+      "xyz": [
+        -18048.839658002977,
+        -759.4528349688923,
+        -13.842556953430176
+      ],
+      "ground_above_road_cm": -15.949558767101324,
+      "actor": "Park pavement SM_Park_Concrete_2_15"
+    }
+  ],
+  "scope": "Native ground survey around first30m of13thStreet practice road; no changes saved."
+}

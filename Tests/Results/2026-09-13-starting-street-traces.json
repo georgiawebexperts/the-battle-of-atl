@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "samples": 505,
+  "plateau_samples": 405,
+  "errors": [],
+  "max_plateau_error_cm": 6.9673939066206e-05,
+  "main_sha256_preserved": "3047f6b3b597d645d3d219314e319e2a041840e46cf4ffda6a1d4b1607eb3f29",
+  "scope": "Native tutorial actor and five cross-section ground traces at101stations; central full-profile road and sidewalk match exported surface within.3cm. Taper endpoints, rendering and riding acceptance separate."
+}

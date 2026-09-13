@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "work/frontage-final/opening0.png",
+    "work/frontage-final/opening1.png",
+    "work/frontage-final/opening2.png"
+  ],
+  "visual_review": "Opening0 and2 inspected: textured asphalt, continuous opaque curb faces, sidewalk/steps connection and bungalow setback visible. Road edge no longer shows prior grass intrusion in these views. Opening text remains readable. Incremental frontage acceptance; full neighborhood art, endpoint and traversal checks remain separate.",
+  "editor": true,
+  "grip_closeup": false,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance.",
+  "visual_accepted": true
+}

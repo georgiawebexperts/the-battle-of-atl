@@ -1,0 +1,22 @@
+{
+  "assets": [
+    {
+      "asset": "/Game/BattleForTheA/Environment/StartingStreet/SM_FrontageRoad.SM_FrontageRoad",
+      "vertices": 303,
+      "triangles": 400
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/StartingStreet/SM_FrontageSouthWalk.SM_FrontageSouthWalk",
+      "vertices": 505,
+      "triangles": 800
+    },
+    {
+      "asset": "/Game/BattleForTheA/Environment/StartingStreet/SM_FrontageNorthWalk.SM_FrontageNorthWalk",
+      "vertices": 505,
+      "triangles": 800
+    }
+  ],
+  "length_cm": 4997.28914648298,
+  "main_sha256_preserved": "3047f6b3b597d645d3d219314e319e2a041840e46cf4ffda6a1d4b1607eb3f29",
+  "scope": "50m frontage asset generation from native terrain; world unchanged. Runtime import/ground clearance, start height, both tutorial routes and visual review pending."
+}

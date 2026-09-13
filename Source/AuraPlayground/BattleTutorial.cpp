@@ -6,6 +6,7 @@
 #include "BattleRider.h"
 #include "BattleQuest.h"
 #include "Components/InstancedStaticMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
@@ -26,7 +27,13 @@ ABattleTutorial::ABattleTutorial(){
  auto Span=[&](FVector A,FVector B){const FVector D=B-A;Part(Road,(A+B)*.5f-FVector(0,0,12),FVector(D.Size()+3,450,24),D.Rotation());};
  for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialBlock::Alternate);I++)Span(BattleTutorialBlock::Alternate[I-1],BattleTutorialBlock::Alternate[I]);
  for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::StubEnds);I+=2)Span(BattleTutorialBlock::StubEnds[I],BattleTutorialBlock::StubEnds[I+1]);
- const FVector H=BattleTutorialData::Home+FVector(0,0,80);
+ // Continuous terrain-fitted frontage covers the old block seams near the house.
+ for(const TCHAR* Name:{TEXT("FrontageRoad"),TEXT("FrontageSouthWalk"),TEXT("FrontageNorthWalk")}){
+  const FString Path=FString::Printf(TEXT("/Game/BattleForTheA/Environment/StartingStreet/SM_%s.SM_%s"),Name,Name);
+  ConstructorHelpers::FObjectFinder<UStaticMesh> Asset(*Path);
+  auto* Surface=CreateDefaultSubobject<UStaticMeshComponent>(Name);Surface->SetupAttachment(RootComponent);Surface->SetStaticMesh(Asset.Object);Surface->SetCollisionProfileName(TEXT("BlockAll"));
+ }
+ const FVector H=BattleTutorialData::Home+FVector(0,80,80);
  // Native terrain peaks 68 cm above the original base at the porch.
  // A solid foundation spans the lower rear grade without exposing a floating floor.
  Part(Concrete,H+FVector(0,0,-75),FVector(650,850,150));
@@ -62,6 +69,7 @@ ABattleTutorial::ABattleTutorial(){
  Part(Iron,H+FVector(0,-530,326),FVector(720,240,20));
  Part(Trim,H+FVector(0,-653,317),FVector(720,14,25));
  for(int I=0;I<4;I++)Part(Concrete,H+FVector(0,-625-I*30,-36-I*9),FVector(145,40,128-I*18));
+ Part(Concrete,H+FVector(0,-744,-30),FVector(145,30,8));
  for(int Side:{-1,1})for(int X=160;X<=300;X+=35)Part(Trim,H+FVector(Side*X,-600,70),FVector(14,14,140));
  for(int Side:{-1,1})for(int Z:{35,105})Part(Timber,H+FVector(Side*225,-600,Z),FVector(170,12,12));
  Part(Timber,H+FVector(180,-625,70),FVector(14,14,140));Part(Iron,H+FVector(180,-625,145),FVector(100,45,45));
@@ -97,7 +105,10 @@ void ABattleTutorial::BeginPlay(){
 #endif
  M->bTutorialActive=true;M->StartCountdown=0;
  GetWorld()->SpawnActor<ABattleMarketClosure>(FVector(-19107.993785,3187.443844,0),FRotator::ZeroRotator);
- const FVector P=BattleTutorialData::Road[0]+FVector(0,0,98);FRotator R=(BattleTutorialData::Road[1]-BattleTutorialData::Road[0]).Rotation();
+ FVector P=BattleTutorialData::Road[0]+FVector(0,0,98);FRotator R=(BattleTutorialData::Road[1]-BattleTutorialData::Road[0]).Rotation();
+ // Place the bike on the authored surface before the protected opening begins.
+ FHitResult StartGround;FCollisionQueryParams StartQuery(SCENE_QUERY_STAT(TutorialStartSurface),false,B);
+ if(GetWorld()->LineTraceSingleByChannel(StartGround,P+FVector(0,0,1000),P-FVector(0,0,1000),ECC_Visibility,StartQuery))P.Z=StartGround.ImpactPoint.Z+98.f;
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAlternate")))R=(BattleTutorialBlock::Alternate[1]-BattleTutorialBlock::Alternate[0]).Rotation();
 #endif
