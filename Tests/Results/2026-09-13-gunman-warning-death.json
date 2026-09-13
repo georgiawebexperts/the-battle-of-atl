@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "reason": "Fatal hit cancels live warning and weapon, physics collapse follows, dead shooter cannot fire or re-aim",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-death-review/395605bc8ccc462f86e051b1d8ef4e72/run.log",
+  "detailed_gunman": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible hip tracking, collapse, dead shooting suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "detailed_body_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-death-review/395605bc8ccc462f86e051b1d8ef4e72/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-death-review/395605bc8ccc462f86e051b1d8ef4e72/settled.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "inspected": [
+      "falling.png",
+      "settled.png"
+    ],
+    "observations": [
+      "Detailed body collapses to side on paved path.",
+      "Outfit and hair remain with body in inspected samples.",
+      "Weapon absent after fatal damage."
+    ],
+    "limits": [
+      "Single stationary paved fixture and two samples; not continuous motion, slopes, stairs, crowds or packaged acceptance.",
+      "Damage applied through gameplay damage API rather than a player-fired projectile."
+    ]
+  }
+}
