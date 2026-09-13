@@ -1,0 +1,41 @@
+{
+  "build": 66,
+  "version": "0.66.0",
+  "source_commit": "e9bcd0cfc075990ac5e0a59c2eadd377eb000ada",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "f249380a29f4d469dd6acb9f526d75b27eb3101717fb1122eef8bb0c6ae75930",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066.zip",
+  "zip_sha256": "1f4f620bbf931893b9bab4cb7cba8c157b1697def54d5d16f4d63b8f308b548b",
+  "zip_bytes": 1316357570,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged rendered rifle and shotgun at body grips with level/up/down aim",
+    "Packaged pistol aiming regression; three independent rendered launches report async pipeline compilation=0",
+    "Packaged inventory/combat/rifle zoom/death persistence and shell reload interruption",
+    "Packaged skatepark arcade/realistic entry, automatic ramp airtime, isolated +10 landing and single-use +30 pickup",
+    "Packaged skatepark concrete/paint render inspected",
+    "ZIP CRC, local signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac",
+    "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven"
+  ],
+  "reports": [
+    "2026-09-13-build066-rifle.json",
+    "2026-09-13-build066-shotgun.json",
+    "2026-09-13-build066-pistol.json",
+    "2026-09-13-build066-inventory.json",
+    "2026-09-13-build066-skate-real.json",
+    "2026-09-13-build066-skate-arcade.json"
+  ]
+}

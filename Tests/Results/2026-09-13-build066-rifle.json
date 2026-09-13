@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 28.89,
+  "async_pipeline_compile": 0,
+  "serial_pso_diagnostic": false,
+  "weapon": "rifle",
+  "max_weapon_origin_to_hand_cm": 15.91,
+  "exit_code": 0,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/33bf7b28c95d49889442d1e5b857b729/aim-1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/33bf7b28c95d49889442d1e5b857b729/aim-2.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/33bf7b28c95d49889442d1e5b857b729/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-e2315d20bf8f47919105ddf0b149e444/run.log",
+  "visual_review": true,
+  "packaged": true,
+  "visual_notes": "Packaged level close view inspected: rifle stays at body, support hand at foregrip. Fine fingers/weapon art remain rough."
+}

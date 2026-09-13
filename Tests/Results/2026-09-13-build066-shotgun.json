@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 28.87,
+  "async_pipeline_compile": 0,
+  "serial_pso_diagnostic": false,
+  "weapon": "shotgun",
+  "max_weapon_origin_to_hand_cm": 23.96,
+  "exit_code": 0,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/4d828281577f4105bfea7ac533fb38c8/aim-1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/4d828281577f4105bfea7ac533fb38c8/aim-2.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/4d828281577f4105bfea7ac533fb38c8/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-26f3ad35ae6f407eb02ccdfc7aa1394e/run.log",
+  "visual_review": true,
+  "packaged": true,
+  "visual_notes": "Packaged level close view inspected: shotgun follows body hand positions. Fine grip, pump-hand and reload animation remain unfinished."
+}

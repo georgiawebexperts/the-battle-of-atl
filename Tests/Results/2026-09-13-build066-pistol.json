@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 49.56,
+  "async_pipeline_compile": 0,
+  "serial_pso_diagnostic": false,
+  "weapon": "pistol",
+  "max_weapon_origin_to_hand_cm": 0.0,
+  "exit_code": 0,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/928c23112e814b47844295aab0a92569/aim-1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/928c23112e814b47844295aab0a92569/aim-2.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/928c23112e814b47844295aab0a92569/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-f968b5cdf0c04317b126949b7a9fb7d8/run.log",
+  "visual_review": false,
+  "packaged": true
+}

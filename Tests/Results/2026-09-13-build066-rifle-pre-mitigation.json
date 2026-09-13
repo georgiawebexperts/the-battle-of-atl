@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 28.89,
+  "weapon": "rifle",
+  "max_weapon_origin_to_hand_cm": 15.91,
+  "exit_code": 0,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/f5761626212946fa83afeecb4c8ce88f/aim-1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/f5761626212946fa83afeecb4c8ce88f/aim-2.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/f5761626212946fa83afeecb4c8ce88f/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-8737457828f9411b84ab74f2596c1a7c/run.log",
+  "visual_review": false,
+  "packaged": true
+}

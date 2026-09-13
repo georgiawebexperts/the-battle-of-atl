@@ -1,9 +1,9 @@
 {
-  "build": 65,
-  "version": "0.65.0",
+  "build": 66,
+  "version": "0.66.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; ammo beside persistent park bins with readable pickup labels",
+  "status": "Early playtest; body-attached long guns and clearer skatepark jump guidance",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -17,7 +17,8 @@
     "Build062: spatial AI-generated Stop! APD! voice during two-second taser warning; six-second voice cooldown and death/run-end stop. Packaged actual audio playback and encounter checks pass. Listening/mix acceptance pending.",
     "Build063: both firearm arms use length-preserving aiming solve; weapon follows control pitch. Packaged pistol level/up/down views verified; inventory and native movement regressions pass. Gate uprights fitted to pavement with lower rails.",
     "Build064: opposing animated pedals/cranks, sole-height-corrected foot targets and synchronous rider bones. Flight pedalling pauses; gentler pitch, saddle lift and landing absorption. Packaged hill/contact/reward checks pass; broader motion and world polish remains.",
-    "Build065: twelve pistol ammo supplies beside original green slatted park bins. Path clearance, support, water and rider approach guards; bins persist. Single camera-facing weapon labels. Native all-difficulty and packaged real collection checks pass."
+    "Build065: twelve pistol ammo supplies beside original green slatted park bins. Path clearance, support, water and rider approach guards; bins persist. Single camera-facing weapon labels. Native all-difficulty and packaged real collection checks pass.",
+    "Build066: rifles, shotguns and SMGs use body-relative weapon-specific wrist positions and closer shoulder stance; corrected camera-floating long guns. Skatepark concrete detail and bank guidance paint. Packaged aim, inventory and both-mode skatepark checks pass."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -64,53 +65,54 @@
     "2026-09-13: Found double-attenuated on-foot mouse input (0.07 processed axis then pawn scaling). Reads raw mouse delta now; injected native input improves yaw3.39 to53.98deg with body/camera aligned. Build/probe pass. OS capture, sensitivity feel, swimming regression and package pending.",
     "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending.",
     "2026-09-13 [codex-maclaptop] Gate scenery repair: native survey found fixed-height 14th Street iron uprights floating up to16.97cm above pavement. Compiled constructor now uses per-post surveyed bases4cm into pavement, lower rail and strengthened end posts/base plates. Reproducible survey generates BattleGateSupport.h. Native check verifies all16 actual post bases against adjacent pavement; editor rendered police scene inspected and encounter regression passes. Source-only: desktop/share remain062; include in next grouped scenery build. Whole entrance accuracy, world art and movement/animation acceptance remain unfinished.",
-    "2026-09-13 [codex-maclaptop] Airborne rider development: bike visual flight pitch reduced to40percent trajectory angle, capped18deg; smoothed9cm saddle lift/forward5cm and extra8deg torso lean; touchdown compression8cm over.33s. Existing IK keeps both wrists on grips (native side-review0.000cm error both), feet retain pedal targets. Cadence advances only grounded, stopping midair pedalling. Arcade downhill rendered native jump/reward/guards and realistic uphill regression pass. Air/landing side frames inspected; continuous motion/shoe contact not accepted. Source-only, desktop063 unchanged. Constructor inspection confirms bike has no visible crank arms/pedals despite leg pedalling targets; prioritize actual pedal/crank geometry and sole contact next, then package combined improvement. Whole game remains unfinished."
-  ],
-  "unreleased_code_changes": [
+    "2026-09-13 [codex-maclaptop] Airborne rider development: bike visual flight pitch reduced to40percent trajectory angle, capped18deg; smoothed9cm saddle lift/forward5cm and extra8deg torso lean; touchdown compression8cm over.33s. Existing IK keeps both wrists on grips (native side-review0.000cm error both), feet retain pedal targets. Cadence advances only grounded, stopping midair pedalling. Arcade downhill rendered native jump/reward/guards and realistic uphill regression pass. Air/landing side frames inspected; continuous motion/shoe contact not accepted. Source-only, desktop063 unchanged. Constructor inspection confirms bike has no visible crank arms/pedals despite leg pedalling targets; prioritize actual pedal/crank geometry and sole contact next, then package combined improvement. Whole game remains unfinished.",
     "2026-09-13 [codex-maclaptop] Skatepark presentation improved: detailed concrete material derived from existing project aggregate/slab shader;69-triangle noncolliding, surface-following bank edge lines and directional arrows. Existing concrete/berm collision geometry retained. Native realistic overview/airborne frames inspected. Modernized skate audit with editor/packaged, actual handling mode and rendered output; isolated landing reward from automatic ramp +30 pickup to remove timer confound. Native arcade and realistic runs pass trail entry/return, automatic bank launch (~143.49cm peak), exactly one +10 landing reward and separate single-use bowl +30 pickup. Failed unbuilt audit launch retained as invalid; corrected build succeeds. Source-only, desktop/share065 unchanged. Next combined package must verify skate art and both handling modes in cooked app; skatepark architecture, surroundings, motion/freeplay/performance and wider whole-game requirements remain incomplete."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
-  "compiled_source": "21f220e36e052a33ae83fb85e2642dae813c69b1",
-  "installation_report": "Tests/Results/2026-09-13-build065-install.json",
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
+  "compiled_source": "e9bcd0cfc075990ac5e0a59c2eadd377eb000ada",
+  "installation_report": "Tests/Results/2026-09-13-build066-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 65,
-    "version": "0.65.0",
-    "source_commit": "21f220e36e052a33ae83fb85e2642dae813c69b1",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
+    "build": 66,
+    "version": "0.66.0",
+    "source_commit": "e9bcd0cfc075990ac5e0a59c2eadd377eb000ada",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "4de28c6c512d64a72124851a70a26f2c24d5531c6afdf937834792b5708011d9",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065.zip",
-    "zip_sha256": "85b212a1f2cd228868259c1c25c70873ccea6a76df007d0cdba46f5c971408fe",
-    "zip_bytes": 1316206305,
+    "machine_code_sha256": "f249380a29f4d469dd6acb9f526d75b27eb3101717fb1122eef8bb0c6ae75930",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066.zip",
+    "zip_sha256": "1f4f620bbf931893b9bab4cb7cba8c157b1697def54d5d16f4d63b8f308b548b",
+    "zip_bytes": 1316357570,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged rendered bin model and single camera-facing ammo label inspected",
-      "Packaged twelve actual ammo/bin pairs: clear rider approaches, seventeen rounds each, bins retained",
-      "Packaged Medium/Hard practice-start pickup layouts and real collections",
-      "Packaged pistol shots, dry fire, bike/foot reload conservation, possession and reserve cap",
-      "Packaged wall reverse recovery in both handling modes",
+      "Packaged rendered rifle and shotgun at body grips with level/up/down aim",
+      "Packaged pistol aiming regression; three independent rendered launches report async pipeline compilation=0",
+      "Packaged inventory/combat/rifle zoom/death persistence and shell reload interruption",
+      "Packaged skatepark arcade/realistic entry, automatic ramp airtime, isolated +10 landing and single-use +30 pickup",
+      "Packaged skatepark concrete/paint render inspected",
       "ZIP CRC, local signature and staged/installed code match"
     ],
     "remaining": [
       "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
       "Broader freeplay, world art and performance acceptance",
       "Voice listening/mix review pending",
-      "Not notarized or tested on another Mac"
+      "Not notarized or tested on another Mac",
+      "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven"
     ],
     "reports": [
-      "2026-09-13-build065-bins.json",
-      "2026-09-13-build065-ammo.json",
-      "2026-09-13-build065-wall.json",
-      "2026-09-13-build065-bins-medium-practice.json",
-      "2026-09-13-build065-bins-hard-practice.json"
+      "2026-09-13-build066-rifle.json",
+      "2026-09-13-build066-shotgun.json",
+      "2026-09-13-build066-pistol.json",
+      "2026-09-13-build066-inventory.json",
+      "2026-09-13-build066-skate-real.json",
+      "2026-09-13-build066-skate-arcade.json"
     ]
   },
   "latest_wall_fix_playtest": {

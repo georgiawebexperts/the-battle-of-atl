@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus pass",
+  "air_rewards": 1,
+  "air_peak_cm": 143.45,
+  "x": 41824.53,
+  "z": 610.59,
+  "exit_code": 0,
+  "packaged": true,
+  "real": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-f59b952859874deb9053f5ef0df0e6f1/run.log",
+  "visual_review": true,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleSkateReview/42a0d5a75e6148d1a347bea1efcd0b34/overview.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleSkateReview/42a0d5a75e6148d1a347bea1efcd0b34/airborne.png"
+  ],
+  "observed_handling": "realistic",
+  "visual_notes": "Packaged overview inspected: concrete detail, bank edge lines and directional arrows present, surface placement consistent with native review. Surrounding world art remains unfinished."
+}
