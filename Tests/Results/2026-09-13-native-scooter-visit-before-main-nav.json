@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "reason": "Visit timer releases both poses and all participants resume walking",
+    "offscreen_wait": true,
+    "participants": 3,
+    "ready": true,
+    "skipped_empty": true
+  },
+  "scope": "Native mapped scene, player positioned nearby, real 25s hold and get-up completion, subsequent >1m walking by each participant. No complete ride-through or route safety acceptance.",
+  "visit": {
+    "visit_started": true,
+    "released": false,
+    "moving_participants": 0,
+    "minimum_travel_cm": 0.0
+  },
+  "passed": false
+}

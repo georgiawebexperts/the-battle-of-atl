@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "main_map_changed": true,
+  "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/pre-scooter-20260913-014300/PiedmontWorld.umap",
+  "backup_sha256": "1d94208c050e3ed89c05a356ab223be232ff396da957994de107a75f4ff05d9c",
+  "appearance_chance": 0.18,
+  "scope": "Added native scene and reviewed navigation tiles to current main; existing actor GUIDs preserved. Fresh-process verification and packaged acceptance pending."
+}

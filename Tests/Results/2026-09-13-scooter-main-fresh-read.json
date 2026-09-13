@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scene_count": 1,
+  "appearance_chance": 0.18000000715255737,
+  "navigation_tiles": 236,
+  "route_length_cm": 1807.1943359375,
+  "looping_traffic_lanes": 1,
+  "crossing_bindings": 2,
+  "scope": "Fresh-process saved main scene/settings, hidden noncolliding navigation tiles and native navigation query. Runtime normal spawning, main ride and packaged acceptance remain separate."
+}

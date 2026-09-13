@@ -1,0 +1,1900 @@
+{
+  "tiles": 236,
+  "samples": [
+    {
+      "xyz": [
+        30660.228166708668,
+        113987.98923694239,
+        1111.4026566454895
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30617.970799869254,
+        113961.26257225123,
+        1109.8381606718333
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30575.71343302984,
+        113934.53590756007,
+        1108.2371931267442
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30533.45606619042,
+        113907.80924286891,
+        1107.0985774636015
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30491.198124311526,
+        113881.08257817774,
+        1106.0620810177056
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30448.94075747211,
+        113854.3559134866,
+        1105.1960452636183
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30406.6833906327,
+        113827.62924879542,
+        1104.3898514850525
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30364.426023793283,
+        113800.90258410426,
+        1103.8286567501784
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30322.16865695387,
+        113774.1759194131,
+        1103.088969410056
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30279.911290114454,
+        113747.44925472193,
+        1103.056776411962
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30633.501502017505,
+        114030.24660378182,
+        1110.673166002828
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30591.244135178094,
+        114003.51993909065,
+        1109.3809867242735
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30548.98676833868,
+        113976.79327439949,
+        1108.2575235063186
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30506.72882645978,
+        113950.06660970833,
+        1107.3173240981682
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30464.471459620367,
+        113923.33994501716,
+        1106.7109189184139
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30422.214092780952,
+        113896.61328032601,
+        1106.083012775444
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30379.95672594154,
+        113869.88661563484,
+        1105.3259169600435
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30337.699359102124,
+        113843.15995094368,
+        1104.6999090332115
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30295.441992262713,
+        113816.43328625252,
+        1104.4967651296952
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30253.1846254233,
+        113789.70662156134,
+        1104.6136639739004
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30606.774837326342,
+        114072.50397062124,
+        1110.8488823396729
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30564.517470486928,
+        114045.77730593007,
+        1109.6430248777904
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30522.259528608032,
+        114019.05064123891,
+        1108.398547503
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30480.002161768614,
+        113992.32397654775,
+        1108.0323941261213
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30437.744794929204,
+        113965.59731185659,
+        1107.3153828782388
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30395.48742808979,
+        113938.87064716543,
+        1106.8079521208258
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30353.230061250375,
+        113912.14398247426,
+        1106.4266060456926
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30310.972694410957,
+        113885.4173177831,
+        1105.9144120602696
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30268.715327571546,
+        113858.69065309194,
+        1106.0108920552125
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30226.457960732132,
+        113831.96398840076,
+        1106.8601758439652
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30580.048172635183,
+        114114.76133746064,
+        1111.4212026026867
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30537.79080579577,
+        114088.03467276947,
+        1110.337618333836
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30495.532863916873,
+        114061.30800807831,
+        1109.4094967974372
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30453.275497077455,
+        114034.58134338717,
+        1108.9587850873852
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30411.01813023804,
+        114007.85467869599,
+        1108.6372354281934
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30368.760763398626,
+        113981.12801400483,
+        1107.9755157995965
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30326.503396559216,
+        113954.40134931366,
+        1107.7484585956474
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30284.246029719798,
+        113927.6746846225,
+        1107.6591607052437
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30241.988662880387,
+        113900.94801993135,
+        1108.080877573684
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30199.731296040973,
+        113874.22135524018,
+        1109.434044247584
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30553.321507944023,
+        114157.01870430006,
+        1112.63848265685
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30511.063566065124,
+        114130.29203960889,
+        1111.5500305377336
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30468.806199225713,
+        114103.56537491774,
+        1110.6099990906016
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30426.548832386296,
+        114076.83871022658,
+        1110.2605468910788
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30384.291465546885,
+        114050.11204553541,
+        1109.9417340061498
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30342.034098707467,
+        114023.38538084425,
+        1109.489674160185
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30299.776731868056,
+        113996.65871615308,
+        1109.476973101475
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30257.51936502864,
+        113969.93205146192,
+        1109.5030263798535
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30215.261998189224,
+        113943.20538677077,
+        1110.7607798932486
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30173.00463134981,
+        113916.4787220796,
+        1113.079267176392
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30526.594843252857,
+        114199.27607113947,
+        1114.5296594426209
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30484.33690137396,
+        114172.5494064483,
+        1113.1585272214843
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30442.079534534547,
+        114145.82274175715,
+        1112.149710106289
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30399.82216769513,
+        114119.09607706599,
+        1111.6458843295839
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30357.56480085572,
+        114092.36941237481,
+        1111.4099604847033
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30315.307434016308,
+        114065.64274768365,
+        1111.1037719593578
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30273.05006717689,
+        114038.91608299248,
+        1111.2592231003287
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30230.792700337475,
+        114012.18941830134,
+        1112.1276056365791
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30188.53533349806,
+        113985.46275361018,
+        1113.4795747497585
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30146.27796665865,
+        113958.736088919,
+        1117.42716455833
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30499.867603522216,
+        114241.5334379789,
+        1116.5002316959353
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30457.6102366828,
+        114214.80677328772,
+        1115.3025075768996
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30415.352869843387,
+        114188.08010859656,
+        1114.0129392257857
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30373.09550300397,
+        114161.3534439054,
+        1113.052845829313
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30330.83813616456,
+        114134.62677921423,
+        1112.735787793277
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30288.580769325145,
+        114107.90011452309,
+        1112.8700758715431
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30246.32340248573,
+        114081.17344983191,
+        1113.3375556931394
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30204.066035646312,
+        114054.44678514075,
+        1114.8054688423758
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30161.8086688069,
+        114027.7201204496,
+        1117.9302820170324
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30119.551301967487,
+        114000.99345575842,
+        1121.8821245241215
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30473.140938831053,
+        114283.7908048183,
+        1117.9502067642234
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30430.88357199164,
+        114257.06414012713,
+        1117.2404722556562
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30388.626205152228,
+        114230.33747543597,
+        1116.0985475499535
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30346.36883831281,
+        114203.61081074481,
+        1115.1783121718904
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30304.1114714734,
+        114176.88414605365,
+        1114.3731377499987
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30261.85410463399,
+        114150.15748136249,
+        1114.381866393359
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30219.59673779457,
+        114123.43081667132,
+        1116.0526383498968
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30177.339370955153,
+        114096.70415198016,
+        1118.3137977950803
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30135.082004115742,
+        114069.977487289,
+        1122.5341842356693
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30092.82463727633,
+        114043.25082259782,
+        1125.8040315630553
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30446.41427413989,
+        114326.04817165772,
+        1118.4155396944966
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30404.15690730048,
+        114299.32150696655,
+        1118.8994693760933
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30361.899540461065,
+        114272.59484227539,
+        1118.3397257882264
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30319.642173621647,
+        114245.86817758423,
+        1117.4356648391597
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30277.384806782233,
+        114219.14151289307,
+        1116.619338444798
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30235.127439942822,
+        114192.41484820191,
+        1116.9742073857874
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30192.870073103408,
+        114165.68818351073,
+        1118.8005418922326
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30150.61270626399,
+        114138.96151881957,
+        1122.5687377793247
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30108.355339424576,
+        114112.23485412842,
+        1126.1581042725275
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30066.097972585165,
+        114085.50818943726,
+        1129.0145927023923
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30419.68760944873,
+        114368.30553849714,
+        1118.5525144874998
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30377.430242609316,
+        114341.57887380596,
+        1119.7139270011694
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30335.172875769902,
+        114314.8522091148,
+        1120.2443132014837
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30292.915508930488,
+        114288.12554442366,
+        1119.8936687148753
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30250.658142091073,
+        114261.39887973249,
+        1119.1115764586482
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30208.400775251663,
+        114234.67221504133,
+        1119.9440854703794
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30166.14340841225,
+        114207.94555035015,
+        1122.347519845166
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30123.886041572834,
+        114181.218885659,
+        1126.5297217975408
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30081.628674733416,
+        114154.49222096785,
+        1128.713921043653
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30039.371307894,
+        114127.76555627667,
+        1130.5791064095029
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30266.188844239325,
+        114330.38291126306,
+        1121.4680015371366
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30223.931477399914,
+        114303.65624657189,
+        1121.812794710492
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30181.6741105605,
+        114276.92958188073,
+        1122.6313288593617
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30139.416743721085,
+        114250.20291718956,
+        1125.6416176191467
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30239.46217954816,
+        114372.64027810248,
+        1122.6838732981419
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30197.20481270875,
+        114345.9136134113,
+        1123.368149275571
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30154.947445869337,
+        114319.18694872015,
+        1125.5226233444644
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30112.690079029926,
+        114292.46028402899,
+        1128.0172539344921
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30212.735514857002,
+        114414.89764494188,
+        1122.8160609753158
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30170.478148017588,
+        114388.17098025072,
+        1124.7008637691947
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30128.220781178177,
+        114361.44431555957,
+        1128.1772952193237
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30085.963414338763,
+        114334.71765086839,
+        1129.6022618099828
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30186.008850165843,
+        114457.1550117813,
+        1121.0548886925394
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30143.75148332643,
+        114430.42834709014,
+        1125.6675925439374
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30101.494116487014,
+        114403.70168239898,
+        1128.396133477752
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30059.236749647604,
+        114376.97501770781,
+        1130.7788789926688
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30159.28218547468,
+        114499.41237862072,
+        1118.8785053082083
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30117.024818635266,
+        114472.68571392955,
+        1123.621446308523
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30074.76745179585,
+        114445.95904923839,
+        1127.4286256713397
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30032.51008495644,
+        114419.23238454721,
+        1129.8476872302726
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30132.55552078352,
+        114541.66974546014,
+        1115.267577345748
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30090.298153944103,
+        114514.94308076896,
+        1120.0388299519268
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30048.040787104692,
+        114488.2164160778,
+        1124.3568167653714
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30005.783420265278,
+        114461.48975138663,
+        1126.208199622702
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30105.828856092354,
+        114583.92711229954,
+        1111.9675567998777
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30063.57148925294,
+        114557.20044760837,
+        1114.8776903031637
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30021.31412241353,
+        114530.47378291721,
+        1118.4520078163391
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29979.056755574115,
+        114503.74711822605,
+        1121.3473826698382
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30079.102191401194,
+        114626.18447913896,
+        1109.6559268527608
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30036.844824561784,
+        114599.45781444779,
+        1111.320339451535
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29994.587457722366,
+        114572.73114975663,
+        1112.5394760708214
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29952.33009088295,
+        114546.00448506547,
+        1115.4319061668332
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30052.37552671003,
+        114668.44184597838,
+        1106.489196305743
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30010.11815987062,
+        114641.7151812872,
+        1108.0513914652074
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29967.860793031206,
+        114614.98851659606,
+        1109.1489015262496
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29925.603426191792,
+        114588.26185190488,
+        1110.8377420063607
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        30025.64886201887,
+        114710.69921281778,
+        1102.5494452614942
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29983.391495179458,
+        114683.97254812662,
+        1105.2249195628826
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29941.134128340043,
+        114657.24588343546,
+        1106.366534485338
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29898.87676150063,
+        114630.51921874429,
+        1106.5282063617358
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29998.92219732771,
+        114752.95657965721,
+        1096.8759772111837
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29956.664830488295,
+        114726.22991496604,
+        1100.8827879410303
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29914.407463648884,
+        114699.50325027488,
+        1103.55594167116
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29872.15009680947,
+        114672.7765855837,
+        1103.0943189832221
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29972.19553263655,
+        114795.21394649662,
+        1086.4606654209015
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29929.93816579713,
+        114768.48728180544,
+        1095.012310308212
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29887.68079895772,
+        114741.76061711428,
+        1096.0152960900048
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29845.42343211831,
+        114715.03395242311,
+        1095.299580643474
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29945.468867945383,
+        114837.47131333603,
+        1073.9043936312414
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29903.211501105972,
+        114810.74464864486,
+        1083.5120579994662
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29860.954134266558,
+        114784.0179839537,
+        1087.0453899580525
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29818.696767427144,
+        114757.29131926254,
+        1080.7605351691493
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29918.742203254224,
+        114879.72868017544,
+        1057.5846620743243
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29876.484836414813,
+        114853.00201548426,
+        1069.1020566490788
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29834.2274695754,
+        114826.27535079312,
+        1072.4771184735873
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29791.970102735984,
+        114799.54868610195,
+        1066.0858793130783
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29892.015538563064,
+        114921.98604701486,
+        1040.6708625631086
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29849.758171723654,
+        114895.2593823237,
+        1051.5347834806785
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29807.500804884236,
+        114868.53271763254,
+        1054.7252139545803
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29765.243438044825,
+        114841.80605294136,
+        1051.005207763118
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29865.2888738719,
+        114964.24341385427,
+        1024.047562160683
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29823.031507032487,
+        114937.5167491631,
+        1033.3649315342964
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29780.774140193073,
+        114910.79008447194,
+        1036.8229699573292
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29738.516773353662,
+        114884.06341978077,
+        1034.8726060008103
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29838.562209180738,
+        115006.50078069369,
+        1009.1541610355591
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29796.304842341327,
+        114979.77411600252,
+        1016.1051088092715
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29754.047475501917,
+        114953.04745131136,
+        1019.1983276304768
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29711.790628204646,
+        114926.32067446176,
+        1021.2138251447875
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29811.83554448958,
+        115048.75814753311,
+        995.9038680511647
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29769.578177650168,
+        115022.03148284194,
+        1001.4700067693948
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29727.321331416086,
+        114995.3047107148,
+        1007.7020357332395
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29685.063961683856,
+        114968.578044194,
+        1007.0579546130475
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29785.108879798416,
+        115091.01551437251,
+        985.9246715883253
+      ],
+      "actor": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "xyz": [
+        29742.85203462752,
+        115064.28874696781,
+        994.7483729146448
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29700.594664895292,
+        115037.56208044702,
+        996.4871918082166
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29658.337295163063,
+        115010.83541392622,
+        996.6473157037237
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29758.38273783896,
+        115133.27278322085,
+        992.3728237613373
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29716.125368106732,
+        115106.54611670005,
+        993.2283250730161
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29673.867998374502,
+        115079.81945017926,
+        994.3206009204282
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29631.610628642273,
+        115053.09278365846,
+        995.4997631570993
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29731.65607131817,
+        115175.53015295307,
+        991.6125957327774
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29689.398701585942,
+        115148.80348643227,
+        992.4790765346839
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29647.141331853712,
+        115122.07681991148,
+        993.3994164805827
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29604.883962121483,
+        115095.35015339068,
+        994.3641717703756
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29704.929404797378,
+        115217.7875226853,
+        991.3978469350752
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29662.67203506515,
+        115191.0608561645,
+        991.6405946174647
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29620.41466533292,
+        115164.33418964372,
+        992.5007227550143
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29578.15729560069,
+        115137.60752312292,
+        993.4581191855925
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29678.20273827659,
+        115260.04489241753,
+        991.8622752330317
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29635.94536854436,
+        115233.31822589673,
+        991.7976058984154
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29593.68799881213,
+        115206.59155937594,
+        991.6833755644191
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29551.4306290799,
+        115179.86489285514,
+        992.4959346788331
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29651.4760717558,
+        115302.30226214977,
+        991.9211286505482
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29609.21870202357,
+        115275.57559562896,
+        991.6727362994616
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29566.96133229134,
+        115248.84892910818,
+        991.8120237203659
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29524.70396255911,
+        115222.12226258738,
+        992.0468291378231
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29624.749405235005,
+        115344.55963188199,
+        992.6051673636343
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29582.492035502775,
+        115317.83296536119,
+        991.8748326250973
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29540.234665770546,
+        115291.1062988404,
+        991.4112765248473
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29497.977296038316,
+        115264.3796323196,
+        991.5112418572105
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29598.022738714215,
+        115386.81700161422,
+        993.2887134808884
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29555.765368981985,
+        115360.09033509342,
+        992.5559386974143
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29513.507999249756,
+        115333.36366857264,
+        991.8191901997955
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29471.250629517526,
+        115306.63700205184,
+        991.2451571028623
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29571.296072193425,
+        115429.07437134646,
+        993.9557369960276
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29529.038702461195,
+        115402.34770482566,
+        993.2145042787097
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29486.781332728966,
+        115375.62103830487,
+        992.5521821252937
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29444.523962996736,
+        115348.89437178407,
+        992.0211485281416
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29544.56940567263,
+        115471.33174107868,
+        994.6345012941217
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29502.312035940402,
+        115444.60507455788,
+        993.8593457438074
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29460.054666208172,
+        115417.8784080371,
+        993.0499022244483
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29417.797296475943,
+        115391.1517415163,
+        992.3025601792217
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29517.84273915184,
+        115513.58911081092,
+        995.256847359143
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29475.585369419612,
+        115486.86244429012,
+        994.4464250127924
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29433.327999687383,
+        115460.13577776933,
+        993.6360348343217
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29391.070629955153,
+        115433.40911124853,
+        992.8232059467823
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29491.11607263105,
+        115555.84648054314,
+        995.8428601658782
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29448.858702898822,
+        115529.11981402234,
+        995.029917744587
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29406.601333166593,
+        115502.39314750156,
+        994.2183225156784
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29364.343963434363,
+        115475.66648098076,
+        993.4140982402171
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29464.38940611026,
+        115598.10385027538,
+        996.426737291356
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29422.13203637803,
+        115571.37718375458,
+        995.6133493481832
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29379.8746666458,
+        115544.6505172338,
+        994.8145044220222
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29337.61729691357,
+        115517.92385071299,
+        994.0123143959106
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29437.66273958947,
+        115640.3612200076,
+        997.0093903254512
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29395.40536985724,
+        115613.6345534868,
+        996.2015556484891
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29353.14800012501,
+        115586.90788696602,
+        995.414868569471
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29310.89063039278,
+        115560.18122044521,
+        994.6187452243014
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29410.936073068675,
+        115682.61858973984,
+        997.592621539488
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29368.678703336445,
+        115655.89192321904,
+        996.8124899629781
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29326.421333604216,
+        115629.16525669825,
+        996.0266431963777
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29284.163963871986,
+        115602.43859017745,
+        995.2402970366502
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29384.209406547885,
+        115724.87595947206,
+        998.201441717666
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29341.952036815655,
+        115698.14929295126,
+        997.4234242774669
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29299.694667083426,
+        115671.42262643047,
+        996.6437326579937
+      ],
+      "actor": "Krog DeKalb road approaches"
+    },
+    {
+      "xyz": [
+        29257.437297351196,
+        115644.69595990967,
+        995.8739742613668
+      ],
+      "actor": "Krog DeKalb road approaches"
+    }
+  ],
+  "site_projected": true,
+  "target_projected": true,
+  "route_length_cm": 1807.1943359375,
+  "passed": true,
+  "main_map_changed": true,
+  "scope": "Local navigation-only tile export, native projection and route query; no physical collision change. Runtime visit and full navigation regression checks still required.",
+  "saved": true
+}

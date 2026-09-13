@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "main_map_changed": true,
+  "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/pre-turnarounds-20260913-013551/PiedmontWorld.umap",
+  "backup_sha256": "8784225dd845cffcd1409a9355aeaae737b09976d03368fb04c62639c89be995",
+  "actor_guids_preserved": true,
+  "scope": "Traffic lane settings transferred onto existing main director and crossing only. Fresh main/cooked acceptance pending."
+}
