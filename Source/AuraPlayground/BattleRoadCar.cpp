@@ -68,7 +68,9 @@ bool ABattleRoadCar::StartRoute(){
 
  for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
  bStarted=false;Speed=0;DistanceTravelled=0;RouteDistance=0;WheelAngle=0;bRouteFinished=false;Lengths.Reset();ClearedCrossings.Reset();AmberStopping.Reset();bWaitingForCrossing=false;
+ CompletedLoops=0;
  if(Route.Num()<2)return false;
+ if(bLoopRoute&&(Route.Num()<4||!Route[0].Equals(Route.Last(),.1f)||FVector::DotProduct((Route[1]-Route[0]).GetSafeNormal2D(),(Route.Last()-Route[Route.Num()-2]).GetSafeNormal2D())<.95f))return false;
  Lengths.Add(0);for(int32 I=1;I<Route.Num();++I){const float L=FVector::Dist2D(Route[I],Route[I-1]);if(L<1)return false;Lengths.Add(Lengths.Last()+L);}
  for(const auto& Gate:Crossings)if(!IsValid(Gate.Crossing)||Gate.Crossing->GetWorld()!=GetWorld()||Gate.StopDistance<0||Gate.StopDistance>=Lengths.Last())return false;
  FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Route[0],Route[1]-Route[0],Pose,Contacts);if(!bGrounded)return false;
@@ -86,7 +88,7 @@ void ABattleRoadCar::Tick(float Dt){
   bObstacleAhead=GetWorld()->SweepSingleByChannel(Ahead,GetActorLocation(),GetActorLocation()+GetActorForwardVector()*StopDistance,GetActorQuat(),ECC_WorldDynamic,FCollisionShape::MakeBox(FVector(236,114,45)),Q);
   LastObstacle=Ahead.GetActor()?Ahead.GetActor()->GetName():TEXT("");
   const float ToEnd=Lengths.Last()-RouteDistance;
-  float Available=ToEnd;bWaitingForCrossing=false;
+  float Available=bLoopRoute?ToEnd+Lengths.Last():ToEnd;bWaitingForCrossing=false;
   for(int32 I=0;I<Crossings.Num();++I){
    if(ClearedCrossings.Contains(I))continue;
    const auto& Gate=Crossings[I];const float Gap=Gate.StopDistance-RouteDistance;
@@ -101,7 +103,7 @@ void ABattleRoadCar::Tick(float Dt){
   }
   const float Target=bObstacleAhead?0.f:FMath::Min(CruiseSpeed,FMath::Sqrt(2*900.f*FMath::Max(0.f,Available-2.f)));
   Speed=FMath::FInterpConstantTo(Speed,Target,Step,Target<Speed?900.f:250.f);
-  const float Travel=FMath::Min(Available,Speed*Step);const FVector Next=SampleRoute(RouteDistance+Travel);
+  const float Travel=FMath::Min(ToEnd,FMath::Min(Available,Speed*Step));const FVector Next=SampleRoute(RouteDistance+Travel);
   FVector Heading=SampleRoute(FMath::Min(Lengths.Last(),RouteDistance+Travel+150))-Next;if(Heading.IsNearlyZero())Heading=GetActorForwardVector();
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
@@ -139,6 +141,9 @@ void ABattleRoadCar::Tick(float Dt){
    LastObstacle=FString(TEXT("movement:"))+(Hit.GetActor()?Hit.GetActor()->GetName():TEXT("unknown"));Speed=0;break;
   }
   RouteDistance+=Travel;DistanceTravelled+=Travel;UpdateWheels(Contacts,Travel,FMath::Clamp(Turn*12.f,-25.f,25.f));
-  if(ToEnd<3){bRouteFinished=true;Speed=0;break;}
+  if(Lengths.Last()-RouteDistance<.01f&&bLoopRoute){
+   RouteDistance=0;++CompletedLoops;ClearedCrossings.Reset();AmberStopping.Reset();
+   for(auto& Gate:Crossings)if(IsValid(Gate.Crossing))Gate.Crossing->ReleaseVehicle(this);
+  }else if(ToEnd<3&&!bLoopRoute){bRouteFinished=true;Speed=0;break;}
  }
 }

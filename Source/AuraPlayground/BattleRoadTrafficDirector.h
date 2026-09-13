@@ -10,6 +10,7 @@ struct FBattleRoadTrafficLane {
  UPROPERTY(EditAnywhere) TArray<FVector> Points;
  UPROPERTY(EditAnywhere) TArray<FBattleCarCrossing> Crossings;
  UPROPERTY(EditAnywhere) float CruiseSpeed=650.f;
+ UPROPERTY(EditAnywhere) bool bLoopRoute=false;
 };
 UCLASS()
 class AURAPLAYGROUND_API ABattleRoadTrafficDirector : public AActor {

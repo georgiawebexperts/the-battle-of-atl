@@ -5,11 +5,13 @@
 #include "Components/InstancedStaticMeshComponent.h"
 #include "EngineUtils.h"
 #include "Misc/CommandLine.h"
+void TickBattleCarLoopAudit(APlayerController* PC,float Dt);
 void TickBattleLightBoundaryAudit(APlayerController* PC,float Dt);
 void TickBattleScooterSceneAudit(APlayerController* PC,float Dt);
 void TickBattleIncidentPoseAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickFurnitureAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleCarLoopAudit"))){TickBattleCarLoopAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleLightBoundaryAudit"))){TickBattleLightBoundaryAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleScooterSceneAudit"))){TickBattleScooterSceneAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleIncidentPoseAudit"))){TickBattleIncidentPoseAudit(this,Dt);return;}

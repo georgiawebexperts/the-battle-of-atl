@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "native_support_samples": 594,
+  "crossing_stops_cm": [
+    3150.7740935662705,
+    11920.595962775515
+  ],
+  "loop_points": 391,
+  "main_map_changed": false,
+  "scope": "Native surface agreement for turn body footprints and two crossing bindings. Runtime laps, collision clearance and visuals remain unverified."
+}

@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Visible native car completed both turns and continued across route seam",
+    "loops": 1,
+    "travel_cm": 18356.2,
+    "loop_length_cm": 17556.08,
+    "max_frame_step_cm": 3.9,
+    "obstacle": ""
+  },
+  "scope": "One native car on real review-map pavement, both turnaround arcs and one complete loop seam; camera follows car. Other cars and pedestrians removed. No multi-car population, rendered motion or main-map acceptance.",
+  "passed": true
+}

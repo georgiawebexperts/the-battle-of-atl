@@ -26,6 +26,8 @@ public:
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  UPROPERTY(EditAnywhere) TArray<FVector> Route;
  UPROPERTY(EditAnywhere) float CruiseSpeed=650.f;
+ UPROPERTY(EditAnywhere) bool bLoopRoute=false;
+ UPROPERTY(BlueprintReadOnly) int32 CompletedLoops=0;
  UPROPERTY(EditAnywhere) TArray<FBattleCarCrossing> Crossings;
  UPROPERTY(BlueprintReadOnly) bool bWaitingForCrossing=false;
  UPROPERTY(VisibleAnywhere) UBoxComponent* Collision;
