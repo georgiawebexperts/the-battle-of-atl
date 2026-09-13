@@ -5,6 +5,7 @@
 #include "BattleRider.h"
 #include "BattleQuest.h"
 #include "BattleDrone.h"
+#include "BattlePickup.h"
 #include "BattleZombie.h"
 #include "BattlePolice.h"
 #include "BattleKnife.h"
@@ -147,6 +148,20 @@ void ABattleLabHUD::DrawHUD(){
    DrawLine(Screen.X-12*S,Screen.Y-12*S,Screen.X+12*S,Screen.Y-12*S,Peach,2*S);
    DrawLine(Screen.X-12*S,Screen.Y+12*S,Screen.X+12*S,Screen.Y+12*S,Peach,2*S);
   }
+ }
+ // A single nearby supply label helps players spot ammunition without filling the view.
+ if(Notice.IsEmpty()&&!Owner->bCrashActive){
+  auto* PC=GetOwningPlayerController();FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
+  float Best=3000.f;FVector2D Label;bool Found=false;
+  for(TActorIterator<ABattleWeaponCrate> It(GetWorld());It;++It){
+   if(It->WeaponSlot!=0||It->bConsumed)continue;
+   const FVector Point=It->GetActorLocation()+FVector(0,0,40);const float Distance=FVector::Dist(GetOwningPawn()->GetActorLocation(),It->GetActorLocation());
+   if(Distance>=Best)continue;FVector2D Candidate;FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(AmmoHUD),false,GetOwningPawn());Q.AddIgnoredActor(*It);
+   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Point,ECC_Visibility,Q)||!PC->ProjectWorldLocationToScreen(Point,Candidate))continue;
+   if(Candidate.X<140*S||Candidate.X>W-140*S||Candidate.Y<170*S||Candidate.Y>H-180*S)continue;
+   Best=Distance;Label=Candidate;Found=true;
+  }
+  if(Found){Panel(Label.X-130*S,Label.Y-32*S,260*S,34*S);Text(FString::Printf(TEXT("AMMO +17  |  %.0fm"),Best/100.f),Label.X-118*S,Label.Y-28*S,20,FLinearColor(.45f,.9f,1));}
  }
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
  if(auto* Viewer=GetOwningPawn()){

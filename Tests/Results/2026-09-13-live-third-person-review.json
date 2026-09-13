@@ -1,0 +1,14 @@
+{
+  "accepted": false,
+  "native_window": true,
+  "source_anchor": "61886f7",
+  "observed": [
+    "Bike HUD displays Q/R gears, J jump, SHIFT boost, H horn",
+    "E successfully dismounts to full third-person body with holstered hands",
+    "CUA drag did not establish reliable mouse orbit; physical mouse result requested",
+    "CUA reported user changed app, so automation stopped to avoid competing with user input"
+  ],
+  "running_session": 17683,
+  "log": "work/third-person-live-review.log",
+  "pending": "User physical mouse report; freeform movement/weapon and hill-ramp visual evaluation. New ammo HUD source edit is not compiled into this session."
+}
