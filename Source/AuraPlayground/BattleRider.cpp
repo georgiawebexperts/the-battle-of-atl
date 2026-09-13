@@ -52,7 +52,7 @@ void ABattleRider::Tick(float Dt){
 
  DrawRemaining=FMath::Max(0.f,DrawRemaining-Dt);
  if(auto* PC=Cast<APlayerController>(GetController())){
-  GetCharacterMovement()->MaxWalkSpeed=bDetailedPlayerRig?(PC->IsInputKeyDown(EKeys::LeftShift)?520:200):(PC->IsInputKeyDown(EKeys::LeftShift)?850:520);
+  GetCharacterMovement()->MaxWalkSpeed=(PC->IsInputKeyDown(EKeys::LeftShift)?700:400);
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
@@ -93,7 +93,7 @@ bool ABattleBike::Dismount(){
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
  auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation(),P);if(!Person)return false;
  Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
- ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());return true;
+ ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
  if(bCrashActive||StunRemaining>0||!IsValid(Person)||Person->ParkedBike!=this)return false;

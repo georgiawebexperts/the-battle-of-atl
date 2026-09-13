@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Warning, swept rider hit, 15 harm, knockoff/recovery/remount, wall obstruction and destruction pass",
+  "health": 100.0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "editor": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-08e98085fda4445298606659f3ec2c1c.log"
+}

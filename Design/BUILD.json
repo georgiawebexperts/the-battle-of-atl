@@ -56,7 +56,8 @@
     "Detailed-gunman candidate uses existing complete rigged M1911 at native size, explicit barrel-local shot origin and fitted12cm wrist offset. Native rendered cover/dodge/fatal-hit pass; side view improves gun scale/grip. Separate death test verifies detailed gun visible during warning and hidden immediately at death. Candidate opt-in; sleeve/motion/barrel detail and package pending.",
     "Detailed-gunman grip now blends in/out and pistol follows lowering forearm briefly before hiding. Added full raise/fire/lower sampled review; final native motion and fatal-interruption tests pass. Inspected raise/lower/idle samples improve transition; continuous motion, sleeve and moving encounters pending. Candidate still opt-in; installed058 unchanged.",
     "Detailed gunman now default with complete-asset preflight and explicit BattleLegacyGunman fallback. Sleeve rig diagnostic finds zero missing section bones; isolated no-skin render retains folds, so earlier tearing suspicion not confirmed. Unflagged native render/combat/death pass. Packaging script already cooks CitySampleCrowd/BattleRetarget. Source default improved; installed058 unchanged.",
-    "2026-09-13: Shotgun now has one muzzle flash/light per trigger pull instead of eight; shared light reduced to150/radius180 to preserve target, gun and hand readability. Editor build/full-shader rendered inventory pass. Staged059 installation held until corrected repack and visibility checks; installed058 unchanged."
+    "2026-09-13: Shotgun now has one muzzle flash/light per trigger pull instead of eight; shared light reduced to150/radius180 to preserve target, gun and hand readability. Editor build/full-shader rendered inventory pass. Staged059 installation held until corrected repack and visibility checks; installed058 unchanged.",
+    "2026-09-13 player feedback: faster400/700 foot speeds; gentler eased bike yaw with no automatic steering drift; distant forward drone warning, persistence on foot and hit feedback. Native foot, both handling modes and protected-tutorial-skipped drone collision fixture pass. Mouse-turn issue, actual distant drone shooting, natural feel/visual review and package remain unaccepted. Installed058 unchanged."
   ],
   "installed_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",
@@ -65,7 +66,7 @@
   "candidate": {
     "build": 59,
     "version": "0.59.0-dev",
-    "status": "Held: muzzle fix needs recook; staged runtime shows road/rifle material fallback. Repair script prepared; installed058 play session active.",
+    "status": "Held after negative058 playtest: movement/drone tuning in editor, mouse-look and continuous play review pending; material instance repair and recook still needed.",
     "author": "2026-09-13 [codex-maclaptop]",
     "scope": "Detailed default gunman/M1911/standing aim and transitions; clearer gunfire warnings; articulated shotgun reload; compact blood spray; per-clip bone mapping fix.",
     "compiled_source": "487e276ad7206c6df5c8e68e08357b1465c94f0c"

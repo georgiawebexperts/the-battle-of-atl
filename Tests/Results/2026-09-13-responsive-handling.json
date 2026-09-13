@@ -1,0 +1,27 @@
+{
+  "packaged": false,
+  "passed": false,
+  "runs": [
+    {
+      "passed": false,
+      "stage": 9,
+      "reason": "Stationary bike pivoted in place",
+      "speed": 0.0,
+      "steer": -0.791,
+      "lean": 0.0,
+      "mode": "arcade",
+      "exit_code": 0
+    },
+    {
+      "passed": false,
+      "stage": 9,
+      "reason": "Stationary bike pivoted in place",
+      "speed": 0.0,
+      "steer": -0.873,
+      "lean": 0.0,
+      "mode": "realistic",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Native main-world keyboard pedal/brake/steer, lean and remount; realistic P toggle on/off. No hill, traction-limit, high-speed, jump or rendered HUD acceptance."
+}

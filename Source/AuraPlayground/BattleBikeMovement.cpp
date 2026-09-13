@@ -38,18 +38,19 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&(Floor->ActorHasTag(TEXT("RideGrass"))||(CurrentFloor.HitResult.GetComponent()&&CurrentFloor.HitResult.GetComponent()->ComponentHasTag(TEXT("RideGrass"))));
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
-   TurnRateDegrees=SmoothedSteer*FMath::Lerp(180.f,85.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f);
+   float DesiredTurnRate=SmoothedSteer*FMath::Lerp(105.f,55.f,FMath::Clamp(Speed/1600.f,0.f,1.f))*FMath::Clamp(Speed/250.f,0.f,1.f);
    if(bRealHandling){
     // Bicycle model: yaw = speed / wheelbase * tan(front-wheel angle).
     const float Requested=Speed/110.f*FMath::Tan(FMath::DegreesToRadians(SmoothedSteer*32.f));
     const float Grip=(bGrass?350.f:680.f)*(Brake>.5f?.65f:1.f);
     const float Limit=Grip/FMath::Max(Speed,50.f);
-    TurnRateDegrees=IsMovingOnGround()?FMath::RadiansToDegrees(FMath::Clamp(Requested,-Limit,Limit)):0.f;
+    DesiredTurnRate=IsMovingOnGround()?FMath::RadiansToDegrees(FMath::Clamp(Requested,-Limit,Limit)):0.f;
    }
+   TurnRateDegrees=(Speed<=1.f||(bRealHandling&&!IsMovingOnGround()))?0.f:FMath::Lerp(TurnRateDegrees,DesiredTurnRate,1.f-FMath::Exp(-6.f*Dt));
    Heading.Yaw+=TurnRateDegrees*Dt;CharacterOwner->SetActorRotation(Heading);
    const bool BrakeTurn=Brake>.5f&&PreviousBrake<=.5f&&FMath::Abs(Steer)>.3f&&Speed>800;
-   const bool FastTurn=FMath::Abs(Steer)>.8f&&FMath::Abs(PreviousSteer)<=.8f&&Speed>1350;
-   if(!bRealHandling&&(BrakeTurn||FastTurn))SlideRemaining=.65f;
+   // Drifting requires a deliberate brake input, never ordinary steering.
+   if(!bRealHandling&&BrakeTurn)SlideRemaining=.65f;
    if(Floor&&(Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))))LastSafeLocation=CharacterOwner->GetActorLocation();
   }
  }

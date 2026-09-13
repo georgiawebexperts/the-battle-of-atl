@@ -134,7 +134,20 @@ void ABattleLabHUD::DrawHUD(){
   }
  }
  if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
- if(Notice.IsEmpty())for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("DRONE SWOOP — KEEP MOVING!");break;}
+ for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(!It->bSpent){
+  const FVector Location=It->GetActorLocation();const float Distance=FVector::Dist(GetOwningPawn()->GetActorLocation(),Location)/100.f;
+  if(Distance>65.f)continue;
+  if(Notice.IsEmpty())Notice=It->bWarning?FString::Printf(TEXT("DRONE  |  %.0fm  |  SHOOT OR EVADE"),Distance):TEXT("DRONE DIVING  |  KEEP MOVING");
+  auto* PC=GetOwningPlayerController();FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FVector2D Screen;
+  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(DroneHUD),false,GetOwningPawn());
+  const bool Visible=!GetWorld()->LineTraceSingleByChannel(Hit,Eye,Location,ECC_Visibility,Q)||Hit.GetActor()==*It;
+  if(Visible&&PC->ProjectWorldLocationToScreen(Location,Screen)&&Screen.X>105*S&&Screen.X<W-105*S&&Screen.Y>145*S&&Screen.Y<H-170*S){
+   Panel(Screen.X-100*S,Screen.Y-48*S,200*S,32*S);
+   Text(FString::Printf(TEXT("DRONE  %.0fm"),Distance),Screen.X-91*S,Screen.Y-46*S,20,Peach);
+   DrawLine(Screen.X-12*S,Screen.Y-12*S,Screen.X+12*S,Screen.Y-12*S,Peach,2*S);
+   DrawLine(Screen.X-12*S,Screen.Y+12*S,Screen.X+12*S,Screen.Y+12*S,Peach,2*S);
+  }
+ }
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
  if(auto* Viewer=GetOwningPawn()){
   const ABattleZombie* Speaking=nullptr;float Best=2500;

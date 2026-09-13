@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "stage": 2,
+  "reason": "Drone audit timeout",
+  "health": 100.0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "editor": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-76cb83e340aa4188b2eed4b0a058fcc3.log"
+}

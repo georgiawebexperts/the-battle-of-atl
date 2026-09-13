@@ -1,5 +1,6 @@
 #include "BattleDrone.h"
 #include "BattleBike.h"
+#include "BattleRider.h"
 #include "BattleZombie.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -8,7 +9,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleDrone::ABattleDrone(){
- PrimaryActorTick.bCanEverTick=true;InitialLifeSpan=12;Tags.Add(TEXT("BattleDrone"));
+ PrimaryActorTick.bCanEverTick=true;InitialLifeSpan=16;Tags.Add(TEXT("BattleDrone"));
  RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("DroneRoot"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
@@ -29,16 +30,17 @@ float ABattleDrone::TakeDamage(float Amount,const FDamageEvent&,AController*,AAc
 void ABattleDrone::Tick(float Dt){
  Super::Tick(Dt);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded||Mode->StartCountdown>0)return;
  for(auto Rotor:Rotors)Rotor->AddLocalRotation(FRotator(0,Dt*2200,0));
- auto* Bike=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(this,0));
+ auto* Target=UGameplayStatics::GetPlayerPawn(this,0);
+ auto* Bike=Cast<ABattleBike>(Target);if(auto* Person=Cast<ABattleRider>(Target))Bike=Person->ParkedBike.Get();
  if(!Bike||Bike->RiderHealth<=0||Bike->StunRemaining>0||Bike->RespawnRemaining>0){bSpent=true;bWarning=false;}
  if(bSpent){AddActorWorldOffset(FVector(0,0,400)*Dt);SetActorRotation(FRotator(-20,GetActorRotation().Yaw,0));return;}
  Clock+=Dt;
- if(bWarning){SetActorRotation((Bike->GetActorLocation()-GetActorLocation()).Rotation());if(Clock<2)return;bWarning=false;Clock=0;DiveStart=GetActorLocation();DiveTarget=Bike->GetActorLocation();EscapeDirection=(DiveTarget-DiveStart).GetSafeNormal2D();}
- const float T=Clock/.8f;
+ if(bWarning){SetActorRotation((Bike->GetActorLocation()-GetActorLocation()).Rotation());if(Clock<4.5f)return;bWarning=false;Clock=0;DiveStart=GetActorLocation();DiveTarget=Target->GetActorLocation();EscapeDirection=(DiveTarget-DiveStart).GetSafeNormal2D();}
+ const float T=Clock/1.6f;
  const FVector Next=T<=1?FMath::Lerp(DiveStart,DiveTarget,T):DiveTarget+EscapeDirection*((T-1)*800)+FVector(0,0,FMath::Square(T-1)*650);
  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(DroneSweep),false,this);
  if(GetWorld()->SweepSingleByChannel(Hit,GetActorLocation(),Next,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(32),Q)){
-  SetActorLocation(Hit.Location);if(Hit.GetActor()==Bike&&Bike->ApplyDroneStrike())RiderHits++;bSpent=true;SetLifeSpan(2);return;
+  SetActorLocation(Hit.Location);if(Hit.GetActor()==Bike&&Bike->ApplyDroneStrike())RiderHits++;else if(Hit.GetActor()==Target&&Target!=Bike&&Bike->ApplyRiderDamage(15)>0){RiderHits++;Bike->StunRemaining=1.5f;Bike->StunLabel=TEXT("DRONE IMPACT");}bSpent=true;SetLifeSpan(2);return;
  }
  SetActorRotation((Next-GetActorLocation()).Rotation());SetActorLocation(Next);if(T>2){bSpent=true;SetLifeSpan(2);}
 }
@@ -48,7 +50,7 @@ void ABattleLabMode::TickDrones(float Dt){
  DroneDelay-=Dt;if(DroneDelay>0)return;
  for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(!It->IsActorBeingDestroyed())return;
  DroneDelay=FMath::FRandRange(60.f,100.f);
- const float A=FMath::FRandRange(-PI,PI);const FVector Spot=Bike->GetActorLocation()+FVector(FMath::Cos(A)*900,FMath::Sin(A)*900,550);
+ const float A=FMath::DegreesToRadians(Bike->GetActorRotation().Yaw+FMath::FRandRange(-40.f,40.f));const FVector Spot=Bike->GetActorLocation()+FVector(FMath::Cos(A)*3500,FMath::Sin(A)*3500,650);
  FCollisionQueryParams Q(SCENE_QUERY_STAT(DroneSpawn),false,Bike);FHitResult Hit;
  if(GetWorld()->SweepSingleByChannel(Hit,Spot,Bike->GetActorLocation(),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(50),Q))return;
  GetWorld()->SpawnActor<ABattleDrone>(Spot,(Bike->GetActorLocation()-Spot).Rotation());

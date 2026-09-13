@@ -44,7 +44,7 @@ FBattleShotResult FireBattlePistol(APawn* Shooter,USceneComponent* Gun,float Spr
  if(!Shooter->GetWorld()->LineTraceSingleByChannel(Hit,Shooter->GetActorLocation()+FVector(0,0,42),Muzzle,ECC_Visibility,Q))Shooter->GetWorld()->LineTraceSingleByChannel(Hit,Muzzle,Target+(Target-Muzzle).GetSafeNormal()*3,ECC_Visibility,Q);
  Result.End=Hit.bBlockingHit?Hit.ImpactPoint:Target;
  auto* Victim=Cast<APiedmontExplorer>(Hit.GetActor());const bool Alive=Victim&&!Victim->bDead;
- if(Hit.GetActor()){const float Applied=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),34,(Result.End-Muzzle).GetSafeNormal(),Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());Result.Damage=Hit.GetActor()->IsA<APawn>()?Applied:0;if(Alive&&Applied>0)if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
+ if(Hit.GetActor()){const float Applied=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),34,(Result.End-Muzzle).GetSafeNormal(),Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());Result.Damage=(Hit.GetActor()->IsA<APawn>()||Hit.GetActor()->ActorHasTag(TEXT("BattleDrone")))?Applied:0;if(Applied>0&&Hit.GetActor()->ActorHasTag(TEXT("BattleDrone")))Result.HitLabel=Hit.GetActor()->IsActorBeingDestroyed()?TEXT("DRONE DOWN"):TEXT("DRONE HIT");if(Alive&&Applied>0)if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
  if(Alive&&Result.Damage>0)Result.HitLabel=ConfirmedHitLabel(Victim);
  Result.EnemyKilled=Alive&&Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile"));
  Result.Kills=Result.EnemyKilled?1:0;
@@ -70,6 +70,7 @@ FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Sl
    const float Falloff=Shotgun?FMath::GetMappedRangeValueClamped(FVector2D(400,2400),FVector2D(1,.15),FVector::Distance(Eye,Result.End)):1;
    const float Damage=UGameplayStatics::ApplyPointDamage(Hit.GetActor(),(Shotgun?18:Slot==4?28:14)*Falloff,Aim,Hit,PC,Shooter,UPiedmontBulletDamage::StaticClass());
    if(Alive&&Damage>0)Result.HitLabel=ConfirmedHitLabel(Victim);
+   if(Damage>0&&Hit.GetActor()->ActorHasTag(TEXT("BattleDrone"))){Result.Damage+=Damage;Result.HitLabel=Hit.GetActor()->IsActorBeingDestroyed()?TEXT("DRONE DOWN"):TEXT("DRONE HIT");}
    if(Alive&&Damage>0&&!TimedVictims.Contains(Victim)){TimedVictims.Add(Victim);if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
    if(Alive){Result.Damage+=Damage;if(Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile")))Result.Kills++;else if(Shotgun)if(auto* Z=Cast<ABattleZombie>(Victim)){Z->bTelegraphing=false;Z->LaunchCharacter(View.Vector()*650+FVector(0,0,120),true,true);}}
   }
