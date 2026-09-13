@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Actual bike movement contacted posed pedestrian",
+    "near_miss": true,
+    "contacts": 1,
+    "pose_active": false,
+    "knockdown": 1,
+    "wipeouts": 1,
+    "phase": 6
+  },
+  "scope": "Actual W-driven arcade bike, isolated flat floor, one injured pose, 3m lateral near miss followed by head-on contact. Initial positions reset; not actual map placement or all approach directions.",
+  "passed": true
+}
