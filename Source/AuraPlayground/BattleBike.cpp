@@ -175,7 +175,9 @@ void ABattleBike::PoseRider(float Dt){
  auto Index=[&](const TCHAR* Name){return BoneNames.IndexOfByKey(FName(Name));};
  auto Descendant=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Parents[I];}return false;};
  auto MoveBranch=[&](int Root,FVector Target,FQuat Rotation){if(Root<0)return;FVector Old=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();++I)if(Descendant(I,Root)){Pose[I].SetLocation(Target+Rotation.RotateVector(Pose[I].GetLocation()-Old));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
- const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,FVector(0,-23,99),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-(Ride->Brake>0?8.f:0.f))));
+ const float BrakeLeanTarget=8.f*FMath::Clamp(Ride->Brake,0.f,1.f);
+ RiderBrakeLean=Dt>0?FMath::Lerp(RiderBrakeLean,BrakeLeanTarget,1.f-FMath::Exp(-10.f*Dt)):BrakeLeanTarget;
+ const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,FVector(0,-23,99),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-RiderBrakeLean)));
  auto Limb=[&](const TCHAR* UpperName,const TCHAR* LowerName,const TCHAR* EndName,FVector Target,FVector Bend){
   int U=Index(UpperName),L=Index(LowerName),E=Index(EndName);if(U<0||L<0||E<0)return;
   FVector Origin=Pose[U].GetLocation();float A=FVector::Distance(Origin,Pose[L].GetLocation()),B=FVector::Distance(Pose[L].GetLocation(),Pose[E].GetLocation());
@@ -192,8 +194,28 @@ void ABattleBike::PoseRider(float Dt){
  for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R")}){
   const int Foot=Index(Name);if(Foot>=0)MoveBranch(Foot,Pose[Foot].GetLocation(),ReferencePose[Foot].GetRotation()*Pose[Foot].GetRotation().Inverse());
  }
- Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),FVector(28,29,114),FVector(1,0,-.4));
- Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),GunHold>0?FVector(-28,45,130):FVector(-28,29,114),FVector(-1,0,-.4));
+ // The bar is at bike-local (40, +/-30, 112). This mesh faces +Y;
+ // place the wrist behind the bar so the palm, rather than wrist, meets it.
+ auto Grip=[&](const TCHAR* Side,float Sign){
+  const FString S(Side);const FString HandName=TEXT("Hand_")+S;
+  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,FVector(Sign*25,26,115),FVector(Sign,0,-.4));
+  const int Hand=Index(*HandName);if(Hand<0)return;
+  const FQuat Facing(FVector::UpVector,FMath::DegreesToRadians(Sign*90.f));
+  MoveBranch(Hand,Pose[Hand].GetLocation(),Facing*ReferencePose[Hand].GetRotation()*Pose[Hand].GetRotation().Inverse());
+  for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")}){
+   for(int Joint=2;Joint<=4;Joint++){
+    const int I=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,Joint,Side));
+    if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Joint==2?-55.f:Joint==3?-65.f:-35.f)));
+   }
+  }
+  for(int Joint=2;Joint<=3;Joint++){
+   const int I=Index(*FString::Printf(TEXT("Thumb%d_%s"),Joint,Side));
+   if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-30.f)));
+  }
+ };
+ Grip(TEXT("L"),1.f);
+ if(GunHold>0)Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),FVector(-28,45,130),FVector(-1,0,-.4));
+ else Grip(TEXT("R"),-1.f);
  for(int I=0;I<Pose.Num();++I)Rider->BoneSpaceTransforms[I]=Parents[I]>=0?Pose[I].GetRelativeTransform(Pose[Parents[I]]):Pose[I];
  Rider->MarkRefreshTransformDirty();
 }

@@ -59,7 +59,15 @@ void ABattleMacController::BeginOpening(){
  FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){
   if(!Weak.IsValid()||!Weak->bOpeningActive)return false;
   auto* C=Weak.Get();const double T=FPlatformTime::Seconds()-C->OpeningStart;const float A=FMath::InterpEaseInOut(0.f,1.f,FMath::Clamp(float(T/12),0.f,1.f),2.f);
-  const FVector Eye=C->OpeningRiderLocation+FMath::Lerp(FVector(-450,-650,250),FVector(350,-550,180),A),Target=C->OpeningRiderLocation+FVector(0,0,65);
+  FVector Eye=C->OpeningRiderLocation+FMath::Lerp(FVector(-450,-650,250),FVector(350,-550,180),A),Target=C->OpeningRiderLocation+FVector(0,0,65);
+#if !UE_BUILD_SHIPPING
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningGripReview")))if(auto* Bike=Cast<ABattleBike>(C->GetPawn())){
+   Bike->Ride->Brake=T>=4&&T<8?1.f:0.f;Bike->RefreshRiderPose();
+   const FTransform Frame=Bike->Visual->GetComponentTransform();
+   Eye=Frame.TransformPosition(FMath::Lerp(FVector(190,-170,165),FVector(190,170,165),A));
+   Target=Frame.TransformPosition(FVector(35,0,120));
+  }
+#endif
   if(C->OpeningCamera)C->OpeningCamera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());
   if(C->PlayerCameraManager)C->PlayerCameraManager->UpdateCamera(0);
 #if !UE_BUILD_SHIPPING

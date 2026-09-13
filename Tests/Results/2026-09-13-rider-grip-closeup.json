@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "duration": 12.01,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "work/rider-grip-closeup/opening0.png",
+    "work/rider-grip-closeup/opening1.png",
+    "work/rider-grip-closeup/opening2.png"
+  ],
+  "visual_review": "Three close1280x720frames inspected: left/front/right grip alignment, middle frame full braking pose. Both palms rest on bar with curled fingers and no obvious wrist separation. Hands and model remain stylized; not full motion or skin-contact validation.",
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance.",
+  "editor": true,
+  "grip_closeup": true
+}

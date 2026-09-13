@@ -159,6 +159,7 @@ private:
  void ToggleHandling(){Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;}
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;
+ float RiderBrakeLean=0;
  TArray<FTransform> ReferencePose;TArray<int32> Parents;TArray<FName> BoneNames;
  float WheelAngle=0;
 };
