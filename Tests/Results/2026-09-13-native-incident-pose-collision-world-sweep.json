@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "started": true,
+    "held": true,
+    "pelvis_drift_cm": 0.0,
+    "horn_recovered": true,
+    "bike_interrupt": true,
+    "damage_interrupt": true,
+    "timed_recovered": true,
+    "posed_head_hit": true,
+    "standing_space_clear": true,
+    "posed_bike_sweep": false
+  },
+  "scope": "Native held pose after 0.6s transition settling, horn and timed get-up completion, bike-impact and damage interruption; spawned fixture only, posed head visibility trace, empty standing-height trace and pelvis bike-sized sweep; no whole-body envelope, scene placement, rarity or visual acceptance.",
+  "passed": false
+}

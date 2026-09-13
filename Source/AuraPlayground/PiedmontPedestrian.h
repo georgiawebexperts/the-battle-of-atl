@@ -62,6 +62,11 @@ protected:
 private:
  void CancelIncidentPose();
  bool TickIncidentPose(float Dt);
+ bool CreateIncidentCollision();
+ void UpdateIncidentCollision();
+ void ClearIncidentCollision();
+ UPROPERTY(Transient) TObjectPtr<USkeletalMeshComponent> IncidentCollision;
+ uint8 IncidentMovementMode=0,IncidentCustomMovementMode=0;
  float IncidentHoldRemaining=0;
  bool bIncidentRecovering=false;
  void CancelBenchReach();
