@@ -13,6 +13,7 @@
 #include "Sound/SoundBase.h"
 #include "Animation/AnimSequence.h"
 #include "Animation/Skeleton.h"
+#include "Rendering/SkeletalMeshRenderData.h"
 #include "Components/PoseableMeshComponent.h"
 #include "PhysicsEngine/PhysicsAsset.h"
 #include "UObject/ConstructorHelpers.h"
@@ -26,8 +27,7 @@ ABattleGunman::ABattleGunman(){
  static ConstructorHelpers::FObjectFinder<UPhysicsAsset> DeathCollision(TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));DeathAsset=DeathCollision.Object;
 }
 void ABattleGunman::BeginPlay(){
-#if !UE_BUILD_SHIPPING
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedGunman"))){
+ if(!FParse::Param(FCommandLine::Get(),TEXT("BattleLegacyGunman"))){
   const FString Root=TEXT("/Game/CitySampleCrowd/Character/Female/");
   const FString MeshRoot=Root+TEXT("NormalWeight/Meshes/f_tal_nrw_");
   auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
@@ -38,11 +38,14 @@ void ABattleGunman::BeginPlay(){
   auto* Quick=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("FTN_N_Walk_F_Quickly")));
   TArray<USkeletalMesh*> Parts;
   for(const FString& Path:TArray<FString>{MeshRoot+TEXT("scoopneck"),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),Root+TEXT("f_001/Face/f_001_nrw_FaceMesh")})Parts.Add(LoadObject<USkeletalMesh>(nullptr,*Path));
-  if(Mesh&&HairMesh&&Idle&&Walk&&Quick&&!Parts.Contains(nullptr)){
+  auto* Aim=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Gunman/AimPlanted/GunmanStandingAim"));
+  auto* Pistol=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/M1911/Meshes/SkeletalMesh/Rigged_M1911"));
+  if(Mesh&&Mesh->GetPhysicsAsset()&&HairMesh&&Idle&&Walk&&Quick&&Aim&&Pistol&&!Parts.Contains(nullptr)){
    Body->SetSkinnedAssetAndUpdate(Mesh);bNativeCrowdRig=bDetailedPlayerRig=true;
-   GunIdle=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Gunman/AimPlanted/GunmanStandingAim"));RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
+   if(FParse::Param(FCommandLine::Get(),TEXT("GunmanHideSkinReview")))Body->SetVisibility(false,false);
+   GunIdle=Aim;RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
    DeathAsset=Mesh->GetPhysicsAsset();
-   if(GunIdle)for(const TCHAR* Name:{TEXT("root"),TEXT("pelvis"),TEXT("spine_01"),TEXT("hand_r")}){
+   if(GunIdle&&FParse::Param(FCommandLine::Get(),TEXT("GunmanRigReview")))for(const TCHAR* Name:{TEXT("root"),TEXT("pelvis"),TEXT("spine_01"),TEXT("hand_r")}){
     const auto& AimRef=GunIdle->GetSkeleton()->GetReferenceSkeleton();const auto& WalkRef=GunWalk->GetSkeleton()->GetReferenceSkeleton();const auto& MeshRef=Mesh->GetRefSkeleton();
     const int A=AimRef.FindBoneIndex(Name),W=WalkRef.FindBoneIndex(Name),R=MeshRef.FindBoneIndex(Name);
     if(A>=0&&R>=0){FTransform T;GunIdle->GetBoneTransform(T,FSkeletonPoseBoneIndex(A),FAnimExtractContext(.5),false);UE_LOG(LogTemp,Display,TEXT("GunmanPose: bone=%s aim_index=%d walk_index=%d bind=%s sample=%s"),Name,A,W,*MeshRef.GetRefBonePose()[R].ToString(),*T.ToString());}
@@ -51,12 +54,21 @@ void ABattleGunman::BeginPlay(){
    for(int I=0;I<Parts.Num();I++){
     auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("GunmanOutfit%d"),I));AddInstanceComponent(Part);Part->SetupAttachment(Body);
     Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
+    if(I==0&&FParse::Param(FCommandLine::Get(),TEXT("GunmanRigReview"))){
+     const auto& BodyRef=Mesh->GetRefSkeleton();const auto& ShirtRef=Parts[I]->GetRefSkeleton();TArray<FTransform> BodyBind,ShirtBind;
+     for(int B=0;B<BodyRef.GetNum();B++)BodyBind.Add(BodyRef.GetParentIndex(B)>=0?BodyRef.GetRefBonePose()[B]*BodyBind[BodyRef.GetParentIndex(B)]:BodyRef.GetRefBonePose()[B]);
+     float MaxPosition=0,MaxAngle=0;int Shared=0;
+     for(int B=0;B<ShirtRef.GetNum();B++){ShirtBind.Add(ShirtRef.GetParentIndex(B)>=0?ShirtRef.GetRefBonePose()[B]*ShirtBind[ShirtRef.GetParentIndex(B)]:ShirtRef.GetRefBonePose()[B]);const int Match=BodyRef.FindBoneIndex(ShirtRef.GetBoneName(B));if(Match>=0){Shared++;MaxPosition=FMath::Max(MaxPosition,float(FVector::Dist(BodyBind[Match].GetLocation(),ShirtBind[B].GetLocation())));MaxAngle=FMath::Max(MaxAngle,float(FMath::RadiansToDegrees(BodyBind[Match].GetRotation().AngularDistance(ShirtBind[B].GetRotation()))));}}
+     TSet<FName> Missing;int SectionCount=0;if(auto* Data=Parts[I]->GetResourceForRendering())if(Data->LODRenderData.Num()){for(const auto& Section:Data->LODRenderData[0].RenderSections){SectionCount++;for(const auto Bone:Section.BoneMap)if(BodyRef.FindBoneIndex(ShirtRef.GetBoneName(Bone))<0)Missing.Add(ShirtRef.GetBoneName(Bone));}}
+     UE_LOG(LogTemp,Display,TEXT("GunmanRig: body_bones=%d shirt_bones=%d shared=%d max_bind_position_cm=%.6f max_bind_angle_deg=%.6f sections=%d missing_section_bones=%d"),BodyRef.GetNum(),ShirtRef.GetNum(),Shared,MaxPosition,MaxAngle,SectionCount,Missing.Num());
+     for(const FName Name:Missing)UE_LOG(LogTemp,Display,TEXT("GunmanRigMissing: %s"),*Name.ToString());
+    }
+
    }
    auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("GunmanHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
    UE_LOG(LogTemp,Display,TEXT("DetailedGunman: body=%s parts=%d physics=%s"),*Mesh->GetName(),Parts.Num(),*GetNameSafe(DeathAsset));
   }
  }
-#endif
  Super::BeginPlay();
  if(bDetailedPlayerRig)if(auto* Pistol=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/M1911/Meshes/SkeletalMesh/Rigged_M1911"))){
   DetailedWeapon=NewObject<USkeletalMeshComponent>(this,TEXT("GunmanM1911"));AddInstanceComponent(DetailedWeapon);DetailedWeapon->SetupAttachment(Weapon);

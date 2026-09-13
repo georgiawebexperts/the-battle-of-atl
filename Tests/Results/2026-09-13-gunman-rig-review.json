@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "motion_review": false,
+  "grip_review": true,
+  "opposite": true,
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/39625b11f6974b38a2ffe0fa2093b533/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/39625b11f6974b38a2ffe0fa2093b533/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/39625b11f6974b38a2ffe0fa2093b533/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/39625b11f6974b38a2ffe0fa2093b533/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/39625b11f6974b38a2ffe0fa2093b533/visible-shooter.png"
+  ],
+  "rig_diagnostic": {
+    "body_bones": 150,
+    "shirt_bones": 176,
+    "shared": 150,
+    "max_bind_position_cm": 0.000115,
+    "max_bind_angle_deg": 2.022047,
+    "sections": 1,
+    "missing_section_bones": 0,
+    "inference": "Missing mapped sleeve bones not supported; skin-hidden comparison retains same light/dark sleeve folds. Do not reshape sleeve based on this shading alone."
+  }
+}

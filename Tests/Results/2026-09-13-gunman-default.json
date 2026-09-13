@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "hide_skin_diagnostic": false,
+  "motion_review": false,
+  "grip_review": false,
+  "opposite": false,
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/175377baaa5c4dc49c34210ab42a5b84/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/175377baaa5c4dc49c34210ab42a5b84/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/175377baaa5c4dc49c34210ab42a5b84/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/175377baaa5c4dc49c34210ab42a5b84/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/175377baaa5c4dc49c34210ab42a5b84/visible-shooter.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "image": "visible-shooter.png",
+    "result": "Unflagged source startup uses detailed character, standing aim and M1911; readable warning label. Accepted as improvement over prior low-poly default; not final game-quality acceptance.",
+    "limits": "Editor fixture only. Performance, turn-to-target, broader natural encounters and next packaged build remain to verify."
+  }
+}
