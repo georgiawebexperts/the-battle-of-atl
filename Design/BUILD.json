@@ -61,7 +61,9 @@
     "2026-09-13: Found double-attenuated on-foot mouse input (0.07 processed axis then pawn scaling). Reads raw mouse delta now; injected native input improves yaw3.39 to53.98deg with body/camera aligned. Build/probe pass. OS capture, sensitivity feel, swimming regression and package pending.",
     "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending."
   ],
-  "unreleased_code_changes": [],
+  "unreleased_code_changes": [
+    "2026-09-13 [codex-maclaptop] Gate scenery repair: native survey found fixed-height 14th Street iron uprights floating up to16.97cm above pavement. Compiled constructor now uses per-post surveyed bases4cm into pavement, lower rail and strengthened end posts/base plates. Reproducible survey generates BattleGateSupport.h. Native check verifies all16 actual post bases against adjacent pavement; editor rendered police scene inspected and encounter regression passes. Source-only: desktop/share remain062; include in next grouped scenery build. Whole entrance accuracy, world art and movement/animation acceptance remain unfinished."
+  ],
   "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
   "compiled_source": "046d84edff7ec2fd30d5cd502788fd1f2cb12bba",

@@ -1,0 +1,162 @@
+[
+  {
+    "side": -1,
+    "index": 0,
+    "x": -17026.01578,
+    "y": -5439.65167,
+    "ground_z": 120.59548950195312,
+    "old_base_z": 117.65686,
+    "gap_cm": -2.9386295019531303,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 1,
+    "x": -16991.01578,
+    "y": -5439.65167,
+    "ground_z": 119.2635726928711,
+    "old_base_z": 117.65686,
+    "gap_cm": -1.606712692871099,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 2,
+    "x": -16956.01578,
+    "y": -5439.65167,
+    "ground_z": 118.03312683105469,
+    "old_base_z": 117.65686,
+    "gap_cm": -0.37626683105469283,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 3,
+    "x": -16921.01578,
+    "y": -5439.65167,
+    "ground_z": 116.61603546142578,
+    "old_base_z": 117.65686,
+    "gap_cm": 1.0408245385742134,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 4,
+    "x": -16886.01578,
+    "y": -5439.65167,
+    "ground_z": 114.97539520263672,
+    "old_base_z": 117.65686,
+    "gap_cm": 2.681464797363276,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 5,
+    "x": -16851.01578,
+    "y": -5439.65167,
+    "ground_z": 113.43829345703125,
+    "old_base_z": 117.65686,
+    "gap_cm": 4.218566542968745,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 6,
+    "x": -16816.01578,
+    "y": -5439.65167,
+    "ground_z": 111.93437194824219,
+    "old_base_z": 117.65686,
+    "gap_cm": 5.722488051757807,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": -1,
+    "index": 7,
+    "x": -16781.01578,
+    "y": -5439.65167,
+    "ground_z": 110.896728515625,
+    "old_base_z": 117.65686,
+    "gap_cm": 6.760131484374995,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 0,
+    "x": -17026.01578,
+    "y": -4739.65167,
+    "ground_z": 108.1194839477539,
+    "old_base_z": 117.65686,
+    "gap_cm": 9.537376052246088,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 1,
+    "x": -16991.01578,
+    "y": -4739.65167,
+    "ground_z": 107.43589782714844,
+    "old_base_z": 117.65686,
+    "gap_cm": 10.220962172851557,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 2,
+    "x": -16956.01578,
+    "y": -4739.65167,
+    "ground_z": 106.55126190185547,
+    "old_base_z": 117.65686,
+    "gap_cm": 11.105598098144526,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 3,
+    "x": -16921.01578,
+    "y": -4739.65167,
+    "ground_z": 105.18595886230469,
+    "old_base_z": 117.65686,
+    "gap_cm": 12.470901137695307,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 4,
+    "x": -16886.01578,
+    "y": -4739.65167,
+    "ground_z": 104.00220489501953,
+    "old_base_z": 117.65686,
+    "gap_cm": 13.654655104980463,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 5,
+    "x": -16851.01578,
+    "y": -4739.65167,
+    "ground_z": 102.73455047607422,
+    "old_base_z": 117.65686,
+    "gap_cm": 14.922309523925776,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 6,
+    "x": -16816.01578,
+    "y": -4739.65167,
+    "ground_z": 101.73960876464844,
+    "old_base_z": 117.65686,
+    "gap_cm": 15.917251235351557,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  },
+  {
+    "side": 1,
+    "index": 7,
+    "x": -16781.01578,
+    "y": -4739.65167,
+    "ground_z": 100.68618774414062,
+    "old_base_z": 117.65686,
+    "gap_cm": 16.97067225585937,
+    "surface": "Park pavement SM_Park_Concrete_2_16"
+  }
+]

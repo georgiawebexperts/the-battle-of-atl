@@ -1,4 +1,5 @@
 #include "BattleTutorial.h"
+#include "BattleGateSupport.h"
 #include "BattleMarketClosure.h"
 #include "BattleTutorialData.h"
 #include "BattleTutorialBlock.h"
@@ -91,8 +92,15 @@ ABattleTutorial::ABattleTutorial(){
  for(int Side:{-1,1}){
   for(int Z=20;Z<360;Z+=40)for(int X:{-1,1})for(int Y:{-1,1})Part(Concrete,G+FVector(X*36,Side*360+Y*36,Z),FVector(70,70,38));
   Part(Concrete,G+FVector(0,Side*360,365),FVector(170,170,30));Part(Concrete,G+FVector(0,Side*360,405),FVector(85,85,50));
-  for(int I=0;I<8;I++)Part(Iron,G+FVector(100+I*35,Side*350,120),FVector(6,6,240));
-  Part(Iron,G+FVector(220,Side*350,230),FVector(300,8,8));
+  for(int I=0;I<8;I++){
+   const float Base=BattleGateSupport::BaseZ[Side<0?0:1][I]-G.Z-4.f,Top=240.f;
+   Part(Iron,G+FVector(100+I*35,Side*350,(Base+Top)*.5f),FVector(6,6,Top-Base));
+   if(I==0||I==7){
+    Part(Iron,G+FVector(100+I*35,Side*350,(Base+Top)*.5f),FVector(10,10,Top-Base));
+    Part(Iron,G+FVector(100+I*35,Side*350,Base+5),FVector(18,18,6));
+   }
+  }
+  for(int Z:{30,230})Part(Iron,G+FVector(220,Side*350,Z),FVector(300,8,8));
  }
  Part(Iron,G+FVector(-80,-360,275),FVector(10,200,105));Label(TEXT("ParkName"),TEXT("PIEDMONT PARK"),G+FVector(-88,-360,280),19,FRotator(0,180,0));
  Label(TEXT("GateName"),TEXT("14TH STREET"),G+FVector(-88,-360,244),16,FRotator(0,180,0));
