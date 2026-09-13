@@ -44,7 +44,7 @@ void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
   }else {
    FParse::Value(FCommandLine::Get(),TEXT("BattleCrashObstacle="),S.Obstacle);
    if(!S.Obstacle.IsEmpty()){
-    Car->Destroy();B->DamageGrace=0;B->Ride->Gear=1;
+    Car->Destroy();B->DamageGrace=0;B->Ride->Gear=1;B->Ride->bRealHandling=true;
     const FVector Place=B->GetActorLocation()+FVector(600,0,0);
     if(S.Obstacle==TEXT("person")){
      auto* Person=PC->GetWorld()->SpawnActor<APiedmontPedestrian>(Place,FRotator(0,180,0));S.ImpactTarget=Person;

@@ -13,6 +13,7 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bConsumed=false;
  UPROPERTY(BlueprintReadOnly) bool bTrailPickup=false;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bTimeBonus=false;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bSpeedBonus=false;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float HealAmount=35;
  UFUNCTION(BlueprintCallable) bool TryCollect(APawn* Pawn);
 private:
@@ -32,6 +33,7 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 TimePickups=0;
  UPROPERTY(BlueprintReadOnly) int32 AmmoPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 HornPickups=0;
+ UPROPERTY(BlueprintReadOnly) int32 SpeedPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 ParkPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 TrailPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 PlacementFailures=0;

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "tracks": 2,
+  "cycle": "off-song1-song2-off",
+  "preference_restored": true,
+  "images": [],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-music-b8e8d594e4084b62a924ad8078f09008/run.log",
+  "exit_code": 0,
+  "packaged": false
+}

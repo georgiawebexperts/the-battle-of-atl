@@ -16,6 +16,9 @@
 #include "Engine/Canvas.h"
 #include "CanvasItem.h"
 #include "Styling/CoreStyle.h"
+#include "Framework/Application/SlateApplication.h"
+#include "Rendering/SlateRenderer.h"
+#include "Fonts/FontMeasure.h"
 #include "Engine/Engine.h"
 #include "Engine/Font.h"
 #include "EngineUtils.h"
@@ -27,9 +30,18 @@ void ABattleLabHUD::DrawHUD(){
  const float W=Canvas->SizeX,H=Canvas->SizeY,S=FMath::Clamp(FMath::Min(W/1920.f,H/1080.f),.75f,1.5f),M=28*S;
  if(!ReadableFont){ReadableFont=NewObject<UFont>(this);ReadableFont->FontCacheType=EFontCacheType::Runtime;}
  const FLinearColor Ink(.012,.018,.025,1),Peach(1,.74,.42),Muted(.96,.97,1);
- auto Panel=[&](float X,float Y,float Width,float Height){DrawRect(Ink,X,Y,Width,Height);};
- auto Text=[&](const FString& T,float X,float Y,float Size,FLinearColor C=FLinearColor::White){FCanvasTextItem Item(FVector2D(X,Y),FText::FromString(T),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(Size*S)),C);Item.Font=ReadableFont;Canvas->DrawItem(Item);};
- auto Center=[&](const FString& T,float Y,float Size,FLinearColor C=FLinearColor::White){FCanvasTextItem Item(FVector2D(W*.5f,Y),FText::FromString(T),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(Size*S)),C);Item.Font=ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);};
+ FBox2D TextPanel(FVector2D::ZeroVector,FVector2D(W,H));
+ const auto Measure=FSlateApplication::Get().GetRenderer()->GetFontMeasureService();
+ auto Panel=[&](float X,float Y,float Width,float Height){TextPanel=FBox2D(FVector2D(X,Y),FVector2D(X+Width,Y+Height));DrawRect(Ink,X,Y,Width,Height);};
+ auto DrawFitted=[&](const FString& T,float X,float Y,float Size,FLinearColor C,bool Centered){
+  const bool InPanel=Y>=TextPanel.Min.Y&&Y<TextPanel.Max.Y&&X>=TextPanel.Min.X&&X<=TextPanel.Max.X;
+  const float Available=FMath::Max(1.f,InPanel?(Centered?2.f*FMath::Min(X-TextPanel.Min.X,TextPanel.Max.X-X)-24*S:TextPanel.Max.X-X-12*S):W-X-M);
+  auto Font=FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(Size*S));
+  while(Font.Size>1&&Measure->Measure(T,Font).X>Available)--Font.Size;
+  FCanvasTextItem Item(FVector2D(X,Y),FText::FromString(T),Font,C);Item.Font=ReadableFont;Item.bCentreX=Centered;Canvas->DrawItem(Item);
+ };
+ auto Text=[&](const FString& T,float X,float Y,float Size,FLinearColor C=FLinearColor::White){DrawFitted(T,X,Y,Size,C,false);};
+ auto Center=[&](const FString& T,float Y,float Size,FLinearColor C=FLinearColor::White){DrawFitted(T,W*.5f,Y,Size,C,true);};
  auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  auto* Bike=Cast<ABattleBike>(GetOwningPawn());auto* Person=Cast<ABattleRider>(GetOwningPawn());auto* Owner=Bike?Bike:Person?Person->ParkedBike.Get():nullptr;
  if(!Owner)return;
@@ -73,10 +85,10 @@ void ABattleLabHUD::DrawHUD(){
  Panel(M,Bottom,310*S,156*S);
  Text(FString::Printf(TEXT("HEALTH  %.0f"),Owner->RiderHealth),M+18*S,Bottom+10*S,22);
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+50*S,274*S,18*S);DrawRect(Owner->RiderHealth<25?FLinearColor(1,.15,.1):FLinearColor(.3,.9,.62),M+18*S,Bottom+50*S,FMath::Clamp(Owner->RiderHealth/100.f,0.f,1.f)*274*S,18*S);
- Text(FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
+ Text(Owner->Ride->BoostRemaining>0?FString::Printf(TEXT("SPEED BOOST  %.1fs"),Owner->Ride->BoostRemaining):FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);
  FString Prompt=Bike&&Bike->Ride->Speed<20?TEXT("E DISMOUNT  |  S/DOWN BACK UP"):TEXT("E  GET OFF THE BIKE");
- const float MusicY=M+(Bike?230.f:174.f)*S;Panel(W-M-300*S,MusicY,300*S,38*S);Text(BattleMusic::Enabled()?TEXT("M  MUSIC ON / TOGGLE"):TEXT("M  MUSIC OFF / TOGGLE"),W-M-280*S,MusicY+6*S,18,Muted);
+ const float MusicY=M+(Bike?230.f:174.f)*S;Panel(W-M-300*S,MusicY,300*S,68*S);Text(BattleMusic::Enabled()?FString::Printf(TEXT("M  MUSIC: SONG %d / 2"),BattleMusic::Selection()):TEXT("M  MUSIC: OFF"),W-M-280*S,MusicY+6*S,18,Muted);Text(TEXT("Cycle: Off > 1 > 2 > Off"),W-M-280*S,MusicY+36*S,16,Muted);
  FString Help=TEXT("Q/R gears   J jump   SHIFT boost   H horn");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=BattleSpareBikes::Nearest(Person)?TEXT("E  RIDE THIS BIKE"):Near?TEXT("E  GET ON THE BIKE"):TEXT("FIND A BIKE  /  BLUE WATCH MARKERS");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
  if(Person&&Person->bSwimming){Prompt=TEXT("EXPLORE THE LAKE");Help=TEXT("WASD / arrows swim   E remount by bike");}

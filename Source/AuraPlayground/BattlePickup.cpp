@@ -32,11 +32,11 @@ ABattleColaPickup::ABattleColaPickup(){
 }
 void ABattleColaPickup::BeginPlay(){
  Super::BeginPlay();RestLocation=GetActorLocation();
- Can->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,bTimeBonus?TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow"):TEXT("/Game/BattleForTheA/Materials/M_ColaRed.M_ColaRed")));
- if(bTimeBonus){
-  Tags.Remove(TEXT("BattleHealthPickup"));Tags.Add(TEXT("BattleTimePickup"));
+ Can->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,(bTimeBonus||bSpeedBonus)?TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow"):TEXT("/Game/BattleForTheA/Materials/M_ColaRed.M_ColaRed")));
+ if(bTimeBonus||bSpeedBonus){
+  Tags.Remove(TEXT("BattleHealthPickup"));Tags.Add(bSpeedBonus?TEXT("BattleSpeedPickup"):TEXT("BattleTimePickup"));
   Can->SetRelativeScale3D(FVector(.55,.55,.12));Can->SetRelativeRotation(FRotator(90,0,0));Glow->SetLightColor(FLinearColor(.2,1,.65));
-  TArray<UTextRenderComponent*> Labels;GetComponents(Labels);for(auto* Label:Labels){Label->SetText(FText::FromString(TEXT("+30s")));Label->SetTextRenderColor(FColor(8,25,15));Label->SetWorldSize(16);Label->SetRelativeLocation(Label->GetRelativeLocation()+FVector(0,0,3));}
+  TArray<UTextRenderComponent*> Labels;GetComponents(Labels);for(auto* Label:Labels){Label->SetText(FText::FromString(bSpeedBonus?TEXT(">> 5s"):TEXT("+30s")));Label->SetTextRenderColor(FColor(8,25,15));Label->SetWorldSize(16);Label->SetRelativeLocation(Label->GetRelativeLocation()+FVector(0,0,3));}
  }
 }
 void ABattleColaPickup::Tick(float Dt){
@@ -47,6 +47,12 @@ bool ABattleColaPickup::TryCollect(APawn* Pawn){
  auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Person=Cast<ABattleRider>(Pawn))Bike=Person->ParkedBike;if(!Bike)return false;
  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(ColaPickupSight),false,Pawn);Q.AddIgnoredActor(this);
  if(GetWorld()->LineTraceSingleByChannel(Hit,Pawn->GetActorLocation(),GetActorLocation(),ECC_Visibility,Q))return false;
+ if(bSpeedBonus){
+  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
+  if(Pawn!=Bike||Bike->bParked||Bike->bCrashActive||Bike->RiderHealth<=0||Bike->StunRemaining>0||Bike->Ride->Recovery>0||!Mode||Mode->bRunEnded||Mode->StartCountdown>0)return false;
+  Bike->Ride->BoostRemaining=FMath::Max(Bike->Ride->BoostRemaining,5.f);
+  bConsumed=true;if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Boost.S_Boost")))UGameplayStatics::PlaySound2D(this,Sound);Destroy();return true;
+ }
  if(bTimeBonus){
   auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(Bike->RiderHealth<=0||!Mode||!Mode->AdjustRunTime(30,TEXT("TIME BONUS")))return false;
   bConsumed=true;if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Boost.S_Boost")))UGameplayStatics::PlaySoundAtLocation(this,Sound,GetActorLocation(),.5f);Destroy();return true;
@@ -127,7 +133,7 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int3
    Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));if(Bin)Crate->Tags.Add(TEXT("AmmoByBin"));Locations.Add(Spot);if(WeaponSlot==0)AmmoPickups++;else WeaponCrates++;return true;}return false;
  }
  if(auto* Pickup=GetWorld()->SpawnActorDeferred<ABattleColaPickup>(ABattleColaPickup::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){
-  Pickup->HealAmount=Heal;Pickup->bTrailPickup=Trail;Pickup->bTimeBonus=WeaponSlot==-2;Pickup->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==-2)TimePickups++;else{Spawned++;if(Trail)TrailPickups++;else ParkPickups++;}return true;
+  Pickup->HealAmount=Heal;Pickup->bTrailPickup=Trail;Pickup->bTimeBonus=WeaponSlot==-2;Pickup->bSpeedBonus=WeaponSlot==-4;Pickup->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==-4)SpeedPickups++;else if(WeaponSlot==-2)TimePickups++;else{Spawned++;if(Trail)TrailPickups++;else ParkPickups++;}return true;
  }return false;
 }
 void ABattlePickupDirector::BeginPlay(){
@@ -162,6 +168,9 @@ void ABattlePickupDirector::BeginPlay(){
   FillTime(Park,false,5);FillTime(Trail,true,10);
   auto FillHorns=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&HornPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-3);}};
   FillHorns(Park,false,3);FillHorns(Trail,true,6);
+  auto FillSpeed=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&SpeedPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-4);}};
+  FillSpeed(AmmoPark,false,3);FillSpeed(AmmoTrail,true,6);
+  UE_LOG(LogTemp,Display,TEXT("BattleSpeedPickups: spawned=%d desired=6"),SpeedPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleHornPickups: spawned=%d desired=6"),HornPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleAmmoPickups: spawned=%d desired=12"),AmmoPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleTimePickups: spawned=%d desired=10"),TimePickups);

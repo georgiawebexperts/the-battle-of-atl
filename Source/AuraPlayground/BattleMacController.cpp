@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "BattleMusic.h"
+void TickBattleSpeedAudit(APlayerController* PC,float Dt);
 #include "BattleSpareBikes.h"
 #include "BattleSwimAudit.h"
 #include "HAL/IConsoleManager.h"
@@ -91,6 +92,7 @@ void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeRideAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpeedAudit")))TickBattleSpeedAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMusicAudit")))BattleMusic::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpareBikeAudit")))BattleSpareBikes::TickAudit(this,Dt);
 #if !UE_BUILD_SHIPPING
@@ -249,11 +251,11 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("BACK"),[this,Ended](){const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));ShowMenu(Ended?(M&&M->bWon?TEXT("Win"):TEXT("Loss")):TEXT("Home"));});
  }else if(Page==TEXT("Instructions")){
   Label(TEXT("Ellison dropped his cell phone playing frisbee in Piedmont Park. Use Find My Lost Phone on his watch to follow a broad compass direction. Recover it, then race past Murder K and Krog Street Market, through Krog Tunnel and right into 98 Estoria. Morgan is waiting for him at the Cabbagetown party. Make it before the clock runs out and celebrate with a beer."),16,FLinearColor::White);
-  Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn (5 uses) | Tab camera\nP arcade / realistic bike physics\nE dismount | Left click pistol"),17,FLinearColor::White);
+  Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn (5 uses) | Tab camera\nP arcade / realistic bike physics\nArcade: scenery bumps keep you on the bike\nEnemies, drones and tasers can knock you off\nFind >> 5s tokens for temporary speed\nM music: Off > Song 1 > Song 2 > Off\nE dismount | Left click pistol"),17,FLinearColor::White);
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
-  Button(BattleMusic::Enabled()?TEXT("MUSIC: ON  /  M"):TEXT("MUSIC: OFF  /  M"),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
+  Button(BattleMusic::Enabled()?FString::Printf(TEXT("MUSIC: SONG %d / 2  /  M"),BattleMusic::Selection()):FString(TEXT("MUSIC: OFF  /  M")),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
   Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);
   for(int Quality:{1,2})Button(Quality==1?TEXT("PERFORMANCE / 1080p"):TEXT("BALANCED / 1080p"),[this,Quality](){if(auto* Settings=UGameUserSettings::GetGameUserSettings()){Settings->SetOverallScalabilityLevel(Quality);Settings->SetScreenResolution(FIntPoint(1920,1080));Settings->SetFullscreenMode(EWindowMode::Windowed);Settings->SetFrameRateLimit(60);Settings->ApplySettings(false);Settings->SaveSettings();}ShowMenu(TEXT("Options"));});
   Button(TEXT("BACK"),[this](){ShowMenu();});

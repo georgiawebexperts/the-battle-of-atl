@@ -17,7 +17,7 @@ void TickBattleTreeRideAudit(APlayerController* PC,float Dt){
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto Key=[&](bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::W,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Pass,const TCHAR* Why){Key(false);S.Done=true;UE_LOG(LogTemp,Display,TEXT("TreeRideAudit: {\"passed\":%s,\"reason\":\"%s\",\"completed\":%d,\"tree\":%d,\"leg\":%d}"),Pass?TEXT("true"):TEXT("false"),Why,S.Completed,S.Tree,S.Leg);PC->ConsoleCommand(TEXT("quit"));};
- auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike){Finish(false,TEXT("Missing bike"));return;}auto* Move=Bike->Ride.Get();
+ auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike){Finish(false,TEXT("Missing bike"));return;}auto* Move=Bike->Ride.Get();Move->bRealHandling=FParse::Param(FCommandLine::Get(),TEXT("BattleRealTreeAudit"));
  auto Floor=[&](FVector Point,FVector& Ground){FHitResult Hit;FCollisionQueryParams Q;Q.bTraceComplex=true;Q.AddIgnoredActor(Bike);if(!PC->GetWorld()->LineTraceSingleByChannel(Hit,Point+FVector(0,0,2000),Point-FVector(0,0,2000),ECC_WorldStatic,Q)||!Hit.GetActor()||Hit.GetActor()->ActorHasTag(TEXT("RideTree")))return false;Ground=Hit.ImpactPoint;return true;};
  if(!S.Started){
   if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(PC)))if(Mode->Enemies)Mode->Enemies->bFreezeSpawns=true;
@@ -47,7 +47,7 @@ void TickBattleTreeRideAudit(APlayerController* PC,float Dt){
  S.Clock+=Dt;if(S.Clock<.6f)return;Key(true);
  if(S.Clock>15){UE_LOG(LogTemp,Display,TEXT("TreeRide state: mesh=%s position=%s target=%s speed=%.1f contacts=%d"),*Tree.Mesh,*Bike->GetActorLocation().ToString(),*Tree.Point.ToString(),Move->Speed,Move->TreeContacts-S.Contacts);Finish(false,TEXT("Tree approach timed out"));return;}
  if(S.Leg==0&&Move->TreeContacts!=S.Contacts){Finish(false,TEXT("Near pass hit a trunk"));return;}
- bool Complete=S.Leg==0?Bike->GetActorLocation().X>Tree.Point.X+300:Move->TreeContacts>S.Contacts&&Bike->bCrashActive&&Bike->RiderHealth<100;
- if(Complete){Key(false);if(S.Leg==1){Bike->ClearPhysicalCrash();Bike->bParked=false;Bike->Rider->SetVisibility(true,true);Move->Recovery=0;}++S.Completed;S.Clock=0;if(S.Leg==0)S.Leg=1;else{S.Leg=0;++S.Tree;}if(S.Tree==3)Finish(true,TEXT("Three authored tree types: keyboard near passes clear and direct hits knock the rider off with harm"));}
+ bool Complete=S.Leg==0?Bike->GetActorLocation().X>Tree.Point.X+300:Move->TreeContacts>S.Contacts&&(Move->bRealHandling?(Bike->bCrashActive&&Bike->RiderHealth<100):(!Bike->bCrashActive&&Bike->RiderHealth==100));
+ if(Complete){Key(false);if(S.Leg==1){Bike->ClearPhysicalCrash();Bike->bParked=false;Bike->Rider->SetVisibility(true,true);Move->Recovery=0;}++S.Completed;S.Clock=0;if(S.Leg==0)S.Leg=1;else{S.Leg=0;++S.Tree;}if(S.Tree==3)Finish(true,TEXT("Three authored tree types: keyboard near passes clear; direct contacts follow selected handling rules"));}
 #endif
 }

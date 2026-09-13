@@ -80,7 +80,7 @@ F                        Melee
 E near a bike            Ride it (after recovery; not while swimming)
                          Blue watch markers show spare bikes.
 Escape                   Pause/menu
-M                        Music on/off (also in Options)
+M                        Cycle Off > Song 1 > Song 2 > Off (also in Options)
 
 You start with 17 pistol rounds. Pistol ammo pickups give 17 rounds to
 reserve; carry up to 102 spare pistol rounds plus 17 loaded. Reload to use
@@ -111,15 +111,18 @@ This does not necessarily remove settings or saved-game data.
 
 Spare bikes: blue watch markers show six parked bikes along the park and
 trail. Walk up and press E to ride one; your abandoned bike stays available.
-Music: press M or use Options to turn the supplied theme on/off.
+Music: press M or use Options to cycle Off > Song 1 > Song 2 > Off.
+Song 1: Battle of the A-T-L. Song 2: The Battle of A-T-L2.
 Tight arcade turns ease speed gradually. Glancing rail contacts slide;
 hold S/Down to back out of a direct wall hit, then steer clear.
 
-Riding impacts: hitting trees, people or solid obstacles at riding speed
-knocks Ellison off, causes harm and costs 10 seconds. After he gets up,
-walk to the bike and press E. Low-speed nudges can still be backed out of.
+Arcade scenery impacts stop or deflect the bike without knocking Ellison
+off. Enemies, tasers and drones can still knock him down. Realistic mode
+keeps collision knockdowns. Hold S/Down to back away from a blocked path.
+Find glowing >> 5s tokens for an automatic five-second speed boost while
+riding. Boost speed eases in and out; brakes still work.
 At a stop, Ellison plants his feet; they return to the pedals as you ride.
-The right-side HUD displays M to toggle music, with its current state.
+The right-side HUD displays the current song and the M cycling order.
 
 Build {{BUILD}} update: the shotgun uses a turned shoulder stance and visible
 support-hand pump/reload movement. Long guns follow the body independently

@@ -88,7 +88,7 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  static const float ArcadeCaps[]={650,950,1300,1650,1950};
  const float Cap=(BoostRemaining>0?(bRealHandling?1800.f:2200.f):(bRealHandling?Caps[Gear-1]:ArcadeCaps[Gear-1]))*(bGrass?.85f:1.f);
  const float Drag=Speed>0?22.f+Speed*.012f:0;
- if(BoostRemaining>0&&Brake<=0&&(!bRealHandling||IsMovingOnGround()))Speed=Cap;
+ if(BoostRemaining>0&&Brake<=0&&(!bRealHandling||IsMovingOnGround()))Speed=FMath::FInterpConstantTo(Speed,Cap,Dt,1500.f);
  if(bRealHandling){
   if(IsMovingOnGround()){
    const FVector Normal=CurrentFloor.HitResult.ImpactNormal.GetSafeNormal();
@@ -104,8 +104,8 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
   const float Corner=IsMovingOnGround()?FMath::SmoothStep(.45f,1.f,FMath::Abs(SmoothedSteer)):0.f;
   const float CornerCap=FMath::Lerp(Cap,FMath::Min(Cap,220.f+80.f*Gear),Corner);
   const float Motor=Speed<CornerCap?Pedal*Accel[Gear-1]:0.f;
-  Speed=FMath::Clamp(Speed+(Motor-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
-  if(Speed>CornerCap)Speed=FMath::FInterpConstantTo(Speed,CornerCap,Dt,550.f*Corner);
+  Speed=FMath::Clamp(Speed+(Motor-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,FMath::Max(Cap,Speed));
+  if(Speed>CornerCap)Speed=FMath::FInterpConstantTo(Speed,CornerCap,Dt,FMath::Max(550.f*Corner,BoostRemaining<=0?450.f:0.f));
  }
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
  const FVector Horizontal=FMath::Lerp(FVector(Velocity.X,Velocity.Y,0),Desired,1.f-FMath::Exp(-(SlideRemaining>0?2.3f:18.f)*Dt));
@@ -148,7 +148,7 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
   const bool Direct=Speed>200&&Directness>.35f&&Speed*Directness>150;
   if(auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor()))Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
   if(Direct&&Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic")))if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(CharacterOwner)))Mode->RecordAssault(Hit.GetActor());
-  ContactCooldown=.35f;if(Direct)CrashImpact(TEXT("Traffic impact"),Speed*Directness);else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
+  ContactCooldown=.35f;if(Direct&&(bRealHandling||Hit.GetActor()->ActorHasTag(TEXT("PiedmontHostile"))))CrashImpact(TEXT("Traffic impact"),Speed*Directness);else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
  if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree")))++TreeContacts;
  // Let a glancing rail/wall contact slide instead of repeatedly killing propulsion.
@@ -156,7 +156,7 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
  const FVector Normal=Hit.ImpactNormal.GetSafeNormal2D();
  const FVector Travel=CharacterOwner->GetActorForwardVector()*(ReverseSpeed>Speed?-1.f:1.f);
  const float Into=FMath::Clamp(-FVector::DotProduct(Travel,Normal),0.f,1.f);
- if(Speed>200&&Into>.35f&&Speed*Into>150){ContactCooldown=.35f;CrashImpact(TEXT("Obstacle impact"),Speed*Into);return;}
+ if(bRealHandling&&Speed>200&&Into>.35f&&Speed*Into>150){ContactCooldown=.35f;CrashImpact(TEXT("Obstacle impact"),Speed*Into);return;}
  if(Into<.65f){
   const float Retained=FMath::Sqrt(FMath::Max(0.f,1.f-Into*Into));
   Speed*=Retained;ReverseSpeed*=Retained;ContactCooldown=.2f;
