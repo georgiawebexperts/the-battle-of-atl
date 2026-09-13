@@ -4,6 +4,7 @@
 #include "BattleCheckpoints.h"
 #include "PiedmontPathSpline.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "Components/SplineComponent.h"
@@ -54,6 +55,44 @@ bool ABattleColaPickup::TryCollect(APawn* Pawn){
  Destroy();return true;
 }
 ABattlePickupDirector::ABattlePickupDirector(){PrimaryActorTick.bCanEverTick=false;}
+namespace {
+bool FindAmmoBinSite(AActor* Owner,FVector Surface,FVector& Base){
+ APiedmontPathSpline* Nearest=nullptr;FVector Center;float Best=MAX_flt;
+ for(TActorIterator<APiedmontPathSpline> It(Owner->GetWorld());It;++It){
+  if(It->bBridge)continue;const FVector P=It->Centerline->FindLocationClosestToWorldLocation(Surface,ESplineCoordinateSpace::World);const float D=FVector::DistSquared2D(P,Surface);
+  if(D<Best){Best=D;Nearest=*It;Center=P;}
+ }
+ if(!Nearest||Best>FMath::Square(450.f))return false;
+ const float Key=Nearest->Centerline->FindInputKeyClosestToWorldLocation(Center);
+ const FVector Direction=Nearest->Centerline->GetDirectionAtSplineInputKey(Key,ESplineCoordinateSpace::World).GetSafeNormal2D(),Right(-Direction.Y,Direction.X,0);
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(AmmoBinSite),false,UGameplayStatics::GetPlayerPawn(Owner,0));
+ for(float Along:{0.f,150.f,-150.f})for(int Side:{-1,1}){
+  const FVector P=Center+Direction*Along+Right*Side*(Nearest->WidthCm*.5f+65.f);FHitResult Hit;
+  bool OnPath=false;for(TActorIterator<APiedmontPathSpline> It(Owner->GetWorld());It;++It){const FVector Closest=It->Centerline->FindLocationClosestToWorldLocation(P,ESplineCoordinateSpace::World);if(FVector::DistSquared2D(P,Closest)<FMath::Square(It->WidthCm*.5f+34.f)){OnPath=true;break;}}if(OnPath)continue;
+  if(!Owner->GetWorld()->LineTraceSingleByChannel(Hit,P+FVector(0,0,300),P-FVector(0,0,300),ECC_Visibility,Q)||Hit.ImpactNormal.Z<.97f)continue;
+  if(!Hit.GetActor()||(!Hit.GetActor()->ActorHasTag(TEXT("RideGrass"))&&!Hit.GetActor()->ActorHasTag(TEXT("RidePath"))&&!Hit.GetActor()->ActorHasTag(TEXT("RideDirt"))))continue;
+  bool Wet=false;for(TActorIterator<APiedmontWaterHazard> It(Owner->GetWorld());It;++It)if(It->ContainsBike(Hit.ImpactPoint+FVector(0,0,98))){Wet=true;break;}if(Wet)continue;
+  float Low=Hit.ImpactPoint.Z,High=Low;bool Supported=true;
+  for(FVector Offset:{FVector(28,0,0),FVector(-28,0,0),FVector(0,28,0),FVector(0,-28,0)}){
+   FHitResult Foot;if(!Owner->GetWorld()->LineTraceSingleByChannel(Foot,Hit.ImpactPoint+Offset+FVector(0,0,30),Hit.ImpactPoint+Offset-FVector(0,0,30),ECC_Visibility,Q)){Supported=false;break;}
+   Low=FMath::Min(Low,float(Foot.ImpactPoint.Z));High=FMath::Max(High,float(Foot.ImpactPoint.Z));
+  }
+  if(!Supported||High-Low>4.f)continue;
+  Base=FVector(P.X,P.Y,Low-1);
+  if(Owner->GetWorld()->OverlapBlockingTestByChannel(Base+FVector(0,0,46),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,43),Q))continue;
+  return true;
+ }
+ return false;
+}
+AActor* SpawnAmmoBin(AActor* Owner,FVector Base,UStaticMesh* Asset){
+ auto* Bin=Owner->GetWorld()->SpawnActor<AActor>(Base+FVector(0,0,44),FRotator::ZeroRotator);if(!Bin)return nullptr;
+ Bin->Tags.Add(TEXT("BattleAmmoBin"));Bin->SetOwner(Owner);
+ auto* Collision=NewObject<UCapsuleComponent>(Bin,TEXT("BinCollision"));Bin->AddInstanceComponent(Collision);Bin->SetRootComponent(Collision);Collision->InitCapsuleSize(31,44);Collision->SetCollisionProfileName(TEXT("BlockAll"));Collision->SetCanEverAffectNavigation(false);Collision->RegisterComponent();
+ Bin->SetActorLocation(Base+FVector(0,0,44));
+ auto* Mesh=NewObject<UStaticMeshComponent>(Bin,TEXT("ParkTrashBin"));Bin->AddInstanceComponent(Mesh);Mesh->SetupAttachment(Collision);Mesh->SetStaticMesh(Asset);Mesh->SetRelativeLocation(FVector(0,0,-44));Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);Mesh->SetCanEverAffectNavigation(false);Mesh->RegisterComponent();
+ return Bin;
+}
+}
 bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot){
  // Ammo may sit near other supplies, but keep a clear eight-metre separation.
  const float Spacing=WeaponSlot==0?800.f:1600.f;
@@ -62,14 +101,25 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int3
  FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(ColaPlacement),false,Pawn);
  if(!GetWorld()->LineTraceSingleByChannel(Ground,Surface+FVector(0,0,150),Surface-FVector(0,0,150),ECC_Visibility,Q)||!Ground.GetActor())return false;
  const auto* Floor=Ground.GetActor();if(!Floor->ActorHasTag(TEXT("RidePath"))&&!Floor->ActorHasTag(TEXT("RideDirt"))&&!Floor->ActorHasTag(TEXT("RideBridge")))return false;
- const FVector Spot=Ground.ImpactPoint+FVector(0,0,65);
+ FVector Spot=Ground.ImpactPoint+FVector(0,0,65);FVector BinBase;UStaticMesh* BinAsset=nullptr;
  if(!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Ground.ImpactPoint+FVector(0,0,98)))return false;
+ if(WeaponSlot==0){
+  BinAsset=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Environment/ParkBin/ParkBin/StaticMeshes/ParkBin.ParkBin"));
+  if(!BinAsset||!FindAmmoBinSite(this,Ground.ImpactPoint,BinBase))return false;
+  const FVector Toward=(BinBase-Ground.ImpactPoint).GetSafeNormal2D();const FVector Supply=Ground.ImpactPoint+Toward*FMath::Max(0.f,float(FVector::Dist2D(BinBase,Ground.ImpactPoint))-110.f);
+  FHitResult Near;if(!GetWorld()->LineTraceSingleByChannel(Near,Supply+FVector(0,0,150),Supply-FVector(0,0,150),ECC_Visibility,Q)||!Near.GetActor()||!Near.GetActor()->ActorHasTag(TEXT("RidePath")))return false;
+  Ground=Near;Spot=Ground.ImpactPoint+FVector(0,0,65);
+  if(GetWorld()->OverlapBlockingTestByChannel(Ground.ImpactPoint+FVector(0,0,98),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,96),Q))return false;
+  for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Ground.ImpactPoint+FVector(0,0,98)))return false;
+ }
  if(GetWorld()->OverlapBlockingTestByChannel(Spot,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(28),Q))return false;
  auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Ground.ImpactPoint,Pawn);
  if(!Route||!Route->IsValid()||Route->IsPartial())return false;
  if(WeaponSlot==-3){if(GetWorld()->SpawnActor<ABattleHornPickup>(Spot,FRotator::ZeroRotator)){Locations.Add(Spot);HornPickups++;return true;}return false;}
  if(WeaponSlot>=0){
-  if(auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==0)AmmoPickups++;else WeaponCrates++;return true;}return false;
+  if(auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){AActor* Bin=WeaponSlot==0?SpawnAmmoBin(this,BinBase,BinAsset):nullptr;
+   if(WeaponSlot==0&&!Bin){Crate->Destroy();return false;}
+   Crate->WeaponSlot=WeaponSlot;Crate->FinishSpawning(FTransform(Spot));if(Bin)Crate->Tags.Add(TEXT("AmmoByBin"));Locations.Add(Spot);if(WeaponSlot==0)AmmoPickups++;else WeaponCrates++;return true;}return false;
  }
  if(auto* Pickup=GetWorld()->SpawnActorDeferred<ABattleColaPickup>(ABattleColaPickup::StaticClass(),FTransform(Spot),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){
   Pickup->HealAmount=Heal;Pickup->bTrailPickup=Trail;Pickup->bTimeBonus=WeaponSlot==-2;Pickup->FinishSpawning(FTransform(Spot));Locations.Add(Spot);if(WeaponSlot==-2)TimePickups++;else{Spawned++;if(Trail)TrailPickups++;else ParkPickups++;}return true;

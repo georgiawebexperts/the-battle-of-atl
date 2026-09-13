@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "reason": "Twelve actual map ammo pickups each have a reachable persistent bin and grant exactly seventeen rounds",
+  "stage": 2,
+  "exit_code": 0,
+  "difficulty": "Hard",
+  "visual_review": true,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-d0902d3ef0fa4e70a034c5dcfaf60669.log",
+  "bin_layout": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-bin-6ca8d5e5c7944453ab472236ef864694/ammo-bin.png"
+  ],
+  "visual_notes": "One rendered pair inspected: slatted green bin supported on grass beside path, cyan ammo label readable and facing review camera. Broader scenery remains rough."
+}

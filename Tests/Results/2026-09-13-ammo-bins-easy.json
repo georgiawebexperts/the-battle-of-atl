@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "reason": "Bin ammo approach obstructed",
+  "stage": 2,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-cfe8f2cdc7af477fb24abc8819940fad.log",
+  "bin_layout": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-bin-bc0e70a5b222441aa23eecfe7d21631a/ammo-bin.png"
+  ]
+}

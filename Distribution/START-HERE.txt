@@ -80,7 +80,8 @@ E near your bike         Get back on (after recovery; not while swimming)
 Escape                   Pause/menu
 
 You start with 17 pistol rounds. Pistol ammo pickups give 17 rounds to
-reserve; reload to use them. The timer drains faster while on foot.
+reserve; reload to use them. Look beside the green slatted trash bins along
+the park and trail paths. The timer drains faster while on foot.
 Close the game window or use Command-Q to quit.
 
 KNOWN ISSUES — PLEASE EXPECT ROUGH EDGES
@@ -88,7 +89,7 @@ This is not a finished release. Models, environment, animation, hand/weapon
 alignment and balance still need work. Police pursuit can be inconsistent;
 police raise a visible taser and give an AI-generated “Stop! APD!” warning.
 Animation polish remains unfinished.
-Ammo placement near trash cans is not finished. Nearby ammo markers are new.
+Ammo now appears beside persistent park trash bins; cyan markers identify it.
 Mouse sensitivity was recently reduced and still needs feedback.
 Real-world hill/ramp riding, camera transitions and performance need testing.
 The app is locally signed only; Apple has not notarized or reviewed it.
@@ -104,9 +105,10 @@ UNINSTALL
 Quit the game, then move The Battle of ATL.app from Applications to Trash.
 This does not necessarily remove settings or saved-game data.
 
-Build {{BUILD}} update: on-foot firearms and both arms follow upward/downward aim.
-The 14th Street gate uprights now meet the pavement. Fine hand contact,
-long-gun animation, scenery and general gameplay polish remain in progress.
+Build {{BUILD}} update: twelve pistol ammo supplies sit beside green park bins.
+Bins stay after collection. Includes moving bike pedals, improved jump/landing
+poses, on-foot aiming and wall reverse recovery from recent builds. Fine hand
+contact, long-gun animation, scenery and gameplay polish remain in progress.
 
 Bike update: visible moving pedals/cranks, shoe alignment, a gentler jump pitch,
 and a short landing bend. Pedalling pauses during flight.

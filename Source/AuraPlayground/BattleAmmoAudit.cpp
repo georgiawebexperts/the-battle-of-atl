@@ -6,6 +6,11 @@
 #include "PiedmontTrafficDirector.h"
 #include "BattleZombie.h"
 #include "EngineUtils.h"
+#include "Camera/CameraActor.h"
+#include "Engine/GameViewportClient.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickAmmoAudit(float Dt){
 #if !UE_BUILD_SHIPPING
@@ -14,6 +19,42 @@ void ABattleMacController::TickAmmoAudit(float Dt){
  auto Finish=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleAmmoAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d}"),Pass?TEXT("true"):TEXT("false"),Reason,AmmoStage);AmmoStage=99;ConsoleCommand(TEXT("quit"));};
 #define CHECK_AMMO(C,R) if(!(C)){Finish(false,TEXT(R));return;}
  auto Next=[&](){AmmoStage++;AmmoClock=0;};
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmmoBinAudit"))){
+  static TArray<TWeakObjectPtr<ABattleWeaponCrate>> Supplies;static TArray<TWeakObjectPtr<AActor>> Bins;
+  if(AmmoStage==0){
+   CHECK_AMMO(Mode->Pickups&&Mode->Pickups->AmmoPickups==12,"Incomplete bin ammo layout");
+   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
+   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
+   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
+   Supplies.Reset();Bins.Reset();
+   for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattleAmmoBin")))Bins.Add(*It);
+   for(TActorIterator<ABattleWeaponCrate> It(GetWorld());It;++It)if(It->WeaponSlot==0){CHECK_AMMO(It->ActorHasTag(TEXT("AmmoByBin")),"Ammo missing bin association");Supplies.Add(*It);}
+   CHECK_AMMO(Supplies.Num()==12&&Bins.Num()==12,"Expected twelve supplies and persistent bins");
+   const FVector Focus=(Supplies[0]->GetActorLocation()+Bins[0]->GetActorLocation())*.5f;
+   const FVector Eye=Focus+FVector(280,-360,160);
+   Bike->SetActorLocation(Bike->GetActorLocation()+FVector(0,0,1000));Bike->GetCharacterMovement()->DisableMovement();
+   if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(Camera);
+   Next();
+  }else if(AmmoStage==1&&AmmoClock>2){
+   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("ammo-bin.png"),false,false);
+   Next();
+  }else if(AmmoStage==2&&AmmoClock>1){
+   TSet<AActor*> Matched;
+   for(auto Weak:Supplies){
+    auto* Crate=Weak.Get();CHECK_AMMO(Crate,"Map ammo disappeared before collection");AActor* Closest=nullptr;float Distance=MAX_flt;
+    for(auto B:Bins)if(B.IsValid()){const float D=FVector::Dist2D(B->GetActorLocation(),Crate->GetActorLocation());if(D<Distance){Distance=D;Closest=B.Get();}}
+    CHECK_AMMO(Closest&&Distance>=100&&Distance<=120&&!Matched.Contains(Closest),"Ammo not paired with a unique nearby bin");Matched.Add(Closest);
+    const FVector Approach=Crate->GetActorLocation()+FVector(0,0,33);FCollisionQueryParams Q(SCENE_QUERY_STAT(AmmoBinApproach),false,Bike);
+    CHECK_AMMO(!GetWorld()->OverlapBlockingTestByChannel(Approach,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,96),Q),"Bin ammo approach obstructed");
+    Bike->SetActorLocation(Approach,false,nullptr,ETeleportType::TeleportPhysics);Bike->Inventory[0].Reserve=0;
+    CHECK_AMMO(Crate->TryCollect(Bike)&&Bike->Inventory[0].Reserve==17,"Actual map ammo could not be collected for seventeen rounds");
+    CHECK_AMMO(!Crate->TryCollect(Bike)&&IsValid(Closest),"Repeat collection or bin persistence failed");
+   }
+   UE_LOG(LogTemp,Display,TEXT("BattleAmmoBins: twelve unique pairs, twelve clear approaches, twelve real collections +17, twelve bins retained"));
+   Finish(true,TEXT("Twelve actual map ammo pickups each have a reachable persistent bin and grant exactly seventeen rounds"));
+  }
+  return;
+ }
  auto Collect=[&](APawn* Pawn){const FTransform T(Pawn->GetActorLocation()+FVector(70,0,-20));auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),T,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);if(!Crate)return false;Crate->WeaponSlot=0;Crate->FinishSpawning(T);Crate->SetActorTickEnabled(false);return Crate->TryCollect(Pawn)&&!Crate->TryCollect(Pawn);};
  if(AmmoStage==0){
   CHECK_AMMO(Bike->PistolAmmo==17&&Bike->Inventory[0].Reserve==0,"Wrong starting ammunition");
