@@ -1,11 +1,13 @@
 """Native hands-free dismount, deliberate draw and on-foot mobility acceptance."""
 import argparse,json,re,subprocess,plistlib,uuid,shutil,struct
 from pathlib import Path
-root=Path(__file__).resolve().parents[1];p=argparse.ArgumentParser();p.add_argument('--review',action='store_true');p.add_argument('--editor',action='store_true');p.add_argument('--detailed-rider',action='store_true');p.add_argument('--report');p.add_argument('--body',action='store_true');p.add_argument('--landing-run',action='store_true');p.add_argument('--interruptions',action='store_true');a=p.parse_args();mode='review' if a.review else 'audit'
+root=Path(__file__).resolve().parents[1];p=argparse.ArgumentParser();p.add_argument('--review',action='store_true');p.add_argument('--editor',action='store_true');p.add_argument('--detailed-rider',action='store_true');p.add_argument('--legacy-rider',action='store_true');p.add_argument('--report');p.add_argument('--body',action='store_true');p.add_argument('--landing-run',action='store_true');p.add_argument('--interruptions',action='store_true');a=p.parse_args();mode='review' if a.review else 'audit'
 bundle=root/'Saved/StagedBuilds/Mac/AuraPlayground.app';app=bundle/'Contents/MacOS/AuraPlayground';bid=plistlib.loads((bundle/'Contents/Info.plist').read_bytes())['CFBundleIdentifier']
 capture=Path.home()/'Library/Containers'/bid/'Data/Documents/BattleFootReview'/uuid.uuid4().hex;capture.mkdir(parents=True)
 out=root/'work'/f'build042-foot-{mode}';out.mkdir(exist_ok=True)
 flags=['-RenderOffscreen','-windowed','-ResX=1280','-ResY=720','-ForceRes','-BattleFootReview',f'-BattleHUDReviewDir={capture}'] if a.review else ['-nullrhi']
+if a.legacy_rider:flags += ['-BattleLegacyRider']
+assert not (a.legacy_rider and a.detailed_rider)
 if a.detailed_rider:
  assert a.editor
  flags+=['-BattleDetailedRider']
@@ -27,8 +29,8 @@ if a.review and d['passed']:
  for name in ['idle','drawn','aimed','reload','walk-a','walk-b','run','jump','land-contact','land-settle','crouch']:
   dest=out/f'{name}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
  d['visual_review']='pending'
-d['editor']=a.editor;d['detailed_rider_preview']=a.detailed_rider;d['full_body_review']=a.body
-if a.detailed_rider:
+d['editor']=a.editor;d['detailed_rider_preview']='DetailedFootPreview: body=m_tal_nrw_body' in (out/'run.log').read_text();d['full_body_review']=a.body
+if d['detailed_rider_preview']:
  d['detailed_arms_loaded']='DetailedArmsPreview: hands=SK_DetailedHands sleeves=SK_DetailedSleeves' in (out/'run.log').read_text()
  d['detailed_body_loaded']='DetailedFootPreview: body=m_tal_nrw_body outfit_parts=4 clips=6' in (out/'run.log').read_text()
  d['detailed_pistol_loaded']='DetailedM1911: loaded' in (out/'run.log').read_text()

@@ -1,6 +1,7 @@
 #include "BattleSwimAudit.h"
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "BattleDetailedRider.h"
 #include "BattleRider.h"
 #include "BattleZombie.h"
 #include "Camera/CameraComponent.h"
@@ -78,7 +79,7 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
  SWIM_CHECK(S.Drift<1,"Parked bike moved during swimming");
  if(S.Stage==2){
   SWIM_CHECK(P->GetCharacterMovement()->MovementMode==MOVE_Flying,"Swimmer lost surface movement mode after possession");
-  const FName Hand=FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))?FName(TEXT("hand_l")):FName(TEXT("Hand_L"));
+  const FName Hand=BattleUseDetailedRider()?FName(TEXT("hand_l")):FName(TEXT("Hand_L"));
   const float Z=P->Body->GetBoneLocationByName(Hand,EBoneSpaces::ComponentSpace).Z;S.MinHand=FMath::Min(S.MinHand,Z);S.MaxHand=FMath::Max(S.MaxHand,Z);
   if(!FParse::Param(FCommandLine::Get(),TEXT("BattleFootBodyReview"))){
    SWIM_CHECK(P->FirstPersonArms->IsVisible(),"Swimming first-person hands hidden");

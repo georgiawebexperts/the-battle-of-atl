@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "phase": 15,
+  "reason": "Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": true,
+  "detailed_rider": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fafdc0a8dece4531918aa6d5634dbf08/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fafdc0a8dece4531918aa6d5634dbf08/rifle-aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fafdc0a8dece4531918aa6d5634dbf08/rifle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fafdc0a8dece4531918aa6d5634dbf08/smg.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fafdc0a8dece4531918aa6d5634dbf08/rifle-reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fafdc0a8dece4531918aa6d5634dbf08/shotgun.png"
+  ],
+  "detailed_assets_loaded": true,
+  "visual_review": "Inspected shotgun and rifle reload with smaller armed help strip. Weapon models/grips/reload motion remain rough. Frozen T-pose target is deliberately tick-disabled by combat fixture; these captures do not evaluate NPC animation."
+}

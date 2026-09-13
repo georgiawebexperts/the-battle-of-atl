@@ -2,6 +2,8 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "Camera/CameraComponent.h"
+#include "UnrealClient.h"
+#include "Misc/CommandLine.h"
 #include "BattlePickup.h"
 #include "BattleZombie.h"
 #include "PiedmontTrafficDirector.h"
@@ -16,6 +18,13 @@ void ABattleMacController::TickInventoryAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode||!Mode->Pickups)return;
+ static TSet<FString> Captured;
+ auto Capture=[&](const FString& Name){FString Dir;if(!Captured.Contains(Name)&&FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),Dir)){Captured.Add(Name);FScreenshotRequest::RequestScreenshot(Dir/(Name+TEXT(".png")),false,false);}};
+ if(InventoryPhase==3&&InventoryClock>.1f)Capture(TEXT("shotgun"));
+ if(InventoryPhase==7&&InventoryClock>.15f)Capture(TEXT("smg"));
+ if(InventoryPhase==12&&InventoryClock>.15f)Capture(TEXT("rifle"));
+ if(InventoryPhase==13&&InventoryClock>.7f)Capture(TEXT("rifle-aimed"));
+ if(InventoryPhase==14&&InventoryClock>.6f)Capture(TEXT("rifle-reload"));
  InventoryClock+=Dt;auto* Z=Cast<ABattleZombie>(InventoryTarget.Get());
  auto Finish=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleInventoryAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"crates\":%d,\"desired\":%d,\"kills\":%d,\"deaths\":%d}"),Pass?TEXT("true"):TEXT("false"),InventoryPhase,Reason,Mode->Pickups->WeaponCrates,Mode->Difficulty.WeaponCrates,Bike->EnemyKills,Bike->Deaths);UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);};
 #define CHECK_INVENTORY(C,R) if(!(C)){Finish(false,TEXT(R));return;}
@@ -34,7 +43,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   CHECK_INVENTORY(Bike->Inventory[1].Owned&&Bike->Inventory[1].Magazine==6&&Bike->Inventory[1].Reserve==12,"Bike crate did not grant shotgun supply");Bike->SetActorTransform(Bike->CheckpointTransform,false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->bForceNextFloorCheck=true;CHECK_INVENTORY(Bike->Dismount(),"Dismount failed");Person=Cast<ABattleRider>(GetPawn());CHECK_INVENTORY(Person&&!Person->SelectWeapon(2)&&!Person->SelectWeapon(3),"Unowned weapon selectable");Key(EKeys::Two);InventoryPhase=2;InventoryClock=0;
  }
  else if(InventoryPhase==2&&InventoryClock>.3f){CHECK_INVENTORY(Person->CurrentWeapon==1&&Person->Ammo==6,"2 key selection failed");Z=Target();CHECK_INVENTORY(Z,"Shotgun target failed");InventoryPhase=3;InventoryClock=0;}
- else if(InventoryPhase==3){Aim();if(InventoryClock>.2f){CHECK_INVENTORY(Person->Fire(),"Shotgun failed to fire");CHECK_INVENTORY(Z->bDead&&Bike->EnemyKills==1&&Person->Ammo==5,"Close shotgun did not kill with one shell");CHECK_INVENTORY(Bike->ShotNotice==TEXT("ZOMBIE DOWN")&&Bike->ShotNoticeRemaining>0,"Shotgun kill confirmation missing");CHECK_INVENTORY(!Person->Fire(),"Shotgun cooldown failed");Key(EKeys::R);InventoryPhase=4;InventoryClock=0;}}
+ else if(InventoryPhase==3){Aim();if(InventoryClock>.4f){CHECK_INVENTORY(Person->Fire(),"Shotgun failed to fire");CHECK_INVENTORY(Z->bDead&&Bike->EnemyKills==1&&Person->Ammo==5,"Close shotgun did not kill with one shell");CHECK_INVENTORY(Bike->ShotNotice==TEXT("ZOMBIE DOWN")&&Bike->ShotNoticeRemaining>0,"Shotgun kill confirmation missing");CHECK_INVENTORY(!Person->Fire(),"Shotgun cooldown failed");Key(EKeys::R);InventoryPhase=4;InventoryClock=0;}}
  else if(InventoryPhase==4&&InventoryClock>.1f){CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->Fire()&&!Person->Melee(),"Reload did not block fire/melee");InventoryPhase=5;}
  else if(InventoryPhase==5&&InventoryClock>2.4f){
   CHECK_INVENTORY(Bike->ShotNoticeRemaining==0,"Shot confirmation did not expire");

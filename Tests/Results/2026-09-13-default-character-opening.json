@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/default-character-opening-captures/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/default-character-opening-captures/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/default-character-opening-captures/opening2.png"
+  ],
+  "visual_review": "Opening1 inspected: upgraded rider appears during normal unflagged startup, story text readable. Full scene/animation acceptance remains incomplete.",
+  "editor": true,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

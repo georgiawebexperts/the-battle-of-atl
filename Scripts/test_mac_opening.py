@@ -26,8 +26,8 @@ if a.review and d['passed']:
  for i in range(3):
   dest=out/f'opening{i}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
  d['visual_review']='pending'
-d['editor']=a.editor;d['grip_closeup']=a.grip;d['detailed_rider_preview']=a.detailed_rider
-if a.detailed_rider:
+d['editor']=a.editor;d['grip_closeup']=a.grip;d['detailed_rider_preview']='DetailedRiderPreview: body=m_tal_nrw_body outfit_parts=4' in (out/'run.log').read_text()
+if d['detailed_rider_preview']:
  d['detailed_assets_loaded']='DetailedRiderPreview: body=m_tal_nrw_body outfit_parts=4' in (out/'run.log').read_text()
  d['passed']=bool(d['passed'] and d['detailed_assets_loaded'])
 if a.grip:

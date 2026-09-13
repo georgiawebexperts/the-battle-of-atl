@@ -35,8 +35,12 @@
     "Native full lake circuit/alternate-bank exit/walkback/E remount passes679m with zero parked-bike drift. Swimming stun restores surface mode; detailed+original taser tests and on-foot regression pass. Recovery HUD inspected. One-route scope, no full rendered performance acceptance. Uninstalled.",
     "Deep/no-history water entry searches for supported clear bank and immediately starts swimmer; obsolete timed path teleport removed. Native deep drop, ordinary shoreline, saved-map geography and keyboard car-crash regression pass. Support traces recorded; all-bank placement, retries under complete obstruction and exact visual contact remain pending. Uninstalled.",
     "First-person surface swimming camera28cm, visible stroke/sculling hands and compact HUD without crosshair. Fixed possession resetting swimmer to falling: initialize surface mode after possession. Rendered stop/return/remount and taser pass; detailed on-foot regression passes. Original rig functional pass but cuff geometry visually rejected; repair before packaging. Uninstalled.",
-    "Legacy swimming edge defect traced to open shoulder cuts in front of camera, not missing wrist polygons. Root moves behind camera with shorter/narrower reach; final sampled treading/late-stroke frames and swim return/remount pass, original foot controls pass. Original blocky style/continuous animation remain unfinished. Uninstalled."
+    "Legacy swimming edge defect traced to open shoulder cuts in front of camera, not missing wrist polygons. Root moves behind camera with shorter/narrower reach; final sampled treading/late-stroke frames and swim return/remount pass, original foot controls pass. Original blocky style/continuous animation remain unfinished. Uninstalled.",
+    "Upgraded Ellison body/clothes/hair, FPS hands and M1911 enabled by default, with explicit BattleLegacyRider diagnostic fallback. Hands require successful detailed body load. M1911 cook directory added. Unflagged editor inventory/rifle zoom/reload/death persistence, foot controls, opening and swimming pass; legacy foot comparison passes. Armed controls strip reduced. Packaged acceptance pending."
   ],
   "remaining_work": "Full requested art, smoother rider/combat animation, broad gameplay balance, complete world detail and performance acceptance. Not a finished game.",
-  "unreleased_author": "2026-09-13 [codex-maclaptop]"
+  "unreleased_author": "2026-09-13 [codex-maclaptop]",
+  "candidate_build": 58,
+  "candidate_version": "0.58.0-dev",
+  "candidate_status": "Source verified; packaging pending; installed057 unchanged"
 }

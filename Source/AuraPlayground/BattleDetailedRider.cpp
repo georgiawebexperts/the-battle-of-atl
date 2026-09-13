@@ -11,10 +11,10 @@
 #include "Engine/StaticMesh.h"
 #include "Misc/CommandLine.h"
 
+bool BattleUseDetailedRider(){return !FParse::Param(FCommandLine::Get(),TEXT("BattleLegacyRider"));}
+
 void ABattleBike::InitializeDetailedRiderPreview(){
-#if !UE_BUILD_SHIPPING
- // Appearance/pose prototype only. Existing crash and on-foot rigs still need migration.
- if(!FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider")))return;
+ if(!BattleUseDetailedRider())return;
  const FString Base=TEXT("/Game/CitySampleCrowd/Character/Male/");
  const FString MeshRoot=Base+TEXT("NormalWeight/Meshes/m_tal_nrw_");
  auto* Body=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
@@ -32,7 +32,6 @@ void ABattleBike::InitializeDetailedRiderPreview(){
  auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedRiderHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetupAttachment(Rider);Hair->RegisterComponent();Hair->AttachToComponent(Rider,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
  bDetailedRiderPreview=true;
  UE_LOG(LogTemp,Display,TEXT("DetailedRiderPreview: body=%s outfit_parts=%d"),*Body->GetName(),Parts.Num());
-#endif
 }
 
 void ABattleBike::AttachDetailedRiderParts(USkinnedMeshComponent* Leader,bool Visible){
@@ -56,8 +55,7 @@ FName BattleDetailedBone(FName Name,bool Detailed){
 }
 
 void ABattleRider::InitializeDetailedArmsPreview(){
-#if !UE_BUILD_SHIPPING
- if(!FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider")))return;
+ if(!bDetailedPlayerRig)return;
  auto* Hands=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/BattleForTheA/Rider/Detailed/SK_DetailedHands"));
  auto* Sleeves=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/BattleForTheA/Rider/Detailed/SK_DetailedSleeves"));
  if(!Hands||!Sleeves)return;
@@ -68,12 +66,10 @@ void ABattleRider::InitializeDetailedArmsPreview(){
  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Sleeves);Part->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck")));Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);
  Part->SetOnlyOwnerSee(true);Part->SetCastShadow(false);Part->SetBoundsScale(10);Part->SetLeaderPoseComponent(FirstPersonArms,true,false);Part->RegisterComponent();
  UE_LOG(LogTemp,Display,TEXT("DetailedArmsPreview: hands=%s sleeves=%s"),*Hands->GetName(),*Sleeves->GetName());
-#endif
 }
 
 void ABattleRider::InitializeDetailedBodyPreview(){
-#if !UE_BUILD_SHIPPING
- if(!FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider")))return;
+ if(!BattleUseDetailedRider())return;
  const FString Base=TEXT("/Game/CitySampleCrowd/Character/Male/");
  const FString MeshRoot=Base+TEXT("NormalWeight/Meshes/m_tal_nrw_");
  auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
@@ -103,7 +99,6 @@ void ABattleRider::InitializeDetailedBodyPreview(){
  if(bDetailedBodyReview){CameraArm->SetComponentTickEnabled(true);Camera->AttachToComponent(CameraArm,FAttachmentTransformRules::SnapToTargetNotIncludingScale,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;}
  UE_LOG(LogTemp,Display,TEXT("DetailedLanding: loaded=2"));
  UE_LOG(LogTemp,Display,TEXT("DetailedFootPreview: body=%s outfit_parts=4 clips=6"),*Mesh->GetName());
-#endif
 }
 void ABattleRider::AnimateBody(float Dt){
  if(bDetailedPlayerRig){
