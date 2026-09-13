@@ -21,7 +21,7 @@ with (out/'run.log').open('w') as log:
 m=re.findall(r'BattleFootAudit: (\{[^\n]+\})',(out/'run.log').read_text());d=json.loads(m[-1]) if m else {'passed':False,'missing_report':True};d['exit_code']=r.returncode;d['passed']=bool(d.get('passed') and r.returncode==0)
 if a.review and d['passed']:
  d['images']=[]
- for name in ['idle','drawn','walk-a','walk-b','run','jump','land-contact','land-settle','crouch']:
+ for name in ['idle','drawn','aimed','reload','walk-a','walk-b','run','jump','land-contact','land-settle','crouch']:
   dest=out/f'{name}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
  d['visual_review']='pending'
 d['editor']=a.editor;d['detailed_rider_preview']=a.detailed_rider;d['full_body_review']=a.body

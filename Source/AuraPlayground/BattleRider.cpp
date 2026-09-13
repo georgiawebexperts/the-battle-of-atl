@@ -57,7 +57,7 @@ void ABattleRider::Tick(float Dt){
  // Exponential smoothing gives the view rig the same response at different frame rates.
  AimBlend=FMath::Lerp(AimBlend,bAiming?1.f:0.f,1.f-FMath::Exp(-12.f*Dt));
  const FVector ViewPosition=FMath::Lerp(GunRestPosition,GunAimPosition,AimBlend);
- Weapon->SetRelativeLocation(ViewPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob*(1.f-.8f*AimBlend)-8*ReloadPose-65*FMath::Clamp(DrawRemaining/.3f,0.f,1.f)));
+ Weapon->SetRelativeLocation(ViewPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob*(1.f-.8f*AimBlend)+(bDetailedPlayerRig?8.f:-8.f)*ReloadPose-65*FMath::Clamp(DrawRemaining/.3f,0.f,1.f)));
  Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
  Super::Tick(Dt);
  const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
