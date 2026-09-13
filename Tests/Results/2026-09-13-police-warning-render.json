@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "stage": 3,
+  "reason": "Real police shot penalty failed",
+  "people": 3,
+  "police_spawned": 1,
+  "taser_hits": 0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-4274e734703a4d859e2bd60eb995b649.log",
+  "images": []
+}

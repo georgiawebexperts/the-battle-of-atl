@@ -134,7 +134,17 @@ void ABattleLabHUD::DrawHUD(){
    if(Owner->RespawnRemaining<=0&&!Owner->bCrashActive)Notice=Active->bWarning?FString::Printf(TEXT("GUNMAN %s  |  %.1fs  |  MOVE TO COVER"),BearingLabel,FMath::Max(.1f,Active->WindupRemaining)):FString::Printf(TEXT("GUNFIRE %s  |  FIND COVER"),BearingLabel);
   }
  }
- if(Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bWarning){Notice=TEXT("POLICE TASER — MOVE TO COVER!");break;}
+ if(Notice.IsEmpty()&&!Owner->bCrashActive)for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead&&It->bWarning){
+  Notice=FString::Printf(TEXT("APD TASER  |  %.1fs  |  TAKE COVER"),FMath::Max(0.f,It->WarningRemaining));
+  FVector2D Label;
+  if(GetOwningPlayerController()->ProjectWorldLocationToScreen(It->GetActorLocation()+FVector(0,0,115),Label)&&Label.X>130*S&&Label.X<W-130*S&&Label.Y>180*S&&Label.Y<H*.60f){
+   Panel(Label.X-120*S,Label.Y-38*S,240*S,42*S);
+   Text(TEXT("STOP! APD"),Label.X-108*S,Label.Y-34*S,21,Peach);
+   DrawRect(FLinearColor(.15,.19,.2),Label.X-108*S,Label.Y-5*S,216*S,4*S);
+   DrawRect(Peach,Label.X-108*S,Label.Y-5*S,216*S*FMath::Clamp(It->WarningRemaining/2.f,0.f,1.f),4*S);
+  }
+  break;
+ }
  for(TActorIterator<ABattleDrone> It(GetWorld());It;++It)if(!It->bSpent){
   const FVector Location=It->GetActorLocation();const float Distance=FVector::Dist(GetOwningPawn()->GetActorLocation(),Location)/100.f;
   if(Distance>65.f)continue;

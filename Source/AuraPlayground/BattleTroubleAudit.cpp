@@ -13,6 +13,9 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "AIController.h"
+#include "Camera/CameraActor.h"
+#include "Misc/CommandLine.h"
+#include "UnrealClient.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickTroubleAudit(float Dt){
@@ -50,15 +53,20 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   const float Travel=FVector::Dist2D(Officer->GetActorLocation(),TroublePoliceStart);UE_LOG(LogTemp,Display,TEXT("PolicePursuitDiagnostic: travel=%.1f location=%s start=%s target=%s speed=%.1f movement=%d controller=%s"),Travel,*Officer->GetActorLocation().ToString(),*TroublePoliceStart.ToString(),*GetPawn()->GetActorLocation().ToString(),Officer->GetVelocity().Size(),int32(Officer->GetCharacterMovement()->MovementMode),*GetNameSafe(Officer->GetController()));CHECK_TROUBLE(Travel>120,"Officer failed actual navigation pursuit");UE_LOG(LogTemp,Display,TEXT("PolicePursuit: travelled=%.1f"),Travel);
   Officer->SetActorTickEnabled(false);Officer->GetCharacterMovement()->DisableMovement();if(auto* AI=Cast<AAIController>(Officer->GetController()))AI->StopMovement();
   CHECK_TROUBLE(Bike->Dismount(),"Dismount failed");Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Person&&Person->ToggleDrawWeapon(),"Could not draw pistol");Officer->SetActorLocation(Person->GetActorLocation()+FVector(300,0,0));Next();
- }else if(TroubleStage==3){Aim();if(TroubleClock>.4f){const float Time=Mode->TimeRemaining,Heat=Mode->Trouble;CHECK_TROUBLE(Person->Fire()&&FMath::IsNearlyEqual(Mode->TimeRemaining-Time,-60.f,.01f)&&Officer->Health<100,"Real police shot penalty failed");CHECK_TROUBLE(Mode->Trouble>Heat,"Gunshot did not attract trouble");
+ }else if(TroubleStage==3){Aim();if(TroubleClock>.4f){const float Time=Mode->TimeRemaining,Heat=Mode->Trouble;const bool Fired=Person->Fire();UE_LOG(LogTemp,Display,TEXT("PoliceShotDiagnostic: fired=%d delta=%.3f officer_health=%.1f draw=%.2f shooter=%s officer=%s view=%s"),Fired,Mode->TimeRemaining-Time,Officer->Health,Person->DrawRemaining,*Person->GetActorLocation().ToString(),*Officer->GetActorLocation().ToString(),*GetControlRotation().ToString());CHECK_TROUBLE(Fired&&FMath::IsNearlyEqual(Mode->TimeRemaining-Time,-60.f,.01f)&&Officer->Health<100,"Real police shot penalty failed");CHECK_TROUBLE(Mode->Trouble>Heat,"Gunshot did not attract trouble");
   Mode->Enemies->Tick(0);const int32 Before=Mode->Enemies->DesiredZombies;Mode->Quest->bCollected=true;Mode->Enemies->Tick(0);CHECK_TROUBLE(Mode->Enemies->DesiredZombies==Before+6,"Artifact did not escalate population");Mode->Quest->bCollected=false;
   CHECK_TROUBLE(Person->MountBike(),"Remount failed");Officer->SetActorLocation(Bike->GetActorLocation()+FVector(350,0,0));
   auto* Wall=GetWorld()->SpawnActor<AActor>();auto* Box=NewObject<UStaticMeshComponent>(Wall);Wall->SetRootComponent(Box);Box->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));Box->SetWorldScale3D(FVector(.3,4,4));Box->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);Box->SetCollisionResponseToAllChannels(ECR_Block);Box->RegisterComponent();Wall->SetActorLocation(Bike->GetActorLocation()+FVector(175,0,0));
   CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==0,"Taser passed through wall");Wall->Destroy();Next();
  }}else if(TroubleStage==4&&TroubleClock>.2f){
+  FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir)){
+   const FVector Focus=Officer->GetActorLocation()+FVector(0,0,45),Eye=Officer->GetActorLocation()+FVector(-350,-450,150);
+   if(auto* ReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(ReviewCamera);
+  }
   Officer->Cooldown=0;Officer->SetActorTickEnabled(true);Next();
- }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->TaserWarning->IsVisible()&&Officer->WarningRemaining>1.f&&Bike->TaserHits==0,"Readable taser warning absent or reaction window too short");TroubleTime=Mode->TimeRemaining;Next();}
+ }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Bike->TaserHits==0,"Taser windup absent or reaction window too short");TroubleTime=Mode->TimeRemaining;FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("police-warning.png"),false,false);Next();}
  else if(TroubleStage==6&&Bike->TaserHits>0){
+  FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("police-discharge.png"),false,false);
   Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Bike->bCrashActive&&Bike->bParked&&Bike->StunRemaining>0&&Bike->Deaths==0&&Bike->RiderHealth==100,"Taser did not knock rider off locally");
   CHECK_TROUBLE(!Bike->FirePistol()&&!Bike->Dismount()&&!Bike->ApplyTaser()&&Bike->TaserHits==1,"Stun actions or repeat-hit guard failed");
   CHECK_TROUBLE(Mode->LastTimeDelta==-10&&Mode->TimeNotice==TEXT("TASED")&&Mode->TimeRemaining<TroubleTime-10,"Taser time penalty missing");Officer->SetActorTickEnabled(false);Next();

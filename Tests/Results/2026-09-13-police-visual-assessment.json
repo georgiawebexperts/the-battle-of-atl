@@ -1,0 +1,16 @@
+{
+  "warning_layout_accepted_at_1280x720": true,
+  "whole_police_encounter_accepted": false,
+  "evidence": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-dbc8bb1ef52c44cd9f35935bda603b2a/police-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-dbc8bb1ef52c44cd9f35935bda603b2a/police-discharge.png"
+  ],
+  "observations": [
+    "STOP! APD label and timer fit inside dark panels against bright trees.",
+    "Warning clears on discharge; TASED and recovery timer appear.",
+    "Discharge line visible, but starts at chest while officer hands remain down.",
+    "No visible taser model/draw; APD voice absent.",
+    "Earlier rendered shot test failed once; diagnostic and later runs passed, cause not established."
+  ],
+  "scope": "Two still frames from controlled native encounter; not animation or freeplay acceptance."
+}
