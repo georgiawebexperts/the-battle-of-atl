@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 143.49,
+  "air_seconds": 0.784,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": true,
+  "crest": true,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-8680f84d22ad4c86abde9784c38eb8eb.log",
+  "scope": "Controlled walking-to-falling transition followed by real J input and native movement/landing. Verifies grace timing and reward/guard behavior, not a real hillside route or visual ride quality."
+}

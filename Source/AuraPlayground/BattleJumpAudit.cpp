@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "Misc/CommandLine.h"
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
@@ -9,7 +10,7 @@
 void ABattleMacController::TickJumpAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(GetWorld()->GetTimeSeconds()<5||JumpStage==99)return;
- auto* Bike=Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode)return;JumpClock+=Dt;
+ auto* Bike=Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode)return;JumpClock+=Dt;const bool LowSpeed=FParse::Param(FCommandLine::Get(),TEXT("BattleLowSpeedJumpAudit"));
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("BattleJumpAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\",\"rewards\":%d,\"peak_cm\":%.2f,\"air_seconds\":%.3f}"),Pass?TEXT("true"):TEXT("false"),JumpStage,Why,Bike->Ride->AirRewards,Bike->Ride->AirPeak,Bike->Ride->AirSeconds);JumpStage=99;ConsoleCommand(TEXT("quit"));};
 #define JCHECK(C,R) if(!(C)){Finish(false,TEXT(R));return;}
@@ -17,9 +18,9 @@ void ABattleMacController::TickJumpAudit(float Dt){
  if(JumpStage==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
-  JCHECK(!Bike->Ride->Hop(),"Stationary hop allowed");Bike->Ride->Gear=2;Key(EKeys::W,true);Next();
- }else if(JumpStage==1&&JumpClock>1.5f){
-  JCHECK(Bike->Ride->Speed>500,"Failed to reach takeoff speed");JumpTimeBefore=Mode->TimeRemaining;Key(EKeys::J,true);Key(EKeys::J,false);Next();
+  JCHECK(!Bike->Ride->Hop(),"Stationary hop allowed");Bike->Ride->Gear=LowSpeed?1:2;Key(EKeys::W,true);Next();
+ }else if(JumpStage==1&&JumpClock>(LowSpeed?.45f:1.5f)){
+  JCHECK(LowSpeed?(Bike->Ride->Speed>=150&&Bike->Ride->Speed<500):Bike->Ride->Speed>500,"Failed to reach requested takeoff speed");UE_LOG(LogTemp,Display,TEXT("JumpTakeoff: speed=%.2f low_speed=%d"),Bike->Ride->Speed,LowSpeed);JumpTimeBefore=Mode->TimeRemaining;if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrestJumpAudit"))){Bike->Ride->SetMovementMode(MOVE_Falling);JCHECK(Bike->Ride->JumpGraceRemaining>0,"Missing crest jump grace");}Key(EKeys::J,true);Key(EKeys::J,false);Next();
  }else if(JumpStage==2&&JumpClock>.15f){
   JCHECK(Bike->Ride->IsFalling()&&Bike->Ride->AirPeak>50,"J did not produce real airborne movement");JCHECK(!Bike->Ride->Hop(),"Midair jump allowed");Next();
  }else if(JumpStage==3&&Bike->Ride->IsMovingOnGround()){

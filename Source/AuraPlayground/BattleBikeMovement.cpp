@@ -6,12 +6,13 @@
 #include "Components/PrimitiveComponent.h"
 #include "Kismet/GameplayStatics.h"
 UBattleBikeMovement::UBattleBikeMovement(){
- MaxWalkSpeed=1800;MaxAcceleration=800;MaxStepHeight=60;SetWalkableFloorAngle(75);
+ MaxWalkSpeed=2200;MaxAcceleration=800;MaxStepHeight=60;SetWalkableFloorAngle(75);
  bOrientRotationToMovement=false;bUseControllerDesiredRotation=false;bMaintainHorizontalGroundVelocity=true;
  bAlwaysCheckFloor=true;bEnablePhysicsInteraction=false;GravityScale=2;AirControl=1;BrakingDecelerationWalking=0;GroundFriction=0;
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
+ JumpGraceRemaining=IsMovingOnGround()?.12f:FMath::Max(0.f,JumpGraceRemaining-Dt);
  if(IsFalling()){AirSeconds+=Dt;if(CharacterOwner)AirPeak=FMath::Max(AirPeak,float(CharacterOwner->GetActorLocation().Z-AirOrigin.Z));}
  RampLaunchGrace=FMath::Max(0.f,RampLaunchGrace-Dt);
  if(IsMovingOnGround()&&CharacterOwner){
@@ -132,13 +133,13 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
 
 bool UBattleBikeMovement::Hop(){
  auto* Bike=Cast<ABattleBike>(CharacterOwner);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||!IsMovingOnGround()||Speed<150)return false;
- Velocity.Z=FMath::Max(0.f,Velocity.Z)+(bRealHandling?650.f:750.f);SetMovementMode(MOVE_Falling);return true;
+ if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||(!IsMovingOnGround()&&(bRealHandling||!IsFalling()||JumpGraceRemaining<=0))||Speed<150)return false;
+ JumpGraceRemaining=0;Velocity.Z=FMath::Max(0.f,Velocity.Z)+(bRealHandling?650.f:750.f);SetMovementMode(MOVE_Falling);return true;
 }
 void UBattleBikeMovement::OnMovementModeChanged(EMovementMode Previous,uint8 Custom){
  Super::OnMovementModeChanged(Previous,Custom);
  auto* Bike=Cast<ABattleBike>(CharacterOwner);if(!Bike)return;
- if(IsFalling()&&Previous==MOVE_Walking){AirOrigin=Bike->GetActorLocation();AirSeconds=AirPeak=0;if(RampLaunchGrace>0&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0&&!Bike->bParked)Velocity.Z=FMath::Max(Velocity.Z,RampLaunchSpeed);RampLaunchSpeed=RampLaunchGrace=0;bRewardableAir=Speed>=500&&!Bike->bParked&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;}
+ if(IsFalling()&&Previous==MOVE_Walking){AirOrigin=Bike->GetActorLocation();AirSeconds=AirPeak=0;if(RampLaunchGrace>0&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0&&!Bike->bParked)Velocity.Z=FMath::Max(Velocity.Z,RampLaunchSpeed);RampLaunchSpeed=RampLaunchGrace=0;bRewardableAir=Speed>=150&&!Bike->bParked&&Recovery<=0&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;}
  else if(Previous==MOVE_Falling){
   bool Water=false;for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Bike->GetActorLocation())){Water=true;break;}
   const bool Earned=!Water&&bRewardableAir&&IsMovingOnGround()&&AirSeconds>=.25f&&AirPeak>=65&&Recovery<=0&&!Bike->bParked&&Bike->StunRemaining<=0&&Bike->RiderHealth>0;
