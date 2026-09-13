@@ -2,7 +2,8 @@
 import json,re,subprocess,argparse,hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--buildings',action='store_true');parser.add_argument('--finish-route',action='store_true');parser.add_argument('--rail',action='store_true');parser.add_argument('--world',action='store_true');parser.add_argument("--crowds",action="store_true");parser.add_argument("--main",action="store_true");parser.add_argument("--real-handling",action="store_true");parser.add_argument("--scooter",action="store_true");parser.add_argument("--yield-probe",action="store_true");parser.add_argument("--turnarounds",action="store_true");parser.add_argument("--approach",action="store_true");args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--buildings',action='store_true');parser.add_argument('--finish-route',action='store_true');parser.add_argument('--rail',action='store_true');parser.add_argument('--world',action='store_true');parser.add_argument("--crowds",action="store_true");parser.add_argument("--main",action="store_true");parser.add_argument("--real-handling",action="store_true");parser.add_argument("--scooter",action="store_true");parser.add_argument("--yield-probe",action="store_true");parser.add_argument("--turnarounds",action="store_true");parser.add_argument("--approach",action="store_true");parser.add_argument("--packaged",action="store_true");args=parser.parse_args()
+assert not args.packaged or args.main
 assert sum([args.level_floor,args.continuous_shell,args.buildings,args.rail,args.world,args.main,args.scooter and not args.main])<=1
 assert Path(args.report).name==args.report
 assert not args.turnarounds or (args.scooter and not args.main)
@@ -14,8 +15,9 @@ log = root / f'work/krog-{variant}-{route}.log'
 map_name = ('PiedmontWorld' if args.main else 'PiedmontKrogApproachReview' if args.approach else 'PiedmontWorld' if args.main else 'PiedmontKrogTurnaroundReview' if args.turnarounds else 'PiedmontScooterReview' if args.scooter else 'PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
             'PiedmontKrogShellReview' if args.continuous_shell else
             'PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview')
+entry=[str(root/'Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground')] if args.packaged else [str(app),str(root/'AuraPlayground.uproject')]
 with log.open('w') as stream:
-    run=subprocess.run([str(app),str(root/'AuraPlayground.uproject'),f'/Game/PiedmontRide/Maps/{map_name}?Difficulty=Easy?AutoStart=1','-game','-BattleSkipTutorial','-RCWebControlDisable',
+    run=subprocess.run(entry+[f'/Game/PiedmontRide/Maps/{map_name}?Difficulty=Easy?AutoStart=1','-game','-BattleSkipTutorial','-RCWebControlDisable',
         '-nullrhi','-unattended','-nosound','-BattleHomeDriveAudit' if args.finish_route else '-BattleKrogAudit','-stdout']+(['-BattleKeepCrowds'] if args.crowds else [])+(['-BattleScooterRideAudit'] if args.scooter else [])+(['-BattleRealHandlingRoute'] if args.real_handling else [])+(['-BattleRouteYieldProbe'] if args.yield_probe else [])+(['-BattleApproachCandidate'] if args.approach else []),stdout=stream,stderr=subprocess.STDOUT,timeout=600)
 matches=re.findall(r'BattleConnectorAudit: (\{[^\n]+\})',log.read_text())
 result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
@@ -32,6 +34,7 @@ result['queue_diagnostics']=re.findall(r'RouteQueueDiagnostic: ([^\n]+)',log.rea
 result['diagnostic_probe_only']=args.yield_probe
 result['exit_code']=run.returncode
 result['map']=map_name
+result['packaged']=args.packaged
 handling=re.findall(r'HandlingRouteAudit: (\{[^\n]+\})',log.read_text())
 result['handling']=json.loads(handling[-1]) if handling else None
 if args.rail or args.world:result['rail_manifest_sha256']=hashlib.sha256((root/'SourceAssets/Terrain/KrogRailContext/deck-manifest.json').read_bytes()).hexdigest()

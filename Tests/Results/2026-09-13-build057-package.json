@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "build": 57,
+  "source_commit": "49ac1fb",
+  "uat_exit_code": 0,
+  "build_cook_run_seconds": 148.86,
+  "staged_app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app",
+  "scope": "Mac Development build, asset cook, staging and archive completed. Runtime and installed acceptance separate; existing unrelated local changes were present."
+}

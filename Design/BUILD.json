@@ -3,21 +3,17 @@
   "version": "0.57.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Preparing Mac057; installed056 retained until cooked acceptance",
+  "status": "Installed signed Mac057; backup056 retained; full game unfinished",
   "milestone": "Bungalow detail, looping Krog traffic, wider approach and scooter recovery scene",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
-    "Verified DeKalb road-end construction fences and signs; main navigation rebuilt.",
-    "Traffic spawns cycle through six visually reviewed paint colors on the existing car body.",
-    "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; 481m main-world Krog route passes in realistic mode with cars and pedestrians active and a yielding test driver; mapped park-hill climb/descent passes; broader handling balance remains pending."
+    "Starting bungalow siding, trim, door, porch/foundation and ground-fitted steps; packaged12s intro and three1280x720frames reviewed. Rider hand alignment and simple scenery remain unfinished.",
+    "Continuous DeKalb traffic loop and wider concrete Krog approach. Main editor ride483.95m and packaged ride485.60m passed both legs with live cars/pedestrians, realistic handling and0wipeouts. One run each; not all-traffic or rendered performance acceptance.",
+    "Scooter incident has three participants, rare18%selection and offscreen assembly; native and packaged25s visit/recovery/walking/cleanup checks pass. Navigation rebuild retains hidden noncolliding236-tile grass connection. Random frequency and final pose art remain pending.",
+    "Automatic bike lights use both headlamp and bike-body dark-volume detection. Packaged route905lit/0unlit tunnel samples.",
+    "Low shadow preset allows two CSM cascades; prior six vehicle-turnaround renders and24tyre contact queries pass. Broader performance testing remains.",
+    "Previous056 handling toggle, six car paints and construction closures retained. Packaged Easy/Hard completion and installed phone/health/death/checkpoint checks pass."
   ],
-  "unreleased_code_changes": [
-    "Starting bungalow finishes/details, elevated foundation and four steps fitted to surveyed ground; opening reviewed and direct tutorial ride passes. Still not final neighborhood art.",
-    "Native main scooter scene/navigation integrated. Startup permits static-world occlusion sampled at eight envelope corners plus four participant/scooter positions, retaining35m player distance. Full intro/home-camera test passes with selection forced:3participants ready at5.2s world time. Clear-line-of-sight fixture proves visible wait, offscreen assembly, skipped chance0 and cleanup. Native visit/recovery previously passed; random frequency and packaged acceptance pending.",
-    "Automatic bike lights also detect the bike body entering a dark volume; native boundary checks and observed Krog crossings pass.",
-    "Continuous DeKalb loop and wider Krog approach integrated into main. Updated main mixed ride passed both legs,483.95m,0wipeouts,39915paved samples,3281lit/0unlit tunnel samples,20moving cars and25walking pedestrians observed. One traffic run; broad congestion/performance acceptance pending.",
-    "Low-shadow preset now allows two CSM cascades while preserving other low settings. Six turnaround images show grounded vehicle shadows; 24 tyre-contact queries pass. Native startup reads two cascades without command-line override. Broad performance and packaged acceptance remain pending.",
-    "Wider Krog approach selectively promoted after actual candidate verification: 483.86m bidirectional realistic ride with live traffic/crowds passed. Rebuilding main navigation initially lost scooter grass connectivity; explicit nav-only tile re-registration and mesh navigation setup restore it. Fresh saved-main approach/40ground probes and 18.07m scooter connection pass; native three-person visit/get-up/walking/cleanup passes. Updated main ride passed; cooked acceptance pending."
-  ],
-  "unreleased_author": "2026-09-13 [codex-maclaptop]"
+  "unreleased_code_changes": [],
+  "remaining_work": "Full requested art, smoother rider/combat animation, broad gameplay balance, complete world detail and performance acceptance. Not a finished game."
 }
