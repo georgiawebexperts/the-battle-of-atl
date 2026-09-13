@@ -11,6 +11,7 @@ public:
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  bool FireTaser();
+ UPROPERTY(VisibleAnywhere) TObjectPtr<class UTextRenderComponent> TaserWarning;
  UPROPERTY(BlueprintReadOnly) float Health=100;
  UPROPERTY(BlueprintReadOnly) bool bWarning=false;
  UPROPERTY(BlueprintReadOnly) int32 TaserShots=0;

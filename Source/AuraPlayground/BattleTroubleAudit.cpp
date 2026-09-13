@@ -9,6 +9,7 @@
 #include "PiedmontPedestrian.h"
 #include "PiedmontTrafficDirector.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/TextRenderComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "AIController.h"
@@ -56,7 +57,7 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==0,"Taser passed through wall");Wall->Destroy();Next();
  }}else if(TroubleStage==4&&TroubleClock>.2f){
   Officer->Cooldown=0;Officer->SetActorTickEnabled(true);Next();
- }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Bike->TaserHits==0,"Taser windup absent or fired early");TroubleTime=Mode->TimeRemaining;Next();}
+ }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->TaserWarning->IsVisible()&&Officer->WarningRemaining>1.f&&Bike->TaserHits==0,"Readable taser warning absent or reaction window too short");TroubleTime=Mode->TimeRemaining;Next();}
  else if(TroubleStage==6&&Bike->TaserHits>0){
   Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Bike->bCrashActive&&Bike->bParked&&Bike->StunRemaining>0&&Bike->Deaths==0&&Bike->RiderHealth==100,"Taser did not knock rider off locally");
   CHECK_TROUBLE(!Bike->FirePistol()&&!Bike->Dismount()&&!Bike->ApplyTaser()&&Bike->TaserHits==1,"Stun actions or repeat-hit guard failed");
