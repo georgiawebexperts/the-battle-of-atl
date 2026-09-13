@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "phase": 15,
+  "reason": "Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": false,
+  "detailed_rider": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-9e1e5a0fba4745f2968cb90213efe890/run.log",
+  "images": [],
+  "detailed_assets_loaded": true
+}

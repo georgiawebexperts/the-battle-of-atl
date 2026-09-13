@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "duration": 12.01,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build058-opening-captures/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build058-opening-captures/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build058-opening-captures/opening2.png"
+  ],
+  "visual_review": "Packaged opening1 inspected: upgraded rider and readable story UI. Full scenery/animation quality not accepted.",
+  "editor": false,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

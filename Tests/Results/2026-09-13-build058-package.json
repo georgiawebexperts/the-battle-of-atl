@@ -1,0 +1,11 @@
+{
+  "build": 58,
+  "version": "0.58.0-dev",
+  "source_commit": "d7db05a81b5e853c6e2575efadd536aeed022bdc",
+  "packaging_passed": true,
+  "build_cook_run_seconds": 143.6,
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app",
+  "executable_sha256": "296cd66b81e09002b349d8b2bddb914e72c20e0cfaf6bb4ede196a8e16f93060",
+  "installed": false,
+  "acceptance": "Packaged runtime checks in progress; desktop057 remains installed. Not full game completion."
+}

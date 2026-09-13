@@ -42,5 +42,5 @@
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
   "candidate_build": 58,
   "candidate_version": "0.58.0-dev",
-  "candidate_status": "Source verified; packaging pending; installed057 unchanged"
+  "candidate_status": "Packaged core checks pass (inventory, foot, swim, opening, handling, crash); Krog route and finish gates running; installed057 unchanged"
 }
