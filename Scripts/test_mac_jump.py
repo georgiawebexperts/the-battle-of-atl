@@ -8,6 +8,7 @@ p.add_argument('--editor',action='store_true')
 p.add_argument('--report',required=True)
 p.add_argument('--low-speed',action='store_true')
 p.add_argument('--crest',action='store_true')
+p.add_argument('--side-review',action='store_true')
 p.add_argument('--review',action='store_true')
 p.add_argument('--hill',action='store_true')
 p.add_argument('--downhill',action='store_true')
@@ -23,7 +24,7 @@ if a.review:
  capture.mkdir()
 flags=['-RenderOffscreen','-windowed','-ResX=1280','-ResY=720','-ForceRes',f'-BattleJumpReviewDir={capture}'] if a.review else ['-nullrhi']
 with log.open('w') as stream:
- run=subprocess.run(entry+(['-BattleHillJumpAudit'] if a.hill else [])+(['-BattleDownhillJumpAudit'] if a.downhill else [])+(['-BattleRealHillJumpAudit'] if a.real else [])+(['-BattleLowSpeedJumpAudit'] if a.low_speed else [])+(['-BattleCrestJumpAudit'] if a.crest else [])+[f'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty={a.difficulty}?AutoStart=1','-game','-RCWebControlDisable',*flags,'-unattended','-nosound','-BattleSkipTutorial','-BattleJumpAudit','-stdout'],stdout=stream,stderr=subprocess.STDOUT,timeout=120)
+ run=subprocess.run(entry+(['-BattleJumpSideReview'] if a.side_review else [])+(['-BattleHillJumpAudit'] if a.hill else [])+(['-BattleDownhillJumpAudit'] if a.downhill else [])+(['-BattleRealHillJumpAudit'] if a.real else [])+(['-BattleLowSpeedJumpAudit'] if a.low_speed else [])+(['-BattleCrestJumpAudit'] if a.crest else [])+[f'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty={a.difficulty}?AutoStart=1','-game','-RCWebControlDisable',*flags,'-unattended','-nosound','-BattleSkipTutorial','-BattleJumpAudit','-stdout'],stdout=stream,stderr=subprocess.STDOUT,timeout=120)
 matches=re.findall(r'BattleJumpAudit: (\{[^\n]+\})',log.read_text())
 result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
 result.update(hill=a.hill,downhill=a.downhill,realistic=a.real,takeoff_diagnostics=re.findall(r'HillJumpTakeoff: ([^\n]+)',log.read_text()),exit_code=run.returncode,difficulty=a.difficulty,visual_review=False,low_speed=a.low_speed,crest=a.crest,executable=entry[0],log=str(log))

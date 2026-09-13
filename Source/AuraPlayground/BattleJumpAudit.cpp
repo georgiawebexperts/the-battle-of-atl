@@ -1,6 +1,9 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
 #include "UnrealClient.h"
+#include "Camera/CameraActor.h"
+#include "Components/PoseableMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Misc/CommandLine.h"
 #include "PiedmontTrafficDirector.h"
@@ -13,6 +16,12 @@ void ABattleMacController::TickJumpAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(GetWorld()->GetTimeSeconds()<5||JumpStage==99)return;
  auto* Bike=Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode)return;JumpClock+=Dt;const bool LowSpeed=FParse::Param(FCommandLine::Get(),TEXT("BattleLowSpeedJumpAudit"));
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleJumpSideReview"))){
+  static TWeakObjectPtr<ACameraActor> Camera;
+  const FVector Eye=Bike->GetActorTransform().TransformPosition(FVector(25,-450,170)),Focus=Bike->GetActorLocation()+FVector(0,0,45);
+  if(!Camera.IsValid())Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation());
+  if(Camera.IsValid()){Camera->SetActorLocationAndRotation(Eye,(Focus-Eye).Rotation());SetViewTarget(Camera.Get());}
+ }
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("BattleJumpAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\",\"rewards\":%d,\"peak_cm\":%.2f,\"air_seconds\":%.3f}"),Pass?TEXT("true"):TEXT("false"),JumpStage,Why,Bike->Ride->AirRewards,Bike->Ride->AirPeak,Bike->Ride->AirSeconds);JumpStage=99;ConsoleCommand(TEXT("quit"));};
 #define JCHECK(C,R) if(!(C)){Finish(false,TEXT(R));return;}
@@ -41,10 +50,20 @@ void ABattleMacController::TickJumpAudit(float Dt){
   }
   JCHECK(LowSpeed?(Bike->Ride->Speed>=150&&Bike->Ride->Speed<500):Bike->Ride->Speed>500,"Failed to reach requested takeoff speed");UE_LOG(LogTemp,Display,TEXT("JumpTakeoff: speed=%.2f low_speed=%d"),Bike->Ride->Speed,LowSpeed);JumpTimeBefore=Mode->TimeRemaining;if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrestJumpAudit"))){Bike->Ride->SetMovementMode(MOVE_Falling);JCHECK(Bike->Ride->JumpGraceRemaining>0,"Missing crest jump grace");}Key(EKeys::J,true);Key(EKeys::J,false);Next();
  }else if(JumpStage==2&&JumpClock>.15f){
-  JCHECK(Bike->Ride->IsFalling()&&Bike->Ride->AirPeak>50,"J did not produce real airborne movement");JCHECK(!Bike->Ride->Hop(),"Midair jump allowed");Capture(TEXT("airborne"));Next();
+  JCHECK(Bike->Ride->IsFalling()&&Bike->Ride->AirPeak>50,"J did not produce real airborne movement");JCHECK(!Bike->Ride->Hop(),"Midair jump allowed");
+  for(int Sign:{-1,1}){
+   const bool Detailed=Bike->Rider->GetBoneIndex(TEXT("pelvis"))>=0;
+   const FVector Expected=Bike->SteeringAssembly->GetComponentTransform().TransformPosition(FVector(Detailed?31:26,-Sign*25,115)-Bike->SteeringAssembly->GetRelativeLocation());
+   const FVector Wrist=Bike->Rider->GetBoneLocation(Sign>0?(Detailed?TEXT("hand_l"):TEXT("Hand_L")):(Detailed?TEXT("hand_r"):TEXT("Hand_R")),EBoneSpaces::WorldSpace);
+   const float Error=FVector::Dist(Expected,Wrist);UE_LOG(LogTemp,Display,TEXT("AirborneGripAudit: side=%d error_cm=%.3f"),Sign,Error);
+   JCHECK(Error<3.f,"Airborne pose lost handlebar contact");
+  }
+  Capture(TEXT("airborne"));Next();
  }else if(JumpStage==3&&Bike->Ride->IsMovingOnGround()){
-  JCHECK(Bike->Ride->AirRewards==1&&Mode->TimeRemaining>JumpTimeBefore+8,"Landing did not award exactly ten seconds");JCHECK(Bike->Ride->AirPeak>65&&Bike->Ride->Recovery==0,"Jump clearance or clean landing failed");Capture(TEXT("landing"));Key(EKeys::W,false);Next();
- }else if(JumpStage==4&&JumpClock>.4f){
+  JCHECK(Bike->Ride->AirRewards==1&&Mode->TimeRemaining>JumpTimeBefore+8,"Landing did not award exactly ten seconds");JCHECK(Bike->Ride->AirPeak>65&&Bike->Ride->Recovery==0,"Jump clearance or clean landing failed");Key(EKeys::W,false);Next();
+ }else if(JumpStage==4){
+  static bool Captured=false;if(!Captured&&JumpClock>.1f){Capture(TEXT("landing"));Captured=true;}
+  if(JumpClock<=.4f)return;
   JCHECK(Bike->Ride->AirRewards==1,"Grounded reward repeated");Bike->StunRemaining=2;JCHECK(!Bike->Ride->Hop(),"Stunned hop allowed");Bike->StunRemaining=0;Mode->bRunEnded=true;JCHECK(!Bike->Ride->Hop(),"Ended run hop allowed");Mode->bRunEnded=false;
   Finish(true,TEXT("Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass"));
  }

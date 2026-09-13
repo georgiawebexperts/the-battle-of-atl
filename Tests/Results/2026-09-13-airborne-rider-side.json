@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 143.49,
+  "air_seconds": 0.806,
+  "hill": true,
+  "downhill": true,
+  "realistic": false,
+  "takeoff_diagnostics": [
+    "grade=-0.0449 floor=StaticMeshActor_124 position=X=-3547.294 Y=11703.237 Z=90.228"
+  ],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-749f30c56b2f42b7a35587743df34dde.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-39ceab4ca56d4a1abf066a8636035ed3/takeoff.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-39ceab4ca56d4a1abf066a8636035ed3/airborne.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-39ceab4ca56d4a1abf066a8636035ed3/landing.png"
+  ],
+  "captures_complete": true,
+  "visual_scope": "Side airborne and landing frames inspected; lift and landing bend visible. Continuous motion and exact shoe contact remain unaccepted.",
+  "airborne_grip_errors_cm": [
+    0.0,
+    0.0
+  ]
+}

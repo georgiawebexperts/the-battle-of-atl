@@ -102,7 +102,7 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
  const FVector Horizontal=FMath::Lerp(FVector(Velocity.X,Velocity.Y,0),Desired,1.f-FMath::Exp(-(SlideRemaining>0?2.3f:18.f)*Dt));
  Velocity.X=Horizontal.X;Velocity.Y=Horizontal.Y;
- if(Pedal>0)Cadence+=Dt*FMath::Clamp(Speed/(Gear*100.f),.5f,2.f)*2*PI;
+ if(Pedal>0&&IsMovingOnGround())Cadence+=Dt*FMath::Clamp(Speed/(Gear*100.f),.5f,2.f)*2*PI;
 }
 void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
  if(Recovery>0)return;BoostRemaining=0;RecoveryReason=Reason;

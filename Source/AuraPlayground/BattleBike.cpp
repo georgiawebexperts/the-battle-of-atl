@@ -114,7 +114,7 @@ void ABattleBike::Tick(float Dt){
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;
  LeanAngle=FMath::Lerp(LeanAngle,(Ride->bRealHandling?FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan(Ride->Speed*FMath::DegreesToRadians(Ride->TurnRateDegrees)/980.f)),-35.f,35.f):Ride->SmoothedSteer*FMath::Min(24.f,Ride->Speed*.035f)),1.f-FMath::Exp(-10.f*Dt));
  float TargetPitch=0;
- if(!bParked&&Fall<=0){if(Ride->IsMovingOnGround()){const FVector N=Ride->CurrentFloor.HitResult.ImpactNormal;TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(-FVector::DotProduct(GetActorForwardVector(),N),N.Z));}else if(Ride->IsFalling())TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(Ride->Velocity.Z,FMath::Max(400.f,Ride->Speed)));}
+ if(!bParked&&Fall<=0){if(Ride->IsMovingOnGround()){const FVector N=Ride->CurrentFloor.HitResult.ImpactNormal;TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(-FVector::DotProduct(GetActorForwardVector(),N),N.Z));}else if(Ride->IsFalling())TargetPitch=FMath::Clamp(.4f*FMath::RadiansToDegrees(FMath::Atan2(Ride->Velocity.Z,FMath::Max(400.f,Ride->Speed))),-18.f,18.f);}
  SurfacePitch=FMath::Lerp(SurfacePitch,FMath::Clamp(TargetPitch,-40.f,40.f),1.f-FMath::Exp(-12.f*Dt));
  Visual->SetRelativeRotation(FRotator(SurfacePitch,0,LeanAngle+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
  WheelAngle+=Ride->Speed*Dt/35*180/PI;UpdateSteeringVisual();FrontWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));RearWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));PoseRider(Dt);
@@ -193,7 +193,16 @@ void ABattleBike::PoseRider(float Dt){
  auto MoveBranch=[&](int Root,FVector Target,FQuat Rotation){if(Root<0)return;FVector Old=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();++I)if(Descendant(I,Root)){Pose[I].SetLocation(Target+Rotation.RotateVector(Pose[I].GetLocation()-Old));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
  const float BrakeLeanTarget=8.f*FMath::Clamp(Ride->Brake,0.f,1.f);
  RiderBrakeLean=Dt>0?FMath::Lerp(RiderBrakeLean,BrakeLeanTarget,1.f-FMath::Exp(-10.f*Dt)):BrakeLeanTarget;
- const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,FVector(0,-23,99),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer))));
+ const bool Airborne=Ride->IsFalling()&&!bParked&&Ride->Recovery<=0;
+ if(bRiderWasAirborne&&!Airborne&&Ride->IsMovingOnGround()&&!bParked)RiderLandingCompression=1.f;
+ bRiderWasAirborne=Airborne;
+ RiderAirBlend=FMath::Lerp(RiderAirBlend,Airborne?1.f:0.f,1.f-FMath::Exp(-10.f*Dt));
+ RiderLandingCompression=FMath::Max(0.f,RiderLandingCompression-Dt*3.f);
+ const float Compress=FMath::Sin(RiderLandingCompression*PI);
+ // Lift off the saddle in flight; knees and elbows absorb touchdown. The limb
+ // solves below keep wrists on the grips and shoes at the pedal targets.
+ const FVector Hip(0,-23+RiderAirBlend*5,99+RiderAirBlend*9-Compress*8);
+ const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,Hip,FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer)-8.f*RiderAirBlend-Compress*7.f)));
  // Let the shoulders follow the bar while the hips remain over the saddle.
  const int Spine=Index(TEXT("Abdomen"));if(Spine>=0)MoveBranch(Spine,Pose[Spine].GetLocation(),FQuat(FVector::UpVector,FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));
  auto Limb=[&](const TCHAR* UpperName,const TCHAR* LowerName,const TCHAR* EndName,FVector Target,FVector Bend){
