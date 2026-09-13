@@ -1,0 +1,39 @@
+{
+  "build": 65,
+  "version": "0.65.0",
+  "source_commit": "21f220e36e052a33ae83fb85e2642dae813c69b1",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "4de28c6c512d64a72124851a70a26f2c24d5531c6afdf937834792b5708011d9",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065.zip",
+  "zip_sha256": "85b212a1f2cd228868259c1c25c70873ccea6a76df007d0cdba46f5c971408fe",
+  "zip_bytes": 1316206305,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged rendered bin model and single camera-facing ammo label inspected",
+    "Packaged twelve actual ammo/bin pairs: clear rider approaches, seventeen rounds each, bins retained",
+    "Packaged Medium/Hard practice-start pickup layouts and real collections",
+    "Packaged pistol shots, dry fire, bike/foot reload conservation, possession and reserve cap",
+    "Packaged wall reverse recovery in both handling modes",
+    "ZIP CRC, local signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac"
+  ],
+  "reports": [
+    "2026-09-13-build065-bins.json",
+    "2026-09-13-build065-ammo.json",
+    "2026-09-13-build065-wall.json",
+    "2026-09-13-build065-bins-medium-practice.json",
+    "2026-09-13-build065-bins-hard-practice.json"
+  ]
+}

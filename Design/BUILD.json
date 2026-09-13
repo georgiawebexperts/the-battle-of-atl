@@ -1,9 +1,9 @@
 {
-  "build": 64,
-  "version": "0.64.0",
+  "build": 65,
+  "version": "0.65.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; moving pedals, aligned shoes and improved jump/landing pose",
+  "status": "Early playtest; ammo beside persistent park bins with readable pickup labels",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -16,7 +16,8 @@
     "Build061: readable police warning/countdown, original yellow/black taser, blended raised grip, muzzle-origin discharge with near-cover guard; prioritized 12 ammo pickups. Packaged police/ammo/wall tests pass. Voice and final animation/art remain unfinished.",
     "Build062: spatial AI-generated Stop! APD! voice during two-second taser warning; six-second voice cooldown and death/run-end stop. Packaged actual audio playback and encounter checks pass. Listening/mix acceptance pending.",
     "Build063: both firearm arms use length-preserving aiming solve; weapon follows control pitch. Packaged pistol level/up/down views verified; inventory and native movement regressions pass. Gate uprights fitted to pavement with lower rails.",
-    "Build064: opposing animated pedals/cranks, sole-height-corrected foot targets and synchronous rider bones. Flight pedalling pauses; gentler pitch, saddle lift and landing absorption. Packaged hill/contact/reward checks pass; broader motion and world polish remains."
+    "Build064: opposing animated pedals/cranks, sole-height-corrected foot targets and synchronous rider bones. Flight pedalling pauses; gentler pitch, saddle lift and landing absorption. Packaged hill/contact/reward checks pass; broader motion and world polish remains.",
+    "Build065: twelve pistol ammo supplies beside original green slatted park bins. Path clearance, support, water and rider approach guards; bins persist. Single camera-facing weapon labels. Native all-difficulty and packaged real collection checks pass."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -66,32 +67,34 @@
     "2026-09-13 [codex-maclaptop] Airborne rider development: bike visual flight pitch reduced to40percent trajectory angle, capped18deg; smoothed9cm saddle lift/forward5cm and extra8deg torso lean; touchdown compression8cm over.33s. Existing IK keeps both wrists on grips (native side-review0.000cm error both), feet retain pedal targets. Cadence advances only grounded, stopping midair pedalling. Arcade downhill rendered native jump/reward/guards and realistic uphill regression pass. Air/landing side frames inspected; continuous motion/shoe contact not accepted. Source-only, desktop063 unchanged. Constructor inspection confirms bike has no visible crank arms/pedals despite leg pedalling targets; prioritize actual pedal/crank geometry and sole contact next, then package combined improvement. Whole game remains unfinished."
   ],
   "unreleased_code_changes": [],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
-  "compiled_source": "910603ff050e29545f35fb3a88dcbbf8b1c28a39",
-  "installation_report": "Tests/Results/2026-09-13-build064-install.json",
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
+  "compiled_source": "21f220e36e052a33ae83fb85e2642dae813c69b1",
+  "installation_report": "Tests/Results/2026-09-13-build065-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 64,
-    "version": "0.64.0",
-    "source_commit": "910603ff050e29545f35fb3a88dcbbf8b1c28a39",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
+    "build": 65,
+    "version": "0.65.0",
+    "source_commit": "21f220e36e052a33ae83fb85e2642dae813c69b1",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "4eb6a4d282765a5ea6069d282c86e7a84064591acafdeca063bdd147c27d6bf4",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064.zip",
-    "zip_sha256": "177ebbec29a0eeff5a2c0c6b5c728a539bade1a72037dd9093e9799f6949659c",
-    "zip_bytes": 1316135883,
+    "machine_code_sha256": "4de28c6c512d64a72124851a70a26f2c24d5531c6afdf937834792b5708011d9",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 065.zip",
+    "zip_sha256": "85b212a1f2cd228868259c1c25c70873ccea6a76df007d0cdba46f5c971408fe",
+    "zip_bytes": 1316206305,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged rendered downhill jump with pedal/forefoot reference contact and wrist grip checks",
-      "Packaged realistic uphill jump/reward/guards",
-      "Packaged wall reverse recovery in both modes",
+      "Packaged rendered bin model and single camera-facing ammo label inspected",
+      "Packaged twelve actual ammo/bin pairs: clear rider approaches, seventeen rounds each, bins retained",
+      "Packaged Medium/Hard practice-start pickup layouts and real collections",
+      "Packaged pistol shots, dry fire, bike/foot reload conservation, possession and reserve cap",
+      "Packaged wall reverse recovery in both handling modes",
       "ZIP CRC, local signature and staged/installed code match"
     ],
     "remaining": [
@@ -99,6 +102,13 @@
       "Broader freeplay, world art and performance acceptance",
       "Voice listening/mix review pending",
       "Not notarized or tested on another Mac"
+    ],
+    "reports": [
+      "2026-09-13-build065-bins.json",
+      "2026-09-13-build065-ammo.json",
+      "2026-09-13-build065-wall.json",
+      "2026-09-13-build065-bins-medium-practice.json",
+      "2026-09-13-build065-bins-hard-practice.json"
     ]
   },
   "latest_wall_fix_playtest": {
