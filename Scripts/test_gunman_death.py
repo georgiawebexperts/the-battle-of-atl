@@ -14,7 +14,8 @@ rows=re.findall(r'GunmanDeathAudit: (\{[^\n]+\})',log.read_text());r=json.loads(
 r.update(log=str(log),detailed_gunman=args.detailed_gunman,app=args.app,exit_code=run.returncode,scope='Native fatal damage physics fixture; visible hip tracking, collapse, dead shooting suppression. Visual ground contact requires image review; not a full combat playtest.');r['passed']=r['passed'] and run.returncode==0
 if args.detailed_gunman:
  r['detailed_body_loaded']='DetailedGunman: body=f_tal_nrw_body parts=4 physics=f_tal_nrw_body_skmesh_Physics' in log.read_text()
- r['passed']=r['passed'] and r['detailed_body_loaded']
+ r['detailed_weapon_loaded']='GunmanM1911: loaded Rigged_M1911' in log.read_text()
+ r['passed']=r['passed'] and r['detailed_body_loaded'] and r['detailed_weapon_loaded']
 if args.render:
  r['images']=[str(capture/name) for name in ['falling.png','settled.png']];r['passed']=r['passed'] and all(pathlib.Path(p).is_file() for p in r['images'])
 (root/'Tests/Results'/(args.report or ('2026-09-12-gunman-death-render.json' if args.render else '2026-09-12-gunman-death.json'))).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r));raise SystemExit(0 if r['passed'] else 1)

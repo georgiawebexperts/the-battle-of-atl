@@ -31,8 +31,9 @@ void TickBattleGunmanDeathAudit(ABattleEnemyDirector* D,float Dt){
   CHECK_DEATH(Gun->TryAim(B)&&Gun->bWarning,"Could not begin live warning before fatal hit");Phase=4;Clock=0;
  }else if(Phase==4&&Clock>.4f){
   CHECK_DEATH(Gun->bWarning&&Gun->ShotsFired==0,"Warning ended before fatal hit");
+  if(Gun->DetailedWeapon)CHECK_DEATH(Gun->DetailedWeapon->IsVisible(),"Detailed weapon missing during warning");
   HipName=Gun->Body->GetBoneIndex(TEXT("pelvis"))>=0?FName(TEXT("pelvis")):FName(TEXT("Hips"));HeadZ=Gun->Body->GetSocketLocation(TEXT("Head")).Z;UGameplayStatics::ApplyDamage(Gun,100,nullptr,UGameplayStatics::GetPlayerPawn(W,0),UDamageType::StaticClass());
-  CHECK_DEATH(!Gun->bWarning&&!Gun->Weapon->IsVisible(),"Fatal hit left warning or weapon active");
+  CHECK_DEATH(!Gun->bWarning&&!Gun->Weapon->IsVisible()&&(!Gun->DetailedWeapon||!Gun->DetailedWeapon->IsVisible()),"Fatal hit left warning or weapon active");
   CHECK_DEATH(Gun->bDead&&Gun->DeathPhysics&&Gun->DeathPhysics->IsSimulatingPhysics(HipName),"Death did not enter physics");Phase=2;Clock=0;
  }else if(Phase==2){
   if(Clock>.3f&&!Falling&&!Dir.IsEmpty()){FScreenshotRequest::RequestScreenshot(Dir/TEXT("falling.png"),false,false);Falling=true;}

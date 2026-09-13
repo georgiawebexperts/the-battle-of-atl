@@ -18,6 +18,7 @@ public:
  UPROPERTY(BlueprintReadOnly) float WindupRemaining=0;
  UPROPERTY(BlueprintReadOnly) float ShotAlertRemaining=0;
  float Health=80,Cooldown=2;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> DetailedWeapon;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> DeathPhysics;
  UPROPERTY() TObjectPtr<UPhysicsAsset> DeathAsset;
  UPROPERTY() TObjectPtr<UAnimSequence> GunIdle;

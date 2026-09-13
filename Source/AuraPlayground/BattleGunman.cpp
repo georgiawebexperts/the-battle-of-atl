@@ -58,6 +58,12 @@ void ABattleGunman::BeginPlay(){
  }
 #endif
  Super::BeginPlay();
+ if(bDetailedPlayerRig)if(auto* Pistol=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/M1911/Meshes/SkeletalMesh/Rigged_M1911"))){
+  DetailedWeapon=NewObject<USkeletalMeshComponent>(this,TEXT("GunmanM1911"));AddInstanceComponent(DetailedWeapon);DetailedWeapon->SetupAttachment(Weapon);
+  DetailedWeapon->SetDisablePostProcessBlueprint(true);DetailedWeapon->SetSkeletalMeshAsset(Pistol);DetailedWeapon->SetRelativeRotation(FRotator(0,180,0));DetailedWeapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);DetailedWeapon->SetCanEverAffectNavigation(false);DetailedWeapon->SetVisibility(false);DetailedWeapon->RegisterComponent();
+  Weapon->SetStaticMesh(nullptr);Weapon->SetRelativeScale3D(FVector(1));Weapon->SetRelativeRotation(FRotator::ZeroRotator);
+  UE_LOG(LogTemp,Display,TEXT("GunmanM1911: loaded %s"),*Pistol->GetName());
+ }
 }
 bool ABattleGunman::CanAttack() const{
  const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
@@ -74,7 +80,7 @@ bool ABattleGunman::TryAim(APawn* Target){
 bool ABattleGunman::ResolveShot(){
  if(!CanAttack()||!bWarning||WindupRemaining>0)return false;
  bWarning=false;Cooldown=4;ShotsFired++;ShotAlertRemaining=1.1f;
- const FVector Muzzle=Weapon->GetStaticMesh()?Weapon->GetComponentTransform().TransformPosition(Weapon->GetStaticMesh()->GetBounds().Origin)+GetActorForwardVector()*14:GetActorLocation()+GetActorForwardVector()*48+FVector(0,0,42);
+ const FVector Muzzle=DetailedWeapon?DetailedWeapon->GetComponentTransform().TransformPosition(FVector(-15.59,0,4.5)):Weapon->GetStaticMesh()?Weapon->GetComponentTransform().TransformPosition(Weapon->GetStaticMesh()->GetBounds().Origin)+GetActorForwardVector()*14:GetActorLocation()+GetActorForwardVector()*48+FVector(0,0,42);
  const FVector End=AimPoint+(AimPoint-Muzzle).GetSafeNormal()*80;FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(this);
  // Check the barrel path too, so a muzzle cannot protrude through cover.
  if(!GetWorld()->LineTraceSingleByChannel(Hit,GetActorLocation()+FVector(0,0,42),Muzzle,ECC_Visibility,Q))GetWorld()->LineTraceSingleByChannel(Hit,Muzzle,End,ECC_Visibility,Q);
@@ -86,9 +92,9 @@ bool ABattleGunman::ResolveShot(){
  return true;
 }
 void ABattleGunman::Tick(float Dt){
- if(bDead){Super::Tick(Dt);MirrorDeathPose();return;}
+ if(bDead){if(DetailedWeapon)DetailedWeapon->SetVisibility(false);Super::Tick(Dt);MirrorDeathPose();return;}
  ShotAlertRemaining=FMath::Max(0.f,ShotAlertRemaining-Dt);
- bWeaponDrawn=bWarning||ShotAlertRemaining>0;Super::Tick(Dt);
+ bWeaponDrawn=bWarning||ShotAlertRemaining>0;Super::Tick(Dt);if(DetailedWeapon)DetailedWeapon->SetVisibility(bWeaponDrawn);
  if(!CanAttack()){bWarning=false;WindupRemaining=0;return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);
  if(bWarning){SetActorRotation(FRotator(0,(AimPoint-GetActorLocation()).Rotation().Yaw,0));WindupRemaining=FMath::Max(0.f,WindupRemaining-Dt);if(WindupRemaining<=0)ResolveShot();}
@@ -98,7 +104,7 @@ float ABattleGunman::TakeDamage(float Amount,const FDamageEvent& Event,AControll
  if(bDead||!FMath::IsFinite(Amount)||Amount<=0)return 0;
  const float Applied=FMath::Min(Health,Amount);Health-=Applied;bWarning=false;WindupRemaining=0;Cooldown=FMath::Max(Cooldown,.8f);
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,20),Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal():FVector::UpVector);
- if(Health<=0){bDead=true;GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Weapon->SetVisibility(false);BeginDeathPhysics(Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal2D():GetActorForwardVector());SetLifeSpan(8);}
+ if(Health<=0){bDead=true;GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Weapon->SetVisibility(false);if(DetailedWeapon)DetailedWeapon->SetVisibility(false);BeginDeathPhysics(Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal2D():GetActorForwardVector());SetLifeSpan(8);}
  return Applied;
 }
 
@@ -137,7 +143,10 @@ void ABattleGunman::AnimateBody(float Dt){
    Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
   }
  }
- if(Drawn&&Weapon->GetStaticMesh()){
+ if(Drawn&&DetailedWeapon){
+  const FVector Centre=Body->GetSocketLocation(TEXT("hand_r"))+GetActorForwardVector()*12;
+  Weapon->SetWorldLocation(Centre-DetailedWeapon->GetComponentTransform().TransformVector(DetailedWeapon->GetSkeletalMeshAsset()->GetBounds().Origin));
+ }else if(Drawn&&Weapon->GetStaticMesh()){
   const FVector Centre=Body->GetSocketLocation(BattleDetailedBone(TEXT("Hand_R"),bDetailedPlayerRig))+GetActorForwardVector()*(bDetailedPlayerRig?16:8)+FVector(0,0,bDetailedPlayerRig?0:6);
   Weapon->SetWorldLocation(Centre-Weapon->GetComponentTransform().TransformVector(Weapon->GetStaticMesh()->GetBounds().Origin));
  }
