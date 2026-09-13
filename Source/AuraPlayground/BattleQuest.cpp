@@ -186,7 +186,8 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  Circle(FVector2D::ZeroVector,Radius,FLinearColor(.3,.6,.67),2);
  const float Yaw=FMath::DegreesToRadians(Pawn->GetActorRotation().Yaw);const FVector2D Forward(FMath::Cos(Yaw),FMath::Sin(Yaw)),Right(-Forward.Y,Forward.X);
  Line(Forward*8,-Forward*5+Right*5,FLinearColor::White,2);Line(Forward*8,-Forward*5-Right*5,FLinearColor::White,2);Line(-Forward*5+Right*5,-Forward*5-Right*5,FLinearColor::White,2);
- if(!Pawn->IsA<ABattleBike>())for(TActorIterator<ABattleBike> It(GetWorld());It;++It)if(It->bParked){const FVector2D B=Project(FVector2D(It->GetActorLocation())).GetClampedToMaxSize(Radius-9);HUD->DrawText(TEXT("B"),FColor::Cyan,Center.X+B.X-4,Center.Y+B.Y-6,nullptr,.9f);}
+ const auto* Foot=Cast<ABattleRider>(Pawn);const auto* Parked=Foot&&IsValid(Foot->ParkedBike)&&Foot->ParkedBike->bParked?Foot->ParkedBike.Get():nullptr;
+ if(Parked){const FVector2D B=Project(FVector2D(Parked->GetActorLocation())).GetClampedToMaxSize(Radius-9);Circle(B,7*UIScale,FLinearColor::Black,4);Circle(B,5*UIScale,FLinearColor(.1,1,1),2);}
  for(FVector P:EnemyLocations){FVector2D D=Project(FVector2D(P));if(D.Size()<Radius-4)Circle(D,2.5f,FLinearColor::Red,2);}
  if(bReady){
   const FVector Target=Practice?BattleTutorialData::Gate:bCollected?RouteTargetLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);
@@ -197,6 +198,8 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
   else{const auto F=D.GetSafeNormal(),R=FVector2D(-F.Y,F.X);const auto Tip=F*(Radius-5);Line(Tip,Tip-F*10+R*6,Gold,3);Line(Tip,Tip-F*10-R*6,Gold,3);}
  }
  auto Compass=[&](const TCHAR* Label,FVector2D Offset){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),FLinearColor::White);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};
+ HUD->DrawRect(FLinearColor(.008,.016,.025,.9),Center.X-130*UIScale,Center.Y-Radius-(Parked?85:57)*UIScale,260*UIScale,(Parked?54:26)*UIScale);
+ if(Parked){const FVector Delta=Parked->GetActorLocation()-Pawn->GetActorLocation();const FVector2D D=CoarseDirection(FVector2D(Delta));const TCHAR* Direction=D.X>0?TEXT("EAST"):D.X<0?TEXT("WEST"):D.Y<0?TEXT("NORTH"):TEXT("SOUTH");Compass(*FString::Printf(TEXT("BIKE  %.0f m  %s"),Delta.Size2D()/100,Direction),FVector2D(0,-Radius-80*UIScale));}
  Compass(TEXT("ELLISON’S WATCH"),FVector2D(0,-Radius-52*UIScale));
  Compass(TEXT("N"),FVector2D(0,-Radius-28*UIScale));Compass(TEXT("S"),FVector2D(0,Radius+3*UIScale));Compass(TEXT("W"),FVector2D(-Radius-18*UIScale,-12*UIScale));Compass(TEXT("E"),FVector2D(Radius+18*UIScale,-12*UIScale));
 

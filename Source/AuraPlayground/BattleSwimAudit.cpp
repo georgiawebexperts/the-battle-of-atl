@@ -14,7 +14,7 @@
 void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  auto* W=PC->GetWorld();if(W->GetTimeSeconds()<5)return;
- struct FState{int Stage=0;float Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start;bool Shot=false;};static FState S;
+ struct FState{int Stage=0,Edge=0;float NextIdleLog=0,Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start;bool Shot=false;};static FState S;
  if(S.Stage<0)return;S.Clock+=Dt;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.:0.,false,0));};
  auto End=[&](bool Pass,const TCHAR* Reason){Key(EKeys::W,false);UE_LOG(LogTemp,Display,TEXT("BattleSwimAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d,\"swim_cm\":%.2f,\"bike_drift_cm\":%.3f,\"stroke_cm\":%.2f}"),Pass?TEXT("true"):TEXT("false"),Reason,S.Stage,S.SwimDistance,S.Drift,S.MinHand<MAX_flt?S.MaxHand-S.MinHand:0);S.Stage=-1;PC->ConsoleCommand(TEXT("quit"));};
@@ -26,10 +26,11 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   if(auto* Mode=Cast<ABattleParkMode>(W->GetAuthGameMode());Mode&&Mode->Enemies)Mode->Enemies->bFreezeSpawns=true;
   FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleSwimBank),true,B);
   for(TActorIterator<AActor> It(W);It;++It)if(It->ActorHasTag(TEXT("RideWater")))Q.AddIgnoredActor(*It);
-  bool Found=false;FVector Dry,Wet;
+  bool Found=false;FVector Dry,Wet;int32 Offset=0;FParse::Value(FCommandLine::Get(),TEXT("BattleSwimEdge="),Offset);
   for(TActorIterator<APiedmontWaterHazard> It(W);It&&!Found;++It){auto* Lake=*It;
    for(int I=0;I<Lake->Polygon.Num()&&!Found;I++){
-    const FVector A=Lake->GetActorTransform().TransformPosition(Lake->Polygon[I]),BEdge=Lake->GetActorTransform().TransformPosition(Lake->Polygon[(I+1)%Lake->Polygon.Num()]);
+    const int Index=(I+FMath::Max(0,Offset))%Lake->Polygon.Num();
+    const FVector A=Lake->GetActorTransform().TransformPosition(Lake->Polygon[Index]),BEdge=Lake->GetActorTransform().TransformPosition(Lake->Polygon[(Index+1)%Lake->Polygon.Num()]);
     const FVector Edge=(A+BEdge)*.5,Along=(BEdge-A).GetSafeNormal2D(),Normal(-Along.Y,Along.X,0);
     for(float Sign:{1.f,-1.f}){
      Dry=Edge-Normal*Sign*250;Wet=Edge+Normal*Sign*250;Dry.Z=Wet.Z=Lake->GetActorLocation().Z+98;
@@ -38,16 +39,18 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
      if(FMath::Abs(Ground.ImpactPoint.Z-Lake->GetActorLocation().Z)>90)continue;
      Dry=Ground.ImpactPoint+FVector(0,0,98);
      if(W->OverlapBlockingTestByChannel(Dry,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))continue;
-     Found=true;break;
+     S.Edge=Index;Found=true;break;
     }
    }
   }
   SWIM_CHECK(Found,"No accessible real shoreline fixture");
   const FRotator Heading=(Wet-Dry).Rotation();B->SetActorLocationAndRotation(Dry,FRotator(0,Heading.Yaw,0),false,nullptr,ETeleportType::TeleportPhysics);PC->SetControlRotation(FRotator(0,Heading.Yaw,0));
   B->Ride->StopMovementImmediately();B->Ride->Speed=0;B->Ride->bForceNextFloorCheck=true;
-  UE_LOG(LogTemp,Display,TEXT("BattleSwimFixture: dry=%s wet=%s"),*Dry.ToString(),*Wet.ToString());
+  UE_LOG(LogTemp,Display,TEXT("BattleSwimFixture: edge=%d dry=%s wet=%s"),S.Edge,*Dry.ToString(),*Wet.ToString());
   Key(EKeys::W,true);S.Stage=1;S.Clock=0;return;
  }
+ if(S.Stage==4){if(S.Clock>=S.NextIdleLog){S.NextIdleLog+=.25f;UE_LOG(LogTemp,Display,TEXT("SwimIdle: t=%.2f dt=%.3f w=%d up=%d pedal=%.1f speed=%.1f velocity=%s location=%s parked=%d"),S.Clock,Dt,PC->IsInputKeyDown(EKeys::W),PC->IsInputKeyDown(EKeys::Up),S.Bike->Ride->Pedal,S.Bike->Ride->Speed,*S.Bike->Ride->Velocity.ToString(),*S.Bike->GetActorLocation().ToString(),S.Bike->bParked);}SWIM_CHECK(PC->GetPawn()==S.Bike.Get()&&!S.Bike->bParked&&S.Bike->Ride->Recovery<=0,"Remount did not remain stable");SWIM_CHECK(S.Bike->Ride->Speed<5,"Bike accelerated after forward key release");if(S.Clock>2)End(true,TEXT("Shoreline entry, swim, fixed-bike return and stable remount pass"));return;}
+ if(S.Stage==6){if(S.Clock<.2f)return;Key(EKeys::E,false);SWIM_CHECK(PC->GetPawn()==S.Bike.Get(),"E failed to remount at bank");Capture(TEXT("returned"));S.Stage=4;S.Clock=0;return;}
  auto* P=Cast<ABattleRider>(PC->GetPawn());
  if(S.Stage==1){if(!P)return;SWIM_CHECK(S.Bike.IsValid()&&S.Bike->bParked,"Lake did not park bike");S.Bank=S.Bike->GetActorLocation();S.Start=P->GetActorLocation();S.Stage=2;S.Clock=0;return;}
  SWIM_CHECK(P&&S.Bike.IsValid(),"Lost swimmer or parked bike");
@@ -62,12 +65,13 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   SWIM_CHECK(P->bSwimming&&S.SwimDistance>250,"Did not swim away from shore");SWIM_CHECK(!P->ToggleDrawWeapon()&&!P->Fire()&&!P->MountBike()&&!P->FirstPersonArms->IsVisible(),"Swimming allowed gun or remount");
   TInlineComponentArray<UPoseableMeshComponent*> Parts(P);for(auto* Part:Parts)if(Part->GetFName()==TEXT("DetailedM1911"))SWIM_CHECK(!Part->IsVisible(),"Pistol visible in water");
   SWIM_CHECK(S.MaxHand-S.MinHand>15,"Swimming arms did not stroke");
-  Key(EKeys::W,false);S.Stage=3;S.Clock=0;
+  Key(EKeys::W,true);S.Stage=3;S.Clock=0;
  }
  if(S.Stage==3){
-  const FVector Delta=S.Bank-P->GetActorLocation();PC->SetControlRotation(FRotator(0,Delta.Rotation().Yaw,0));Key(EKeys::W,true);
-  if(!P->bSwimming&&Delta.Size2D()<210){Key(EKeys::W,false);Capture(TEXT("returned"));if(!P->MountBike()){UE_LOG(LogTemp,Display,TEXT("SwimRemountDebug: distance=%.1f stun=%.1f crash=%d health=%.1f swimmer=%s"),FVector::Distance(S.Bank,P->GetActorLocation()),S.Bike->StunRemaining,S.Bike->bCrashActive,P->Health,*P->GetActorLocation().ToString());TArray<FOverlapResult> Hits;FCollisionQueryParams Q;Q.AddIgnoredActor(P);Q.AddIgnoredActor(S.Bike.Get());W->OverlapMultiByChannel(Hits,S.Bank,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q);for(const auto& Hit:Hits)UE_LOG(LogTemp,Display,TEXT("SwimRemountOverlap: %s blocking=%d"),*FString::Printf(TEXT("%s label=%s component=%s water=%d"),*GetNameSafe(Hit.GetActor()),Hit.GetActor()?*Hit.GetActor()->GetActorNameOrLabel():TEXT("none"),*GetNameSafe(Hit.GetComponent()),Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideWater"))),Hit.bBlockingHit);End(false,TEXT("Cannot remount at bank"));return;}End(true,TEXT("Real shoreline entry, swim away, return and fixed-bike remount pass"));}
+  const FVector Delta=S.Bank-P->GetActorLocation();PC->SetControlRotation(FRotator(0,Delta.Rotation().Yaw,0));
+  if(!P->bSwimming&&Delta.Size2D()<210){Key(EKeys::W,false);S.Stage=5;S.Clock=0;}
  }
+ if(S.Stage==5&&S.Clock>.2f){SWIM_CHECK(!PC->IsInputKeyDown(EKeys::W),"Forward release not processed");Key(EKeys::E,true);S.Stage=6;S.Clock=0;}
 #undef SWIM_CHECK
 #endif
 }

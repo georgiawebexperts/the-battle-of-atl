@@ -58,7 +58,13 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  // Resolve water after movement refreshes CurrentFloor. A bridge return must not
  // be judged using the underwater floor cached before teleporting to safety.
  if(CharacterOwner&&Recovery<=0&&IsMovingOnGround()){
-  bool Wet=false;for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wet=true;break;}
+  // Keep enough dry bank for the capsule to settle after remounting on a slope.
+  bool Wet=false;const FVector Here=CharacterOwner->GetActorLocation();
+  for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It&&!Wet;++It){
+   FVector Probe=Here;Probe.Z=It->GetActorLocation().Z+1;
+   Wet=It->ContainsBike(Probe);
+   for(int I=0;I<8&&!Wet;I++){const float A=I*PI/4;Wet=It->ContainsBike(Probe+FVector(FMath::Cos(A)*120,FMath::Sin(A)*120,0));}
+  }
   if(!Wet){LastDryLocation=CharacterOwner->GetActorLocation();bHasDryLocation=true;}
  }
  if(CharacterOwner&&Recovery<=0){const AActor* Floor=CurrentFloor.HitResult.GetActor();if(!Floor||!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wipeout(TEXT("Splash"),true);break;}}
