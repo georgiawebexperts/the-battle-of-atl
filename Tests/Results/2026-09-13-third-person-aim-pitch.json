@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 49.56,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-c419a9a5318246f5a0980127265cb5fe/aim-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-c419a9a5318246f5a0980127265cb5fe/aim-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-c419a9a5318246f5a0980127265cb5fe/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-c419a9a5318246f5a0980127265cb5fe/run.log",
+  "visual_review": "Up/down arms and visible pistol reviewed. Level frame caught landing transition; rerun with settle delay before accepting level pose. Grip/thumb fine contact and long-gun presentation remain pending."
+}

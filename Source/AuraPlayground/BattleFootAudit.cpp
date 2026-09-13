@@ -6,6 +6,7 @@
 #include "PiedmontPedestrian.h"
 #include "PiedmontTrafficDirector.h"
 #include "Camera/CameraComponent.h"
+#include "Camera/CameraActor.h"
 #include "GameFramework/HUD.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -22,6 +23,36 @@ void ABattleMacController::TickFootAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FootStage<0||GetWorld()->GetTimeSeconds()<5)return;
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* P=Cast<ABattleRider>(GetPawn());
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleAimPitchAudit"))){
+  static int Phase=0;static float Clock=0;static FVector Hands[3];Clock+=Dt;
+  auto Finish=[&](bool Passed){UE_LOG(LogTemp,Display,TEXT("BattleAimPitchAudit: {\"passed\":%s,\"vertical_hand_travel_cm\":%.2f}"),Passed?TEXT("true"):TEXT("false"),Hands[1].Z-Hands[2].Z);FootStage=-1;ConsoleCommand(TEXT("quit"));};
+  if(Phase==0){
+   auto* B=Cast<ABattleBike>(GetPawn());if(!B||!B->Dismount())return;P=Cast<ABattleRider>(GetPawn());
+   if(M->Enemies)M->Enemies->bFreezeSpawns=true;
+   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
+   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
+   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
+   P->SetActorLocation(P->GetActorLocation()+FVector(1200,0,80));
+   TInlineComponentArray<UMeshComponent*> ReviewMeshes(P);for(auto* Mesh:ReviewMeshes)Mesh->SetOnlyOwnerSee(false);
+   P->ToggleDrawWeapon();SetControlRotation(FRotator(0,0,0));Phase=1;Clock=-1.5f;return;
+  }
+  if(!P){Finish(false);return;}
+  if(Clock>.8f&&Clock<1.2f){
+   const float Pitch=Phase==1?0.f:Phase==2?35.f:-35.f;
+   const float Error=FMath::Abs(FMath::FindDeltaAngleDegrees(P->Weapon->GetComponentRotation().Pitch,Pitch));
+   if(Error>1.f){Finish(false);return;}
+   Hands[Phase-1]=P->Body->GetSocketLocation(TEXT("hand_r"))-P->GetActorLocation();
+   const FVector Focus=P->GetActorLocation()+FVector(0,0,40),Eye=Focus+FVector(190,-240,65);
+   if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(Camera);
+   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/FString::Printf(TEXT("aim-%d.png"),Phase),false,false);
+   Clock=1.2f;return;
+  }
+  if(Clock>1.5f){
+   if(Phase==3){Finish(Hands[1].Z-Hands[2].Z>25.f);return;}
+   Phase++;SetControlRotation(FRotator(Phase==2?35:-35,0,0));Clock=0;
+  }
+  return;
+ }
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMouseLookAudit"))){
   static int Phase=0;static float Clock=0;static FRotator Initial,InitialBody;static FVector Start;
   static bool OrbitPassed=false,WalkPassed=false;Clock+=Dt;
@@ -79,7 +110,7 @@ void ABattleMacController::TickFootAudit(float Dt){
  else if(FootStage==18&&FootClock>.15f){Key(EKeys::G,false);auto* Gun=Magazine();CHECKFOOT(!P->bWeaponDrawn&&P->ReloadRemaining==0&&P->Ammo==16&&P->ParkedBike->Inventory[0].Reserve==2,"Holster consumed rounds or kept reload active");CHECKFOOT(Gun&&!Gun->IsVisible()&&FMath::Abs(Gun->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::ComponentSpace).Z+1.6719f)<.1f,"Holster left magazine withdrawn or pistol visible");Key(EKeys::G,true);Advance(19);}
  else if(FootStage==19&&FootClock>.5f){Key(EKeys::G,false);CHECKFOOT(P->ParkedBike->GiveWeapon(1,6),"Switch fixture failed");Key(EKeys::R,true);Advance(20);}
  else if(FootStage==20&&FootClock>.55f){Key(EKeys::R,false);CHECKFOOT(P->ReloadRemaining>0,"Switch interruption never began reload");Key(EKeys::Two,true);Advance(21);}
- else if(FootStage==21&&FootClock>.4f){Key(EKeys::Two,false);CHECKFOOT(P->CurrentWeapon==1&&P->ReloadRemaining==0&&P->ParkedBike->Inventory[0].Magazine==9&&P->ParkedBike->Inventory[0].Reserve==2,"Weapon switch changed pistol rounds or kept reload active");CHECKFOOT(Magazine()&&!Magazine()->IsVisible(),"Pistol visible with shotgun");Key(EKeys::One,true);Advance(22);}
+ else if(FootStage==21&&FootClock>.4f){Key(EKeys::Two,false);CHECKFOOT(P->CurrentWeapon==1&&P->ReloadRemaining==0&&P->ParkedBike->Inventory[0].Magazine==16&&P->ParkedBike->Inventory[0].Reserve==2,"Weapon switch changed pistol rounds or kept reload active");CHECKFOOT(Magazine()&&!Magazine()->IsVisible(),"Pistol visible with shotgun");Key(EKeys::One,true);Advance(22);}
  else if(FootStage==22&&FootClock>.5f){Key(EKeys::One,false);CHECKFOOT(P->CurrentWeapon==0&&P->Ammo==16,"Return to pistol lost rounds");Key(EKeys::R,true);Advance(23);}
  else if(FootStage==23&&FootClock>.55f){Key(EKeys::R,false);CHECKFOOT(P->ReloadRemaining>0&&P->MountBike(),"Remount interruption failed");auto* Bike=Cast<ABattleBike>(GetPawn());CHECKFOOT(Bike&&Bike->Dismount(),"Cannot dismount after interrupted reload");Advance(24);}
  else if(FootStage==24&&FootClock>.2f){CHECKFOOT(!P->bWeaponDrawn&&P->Ammo==16&&P->ReloadRemaining==0&&P->ParkedBike->Inventory[0].Reserve==2,"Remount/dismount duplicated rounds or resumed reload");CHECKFOOT(Magazine()&&!Magazine()->IsVisible()&&FMath::Abs(Magazine()->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::ComponentSpace).Z+1.6719f)<.1f,"New rider pistol state is not reset");UE_LOG(LogTemp,Display,TEXT("DetailedReloadInterruptions: holster/switch/remount passed"));Advance(4);}

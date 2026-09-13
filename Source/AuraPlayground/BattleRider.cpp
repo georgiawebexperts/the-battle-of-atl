@@ -16,12 +16,33 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 namespace {
-void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight){
+void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,bool LongGun){
  auto* Mesh=Cast<USkeletalMesh>(Body->GetSkinnedAsset());if(!Mesh)return;
  const auto& Ref=Mesh->GetRefSkeleton();TArray<FTransform> Pose=Body->BoneSpaceTransforms;
  for(int I=0;I<Pose.Num();I++)if(Ref.GetParentIndex(I)>=0)Pose[I]=Pose[I]*Pose[Ref.GetParentIndex(I)];
  auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Ref.GetParentIndex(I);}return false;};
  auto Rotate=[&](int Root,FQuat Rotation){if(Root<0)return;Rotation=FQuat::Slerp(FQuat::Identity,Rotation,Weight);const FVector Pivot=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Pivot+Rotation.RotateVector(Pose[I].GetLocation()-Pivot));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
+ // Solve both arms from the current locomotion pose, preserving segment lengths.
+ const FVector Right=FVector::CrossProduct(FVector::UpVector,Forward).GetSafeNormal();
+ auto Solve=[&](const TCHAR* Side,FVector Target){
+  const int U=Ref.FindBoneIndex(*FString::Printf(TEXT("upperarm_%s"),Side)),L=Ref.FindBoneIndex(*FString::Printf(TEXT("lowerarm_%s"),Side)),H=Ref.FindBoneIndex(*FString::Printf(TEXT("hand_%s"),Side));
+  if(U<0||L<0||H<0)return;
+  const FVector Origin=Pose[U].GetLocation();Target=FMath::Lerp(Pose[H].GetLocation(),Target,Weight);
+  const float A=FVector::Dist(Origin,Pose[L].GetLocation()),B=FVector::Dist(Pose[L].GetLocation(),Pose[H].GetLocation());
+  const FVector D=(Target-Origin).GetSafeNormal();const float Distance=FMath::Clamp(FVector::Dist(Origin,Target),FMath::Abs(A-B)+.1f,A+B-.1f);
+  const float Along=(A*A-B*B+Distance*Distance)/(2*Distance),Height=FMath::Sqrt(FMath::Max(0.f,A*A-Along*Along));
+  const FVector Bend=Right*(FCString::Strcmp(Side,TEXT("r"))==0?1.f:-1.f)-FVector::UpVector;
+  const FVector Elbow=Origin+D*Along+FVector::VectorPlaneProject(Bend,D).GetSafeNormal()*Height;
+  // Targets are already blended; solve with full rotations to avoid double blending.
+  const float Saved=Weight;Weight=1;
+  Rotate(U,FQuat::FindBetweenVectors(Pose[L].GetLocation()-Origin,Elbow-Origin));
+  Rotate(L,FQuat::FindBetweenVectors(Pose[H].GetLocation()-Pose[L].GetLocation(),Origin+D*Distance-Pose[L].GetLocation()));Weight=Saved;
+ };
+ const int Shoulder=Ref.FindBoneIndex(TEXT("upperarm_r"));
+ if(Shoulder>=0){
+  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*43.f-FVector::UpVector*8.f;
+  Solve(TEXT("r"),GripTarget);Solve(TEXT("l"),GripTarget+Forward*(LongGun?23.f:3.f)-Right*9.f-FVector::UpVector*2.f);
+ }
  const int Hand=Ref.FindBoneIndex(TEXT("hand_r")),Middle=Ref.FindBoneIndex(TEXT("middle_01_r")),Index=Ref.FindBoneIndex(TEXT("index_01_r")),Pinky=Ref.FindBoneIndex(TEXT("pinky_01_r"));
  if(Hand<0||Middle<0||Index<0||Pinky<0)return;
  Rotate(Hand,FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[Hand].GetLocation(),Forward));
@@ -96,14 +117,16 @@ void ABattleRider::Tick(float Dt){
  UpdateMelee(Dt);UpdateWeaponModel();UpdateDetailedPistol();PoseArms(Dt);
  FirstPersonArms->SetHiddenInGame(true,true);
  // The camera follows Ellison; weapons stay with his body rather than the lens.
+ const FRotator AimRotation=GetController()?GetControlRotation():GetActorRotation();
+ const FVector AimForward=AimRotation.Vector();
  const FName Hand=bDetailedPlayerRig?FName(TEXT("hand_r")):FName(TEXT("Hand_R"));
- if(bDetailedPlayerRig&&bWeaponDrawn)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(GetActorForwardVector()),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f));
+ if(bDetailedPlayerRig&&bWeaponDrawn&&CurrentWeapon!=3&&!bSwimming)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(AimForward),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f),CurrentWeapon!=0);
  const FVector Grip=Body->GetSocketLocation(Hand);
- Weapon->SetWorldRotation(GetActorRotation()+GunRestRotation);
+ Weapon->SetWorldRotation((bWeaponDrawn?AimRotation:GetActorRotation())+GunRestRotation);
  FVector WeaponOrigin=Grip;
  if(CurrentWeapon==0&&DetailedPistol){
   auto* Mesh=Cast<USkeletalMesh>(DetailedPistol->GetSkinnedAsset());
-  if(Mesh)WeaponOrigin=Grip+GetActorForwardVector()*12-DetailedPistol->GetComponentTransform().TransformVector(Mesh->GetBounds().Origin);
+  if(Mesh)WeaponOrigin=Grip+AimForward*12-DetailedPistol->GetComponentTransform().TransformVector(Mesh->GetBounds().Origin);
  }
  Weapon->SetWorldLocation(WeaponOrigin);
  if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;

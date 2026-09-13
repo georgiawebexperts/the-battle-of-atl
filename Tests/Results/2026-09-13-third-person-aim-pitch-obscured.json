@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 50.22,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-9f1cb4399b14486eb43c72adf89dfab3/aim-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-9f1cb4399b14486eb43c72adf89dfab3/aim-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-9f1cb4399b14486eb43c72adf89dfab3/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-9f1cb4399b14486eb43c72adf89dfab3/run.log",
+  "visual_review": false
+}

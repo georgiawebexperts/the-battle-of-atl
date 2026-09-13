@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "reason": "Weapon switch changed pistol rounds or kept reload active",
+  "walk_speed": 0.0,
+  "run_speed": 0.0,
+  "arm_swing_cm": 0.0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-audit-062ca2aeb8bc4398be00a0336f9046f1/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "exit_code": 0,
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": false,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "detailed_pistol_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [],
+  "landing_run_requested": false,
+  "landing_matches_request": false,
+  "pose_transitions": [],
+  "pose_transitions_completed": false,
+  "reload_interruptions_passed": false
+}
