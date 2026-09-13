@@ -1,0 +1,30 @@
+{
+  "hands_bones": 150,
+  "sleeves_bones": 171,
+  "shared_bones": 150,
+  "max_shared_position_difference_cm": 0.0010000000000047748,
+  "sleeve_only_bones": [
+    "animation_root",
+    "center_of_mass",
+    "focus",
+    "foot_prediction_l",
+    "foot_prediction_r",
+    "ik_foot_l",
+    "ik_foot_l_ball",
+    "ik_foot_r",
+    "ik_foot_r_ball",
+    "ik_foot_root",
+    "ik_hand_gun",
+    "ik_hand_l",
+    "ik_hand_l_pivot",
+    "ik_hand_l_wrld",
+    "ik_hand_r",
+    "ik_hand_r_pivot",
+    "ik_hand_r_wrld",
+    "ik_hand_root",
+    "interaction",
+    "weapon_l",
+    "weapon_r"
+  ],
+  "scope": "Read-only source FBX bind positions/influences; does not prove runtime deformation correctness. Sleeve thumb_01_l has311 influenced control points; imported follower helper bones missing from hands have no reported nonzero influences."
+}

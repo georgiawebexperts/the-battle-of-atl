@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "phase": 0,
+  "reason": "Initial ownership incorrect",
+  "crates": 20,
+  "desired": 20,
+  "kills": 0,
+  "deaths": 0,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": true,
+  "sleeves_hidden_diagnostic": false,
+  "full_shaders": true,
+  "detailed_rider": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-fd56b4fc8b2644b2ba7bd6697e5c9ae2/run.log",
+  "images": [],
+  "shotgun_materials": [],
+  "shotgun_shaders_ready": false
+}

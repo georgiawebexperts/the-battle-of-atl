@@ -65,6 +65,9 @@ void ABattleRider::InitializeDetailedArmsPreview(){
  auto* Part=NewObject<USkeletalMeshComponent>(this,TEXT("DetailedFirstPersonSleeves"));AddInstanceComponent(Part);Part->SetupAttachment(FirstPersonArms);
  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Sleeves);Part->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck")));Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);
  Part->SetOnlyOwnerSee(true);Part->SetCastShadow(false);Part->SetBoundsScale(10);Part->SetLeaderPoseComponent(FirstPersonArms,true,false);Part->RegisterComponent();
+#if !UE_BUILD_SHIPPING
+ Part->SetHiddenInGame(FParse::Param(FCommandLine::Get(),TEXT("BattleHideSleeves")));
+#endif
  UE_LOG(LogTemp,Display,TEXT("DetailedArmsPreview: hands=%s sleeves=%s"),*Hands->GetName(),*Sleeves->GetName());
 }
 

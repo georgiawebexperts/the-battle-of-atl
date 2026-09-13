@@ -1,0 +1,16 @@
+{
+  "assets": [
+    {
+      "asset": "/Game/BattleForTheA/Rider/Detailed/SK_DetailedSleeves",
+      "source": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Rider/DetailedArms/crewneck_cuffs.fbx",
+      "materials": [
+        {
+          "slot": "M_Crewneck",
+          "asset": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck.MI_m_nrw_crewneck"
+        }
+      ],
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base.SK_Base"
+    }
+  ],
+  "scope": "Rejected trial import; original SK_DetailedSleeves restored from pre-trial backup. Final fix is procedural wrist/reach, not an asset replacement."
+}
