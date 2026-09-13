@@ -7,7 +7,7 @@ mode='escape' if a.escape else 'review' if a.review else 'skip' if a.skip else '
 bundle=root/'Saved/StagedBuilds/Mac/AuraPlayground.app';app=bundle/'Contents/MacOS/AuraPlayground'
 bid=plistlib.loads((bundle/'Contents/Info.plist').read_bytes())['CFBundleIdentifier']
 capture=Path.home()/'Library/Containers'/bid/'Data/Documents/BattleOpeningReview'/uuid.uuid4().hex;capture.mkdir(parents=True)
-out=root/'work'/f'build042-opening-{mode}';out.mkdir(exist_ok=True)
+out=root/'work'/f'opening-{mode}-{uuid.uuid4().hex}';out.mkdir()
 flags=['-RenderOffscreen','-windowed','-ResX=1280','-ResY=720','-ForceRes','-BattleOpeningReview',f'-BattleHUDReviewDir={capture}'] if a.review else ['-nullrhi','-BattleOpeningAudit']
 if a.detailed_rider:
  assert a.editor and a.review
@@ -20,11 +20,11 @@ if a.escape:flags+=['-BattleOpeningEscape']
 entry=['/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd',str(root/'AuraPlayground.uproject'),'-game','-RCWebControlDisable'] if a.editor else [str(app)]
 with (out/'run.log').open('w') as log:
  r=subprocess.run(entry+['/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1',*flags,'-unattended','-nosound','-ExecCmds=r.ScreenshotDelegate 0,t.IdleWhenNotForeground 0','-stdout'],stdout=log,stderr=subprocess.STDOUT,timeout=70)
-m=re.findall(r'BattleOpeningAudit: (\{[^\n]+\})',(out/'run.log').read_text());d=json.loads(m[-1]) if m else {'passed':False,'missing_report':True};d['exit_code']=r.returncode;d['passed']=bool(d.get('passed') and r.returncode==0)
+m=re.findall(r'BattleOpeningAudit: (\{[^\n]+\})',(out/'run.log').read_text());d=json.loads(m[-1]) if m else {'passed':False,'missing_report':True};d['log']=str(out/'run.log');d['app']=entry[0];d['exit_code']=r.returncode;d['passed']=bool(d.get('passed') and r.returncode==0)
 if a.review and d['passed']:
  d['images']=[]
  for i in range(3):
-  dest=out/f'opening{i}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
+  dest=out/f'opening{i}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.resolve()))
  d['visual_review']='pending'
 d['editor']=a.editor;d['grip_closeup']=a.grip;d['detailed_rider_preview']='DetailedRiderPreview: body=m_tal_nrw_body outfit_parts=4' in (out/'run.log').read_text()
 if d['detailed_rider_preview']:

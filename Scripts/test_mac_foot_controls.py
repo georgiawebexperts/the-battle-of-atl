@@ -4,7 +4,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1];p=argparse.ArgumentParser();p.add_argument('--review',action='store_true');p.add_argument('--editor',action='store_true');p.add_argument('--detailed-rider',action='store_true');p.add_argument('--legacy-rider',action='store_true');p.add_argument('--report');p.add_argument('--body',action='store_true');p.add_argument('--landing-run',action='store_true');p.add_argument('--interruptions',action='store_true');a=p.parse_args();mode='review' if a.review else 'audit'
 bundle=root/'Saved/StagedBuilds/Mac/AuraPlayground.app';app=bundle/'Contents/MacOS/AuraPlayground';bid=plistlib.loads((bundle/'Contents/Info.plist').read_bytes())['CFBundleIdentifier']
 capture=Path.home()/'Library/Containers'/bid/'Data/Documents/BattleFootReview'/uuid.uuid4().hex;capture.mkdir(parents=True)
-out=root/'work'/f'build042-foot-{mode}';out.mkdir(exist_ok=True)
+out=root/'work'/f'foot-{mode}-{uuid.uuid4().hex}';out.mkdir()
 flags=['-RenderOffscreen','-windowed','-ResX=1280','-ResY=720','-ForceRes','-BattleFootReview',f'-BattleHUDReviewDir={capture}'] if a.review else ['-nullrhi']
 if a.legacy_rider:flags += ['-BattleLegacyRider']
 assert not (a.legacy_rider and a.detailed_rider)
@@ -23,11 +23,11 @@ if a.interruptions:
 entry=['/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd',str(root/'AuraPlayground.uproject'),'-game','-RCWebControlDisable'] if a.editor else [str(app)]
 with (out/'run.log').open('w') as log:
  r=subprocess.run([*entry,'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1',*flags,'-BattleFootAudit','-BattleSkipTutorial','-unattended','-nosound','-ExecCmds=r.ScreenshotDelegate 0,t.IdleWhenNotForeground 0','-stdout'],stdout=log,stderr=subprocess.STDOUT,timeout=90)
-m=re.findall(r'BattleFootAudit: (\{[^\n]+\})',(out/'run.log').read_text());d=json.loads(m[-1]) if m else {'passed':False,'missing_report':True};d['exit_code']=r.returncode;d['passed']=bool(d.get('passed') and r.returncode==0)
+m=re.findall(r'BattleFootAudit: (\{[^\n]+\})',(out/'run.log').read_text());d=json.loads(m[-1]) if m else {'passed':False,'missing_report':True};d['log']=str(out/'run.log');d['app']=entry[0];d['exit_code']=r.returncode;d['passed']=bool(d.get('passed') and r.returncode==0)
 if a.review and d['passed']:
  d['images']=[]
  for name in ['idle','drawn','aimed','reload','walk-a','walk-b','run','jump','land-contact','land-settle','crouch']:
-  dest=out/f'{name}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
+  dest=out/f'{name}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.resolve()))
  d['visual_review']='pending'
 d['editor']=a.editor;d['detailed_rider_preview']='DetailedFootPreview: body=m_tal_nrw_body' in (out/'run.log').read_text();d['full_body_review']=a.body
 if d['detailed_rider_preview']:
