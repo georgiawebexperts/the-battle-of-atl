@@ -1,0 +1,38 @@
+{
+  "build": 71,
+  "version": "0.71.0",
+  "source_commit": "81e317aba54cf6740554d5164837dbb1a1ca84da",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 071/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 070/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "3fbf7331a6918c6847a1b75561938ea8ea47c4b5b7215cb6994213699b8cfd5b",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 071.zip",
+  "zip_sha256": "ac06b36340debde34c0a812b4a3cc9f03605dc0e131d2d0f79c1fd84da1dad16",
+  "zip_bytes": 1323318333,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged side and player-camera stroke/treading views inspected",
+    "Packaged swim, release-to-stop, fixed bank bike, return and E remount",
+    "Packaged deeper-water entry, clear walking bank exit and return to bike",
+    "ZIP CRC, signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac",
+    "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress"
+  ],
+  "reports": [
+    "2026-09-13-build071-release-side.json",
+    "2026-09-13-build071-release-view.json",
+    "2026-09-13-build071-release-deep.json"
+  ]
+}
