@@ -104,10 +104,25 @@ void ABattleRider::InitializeDetailedBodyPreview(){
 void ABattleRider::AnimateBody(float Dt){
  if(bDetailedPlayerRig){
   const bool Falling=GetCharacterMovement()->IsFalling()&&!bSwimming;
+  if(Falling!=bDetailedFalling){
+   DetailedTransitionPose=Body->BoneSpaceTransforms;DetailedTransitionClock=0;
+   UE_LOG(LogTemp,Display,TEXT("DetailedFootTransition: begin=%s bones=%d"),Falling?TEXT("airborne"):TEXT("landing"),DetailedTransitionPose.Num());
+  }
   if(Falling&&!bDetailedFalling)SetBodySequence(DetailedFall,true);
   else if(!Falling&&bDetailedFalling)StopBodySequence();
   bDetailedFalling=Falling;
   SetLocomotionClips(bIsCrouched?DetailedCrouchIdle:DetailedIdle,bIsCrouched?DetailedCrouchWalk:DetailedWalk,bIsCrouched?DetailedCrouchWalk:DetailedRun);
  }
  APiedmontExplorer::AnimateBody(Dt);
+ if(bDetailedPlayerRig&&DetailedTransitionClock<.18f&&DetailedTransitionPose.Num()==Body->BoneSpaceTransforms.Num()){
+  DetailedTransitionClock=FMath::Min(.18f,DetailedTransitionClock+Dt);
+  const float T=DetailedTransitionClock/.18f,Weight=T*T*(3.f-2.f*T);
+  // Blend local rotations and translations, preserving bone lengths; world jump
+  // displacement remains entirely on the CharacterMovement capsule.
+  for(int I=0;I<DetailedTransitionPose.Num();I++){
+   FTransform Blended;Blended.Blend(DetailedTransitionPose[I],Body->BoneSpaceTransforms[I],Weight);Body->BoneSpaceTransforms[I]=Blended;
+  }
+  Body->MarkRefreshTransformDirty();
+  if(DetailedTransitionClock>=.18f)UE_LOG(LogTemp,Display,TEXT("DetailedFootTransition: complete=%s"),bDetailedFalling?TEXT("airborne"):TEXT("landing"));
+ }
 }

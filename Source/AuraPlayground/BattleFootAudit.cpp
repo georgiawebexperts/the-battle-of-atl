@@ -50,6 +50,7 @@ void ABattleMacController::TickFootAudit(float Dt){
  UE_LOG(LogTemp,Display,TEXT("DetailedFootJump: hip_offset=%s"),*(Hip-P->GetActorLocation()).ToString());
  CHECKFOOT(FVector::Dist(Hip,P->GetActorLocation())<130,"Jump animation displaced body outside player capsule");
  }Capture(TEXT("jump"));Key(EKeys::SpaceBar,false);Key(EKeys::W,false);Key(EKeys::LeftShift,false);Advance(7);}
+ else if(FootStage==7&&FootClock<=1.2f){if(P->GetCharacterMovement()->IsMovingOnGround()){if(FootCaptures==2){Capture(TEXT("land-contact"));FootCaptures++;}else if(FootCaptures==3&&FootClock>.8f){Capture(TEXT("land-settle"));FootCaptures++;}}}
  else if(FootStage==7&&FootClock>1.2f){CHECKFOOT(P->GetCharacterMovement()->IsMovingOnGround(),"Jump did not land");Key(EKeys::C,true);Advance(8);}
  else if(FootStage==8&&FootClock>.4f){Key(EKeys::C,false);CHECKFOOT(P->bIsCrouched&&P->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()<60&&P->Camera->GetRelativeLocation().Z<50,"Crouch did not lower capsule and camera");Capture(TEXT("crouch"));Key(EKeys::LeftShift,true);Key(EKeys::W,true);Advance(9);}
  else if(FootStage==9&&FootClock>.6f){CHECKFOOT(P->GetVelocity().Size2D()<260,"Sprint bypassed crouch speed");Key(EKeys::W,false);Key(EKeys::LeftShift,false);P->GetCharacterMovement()->StopMovementImmediately();

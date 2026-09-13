@@ -69,6 +69,8 @@ private:
  void InitializeDetailedBodyPreview();
  virtual void AnimateBody(float Dt) override;
  bool bDetailedBodyReview=false,bDetailedFalling=false;
+ TArray<FTransform> DetailedTransitionPose;
+ float DetailedTransitionClock=.18f;
  UPROPERTY() TObjectPtr<UAnimSequence> DetailedIdle;
  UPROPERTY() TObjectPtr<UAnimSequence> DetailedWalk;
  UPROPERTY() TObjectPtr<UAnimSequence> DetailedRun;
