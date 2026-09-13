@@ -1,9 +1,9 @@
 {
-  "build": 63,
-  "version": "0.63.0",
+  "build": 64,
+  "version": "0.64.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; improved third-person aim and grounded entrance gate",
+  "status": "Early playtest; moving pedals, aligned shoes and improved jump/landing pose",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -15,7 +15,8 @@
     "Packaged Easy/Hard finish guards pass; installed cardinal phone hunt, recollection, two death resets, health and two ordered checkpoints pass. Existing market, traffic, story and other gameplay retained.",
     "Build061: readable police warning/countdown, original yellow/black taser, blended raised grip, muzzle-origin discharge with near-cover guard; prioritized 12 ammo pickups. Packaged police/ammo/wall tests pass. Voice and final animation/art remain unfinished.",
     "Build062: spatial AI-generated Stop! APD! voice during two-second taser warning; six-second voice cooldown and death/run-end stop. Packaged actual audio playback and encounter checks pass. Listening/mix acceptance pending.",
-    "Build063: both firearm arms use length-preserving aiming solve; weapon follows control pitch. Packaged pistol level/up/down views verified; inventory and native movement regressions pass. Gate uprights fitted to pavement with lower rails."
+    "Build063: both firearm arms use length-preserving aiming solve; weapon follows control pitch. Packaged pistol level/up/down views verified; inventory and native movement regressions pass. Gate uprights fitted to pavement with lower rails.",
+    "Build064: opposing animated pedals/cranks, sole-height-corrected foot targets and synchronous rider bones. Flight pedalling pauses; gentler pitch, saddle lift and landing absorption. Packaged hill/contact/reward checks pass; broader motion and world polish remains."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -61,39 +62,37 @@
     "2026-09-13 player feedback: faster400/700 foot speeds; gentler eased bike yaw with no automatic steering drift; distant forward drone warning, persistence on foot and hit feedback. Native foot, both handling modes and protected-tutorial-skipped drone collision fixture pass. Mouse-turn issue, actual distant drone shooting, natural feel/visual review and package remain unaccepted. Installed058 unchanged.",
     "2026-09-13: Found double-attenuated on-foot mouse input (0.07 processed axis then pawn scaling). Reads raw mouse delta now; injected native input improves yaw3.39 to53.98deg with body/camera aligned. Build/probe pass. OS capture, sensitivity feel, swimming regression and package pending.",
     "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending.",
-    "2026-09-13 [codex-maclaptop] Gate scenery repair: native survey found fixed-height 14th Street iron uprights floating up to16.97cm above pavement. Compiled constructor now uses per-post surveyed bases4cm into pavement, lower rail and strengthened end posts/base plates. Reproducible survey generates BattleGateSupport.h. Native check verifies all16 actual post bases against adjacent pavement; editor rendered police scene inspected and encounter regression passes. Source-only: desktop/share remain062; include in next grouped scenery build. Whole entrance accuracy, world art and movement/animation acceptance remain unfinished."
-  ],
-  "unreleased_code_changes": [
+    "2026-09-13 [codex-maclaptop] Gate scenery repair: native survey found fixed-height 14th Street iron uprights floating up to16.97cm above pavement. Compiled constructor now uses per-post surveyed bases4cm into pavement, lower rail and strengthened end posts/base plates. Reproducible survey generates BattleGateSupport.h. Native check verifies all16 actual post bases against adjacent pavement; editor rendered police scene inspected and encounter regression passes. Source-only: desktop/share remain062; include in next grouped scenery build. Whole entrance accuracy, world art and movement/animation acceptance remain unfinished.",
     "2026-09-13 [codex-maclaptop] Airborne rider development: bike visual flight pitch reduced to40percent trajectory angle, capped18deg; smoothed9cm saddle lift/forward5cm and extra8deg torso lean; touchdown compression8cm over.33s. Existing IK keeps both wrists on grips (native side-review0.000cm error both), feet retain pedal targets. Cadence advances only grounded, stopping midair pedalling. Arcade downhill rendered native jump/reward/guards and realistic uphill regression pass. Air/landing side frames inspected; continuous motion/shoe contact not accepted. Source-only, desktop063 unchanged. Constructor inspection confirms bike has no visible crank arms/pedals despite leg pedalling targets; prioritize actual pedal/crank geometry and sole contact next, then package combined improvement. Whole game remains unfinished."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
-  "compiled_source": "7b0cf4a7ef2b462343ddec3602c64688964c7d68",
-  "installation_report": "Tests/Results/2026-09-13-build063-install.json",
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
+  "compiled_source": "910603ff050e29545f35fb3a88dcbbf8b1c28a39",
+  "installation_report": "Tests/Results/2026-09-13-build064-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 63,
-    "version": "0.63.0",
-    "source_commit": "7b0cf4a7ef2b462343ddec3602c64688964c7d68",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
+    "build": 64,
+    "version": "0.64.0",
+    "source_commit": "910603ff050e29545f35fb3a88dcbbf8b1c28a39",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "4af37c0c790b7ed7d632814c7262d48eb3f029981382f6c72d24d52ae01dc729",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063.zip",
-    "zip_sha256": "805c7da029ba2633037578017b3ebe1fc88604bb71b14326c3519d9b8a4703aa",
-    "zip_bytes": 1316132357,
+    "machine_code_sha256": "4eb6a4d282765a5ea6069d282c86e7a84064591acafdeca063bdd147c27d6bf4",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064.zip",
+    "zip_sha256": "177ebbec29a0eeff5a2c0c6b5c728a539bade1a72037dd9093e9799f6949659c",
+    "zip_bytes": 1316135883,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged rendered pistol aim at0/+35/-35 degrees; gun error within1degree, hands travel49.6cm; side views inspected",
-      "Packaged pickups/combat/death persistence/rifle zoom/shotgun reload interruptions",
-      "Native holster/draw/reload interruption/walk/sprint/jump/crouch/remount regression",
-      "Native16 gate supports meet pavement; gate render inspected",
-      "ZIP CRC, signature and staged/installed machine code match"
+      "Packaged rendered downhill jump with pedal/forefoot reference contact and wrist grip checks",
+      "Packaged realistic uphill jump/reward/guards",
+      "Packaged wall reverse recovery in both modes",
+      "ZIP CRC, local signature and staged/installed code match"
     ],
     "remaining": [
       "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",

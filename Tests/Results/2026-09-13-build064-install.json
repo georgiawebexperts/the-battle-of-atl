@@ -1,0 +1,30 @@
+{
+  "build": 64,
+  "version": "0.64.0",
+  "source_commit": "910603ff050e29545f35fb3a88dcbbf8b1c28a39",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "4eb6a4d282765a5ea6069d282c86e7a84064591acafdeca063bdd147c27d6bf4",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 064.zip",
+  "zip_sha256": "177ebbec29a0eeff5a2c0c6b5c728a539bade1a72037dd9093e9799f6949659c",
+  "zip_bytes": 1316135883,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged rendered downhill jump with pedal/forefoot reference contact and wrist grip checks",
+    "Packaged realistic uphill jump/reward/guards",
+    "Packaged wall reverse recovery in both modes",
+    "ZIP CRC, local signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac"
+  ]
+}
