@@ -75,14 +75,18 @@ void ABattleLabHUD::DrawHUD(){
  FString Prompt=TEXT("E  GET OFF THE BIKE");
  FString Help=TEXT("W/UP pedal   S/DOWN brake   J jump");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
- if(Person&&Person->bSwimming){Prompt=TEXT("SWIM BACK TO SHORE");Help=TEXT("WASD / arrows swim   E mounts once ashore");}
+ if(Person&&Person->bSwimming){Prompt=TEXT("EXPLORE THE LAKE");Help=TEXT("WASD / arrows swim   E remount by bike");}
  if(Owner->bCrashActive){Prompt=GettingUp?TEXT("GETTING BACK UP"):TEXT("KNOCKED OFF YOUR BIKE");Help=TEXT("Recovery is automatic — clock keeps running");}
  if(Owner->StunRemaining>0){Prompt=Owner->StunLabel;Help=FString::Printf(TEXT("Control returns in %.1fs — clock keeps running"),Owner->StunRemaining);}
- Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
- Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
+ if(Person&&Person->bSwimming&&Owner->StunRemaining<=0){
+  Panel(W*.5f-300*S,H-M-50*S,600*S,50*S);Center(Help,H-M-38*S,21,Muted);
+ }else{
+  Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
+  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
+ }
  if(Bike){Panel(M,Bottom-58*S,310*S,50*S);Text(FString::Printf(TEXT("PISTOL  %d / %d"),Bike->PistolAmmo,Bike->Inventory[0].Reserve),M+20*S,Bottom-48*S,27,Peach);}
  const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;
- if(!Owner->bCrashActive){
+ if(!Owner->bCrashActive&&!(Person&&Person->bSwimming)){
  if(auto* PC=GetOwningPlayerController()){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){

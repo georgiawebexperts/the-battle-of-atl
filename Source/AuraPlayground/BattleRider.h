@@ -84,6 +84,6 @@ private:
  UPROPERTY() TObjectPtr<UAnimSequence> DetailedLandStand;
  UPROPERTY() TObjectPtr<UAnimSequence> DetailedLandRun;
  TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;
- float SwayTime=0;
+ float SwayTime=0,SwimViewPhase=0;
  float AimBlend=0,ArmPoseBlend=0,EmptyArmMotion=0;
 };

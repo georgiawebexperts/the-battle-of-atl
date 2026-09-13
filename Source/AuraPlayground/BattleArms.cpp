@@ -1,12 +1,13 @@
 #include "BattleRider.h"
 #include "BattleDetailedRider.h"
 #include "BattleInventory.h"
+#include "BattleBike.h"
 #include "Camera/CameraComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 void ABattleRider::PoseArms(float Dt){
- FirstPersonArms->SetVisibility(Health>0&&!bSwimming&&!bDetailedBodyReview,true);
- ArmPoseBlend=FMath::FInterpTo(ArmPoseBlend,(bWeaponDrawn||MeleeRemaining>0)?1.f:0.f,Dt,12);if(ArmRest.IsEmpty())return;TArray<FTransform> Pose=ArmRest;
+ FirstPersonArms->SetVisibility(Health>0&&!bDetailedBodyReview,true);
+ ArmPoseBlend=FMath::FInterpTo(ArmPoseBlend,(!bSwimming&&(bWeaponDrawn||MeleeRemaining>0))?1.f:0.f,Dt,12);if(ArmRest.IsEmpty())return;TArray<FTransform> Pose=ArmRest;
  const bool Detailed=ArmNames.Contains(TEXT("pelvis"));
  auto Index=[&](FName Name){return ArmNames.IndexOfByKey(BattleDetailedBone(Name,Detailed));};
  auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=ArmParents[I];}return false;};
@@ -18,13 +19,21 @@ void ABattleRider::PoseArms(float Dt){
   const float Along=(A*A-B*B+Distance*Distance)/(2*Distance),Height=FMath::Sqrt(FMath::Max(0.f,A*A-Along*Along));const FVector Bend(Suffix[0]=='R'?-1:1,0,-1);
   const FVector Joint=Origin+Direction*Along+(Bend-Direction*FVector::DotProduct(Bend,Direction)).GetSafeNormal()*Height;
   Move(U,Origin,FQuat::FindBetweenVectors(Pose[L].GetLocation()-Origin,Joint-Origin));Move(L,Joint,FQuat::FindBetweenVectors(Pose[H].GetLocation()-Pose[L].GetLocation(),Target-Joint));
-  const int Middle=Index(*FString::Printf(TEXT("Middle2_%s"),Suffix));const FVector FingerDirection=FMath::Lerp(FVector(0,.65f,-.76f).GetSafeNormal(),FVector(0,1,0),ArmPoseBlend).GetSafeNormal();
+  const int Middle=Index(*FString::Printf(TEXT("Middle2_%s"),Suffix));const FVector FingerDirection=bSwimming?FVector(0,1,-.15f).GetSafeNormal():FMath::Lerp(FVector(0,.65f,-.76f).GetSafeNormal(),FVector(0,1,0),ArmPoseBlend).GetSafeNormal();
   if(Middle>=0){const FQuat Align=FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[H].GetLocation(),FingerDirection);Move(H,Pose[H].GetLocation(),Align);}
-  Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,FMath::DegreesToRadians(Suffix[0]=='R'?-90.f:90.f)));
+  if(bSwimming){
+   const int IndexKnuckle=Index(*FString::Printf(TEXT("Index2_%s"),Suffix)),PinkyKnuckle=Index(*FString::Printf(TEXT("Pinky2_%s"),Suffix));
+   if(IndexKnuckle>=0&&PinkyKnuckle>=0){
+    const FVector Across=FVector::VectorPlaneProject(Pose[PinkyKnuckle].GetLocation()-Pose[IndexKnuckle].GetLocation(),FingerDirection).GetSafeNormal();
+    const FVector Desired(Suffix[0]=='R'?-1.f:1.f,0,0);
+    const float Twist=FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Desired),FingerDirection),FVector::DotProduct(Across,Desired));
+    Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,Twist));
+   }
+  }else Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,FMath::DegreesToRadians(Suffix[0]=='R'?-90.f:90.f)));
   // Preserve hand proportions by default; the view rig allows per-weapon fitting.
   for(int I=H;I<Pose.Num();I++)if(Child(I,H)){Pose[I].SetLocation(Pose[H].GetLocation()+(Pose[I].GetLocation()-Pose[H].GetLocation())*HandScale);Pose[I].SetScale3D(Pose[I].GetScale3D()*HandScale);}
   for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")})for(int JointNumber=2;JointNumber<=4;JointNumber++){
-   const int F=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,JointNumber,Suffix));if(F<0)continue;float Curl=FMath::Lerp(JointNumber==2?18.f:32.f,JointNumber==2?35.f:65.f,ArmPoseBlend);if(FCString::Strcmp(Finger,TEXT("Index"))==0&&Suffix[0]=='R')Curl*=.5f;Move(F,Pose[F].GetLocation(),FQuat(Suffix[0]=='R'?FVector::UpVector:-FVector::UpVector,FMath::DegreesToRadians(-Curl)));
+   const int F=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,JointNumber,Suffix));if(F<0)continue;float Curl=bSwimming?8.f:FMath::Lerp(JointNumber==2?18.f:32.f,JointNumber==2?35.f:65.f,ArmPoseBlend);if(FCString::Strcmp(Finger,TEXT("Index"))==0&&Suffix[0]=='R')Curl*=.5f;Move(F,Pose[F].GetLocation(),FQuat(Suffix[0]=='R'?FVector::UpVector:-FVector::UpVector,FMath::DegreesToRadians(-Curl)));
   }
   if(Detailed&&CurrentWeapon==0&&MeleeRemaining<=0){
    const int Thumb=Index(*FString::Printf(TEXT("Thumb2_%s"),Suffix));
@@ -56,6 +65,13 @@ void ABattleRider::PoseArms(float Dt){
  const FVector FreeRight(38+Swing*16*EmptyArmMotion,25,-30+(8+7*Lift)*EmptyArmMotion);
  const FVector FreeLeft(38-Swing*16*EmptyArmMotion,-25,-30+(8+7*Lift)*EmptyArmMotion);
  Right=FMath::Lerp(FreeRight,Right,ArmPoseBlend);Left=FMath::Lerp(FreeLeft,Left,ArmPoseBlend);
+ if(bSwimming){
+  const float Effort=FMath::Clamp(GetVelocity().Size2D()/200.f,0.f,1.f);
+  const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
+  if(!Stunned)SwimViewPhase+=Dt*FMath::Lerp(1.5f,3.8f,Effort);
+  auto Stroke=[&](float Side){const float Phase=SwimViewPhase+(Side<0?PI:0);return FVector(38+FMath::Cos(Phase)*FMath::Lerp(5.f,20.f,Effort),Side*(22+FMath::Sin(Phase)*FMath::Lerp(5.f,11.f,Effort)),-18+FMath::Sin(Phase)*FMath::Lerp(3.f,9.f,Effort));};
+  Right=Stroke(1);Left=Stroke(-1);
+ }
  RightGrip=FirstPersonArms->GetRelativeTransform().InverseTransformPosition(Right);LeftGrip=FirstPersonArms->GetRelativeTransform().InverseTransformPosition(Left);
  Limb(TEXT("R"),RightGrip);Limb(TEXT("L"),LeftGrip);
  for(int I=0;I<Pose.Num();I++)FirstPersonArms->BoneSpaceTransforms[I]=ArmParents[I]>=0?Pose[I].GetRelativeTransform(Pose[ArmParents[I]]):Pose[I];FirstPersonArms->MarkRefreshTransformDirty();

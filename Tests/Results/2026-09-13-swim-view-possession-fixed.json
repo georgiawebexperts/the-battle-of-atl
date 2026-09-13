@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 521.0,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": false,
+  "entry_bank_distance_cm": 527.85,
+  "deep_drop": false,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-858718437fc24060a4ca71124765cd3c/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-858718437fc24060a4ca71124765cd3c/stroke-middle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-858718437fc24060a4ca71124765cd3c/treading.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-858718437fc24060a4ca71124765cd3c/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-858718437fc24060a4ca71124765cd3c/returned.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-858718437fc24060a4ca71124765cd3c/stroke-late.png"
+  ],
+  "first_person": true,
+  "view_diagnostics": [
+    "eye_above_surface_cm=28.00 hand_stroke_cm=17.09"
+  ],
+  "bank_support_diagnostics": [
+    "offset=-60 simple=1 z=-340.86 actor=StaticMeshActor_9 complex=1 z=-340.86 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=0 simple=1 z=-341.38 actor=StaticMeshActor_9 complex=1 z=-341.38 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=60 simple=1 z=-342.26 actor=StaticMeshActor_9 complex=1 z=-342.26 actor=StaticMeshActor_9 tire_z=-339.38"
+  ],
+  "stop_diagnostics": [
+    "t=0.000 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=200.00 position=X=-2531.828 Y=-1465.229 Z=-386.334",
+    "t=0.259 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334",
+    "t=0.516 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334",
+    "t=0.771 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334",
+    "t=1.147 dt=0.143 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334",
+    "t=1.408 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334",
+    "t=1.664 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334",
+    "t=1.921 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2546.904 Y=-1477.390 Z=-386.334"
+  ],
+  "visual_review": "Inspected treading frame: visible hands, clear surface-height view, single-line swim hint and no crosshair. Earlier stroke frames inspected for palm adjustment. Full authored animation and lake art remain unfinished."
+}

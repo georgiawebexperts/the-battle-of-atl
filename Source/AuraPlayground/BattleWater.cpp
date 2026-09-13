@@ -39,13 +39,13 @@ bool ABattleBike::EnterLake(const FVector& Impact,const FVector& Bank){
  if(!Found)return false;
  FActorSpawnParameters Spawn;Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
  auto* Person=GetWorld()->SpawnActor<ABattleRider>(Entry,GetActorRotation(),Spawn);if(!Person)return false;
- Person->BeginSurfaceSwimming(Lake->GetActorLocation().Z);
  RideImpact(1.8f,true);
  SetActorLocation(Park,false,nullptr,ETeleportType::TeleportPhysics);
  Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();Ride->DisableMovement();
  bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=0;
  Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);
- PC->Possess(Person);PC->SetControlRotation(GetActorRotation());
+ // Possession restarts CharacterMovement; establish surface mode after that reset.
+ PC->Possess(Person);Person->BeginSurfaceSwimming(Lake->GetActorLocation().Z);PC->SetControlRotation(GetActorRotation());
 #if !UE_BUILD_SHIPPING
  for(float Offset:{-60.f,0.f,60.f}){
   const FVector Point=Park+GetActorForwardVector()*Offset;FHitResult Simple,Complex;

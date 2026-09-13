@@ -62,7 +62,7 @@ void ABattleRider::Tick(float Dt){
  Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
  Super::Tick(Dt);
  const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
- if(!bDetailedBodyReview)Camera->SetRelativeLocation(FVector(0,0,FMath::FInterpTo(Camera->GetRelativeLocation().Z,Stunned?8.f:(bIsCrouched?38.f:64.f),Dt,8)));
+ if(!bDetailedBodyReview)Camera->SetRelativeLocation(FVector(0,0,FMath::FInterpTo(Camera->GetRelativeLocation().Z,bSwimming?-7.f:(Stunned?8.f:(bIsCrouched?38.f:64.f)),Dt,8)));
  UpdateMelee(Dt);UpdateWeaponModel();UpdateDetailedPistol();PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return (!ParkedBike||ParkedBike->StunRemaining<=0)&&Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}

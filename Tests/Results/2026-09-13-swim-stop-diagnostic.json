@@ -1,0 +1,42 @@
+{
+  "passed": false,
+  "reason": "Idle swimmer did not settle",
+  "stage": 9,
+  "swim_cm": 515.51,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": false,
+  "entry_bank_distance_cm": 521.48,
+  "deep_drop": false,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-5a2b937eaa4541c6beec5225aff3c482/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-5a2b937eaa4541c6beec5225aff3c482/stroke-middle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-5a2b937eaa4541c6beec5225aff3c482/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-5a2b937eaa4541c6beec5225aff3c482/stroke-late.png"
+  ],
+  "first_person": true,
+  "view_diagnostics": [
+    "eye_above_surface_cm=28.00 hand_stroke_cm=17.22"
+  ],
+  "bank_support_diagnostics": [
+    "offset=-60 simple=1 z=-340.86 actor=StaticMeshActor_9 complex=1 z=-340.86 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=0 simple=1 z=-341.38 actor=StaticMeshActor_9 complex=1 z=-341.38 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=60 simple=1 z=-342.26 actor=StaticMeshActor_9 complex=1 z=-342.26 actor=StaticMeshActor_9 tire_z=-339.38"
+  ],
+  "stop_diagnostics": [
+    "t=0.000 dt=0.012 mode=3 brake=0.0 active=1 tick=1 root=0 speed=200.00 position=X=-2522.605 Y=-1457.762 Z=-387.190",
+    "t=0.260 dt=0.012 mode=3 brake=0.0 active=1 tick=1 root=0 speed=200.00 position=X=-2563.052 Y=-1490.389 Z=-387.242",
+    "t=0.515 dt=0.012 mode=3 brake=0.0 active=1 tick=1 root=0 speed=200.00 position=X=-2602.801 Y=-1522.454 Z=-387.234",
+    "t=0.770 dt=0.011 mode=3 brake=0.0 active=1 tick=1 root=0 speed=200.00 position=X=-2642.662 Y=-1554.608 Z=-387.236"
+  ]
+}
