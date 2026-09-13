@@ -1,0 +1,13 @@
+The Battle of ATL — shotgun model attribution
+
+This work is based on "Remington Model 870 (CC0)"
+https://sketchfab.com/3d-models/remington-model-870-cc0-d9a309a2f57b4a87ac38cc440a3deaa7
+by britdawgmasterfunk
+https://sketchfab.com/britdawgmasterfunk
+licensed under Creative Commons Attribution 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+Adapted for The Battle of ATL: combined mesh transforms, normalized scale,
+reduced geometry, revised Mac materials and first-person positioning.
+The source title says CC0; attribution is retained in accordance with the
+CC-BY-4.0 license supplied in the downloadable archive.

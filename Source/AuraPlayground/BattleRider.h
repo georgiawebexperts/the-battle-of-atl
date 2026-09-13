@@ -29,6 +29,7 @@ public:
  void UpdateWeaponModel();
  UPROPERTY() TObjectPtr<USceneComponent> LongGun;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> RifleMesh;
+ UPROPERTY() TObjectPtr<UStaticMeshComponent> ShotgunMesh;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> LongGunParts;
  UFUNCTION(BlueprintCallable) bool Melee();
  UPROPERTY(BlueprintReadOnly) int32 MeleeSwings=0,MeleeHits=0;

@@ -1,0 +1,25 @@
+{
+  "asset": {
+    "path": "/Game/BattleForTheA/Weapons/Remington870/Remington870/StaticMeshes/Remington870.Remington870",
+    "min": "<Struct 'Vector' (0x7c5ad77b500) {x: -50.000000, y: -4.264501, z: -11.832972}>",
+    "max": "<Struct 'Vector' (0x7c5ad77b518) {x: 50.000000, y: 4.264501, z: 11.832972}>",
+    "lods": 1
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/remington870-review/b6ebdd490f9a41ffb785a1ab74abd64f/side.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/remington870-review/b6ebdd490f9a41ffb785a1ab74abd64f/rear.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/remington870-review/b6ebdd490f9a41ffb785a1ab74abd64f/front.png"
+  ],
+  "main_map_saved": false,
+  "equipped": false,
+  "visual_accepted": false,
+  "static_art_review": "Side and rear inspected: smooth silhouette and dark metal/polymer materials after disabling Nanite and reducing source triangles.",
+  "optimization": {
+    "before_triangles": 398424,
+    "after_triangles": 59763,
+    "source_preserved": true,
+    "percent_requested": 0.15
+  },
+  "runtime_review": "Inventory gameplay passes, but shotgun.png shows a checker/fallback appearance and loose support-hand grip. Not visually accepted; not packaged.",
+  "inventory_report": "Tests/Results/2026-09-13-remington870-inventory.json"
+}

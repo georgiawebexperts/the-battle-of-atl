@@ -51,6 +51,9 @@ void ABattleRider::BuildLongGun(){
  Part(TEXT("MagazineOrPump"),FVector(12,0,-4),FVector(.17,.07,.065),false);
  Part(TEXT("DiscHopper"),FVector(8,0,7),FVector(.32,.32,.05),true);
  LongGunParts[5]->SetRelativeRotation(FRotator::ZeroRotator);
+ ShotgunMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShotgunModel"));ShotgunMesh->SetupAttachment(LongGun);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Shotgun(TEXT("/Game/BattleForTheA/Weapons/Remington870/Remington870/StaticMeshes/Remington870.Remington870"));
+ ShotgunMesh->SetStaticMesh(Shotgun.Object);ShotgunMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunMesh->SetCanEverAffectNavigation(false);ShotgunMesh->SetOnlyOwnerSee(true);ShotgunMesh->SetCastShadow(false);ShotgunMesh->SetVisibility(false);
  RifleMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RifleModel"));RifleMesh->SetupAttachment(LongGun);
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Rifle(TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"));RifleMesh->SetStaticMesh(Rifle.Object);RifleMesh->SetRelativeRotation(FRotator(0,-90,0));RifleMesh->SetRelativeScale3D(FVector(.5));RifleMesh->SetRelativeLocation(FVector(-10,0,-10));RifleMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleMesh->SetOnlyOwnerSee(true);RifleMesh->SetCastShadow(false);RifleMesh->SetVisibility(false);
 
@@ -61,7 +64,8 @@ void ABattleRider::UpdateWeaponModel(){
  LongGun->SetRelativeScale3D(FVector(CurrentWeapon==2?.7f:1.f,1,1));LongGun->SetVisibility(Visible,true);
  if(CurrentWeapon>0)Weapon->SetVisibility(false);
  RifleMesh->SetVisibility(Visible&&CurrentWeapon==4);
+ ShotgunMesh->SetVisibility(Visible&&CurrentWeapon==1);
  if(LongGunParts.Num()==6){
   LongGunParts[5]->SetVisibility(Visible&&CurrentWeapon==3);LongGunParts[1]->SetRelativeScale3D(CurrentWeapon==3?FVector(.14,.035,.2):FVector(.035,.035,.35));LongGunParts[4]->SetRelativeLocation(CurrentWeapon==2?FVector(3,0,-10):FVector(12,0,-4));LongGunParts[4]->SetRelativeScale3D(CurrentWeapon==2?FVector(.06,.05,.2):FVector(.17,.07,.065));}
- if(CurrentWeapon==4)for(auto Part:LongGunParts)Part->SetVisibility(false);
+ if(CurrentWeapon==4||CurrentWeapon==1)for(auto Part:LongGunParts)Part->SetVisibility(false);
 }

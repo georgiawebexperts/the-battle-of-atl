@@ -40,7 +40,9 @@
     "Legacy swimming edge defect traced to open shoulder cuts in front of camera, not missing wrist polygons. Root moves behind camera with shorter/narrower reach; final sampled treading/late-stroke frames and swim return/remount pass, original foot controls pass. Original blocky style/continuous animation remain unfinished. Uninstalled.",
     "Upgraded Ellison body/clothes/hair, FPS hands and M1911 enabled by default, with explicit BattleLegacyRider diagnostic fallback. Hands require successful detailed body load. M1911 cook directory added. Unflagged editor inventory/rifle zoom/reload/death persistence, foot controls, opening and swimming pass; legacy foot comparison passes. Armed controls strip reduced. Packaged acceptance pending."
   ],
-  "unreleased_code_changes": [],
+  "unreleased_code_changes": [
+    "Remington870 shotgun candidate replaces primitive slot1 mesh; credited free source, 398424 to59763 triangles, conventional Mac materials, initial hands/aim/muzzle fitting. Editor build and inventory checks pass. Static art renders correctly; first-person material fallback and support-hand fit still rejected. Not packaged; installed058 unchanged."
+  ],
   "installed_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",
   "compiled_source": "d7db05a81b5e853c6e2575efadd536aeed022bdc",

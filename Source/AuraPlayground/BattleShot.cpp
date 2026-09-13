@@ -57,7 +57,7 @@ FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Sl
  FBattleShotResult Result;auto* PC=Shooter?Cast<APlayerController>(Shooter->GetController()):nullptr;if(!PC||!Gun)return Result;
  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);const bool Shotgun=Slot==1;const int32 Pellets=Shotgun?8:1;
  const float Range=Shotgun?2400:Slot==4?15000:11000,Spread=Shotgun?(Aiming?3.f:5.f):(Aiming?(Slot==4?.15f:1.f):3.f);
- const FVector Muzzle=Gun->GetComponentLocation()+View.Vector()*(Shotgun?43:30);
+ const FVector Muzzle=Shotgun?Gun->GetComponentTransform().TransformPosition(FVector(50,0,8)):Gun->GetComponentLocation()+View.Vector()*30;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleLongGun),true,Shooter);
  TSet<AActor*> TimedVictims;
  for(int32 I=0;I<Pellets;I++){
