@@ -11,6 +11,7 @@
 #include "Misc/CommandLine.h"
 #include "BattlePickup.h"
 #include "BattleZombie.h"
+#include "PiedmontBlood.h"
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
@@ -37,6 +38,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(InventoryPhase==3&&InventoryClock>.6f)Capture(TEXT("shotgun"));
  if(Review&&InventoryPhase==3&&InventoryClock>1.f&&!ShotgunAimPressed){ShotgunAimPressed=true;InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Pressed,1.f,false,0));}
  if(InventoryPhase==3&&InventoryClock>1.7f)Capture(TEXT("shotgun-aimed"));
+ if(InventoryPhase==4&&InventoryClock>.04f)Capture(TEXT("shotgun-impact"));
  if(InventoryPhase==5&&Person&&Person->ShotgunPumpTravel>6.f){ShotgunPumpMoved=true;Capture(TEXT("shotgun-pump"));}
  if(InventoryPhase==5&&InventoryClock>1.15f)Capture(TEXT("shotgun-reload"));
  if(InventoryPhase==5&&InventoryClock>1.35f)Capture(TEXT("shotgun-insert"));
@@ -67,9 +69,10 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  }
  else if(InventoryPhase==2&&InventoryClock>.3f){CHECK_INVENTORY(Person->CurrentWeapon==1&&Person->Ammo==6,"2 key selection failed");Z=Target();CHECK_INVENTORY(Z,"Shotgun target failed");InventoryPhase=3;InventoryClock=0;}
  else if(InventoryPhase==3){Aim();if(InventoryClock>(Review?2.f:.4f)){CHECK_INVENTORY(Person->Fire(),"Shotgun failed to fire");CHECK_INVENTORY(Z->bDead&&Bike->EnemyKills==1&&Person->Ammo==5,"Close shotgun did not kill with one shell");CHECK_INVENTORY(Bike->ShotNotice==TEXT("ZOMBIE DOWN")&&Bike->ShotNoticeRemaining>0,"Shotgun kill confirmation missing");CHECK_INVENTORY(!Person->Fire(),"Shotgun cooldown failed");if(ShotgunAimPressed)InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Released,0.f,false,0));Key(EKeys::R);InventoryPhase=4;InventoryClock=0;}}
- else if(InventoryPhase==4&&InventoryClock>.1f){CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->Fire()&&!Person->Melee(),"Reload did not block fire/melee");InventoryPhase=5;}
+ else if(InventoryPhase==4&&InventoryClock>.1f){int32 Sprays=0;for(TActorIterator<APiedmontBlood> It(GetWorld());It;++It)Sprays++;UE_LOG(LogTemp,Display,TEXT("BloodSprayAudit: impact_bursts=%d"),Sprays);CHECK_INVENTORY(Sprays>=1&&Sprays<=3,"Shotgun impact sprays not coalesced");CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->Fire()&&!Person->Melee(),"Reload did not block fire/melee");InventoryPhase=5;}
  else if(InventoryPhase==5&&InventoryClock>2.4f){
   CHECK_INVENTORY(Bike->ShotNoticeRemaining==0,"Shot confirmation did not expire");
+  int32 RemainingSprays=0;for(TActorIterator<APiedmontBlood> It(GetWorld());It;++It)RemainingSprays++;UE_LOG(LogTemp,Display,TEXT("BloodSprayAudit: remaining_bursts=%d"),RemainingSprays);CHECK_INVENTORY(RemainingSprays==0,"Impact spray did not expire");
   CHECK_INVENTORY(ShotgunPumpMoved&&Person->ShotgunPumpTravel==0,"Shotgun pump did not cycle and return");
   CHECK_INVENTORY(Person->Ammo==6&&Bike->Inventory[1].Reserve==11,"Timed reload did not conserve shells");Z->Destroy();
   auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Person->GetActorLocation()+FVector(70,0,-20)),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);CHECK_INVENTORY(Crate,"SMG crate fixture failed");Crate->WeaponSlot=2;Crate->FinishSpawning(FTransform(Person->GetActorLocation()+FVector(70,0,-20)));InventoryPhase=6;InventoryClock=0;

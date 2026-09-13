@@ -3,6 +3,7 @@
 #include "GameFramework/Actor.h"
 #include "PiedmontBlood.generated.h"
 class UStaticMeshComponent;
+class UMaterialInstanceDynamic;
 UCLASS()
 class AURAPLAYGROUND_API APiedmontBlood : public AActor {
  GENERATED_BODY()
@@ -14,5 +15,8 @@ public:
  FVector SprayDirection=FVector::UpVector;
 private:
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Drops;
- TArray<FVector> Velocities;
+ TArray<FVector> Velocities,Sizes;
+ UPROPERTY() TObjectPtr<UMaterialInstanceDynamic> SprayMaterial;
+ float Age=0;
+ void UpdateSpray(float Time);
 };

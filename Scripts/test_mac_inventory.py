@@ -21,6 +21,8 @@ result['difficulty']=a.difficulty;result['expected_crates']=expected;result['pas
 result['exit_code']=run.returncode;result['passed']=bool(result.get('passed') and run.returncode==0);result['rendered_appearance_verified']=False;result['editor']=a.editor;result['fixed_seed']=True;result['sleeves_hidden_diagnostic']=a.hide_sleeves;result['full_shaders']=a.full_shaders;result['detailed_rider']='DetailedFootPreview: body=m_tal_nrw_body' in log.read_text();result['log']=str(log);result['images']=[str(x) for x in out.glob('*.png')]
 if result['detailed_rider']:
  result['detailed_assets_loaded']=all(x in log.read_text() for x in ['DetailedFootPreview: body=m_tal_nrw_body','DetailedArmsPreview: hands=SK_DetailedHands','DetailedM1911: loaded']);result['passed']=result['passed'] and result['detailed_assets_loaded']
+blood_rows=re.findall(r'BloodSprayAudit: (impact_bursts|remaining_bursts)=(\d+)',log.read_text())
+result['blood_spray']={key:int(value) for key,value in blood_rows}
 shader_rows=re.findall(r'ShotgunMaterialAudit: slot=(\d+) interface=(\S+) resource=(\d+) shader_complete=(\d+)',log.read_text())
 result['shotgun_materials']=[{'slot':int(i),'material':m,'resource':bool(int(r)),'shader_complete':bool(int(c))} for i,m,r,c in shader_rows]
 result['shotgun_shaders_ready']=len(shader_rows)==5 and all(int(c)==1 for _,_,_,c in shader_rows)
