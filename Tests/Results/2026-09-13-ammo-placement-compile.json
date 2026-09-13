@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "scope": "Editor compilation only; pickup populations and distribution require native testing",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-priority-build.log",
+  "desktop_build": 60
+}

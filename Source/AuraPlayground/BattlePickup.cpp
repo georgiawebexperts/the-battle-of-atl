@@ -55,7 +55,9 @@ bool ABattleColaPickup::TryCollect(APawn* Pawn){
 }
 ABattlePickupDirector::ABattlePickupDirector(){PrimaryActorTick.bCanEverTick=false;}
 bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot){
- for(const FVector& P:Locations)if(FVector::DistSquared2D(P,Surface)<FMath::Square(1600.f))return false;
+ // Ammo may sit near other supplies, but keep a clear eight-metre separation.
+ const float Spacing=WeaponSlot==0?800.f:1600.f;
+ for(const FVector& P:Locations)if(FVector::DistSquared2D(P,Surface)<FMath::Square(Spacing))return false;
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return false;
  FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(ColaPlacement),false,Pawn);
  if(!GetWorld()->LineTraceSingleByChannel(Ground,Surface+FVector(0,0,150),Surface-FVector(0,0,150),ECC_Visibility,Q)||!Ground.GetActor())return false;
@@ -88,6 +90,7 @@ void ABattlePickupDirector::BeginPlay(){
  auto Fill=[&](TArray<FVector>& Candidates,bool IsTrail,int32 Goal){
   while(!Candidates.IsEmpty()&&(IsTrail?TrailPickups:ParkPickups)<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);if(!SpawnCola(P,IsTrail,Heal))PlacementFailures++;}
  };
+ const TArray<FVector> AmmoPark=Park,AmmoTrail=Trail;
  Fill(Trail,true,TrailGoal);Fill(Park,false,Desired-TrailGoal);
 #if !UE_BUILD_SHIPPING
  const bool ColaAudit=FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit"));
@@ -95,12 +98,13 @@ void ABattlePickupDirector::BeginPlay(){
  const bool ColaAudit=false;
 #endif
  if(!ColaAudit){
+  // Reserve pistol supplies before optional weapon/time/horn pickups occupy the route.
+  auto FillAmmo=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&AmmoPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,0);}};
+  FillAmmo(AmmoPark,false,6);FillAmmo(AmmoTrail,true,12);
   TArray<FVector> Supplies=Park;Supplies.Append(Trail);
   while(!Supplies.IsEmpty()&&WeaponCrates<Mode->Difficulty.WeaponCrates){const int32 I=FMath::RandHelper(Supplies.Num());const FVector P=Supplies[I];Supplies.RemoveAtSwap(I);SpawnCola(P,false,0,1+WeaponCrates%4);}
   auto FillTime=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&TimePickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-2);}};
   FillTime(Park,false,5);FillTime(Trail,true,10);
-  auto FillAmmo=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&AmmoPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,0);}};
-  FillAmmo(Park,false,6);FillAmmo(Trail,true,12);
   auto FillHorns=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&HornPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-3);}};
   FillHorns(Park,false,3);FillHorns(Trail,true,6);
   UE_LOG(LogTemp,Display,TEXT("BattleHornPickups: spawned=%d desired=6"),HornPickups);
