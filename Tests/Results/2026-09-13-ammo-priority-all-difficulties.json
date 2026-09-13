@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "scope": "One native world startup per difficulty, counts and 17-round ammo conservation; no render/distribution acceptance",
+  "runs": [
+    {
+      "difficulty": "Easy",
+      "counts": {
+        "BattleAmmoPickups": {
+          "actual": 12,
+          "target": 12
+        },
+        "BattleHornPickups": {
+          "actual": 6,
+          "target": 6
+        },
+        "BattleTimePickups": {
+          "actual": 10,
+          "target": 10
+        },
+        "BattleCrates": {
+          "actual": 20,
+          "target": 20
+        }
+      },
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-e5458981f8c34692bf1a0cac539e43e3.log",
+      "passed": true
+    },
+    {
+      "difficulty": "Medium",
+      "counts": {
+        "BattleAmmoPickups": {
+          "actual": 12,
+          "target": 12
+        },
+        "BattleHornPickups": {
+          "actual": 6,
+          "target": 6
+        },
+        "BattleTimePickups": {
+          "actual": 10,
+          "target": 10
+        },
+        "BattleCrates": {
+          "actual": 12,
+          "target": 12
+        }
+      },
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-93530741e170469da3ce340a88d28516.log",
+      "passed": true
+    },
+    {
+      "difficulty": "Hard",
+      "counts": {
+        "BattleAmmoPickups": {
+          "actual": 12,
+          "target": 12
+        },
+        "BattleHornPickups": {
+          "actual": 6,
+          "target": 6
+        },
+        "BattleTimePickups": {
+          "actual": 10,
+          "target": 10
+        },
+        "BattleCrates": {
+          "actual": 6,
+          "target": 6
+        }
+      },
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-f36f10ac1d934b879d1e0b3581421db6.log",
+      "passed": true
+    }
+  ]
+}

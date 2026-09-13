@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "difficulty": "Easy",
+  "scope": "Single native world initialization; placement counts only, not visual distribution",
+  "counts": {
+    "BattleAmmoPickups": {
+      "actual": 12,
+      "target": 12
+    },
+    "BattleHornPickups": {
+      "actual": 6,
+      "target": 6
+    },
+    "BattleTimePickups": {
+      "actual": 10,
+      "target": 10
+    },
+    "BattleCrates": {
+      "actual": 20,
+      "target": 20
+    }
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-9c73324279e54134b8963bf363898e1d.log"
+}
