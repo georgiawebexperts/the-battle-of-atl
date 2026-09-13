@@ -1,9 +1,9 @@
 {
-  "build": 60,
-  "version": "0.60.0",
+  "build": 61,
+  "version": "0.61.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "early playtest; wall recovery verified in controlled fixtures",
+  "status": "Early playtest; visible police taser and ammo rules verified in packaged controlled encounters",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -12,7 +12,8 @@
     "Steering assembly, articulated handlebar grips and smoothed lean; packaged arcade/realistic handling checks pass. Starting street frontage and bungalow setback improvements included.",
     "Lake water rendered; entry leaves Ellison swimming with bike on bank. Deep-entry bank search, lower swim capsule, fixed possession-mode reset, release-to-stop, surface camera, stroke hands, bike radar guidance and compact HUD included. Packaged swim/tread/return/remount verified; earlier editor full-circuit exploration passed. Full water art and all-bank behavior remain unaccepted.",
     "Packaged Krog route485.77m completed both directions with zero wipeouts,6787/6787paved samples,500lit/0unlit tunnel samples,23moving cars and25walking people observed. Forced scooter scene present. One selected run, not all traffic or performance acceptance.",
-    "Packaged Easy/Hard finish guards pass; installed cardinal phone hunt, recollection, two death resets, health and two ordered checkpoints pass. Existing market, traffic, story and other gameplay retained."
+    "Packaged Easy/Hard finish guards pass; installed cardinal phone hunt, recollection, two death resets, health and two ordered checkpoints pass. Existing market, traffic, story and other gameplay retained.",
+    "Build061: readable police warning/countdown, original yellow/black taser, blended raised grip, muzzle-origin discharge with near-cover guard; prioritized 12 ammo pickups. Packaged police/ammo/wall tests pass. Voice and final animation/art remain unfinished."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -38,9 +39,7 @@
     "Deep/no-history water entry searches for supported clear bank and immediately starts swimmer; obsolete timed path teleport removed. Native deep drop, ordinary shoreline, saved-map geography and keyboard car-crash regression pass. Support traces recorded; all-bank placement, retries under complete obstruction and exact visual contact remain pending. Uninstalled.",
     "First-person surface swimming camera28cm, visible stroke/sculling hands and compact HUD without crosshair. Fixed possession resetting swimmer to falling: initialize surface mode after possession. Rendered stop/return/remount and taser pass; detailed on-foot regression passes. Original rig functional pass but cuff geometry visually rejected; repair before packaging. Uninstalled.",
     "Legacy swimming edge defect traced to open shoulder cuts in front of camera, not missing wrist polygons. Root moves behind camera with shorter/narrower reach; final sampled treading/late-stroke frames and swim return/remount pass, original foot controls pass. Original blocky style/continuous animation remain unfinished. Uninstalled.",
-    "Upgraded Ellison body/clothes/hair, FPS hands and M1911 enabled by default, with explicit BattleLegacyRider diagnostic fallback. Hands require successful detailed body load. M1911 cook directory added. Unflagged editor inventory/rifle zoom/reload/death persistence, foot controls, opening and swimming pass; legacy foot comparison passes. Armed controls strip reduced. Packaged acceptance pending."
-  ],
-  "unreleased_code_changes": [
+    "Upgraded Ellison body/clothes/hair, FPS hands and M1911 enabled by default, with explicit BattleLegacyRider diagnostic fallback. Hands require successful detailed body load. M1911 cook directory added. Unflagged editor inventory/rifle zoom/reload/death persistence, foot controls, opening and swimming pass; legacy foot comparison passes. Armed controls strip reduced. Packaged acceptance pending.",
     "Remington870 shotgun candidate replaces primitive slot1 mesh; credited free source, 398424 to59763 triangles, conventional Mac materials, initial hands/aim/muzzle fitting. Editor build and inventory checks pass. Static art renders correctly; first-person material fallback and support-hand fit still rejected. Not packaged; installed058 unchanged.",
     "Shotgun material fallback diagnosed as incomplete shaders in uncooked on-demand review, not missing mesh/material references. Added full-shader review option; all five resources ready and rendered correctly. Settled hip/aim/reload captures added. Reduced displayed gun length to80cm, centered sights, corrected wrist/palm fitting and blended palm alignment; editor build and inventory pass. Finger detail/authored reload/pump work and packaged verification remain pending; installed058 unchanged.",
     "Articulated shotgun body/pump and per-shell reload implemented. Native build and rendered inventory pass pump return, partial reload holster conservation and remount persistence. Centered receiver visible; support-hand pinch/shell visibility and continuous motion remain visually unaccepted. No packaging; installed058 unchanged.",
@@ -61,39 +60,40 @@
     "2026-09-13: Found double-attenuated on-foot mouse input (0.07 processed axis then pawn scaling). Reads raw mouse delta now; injected native input improves yaw3.39 to53.98deg with body/camera aligned. Build/probe pass. OS capture, sensitivity feel, swimming regression and package pending.",
     "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",
-  "compiled_source": "d7db05a81b5e853c6e2575efadd536aeed022bdc",
-  "installation_report": "Tests/Results/2026-09-13-build058-installed.json",
-  "candidate": {
-    "build": 59,
-    "version": "0.59.0-dev",
-    "status": "Material flags repaired; normal-window menu interaction unresolved. Movement/drone/mouse fixes await live acceptance and corrected recook; installed058 unchanged.",
-    "author": "2026-09-13 [codex-maclaptop]",
-    "scope": "Detailed default gunman/M1911/standing aim and transitions; clearer gunfire warnings; articulated shotgun reload; compact blood spray; per-clip bone mapping fix.",
-    "compiled_source": "487e276ad7206c6df5c8e68e08357b1465c94f0c"
-  },
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
+  "compiled_source": "42ffc21be6041e1deae44e6249b68eb7e814f2d7",
+  "installation_report": "Tests/Results/2026-09-13-build061-install.json",
+  "candidate": null,
   "share_playtest": {
-    "date": "2026-09-13",
-    "author": "codex-maclaptop",
-    "source_commit": "8856f27",
-    "app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 059/The Battle of ATL.app",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 059.zip",
-    "zip_bytes": 1315984641,
-    "zip_sha256": "58eb41bd6d9821fbe6cd1897af03907327c390e4a30e6ff504b192cff4a4c1de",
-    "architecture": "arm64",
+    "build": 61,
+    "version": "0.61.0",
+    "source_commit": "42ffc21be6041e1deae44e6249b68eb7e814f2d7",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
+    "locally_signed": true,
     "notarized": false,
-    "signature": "ad hoc; deep strict verification passed",
-    "packaged_foot_test": "2026-09-13-share059-packaged-foot.json",
-    "branded_health_test": "2026-09-13-share059-branded-health.json",
-    "another_mac_tested": false,
-    "quarantined_download_flow_tested": false,
-    "installed_desktop_build": 58,
-    "distribution": "private early playtest with known issues; not finished-game acceptance",
+    "machine_code_matches_tested_staged_app": true,
+    "machine_code_sha256": "2777bbb63873e7b5ea1710df32419eb3180b24270c524a12118db61b2caf8b01",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061.zip",
+    "zip_sha256": "697ec3f890e06af2f30d0d040841df6b12fb4a4317b3edf5aeae9a07ff2ac281",
+    "zip_bytes": 1316111060,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
-    }
+    },
+    "verification": [
+      "Packaged rendered police warning, raised device, muzzle-origin discharge, near-cover rejection, recovery and alert expiry",
+      "Packaged 17-round ammunition/reload rules",
+      "Packaged isolated wall reverse/steering in arcade and realistic modes"
+    ],
+    "remaining": [
+      "Voice absent",
+      "Further character/hand/animation/world quality work",
+      "Broader freeplay and performance acceptance",
+      "Not notarized or tested on another Mac"
+    ]
   },
   "latest_wall_fix_playtest": {
     "build": 60,
@@ -108,5 +108,15 @@
     "source_wall_recovery": "2026-09-13-wall-recovery-built.json",
     "all_world_corners_verified": false,
     "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060.zip"
-  }
+  },
+  "candidate_history": [
+    {
+      "build": 59,
+      "version": "0.59.0-dev",
+      "status": "Material flags repaired; normal-window menu interaction unresolved. Movement/drone/mouse fixes await live acceptance and corrected recook; installed058 unchanged.",
+      "author": "2026-09-13 [codex-maclaptop]",
+      "scope": "Detailed default gunman/M1911/standing aim and transitions; clearer gunfire warnings; articulated shotgun reload; compact blood spray; per-clip bone mapping fix.",
+      "compiled_source": "487e276ad7206c6df5c8e68e08357b1465c94f0c"
+    }
+  ]
 }

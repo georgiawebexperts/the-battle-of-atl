@@ -10,7 +10,8 @@
   "remaining": [
     "Officer model remains stylized and low-detail",
     "Thumb/support-hand contact and continuous draw/stow animation need further review",
-    "APD voice absent",
-    "Packaged validation pending"
-  ]
+    "APD voice absent"
+  ],
+  "packaged_report": "2026-09-13-build061-police-render.json",
+  "packaged_warning_and_discharge_frames_reviewed": true
 }
