@@ -94,7 +94,7 @@ bool ABattleGunman::ResolveShot(){
 void ABattleGunman::Tick(float Dt){
  if(bDead){if(DetailedWeapon)DetailedWeapon->SetVisibility(false);Super::Tick(Dt);MirrorDeathPose();return;}
  ShotAlertRemaining=FMath::Max(0.f,ShotAlertRemaining-Dt);
- bWeaponDrawn=bWarning||ShotAlertRemaining>0;Super::Tick(Dt);if(DetailedWeapon)DetailedWeapon->SetVisibility(bWeaponDrawn);
+ bWeaponDrawn=bWarning||ShotAlertRemaining>0;Super::Tick(Dt);if(DetailedWeapon)DetailedWeapon->SetVisibility(bWeaponDrawn||GripBlend>.06f);
  if(!CanAttack()){bWarning=false;WindupRemaining=0;return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);
  if(bWarning){SetActorRotation(FRotator(0,(AimPoint-GetActorLocation()).Rotation().Yaw,0));WindupRemaining=FMath::Max(0.f,WindupRemaining-Dt);if(WindupRemaining<=0)ResolveShot();}
@@ -109,7 +109,7 @@ float ABattleGunman::TakeDamage(float Amount,const FDamageEvent& Event,AControll
 }
 
 void ABattleGunman::AnimateBody(float Dt){
- const bool Drawn=bWeaponDrawn;const TArray<FTransform> Previous=bDetailedPlayerRig?PreviousAnimationPose:Body->BoneSpaceTransforms;
+ const bool Drawn=bWeaponDrawn;GripBlend=FMath::Lerp(GripBlend,Drawn?1.f:0.f,1.f-FMath::Exp(-12.f*Dt));const TArray<FTransform> Previous=bDetailedPlayerRig?PreviousAnimationPose:Body->BoneSpaceTransforms;
  SetLocomotionClips(Drawn&&GunIdle?GunIdle:RelaxedIdle,GunWalk,GunRun);
  // Keep the authored gun stance; the generic hand IK otherwise overwrites it.
  if(GunIdle)bWeaponDrawn=false;
@@ -120,12 +120,12 @@ void ABattleGunman::AnimateBody(float Dt){
   Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
  }
  if(bDetailedPlayerRig)PreviousAnimationPose=Body->BoneSpaceTransforms;
- if(Drawn&&bDetailedPlayerRig){
+ if((Drawn||GripBlend>.01f)&&bDetailedPlayerRig){
   const auto& Ref=CastChecked<USkeletalMesh>(Body->GetSkinnedAsset())->GetRefSkeleton();
   TArray<FTransform> Pose=Body->BoneSpaceTransforms;
   for(int I=0;I<Pose.Num();I++)if(Ref.GetParentIndex(I)>=0)Pose[I]=Pose[I]*Pose[Ref.GetParentIndex(I)];
   auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Ref.GetParentIndex(I);}return false;};
-  auto Rotate=[&](int Root,FQuat Rotation){if(Root<0)return;const FVector Pivot=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Pivot+Rotation.RotateVector(Pose[I].GetLocation()-Pivot));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
+  auto Rotate=[&](int Root,FQuat Rotation){if(Root<0)return;Rotation=FQuat::Slerp(FQuat::Identity,Rotation,GripBlend);const FVector Pivot=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Pivot+Rotation.RotateVector(Pose[I].GetLocation()-Pivot));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
   const int Hand=Ref.FindBoneIndex(TEXT("hand_r")),Middle=Ref.FindBoneIndex(TEXT("middle_01_r")),Index=Ref.FindBoneIndex(TEXT("index_01_r")),Pinky=Ref.FindBoneIndex(TEXT("pinky_01_r"));
   const FVector Forward(0,1,0);
   if(Hand>=0&&Middle>=0&&Index>=0&&Pinky>=0){
@@ -143,8 +143,12 @@ void ABattleGunman::AnimateBody(float Dt){
    Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
   }
  }
- if(Drawn&&DetailedWeapon){
-  const FVector Centre=Body->GetSocketLocation(TEXT("hand_r"))+GetActorForwardVector()*12;
+ if((Drawn||GripBlend>.01f)&&DetailedWeapon){
+  const FVector Hand=Body->GetSocketLocation(TEXT("hand_r"));
+  const FVector Forearm=(Hand-Body->GetSocketLocation(TEXT("lowerarm_r"))).GetSafeNormal();
+  const FVector WeaponForward=FMath::Lerp(Forearm,GetActorForwardVector(),GripBlend).GetSafeNormal();
+  Weapon->SetWorldRotation(WeaponForward.Rotation());
+  const FVector Centre=Hand+WeaponForward*12;
   Weapon->SetWorldLocation(Centre-DetailedWeapon->GetComponentTransform().TransformVector(DetailedWeapon->GetSkeletalMeshAsset()->GetBounds().Origin));
  }else if(Drawn&&Weapon->GetStaticMesh()){
   const FVector Centre=Body->GetSocketLocation(BattleDetailedBone(TEXT("Hand_R"),bDetailedPlayerRig))+GetActorForwardVector()*(bDetailedPlayerRig?16:8)+FVector(0,0,bDetailedPlayerRig?0:6);

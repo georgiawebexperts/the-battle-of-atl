@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "reason": "Fatal hit cancels live warning and weapon, physics collapse follows, dead shooter cannot fire or re-aim",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-death-review/33c7cd3d384540d9b70893e0c46883dc/run.log",
+  "detailed_gunman": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible hip tracking, collapse, dead shooting suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true
+}

@@ -13,8 +13,10 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Paths.h"
 #include "GameFramework/PlayerController.h"
+void TickGunmanMotionReview(ABattleEnemyDirector* D,float Dt);
 void TickBattleGunmanAudit(ABattleEnemyDirector* D,float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("GunmanMotionReview"))){TickGunmanMotionReview(D,Dt);return;}
  auto* W=D->GetWorld();if(W->GetTimeSeconds()<5)return;
  static int Phase=0;static float Clock=0;static ABattleGunman* Gun=nullptr;static AStaticMeshActor* Cover=nullptr;static FVector Origin;
  auto* B=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(W,0));auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(W));if(!B||!M)return;

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "reason": "Single locked-aim shot completed; player dodged and shooter returned to idle",
+  "motion_review": true,
+  "grip_review": false,
+  "opposite": false,
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Single stationary raise/fire/lower review with player moved outside locked aim and attack radius; sampled images require visual review, not continuous motion or full combat acceptance.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-00.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-01.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-02.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-03.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-04.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-05.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-06.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-07.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-08.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-09.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/4d6ccdf4ccfc45538107e6f860fc45cb/motion-10.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "inspected": [
+      "motion-00.png",
+      "motion-07.png",
+      "motion-10.png"
+    ],
+    "observations": [
+      "Early raise visible, pistol follows lower arm during return, final idle has no visible weapon."
+    ],
+    "limitations": [
+      "Eleven scheduled samples, not a continuous video or frame-rate benchmark.",
+      "Full hand/sleeve fidelity, turn-to-target and moving encounters remain unaccepted."
+    ]
+  }
+}

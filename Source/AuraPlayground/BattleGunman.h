@@ -26,6 +26,7 @@ public:
  UPROPERTY() TObjectPtr<UAnimSequence> GunWalk;
  UPROPERTY() TObjectPtr<UAnimSequence> GunRun;
 private:
+ float GripBlend=0;
  TArray<FTransform> PreviousAnimationPose;
  FVector AimPoint;
  TWeakObjectPtr<APawn> AimTarget;
