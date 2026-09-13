@@ -1,0 +1,243 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "The Battle of ATL original prop"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Taser"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Taser",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 3,
+            "NORMAL": 4,
+            "TEXCOORD_0": 5
+          },
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8
+          },
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "SafetyYellow",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9,
+          0.55,
+          0.025,
+          1
+        ],
+        "metallicFactor": 0.08,
+        "roughnessFactor": 0.38
+      }
+    },
+    {
+      "name": "Polymer",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.012,
+          0.016,
+          0.022,
+          1
+        ],
+        "metallicFactor": 0.05,
+        "roughnessFactor": 0.48
+      }
+    },
+    {
+      "name": "Contacts",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.35,
+          0.4,
+          0.44,
+          1
+        ],
+        "metallicFactor": 0.85,
+        "roughnessFactor": 0.22
+      }
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "Taser.bin",
+      "byteLength": 33792
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 2016,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2016,
+      "byteLength": 2016,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4032,
+      "byteLength": 1344,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5376,
+      "byteLength": 8640,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 14016,
+      "byteLength": 8640,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 22656,
+      "byteLength": 5760,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 28416,
+      "byteLength": 2016,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 30432,
+      "byteLength": 2016,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 32448,
+      "byteLength": 1344,
+      "target": 34962
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 168,
+      "type": "VEC3",
+      "min": [
+        -0.07,
+        -0.1,
+        -0.024
+      ],
+      "max": [
+        0.1,
+        0.07,
+        0.024
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 168,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 168,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 720,
+      "type": "VEC3",
+      "min": [
+        -0.07,
+        -0.12,
+        -0.026000000000000002
+      ],
+      "max": [
+        0.17,
+        0.077,
+        0.026000000000000002
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 720,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 720,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 168,
+      "type": "VEC3",
+      "min": [
+        0.155,
+        0.02,
+        -0.020499999999999997
+      ],
+      "max": [
+        0.175,
+        0.057,
+        0.020499999999999997
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 168,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 168,
+      "type": "VEC2"
+    }
+  ]
+}

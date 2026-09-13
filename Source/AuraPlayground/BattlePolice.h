@@ -15,7 +15,16 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bWarning=false;
  UPROPERTY(BlueprintReadOnly) int32 TaserShots=0;
  float WarningRemaining=0,Cooldown=3,PathDelay=0;
+ UPROPERTY(BlueprintReadOnly) float TaserDrawBlend=0;
+ UPROPERTY(BlueprintReadOnly) FVector LastTaserOrigin=FVector::ZeroVector;
+ FVector TaserMuzzle() const;
+ UPROPERTY() TObjectPtr<UAnimSequence> TaserAim;
+ UPROPERTY() TObjectPtr<UAnimSequence> TaserIdle;
+ UPROPERTY() TObjectPtr<UAnimSequence> TaserWalk;
+ UPROPERTY() TObjectPtr<UAnimSequence> TaserRun;
+ float DischargeRemaining=0;
 protected:
+ virtual void AnimateBody(float Dt) override;
  virtual bool CanUseWeapon() const override{return false;}
 private:
  bool CanReachTarget(APawn* Target) const;

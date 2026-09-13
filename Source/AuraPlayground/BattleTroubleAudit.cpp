@@ -14,6 +14,7 @@
 #include "Engine/StaticMesh.h"
 #include "AIController.h"
 #include "Camera/CameraActor.h"
+#include "GameFramework/HUD.h"
 #include "Misc/CommandLine.h"
 #include "UnrealClient.h"
 #include "EngineUtils.h"
@@ -60,13 +61,22 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==0,"Taser passed through wall");Wall->Destroy();Next();
  }}else if(TroubleStage==4&&TroubleClock>.2f){
   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir)){
-   const FVector Focus=Officer->GetActorLocation()+FVector(0,0,45),Eye=Officer->GetActorLocation()+FVector(-350,-450,150);
+   const FVector Focus=Officer->GetActorLocation()+FVector(0,0,45),Eye=Officer->GetActorLocation()+(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceCloseup"))?FVector(-120,-190,90):FVector(-350,-450,150));
    if(auto* ReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(ReviewCamera);
+   if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceCloseup"))&&GetHUD())GetHUD()->bShowHUD=false;
   }
   Officer->Cooldown=0;Officer->SetActorTickEnabled(true);Next();
- }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Bike->TaserHits==0,"Taser windup absent or reaction window too short");TroubleTime=Mode->TimeRemaining;FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("police-warning.png"),false,false);Next();}
+ }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Officer->TaserDrawBlend>.7f&&Officer->Weapon->GetComponentLocation().Z>Officer->GetActorLocation().Z&&Officer->Weapon->IsVisible()&&Officer->Weapon->GetStaticMesh()->GetName()==TEXT("Taser")&&Bike->TaserHits==0,"Taser windup absent or reaction window too short");// Put cover behind the muzzle: a muzzle-only ray would incorrectly fire past it.
+  auto* NearWall=GetWorld()->SpawnActor<AActor>();CHECK_TROUBLE(NearWall,"Near-cover fixture failed");
+  auto* NearBox=NewObject<UStaticMeshComponent>(NearWall);NearWall->SetRootComponent(NearBox);NearBox->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));NearBox->SetWorldScale3D(FVector(.05,.8,1));NearBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);NearBox->SetCollisionResponseToAllChannels(ECR_Block);NearBox->SetCanEverAffectNavigation(false);NearBox->RegisterComponent();
+  NearWall->SetActorLocationAndRotation((Officer->GetActorLocation()+FVector(0,0,40)+Officer->TaserMuzzle())*.5f,Officer->GetActorRotation());
+  FHitResult Probe;FCollisionQueryParams ProbeQuery(SCENE_QUERY_STAT(TaserNearCoverAudit),false,Officer);GetWorld()->LineTraceSingleByChannel(Probe,Officer->TaserMuzzle(),Bike->GetActorLocation(),ECC_Visibility,ProbeQuery);
+  CHECK_TROUBLE(Probe.GetActor()!=NearWall,"Near-cover fixture did not isolate muzzle protrusion");
+  CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==0,"Protruding taser bypassed nearby cover");NearWall->Destroy();
+  TroubleTime=Mode->TimeRemaining;FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("police-warning.png"),false,false);Next();}
  else if(TroubleStage==6&&Bike->TaserHits>0){
   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("police-discharge.png"),false,false);
+  CHECK_TROUBLE(Officer->LastTaserOrigin.Z>Officer->GetActorLocation().Z&&FVector::Dist(Officer->LastTaserOrigin,Officer->Weapon->GetComponentLocation())<40,"Taser discharge did not originate at raised device");
   Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Bike->bCrashActive&&Bike->bParked&&Bike->StunRemaining>0&&Bike->Deaths==0&&Bike->RiderHealth==100,"Taser did not knock rider off locally");
   CHECK_TROUBLE(!Bike->FirePistol()&&!Bike->Dismount()&&!Bike->ApplyTaser()&&Bike->TaserHits==1,"Stun actions or repeat-hit guard failed");
   CHECK_TROUBLE(Mode->LastTimeDelta==-10&&Mode->TimeNotice==TEXT("TASED")&&Mode->TimeRemaining<TroubleTime-10,"Taser time penalty missing");Officer->SetActorTickEnabled(false);Next();

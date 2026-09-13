@@ -86,9 +86,9 @@ Close the game window or use Command-Q to quit.
 KNOWN ISSUES — PLEASE EXPECT ROUGH EDGES
 This is not a finished release. Models, environment, animation, hand/weapon
 alignment and balance still need work. Police pursuit can be inconsistent;
-police voice and the complete visible taser sequence are not finished.
+police now raise a visible taser, but voice and animation polish are unfinished.
 Ammo placement near trash cans is not finished. Nearby ammo markers are new.
-Mouse sensitivity was reduced again for this build and still needs feedback.
+Mouse sensitivity was recently reduced and still needs feedback.
 Real-world hill/ramp riding, camera transitions and performance need testing.
 The app is locally signed only; Apple has not notarized or reviewed it.
 

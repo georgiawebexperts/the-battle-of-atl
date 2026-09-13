@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "stage": 8,
+  "reason": "Police pursuit, taser, recovery, gunfire panic and quiet-period alert expiry pass",
+  "people": 3,
+  "police_spawned": 1,
+  "taser_hits": 2,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-78c14276409546a8981fe3ad1d6717e4.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-294017b5f7094f3f8880cd21cd8cd857/police-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-294017b5f7094f3f8880cd21cd8cd857/police-discharge.png"
+  ],
+  "capture_complete": true
+}

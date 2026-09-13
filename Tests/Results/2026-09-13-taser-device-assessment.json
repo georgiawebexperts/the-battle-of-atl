@@ -1,0 +1,16 @@
+{
+  "raised_device_and_discharge_origin_verified": true,
+  "whole_encounter_accepted": false,
+  "evidence": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-60d2d035099444af90cd24f4a3ab110d/police-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-60d2d035099444af90cd24f4a3ab110d/police-discharge.png"
+  ],
+  "closeup_report": "2026-09-13-taser-palm-fit.json",
+  "native_cover_and_recovery_passed": true,
+  "remaining": [
+    "Officer model remains stylized and low-detail",
+    "Thumb/support-hand contact and continuous draw/stow animation need further review",
+    "APD voice absent",
+    "Packaged validation pending"
+  ]
+}
