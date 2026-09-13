@@ -40,7 +40,7 @@ void ABattleGunman::BeginPlay(){
   for(const FString& Path:TArray<FString>{MeshRoot+TEXT("scoopneck"),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),Root+TEXT("f_001/Face/f_001_nrw_FaceMesh")})Parts.Add(LoadObject<USkeletalMesh>(nullptr,*Path));
   if(Mesh&&HairMesh&&Idle&&Walk&&Quick&&!Parts.Contains(nullptr)){
    Body->SetSkinnedAssetAndUpdate(Mesh);bNativeCrowdRig=bDetailedPlayerRig=true;
-   GunIdle=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Gunman/AimGrounded/GunmanPointing"));RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
+   GunIdle=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Gunman/AimPlanted/GunmanStandingAim"));RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
    DeathAsset=Mesh->GetPhysicsAsset();
    if(GunIdle)for(const TCHAR* Name:{TEXT("root"),TEXT("pelvis"),TEXT("spine_01"),TEXT("hand_r")}){
     const auto& AimRef=GunIdle->GetSkeleton()->GetReferenceSkeleton();const auto& WalkRef=GunWalk->GetSkeleton()->GetReferenceSkeleton();const auto& MeshRef=Mesh->GetRefSkeleton();

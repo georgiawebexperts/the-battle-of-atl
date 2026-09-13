@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "grip_review": true,
+  "opposite": false,
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/b0226c7a97de46fa894ab7f2afc1ea63/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/b0226c7a97de46fa894ab7f2afc1ea63/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/b0226c7a97de46fa894ab7f2afc1ea63/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/b0226c7a97de46fa894ab7f2afc1ea63/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/b0226c7a97de46fa894ab7f2afc1ea63/visible-shooter.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "image": "visible-shooter.png",
+    "observations": [
+      "Native idle lower body removes raised bent leg in sampled aiming pose.",
+      "Authored upper-body aim and fitted grip retained."
+    ],
+    "accepted_for_default": false,
+    "remaining": [
+      "Sleeve appearance near right wrist unresolved; removing extra wrist correction did not improve it and was reverted.",
+      "Weapon model and contact need further polish.",
+      "Continuous movement/transitions, actual foot-ground measurements and death physics not accepted."
+    ]
+  }
+}

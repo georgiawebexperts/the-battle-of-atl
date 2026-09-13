@@ -1,0 +1,8 @@
+{
+  "clip": "/Game/BattleRetarget/Gunman/AimPlanted/GunmanStandingAim.GunmanStandingAim",
+  "upper_bones": 102,
+  "lower_bones": 48,
+  "duration": 10.0,
+  "frames": 300,
+  "visual_acceptance": false
+}
