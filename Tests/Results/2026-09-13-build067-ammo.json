@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "reason": "Seventeen initial shots, dry fire, pickups, bike/foot reload conservation, possession, interrupted reload and reserve cap pass",
+  "stage": 9,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-344abb7d2a5b4518975bbc6a6fc45fcd.log",
+  "bin_layout": false,
+  "practice": false,
+  "images": []
+}

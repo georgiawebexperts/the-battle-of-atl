@@ -1,0 +1,41 @@
+{
+  "build": 67,
+  "version": "0.67.0",
+  "source_commit": "95db51b1b1ed0fc3fbc34d46170a67f968925df2",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "0d5a4eedab9e2f36bd76229cb5c7f748979afda23f5f790e282da387d17737b4",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067.zip",
+  "zip_sha256": "e8d5f5ef2a6bd0722a576512d24548a2664063edfa7d06d1e7f67a5ddda32e3d",
+  "zip_bytes": 1323291684,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged curved lake bridge keyboard traversal both directions and handling modes",
+    "Packaged spare-bike exchange preserves supplies; abandoned bike reusable; model inspected",
+    "Packaged music M toggle with actual audio component playback",
+    "Packaged opening regression preserves clock and returns camera; image inspected",
+    "Packaged pistol reserve pickups and reload conservation",
+    "ZIP CRC, local signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac",
+    "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress"
+  ],
+  "reports": [
+    "2026-09-13-build067-bridge.json",
+    "2026-09-13-build067-bikes.json",
+    "2026-09-13-build067-music.json",
+    "2026-09-13-build067-opening.json",
+    "2026-09-13-build067-ammo.json"
+  ]
+}
