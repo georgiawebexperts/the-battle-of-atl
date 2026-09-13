@@ -1,0 +1,36 @@
+{
+  "build": 69,
+  "version": "0.69.0",
+  "source_commit": "ca50e204d42814bbb2e9736c7e83bc4062628bf7",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "d9fd57877b047b47675d4b35d6d0ba6eb88d9b1b323ebcffef080292a168cbb3",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 069.zip",
+  "zip_sha256": "4cf2c04383f611750285644c81b2c9b2dfeb1205f5dfb5dc2d8e0858e6f12524",
+  "zip_bytes": 1323298326,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged stopped, moving and braking foot contact; lowered pelvis saddle clearance; rendered views inspected",
+    "Packaged jump and pedal/grip regression",
+    "ZIP CRC, local signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac",
+    "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress"
+  ],
+  "reports": [
+    "2026-09-13-build069-balance.json",
+    "2026-09-13-build069-jump.json"
+  ]
+}

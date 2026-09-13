@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.024,
+  "pedal_error_cm": 0.0,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-9.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/depart-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/depart-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-8.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/depart-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/depart-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/stopped-again.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-10.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-6.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-7.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/brake-4.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-fa435b6c791a45cc96d8f4dcdfa4a47e/run.log",
+  "exit_code": 0,
+  "packaged": true,
+  "visual_review": {
+    "accepted": true,
+    "scope": "Packaged pedaling, departure and stopped-again side views inspected: saddle beneath seated rider and behind standing rider, no seat through torso. This does not accept all animation quality."
+  }
+}
