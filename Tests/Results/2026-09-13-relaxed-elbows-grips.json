@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.025,
+  "pedal_error_cm": 0.0,
+  "grip_error_cm": 0.0,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-9.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/depart-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/depart-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-8.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/depart-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/depart-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/stopped-again.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-10.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-11.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-6.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-7.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/brake-4.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-e157c7a01d1048649fdf108a8711938a/run.log",
+  "exit_code": 0,
+  "packaged": false,
+  "visual_review": {
+    "accepted": true,
+    "scope": "Stopped and departure side views: elbows lower and closer to ribs; saddle clear. Full continuous animation quality remains unfinished."
+  }
+}

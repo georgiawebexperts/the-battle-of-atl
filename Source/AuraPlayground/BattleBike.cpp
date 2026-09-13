@@ -267,7 +267,10 @@ void ABattleBike::PoseRider(float Dt){
  const FVector FingerAxis=GripTurn.RotateVector(FVector::ForwardVector);
  auto Grip=[&](const TCHAR* Side,float Sign){
   const FString S(Side);const FString HandName=TEXT("Hand_")+S;
-  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,SteeringToRider.TransformPosition(FVector(bDetailedRiderPreview?31:26,-Sign*25,115)-SteeringAssembly->GetRelativeLocation()),FVector(Sign,0,-.4));
+  // When standing ahead of the saddle, relax elbows toward the ribs instead
+  // of retaining the wide riding bend. Wrist targets stay on the grips.
+  const FVector ElbowBend=FMath::Lerp(FVector(Sign,0,-.4),FVector(Sign*.25f,-.15f,-1.f),RiderBalanceBlend);
+  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,SteeringToRider.TransformPosition(FVector(bDetailedRiderPreview?31:26,-Sign*25,115)-SteeringAssembly->GetRelativeLocation()),ElbowBend);
   const int Hand=Index(*HandName);if(Hand<0)return;
   FQuat Facing=GripTurn*FQuat(FVector::UpVector,FMath::DegreesToRadians(Sign*90.f));
   if(bDetailedRiderPreview){
