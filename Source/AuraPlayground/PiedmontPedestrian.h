@@ -34,6 +34,9 @@ public:
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontPedestrian> GroupLeader;
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);
+ UFUNCTION(BlueprintCallable) bool BeginIncidentPose(UAnimSequence* Clip,float PoseSeconds,float HoldSeconds);
+ UFUNCTION(BlueprintCallable) void ReleaseIncidentPose();
+ UPROPERTY(BlueprintReadOnly) bool bIncidentPosing=false;
  bool BeginBenchReach();
  bool BeginBenchIgnition(class ABattleParkFurniture* Furniture,int32 Index);
  UPROPERTY(BlueprintReadOnly) int32 BenchesIgnited=0;
@@ -57,6 +60,10 @@ protected:
  float YieldCooldown=0;
  virtual bool CanUseWeapon() const override {return false;}
 private:
+ void CancelIncidentPose();
+ bool TickIncidentPose(float Dt);
+ float IncidentHoldRemaining=0;
+ bool bIncidentRecovering=false;
  void CancelBenchReach();
  void TickBenchIgnition(float Dt);
  bool IsAtIgnitionBench(class ABattleParkFurniture* Furniture,int32 Index) const;

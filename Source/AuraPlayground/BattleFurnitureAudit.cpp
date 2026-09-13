@@ -4,8 +4,11 @@
 #include "PiedmontTrafficDirector.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "EngineUtils.h"
+#include "Misc/CommandLine.h"
+void TickBattleIncidentPoseAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickFurnitureAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleIncidentPoseAudit"))){TickBattleIncidentPoseAudit(this,Dt);return;}
  if(GetWorld()->GetTimeSeconds()<5||bFurnitureAudited)return;bFurnitureAudited=true;
  for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
  for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();

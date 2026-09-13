@@ -48,7 +48,7 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  if(BodySequence){
   const float Duration=BodySequence->GetPlayLength();
   if(Duration<=0){StopBodySequence();return false;}
-  BodySequenceClock+=Dt;
+  if(!bBodySequenceHeld)BodySequenceClock+=Dt;
   const float Time=bBodySequenceLoop?FMath::Fmod(BodySequenceClock,Duration):FMath::Min(BodySequenceClock,Duration);
   const auto& Data=Clip(BodySequence);
   const auto& Ref=BodySequence->GetSkeleton()->GetReferenceSkeleton();
@@ -123,10 +123,13 @@ void APiedmontExplorer::SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Wa
 void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose){BodyAction=Animation;BodyActionClock=0;BodyActionFromPose=FromPose;}
 
 void APiedmontExplorer::SetBodySequence(UAnimSequence* Animation,bool bLoop){
- BodySequence=Animation;BodySequenceClock=0;bBodySequenceLoop=bLoop;
+ BodySequence=Animation;BodySequenceClock=0;bBodySequenceLoop=bLoop;bBodySequenceHeld=false;
  BodyAction=nullptr;BodyActionFromPose.Reset();
 }
-void APiedmontExplorer::StopBodySequence(){BodySequence=nullptr;BodySequenceClock=0;}
+void APiedmontExplorer::StopBodySequence(){BodySequence=nullptr;BodySequenceClock=0;bBodySequenceHeld=false;}
+void APiedmontExplorer::HoldBodySequenceAt(float Seconds){
+ if(BodySequence){BodySequenceClock=FMath::Clamp(Seconds,0.f,BodySequence->GetPlayLength());bBodySequenceHeld=true;}
+}
 bool APiedmontExplorer::IsBodySequencePlaying() const{
  return BodySequence&&(bBodySequenceLoop||BodySequenceClock<BodySequence->GetPlayLength());
 }

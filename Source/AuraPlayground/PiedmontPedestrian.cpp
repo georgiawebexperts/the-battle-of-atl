@@ -75,7 +75,7 @@ void APiedmontPedestrian::YieldTo(APawn* Source,bool Horn){
 }
 bool APiedmontPedestrian::BeginBenchReach(){
  auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded)return false;
- if(bDead||bSwimming||SleepPhase||KnockdownPhase||StumbleRemaining>0||bBenchReaching||CityAppearanceVariant!=0||!bNativeCrowdRig)return false;
+ if(bDead||bSwimming||SleepPhase||KnockdownPhase||StumbleRemaining>0||bIncidentPosing||bBenchReaching||CityAppearanceVariant!=0||!bNativeCrowdRig)return false;
  auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/LowReachCandidate/MixamoLowReachReference_Anim.MixamoLowReachReference_Anim"));if(!Clip)return false;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;SetBodySequence(Clip,false);BenchReachClock=0;bBenchReaching=true;return true;
@@ -113,9 +113,12 @@ void APiedmontPedestrian::CancelBenchReach(){
  if(bBenchReaching){bBenchReaching=false;StopBodySequence();}
 }
 void APiedmontPedestrian::EndPlay(const EEndPlayReason::Type Reason){CancelBenchReach();Super::EndPlay(Reason);}
-void APiedmontPedestrian::HearHorn(APawn* Source){CancelBenchReach();YieldTo(Source,true);}
+void APiedmontPedestrian::HearHorn(APawn* Source){
+ if(bIncidentPosing){if(Source&&FVector::Dist2D(Source->GetActorLocation(),GetActorLocation())<1400)ReleaseIncidentPose();return;}
+ CancelBenchReach();YieldTo(Source,true);
+}
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
- if(bDead||StumbleRemaining>0)return;CancelBenchReach();CancelSleepBehavior();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
+ if(bDead||StumbleRemaining>0)return;CancelIncidentPose();CancelBenchReach();CancelSleepBehavior();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
  if(Speed>330&&BeginKnockdown(Speed,Direction))return;
  // Light contact plays an authored surprise; unavailable rigs retain the fallback.
@@ -129,6 +132,7 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
  if(KnockdownPhase){TickKnockdown(Dt);return;}
+ if(TickIncidentPose(Dt))return;
  if(bBenchReaching){
   auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
   if(bDead||bSwimming||!Mode||Mode->bRunEnded)CancelBenchReach();
@@ -170,7 +174,7 @@ void APiedmontPedestrian::Tick(float Dt){
 }
 float APiedmontPedestrian::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  if(bDead||Amount<=0)return 0;
- CancelBenchReach();CancelSleepBehavior();
+ CancelIncidentPose();CancelBenchReach();CancelSleepBehavior();
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,30),FVector::UpVector);bDead=true;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
  if(KnockdownPhase==2)KnockdownPhase=0;
@@ -185,7 +189,7 @@ bool APiedmontPedestrian::SetDestinationForValidation(FVector Goal){
 }
 
 bool APiedmontPedestrian::BeginSleeping(){
- if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||SleepPhase||bBenchReaching)return false;
+ if(!bNativeCrowdRig||bDead||bSwimming||KnockdownPhase||StumbleRemaining>0||SleepPhase||bBenchReaching||bIncidentPosing)return false;
  // The initial candidate was authored for the male City skeleton only.
  if(!Body->GetSkinnedAsset()||!Body->GetSkinnedAsset()->GetName().StartsWith(TEXT("m_tal_nrw")))return false;
  auto* Animation=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Mixamo/SleepCandidate/SleepingBaked"));

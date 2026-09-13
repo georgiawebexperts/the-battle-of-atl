@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "started": true,
+    "held": true,
+    "pelvis_drift_cm": 0.0,
+    "horn_recovered": true,
+    "bike_interrupt": true,
+    "damage_interrupt": true,
+    "timed_recovered": true
+  },
+  "scope": "Native held pose after 0.6s transition settling, horn and timed get-up completion, bike-impact and damage interruption; spawned fixture only, no scene placement, rarity, visual or collision-envelope acceptance.",
+  "passed": true
+}

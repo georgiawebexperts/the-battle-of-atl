@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": false,
+    "started": true,
+    "held": false,
+    "pelvis_drift_cm": 92.039,
+    "horn_recovered": true,
+    "bike_interrupt": true,
+    "damage_interrupt": true
+  },
+  "scope": "Native held pose, horn get-up, recovery completion, bike-impact and damage interruption; spawned fixture only, no scene placement, rarity, visual or collision-envelope acceptance.",
+  "passed": false
+}

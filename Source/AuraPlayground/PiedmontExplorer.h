@@ -48,6 +48,8 @@ protected:
  // Full-body authored sequences keep sleeping/get-up poses independent of movement blending.
  void SetBodySequence(UAnimSequence* Animation,bool bLoop);
  void StopBodySequence();
+ void HoldBodySequenceAt(float Seconds);
+ void ResumeBodySequence(){bBodySequenceHeld=false;}
  bool IsBodySequencePlaying() const;
  void SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run);
  virtual bool CanUseWeapon() const;
@@ -66,7 +68,7 @@ private:
  float Gait=0;
  UPROPERTY() TObjectPtr<UAnimSequence> BodySequence;
  float BodySequenceClock=0;
- bool bBodySequenceLoop=false;
+ bool bBodySequenceLoop=false,bBodySequenceHeld=false;
  UPROPERTY() TObjectPtr<UAnimSequence> BodyAction;
  float BodyActionClock=0;
  TArray<FTransform> BodyActionFromPose;
