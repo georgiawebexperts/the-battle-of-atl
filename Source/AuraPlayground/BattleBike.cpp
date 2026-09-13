@@ -61,6 +61,13 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  auto Steered=[&](USceneComponent* Part){const FVector Location=Part->GetRelativeLocation();Part->SetupAttachment(SteeringAssembly);Part->SetRelativeLocation(Location-Head);};
  Tube(TEXT("SeatTube"),Crank,Seat,2.2,Paint.Object);Tube(TEXT("TopTube"),Seat,Head,2,Paint.Object);Tube(TEXT("DownTube"),Crank,Head,3,Paint.Object);
  for(int S:{-1,1}){Tube(FString::Printf(TEXT("Stay%d"),S),Back+FVector(0,S*7,0),Seat,1.4,Paint.Object);Tube(FString::Printf(TEXT("ChainStay%d"),S),Back+FVector(0,S*7,0),Crank,1.4,Paint.Object);Steered(Tube(FString::Printf(TEXT("Fork%d"),S),Head,Front+FVector(0,S*6,0),1.6,Rubber.Object));}
+ // Two independent level pedal platforms follow the shared crank phase.
+ Tube(TEXT("BottomBracket"),Crank-FVector(0,10,0),Crank+FVector(0,10,0),2,Rubber.Object);
+ for(int Sign:{-1,1}){
+  Part(FString::Printf(TEXT("Pedal%d"),Sign),Crank+FVector(0,-Sign*12,Sign*16),FVector(.12,.12,.025),false,Rubber.Object);
+  Tube(FString::Printf(TEXT("CrankArm%d"),Sign),Crank+FVector(0,-Sign*8,0),Crank+FVector(0,-Sign*8,Sign*16),1.1,Paint.Object);
+  Tube(FString::Printf(TEXT("PedalAxle%d"),Sign),Crank+FVector(0,-Sign*8,Sign*16),Crank+FVector(0,-Sign*12,Sign*16),.8,Rubber.Object);
+ }
  Part(TEXT("Battery"),FVector(16,0,59),FVector(.14,.1,.42),false,Rubber.Object)->SetRelativeRotation(FRotator(35,0,0));
  Part(TEXT("Saddle"),FVector(-23,0,98),FVector(.29,.19,.055),false,Rubber.Object);
  Steered(Tube(TEXT("Stem"),Head,FVector(40,0,112),2,Rubber.Object));Steered(Tube(TEXT("Handlebar"),FVector(40,-30,112),FVector(40,30,112),1.5,Rubber.Object));
@@ -214,8 +221,26 @@ void ABattleBike::PoseRider(float Dt){
   MoveBranch(L,Joint,FQuat::FindBetweenVectors(Pose[E].GetLocation()-Pose[L].GetLocation(),Target-Joint));
  };
  const float C=Ride->Cadence;
- Limb(TEXT("UpperLeg_L"),TEXT("LowerLeg_L"),TEXT("Foot_L"),FVector(12,-5+FMath::Sin(C)*16,32+FMath::Cos(C)*16),FVector(0,1,0));
- Limb(TEXT("UpperLeg_R"),TEXT("LowerLeg_R"),TEXT("Foot_R"),FVector(-12,-5-FMath::Sin(C)*16,32-FMath::Cos(C)*16),FVector(0,1,0));
+ const FTransform BikeToRider=Visual->GetComponentTransform().GetRelativeTransform(Rider->GetComponentTransform());
+ for(int Sign:{-1,1}){
+  const TCHAR* Side=Sign>0?TEXT("L"):TEXT("R");
+  const FVector Hub(-5,-Sign*8,36),Radial(Sign*FMath::Sin(C)*16,0,Sign*FMath::Cos(C)*16),Pedal(-5+Radial.X,-Sign*12,36+Radial.Z);
+  if(auto* Platform=Cast<UStaticMeshComponent>(GetDefaultSubobjectByName(*FString::Printf(TEXT("Pedal%d"),Sign))))Platform->SetRelativeLocation(Pedal);
+  if(auto* ArmPart=Cast<UStaticMeshComponent>(GetDefaultSubobjectByName(*FString::Printf(TEXT("CrankArm%d"),Sign)))){
+   ArmPart->SetRelativeLocation(Hub+Radial*.5f);ArmPart->SetRelativeRotation(FQuat::FindBetweenNormals(FVector::UpVector,Radial.GetSafeNormal()));
+  }
+  if(auto* Axle=Cast<UStaticMeshComponent>(GetDefaultSubobjectByName(*FString::Printf(TEXT("PedalAxle%d"),Sign))))Axle->SetRelativeLocation(Hub+Radial+FVector(0,-Sign*2,0));
+  const int Foot=Index(*FString::Printf(TEXT("Foot_%s"),Side));
+  FVector SoleOffset(0,12,-8);
+  if(bDetailedRiderPreview&&Foot>=0){
+   const int Ball=Index(Sign>0?TEXT("ball_l"):TEXT("ball_r"));
+   if(Ball>=0)SoleOffset=ReferencePose[Ball].GetLocation()-ReferencePose[Foot].GetLocation();
+   // Imported loafer bounds: minZ=-2.184858cm; use the sole under the forefoot.
+   SoleOffset.Z=-2.184858f-ReferencePose[Foot].GetLocation().Z;
+  }
+  const FVector Ankle=BikeToRider.TransformPosition(Pedal+FVector(0,0,1.25f))-SoleOffset;
+  Limb(*FString::Printf(TEXT("UpperLeg_%s"),Side),*FString::Printf(TEXT("LowerLeg_%s"),Side),*FString::Printf(TEXT("Foot_%s"),Side),Ankle,FVector(0,1,0));
+ }
  // Leg IK locates the ankles but also rotates the attached shoes. Keep each
  // shoe in its forward-facing bind orientation so it stays level on the pedal.
  for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R")}){
@@ -255,7 +280,7 @@ void ABattleBike::PoseRider(float Dt){
  if(GunHold>0)Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),FVector(-28,45,130),FVector(-1,0,-.4));
  else Grip(TEXT("R"),-1.f);
  for(int I=0;I<Pose.Num();++I)Rider->BoneSpaceTransforms[I]=Parents[I]>=0?Pose[I].GetRelativeTransform(Pose[Parents[I]]):Pose[I];
- Rider->MarkRefreshTransformDirty();
+ Rider->MarkRefreshTransformDirty();Rider->RefreshBoneTransforms();
 }
 
 bool ABattleBike::FirePistol(){

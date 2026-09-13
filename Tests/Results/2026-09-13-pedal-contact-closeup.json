@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 143.45,
+  "air_seconds": 0.815,
+  "hill": true,
+  "downhill": true,
+  "realistic": false,
+  "takeoff_diagnostics": [
+    "grade=-0.0449 floor=StaticMeshActor_124 position=X=-3551.624 Y=11703.385 Z=90.429"
+  ],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-7124144564c6475fa95a61a1a0758b72.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-35c156c4540d40af9e64e99c4c8aefb4/takeoff.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-35c156c4540d40af9e64e99c4c8aefb4/airborne.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-35c156c4540d40af9e64e99c4c8aefb4/landing.png"
+  ],
+  "captures_complete": true,
+  "pedal_contact": [
+    [
+      "0.000",
+      "252",
+      "9.591"
+    ]
+  ],
+  "contact_scope": "Forefoot sole reference point derived from imported loafer bounds; closeup images support approximate sole/platform contact. Not a per-vertex contact solver."
+}

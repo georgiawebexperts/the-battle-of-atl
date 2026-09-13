@@ -107,3 +107,6 @@ This does not necessarily remove settings or saved-game data.
 Build {{BUILD}} update: on-foot firearms and both arms follow upward/downward aim.
 The 14th Street gate uprights now meet the pavement. Fine hand contact,
 long-gun animation, scenery and general gameplay polish remain in progress.
+
+Bike update: visible moving pedals/cranks, shoe alignment, a gentler jump pitch,
+and a short landing bend. Pedalling pauses during flight.

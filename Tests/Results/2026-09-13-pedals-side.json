@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "stage": 1,
+  "reason": "Shoe sole lost pedal contact",
+  "rewards": 0,
+  "peak_cm": 0.0,
+  "air_seconds": 0.0,
+  "hill": true,
+  "downhill": true,
+  "realistic": false,
+  "takeoff_diagnostics": [],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-c10fa481a7c04d17ad907ba7f1bf71b6.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-57d27d79c38543ddb5b8dda2e0f1c824/takeoff.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-57d27d79c38543ddb5b8dda2e0f1c824/airborne.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-57d27d79c38543ddb5b8dda2e0f1c824/landing.png"
+  ],
+  "captures_complete": false
+}
