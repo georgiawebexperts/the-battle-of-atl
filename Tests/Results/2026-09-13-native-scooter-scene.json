@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Actual Krog site: visible wait then offscreen assembly, two interactive poses, bystander and eleven scooter parts",
+    "offscreen_wait": true,
+    "participants": 3,
+    "ready": true,
+    "skipped_empty": true
+  },
+  "scope": "Forced chance 0/1, actual mapped site, camera-facing exclusion and offscreen assembly. No normal random distribution, rendered scene, route clearance or visit completion acceptance.",
+  "passed": true
+}

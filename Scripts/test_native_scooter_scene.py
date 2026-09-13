@@ -1,0 +1,5 @@
+import json,pathlib,re,subprocess
+root=pathlib.Path(__file__).resolve().parents[1];log=root/'work/scooter-scene-audit.log'
+with log.open('w') as f:
+ r=subprocess.run(['/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd',str(root/'AuraPlayground.uproject'),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-game','-nullrhi','-BattleSkipTutorial','-BattleFurnitureAudit','-BattleScooterSceneAudit','-RCWebControlDisable','-unattended','-nosound','-stdout'],stdout=f,stderr=subprocess.STDOUT,timeout=120)
+rows=re.findall(r'ScooterSceneAudit: (\{[^\n]+\})',log.read_text());j={'exit_code':r.returncode,'checks':json.loads(rows[-1]) if rows else None,'scope':'Forced chance 0/1, actual mapped site, camera-facing exclusion and offscreen assembly. No normal random distribution, rendered scene, route clearance or visit completion acceptance.'};j['passed']=r.returncode==0 and bool(j['checks']) and j['checks']['passed'];(root/'Tests/Results/2026-09-13-native-scooter-scene.json').write_text(json.dumps(j,indent=2)+'\n');print(json.dumps(j));raise SystemExit(0 if j['passed'] else 1)

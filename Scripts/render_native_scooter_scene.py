@@ -1,0 +1,6 @@
+"""Capture the native scooter encounter with normal game lighting and characters."""
+import json,pathlib,re,subprocess,uuid
+root=pathlib.Path(__file__).resolve().parents[1];out=root/'work/scooter-scene-runtime'/uuid.uuid4().hex;out.mkdir(parents=True);shot=out/'scene.png';log=out/'run.log'
+with log.open('w') as f:
+ r=subprocess.run(['/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd',str(root/'AuraPlayground.uproject'),'/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1','-game','-RenderOffscreen','-windowed','-ResX=1280','-ResY=720','-ForceRes','-BattleSkipTutorial','-BattleFurnitureAudit','-BattleScooterSceneAudit','-BattleScooterSceneRender='+str(shot),'-RCWebControlDisable','-unattended','-nosound','-stdout'],stdout=f,stderr=subprocess.STDOUT,timeout=180)
+rows=re.findall(r'ScooterSceneAudit: (\{[^\n]+\})',log.read_text());j={'exit_code':r.returncode,'checks':json.loads(rows[-1]) if rows else None,'image':str(shot),'image_exists':shot.exists(),'visual_review':'pending','scope':'Forced native scene at surveyed Krog site, actual gameplay lighting, no map save. Not normal random rarity or full route acceptance.'};(root/'Tests/Results/2026-09-13-native-scooter-scene-render.json').write_text(json.dumps(j,indent=2)+'\n');print(json.dumps(j));raise SystemExit(0 if r.returncode==0 and shot.exists() else 1)

@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Runtime scene captured; visual review pending",
+    "offscreen_wait": true,
+    "participants": 3,
+    "ready": true,
+    "skipped_empty": true
+  },
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/scooter-scene-runtime/85648b66da914242af0ceb3e5559a521/scene.png",
+  "image_exists": true,
+  "visual_review": "Native frame inspected: three distinct participants and scooter visible at surveyed Krog site with normal HUD/world lighting. Poses, hair highlights and contact-shadow appearance remain rough; no final art acceptance.",
+  "scope": "Forced native scene at surveyed Krog site, actual gameplay lighting, no map save. Not normal random rarity or full route acceptance."
+}
