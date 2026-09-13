@@ -71,7 +71,11 @@ void APiedmontExplorer::Tick(float Dt){
  CameraArm->TargetArmLength=FMath::FInterpTo(CameraArm->TargetArmLength,bAiming?180.f:320.f,Dt,10);
  Camera->SetFieldOfView(FMath::FInterpTo(Camera->FieldOfView,bAiming?AimedFieldOfView():85.f,Dt,10));
  if(auto* PC=Cast<APlayerController>(GetController())){
-  float X=0,Y=0;PC->GetInputMouseDelta(X,Y);AddControllerYawInput(X*.18f);AddControllerPitchInput(Y*-.12f);
+  // GetInputMouseDelta already includes the project 0.07 axis sensitivity.
+  // Read device delta once so the pawn does not attenuate mouse look twice.
+  const float X=PC->PlayerInput?PC->PlayerInput->GetRawKeyValue(EKeys::MouseX):0.f;
+  const float Y=PC->PlayerInput?PC->PlayerInput->GetRawKeyValue(EKeys::MouseY):0.f;
+  AddControllerYawInput(X*.18f);AddControllerPitchInput(Y*-.12f);
   const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);
   const float Side=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
   FRotator Heading(0,PC->GetControlRotation().Yaw,0);FVector Move=Heading.Vector()*Forward+FRotationMatrix(Heading).GetUnitAxis(EAxis::Y)*Side;

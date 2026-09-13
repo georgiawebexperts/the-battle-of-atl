@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "yaw_delta": 3.39,
+  "pitch_delta": 0.75,
+  "body_error": 0.0,
+  "view_error": 0.0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/mouse-look-probe.log",
+  "scope": "Injected engine MouseX/MouseY events; not macOS cursor-capture verification."
+}

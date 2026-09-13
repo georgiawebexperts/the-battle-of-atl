@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "yaw_delta": 53.98,
+  "pitch_delta": 12.0,
+  "body_error": 0.0,
+  "view_error": 0.0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/mouse-look-fixed.log",
+  "packaged": false,
+  "scope": "Injected engine mouse-axis input after dismount; not OS pointer capture or subjective sensitivity acceptance."
+}
