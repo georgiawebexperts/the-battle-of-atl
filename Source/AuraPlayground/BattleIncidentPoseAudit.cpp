@@ -34,7 +34,7 @@ void TickBattleIncidentPoseAudit(APlayerController* PC,float Dt){
   BikeSweep=PC->GetWorld()->SweepSingleByObjectType(Hit,Pelvis-Side,Pelvis+Side,FQuat::Identity,FCollisionObjectQueryParams(ECC_Pawn),FCollisionShape::MakeSphere(20),Q)&&Hit.GetActor()==P;
   auto* C=PC->GetWorld()->SpawnActor<AActor>();auto* Box=NewObject<UBoxComponent>(C);C->SetRootComponent(Box);C->AddInstanceComponent(Box);Box->SetBoxExtent(FVector(70,70,10));Box->SetCollisionProfileName(TEXT("BlockAll"));Box->RegisterComponent();C->SetActorLocation(Empty);Ceiling=C;
   P->HearHorn(PC->GetPawn());Stage=25;Age=0;return;}
- if(Stage==25&&Age>.5f){BlockedRecovery=P->bIncidentPosing&&FVector::Dist(Pelvis,P->Body->GetBoneLocation(TEXT("pelvis")))<1.f;if(Ceiling.IsValid())Ceiling->Destroy();P->HearHorn(PC->GetPawn());Stage=3;Age=0;return;}
+ if(Stage==25&&Age>.5f){BlockedRecovery=P->bIncidentPosing&&FVector::Dist(Pelvis,P->Body->GetBoneLocation(TEXT("pelvis")))<1.f;if(Ceiling.IsValid())Ceiling->Destroy();Stage=3;Age=0;return;}
  if(Stage==3&&Age>Clip->GetPlayLength()+2){
   Recovered=!P->bIncidentPosing&&!P->bDead;
   const bool Again=P->BeginIncidentPose(Clip,Clip->GetPlayLength()*.3f,20);P->BikeImpact(600,FVector::ForwardVector);

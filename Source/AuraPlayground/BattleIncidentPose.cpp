@@ -24,6 +24,8 @@ bool APiedmontPedestrian::BeginIncidentPose(UAnimSequence* Clip,float PoseSecond
 }
 void APiedmontPedestrian::ReleaseIncidentPose(){
  if(!bIncidentPosing||bIncidentRecovering)return;
+ // Keep an external release request pending if an obstruction delays get-up.
+ IncidentHoldRemaining=0;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(IncidentStandingSpace),false,this);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius(),GetCapsuleComponent()->GetScaledCapsuleHalfHeight()-2.f),Q))return;
  ResumeBodySequence();bIncidentRecovering=true;

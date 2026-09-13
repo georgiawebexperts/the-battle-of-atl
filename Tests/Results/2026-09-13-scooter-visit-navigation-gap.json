@@ -1,0 +1,35 @@
+{
+  "participants": [
+    {
+      "index": 0,
+      "posed": false,
+      "dead": false,
+      "pause": 0.0,
+      "destination": false,
+      "nav_projected": true,
+      "nav_distance_cm": 844.44,
+      "blockers": ""
+    },
+    {
+      "index": 1,
+      "posed": true,
+      "dead": false,
+      "pause": 1.0,
+      "destination": false,
+      "nav_projected": true,
+      "nav_distance_cm": 827.87,
+      "blockers": ""
+    },
+    {
+      "index": 2,
+      "posed": false,
+      "dead": false,
+      "pause": 0.0,
+      "destination": false,
+      "nav_projected": true,
+      "nav_distance_cm": 891.98,
+      "blockers": ""
+    }
+  ],
+  "scope": "Native end-of-visit observations before queued-release fix. Nav projections searched within 10m; nearby coverage is 8.28-8.92m away. No navigation connection implemented."
+}

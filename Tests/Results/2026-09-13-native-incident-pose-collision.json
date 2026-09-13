@@ -14,6 +14,6 @@
     "posed_bike_sweep": true,
     "blocked_getup_waited": true
   },
-  "scope": "Native held pose after 0.6s transition settling, horn and timed get-up completion, bike-impact and damage interruption; spawned fixture only, posed head visibility trace, empty standing-height trace and pelvis bike-sized Pawn-object sweep and blocked get-up wait; no whole-body envelope, scene placement, rarity or visual acceptance.",
+  "scope": "Native held pose after 0.6s transition settling, horn and timed get-up completion, bike-impact and damage interruption; spawned fixture only, posed head visibility trace, empty standing-height trace and pelvis bike-sized Pawn-object sweep and blocked get-up wait followed by automatic retry after obstruction removal; no whole-body envelope, scene placement, rarity or visual acceptance.",
   "passed": true
 }
