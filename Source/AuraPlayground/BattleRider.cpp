@@ -17,7 +17,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 namespace {
-void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,int32 WeaponSlot){
+void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,int32 WeaponSlot,FVector SupportGrip){
  const bool LongGun=WeaponSlot>0;
  auto* Mesh=Cast<USkeletalMesh>(Body->GetSkinnedAsset());if(!Mesh)return;
  const auto& Ref=Mesh->GetRefSkeleton();TArray<FTransform> Pose=Body->BoneSpaceTransforms;
@@ -42,20 +42,25 @@ void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weig
  };
  const int Shoulder=Ref.FindBoneIndex(TEXT("upperarm_r"));
  if(Shoulder>=0){
-  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*(LongGun?25.f:43.f)-FVector::UpVector*8.f;
+  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*(WeaponSlot==1?0.f:LongGun?25.f:43.f)-FVector::UpVector*8.f;
   Solve(TEXT("r"),GripTarget);
-  const FVector Delta=LongGun?BattleWeaponGrip::Left(WeaponSlot)-BattleWeaponGrip::Right(WeaponSlot):FVector(3,-9,-2);
+  const FVector Delta=LongGun?SupportGrip-BattleWeaponGrip::Right(WeaponSlot):FVector(3,-9,-2);
   Solve(TEXT("l"),GripTarget+Forward*Delta.X+Right*Delta.Y+FVector::CrossProduct(Forward,Right).GetSafeNormal()*Delta.Z);
  }
- const int Hand=Ref.FindBoneIndex(TEXT("hand_r")),Middle=Ref.FindBoneIndex(TEXT("middle_01_r")),Index=Ref.FindBoneIndex(TEXT("index_01_r")),Pinky=Ref.FindBoneIndex(TEXT("pinky_01_r"));
- if(Hand<0||Middle<0||Index<0||Pinky<0)return;
- Rotate(Hand,FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[Hand].GetLocation(),Forward));
- const FVector Across=FVector::VectorPlaneProject(Pose[Pinky].GetLocation()-Pose[Index].GetLocation(),Forward).GetSafeNormal();
- const FVector Down(0,0,-1);Rotate(Hand,FQuat(Forward,FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Down),Forward),FVector::DotProduct(Across,Down))));
- for(const TCHAR* Finger:{TEXT("index"),TEXT("middle"),TEXT("ring"),TEXT("pinky")})for(int Joint=1;Joint<=3;Joint++){
-  const int Bone=Ref.FindBoneIndex(*FString::Printf(TEXT("%s_%02d_r"),Finger,Joint));
-  const float Curl=(Joint==1?35.f:65.f)*(FCString::Strcmp(Finger,TEXT("index"))==0?.5f:1.f);
-  Rotate(Bone,FQuat(FVector::UpVector,FMath::DegreesToRadians(-Curl)));
+ // The shotgun has a vertical front grip; orient its support palm as well.
+ for(const TCHAR* Side:{TEXT("r"),TEXT("l")}){
+  const bool Left=FCString::Strcmp(Side,TEXT("l"))==0;if(Left&&WeaponSlot!=1)continue;
+  auto BoneIndex=[&](const TCHAR* Name){return Ref.FindBoneIndex(*FString::Printf(TEXT("%s_%s"),Name,Side));};
+  const int Hand=BoneIndex(TEXT("hand")),Middle=BoneIndex(TEXT("middle_01")),Index=BoneIndex(TEXT("index_01")),Pinky=BoneIndex(TEXT("pinky_01"));
+  if(Hand<0||Middle<0||Index<0||Pinky<0)continue;
+  Rotate(Hand,FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[Hand].GetLocation(),Forward));
+  const FVector Across=FVector::VectorPlaneProject(Pose[Pinky].GetLocation()-Pose[Index].GetLocation(),Forward).GetSafeNormal();
+  const FVector Down=-FVector::CrossProduct(Forward,Right).GetSafeNormal();Rotate(Hand,FQuat(Forward,FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Down),Forward),FVector::DotProduct(Across,Down))));
+  for(const TCHAR* Finger:{TEXT("index"),TEXT("middle"),TEXT("ring"),TEXT("pinky")})for(int Joint=1;Joint<=3;Joint++){
+   const int Bone=Ref.FindBoneIndex(*FString::Printf(TEXT("%s_%02d_%s"),Finger,Joint,Side));
+   const float Curl=(Joint==1?35.f:65.f)*(!Left&&FCString::Strcmp(Finger,TEXT("index"))==0?.5f:1.f);
+   Rotate(Bone,FQuat(-Down,FMath::DegreesToRadians(Left?Curl:-Curl)));
+  }
  }
  for(int I=0;I<Pose.Num();I++)Body->BoneSpaceTransforms[I]=Ref.GetParentIndex(I)>=0?Pose[I].GetRelativeTransform(Pose[Ref.GetParentIndex(I)]):Pose[I];
  Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
@@ -124,7 +129,7 @@ void ABattleRider::Tick(float Dt){
  const FRotator AimRotation=GetController()?GetControlRotation():GetActorRotation();
  const FVector AimForward=AimRotation.Vector();
  const FName Hand=bDetailedPlayerRig?FName(TEXT("hand_r")):FName(TEXT("Hand_R"));
- if(bDetailedPlayerRig&&bWeaponDrawn&&CurrentWeapon!=3&&!bSwimming)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(AimForward),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f),CurrentWeapon);
+ if(bDetailedPlayerRig&&bWeaponDrawn&&CurrentWeapon!=3&&!bSwimming)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(AimForward),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f),CurrentWeapon,CurrentWeapon==1?ShotgunReloadHand:BattleWeaponGrip::Left(CurrentWeapon));
  const FVector Grip=Body->GetSocketLocation(Hand);
  Weapon->SetWorldRotation((bWeaponDrawn?AimRotation:GetActorRotation())+GunRestRotation);
  FVector WeaponOrigin=Grip;

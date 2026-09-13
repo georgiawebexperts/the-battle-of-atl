@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": -0.02,
+  "vertical_support_hand_travel_cm": 49.27,
+  "async_pipeline_compile": 0,
+  "serial_pso_diagnostic": false,
+  "weapon": "shotgun",
+  "max_weapon_origin_to_hand_cm": 39.32,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-192d81340f3c407f8d12b8eaf6d101c7/aim-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-192d81340f3c407f8d12b8eaf6d101c7/aim-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-192d81340f3c407f8d12b8eaf6d101c7/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-192d81340f3c407f8d12b8eaf6d101c7/run.log",
+  "visual_review": false,
+  "packaged": false
+}

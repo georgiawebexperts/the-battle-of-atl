@@ -7,6 +7,8 @@
 #include "MaterialShared.h"
 #include "SceneInterface.h"
 #include "Camera/CameraComponent.h"
+#include "Camera/CameraActor.h"
+#include "Components/PoseableMeshComponent.h"
 #include "UnrealClient.h"
 #include "Misc/CommandLine.h"
 #include "BattlePickup.h"
@@ -25,6 +27,16 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode||!Mode->Pickups)return;
  static TSet<FString> Captured;
+ static float HandError=0,HandLow=MAX_flt,HandHigh=-MAX_flt;static int PumpHandSamples=0,ReloadHandSamples=0;
+ const bool HandAudit=FParse::Param(FCommandLine::Get(),TEXT("BattleShotgunHandAudit"));
+ if(HandAudit&&Person&&Person->CurrentWeapon==1&&Person->bWeaponDrawn&&Person->DrawRemaining<=0&&(Person->ShotgunPumpTravel>1||Person->bShotgunReloading)){
+  const FVector Actual=Person->Body->GetSocketLocation(TEXT("hand_l"));
+  const FVector Expected=Person->LongGun->GetComponentLocation()+Person->LongGun->GetComponentQuat().RotateVector(Person->ShotgunReloadHand);
+  const float Error=FVector::Dist(Actual,Expected);
+  if(Error>3&&Error>HandError)UE_LOG(LogTemp,Warning,TEXT("ShotgunHandMismatch: phase=%d clock=%.3f error=%.3f actual=%s expected=%s target=%s draw=%.3f reload=%.3f pump=%.3f"),InventoryPhase,InventoryClock,Error,*Actual.ToString(),*Expected.ToString(),*Person->ShotgunReloadHand.ToString(),Person->DrawRemaining,Person->ReloadRemaining,Person->ShotgunPumpTravel);
+  HandError=FMath::Max(HandError,Error);
+  if(Person->ShotgunPumpTravel>1)PumpHandSamples++;if(Person->bShotgunReloading){ReloadHandSamples++;const float Z=Person->LongGun->GetComponentTransform().InverseTransformPosition(Actual).Z;HandLow=FMath::Min(HandLow,Z);HandHigh=FMath::Max(HandHigh,Z);}
+ }
  static bool ShotgunAimPressed=false,ShotgunPumpMoved=false;FString ReviewDir;const bool Review=FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),ReviewDir);
  auto Capture=[&](const FString& Name){FString Dir;if(!Captured.Contains(Name)&&FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),Dir)){Captured.Add(Name);
   if(Person&&Person->ShotgunMesh&&Name==TEXT("shotgun")){
@@ -51,7 +63,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(InventoryPhase==13&&InventoryClock>.7f)Capture(TEXT("rifle-aimed"));
  if(InventoryPhase==14&&InventoryClock>.6f)Capture(TEXT("rifle-reload"));
  InventoryClock+=Dt;auto* Z=Cast<ABattleZombie>(InventoryTarget.Get());
- auto Finish=[&](bool Pass,const TCHAR* Reason){if(Person)UE_LOG(LogTemp,Display,TEXT("InventoryFinishState: clock=%.3f ammo=%d reserve=%s reload=%.3f"),InventoryClock,Person->Ammo,*Person->ReserveLabel(),Person->ReloadRemaining);UE_LOG(LogTemp,Display,TEXT("BattleInventoryAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"crates\":%d,\"desired\":%d,\"kills\":%d,\"deaths\":%d}"),Pass?TEXT("true"):TEXT("false"),InventoryPhase,Reason,Mode->Pickups->WeaponCrates,Mode->Difficulty.WeaponCrates,Bike->EnemyKills,Bike->Deaths);UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);};
+ auto Finish=[&](bool Pass,const TCHAR* Reason){if(HandAudit){Pass=Pass&&HandError<3&&PumpHandSamples>0&&ReloadHandSamples>0;UE_LOG(LogTemp,Display,TEXT("BattleShotgunHands: {\"max_error_cm\":%.3f,\"pump_samples\":%d,\"reload_samples\":%d,\"vertical_travel_cm\":%.2f}"),HandError,PumpHandSamples,ReloadHandSamples,ReloadHandSamples?HandHigh-HandLow:0.f);}if(Person)UE_LOG(LogTemp,Display,TEXT("InventoryFinishState: clock=%.3f ammo=%d reserve=%s reload=%.3f"),InventoryClock,Person->Ammo,*Person->ReserveLabel(),Person->ReloadRemaining);UE_LOG(LogTemp,Display,TEXT("BattleInventoryAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"crates\":%d,\"desired\":%d,\"kills\":%d,\"deaths\":%d}"),Pass?TEXT("true"):TEXT("false"),InventoryPhase,Reason,Mode->Pickups->WeaponCrates,Mode->Difficulty.WeaponCrates,Bike->EnemyKills,Bike->Deaths);UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);};
 #define CHECK_INVENTORY(C,R) if(!(C)){Finish(false,TEXT(R));return;}
  auto Key=[&](FKey K){for(bool Down:{true,false})InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Target=[&](){auto* T=GetWorld()->SpawnActor<ABattleZombie>(Person->GetActorLocation()+FVector(250,0,0),FRotator::ZeroRotator);if(T){T->SetActorTickEnabled(false);T->GetCharacterMovement()->DisableMovement();T->Emergence=0;}InventoryTarget=T;return T;};
@@ -105,7 +117,9 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   CHECK_INVENTORY(Person->Ammo==6&&Bike->Inventory[1].Reserve==7&&Person->ReloadRemaining==0,"Resumed shell reload conservation failed");
   CHECK_INVENTORY(Person->MountBike()&&Bike->Dismount(),"Shotgun possession cycle failed");Person=Cast<ABattleRider>(GetPawn());
   CHECK_INVENTORY(Person&&Person->CurrentWeapon==1&&Person->Ammo==6&&Bike->Inventory[1].Reserve==7,"Shotgun partial reload inventory not retained");
-  if(Review){Person->Ammo=2;Person->SaveWeapon();Key(EKeys::Two);InventoryPhase=21;InventoryClock=0;}
+  if(Review){
+   if(HandAudit){TInlineComponentArray<UMeshComponent*> Meshes(Person);for(auto* Mesh:Meshes)Mesh->SetOnlyOwnerSee(false);const FVector Focus=Person->GetActorLocation()+FVector(0,0,20),Eye=Focus+FVector(100,-140,40);if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(Camera);}
+   Person->Ammo=2;Person->SaveWeapon();Key(EKeys::Two);InventoryPhase=21;InventoryClock=0;}
   else{Finish(true,TEXT("Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass"));return;}
  }
  else if(InventoryPhase==21&&InventoryClock>.4f){Key(EKeys::R);InventoryPhase=22;InventoryClock=0;}

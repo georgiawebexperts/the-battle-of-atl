@@ -69,6 +69,9 @@ void ABattleRider::BuildLongGun(){
 }
 void ABattleRider::UpdateWeaponModel(){
  const bool Visible=CurrentWeapon>0&&bWeaponDrawn&&MeleeRemaining<=0;
+ // Firearms follow the body; camera lag must not move them after hand placement.
+ USceneComponent* Parent=CurrentWeapon==3?static_cast<USceneComponent*>(Camera.Get()):GetRootComponent();
+ if(LongGun->GetAttachParent()!=Parent)LongGun->AttachToComponent(Parent,FAttachmentTransformRules::KeepWorldTransform);
  LongGun->SetRelativeLocation(Weapon->GetRelativeLocation());LongGun->SetRelativeRotation(Weapon->GetRelativeRotation()-GunRestRotation);
  LongGun->SetRelativeScale3D(FVector(CurrentWeapon==2?.7f:1.f,1,1));LongGun->SetVisibility(Visible,true);
  if(CurrentWeapon>0)Weapon->SetVisibility(false);
