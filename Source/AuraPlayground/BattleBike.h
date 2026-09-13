@@ -62,6 +62,7 @@ public:
  virtual void Tick(float Dt) override;
  virtual void UnPossessed() override;
  void RefreshRiderPose();
+ void AttachDetailedRiderParts(class USkinnedMeshComponent* Leader,bool Visible);
  bool ApplyKnifeStab(bool Lethal);
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UBattleBikeMovement> Ride;

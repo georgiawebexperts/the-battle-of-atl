@@ -84,7 +84,7 @@ bool ABattleBike::Dismount(){
  if(!Found)return false;
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
  auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation(),P);if(!Person)return false;
- Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false);
+ Ride->BoostRemaining=0;Ride->Speed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
  ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
@@ -94,7 +94,7 @@ bool ABattleBike::Remount(ABattleRider* Person){
  auto* PC=Cast<APlayerController>(Person->GetController());if(!PC)return false;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleRemount),false,this);Q.AddIgnoredActor(Person);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))return false;
- Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;ClearPhysicalCrash();Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetRelativeLocation(FVector::ZeroVector);Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
+ Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;ClearPhysicalCrash();Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetRelativeLocation(FVector::ZeroVector);Ride->SetMovementMode(MOVE_Walking);Ride->Speed=0;Rider->SetVisibility(!bFirstPerson,true);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
 }
 
 bool ABattleRider::Fire(){

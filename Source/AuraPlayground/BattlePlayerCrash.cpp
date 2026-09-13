@@ -18,11 +18,13 @@ ABattlePlayerCrash::ABattlePlayerCrash(){PrimaryActorTick.bCanEverTick=true;Prim
 bool ABattlePlayerCrash::Start(ABattleBike* Source,const FVector& Velocity){
  if(!IsValid(Source)||Source->bParked||Source->RiderHealth<=0||!Source->GetController())return false;
  auto* Mesh=Cast<USkeletalMesh>(Source->Rider->GetSkinnedAsset());
- auto* Asset=LoadObject<UPhysicsAsset>(nullptr,TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));
+ const bool Detailed=Mesh&&Mesh->GetRefSkeleton().FindBoneIndex(TEXT("pelvis"))>=0;
+ auto* Asset=Detailed?Mesh->GetPhysicsAsset():LoadObject<UPhysicsAsset>(nullptr,TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));
+ HipBone=Detailed?TEXT("pelvis"):TEXT("Hips");
  if(!Mesh||!Asset)return false;
  Bike=Source;SetOwner(Bike);Bike->RefreshRiderPose();
  Physics=NewObject<USkeletalMeshComponent>(this);AddInstanceComponent(Physics);SetRootComponent(Physics);
- Physics->SetSkeletalMeshAsset(Mesh);Physics->SetPhysicsAsset(Asset,true);Physics->SetWorldTransform(Bike->Rider->GetComponentTransform());
+ Physics->SetDisablePostProcessBlueprint(true);Physics->SetSkeletalMeshAsset(Mesh);Physics->SetPhysicsAsset(Asset,true);Physics->SetWorldTransform(Bike->Rider->GetComponentTransform());
  Physics->SetCollisionProfileName(TEXT("Ragdoll"));Physics->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);Physics->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);Physics->SetCollisionResponseToChannel(ECC_Camera,ECR_Ignore);
  Physics->SetCanEverAffectNavigation(false);Physics->PhysicsTransformUpdateMode=EPhysicsTransformUpdateMode::ComponentTransformIsKinematic;Physics->RegisterComponent();Physics->RefreshBoneTransforms();Physics->SetAllBodiesSimulatePhysics(true);Physics->SetSimulatePhysics(true);
  const auto& Ref=Mesh->GetRefSkeleton();for(int I=0;I<Ref.GetNum();I++)if(auto* B=Physics->GetBodyInstance(Ref.GetBoneName(I))){B->SetBodyTransform(Bike->Rider->GetBoneTransform(I),ETeleportType::TeleportPhysics);B->SetUseCCD(true);}
@@ -31,14 +33,15 @@ bool ABattlePlayerCrash::Start(ABattleBike* Source,const FVector& Velocity){
  Physics->SetAllPhysicsLinearVelocity(Velocity+FVector(0,0,60));MirrorPose();
  Fallen=GetWorld()->SpawnActor<ABattleFallenBike>();if(!Fallen||!Fallen->InitializeFrom(Bike,Velocity*.75f)){Destroy();return false;}
  Camera=GetWorld()->SpawnActor<ACameraActor>();
- if(Camera){const FVector Focus=Display->GetSocketLocation(TEXT("Hips"));Camera->SetActorLocation(Focus+FVector(-320,-420,300));}
- Bike->bCrashActive=true;Bike->bParked=true;Bike->Rider->SetVisibility(false);Bike->Ride->Pedal=Bike->Ride->Steer=Bike->Ride->Brake=0;Bike->Ride->DisableMovement();
+ if(Camera){const FVector Focus=Display->GetSocketLocation(HipBone);Camera->SetActorLocation(Focus+FVector(-320,-420,300));}
+ Bike->bCrashActive=true;Bike->bParked=true;Bike->Rider->SetVisibility(false,true);Bike->Ride->Pedal=Bike->Ride->Steer=Bike->Ride->Brake=0;Bike->Ride->DisableMovement();
+ Bike->AttachDetailedRiderParts(Display,true);
  ABattleSpirit::CancelForRider(Bike);
  UE_LOG(LogTemp,Display,TEXT("PlayerCrashLive: started speed=%.1f"),Velocity.Size());return true;
 }
 void ABattlePlayerCrash::MirrorPose(){
  const auto& Ref=Physics->GetSkeletalMeshAsset()->GetRefSkeleton();TArray<FTransform> World,Local;
- if(auto* Hip=Physics->GetBodyInstance(TEXT("Hips")))Display->SetWorldLocation(Hip->GetUnrealWorldTransform().GetLocation()-FVector(0,0,90));
+ if(auto* Hip=Physics->GetBodyInstance(HipBone))Display->SetWorldLocation(Hip->GetUnrealWorldTransform().GetLocation()-FVector(0,0,90));
  const FTransform Frame=Display->GetComponentTransform();
  for(int I=0;I<Ref.GetNum();I++){const int Parent=Ref.GetParentIndex(I);FTransform T;
   if(auto* B=Physics->GetBodyInstance(Ref.GetBoneName(I))){T=B->GetUnrealWorldTransform();T.SetScale3D(B->Scale3D);}else T=Parent>=0?Ref.GetRefBonePose()[I]*World[Parent]:Ref.GetRefBonePose()[I]*Frame;
@@ -52,10 +55,10 @@ void ABattlePlayerCrash::Tick(float Dt){
  if(Bike->RiderHealth<=0){Destroy();return;}
  auto* PC=Cast<APlayerController>(Bike->GetController());if(!PC){Destroy();return;}
  Clock+=Dt;
- if(!bGettingUp){MirrorPose();Settled=Physics->GetPhysicsLinearVelocity(TEXT("Hips")).Size()<100?Settled+Dt:0;
-  if(Clock>1.2f&&Settled>.5f){bGettingUp=Recovery.Begin(Bike,Physics,Display);if(!bGettingUp)Settled=0;}
+ if(!bGettingUp){MirrorPose();Settled=Physics->GetPhysicsLinearVelocity(HipBone).Size()<100?Settled+Dt:0;
+  if(Clock>1.2f&&Settled>.5f){bGettingUp=Recovery.Begin(Bike,Physics,Display);if(!bGettingUp)Settled=0;else Bike->AttachDetailedRiderParts(Recovery.Pose.Get(),true);}
  }else if(Recovery.Tick(Dt)&&FinishRecovery(Dt))return;
- const FVector Hip=bGettingUp&&Recovery.Pose.IsValid()?Recovery.Pose->GetSocketLocation(TEXT("Hips")):Display->GetSocketLocation(TEXT("Hips"));
+ const FVector Hip=bGettingUp&&Recovery.Pose.IsValid()?Recovery.Pose->GetSocketLocation(HipBone):Display->GetSocketLocation(HipBone);
  // Keep the player target at the body so enemies pursue the fallen rider.
  Bike->SetActorLocation(Hip+FVector(0,0,25),false,nullptr,ETeleportType::TeleportPhysics);
  if(Camera){UpdateBattleCrashCamera(Camera,Bike,Fallen,Hip+FVector(0,0,25),Dt);PC->SetViewTarget(Camera);}
@@ -98,7 +101,7 @@ bool ABattlePlayerCrash::FinishRecovery(float Dt){
  PC->Possess(Person);PC->SetControlRotation(Rotation);PC->SetViewTargetWithBlend(Person,.3f);
  Bike->bCrashActive=false;Bike->Ride->Recovery=0;Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;
  if(Fallen)Bike->SetActorLocation(Fallen->GetActorLocation(),false,nullptr,ETeleportType::TeleportPhysics);
- Recovery.Reset();Display->DestroyComponent();Physics->DestroyComponent();if(Camera){Camera->SetLifeSpan(.4f);Camera=nullptr;}
+ Bike->AttachDetailedRiderParts(Bike->Rider,false);Recovery.Reset();Display->DestroyComponent();Physics->DestroyComponent();if(Camera){Camera->SetLifeSpan(.4f);Camera=nullptr;}
  bRecovered=true;UE_LOG(LogTemp,Display,TEXT("PlayerCrashLive: recovered on foot health=%.1f ammo=%d"),Person->Health,Person->Ammo);return true;
 }
 bool ABattlePlayerCrash::PrepareRemount(ABattleRider* Person){
@@ -115,9 +118,10 @@ bool ABattlePlayerCrash::PrepareRemount(ABattleRider* Person){
 }
 float ABattlePlayerCrash::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){return IsValid(Bike)&&!bRecovered?Bike->ApplyRiderDamage(Amount):0;}
 void ABattlePlayerCrash::EndPlay(const EEndPlayReason::Type Reason){
+ if(IsValid(Bike))Bike->AttachDetailedRiderParts(Bike->Rider,!Bike->bParked&&!Bike->bFirstPerson);
  Recovery.Reset();if(IsValid(Fallen))Fallen->Destroy();
  if(IsValid(Camera)){if(IsValid(Bike))if(auto* PC=Cast<APlayerController>(Bike->GetController()))PC->SetViewTarget(Bike);Camera->Destroy();}
- if(IsValid(Bike)){Bike->bCrashActive=false;Bike->Rider->SetVisibility(!Bike->bParked&&!Bike->bFirstPerson);}
+ if(IsValid(Bike)){Bike->bCrashActive=false;Bike->Rider->SetVisibility(!Bike->bParked&&!Bike->bFirstPerson,true);}
  Super::EndPlay(Reason);
 }
 

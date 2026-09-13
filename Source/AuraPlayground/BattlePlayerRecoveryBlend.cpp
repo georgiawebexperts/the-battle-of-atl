@@ -25,14 +25,16 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
  Reset();
  if(!IsValid(Bike)||!IsValid(Physics)||!Bike->GetWorld())return false;
  USkeletalMesh* Mesh=Physics->GetSkeletalMeshAsset();if(!Mesh)return false;const auto& Ref=Mesh->GetRefSkeleton();
- const int32 Hip=Ref.FindBoneIndex(TEXT("Hips")),Head=Ref.FindBoneIndex(TEXT("Head"));if(Hip<0||Head<0)return false;
+ const bool Detailed=Ref.FindBoneIndex(TEXT("pelvis"))>=0;
+ const int32 Hip=Ref.FindBoneIndex(Detailed?TEXT("pelvis"):TEXT("Hips")),Head=Ref.FindBoneIndex(TEXT("Head"));if(Hip<0||Head<0)return false;
  TArray<FTransform> Landed;for(int32 I=0;I<Ref.GetNum();I++)Landed.Add(Display?Display->GetBoneTransform(I):Physics->GetBoneTransform(I));
  const FVector HipWorld=Landed[Hip].GetLocation(),Heading=(Landed[Head].GetLocation()-HipWorld).GetSafeNormal2D();
  float Best=TNumericLimits<float>::Max(),HeadingBest=TNumericLimits<float>::Max();FTransform Frame;
- TArray<int32> FitBones;for(const FName Name:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 Index=Ref.FindBoneIndex(Name);if(Index<0)return false;FitBones.Add(Index);}
+ TArray<int32> FitBones;for(const FName Name:{FName(Detailed?TEXT("pelvis"):TEXT("Hips")),FName(TEXT("Head")),FName(Detailed?TEXT("hand_l"):TEXT("Hand_L")),FName(Detailed?TEXT("hand_r"):TEXT("Hand_R")),FName(Detailed?TEXT("foot_l"):TEXT("Foot_L")),FName(Detailed?TEXT("foot_r"):TEXT("Foot_R"))}){const int32 Index=Ref.FindBoneIndex(Name);if(Index<0)return false;FitBones.Add(Index);}
  const TCHAR* Sides[]={TEXT("F"),TEXT("B"),TEXT("L"),TEXT("R")};
  for(int32 C=0;C<4;C++){
-  UAnimSequence* Anim=LoadObject<UAnimSequence>(nullptr,*FString::Printf(TEXT("/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_%s.GetUp_%s"),Sides[C],Sides[C]));if(!Anim)continue;
+  const FString Path=Detailed?FString::Printf(TEXT("/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_%s"),Sides[C]):FString::Printf(TEXT("/Game/BattleRetarget/Ellison/RecoveryScaled/GetUp_%s.GetUp_%s"),Sides[C],Sides[C]);
+  UAnimSequence* Anim=LoadObject<UAnimSequence>(nullptr,*Path);if(!Anim)continue;
   const auto Start=Sample(Anim,Ref,0,true);const FVector LocalHeading=(Start[Head].GetLocation()-Start[Hip].GetLocation()).GetSafeNormal2D();
   double Dot=0,Cross=0;
   for(int32 I:FitBones){const FVector A=Start[I].GetLocation()-Start[Hip].GetLocation(),B=Landed[I].GetLocation()-HipWorld;Dot+=A.X*B.X+A.Y*B.Y;Cross+=A.X*B.Y-A.Y*B.X;}
@@ -56,7 +58,7 @@ bool FBattlePlayerRecoveryBlend::Begin(ABattleBike* Bike,USkeletalMeshComponent*
    FCollisionQueryParams ClearanceQuery;ClearanceQuery.AddIgnoredActor(Bike);ClearanceQuery.AddIgnoredActor(Physics->GetOwner());FCollisionObjectQueryParams Objects;Objects.AddObjectTypesToQuery(ECC_WorldStatic);Objects.AddObjectTypesToQuery(ECC_WorldDynamic);Objects.AddObjectTypesToQuery(ECC_PhysicsBody);Objects.AddObjectTypesToQuery(ECC_Pawn);
    if(Bike->GetWorld()->OverlapAnyTestByObjectType(Origin+FVector(0,0,98),FQuat::Identity,Objects,FCollisionShape::MakeCapsule(30,96),ClearanceQuery))continue;
    const FTransform Candidate(Rotation,Origin);float Error=0;
-   for(const FName Bone:{FName(TEXT("Hips")),FName(TEXT("Head")),FName(TEXT("Hand_L")),FName(TEXT("Hand_R")),FName(TEXT("Foot_L")),FName(TEXT("Foot_R"))}){const int32 I=Ref.FindBoneIndex(Bone);Error+=FVector::DistSquared(Candidate.TransformPosition(Start[I].GetLocation()),Landed[I].GetLocation());}
+   for(const int32 I:FitBones){Error+=FVector::DistSquared(Candidate.TransformPosition(Start[I].GetLocation()),Landed[I].GetLocation());}
    if(Fit==0)HeadingBest=FMath::Min(HeadingBest,Error);
    if(Error<Best){Best=Error;Choice=C;Frame=Candidate;Clip=Anim;FloorZ=Origin.Z;}
   }

@@ -30,5 +30,6 @@ private:
  float NextExitSearch=0;
  FBattlePlayerRecoveryBlend Recovery;
  float Clock=0,Settled=0;
+ FName HipBone=TEXT("Hips");
  bool bGettingUp=false;
 };

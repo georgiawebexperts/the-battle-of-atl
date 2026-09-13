@@ -67,7 +67,7 @@ bool ABattleBike::RecoverAtCheckpoint(){
  if(Person){Person->SaveWeapon();PC->Possess(this);Person->Destroy();}else if(PC->GetPawn()!=this)PC->Possess(this);
  bParked=false;LeanAngle=0;Ride->SmoothedSteer=0;StunRemaining=0;TaserGrace=FMath::Max(TaserGrace,2.f);RiderHealth=100;DamageGrace=2;HurtCooldown=5;RespawnRemaining=0;
  Ride->LastSafeLocation=Location;Ride->SetMovementMode(MOVE_Walking);Ride->bForceNextFloorCheck=true;
- Rider->SetVisibility(!bFirstPerson);PC->SetControlRotation(Rotation);
+ Rider->SetVisibility(!bFirstPerson,true);PC->SetControlRotation(Rotation);
  UE_LOG(LogTemp,Display,TEXT("BattleHealth: recovered at %s; deaths=%d"),*CheckpointName,Deaths);
  return true;
 }

@@ -20,7 +20,7 @@
 #include "EngineUtils.h"
 void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleBike> Bike;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ABattlePolice> Officer;TWeakObjectPtr<ABattleDrone> Drone;TWeakObjectPtr<AActor> RecoveryBlocker;FVector RecoveryAnchor,HoldHead;float BlockClock=0;bool BlockPlaced=false,BlockReleased=false,HoldSample=false,HoldVerified=false;TWeakObjectPtr<APiedmontDarkZone> LightZone;TWeakObjectPtr<USceneComponent> HeadParent,TailParent;FTransform HeadRelative,TailRelative;bool LightChecked=false;float LightClock=0;float ExpectedHealth=70;bool Taser=false,DroneMode=false,WarningSeen=false;float Clock=0,CrashTime=0,StartTime=0,Elapsed=0;int Stage=0,Wipeouts=0,Ammo=0,Cycles=0;bool Done=false,FallShot=false,FootShot=false,Death=false;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleBike> Bike;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ABattlePolice> Officer;TWeakObjectPtr<ABattleDrone> Drone;TWeakObjectPtr<AActor> RecoveryBlocker;FVector RecoveryAnchor,HoldHead;float BlockClock=0;bool BlockPlaced=false,BlockReleased=false,HoldSample=false,HoldVerified=false;TWeakObjectPtr<APiedmontDarkZone> LightZone;TWeakObjectPtr<USceneComponent> HeadParent,TailParent;FTransform HeadRelative,TailRelative;bool LightChecked=false;float LightClock=0;float ExpectedHealth=70;bool Taser=false,DroneMode=false,WarningSeen=false;float Clock=0,CrashTime=0,StartTime=0,Elapsed=0;int RecoveryShot=0;int Stage=0,Wipeouts=0,Ammo=0,Cycles=0;bool Done=false,FallShot=false,FootShot=false,Death=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Shot=[&](const TCHAR* Name){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);FScreenshotRequest::RequestScreenshot(Folder/(S.Cycles?FString::Printf(TEXT("cycle%d-%s"),S.Cycles+1,Name):FString(Name)),false,false);};
@@ -54,6 +54,9 @@ void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
   Key(EKeys::W,false);S.Stage=2;S.CrashTime=S.Clock;S.StartTime=Mode?Mode->TimeRemaining:0;S.Elapsed=0;}
  if(S.Stage==2){
   S.Elapsed+=Dt;
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))&&IsValid(B->PlayerCrash)&&B->PlayerCrash->GetRecoveryPose()&&S.RecoveryShot<3&&B->PlayerCrash->GetRecoveryTime()>.15f+S.RecoveryShot*1.4f){
+   Shot(*FString::Printf(TEXT("detailed-recovery%d.png"),S.RecoveryShot));S.RecoveryShot++;
+  }
   const bool CrowdBlock=FParse::Param(FCommandLine::Get(),TEXT("BattleCrashCrowdBlock")),SolidBlock=FParse::Param(FCommandLine::Get(),TEXT("BattleCrashSolidBlock"));
   if((CrowdBlock||SolidBlock)&&IsValid(B->PlayerCrash)){
    auto* Pose=B->PlayerCrash->GetRecoveryPose();const float Progress=B->PlayerCrash->GetRecoveryTime();

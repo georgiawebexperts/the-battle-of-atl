@@ -29,3 +29,17 @@ void ABattleBike::InitializeDetailedRiderPreview(){
  UE_LOG(LogTemp,Display,TEXT("DetailedRiderPreview: body=%s outfit_parts=%d"),*Body->GetName(),Parts.Num());
 #endif
 }
+
+void ABattleBike::AttachDetailedRiderParts(USkinnedMeshComponent* Leader,bool Visible){
+ if(!bDetailedRiderPreview||!Leader)return;
+ TArray<USkeletalMeshComponent*> Parts;GetComponents(Parts);
+ for(auto* Part:Parts)if(Part->GetName().StartsWith(TEXT("DetailedRiderPart"))){
+  Part->AttachToComponent(Leader,FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+  Part->SetLeaderPoseComponent(Leader,true,false);Part->SetVisibility(Visible);
+ }
+ TArray<UStaticMeshComponent*> Props;GetComponents(Props);
+ for(auto* Part:Props)if(Part->GetName()==TEXT("DetailedRiderHair")){
+  Part->AttachToComponent(Leader,FAttachmentTransformRules::KeepRelativeTransform,TEXT("head"));Part->SetVisibility(Visible);
+ }
+ Leader->RefreshFollowerComponents();
+}

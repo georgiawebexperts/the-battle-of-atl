@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Death interrupted crash and restored checkpoint control",
+    "stage": 5
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/70133fa9246243b592fce9cccf3c7a38/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/70133fa9246243b592fce9cccf3c7a38/live-death-return.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/70133fa9246243b592fce9cccf3c7a38/live-fall.png"
+  ],
+  "events": [
+    "started speed=1005.9"
+  ],
+  "scope": "Collision and mid-fall death; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": true,
+  "runtime": "editor-game",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 108.348,
+      "selected_rms_cm": 104.981
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true
+}
