@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "review_map": "/Game/PiedmontRide/Maps/PiedmontLakePathGradingReview",
+  "main_map_unchanged_sha256": "5afdef9bc711cd6143a4a4b884387c987b52efbf128c69b00c6e2824bfb9b12f",
+  "checks": 2097,
+  "maximum_height_error_cm": 0.000140188732302704,
+  "failures": [],
+  "scope": "Candidate terrain and pavement collision only. Navigation, moving bike and game visuals pending.",
+  "installed": false
+}

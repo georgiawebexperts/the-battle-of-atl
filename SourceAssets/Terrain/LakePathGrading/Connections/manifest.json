@@ -1,0 +1,99 @@
+{
+  "chunks": [
+    {
+      "file": "Park_Asphalt_3_15.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Asphalt_3_15",
+      "changed_vertices": 400,
+      "max_shift_cm": 26.302083330983372,
+      "bounds_cm": [
+        [
+          -11477.521342,
+          -7185.599611,
+          -362.364583
+        ],
+        [
+          -3077.521342,
+          1035.303511,
+          -224.527639
+        ]
+      ]
+    },
+    {
+      "file": "Park_Asphalt_3_16.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Asphalt_3_16",
+      "changed_vertices": 198,
+      "max_shift_cm": 6.56504532338632,
+      "bounds_cm": [
+        [
+          -8508.363201,
+          1035.303511,
+          -325.86257867119804
+        ],
+        [
+          -3077.521342,
+          9435.303511,
+          -71.541177
+        ]
+      ]
+    },
+    {
+      "file": "Park_Concrete_3_15.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Concrete_3_15",
+      "changed_vertices": 158,
+      "max_shift_cm": 27.343749998379433,
+      "bounds_cm": [
+        [
+          -11477.521342,
+          -6183.390557,
+          -372.099582
+        ],
+        [
+          -3077.521342,
+          -149.52793,
+          -175.27690190059397
+        ]
+      ]
+    },
+    {
+      "file": "Park_Concrete_3_16.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Concrete_3_16",
+      "changed_vertices": 484,
+      "max_shift_cm": 38.28124996232925,
+      "bounds_cm": [
+        [
+          -8239.892627,
+          1384.646849,
+          -414.812221
+        ],
+        [
+          -3077.521342,
+          7470.083327,
+          -168.916547
+        ]
+      ]
+    },
+    {
+      "file": "Park_Gravel_3_15.obj",
+      "source_collection": "ParkPavement",
+      "original_mesh": "SM_Park_Gravel_3_15",
+      "changed_vertices": 259,
+      "max_shift_cm": 27.446414990778084,
+      "bounds_cm": [
+        [
+          -11477.521342,
+          -7364.696489,
+          -418.354167
+        ],
+        [
+          -3666.285971,
+          1035.303511,
+          -144.65625
+        ]
+      ]
+    }
+  ]
+}
