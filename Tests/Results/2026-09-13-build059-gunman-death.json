@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "reason": "Fatal hit cancels live warning and weapon, physics collapse follows, dead shooter cannot fire or re-aim",
+  "log": "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/8ae2838e7f4643d7a5c54648164f9b0e/run.log",
+  "detailed_gunman": true,
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible hip tracking, collapse, dead shooting suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/8ae2838e7f4643d7a5c54648164f9b0e/falling.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/8ae2838e7f4643d7a5c54648164f9b0e/settled.png"
+  ]
+}

@@ -26,13 +26,14 @@ ABattleShotFX::ABattleShotFX(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));static ConstructorHelpers::FObjectFinder<UStaticMesh> Sphere(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
  Tracer->SetStaticMesh(Cylinder.Object);Flash->SetStaticMesh(Sphere.Object);
  for(auto* M:{Tracer.Get(),Flash.Get()}){M->SetCollisionEnabled(ECollisionEnabled::NoCollision);M->SetCastShadow(false);M->SetCanEverAffectNavigation(false);}
- Light=CreateDefaultSubobject<UPointLightComponent>(TEXT("MuzzleLight"));Light->SetupAttachment(RootComponent);Light->SetIntensity(3000);Light->SetAttenuationRadius(240);Light->SetLightColor(FLinearColor(1,.48,.08));Light->SetCastShadows(false);
+ Light=CreateDefaultSubobject<UPointLightComponent>(TEXT("MuzzleLight"));Light->SetupAttachment(RootComponent);Light->SetIntensity(150);Light->SetAttenuationRadius(180);Light->SetLightColor(FLinearColor(1,.48,.08));Light->SetCastShadows(false);
 }
 void ABattleShotFX::BeginPlay(){
  Super::BeginPlay();auto* Mat=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_ShotGlow.M_ShotGlow"));
  Tracer->SetMaterial(0,Mat);Flash->SetMaterial(0,Mat);SetActorLocation(Start);
  const FVector Delta=End-Start;Tracer->SetRelativeLocation(Delta*.5f);Tracer->SetRelativeRotation(FQuat::FindBetweenNormals(FVector::UpVector,Delta.GetSafeNormal()));Tracer->SetRelativeScale3D(FVector(.012,.012,Delta.Size()/100));
  Flash->SetRelativeScale3D(FVector(.18,.06,.06));
+ Flash->SetVisibility(bMuzzleFlash);Light->SetVisibility(bMuzzleFlash);
 }
 FBattleShotResult FireBattlePistol(APawn* Shooter,USceneComponent* Gun,float Spread){
  FBattleShotResult Result;if(!Shooter||!Gun)return Result;auto* PC=Cast<APlayerController>(Shooter->GetController());if(!PC)return Result;
@@ -72,7 +73,8 @@ FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Sl
    if(Alive&&Damage>0&&!TimedVictims.Contains(Victim)){TimedVictims.Add(Victim);if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Shooter)))Mode->RecordPlayerShotHit(Victim);}
    if(Alive){Result.Damage+=Damage;if(Victim->bDead&&Victim->ActorHasTag(TEXT("PiedmontHostile")))Result.Kills++;else if(Shotgun)if(auto* Z=Cast<ABattleZombie>(Victim)){Z->bTelegraphing=false;Z->LaunchCharacter(View.Vector()*650+FVector(0,0,120),true,true);}}
   }
-  if(auto* FX=Shooter->GetWorld()->SpawnActorDeferred<ABattleShotFX>(ABattleShotFX::StaticClass(),FTransform(Muzzle),Shooter,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){FX->Start=Muzzle;FX->End=Result.End;FX->FinishSpawning(FTransform(Muzzle));}
+  // Pellets retain separate tracers, but a trigger pull has only one muzzle flash/light.
+  if(auto* FX=Shooter->GetWorld()->SpawnActorDeferred<ABattleShotFX>(ABattleShotFX::StaticClass(),FTransform(Muzzle),Shooter,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){FX->Start=Muzzle;FX->End=Result.End;FX->bMuzzleFlash=I==0;FX->FinishSpawning(FTransform(Muzzle));}
  }
  if(TimedVictims.Num()>1)Result.HitLabel=FString::Printf(TEXT("%d TARGETS HIT"),TimedVictims.Num());
  Result.EnemyKilled=Result.Kills>0;

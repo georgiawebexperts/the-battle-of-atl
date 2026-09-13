@@ -13,6 +13,7 @@ public:
  ABattleShotFX();
  virtual void BeginPlay() override;
  FVector Start,End;
+ bool bMuzzleFlash=true;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> Tracer;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> Flash;
  UPROPERTY() TObjectPtr<UPointLightComponent> Light;

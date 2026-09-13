@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "hide_skin_diagnostic": false,
+  "motion_review": false,
+  "grip_review": false,
+  "opposite": false,
+  "detailed_gunman": true,
+  "log": "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/c68225f1ed39488d8f241fab333fc76a/run.log",
+  "fixed_seed": true,
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/c68225f1ed39488d8f241fab333fc76a/warning.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/c68225f1ed39488d8f241fab333fc76a/behind-warning.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/c68225f1ed39488d8f241fab333fc76a/covered-shot.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleGunmanReview/c68225f1ed39488d8f241fab333fc76a/visible-shooter.png"
+  ]
+}
