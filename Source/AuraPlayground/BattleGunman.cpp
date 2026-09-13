@@ -1,4 +1,8 @@
 #include "BattleGunman.h"
+#include "BattleDetailedRider.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Engine/SkeletalMesh.h"
+#include "Misc/CommandLine.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleShot.h"
@@ -19,6 +23,34 @@ ABattleGunman::ABattleGunman(){
  static ConstructorHelpers::FObjectFinder<UAnimSequence> RunClip(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run.Animations_CharacterArmature_Run"));GunRun=RunClip.Object;
  bUseControllerRotationYaw=false;PrimaryActorTick.TickGroup=TG_PostPhysics;
  static ConstructorHelpers::FObjectFinder<UPhysicsAsset> DeathCollision(TEXT("/Game/BattleForTheA/Rider/Physics/PA_EllisonCrashCandidateV6.PA_EllisonCrashCandidateV6"));DeathAsset=DeathCollision.Object;
+}
+void ABattleGunman::BeginPlay(){
+#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedGunman"))){
+  const FString Root=TEXT("/Game/CitySampleCrowd/Character/Female/");
+  const FString MeshRoot=Root+TEXT("NormalWeight/Meshes/f_tal_nrw_");
+  auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
+  auto* HairMesh=LoadObject<UStaticMesh>(nullptr,*(Root+TEXT("f_001/Hair/Hair/Hair_S_Coil_CardsMesh_Group0_LOD0")));
+  const FString AnimRoot=TEXT("/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/");
+  auto* Idle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("FTN_N_Idle_Base")));
+  auto* Walk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("FTN_N_Walk_F")));
+  auto* Quick=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("FTN_N_Walk_F_Quickly")));
+  TArray<USkeletalMesh*> Parts;
+  for(const FString& Path:TArray<FString>{MeshRoot+TEXT("scoopneck"),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),Root+TEXT("f_001/Face/f_001_nrw_FaceMesh")})Parts.Add(LoadObject<USkeletalMesh>(nullptr,*Path));
+  if(Mesh&&HairMesh&&Idle&&Walk&&Quick&&!Parts.Contains(nullptr)){
+   Body->SetSkinnedAssetAndUpdate(Mesh);bNativeCrowdRig=bDetailedPlayerRig=true;
+   GunIdle=nullptr;RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
+   DeathAsset=Mesh->GetPhysicsAsset();
+   for(int I=0;I<Parts.Num();I++){
+    auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("GunmanOutfit%d"),I));AddInstanceComponent(Part);Part->SetupAttachment(Body);
+    Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
+   }
+   auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("GunmanHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
+   UE_LOG(LogTemp,Display,TEXT("DetailedGunman: body=%s parts=%d physics=%s"),*Mesh->GetName(),Parts.Num(),*GetNameSafe(DeathAsset));
+  }
+ }
+#endif
+ Super::BeginPlay();
 }
 bool ABattleGunman::CanAttack() const{
  const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
@@ -75,7 +107,7 @@ void ABattleGunman::AnimateBody(float Dt){
   Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
  }
  if(Drawn&&Weapon->GetStaticMesh()){
-  const FVector Centre=Body->GetSocketLocation(TEXT("Hand_R"))+GetActorForwardVector()*8+FVector(0,0,6);
+  const FVector Centre=Body->GetSocketLocation(BattleDetailedBone(TEXT("Hand_R"),bDetailedPlayerRig))+GetActorForwardVector()*8+FVector(0,0,6);
   Weapon->SetWorldLocation(Centre-Weapon->GetComponentTransform().TransformVector(Weapon->GetStaticMesh()->GetBounds().Origin));
  }
 }

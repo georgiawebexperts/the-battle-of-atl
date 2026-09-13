@@ -1,4 +1,5 @@
 #include "BattleGunman.h"
+#include "BattleDetailedRider.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
@@ -17,13 +18,13 @@ bool ABattleGunman::BeginDeathPhysics(FVector Direction){
  const auto& Ref=Mesh->GetRefSkeleton();
  for(int I=0;I<Ref.GetNum();I++)if(auto* Instance=DeathPhysics->GetBodyInstance(Ref.GetBoneName(I))){Instance->SetBodyTransform(Body->GetBoneTransform(I),ETeleportType::TeleportPhysics);Instance->SetUseCCD(true);}
  DeathPhysics->SetAllPhysicsLinearVelocity(Direction.GetSafeNormal2D()*120+FVector(0,0,15));
- DeathPhysics->AddImpulse(Direction.GetSafeNormal2D()*100,TEXT("Chest"),true);
+ DeathPhysics->AddImpulse(Direction.GetSafeNormal2D()*100,BattleDetailedBone(TEXT("Chest"),bDetailedPlayerRig),true);
  MirrorDeathPose();return true;
 }
 void ABattleGunman::MirrorDeathPose(){
  if(!DeathPhysics)return;
  const auto& Ref=DeathPhysics->GetSkeletalMeshAsset()->GetRefSkeleton();TArray<FTransform> World,Local;
- if(auto* Hip=DeathPhysics->GetBodyInstance(TEXT("Hips")))Body->SetWorldLocation(Hip->GetUnrealWorldTransform().GetLocation()-FVector(0,0,90));
+ if(auto* Hip=DeathPhysics->GetBodyInstance(BattleDetailedBone(TEXT("Hips"),bDetailedPlayerRig)))Body->SetWorldLocation(Hip->GetUnrealWorldTransform().GetLocation()-FVector(0,0,90));
  const FTransform Frame=Body->GetComponentTransform();
  for(int I=0;I<Ref.GetNum();I++){
   const int Parent=Ref.GetParentIndex(I);FTransform T;

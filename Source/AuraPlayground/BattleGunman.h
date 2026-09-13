@@ -9,6 +9,7 @@ class AURAPLAYGROUND_API ABattleGunman : public APiedmontExplorer {
  GENERATED_BODY()
 public:
  ABattleGunman();
+ virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  virtual float TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
  bool TryAim(APawn* Target);

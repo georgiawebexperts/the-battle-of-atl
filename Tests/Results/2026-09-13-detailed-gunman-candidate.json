@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/f50db435c632455cb6647b2b7a7633eb/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/f50db435c632455cb6647b2b7a7633eb/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/f50db435c632455cb6647b2b7a7633eb/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/f50db435c632455cb6647b2b7a7633eb/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/f50db435c632455cb6647b2b7a7633eb/visible-shooter.png"
+  ],
+  "detailed_body_loaded": true,
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "image": "visible-shooter.png",
+    "appearance": "Detailed female CitySample body, face, hair, scoopneck, jeans and shoes render correctly.",
+    "accepted_for_default": false,
+    "reason": "Generic procedural arm targets give awkward aiming stance and imprecise pistol grip. Need authored aiming pose/animation, weapon fitting and death review before default integration.",
+    "scope": "Stationary gunman only; locomotion and physics death not exercised."
+  }
+}
