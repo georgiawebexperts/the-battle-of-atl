@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "reason": "Real shoreline entry, swim away, return and fixed-bike remount pass",
+  "stage": 3,
+  "swim_cm": 491.75,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 44.26,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-5cc086296caa4407b74624dca80594f9/run.log",
+  "images": []
+}

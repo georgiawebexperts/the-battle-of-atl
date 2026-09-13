@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "reason": "Real shoreline entry, swim away, return and fixed-bike remount pass",
+  "stage": 3,
+  "swim_cm": 529.36,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-24628257545a4aaaa66a330e3c978200/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-24628257545a4aaaa66a330e3c978200/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-24628257545a4aaaa66a330e3c978200/returned.png"
+  ],
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "visual_accepted": true,
+  "visual_scope": "Inspected swimming screenshot: lake surface and swimming HUD visible. Does not verify full lake circuit, underwater view, all banks or final animation quality."
+}
