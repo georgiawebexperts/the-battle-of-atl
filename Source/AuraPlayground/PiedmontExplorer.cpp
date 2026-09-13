@@ -92,7 +92,7 @@ void APiedmontExplorer::AnimateBody(float Dt){
    // Floor distance is measured from the capsule base and remains valid there.
    BodyHeight-=Movement->CurrentFloor.GetDistanceToFloor();
  }
- Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75):FVector(0,0,BodyHeight));
+ Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75+SwimStandingHalfHeight-35):FVector(0,0,BodyHeight));
  Body->SetRelativeRotation(bSwimming?FRotator(0,-90,90):FRotator(0,-90,0));
  Gait+=bSwimming?Dt*3.f:GetVelocity().Size2D()*Dt/85.f;
  const float Blend=FMath::Clamp(GetVelocity().Size2D()/220.f,0.f,1.f);
@@ -149,20 +149,34 @@ void APiedmontExplorer::ValidationKey(FName Key,bool Pressed){
 }
 
 void APiedmontExplorer::UpdateSwimming(float Dt){
+ constexpr float SwimHalfHeight=35;
  APiedmontWaterHazard* Water=nullptr;
  const FVector Here=GetActorLocation();
  for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It){
   const float Level=It->GetActorLocation().Z;
-  if(It->ContainsBike(FVector(Here.X,Here.Y,Level+1))&&Here.Z-88<Level+25){Water=*It;break;}
+  if(It->ContainsBike(FVector(Here.X,Here.Y,Level+1))&&Here.Z-(bSwimming?SwimHalfHeight:GetCapsuleComponent()->GetScaledCapsuleHalfHeight())<Level+25){Water=*It;break;}
  }
  const bool InWater=Water!=nullptr;
  if(InWater!=bSwimming){
+  if(InWater){
+   UnCrouch();GetCharacterMovement()->UnCrouch(false);
+   SwimStandingHalfHeight=GetCapsuleComponent()->GetUnscaledCapsuleHalfHeight();
+   GetCapsuleComponent()->SetCapsuleHalfHeight(SwimHalfHeight);
+   SetActorLocation(GetActorLocation()-FVector(0,0,SwimStandingHalfHeight-SwimHalfHeight),false,nullptr,ETeleportType::TeleportPhysics);
+  }else{
+   const FVector Standing=Here+FVector(0,0,SwimStandingHalfHeight-SwimHalfHeight);
+   FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimStandClearance),false,this);
+   for(auto* Ignored:GetCapsuleComponent()->GetMoveIgnoreActors())Q.AddIgnoredActor(Ignored);
+   if(GetWorld()->OverlapBlockingTestByChannel(Standing,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius(),SwimStandingHalfHeight),Q))return;
+   SetActorLocation(Standing,false,nullptr,ETeleportType::TeleportPhysics);
+   GetCapsuleComponent()->SetCapsuleHalfHeight(SwimStandingHalfHeight);
+  }
   bSwimming=InWater;GetCharacterMovement()->SetMovementMode(bSwimming?MOVE_Flying:MOVE_Walking);
   GetCharacterMovement()->MaxFlySpeed=200;GetCharacterMovement()->BrakingDecelerationFlying=1200;
  }
  if(bSwimming){
-  const float Target=Water->GetActorLocation().Z+88;
-  FHitResult Hit;SetActorLocation(FVector(Here.X,Here.Y,FMath::FInterpTo(Here.Z,Target,Dt,8)),true,&Hit);
+  const FVector Position=GetActorLocation();const float Target=Water->GetActorLocation().Z+SwimHalfHeight;
+  FHitResult Hit;SetActorLocation(FVector(Position.X,Position.Y,FMath::FInterpTo(Position.Z,Target,Dt,8)),true,&Hit);
   GetCharacterMovement()->Velocity.Z=0;
  }
 }

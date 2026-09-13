@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "reason": "Timed out reaching shore or swimming",
+  "stage": 7,
+  "swim_cm": 520.94,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "route_index": 74,
+  "route_points": 343,
+  "route_distance_cm": 14903.27,
+  "alternate_shore": false,
+  "edge_used": 45,
+  "fixture": "X=-12611.248 Y=5129.596 Z=-258.512 wet=X=-12556.180 Y=4632.638 Z=-323.334",
+  "edge_requested": 45,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-3d3471324e1541bba405d393c4d92946/run.log",
+  "images": [],
+  "route_fixture": "Tests/Fixtures/swim-exploration-before-detour.json"
+}

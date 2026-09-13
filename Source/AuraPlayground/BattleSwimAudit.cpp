@@ -10,14 +10,24 @@
 #include "Misc/CommandLine.h"
 #include "UnrealClient.h"
 #include "Engine/OverlapResult.h"
+#include "Misc/FileHelper.h"
+#include "Serialization/JsonSerializer.h"
+#include "Dom/JsonObject.h"
 
 void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  auto* W=PC->GetWorld();if(W->GetTimeSeconds()<5)return;
- struct FState{int Stage=0,Edge=0;float NextIdleLog=0,Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start;bool Shot=false;};static FState S;
+ struct FState{int Stage=0,Edge=0;float NextIdleLog=0,Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start,RouteLast;TArray<FVector> Route;TArray<bool> RouteSwim;int RouteIndex=0;float RouteDistance=0;bool AwayShore=false,Shot=false;};static FState S;
  if(S.Stage<0)return;S.Clock+=Dt;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.:0.,false,0));};
- auto End=[&](bool Pass,const TCHAR* Reason){Key(EKeys::W,false);UE_LOG(LogTemp,Display,TEXT("BattleSwimAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d,\"swim_cm\":%.2f,\"bike_drift_cm\":%.3f,\"stroke_cm\":%.2f}"),Pass?TEXT("true"):TEXT("false"),Reason,S.Stage,S.SwimDistance,S.Drift,S.MinHand<MAX_flt?S.MaxHand-S.MinHand:0);S.Stage=-1;PC->ConsoleCommand(TEXT("quit"));};
+ auto End=[&](bool Pass,const TCHAR* Reason){Key(EKeys::W,false);
+  if(!Pass&&S.Stage==7&&PC->GetPawn()){
+   APawn* Pawn=PC->GetPawn();const FVector Here=Pawn->GetActorLocation();FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimRouteBlock),false,Pawn);Q.AddIgnoredActor(S.Bike.Get());for(TActorIterator<AActor> It(W);It;++It)if(It->ActorHasTag(TEXT("RideWater")))Q.AddIgnoredActor(*It);
+   const FVector Ahead=Here+(S.Route[S.RouteIndex]-Here).GetSafeNormal2D()*300;
+   W->SweepSingleByChannel(Hit,Here,Ahead,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q);
+   UE_LOG(LogTemp,Display,TEXT("SwimRouteBlock: here=%s velocity=%s target=%s actor=%s component=%s impact=%s normal=%s"),*Here.ToString(),*Pawn->GetVelocity().ToString(),*S.Route[S.RouteIndex].ToString(),Hit.GetActor()?*Hit.GetActor()->GetActorNameOrLabel():TEXT("none"),*GetNameSafe(Hit.GetComponent()),*Hit.ImpactPoint.ToString(),*Hit.ImpactNormal.ToString());
+   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleSwimReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("route-blocked.png"),false,false);
+  }UE_LOG(LogTemp,Display,TEXT("BattleSwimAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d,\"swim_cm\":%.2f,\"bike_drift_cm\":%.3f,\"stroke_cm\":%.2f,\"route_index\":%d,\"route_points\":%d,\"route_distance_cm\":%.2f,\"alternate_shore\":%s}"),Pass?TEXT("true"):TEXT("false"),Reason,S.Stage,S.SwimDistance,S.Drift,S.MinHand<MAX_flt?S.MaxHand-S.MinHand:0,S.RouteIndex,S.Route.Num(),S.RouteDistance,S.AwayShore?TEXT("true"):TEXT("false"));S.Stage=-1;PC->ConsoleCommand(TEXT("quit"));};
  auto Capture=[&](const TCHAR* Name){FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleSwimReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),false,false);};
 #define SWIM_CHECK(C,R) if(!(C)){End(false,TEXT(R));return;}
  if(S.Clock>35){End(false,TEXT("Timed out reaching shore or swimming"));return;}
@@ -66,6 +76,23 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   TInlineComponentArray<UPoseableMeshComponent*> Parts(P);for(auto* Part:Parts)if(Part->GetFName()==TEXT("DetailedM1911"))SWIM_CHECK(!Part->IsVisible(),"Pistol visible in water");
   SWIM_CHECK(S.MaxHand-S.MinHand>15,"Swimming arms did not stroke");
   Key(EKeys::W,true);S.Stage=3;S.Clock=0;
+  FString RoutePath;if(FParse::Value(FCommandLine::Get(),TEXT("BattleSwimRoute="),RoutePath)){
+   FString Json;TSharedPtr<FJsonObject> Root;SWIM_CHECK(FFileHelper::LoadFileToString(Json,*RoutePath)&&FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Json),Root),"Cannot load exploration route");
+   const TArray<TSharedPtr<FJsonValue>>* Points=nullptr;SWIM_CHECK(Root->TryGetArrayField(TEXT("points"),Points),"Missing exploration points");
+   for(const auto& Value:*Points){const auto Point=Value->AsObject();SWIM_CHECK(Point.IsValid(),"Invalid route point");S.Route.Add(FVector(Point->GetNumberField(TEXT("x")),Point->GetNumberField(TEXT("y")),0));S.RouteSwim.Add(Point->GetBoolField(TEXT("swim")));}
+   SWIM_CHECK(!S.Route.IsEmpty(),"Empty exploration route");S.RouteLast=P->GetActorLocation();S.Stage=7;
+  }
+ }
+ if(S.Stage==7){
+  S.RouteDistance+=FVector::Dist2D(S.RouteLast,P->GetActorLocation());S.RouteLast=P->GetActorLocation();
+  const FVector Delta=S.Route[S.RouteIndex]-P->GetActorLocation();PC->SetControlRotation(FRotator(0,Delta.Rotation().Yaw,0));
+  if(Delta.Size2D()<80){
+   SWIM_CHECK(P->bSwimming==S.RouteSwim[S.RouteIndex],"Route surface state does not match lake or shore");
+   if(!P->bSwimming&&FVector::Dist2D(S.Bank,P->GetActorLocation())>1000)S.AwayShore=true;
+   S.RouteIndex++;S.Clock=0;
+   if(S.RouteIndex%25==0)UE_LOG(LogTemp,Display,TEXT("SwimExploration: point=%d/%d distance=%.1f"),S.RouteIndex,S.Route.Num(),S.RouteDistance);
+   if(S.RouteIndex==S.Route.Num()){if(S.RouteSwim.Contains(false)){SWIM_CHECK(S.AwayShore,"Did not exit at a different shore");}S.Stage=3;}
+  }
  }
  if(S.Stage==3){
   const FVector Delta=S.Bank-P->GetActorLocation();PC->SetControlRotation(FRotator(0,Delta.Rotation().Yaw,0));

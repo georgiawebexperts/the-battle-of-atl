@@ -1,0 +1,33 @@
+{
+  "description": "Short diagnostic route toward obstruction from edge90; not a full exploration acceptance route.",
+  "points": [
+    {
+      "x": -3298.553970830022,
+      "y": 26.772219645141455,
+      "swim": true
+    },
+    {
+      "x": -3219.5584051740507,
+      "y": -155.59332977883025,
+      "swim": true
+    },
+    {
+      "x": -3132.7114329134756,
+      "y": -334.8074002967585,
+      "swim": true
+    },
+    {
+      "x": -3039.715960283951,
+      "y": -510.5470633643963,
+      "swim": true
+    },
+    {
+      "x": -2903.8621463371232,
+      "y": -655.9043039988204,
+      "swim": true
+    }
+  ],
+  "swim_points": 5,
+  "walk_points": 0,
+  "planned_cm": 795.6759422415782
+}

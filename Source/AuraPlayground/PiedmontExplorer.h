@@ -63,6 +63,7 @@ protected:
  virtual void AnimateBody(float Dt);
 private:
  void UpdateSwimming(float Dt);
+ float SwimStandingHalfHeight=88;
  TArray<FTransform> RestPose;
  TArray<int32> Parents;
  TArray<FName> Bones;
