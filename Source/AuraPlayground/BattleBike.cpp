@@ -246,7 +246,7 @@ int32 ABattleBike::AddHornUses(int32 Amount){
 }
 void ABattleBike::UpdateLights(float Dt){
  LightOffDelay=FMath::Max(0.f,LightOffDelay-Dt);LightCheck-=Dt;if(LightCheck>0)return;LightCheck=.2f;bool Dark=false;
- for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(Headlight->GetComponentLocation())){Dark=true;break;}
+ for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(GetActorLocation())||It->Contains(Headlight->GetComponentLocation())){Dark=true;break;}
  if(!Dark){TActorIterator<ADirectionalLight> Sun(GetWorld());if(Sun)Dark=Sun->GetActorForwardVector().Z>0;}
  if(Dark){LightOffDelay=1.5f;bLightsOn=true;}else if(LightOffDelay<=0)bLightsOn=false;
  Headlight->SetVisibility(bLightsOn);TailLight->SetVisibility(bLightsOn);

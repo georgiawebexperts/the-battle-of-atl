@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "body_only_lit": true,
+    "head_only_lit": true,
+    "exit_delay": true,
+    "daylight_off": true
+  },
+  "scope": "Native automatic-light ticks at a narrow isolated dark volume: bike body only, headlamp only, delayed exit, daylight off. No rendered illumination or complete Krog route acceptance.",
+  "passed": true
+}

@@ -109,12 +109,13 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  }
  const float Error=FMath::FindDeltaAngleDegrees(Bike->GetActorRotation().Yaw,(Target-Position).Rotation().Yaw);
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
+ FString YieldReason;
  bool Yield=Bike->Ride->bRealHandling&&FMath::Abs(Error)>10&&Bike->Ride->Speed>450;
  if(Bike->Ride->bRealHandling){
   // Brake before a mapped bend, using remaining distance and a conservative corner radius.
   const FVector Forward=Bike->GetActorForwardVector().GetSafeNormal2D();
   const float StopLook=Bike->Ride->Speed*Bike->Ride->Speed/1100.f+500.f;
-  for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car){const FVector Offset=Car->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);if(Ahead>0&&Ahead<StopLook&&Side<350&&FMath::Abs(Offset.Z)<180)Yield=true;}
+  for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car){const FVector Offset=Car->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);if(Ahead>0&&Ahead<StopLook&&Side<350&&FMath::Abs(Offset.Z)<180){Yield=true;YieldReason=FString::Printf(TEXT("car=%s ahead=%.1f side=%.1f speed=%.1f crossing=%d obstacle=%s"),*Car->GetName(),Ahead,Side,Car->Speed,Car->bWaitingForCrossing,*Car->LastObstacle);}}
   float DistanceToBend=FVector::Dist2D(Closest,ConnectorPoints[Segment+1]);
   for(int I=Segment+1;I+1<ConnectorPoints.Num()&&DistanceToBend<2000;I++){
    const FVector In=(ConnectorPoints[I]-ConnectorPoints[I-1]).GetSafeNormal2D(),Out=(ConnectorPoints[I+1]-ConnectorPoints[I]).GetSafeNormal2D();
@@ -129,9 +130,14 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   for(TActorIterator<APiedmontPedestrian> Person(GetWorld());Person;++Person){
    const FVector Offset=Person->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);
    const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);
-   if(Ahead>0&&Ahead<LookAhead&&Side<220&&FMath::Abs(Offset.Z)<160){Yield=true;break;}
+   if(Ahead>0&&Ahead<LookAhead&&Side<220&&FMath::Abs(Offset.Z)<160){Yield=true;YieldReason=FString::Printf(TEXT("person=%s ahead=%.1f side=%.1f speed=%.1f pause=%.1f posed=%d dead=%d destination=%d"),*Person->GetName(),Ahead,Side,Person->GetVelocity().Size2D(),Person->PauseRemaining,Person->bIncidentPosing,Person->bDead,Person->bHasDestination);break;}
   }
  }
+ static float YieldAge=0;
+ if(Yield&&Bike->Ride->Speed<10){YieldAge+=Dt;if(YieldAge>=5){UE_LOG(LogTemp,Display,TEXT("RouteYieldDiagnostic: leg=%d elapsed=%.1f position=%s reason=%s"),ConnectorLeg,ConnectorElapsed,*Position.ToString(),*YieldReason);
+  for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car)if(FVector::Dist2D(Car->GetActorLocation(),Position)<2500)UE_LOG(LogTemp,Display,TEXT("RouteQueueDiagnostic: car=%s position=%s speed=%.1f finished=%d crossing=%d grounded=%d obstacle=%s"),*Car->GetName(),*Car->GetActorLocation().ToString(),Car->Speed,Car->bRouteFinished,Car->bWaitingForCrossing,Car->bGrounded,*Car->LastObstacle);
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleRouteYieldProbe"))&&YieldReason.StartsWith(TEXT("car="))){Finish(false);return;}
+  YieldAge=0;}}else YieldAge=0;
  Key(EKeys::SpaceBar,Yield);Key(EKeys::W,!Yield);Key(EKeys::A,Error < -2);Key(EKeys::D,Error > 2);
 #endif
 }
