@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, aim, protected firing/reload, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 31.8,
+  "exit_code": 0,
+  "images": [
+    "work/m1911-first/idle.png",
+    "work/m1911-first/drawn.png",
+    "work/m1911-first/aimed.png",
+    "work/m1911-first/reload.png",
+    "work/m1911-first/walk-a.png",
+    "work/m1911-first/walk-b.png",
+    "work/m1911-first/run.png",
+    "work/m1911-first/jump.png",
+    "work/m1911-first/land-contact.png",
+    "work/m1911-first/land-settle.png",
+    "work/m1911-first/crouch.png"
+  ],
+  "visual_review": "Draw/aim/reload frames inspected. Geometry/controls/magazine pass; materials look flat, need material assignment verification. Magazine mostly below frame and full reload quality unaccepted.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": false,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "detailed_pistol_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": true,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true
+}

@@ -25,6 +25,7 @@ ABattleRider::ABattleRider(){
 void ABattleRider::BeginPlay(){
  InitializeDetailedBodyPreview();
  Super::BeginPlay();
+ InitializeDetailedPistolPreview();
  if(auto* Steel=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")))for(auto Child:MeleeRoot->GetAttachChildren())if(auto* Mesh=Cast<UStaticMeshComponent>(Child))Mesh->SetMaterial(0,Steel);
  if(auto* Steel=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")))for(auto Part:LongGunParts)Part->SetMaterial(0,Steel);
  if(LongGunParts.Num()>5)LongGunParts[5]->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow")));
@@ -57,12 +58,12 @@ void ABattleRider::Tick(float Dt){
  // Exponential smoothing gives the view rig the same response at different frame rates.
  AimBlend=FMath::Lerp(AimBlend,bAiming?1.f:0.f,1.f-FMath::Exp(-12.f*Dt));
  const FVector ViewPosition=FMath::Lerp(GunRestPosition,GunAimPosition,AimBlend);
- Weapon->SetRelativeLocation(ViewPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob*(1.f-.8f*AimBlend)+(bDetailedPlayerRig?8.f:-8.f)*ReloadPose-65*FMath::Clamp(DrawRemaining/.3f,0.f,1.f)));
+ Weapon->SetRelativeLocation(ViewPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob*(1.f-.8f*AimBlend)+(bDetailedPlayerRig?(DetailedPistol&&CurrentWeapon==0?16.f:8.f):-8.f)*ReloadPose-65*FMath::Clamp(DrawRemaining/.3f,0.f,1.f)));
  Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
  Super::Tick(Dt);
  const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
  if(!bDetailedBodyReview)Camera->SetRelativeLocation(FVector(0,0,FMath::FInterpTo(Camera->GetRelativeLocation().Z,Stunned?8.f:(bIsCrouched?38.f:64.f),Dt,8)));
- UpdateMelee(Dt);UpdateWeaponModel();PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
+ UpdateMelee(Dt);UpdateWeaponModel();UpdateDetailedPistol();PoseArms(Dt);if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return (!ParkedBike||ParkedBike->StunRemaining<=0)&&Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}
 float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){

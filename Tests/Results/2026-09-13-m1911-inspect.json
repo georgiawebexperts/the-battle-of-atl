@@ -1,0 +1,373 @@
+{
+  "assets": [
+    {
+      "path": "/Game/M1911/Meshes/NonRigged_M1911",
+      "class": "StaticMesh",
+      "min": [
+        -15.588159561157227,
+        -1.5589890480041504,
+        -7.923579216003418
+      ],
+      "max": [
+        7.680603981018066,
+        1.6809941530227661,
+        6.498282432556152
+      ],
+      "materials": [
+        "/Game/M1911/Textures/M_Grip.M_Grip",
+        "/Game/M1911/Textures/M_Slide.M_Slide",
+        "/Game/M1911/Textures/M_Frame.M_Frame",
+        "/Game/M1911/Textures/M_Barrel.M_Barrel"
+      ]
+    },
+    {
+      "path": "/Game/M1911/Meshes/NonRigged_M1911_Magazine",
+      "class": "StaticMesh",
+      "min": [
+        -3.0621206760406494,
+        -0.7185107469558716,
+        -5.503874778747559
+      ],
+      "max": [
+        3.1279802322387695,
+        0.7059721350669861,
+        6.642414093017578
+      ],
+      "materials": [
+        "/Game/M1911/Textures/M_Mag.M_Mag"
+      ]
+    },
+    {
+      "path": "/Game/M1911/Meshes/SkeletalMesh/Rigged_M1911",
+      "class": "SkeletalMesh",
+      "materials": [
+        {
+          "slot": "Grip",
+          "material": "/Game/M1911/Textures/M_Grip.M_Grip"
+        },
+        {
+          "slot": "Slide",
+          "material": "/Game/M1911/Textures/M_Slide.M_Slide"
+        },
+        {
+          "slot": "Frame",
+          "material": "/Game/M1911/Textures/M_Frame.M_Frame"
+        },
+        {
+          "slot": "Barrel",
+          "material": "/Game/M1911/Textures/M_Barrel.M_Barrel"
+        },
+        {
+          "slot": "Ammo",
+          "material": "/Game/M1911/Textures/M_Ammo.M_Ammo"
+        },
+        {
+          "slot": "Mag",
+          "material": "/Game/M1911/Textures/M_Mag.M_Mag"
+        }
+      ],
+      "bones": [
+        {
+          "name": "M1911_Rig",
+          "parent": "None",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Root",
+          "parent": "M1911_Rig",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "Gun",
+          "parent": "Root",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "Trigger",
+          "parent": "Gun",
+          "position": [
+            -1.2166742235422134,
+            6.302617328035609e-08,
+            0.4690883681178094
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "Trigger_end",
+          "parent": "Trigger",
+          "position": [
+            -1.2166742384433742,
+            6.284136089274028e-08,
+            2.3530287666260854
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "Hammer",
+          "parent": "Gun",
+          "position": [
+            4.75405678153038,
+            3.984158341019395e-07,
+            2.9653109610080723
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "Hammer_end",
+          "parent": "Hammer",
+          "position": [
+            4.7540566325187665,
+            3.982310232686359e-07,
+            4.849251359516348
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "MagRelease",
+          "parent": "Gun",
+          "position": [
+            -0.27983635663986206,
+            0.6649823859333992,
+            -0.2934722229838372
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "MagRelease_end",
+          "parent": "MagRelease",
+          "position": [
+            -0.27983635663986206,
+            0.6649823931991712,
+            1.5904679892599236
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "SlideRelease",
+          "parent": "Gun",
+          "position": [
+            -3.5584937781095505,
+            0.6649828050285582,
+            2.7753509581089024
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "SlideRelease_end",
+          "parent": "SlideRelease",
+          "position": [
+            -3.5584937036037436,
+            0.6649828141569754,
+            4.659291356617178
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "Safety",
+          "parent": "Gun",
+          "position": [
+            4.931823909282684,
+            0.6649827584624297,
+            2.3022506386041646
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "Safety_end",
+          "parent": "Safety",
+          "position": [
+            4.931823715567596,
+            0.6649827340632348,
+            4.18619103711244
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "Mag",
+          "parent": "Gun",
+          "position": [
+            2.976096235215664,
+            -2.2463460025434756e-07,
+            -1.6719006001949315
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "Bullet",
+          "parent": "Mag",
+          "position": [
+            1.983658503741026,
+            4.1314677323711635e-07,
+            3.0784182245839795
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "Bullet_end",
+          "parent": "Bullet",
+          "position": [
+            1.9836584813892832,
+            4.131468025470042e-07,
+            4.962358437012549
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        },
+        {
+          "name": "Follower",
+          "parent": "Mag",
+          "position": [
+            1.781295146793127,
+            4.1314677323711635e-07,
+            3.0784182245839795
+          ],
+          "rotation": [
+            -0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865476
+          ]
+        },
+        {
+          "name": "Follower_end",
+          "parent": "Follower",
+          "position": [
+            1.7812951393425467,
+            4.131468025470042e-07,
+            4.962358437012549
+          ],
+          "rotation": [
+            0.707106781151865,
+            0.0,
+            0.0,
+            -0.707106781151865
+          ]
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    "/Game/M1911/Meshes/NonRigged_M1911",
+    "/Game/M1911/Meshes/NonRigged_M1911_Magazine",
+    "/Game/M1911/Meshes/SkeletalMesh/Rigged_M1911",
+    "/Game/M1911/Meshes/SkeletalMesh/Rigged_M1911_Skeleton",
+    "/Game/M1911/Textures/M1911_low_Ammo_BaseColor",
+    "/Game/M1911/Textures/M1911_low_Ammo_Normal",
+    "/Game/M1911/Textures/M1911_low_Ammo_OcclusionRoughnessMetallic",
+    "/Game/M1911/Textures/M1911_low_Barrel_BaseColor",
+    "/Game/M1911/Textures/M1911_low_Barrel_Normal",
+    "/Game/M1911/Textures/M1911_low_Barrel_OcclusionRoughnessMetallic",
+    "/Game/M1911/Textures/M1911_low_Frame_BaseColor",
+    "/Game/M1911/Textures/M1911_low_Frame_Normal",
+    "/Game/M1911/Textures/M1911_low_Frame_OcclusionRoughnessMetallic",
+    "/Game/M1911/Textures/M1911_low_Grip_BaseColor",
+    "/Game/M1911/Textures/M1911_low_Grip_Normal",
+    "/Game/M1911/Textures/M1911_low_Grip_OcclusionRoughnessMetallic",
+    "/Game/M1911/Textures/M1911_low_Mag_BaseColor",
+    "/Game/M1911/Textures/M1911_low_Mag_Normal",
+    "/Game/M1911/Textures/M1911_low_Mag_OcclusionRoughnessMetallic",
+    "/Game/M1911/Textures/M1911_low_Slide_BaseColor",
+    "/Game/M1911/Textures/M1911_low_Slide_Normal",
+    "/Game/M1911/Textures/M1911_low_Slide_OcclusionRoughnessMetallic",
+    "/Game/M1911/Textures/M_Ammo",
+    "/Game/M1911/Textures/M_Barrel",
+    "/Game/M1911/Textures/M_Frame",
+    "/Game/M1911/Textures/M_Grip",
+    "/Game/M1911/Textures/M_Mag",
+    "/Game/M1911/Textures/M_Slide"
+  ]
+}

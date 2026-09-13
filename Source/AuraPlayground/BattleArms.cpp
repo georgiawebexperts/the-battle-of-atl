@@ -1,6 +1,7 @@
 #include "BattleRider.h"
 #include "BattleDetailedRider.h"
 #include "BattleInventory.h"
+#include "Camera/CameraComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 void ABattleRider::PoseArms(float Dt){
@@ -42,6 +43,10 @@ void ABattleRider::PoseArms(float Dt){
  };
  const FQuat Motion=(Weapon->GetRelativeRotation()-GunRestRotation).Quaternion();const FVector Gun=Weapon->GetRelativeLocation();const float Reload=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
  FVector Right=Gun+Motion.RotateVector(RightWristOffset);FVector Left=Gun+Motion.RotateVector(LeftWristOffset)+FVector(-4,-6,bDetailedPlayerRig?-10.f:-18.f)*Reload;
+ if(DetailedPistol&&CurrentWeapon==0&&ReloadRemaining>0){
+  DetailedPistol->RefreshBoneTransforms();
+  Left=Camera->GetComponentTransform().InverseTransformPosition(DetailedPistol->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::WorldSpace))+FVector(-6,-4,-2);
+ }
  if(CurrentWeapon>0)Left=Gun+Motion.RotateVector(FVector(12,-3,-5));
  if(CurrentWeapon==4){Right=Gun+Motion.RotateVector(FVector(-12,3,-16));Left=Gun+Motion.RotateVector(FVector(-12,-3,-14))+FVector(-6,-4,-6)*Reload;}
  if(MeleeRemaining>0){Right=MeleeRoot->GetRelativeTransform().TransformPosition(FVector(0,0,-31));Left=FVector(20,-20,-28);}

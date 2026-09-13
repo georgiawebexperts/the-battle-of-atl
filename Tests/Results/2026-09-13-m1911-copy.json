@@ -1,0 +1,118 @@
+{
+  "files": [
+    {
+      "path": "Content/M1911/Meshes/NonRigged_M1911.uasset",
+      "sha256": "a301074c9558320de6bee3c86afaafa226f19421039a5cf046adb888b9225ad2"
+    },
+    {
+      "path": "Content/M1911/Meshes/NonRigged_M1911_Magazine.uasset",
+      "sha256": "fd0ffcda5f239012da5caaaf4447c3419b19765d5c43197a36856de3fb3b0d0b"
+    },
+    {
+      "path": "Content/M1911/Meshes/SkeletalMesh/Rigged_M1911.uasset",
+      "sha256": "73e964babd1b1729cd682cb2a3794715619ebd0f1a4e8ac9a88d3f21833d24d0"
+    },
+    {
+      "path": "Content/M1911/Meshes/SkeletalMesh/Rigged_M1911_Skeleton.uasset",
+      "sha256": "c470e8d791d70c8823e3eb19d5d77878e1b7df78335f6533b8bd1532948a2753"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Ammo_BaseColor.uasset",
+      "sha256": "5f68ec4d372c30f497b8225995754f3a124debeee1dc9f4241470e52d024c326"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Ammo_Normal.uasset",
+      "sha256": "b68b70a3508cc7805eacd3d2e6a99e001fb9ebead75890f22b1aab4c8345b4af"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Ammo_OcclusionRoughnessMetallic.uasset",
+      "sha256": "81f5dfba23048a12a77f189dff1384db5d598be3ebbaef59a6473712eec24210"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Barrel_BaseColor.uasset",
+      "sha256": "592aff510e87202a00315759be8520dc51be36ada1948e49502f525be1528b42"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Barrel_Normal.uasset",
+      "sha256": "8cdc9cf477199f70d141bf7cfa0e7ed216534a18fd74a544df89ad5d90d02a19"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Barrel_OcclusionRoughnessMetallic.uasset",
+      "sha256": "40261ba79a79ad3f063567d83537c62928826f6b237768973cf88af61b81b125"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Frame_BaseColor.uasset",
+      "sha256": "75aed33d71e7372c6c81bcc320de752eec8389369088486a02c63a6d516992f4"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Frame_Normal.uasset",
+      "sha256": "1d5d409614c11f32e38941339afe0b7e9d8446c41cfa900e4a35ab5ff68d8270"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Frame_OcclusionRoughnessMetallic.uasset",
+      "sha256": "02473580e6f442f2bd983fa3d6155df4e6af3b9eec03833349e4f5ac78c465fe"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Grip_BaseColor.uasset",
+      "sha256": "fa019955356d95683d2d1ce0aed713f82c61994355d7e77608758fa0e9084018"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Grip_Normal.uasset",
+      "sha256": "d5109533ea74650afe8426b236015cbdcf56e5e8a1ece6d73c48307f45ddbcec"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Grip_OcclusionRoughnessMetallic.uasset",
+      "sha256": "b692e0d6dda027066bf4f1482c3ae9f1e44a4d5f328d6ab0e786040308705e5d"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Mag_BaseColor.uasset",
+      "sha256": "a324eec550cde5582e6d3c92dd2a13b1ae3c5b96834955a1099edf40c8523c18"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Mag_Normal.uasset",
+      "sha256": "2935865a79a277704adee694b3fd1fef3277710d96058c666337b73f3c95b0c6"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Mag_OcclusionRoughnessMetallic.uasset",
+      "sha256": "86f488c7e4d9854b8a559c3d69d62366c1dfa5472b48e66360dddd1c912c6c86"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Slide_BaseColor.uasset",
+      "sha256": "4503c7a7acdd7069a60168bd674a89c201f0cd14c4be994224deafcf59bd66d0"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Slide_Normal.uasset",
+      "sha256": "a9e0c8cd96cad2466c99512c297b58d3fd661e788150965c1a2e25026dccbed7"
+    },
+    {
+      "path": "Content/M1911/Textures/M1911_low_Slide_OcclusionRoughnessMetallic.uasset",
+      "sha256": "61e0ddbce8627db2810f520960dcaecc53128bee942b5c4df1e340b749aba39a"
+    },
+    {
+      "path": "Content/M1911/Textures/M_Ammo.uasset",
+      "sha256": "16c041ebb39caf4cd6a4363537163238d5eb734647966e3ecc60e435a46d8cb1"
+    },
+    {
+      "path": "Content/M1911/Textures/M_Barrel.uasset",
+      "sha256": "5526289f63d6ccb3514d0401c78aa440a91568a48fdd6acd649d6bbf9d7b76e9"
+    },
+    {
+      "path": "Content/M1911/Textures/M_Frame.uasset",
+      "sha256": "15ca3526d5e7d39bc9f8322fb7e35487e9c4c675119c73e5a2759db28d0c2f9b"
+    },
+    {
+      "path": "Content/M1911/Textures/M_Grip.uasset",
+      "sha256": "045b459353c813bff1ede52f31c2d80597e5f2b5a752a6fec2929b56fd8346b1"
+    },
+    {
+      "path": "Content/M1911/Textures/M_Mag.uasset",
+      "sha256": "7686f76a0584b738bbfb3ccc61b268ca7860d24c8ec233b525dbdca392b7dd14"
+    },
+    {
+      "path": "Content/M1911/Textures/M_Slide.uasset",
+      "sha256": "ad5f701e822b2d04bbeeb037b4286f3377dccceae6db23f31aebf4506960f2bc"
+    }
+  ],
+  "source": "External GameAnimationSample/Content/M1911, free Fab library acquisition",
+  "scope": "Dependency closure for pistol/static magazine/rig; demo map excluded"
+}

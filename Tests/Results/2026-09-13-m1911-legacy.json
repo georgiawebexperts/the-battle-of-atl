@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, aim, protected firing/reload, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 31.4,
+  "exit_code": 0,
+  "editor": true,
+  "detailed_rider_preview": false,
+  "full_body_review": false
+}

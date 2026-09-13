@@ -67,6 +67,10 @@ private:
  void PoseArms(float Dt);
  void InitializeDetailedArmsPreview();
  void InitializeDetailedBodyPreview();
+ void InitializeDetailedPistolPreview();
+ void UpdateDetailedPistol();
+ UPROPERTY() TObjectPtr<UPoseableMeshComponent> DetailedPistol;
+ FVector DetailedMagazineRest;
  virtual void AnimateBody(float Dt) override;
  bool bDetailedBodyReview=false,bDetailedFalling=false;
  TArray<FTransform> DetailedTransitionPose;

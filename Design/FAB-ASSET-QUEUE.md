@@ -20,3 +20,5 @@ Sources: https://www.fab.com/listings/343098bf-bcfa-4d3a-8260-96e9c77b8635 ; htt
 
 
 2026-09-11 [codex-maclaptop]: First verified Mixamo motion acquired: Sleeping Idle (Sleeping Deeply), Default Character, FBX Binary with skin,30fps, no keyframe reduction,207 displayed frames. SourceAssets/Mixamo/SleepingIdle_WithSkin.fbx (2,323,904 bytes, provenance JSON beside it). Imported reference mesh/skeleton/animation at /Game/BattleRetarget/Mixamo/SleepingReference using Scripts/import_mixamo_sleep_reference.py; not retargeted or wired to gameplay. Native Launcher remains locked; Mixamo browser session works.
+
+2026-09-13 [codex-maclaptop]: M1911 migrated into actual game Content/M1911 (28 dependency packages, inspect/copy reports). Rigged pistol and magazine motion now in opt-in detailed player preview; native control/ammo/magazine checks pass and final reload render inspected. Not installed/default yet; continuous hand contact, muzzle alignment, interruptions/performance remain pending. Qi Gong remains staged only.

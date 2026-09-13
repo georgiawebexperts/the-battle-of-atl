@@ -26,6 +26,7 @@ void ABattleMacController::TickFootAudit(float Dt){
 #define CHECKFOOT(C,R) if(!(C)){End(false,TEXT(R));return;}
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Capture=[&](const TCHAR* Name){if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootReview"))){FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),false,false);}};
+ auto Magazine=[&]()->UPoseableMeshComponent*{if(!P)return nullptr;TInlineComponentArray<UPoseableMeshComponent*> Parts(P);for(auto* Part:Parts)if(Part->GetFName()==TEXT("DetailedM1911"))return Part;return nullptr;};
  auto Advance=[&](int N){FootStage=N;FootClock=0;};
  FootClock+=Dt;
  if(FootStage==0){
@@ -41,8 +42,8 @@ void ABattleMacController::TickFootAudit(float Dt){
  else if(FootStage==3&&FootClock>.5f){CHECKFOOT(P->Weapon->IsVisible()&&P->Ammo==10,"Drawn weapon missing or fired early");if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootReview")))if(auto* HUD=GetHUD())HUD->bShowHUD=false;Capture(TEXT("drawn"));Key(EKeys::RightMouseButton,true);Advance(13);}
  else if(FootStage==13&&FootClock>.5f){CHECKFOOT(P->bAiming&&P->Ammo==10,"Aiming failed or consumed ammo");Capture(TEXT("aimed"));Key(EKeys::RightMouseButton,false);Advance(12);}
  else if(FootStage==12&&FootClock>.15f){CHECKFOOT(P->Fire()&&P->Ammo==9,"Drawn gun could not fire");CHECKFOOT(P->ParkedBike&&P->ParkedBike->GiveWeapon(0,1),"Reload round fixture failed");Key(EKeys::R,true);Advance(14);}
- else if(FootStage==14&&FootClock>.75f){Key(EKeys::R,false);CHECKFOOT(P->ReloadRemaining>0&&P->Ammo==9&&!P->Fire(),"Reload failed or allowed firing");Capture(TEXT("reload"));Advance(15);}
- else if(FootStage==15&&FootClock>1.1f){CHECKFOOT(P->ReloadRemaining<=0&&P->Ammo==10&&P->ParkedBike->Inventory[0].Reserve==0,"Reload did not conserve rounds");if(auto* HUD=GetHUD())HUD->bShowHUD=true;CHECKFOOT(P->Fire()&&P->Ammo==9,"Cannot fire after reload");Key(EKeys::G,true);Advance(4);}
+ else if(FootStage==14&&FootClock>.75f){Key(EKeys::R,false);CHECKFOOT(P->ReloadRemaining>0&&P->Ammo==9&&!P->Fire(),"Reload failed or allowed firing");if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))){auto* Gun=Magazine();CHECKFOOT(Gun&&Gun->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::ComponentSpace).Z<-15,"Pistol magazine did not withdraw");}Capture(TEXT("reload"));Advance(15);}
+ else if(FootStage==15&&FootClock>1.1f){CHECKFOOT(P->ReloadRemaining<=0&&P->Ammo==10&&P->ParkedBike->Inventory[0].Reserve==0,"Reload did not conserve rounds");if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))){auto* Gun=Magazine();CHECKFOOT(Gun&&FMath::Abs(Gun->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::ComponentSpace).Z+1.6719f)<.1f,"Pistol magazine did not reinsert");}if(auto* HUD=GetHUD())HUD->bShowHUD=true;CHECKFOOT(P->Fire()&&P->Ammo==9,"Cannot fire after reload");Key(EKeys::G,true);Advance(4);}
  else if(FootStage==4){
   Key(EKeys::G,false);Key(EKeys::W,true);
   CHECKFOOT(!P->bWeaponDrawn&&!P->Fire(),"Holstering did not prevent firing");
