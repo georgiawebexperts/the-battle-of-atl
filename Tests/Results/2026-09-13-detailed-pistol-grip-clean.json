@@ -1,0 +1,51 @@
+{
+  "passed": false,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 31.9,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-pistol-grip-clean/idle.png",
+    "work/detailed-pistol-grip-clean/drawn.png",
+    "work/detailed-pistol-grip-clean/walk-a.png",
+    "work/detailed-pistol-grip-clean/walk-b.png",
+    "work/detailed-pistol-grip-clean/run.png",
+    "work/detailed-pistol-grip-clean/jump.png",
+    "work/detailed-pistol-grip-clean/land-contact.png",
+    "work/detailed-pistol-grip-clean/land-settle.png",
+    "work/detailed-pistol-grip-clean/crouch.png"
+  ],
+  "visual_review": "Clean grip inspected: support thumb sticks upward and palm looks open. Reject final grip quality; needs thumb pose adjustment.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": false,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": true,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true,
+  "functional_passed": true
+}

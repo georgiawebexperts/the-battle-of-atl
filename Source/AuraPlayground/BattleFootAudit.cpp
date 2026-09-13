@@ -6,6 +6,7 @@
 #include "PiedmontPedestrian.h"
 #include "PiedmontTrafficDirector.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/HUD.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -37,7 +38,8 @@ void ABattleMacController::TickFootAudit(float Dt){
  CHECKFOOT(P,"Lost on-foot pawn");
  if(FootStage==1&&FootClock>.3f){CHECKFOOT(P->Ammo==10&&P->ShotsFired==0&&!P->bAiming&&!P->bWeaponDrawn,"Click drew or fired a holstered gun");Capture(TEXT("idle"));Key(EKeys::LeftMouseButton,false);Key(EKeys::RightMouseButton,false);Key(EKeys::G,true);Advance(2);}
  else if(FootStage==2&&FootClock>.08f){Key(EKeys::G,false);CHECKFOOT(P->bWeaponDrawn&&P->DrawRemaining>0&&!P->Fire(),"Draw delay or G binding failed");Advance(3);}
- else if(FootStage==3&&FootClock>.5f){CHECKFOOT(P->Weapon->IsVisible()&&P->Fire()&&P->Ammo==9,"Drawn gun could not fire");Capture(TEXT("drawn"));Key(EKeys::G,true);Advance(4);}
+ else if(FootStage==3&&FootClock>.5f){CHECKFOOT(P->Weapon->IsVisible()&&P->Ammo==10,"Drawn weapon missing or fired early");if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootReview")))if(auto* HUD=GetHUD())HUD->bShowHUD=false;Capture(TEXT("drawn"));Advance(12);}
+ else if(FootStage==12&&FootClock>.15f){if(auto* HUD=GetHUD())HUD->bShowHUD=true;CHECKFOOT(P->Fire()&&P->Ammo==9,"Drawn gun could not fire");Key(EKeys::G,true);Advance(4);}
  else if(FootStage==4){
   Key(EKeys::G,false);Key(EKeys::W,true);
   CHECKFOOT(!P->bWeaponDrawn&&!P->Fire(),"Holstering did not prevent firing");

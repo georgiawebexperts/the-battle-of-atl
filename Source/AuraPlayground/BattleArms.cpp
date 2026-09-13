@@ -25,6 +25,15 @@ void ABattleRider::PoseArms(float Dt){
   for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")})for(int JointNumber=2;JointNumber<=4;JointNumber++){
    const int F=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,JointNumber,Suffix));if(F<0)continue;float Curl=FMath::Lerp(JointNumber==2?18.f:32.f,JointNumber==2?35.f:65.f,ArmPoseBlend);if(FCString::Strcmp(Finger,TEXT("Index"))==0&&Suffix[0]=='R')Curl*=.5f;Move(F,Pose[F].GetLocation(),FQuat(Suffix[0]=='R'?FVector::UpVector:-FVector::UpVector,FMath::DegreesToRadians(-Curl)));
   }
+  if(Detailed&&CurrentWeapon==0&&MeleeRemaining<=0){
+   const int Thumb=Index(*FString::Printf(TEXT("Thumb2_%s"),Suffix));
+   const int Tip=ArmNames.IndexOfByKey(*FString::Printf(TEXT("thumb_03_%s"),Suffix[0]=='R'?TEXT("r"):TEXT("l")));
+   if(Thumb>=0&&Tip>=0){
+    const FVector ThumbDirection=FVector(0,1,.12f).GetSafeNormal();
+    const FQuat Align=FQuat::FindBetweenVectors(Pose[Tip].GetLocation()-Pose[Thumb].GetLocation(),ThumbDirection);
+    Move(Thumb,Pose[Thumb].GetLocation(),FQuat::Slerp(FQuat::Identity,Align,ArmPoseBlend));
+   }
+  }
  };
  const FQuat Motion=(Weapon->GetRelativeRotation()-GunRestRotation).Quaternion();const FVector Gun=Weapon->GetRelativeLocation();const float Reload=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
  FVector Right=Gun+Motion.RotateVector(RightWristOffset);FVector Left=Gun+Motion.RotateVector(LeftWristOffset)+FVector(-4,-6,-18)*Reload;

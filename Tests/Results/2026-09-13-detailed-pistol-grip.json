@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 31.8,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-pistol-grip-initial/idle.png",
+    "work/detailed-pistol-grip-initial/drawn.png",
+    "work/detailed-pistol-grip-initial/walk-a.png",
+    "work/detailed-pistol-grip-initial/walk-b.png",
+    "work/detailed-pistol-grip-initial/run.png",
+    "work/detailed-pistol-grip-initial/jump.png",
+    "work/detailed-pistol-grip-initial/land-contact.png",
+    "work/detailed-pistol-grip-initial/land-settle.png",
+    "work/detailed-pistol-grip-initial/crouch.png"
+  ],
+  "visual_review": "Drawn pistol inspected without muzzle flash, but help panel obscures lower grip; not accepted as close hand/grip review.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": false,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": true,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true
+}
