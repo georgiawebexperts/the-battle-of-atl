@@ -1,0 +1,28 @@
+{
+  "build": 62,
+  "version": "0.62.0",
+  "source_commit": "046d84edff7ec2fd30d5cd502788fd1f2cb12bba",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "58f23ac740a8d0a5c88bf964d98ea307798c8dc0862b677fbf0ac802a7e05409",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062.zip",
+  "zip_sha256": "77d46eac221acc7364888cade11abbbd2543d88837505fd424a1bba65e96f720",
+  "zip_bytes": 1316128664,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged audio-enabled rendered police encounter: one 1.58-second warning, raised taser, cover rejection, recovery, panic and alert expiry",
+    "ZIP CRC, local signature and staged/installed machine code match"
+  ],
+  "remaining": [
+    "Voice mix/listening review pending",
+    "Further character/hand/animation/world quality work",
+    "Broader freeplay and performance acceptance",
+    "Not notarized or tested on another Mac"
+  ]
+}

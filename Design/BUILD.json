@@ -1,9 +1,9 @@
 {
-  "build": 61,
-  "version": "0.61.0",
+  "build": 62,
+  "version": "0.62.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; visible police taser and ammo rules verified in packaged controlled encounters",
+  "status": "Early playtest; spatial APD warning verified in packaged police encounter",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -13,7 +13,8 @@
     "Lake water rendered; entry leaves Ellison swimming with bike on bank. Deep-entry bank search, lower swim capsule, fixed possession-mode reset, release-to-stop, surface camera, stroke hands, bike radar guidance and compact HUD included. Packaged swim/tread/return/remount verified; earlier editor full-circuit exploration passed. Full water art and all-bank behavior remain unaccepted.",
     "Packaged Krog route485.77m completed both directions with zero wipeouts,6787/6787paved samples,500lit/0unlit tunnel samples,23moving cars and25walking people observed. Forced scooter scene present. One selected run, not all traffic or performance acceptance.",
     "Packaged Easy/Hard finish guards pass; installed cardinal phone hunt, recollection, two death resets, health and two ordered checkpoints pass. Existing market, traffic, story and other gameplay retained.",
-    "Build061: readable police warning/countdown, original yellow/black taser, blended raised grip, muzzle-origin discharge with near-cover guard; prioritized 12 ammo pickups. Packaged police/ammo/wall tests pass. Voice and final animation/art remain unfinished."
+    "Build061: readable police warning/countdown, original yellow/black taser, blended raised grip, muzzle-origin discharge with near-cover guard; prioritized 12 ammo pickups. Packaged police/ammo/wall tests pass. Voice and final animation/art remain unfinished.",
+    "Build062: spatial AI-generated Stop! APD! voice during two-second taser warning; six-second voice cooldown and death/run-end stop. Packaged actual audio playback and encounter checks pass. Listening/mix acceptance pending."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -61,35 +62,34 @@
     "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending."
   ],
   "unreleased_code_changes": [],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
-  "compiled_source": "42ffc21be6041e1deae44e6249b68eb7e814f2d7",
-  "installation_report": "Tests/Results/2026-09-13-build061-install.json",
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
+  "compiled_source": "046d84edff7ec2fd30d5cd502788fd1f2cb12bba",
+  "installation_report": "Tests/Results/2026-09-13-build062-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 61,
-    "version": "0.61.0",
-    "source_commit": "42ffc21be6041e1deae44e6249b68eb7e814f2d7",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
+    "build": 62,
+    "version": "0.62.0",
+    "source_commit": "046d84edff7ec2fd30d5cd502788fd1f2cb12bba",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "2777bbb63873e7b5ea1710df32419eb3180b24270c524a12118db61b2caf8b01",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061.zip",
-    "zip_sha256": "697ec3f890e06af2f30d0d040841df6b12fb4a4317b3edf5aeae9a07ff2ac281",
-    "zip_bytes": 1316111060,
+    "machine_code_sha256": "58f23ac740a8d0a5c88bf964d98ea307798c8dc0862b677fbf0ac802a7e05409",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062.zip",
+    "zip_sha256": "77d46eac221acc7364888cade11abbbd2543d88837505fd424a1bba65e96f720",
+    "zip_bytes": 1316128664,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged rendered police warning, raised device, muzzle-origin discharge, near-cover rejection, recovery and alert expiry",
-      "Packaged 17-round ammunition/reload rules",
-      "Packaged isolated wall reverse/steering in arcade and realistic modes"
+      "Packaged audio-enabled rendered police encounter: one 1.58-second warning, raised taser, cover rejection, recovery, panic and alert expiry",
+      "ZIP CRC, local signature and staged/installed machine code match"
     ],
     "remaining": [
-      "Voice absent",
+      "Voice mix/listening review pending",
       "Further character/hand/animation/world quality work",
       "Broader freeplay and performance acceptance",
       "Not notarized or tested on another Mac"
