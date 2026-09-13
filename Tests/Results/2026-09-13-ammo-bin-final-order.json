@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "reason": "Twelve actual map ammo pickups each have a reachable persistent bin and grant exactly seventeen rounds",
+  "stage": 2,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-8c066c4f998345f5849ed66332f06304.log",
+  "bin_layout": true,
+  "images": []
+}

@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "reason": "Bin ammo approach obstructed",
+  "stage": 2,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-e66d6d2c18d7407ca99ba75d020e7906.log",
+  "bin_layout": true,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAmmoReview/31fcc30549be48e895e7dbefb852be9a/ammo-bin.png"
+  ]
+}

@@ -6,6 +6,7 @@
 #include "PiedmontTrafficDirector.h"
 #include "BattleZombie.h"
 #include "EngineUtils.h"
+#include "Engine/OverlapResult.h"
 #include "Camera/CameraActor.h"
 #include "Engine/GameViewportClient.h"
 #include "Misc/CommandLine.h"
@@ -45,6 +46,8 @@ void ABattleMacController::TickAmmoAudit(float Dt){
     for(auto B:Bins)if(B.IsValid()){const float D=FVector::Dist2D(B->GetActorLocation(),Crate->GetActorLocation());if(D<Distance){Distance=D;Closest=B.Get();}}
     CHECK_AMMO(Closest&&Distance>=100&&Distance<=120&&!Matched.Contains(Closest),"Ammo not paired with a unique nearby bin");Matched.Add(Closest);
     const FVector Approach=Crate->GetActorLocation()+FVector(0,0,33);FCollisionQueryParams Q(SCENE_QUERY_STAT(AmmoBinApproach),false,Bike);
+    TArray<FOverlapResult> Blocks;GetWorld()->OverlapMultiByChannel(Blocks,Approach,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,96),Q);
+    for(const auto& B:Blocks)if(B.bBlockingHit)UE_LOG(LogTemp,Warning,TEXT("BattleAmmoBinBlocked: crate=%s pos=%s actor=%s component=%s"),*Crate->GetName(),*Approach.ToString(),*GetNameSafe(B.GetActor()),*GetNameSafe(B.GetComponent()));
     CHECK_AMMO(!GetWorld()->OverlapBlockingTestByChannel(Approach,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,96),Q),"Bin ammo approach obstructed");
     Bike->SetActorLocation(Approach,false,nullptr,ETeleportType::TeleportPhysics);Bike->Inventory[0].Reserve=0;
     CHECK_AMMO(Crate->TryCollect(Bike)&&Bike->Inventory[0].Reserve==17,"Actual map ammo could not be collected for seventeen rounds");

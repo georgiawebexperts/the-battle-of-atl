@@ -168,9 +168,10 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleMemorial>(BattleSpiritData::Memorial,FRotator(0,BattleSpiritData::MemorialYaw,0));
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
- Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
  GetWorld()->SpawnActor<ABattleParkLifeDirector>();
  GetWorld()->SpawnActor<ABattleTutorial>();
+ // Validate supply placement against the complete world, including tutorial roads and fences.
+ Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();
 }
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}

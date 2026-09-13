@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "reason": "Incomplete bin ammo layout",
+  "stage": 0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-7c63c7278b164244a7fb9cb49d09e3ab.log",
+  "bin_layout": true,
+  "practice": true,
+  "images": []
+}

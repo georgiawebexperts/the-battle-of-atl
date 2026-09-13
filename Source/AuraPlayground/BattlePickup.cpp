@@ -2,6 +2,7 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleCheckpoints.h"
+#include "BattleQuest.h"
 #include "PiedmontPathSpline.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -113,7 +114,10 @@ bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int3
   for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Ground.ImpactPoint+FVector(0,0,98)))return false;
  }
  if(GetWorld()->OverlapBlockingTestByChannel(Spot,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(28),Q))return false;
- auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(this,Pawn->GetActorLocation(),Ground.ImpactPoint,Pawn);
+ // The practice street is outside the park navigation mesh. Validate supplies from the saved park start.
+ auto* ParkMode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ const FVector RouteStart=ParkMode&&ParkMode->Quest?ParkMode->Quest->InitialStartTransform.GetLocation():Pawn->GetActorLocation();
+ auto* Route=UNavigationSystemV1::FindPathToLocationSynchronously(this,RouteStart,Ground.ImpactPoint,Pawn);
  if(!Route||!Route->IsValid()||Route->IsPartial())return false;
  if(WeaponSlot==-3){if(GetWorld()->SpawnActor<ABattleHornPickup>(Spot,FRotator::ZeroRotator)){Locations.Add(Spot);HornPickups++;return true;}return false;}
  if(WeaponSlot>=0){
