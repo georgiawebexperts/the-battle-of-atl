@@ -26,21 +26,22 @@ void ABattleRider::PoseArms(float Dt){
   Move(U,Origin,FQuat::FindBetweenVectors(Pose[L].GetLocation()-Origin,Joint-Origin));Move(L,Joint,FQuat::FindBetweenVectors(Pose[H].GetLocation()-Pose[L].GetLocation(),Target-Joint));
   const int Middle=Index(*FString::Printf(TEXT("Middle2_%s"),Suffix));const FVector FingerDirection=bSwimming?FVector(0,1,-.15f).GetSafeNormal():FMath::Lerp(FVector(0,.65f,-.76f).GetSafeNormal(),FVector(0,1,0),ArmPoseBlend).GetSafeNormal();
   if(Middle>=0){const FQuat Align=FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[H].GetLocation(),FingerDirection);Move(H,Pose[H].GetLocation(),Align);}
-  if(bSwimming){
+  if(!bSwimming)Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,FMath::DegreesToRadians(Suffix[0]=='R'?-90.f:90.f)));
+  if(bSwimming||CurrentWeapon==1){
    const int IndexKnuckle=Index(*FString::Printf(TEXT("Index2_%s"),Suffix)),PinkyKnuckle=Index(*FString::Printf(TEXT("Pinky2_%s"),Suffix));
    if(IndexKnuckle>=0&&PinkyKnuckle>=0){
     const FVector Across=FVector::VectorPlaneProject(Pose[PinkyKnuckle].GetLocation()-Pose[IndexKnuckle].GetLocation(),FingerDirection).GetSafeNormal();
-    const FVector Desired(Suffix[0]=='R'?-1.f:1.f,0,0);
+    const FVector Desired=bSwimming?FVector(Suffix[0]=='R'?-1.f:1.f,0,0):FVector(0,0,-1);
     const float Twist=FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Desired),FingerDirection),FVector::DotProduct(Across,Desired));
-    Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,Twist));
+    Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,Twist*(bSwimming?1.f:ArmPoseBlend)));
    }
-  }else Move(H,Pose[H].GetLocation(),FQuat(FingerDirection,FMath::DegreesToRadians(Suffix[0]=='R'?-90.f:90.f)));
+  }
   // Preserve hand proportions by default; the view rig allows per-weapon fitting.
   for(int I=H;I<Pose.Num();I++)if(Child(I,H)){Pose[I].SetLocation(Pose[H].GetLocation()+(Pose[I].GetLocation()-Pose[H].GetLocation())*HandScale);Pose[I].SetScale3D(Pose[I].GetScale3D()*HandScale);}
   for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")})for(int JointNumber=2;JointNumber<=4;JointNumber++){
    const int F=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,JointNumber,Suffix));if(F<0)continue;float Curl=bSwimming?8.f:FMath::Lerp(JointNumber==2?18.f:32.f,JointNumber==2?35.f:65.f,ArmPoseBlend);if(FCString::Strcmp(Finger,TEXT("Index"))==0&&Suffix[0]=='R')Curl*=.5f;Move(F,Pose[F].GetLocation(),FQuat(Suffix[0]=='R'?FVector::UpVector:-FVector::UpVector,FMath::DegreesToRadians(-Curl)));
   }
-  if(Detailed&&CurrentWeapon==0&&MeleeRemaining<=0){
+  if(Detailed&&(CurrentWeapon==0||CurrentWeapon==1)&&MeleeRemaining<=0){
    const int Thumb=Index(*FString::Printf(TEXT("Thumb2_%s"),Suffix));
    const int Tip=ArmNames.IndexOfByKey(*FString::Printf(TEXT("thumb_03_%s"),Suffix[0]=='R'?TEXT("r"):TEXT("l")));
    if(Thumb>=0&&Tip>=0){
@@ -49,7 +50,7 @@ void ABattleRider::PoseArms(float Dt){
     Move(Thumb,Pose[Thumb].GetLocation(),FQuat::Slerp(FQuat::Identity,Align,ArmPoseBlend));
    }
   }
-  if(Detailed&&CurrentWeapon==0&&Suffix[0]=='R'&&MeleeRemaining<=0){
+  if(Detailed&&(CurrentWeapon==0||CurrentWeapon==1)&&Suffix[0]=='R'&&MeleeRemaining<=0){
    const FQuat ViewToMesh=FirstPersonArms->GetRelativeRotation().Quaternion().Inverse();
    const FQuat WeaponMotion=ViewToMesh*(Weapon->GetRelativeRotation()-GunRestRotation).Quaternion()*ViewToMesh.Inverse();
    Move(H,Pose[H].GetLocation(),FQuat::Slerp(FQuat::Identity,WeaponMotion,ArmPoseBlend));
@@ -62,7 +63,7 @@ void ABattleRider::PoseArms(float Dt){
   Left=Camera->GetComponentTransform().InverseTransformPosition(DetailedPistol->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::WorldSpace))+FVector(-6,-4,-2);
  }
  if(CurrentWeapon>0)Left=Gun+Motion.RotateVector(FVector(12,-3,-5));
- if(CurrentWeapon==1){Right=Gun+Motion.RotateVector(FVector(-39,3,-4));Left=Gun+Motion.RotateVector(FVector(10,-3,-5))+FVector(-6,-4,-8)*Reload;}
+ if(CurrentWeapon==1){Right=Gun+Motion.RotateVector(FVector(-39,4,-3));Left=Gun+Motion.RotateVector(FVector(4,-3,-4))+FVector(-6,-4,-8)*Reload;}
  if(CurrentWeapon==4){Right=Gun+Motion.RotateVector(FVector(-12,3,-16));Left=Gun+Motion.RotateVector(FVector(-12,-3,-14))+FVector(-6,-4,-6)*Reload;}
  if(MeleeRemaining>0){Right=MeleeRoot->GetRelativeTransform().TransformPosition(FVector(0,0,-31));Left=FVector(20,-20,-28);}
  const float Moving=GetCharacterMovement()->IsMovingOnGround()?FMath::Clamp(GetVelocity().Size2D()/(bDetailedPlayerRig?200.f:520.f),0.f,1.5f):0;

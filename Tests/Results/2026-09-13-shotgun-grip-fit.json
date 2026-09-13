@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "phase": 15,
+  "reason": "Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": true,
+  "full_shaders": true,
+  "detailed_rider": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/rifle-aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/rifle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/smg.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/rifle-reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/shotgun-aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/shotgun-reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-da40a5285a07458da14448c6e1199c9e/shotgun.png"
+  ],
+  "detailed_assets_loaded": true,
+  "shotgun_materials": [
+    {
+      "slot": 0,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 1,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Polymer.M_Remington_Polymer",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 2,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 3,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 4,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    }
+  ],
+  "shotgun_shaders_ready": true,
+  "visual_review": {
+    "inspected": [
+      "shotgun.png",
+      "shotgun-aimed.png",
+      "shotgun-reload.png"
+    ],
+    "materials": "All five equipped material resources complete; textured surfaces visible without checker fallback.",
+    "fit": "80cm displayed length and lateral/vertical aim alignment improve sight clearance; support palm aligned around grip instead of open underneath.",
+    "remaining": "Finger/thumb presentation and authored shell insertion/pump motion still need polish. Static frames do not verify continuous draw/holster animation.",
+    "fully_accepted": false
+  }
+}

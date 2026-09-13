@@ -1,6 +1,11 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
+#include "Materials/Material.h"
+#include "MaterialShared.h"
+#include "SceneInterface.h"
 #include "Camera/CameraComponent.h"
 #include "UnrealClient.h"
 #include "Misc/CommandLine.h"
@@ -19,8 +24,20 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode||!Mode->Pickups)return;
  static TSet<FString> Captured;
- auto Capture=[&](const FString& Name){FString Dir;if(!Captured.Contains(Name)&&FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),Dir)){Captured.Add(Name);FScreenshotRequest::RequestScreenshot(Dir/(Name+TEXT(".png")),false,false);}};
- if(InventoryPhase==3&&InventoryClock>.1f)Capture(TEXT("shotgun"));
+ static bool ShotgunAimPressed=false;FString ReviewDir;const bool Review=FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),ReviewDir);
+ auto Capture=[&](const FString& Name){FString Dir;if(!Captured.Contains(Name)&&FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),Dir)){Captured.Add(Name);
+  if(Person&&Person->ShotgunMesh&&Name==TEXT("shotgun")){
+   UStaticMesh* Mesh=Person->ShotgunMesh->GetStaticMesh();UE_LOG(LogTemp,Display,TEXT("ShotgunMaterialAudit: mesh=%s nanite=%d triangles=%d"),*GetNameSafe(Mesh),Mesh?Mesh->GetNaniteSettings().bEnabled:0,Mesh?Mesh->GetNumTriangles(0):0);
+   for(int32 I=0;I<Person->ShotgunMesh->GetNumMaterials();I++){
+    auto* Interface=Person->ShotgunMesh->GetMaterial(I);auto* Material=Interface?Interface->GetMaterial():nullptr;auto* Resource=Material?Material->GetMaterialResource(GetWorld()->Scene->GetShaderPlatform()):nullptr;
+    UE_LOG(LogTemp,Display,TEXT("ShotgunMaterialAudit: slot=%d interface=%s resource=%d shader_complete=%d"),I,*GetPathNameSafe(Interface),Resource!=nullptr,Resource&&Resource->IsGameThreadShaderMapComplete());
+   }
+  }
+  FScreenshotRequest::RequestScreenshot(Dir/(Name+TEXT(".png")),false,false);}};
+ if(InventoryPhase==3&&InventoryClock>.6f)Capture(TEXT("shotgun"));
+ if(Review&&InventoryPhase==3&&InventoryClock>1.f&&!ShotgunAimPressed){ShotgunAimPressed=true;InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Pressed,1.f,false,0));}
+ if(InventoryPhase==3&&InventoryClock>1.7f)Capture(TEXT("shotgun-aimed"));
+ if(InventoryPhase==5&&InventoryClock>.7f)Capture(TEXT("shotgun-reload"));
  if(InventoryPhase==7&&InventoryClock>.15f)Capture(TEXT("smg"));
  if(InventoryPhase==12&&InventoryClock>.15f)Capture(TEXT("rifle"));
  if(InventoryPhase==13&&InventoryClock>.7f)Capture(TEXT("rifle-aimed"));
@@ -43,7 +60,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   CHECK_INVENTORY(Bike->Inventory[1].Owned&&Bike->Inventory[1].Magazine==6&&Bike->Inventory[1].Reserve==12,"Bike crate did not grant shotgun supply");Bike->SetActorTransform(Bike->CheckpointTransform,false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->bForceNextFloorCheck=true;CHECK_INVENTORY(Bike->Dismount(),"Dismount failed");Person=Cast<ABattleRider>(GetPawn());CHECK_INVENTORY(Person&&!Person->SelectWeapon(2)&&!Person->SelectWeapon(3),"Unowned weapon selectable");Key(EKeys::Two);InventoryPhase=2;InventoryClock=0;
  }
  else if(InventoryPhase==2&&InventoryClock>.3f){CHECK_INVENTORY(Person->CurrentWeapon==1&&Person->Ammo==6,"2 key selection failed");Z=Target();CHECK_INVENTORY(Z,"Shotgun target failed");InventoryPhase=3;InventoryClock=0;}
- else if(InventoryPhase==3){Aim();if(InventoryClock>.4f){CHECK_INVENTORY(Person->Fire(),"Shotgun failed to fire");CHECK_INVENTORY(Z->bDead&&Bike->EnemyKills==1&&Person->Ammo==5,"Close shotgun did not kill with one shell");CHECK_INVENTORY(Bike->ShotNotice==TEXT("ZOMBIE DOWN")&&Bike->ShotNoticeRemaining>0,"Shotgun kill confirmation missing");CHECK_INVENTORY(!Person->Fire(),"Shotgun cooldown failed");Key(EKeys::R);InventoryPhase=4;InventoryClock=0;}}
+ else if(InventoryPhase==3){Aim();if(InventoryClock>(Review?2.f:.4f)){CHECK_INVENTORY(Person->Fire(),"Shotgun failed to fire");CHECK_INVENTORY(Z->bDead&&Bike->EnemyKills==1&&Person->Ammo==5,"Close shotgun did not kill with one shell");CHECK_INVENTORY(Bike->ShotNotice==TEXT("ZOMBIE DOWN")&&Bike->ShotNoticeRemaining>0,"Shotgun kill confirmation missing");CHECK_INVENTORY(!Person->Fire(),"Shotgun cooldown failed");if(ShotgunAimPressed)InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Released,0.f,false,0));Key(EKeys::R);InventoryPhase=4;InventoryClock=0;}}
  else if(InventoryPhase==4&&InventoryClock>.1f){CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->Fire()&&!Person->Melee(),"Reload did not block fire/melee");InventoryPhase=5;}
  else if(InventoryPhase==5&&InventoryClock>2.4f){
   CHECK_INVENTORY(Bike->ShotNoticeRemaining==0,"Shot confirmation did not expire");

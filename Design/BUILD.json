@@ -41,7 +41,8 @@
     "Upgraded Ellison body/clothes/hair, FPS hands and M1911 enabled by default, with explicit BattleLegacyRider diagnostic fallback. Hands require successful detailed body load. M1911 cook directory added. Unflagged editor inventory/rifle zoom/reload/death persistence, foot controls, opening and swimming pass; legacy foot comparison passes. Armed controls strip reduced. Packaged acceptance pending."
   ],
   "unreleased_code_changes": [
-    "Remington870 shotgun candidate replaces primitive slot1 mesh; credited free source, 398424 to59763 triangles, conventional Mac materials, initial hands/aim/muzzle fitting. Editor build and inventory checks pass. Static art renders correctly; first-person material fallback and support-hand fit still rejected. Not packaged; installed058 unchanged."
+    "Remington870 shotgun candidate replaces primitive slot1 mesh; credited free source, 398424 to59763 triangles, conventional Mac materials, initial hands/aim/muzzle fitting. Editor build and inventory checks pass. Static art renders correctly; first-person material fallback and support-hand fit still rejected. Not packaged; installed058 unchanged.",
+    "Shotgun material fallback diagnosed as incomplete shaders in uncooked on-demand review, not missing mesh/material references. Added full-shader review option; all five resources ready and rendered correctly. Settled hip/aim/reload captures added. Reduced displayed gun length to80cm, centered sights, corrected wrist/palm fitting and blended palm alignment; editor build and inventory pass. Finger detail/authored reload/pump work and packaged verification remain pending; installed058 unchanged."
   ],
   "installed_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",

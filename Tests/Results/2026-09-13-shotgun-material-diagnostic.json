@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "phase": 15,
+  "reason": "Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": true,
+  "detailed_rider": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-c7160b94f9d24139a7cc862f0741243b/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-c7160b94f9d24139a7cc862f0741243b/rifle-aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-c7160b94f9d24139a7cc862f0741243b/rifle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-c7160b94f9d24139a7cc862f0741243b/smg.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-c7160b94f9d24139a7cc862f0741243b/rifle-reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-c7160b94f9d24139a7cc862f0741243b/shotgun.png"
+  ],
+  "detailed_assets_loaded": true
+}

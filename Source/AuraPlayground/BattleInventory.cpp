@@ -53,7 +53,7 @@ void ABattleRider::BuildLongGun(){
  LongGunParts[5]->SetRelativeRotation(FRotator::ZeroRotator);
  ShotgunMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShotgunModel"));ShotgunMesh->SetupAttachment(LongGun);
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Shotgun(TEXT("/Game/BattleForTheA/Weapons/Remington870/Remington870/StaticMeshes/Remington870.Remington870"));
- ShotgunMesh->SetStaticMesh(Shotgun.Object);ShotgunMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunMesh->SetCanEverAffectNavigation(false);ShotgunMesh->SetOnlyOwnerSee(true);ShotgunMesh->SetCastShadow(false);ShotgunMesh->SetVisibility(false);
+ ShotgunMesh->SetStaticMesh(Shotgun.Object);ShotgunMesh->SetRelativeScale3D(FVector(.8f));ShotgunMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunMesh->SetCanEverAffectNavigation(false);ShotgunMesh->SetOnlyOwnerSee(true);ShotgunMesh->SetCastShadow(false);ShotgunMesh->SetVisibility(false);
  RifleMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RifleModel"));RifleMesh->SetupAttachment(LongGun);
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Rifle(TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"));RifleMesh->SetStaticMesh(Rifle.Object);RifleMesh->SetRelativeRotation(FRotator(0,-90,0));RifleMesh->SetRelativeScale3D(FVector(.5));RifleMesh->SetRelativeLocation(FVector(-10,0,-10));RifleMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleMesh->SetOnlyOwnerSee(true);RifleMesh->SetCastShadow(false);RifleMesh->SetVisibility(false);
 
