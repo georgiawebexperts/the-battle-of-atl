@@ -1,4 +1,5 @@
 #include "BattleMacController.h"
+#include "HAL/IConsoleManager.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleDetailedRider.h"
@@ -27,6 +28,7 @@ void ABattleMacController::TickFootAudit(float Dt){
   static int Phase=0;static float Clock=0;static FVector Hands[3];static float MaxWeaponHandDistance=0;Clock+=Dt;
   auto Finish=[&](bool Passed){UE_LOG(LogTemp,Display,TEXT("BattleAimPitchAudit: {\"passed\":%s,\"vertical_hand_travel_cm\":%.2f}"),Passed&&MaxWeaponHandDistance<80?TEXT("true"):TEXT("false"),Hands[1].Z-Hands[2].Z);UE_LOG(LogTemp,Display,TEXT("BattleAimWeaponDistance: %.2f"),MaxWeaponHandDistance);FootStage=-1;ConsoleCommand(TEXT("quit"));};
   if(Phase==0){
+   if(auto* CVar=IConsoleManager::Get().FindConsoleVariable(TEXT("r.AsyncPipelineCompile")))UE_LOG(LogTemp,Display,TEXT("BattlePipelinePolicy: async=%d"),CVar->GetInt());
    auto* B=Cast<ABattleBike>(GetPawn());if(!B||!B->Dismount())return;P=Cast<ABattleRider>(GetPawn());
    if(M->Enemies)M->Enemies->bFreezeSpawns=true;
    for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);

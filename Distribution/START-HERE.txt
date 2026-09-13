@@ -111,3 +111,5 @@ The skatepark has concrete detail and painted jump-bank guidance. Includes
 the recent ammo-bin landmarks, moving pedals and wall-reverse recovery.
 Fine finger contact, reload animation, weapon art and world polish remain
 in progress.
+Mac pipeline compilation is serialized following a driver startup crash;
+brief first-use shader pauses are possible. Broader stability testing remains.

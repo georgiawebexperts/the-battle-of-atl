@@ -1,0 +1,18 @@
+{
+  "author": "2026-09-13 [codex-maclaptop]",
+  "crash_report": "/Users/elliottinspace/Library/Logs/DiagnosticReports/AuraPlayground-2026-09-13-144314.ips",
+  "exception": "EXC_BAD_ACCESS at 0x6a3",
+  "phase": "first rendered frame, before weapon audit",
+  "faulting_thread": 24,
+  "stack": [
+    "os_unfair_lock_lock",
+    "AGX::Program::getOrCreateCompileOptions",
+    "AGX::UserCommonShaderFactory::createFragmentProgramVariant",
+    "AGXG14XFamilyDevice newRenderPipelineStateWithDescriptor",
+    "CreateMTLRenderPipeline",
+    "FCompileGraphicsPipelineStateTask::CompilePSOInternal"
+  ],
+  "mitigation": "Mac SystemSettings r.AsyncPipelineCompile=0, removing asynchronous RHI pipeline creation task path",
+  "certainty": "Mitigation under evaluation; one passing diagnostic does not establish cause or eliminate all crashes",
+  "tradeoff": "Potential shader/pipeline first-use hitches"
+}

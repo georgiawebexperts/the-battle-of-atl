@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "missing_report": true,
+  "weapon": "shotgun",
+  "max_weapon_origin_to_hand_cm": null,
+  "exit_code": -11,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/0756fe15bfa54699b3aa79de6f60f1b3/aim-1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/0756fe15bfa54699b3aa79de6f60f1b3/aim-2.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/0756fe15bfa54699b3aa79de6f60f1b3/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-78cdb01bb12743aaa3f7bf2c9b5f21d7/run.log",
+  "visual_review": false,
+  "packaged": true
+}
