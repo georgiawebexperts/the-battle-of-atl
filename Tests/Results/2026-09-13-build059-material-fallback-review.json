@@ -1,0 +1,12 @@
+{
+  "source_log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-00ab489f64c64cafae0bace35e84a5ee/run.log",
+  "material_fallbacks": [
+    "/Game/BattleForTheA/Weapons/Rifle/Rifle/Materials/Atlas.Atlas",
+    "/Game/PiedmontRide/Materials/M_ParkAsphaltWorld.M_ParkAsphaltWorld",
+    "/Game/PiedmontRide/Materials/M_ParkConcreteWorld.M_ParkConcreteWorld"
+  ],
+  "release_accepted": false,
+  "functional_checks_remain_valid": true,
+  "repair_status": "Script prepared and syntax checked; not run while installed058 play session is active.",
+  "scope": "Reassessment of existing staged059 runtime log; no new runtime test."
+}

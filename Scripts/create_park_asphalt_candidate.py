@@ -27,7 +27,7 @@ color=mul(node(unreal.MaterialExpressionConstant3Vector,constant=unreal.LinearCo
 assert lib.connect_material_property(color,'',unreal.MaterialProperty.MP_BASE_COLOR)
 assert lib.connect_material_property(add(val(.82),mul(fine,val(.12))),'',unreal.MaterialProperty.MP_ROUGHNESS)
 assert lib.connect_material_property(val(.08),'',unreal.MaterialProperty.MP_SPECULAR)
-m.set_editor_property('used_with_instanced_static_meshes',True);lib.recompile_material(m)
+m.set_editor_property('used_with_instanced_static_meshes',True);m.set_editor_property('used_with_nanite',True);lib.recompile_material(m)
 assert unreal.EditorAssetLibrary.save_loaded_asset(m)
 unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontSleeperReview')
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);changed=[]

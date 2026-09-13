@@ -32,6 +32,8 @@ result['blood_spray']={key:int(value) for key,value in blood_rows}
 shader_rows=re.findall(r'ShotgunMaterialAudit: slot=(\d+) interface=(\S+) resource=(\d+) shader_complete=(\d+)',log.read_text())
 result['shotgun_materials']=[{'slot':int(i),'material':m,'resource':bool(int(r)),'shader_complete':bool(int(c))} for i,m,r,c in shader_rows]
 result['shotgun_shaders_ready']=len(shader_rows)==5 and all(int(c)==1 for _,_,_,c in shader_rows)
+result['material_fallbacks']=sorted(set(re.findall(r'LogMaterial: Warning: Material (\S+) missing usage flag [^\n]+Default Material will be used in game\.',log.read_text())))
+if result['material_fallbacks']:result['passed']=False
 if a.full_shaders:result['passed']=result['passed'] and result['shotgun_shaders_ready']
 (root/'Tests/Results'/a.report).write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 if not result['passed']:raise SystemExit(1)
