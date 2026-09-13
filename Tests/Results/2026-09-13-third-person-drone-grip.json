@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "stage": 8,
+  "reason": "Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass",
+  "health": 100.0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "editor": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-1db563bfc69a41b487792ff5825894cf/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-1db563bfc69a41b487792ff5825894cf/distant-drone.png"
+  ],
+  "scope": "Native collision/recovery plus real pistol fire at a35m drone after dismount. Natural spawn placement, moving aim and perceived difficulty remain unaccepted."
+}

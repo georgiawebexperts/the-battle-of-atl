@@ -23,6 +23,8 @@ void ABattleMacController::TickDroneAudit(float Dt){
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("BattleDroneAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\",\"health\":%.2f}"),Pass?TEXT("true"):TEXT("false"),DroneStage,Why,Bike->RiderHealth);DroneStage=99;ConsoleCommand(TEXT("quit"));};
 #define DCHECK(C,R) if(!(C)){Finish(false,TEXT(R));return;}
  auto Next=[&](){DroneStage++;DroneClock=0;};
+ // Keep the test aim on the target while the shoulder camera settles and recoil recovers.
+ if(DroneStage>=5&&DroneStage<=8&&Drone){FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((Drone->GetActorLocation()-Eye).Rotation());}
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  if(DroneStage==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);

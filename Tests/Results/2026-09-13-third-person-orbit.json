@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "free_orbit": true,
+  "camera_relative_walk": true,
+  "shoulder_aim": true,
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/mouse-look-bb03df2ca0514c9fb3375d2afd931a73.log",
+  "scope": "Injected engine mouse-axis events after dismount; control, camera and body rotation. Does not verify OS pointer capture or subjective sensitivity."
+}

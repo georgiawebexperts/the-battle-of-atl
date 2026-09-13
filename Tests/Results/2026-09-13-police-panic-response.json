@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "stage": 2,
+  "reason": "Officer failed actual navigation pursuit",
+  "people": 3,
+  "police_spawned": 1,
+  "taser_hits": 0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-176196a3cb3d454bb7d2e4b42215c956.log"
+}

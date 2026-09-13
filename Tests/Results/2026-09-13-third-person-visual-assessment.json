@@ -1,0 +1,18 @@
+{
+  "accepted": false,
+  "reviewed": [
+    "work/foot-review-cfca2fad794448df883cc58c47b0bcef/idle.png",
+    "work/foot-review-cfca2fad794448df883cc58c47b0bcef/aimed.png",
+    "work/drone-b08b39eddfea4c42a3f3364a1bc1a8d4/distant-drone.png",
+    "work/drone-1db563bfc69a41b487792ff5825894cf/distant-drone.png"
+  ],
+  "findings": [
+    "Full third-person character visible and holstered hands lowered.",
+    "Shoulder camera and distance marker readable.",
+    "First aiming image showed low pistol/wrist alignment; grip correction compiled and screenshot rechecked but side-view grip, support hand and pitch tracking still require review.",
+    "Passing foot test measures old hidden-arm rig swing; it does not prove visible full-body walking quality.",
+    "Drone real-weapon engagement passes after continuous fixture aim through camera movement/recoil.",
+    "Police pursuit failed on first random spawn; diagnostic rerun passed. Spawn reliability remains unresolved."
+  ],
+  "installed": false
+}

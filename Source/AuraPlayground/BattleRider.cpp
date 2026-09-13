@@ -15,6 +15,27 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
+namespace {
+void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight){
+ auto* Mesh=Cast<USkeletalMesh>(Body->GetSkinnedAsset());if(!Mesh)return;
+ const auto& Ref=Mesh->GetRefSkeleton();TArray<FTransform> Pose=Body->BoneSpaceTransforms;
+ for(int I=0;I<Pose.Num();I++)if(Ref.GetParentIndex(I)>=0)Pose[I]=Pose[I]*Pose[Ref.GetParentIndex(I)];
+ auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Ref.GetParentIndex(I);}return false;};
+ auto Rotate=[&](int Root,FQuat Rotation){if(Root<0)return;Rotation=FQuat::Slerp(FQuat::Identity,Rotation,Weight);const FVector Pivot=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Pivot+Rotation.RotateVector(Pose[I].GetLocation()-Pivot));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
+ const int Hand=Ref.FindBoneIndex(TEXT("hand_r")),Middle=Ref.FindBoneIndex(TEXT("middle_01_r")),Index=Ref.FindBoneIndex(TEXT("index_01_r")),Pinky=Ref.FindBoneIndex(TEXT("pinky_01_r"));
+ if(Hand<0||Middle<0||Index<0||Pinky<0)return;
+ Rotate(Hand,FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[Hand].GetLocation(),Forward));
+ const FVector Across=FVector::VectorPlaneProject(Pose[Pinky].GetLocation()-Pose[Index].GetLocation(),Forward).GetSafeNormal();
+ const FVector Down(0,0,-1);Rotate(Hand,FQuat(Forward,FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Down),Forward),FVector::DotProduct(Across,Down))));
+ for(const TCHAR* Finger:{TEXT("index"),TEXT("middle"),TEXT("ring"),TEXT("pinky")})for(int Joint=1;Joint<=3;Joint++){
+  const int Bone=Ref.FindBoneIndex(*FString::Printf(TEXT("%s_%02d_r"),Finger,Joint));
+  const float Curl=(Joint==1?35.f:65.f)*(FCString::Strcmp(Finger,TEXT("index"))==0?.5f:1.f);
+  Rotate(Bone,FQuat(FVector::UpVector,FMath::DegreesToRadians(-Curl)));
+ }
+ for(int I=0;I<Pose.Num();I++)Body->BoneSpaceTransforms[I]=Ref.GetParentIndex(I)>=0?Pose[I].GetRelativeTransform(Pose[Ref.GetParentIndex(I)]):Pose[I];
+ Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
+}
+}
 ABattleRider::ABattleRider(){
  Camera->SetupAttachment(CameraArm,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;
  CameraArm->SetComponentTickEnabled(true);CameraArm->bDoCollisionTest=true;Body->SetOwnerNoSee(false);
@@ -76,8 +97,15 @@ void ABattleRider::Tick(float Dt){
  FirstPersonArms->SetHiddenInGame(true,true);
  // The camera follows Ellison; weapons stay with his body rather than the lens.
  const FName Hand=bDetailedPlayerRig?FName(TEXT("hand_r")):FName(TEXT("Hand_R"));
+ if(bDetailedPlayerRig&&bWeaponDrawn)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(GetActorForwardVector()),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f));
  const FVector Grip=Body->GetSocketLocation(Hand);
- Weapon->SetWorldLocation(Grip);Weapon->SetWorldRotation(GetActorRotation()+GunRestRotation);
+ Weapon->SetWorldRotation(GetActorRotation()+GunRestRotation);
+ FVector WeaponOrigin=Grip;
+ if(CurrentWeapon==0&&DetailedPistol){
+  auto* Mesh=Cast<USkeletalMesh>(DetailedPistol->GetSkinnedAsset());
+  if(Mesh)WeaponOrigin=Grip+GetActorForwardVector()*12-DetailedPistol->GetComponentTransform().TransformVector(Mesh->GetBounds().Origin);
+ }
+ Weapon->SetWorldLocation(WeaponOrigin);
  if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return (!ParkedBike||ParkedBike->StunRemaining<=0)&&Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}

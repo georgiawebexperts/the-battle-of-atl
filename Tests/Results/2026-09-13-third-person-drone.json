@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "stage": 7,
+  "reason": "Actual pistol shot did not hit distant drone or show feedback",
+  "health": 100.0,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "editor": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-b08b39eddfea4c42a3f3364a1bc1a8d4/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-b08b39eddfea4c42a3f3364a1bc1a8d4/distant-drone.png"
+  ],
+  "scope": "Native collision/recovery plus real pistol fire at a35m drone after dismount. Natural spawn placement, moving aim and perceived difficulty remain unaccepted."
+}

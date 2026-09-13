@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "reason": "Seventeen initial shots, dry fire, pickups, bike/foot reload conservation, possession, interrupted reload and reserve cap pass",
+  "stage": 9,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/ammo-58cf678cbdb94d9397a3295a9a5e1534.log"
+}
