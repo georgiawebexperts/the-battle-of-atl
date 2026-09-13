@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 143.49,
+  "air_seconds": 0.796,
+  "hill": false,
+  "downhill": false,
+  "realistic": false,
+  "takeoff_diagnostics": [],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-7daa94371a79456994e0146ac6af1cc3.log",
+  "pedal_contact": [
+    [
+      "2.635",
+      "208",
+      "9.249"
+    ]
+  ],
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-c3289ce1ceef476e838770e654680bfd/takeoff.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-c3289ce1ceef476e838770e654680bfd/airborne.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-c3289ce1ceef476e838770e654680bfd/landing.png"
+  ],
+  "captures_complete": true
+}

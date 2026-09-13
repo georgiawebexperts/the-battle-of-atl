@@ -1,6 +1,7 @@
 #include "BattleSpareBikes.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattlePlayerCrash.h"
 #include "PiedmontPathSpline.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -57,7 +58,12 @@ bool Mount(ABattleRider* Person,AActor* Spare){
  auto* Bike=Person->ParkedBike.Get();if(Bike->StunRemaining>0||Bike->bCrashActive||!Bike->bParked||Nearest(Person)!=Spare)return false;
  const FTransform Abandoned=Bike->GetActorTransform(),Destination=Spare->GetActorTransform();Spare->SetActorEnableCollision(false);
  Bike->SetActorTransform(Destination,false,nullptr,ETeleportType::TeleportPhysics);
- if(!Bike->Remount(Person)){Bike->SetActorTransform(Abandoned,false,nullptr,ETeleportType::TeleportPhysics);Spare->SetActorEnableCollision(true);return false;}
+ // A recovered crash normally remounts at the fallen bike. A spare has its own
+ // upright location; retain the old crash until the new mount succeeds.
+ auto* PreviousCrash=Bike->PlayerCrash.Get();Bike->PlayerCrash=nullptr;
+ if(!Bike->Remount(Person)){Bike->PlayerCrash=PreviousCrash;Bike->SetActorTransform(Abandoned,false,nullptr,ETeleportType::TeleportPhysics);Spare->SetActorEnableCollision(true);return false;}
+ UE_LOG(LogTemp,Display,TEXT("BattleSpareMount: recovered_crash=%d"),IsValid(PreviousCrash)?1:0);
+ if(IsValid(PreviousCrash))PreviousCrash->Destroy();
  // Keep the player's durable state on the possessed bike; exchange parked locations.
  Spare->SetActorTransform(Abandoned);Spare->SetActorEnableCollision(true);Bike->Ride->LastSafeLocation=Destination.GetLocation();Bike->Ride->LastDryLocation=Destination.GetLocation();Bike->Ride->bHasDryLocation=true;Bike->Ride->bForceNextFloorCheck=true;
  return true;

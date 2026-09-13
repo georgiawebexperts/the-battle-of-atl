@@ -1,0 +1,39 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/detailed-recovery0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/detailed-recovery1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/detailed-recovery2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/7312c5cc0ff84bb0a51df8588a7864f1/live-remounted.png"
+  ],
+  "events": [
+    "started speed=649.9",
+    "recovered on foot health=48.3 ammo=17",
+    "state=1 timer=1 elapsed=8.042 lost=9.889",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Collision and remount; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": true,
+  "runtime": "editor-game",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 96.363,
+      "selected_rms_cm": 74.563
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true
+}

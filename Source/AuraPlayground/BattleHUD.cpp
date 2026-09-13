@@ -2,6 +2,7 @@
 #include "BattlePlayerCrash.h"
 #include "BattleBike.h"
 #include "BattleSpareBikes.h"
+#include "BattleMusic.h"
 #include "BattleHome.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
@@ -75,6 +76,7 @@ void ABattleLabHUD::DrawHUD(){
  Text(FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);
  FString Prompt=Bike&&Bike->Ride->Speed<20?TEXT("E DISMOUNT  |  S/DOWN BACK UP"):TEXT("E  GET OFF THE BIKE");
+ const float MusicY=M+(Bike?230.f:174.f)*S;Panel(W-M-300*S,MusicY,300*S,38*S);Text(BattleMusic::Enabled()?TEXT("M  MUSIC ON / TOGGLE"):TEXT("M  MUSIC OFF / TOGGLE"),W-M-280*S,MusicY+6*S,18,Muted);
  FString Help=TEXT("Q/R gears   J jump   SHIFT boost   H horn");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=BattleSpareBikes::Nearest(Person)?TEXT("E  RIDE THIS BIKE"):Near?TEXT("E  GET ON THE BIKE"):TEXT("FIND A BIKE  /  BLUE WATCH MARKERS");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
  if(Person&&Person->bSwimming){Prompt=TEXT("EXPLORE THE LAKE");Help=TEXT("WASD / arrows swim   E remount by bike");}

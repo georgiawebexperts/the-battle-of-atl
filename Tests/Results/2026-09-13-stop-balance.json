@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.01,
+  "pedal_error_cm": 0.092,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-818db92f67ad4a5c99212f5532e8f69e/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-818db92f67ad4a5c99212f5532e8f69e/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-818db92f67ad4a5c99212f5532e8f69e/stopped-again.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-818db92f67ad4a5c99212f5532e8f69e/run.log",
+  "exit_code": 0,
+  "packaged": false,
+  "visual_review": {
+    "accepted": true,
+    "finding": "Stopped frame shows feet planted with lowered straddling posture; M music toggle is readable below physics mode."
+  }
+}

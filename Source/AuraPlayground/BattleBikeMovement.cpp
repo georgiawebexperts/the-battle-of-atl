@@ -135,13 +135,20 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
 #endif
 
  if(!CharacterOwner||Recovery>0||ContactCooldown>0||Hit.ImpactNormal.Z>.45f)return;
+ auto CrashImpact=[&](const TCHAR* Reason,float ClosingSpeed){
+  if(auto* Bike=Cast<ABattleBike>(CharacterOwner)){
+   Bike->ApplyRiderDamage(FMath::Clamp(ClosingSpeed/30.f,8.f,30.f));
+   if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(Bike)))Mode->AdjustRunTime(-10,TEXT("CRASH"));
+  }
+  Wipeout(Reason);
+ };
  const bool Traffic=Hit.GetActor()&&(Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic"))||Hit.GetActor()->ActorHasTag(TEXT("PiedmontHostile"))||Hit.GetActor()->ActorHasTag(TEXT("RideVehicle")));
  if(Traffic){
   const float Directness=-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),Hit.ImpactNormal.GetSafeNormal2D());
-  const bool Direct=Speed>500&&Directness>.7f;
+  const bool Direct=Speed>200&&Directness>.35f&&Speed*Directness>150;
   if(auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor()))Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
   if(Direct&&Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic")))if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(CharacterOwner)))Mode->RecordAssault(Hit.GetActor());
-  ContactCooldown=.35f;if(Direct)Wipeout(TEXT("Traffic impact"));else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
+  ContactCooldown=.35f;if(Direct)CrashImpact(TEXT("Traffic impact"),Speed*Directness);else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
  if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree")))++TreeContacts;
  // Let a glancing rail/wall contact slide instead of repeatedly killing propulsion.
@@ -149,13 +156,14 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
  const FVector Normal=Hit.ImpactNormal.GetSafeNormal2D();
  const FVector Travel=CharacterOwner->GetActorForwardVector()*(ReverseSpeed>Speed?-1.f:1.f);
  const float Into=FMath::Clamp(-FVector::DotProduct(Travel,Normal),0.f,1.f);
+ if(Speed>200&&Into>.35f&&Speed*Into>150){ContactCooldown=.35f;CrashImpact(TEXT("Obstacle impact"),Speed*Into);return;}
  if(Into<.65f){
   const float Retained=FMath::Sqrt(FMath::Max(0.f,1.f-Into*Into));
   Speed*=Retained;ReverseSpeed*=Retained;ContactCooldown=.2f;
   if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>300)Bike->RideImpact(.12f);
   return;
  }
- // Terrain, walls and fences never enter the wipeout state.
+ // Walking-speed contact keeps the small separation nudge for maneuvering.
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>100)Bike->RideImpact(.45f);
  BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=ReverseSpeed=0;
 }

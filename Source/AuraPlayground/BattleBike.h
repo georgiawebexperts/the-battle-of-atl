@@ -170,7 +170,7 @@ private:
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;
  float RiderBrakeLean=0;
- float RiderAirBlend=0,RiderLandingCompression=0;
+ float RiderAirBlend=0,RiderLandingCompression=0,RiderBalanceBlend=0;
  bool bRiderWasAirborne=false;
  TArray<FTransform> ReferencePose;TArray<int32> Parents;TArray<FName> BoneNames;
  float WheelAngle=0;

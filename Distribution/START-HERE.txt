@@ -115,6 +115,12 @@ Music: press M or use Options to turn the supplied theme on/off.
 Tight arcade turns ease speed gradually. Glancing rail contacts slide;
 hold S/Down to back out of a direct wall hit, then steer clear.
 
+Riding impacts: hitting trees, people or solid obstacles at riding speed
+knocks Ellison off, causes harm and costs 10 seconds. After he gets up,
+walk to the bike and press E. Low-speed nudges can still be backed out of.
+At a stop, Ellison plants his feet; they return to the pedals as you ride.
+The right-side HUD displays M to toggle music, with its current state.
+
 Build {{BUILD}} update: the shotgun uses a turned shoulder stance and visible
 support-hand pump/reload movement. Long guns follow the body independently
 of camera movement. Includes recent skatepark guidance, ammo-bin landmarks,

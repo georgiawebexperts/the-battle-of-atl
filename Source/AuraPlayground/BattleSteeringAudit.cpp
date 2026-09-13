@@ -8,6 +8,7 @@
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
 #include "Kismet/GameplayStatics.h"
+void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt);
 void TickBattleBridgeTurnAudit(APlayerController* PC,float Dt);
 void TickBattleRailScrapeAudit(APlayerController* PC,float Dt);
 void TickBattleIncidentBikeAudit(APlayerController* PC,float Dt);
@@ -15,6 +16,7 @@ void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt);
 void TickBattleWallRecoveryAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickSteeringAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleBikeBalanceAudit"))){TickBattleBikeBalanceAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleBridgeTurnAudit"))){TickBattleBridgeTurnAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleRailScrapeAudit"))){TickBattleRailScrapeAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleWallRecoveryAudit"))){TickBattleWallRecoveryAudit(this,Dt);return;}

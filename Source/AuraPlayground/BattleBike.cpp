@@ -207,10 +207,12 @@ void ABattleBike::PoseRider(float Dt){
  RiderAirBlend=FMath::Lerp(RiderAirBlend,Airborne?1.f:0.f,1.f-FMath::Exp(-10.f*Dt));
  RiderLandingCompression=FMath::Max(0.f,RiderLandingCompression-Dt*3.f);
  const float Compress=FMath::Sin(RiderLandingCompression*PI);
+ const float BalanceTarget=Ride->IsMovingOnGround()&&!bParked&&Ride->Recovery<=0?1.f-FMath::SmoothStep(15.f,100.f,Ride->Speed+Ride->ReverseSpeed):0.f;
+ RiderBalanceBlend=Dt>0?FMath::Lerp(RiderBalanceBlend,BalanceTarget,1.f-FMath::Exp(-8.f*Dt)):BalanceTarget;
  // Lift off the saddle in flight; knees and elbows absorb touchdown. The limb
  // solves below keep wrists on the grips and shoes at the pedal targets.
- const FVector Hip(0,-23+RiderAirBlend*5,99+RiderAirBlend*9-Compress*8);
- const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,Hip,FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer)-8.f*RiderAirBlend-Compress*7.f)));
+ const FVector Hip(0,-23+RiderAirBlend*5,99+RiderAirBlend*9-Compress*8-RiderBalanceBlend*16);
+ const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,Hip,FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f+RiderBalanceBlend*12.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer)-8.f*RiderAirBlend-Compress*7.f)));
  // Let the shoulders follow the bar while the hips remain over the saddle.
  const int Spine=Index(TEXT("Abdomen"));if(Spine>=0)MoveBranch(Spine,Pose[Spine].GetLocation(),FQuat(FVector::UpVector,FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));
  auto Limb=[&](const TCHAR* UpperName,const TCHAR* LowerName,const TCHAR* EndName,FVector Target,FVector Bend){
@@ -239,7 +241,14 @@ void ABattleBike::PoseRider(float Dt){
    // Imported loafer bounds: minZ=-2.184858cm; use the sole under the forefoot.
    SoleOffset.Z=-2.184858f-ReferencePose[Foot].GetLocation().Z;
   }
-  const FVector Ankle=BikeToRider.TransformPosition(Pedal+FVector(0,0,1.25f))-SoleOffset;
+  FVector Sole=BikeToRider.TransformPosition(Pedal+FVector(0,0,1.25f));
+  if(RiderBalanceBlend>.001f){
+   const FVector Probe=Visual->GetComponentTransform().TransformPosition(FVector(-5,-Sign*27,5));FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(BikeBalanceFoot),false,this);
+   if(GetWorld()->LineTraceSingleByChannel(Ground,Probe+FVector(0,0,150),Probe-FVector(0,0,200),ECC_Visibility,Q)&&Ground.ImpactNormal.Z>.65f&&FMath::Abs(Ground.ImpactPoint.Z-(GetActorLocation().Z-98.f))<55.f){
+    const FVector Planted=Rider->GetComponentTransform().InverseTransformPosition(Ground.ImpactPoint+FVector(0,0,1));Sole=FMath::Lerp(Sole,Planted,RiderBalanceBlend);
+   }
+  }
+  const FVector Ankle=Sole-SoleOffset;
   Limb(*FString::Printf(TEXT("UpperLeg_%s"),Side),*FString::Printf(TEXT("LowerLeg_%s"),Side),*FString::Printf(TEXT("Foot_%s"),Side),Ankle,FVector(0,1,0));
  }
  // Leg IK locates the ankles but also rotates the attached shoes. Keep each

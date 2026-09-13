@@ -30,7 +30,7 @@ void ABattleMacController::TickJumpAudit(float Dt){
  auto Capture=[&](const TCHAR* Name){FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleJumpReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),false,false);};
  auto Next=[&](){JumpStage++;JumpClock=0;};
  static float MaxSoleError=0,PedalPhaseStart=0;static int SoleSamples=0;
- if(JumpStage>=1&&JumpStage<=3&&Bike->Rider->GetBoneIndex(TEXT("ball_l"))>=0){
+ if(((JumpStage==1&&JumpClock>.9f)||(JumpStage==2&&JumpClock>.3f)||JumpStage==3)&&Bike->Rider->GetBoneIndex(TEXT("ball_l"))>=0){
   for(int Sign:{-1,1}){
    auto* Pedal=Cast<UStaticMeshComponent>(Bike->GetDefaultSubobjectByName(*FString::Printf(TEXT("Pedal%d"),Sign)));
    JCHECK(Pedal,"Missing visible pedal platform");

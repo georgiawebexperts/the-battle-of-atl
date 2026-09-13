@@ -1,8 +1,11 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattleSpareBikes.h"
 #include "BattlePlayerCrash.h"
 #include "BattleFallenBike.h"
 #include "BattleRoadCar.h"
+#include "PiedmontPedestrian.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "BattlePolice.h"
 #include "BattleDrone.h"
 #include "PiedmontDarkZone.h"
@@ -20,7 +23,7 @@
 #include "EngineUtils.h"
 void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleBike> Bike;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ABattlePolice> Officer;TWeakObjectPtr<ABattleDrone> Drone;TWeakObjectPtr<AActor> RecoveryBlocker;FVector RecoveryAnchor,HoldHead;float BlockClock=0;bool BlockPlaced=false,BlockReleased=false,HoldSample=false,HoldVerified=false;TWeakObjectPtr<APiedmontDarkZone> LightZone;TWeakObjectPtr<USceneComponent> HeadParent,TailParent;FTransform HeadRelative,TailRelative;bool LightChecked=false;float LightClock=0;float ExpectedHealth=70;bool Taser=false,DroneMode=false,WarningSeen=false;float Clock=0,CrashTime=0,StartTime=0,Elapsed=0;int RecoveryShot=0;int Stage=0,Wipeouts=0,Ammo=0,Cycles=0;bool Done=false,FallShot=false,FootShot=false,Death=false;};static FState S;
+ struct FState{FString Obstacle;TWeakObjectPtr<AActor> ImpactTarget;TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleBike> Bike;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ABattlePolice> Officer;TWeakObjectPtr<ABattleDrone> Drone;TWeakObjectPtr<AActor> RecoveryBlocker;FVector RecoveryAnchor,HoldHead;float BlockClock=0;bool BlockPlaced=false,BlockReleased=false,HoldSample=false,HoldVerified=false;TWeakObjectPtr<APiedmontDarkZone> LightZone;TWeakObjectPtr<USceneComponent> HeadParent,TailParent;FTransform HeadRelative,TailRelative;bool LightChecked=false;float LightClock=0;float ExpectedHealth=70;bool Taser=false,DroneMode=false,WarningSeen=false;float Clock=0,CrashTime=0,StartTime=0,StartRunTime=0,Elapsed=0;int RecoveryShot=0;int Stage=0,Wipeouts=0,Ammo=0,Cycles=0;bool Done=false,FallShot=false,FootShot=false,Death=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Shot=[&](const TCHAR* Name){FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);FScreenshotRequest::RequestScreenshot(Folder/(S.Cycles?FString::Printf(TEXT("cycle%d-%s"),S.Cycles+1,Name):FString(Name)),false,false);};
@@ -38,12 +41,31 @@ void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
    Car->Destroy();B->DamageGrace=S.Taser?100:0;B->RiderHealth=100;S.ExpectedHealth=S.Taser?100:85;
    if(S.Taser){S.Officer=PC->GetWorld()->SpawnActor<ABattlePolice>(B->GetActorLocation()+FVector(350,0,0),FRotator::ZeroRotator);if(!S.Officer.IsValid()){Finish(false,TEXT("Officer spawn failed"));return;}S.Officer->Cooldown=0;}
    else S.Drone=PC->GetWorld()->SpawnActor<ABattleDrone>(B->GetActorLocation()+FVector(-600,0,400),FRotator::ZeroRotator);
-  }else Key(EKeys::W,true);return;
+  }else {
+   FParse::Value(FCommandLine::Get(),TEXT("BattleCrashObstacle="),S.Obstacle);
+   if(!S.Obstacle.IsEmpty()){
+    Car->Destroy();B->DamageGrace=0;B->Ride->Gear=1;
+    const FVector Place=B->GetActorLocation()+FVector(600,0,0);
+    if(S.Obstacle==TEXT("person")){
+     auto* Person=PC->GetWorld()->SpawnActor<APiedmontPedestrian>(Place,FRotator(0,180,0));S.ImpactTarget=Person;
+     Person->SetActorTickEnabled(false);Person->GetCharacterMovement()->DisableMovement();
+    }else {
+     auto* A=PC->GetWorld()->SpawnActor<AActor>();S.ImpactTarget=A;auto* Box=NewObject<UBoxComponent>(A);A->AddInstanceComponent(Box);A->SetRootComponent(Box);Box->SetBoxExtent(S.Obstacle==TEXT("tree")?FVector(40,40,180):FVector(40,250,180));Box->SetCollisionProfileName(TEXT("BlockAll"));Box->RegisterComponent();A->SetActorLocation(Place);if(S.Obstacle==TEXT("tree"))A->Tags.Add(TEXT("RideTree"));
+    }
+   }
+   Key(EKeys::W,true);
+  }return;
  }
  auto* B=S.Bike.Get();if(!B){Finish(false,TEXT("Bike lost"));return;}
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(B));
  if(S.Stage==1){if(S.Taser&&S.Officer.IsValid()&&S.Officer->bWarning)S.WarningSeen=true;if(S.DroneMode&&S.Drone.IsValid()&&S.Drone->bWarning)S.WarningSeen=true;}
  if(S.Stage==1&&B->bCrashActive){
+  if(!S.Obstacle.IsEmpty()){
+   if(B->RiderHealth>=70||B->RiderHealth<39||!Mode||Mode->LastTimeDelta!=-10||Mode->TimeNotice!=TEXT("CRASH")){Finish(false,TEXT("Obstacle collision did not apply harm and crash penalty"));return;}
+   if(S.Obstacle==TEXT("person")){auto* Person=Cast<APiedmontPedestrian>(S.ImpactTarget.Get());if(!Person||Person->BikeContacts<1){Finish(false,TEXT("Pedestrian did not react to impact"));return;}}
+   if(S.Obstacle==TEXT("tree")&&B->Ride->TreeContacts<1){Finish(false,TEXT("Tree collision not recorded"));return;}
+   S.ExpectedHealth=B->RiderHealth;B->HurtCooldown=100;B->DamageGrace=100;
+  }
   if(S.Taser||S.DroneMode){
    const bool Hit=S.Taser?B->TaserHits==1&&Mode&&Mode->LastTimeDelta==-10&&Mode->TimeNotice==TEXT("TASED"):S.Drone.IsValid()&&S.Drone->RiderHits==1;
    const bool RepeatBlocked=S.Taser?!B->ApplyTaser():!B->ApplyDroneStrike();
@@ -51,7 +73,7 @@ void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
    B->DamageGrace=100;B->HurtCooldown=100;
    if(S.Officer.IsValid())S.Officer->SetActorTickEnabled(false);
   }
-  Key(EKeys::W,false);S.Stage=2;S.CrashTime=S.Clock;S.StartTime=Mode?Mode->TimeRemaining:0;S.Elapsed=0;}
+  Key(EKeys::W,false);S.Stage=2;S.CrashTime=S.Clock;S.StartTime=Mode?Mode->TimeRemaining:0;S.StartRunTime=Cast<ABattleParkMode>(Mode)?Cast<ABattleParkMode>(Mode)->RunElapsed:0;S.Elapsed=0;return;}
  if(S.Stage==2){
   S.Elapsed+=Dt;
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))&&IsValid(B->PlayerCrash)&&B->PlayerCrash->GetRecoveryPose()&&S.RecoveryShot<3&&B->PlayerCrash->GetRecoveryTime()>.15f+S.RecoveryShot*1.4f){
@@ -84,14 +106,24 @@ void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt){
     if(!SpacePass){Finish(false,TEXT("Recovery obstacle resolution failed"));return;}if(S.RecoveryBlocker.IsValid())S.RecoveryBlocker->Destroy();
    }
    const bool State=B->bParked&&!B->bCrashActive&&IsValid(B->PlayerCrash)&&B->PlayerCrash->bRecovered&&Person->ParkedBike==B&&!Person->bWeaponDrawn&&Person->Health==S.ExpectedHealth&&B->PistolAmmo==S.Ammo;
-   const float Lost=Mode?S.StartTime-Mode->TimeRemaining:0;const bool Timer=Mode&&FMath::Abs(Lost-S.Elapsed*Mode->FootTimeMultiplier)<.2f;
-   UE_LOG(LogTemp,Display,TEXT("PlayerCrashFoot: state=%d timer=%d elapsed=%.3f lost=%.3f"),State,Timer,S.Elapsed,Lost);
+   const float Lost=Mode?S.StartTime-Mode->TimeRemaining:0;const auto* ParkMode=Cast<ABattleParkMode>(Mode);const float TimerElapsed=ParkMode?ParkMode->RunElapsed-S.StartRunTime:0;const bool Timer=ParkMode&&FMath::Abs(Lost-TimerElapsed*Mode->FootTimeMultiplier)<.08f;
+   UE_LOG(LogTemp,Display,TEXT("PlayerCrashFoot: state=%d timer=%d elapsed=%.3f lost=%.3f"),State,Timer,TimerElapsed,Lost);
    if(!State||!Timer){Finish(false,TEXT("Foot state or timer mismatch"));return;}Shot(TEXT("live-foot.png"));
    if(S.Death){B->DamageGrace=0;Person->TakeDamage(1000,FDamageEvent(),PC,nullptr);S.Stage=5;return;}
+   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashSpareBike"))){
+    TArray<FVector> Sites;BattleSpareBikes::Locations(PC,Sites);bool Found=false;
+    FCollisionQueryParams Q(SCENE_QUERY_STAT(CrashSpareApproach),false,Person);Q.AddIgnoredActor(B);
+    for(FVector Site:Sites){for(FVector Offset:{FVector(145,0,0),FVector(-145,0,0),FVector(0,145,0),FVector(0,-145,0)}){
+     FHitResult Ground;FVector P=Site+Offset;if(!PC->GetWorld()->LineTraceSingleByChannel(Ground,P+FVector(0,0,180),P-FVector(0,0,300),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.8f)continue;P=Ground.ImpactPoint+FVector(0,0,91);
+     if(PC->GetWorld()->OverlapBlockingTestByChannel(P,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;Person->SetActorLocation(P,false,nullptr,ETeleportType::TeleportPhysics);if(BattleSpareBikes::Nearest(Person)){Found=true;break;}
+    }if(Found)break;}
+    if(!Found){Finish(false,TEXT("No accessible spare after crash"));return;}
+   }
    S.Stage=3;
   }
  }
  if(S.Stage==3){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashSpareBike"))){Key(EKeys::E,true);Key(EKeys::E,false);S.Stage=4;S.CrashTime=S.Clock;return;}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrashLights"))&&!S.LightChecked){
    if(!IsValid(B->PlayerCrash)||!IsValid(B->PlayerCrash->Fallen)){Finish(false,TEXT("Missing fallen bike for lamp test"));return;}
    if(!S.LightZone.IsValid()){

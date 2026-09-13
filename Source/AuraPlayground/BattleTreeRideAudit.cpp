@@ -4,6 +4,7 @@
 #include "EngineUtils.h"
 #include "Engine/StaticMesh.h"
 #include "Components/InstancedStaticMeshComponent.h"
+#include "Components/PoseableMeshComponent.h"
 #include "PhysicsEngine/BodySetup.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
@@ -42,11 +43,11 @@ void TickBattleTreeRideAudit(APlayerController* PC,float Dt){
   if(S.Trees.Num()!=3){Finish(false,TEXT("Could not find three clear representative approaches"));return;}S.Started=true;
  }
  const auto& Tree=S.Trees[S.Tree];
- if(S.Clock==0){FVector Ground;const FVector Start=Tree.Point+FVector(-800,S.Leg==0?Tree.Radius+100:0,0);if(!Floor(Start,Ground)){Finish(false,TEXT("Missing approach floor"));return;}Key(false);Move->StopMovementImmediately();Move->Speed=0;Move->Recovery=0;Move->Gear=3;Bike->SetActorLocationAndRotation(Ground+FVector(0,0,98),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);Move->bForceNextFloorCheck=true;S.Contacts=Move->TreeContacts;S.Clock=.001f;return;}
+ if(S.Clock==0){FVector Ground;const FVector Start=Tree.Point+FVector(-800,S.Leg==0?Tree.Radius+100:0,0);if(!Floor(Start,Ground)){Finish(false,TEXT("Missing approach floor"));return;}Key(false);Move->StopMovementImmediately();Move->Speed=0;Move->Recovery=0;Move->Gear=3;Bike->SetActorLocationAndRotation(Ground+FVector(0,0,98),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);Move->bForceNextFloorCheck=true;Bike->RiderHealth=100;Bike->DamageGrace=0;Bike->HurtCooldown=100;S.Contacts=Move->TreeContacts;S.Clock=.001f;return;}
  S.Clock+=Dt;if(S.Clock<.6f)return;Key(true);
  if(S.Clock>15){UE_LOG(LogTemp,Display,TEXT("TreeRide state: mesh=%s position=%s target=%s speed=%.1f contacts=%d"),*Tree.Mesh,*Bike->GetActorLocation().ToString(),*Tree.Point.ToString(),Move->Speed,Move->TreeContacts-S.Contacts);Finish(false,TEXT("Tree approach timed out"));return;}
  if(S.Leg==0&&Move->TreeContacts!=S.Contacts){Finish(false,TEXT("Near pass hit a trunk"));return;}
- bool Complete=S.Leg==0?Bike->GetActorLocation().X>Tree.Point.X+300:Move->TreeContacts>S.Contacts&&Move->Speed<150&&Bike->GetActorLocation().X<Tree.Point.X+50;
- if(Complete){Key(false);++S.Completed;S.Clock=0;if(S.Leg==0)S.Leg=1;else{S.Leg=0;++S.Tree;}if(S.Tree==3)Finish(true,TEXT("Three authored tree types: keyboard near passes clear and direct hits stop the bike"));}
+ bool Complete=S.Leg==0?Bike->GetActorLocation().X>Tree.Point.X+300:Move->TreeContacts>S.Contacts&&Bike->bCrashActive&&Bike->RiderHealth<100;
+ if(Complete){Key(false);if(S.Leg==1){Bike->ClearPhysicalCrash();Bike->bParked=false;Bike->Rider->SetVisibility(true,true);Move->Recovery=0;}++S.Completed;S.Clock=0;if(S.Leg==0)S.Leg=1;else{S.Leg=0;++S.Tree;}if(S.Tree==3)Finish(true,TEXT("Three authored tree types: keyboard near passes clear and direct hits knock the rider off with harm"));}
 #endif
 }
