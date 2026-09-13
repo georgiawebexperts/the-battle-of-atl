@@ -56,7 +56,7 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Rubber(TEXT("/Game/BeltLineGlide/Materials/M_Rubber.M_Rubber"));
  auto Part=[&](FString Name,FVector Loc,FVector Scale,bool Round,UMaterialInterface* Mat){auto* M=CreateDefaultSubobject<UStaticMeshComponent>(*Name);M->SetupAttachment(Visual);M->SetStaticMesh(Round?Cylinder.Object:Cube.Object);M->SetRelativeLocation(Loc);M->SetRelativeScale3D(Scale);M->SetCollisionEnabled(ECollisionEnabled::NoCollision);M->SetMaterial(0,Mat);return M;};
  auto Tube=[&](FString Name,FVector A,FVector B,float Radius,UMaterialInterface* Mat){auto* M=Part(Name,(A+B)*.5,FVector(Radius/50,Radius/50,(B-A).Size()/100),true,Mat);M->SetRelativeRotation(FQuat::FindBetweenNormals(FVector::UpVector,(B-A).GetSafeNormal()));return M;};
- const FVector Back(-60,0,35),Front(60,0,35),Crank(-5,0,36),Seat(-23,0,92),Head(43,0,91);
+ const FVector Back(-60,0,35),Front(60,0,35),Crank(-5,0,36),Seat(-23,0,82),Head(43,0,91);
  SteeringAssembly=CreateDefaultSubobject<USceneComponent>(TEXT("SteeringAssembly"));SteeringAssembly->SetupAttachment(Visual);SteeringAssembly->SetRelativeLocation(Head);
  auto Steered=[&](USceneComponent* Part){const FVector Location=Part->GetRelativeLocation();Part->SetupAttachment(SteeringAssembly);Part->SetRelativeLocation(Location-Head);};
  Tube(TEXT("SeatTube"),Crank,Seat,2.2,Paint.Object);Tube(TEXT("TopTube"),Seat,Head,2,Paint.Object);Tube(TEXT("DownTube"),Crank,Head,3,Paint.Object);
@@ -69,7 +69,7 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
   Tube(FString::Printf(TEXT("PedalAxle%d"),Sign),Crank+FVector(0,-Sign*8,Sign*16),Crank+FVector(0,-Sign*12,Sign*16),.8,Rubber.Object);
  }
  Part(TEXT("Battery"),FVector(16,0,59),FVector(.14,.1,.42),false,Rubber.Object)->SetRelativeRotation(FRotator(35,0,0));
- Part(TEXT("Saddle"),FVector(-23,0,98),FVector(.29,.19,.055),false,Rubber.Object);
+ Part(TEXT("Saddle"),FVector(-23,0,88),FVector(.29,.19,.055),false,Rubber.Object);
  Steered(Tube(TEXT("Stem"),Head,FVector(40,0,112),2,Rubber.Object));Steered(Tube(TEXT("Handlebar"),FVector(40,-30,112),FVector(40,30,112),1.5,Rubber.Object));
  FrontWheel=Part(TEXT("FrontWheel"),Front,FVector(.70,.70,.055),true,Rubber.Object);FrontWheel->SetRelativeRotation(FRotator(0,0,90));Steered(FrontWheel);
  RearWheel=Part(TEXT("RearWheel"),Back,FVector(.70,.70,.055),true,Rubber.Object);RearWheel->SetRelativeRotation(FRotator(0,0,90));
@@ -211,7 +211,11 @@ void ABattleBike::PoseRider(float Dt){
  RiderBalanceBlend=Dt>0?FMath::Lerp(RiderBalanceBlend,BalanceTarget,1.f-FMath::Exp(-8.f*Dt)):BalanceTarget;
  // Lift off the saddle in flight; knees and elbows absorb touchdown. The limb
  // solves below keep wrists on the grips and shoes at the pedal targets.
- const FVector Hip(0,-23+RiderAirBlend*5,99+RiderAirBlend*9-Compress*8-RiderBalanceBlend*16);
+ // Step ahead of the saddle before lowering into a standing straddle. On
+ // departure this reverses: rise first, then slide back onto the seat.
+ const float StandForward=FMath::SmoothStep(0.f,.45f,RiderBalanceBlend);
+ const float StandLower=FMath::SmoothStep(.45f,1.f,RiderBalanceBlend);
+ const FVector Hip(0,-23+RiderAirBlend*5+StandForward*35,99+RiderAirBlend*9-Compress*8-StandLower*16);
  const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,Hip,FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f+RiderBalanceBlend*12.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer)-8.f*RiderAirBlend-Compress*7.f)));
  // Let the shoulders follow the bar while the hips remain over the saddle.
  const int Spine=Index(TEXT("Abdomen"));if(Spine>=0)MoveBranch(Spine,Pose[Spine].GetLocation(),FQuat(FVector::UpVector,FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));

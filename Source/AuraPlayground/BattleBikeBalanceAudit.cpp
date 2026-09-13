@@ -9,7 +9,7 @@
 #include "UnrealClient.h"
 void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- static int Phase=0;static float Clock=0,MaxGround=0,MaxPedal=0;static TWeakObjectPtr<ACameraActor> Camera;
+ static int Phase=0;static float Clock=0,MaxGround=0,MaxPedal=0;static TWeakObjectPtr<ACameraActor> Camera;static int TransitionShots=0;
  if(Phase==99||PC->GetWorld()->GetTimeSeconds()<5)return;auto* B=Cast<ABattleBike>(PC->GetPawn());if(!B)return;Clock+=Dt;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("BikeBalanceAudit: {\"passed\":%s,\"phase\":%d,\"ground_error_cm\":%.3f,\"pedal_error_cm\":%.3f,\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Phase,MaxGround,MaxPedal,Why);Phase=99;Key(EKeys::W,false);Key(EKeys::SpaceBar,false);PC->ConsoleCommand(TEXT("quit"));};
@@ -18,6 +18,11 @@ void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt){
   if(!Camera.IsValid())Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FTransform Frame=B->Visual->GetComponentTransform();const FVector Eye=Frame.TransformPosition(FVector(140,-290,100)),Target=Frame.TransformPosition(FVector(0,0,65));Camera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());PC->SetViewTarget(Camera.Get());
  }
  auto Shot=[&](const TCHAR* Name){if(!Dir.IsEmpty())FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),true,false);};
+ // The old feet-only check missed the lowered pelvis passing through the seat.
+ const FVector Hip=B->Visual->GetComponentTransform().InverseTransformPosition(B->Rider->GetBoneLocation(TEXT("pelvis"),EBoneSpaces::WorldSpace));
+ if(Phase>0&&Phase<4&&Hip.Z<96.f&&Hip.X<8.f){Finish(false,TEXT("Lowered pelvis overlaps saddle envelope"));return;}
+ if(Phase==2&&Clock>.08f*(TransitionShots+1)&&TransitionShots<4){Shot(*FString::Printf(TEXT("depart-%d"),TransitionShots++));}
+ if(Phase==3&&Clock>.08f*(TransitionShots+1)&&TransitionShots<12){Shot(*FString::Printf(TEXT("brake-%d"),TransitionShots++));}
  auto CheckFeet=[&](bool Grounded){
   for(int Sign:{-1,1}){
    if(B->Rider->GetBoneIndex(Sign>0?TEXT("ball_l"):TEXT("ball_r"))<0)return false;
@@ -30,7 +35,7 @@ void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt){
  };
  if(Phase==0){B->Ride->StopMovementImmediately();B->Ride->Speed=B->Ride->ReverseSpeed=0;Key(EKeys::SpaceBar,true);Clock=0;Phase=1;}
  else if(Phase==1&&Clock>1){Shot(TEXT("stopped"));if(!CheckFeet(true)){Finish(false,TEXT("Stopped shoes did not reach ground"));return;}Key(EKeys::SpaceBar,false);Key(EKeys::W,true);Clock=0;Phase=2;}
- else if(Phase==2&&Clock>1.3f){Shot(TEXT("pedaling"));if(B->Ride->Speed<150||!CheckFeet(false)){Finish(false,TEXT("Moving shoes did not return to pedals"));return;}Key(EKeys::W,false);Key(EKeys::SpaceBar,true);Clock=0;Phase=3;}
+ else if(Phase==2&&Clock>1.3f){Shot(TEXT("pedaling"));if(B->Ride->Speed<150||!CheckFeet(false)){Finish(false,TEXT("Moving shoes did not return to pedals"));return;}Key(EKeys::W,false);Key(EKeys::SpaceBar,true);Clock=0;TransitionShots=0;Phase=3;}
  else if(Phase==3&&Clock>1.7f){Shot(TEXT("stopped-again"));if(B->Ride->Speed>1||!CheckFeet(true)){Finish(false,TEXT("Braking did not plant shoes again"));return;}Clock=0;Phase=4;}
  else if(Phase==4&&Clock>.3f)Finish(true,TEXT("Grounded stop, moving pedal contact, braking and replant pass"));
 #endif
