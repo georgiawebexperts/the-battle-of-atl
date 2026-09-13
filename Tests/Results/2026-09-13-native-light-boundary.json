@@ -8,5 +8,9 @@
     "daylight_off": true
   },
   "scope": "Native automatic-light ticks at a narrow isolated dark volume: bike body only, headlamp only, delayed exit, daylight off. No rendered illumination or complete Krog route acceptance.",
+  "shadow_profile": {
+    "cascades": 2
+  },
+  "project_shadow_profile_passed": true,
   "passed": true
 }

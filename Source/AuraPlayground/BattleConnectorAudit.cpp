@@ -5,6 +5,8 @@
 #include "BattleSpiritData.h"
 #include "PiedmontPathSpline.h"
 #include "Components/SplineComponent.h"
+#include "Components/BoxComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "EngineUtils.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Algo/Reverse.h"
@@ -115,7 +117,13 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   // Brake before a mapped bend, using remaining distance and a conservative corner radius.
   const FVector Forward=Bike->GetActorForwardVector().GetSafeNormal2D();
   const float StopLook=Bike->Ride->Speed*Bike->Ride->Speed/1100.f+500.f;
-  for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car){const FVector Offset=Car->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);if(Ahead>0&&Ahead<StopLook&&Side<350&&FMath::Abs(Offset.Z)<180){Yield=true;YieldReason=FString::Printf(TEXT("car=%s ahead=%.1f side=%.1f speed=%.1f crossing=%d obstacle=%s"),*Car->GetName(),Ahead,Side,Car->Speed,Car->bWaitingForCrossing,*Car->LastObstacle);}}
+  for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car){const FVector Offset=Car->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);if(Ahead>0&&Ahead<StopLook&&Side<350&&FMath::Abs(Offset.Z)<180){
+   if(Car->Speed<1&&Car->bObstacleAhead&&Car->LastObstacle==Bike->GetName()&&Car->Collision->GetCollisionEnabled()!=ECollisionEnabled::NoCollision){
+    FHitResult ClearanceHit;
+    const bool Blocked=Car->Collision->SweepComponent(ClearanceHit,Position,Position+Forward*StopLook,Bike->GetActorQuat(),FCollisionShape::MakeCapsule(Bike->Capsule->GetScaledCapsuleRadius(),Bike->Capsule->GetScaledCapsuleHalfHeight()));
+    if(!Blocked){static bool Logged=false;if(!Logged){UE_LOG(LogTemp,Display,TEXT("RouteYieldPriority: stopped car yields to bike; actual capsule path clear at %s"),*Position.ToString());Logged=true;}continue;}
+   }
+   Yield=true;YieldReason=FString::Printf(TEXT("car=%s ahead=%.1f side=%.1f speed=%.1f crossing=%d obstacle=%s"),*Car->GetName(),Ahead,Side,Car->Speed,Car->bWaitingForCrossing,*Car->LastObstacle);}}
   float DistanceToBend=FVector::Dist2D(Closest,ConnectorPoints[Segment+1]);
   for(int I=Segment+1;I+1<ConnectorPoints.Num()&&DistanceToBend<2000;I++){
    const FVector In=(ConnectorPoints[I]-ConnectorPoints[I-1]).GetSafeNormal2D(),Out=(ConnectorPoints[I+1]-ConnectorPoints[I]).GetSafeNormal2D();
@@ -135,7 +143,10 @@ void ABattleMacController::TickConnectorAudit(float Dt){
    const float Arrival=FMath::Clamp(Ahead/FMath::Max(100.f,Bike->Ride->Speed),0.f,2.f);
    const float FutureSide=SignedSide+(Velocity.X*Forward.Y-Velocity.Y*Forward.X)*Arrival;
    const float ClosestSide=SignedSide*FutureSide<=0?0.f:FMath::Min(Side,FMath::Abs(FutureSide));
-   const float Clearance=FMath::Max(100.f,float(Person->GetComponentsBoundingBox(true).GetExtent().Size2D()+50.f));
+   // Standing pedestrians collide through their capsule. Hidden visual components
+   // can have oversized bounds, so actor-wide rendering bounds are not a collision corridor.
+   const bool LowPose=Person->bIncidentPosing||Person->bDead||Person->KnockdownPhase>0;
+   const float Clearance=LowPose?200.f:FMath::Max(100.f,Bike->Capsule->GetScaledCapsuleRadius()+Person->GetCapsuleComponent()->GetScaledCapsuleRadius()+40.f);
    if(Ahead>0&&Ahead<LookAhead&&ClosestSide<Clearance&&FMath::Abs(Offset.Z)<160){Yield=true;YieldReason=FString::Printf(TEXT("person=%s ahead=%.1f side=%.1f speed=%.1f pause=%.1f posed=%d dead=%d destination=%d"),*Person->GetName(),Ahead,Side,Person->GetVelocity().Size2D(),Person->PauseRemaining,Person->bIncidentPosing,Person->bDead,Person->bHasDestination);break;}
   }
  }

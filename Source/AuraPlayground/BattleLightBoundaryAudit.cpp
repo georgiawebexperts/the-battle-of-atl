@@ -5,6 +5,7 @@
 #include "Components/PointLightComponent.h"
 #include "Engine/DirectionalLight.h"
 #include "EngineUtils.h"
+#include "HAL/IConsoleManager.h"
 #include "GameFramework/PlayerController.h"
 void TickBattleLightBoundaryAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
@@ -12,7 +13,10 @@ void TickBattleLightBoundaryAudit(APlayerController* PC,float Dt){
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}
  if(S.Stage==99||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto* B=Cast<ABattleBike>(PC->GetPawn());if(!B)return;S.Age+=Dt;
- auto Finish=[&](bool Pass){UE_LOG(LogTemp,Display,TEXT("LightBoundaryAudit: {\"passed\":%s,\"body_only_lit\":%s,\"head_only_lit\":%s,\"exit_delay\":%s,\"daylight_off\":%s}"),Pass?TEXT("true"):TEXT("false"),S.BodyLit?TEXT("true"):TEXT("false"),S.HeadLit?TEXT("true"):TEXT("false"),S.Held?TEXT("true"):TEXT("false"),!B->bLightsOn?TEXT("true"):TEXT("false"));S.Stage=99;PC->ConsoleCommand(TEXT("quit"));};
+ auto Finish=[&](bool Pass){
+ auto* Cascades=IConsoleManager::Get().FindConsoleVariable(TEXT("r.Shadow.CSM.MaxCascades"));
+ UE_LOG(LogTemp,Display,TEXT("ProjectShadowProfile: {\"cascades\":%d}"),Cascades?Cascades->GetInt():-1);
+ UE_LOG(LogTemp,Display,TEXT("LightBoundaryAudit: {\"passed\":%s,\"body_only_lit\":%s,\"head_only_lit\":%s,\"exit_delay\":%s,\"daylight_off\":%s}"),Pass?TEXT("true"):TEXT("false"),S.BodyLit?TEXT("true"):TEXT("false"),S.HeadLit?TEXT("true"):TEXT("false"),S.Held?TEXT("true"):TEXT("false"),!B->bLightsOn?TEXT("true"):TEXT("false"));S.Stage=99;PC->ConsoleCommand(TEXT("quit"));};
  if(S.Stage==0){
   for(TActorIterator<APiedmontDarkZone> It(PC->GetWorld());It;++It)It->Destroy();
   for(TActorIterator<ADirectionalLight> It(PC->GetWorld());It;++It)It->SetActorRotation(FRotator(-45,0,0));
