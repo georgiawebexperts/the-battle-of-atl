@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, aim, protected firing/reload, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 400.0,
+  "run_speed": 700.0,
+  "arm_swing_cm": 47.9,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/idle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/drawn.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/walk-a.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/walk-b.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/run.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/jump.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/land-contact.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/land-settle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/foot-review-4eab6a5f59804e67af7443befd6f1457/crouch.png"
+  ],
+  "visual_review": "pending",
+  "editor": false,
+  "detailed_rider_preview": true,
+  "full_body_review": false,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "detailed_pistol_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": true,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true
+}

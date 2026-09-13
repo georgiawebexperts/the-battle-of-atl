@@ -72,5 +72,27 @@
     "author": "2026-09-13 [codex-maclaptop]",
     "scope": "Detailed default gunman/M1911/standing aim and transitions; clearer gunfire warnings; articulated shotgun reload; compact blood spray; per-clip bone mapping fix.",
     "compiled_source": "487e276ad7206c6df5c8e68e08357b1465c94f0c"
+  },
+  "share_playtest": {
+    "date": "2026-09-13",
+    "author": "codex-maclaptop",
+    "source_commit": "8856f27",
+    "app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 059/The Battle of ATL.app",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 059.zip",
+    "zip_bytes": 1315984641,
+    "zip_sha256": "58eb41bd6d9821fbe6cd1897af03907327c390e4a30e6ff504b192cff4a4c1de",
+    "architecture": "arm64",
+    "notarized": false,
+    "signature": "ad hoc; deep strict verification passed",
+    "packaged_foot_test": "2026-09-13-share059-packaged-foot.json",
+    "branded_health_test": "2026-09-13-share059-branded-health.json",
+    "another_mac_tested": false,
+    "quarantined_download_flow_tested": false,
+    "installed_desktop_build": 58,
+    "distribution": "private early playtest with known issues; not finished-game acceptance",
+    "dirty_source_inputs": {
+      "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+      "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+    }
   }
 }

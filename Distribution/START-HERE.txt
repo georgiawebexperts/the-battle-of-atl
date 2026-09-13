@@ -1,0 +1,102 @@
+THE BATTLE OF ATL — MAC PLAYTEST 059
+Early, unfinished playtest • September 13, 2026
+
+WHAT YOU NEED
+An Apple silicon Mac (M1 or newer). This build targets macOS 14 or later.
+Intel Macs, Windows, iPhones and iPads cannot run this build.
+Allow at least 8 GB free for downloading, extracting and copying the app.
+Performance on other Macs has not yet been established.
+You do NOT need Unreal Engine, Aura, Xcode or an Apple Developer account.
+A mouse and keyboard are recommended.
+
+INSTALL AND OPEN
+1. Download the ZIP sent by Elliott. Double-click it to extract the folder.
+2. Drag “The Battle of ATL.app” into your Applications folder.
+   Copy the complete app, not an alias or shortcut. Keep these instructions.
+3. In Applications, double-click “The Battle of ATL”.
+4. macOS may block it because this private test is not signed with an Apple
+   Developer ID and has not been notarized by Apple. This is expected.
+   Wording varies: “developer cannot be verified” or “Apple could not verify
+   ... is free of malware” are examples. Choose Done/Cancel if offered.
+5. If you trust the copy received directly from Elliott, open Apple menu >
+   System Settings > Privacy & Security. Scroll down to Security.
+6. Find the message about this app and click Open Anyway, if offered.
+7. Authenticate with your Mac password or Touch ID, then click Open in the
+   confirmation. You should normally be able to open it normally afterward.
+   If Open Anyway is missing, attempt to open the app again and return here.
+
+Do not disable Gatekeeper, SIP, or other system-wide security settings.
+No Terminal commands are required by this guide. A work/school Mac may have
+management rules that prevent the exception; ask its administrator.
+
+If the message specifically says the app “will damage your computer”, or
+says it is damaged, STOP and send Elliott a screenshot. Do not treat every
+warning as the expected unidentified-developer prompt. Re-download if the
+ZIP was incomplete; do not repeatedly override a different warning.
+
+Apple's official instructions:
+https://support.apple.com/102445
+https://support.apple.com/guide/mac-help/mh40616/mac
+
+FIRST RUN
+Choose START PARK RIDE. The home/practice area lets you learn before the
+park timer begins. The first load may take longer than later loads.
+If the game looks frozen, give it a little time; do not launch extra copies.
+Click inside the game window to focus it. Press Escape for the menu.
+
+THE OBJECTIVE
+You are Ellison. Find the lost phone using the watch's general direction,
+then follow the route toward Krog Street Tunnel and Morgan at 98 Estoria.
+This is a fictional, unfinished game, not a real-world navigation guide.
+Contains fictional violence and blood.
+
+BIKE CONTROLS
+W / Up arrow             Pedal
+A / D or Left / Right    Steer
+S / Down arrow or Space  Brake
+Q / R                    Lower / higher gear (five gears)
+J                        Jump while moving
+Left Shift               Boost
+H                        Horn (limited uses)
+E                        Get off the bike
+P                        Switch arcade / realistic bike handling
+Tab                      Change bike camera
+
+ON FOOT
+Mouse                    Turn camera
+WASD / arrow keys        Move relative to camera
+Left Shift               Run
+Space                    Jump
+C / Left Control         Crouch
+G                        Draw / holster weapon
+Right mouse button       Aim while weapon is drawn
+Left mouse button        Fire while weapon is drawn
+R                        Reload using collected ammunition
+1 / 2 / 3 / 4 / 5        Select acquired pistol / shotgun / SMG / frisbee / rifle
+F                        Melee
+E near your bike         Get back on (after recovery; not while swimming)
+Escape                   Pause/menu
+
+You start with 17 pistol rounds. Pistol ammo pickups give 17 rounds to
+reserve; reload to use them. The timer drains faster while on foot.
+Close the game window or use Command-Q to quit.
+
+KNOWN ISSUES — PLEASE EXPECT ROUGH EDGES
+This is not a finished release. Models, environment, animation, hand/weapon
+alignment and balance still need work. Police pursuit can be inconsistent;
+police voice and the complete visible taser sequence are not finished.
+Ammo placement near trash cans is not finished. Nearby ammo markers are new.
+Mouse sensitivity was reduced again for this build and still needs feedback.
+Real-world hill/ramp riding, camera transitions and performance need testing.
+The app is locally signed only; Apple has not notarized or reviewed it.
+
+SEND FEEDBACK
+Tell Elliott your Mac model, chip, RAM, macOS version and “Playtest 059”.
+Describe what you were doing, which key/button you pressed, what you
+expected and what happened. A short video is especially useful for jerky
+movement, awkward aiming or crashes. Include any exact error message.
+Do not include passwords or other private information in screenshots/logs.
+
+UNINSTALL
+Quit the game, then move The Battle of ATL.app from Applications to Trash.
+This does not necessarily remove settings or saved-game data.

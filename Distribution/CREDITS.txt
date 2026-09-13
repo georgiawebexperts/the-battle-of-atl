@@ -1,0 +1,38 @@
+The Battle of ATL — Web Experts
+
+Geographic reference data: © OpenStreetMap contributors.
+https://www.openstreetmap.org/copyright
+Map data available under the Open Database License (ODbL).
+
+Unreal Engine and Epic-provided assets: Epic Games.
+Mixamo animation source: Adobe Mixamo.
+Additional licensed assets remain the property of their creators.
+
+The Battle of ATL — shotgun model attribution
+
+This work is based on "Remington Model 870 (CC0)"
+https://sketchfab.com/3d-models/remington-model-870-cc0-d9a309a2f57b4a87ac38cc440a3deaa7
+by britdawgmasterfunk
+https://sketchfab.com/britdawgmasterfunk
+licensed under Creative Commons Attribution 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+Adapted for The Battle of ATL: combined mesh transforms, normalized scale,
+reduced geometry, revised Mac materials and first-person positioning.
+The source title says CC0; attribution is retained in accordance with the
+CC-BY-4.0 license supplied in the downloadable archive.
+
+Additional adaptation: separated foregrip/collars from the fixed body for pump animation.
+
+------------------------------------------------------
+Ultimate Modular Males by @Quaternius
+Consider supporting me on Patreon, even $1 helps me a lot!
+
+https://www.patreon.com/quaternius
+-------------------------------------------------------
+
+License:
+CC0 1.0 Universal (CC0 1.0) 
+Public Domain Dedication
+https://creativecommons.org/publicdomain/zero/1.0/
+
