@@ -747,3 +747,13 @@ Rendered loop exposed frame-dependent front-wheel steering (Turn*12 per frame). 
 Review-map sun was movable with bias.5/slope.5, contact shadows0, resolution scale1. Set review-only bias.15/slope.3/contact.03/resolution2 in review_turnaround_contact_shadows.py. Main lighting unchanged. Fresh six-image render is live session99721, output report2026-09-13-krog-turnaround-render.json; poll existing handle before restarting. Shadow appearance/performance not yet accepted.
 
 Prepared selective promote_krog_turnarounds.py and updated install_scooter_scene.py dependency to the corrected mixed report. Neither run. Promotion only transfers traffic settings; if accepting the new shadow treatment, its main-map transfer still needs implementation and verification. No main changes or packaged update. Installed056 unchanged; full game remains unfinished.
+
+
+## Turning tyres grounded; shadow-quality investigation — 2026-09-13 [codex-maclaptop]
+Rejected low-bias shadow candidate after first image showed road self-shadow stripes; intentionally terminated its owned render after confirming that artifact, not because of an observation timeout. Preserved2026-09-13-krog-low-bias-rejected.json. Original bias with contact shadows removed stripes but produced noisy detached outlines; no visual acceptance.
+
+Added native LOD0 lower-tyre-vertex/real-road queries at allsix turning snapshots. All24wheel snapshots pass: minimum gaps range-0.2337to+0.3114cm, zero missing ground traces. This rules out a significant tyre lift in those snapshots; don't lower wheels to disguise bad shadows. Report2026-09-13-turning-tire-contact.json and imageswork/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e. Build passes.
+
+Found project defaultsg.ShadowQuality=1, whose engine settings cap CSM at1cascade/1024resolution with.7distance scale. Current sun requests4cascades over40000cm with distribution exponent3, so the cap spreads detail across a large range. Restored original review sunlight(bias.5/slope.5/contact0/resolution1). Started isolated render with command-line r.Shadow.CSM.MaxCascades2, without enabling group2fog/other effects. Live session1410; output2026-09-13-krog-turnaround-render.json. Poll handle/report before restart. Verify override, appearance and performance before modifying production settings.
+
+Updated Design/BUILD.json unreleased notes; installed056/main unchanged. Mixed-clearance ride still needs running after visual work; traffic and scooter promotion scripts remain unrun. Full game unfinished.

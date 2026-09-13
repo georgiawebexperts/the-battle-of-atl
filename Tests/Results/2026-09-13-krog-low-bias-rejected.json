@@ -1,0 +1,15 @@
+{
+  "capture_passed": false,
+  "checks": null,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/8c5db667583846b0b3ddff1c3dec9a6a/turn-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/8c5db667583846b0b3ddff1c3dec9a6a/turn-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/8c5db667583846b0b3ddff1c3dec9a6a/turn-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/8c5db667583846b0b3ddff1c3dec9a6a/turn-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/8c5db667583846b0b3ddff1c3dec9a6a/turn-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/8c5db667583846b0b3ddff1c3dec9a6a/turn-5.png"
+  ],
+  "visual_accepted": false,
+  "scope": "Render intentionally stopped after early images showed unacceptable road shadow striping; no complete-loop claim for this run.",
+  "rejection": "Lower shadow bias created road self-shadow bands; contact shadows improved grounding but global treatment rejected."
+}

@@ -1,0 +1,22 @@
+{
+  "capture_passed": true,
+  "checks": {
+    "passed": true,
+    "reason": "Visible native car completed both turns and continued across route seam",
+    "loops": 1,
+    "travel_cm": 18356.12,
+    "loop_length_cm": 17556.08,
+    "max_frame_step_cm": 62.24,
+    "obstacle": ""
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/79950fde5f8040c480bfc21c40ce41d5/turn-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/79950fde5f8040c480bfc21c40ce41d5/turn-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/79950fde5f8040c480bfc21c40ce41d5/turn-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/79950fde5f8040c480bfc21c40ce41d5/turn-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/79950fde5f8040c480bfc21c40ce41d5/turn-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/79950fde5f8040c480bfc21c40ce41d5/turn-5.png"
+  ],
+  "visual_accepted": false,
+  "scope": "Attempts six moving-car snapshots across two turns; consult checks for loop completion. Visual review required; not motion-video or multiplayer/crowd acceptance."
+}

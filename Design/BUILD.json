@@ -12,6 +12,10 @@
     "P toggles arcade/realistic handling with HUD indicator; native input and controlled slope/braking/traction/air checks pass; HUD visually checked at1280x720; 481m main-world Krog route passes in realistic mode with cars and pedestrians active and a yielding test driver; mapped park-hill climb/descent passes; broader handling balance remains pending."
   ],
   "unreleased_code_changes": [
-    "Starting bungalow finishes/details, elevated foundation and four steps fitted to surveyed ground; opening reviewed and direct tutorial ride passes. Still not final neighborhood art."
-  ]
+    "Starting bungalow finishes/details, elevated foundation and four steps fitted to surveyed ground; opening reviewed and direct tutorial ride passes. Still not final neighborhood art.",
+    "Native scooter incident poses, collision and cleanup; review scene assembles offscreen, releases after a visit and resumes walking. Scene and navigation connection are not installed in the main map.",
+    "Automatic bike lights also detect the bike body entering a dark volume; native boundary checks and observed Krog crossings pass.",
+    "Optional continuous traffic loops resolve visible route-end stops in a separate DeKalb review. Real car wheels now steer from curvature/wheelbase with time-based easing. Main traffic still uses the previous endpoint routes; mixed ride and final visual acceptance remain pending."
+  ],
+  "unreleased_author": "2026-09-13 [codex-maclaptop]"
 }

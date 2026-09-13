@@ -3,14 +3,14 @@
     {
       "actor": "DirectionalLight",
       "before": {
-        "shadow_bias": 0.5,
-        "shadow_slope_bias": 0.5,
-        "contact_shadow_length": 0.0,
-        "shadow_resolution_scale": 1.0
-      },
-      "after": {
         "shadow_bias": 0.15000000596046448,
         "shadow_slope_bias": 0.30000001192092896,
+        "contact_shadow_length": 0.029999999329447746,
+        "shadow_resolution_scale": 2.0
+      },
+      "after": {
+        "shadow_bias": 0.5,
+        "shadow_slope_bias": 0.5,
         "contact_shadow_length": 0.029999999329447746,
         "shadow_resolution_scale": 2.0
       }
@@ -18,5 +18,5 @@
   ],
   "main_map_changed": false,
   "visual_accepted": false,
-  "scope": "Lower bias and screen-space contact shadows on review-map sunlight only; appearance and performance pending."
+  "scope": "Original bias and screen-space contact shadows on review-map sunlight only; appearance and performance pending."
 }

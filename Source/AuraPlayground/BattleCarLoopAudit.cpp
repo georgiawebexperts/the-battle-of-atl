@@ -7,6 +7,27 @@
 #include "GameFramework/PlayerController.h"
 #include "Misc/CommandLine.h"
 #include "UnrealClient.h"
+#if WITH_EDITOR
+#include "MeshDescription.h"
+#include "Engine/StaticMesh.h"
+#include "Components/StaticMeshComponent.h"
+static void ReviewLoopTires(ABattleRoadCar* Car,int View){
+ for(int I=0;I<Car->Wheels.Num();I++){
+  auto* Wheel=Car->Wheels[I];const FMeshDescription* Mesh=Wheel&&Wheel->GetStaticMesh()?Wheel->GetStaticMesh()->GetMeshDescription(0):nullptr;
+  if(!Mesh)continue;const auto Positions=Mesh->GetVertexPositions();float Low=TNumericLimits<float>::Max();
+  for(const FVertexID Id:Mesh->Vertices().GetElementIDs())Low=FMath::Min(Low,float(Wheel->GetComponentTransform().TransformPosition(FVector(Positions[Id])).Z));
+  float MinGap=TNumericLimits<float>::Max();int Samples=0,Missing=0;
+  FCollisionObjectQueryParams Objects;Objects.AddObjectTypesToQuery(ECC_WorldStatic);FCollisionQueryParams Q(SCENE_QUERY_STAT(TurningTireContact),true,Car);
+  for(const FVertexID Id:Mesh->Vertices().GetElementIDs()){
+   const FVector P=Wheel->GetComponentTransform().TransformPosition(FVector(Positions[Id]));if(P.Z>Low+3)continue;
+   FHitResult Hit;if(Car->GetWorld()->LineTraceSingleByObjectType(Hit,P+FVector(0,0,20),P-FVector(0,0,30),Objects,Q)){MinGap=FMath::Min(MinGap,float(P.Z-Hit.ImpactPoint.Z));++Samples;}else ++Missing;
+  }
+  UE_LOG(LogTemp,Display,TEXT("TurnTireContact: {\"view\":%d,\"wheel\":%d,\"samples\":%d,\"missing\":%d,\"minimum_gap_cm\":%.4f}"),View,I,Samples,Missing,MinGap);
+ }
+}
+#else
+static void ReviewLoopTires(ABattleRoadCar*,int){}
+#endif
 void TickBattleCarLoopAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<ABattleRoadCar> Car;TWeakObjectPtr<ACameraActor> Camera;FVector Previous;float Age=0,Length=0,MaxStep=0;TArray<float> ShotDistances;FString RenderDir;int NextShot=0;bool Started=false,Done=false;};static FState S;
@@ -30,7 +51,7 @@ void TickBattleCarLoopAudit(APlayerController* PC,float Dt){
  auto* C=S.Car.Get();if(!C){Finish(false,TEXT("Visible car disappeared"));return;}
  S.MaxStep=FMath::Max(S.MaxStep,float(FVector::Dist(C->GetActorLocation(),S.Previous)));S.Previous=C->GetActorLocation();
  S.Camera->SetActorLocation(C->GetActorLocation()+FVector(600,400,400));S.Camera->SetActorRotation((C->GetActorLocation()-S.Camera->GetActorLocation()).Rotation());PC->SetViewTarget(S.Camera.Get());
- if(!S.RenderDir.IsEmpty()&&S.ShotDistances.IsValidIndex(S.NextShot)&&C->DistanceTravelled>=S.ShotDistances[S.NextShot]){FScreenshotRequest::RequestScreenshot(S.RenderDir/FString::Printf(TEXT("turn-%d.png"),S.NextShot),false,false);++S.NextShot;}
+ if(!S.RenderDir.IsEmpty()&&S.ShotDistances.IsValidIndex(S.NextShot)&&C->DistanceTravelled>=S.ShotDistances[S.NextShot]){ReviewLoopTires(C,S.NextShot);FScreenshotRequest::RequestScreenshot(S.RenderDir/FString::Printf(TEXT("turn-%d.png"),S.NextShot),false,false);++S.NextShot;}
  if(C->CompletedLoops>=1&&C->DistanceTravelled>S.Length+800){Finish(!C->bRouteFinished&&C->Speed>100&&S.MaxStep<80,TEXT("Visible native car completed both turns and continued across route seam"));return;}
  if(S.Age>150)Finish(false,TEXT("Car did not complete loop in time"));
 #endif

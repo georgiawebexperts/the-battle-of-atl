@@ -1,0 +1,14 @@
+{
+  "settings": [
+    {
+      "shadow_bias": 0.5,
+      "shadow_slope_bias": 0.5,
+      "contact_shadow_length": 0.0,
+      "shadow_resolution_scale": 1.0,
+      "dynamic_shadow_cascades": 4,
+      "cascade_distribution_exponent": 3.0
+    }
+  ],
+  "main_map_changed": false,
+  "scope": "Original sun settings restored in review. Two-cascade command-line override and visual/performance verification still required."
+}

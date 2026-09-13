@@ -1,0 +1,193 @@
+{
+  "capture_passed": true,
+  "checks": {
+    "passed": true,
+    "reason": "Visible native car completed both turns and continued across route seam",
+    "loops": 1,
+    "travel_cm": 18356.11,
+    "loop_length_cm": 17556.08,
+    "max_frame_step_cm": 62.24,
+    "obstacle": ""
+  },
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e/turn-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e/turn-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e/turn-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e/turn-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e/turn-4.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-turnarounds/6a4e9ffbb25644d3b29bba41205c241e/turn-5.png"
+  ],
+  "visual_accepted": false,
+  "scope": "Attempts six moving-car snapshots across two turns; consult checks for loop completion. Visual review required; not motion-video or multiplayer/crowd acceptance.",
+  "tire_contacts": [
+    {
+      "view": 0,
+      "wheel": 0,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": -0.1931
+    },
+    {
+      "view": 0,
+      "wheel": 1,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.1592
+    },
+    {
+      "view": 0,
+      "wheel": 2,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1228
+    },
+    {
+      "view": 0,
+      "wheel": 3,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1429
+    },
+    {
+      "view": 1,
+      "wheel": 0,
+      "samples": 16,
+      "missing": 0,
+      "minimum_gap_cm": -0.2188
+    },
+    {
+      "view": 1,
+      "wheel": 1,
+      "samples": 16,
+      "missing": 0,
+      "minimum_gap_cm": 0.1693
+    },
+    {
+      "view": 1,
+      "wheel": 2,
+      "samples": 17,
+      "missing": 0,
+      "minimum_gap_cm": 0.0872
+    },
+    {
+      "view": 1,
+      "wheel": 3,
+      "samples": 17,
+      "missing": 0,
+      "minimum_gap_cm": 0.1107
+    },
+    {
+      "view": 2,
+      "wheel": 0,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": -0.0205
+    },
+    {
+      "view": 2,
+      "wheel": 1,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.0898
+    },
+    {
+      "view": 2,
+      "wheel": 2,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.0546
+    },
+    {
+      "view": 2,
+      "wheel": 3,
+      "samples": 19,
+      "missing": 0,
+      "minimum_gap_cm": 0.0666
+    },
+    {
+      "view": 3,
+      "wheel": 0,
+      "samples": 18,
+      "missing": 0,
+      "minimum_gap_cm": -0.2337
+    },
+    {
+      "view": 3,
+      "wheel": 1,
+      "samples": 18,
+      "missing": 0,
+      "minimum_gap_cm": -0.0011
+    },
+    {
+      "view": 3,
+      "wheel": 2,
+      "samples": 18,
+      "missing": 0,
+      "minimum_gap_cm": 0.0201
+    },
+    {
+      "view": 3,
+      "wheel": 3,
+      "samples": 18,
+      "missing": 0,
+      "minimum_gap_cm": 0.0594
+    },
+    {
+      "view": 4,
+      "wheel": 0,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.0824
+    },
+    {
+      "view": 4,
+      "wheel": 1,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.3114
+    },
+    {
+      "view": 4,
+      "wheel": 2,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.123
+    },
+    {
+      "view": 4,
+      "wheel": 3,
+      "samples": 20,
+      "missing": 0,
+      "minimum_gap_cm": 0.1672
+    },
+    {
+      "view": 5,
+      "wheel": 0,
+      "samples": 17,
+      "missing": 0,
+      "minimum_gap_cm": 0.0015
+    },
+    {
+      "view": 5,
+      "wheel": 1,
+      "samples": 17,
+      "missing": 0,
+      "minimum_gap_cm": 0.0048
+    },
+    {
+      "view": 5,
+      "wheel": 2,
+      "samples": 17,
+      "missing": 0,
+      "minimum_gap_cm": 0.1512
+    },
+    {
+      "view": 5,
+      "wheel": 3,
+      "samples": 17,
+      "missing": 0,
+      "minimum_gap_cm": 0.0059
+    }
+  ],
+  "tire_contact_passed": true
+}
