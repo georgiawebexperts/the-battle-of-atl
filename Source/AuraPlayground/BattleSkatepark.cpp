@@ -15,6 +15,9 @@ ABattleSkatepark::ABattleSkatepark(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> C(TEXT("/Game/BattleForTheA/Skatepark/SM_SkateConcrete.SM_SkateConcrete"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> B(TEXT("/Game/BattleForTheA/Skatepark/SM_SkateBerm.SM_SkateBerm"));
  Concrete->SetStaticMesh(C.Object);Berm->SetStaticMesh(B.Object);Berm->ComponentTags.Add(TEXT("RideGrass"));
+ auto* Paint=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RampWayfindingPaint"));Paint->SetupAttachment(RootComponent);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> PaintAsset(TEXT("/Game/BattleForTheA/Skatepark/SM_SkateMarkings.SM_SkateMarkings"));
+ Paint->SetStaticMesh(PaintAsset.Object);Paint->SetCollisionEnabled(ECollisionEnabled::NoCollision);Paint->SetCanEverAffectNavigation(false);Paint->SetCastShadow(false);
  for(auto* M:{Concrete.Get(),Berm.Get()}){M->SetupAttachment(RootComponent);M->SetCollisionProfileName(TEXT("BlockAll"));M->SetCanEverAffectNavigation(true);}
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Iron(TEXT("/Game/BattleForTheA/Furniture/M_BenchFrame.M_BenchFrame"));

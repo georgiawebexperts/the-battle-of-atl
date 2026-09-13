@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "missing_report": true,
+  "exit_code": 1,
+  "packaged": false,
+  "real": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-84491eecd3c843989a19b990c2d7d016/run.log",
+  "visual_review": false,
+  "images": [],
+  "observed_handling": "arcade"
+}

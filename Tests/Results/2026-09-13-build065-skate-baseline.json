@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus pass",
+  "air_rewards": 1,
+  "air_peak_cm": 143.49,
+  "x": 41817.28,
+  "z": 607.11,
+  "exit_code": 0,
+  "packaged": true,
+  "real": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-fa03325bbb0d43979ac16550c6081949/run.log",
+  "visual_review": false,
+  "images": []
+}

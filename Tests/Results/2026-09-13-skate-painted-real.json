@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus pass",
+  "air_rewards": 1,
+  "air_peak_cm": 143.49,
+  "x": 41823.11,
+  "z": 609.91,
+  "exit_code": 0,
+  "packaged": false,
+  "real": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-8445cacc5f87481ba38ff7c3f291ebd7/run.log",
+  "visual_review": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-8445cacc5f87481ba38ff7c3f291ebd7/overview.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-8445cacc5f87481ba38ff7c3f291ebd7/airborne.png"
+  ],
+  "observed_handling": "realistic",
+  "visual_notes": "Overview and airborne frames inspected: bank-edge paint follows curved surface, approach/entrance arrows point along intended paths, concrete aggregate visible. This older reward check allowed automatic ramp +30 pickup; later isolated reward test is authoritative for timer accounting."
+}

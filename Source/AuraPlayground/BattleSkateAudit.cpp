@@ -5,6 +5,10 @@
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
+#include "Camera/CameraActor.h"
+#include "Engine/GameViewportClient.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "Kismet/GameplayStatics.h"
 #include "InputKeyEventArgs.h"
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
@@ -14,11 +18,16 @@ void ABattleMacController::TickSkateAudit(float Dt){
  auto* Bike=Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));ABattleSkatepark* Park=nullptr;if(TActorIterator<ABattleSkatepark> It(GetWorld());It)Park=*It;if(!Bike||!Mode)return;SkateClock+=Dt;
  auto Finish=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleSkateAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\",\"air_rewards\":%d,\"air_peak_cm\":%.2f,\"x\":%.2f,\"z\":%.2f}"),Pass?TEXT("true"):TEXT("false"),SkateStage,Reason,Bike->Ride->AirRewards,Bike->Ride->AirPeak,Bike->GetActorLocation().X,Bike->GetActorLocation().Z);SkateStage=99;ConsoleCommand(TEXT("quit"));};
 #define SCHECK(C,R) if(!(C)){Finish(false,TEXT(R));return;}
+ auto Capture=[&](const TCHAR* Name){FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),false,false);};
  auto Next=[&](){SkateStage++;SkateClock=0;};
  auto Key=[&](bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::W,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Place=[&](FVector P,float Yaw,float Speed){Bike->SetActorLocationAndRotation(P,FRotator(0,Yaw,0),false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(FRotator(0,Yaw,0));Bike->Ride->StopMovementImmediately();Bike->Ride->SetMovementMode(MOVE_Walking);Bike->Ride->bForceNextFloorCheck=true;Bike->Ride->Speed=Speed;Bike->Ride->Gear=4;};
  if(SkateStage==0){
   SCHECK(Park&&Park->Bonuses.Num()==3,"Missing park/bonus layout");
+  for(auto Bonus:Park->Bonuses)Bonus->SetActorTickEnabled(false);
+  Bike->Ride->bRealHandling=FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReal"));
+  UE_LOG(LogTemp,Display,TEXT("BattleSkateHandling: %s"),Bike->Ride->bRealHandling?TEXT("realistic"):TEXT("arcade"));
+  if(FParse::Param(FCommandLine::Get(),TEXT("RenderOffscreen"))){const FVector Focus=Park->GetActorLocation()+FVector(0,0,650),Eye=Focus+FVector(1000,-2800,2200);if(auto* C=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(C);}
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
   FCollisionQueryParams Q(SCENE_QUERY_STAT(SkateSurfaceAudit),false,Bike);
@@ -26,12 +35,12 @@ void ABattleMacController::TickSkateAudit(float Dt){
   Place(FVector(41600,74168,580),180,700);Key(true);Next();
  }else if(SkateStage==1&&SkateClock>2.2f){
   SCHECK(Bike->GetActorLocation().X<40750&&Bike->Ride->CurrentFloor.HitResult.GetActor()==Park&&Bike->Ride->Wipeouts==0,"Cannot ride from trail into skatepark");
-  Place(FVector(39100,73500,748),0,1100);SkateTime=Mode->TimeRemaining;Next();
- }else if(SkateStage==2&&Bike->Ride->IsFalling()&&Bike->Ride->AirPeak>65){SCHECK(Bike->GetActorLocation().X>40000,"Unexpected takeoff before ramp lip");Next();}
+  Capture(TEXT("overview"));Place(FVector(39100,73500,748),0,1100);SkateTime=Mode->TimeRemaining;Next();
+ }else if(SkateStage==2&&Bike->Ride->IsFalling()&&Bike->Ride->AirPeak>65){SCHECK(Bike->GetActorLocation().X>40000,"Unexpected takeoff before ramp lip");Capture(TEXT("airborne"));Next();}
  else if(SkateStage==3&&Bike->Ride->IsMovingOnGround()){
-  SCHECK(Bike->Ride->AirRewards>=1&&Mode->TimeRemaining>SkateTime+5&&Bike->Ride->Wipeouts==0,"Ramp did not award clean airtime bonus");Key(false);Place(FVector(38050,73650,568),0,0);SkateTime=Mode->TimeRemaining;Next();
+  SCHECK(Bike->Ride->AirRewards==1&&!Park->Bonuses[2]->bConsumed&&Mode->TimeRemaining>SkateTime+5&&Bike->Ride->Wipeouts==0,"Ramp did not award clean airtime bonus");Key(false);Place(FVector(38050,73650,568),0,0);SkateTime=Mode->TimeRemaining;Next();
  }else if(SkateStage==4&&SkateClock>.3f){
-  SCHECK(Park->Bonuses[0]->bConsumed&&Mode->TimeRemaining>SkateTime+29,"Bowl bonus did not grant thirty seconds");SCHECK(!Park->Bonuses[0]->TryCollect(Bike),"Bowl bonus repeated");SCHECK(Bike->Ride->CurrentFloor.HitResult.GetActor()==Park&&Bike->GetActorLocation().Z>560,"Bike fell through bowl");Place(FVector(39700,74168,748),0,700);Key(true);Next();
+  SCHECK(Park->Bonuses[0]->TryCollect(Bike)&&Park->Bonuses[0]->bConsumed&&Mode->TimeRemaining>SkateTime+29,"Bowl bonus did not grant thirty seconds");SCHECK(!Park->Bonuses[0]->TryCollect(Bike),"Bowl bonus repeated");SCHECK(Bike->Ride->CurrentFloor.HitResult.GetActor()==Park&&Bike->GetActorLocation().Z>560,"Bike fell through bowl");Place(FVector(39700,74168,748),0,700);Key(true);Next();
  }
  else if(SkateStage==5&&Bike->GetActorLocation().X>41810){Key(false);Bike->Ride->Speed=0;Bike->Ride->StopMovementImmediately();Next();}
  else if(SkateStage==6&&SkateClock>.3f){SCHECK(Bike->Ride->IsMovingOnGround()&&Bike->Ride->Wipeouts==0&&Bike->Ride->CurrentFloor.HitResult.GetActor()&&Bike->Ride->CurrentFloor.HitResult.GetActor()->ActorHasTag(TEXT("BattleEastsideRoute")),"Return from skatepark to trail failed");Finish(true,TEXT("Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus pass"));}

@@ -1,6 +1,6 @@
 import unreal,json,pathlib
 root=pathlib.Path(unreal.Paths.project_dir());base=root/'SourceAssets/Skatepark';dest='/Game/BattleForTheA/Skatepark';rows=[]
-name='M_SkateConcrete';m=unreal.load_asset(dest+'/'+name)
+name='M_SkateConcrete';m=unreal.load_asset(dest+'/M_SkateConcreteDetailed') or unreal.load_asset(dest+'/'+name)
 if not m:
  m=unreal.AssetToolsHelpers.get_asset_tools().create_asset(name,dest,unreal.Material,unreal.MaterialFactoryNew())
  c=unreal.MaterialEditingLibrary.create_material_expression(m,unreal.MaterialExpressionConstant3Vector);c.set_editor_property('constant',unreal.LinearColor(.36,.35,.32));unreal.MaterialEditingLibrary.connect_material_property(c,'',unreal.MaterialProperty.MP_BASE_COLOR)
