@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "phase": 2,
+  "reason": "Saved frame, island and persistent swimmer/bank separation checked",
+  "recoverySeconds": 2.001,
+  "wipeouts": 1,
+  "editor": true,
+  "exit_code": 0,
+  "rendered_appearance_verified": false
+}

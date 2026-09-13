@@ -19,6 +19,7 @@ public:
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontBike> Bike;
  UPROPERTY(BlueprintReadOnly) bool bSwimming=false;
+ void BeginSurfaceSwimming(float SurfaceZ);
  UPROPERTY(BlueprintReadOnly) bool bAuthoredLocomotion=false;
  UPROPERTY(BlueprintReadOnly) bool bNativeCrowdRig=false;
  UPROPERTY(BlueprintReadOnly) bool bWeaponDrawn=false;

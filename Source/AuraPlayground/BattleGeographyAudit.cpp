@@ -1,17 +1,19 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "BattleRider.h"
 #include "BattleQuest.h"
 #include "BattleRouteAnchors.h"
 #include "GameFramework/WorldSettings.h"
 #include "EngineUtils.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-// Exercise the saved geographic frame and actual timed water recovery in a
+// Exercise the saved geographic frame and swimmer/bank separation in a
 // cooked game. This fixture is never active during normal play or Shipping.
 void ABattleMacController::TickGeographyAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(GetWorld()->GetTimeSeconds()<5)return;
- auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
+ auto* Foot=Cast<ABattleRider>(GetPawn());auto* Bike=Cast<ABattleBike>(GetPawn());if(Foot)Bike=Foot->ParkedBike.Get();if(!Bike)return;
+ static FVector ParkedAt;
  APiedmontWaterHazard* Water=nullptr;
  TActorIterator<APiedmontWaterHazard> WaterIt(GetWorld());if(WaterIt)Water=*WaterIt;
  auto Finish=[&](bool Passed,const TCHAR* Reason){
@@ -44,17 +46,15 @@ void ABattleMacController::TickGeographyAudit(float Dt){
  }
  GeographyClock+=Dt;
  if(GeographyPhase==1){
-  if(Bike->Ride->Recovery>0){GeographyPhase=2;GeographyClock=0;}
-  else if(GeographyClock>1)Finish(false,TEXT("Lake entry did not trigger recovery"));
+  if(Foot&&Foot->bSwimming&&Bike->bParked){ParkedAt=Bike->GetActorLocation();GeographyPhase=2;GeographyClock=0;}
+  else if(GeographyClock>3)Finish(false,TEXT("Lake entry did not separate swimmer and bike"));
   return;
  }
- if(Bike->Ride->Recovery<=0){
-  const AActor* Floor=Bike->Ride->CurrentFloor.HitResult.GetActor();
-  const bool Dry=!Water->ContainsBike(Bike->GetActorLocation());
-  const bool Path=Floor&&(Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))||Floor->ActorHasTag(TEXT("RideBridge")));
-  const bool OnBridge=Floor&&Floor->ActorHasTag(TEXT("RideBridge"));
-  UE_LOG(LogTemp,Display,TEXT("GeographyWaterReturn: insideBoundary=%d onPath=%d onBridge=%d onDirt=%d floor=%s position=%s"),!Dry,Path,OnBridge,Floor&&Floor->ActorHasTag(TEXT("RideDirt")),Floor?*Floor->GetName():TEXT("none"),*Bike->GetActorLocation().ToString());
-  Finish((Dry||OnBridge)&&Path&&Bike->Ride->Wipeouts==GeographyInitialWipeouts+1&&GeographyClock>=1.8f&&GeographyClock<2.35f,TEXT("Completed water return"));
- }else if(GeographyClock>3)Finish(false,TEXT("Recovery did not finish"));
+ if(GeographyClock>2){
+  FVector BankProbe=Bike->GetActorLocation();BankProbe.Z=Water->GetActorLocation().Z+1;
+  const bool Dry=!Water->ContainsBike(BankProbe),Fixed=FVector::Distance(ParkedAt,Bike->GetActorLocation())<1;
+  Finish(Dry&&Fixed&&Foot&&Foot->bSwimming&&Bike->bParked&&Bike->Ride->Wipeouts==GeographyInitialWipeouts+1,TEXT("Saved frame, island and persistent swimmer/bank separation checked"));
+ }
+
 #endif
 }

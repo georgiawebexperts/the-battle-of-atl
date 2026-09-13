@@ -48,9 +48,9 @@ public:
  void Wipeout(const FString& Reason,bool Water=false);
  void Shift(int32 Delta){Gear=FMath::Clamp(Gear+Delta,1,5);}
 private:
- bool bWaterReturn=false;
+ bool bPendingLakeEntry=false;
  float BounceRemaining=0,ContactCooldown=0,PreviousBrake=0,PreviousSteer=0;
- FVector BounceDirection,ReturnLocation;
+ FVector BounceDirection;
 };
 
 UCLASS()

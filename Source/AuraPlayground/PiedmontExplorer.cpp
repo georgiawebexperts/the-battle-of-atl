@@ -148,6 +148,12 @@ void APiedmontExplorer::ValidationKey(FName Key,bool Pressed){
 #endif
 }
 
+void APiedmontExplorer::BeginSurfaceSwimming(float SurfaceZ){
+ if(!bSwimming){UnCrouch();GetCharacterMovement()->UnCrouch(false);SwimStandingHalfHeight=GetCapsuleComponent()->GetUnscaledCapsuleHalfHeight();}
+ GetCapsuleComponent()->SetCapsuleHalfHeight(35);
+ SetActorLocation(FVector(GetActorLocation().X,GetActorLocation().Y,SurfaceZ+35),false,nullptr,ETeleportType::TeleportPhysics);
+ bSwimming=true;GetCharacterMovement()->SetMovementMode(MOVE_Flying);GetCharacterMovement()->MaxFlySpeed=200;GetCharacterMovement()->BrakingDecelerationFlying=1200;
+}
 void APiedmontExplorer::UpdateSwimming(float Dt){
  constexpr float SwimHalfHeight=35;
  APiedmontWaterHazard* Water=nullptr;
@@ -159,10 +165,7 @@ void APiedmontExplorer::UpdateSwimming(float Dt){
  const bool InWater=Water!=nullptr;
  if(InWater!=bSwimming){
   if(InWater){
-   UnCrouch();GetCharacterMovement()->UnCrouch(false);
-   SwimStandingHalfHeight=GetCapsuleComponent()->GetUnscaledCapsuleHalfHeight();
-   GetCapsuleComponent()->SetCapsuleHalfHeight(SwimHalfHeight);
-   SetActorLocation(GetActorLocation()-FVector(0,0,SwimStandingHalfHeight-SwimHalfHeight),false,nullptr,ETeleportType::TeleportPhysics);
+   BeginSurfaceSwimming(Water->GetActorLocation().Z);
   }else{
    const FVector Standing=Here+FVector(0,0,SwimStandingHalfHeight-SwimHalfHeight);
    FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimStandClearance),false,this);

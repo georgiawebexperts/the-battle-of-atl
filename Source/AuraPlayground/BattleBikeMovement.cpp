@@ -31,8 +31,7 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  if(Recovery>0){
   Recovery=FMath::Max(0.f,Recovery-Dt);Speed=0;
   if(Recovery==0){
-   if(bWaterReturn&&CharacterOwner){CharacterOwner->SetActorLocation(ReturnLocation,false,nullptr,ETeleportType::TeleportPhysics);SetMovementMode(MOVE_Walking);bForceNextFloorCheck=true;bWaterReturn=false;}
-   Speed=Pedal>0?240:0;
+   Speed=!bPendingLakeEntry&&Pedal>0?240:0;
   }
  }
  if(CharacterOwner){
@@ -65,7 +64,7 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
    Wet=It->ContainsBike(Probe);
    for(int I=0;I<8&&!Wet;I++){const float A=I*PI/4;Wet=It->ContainsBike(Probe+FVector(FMath::Cos(A)*120,FMath::Sin(A)*120,0));}
   }
-  if(!Wet){LastDryLocation=CharacterOwner->GetActorLocation();bHasDryLocation=true;}
+  if(!Wet){bPendingLakeEntry=false;LastDryLocation=CharacterOwner->GetActorLocation();bHasDryLocation=true;}
  }
  if(CharacterOwner&&Recovery<=0){const AActor* Floor=CurrentFloor.HitResult.GetActor();if(!Floor||!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wipeout(TEXT("Splash"),true);break;}}
 }
@@ -93,15 +92,19 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  if(Pedal>0)Cadence+=Dt*FMath::Clamp(Speed/(Gear*100.f),.5f,2.f)*2*PI;
 }
 void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
- if(Recovery>0)return;const FVector CrashVelocity=Velocity.IsNearlyZero()?CharacterOwner->GetActorForwardVector()*Speed:Velocity;BoostRemaining=0;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
- if(Water&&bHasDryLocation&&FVector::Dist2D(LastDryLocation,CharacterOwner->GetActorLocation())<600.f){
-  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Bike->EnterLake(CharacterOwner->GetActorLocation(),LastDryLocation)){bWaterReturn=false;Recovery=0;return;}
+ if(Recovery>0)return;BoostRemaining=0;RecoveryReason=Reason;
+ if(Water){
+  if(!bPendingLakeEntry)Wipeouts++;bPendingLakeEntry=true;Speed=0;StopMovementImmediately();
+  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Bike->EnterLake(CharacterOwner->GetActorLocation(),LastDryLocation)){bPendingLakeEntry=false;Recovery=0;return;}
+  // Retry transient spawn/shore obstructions without transporting the rider to a path.
+  Recovery=.25f;DisableMovement();return;
  }
- ReturnLocation=LastSafeLocation;if(Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))ReturnLocation=Bike->FindPathReturn();
- if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(Water?1.8f:1.0f,Water);
- if(!Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->StartPhysicalCrash(CrashVelocity);
+ const FVector CrashVelocity=Velocity.IsNearlyZero()?CharacterOwner->GetActorForwardVector()*Speed:Velocity;
+ bPendingLakeEntry=false;Recovery=2;Wipeouts++;
+ if(auto* Bike=Cast<ABattleBike>(CharacterOwner)){Bike->RideImpact(1.f,false);Bike->StartPhysicalCrash(CrashVelocity);}
  Speed=0;StopMovementImmediately();
 }
+
 void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta){
  Super::HandleImpact(Hit,TimeSlice,MoveDelta);
 #if !UE_BUILD_SHIPPING
