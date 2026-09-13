@@ -95,6 +95,7 @@ void ABattleRider::InitializeDetailedBodyPreview(){
   Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetOwnerNoSee(!bDetailedBodyReview);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
  }
  auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedFootHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetOwnerNoSee(!bDetailedBodyReview);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
+ GetCharacterMovement()->MaxWalkSpeed=200;GetCharacterMovement()->MaxWalkSpeedCrouched=150;
  bNativeCrowdRig=bDetailedPlayerRig=true;SetLocomotionClips(DetailedIdle,DetailedWalk,DetailedRun);
  if(bDetailedBodyReview){CameraArm->SetComponentTickEnabled(true);Camera->AttachToComponent(CameraArm,FAttachmentTransformRules::SnapToTargetNotIncludingScale,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;}
  UE_LOG(LogTemp,Display,TEXT("DetailedFootPreview: body=%s outfit_parts=4 clips=6"),*Mesh->GetName());

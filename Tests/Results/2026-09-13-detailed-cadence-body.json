@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 29.7,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-cadence-body/idle.png",
+    "work/detailed-cadence-body/drawn.png",
+    "work/detailed-cadence-body/walk-a.png",
+    "work/detailed-cadence-body/walk-b.png",
+    "work/detailed-cadence-body/run.png",
+    "work/detailed-cadence-body/jump.png",
+    "work/detailed-cadence-body/crouch.png"
+  ],
+  "visual_review": "Walk-a/walk-b and run inspected: standing walk uses relaxed arm pose, running uses bent elbows; body/clothing intact. Continuous cadence and foot sliding still need motion review.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": true,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "clip_travel_cm_s": {
+    "M_Relaxed_Stand_Idle_Loop": 0.0,
+    "M_Relaxed_Walk_Loop_F": 169.922,
+    "M_Relaxed_Run_Loop_F": 386.186,
+    "M_Relaxed_Jump_Loop_Fall": 0.0,
+    "M_Neutral_Crouch_Idle_Loop": 0.0,
+    "M_Neutral_Crouch_Loop_F": 231.715
+  }
+}

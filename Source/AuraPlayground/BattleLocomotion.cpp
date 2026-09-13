@@ -9,6 +9,7 @@ namespace {
 // every pedestrian every frame; interpolation still runs at the render rate.
 struct FCrowdClip {
  int32 Bones=0,Frames=0;
+ float TravelSpeed=0;
  TArray<FTransform> Samples;
 };
 TMap<FObjectKey,FCrowdClip> CrowdClips;
@@ -27,7 +28,16 @@ const FCrowdClip& Clip(UAnimSequence* Animation){
    Animation->GetBoneTransform(Transform,FSkeletonPoseBoneIndex(Bone),Context,false);
   }
  }
+ // Measure authored root travel before root removal so in-place playback can
+ // match world movement without assuming every source clip runs at crowd speed.
+ const int32 MotionRoot=Animation->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(TEXT("root"));
+ if(MotionRoot>=0){
+  double Distance=0;
+  for(int32 Frame=1;Frame<=Result.Frames;Frame++)Distance+=FVector::Dist2D(Result.Samples[Frame*Result.Bones+MotionRoot].GetTranslation(),Result.Samples[(Frame-1)*Result.Bones+MotionRoot].GetTranslation());
+  Result.TravelSpeed=Distance/Animation->GetPlayLength();
+ }
 #if !UE_BUILD_SHIPPING
+ if(Animation->GetPathName().StartsWith(TEXT("/Game/BattleRetarget/Ellison/CityLocomotion/")))UE_LOG(LogTemp,Display,TEXT("DetailedClipTravel: clip=%s speed_cm_s=%.3f"),*Animation->GetName(),Result.TravelSpeed);
  // Compare decoded ankle rotations with the bind pose before correcting retargeting.
  for(const TCHAR* Name:{TEXT("UpperLeg_L"),TEXT("LowerLeg_L"),TEXT("Foot_L"),TEXT("Foot_L_end")}){
   const auto& Ref=Animation->GetSkeleton()->GetReferenceSkeleton();
@@ -73,9 +83,9 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  const auto& Skeleton=WalkAnimation->GetSkeleton()->GetReferenceSkeleton();
  const float Speed=GetVelocity().Size2D();
  LocomotionSpeed=FMath::Lerp(LocomotionSpeed,Speed,1.f-FMath::Exp(-10.f*Dt));
- const float RunWeight=FMath::Clamp((LocomotionSpeed-180.f)/170.f,0.f,1.f);
+ const float RunWeight=bDetailedPlayerRig?FMath::Clamp((LocomotionSpeed-240.f)/200.f,0.f,1.f):FMath::Clamp((LocomotionSpeed-180.f)/170.f,0.f,1.f);
  const float MoveWeight=FMath::Clamp(LocomotionSpeed/45.f,0.f,1.f);
- const float ReferenceSpeed=FMath::Lerp(140.f,350.f,RunWeight);
+ const float ReferenceSpeed=bDetailedPlayerRig?FMath::Lerp(Walk.TravelSpeed>1.f?Walk.TravelSpeed:140.f,Run.TravelSpeed>1.f?Run.TravelSpeed:350.f,RunWeight):FMath::Lerp(140.f,350.f,RunWeight);
  const float CycleSeconds=FMath::Lerp(WalkAnimation->GetPlayLength(),RunAnimation->GetPlayLength(),RunWeight);
  LocomotionPhase=FMath::Frac(LocomotionPhase+Dt*LocomotionSpeed/ReferenceSpeed/CycleSeconds);
  IdleClock=FMath::Fmod(IdleClock+Dt,IdleAnimation->GetPlayLength());

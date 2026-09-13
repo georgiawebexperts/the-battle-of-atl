@@ -31,7 +31,7 @@ void ABattleRider::PoseArms(float Dt){
  if(CurrentWeapon>0)Left=Gun+Motion.RotateVector(FVector(12,-3,-5));
  if(CurrentWeapon==4){Right=Gun+Motion.RotateVector(FVector(-12,3,-16));Left=Gun+Motion.RotateVector(FVector(-12,-3,-14))+FVector(-6,-4,-6)*Reload;}
  if(MeleeRemaining>0){Right=MeleeRoot->GetRelativeTransform().TransformPosition(FVector(0,0,-31));Left=FVector(20,-20,-28);}
- const float Moving=GetCharacterMovement()->IsMovingOnGround()?FMath::Clamp(GetVelocity().Size2D()/520.f,0.f,1.5f):0;
+ const float Moving=GetCharacterMovement()->IsMovingOnGround()?FMath::Clamp(GetVelocity().Size2D()/(bDetailedPlayerRig?200.f:520.f),0.f,1.5f):0;
  EmptyArmMotion=FMath::FInterpTo(EmptyArmMotion,Moving,Dt,7);
  const float Swing=FMath::Sin(SwayTime),Lift=FMath::Square(FMath::Cos(SwayTime));
  const FVector FreeRight(38+Swing*16*EmptyArmMotion,25,-30+(8+7*Lift)*EmptyArmMotion);

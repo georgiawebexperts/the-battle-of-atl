@@ -45,12 +45,12 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||(ParkedBike->RiderHealth>0&&ParkedBike->StunRemaining<=0))&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::Tick(float Dt){
  ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
- SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/80.f,0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
+ SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/(bDetailedPlayerRig?32.f:80.f),0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
  const float ReloadPose=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
 
  DrawRemaining=FMath::Max(0.f,DrawRemaining-Dt);
  if(auto* PC=Cast<APlayerController>(GetController())){
-  GetCharacterMovement()->MaxWalkSpeed=PC->IsInputKeyDown(EKeys::LeftShift)?850:520;
+  GetCharacterMovement()->MaxWalkSpeed=bDetailedPlayerRig?(PC->IsInputKeyDown(EKeys::LeftShift)?520:200):(PC->IsInputKeyDown(EKeys::LeftShift)?850:520);
   bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
   if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
  }
