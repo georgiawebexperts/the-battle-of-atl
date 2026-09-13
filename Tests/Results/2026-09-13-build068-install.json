@@ -1,0 +1,42 @@
+{
+  "build": 68,
+  "version": "0.68.0",
+  "source_commit": "3b0d157a1c41b06383b279cd38cf09cfe4fc2f68",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "3b0e4a809d413a594a944f7d3d6520fcc99b1748b5ea091be804f6b62df6fd47",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068.zip",
+  "zip_sha256": "ef18116cdb30134b2de16df24cc4e62db355d5eb857f5fd8940ad49d15ad12d4",
+  "zip_bytes": 1323311557,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged actual pedestrian impact, harm, -10 seconds, fall, get-up and E remount",
+    "Packaged tree collision proxy, recovery and switching to a spare bike with cleanup",
+    "Packaged feet grounded at stop, pedal contact while riding and braking/replant; images inspected",
+    "Packaged curved bridge traversal and gentle-wall reverse escape in both modes",
+    "Native three authored tree types near passes and direct knockoff impacts; jump/pedal regression",
+    "ZIP CRC, local signature and staged/installed code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac",
+    "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress",
+    "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress"
+  ],
+  "reports": [
+    "2026-09-13-build068-person-fall.json",
+    "2026-09-13-build068-crash-spare.json",
+    "2026-09-13-build068-balance.json",
+    "2026-09-13-build068-bridge.json",
+    "2026-09-13-build068-wall-escape.json"
+  ]
+}

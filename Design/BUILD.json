@@ -1,9 +1,9 @@
 {
-  "build": 67,
-  "version": "0.67.0",
+  "build": 68,
+  "version": "0.68.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; bridge turning, spare bikes, larger ammo reserve and theme music",
+  "status": "Early playtest; collision falls, feet-down balance and visible music shortcut",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -19,7 +19,8 @@
     "Build064: opposing animated pedals/cranks, sole-height-corrected foot targets and synchronous rider bones. Flight pedalling pauses; gentler pitch, saddle lift and landing absorption. Packaged hill/contact/reward checks pass; broader motion and world polish remains.",
     "Build065: twelve pistol ammo supplies beside original green slatted park bins. Path clearance, support, water and rider approach guards; bins persist. Single camera-facing weapon labels. Native all-difficulty and packaged real collection checks pass.",
     "Build066: rifles, shotguns and SMGs use body-relative weapon-specific wrist positions and closer shoulder stance; corrected camera-floating long guns. Skatepark concrete detail and bank guidance paint. Packaged aim, inventory and both-mode skatepark checks pass.",
-    "Build067: gradual arcade corner speed assist and glancing rail slide; six spare bikes with E exchange and watch markers; 102 pistol reserve; supplied music with M/Options toggle; revised swimming pose and shotgun stance."
+    "Build067: gradual arcade corner speed assist and glancing rail slide; six spare bikes with E exchange and watch markers; 102 pistol reserve; supplied music with M/Options toggle; revised swimming pose and shotgun stance.",
+    "Build068: riding-speed tree/person/solid impacts cause physical fall, harm and -10 seconds; stopped rider plants feet and returns them to pedals; HUD exposes M music toggle; recovered crashes can switch to spare bikes."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -71,34 +72,34 @@
     "2026-09-13 [codex-maclaptop] Continued native gameplay work, desktop/share066 unchanged. Re-ran actual solid-wall input/collision escape in arcade and realistic modes: both pass (2026-09-13-wall-recovery-current.json). Unreleased long guns now parent to rider root instead of camera (frisbee retains camera parent), avoiding late camera motion after body hand placement. Shotgun body support arm follows pump/reload target, belt reach deepened, reload lead waits an additional .25s after pump; wrist offset revised to (-39,4,-3), right shoulder reach0. Rendered inventory/shell interruption/remount check passes with maximum support wrist error2.677cm and44.77cm reload travel. Aim audit now records support-hand travel as well as right-hand travel, because current shotgun stance pivots near right wrist; gun pitch remains checked. Shotgun/rifle/pistol native aim checks pass; support palm orientation/curl added for shotgun and curl axis follows aim. IMPORTANT: raised shotgun firing-hand contact still visibly appears separated despite mathematical passes; appearance NOT accepted, no new package. Next work should resolve this pose/model contact, inspect continuous reload and retest before releasing. Early attempt ended initial ownership incorrect and emitted -inf audit travel; empty-sample diagnostic now emits finite0. Source build and Python syntax/diff checks pass. Full game goal remains incomplete."
   ],
   "unreleased_code_changes": [],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066/The Battle of ATL.app",
-  "compiled_source": "95db51b1b1ed0fc3fbc34d46170a67f968925df2",
-  "installation_report": "Tests/Results/2026-09-13-build067-install.json",
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067/The Battle of ATL.app",
+  "compiled_source": "3b0d157a1c41b06383b279cd38cf09cfe4fc2f68",
+  "installation_report": "Tests/Results/2026-09-13-build068-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 67,
-    "version": "0.67.0",
-    "source_commit": "95db51b1b1ed0fc3fbc34d46170a67f968925df2",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 066/The Battle of ATL.app",
+    "build": 68,
+    "version": "0.68.0",
+    "source_commit": "3b0d157a1c41b06383b279cd38cf09cfe4fc2f68",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "0d5a4eedab9e2f36bd76229cb5c7f748979afda23f5f790e282da387d17737b4",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 067.zip",
-    "zip_sha256": "e8d5f5ef2a6bd0722a576512d24548a2664063edfa7d06d1e7f67a5ddda32e3d",
-    "zip_bytes": 1323291684,
+    "machine_code_sha256": "3b0e4a809d413a594a944f7d3d6520fcc99b1748b5ea091be804f6b62df6fd47",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 068.zip",
+    "zip_sha256": "ef18116cdb30134b2de16df24cc4e62db355d5eb857f5fd8940ad49d15ad12d4",
+    "zip_bytes": 1323311557,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged curved lake bridge keyboard traversal both directions and handling modes",
-      "Packaged spare-bike exchange preserves supplies; abandoned bike reusable; model inspected",
-      "Packaged music M toggle with actual audio component playback",
-      "Packaged opening regression preserves clock and returns camera; image inspected",
-      "Packaged pistol reserve pickups and reload conservation",
+      "Packaged actual pedestrian impact, harm, -10 seconds, fall, get-up and E remount",
+      "Packaged tree collision proxy, recovery and switching to a spare bike with cleanup",
+      "Packaged feet grounded at stop, pedal contact while riding and braking/replant; images inspected",
+      "Packaged curved bridge traversal and gentle-wall reverse escape in both modes",
+      "Native three authored tree types near passes and direct knockoff impacts; jump/pedal regression",
       "ZIP CRC, local signature and staged/installed code match"
     ],
     "remaining": [
@@ -107,14 +108,15 @@
       "Voice listening/mix review pending",
       "Not notarized or tested on another Mac",
       "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven",
+      "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress",
       "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress"
     ],
     "reports": [
-      "2026-09-13-build067-bridge.json",
-      "2026-09-13-build067-bikes.json",
-      "2026-09-13-build067-music.json",
-      "2026-09-13-build067-opening.json",
-      "2026-09-13-build067-ammo.json"
+      "2026-09-13-build068-person-fall.json",
+      "2026-09-13-build068-crash-spare.json",
+      "2026-09-13-build068-balance.json",
+      "2026-09-13-build068-bridge.json",
+      "2026-09-13-build068-wall-escape.json"
     ]
   },
   "latest_wall_fix_playtest": {

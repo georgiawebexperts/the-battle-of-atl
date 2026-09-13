@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.011,
+  "pedal_error_cm": 0.0,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-93ff61f3f0514330a9a1bf0d0f13f245/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-93ff61f3f0514330a9a1bf0d0f13f245/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-93ff61f3f0514330a9a1bf0d0f13f245/stopped-again.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-93ff61f3f0514330a9a1bf0d0f13f245/run.log",
+  "exit_code": 0,
+  "packaged": true,
+  "visual_review": {
+    "accepted": true,
+    "finding": "Stopped-again frame shows feet down and readable music toggle; numerical ground/pedal checks pass."
+  }
+}

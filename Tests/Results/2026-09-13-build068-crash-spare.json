@@ -1,0 +1,45 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/detailed-recovery0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/detailed-recovery1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/detailed-recovery2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/19b6920af3124383926ae0270012d698/live-remounted.png"
+  ],
+  "events": [
+    "started speed=649.8",
+    "recovered on foot health=48.3 ammo=17",
+    "state=1 timer=1 elapsed=6.703 lost=8.374",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Keyboard collision with tree collision proxy, harm, -10 seconds, physical recovery and remount. Authored tree instances have a separate world test; arbitrary terrain and continuous animation quality remain unverified.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": true,
+  "runtime": "packaged",
+  "obstacle": "tree",
+  "spare_after_crash": true,
+  "pose_fits": [
+    {
+      "heading_rms_cm": 67.612,
+      "selected_rms_cm": 46.327
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true,
+  "visual_review": {
+    "accepted": true,
+    "finding": "Remounted bike HUD and preserved health/ammo visible at spare location; foliage obscures the camera here, so this is not full camera-quality acceptance."
+  }
+}
