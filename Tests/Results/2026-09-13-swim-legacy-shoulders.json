@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 496.93,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 44.24,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": false,
+  "entry_bank_distance_cm": 527.82,
+  "deep_drop": false,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-d1a72fee37384793a99c75c8eb522aa6/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-d1a72fee37384793a99c75c8eb522aa6/stroke-middle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-d1a72fee37384793a99c75c8eb522aa6/treading.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-d1a72fee37384793a99c75c8eb522aa6/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-d1a72fee37384793a99c75c8eb522aa6/returned.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-d1a72fee37384793a99c75c8eb522aa6/stroke-late.png"
+  ],
+  "first_person": true,
+  "stop_diagnostics": [
+    "t=0.000 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=200.00 position=X=-2513.065 Y=-1450.093 Z=-386.334",
+    "t=0.256 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334",
+    "t=0.510 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334",
+    "t=0.765 dt=0.012 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334",
+    "t=1.159 dt=0.152 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334",
+    "t=1.416 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334",
+    "t=1.669 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334",
+    "t=1.924 dt=0.011 mode=5 brake=1200.0 active=1 tick=1 root=0 speed=0.00 position=X=-2528.138 Y=-1462.252 Z=-386.334"
+  ],
+  "view_diagnostics": [
+    "eye_above_surface_cm=28.00 hand_stroke_cm=16.08"
+  ],
+  "bank_support_diagnostics": [
+    "offset=-60 simple=1 z=-340.86 actor=StaticMeshActor_9 complex=1 z=-340.86 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=0 simple=1 z=-341.38 actor=StaticMeshActor_9 complex=1 z=-341.38 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=60 simple=1 z=-342.26 actor=StaticMeshActor_9 complex=1 z=-342.26 actor=StaticMeshActor_9 tire_z=-339.38"
+  ],
+  "visual_review": "Initial root adjustment: treading and mid-stroke improved, late-stroke edge still visible; superseded by farther-back root and shorter/narrower reach."
+}

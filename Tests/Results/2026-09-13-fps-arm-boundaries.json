@@ -1,0 +1,22 @@
+{
+  "source": "SourceAssets/Rider/FPSArms.fbx",
+  "sha256": "ed46d9687f07e609813636c8c1172f01765540c41a641ec2eaf6f246ff80c7ba",
+  "body_polygons_source": 1542,
+  "arm_polygons": 1140,
+  "open_edges": 24,
+  "open_edge_bounds_fbx_cm": [
+    [
+      -20.3648,
+      138.506,
+      -0.565439
+    ],
+    [
+      20.3648,
+      151.61,
+      10.6837
+    ]
+  ],
+  "nearest_open_edge_endpoint_to_hand_bone_cm": 36.80017910250437,
+  "method": "FBX SDK mesh polygon edges used once; source Casual_Body has zero open edges. Extracted open boundaries occur at shoulders, not wrists. Fbx global coordinates are Y-up.",
+  "author": "2026-09-13 [codex-maclaptop]"
+}

@@ -1,0 +1,7 @@
+// Read-only FBX polygon boundary inspection. Input: skeletal FBX path.
+#include <fbxsdk.h>
+#include <iostream>
+#include <map>
+#include <utility>
+#include <cmath>
+int main(int argc,char** argv){if(argc!=2)return 2;auto*m=FbxManager::Create();m->SetIOSettings(FbxIOSettings::Create(m,IOSROOT));auto*s=FbxScene::Create(m,"inspect");auto*i=FbxImporter::Create(m,"");if(!i->Initialize(argv[1],-1,m->GetIOSettings())||!i->Import(s))return 1;for(int n=0;n<s->GetNodeCount();n++){auto*node=s->GetNode(n);std::string name=node->GetName();if(name.find("Hand")!=std::string::npos){auto p=node->EvaluateGlobalTransform().GetT();std::cout<<"BONE "<<name<<" "<<p[0]<<" "<<p[1]<<" "<<p[2]<<"\n";}auto*mesh=node->GetMesh();if(!mesh)continue;std::map<std::pair<int,int>,int> edges;for(int p=0;p<mesh->GetPolygonCount();p++)for(int v=0;v<mesh->GetPolygonSize(p);v++){int a=mesh->GetPolygonVertex(p,v),b=mesh->GetPolygonVertex(p,(v+1)%mesh->GetPolygonSize(p));edges[std::minmax(a,b)]++;}int open=0;std::cout<<"MESH "<<name<<" polys="<<mesh->GetPolygonCount()<<" cps="<<mesh->GetControlPointsCount()<<"\n";for(auto e:edges)if(e.second==1){open++;auto a=node->EvaluateGlobalTransform().MultT(mesh->GetControlPointAt(e.first.first));auto b=node->EvaluateGlobalTransform().MultT(mesh->GetControlPointAt(e.first.second));std::cout<<"EDGE "<<a[0]<<" "<<a[1]<<" "<<a[2]<<" "<<b[0]<<" "<<b[1]<<" "<<b[2]<<"\n";}std::cout<<"OPEN "<<open<<"\n";}m->Destroy();}

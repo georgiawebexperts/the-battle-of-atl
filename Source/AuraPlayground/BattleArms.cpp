@@ -9,6 +9,11 @@ void ABattleRider::PoseArms(float Dt){
  FirstPersonArms->SetVisibility(Health>0&&!bDetailedBodyReview,true);
  ArmPoseBlend=FMath::FInterpTo(ArmPoseBlend,(!bSwimming&&(bWeaponDrawn||MeleeRemaining>0))?1.f:0.f,Dt,12);if(ArmRest.IsEmpty())return;TArray<FTransform> Pose=ArmRest;
  const bool Detailed=ArmNames.Contains(TEXT("pelvis"));
+ // The legacy arms are cut at the shoulders. Keep those open ends behind the
+ // swimming camera; wrist targets remain expressed in camera space below.
+ const FVector RigPosition=!Detailed&&bSwimming?FVector(-24,0,-165):FVector(22,0,-175);
+ FirstPersonArms->SetRelativeLocation(FMath::VInterpTo(FirstPersonArms->GetRelativeLocation(),RigPosition,Dt,12));
+
  auto Index=[&](FName Name){return ArmNames.IndexOfByKey(BattleDetailedBone(Name,Detailed));};
  auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=ArmParents[I];}return false;};
  auto Move=[&](int Root,FVector Target,FQuat Rotation){if(Root<0)return;const FVector Old=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Target+Rotation.RotateVector(Pose[I].GetLocation()-Old));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
@@ -69,7 +74,7 @@ void ABattleRider::PoseArms(float Dt){
   const float Effort=FMath::Clamp(GetVelocity().Size2D()/200.f,0.f,1.f);
   const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
   if(!Stunned)SwimViewPhase+=Dt*FMath::Lerp(1.5f,3.8f,Effort);
-  auto Stroke=[&](float Side){const float Phase=SwimViewPhase+(Side<0?PI:0);return FVector(38+FMath::Cos(Phase)*FMath::Lerp(5.f,20.f,Effort),Side*(22+FMath::Sin(Phase)*FMath::Lerp(5.f,11.f,Effort)),-18+FMath::Sin(Phase)*FMath::Lerp(3.f,9.f,Effort));};
+  auto Stroke=[&](float Side){const float Phase=SwimViewPhase+(Side<0?PI:0);return FVector((Detailed?38.f:22.f)+FMath::Cos(Phase)*FMath::Lerp(5.f,Detailed?20.f:8.f,Effort),Side*((Detailed?22.f:14.f)+FMath::Sin(Phase)*FMath::Lerp(5.f,Detailed?11.f:5.f,Effort)),-18+FMath::Sin(Phase)*FMath::Lerp(3.f,9.f,Effort));};
   Right=Stroke(1);Left=Stroke(-1);
  }
  RightGrip=FirstPersonArms->GetRelativeTransform().InverseTransformPosition(Right);LeftGrip=FirstPersonArms->GetRelativeTransform().InverseTransformPosition(Left);
