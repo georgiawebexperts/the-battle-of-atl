@@ -40,13 +40,16 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(InventoryPhase==5&&Person&&Person->ShotgunPumpTravel>6.f){ShotgunPumpMoved=true;Capture(TEXT("shotgun-pump"));}
  if(InventoryPhase==5&&InventoryClock>1.15f)Capture(TEXT("shotgun-reload"));
  if(InventoryPhase==5&&InventoryClock>1.35f)Capture(TEXT("shotgun-insert"));
- if(InventoryPhase==17&&InventoryClock>.9f)Capture(TEXT("shotgun-next-shell"));
+ if(Review&&InventoryPhase==22){
+  const int32 Frame=FMath::FloorToInt(InventoryClock*10.f);
+  Capture(FString::Printf(TEXT("shotgun-sequence-%02d"),Frame));
+ }
  if(InventoryPhase==7&&InventoryClock>.15f)Capture(TEXT("smg"));
  if(InventoryPhase==12&&InventoryClock>.15f)Capture(TEXT("rifle"));
  if(InventoryPhase==13&&InventoryClock>.7f)Capture(TEXT("rifle-aimed"));
  if(InventoryPhase==14&&InventoryClock>.6f)Capture(TEXT("rifle-reload"));
  InventoryClock+=Dt;auto* Z=Cast<ABattleZombie>(InventoryTarget.Get());
- auto Finish=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleInventoryAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"crates\":%d,\"desired\":%d,\"kills\":%d,\"deaths\":%d}"),Pass?TEXT("true"):TEXT("false"),InventoryPhase,Reason,Mode->Pickups->WeaponCrates,Mode->Difficulty.WeaponCrates,Bike->EnemyKills,Bike->Deaths);UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);};
+ auto Finish=[&](bool Pass,const TCHAR* Reason){if(Person)UE_LOG(LogTemp,Display,TEXT("InventoryFinishState: clock=%.3f ammo=%d reserve=%s reload=%.3f"),InventoryClock,Person->Ammo,*Person->ReserveLabel(),Person->ReloadRemaining);UE_LOG(LogTemp,Display,TEXT("BattleInventoryAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"crates\":%d,\"desired\":%d,\"kills\":%d,\"deaths\":%d}"),Pass?TEXT("true"):TEXT("false"),InventoryPhase,Reason,Mode->Pickups->WeaponCrates,Mode->Difficulty.WeaponCrates,Bike->EnemyKills,Bike->Deaths);UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);};
 #define CHECK_INVENTORY(C,R) if(!(C)){Finish(false,TEXT(R));return;}
  auto Key=[&](FKey K){for(bool Down:{true,false})InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Target=[&](){auto* T=GetWorld()->SpawnActor<ABattleZombie>(Person->GetActorLocation()+FVector(250,0,0),FRotator::ZeroRotator);if(T){T->SetActorTickEnabled(false);T->GetCharacterMovement()->DisableMovement();T->Emergence=0;}InventoryTarget=T;return T;};
@@ -99,6 +102,12 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   CHECK_INVENTORY(Person->Ammo==6&&Bike->Inventory[1].Reserve==7&&Person->ReloadRemaining==0,"Resumed shell reload conservation failed");
   CHECK_INVENTORY(Person->MountBike()&&Bike->Dismount(),"Shotgun possession cycle failed");Person=Cast<ABattleRider>(GetPawn());
   CHECK_INVENTORY(Person&&Person->CurrentWeapon==1&&Person->Ammo==6&&Bike->Inventory[1].Reserve==7,"Shotgun partial reload inventory not retained");
+  if(Review){Person->Ammo=2;Person->SaveWeapon();Key(EKeys::Two);InventoryPhase=21;InventoryClock=0;}
+  else{Finish(true,TEXT("Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass"));return;}
+ }
+ else if(InventoryPhase==21&&InventoryClock>.4f){Key(EKeys::R);InventoryPhase=22;InventoryClock=0;}
+ else if(InventoryPhase==22&&InventoryClock>3.6f){
+  CHECK_INVENTORY(Person->Ammo==6&&Person->ReloadRemaining==0,"Rendered reload sequence did not finish");
   Finish(true,TEXT("Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass"));return;
  }
  if(InventoryClock>15)Finish(false,TEXT("Inventory phase timed out"));

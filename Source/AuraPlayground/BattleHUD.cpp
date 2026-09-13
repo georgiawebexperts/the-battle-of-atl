@@ -62,7 +62,7 @@ void ABattleLabHUD::DrawHUD(){
  else if(Owner->bCrashActive){Text(TEXT("KNOCKED OFF"),W-M-280*S,M+12*S,28,Peach);Text(GettingUp?TEXT("Getting back up"):TEXT("Recovering"),W-M-280*S,M+65*S,23,Muted);}
  else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
  else if(Person->bSwimming){Text(TEXT("SWIMMING"),W-M-280*S,M+12*S,28,Peach);Text(TEXT("Bike stays at the bank"),W-M-280*S,M+55*S,20,Muted);}
- else{Text(Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);Text(Person->bWeaponDrawn?FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()):TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,Person->bWeaponDrawn?30:20);}
+ else{Text(Person->ReloadRemaining>0?TEXT("RELOADING"):Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);Text(Person->bWeaponDrawn?FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()):TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,Person->bWeaponDrawn?30:20);}
  if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){Panel(M,M+118*S,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,M+128*S,18,Peach);}}
  Panel(W-M-300*S,M+118*S,300*S,44*S);Text(FString::Printf(TEXT("%sHORN  %d / 5"),Bike?TEXT("H  "):TEXT(""),Owner->HornUses),W-M-280*S,M+126*S,22,Owner->HornUses>0?Muted:Peach);
  if(Bike){Panel(W-M-300*S,M+174*S,300*S,44*S);Text(Bike->Ride->bRealHandling?TEXT("P  MODE: REALISTIC"):TEXT("P  MODE: ARCADE"),W-M-280*S,M+185*S,18,Muted);}
@@ -104,7 +104,6 @@ void ABattleLabHUD::DrawHUD(){
  else if(Owner->bCrashActive||Owner->StunRemaining>0)Notice=TEXT("");
 
  else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
- else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");
  else if(Owner->HornNoticeRemaining>0)Notice=Owner->HornNotice;
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
  if(!Owner->bCrashActive&&Notice.IsEmpty())for(TActorIterator<ABattleKnife> It(GetWorld());It;++It)if(!It->bDead&&!It->bEscaped&&FVector::Dist2D(It->GetActorLocation(),GetOwningPawn()->GetActorLocation())<1400){Notice=It->bWindingUp?TEXT("KNIFE STRIKE — MOVE!"):It->Stabs>0?TEXT("KNIFE CHASE — RUN, DEFEND OR REMOUNT"):TEXT("KNIFE ATTACKER — RUN OR G TO DRAW");break;}

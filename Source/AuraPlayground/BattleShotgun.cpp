@@ -37,19 +37,19 @@ void ABattleRider::UpdateShotgunMechanism(float Dt){
  ShotgunReloadBlend=Ease((Elapsed-ShotgunReloadLead)/.2f)*Ease(ReloadRemaining/.3f);
  const float Loading=Elapsed-ShotgunReloadLead;
  TransferShotgunShells(FMath::Clamp(FMath::FloorToInt(Loading/ShellSeconds),0,ShotgunReloadShells));
- const FVector Fetch(-24,-14,-19),Port(-18,1.3f,1.2f);
- if(Loading<0){ShotgunReloadHand=FMath::Lerp(ShotgunReloadHand,Fetch+FVector(-4,-2,-2),Ease((Elapsed-(ShotgunReloadLead-.25f))/.25f));return;}
- if(Loading>=ShotgunReloadShells*ShellSeconds){ShotgunReloadHand=FMath::Lerp(Port+FVector(2,-2,-2),FVector(4,-3,-4),Ease((Loading-ShotgunReloadShells*ShellSeconds)/.35f));return;}
+ const FVector Fetch(-24,-14,-19),Port(-18,1.3f,1.2f),HandOffset(-10,-1,-3);
+ if(Loading<0){ShotgunReloadHand=FMath::Lerp(ShotgunReloadHand,Fetch+HandOffset,Ease((Elapsed-(ShotgunReloadLead-.25f))/.25f));return;}
+ if(Loading>=ShotgunReloadShells*ShellSeconds){ShotgunReloadHand=FMath::Lerp(Port+FVector(6,0,0)+HandOffset,FVector(4,-3,-4),Ease((Loading-ShotgunReloadShells*ShellSeconds)/.35f));return;}
  ShotgunShellPhase=FMath::Fmod(Loading,ShellSeconds)/ShellSeconds;
  // Return the empty hand to the next shell before presenting it. Keeping the
  // cycle endpoints aligned avoids snapping from the loading port to the belt.
  if(ShotgunShellPhase<.25f){
-  const FVector Previous=Loading<ShellSeconds?Fetch+FVector(-4,-2,-2):Port+FVector(2,-2,-2);
-  ShotgunReloadHand=FMath::Lerp(Previous,Fetch+FVector(-4,-2,-2),Ease(ShotgunShellPhase/.25f));return;
+  const FVector Previous=Loading<ShellSeconds?Fetch+HandOffset:Port+FVector(6,0,0)+HandOffset;
+  ShotgunReloadHand=FMath::Lerp(Previous,Fetch+HandOffset,Ease(ShotgunShellPhase/.25f));return;
  }
  const FVector ShellPosition=FMath::Lerp(Fetch,Port,Ease((ShotgunShellPhase-.25f)/.6f))+FVector(6*Ease((ShotgunShellPhase-.85f)/.15f),0,0);
  ShotgunShell->SetRelativeLocation(ShellPosition);
- ShotgunReloadHand=ShellPosition+FVector(-4,-2,-2);
+ ShotgunReloadHand=ShellPosition+HandOffset;
 }
 void ABattleRider::UpdateShotgunVisual(){
  const bool Visible=CurrentWeapon==1&&bWeaponDrawn&&MeleeRemaining<=0;

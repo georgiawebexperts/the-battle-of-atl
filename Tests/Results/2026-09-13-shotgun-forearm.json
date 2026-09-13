@@ -1,0 +1,78 @@
+{
+  "passed": false,
+  "phase": 17,
+  "reason": "Shotgun did not insert two individual shells",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": true,
+  "full_shaders": true,
+  "detailed_rider": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/rifle-aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-18.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/rifle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-insert.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/smg.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-08.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-pump.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/rifle-reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-11.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-05.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-10.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-06.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-12.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-aimed.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-13.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-07.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-reload.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-03.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-16.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-02.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-14.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-00.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-01.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-5f01fc8ca86342a5ab638f911e54e516/shotgun-sequence-15.png"
+  ],
+  "detailed_assets_loaded": true,
+  "shotgun_materials": [
+    {
+      "slot": 0,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 1,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Polymer.M_Remington_Polymer",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 2,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 3,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    },
+    {
+      "slot": 4,
+      "material": "/Game/BattleForTheA/Weapons/Remington870/M_Remington_Steel.M_Remington_Steel",
+      "resource": true,
+      "shader_complete": true
+    }
+  ],
+  "shotgun_shaders_ready": true
+}

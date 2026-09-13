@@ -39,7 +39,7 @@ void ABattleRider::PoseArms(float Dt){
   // Preserve hand proportions by default; the view rig allows per-weapon fitting.
   for(int I=H;I<Pose.Num();I++)if(Child(I,H)){Pose[I].SetLocation(Pose[H].GetLocation()+(Pose[I].GetLocation()-Pose[H].GetLocation())*HandScale);Pose[I].SetScale3D(Pose[I].GetScale3D()*HandScale);}
   for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")})for(int JointNumber=2;JointNumber<=4;JointNumber++){
-   const int F=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,JointNumber,Suffix));if(F<0)continue;float Curl=bSwimming?8.f:FMath::Lerp(JointNumber==2?18.f:32.f,JointNumber==2?35.f:65.f,ArmPoseBlend);if(FCString::Strcmp(Finger,TEXT("Index"))==0&&Suffix[0]=='R')Curl*=.5f;Move(F,Pose[F].GetLocation(),FQuat(Suffix[0]=='R'?FVector::UpVector:-FVector::UpVector,FMath::DegreesToRadians(-Curl)));
+   const int F=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,JointNumber,Suffix));if(F<0)continue;float Curl=bSwimming?8.f:FMath::Lerp(JointNumber==2?18.f:32.f,JointNumber==2?35.f:65.f,ArmPoseBlend);if(CurrentWeapon==1&&bShotgunReloading&&Suffix[0]=='L')Curl=FMath::Lerp(Curl,JointNumber==2?15.f:30.f,ShotgunReloadBlend);if(FCString::Strcmp(Finger,TEXT("Index"))==0&&Suffix[0]=='R')Curl*=.5f;Move(F,Pose[F].GetLocation(),FQuat(Suffix[0]=='R'?FVector::UpVector:-FVector::UpVector,FMath::DegreesToRadians(-Curl)));
   }
   if(Detailed&&(CurrentWeapon==0||CurrentWeapon==1)&&MeleeRemaining<=0){
    const int Thumb=Index(*FString::Printf(TEXT("Thumb2_%s"),Suffix));
@@ -50,11 +50,12 @@ void ABattleRider::PoseArms(float Dt){
     Move(Thumb,Pose[Thumb].GetLocation(),FQuat::Slerp(FQuat::Identity,Align,ArmPoseBlend));
    }
   }
-  if(Detailed&&(CurrentWeapon==0||CurrentWeapon==1)&&Suffix[0]=='R'&&MeleeRemaining<=0){
+  if(Detailed&&(CurrentWeapon==1||(CurrentWeapon==0&&Suffix[0]=='R'))&&MeleeRemaining<=0){
    const FQuat ViewToMesh=FirstPersonArms->GetRelativeRotation().Quaternion().Inverse();
    const FQuat WeaponMotion=ViewToMesh*(Weapon->GetRelativeRotation()-GunRestRotation).Quaternion()*ViewToMesh.Inverse();
    Move(H,Pose[H].GetLocation(),FQuat::Slerp(FQuat::Identity,WeaponMotion,ArmPoseBlend));
   }
+
  };
  const FQuat Motion=(Weapon->GetRelativeRotation()-GunRestRotation).Quaternion();const FVector Gun=Weapon->GetRelativeLocation();const float Reload=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
  FVector Right=Gun+Motion.RotateVector(RightWristOffset);FVector Left=Gun+Motion.RotateVector(LeftWristOffset)+FVector(-4,-6,bDetailedPlayerRig?-10.f:-18.f)*Reload;
