@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "points": 52,
+  "surface_samples": 40,
+  "new_surface_hits": 40,
+  "mesh": "/Game/BattleForTheA/Environment/KrogApproach/SM_KrogApproach.SM_KrogApproach",
+  "scope": "Fresh-process main/review spline agreement, blocking mesh and native ground probes. Existing scooter/loop/navigation verification also passed. Full main ride and packaged acceptance remain separate."
+}

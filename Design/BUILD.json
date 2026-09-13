@@ -1,11 +1,11 @@
 {
-  "build": 56,
-  "version": "0.56.0-dev",
+  "build": 57,
+  "version": "0.57.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed signed Mac056; backup055 retained; full game unfinished",
-  "milestone": "Optional realistic handling, six traffic colors, DeKalb construction closures",
-  "author": "2026-09-12 [codex-maclaptop]",
+  "status": "Preparing Mac057; installed056 retained until cooked acceptance",
+  "milestone": "Bungalow detail, looping Krog traffic, wider approach and scooter recovery scene",
+  "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
     "Verified DeKalb road-end construction fences and signs; main navigation rebuilt.",
     "Traffic spawns cycle through six visually reviewed paint colors on the existing car body.",
@@ -15,8 +15,9 @@
     "Starting bungalow finishes/details, elevated foundation and four steps fitted to surveyed ground; opening reviewed and direct tutorial ride passes. Still not final neighborhood art.",
     "Native main scooter scene/navigation integrated. Startup permits static-world occlusion sampled at eight envelope corners plus four participant/scooter positions, retaining35m player distance. Full intro/home-camera test passes with selection forced:3participants ready at5.2s world time. Clear-line-of-sight fixture proves visible wait, offscreen assembly, skipped chance0 and cleanup. Native visit/recovery previously passed; random frequency and packaged acceptance pending.",
     "Automatic bike lights also detect the bike body entering a dark volume; native boundary checks and observed Krog crossings pass.",
-    "Continuous DeKalb traffic loop integrated; review mixed ride passes481.54m both ways. Main mixed ride reaches scooter visit but fails to finish:185.94m, zero crashes, car/rider mutual yield near29278,115643. Main full-route acceptance unresolved; do not present review pass as proof main route passes.",
-    "Low-shadow preset now allows two CSM cascades while preserving other low settings. Six turnaround images show grounded vehicle shadows; 24 tyre-contact queries pass. Native startup reads two cascades without command-line override. Broad performance and packaged acceptance remain pending."
+    "Continuous DeKalb loop and wider Krog approach integrated into main. Updated main mixed ride passed both legs,483.95m,0wipeouts,39915paved samples,3281lit/0unlit tunnel samples,20moving cars and25walking pedestrians observed. One traffic run; broad congestion/performance acceptance pending.",
+    "Low-shadow preset now allows two CSM cascades while preserving other low settings. Six turnaround images show grounded vehicle shadows; 24 tyre-contact queries pass. Native startup reads two cascades without command-line override. Broad performance and packaged acceptance remain pending.",
+    "Wider Krog approach selectively promoted after actual candidate verification: 483.86m bidirectional realistic ride with live traffic/crowds passed. Rebuilding main navigation initially lost scooter grass connectivity; explicit nav-only tile re-registration and mesh navigation setup restore it. Fresh saved-main approach/40ground probes and 18.07m scooter connection pass; native three-person visit/get-up/walking/cleanup passes. Updated main ride passed; cooked acceptance pending."
   ],
   "unreleased_author": "2026-09-13 [codex-maclaptop]"
 }

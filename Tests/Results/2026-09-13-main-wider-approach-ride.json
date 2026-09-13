@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48394.89,
+  "maxCenterlineErrorCm": 55.63,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 39915,
+    "paved": 39915
+  },
+  "lights": {
+    "lit_samples": 3281,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 518,
+    "max_live_cars": 20,
+    "max_moving_cars": 20,
+    "nearby_samples": 17,
+    "nearest_car_cm": 385.2
+  },
+  "crowd_observed": {
+    "max_live_people": 29,
+    "max_walking_people": 25,
+    "nearby_samples": 406,
+    "nearest_person_cm": 62.0
+  },
+  "yield_diagnostics": [
+    "leg=0 elapsed=12.8 position=X=25273.751 Y=106524.368 Z=953.056 reason=person=PiedmontPedestrian_42 ahead=171.1 side=96.2 speed=135.0 pause=0.0 posed=0 dead=0 destination=1"
+  ],
+  "queue_diagnostics": [],
+  "diagnostic_probe_only": false,
+  "exit_code": 0,
+  "map": "PiedmontWorld",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 208.19,
+    "max_grade": 0.201
+  },
+  "scope": "Selected bidirectional route with live cars and autonomous pedestrians retained. Test rider brakes for people ahead using Space; no steering avoidance or rendered performance evaluation. Realistic handling uses test-driver Space braking before mapped bends and nearby cars; this is not player autopilot or complete handling acceptance. Forced scooter scene assembled before route traversal in the selected map; normal random selection and rendered appearance unverified.",
+  "scooter_scene": {
+    "passed": true,
+    "ready": true,
+    "visit_started": true,
+    "nearest_scene_cm": 1801.15,
+    "participants": 3
+  },
+  "candidate_actor_verified": true
+}

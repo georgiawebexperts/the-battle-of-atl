@@ -6,12 +6,12 @@ parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09
 assert sum([args.level_floor,args.continuous_shell,args.buildings,args.rail,args.world,args.main,args.scooter and not args.main])<=1
 assert Path(args.report).name==args.report
 assert not args.turnarounds or (args.scooter and not args.main)
-assert not args.approach or (args.scooter and not args.main and not args.turnarounds)
+assert not args.approach or (args.scooter and not args.turnarounds)
 app=Path('/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd')
-variant = 'approach' if args.approach else 'main-scooter' if args.main and args.scooter else 'turnaround' if args.turnarounds else 'scooter' if args.scooter else 'main' if args.main else 'world' if args.world else 'rail' if args.rail else 'buildings' if args.buildings else 'continuous-shell' if args.continuous_shell else 'level-floor' if args.level_floor else 'candidate'
+variant = 'main-approach' if args.approach and args.main else 'approach' if args.approach else 'main-scooter' if args.main and args.scooter else 'turnaround' if args.turnarounds else 'scooter' if args.scooter else 'main' if args.main else 'world' if args.world else 'rail' if args.rail else 'buildings' if args.buildings else 'continuous-shell' if args.continuous_shell else 'level-floor' if args.level_floor else 'candidate'
 route = 'finish-drive' if args.finish_route else 'drive'
 log = root / f'work/krog-{variant}-{route}.log'
-map_name = ('PiedmontKrogApproachReview' if args.approach else 'PiedmontWorld' if args.main else 'PiedmontKrogTurnaroundReview' if args.turnarounds else 'PiedmontScooterReview' if args.scooter else 'PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
+map_name = ('PiedmontWorld' if args.main else 'PiedmontKrogApproachReview' if args.approach else 'PiedmontWorld' if args.main else 'PiedmontKrogTurnaroundReview' if args.turnarounds else 'PiedmontScooterReview' if args.scooter else 'PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
             'PiedmontKrogShellReview' if args.continuous_shell else
             'PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview')
 with log.open('w') as stream:
@@ -50,7 +50,7 @@ if args.scooter:
     result['passed']=bool(result['passed'] and result['scooter_scene'] and result['scooter_scene']['passed'])
     result['scope']+=' Forced scooter scene assembled before route traversal in the selected map; normal random selection and rendered appearance unverified.'
 if args.approach:
-    result['candidate_actor_verified']='ApproachCandidateAudit: actors=1 world=PiedmontKrogApproachReview' in log.read_text()
+    result['candidate_actor_verified']=f'ApproachCandidateAudit: actors=1 world={map_name}' in log.read_text()
     result['passed']=bool(result['passed'] and result['candidate_actor_verified'])
 if args.yield_probe:result['scope']+=' Car-queue probe enabled: may stop early after five seconds waiting behind a car. Consult completedLegs and light checks; a false result alone does not distinguish early exit from a route or lighting failure.'
 (root/'Tests/Results'/args.report).write_text(json.dumps(result,indent=2)+'\n')

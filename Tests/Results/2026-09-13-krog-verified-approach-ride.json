@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48385.74,
+  "maxCenterlineErrorCm": 70.66,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 41016,
+    "paved": 41016
+  },
+  "lights": {
+    "lit_samples": 10793,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 539,
+    "max_live_cars": 22,
+    "max_moving_cars": 19,
+    "nearby_samples": 68,
+    "nearest_car_cm": 327.62
+  },
+  "crowd_observed": {
+    "max_live_people": 29,
+    "max_walking_people": 25,
+    "nearby_samples": 391,
+    "nearest_person_cm": 62.0
+  },
+  "yield_diagnostics": [
+    "leg=0 elapsed=32.2 position=X=24919.632 Y=109350.604 Z=973.456 reason=person=PiedmontPedestrian_38 ahead=402.1 side=124.8 speed=310.0 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=1 elapsed=17.1 position=X=30114.383 Y=116422.586 Z=1096.678 reason=person=PiedmontPedestrian_103 ahead=282.3 side=77.9 speed=135.0 pause=0.0 posed=0 dead=0 destination=1"
+  ],
+  "queue_diagnostics": [
+    "car=BattleRoadCar_6 position=X=28724.061 Y=116247.694 Z=1061.867 speed=147.3 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_23 position=X=29789.195 Y=115891.999 Z=1069.342 speed=250.0 finished=0 crossing=0 grounded=1 obstacle=",
+    "car=BattleRoadCar_26 position=X=28167.301 Y=116429.228 Z=1052.682 speed=143.0 finished=0 crossing=0 grounded=1 obstacle="
+  ],
+  "diagnostic_probe_only": false,
+  "exit_code": 0,
+  "map": "PiedmontKrogApproachReview",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 208.24,
+    "max_grade": 0.2022
+  },
+  "scope": "Selected bidirectional route with live cars and autonomous pedestrians retained. Test rider brakes for people ahead using Space; no steering avoidance or rendered performance evaluation. Realistic handling uses test-driver Space braking before mapped bends and nearby cars; this is not player autopilot or complete handling acceptance. Forced scooter scene assembled before route traversal in the selected map; normal random selection and rendered appearance unverified.",
+  "scooter_scene": {
+    "passed": true,
+    "ready": true,
+    "visit_started": true,
+    "nearest_scene_cm": 1804.3,
+    "participants": 3
+  },
+  "candidate_actor_verified": true
+}

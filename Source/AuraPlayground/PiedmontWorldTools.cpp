@@ -21,6 +21,8 @@
 #include "EngineUtils.h"
 #include "Engine/StaticMeshActor.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/InstancedStaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 #include "WaterBodyActor.h"
 #include "WaterBodyComponent.h"
 #include "Commandlets/Commandlet.h"
@@ -116,11 +118,23 @@ AActor* UPiedmontWorldTools::SpawnValidationDarkZone(UObject* WorldContext,FVect
 bool UPiedmontWorldTools::BuildParkNavigation(FVector Center,FVector Extent){
 #if WITH_EDITOR
  UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
- if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("ArcadeBikeLab")&&World->GetName()!=TEXT("PiedmontKrogWorldReview")&&World->GetName()!=TEXT("PiedmontScooterReview")))return false;
+ if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("ArcadeBikeLab")&&World->GetName()!=TEXT("PiedmontKrogWorldReview")&&World->GetName()!=TEXT("PiedmontScooterReview")&&World->GetName()!=TEXT("PiedmontKrogApproachReview")))return false;
  for(TActorIterator<AActor> It(World);It;++It){
   const bool Relevant=It->ActorHasTag(TEXT("RideNavOnly"))||It->ActorHasTag(TEXT("RideDirt"))||It->ActorHasTag(TEXT("RidePath"))||It->ActorHasTag(TEXT("RideBridge"))||It->ActorHasTag(TEXT("RideBarrier"));
   TArray<UPrimitiveComponent*> Components;It->GetComponents(Components);
-  for(auto* Component:Components)Component->SetCanEverAffectNavigation(Relevant);
+  for(auto* Component:Components){
+   if(It->ActorHasTag(TEXT("RideNavOnly"))){
+    // Refresh cached navigation registration after loading hidden, noncolliding tiles.
+    Component->SetCanEverAffectNavigation(false);
+    Component->SetCustomNavigableGeometry(EHasCustomNavigableGeometry::EvenIfNotCollidable);
+    if(auto* Instances=Cast<UInstancedStaticMeshComponent>(Component)){
+     UStaticMesh* Mesh=Instances->GetStaticMesh();
+     if(Mesh)Mesh->CreateNavCollision();
+    }
+   }
+   Component->SetCanEverAffectNavigation(Relevant);
+   if(It->ActorHasTag(TEXT("RideNavOnly")))FNavigationSystem::UpdateComponentData(*Component);
+  }
  }
  ANavMeshBoundsVolume* Bounds=nullptr;
  for(TActorIterator<ANavMeshBoundsVolume> It(World);It;++It)if(It->ActorHasTag(TEXT("PiedmontNavBounds")))Bounds=*It;
@@ -176,7 +190,7 @@ bool UPiedmontWorldTools::IsParkNavigationBuilding(){
 bool UPiedmontWorldTools::FinishParkNavigationBuild(){
 #if WITH_EDITOR
  UWorld* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
- if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("PiedmontKrogWorldReview")&&World->GetName()!=TEXT("PiedmontScooterReview")))return false;
+ if(!World||(World->GetName()!=TEXT("PiedmontWorld")&&World->GetName()!=TEXT("PiedmontKrogWorldReview")&&World->GetName()!=TEXT("PiedmontScooterReview")&&World->GetName()!=TEXT("PiedmontKrogApproachReview")))return false;
  for(TActorIterator<ANavigationData> It(World);It;++It)It->EnsureBuildCompletion();
  World->MarkPackageDirty();return !IsParkNavigationBuilding();
 #else

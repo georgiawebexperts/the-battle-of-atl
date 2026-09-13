@@ -2,6 +2,7 @@
 import unreal,json
 from pathlib import Path
 root=Path(unreal.Paths.project_dir()).resolve()
+(root/'Tests/Results/2026-09-13-scooter-main-fresh-read.json').write_text(json.dumps({'passed':False,'status':'Verification started; incomplete or failed until replaced with a successful report.'})+'\n')
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 unreal.PiedmontWorldTools.finish_editor_asset_loading();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 actors=ea.get_all_level_actors();scenes=[a for a in actors if isinstance(a,unreal.BattleScooterScene)];patches=[a for a in actors if a.actor_has_tag('ScooterNavigation')];directors=[a for a in actors if isinstance(a,unreal.BattleRoadTrafficDirector) and a.actor_has_tag('KrogTrafficReview')]

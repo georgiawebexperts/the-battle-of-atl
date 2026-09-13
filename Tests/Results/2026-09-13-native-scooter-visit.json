@@ -14,7 +14,7 @@
     "visit_started": true,
     "released": true,
     "moving_participants": 3,
-    "minimum_travel_cm": 811.1
+    "minimum_travel_cm": 829.85
   },
   "cleanup": {
     "passed": true,

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/pre-krog-approach-20260913-022711/PiedmontWorld.umap",
+  "backup_sha256": "7717e848f76af2541fe49e328b97c5ea747e45cc3e7eae7250eb591312b737d1",
+  "main_sha256": "0f556475aa995f7786d497b0fa419fb3034df228769c20af9fdfd298a3a3fa17",
+  "samples": 826,
+  "reachable": 796,
+  "regressions": [],
+  "krog_failures": [],
+  "scope": "One concrete actor and reviewed BattleKrog_2 points transferred to current main, preserving other actor GUIDs. Navigation rebuilt and sampled. Fresh main runtime/cooked acceptance remains pending."
+}

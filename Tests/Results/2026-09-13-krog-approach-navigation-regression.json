@@ -1,0 +1,11 @@
+{
+  "before_samples": 826,
+  "after_samples": 826,
+  "before_reachable": 796,
+  "after_reachable": 796,
+  "missing": [],
+  "regressions": [],
+  "passed": true,
+  "scope": "Retained route endpoints/midpoints plus dense Krog samples; no full polygon, traffic or runtime route acceptance. Read-only; main map unchanged.",
+  "scooter_route_length_cm": 1807.0029296875
+}
