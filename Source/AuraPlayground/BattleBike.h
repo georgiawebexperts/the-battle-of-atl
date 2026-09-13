@@ -135,7 +135,7 @@ public:
  UPROPERTY(BlueprintReadOnly) float LastHealAmount=0;
  void UpdateHealth(float Dt);
  bool RecoverAtCheckpoint();
- UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=10;
+ UPROPERTY(BlueprintReadOnly) int32 PistolAmmo=17;
  UPROPERTY(BlueprintReadOnly) TArray<FBattleWeaponState> Inventory;
  UPROPERTY(BlueprintReadOnly) int32 LastFootWeapon=0;
  UFUNCTION(BlueprintCallable) bool GiveWeapon(int32 Slot,int32 Rounds);

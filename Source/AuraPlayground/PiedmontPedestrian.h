@@ -44,6 +44,10 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<class UStaticMeshComponent> BenchLighterStem;
  UPROPERTY(BlueprintReadOnly) bool bBenchReaching=false;
  void HearHorn(APawn* Source);
+ void HearGunfire(FVector Source);
+ UPROPERTY(BlueprintReadOnly) float PanicRemaining=0;
+ FVector PanicOrigin;
+ float PanicRepath=0;
  void BikeImpact(float Speed,FVector Direction);
  // Opt-in until encounter placement and chase/settle behavior are complete.
  UFUNCTION(BlueprintCallable) bool BeginSleeping();

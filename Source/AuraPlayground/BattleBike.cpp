@@ -42,7 +42,7 @@
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSubobjectClass<UBattleBikeMovement>(ACharacter::CharacterMovementComponentName)){
- Inventory.SetNum(BattleWeapons::Count);Inventory[0].Owned=true;Inventory[0].Magazine=10;Inventory[0].Reserve=0;
+ Inventory.SetNum(BattleWeapons::Count);Inventory[0].Owned=true;Inventory[0].Magazine=17;Inventory[0].Reserve=0;
  AsphaltAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("AsphaltTires"));GrassAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("GrassTires"));MotorAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("ElectricMotor"));
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()}){Audio->SetupAttachment(GetCapsuleComponent());Audio->bAutoActivate=false;Audio->SetVolumeMultiplier(0);}
  PrimaryActorTick.bCanEverTick=true;bUseControllerRotationYaw=false;

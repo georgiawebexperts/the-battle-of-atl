@@ -2,6 +2,7 @@
 #include "BattleRider.h"
 #include "BattlePolice.h"
 #include "BattleZombie.h"
+#include "PiedmontPedestrian.h"
 #include "BattleQuest.h"
 #include "NavigationSystem.h"
 #include "EngineUtils.h"
@@ -10,6 +11,9 @@
 void ABattleLabMode::RecordGunfire(){
  if(bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this))return;
  Trouble=FMath::Min(12.f,Trouble+.75f);QuietTime=0;
+ if(auto* Source=UGameplayStatics::GetPlayerPawn(this,0))for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->HearGunfire(Source->GetActorLocation());
+ if(!bPoliceAlert){bPoliceAlert=true;PoliceDelay=6;}
+
 }
 bool ABattleLabMode::RecordAssault(AActor* Victim){
  if(!IsValid(Victim)||!Victim->ActorHasTag(TEXT("PiedmontTraffic"))||bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this)||AssaultVictims.Contains(Victim))return false;
@@ -19,7 +23,9 @@ bool ABattleLabMode::RecordAssault(AActor* Victim){
 }
 void ABattleLabMode::TickTrouble(float Dt){
  if(bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this))return;
- QuietTime+=Dt;if(QuietTime>20)Trouble=FMath::Max(0.f,Trouble-Dt*.15f);
+ QuietTime+=Dt;
+ if(QuietTime>45){bPoliceAlert=false;Trouble=0;for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead)It->Destroy();return;}
+ if(QuietTime>20)Trouble=FMath::Max(0.f,Trouble-Dt*.15f);
  auto* Mode=Cast<ABattleParkMode>(this);auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn||(Mode->Enemies&&Mode->Enemies->bFreezeSpawns))return;
  auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Person=Cast<ABattleRider>(Pawn))Bike=Person->ParkedBike;if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0)return;
  int32 Live=0;for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else Live++;}

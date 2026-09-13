@@ -113,6 +113,11 @@ void APiedmontPedestrian::CancelBenchReach(){
  if(bBenchReaching){bBenchReaching=false;StopBodySequence();}
 }
 void APiedmontPedestrian::EndPlay(const EEndPlayReason::Type Reason){CancelBenchReach();Super::EndPlay(Reason);}
+void APiedmontPedestrian::HearGunfire(FVector Source){
+ if(bDead||bAmbientSleeper||bSwimming||FVector::DistSquared2D(Source,GetActorLocation())>FMath::Square(4500.f))return;
+ CancelIncidentPose();CancelBenchReach();
+ PanicOrigin=Source;PanicRemaining=18;PanicRepath=0;PauseRemaining=YieldRemaining=0;
+}
 void APiedmontPedestrian::HearHorn(APawn* Source){
  if(bIncidentPosing){if(Source&&FVector::Dist2D(Source->GetActorLocation(),GetActorLocation())<1400)ReleaseIncidentPose();return;}
  CancelBenchReach();YieldTo(Source,true);
@@ -160,6 +165,20 @@ void APiedmontPedestrian::Tick(float Dt){
  auto* AI=Cast<AAIController>(GetController());if(!AI)return;
  auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));
  if(!Mode||Mode->bRunEnded||bSwimming){AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();return;}
+ if(PanicRemaining>0){
+  PanicRemaining=FMath::Max(0.f,PanicRemaining-Dt);PanicRepath-=Dt;
+  GetCharacterMovement()->MaxWalkSpeed=480;
+  if(PanicRepath<=0){
+   PanicRepath=1.2f;auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+   if(Nav){const FVector Away=(GetActorLocation()-PanicOrigin).GetSafeNormal2D();
+    for(float Angle:{0.f,45.f,-45.f,90.f,-90.f}){FNavLocation Goal;
+     if(Nav->ProjectPointToNavigation(GetActorLocation()+Away.RotateAngleAxis(Angle,FVector::UpVector)*1200,Goal,FVector(300,300,250))&&MoveTo(Goal.Location,100))break;
+    }
+   }
+  }
+  if(PanicRemaining<=0){Configure(Kind);AI->StopMovement();bHasDestination=false;ThinkRemaining=0;}
+  return;
+ }
  YieldCooldown=FMath::Max(0.f,YieldCooldown-Dt);ThinkRemaining-=Dt;
 
  if(PauseRemaining>0){PauseRemaining=FMath::Max(0.f,PauseRemaining-Dt);AI->StopMovement();bHasDestination=false;return;}

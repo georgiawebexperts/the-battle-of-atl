@@ -67,7 +67,13 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   CHECK_TROUBLE(Bike->StunRemaining==0&&GetPawn()==Bike&&Bike->Ride->IsMovingOnGround()&&Bike->Deaths==0,"Recovery/remount failed");
   CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==1,"Taser grace failed");Bike->TaserGrace=0;CHECK_TROUBLE(Officer->FireTaser()&&Bike->ApplyRiderDamage(1000)>0,"Death during stun fixture failed");Next();
  }
- else if(TroubleStage==8&&TroubleClock>2.4f){CHECK_TROUBLE(Bike->Deaths==1&&GetPawn()==Bike&&!Bike->bParked&&Bike->StunRemaining==0,"Checkpoint retained stale stun");Finish(true,TEXT("Impact routing, three people, police spawn/pursuit, real shot penalty, escalation, blocked taser, windup, knockoff, recovery and death during stun pass"));}
+ else if(TroubleStage==8&&TroubleClock>2.4f){CHECK_TROUBLE(Bike->Deaths==1&&GetPawn()==Bike&&!Bike->bParked&&Bike->StunRemaining==0,"Checkpoint retained stale stun");auto* Witness=Civilian();CHECK_TROUBLE(Witness,"Panic witness missing");
+ Mode->bPoliceAlert=false;Mode->RecordGunfire();
+ CHECK_TROUBLE(Witness->PanicRemaining==18&&Mode->bPoliceAlert&&Mode->PoliceDelay==6,"Gunfire did not start sustained panic and delayed police response");
+ Mode->QuietTime=44;Mode->TickTrouble(2);
+ CHECK_TROUBLE(!Mode->bPoliceAlert&&Mode->Trouble==0,"Police alert did not expire after quiet interval");
+ for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)CHECK_TROUBLE(It->bDead||It->IsActorBeingDestroyed(),"Live police remained after alert expired");
+ Finish(true,TEXT("Police pursuit, taser, recovery, gunfire panic and quiet-period alert expiry pass"));}
  if(TroubleClock>18&&TroubleStage!=99)Finish(false,TEXT("Trouble audit timeout"));
 #undef CHECK_TROUBLE
 #endif

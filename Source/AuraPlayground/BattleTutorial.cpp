@@ -122,9 +122,9 @@ bool ABattleTutorial::TryStart(FVector Previous,FVector Current){
  if(Previous.X>=G.X||Current.X<G.X||FMath::Abs(Current.Y-G.Y)>270||FMath::Abs(Current.Z-G.Z)>180)return false;
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);auto* B=Cast<ABattleBike>(Pawn);auto* Foot=Cast<ABattleRider>(Pawn);if(Foot)B=Foot->ParkedBike.Get();if(!B||B->RiderHealth<=0||B->Ride->Recovery>0||B->StunRemaining>0)return false;
  M->bTutorialActive=false;M->StartCountdown=3;M->TimeRemaining=M->Difficulty.TimeLimitSeconds;M->RunElapsed=M->RunTopSpeed=0;
- B->HornUses=5;B->RiderHealth=100;B->PistolAmmo=10;B->Inventory[0].Magazine=10;B->Inventory[0].Reserve=0;B->Ride->Wipeouts=0;B->NearMisses=B->EnemyKills=0;
+ B->HornUses=5;B->RiderHealth=100;B->PistolAmmo=17;B->Inventory[0].Magazine=17;B->Inventory[0].Reserve=0;B->Ride->Wipeouts=0;B->NearMisses=B->EnemyKills=0;
  M->Trouble=0;M->PeopleHit=0;M->bPoliceAlert=false;
- if(Foot){Foot->Health=100;if(Foot->CurrentWeapon==0)Foot->Ammo=10;}
+ if(Foot){Foot->Health=100;if(Foot->CurrentWeapon==0)Foot->Ammo=17;}
  if(M->Quest)B->CheckpointTransform=M->Quest->InitialStartTransform;
  UE_LOG(LogTemp,Display,TEXT("BattleTutorial: gate crossed; countdown=3 timer=%.0f"),M->TimeRemaining);return true;
 }

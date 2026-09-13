@@ -11,6 +11,10 @@
 #include "Engine/StaticMeshActor.h"
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "InputKeyEventArgs.h"
+#include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
+#include "Misc/CommandLine.h"
+#include "UnrealClient.h"
 void ABattleMacController::TickDroneAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(GetWorld()->GetTimeSeconds()<5||DroneStage==99)return;DroneClock+=Dt;
@@ -19,6 +23,7 @@ void ABattleMacController::TickDroneAudit(float Dt){
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("BattleDroneAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\",\"health\":%.2f}"),Pass?TEXT("true"):TEXT("false"),DroneStage,Why,Bike->RiderHealth);DroneStage=99;ConsoleCommand(TEXT("quit"));};
 #define DCHECK(C,R) if(!(C)){Finish(false,TEXT(R));return;}
  auto Next=[&](){DroneStage++;DroneClock=0;};
+ auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  if(DroneStage==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
@@ -33,7 +38,23 @@ void ABattleMacController::TickDroneAudit(float Dt){
  }else if(DroneStage==4&&DroneClock>5.8f){
   DCHECK(Drone&&Drone->bSpent&&Drone->RiderHits==0&&!Bike->bParked,"Drone passed through obstruction");
   const float Health=Drone->Health;FDamageEvent Damage;DCHECK(Drone->TakeDamage(34,Damage,this,Bike)==34&&Drone->Health==Health-34,"Drone cannot be shot");DCHECK(Drone->TakeDamage(34,Damage,this,Bike)==6&&Drone->IsActorBeingDestroyed(),"Drone cannot be destroyed");
-  if(AuditDroneWall.IsValid())AuditDroneWall->Destroy();Finish(true,TEXT("Warning, swept rider hit, 15 harm, knockoff/recovery/remount, wall obstruction and destruction pass"));
+  if(AuditDroneWall.IsValid())AuditDroneWall->Destroy();
+  const FVector Spot=Bike->GetActorLocation()+Bike->GetActorForwardVector()*3500+FVector(0,0,650);
+  AuditDrone=GetWorld()->SpawnActor<ABattleDrone>(Spot,(Bike->GetActorLocation()-Spot).Rotation());
+  DCHECK(AuditDrone.IsValid()&&Bike->Dismount(),"Distant drone or voluntary dismount failed");
+  Key(EKeys::G,true);Key(EKeys::G,false);Key(EKeys::RightMouseButton,true);Next();
+ }else if(DroneStage==5&&DroneClock>.8f){
+  DCHECK(Person&&Drone&&Drone->bWarning&&!Drone->bSpent&&Person->bWeaponDrawn,"Dismount cancelled drone or failed to draw weapon");
+  FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((Drone->GetActorLocation()-Eye).Rotation());Next();
+ }else if(DroneStage==6&&DroneClock>.35f){
+  DCHECK(Person&&Drone&&Person->bAiming,"Distant drone aim failed");
+  FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleDroneReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("distant-drone.png"),false,false);
+  Next();
+ }else if(DroneStage==7&&DroneClock>.2f){
+  DCHECK(Person&&Drone&&Person->Fire()&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT"),"Actual pistol shot did not hit distant drone or show feedback");Next();
+ }else if(DroneStage==8&&DroneClock>.35f){
+  DCHECK(Person&&Drone&&Person->Fire()&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==15,"Second pistol shot did not destroy drone with correct ammo/feedback");
+  Key(EKeys::RightMouseButton,false);Finish(true,TEXT("Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass"));
  }
  if(DroneClock>18&&DroneStage!=99)Finish(false,TEXT("Drone audit timeout"));
 #undef DCHECK

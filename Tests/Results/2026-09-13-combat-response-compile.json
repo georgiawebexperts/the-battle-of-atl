@@ -1,0 +1,11 @@
+{
+  "compiled": true,
+  "runtime_verified": false,
+  "installed": false,
+  "build_logs": [
+    "work/combat-response-17-build.log",
+    "work/combat-response-audit-build.log"
+  ],
+  "scope": "Editor target compilation only; ammunition, panic, alert expiry and drone destruction need native runtime validation.",
+  "installed_build": 58
+}

@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "missing_report": true,
+  "exit_code": 1,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "editor": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-d54da22f46c04d1390f7fcb937b65fa1/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/drone-d54da22f46c04d1390f7fcb937b65fa1/distant-drone.png"
+  ],
+  "scope": "Native collision/recovery plus real pistol fire at a35m drone after dismount. Natural spawn placement, moving aim and perceived difficulty remain unaccepted."
+}
