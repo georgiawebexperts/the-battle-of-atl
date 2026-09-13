@@ -1,0 +1,13 @@
+{
+  "installed": true,
+  "build": 58,
+  "version": "0.58.0",
+  "app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "desktop_link": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "backup": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",
+  "signature_verified": true,
+  "health_checkpoints_passed": true,
+  "compiled_source": "d7db05a81b5e853c6e2575efadd536aeed022bdc",
+  "installed_at_utc": "2026-09-13T11:04:13.317301+00:00",
+  "scope": "Local playtest installation after named packaged gates. Full requested game quality, all scenarios and performance remain unfinished."
+}

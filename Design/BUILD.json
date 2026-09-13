@@ -1,20 +1,22 @@
 {
-  "build": 57,
-  "version": "0.57.0-dev",
+  "build": 58,
+  "version": "0.58.0-dev",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed signed Mac057; backup056 retained; full game unfinished",
-  "milestone": "Bungalow detail, looping Krog traffic, wider approach and scooter recovery scene",
+  "status": "Installed signed Mac058; backup057 retained; full game unfinished",
+  "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
-    "Starting bungalow siding, trim, door, porch/foundation and ground-fitted steps; packaged12s intro and three1280x720frames reviewed. Rider hand alignment and simple scenery remain unfinished.",
-    "Continuous DeKalb traffic loop and wider concrete Krog approach. Main editor ride483.95m and packaged ride485.60m passed both legs with live cars/pedestrians, realistic handling and0wipeouts. One run each; not all-traffic or rendered performance acceptance.",
-    "Scooter incident has three participants, rare18%selection and offscreen assembly; native and packaged25s visit/recovery/walking/cleanup checks pass. Navigation rebuild retains hidden noncolliding236-tile grass connection. Random frequency and final pose art remain pending.",
-    "Automatic bike lights use both headlamp and bike-body dark-volume detection. Packaged route905lit/0unlit tunnel samples.",
-    "Low shadow preset allows two CSM cascades; prior six vehicle-turnaround renders and24tyre contact queries pass. Broader performance testing remains.",
-    "Previous056 handling toggle, six car paints and construction closures retained. Packaged Easy/Hard completion and installed phone/health/death/checkpoint checks pass."
+    "Upgraded Ellison body/clothes/hair on bike, on foot and during physical crash recovery; authored walk/run/crouch/fall/landing/get-up clips and detailed FPS hands. Default startup verified in packaged opening. Continuous animation/contact polish remains.",
+    "M1911 pistol with visible magazine reload; packaged inventory checks pass shotgun/SMG/rifle selection, combat, ammo conservation, rifle zoom, death persistence and remount. Long-gun models/grips/reloads remain rough.",
+    "Steering assembly, articulated handlebar grips and smoothed lean; packaged arcade/realistic handling checks pass. Starting street frontage and bungalow setback improvements included.",
+    "Lake water rendered; entry leaves Ellison swimming with bike on bank. Deep-entry bank search, lower swim capsule, fixed possession-mode reset, release-to-stop, surface camera, stroke hands, bike radar guidance and compact HUD included. Packaged swim/tread/return/remount verified; earlier editor full-circuit exploration passed. Full water art and all-bank behavior remain unaccepted.",
+    "Packaged Krog route485.77m completed both directions with zero wipeouts,6787/6787paved samples,500lit/0unlit tunnel samples,23moving cars and25walking people observed. Forced scooter scene present. One selected run, not all traffic or performance acceptance.",
+    "Packaged Easy/Hard finish guards pass; installed cardinal phone hunt, recollection, two death resets, health and two ordered checkpoints pass. Existing market, traffic, story and other gameplay retained."
   ],
-  "unreleased_code_changes": [
+  "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
+  "unreleased_author": "2026-09-13 [codex-maclaptop]",
+  "source_progress_history": [
     "Mounted rider palms now face handlebars independently of forearm IK; articulated fingers/thumbs curl around the bar, retaining raised right-hand pistol pose. Three close left/front/right views, including full braking pose, reviewed in native editor. Braking torso lean now blends with frame-rate-independent response. Native arcade/realistic controls and remount checks pass. Not yet packaged; installed057 unchanged. Character remains low-poly and final animation quality unfinished.",
     "SteeringAssembly groups front wheel, fork, stem and handlebars around inclined steerer; wheel spin remains independent. Hands follow steering transform. Torso rotates and leans into turns so wrist targets remain within1.11mm in sampled full-left/straight-braking/full-right poses. Native arcade/realistic controls and remount pass. Unpackaged; installed057 unchanged.",
     "50m starting frontage now uses terrain-fitted crowned asphalt,18cm curbs,short sidewalks and outer skirts, tapering into both existing practice routes. Bungalow moved80cm back with landing to keep steps out of sidewalk; bike start traces finished road height. Native405 central surface probes, protected opening render,76.90m direct and250.22m alternate tutorial rides pass. Installed057 unchanged; rest of neighborhood still unfinished.",
@@ -38,9 +40,9 @@
     "Legacy swimming edge defect traced to open shoulder cuts in front of camera, not missing wrist polygons. Root moves behind camera with shorter/narrower reach; final sampled treading/late-stroke frames and swim return/remount pass, original foot controls pass. Original blocky style/continuous animation remain unfinished. Uninstalled.",
     "Upgraded Ellison body/clothes/hair, FPS hands and M1911 enabled by default, with explicit BattleLegacyRider diagnostic fallback. Hands require successful detailed body load. M1911 cook directory added. Unflagged editor inventory/rifle zoom/reload/death persistence, foot controls, opening and swimming pass; legacy foot comparison passes. Armed controls strip reduced. Packaged acceptance pending."
   ],
-  "remaining_work": "Full requested art, smoother rider/combat animation, broad gameplay balance, complete world detail and performance acceptance. Not a finished game.",
-  "unreleased_author": "2026-09-13 [codex-maclaptop]",
-  "candidate_build": 58,
-  "candidate_version": "0.58.0-dev",
-  "candidate_status": "Packaged core checks pass (inventory, foot, swim, opening, handling, crash); Krog route and finish gates running; installed057 unchanged"
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",
+  "compiled_source": "d7db05a81b5e853c6e2575efadd536aeed022bdc",
+  "installation_report": "Tests/Results/2026-09-13-build058-installed.json"
 }
