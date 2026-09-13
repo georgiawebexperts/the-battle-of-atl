@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 49.6,
+  "exit_code": 0,
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/232c889adac64eb8b026c4b3b62c32f5/aim-1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/232c889adac64eb8b026c4b3b62c32f5/aim-2.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAimReview/232c889adac64eb8b026c4b3b62c32f5/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-7be99917853f4592af4669209c1c5b70/run.log",
+  "visual_review": true,
+  "packaged": true,
+  "visual_scope": "Three stationary pistol side views inspected; does not accept long-gun/finger/reload/continuous locomotion animation"
+}

@@ -1,0 +1,31 @@
+{
+  "build": 63,
+  "version": "0.63.0",
+  "source_commit": "7b0cf4a7ef2b462343ddec3602c64688964c7d68",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "machine_code_sha256": "4af37c0c790b7ed7d632814c7262d48eb3f029981382f6c72d24d52ae01dc729",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063.zip",
+  "zip_sha256": "805c7da029ba2633037578017b3ebe1fc88604bb71b14326c3519d9b8a4703aa",
+  "zip_bytes": 1316132357,
+  "dirty_source_inputs": {
+    "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
+    "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
+  },
+  "verification": [
+    "Packaged rendered pistol aim at0/+35/-35 degrees; gun error within1degree, hands travel49.6cm; side views inspected",
+    "Packaged pickups/combat/death persistence/rifle zoom/shotgun reload interruptions",
+    "Native holster/draw/reload interruption/walk/sprint/jump/crouch/remount regression",
+    "Native16 gate supports meet pavement; gate render inspected",
+    "ZIP CRC, signature and staged/installed machine code match"
+  ],
+  "remaining": [
+    "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+    "Broader freeplay, world art and performance acceptance",
+    "Voice listening/mix review pending",
+    "Not notarized or tested on another Mac"
+  ]
+}

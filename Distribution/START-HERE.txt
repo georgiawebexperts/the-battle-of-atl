@@ -103,3 +103,7 @@ Do not include passwords or other private information in screenshots/logs.
 UNINSTALL
 Quit the game, then move The Battle of ATL.app from Applications to Trash.
 This does not necessarily remove settings or saved-game data.
+
+Build {{BUILD}} update: on-foot firearms and both arms follow upward/downward aim.
+The 14th Street gate uprights now meet the pavement. Fine hand contact,
+long-gun animation, scenery and general gameplay polish remain in progress.

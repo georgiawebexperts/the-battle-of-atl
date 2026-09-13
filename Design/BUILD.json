@@ -1,9 +1,9 @@
 {
-  "build": 62,
-  "version": "0.62.0",
+  "build": 63,
+  "version": "0.63.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; spatial APD warning verified in packaged police encounter",
+  "status": "Early playtest; improved third-person aim and grounded entrance gate",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -14,7 +14,8 @@
     "Packaged Krog route485.77m completed both directions with zero wipeouts,6787/6787paved samples,500lit/0unlit tunnel samples,23moving cars and25walking people observed. Forced scooter scene present. One selected run, not all traffic or performance acceptance.",
     "Packaged Easy/Hard finish guards pass; installed cardinal phone hunt, recollection, two death resets, health and two ordered checkpoints pass. Existing market, traffic, story and other gameplay retained.",
     "Build061: readable police warning/countdown, original yellow/black taser, blended raised grip, muzzle-origin discharge with near-cover guard; prioritized 12 ammo pickups. Packaged police/ammo/wall tests pass. Voice and final animation/art remain unfinished.",
-    "Build062: spatial AI-generated Stop! APD! voice during two-second taser warning; six-second voice cooldown and death/run-end stop. Packaged actual audio playback and encounter checks pass. Listening/mix acceptance pending."
+    "Build062: spatial AI-generated Stop! APD! voice during two-second taser warning; six-second voice cooldown and death/run-end stop. Packaged actual audio playback and encounter checks pass. Listening/mix acceptance pending.",
+    "Build063: both firearm arms use length-preserving aiming solve; weapon follows control pitch. Packaged pistol level/up/down views verified; inventory and native movement regressions pass. Gate uprights fitted to pavement with lower rails."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -59,41 +60,43 @@
     "2026-09-13: Shotgun now has one muzzle flash/light per trigger pull instead of eight; shared light reduced to150/radius180 to preserve target, gun and hand readability. Editor build/full-shader rendered inventory pass. Staged059 installation held until corrected repack and visibility checks; installed058 unchanged.",
     "2026-09-13 player feedback: faster400/700 foot speeds; gentler eased bike yaw with no automatic steering drift; distant forward drone warning, persistence on foot and hit feedback. Native foot, both handling modes and protected-tutorial-skipped drone collision fixture pass. Mouse-turn issue, actual distant drone shooting, natural feel/visual review and package remain unaccepted. Installed058 unchanged.",
     "2026-09-13: Found double-attenuated on-foot mouse input (0.07 processed axis then pawn scaling). Reads raw mouse delta now; injected native input improves yaw3.39 to53.98deg with body/camera aligned. Build/probe pass. OS capture, sensitivity feel, swimming regression and package pending.",
-    "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending."
-  ],
-  "unreleased_code_changes": [
+    "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending.",
     "2026-09-13 [codex-maclaptop] Gate scenery repair: native survey found fixed-height 14th Street iron uprights floating up to16.97cm above pavement. Compiled constructor now uses per-post surveyed bases4cm into pavement, lower rail and strengthened end posts/base plates. Reproducible survey generates BattleGateSupport.h. Native check verifies all16 actual post bases against adjacent pavement; editor rendered police scene inspected and encounter regression passes. Source-only: desktop/share remain062; include in next grouped scenery build. Whole entrance accuracy, world art and movement/animation acceptance remain unfinished."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
-  "compiled_source": "046d84edff7ec2fd30d5cd502788fd1f2cb12bba",
-  "installation_report": "Tests/Results/2026-09-13-build062-install.json",
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
+  "compiled_source": "7b0cf4a7ef2b462343ddec3602c64688964c7d68",
+  "installation_report": "Tests/Results/2026-09-13-build063-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 62,
-    "version": "0.62.0",
-    "source_commit": "046d84edff7ec2fd30d5cd502788fd1f2cb12bba",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 061/The Battle of ATL.app",
+    "build": 63,
+    "version": "0.63.0",
+    "source_commit": "7b0cf4a7ef2b462343ddec3602c64688964c7d68",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062/The Battle of ATL.app",
     "locally_signed": true,
     "notarized": false,
     "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "58f23ac740a8d0a5c88bf964d98ea307798c8dc0862b677fbf0ac802a7e05409",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 062.zip",
-    "zip_sha256": "77d46eac221acc7364888cade11abbbd2543d88837505fd424a1bba65e96f720",
-    "zip_bytes": 1316128664,
+    "machine_code_sha256": "4af37c0c790b7ed7d632814c7262d48eb3f029981382f6c72d24d52ae01dc729",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 063.zip",
+    "zip_sha256": "805c7da029ba2633037578017b3ebe1fc88604bb71b14326c3519d9b8a4703aa",
+    "zip_bytes": 1316132357,
     "dirty_source_inputs": {
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     },
     "verification": [
-      "Packaged audio-enabled rendered police encounter: one 1.58-second warning, raised taser, cover rejection, recovery, panic and alert expiry",
-      "ZIP CRC, local signature and staged/installed machine code match"
+      "Packaged rendered pistol aim at0/+35/-35 degrees; gun error within1degree, hands travel49.6cm; side views inspected",
+      "Packaged pickups/combat/death persistence/rifle zoom/shotgun reload interruptions",
+      "Native holster/draw/reload interruption/walk/sprint/jump/crouch/remount regression",
+      "Native16 gate supports meet pavement; gate render inspected",
+      "ZIP CRC, signature and staged/installed machine code match"
     ],
     "remaining": [
-      "Voice mix/listening review pending",
-      "Further character/hand/animation/world quality work",
-      "Broader freeplay and performance acceptance",
+      "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
+      "Broader freeplay, world art and performance acceptance",
+      "Voice listening/mix review pending",
       "Not notarized or tested on another Mac"
     ]
   },
