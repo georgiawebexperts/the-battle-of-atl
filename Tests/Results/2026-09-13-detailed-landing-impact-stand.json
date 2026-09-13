@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 29.7,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-landing-impact-stand/idle.png",
+    "work/detailed-landing-impact-stand/drawn.png",
+    "work/detailed-landing-impact-stand/walk-a.png",
+    "work/detailed-landing-impact-stand/walk-b.png",
+    "work/detailed-landing-impact-stand/run.png",
+    "work/detailed-landing-impact-stand/jump.png",
+    "work/detailed-landing-impact-stand/land-contact.png",
+    "work/detailed-landing-impact-stand/land-settle.png",
+    "work/detailed-landing-impact-stand/crouch.png"
+  ],
+  "visual_review": "Settled landing frame inspected: lowered pelvis and bent knees absorb impact, body/clothes attached. Feet under HUD and continuous landing motion remain pending.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": true,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": true,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true
+}

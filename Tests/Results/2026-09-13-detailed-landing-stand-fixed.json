@@ -1,0 +1,51 @@
+{
+  "passed": false,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 29.7,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-landing-stand-fixed/idle.png",
+    "work/detailed-landing-stand-fixed/drawn.png",
+    "work/detailed-landing-stand-fixed/walk-a.png",
+    "work/detailed-landing-stand-fixed/walk-b.png",
+    "work/detailed-landing-stand-fixed/run.png",
+    "work/detailed-landing-stand-fixed/jump.png",
+    "work/detailed-landing-stand-fixed/land-contact.png",
+    "work/detailed-landing-stand-fixed/land-settle.png",
+    "work/detailed-landing-stand-fixed/crouch.png"
+  ],
+  "visual_review": "Stand selection passes; rejected visual timing:0.5s airborne lead-in. Contact/settle frames inspected; source profile identifies impact start.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": true,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": true,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true,
+  "functional_passed": true
+}

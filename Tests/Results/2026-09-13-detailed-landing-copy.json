@@ -1,0 +1,15 @@
+{
+  "copied": [
+    {
+      "asset": "Content/BattleRetarget/Ellison/CityLanding/M_Relaxed_Jump_F_Land_Stand_Light_Lfoot.uasset",
+      "sha256": "758ca61e0cd8f61d74005c6e305b7f18d3b601560a440ae8675b94c11eda212a",
+      "seconds": 3.8333332538604736
+    },
+    {
+      "asset": "Content/BattleRetarget/Ellison/CityLanding/M_Relaxed_Jump_F_Land_Run_Light_Lfoot.uasset",
+      "sha256": "bded4f95730f28fc927f7313a5bd8165bc75eb13f860fff3882f5178ddde2e57",
+      "seconds": 3.366666555404663
+    }
+  ],
+  "skeleton_byte_identical": true
+}

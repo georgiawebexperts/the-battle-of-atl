@@ -87,6 +87,9 @@ void ABattleRider::InitializeDetailedBodyPreview(){
  DetailedCrouchIdle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Neutral_Crouch_Idle_Loop")));
  DetailedCrouchWalk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Neutral_Crouch_Loop_F")));
  DetailedFall=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Relaxed_Jump_Loop_Fall")));
+ DetailedLandStand=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Ellison/CityLanding/M_Relaxed_Jump_F_Land_Stand_Light_Lfoot"));
+ DetailedLandRun=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Ellison/CityLanding/M_Relaxed_Jump_F_Land_Run_Light_Lfoot"));
+ if(!DetailedLandStand||!DetailedLandRun)return;
  if(!Mesh||!HairMesh||!DetailedIdle||!DetailedWalk||!DetailedRun||!DetailedCrouchIdle||!DetailedCrouchWalk||!DetailedFall)return;
  bDetailedBodyReview=FParse::Param(FCommandLine::Get(),TEXT("BattleFootBodyReview"));
  Body->SetSkinnedAssetAndUpdate(Mesh);Body->SetOwnerNoSee(!bDetailedBodyReview);Body->RefreshBoneTransforms();
@@ -98,6 +101,7 @@ void ABattleRider::InitializeDetailedBodyPreview(){
  GetCharacterMovement()->MaxWalkSpeed=200;GetCharacterMovement()->MaxWalkSpeedCrouched=150;
  bNativeCrowdRig=bDetailedPlayerRig=true;SetLocomotionClips(DetailedIdle,DetailedWalk,DetailedRun);
  if(bDetailedBodyReview){CameraArm->SetComponentTickEnabled(true);Camera->AttachToComponent(CameraArm,FAttachmentTransformRules::SnapToTargetNotIncludingScale,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;}
+ UE_LOG(LogTemp,Display,TEXT("DetailedLanding: loaded=2"));
  UE_LOG(LogTemp,Display,TEXT("DetailedFootPreview: body=%s outfit_parts=4 clips=6"),*Mesh->GetName());
 #endif
 }
@@ -109,7 +113,16 @@ void ABattleRider::AnimateBody(float Dt){
    UE_LOG(LogTemp,Display,TEXT("DetailedFootTransition: begin=%s bones=%d"),Falling?TEXT("airborne"):TEXT("landing"),DetailedTransitionPose.Num());
   }
   if(Falling&&!bDetailedFalling)SetBodySequence(DetailedFall,true);
-  else if(!Falling&&bDetailedFalling)StopBodySequence();
+  else if(!Falling&&bDetailedFalling){
+   StopBodySequence();
+   if(!bSwimming&&!bIsCrouched){
+    auto* Landing=!GetLastMovementInputVector().IsNearlyZero()&&GetVelocity().Size2D()>240.f?DetailedLandRun.Get():DetailedLandStand.Get();
+    // Both source clips touch down at0.5s; skip their airborne lead-in.
+    PlayBodyAction(Landing,{},.5f,Landing==DetailedLandRun.Get()?1.15f:1.4f);
+    UE_LOG(LogTemp,Display,TEXT("DetailedLanding: selected=%s speed=%.1f"),*Landing->GetName(),GetVelocity().Size2D());
+   }
+  }
+  if(bIsCrouched||bSwimming)PlayBodyAction(nullptr,{});
   bDetailedFalling=Falling;
   SetLocomotionClips(bIsCrouched?DetailedCrouchIdle:DetailedIdle,bIsCrouched?DetailedCrouchWalk:DetailedWalk,bIsCrouched?DetailedCrouchWalk:DetailedRun);
  }

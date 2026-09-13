@@ -76,7 +76,7 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
   return true;
  }
  if(!IdleAnimation||!WalkAnimation||!RunAnimation)return false;
- if(BodyAction){BodyActionClock+=Dt;if(BodyActionClock>=BodyAction->GetPlayLength())BodyAction=nullptr;else Clip(BodyAction);}
+ if(BodyAction){BodyActionClock+=Dt;if(BodyActionClock>=BodyActionEnd)BodyAction=nullptr;else Clip(BodyAction);}
  // Fill the cache before retaining references: a TMap growth may relocate values.
  Clip(IdleAnimation);Clip(WalkAnimation);Clip(RunAnimation);
  const auto& Idle=Clip(IdleAnimation);const auto& Walk=Clip(WalkAnimation);const auto& Run=Clip(RunAnimation);
@@ -99,10 +99,10 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
    const int32 ActionBone=BodyAction->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(Bones[I]);
    if(ActionBone>=0){
     const float Duration=BodyAction->GetPlayLength();
-    const float Weight=FMath::Min(FMath::Clamp(BodyActionClock/.12f,0.f,1.f),FMath::Clamp((Duration-BodyActionClock)/.25f,0.f,1.f));
+    const float Weight=FMath::Min(FMath::Clamp((BodyActionClock-BodyActionStart)/.12f,0.f,1.f),FMath::Clamp((BodyActionEnd-BodyActionClock)/.25f,0.f,1.f));
     FTransform ActionPose=Sample(Clip(BodyAction),ActionBone,FMath::Min(BodyActionClock/Duration,.99999f));
-    if(BodyActionFromPose.IsValidIndex(I)&&BodyActionClock<.3f){
-     FTransform Blended;Blended.Blend(BodyActionFromPose[I],ActionPose,FMath::Clamp(BodyActionClock/.3f,0.f,1.f));Pose[I]=Blended;
+    if(BodyActionFromPose.IsValidIndex(I)&&BodyActionClock-BodyActionStart<.3f){
+     FTransform Blended;Blended.Blend(BodyActionFromPose[I],ActionPose,FMath::Clamp((BodyActionClock-BodyActionStart)/.3f,0.f,1.f));Pose[I]=Blended;
     }else{FTransform Blended;Blended.Blend(Pose[I],ActionPose,Weight);Pose[I]=Blended;}
    }
   }
@@ -135,7 +135,12 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
 
 void APiedmontExplorer::SetLocomotionClips(UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Run){IdleAnimation=Idle;WalkAnimation=Walk;RunAnimation=Run;}
 
-void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose){BodyAction=Animation;BodyActionClock=0;BodyActionFromPose=FromPose;}
+void APiedmontExplorer::PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose,float StartTime,float EndTime){
+ BodyAction=Animation;BodyActionFromPose=FromPose;
+ const float Duration=Animation?Animation->GetPlayLength():0;
+ BodyActionStart=BodyActionClock=FMath::Clamp(StartTime,0.f,Duration);
+ BodyActionEnd=EndTime<0?Duration:FMath::Clamp(EndTime,BodyActionStart,Duration);
+}
 
 void APiedmontExplorer::SetBodySequence(UAnimSequence* Animation,bool bLoop){
  BodySequence=Animation;BodySequenceClock=0;bBodySequenceLoop=bLoop;bBodySequenceHeld=false;

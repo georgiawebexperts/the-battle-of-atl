@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 200.0,
+  "run_speed": 520.0,
+  "arm_swing_cm": 29.5,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-landing-selection-rejected/idle.png",
+    "work/detailed-landing-selection-rejected/drawn.png",
+    "work/detailed-landing-selection-rejected/walk-a.png",
+    "work/detailed-landing-selection-rejected/walk-b.png",
+    "work/detailed-landing-selection-rejected/run.png",
+    "work/detailed-landing-selection-rejected/jump.png",
+    "work/detailed-landing-selection-rejected/land-contact.png",
+    "work/detailed-landing-selection-rejected/land-settle.png",
+    "work/detailed-landing-selection-rejected/crouch.png"
+  ],
+  "visual_review": "Rejected landing selection: run clip chosen after movement release due retained airborne velocity. Contact/settle frames inspected, limbs attached; final landing motion unaccepted.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": true,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "landing_clips_loaded": true,
+  "landing_selected": [
+    "M_Relaxed_Jump_F_Land_Run_Light_Lfoot"
+  ],
+  "landing_run_requested": false,
+  "landing_matches_request": false,
+  "pose_transitions": [
+    [
+      "begin",
+      "airborne"
+    ],
+    [
+      "complete",
+      "airborne"
+    ],
+    [
+      "begin",
+      "landing"
+    ],
+    [
+      "complete",
+      "landing"
+    ]
+  ],
+  "pose_transitions_completed": true
+}

@@ -44,7 +44,7 @@ private:
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
 protected:
  virtual float AimedFieldOfView() const{return 65.f;}
- void PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose=TArray<FTransform>());
+ void PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose=TArray<FTransform>(),float StartTime=0,float EndTime=-1);
  // Full-body authored sequences keep sleeping/get-up poses independent of movement blending.
  void SetBodySequence(UAnimSequence* Animation,bool bLoop);
  void StopBodySequence();
@@ -71,7 +71,7 @@ private:
  float BodySequenceClock=0;
  bool bBodySequenceLoop=false,bBodySequenceHeld=false;
  UPROPERTY() TObjectPtr<UAnimSequence> BodyAction;
- float BodyActionClock=0;
+ float BodyActionClock=0,BodyActionStart=0,BodyActionEnd=0;
  TArray<FTransform> BodyActionFromPose;
  UPROPERTY() TObjectPtr<UAnimSequence> IdleAnimation;
  UPROPERTY() TObjectPtr<UAnimSequence> WalkAnimation;
