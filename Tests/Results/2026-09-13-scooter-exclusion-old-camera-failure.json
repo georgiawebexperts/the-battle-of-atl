@@ -2,9 +2,9 @@
   "review_map": false,
   "exit_code": 0,
   "checks": {
-    "passed": true,
+    "passed": false,
     "reason": "Actual Krog site: visible wait then offscreen assembly, two interactive poses, bystander and eleven scooter parts",
-    "offscreen_wait": true,
+    "offscreen_wait": false,
     "participants": 3,
     "ready": true,
     "skipped_empty": true
@@ -15,5 +15,5 @@
     "passed": true,
     "participants_checked": 3
   },
-  "passed": true
+  "passed": false
 }

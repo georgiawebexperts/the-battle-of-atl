@@ -11,13 +11,32 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
+#include "Misc/CommandLine.h"
+#include "Kismet/KismetSystemLibrary.h"
 ABattleScooterScene::ABattleScooterScene(){RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("Scene"));PrimaryActorTick.bCanEverTick=true;PrimaryActorTick.TickInterval=.1f;}
 bool ABattleScooterScene::IsOffscreen() const{
  auto* PC=GetWorld()->GetFirstPlayerController();if(!PC||!PC->GetPawn()||!PC->PlayerCameraManager)return false;
  if(FVector::Dist2D(PC->GetPawn()->GetActorLocation(),GetActorLocation())<3500)return false;
  const FVector ToScene=GetActorLocation()-PC->PlayerCameraManager->GetCameraLocation();
  // Entire conservative 5m scene sphere must be behind the camera, not just its origin.
- return FVector::DotProduct(ToScene,PC->PlayerCameraManager->GetCameraRotation().Vector()) < -500;
+ if(FVector::DotProduct(ToScene,PC->PlayerCameraManager->GetCameraRotation().Vector()) < -500)return true;
+ // A far-away scene can also be hidden by the city or terrain while ahead of
+ // the player. Check the whole conservative envelope, not just ground level.
+ FCollisionQueryParams Q(SCENE_QUERY_STAT(ScooterOcclusion),false,this);
+ Q.AddIgnoredActor(PC->GetPawn());
+ const FVector Eye=PC->PlayerCameraManager->GetCameraLocation();
+ // Also sample the people and scooter themselves: clear gaps between buildings
+ // must not be mistaken for an entirely hidden scene from corner tests alone.
+ for(const FVector Offset:{FVector(0,0,100),FVector(-40,-100,100),FVector(145,90,170),FVector(-110,100,30)}){
+  const FVector Point=GetActorLocation()+Offset;FHitResult Hit;
+  if(!GetWorld()->LineTraceSingleByObjectType(Hit,Eye,Point,FCollisionObjectQueryParams(ECC_WorldStatic),Q)||Hit.Distance>FVector::Dist(Eye,Point)-600)return false;
+ }
+ for(int X:{-1,1})for(int Y:{-1,1})for(int Z:{-1,1}){
+  const FVector Point=GetActorLocation()+FVector(X*500,Y*500,Z*500);
+  FHitResult Hit;
+  if(!GetWorld()->LineTraceSingleByObjectType(Hit,Eye,Point,FCollisionObjectQueryParams(ECC_WorldStatic),Q)||Hit.Distance>FVector::Dist(Eye,Point)-600)return false;
+ }
+ return true;
 }
 void ABattleScooterScene::EndPlay(const EEndPlayReason::Type Reason){
  for(auto P:Participants)if(IsValid(P)&&!P->IsActorBeingDestroyed())P->Destroy();
@@ -59,7 +78,22 @@ bool ABattleScooterScene::SpawnScene(){
  return true;
 }
 void ABattleScooterScene::Tick(float Dt){
- Super::Tick(Dt);if(GetWorld()->GetTimeSeconds()<3)return;
+ Super::Tick(Dt);
+#if !UE_BUILD_SHIPPING
+ // Observe the saved encounter at the real home start, without moving the player
+ // or substituting a staging camera. Force only selection so the rare branch runs.
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleScooterStartupCheck"))){
+  AppearanceChance=1;
+  if(bSceneReady||GetWorld()->GetTimeSeconds()>40){
+   const auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
+   const float Distance=Pawn?FVector::Dist2D(Pawn->GetActorLocation(),GetActorLocation()):0;
+   const bool Pass=bSceneReady&&Participants.Num()==3&&Distance>=3500&&IsOffscreen();
+   UE_LOG(LogTemp,Display,TEXT("ScooterStartupAudit: {\"passed\":%s,\"ready\":%s,\"participants\":%d,\"distance_cm\":%.1f,\"world_seconds\":%.2f}"),Pass?TEXT("true"):TEXT("false"),bSceneReady?TEXT("true"):TEXT("false"),Participants.Num(),Distance,GetWorld()->GetTimeSeconds());
+   SetActorTickEnabled(false);UKismetSystemLibrary::QuitGame(this,GetWorld()->GetFirstPlayerController(),EQuitPreference::Quit,false);return;
+  }
+ }
+#endif
+ if(GetWorld()->GetTimeSeconds()<3)return;
  auto* Mode=Cast<APiedmontRideMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded)return;
  if(!bChoiceMade){bChoiceMade=true;bSelected=FMath::FRand()<FMath::Clamp(AppearanceChance,0.f,1.f);if(!bSelected){SetActorTickEnabled(false);return;}}
  if(!bSpawned){if(!IsOffscreen())return;SetActorHiddenInGame(true);if(!SpawnScene()){AbortScene();return;}bSpawned=true;return;}

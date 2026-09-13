@@ -4,6 +4,7 @@
 #include "Components/CapsuleComponent.h"
 #include "PiedmontPedestrian.h"
 #include "Camera/CameraActor.h"
+#include "Camera/PlayerCameraManager.h"
 #include "GameFramework/PlayerController.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/World.h"
@@ -25,11 +26,16 @@ void TickBattleScooterSceneAudit(APlayerController* PC,float Dt){
   for(auto P:Owned)Clean&=!P.IsValid()||P->IsActorBeingDestroyed();Passed&=Clean;
   UE_LOG(LogTemp,Display,TEXT("ScooterCleanupAudit: {\"passed\":%s,\"participants_checked\":%d}"),Clean?TEXT("true"):TEXT("false"),ParticipantCount);
  UE_LOG(LogTemp,Display,TEXT("ScooterSceneAudit: {\"passed\":%s,\"reason\":\"%s\",\"offscreen_wait\":%s,\"participants\":%d,\"ready\":%s,\"skipped_empty\":%s}"),Passed?TEXT("true"):TEXT("false"),Reason,HiddenWait?TEXT("true"):TEXT("false"),ParticipantCount,Ready?TEXT("true"):TEXT("false"),Skipped.IsValid()&&!Skipped->bSelected&&Skipped->Participants.IsEmpty()?TEXT("true"):TEXT("false"));Stage=99;PC->ConsoleCommand(TEXT("quit"));};
- if(Stage==0){for(TActorIterator<ABattleScooterScene> Existing(PC->GetWorld());Existing;++Existing)Existing->Destroy();auto* C=PC->GetWorld()->SpawnActor<ACameraActor>(Site+FVector(5000,0,200),FRotator(0,180,0));Camera=C;
+ if(Stage==0){for(TActorIterator<ABattleScooterScene> Existing(PC->GetWorld());Existing;++Existing)Existing->Destroy();auto* C=PC->GetWorld()->SpawnActor<ACameraActor>(Site+FVector(550,0,300),FRotator(0,180,0));Camera=C;
   auto* A=PC->GetWorld()->SpawnActor<ABattleScooterScene>(Site,FRotator::ZeroRotator);A->AppearanceChance=1;Selected=A;
   auto* B=PC->GetWorld()->SpawnActor<ABattleScooterScene>(Site,FRotator::ZeroRotator);B->AppearanceChance=0;Skipped=B;Stage=1;Age=0;
  }
- if(Camera.IsValid())PC->SetViewTarget(Camera.Get());
+ if(Camera.IsValid()){PC->SetViewTarget(Camera.Get());if(PC->PlayerCameraManager)PC->PlayerCameraManager->UpdateCamera(0);}
+ if(Stage==1){
+  FHitResult Obstruction;FCollisionQueryParams Q;Q.AddIgnoredActor(PC->GetPawn());
+  if(PC->GetWorld()->LineTraceSingleByObjectType(Obstruction,Camera->GetActorLocation(),Site+FVector(0,0,100),FCollisionObjectQueryParams(ECC_WorldStatic),Q)){Finish(false,TEXT("Visibility fixture is occluded; cannot prove on-screen exclusion"));return;}
+ }
+
  if(!Selected.IsValid()||!Skipped.IsValid()){Finish(false,TEXT("Scene aborted during mapped placement"));return;}
  if(Stage==1&&Age>1){HiddenWait=Selected->bSelected&&!Selected->bSceneReady&&Selected->Participants.IsEmpty();Camera->SetActorRotation(FRotator::ZeroRotator);Stage=2;Age=0;return;}
  if(Stage==2&&Age>5){TArray<UStaticMeshComponent*> Parts;Selected->GetComponents(Parts);

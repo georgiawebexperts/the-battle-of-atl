@@ -1,0 +1,83 @@
+{
+  "passed": false,
+  "completedLegs": 0,
+  "travelCm": 18594.14,
+  "maxCenterlineErrorCm": 16.59,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 23381,
+    "paved": 23381
+  },
+  "lights": {
+    "lit_samples": 0,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 716,
+    "max_live_cars": 20,
+    "max_moving_cars": 20,
+    "nearby_samples": 239,
+    "nearest_car_cm": 382.4
+  },
+  "crowd_observed": {
+    "max_live_people": 29,
+    "max_walking_people": 23,
+    "nearby_samples": 619,
+    "nearest_person_cm": 62.0
+  },
+  "yield_diagnostics": [
+    "leg=0 elapsed=13.4 position=X=25271.972 Y=106536.827 Z=953.134 reason=person=PiedmontPedestrian_38 ahead=178.5 side=40.9 speed=0.0 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=0 elapsed=45.8 position=X=25064.399 Y=108079.642 Z=964.922 reason=person=PiedmontPedestrian_70 ahead=400.0 side=45.2 speed=0.0 pause=0.8 posed=0 dead=0 destination=0",
+    "leg=0 elapsed=125.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=BattleBike_0",
+    "leg=0 elapsed=130.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=BattleBike_0",
+    "leg=0 elapsed=135.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=BattleBike_0",
+    "leg=0 elapsed=140.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=BattleBike_0",
+    "leg=0 elapsed=145.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=PiedmontPedestrian_104",
+    "leg=0 elapsed=150.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=BattleBike_0",
+    "leg=0 elapsed=155.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=PiedmontPedestrian_29",
+    "leg=0 elapsed=160.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=person=PiedmontPedestrian_29 ahead=92.2 side=139.3 speed=74.5 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=0 elapsed=165.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=person=PiedmontPedestrian_25 ahead=53.1 side=32.0 speed=33.2 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=0 elapsed=170.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=BattleBike_0",
+    "leg=0 elapsed=175.9 position=X=28896.426 Y=115622.833 Z=1091.286 reason=car=BattleRoadCar_2 ahead=358.2 side=134.0 speed=0.0 crossing=0 obstacle=PiedmontPedestrian_106"
+  ],
+  "queue_diagnostics": [
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=PiedmontPedestrian_104",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=PiedmontPedestrian_29",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=PiedmontPedestrian_29",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=BattleBike_0",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle=",
+    "car=BattleRoadCar_2 position=X=29278.283 Y=115643.170 Z=1069.333 speed=0.0 finished=0 crossing=0 grounded=1 obstacle=PiedmontPedestrian_106",
+    "car=BattleRoadCar_4 position=X=30438.202 Y=115298.327 Z=1070.475 speed=0.0 finished=0 crossing=1 grounded=1 obstacle="
+  ],
+  "diagnostic_probe_only": false,
+  "exit_code": 0,
+  "map": "PiedmontWorld",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 206.08,
+    "max_grade": 0.0768
+  },
+  "scope": "Selected bidirectional route with live cars and autonomous pedestrians retained. Test rider brakes for people ahead using Space; no steering avoidance or rendered performance evaluation. Realistic handling uses test-driver Space braking before mapped bends and nearby cars; this is not player autopilot or complete handling acceptance. Forced scooter scene assembled before route traversal in the selected map; normal random selection and rendered appearance unverified.",
+  "scooter_scene": {
+    "passed": true,
+    "ready": true,
+    "visit_started": true,
+    "nearest_scene_cm": 2135.74,
+    "participants": 3
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "ready": false,
+  "participants": 0,
+  "distance_cm": 125922.5,
+  "world_seconds": 40.0,
+  "exit_code": 0,
+  "scope": "Saved main encounter, normal home spawn/opening and real player camera. Selection forced to 100% for this test only; no actor replacement, staging camera or player teleport. Does not test random frequency, visual fidelity or journey to Krog."
+}
