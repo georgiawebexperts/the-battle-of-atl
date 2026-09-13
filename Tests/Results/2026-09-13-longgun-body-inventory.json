@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "phase": 20,
+  "reason": "Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass",
+  "crates": 20,
+  "desired": 20,
+  "kills": 2,
+  "deaths": 1,
+  "difficulty": "Easy",
+  "expected_crates": 20,
+  "exit_code": 0,
+  "rendered_appearance_verified": false,
+  "editor": true,
+  "fixed_seed": true,
+  "sleeves_hidden_diagnostic": false,
+  "full_shaders": false,
+  "detailed_rider": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/inventory-e2d62a101ad6466e906c7478a8ad370c/run.log",
+  "images": [],
+  "detailed_assets_loaded": true,
+  "blood_spray": {
+    "impact_bursts": 2,
+    "remaining_bursts": 0
+  },
+  "shotgun_materials": [],
+  "shotgun_shaders_ready": false,
+  "material_fallbacks": []
+}

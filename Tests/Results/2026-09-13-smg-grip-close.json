@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 28.63,
+  "weapon": "smg",
+  "max_weapon_origin_to_hand_cm": 9.23,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-12c569f9d3fa4731b3806ea125af9144/aim-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-12c569f9d3fa4731b3806ea125af9144/aim-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-12c569f9d3fa4731b3806ea125af9144/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-12c569f9d3fa4731b3806ea125af9144/run.log",
+  "visual_review": true,
+  "packaged": false,
+  "visual_notes": "Level close view inspected: SMG at body and supported by hands; primitive weapon model and fine fingers remain rough."
+}

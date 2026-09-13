@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "BattleWeaponGrip.h"
 #include "BattlePlayerCrash.h"
 #include "BattleKnife.h"
 #include "Engine/SkeletalMesh.h"
@@ -16,7 +17,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 namespace {
-void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,bool LongGun){
+void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,int32 WeaponSlot){
+ const bool LongGun=WeaponSlot>0;
  auto* Mesh=Cast<USkeletalMesh>(Body->GetSkinnedAsset());if(!Mesh)return;
  const auto& Ref=Mesh->GetRefSkeleton();TArray<FTransform> Pose=Body->BoneSpaceTransforms;
  for(int I=0;I<Pose.Num();I++)if(Ref.GetParentIndex(I)>=0)Pose[I]=Pose[I]*Pose[Ref.GetParentIndex(I)];
@@ -40,8 +42,10 @@ void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weig
  };
  const int Shoulder=Ref.FindBoneIndex(TEXT("upperarm_r"));
  if(Shoulder>=0){
-  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*43.f-FVector::UpVector*8.f;
-  Solve(TEXT("r"),GripTarget);Solve(TEXT("l"),GripTarget+Forward*(LongGun?23.f:3.f)-Right*9.f-FVector::UpVector*2.f);
+  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*(LongGun?25.f:43.f)-FVector::UpVector*8.f;
+  Solve(TEXT("r"),GripTarget);
+  const FVector Delta=LongGun?BattleWeaponGrip::Left(WeaponSlot)-BattleWeaponGrip::Right(WeaponSlot):FVector(3,-9,-2);
+  Solve(TEXT("l"),GripTarget+Forward*Delta.X+Right*Delta.Y+FVector::CrossProduct(Forward,Right).GetSafeNormal()*Delta.Z);
  }
  const int Hand=Ref.FindBoneIndex(TEXT("hand_r")),Middle=Ref.FindBoneIndex(TEXT("middle_01_r")),Index=Ref.FindBoneIndex(TEXT("index_01_r")),Pinky=Ref.FindBoneIndex(TEXT("pinky_01_r"));
  if(Hand<0||Middle<0||Index<0||Pinky<0)return;
@@ -120,7 +124,7 @@ void ABattleRider::Tick(float Dt){
  const FRotator AimRotation=GetController()?GetControlRotation():GetActorRotation();
  const FVector AimForward=AimRotation.Vector();
  const FName Hand=bDetailedPlayerRig?FName(TEXT("hand_r")):FName(TEXT("Hand_R"));
- if(bDetailedPlayerRig&&bWeaponDrawn&&CurrentWeapon!=3&&!bSwimming)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(AimForward),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f),CurrentWeapon!=0);
+ if(bDetailedPlayerRig&&bWeaponDrawn&&CurrentWeapon!=3&&!bSwimming)PoseThirdPersonGrip(Body,Body->GetComponentTransform().InverseTransformVectorNoScale(AimForward),1.f-FMath::Clamp(DrawRemaining/.3f,0.f,1.f),CurrentWeapon);
  const FVector Grip=Body->GetSocketLocation(Hand);
  Weapon->SetWorldRotation((bWeaponDrawn?AimRotation:GetActorRotation())+GunRestRotation);
  FVector WeaponOrigin=Grip;
@@ -129,6 +133,13 @@ void ABattleRider::Tick(float Dt){
   if(Mesh)WeaponOrigin=Grip+AimForward*12-DetailedPistol->GetComponentTransform().TransformVector(Mesh->GetBounds().Origin);
  }
  Weapon->SetWorldLocation(WeaponOrigin);
+ if(CurrentWeapon>0&&CurrentWeapon!=3){
+  // Long-gun art uses receiver-centred origins, not a grip socket. Keep the
+  // weapon-specific wrist offset at Ellison's hand rather than at the camera.
+  const FVector Wrist=BattleWeaponGrip::Right(CurrentWeapon);
+  LongGun->SetWorldRotation(bWeaponDrawn?AimRotation:GetActorRotation());
+  LongGun->SetWorldLocation(Grip-LongGun->GetComponentQuat().RotateVector(Wrist));
+ }
  if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
 bool ABattleRider::MountBike(){return (!ParkedBike||ParkedBike->StunRemaining<=0)&&Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}

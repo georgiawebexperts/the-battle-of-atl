@@ -24,8 +24,8 @@ void ABattleMacController::TickFootAudit(float Dt){
  if(FootStage<0||GetWorld()->GetTimeSeconds()<5)return;
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* P=Cast<ABattleRider>(GetPawn());
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAimPitchAudit"))){
-  static int Phase=0;static float Clock=0;static FVector Hands[3];Clock+=Dt;
-  auto Finish=[&](bool Passed){UE_LOG(LogTemp,Display,TEXT("BattleAimPitchAudit: {\"passed\":%s,\"vertical_hand_travel_cm\":%.2f}"),Passed?TEXT("true"):TEXT("false"),Hands[1].Z-Hands[2].Z);FootStage=-1;ConsoleCommand(TEXT("quit"));};
+  static int Phase=0;static float Clock=0;static FVector Hands[3];static float MaxWeaponHandDistance=0;Clock+=Dt;
+  auto Finish=[&](bool Passed){UE_LOG(LogTemp,Display,TEXT("BattleAimPitchAudit: {\"passed\":%s,\"vertical_hand_travel_cm\":%.2f}"),Passed&&MaxWeaponHandDistance<80?TEXT("true"):TEXT("false"),Hands[1].Z-Hands[2].Z);UE_LOG(LogTemp,Display,TEXT("BattleAimWeaponDistance: %.2f"),MaxWeaponHandDistance);FootStage=-1;ConsoleCommand(TEXT("quit"));};
   if(Phase==0){
    auto* B=Cast<ABattleBike>(GetPawn());if(!B||!B->Dismount())return;P=Cast<ABattleRider>(GetPawn());
    if(M->Enemies)M->Enemies->bFreezeSpawns=true;
@@ -34,15 +34,17 @@ void ABattleMacController::TickFootAudit(float Dt){
    for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
    P->SetActorLocation(P->GetActorLocation()+FVector(1200,0,80));
    TInlineComponentArray<UMeshComponent*> ReviewMeshes(P);for(auto* Mesh:ReviewMeshes)Mesh->SetOnlyOwnerSee(false);
-   P->ToggleDrawWeapon();SetControlRotation(FRotator(0,0,0));Phase=1;Clock=-1.5f;return;
+   P->ToggleDrawWeapon();int Slot=0;FParse::Value(FCommandLine::Get(),TEXT("BattleAimWeapon="),Slot);if(Slot>0){B->GiveWeapon(Slot,60);P->SelectWeapon(Slot);}SetControlRotation(FRotator(0,0,0));Phase=1;Clock=-1.5f;return;
   }
   if(!P){Finish(false);return;}
   if(Clock>.8f&&Clock<1.2f){
    const float Pitch=Phase==1?0.f:Phase==2?35.f:-35.f;
-   const float Error=FMath::Abs(FMath::FindDeltaAngleDegrees(P->Weapon->GetComponentRotation().Pitch,Pitch));
+   const float Error=FMath::Abs(FMath::FindDeltaAngleDegrees((P->CurrentWeapon>0?P->LongGun->GetComponentRotation().Pitch:P->Weapon->GetComponentRotation().Pitch),Pitch));
    if(Error>1.f){Finish(false);return;}
-   Hands[Phase-1]=P->Body->GetSocketLocation(TEXT("hand_r"))-P->GetActorLocation();
-   const FVector Focus=P->GetActorLocation()+FVector(0,0,40),Eye=Focus+FVector(190,-240,65);
+   const FVector Hand=P->Body->GetSocketLocation(TEXT("hand_r"));
+   if(P->CurrentWeapon>0)MaxWeaponHandDistance=FMath::Max(MaxWeaponHandDistance,float(FVector::Dist(P->LongGun->GetComponentLocation(),Hand)));
+   Hands[Phase-1]=Hand-P->GetActorLocation();
+   const FVector Focus=P->GetActorLocation()+FVector(0,0,40),Eye=Focus+(FParse::Param(FCommandLine::Get(),TEXT("BattleAimClose"))?FVector(100,-120,35):FVector(190,-240,65));
    if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(Camera);
    FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/FString::Printf(TEXT("aim-%d.png"),Phase),false,false);
    Clock=1.2f;return;

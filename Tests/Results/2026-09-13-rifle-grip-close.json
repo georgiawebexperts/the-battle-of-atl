@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 28.69,
+  "weapon": "rifle",
+  "max_weapon_origin_to_hand_cm": 15.91,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-4db2aec6386149608667afd3432d64d5/aim-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-4db2aec6386149608667afd3432d64d5/aim-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-4db2aec6386149608667afd3432d64d5/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-4db2aec6386149608667afd3432d64d5/run.log",
+  "visual_review": true,
+  "packaged": false,
+  "visual_notes": "Level and upward close views inspected: rifle at shoulder/body with support hand under foregrip. Low-poly rifle art and fine fingers remain unfinished."
+}

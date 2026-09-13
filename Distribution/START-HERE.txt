@@ -105,10 +105,9 @@ UNINSTALL
 Quit the game, then move The Battle of ATL.app from Applications to Trash.
 This does not necessarily remove settings or saved-game data.
 
-Build {{BUILD}} update: twelve pistol ammo supplies sit beside green park bins.
-Bins stay after collection. Includes moving bike pedals, improved jump/landing
-poses, on-foot aiming and wall reverse recovery from recent builds. Fine hand
-contact, long-gun animation, scenery and gameplay polish remain in progress.
-
-Bike update: visible moving pedals/cranks, shoe alignment, a gentler jump pitch,
-and a short landing bend. Pedalling pauses during flight.
+Build {{BUILD}} update: rifles, shotguns and SMGs now follow Ellison's body
+and weapon-specific hand positions instead of floating near the camera.
+The skatepark has concrete detail and painted jump-bank guidance. Includes
+the recent ammo-bin landmarks, moving pedals and wall-reverse recovery.
+Fine finger contact, reload animation, weapon art and world polish remain
+in progress.

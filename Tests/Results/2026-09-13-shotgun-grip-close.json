@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "vertical_hand_travel_cm": 28.58,
+  "weapon": "shotgun",
+  "max_weapon_origin_to_hand_cm": 23.96,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-0967dc0257ea4b5abb4453508fd0a3b3/aim-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-0967dc0257ea4b5abb4453508fd0a3b3/aim-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-0967dc0257ea4b5abb4453508fd0a3b3/aim-3.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/aim-pitch-0967dc0257ea4b5abb4453508fd0a3b3/run.log",
+  "visual_review": true,
+  "packaged": false,
+  "visual_notes": "Level close view inspected: shotgun located at body and both hands; fine grip, pump-hand/reload motion and shoulder contact still need polish."
+}
