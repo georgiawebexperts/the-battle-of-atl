@@ -4,6 +4,11 @@
 #include "Misc/FileHelper.h"
 #if WITH_EDITOR
 #include "Editor.h"
+#include "Components/SkinnedMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Rendering/SkeletalMeshRenderData.h"
+#include "Rendering/SkeletalMeshLODRenderData.h"
+#include "Rendering/SkinWeightVertexBuffer.h"
 #include "AssetCompilingManager.h"
 #include "Containers/Ticker.h"
 #include "NavigationSystem.h"
@@ -199,5 +204,28 @@ void UPiedmontWorldTools::RebuildWaterZones(){
    It->MarkPackageDirty();
   }
  }
+#endif
+}
+
+bool UPiedmontWorldTools::ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples){
+ MinimumClearance=0;Samples=0;
+#if WITH_EDITOR
+ if(!Mesh||!Mesh->GetWorld())return false;
+ // A commandlet may not evaluate an offscreen leader before the first capture.
+ if(auto* Pose=Cast<USkeletalMeshComponent>(Mesh->LeaderPoseComponent.IsValid()?Mesh->LeaderPoseComponent.Get():Mesh)){Pose->TickAnimation(0.f,false);Pose->RefreshBoneTransforms();}
+ const auto* Data=Mesh->GetSkeletalMeshRenderData();
+ if(!Data||Data->LODRenderData.Num()==0)return false;
+ const auto& LOD=Data->LODRenderData[0];auto* Weights=Mesh->GetSkinWeightBuffer(0);
+ if(!Weights)return false;
+ float Min=TNumericLimits<float>::Max();FCollisionQueryParams Q;Q.AddIgnoredActor(Mesh->GetOwner());
+ for(uint32 I=0;I<LOD.GetNumVertices();I++){
+  const FVector Point=Mesh->GetComponentTransform().TransformPosition(FVector(USkinnedMeshComponent::GetSkinnedVertexPosition(Mesh,I,LOD,*Weights)));
+  FHitResult Hit;
+  if(!Mesh->GetWorld()->LineTraceSingleByChannel(Hit,Point+FVector(0,0,300),Point-FVector(0,0,500),ECC_WorldStatic,Q))return false;
+  Min=FMath::Min(Min,float(Point.Z-Hit.ImpactPoint.Z));Samples++;
+ }
+ if(!Samples)return false;MinimumClearance=Min;return true;
+#else
+ return false;
 #endif
 }

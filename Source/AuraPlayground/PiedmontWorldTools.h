@@ -3,6 +3,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "PiedmontWorldTools.generated.h"
 class ALandscape;
+class USkinnedMeshComponent;
 class UPhysicsAsset;
 UCLASS()
 class AURAPLAYGROUND_API UPiedmontWorldTools : public UBlueprintFunctionLibrary {
@@ -26,6 +27,9 @@ public:
  static void FinishEditorAssetLoading();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void TickSceneReview();
+ /** Editor review only: minimum skinned LOD0 vertex clearance above static ground. */
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Validation")
+ static bool ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void RebuildWaterZones();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")

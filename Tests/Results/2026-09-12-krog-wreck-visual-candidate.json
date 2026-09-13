@@ -1,16 +1,56 @@
 {
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/a6d20a726ea84975b26792b47af9c7c0/scene-0.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/a6d20a726ea84975b26792b47af9c7c0/scene-1.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/03d83dc278064f3bad696d4e9095e493/scene-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/03d83dc278064f3bad696d4e9095e493/scene-1.png"
   ],
   "map_saved": false,
   "diagnostic_fill_light": true,
   "hair_omitted_for_pose_review": true,
-  "visual_review": "Both views inspected. Reclined rider and kneeling helper communicate assistance better than low-reach alone. Not accepted for gameplay: ground alignment, duplicated outfits, primitive dark scooter, animation transitions and native hair attachment remain unfinished.",
+  "forced_character_lod": 0,
+  "pose_ground_scope": "Clothing and shoes LOD0; excludes face asset root geometry and does not prove physical support.",
+  "pose_ground": [
+    {
+      "role": "rider",
+      "adjustment_cm": 4.467999696731567,
+      "minimum_clearance_cm": 1.0,
+      "vertices_checked": 24899,
+      "part_clearances_before_cm": [
+        -3.4679996967315674,
+        -0.5299074649810791,
+        -1.6077520847320557
+      ]
+    },
+    {
+      "role": "helper",
+      "adjustment_cm": 2.691605567932129,
+      "minimum_clearance_cm": 0.9999999403953552,
+      "vertices_checked": 24899,
+      "part_clearances_before_cm": [
+        40.142032623291016,
+        -1.0724413394927979,
+        -1.691605567932129
+      ]
+    },
+    {
+      "role": "bystander",
+      "adjustment_cm": 3.897737503051758,
+      "minimum_clearance_cm": 1.0,
+      "vertices_checked": 24899,
+      "part_clearances_before_cm": [
+        83.8817367553711,
+        0.8677555918693542,
+        -2.897737503051758
+      ]
+    }
+  ],
+  "scooter_parts": 11,
+  "scooter_ground_adjustment_cm": 6.440836463722235,
+  "visual_review": "Both final views inspected. Scooter is more recognizable, but poses still read as hovering/unsupported and duplicate characters remain. Not accepted for gameplay integration.",
   "scope": "Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.",
-  "placement": {
-    "back_from_portal_cm": 1900,
-    "lateral_offset_cm": -1100,
-    "earlier_candidate_rejected": "Building collision had not finished loading before initial survey; now explicitly waits."
-  }
+  "remaining": [
+    "Resolve discrepancy between sampled clothing ground clearance and visible support/shadow appearance",
+    "Replace frozen get-up snapshots with believable injured/helper idle animation",
+    "Character variety and native hair attachment",
+    "Runtime rarity, visibility, collision and route clearance"
+  ]
 }
