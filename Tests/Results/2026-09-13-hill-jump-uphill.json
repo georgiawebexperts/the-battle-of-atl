@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "stage": 0,
+  "reason": "Hill source differs from installed ground",
+  "rewards": 0,
+  "peak_cm": 0.0,
+  "air_seconds": 0.0,
+  "hill": true,
+  "downhill": false,
+  "realistic": false,
+  "takeoff_diagnostics": [],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-dbff07a59d9745f0a0a5d5b11018c987.log"
+}

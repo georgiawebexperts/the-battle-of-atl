@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 143.49,
+  "air_seconds": 0.696,
+  "hill": true,
+  "downhill": false,
+  "realistic": false,
+  "takeoff_diagnostics": [
+    "grade=0.0781 floor=StaticMeshActor_8 position=X=-1323.466 Y=11627.349 Z=-64.452"
+  ],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-928937003f8c424f8d5b81ea279fd462.log"
+}

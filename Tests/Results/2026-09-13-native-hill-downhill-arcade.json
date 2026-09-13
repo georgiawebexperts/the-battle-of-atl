@@ -1,0 +1,27 @@
+{
+  "passed": false,
+  "stage": 2,
+  "reason": "J did not produce real airborne movement",
+  "rewards": 0,
+  "peak_cm": 0.0,
+  "air_seconds": 0.0,
+  "hill": true,
+  "downhill": true,
+  "realistic": false,
+  "takeoff_diagnostics": [
+    "grade=-0.0494 floor=StaticMeshActor_124 position=X=-3336.535 Y=11696.045 Z=79.869"
+  ],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-5d16251c8cf340768561a6dfb87876d1.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-7dc3d538b31f441b84e559ae4e3c715e/takeoff.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-7dc3d538b31f441b84e559ae4e3c715e/airborne.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-7dc3d538b31f441b84e559ae4e3c715e/landing.png"
+  ],
+  "captures_complete": false
+}

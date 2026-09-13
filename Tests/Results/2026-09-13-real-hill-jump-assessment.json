@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "report": "2026-09-13-native-hill-uphill-arcade.json",
+      "realistic": false,
+      "downhill": false,
+      "peak_cm": 143.49,
+      "air_seconds": 0.696,
+      "rewards": 1
+    },
+    {
+      "report": "2026-09-13-native-hill-downhill-render-fixed.json",
+      "realistic": false,
+      "downhill": true,
+      "peak_cm": 143.43,
+      "air_seconds": 0.816,
+      "rewards": 1
+    },
+    {
+      "report": "2026-09-13-native-hill-uphill-real.json",
+      "realistic": true,
+      "downhill": false,
+      "peak_cm": 107.78,
+      "air_seconds": 0.614,
+      "rewards": 1
+    },
+    {
+      "report": "2026-09-13-native-hill-downhill-real.json",
+      "realistic": true,
+      "downhill": true,
+      "peak_cm": 107.78,
+      "air_seconds": 0.707,
+      "rewards": 1
+    }
+  ],
+  "scope": "One installed30m paved slope, both directions and handling modes. Actual keyboard acceleration/J takeoff/landing; does not prove all hills/ramps or subjective handling quality.",
+  "visual_assessment": "Downhill airborne and landing frames reviewed. +10s reward readable. Rider airborne posture still stiff; not accepted as final animation.",
+  "coordinate_note": "Use native world spline positions. Retained park-path-network source Y orientation differs from live world; rejected first fixture.",
+  "capture_note": "First rendered run stalled1.3s at takeoff capture; moved capture to approach before acceleration; rerun passes. Hitch/frame-rate resilience not established."
+}
