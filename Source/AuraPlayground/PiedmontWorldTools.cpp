@@ -207,8 +207,8 @@ void UPiedmontWorldTools::RebuildWaterZones(){
 #endif
 }
 
-bool UPiedmontWorldTools::ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples){
- MinimumClearance=0;Samples=0;
+bool UPiedmontWorldTools::ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples,FVector& ClosestVertex,FVector& GroundPoint,FString& GroundActor){
+ MinimumClearance=0;Samples=0;ClosestVertex=GroundPoint=FVector::ZeroVector;GroundActor.Reset();
 #if WITH_EDITOR
  if(!Mesh||!Mesh->GetWorld())return false;
  // A commandlet may not evaluate an offscreen leader before the first capture.
@@ -222,7 +222,8 @@ bool UPiedmontWorldTools::ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,
   const FVector Point=Mesh->GetComponentTransform().TransformPosition(FVector(USkinnedMeshComponent::GetSkinnedVertexPosition(Mesh,I,LOD,*Weights)));
   FHitResult Hit;
   if(!Mesh->GetWorld()->LineTraceSingleByChannel(Hit,Point+FVector(0,0,300),Point-FVector(0,0,500),ECC_WorldStatic,Q))return false;
-  Min=FMath::Min(Min,float(Point.Z-Hit.ImpactPoint.Z));Samples++;
+  const float Gap=float(Point.Z-Hit.ImpactPoint.Z);
+  if(Gap<Min){Min=Gap;ClosestVertex=Point;GroundPoint=Hit.ImpactPoint;GroundActor=Hit.GetActor()?Hit.GetActor()->GetActorLabel():TEXT("None");}Samples++;
  }
  if(!Samples)return false;MinimumClearance=Min;return true;
 #else

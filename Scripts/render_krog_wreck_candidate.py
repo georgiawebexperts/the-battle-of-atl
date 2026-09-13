@@ -6,6 +6,7 @@ assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/Pied
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 r=json.loads((root/'Tests/Results/2026-09-12-krog-wreck-site-survey.json').read_text());site=next(c for c in r['candidates'] if c['back_from_portal_cm']==r['preferred_candidate']['back_from_portal_cm'] and c['lateral_offset_cm']==r['preferred_candidate']['lateral_offset_cm']);x,y=site['center_xy'];z=site['samples'][0]['z'];origin=unreal.Vector(x,y,z)
+SHOW_CONTACT_MARKERS=False
 base='/Game/CitySampleCrowd/Character/Male/';actors=[];bodies=[]
 roles=[('rider',(0,0),0,'/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B',.08),('helper',(-40,-100),0,'/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B',.30),('bystander',(145,90),150,'/Game/BattleRetarget/Mixamo/LowReachCandidate/MixamoLowReachReference_Anim',.03)]
 for role,(ox,oy),yaw,clip,fraction in roles:
@@ -30,7 +31,11 @@ for role,body,parts in bodies:
  verified=[unreal.PiedmontWorldTools.review_skin_ground_clearance(c) for c in parts[1:4]]
  assert all(v is not None for v in verified)
  minimum=min(v[0] for v in verified);assert abs(minimum-1)<.1,(role,minimum)
- pose_ground.append({'role':role,'adjustment_cm':adjustment,'minimum_clearance_cm':minimum,'vertices_checked':sum(v[1] for v in verified),'part_clearances_before_cm':[v[0] for v in samples]})
+ pose_ground.append({'role':role,'adjustment_cm':adjustment,'minimum_clearance_cm':minimum,'vertices_checked':sum(v[1] for v in verified),'part_clearances_before_cm':[v[0] for v in samples],'contacts':[{'mesh':str(c.get_skeletal_mesh_asset().get_name()),'vertex':[v[2].x,v[2].y,v[2].z],'surface':[v[3].x,v[3].y,v[3].z],'actor':v[4]} for c,v in zip(parts[1:4],verified)]})
+# Temporary markers show sampled clothing/footwear contacts in diagnostic views.
+for role in (pose_ground if SHOW_CONTACT_MARKERS else []):
+ for contact in role['contacts']:
+  a=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(*contact['vertex']));a.set_actor_label('Contact marker');c=a.static_mesh_component;c.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Sphere'));c.set_collision_enabled(unreal.CollisionEnabled.NO_COLLISION);c.set_material(0,unreal.load_asset('/Game/BattleForTheA/Environment/KrogIncident/M_ScooterTrim'));a.set_actor_scale3d(unreal.Vector(.06,.06,.06))
 # Original scooter finishes are saved assets; the scene actors remain transient.
 materials={}
 for name,color,rough,metal in [('Metal',(.38,.42,.46),.28,.85),('Trim',(.16,.5,.025),.5,0)]:
@@ -64,7 +69,7 @@ for sky in ea.get_all_level_actors():
  if isinstance(sky,unreal.SkyLight):
   sky.get_component_by_class(unreal.SkyLightComponent).set_editor_property('real_time_capture',False);sky.get_component_by_class(unreal.SkyLightComponent).recapture_sky()
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
-fill=ea.spawn_actor_from_class(unreal.PointLight,origin+unreal.Vector(250,-250,350));light=fill.get_component_by_class(unreal.PointLightComponent);light.set_intensity(100);light.set_editor_property('attenuation_radius',1800);light.set_cast_shadows(True)
+fill=ea.spawn_actor_from_class(unreal.PointLight,origin+unreal.Vector(250,-250,350));light=fill.get_component_by_class(unreal.PointLightComponent);light.set_intensity(100);light.set_editor_property('attenuation_radius',1800);light.set_cast_shadows(True);light.set_editor_property('shadow_bias',0.15);light.set_editor_property('shadow_slope_bias',0.3);light.set_editor_property('contact_shadow_length',0.03);light.set_editor_property('shadow_resolution_scale',4.0)
 images=[]
 offsets=[];sightlines=[]
 for angle in range(0,360,30):
@@ -78,5 +83,5 @@ for i,offset in enumerate((offsets[0],offsets[len(offsets)//2])):
  eye=origin+offset;cam.set_actor_location(eye,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(eye,origin+unreal.Vector(0,0,60)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();capture.capture_scene()
  name=f'scene-{i}.png';unreal.RenderingLibrary.export_render_target(world,target,str(out),name);images.append(str(out/name))
-report={'images':images,'map_saved':False,'diagnostic_fill_light':True,'hair_omitted_for_pose_review':True,'forced_character_lod':0,'pose_ground_scope':'Clothing and shoes LOD0; excludes face asset root geometry and does not prove physical support.','pose_ground':pose_ground,'scooter_parts':len(scooter),'scooter_ground_adjustment_cm':raise_by,'visual_review':'pending','scope':'Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.'}
+report={'images':images,'map_saved':False,'diagnostic_fill_light':True,'contact_markers':SHOW_CONTACT_MARKERS,'diagnostic_shadow_settings':{'bias':.15,'slope_bias':.3,'contact_length':.03,'resolution_scale':4.0},'hair_omitted_for_pose_review':True,'forced_character_lod':0,'pose_ground_scope':'Clothing and shoes LOD0; excludes face asset root geometry and does not prove physical support.','pose_ground':pose_ground,'scooter_parts':len(scooter),'scooter_ground_adjustment_cm':raise_by,'visual_review':'pending','scope':'Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.'}
 (root/'Tests/Results/2026-09-12-krog-wreck-visual-candidate.json').write_text(json.dumps(report,indent=2)+'\n')

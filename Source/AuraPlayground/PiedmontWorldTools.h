@@ -29,7 +29,7 @@ public:
  static void TickSceneReview();
  /** Editor review only: minimum skinned LOD0 vertex clearance above static ground. */
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Validation")
- static bool ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples);
+ static bool ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples,FVector& ClosestVertex,FVector& GroundPoint,FString& GroundActor);
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void RebuildWaterZones();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")

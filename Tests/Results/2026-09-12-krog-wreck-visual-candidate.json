@@ -1,7 +1,7 @@
 {
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/03d83dc278064f3bad696d4e9095e493/scene-0.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/03d83dc278064f3bad696d4e9095e493/scene-1.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/e36bce3a759f4f1681c7011370ccdbd8/scene-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/e36bce3a759f4f1681c7011370ccdbd8/scene-1.png"
   ],
   "map_saved": false,
   "diagnostic_fill_light": true,
@@ -18,6 +18,50 @@
         -3.4679996967315674,
         -0.5299074649810791,
         -1.6077520847320557
+      ],
+      "contacts": [
+        {
+          "mesh": "m_tal_nrw_crewneck",
+          "vertex": [
+            30311.10722756976,
+            114013.57624117647,
+            1110.6728162523086
+          ],
+          "surface": [
+            30311.10666700015,
+            114013.57641581872,
+            1109.6728162563
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "mesh": "m_tal_nrw_jeans",
+          "vertex": [
+            30343.55145907992,
+            114045.23439375673,
+            1114.0994267817314
+          ],
+          "surface": [
+            30343.55089628927,
+            114045.23456623175,
+            1110.1613345599173
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "mesh": "m_tal_nrw_loafers",
+          "vertex": [
+            30362.575172668636,
+            114097.7144629172,
+            1114.3573431130226
+          ],
+          "surface": [
+            30362.574608575676,
+            114097.71463179958,
+            1111.4970954595044
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
       ]
     },
     {
@@ -29,6 +73,50 @@
         40.142032623291016,
         -1.0724413394927979,
         -1.691605567932129
+      ],
+      "contacts": [
+        {
+          "mesh": "m_tal_nrw_crewneck",
+          "vertex": [
+            30260.692549827087,
+            113935.16417488681,
+            1151.1871292612473
+          ],
+          "surface": [
+            30260.69199270872,
+            113935.16435489692,
+            1108.3534918919204
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "mesh": "m_tal_nrw_jeans",
+          "vertex": [
+            30297.437964560973,
+            113939.28935227024,
+            1109.3840008995453
+          ],
+          "surface": [
+            30297.43740492712,
+            113939.28953199794,
+            1107.7648366899364
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "mesh": "m_tal_nrw_loafers",
+          "vertex": [
+            30324.638595702636,
+            113976.28730187046,
+            1109.3617208025375
+          ],
+          "surface": [
+            30324.638034206706,
+            113976.28747906539,
+            1108.3617208447392
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
       ]
     },
     {
@@ -40,17 +128,67 @@
         83.8817367553711,
         0.8677555918693542,
         -2.897737503051758
+      ],
+      "contacts": [
+        {
+          "mesh": "m_tal_nrw_crewneck",
+          "vertex": [
+            30475.500227687386,
+            114161.90273765998,
+            1200.4413266052152
+          ],
+          "surface": [
+            30475.49965586391,
+            114161.90290214823,
+            1112.6618493132437
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "mesh": "m_tal_nrw_jeans",
+          "vertex": [
+            30468.58385122642,
+            114156.42561022661,
+            1117.2347006667997
+          ],
+          "surface": [
+            30468.583279876417,
+            114156.42577508981,
+            1112.469207553022
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        },
+        {
+          "mesh": "m_tal_nrw_loafers",
+          "vertex": [
+            30477.312121586492,
+            114161.94962217519,
+            1113.6634983886624
+          ],
+          "surface": [
+            30477.31154963898,
+            114161.94978666023,
+            1112.6634983353065
+          ],
+          "actor": "USGS Atlanta terrain + authored underwater basin"
+        }
       ]
     }
   ],
   "scooter_parts": 11,
   "scooter_ground_adjustment_cm": 6.440836463722235,
-  "visual_review": "Both final views inspected. Scooter is more recognizable, but poses still read as hovering/unsupported and duplicate characters remain. Not accepted for gameplay integration.",
+  "visual_review": "Both final views inspected. Contact appearance improved after diagnostic shadow correction without further character-height changes. Frozen poses and duplicate characters remain provisional; not full scene/gameplay acceptance.",
   "scope": "Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.",
-  "remaining": [
-    "Resolve discrepancy between sampled clothing ground clearance and visible support/shadow appearance",
-    "Replace frozen get-up snapshots with believable injured/helper idle animation",
-    "Character variety and native hair attachment",
-    "Runtime rarity, visibility, collision and route clearance"
+  "contact_markers": false,
+  "diagnostic_shadow_settings": {
+    "bias": 0.15,
+    "slope_bias": 0.3,
+    "contact_length": 0.03,
+    "resolution_scale": 4.0
+  },
+  "diagnosis": "Nine per-mesh minimum-clearance points recorded, all on USGS terrain. Markers align with rendered clothing/shoes. Changing diagnostic light shadow settings reduces apparent hovering; earlier pose-evaluation hypothesis did not explain it.",
+  "diagnostic_comparison_images": [
+    "work/krog-wreck-review/7c93f3e3736145fb8627a3ddc4e94dd2/scene-1.png",
+    "work/krog-wreck-review/7a43161628604ac7b2141c82ca2dfeb1/scene-1.png"
   ]
 }
