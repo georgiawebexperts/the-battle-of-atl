@@ -1,6 +1,9 @@
-#include "BattleBike.h"
 #include "BattleDetailedRider.h"
+#include "BattleBike.h"
 #include "BattleRider.h"
+#include "Animation/AnimSequence.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -66,4 +69,44 @@ void ABattleRider::InitializeDetailedArmsPreview(){
  Part->SetOnlyOwnerSee(true);Part->SetCastShadow(false);Part->SetBoundsScale(10);Part->SetLeaderPoseComponent(FirstPersonArms,true,false);Part->RegisterComponent();
  UE_LOG(LogTemp,Display,TEXT("DetailedArmsPreview: hands=%s sleeves=%s"),*Hands->GetName(),*Sleeves->GetName());
 #endif
+}
+
+void ABattleRider::InitializeDetailedBodyPreview(){
+#if !UE_BUILD_SHIPPING
+ if(!FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider")))return;
+ const FString Base=TEXT("/Game/CitySampleCrowd/Character/Male/");
+ const FString MeshRoot=Base+TEXT("NormalWeight/Meshes/m_tal_nrw_");
+ auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
+ auto* HairMesh=LoadObject<UStaticMesh>(nullptr,*(Base+TEXT("m_001/Hair/Hair/Hair_S_AfroFade_CardsMesh_Group0_LOD0")));
+ TArray<USkeletalMesh*> Parts;
+ for(const FString& Path:TArray<FString>{MeshRoot+TEXT("crewneck"),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),Base+TEXT("m_001/Face/m_001_nrw_FaceMesh")}){auto* Part=LoadObject<USkeletalMesh>(nullptr,*Path);if(!Part)return;Parts.Add(Part);}
+ const FString AnimRoot=TEXT("/Game/BattleRetarget/Ellison/CityLocomotion/");
+ DetailedIdle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Relaxed_Stand_Idle_Loop")));
+ DetailedWalk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Relaxed_Walk_Loop_F")));
+ DetailedRun=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Relaxed_Run_Loop_F")));
+ DetailedCrouchIdle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Neutral_Crouch_Idle_Loop")));
+ DetailedCrouchWalk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Neutral_Crouch_Loop_F")));
+ DetailedFall=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("M_Relaxed_Jump_Loop_Fall")));
+ if(!Mesh||!HairMesh||!DetailedIdle||!DetailedWalk||!DetailedRun||!DetailedCrouchIdle||!DetailedCrouchWalk||!DetailedFall)return;
+ bDetailedBodyReview=FParse::Param(FCommandLine::Get(),TEXT("BattleFootBodyReview"));
+ Body->SetSkinnedAssetAndUpdate(Mesh);Body->SetOwnerNoSee(!bDetailedBodyReview);Body->RefreshBoneTransforms();
+ for(int I=0;I<Parts.Num();I++){
+  auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("DetailedFootPart%d"),I));AddInstanceComponent(Part);Part->SetupAttachment(Body);
+  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetOwnerNoSee(!bDetailedBodyReview);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
+ }
+ auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedFootHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetOwnerNoSee(!bDetailedBodyReview);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
+ bNativeCrowdRig=bDetailedPlayerRig=true;SetLocomotionClips(DetailedIdle,DetailedWalk,DetailedRun);
+ if(bDetailedBodyReview){CameraArm->SetComponentTickEnabled(true);Camera->AttachToComponent(CameraArm,FAttachmentTransformRules::SnapToTargetNotIncludingScale,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;}
+ UE_LOG(LogTemp,Display,TEXT("DetailedFootPreview: body=%s outfit_parts=4 clips=6"),*Mesh->GetName());
+#endif
+}
+void ABattleRider::AnimateBody(float Dt){
+ if(bDetailedPlayerRig){
+  const bool Falling=GetCharacterMovement()->IsFalling()&&!bSwimming;
+  if(Falling&&!bDetailedFalling)SetBodySequence(DetailedFall,true);
+  else if(!Falling&&bDetailedFalling)StopBodySequence();
+  bDetailedFalling=Falling;
+  SetLocomotionClips(bIsCrouched?DetailedCrouchIdle:DetailedIdle,bIsCrouched?DetailedCrouchWalk:DetailedWalk,bIsCrouched?DetailedCrouchWalk:DetailedRun);
+ }
+ APiedmontExplorer::AnimateBody(Dt);
 }

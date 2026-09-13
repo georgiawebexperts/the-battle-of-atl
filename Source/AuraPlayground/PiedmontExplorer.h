@@ -59,6 +59,7 @@ private:
  bool bTriggerHeld=false;
  float FireCooldown=0;
 protected:
+ bool bDetailedPlayerRig=false;
  virtual void AnimateBody(float Dt);
 private:
  void UpdateSwimming(float Dt);

@@ -4,7 +4,7 @@
 #include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 void ABattleRider::PoseArms(float Dt){
- FirstPersonArms->SetVisibility(Health>0&&!bSwimming,true);
+ FirstPersonArms->SetVisibility(Health>0&&!bSwimming&&!bDetailedBodyReview,true);
  ArmPoseBlend=FMath::FInterpTo(ArmPoseBlend,(bWeaponDrawn||MeleeRemaining>0)?1.f:0.f,Dt,12);if(ArmRest.IsEmpty())return;TArray<FTransform> Pose=ArmRest;
  const bool Detailed=ArmNames.Contains(TEXT("pelvis"));
  auto Index=[&](FName Name){return ArmNames.IndexOfByKey(BattleDetailedBone(Name,Detailed));};

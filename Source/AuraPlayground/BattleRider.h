@@ -66,6 +66,15 @@ private:
  FRotator GunRestRotation;
  void PoseArms(float Dt);
  void InitializeDetailedArmsPreview();
+ void InitializeDetailedBodyPreview();
+ virtual void AnimateBody(float Dt) override;
+ bool bDetailedBodyReview=false,bDetailedFalling=false;
+ UPROPERTY() TObjectPtr<UAnimSequence> DetailedIdle;
+ UPROPERTY() TObjectPtr<UAnimSequence> DetailedWalk;
+ UPROPERTY() TObjectPtr<UAnimSequence> DetailedRun;
+ UPROPERTY() TObjectPtr<UAnimSequence> DetailedCrouchIdle;
+ UPROPERTY() TObjectPtr<UAnimSequence> DetailedCrouchWalk;
+ UPROPERTY() TObjectPtr<UAnimSequence> DetailedFall;
  TArray<FTransform> ArmRest;TArray<int32> ArmParents;TArray<FName> ArmNames;
  float SwayTime=0;
  float AimBlend=0,ArmPoseBlend=0,EmptyArmMotion=0;

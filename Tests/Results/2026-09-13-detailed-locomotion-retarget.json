@@ -1,0 +1,38 @@
+{
+  "source": "/Game/Characters/UEFN_Mannequin/Meshes/SKM_UEFN_Mannequin.SKM_UEFN_Mannequin",
+  "target": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body.m_tal_nrw_body",
+  "retargeter": "/Game/MetaHumans/Common/Common/Rigs/RTG_UEFN_to_Metahuman_nrw.RTG_UEFN_to_Metahuman_nrw",
+  "clips": [
+    {
+      "path": "/Game/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Stand_Idle_Loop.M_Relaxed_Stand_Idle_Loop",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 10.0
+    },
+    {
+      "path": "/Game/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Walk_Loop_F.M_Relaxed_Walk_Loop_F",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 4.099999904632568
+    },
+    {
+      "path": "/Game/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Run_Loop_F.M_Relaxed_Run_Loop_F",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 2.9000000953674316
+    },
+    {
+      "path": "/Game/BattleRetarget/Ellison/CityLocomotion/M_Neutral_Crouch_Idle_Loop.M_Neutral_Crouch_Idle_Loop",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 10.0
+    },
+    {
+      "path": "/Game/BattleRetarget/Ellison/CityLocomotion/M_Neutral_Crouch_Loop_F.M_Neutral_Crouch_Loop_F",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 3.700000047683716
+    },
+    {
+      "path": "/Game/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Jump_Loop_Fall.M_Relaxed_Jump_Loop_Fall",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "length": 3.3333332538604736
+    }
+  ],
+  "scope": "Retargeted copies only; not integrated or visually accepted."
+}

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 30.7,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-foot-fps/idle.png",
+    "work/detailed-foot-fps/drawn.png",
+    "work/detailed-foot-fps/walk-a.png",
+    "work/detailed-foot-fps/walk-b.png",
+    "work/detailed-foot-fps/run.png",
+    "work/detailed-foot-fps/jump.png",
+    "work/detailed-foot-fps/crouch.png"
+  ],
+  "visual_review": "Inspected idle/jump/crouch for full-body clipping (none visible) and run for detailed hands/sleeves (visible). Close weapon grip and continuous motion remain unaccepted.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": false,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true
+}

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 30.8,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-foot-root/idle.png",
+    "work/detailed-foot-root/drawn.png",
+    "work/detailed-foot-root/walk-a.png",
+    "work/detailed-foot-root/walk-b.png",
+    "work/detailed-foot-root/run.png",
+    "work/detailed-foot-root/jump.png",
+    "work/detailed-foot-root/crouch.png"
+  ],
+  "visual_review": "Inspected jump, two movement frames and crouch: body/clothing attached and visible; authored fall no longer displaces body. Continuous cadence, launch/landing blend, feet partly hidden by HUD, and weapon posture remain unaccepted.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": true,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "jump_hip_offset_cm": [
+    -20.118,
+    3.514,
+    -3.185
+  ]
+}

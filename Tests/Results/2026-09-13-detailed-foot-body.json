@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "reason": "Holstered dismount, G draw/holster, protected firing, walking arms, sprint, jump, crouch clearance and remount pass",
+  "walk_speed": 520.0,
+  "run_speed": 850.0,
+  "arm_swing_cm": 30.8,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-foot-body-initial/idle.png",
+    "work/detailed-foot-body-initial/drawn.png",
+    "work/detailed-foot-body-initial/walk-a.png",
+    "work/detailed-foot-body-initial/walk-b.png",
+    "work/detailed-foot-body-initial/run.png",
+    "work/detailed-foot-body-initial/jump.png",
+    "work/detailed-foot-body-initial/crouch.png"
+  ],
+  "visual_review": "Rejected: body disappears during jump; idle/run/crouch body present. Continuous movement and feet not accepted.",
+  "editor": true,
+  "detailed_rider_preview": true,
+  "full_body_review": true,
+  "detailed_arms_loaded": true,
+  "detailed_body_loaded": true,
+  "functional_passed": true
+}

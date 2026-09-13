@@ -1,4 +1,5 @@
 #include "PiedmontExplorer.h"
+#include "BattleDetailedRider.h"
 #include "Animation/AnimSequence.h"
 #include "PiedmontBike.h"
 #include "PiedmontCombat.h"
@@ -98,7 +99,7 @@ void APiedmontExplorer::AnimateBody(float Dt){
  TArray<FTransform> Pose=RestPose;
  bAuthoredLocomotion=!bSwimming&&SampleLocomotion(Dt,Pose);
  for(int32 I=0;I<Pose.Num();++I)if(Parents[I]>=0)Pose[I]=Pose[I]*Pose[Parents[I]];
- auto Index=[&](const TCHAR* Name){return Bones.IndexOfByKey(FName(Name));};
+ auto Index=[&](const TCHAR* Name){return Bones.IndexOfByKey(BattleDetailedBone(FName(Name),bDetailedPlayerRig));};
  auto Descendant=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Parents[I];}return false;};
  auto MoveBranch=[&](int Root,FVector Target,FQuat Rotation){
   if(Root<0)return;const FVector Old=Pose[Root].GetLocation();

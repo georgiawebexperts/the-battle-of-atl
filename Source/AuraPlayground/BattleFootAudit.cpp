@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattleDetailedRider.h"
 #include "BattleZombie.h"
 #include "PiedmontPedestrian.h"
 #include "PiedmontTrafficDirector.h"
@@ -40,11 +41,15 @@ void ABattleMacController::TickFootAudit(float Dt){
  else if(FootStage==4){
   Key(EKeys::G,false);Key(EKeys::W,true);
   CHECKFOOT(!P->bWeaponDrawn&&!P->Fire(),"Holstering did not prevent firing");
-  FootArmMin=FMath::Min(FootArmMin,P->FirstPersonArms->GetBoneLocationByName(TEXT("Hand_R"),EBoneSpaces::ComponentSpace).Y);FootArmMax=FMath::Max(FootArmMax,P->FirstPersonArms->GetBoneLocationByName(TEXT("Hand_R"),EBoneSpaces::ComponentSpace).Y);
+  FootArmMin=FMath::Min(FootArmMin,P->FirstPersonArms->GetBoneLocationByName(BattleDetailedBone(TEXT("Hand_R"),FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))),EBoneSpaces::ComponentSpace).Y);FootArmMax=FMath::Max(FootArmMax,P->FirstPersonArms->GetBoneLocationByName(BattleDetailedBone(TEXT("Hand_R"),FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))),EBoneSpaces::ComponentSpace).Y);
   if(FootClock>.45f&&FootCaptures==0){Capture(TEXT("walk-a"));FootCaptures++;}if(FootClock>.85f&&FootCaptures==1){Capture(TEXT("walk-b"));FootCaptures++;}
   if(FootClock>1.3f){FootWalkSpeed=P->GetVelocity().Size2D();CHECKFOOT(FootWalkSpeed>450&&FVector::Dist2D(P->GetActorLocation(),FootStart)>300&&FootArmMax-FootArmMin>15,"Walking or empty-hand swing failed");Key(EKeys::LeftShift,true);Advance(5);}
  }else if(FootStage==5&&FootClock>1){FootRunSpeed=P->GetVelocity().Size2D();CHECKFOOT(FootRunSpeed>FootWalkSpeed*1.3f&&!P->bWeaponDrawn,"Sprint did not accelerate hands-free");Capture(TEXT("run"));FootJumpBase=P->GetActorLocation().Z;Key(EKeys::SpaceBar,true);Advance(6);}
- else if(FootStage==6&&FootClock>.3f){CHECKFOOT(P->GetCharacterMovement()->IsFalling()&&P->GetActorLocation().Z>FootJumpBase+30,"Space did not jump");Capture(TEXT("jump"));Key(EKeys::SpaceBar,false);Key(EKeys::W,false);Key(EKeys::LeftShift,false);Advance(7);}
+ else if(FootStage==6&&FootClock>.3f){CHECKFOOT(P->GetCharacterMovement()->IsFalling()&&P->GetActorLocation().Z>FootJumpBase+30,"Space did not jump");if(FParse::Param(FCommandLine::Get(),TEXT("BattleDetailedRider"))){
+ const FVector Hip=P->Body->GetBoneLocationByName(TEXT("pelvis"),EBoneSpaces::WorldSpace);
+ UE_LOG(LogTemp,Display,TEXT("DetailedFootJump: hip_offset=%s"),*(Hip-P->GetActorLocation()).ToString());
+ CHECKFOOT(FVector::Dist(Hip,P->GetActorLocation())<130,"Jump animation displaced body outside player capsule");
+ }Capture(TEXT("jump"));Key(EKeys::SpaceBar,false);Key(EKeys::W,false);Key(EKeys::LeftShift,false);Advance(7);}
  else if(FootStage==7&&FootClock>1.2f){CHECKFOOT(P->GetCharacterMovement()->IsMovingOnGround(),"Jump did not land");Key(EKeys::C,true);Advance(8);}
  else if(FootStage==8&&FootClock>.4f){Key(EKeys::C,false);CHECKFOOT(P->bIsCrouched&&P->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()<60&&P->Camera->GetRelativeLocation().Z<50,"Crouch did not lower capsule and camera");Capture(TEXT("crouch"));Key(EKeys::LeftShift,true);Key(EKeys::W,true);Advance(9);}
  else if(FootStage==9&&FootClock>.6f){CHECKFOOT(P->GetVelocity().Size2D()<260,"Sprint bypassed crouch speed");Key(EKeys::W,false);Key(EKeys::LeftShift,false);P->GetCharacterMovement()->StopMovementImmediately();

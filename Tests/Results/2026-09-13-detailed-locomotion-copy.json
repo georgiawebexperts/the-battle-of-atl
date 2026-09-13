@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Stand_Idle_Loop.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Stand_Idle_Loop.uasset",
+      "sha256": "11cd1bd6146cb7369fd7a4b9d7f8026f8bc9ce44cc789989fdedd8684e5784c4"
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Walk_Loop_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Walk_Loop_F.uasset",
+      "sha256": "eb478bb2e1f66f68eea632c613b684159e00a42d65f2b0ee566a57ed9fd906b1"
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Run_Loop_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Run_Loop_F.uasset",
+      "sha256": "2b61ab7274424b1f792539fc2c0b2ceb67a210508e40eafeea0ee8e62bedccad"
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/Ellison/CityLocomotion/M_Neutral_Crouch_Idle_Loop.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/Ellison/CityLocomotion/M_Neutral_Crouch_Idle_Loop.uasset",
+      "sha256": "9e48ab2bc80a301ece79f1ab1d9c3e7c646f00c7b0c6dd8ec680b44807f59267"
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/Ellison/CityLocomotion/M_Neutral_Crouch_Loop_F.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/Ellison/CityLocomotion/M_Neutral_Crouch_Loop_F.uasset",
+      "sha256": "d740e06490c3b682093c8fd8c9cc80370cd36f200da1bbc957338cfe07e32379"
+    },
+    {
+      "source": "/Volumes/Adam Assets/Unreal/GameAnimationSample/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Jump_Loop_Fall.uasset",
+      "target": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/Ellison/CityLocomotion/M_Relaxed_Jump_Loop_Fall.uasset",
+      "sha256": "ecdcb80499af22cf9def7d4b5dee5c0d8deca75b5194876633816eaa4a22fb09"
+    }
+  ],
+  "skeleton_identical": true,
+  "scope": "Six new clip copies with identical existing skeleton; native loading/render validation next."
+}
