@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "duration": 12.01,
+  "skipped": false,
+  "protected": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-47abfc3e0303478ba6bc47e83c7d006a/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-47abfc3e0303478ba6bc47e83c7d006a/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-47abfc3e0303478ba6bc47e83c7d006a/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-47abfc3e0303478ba6bc47e83c7d006a/opening2.png"
+  ],
+  "visual_review": {
+    "accepted": false,
+    "reason": "Warmup then pause still loses water."
+  },
+  "editor": true,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}
