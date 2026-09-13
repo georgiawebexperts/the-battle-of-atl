@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 521.35,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 44.99,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": true,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-222a080f78f44ebaa12f94b356a22188/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-222a080f78f44ebaa12f94b356a22188/tased.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-222a080f78f44ebaa12f94b356a22188/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-222a080f78f44ebaa12f94b356a22188/returned.png"
+  ],
+  "visual_accepted": false,
+  "visual_findings": "Old duplicate get-up banner remained over water; corrected in swim-taser-hud report."
+}

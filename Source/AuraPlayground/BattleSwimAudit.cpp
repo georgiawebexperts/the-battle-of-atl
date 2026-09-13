@@ -17,7 +17,7 @@
 void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  auto* W=PC->GetWorld();if(W->GetTimeSeconds()<5)return;
- struct FState{int Stage=0,Edge=0;float NextIdleLog=0,Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start,RouteLast;TArray<FVector> Route;TArray<bool> RouteSwim;int RouteIndex=0;float RouteDistance=0;bool AwayShore=false,Shot=false;};static FState S;
+ struct FState{int Stage=0,Edge=0;float NextIdleLog=0,Clock=0,SwimDistance=0,Drift=0,MinHand=MAX_flt,MaxHand=-MAX_flt;TWeakObjectPtr<ABattleBike> Bike;FVector Bank,Start,RouteLast;TArray<FVector> Route;TArray<bool> RouteSwim;int RouteIndex=0;float RouteDistance=0;bool TaserPassed=false,AwayShore=false,Shot=false;};static FState S;
  if(S.Stage<0)return;S.Clock+=Dt;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.:0.,false,0));};
  auto End=[&](bool Pass,const TCHAR* Reason){Key(EKeys::W,false);
@@ -27,7 +27,7 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
    W->SweepSingleByChannel(Hit,Here,Ahead,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q);
    UE_LOG(LogTemp,Display,TEXT("SwimRouteBlock: here=%s velocity=%s target=%s actor=%s component=%s impact=%s normal=%s"),*Here.ToString(),*Pawn->GetVelocity().ToString(),*S.Route[S.RouteIndex].ToString(),Hit.GetActor()?*Hit.GetActor()->GetActorNameOrLabel():TEXT("none"),*GetNameSafe(Hit.GetComponent()),*Hit.ImpactPoint.ToString(),*Hit.ImpactNormal.ToString());
    FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleSwimReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("route-blocked.png"),false,false);
-  }UE_LOG(LogTemp,Display,TEXT("BattleSwimAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d,\"swim_cm\":%.2f,\"bike_drift_cm\":%.3f,\"stroke_cm\":%.2f,\"route_index\":%d,\"route_points\":%d,\"route_distance_cm\":%.2f,\"alternate_shore\":%s}"),Pass?TEXT("true"):TEXT("false"),Reason,S.Stage,S.SwimDistance,S.Drift,S.MinHand<MAX_flt?S.MaxHand-S.MinHand:0,S.RouteIndex,S.Route.Num(),S.RouteDistance,S.AwayShore?TEXT("true"):TEXT("false"));S.Stage=-1;PC->ConsoleCommand(TEXT("quit"));};
+  }UE_LOG(LogTemp,Display,TEXT("BattleSwimAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d,\"swim_cm\":%.2f,\"bike_drift_cm\":%.3f,\"stroke_cm\":%.2f,\"route_index\":%d,\"route_points\":%d,\"route_distance_cm\":%.2f,\"alternate_shore\":%s,\"taser_recovery\":%s}"),Pass?TEXT("true"):TEXT("false"),Reason,S.Stage,S.SwimDistance,S.Drift,S.MinHand<MAX_flt?S.MaxHand-S.MinHand:0,S.RouteIndex,S.Route.Num(),S.RouteDistance,S.AwayShore?TEXT("true"):TEXT("false"),S.TaserPassed?TEXT("true"):TEXT("false"));S.Stage=-1;PC->ConsoleCommand(TEXT("quit"));};
  auto Capture=[&](const TCHAR* Name){FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleSwimReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),false,false);};
 #define SWIM_CHECK(C,R) if(!(C)){End(false,TEXT(R));return;}
  if(S.Clock>35){End(false,TEXT("Timed out reaching shore or swimming"));return;}
@@ -82,6 +82,16 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
    for(const auto& Value:*Points){const auto Point=Value->AsObject();SWIM_CHECK(Point.IsValid(),"Invalid route point");S.Route.Add(FVector(Point->GetNumberField(TEXT("x")),Point->GetNumberField(TEXT("y")),0));S.RouteSwim.Add(Point->GetBoolField(TEXT("swim")));}
    SWIM_CHECK(!S.Route.IsEmpty(),"Empty exploration route");S.RouteLast=P->GetActorLocation();S.Stage=7;
   }
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSwimTaser"))){
+   auto* Mode=Cast<ABattleLabMode>(W->GetAuthGameMode());SWIM_CHECK(Mode,"Missing timer mode");const float Before=Mode->TimeRemaining;
+   SWIM_CHECK(S.Bike->ApplyTaser(),"Taser application rejected");SWIM_CHECK(FMath::Abs((Before-Mode->TimeRemaining)-10)<.1f,"Taser time penalty incorrect");
+   S.Start=P->GetActorLocation();S.Shot=false;S.Stage=8;S.Clock=0;
+  }
+ }
+ if(S.Stage==8){
+  if(S.Bike->StunRemaining>0){SWIM_CHECK(P->GetCharacterMovement()->MovementMode==MOVE_None&&P->GetVelocity().Size()<1,"Tased swimmer still moving");SWIM_CHECK(!P->ToggleDrawWeapon()&&!P->MountBike(),"Tased swimmer allowed interaction");if(S.Clock>.5f&&!S.Shot){Capture(TEXT("tased"));S.Shot=true;}return;}
+  SWIM_CHECK(P->bSwimming&&P->GetCharacterMovement()->MovementMode==MOVE_Flying,"Swim mode not restored after taser");
+  if(S.Clock<4.2f)return;SWIM_CHECK(FVector::Dist2D(S.Start,P->GetActorLocation())>100,"Swimmer did not move after recovery");S.TaserPassed=true;S.Stage=3;S.Clock=0;
  }
  if(S.Stage==7){
   S.RouteDistance+=FVector::Dist2D(S.RouteLast,P->GetActorLocation());S.RouteLast=P->GetActorLocation();

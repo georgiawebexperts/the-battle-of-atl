@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 516.63,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "route_index": 345,
+  "route_points": 345,
+  "route_distance_cm": 67933.34,
+  "alternate_shore": true,
+  "edge_used": 45,
+  "fixture": "X=-12611.248 Y=5129.596 Z=-258.512 wet=X=-12556.180 Y=4632.638 Z=-323.334",
+  "edge_requested": 45,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-33451e662f034e77b222bd49b2583630/run.log",
+  "images": [],
+  "route_fixture": "Tests/Fixtures/swim-exploration.json",
+  "scope": "Native nullRHI full inner-shore circuit, alternate-bank exit, outer-shore walk including tree detour, original parked-bike E remount and2s stable idle. One route/seed; not broad rendered performance or all banks."
+}

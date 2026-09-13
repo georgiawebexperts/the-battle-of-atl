@@ -58,7 +58,8 @@ void ABattleLabHUD::DrawHUD(){
  }
  if(Park&&Park->ExpansionNoticeRemaining>0){Panel(W*.5f-340*S,H*.48f,680*S,110*S);Center(TEXT("MIDTOWN EXPANSION COMING SOON"),H*.48f+12*S,26,Peach);Center(TEXT("The Battle of ATL • Follow the route to Piedmont Park"),H*.48f+59*S,20);}
  Panel(W-M-300*S,M,300*S,106*S);
- if(Owner->bCrashActive){Text(TEXT("KNOCKED OFF"),W-M-280*S,M+12*S,28,Peach);Text(GettingUp?TEXT("Getting back up"):TEXT("Recovering"),W-M-280*S,M+65*S,23,Muted);}
+ if(Owner->StunRemaining>0){Text(Owner->StunLabel,W-M-280*S,M+12*S,28,Peach);Text(FString::Printf(TEXT("Recovering  %.1fs"),Owner->StunRemaining),W-M-280*S,M+55*S,20,Muted);}
+ else if(Owner->bCrashActive){Text(TEXT("KNOCKED OFF"),W-M-280*S,M+12*S,28,Peach);Text(GettingUp?TEXT("Getting back up"):TEXT("Recovering"),W-M-280*S,M+65*S,23,Muted);}
  else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),Bike->Ride->Speed*.0223694f),W-M-280*S,M+12*S,38);Text(FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear),W-M-280*S,M+65*S,23,Muted);}
  else if(Person->bSwimming){Text(TEXT("SWIMMING"),W-M-280*S,M+12*S,28,Peach);Text(TEXT("Bike stays at the bank"),W-M-280*S,M+55*S,20,Muted);}
  else{Text(Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);Text(Person->bWeaponDrawn?FString::Printf(TEXT("%d  /  %s"),Person->Ammo,*Person->ReserveLabel()):TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,Person->bWeaponDrawn?30:20);}
@@ -76,6 +77,7 @@ void ABattleLabHUD::DrawHUD(){
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=Near?TEXT("E  GET ON THE BIKE"):TEXT("RETURN TO YOUR BIKE TO RIDE");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
  if(Person&&Person->bSwimming){Prompt=TEXT("SWIM BACK TO SHORE");Help=TEXT("WASD / arrows swim   E mounts once ashore");}
  if(Owner->bCrashActive){Prompt=GettingUp?TEXT("GETTING BACK UP"):TEXT("KNOCKED OFF YOUR BIKE");Help=TEXT("Recovery is automatic — clock keeps running");}
+ if(Owner->StunRemaining>0){Prompt=Owner->StunLabel;Help=FString::Printf(TEXT("Control returns in %.1fs — clock keeps running"),Owner->StunRemaining);}
  Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
  if(Bike){Panel(M,Bottom-58*S,310*S,50*S);Text(FString::Printf(TEXT("PISTOL  %d / %d"),Bike->PistolAmmo,Bike->Inventory[0].Reserve),M+20*S,Bottom-48*S,27,Peach);}
@@ -94,8 +96,7 @@ void ABattleLabHUD::DrawHUD(){
  }
  FString Notice;
  if(Owner->RespawnRemaining>0)Notice=TEXT("RECOVERING AT CHECKPOINT  |  -10 SECONDS");
- else if(Owner->bCrashActive)Notice=Owner->StunRemaining>0?Owner->StunLabel:TEXT("");
- else if(Owner->StunRemaining>0)Notice=FString::Printf(TEXT("%s  %.1fs  |  GET UP, THEN E TO REMOUNT"),*Owner->StunLabel,Owner->StunRemaining);
+ else if(Owner->bCrashActive||Owner->StunRemaining>0)Notice=TEXT("");
 
  else if(Bike&&Bike->Ride->Recovery>0)Notice=FString::Printf(TEXT("RECOVERING  %.1f"),Bike->Ride->Recovery);
  else if(Person&&Person->ReloadRemaining>0)Notice=TEXT("RELOADING");

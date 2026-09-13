@@ -51,5 +51,5 @@ void ABattleBike::UpdateStun(float Dt){
  auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Person&&Person->ParkedBike==this){Person->GetCharacterMovement()->StopMovementImmediately();Person->GetCharacterMovement()->DisableMovement();}
  StunRemaining=FMath::Max(0.f,StunRemaining-Dt);
- if(StunRemaining<=0&&Person&&Person->ParkedBike==this&&RiderHealth>0&&RespawnRemaining<=0){Person->ConsumeMovementInputVector();Person->GetCharacterMovement()->SetMovementMode(Person->bSwimming?MOVE_Swimming:MOVE_Walking);}
+ if(StunRemaining<=0&&Person&&Person->ParkedBike==this&&RiderHealth>0&&RespawnRemaining<=0){Person->ConsumeMovementInputVector();Person->GetCharacterMovement()->SetMovementMode(Person->bSwimming?MOVE_Flying:MOVE_Walking);}
 }
