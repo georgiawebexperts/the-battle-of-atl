@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "scope": "Editor C++ compilation only; no runtime or visual acceptance",
+  "source_commit": "79e452d",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-warning-build.log",
+  "desktop_build": 60,
+  "runtime_test_pending": "Existing play session remains open; waiting for user to finish."
+}

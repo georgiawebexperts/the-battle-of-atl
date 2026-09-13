@@ -1176,3 +1176,5 @@ Elliott requested wrapping up and a good stopping point because only ~10% usage 
 
 
 2026-09-13 [codex-maclaptop] Police warning work in progress: source now adds a camera-facing STOP! APD / TASER warning, extends the cover-reaction window from 1.25 to 2 seconds, and extends the discharge flash to 0.65 seconds. Trouble audit now requires visible warning and remaining reaction time. Not compiled or runtime/render verified yet; desktop remains tested build 060. Existing game PID 58603 was confirmed running; asked Elliott whether finished before closing it for serialized build/tests. Visible weapon draw, proper taser model/deployment, and APD voice remain unfinished. Do not claim these source changes are in the desktop build.
+
+2026-09-13 [codex-maclaptop] Police warning source 79e452d compiled successfully in the Mac editor (work/police-warning-build.log). No native encounter/render acceptance yet. Existing packaged play session was left running. Desktop/share 060 unchanged.
