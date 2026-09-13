@@ -1,0 +1,14 @@
+{
+  "build": 60,
+  "version": "0.60.0",
+  "source_commit": "04a20bd",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "locally_signed": true,
+  "notarized": false,
+  "machine_code_matches_tested_staged_app": true,
+  "packaged_wall_recovery": "2026-09-13-build060-wall-recovery.json",
+  "source_wall_recovery": "2026-09-13-wall-recovery-built.json",
+  "all_world_corners_verified": false,
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060.zip"
+}

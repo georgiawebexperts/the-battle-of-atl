@@ -1,9 +1,9 @@
 {
-  "build": 58,
-  "version": "0.58.0-dev",
+  "build": 60,
+  "version": "0.60.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Installed signed Mac058; backup057 retained; full game unfinished",
+  "status": "early playtest; wall recovery verified in controlled fixtures",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -61,7 +61,7 @@
     "2026-09-13: Found double-attenuated on-foot mouse input (0.07 processed axis then pawn scaling). Reads raw mouse delta now; injected native input improves yaw3.39 to53.98deg with body/camera aligned. Build/probe pass. OS capture, sensitivity feel, swimming regression and package pending.",
     "2026-09-13: Initial title camera was inside rider clothing. Deferred authored intro view now frames bungalow/rider/bike; verified in normal1280x720 window. Editor build and actualEnter-skip/natural-completion camera-return checks pass. Menu click automation inconclusive in both058 and development; package pending."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL-build057.app",
   "compiled_source": "d7db05a81b5e853c6e2575efadd536aeed022bdc",
   "installation_report": "Tests/Results/2026-09-13-build058-installed.json",
@@ -94,5 +94,19 @@
       "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
       "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
     }
+  },
+  "latest_wall_fix_playtest": {
+    "build": 60,
+    "version": "0.60.0",
+    "source_commit": "04a20bd",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/BattleForTheA/Mac/TheBattleOfATL.app",
+    "locally_signed": true,
+    "notarized": false,
+    "machine_code_matches_tested_staged_app": true,
+    "packaged_wall_recovery": "2026-09-13-build060-wall-recovery.json",
+    "source_wall_recovery": "2026-09-13-wall-recovery-built.json",
+    "all_world_corners_verified": false,
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 060.zip"
   }
 }
