@@ -6,7 +6,9 @@
 #include "BattleZombie.h"
 #include "Camera/CameraComponent.h"
 #include "Camera/CameraActor.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Components/PoseableMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
 #include "EngineUtils.h"
@@ -83,6 +85,15 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
  SWIM_CHECK(P&&S.Bike.IsValid(),"Lost swimmer or parked bike");
  S.Drift=FMath::Max(S.Drift,float(FVector::Distance(S.Bank,S.Bike->GetActorLocation())));
  SWIM_CHECK(S.Drift<1,"Parked bike moved during swimming");
+ // This deep-drop lane reaches a shallow bank before a full stroke window.
+ // Verify the real walking exit, then continue the same fixed-bike return.
+ if(S.Stage==2&&!P->bSwimming&&FParse::Param(FCommandLine::Get(),TEXT("BattleSwimDeepDrop"))){
+  S.SwimDistance=FVector::Dist2D(S.Start,P->GetActorLocation());
+  SWIM_CHECK(S.SwimDistance>250&&S.MaxHand-S.MinHand>15&&P->GetCharacterMovement()->IsMovingOnGround(),"Deep-water swim did not produce a walking shore exit");
+  FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimExitBodyClear),false,P);for(auto* Ignored:P->GetCapsuleComponent()->GetMoveIgnoreActors())Q.AddIgnoredActor(Ignored);
+  SWIM_CHECK(!W->OverlapBlockingTestByChannel(P->GetActorLocation(),FQuat::Identity,ECC_Pawn,P->GetCapsuleComponent()->GetCollisionShape(),Q),"Standing swimmer intersects bank");
+  Capture(TEXT("shore-exit"));S.Stage=3;S.Clock=0;
+ }
  if(S.Stage==2){
   SWIM_CHECK(P->GetCharacterMovement()->MovementMode==MOVE_Flying,"Swimmer lost surface movement mode after possession");
   const FName Hand=BattleUseDetailedRider()?FName(TEXT("hand_l")):FName(TEXT("Hand_L"));
@@ -92,6 +103,12 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
    if(S.Clock>1){
     const float CameraDistance=FVector::Dist(P->Camera->GetComponentLocation(),P->GetActorLocation());
     const float EyeAboveWater=P->Camera->GetComponentLocation().Z-P->GetActorLocation().Z+35;
+    if(!(CameraDistance>120&&CameraDistance<650&&EyeAboveWater>10))UE_LOG(LogTemp,Display,TEXT("SwimCameraFailure: distance=%.2f eye=%.2f swimming=%d pawn=%s camera=%s"),CameraDistance,EyeAboveWater,P->bSwimming,*P->GetActorLocation().ToString(),*P->Camera->GetComponentLocation().ToString());
+    if(CameraDistance<120){
+     const auto* Arm=P->CameraArm.Get();const FVector Start=Arm->GetComponentLocation(),RayEnd=Start-Arm->GetTargetRotation().Vector()*Arm->TargetArmLength+Arm->GetTargetRotation().RotateVector(Arm->SocketOffset);
+     FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimCameraDiagnostic),false,P);W->SweepSingleByChannel(Hit,Start,RayEnd,FQuat::Identity,Arm->ProbeChannel,FCollisionShape::MakeSphere(Arm->ProbeSize),Q);
+     UE_LOG(LogTemp,Display,TEXT("SwimCameraBlocker: actor=%s component=%s start_penetration=%d depth=%.2f"),*GetNameSafe(Hit.GetActor()),*GetNameSafe(Hit.GetComponent()),Hit.bStartPenetrating,Hit.PenetrationDepth);
+    }
     SWIM_CHECK(CameraDistance>120&&CameraDistance<650&&EyeAboveWater>10,"Swimming camera is not outside the visible body above water");
    }
   }

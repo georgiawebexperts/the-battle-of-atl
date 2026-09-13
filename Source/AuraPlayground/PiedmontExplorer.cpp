@@ -48,7 +48,12 @@ void APiedmontExplorer::BeginPlay(){
   const FVector Size=Gun->GetBounds().BoxExtent*2;const float Scale=28.f/FMath::Max(Size.X,Size.Y);const FRotator Rotation(0,Size.Y>Size.X?-90.f:0.f,0);
   Weapon->SetStaticMesh(Gun);Weapon->SetRelativeScale3D(FVector(Scale));Weapon->SetRelativeRotation(Rotation);Weapon->SetRelativeLocation(FVector(48,15,42)-Rotation.RotateVector(Gun->GetBounds().Origin)*Scale);
  }
- for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("RideWater")))GetCapsuleComponent()->IgnoreActorWhenMoving(*It,true);
+ for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("RideWater"))){
+  GetCapsuleComponent()->IgnoreActorWhenMoving(*It,true);
+  // Hidden shoreline support is a bike barrier, not visible camera occlusion.
+  // Keep its physical channels; terrain and visible structures still stop the camera.
+  if(It->IsHidden()){TInlineComponentArray<UPrimitiveComponent*> Primitives(*It);for(auto* Primitive:Primitives)Primitive->SetCollisionResponseToChannel(ECC_Camera,ECR_Ignore);}
+ }
  if(auto* Asset=Cast<USkeletalMesh>(Body->GetSkinnedAsset())){
   const auto& Ref=Asset->GetRefSkeleton();
   for(int32 I=0;I<Ref.GetNum();++I){Parents.Add(Ref.GetParentIndex(I));Bones.Add(Ref.GetBoneName(I));RestPose.Add(Ref.GetRefBonePose()[I]);}
@@ -202,12 +207,24 @@ void APiedmontExplorer::UpdateSwimming(float Dt){
   const float Level=It->GetActorLocation().Z;
   if(It->ContainsBike(FVector(Here.X,Here.Y,Level+1))&&Here.Z-(bSwimming?SwimHalfHeight:GetCapsuleComponent()->GetScaledCapsuleHalfHeight())<Level+25){Water=*It;break;}
  }
+ FVector ShoreStanding;bool ShallowExit=false;
+ if(Water){
+  // The authored water polygon can overlap the sloping bank. Stand on shallow,
+  // walkable ground rather than leaving the body treading through that bank.
+  FHitResult Floor;FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimShallowBank),false,this);
+  for(auto* Ignored:GetCapsuleComponent()->GetMoveIgnoreActors())Q.AddIgnoredActor(Ignored);
+  const float Surface=Water->GetActorLocation().Z;
+  if(GetWorld()->LineTraceSingleByChannel(Floor,FVector(Here.X,Here.Y,Surface+100),FVector(Here.X,Here.Y,Surface-100),ECC_Visibility,Q)&&GetCharacterMovement()->IsWalkable(Floor)&&Floor.ImpactPoint.Z>Surface-45){
+   ShoreStanding=FVector(Here.X,Here.Y,Floor.ImpactPoint.Z+SwimStandingHalfHeight+2.f);
+   if(!GetWorld()->OverlapBlockingTestByChannel(ShoreStanding,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius(),SwimStandingHalfHeight),Q)){Water=nullptr;ShallowExit=true;}
+  }
+ }
  const bool InWater=Water!=nullptr;
  if(InWater!=bSwimming){
   if(InWater){
    BeginSurfaceSwimming(Water->GetActorLocation().Z);
   }else{
-   const FVector Standing=Here+FVector(0,0,SwimStandingHalfHeight-SwimHalfHeight);
+   const FVector Standing=ShallowExit?ShoreStanding:Here+FVector(0,0,SwimStandingHalfHeight-SwimHalfHeight);
    FCollisionQueryParams Q(SCENE_QUERY_STAT(SwimStandClearance),false,this);
    for(auto* Ignored:GetCapsuleComponent()->GetMoveIgnoreActors())Q.AddIgnoredActor(Ignored);
    if(GetWorld()->OverlapBlockingTestByChannel(Standing,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius(),SwimStandingHalfHeight),Q))return;

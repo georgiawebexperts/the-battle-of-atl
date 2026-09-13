@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 327.82,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 102.1,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": false,
+  "entry_bank_distance_cm": 625.87,
+  "deep_drop": true,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-9725af195f8b4c048f1c01b6383fe8b6/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-9725af195f8b4c048f1c01b6383fe8b6/stroke-middle.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-9725af195f8b4c048f1c01b6383fe8b6/shore-exit.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-9725af195f8b4c048f1c01b6383fe8b6/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-9725af195f8b4c048f1c01b6383fe8b6/returned.png"
+  ],
+  "runtime": "editor-game",
+  "third_person_view_review": true,
+  "stop_diagnostics": [],
+  "view_diagnostics": [],
+  "bank_support_diagnostics": [
+    "offset=-60 simple=1 z=-391.76 actor=StaticMeshActor_6 complex=1 z=-391.76 actor=StaticMeshActor_6 tire_z=-388.99",
+    "offset=0 simple=1 z=-390.99 actor=StaticMeshActor_6 complex=1 z=-390.99 actor=StaticMeshActor_6 tire_z=-388.99",
+    "offset=60 simple=1 z=-391.55 actor=StaticMeshActor_6 complex=1 z=-391.55 actor=StaticMeshActor_6 tire_z=-388.99"
+  ],
+  "visual_review": {
+    "accepted": true,
+    "scope": "Walking shore-exit image inspected; full standing capsule clearance asserted; returned bike view inspected in prior camera-fix run. Full bank/world art not accepted."
+  }
+}
