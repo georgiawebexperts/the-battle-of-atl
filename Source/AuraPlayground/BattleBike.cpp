@@ -56,12 +56,14 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  auto Part=[&](FString Name,FVector Loc,FVector Scale,bool Round,UMaterialInterface* Mat){auto* M=CreateDefaultSubobject<UStaticMeshComponent>(*Name);M->SetupAttachment(Visual);M->SetStaticMesh(Round?Cylinder.Object:Cube.Object);M->SetRelativeLocation(Loc);M->SetRelativeScale3D(Scale);M->SetCollisionEnabled(ECollisionEnabled::NoCollision);M->SetMaterial(0,Mat);return M;};
  auto Tube=[&](FString Name,FVector A,FVector B,float Radius,UMaterialInterface* Mat){auto* M=Part(Name,(A+B)*.5,FVector(Radius/50,Radius/50,(B-A).Size()/100),true,Mat);M->SetRelativeRotation(FQuat::FindBetweenNormals(FVector::UpVector,(B-A).GetSafeNormal()));return M;};
  const FVector Back(-60,0,35),Front(60,0,35),Crank(-5,0,36),Seat(-23,0,92),Head(43,0,91);
+ SteeringAssembly=CreateDefaultSubobject<USceneComponent>(TEXT("SteeringAssembly"));SteeringAssembly->SetupAttachment(Visual);SteeringAssembly->SetRelativeLocation(Head);
+ auto Steered=[&](USceneComponent* Part){const FVector Location=Part->GetRelativeLocation();Part->SetupAttachment(SteeringAssembly);Part->SetRelativeLocation(Location-Head);};
  Tube(TEXT("SeatTube"),Crank,Seat,2.2,Paint.Object);Tube(TEXT("TopTube"),Seat,Head,2,Paint.Object);Tube(TEXT("DownTube"),Crank,Head,3,Paint.Object);
- for(int S:{-1,1}){Tube(FString::Printf(TEXT("Stay%d"),S),Back+FVector(0,S*7,0),Seat,1.4,Paint.Object);Tube(FString::Printf(TEXT("ChainStay%d"),S),Back+FVector(0,S*7,0),Crank,1.4,Paint.Object);Tube(FString::Printf(TEXT("Fork%d"),S),Head,Front+FVector(0,S*6,0),1.6,Rubber.Object);}
+ for(int S:{-1,1}){Tube(FString::Printf(TEXT("Stay%d"),S),Back+FVector(0,S*7,0),Seat,1.4,Paint.Object);Tube(FString::Printf(TEXT("ChainStay%d"),S),Back+FVector(0,S*7,0),Crank,1.4,Paint.Object);Steered(Tube(FString::Printf(TEXT("Fork%d"),S),Head,Front+FVector(0,S*6,0),1.6,Rubber.Object));}
  Part(TEXT("Battery"),FVector(16,0,59),FVector(.14,.1,.42),false,Rubber.Object)->SetRelativeRotation(FRotator(35,0,0));
  Part(TEXT("Saddle"),FVector(-23,0,98),FVector(.29,.19,.055),false,Rubber.Object);
- Tube(TEXT("Stem"),Head,FVector(40,0,112),2,Rubber.Object);Tube(TEXT("Handlebar"),FVector(40,-30,112),FVector(40,30,112),1.5,Rubber.Object);
- FrontWheel=Part(TEXT("FrontWheel"),Front,FVector(.70,.70,.055),true,Rubber.Object);FrontWheel->SetRelativeRotation(FRotator(0,0,90));
+ Steered(Tube(TEXT("Stem"),Head,FVector(40,0,112),2,Rubber.Object));Steered(Tube(TEXT("Handlebar"),FVector(40,-30,112),FVector(40,30,112),1.5,Rubber.Object));
+ FrontWheel=Part(TEXT("FrontWheel"),Front,FVector(.70,.70,.055),true,Rubber.Object);FrontWheel->SetRelativeRotation(FRotator(0,0,90));Steered(FrontWheel);
  RearWheel=Part(TEXT("RearWheel"),Back,FVector(.70,.70,.055),true,Rubber.Object);RearWheel->SetRelativeRotation(FRotator(0,0,90));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> DetailedWheel(TEXT("/Game/PiedmontRide/Bike/SM_BikeWheel.SM_BikeWheel"));
  if(DetailedWheel.Succeeded()){FrontWheel->SetStaticMesh(DetailedWheel.Object);RearWheel->SetStaticMesh(DetailedWheel.Object);FrontWheel->SetRelativeScale3D(FVector(1));RearWheel->SetRelativeScale3D(FVector(1));}
@@ -112,7 +114,7 @@ void ABattleBike::Tick(float Dt){
  if(!bParked&&Fall<=0){if(Ride->IsMovingOnGround()){const FVector N=Ride->CurrentFloor.HitResult.ImpactNormal;TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(-FVector::DotProduct(GetActorForwardVector(),N),N.Z));}else if(Ride->IsFalling())TargetPitch=FMath::RadiansToDegrees(FMath::Atan2(Ride->Velocity.Z,FMath::Max(400.f,Ride->Speed)));}
  SurfacePitch=FMath::Lerp(SurfacePitch,FMath::Clamp(TargetPitch,-40.f,40.f),1.f-FMath::Exp(-12.f*Dt));
  Visual->SetRelativeRotation(FRotator(SurfacePitch,0,LeanAngle+Fall*65));Rider->SetRelativeLocation(FVector(0,-50*Fall,15*Fall));
- WheelAngle+=Ride->Speed*Dt/35*180/PI;FrontWheel->SetRelativeRotation(FRotator(WheelAngle,Ride->SmoothedSteer*20,90));RearWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));PoseRider(Dt);
+ WheelAngle+=Ride->Speed*Dt/35*180/PI;UpdateSteeringVisual();FrontWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));RearWheel->SetRelativeRotation(FRotator(WheelAngle,0,90));PoseRider(Dt);
 }
 FVector ABattleBike::FindPathReturn() const{
  FVector Best=Ride->LastSafeLocation;double Distance=TNumericLimits<double>::Max();
@@ -168,7 +170,11 @@ void ABattleLabMode::Tick(float Dt){
  if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
  APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&(Player->IsA<ABattleRider>()||(Cast<ABattleBike>(Player)&&Cast<ABattleBike>(Player)->bCrashActive))?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
 }
-void ABattleBike::RefreshRiderPose(){PoseRider(0);Rider->RefreshBoneTransforms();Rider->MarkRenderDynamicDataDirty();}
+void ABattleBike::UpdateSteeringVisual(){
+ // Turn the complete fork around the inclined steerer, retaining wheel spin.
+ SteeringAssembly->SetRelativeRotation(FQuat(FVector(-3,0,21).GetSafeNormal(),FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));
+}
+void ABattleBike::RefreshRiderPose(){UpdateSteeringVisual();PoseRider(0);Rider->RefreshBoneTransforms();Rider->MarkRenderDynamicDataDirty();}
 void ABattleBike::PoseRider(float Dt){
  if(ReferencePose.IsEmpty())return;
  TArray<FTransform> Pose=ReferencePose;
@@ -177,7 +183,9 @@ void ABattleBike::PoseRider(float Dt){
  auto MoveBranch=[&](int Root,FVector Target,FQuat Rotation){if(Root<0)return;FVector Old=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();++I)if(Descendant(I,Root)){Pose[I].SetLocation(Target+Rotation.RotateVector(Pose[I].GetLocation()-Old));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
  const float BrakeLeanTarget=8.f*FMath::Clamp(Ride->Brake,0.f,1.f);
  RiderBrakeLean=Dt>0?FMath::Lerp(RiderBrakeLean,BrakeLeanTarget,1.f-FMath::Exp(-10.f*Dt)):BrakeLeanTarget;
- const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,FVector(0,-23,99),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-RiderBrakeLean)));
+ const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,FVector(0,-23,99),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer))));
+ // Let the shoulders follow the bar while the hips remain over the saddle.
+ const int Spine=Index(TEXT("Abdomen"));if(Spine>=0)MoveBranch(Spine,Pose[Spine].GetLocation(),FQuat(FVector::UpVector,FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));
  auto Limb=[&](const TCHAR* UpperName,const TCHAR* LowerName,const TCHAR* EndName,FVector Target,FVector Bend){
   int U=Index(UpperName),L=Index(LowerName),E=Index(EndName);if(U<0||L<0||E<0)return;
   FVector Origin=Pose[U].GetLocation();float A=FVector::Distance(Origin,Pose[L].GetLocation()),B=FVector::Distance(Pose[L].GetLocation(),Pose[E].GetLocation());
@@ -196,21 +204,24 @@ void ABattleBike::PoseRider(float Dt){
  }
  // The bar is at bike-local (40, +/-30, 112). This mesh faces +Y;
  // place the wrist behind the bar so the palm, rather than wrist, meets it.
+ const FTransform SteeringToRider=SteeringAssembly->GetComponentTransform().GetRelativeTransform(Rider->GetComponentTransform());
+ const FQuat GripTurn=SteeringToRider.GetRotation()*Rider->GetRelativeRotation().Quaternion();
+ const FVector FingerAxis=GripTurn.RotateVector(FVector::ForwardVector);
  auto Grip=[&](const TCHAR* Side,float Sign){
   const FString S(Side);const FString HandName=TEXT("Hand_")+S;
-  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,FVector(Sign*25,26,115),FVector(Sign,0,-.4));
+  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,SteeringToRider.TransformPosition(FVector(26,-Sign*25,115)-SteeringAssembly->GetRelativeLocation()),FVector(Sign,0,-.4));
   const int Hand=Index(*HandName);if(Hand<0)return;
-  const FQuat Facing(FVector::UpVector,FMath::DegreesToRadians(Sign*90.f));
+  const FQuat Facing=GripTurn*FQuat(FVector::UpVector,FMath::DegreesToRadians(Sign*90.f));
   MoveBranch(Hand,Pose[Hand].GetLocation(),Facing*ReferencePose[Hand].GetRotation()*Pose[Hand].GetRotation().Inverse());
   for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")}){
    for(int Joint=2;Joint<=4;Joint++){
     const int I=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,Joint,Side));
-    if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Joint==2?-55.f:Joint==3?-65.f:-35.f)));
+    if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FingerAxis,FMath::DegreesToRadians(Joint==2?-55.f:Joint==3?-65.f:-35.f)));
    }
   }
   for(int Joint=2;Joint<=3;Joint++){
    const int I=Index(*FString::Printf(TEXT("Thumb%d_%s"),Joint,Side));
-   if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-30.f)));
+   if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FingerAxis,FMath::DegreesToRadians(-30.f)));
   }
  };
  Grip(TEXT("L"),1.f);

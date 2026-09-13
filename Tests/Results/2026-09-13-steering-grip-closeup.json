@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "work/steering-grip-final/opening0.png",
+    "work/steering-grip-final/opening1.png",
+    "work/steering-grip-final/opening2.png"
+  ],
+  "visual_review": "Three close native frames inspected: full left, straight/braking, full right. Hands remain aligned with rotated bars; shoulder rotation/forward lean avoids stretched arms. Maximum sampled wrist target error0.111cm. Stylized model remains; not full dynamic animation, wheel-ground or final art acceptance.",
+  "editor": true,
+  "grip_closeup": true,
+  "wrist_reach": [
+    {
+      "steer": -1.0,
+      "side": -1,
+      "error_cm": 0.111
+    },
+    {
+      "steer": -1.0,
+      "side": 1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 0.0,
+      "side": -1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 0.0,
+      "side": 1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 1.0,
+      "side": -1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 1.0,
+      "side": 1,
+      "error_cm": 0.0626
+    }
+  ],
+  "scope": "Three static native rider/steering poses with six actual world-space wrist/target comparisons, plus protected opening completion. Not a full steering-motion or collision/performance test.",
+  "visual_accepted": true
+}

@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "duration": 12.01,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "visual_review": "pending",
+  "editor": true,
+  "grip_closeup": true,
+  "wrist_reach": [
+    {
+      "steer": -1.0,
+      "side": -1,
+      "error_cm": 3.3524
+    },
+    {
+      "steer": -1.0,
+      "side": 1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 0.0,
+      "side": -1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 0.0,
+      "side": 1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 1.0,
+      "side": -1,
+      "error_cm": 0.0
+    },
+    {
+      "steer": 1.0,
+      "side": 1,
+      "error_cm": 3.3071
+    }
+  ],
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

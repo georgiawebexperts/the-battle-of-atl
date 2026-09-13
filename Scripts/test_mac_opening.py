@@ -24,6 +24,11 @@ if a.review and d['passed']:
   dest=out/f'opening{i}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
  d['visual_review']='pending'
 d['editor']=a.editor;d['grip_closeup']=a.grip
+if a.grip:
+ rows=re.findall(r'BattleGripReach: steer=([-0-9.]+) side=(-?1) error_cm=([0-9.]+)',(out/'run.log').read_text())
+ d['wrist_reach']=[{'steer':float(t),'side':int(side),'error_cm':float(error)} for t,side,error in rows]
+ d['passed']=bool(d['passed'] and len(rows)==6 and {float(t) for t,_,_ in rows}=={-1,0,1} and all(float(error)<1 for _,_,error in rows))
+
 d['scope']='Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance.'
 report_name=a.report or f'2026-09-11-build042-opening-{mode}.json'
 assert Path(report_name).name==report_name

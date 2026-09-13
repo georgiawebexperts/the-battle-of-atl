@@ -1,5 +1,6 @@
 #include "BattleMacController.h"
 #include "BattleBike.h"
+#include "Components/PoseableMeshComponent.h"
 #include "Camera/CameraActor.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Camera/CameraComponent.h"
@@ -62,7 +63,7 @@ void ABattleMacController::BeginOpening(){
   FVector Eye=C->OpeningRiderLocation+FMath::Lerp(FVector(-450,-650,250),FVector(350,-550,180),A),Target=C->OpeningRiderLocation+FVector(0,0,65);
 #if !UE_BUILD_SHIPPING
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningGripReview")))if(auto* Bike=Cast<ABattleBike>(C->GetPawn())){
-   Bike->Ride->Brake=T>=4&&T<8?1.f:0.f;Bike->RefreshRiderPose();
+   Bike->Ride->Brake=T>=4&&T<8?1.f:0.f;Bike->Ride->SmoothedSteer=T<4?-1.f:T<8?0.f:1.f;Bike->RefreshRiderPose();
    const FTransform Frame=Bike->Visual->GetComponentTransform();
    Eye=Frame.TransformPosition(FMath::Lerp(FVector(190,-170,165),FVector(190,170,165),A));
    Target=Frame.TransformPosition(FVector(35,0,120));
@@ -71,7 +72,13 @@ void ABattleMacController::BeginOpening(){
   if(C->OpeningCamera)C->OpeningCamera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());
   if(C->PlayerCameraManager)C->PlayerCameraManager->UpdateCamera(0);
 #if !UE_BUILD_SHIPPING
-  if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningReview"))&&C->OpeningCaptureStage<3&&T>2+C->OpeningCaptureStage*4){FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);FScreenshotRequest::RequestScreenshot(Dir/FString::Printf(TEXT("opening%d.png"),C->OpeningCaptureStage),true,false);C->OpeningCaptureStage++;}
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningReview"))&&C->OpeningCaptureStage<3&&T>2+C->OpeningCaptureStage*4){
+   if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningGripReview")))if(auto* Bike=Cast<ABattleBike>(C->GetPawn()))for(int Sign:{-1,1}){
+    const FVector Expected=Bike->SteeringAssembly->GetComponentTransform().TransformPosition(FVector(26,-Sign*25,115)-Bike->SteeringAssembly->GetRelativeLocation());
+    const FVector Wrist=Bike->Rider->GetBoneLocation(Sign>0?TEXT("Hand_L"):TEXT("Hand_R"),EBoneSpaces::WorldSpace);
+    UE_LOG(LogTemp,Display,TEXT("BattleGripReach: steer=%.2f side=%d error_cm=%.4f"),Bike->Ride->SmoothedSteer,Sign,FVector::Distance(Expected,Wrist));
+   }
+   FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);FScreenshotRequest::RequestScreenshot(Dir/FString::Printf(TEXT("opening%d.png"),C->OpeningCaptureStage),true,false);C->OpeningCaptureStage++;}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningSkip"))&&T>2&&C->OpeningCaptureStage==0){C->OpeningCaptureStage=1;C->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningEscape"))?EKeys::Escape:EKeys::Enter,IE_Pressed,1.f,false,0));}
 #endif
   if(T>=12){C->FinishOpening();return false;}return true;

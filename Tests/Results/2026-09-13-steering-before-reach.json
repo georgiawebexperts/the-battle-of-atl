@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "duration": 12.01,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "work/steering-before-reach/opening0.png",
+    "work/steering-before-reach/opening1.png",
+    "work/steering-before-reach/opening2.png"
+  ],
+  "visual_review": "Rejected: outer hand visibly falls short of bar at full turn. Shoulder posture does not follow handlebar.",
+  "editor": true,
+  "grip_closeup": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance.",
+  "opening_passed": true,
+  "visual_accepted": false
+}

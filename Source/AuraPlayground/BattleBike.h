@@ -76,6 +76,7 @@ public:
  void RideImpact(float Strength,bool Water=false);
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> Capsule;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> Visual;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> SteeringAssembly;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPoseableMeshComponent> Rider;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> Arm;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
@@ -156,6 +157,7 @@ private:
  TMap<TWeakObjectPtr<AActor>,float> RewardTimes;
  float ShotCooldown=0,ReloadTimer=0,GunHold=0;
  void PoseRider(float Dt);
+ void UpdateSteeringVisual();
  void ToggleHandling(){Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;}
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;

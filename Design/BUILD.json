@@ -15,7 +15,8 @@
     "Previous056 handling toggle, six car paints and construction closures retained. Packaged Easy/Hard completion and installed phone/health/death/checkpoint checks pass."
   ],
   "unreleased_code_changes": [
-    "Mounted rider palms now face handlebars independently of forearm IK; articulated fingers/thumbs curl around the bar, retaining raised right-hand pistol pose. Three close left/front/right views, including full braking pose, reviewed in native editor. Braking torso lean now blends with frame-rate-independent response. Native arcade/realistic controls and remount checks pass. Not yet packaged; installed057 unchanged. Character remains low-poly and final animation quality unfinished."
+    "Mounted rider palms now face handlebars independently of forearm IK; articulated fingers/thumbs curl around the bar, retaining raised right-hand pistol pose. Three close left/front/right views, including full braking pose, reviewed in native editor. Braking torso lean now blends with frame-rate-independent response. Native arcade/realistic controls and remount checks pass. Not yet packaged; installed057 unchanged. Character remains low-poly and final animation quality unfinished.",
+    "SteeringAssembly groups front wheel, fork, stem and handlebars around inclined steerer; wheel spin remains independent. Hands follow steering transform. Torso rotates and leans into turns so wrist targets remain within1.11mm in sampled full-left/straight-braking/full-right poses. Native arcade/realistic controls and remount pass. Unpackaged; installed057 unchanged."
   ],
   "remaining_work": "Full requested art, smoother rider/combat animation, broad gameplay balance, complete world detail and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]"
