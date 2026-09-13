@@ -7,14 +7,27 @@ unreal.PiedmontWorldTools.finish_editor_asset_loading()
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 r=json.loads((root/'Tests/Results/2026-09-12-krog-wreck-site-survey.json').read_text());site=next(c for c in r['candidates'] if c['back_from_portal_cm']==r['preferred_candidate']['back_from_portal_cm'] and c['lateral_offset_cm']==r['preferred_candidate']['lateral_offset_cm']);x,y=site['center_xy'];z=site['samples'][0]['z'];origin=unreal.Vector(x,y,z)
 SHOW_CONTACT_MARKERS=False
-base='/Game/CitySampleCrowd/Character/Male/';actors=[];bodies=[]
+actors=[];bodies=[];appearance=[]
 roles=[('rider',(0,0),0,'/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B',.08),('helper',(-40,-100),0,'/Game/BattleRetarget/City/Male/M_ragdoll_getup_stand_B',.30),('bystander',(145,90),150,'/Game/BattleRetarget/Mixamo/LowReachCandidate/MixamoLowReachReference_Anim',.03)]
 for role,(ox,oy),yaw,clip,fraction in roles:
+ female=role=='bystander';gender='Female' if female else 'Male';prefix='f_tal_nrw_' if female else 'm_tal_nrw_';face='f_001' if female else 'm_001';base='/Game/CitySampleCrowd/Character/'+gender+'/'
+ if female:clip='/Game/CitySampleCrowd/Character/Anims/Loco/FTN_Set/FTN_N_Idle_Base';fraction=.2
  hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x+ox,y+oy,z+300),unreal.Vector(x+ox,y+oy,z-300));assert hit
  pos=hit[0];parts=[]
- for path in [base+'NormalWeight/Meshes/m_tal_nrw_'+n for n in ('body','crewneck','jeans','loafers')]+[base+'m_001/Face/m_001_nrw_FaceMesh']:
+ for path in [base+'NormalWeight/Meshes/'+prefix+n for n in ('body','scoopneck' if female else 'crewneck','jeans','loafers')]+[base+face+'/Face/'+face+'_nrw_FaceMesh']:
   actor=ea.spawn_actor_from_class(unreal.SkeletalMeshActor,pos,unreal.Rotator(yaw=yaw));actor.set_actor_label('Wreck review '+role);c=actor.skeletal_mesh_component;c.set_editor_property('disable_post_process_blueprint',True);c.set_skeletal_mesh_asset(unreal.load_asset(path));c.set_update_animation_in_editor(True);c.set_forced_lod(1);c.set_editor_property('visibility_based_anim_tick_option',unreal.VisibilityBasedAnimTickOption.ALWAYS_TICK_POSE_AND_REFRESH_BONES);c.set_collision_enabled(unreal.CollisionEnabled.NO_COLLISION);parts.append(c);actors.append(actor)
- body=parts[0];animation=unreal.load_asset(clip);assert animation
+ body=parts[0]
+ # Attach body-space hair cards to the head while the skeleton is still in bind pose.
+ hair_name='Hair_S_Coil' if female else 'Hair_S_AfroFade'
+ hair=ea.spawn_actor_from_class(unreal.StaticMeshActor,pos,unreal.Rotator(yaw=yaw));hair.set_actor_label('Wreck review '+role+' hair');hc=hair.static_mesh_component;hc.set_mobility(unreal.ComponentMobility.MOVABLE);hc.set_static_mesh(unreal.load_asset(base+face+'/Hair/Hair/'+hair_name+'_CardsMesh_Group0_LOD0'));hc.set_collision_enabled(unreal.CollisionEnabled.NO_COLLISION)
+ hair.attach_to_component(body,'head',unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,unreal.AttachmentRule.KEEP_WORLD,False);assert hc.get_attach_parent()==body;actors.append(hair)
+ appearance.append({'role':role,'gender':gender,'hair':hair_name,'top_material_parameters':[{str(m.get_name()):[str(n) for n in unreal.MaterialEditingLibrary.get_vector_parameter_names(m)]} for m in parts[1].get_materials()]})
+ tint={'rider':(.25,.45,.8),'helper':(.9,.28,.08),'bystander':(.25,.7,.4)}[role]
+ for i in range(parts[1].get_num_materials()):
+  mid=parts[1].create_dynamic_material_instance(i)
+  for key in ('A_CrowdColor_main','B_CrowdColor_main','C_Color_Value','A_CrowdColor_var','B_CrowdColor_Var'):mid.set_vector_parameter_value(key,unreal.LinearColor(*tint,1))
+ appearance[-1]['top_tint']=tint
+ animation=unreal.load_asset(clip);assert animation
  body.set_animation_mode(unreal.AnimationMode.ANIMATION_SINGLE_NODE);body.set_animation(animation);body.set_position(animation.get_editor_property('sequence_length')*fraction,False);body.stop()
  for c in parts[1:]:c.set_leader_pose_component(body,True,False)
  bodies.append((role,body,parts))
@@ -83,5 +96,5 @@ for i,offset in enumerate((offsets[0],offsets[len(offsets)//2])):
  eye=origin+offset;cam.set_actor_location(eye,False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(eye,origin+unreal.Vector(0,0,60)),False)
  for _ in range(24):unreal.PiedmontWorldTools.tick_scene_review();capture.capture_scene()
  name=f'scene-{i}.png';unreal.RenderingLibrary.export_render_target(world,target,str(out),name);images.append(str(out/name))
-report={'images':images,'map_saved':False,'diagnostic_fill_light':True,'contact_markers':SHOW_CONTACT_MARKERS,'diagnostic_shadow_settings':{'bias':.15,'slope_bias':.3,'contact_length':.03,'resolution_scale':4.0},'hair_omitted_for_pose_review':True,'forced_character_lod':0,'pose_ground_scope':'Clothing and shoes LOD0; excludes face asset root geometry and does not prove physical support.','pose_ground':pose_ground,'scooter_parts':len(scooter),'scooter_ground_adjustment_cm':raise_by,'visual_review':'pending','scope':'Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.'}
+report={'images':images,'map_saved':False,'diagnostic_fill_light':True,'contact_markers':SHOW_CONTACT_MARKERS,'diagnostic_shadow_settings':{'bias':.15,'slope_bias':.3,'contact_length':.03,'resolution_scale':4.0},'hair_omitted_for_pose_review':False,'appearances':appearance,'forced_character_lod':0,'pose_ground_scope':'Clothing and shoes LOD0; excludes face asset root geometry and does not prove physical support.','pose_ground':pose_ground,'scooter_parts':len(scooter),'scooter_ground_adjustment_cm':raise_by,'visual_review':'pending','scope':'Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.'}
 (root/'Tests/Results/2026-09-12-krog-wreck-visual-candidate.json').write_text(json.dumps(report,indent=2)+'\n')

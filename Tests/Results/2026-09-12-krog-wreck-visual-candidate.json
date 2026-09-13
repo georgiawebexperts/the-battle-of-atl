@@ -1,11 +1,119 @@
 {
   "images": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/e36bce3a759f4f1681c7011370ccdbd8/scene-0.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/e36bce3a759f4f1681c7011370ccdbd8/scene-1.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/9494f389157b47ac8990b9eeeee3a135/scene-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-wreck-review/9494f389157b47ac8990b9eeeee3a135/scene-1.png"
   ],
   "map_saved": false,
   "diagnostic_fill_light": true,
-  "hair_omitted_for_pose_review": true,
+  "contact_markers": false,
+  "diagnostic_shadow_settings": {
+    "bias": 0.15,
+    "slope_bias": 0.3,
+    "contact_length": 0.03,
+    "resolution_scale": 4.0
+  },
+  "hair_omitted_for_pose_review": false,
+  "appearances": [
+    {
+      "role": "rider",
+      "gender": "Male",
+      "hair": "Hair_S_AfroFade",
+      "top_material_parameters": [
+        {
+          "MI_m_nrw_crewneck": [
+            "C_Color_Value",
+            "B_CrowdColor_main",
+            "B_CrowdColor_Var",
+            "A_CrowdColor_main",
+            "A_CrowdColor_var",
+            "A_Color_Tint",
+            "B_Color_Tint",
+            "C_Color_Tint",
+            "A_ColorCrowd_Tint",
+            "B_ColorCrowd_Tint",
+            "A_ColorCrowd_var",
+            "B_ColorCrowd_MatA_MultValue",
+            "A_CrowdColor_pattern",
+            "B_CrowdColor_pattern",
+            "FuzzColor",
+            "BaseColor_BreakupWearColor",
+            "FakeLightPosOffset"
+          ]
+        }
+      ],
+      "top_tint": [
+        0.25,
+        0.45,
+        0.8
+      ]
+    },
+    {
+      "role": "helper",
+      "gender": "Male",
+      "hair": "Hair_S_AfroFade",
+      "top_material_parameters": [
+        {
+          "MI_m_nrw_crewneck": [
+            "C_Color_Value",
+            "B_CrowdColor_main",
+            "B_CrowdColor_Var",
+            "A_CrowdColor_main",
+            "A_CrowdColor_var",
+            "A_Color_Tint",
+            "B_Color_Tint",
+            "C_Color_Tint",
+            "A_ColorCrowd_Tint",
+            "B_ColorCrowd_Tint",
+            "A_ColorCrowd_var",
+            "B_ColorCrowd_MatA_MultValue",
+            "A_CrowdColor_pattern",
+            "B_CrowdColor_pattern",
+            "FuzzColor",
+            "BaseColor_BreakupWearColor",
+            "FakeLightPosOffset"
+          ]
+        }
+      ],
+      "top_tint": [
+        0.9,
+        0.28,
+        0.08
+      ]
+    },
+    {
+      "role": "bystander",
+      "gender": "Female",
+      "hair": "Hair_S_Coil",
+      "top_material_parameters": [
+        {
+          "MI_f_nrw_scoopneck": [
+            "C_Color_Value",
+            "B_CrowdColor_main",
+            "B_CrowdColor_Var",
+            "A_CrowdColor_main",
+            "A_CrowdColor_var",
+            "A_Color_Tint",
+            "B_Color_Tint",
+            "C_Color_Tint",
+            "A_ColorCrowd_Tint",
+            "B_ColorCrowd_Tint",
+            "A_ColorCrowd_var",
+            "B_ColorCrowd_MatA_MultValue",
+            "A_CrowdColor_pattern",
+            "B_CrowdColor_pattern",
+            "FuzzColor",
+            "BaseColor_BreakupWearColor",
+            "FakeLightPosOffset"
+          ]
+        }
+      ],
+      "top_tint": [
+        0.25,
+        0.7,
+        0.4
+      ]
+    }
+  ],
   "forced_character_lod": 0,
   "pose_ground_scope": "Clothing and shoes LOD0; excludes face asset root geometry and does not prove physical support.",
   "pose_ground": [
@@ -121,54 +229,54 @@
     },
     {
       "role": "bystander",
-      "adjustment_cm": 3.897737503051758,
+      "adjustment_cm": 1.187196671962738,
       "minimum_clearance_cm": 1.0,
-      "vertices_checked": 24899,
+      "vertices_checked": 22209,
       "part_clearances_before_cm": [
-        83.8817367553711,
-        0.8677555918693542,
-        -2.897737503051758
+        84.32381439208984,
+        1.496269941329956,
+        -0.18719667196273804
       ],
       "contacts": [
         {
-          "mesh": "m_tal_nrw_crewneck",
+          "mesh": "f_tal_nrw_scoopneck",
           "vertex": [
-            30475.500227687386,
-            114161.90273765998,
-            1200.4413266052152
+            30513.621975947022,
+            114139.8123065266,
+            1197.395893501177
           ],
           "surface": [
-            30475.49965586391,
-            114161.90290214823,
-            1112.6618493132437
+            30513.621401513847,
+            114139.81247252709,
+            1111.8848836456266
           ],
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
-          "mesh": "m_tal_nrw_jeans",
+          "mesh": "f_tal_nrw_jeans",
           "vertex": [
-            30468.58385122642,
-            114156.42561022661,
-            1117.2347006667997
+            30478.350598661094,
+            114148.87864636404,
+            1114.8872319926168
           ],
           "surface": [
-            30468.583279876417,
-            114156.42577508981,
-            1112.469207553022
+            30478.35002664249,
+            114148.87881174388,
+            1112.2037653942007
           ],
           "actor": "USGS Atlanta terrain + authored underwater basin"
         },
         {
-          "mesh": "m_tal_nrw_loafers",
+          "mesh": "f_tal_nrw_loafers",
           "vertex": [
-            30477.312121586492,
-            114161.94962217519,
-            1113.6634983886624
+            30492.453932062883,
+            114158.3268232022,
+            1113.5360770691777
           ],
           "surface": [
-            30477.31154963898,
-            114161.94978666023,
-            1112.6634983353065
+            30492.453359078805,
+            114158.32698793524,
+            1112.5360770712252
           ],
           "actor": "USGS Atlanta terrain + authored underwater basin"
         }
@@ -177,18 +285,12 @@
   ],
   "scooter_parts": 11,
   "scooter_ground_adjustment_cm": 6.440836463722235,
-  "visual_review": "Both final views inspected. Contact appearance improved after diagnostic shadow correction without further character-height changes. Frozen poses and duplicate characters remain provisional; not full scene/gameplay acceptance.",
+  "visual_review": "Both final views inspected: male injured/helper roles and female bystander, distinct blue/orange/green tops, attached hair following posed heads. Hair card highlights remain coarse; injured/helper get-up snapshots are provisional. No runtime or full animation acceptance.",
   "scope": "Frozen pose/primitive-scooter composition only. No collision, animation transitions, activation, rarity or gameplay acceptance.",
-  "contact_markers": false,
-  "diagnostic_shadow_settings": {
-    "bias": 0.15,
-    "slope_bias": 0.3,
-    "contact_length": 0.03,
-    "resolution_scale": 4.0
-  },
-  "diagnosis": "Nine per-mesh minimum-clearance points recorded, all on USGS terrain. Markers align with rendered clothing/shoes. Changing diagnostic light shadow settings reduces apparent hovering; earlier pose-evaluation hypothesis did not explain it.",
-  "diagnostic_comparison_images": [
-    "work/krog-wreck-review/7c93f3e3736145fb8627a3ddc4e94dd2/scene-1.png",
-    "work/krog-wreck-review/7a43161628604ac7b2141c82ca2dfeb1/scene-1.png"
+  "remaining": [
+    "Rare runtime event with present/absent runs and clear route",
+    "Credible injured/helper idle animation and transitions",
+    "Hair card/material refinement",
+    "Player interaction, collision and normal world lighting validation"
   ]
 }
