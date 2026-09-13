@@ -103,7 +103,7 @@ float ABattleGunman::TakeDamage(float Amount,const FDamageEvent& Event,AControll
 }
 
 void ABattleGunman::AnimateBody(float Dt){
- const bool Drawn=bWeaponDrawn;const TArray<FTransform> Previous=Body->BoneSpaceTransforms;
+ const bool Drawn=bWeaponDrawn;const TArray<FTransform> Previous=bDetailedPlayerRig?PreviousAnimationPose:Body->BoneSpaceTransforms;
  SetLocomotionClips(Drawn&&GunIdle?GunIdle:RelaxedIdle,GunWalk,GunRun);
  // Keep the authored gun stance; the generic hand IK otherwise overwrites it.
  if(GunIdle)bWeaponDrawn=false;
@@ -113,8 +113,32 @@ void ABattleGunman::AnimateBody(float Dt){
   for(int I=0;I<Previous.Num();I++){FTransform Blended;Blended.Blend(Previous[I],Body->BoneSpaceTransforms[I],Weight);Body->BoneSpaceTransforms[I]=Blended;}
   Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
  }
+ if(bDetailedPlayerRig)PreviousAnimationPose=Body->BoneSpaceTransforms;
+ if(Drawn&&bDetailedPlayerRig){
+  const auto& Ref=CastChecked<USkeletalMesh>(Body->GetSkinnedAsset())->GetRefSkeleton();
+  TArray<FTransform> Pose=Body->BoneSpaceTransforms;
+  for(int I=0;I<Pose.Num();I++)if(Ref.GetParentIndex(I)>=0)Pose[I]=Pose[I]*Pose[Ref.GetParentIndex(I)];
+  auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Ref.GetParentIndex(I);}return false;};
+  auto Rotate=[&](int Root,FQuat Rotation){if(Root<0)return;const FVector Pivot=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Pivot+Rotation.RotateVector(Pose[I].GetLocation()-Pivot));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
+  const int Hand=Ref.FindBoneIndex(TEXT("hand_r")),Middle=Ref.FindBoneIndex(TEXT("middle_01_r")),Index=Ref.FindBoneIndex(TEXT("index_01_r")),Pinky=Ref.FindBoneIndex(TEXT("pinky_01_r"));
+  const FVector Forward(0,1,0);
+  if(Hand>=0&&Middle>=0&&Index>=0&&Pinky>=0){
+   Rotate(Hand,FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[Hand].GetLocation(),Forward));
+   const FVector Across=FVector::VectorPlaneProject(Pose[Pinky].GetLocation()-Pose[Index].GetLocation(),Forward).GetSafeNormal();
+   const FVector Down(0,0,-1);const float Twist=FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Down),Forward),FVector::DotProduct(Across,Down));Rotate(Hand,FQuat(Forward,Twist));
+   for(const TCHAR* Finger:{TEXT("index"),TEXT("middle"),TEXT("ring"),TEXT("pinky")})for(int Joint=1;Joint<=3;Joint++){
+    const int Bone=Ref.FindBoneIndex(*FString::Printf(TEXT("%s_%02d_r"),Finger,Joint));
+    const float Curl=(Joint==1?35.f:65.f)*(FCString::Strcmp(Finger,TEXT("index"))==0?.5f:1.f);
+    Rotate(Bone,FQuat(FVector::UpVector,FMath::DegreesToRadians(-Curl)));
+   }
+   const int Thumb=Ref.FindBoneIndex(TEXT("thumb_01_r")),Tip=Ref.FindBoneIndex(TEXT("thumb_03_r"));
+   if(Thumb>=0&&Tip>=0)Rotate(Thumb,FQuat::FindBetweenVectors(Pose[Tip].GetLocation()-Pose[Thumb].GetLocation(),FVector(0,1,.12).GetSafeNormal()));
+   for(int I=0;I<Pose.Num();I++)Body->BoneSpaceTransforms[I]=Ref.GetParentIndex(I)>=0?Pose[I].GetRelativeTransform(Pose[Ref.GetParentIndex(I)]):Pose[I];
+   Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
+  }
+ }
  if(Drawn&&Weapon->GetStaticMesh()){
-  const FVector Centre=Body->GetSocketLocation(BattleDetailedBone(TEXT("Hand_R"),bDetailedPlayerRig))+GetActorForwardVector()*8+FVector(0,0,6);
+  const FVector Centre=Body->GetSocketLocation(BattleDetailedBone(TEXT("Hand_R"),bDetailedPlayerRig))+GetActorForwardVector()*(bDetailedPlayerRig?16:8)+FVector(0,0,bDetailedPlayerRig?0:6);
   Weapon->SetWorldLocation(Centre-Weapon->GetComponentTransform().TransformVector(Weapon->GetStaticMesh()->GetBounds().Origin));
  }
 }

@@ -25,6 +25,7 @@ public:
  UPROPERTY() TObjectPtr<UAnimSequence> GunWalk;
  UPROPERTY() TObjectPtr<UAnimSequence> GunRun;
 private:
+ TArray<FTransform> PreviousAnimationPose;
  FVector AimPoint;
  TWeakObjectPtr<APawn> AimTarget;
  bool CanAttack() const;

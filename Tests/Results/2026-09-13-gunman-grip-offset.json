@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "grip_review": true,
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/d937b183da2649a5863cc21be4e7538b/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/d937b183da2649a5863cc21be4e7538b/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/d937b183da2649a5863cc21be4e7538b/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/d937b183da2649a5863cc21be4e7538b/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/d937b183da2649a5863cc21be4e7538b/visible-shooter.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "image": "visible-shooter.png",
+    "observations": [
+      "HUD-free close view replaces obstructed review.",
+      "Hand no longer hangs open beneath weapon; fingers curl and weapon is closer to wrist.",
+      "Gun occludes much of contact in this angle, so full grip acceptance remains unproven.",
+      "Raised leg remains visibly unsuitable for stationary threat."
+    ],
+    "accepted_for_default": false,
+    "remaining": [
+      "Opposite-side hand contact and continuous draw/release",
+      "Planted lower-body stance",
+      "Detailed weapon art",
+      "Physics death and packaged acceptance"
+    ]
+  }
+}
