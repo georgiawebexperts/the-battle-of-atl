@@ -14,6 +14,9 @@ public:
  UPROPERTY(BlueprintReadOnly) float Health=100;
  UPROPERTY(BlueprintReadOnly) bool bWarning=false;
  UPROPERTY(BlueprintReadOnly) int32 TaserShots=0;
+ UPROPERTY() TObjectPtr<class UAudioComponent> WarningVoice;
+ int32 WarningVoiceStarts=0;
+ float VoiceCooldown=0;
  float WarningRemaining=0,Cooldown=3,PathDelay=0;
  UPROPERTY(BlueprintReadOnly) float TaserDrawBlend=0;
  UPROPERTY(BlueprintReadOnly) FVector LastTaserOrigin=FVector::ZeroVector;

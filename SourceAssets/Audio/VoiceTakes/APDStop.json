@@ -1,0 +1,13 @@
+{
+  "text": "Stop! APD!",
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "voice": "cedar",
+  "speed": 1.1,
+  "instructions": "Firm urgent fictional police command; brisk; pronounce A, P, D separately; no extra words.",
+  "ai_generated": true,
+  "duration_seconds": 1.58,
+  "transcript": "Stop. APD.",
+  "transcript_matches": true,
+  "validation": "Automatic transcription and duration; not a listening review",
+  "author": "2026-09-13 [codex-maclaptop]"
+}

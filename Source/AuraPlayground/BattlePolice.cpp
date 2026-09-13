@@ -1,4 +1,6 @@
 #include "BattlePolice.h"
+#include "Components/AudioComponent.h"
+#include "Sound/SoundWave.h"
 #include "Animation/AnimSequence.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
@@ -17,6 +19,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 ABattlePolice::ABattlePolice(){
+ WarningVoice=CreateDefaultSubobject<UAudioComponent>(TEXT("WarningVoice"));
+ WarningVoice->SetupAttachment(GetCapsuleComponent());WarningVoice->SetRelativeLocation(FVector(0,0,60));
+ WarningVoice->bAutoActivate=false;WarningVoice->bIsUISound=false;WarningVoice->bOverrideAttenuation=true;
+ auto& Attenuation=WarningVoice->AttenuationOverrides;Attenuation.bAttenuate=true;Attenuation.bSpatialize=true;
+ Attenuation.AttenuationShapeExtents=FVector(300,0,0);Attenuation.FalloffDistance=1800;
+ Attenuation.bEnableOcclusion=true;Attenuation.OcclusionVolumeAttenuation=.35f;Attenuation.OcclusionLowPassFilterFrequency=1000;
  Tags.Add(TEXT("BattlePolice"));Tags.Add(TEXT("BattleHostile"));
  AIControllerClass=AAIController::StaticClass();AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;bUseControllerRotationYaw=false;
  GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->MaxWalkSpeed=460;
@@ -30,6 +38,7 @@ ABattlePolice::ABattlePolice(){
 }
 void ABattlePolice::BeginPlay(){
  Super::BeginPlay();
+ WarningVoice->SetSound(LoadObject<USoundWave>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_APDStop.S_APDStop")));
  if(auto* Mesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Police/Taser/Taser/StaticMeshes/Taser.Taser"))){Weapon->SetStaticMesh(Mesh);Weapon->SetRelativeScale3D(FVector(1));}
  Weapon->SetVisibility(false);
 }
@@ -106,25 +115,28 @@ bool ABattlePolice::FireTaser(){
  TaserShots++;Cooldown=15;bWarning=false;return Hit;
 }
 void ABattlePolice::Tick(float Dt){
+ VoiceCooldown=FMath::Max(0.f,VoiceCooldown-Dt);
  DischargeRemaining=FMath::Max(0.f,DischargeRemaining-Dt);
  Super::Tick(Dt);Weapon->SetVisibility(!bDead);
 
- if(bDead){Body->SetRelativeRotation(FRotator(0,-90,90));return;}
+ if(bDead){WarningVoice->Stop();Body->SetRelativeRotation(FRotator(0,-90,90));return;}
  auto* AI=Cast<AAIController>(GetController());auto* Target=UGameplayStatics::GetPlayerPawn(this,0);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(!Target||!Mode||Mode->StartCountdown>0||Mode->bRunEnded){if(AI)AI->StopMovement();return;}
+ if(!Target||!Mode||Mode->StartCountdown>0||Mode->bRunEnded){WarningVoice->Stop();bWarning=false;if(AI)AI->StopMovement();return;}
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Person=Cast<ABattleRider>(Target))Bike=Person->ParkedBike;
  if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||Bike->TaserGrace>0){bWarning=false;if(AI)AI->StopMovement();Cooldown=FMath::Max(0.f,Cooldown-Dt);return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);PathDelay-=Dt;
  if(bWarning){if(AI)AI->StopMovement();SetActorRotation(FRotator(0,(Target->GetActorLocation()-GetActorLocation()).Rotation().Yaw,0));
   if(!CanReachTarget(Target)){bWarning=false;Cooldown=3;return;}
   WarningRemaining-=Dt;if(WarningRemaining<=0)FireTaser();return;}
- if(Cooldown<=0&&CanReachTarget(Target)){bWarning=true;WarningRemaining=2.f;return;}
+ if(Cooldown<=0&&CanReachTarget(Target)){bWarning=true;WarningRemaining=2.f;
+  if(VoiceCooldown<=0&&WarningVoice->Sound){WarningVoice->Play();WarningVoiceStarts++;VoiceCooldown=6.f;}
+  return;}
  if(AI&&PathDelay<=0){PathDelay=.6f;AI->MoveToActor(Target,550,true,true,true,nullptr,true);}
 }
 float ABattlePolice::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  if(bDead||!FMath::IsFinite(Amount)||Amount<=0)return 0;const float Applied=FMath::Min(Health,Amount);Health-=Applied;
  APiedmontBlood::Burst(GetWorld(),GetActorLocation()+FVector(0,0,30),Causer?(GetActorLocation()-Causer->GetActorLocation()).GetSafeNormal():FVector::UpVector);
  bWarning=false;Cooldown=FMath::Max(Cooldown,.5f);
- if(Health<=0){bDead=true;TInlineComponentArray<UTextRenderComponent*> Labels(this);for(auto* Label:Labels)Label->SetVisibility(false);if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);SetLifeSpan(10);}
+ if(Health<=0){WarningVoice->Stop();bDead=true;TInlineComponentArray<UTextRenderComponent*> Labels(this);for(auto* Label:Labels)Label->SetVisibility(false);if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);SetLifeSpan(10);}
  return Applied;
 }

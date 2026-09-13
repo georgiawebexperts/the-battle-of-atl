@@ -4,6 +4,8 @@
 #include "BattlePlayerCrash.h"
 #include "BattleFallenBike.h"
 #include "BattlePolice.h"
+#include "Components/AudioComponent.h"
+#include "Sound/SoundBase.h"
 #include "BattleZombie.h"
 #include "BattleQuest.h"
 #include "PiedmontPedestrian.h"
@@ -67,6 +69,11 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   }
   Officer->Cooldown=0;Officer->SetActorTickEnabled(true);Next();
  }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Officer->TaserDrawBlend>.7f&&Officer->Weapon->GetComponentLocation().Z>Officer->GetActorLocation().Z&&Officer->Weapon->IsVisible()&&Officer->Weapon->GetStaticMesh()->GetName()==TEXT("Taser")&&Bike->TaserHits==0,"Taser windup absent or reaction window too short");// Put cover behind the muzzle: a muzzle-only ray would incorrectly fire past it.
+  CHECK_TROUBLE(Officer->WarningVoice->Sound&&Officer->WarningVoice->Sound->GetDuration()>1.f&&Officer->WarningVoice->Sound->GetDuration()<2.f&&Officer->WarningVoiceStarts==1,"Warning voice missing, repeated or too long");
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceAudioAudit"))){
+   CHECK_TROUBLE(Officer->WarningVoice->IsPlaying(),"Warning voice did not start on audio device");
+   UE_LOG(LogTemp,Display,TEXT("PoliceVoiceAudit: playing=1 duration=%.2f starts=%d"),Officer->WarningVoice->Sound->GetDuration(),Officer->WarningVoiceStarts);
+  }
   auto* NearWall=GetWorld()->SpawnActor<AActor>();CHECK_TROUBLE(NearWall,"Near-cover fixture failed");
   auto* NearBox=NewObject<UStaticMeshComponent>(NearWall);NearWall->SetRootComponent(NearBox);NearBox->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));NearBox->SetWorldScale3D(FVector(.05,.8,1));NearBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);NearBox->SetCollisionResponseToAllChannels(ECR_Block);NearBox->SetCanEverAffectNavigation(false);NearBox->RegisterComponent();
   NearWall->SetActorLocationAndRotation((Officer->GetActorLocation()+FVector(0,0,40)+Officer->TaserMuzzle())*.5f,Officer->GetActorRotation());
