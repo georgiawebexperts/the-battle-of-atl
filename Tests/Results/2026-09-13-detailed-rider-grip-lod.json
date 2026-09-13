@@ -1,0 +1,51 @@
+{
+  "passed": false,
+  "duration": 12.01,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-rider-grip-lod/opening0.png",
+    "work/detailed-rider-grip-lod/opening1.png",
+    "work/detailed-rider-grip-lod/opening2.png"
+  ],
+  "visual_review": "Rejected: sleeves and face/hair lag body pose in paused steering preview; detached wrist/arm visible in third frame. Forcing LOD0 did not resolve it.",
+  "editor": true,
+  "grip_closeup": true,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "wrist_reach": [
+    {
+      "steer": -1.0,
+      "side": -1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": -1.0,
+      "side": 1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 0.0,
+      "side": -1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 0.0,
+      "side": 1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 1.0,
+      "side": -1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 1.0,
+      "side": 1,
+      "error_cm": 0.0002
+    }
+  ],
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance.",
+  "functional_passed": true
+}

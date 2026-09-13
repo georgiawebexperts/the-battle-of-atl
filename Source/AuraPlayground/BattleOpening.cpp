@@ -74,8 +74,9 @@ void ABattleMacController::BeginOpening(){
 #if !UE_BUILD_SHIPPING
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningReview"))&&C->OpeningCaptureStage<3&&T>2+C->OpeningCaptureStage*4){
    if(FParse::Param(FCommandLine::Get(),TEXT("BattleOpeningGripReview")))if(auto* Bike=Cast<ABattleBike>(C->GetPawn()))for(int Sign:{-1,1}){
-    const FVector Expected=Bike->SteeringAssembly->GetComponentTransform().TransformPosition(FVector(26,-Sign*25,115)-Bike->SteeringAssembly->GetRelativeLocation());
-    const FVector Wrist=Bike->Rider->GetBoneLocation(Sign>0?TEXT("Hand_L"):TEXT("Hand_R"),EBoneSpaces::WorldSpace);
+    const bool Detailed=Bike->Rider->GetBoneIndex(TEXT("pelvis"))>=0;
+    const FVector Expected=Bike->SteeringAssembly->GetComponentTransform().TransformPosition(FVector(Detailed?31:26,-Sign*25,115)-Bike->SteeringAssembly->GetRelativeLocation());
+    const FVector Wrist=Bike->Rider->GetBoneLocation(Sign>0?(Detailed?TEXT("hand_l"):TEXT("Hand_L")):(Detailed?TEXT("hand_r"):TEXT("Hand_R")),EBoneSpaces::WorldSpace);
     UE_LOG(LogTemp,Display,TEXT("BattleGripReach: steer=%.2f side=%d error_cm=%.4f"),Bike->Ride->SmoothedSteer,Sign,FVector::Distance(Expected,Wrist));
    }
    FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);FScreenshotRequest::RequestScreenshot(Dir/FString::Printf(TEXT("opening%d.png"),C->OpeningCaptureStage),true,false);C->OpeningCaptureStage++;}

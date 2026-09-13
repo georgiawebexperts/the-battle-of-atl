@@ -80,6 +80,7 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
 }
 void ABattleBike::BeginPlay(){
  Super::BeginPlay();
+ InitializeDetailedRiderPreview();
  if(auto* Gun=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/PiedmontRide/Bike/SM_Pistol.SM_Pistol"))){const FVector Size=Gun->GetBounds().BoxExtent*2;const float Scale=28/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);Pistol->SetStaticMesh(Gun);Pistol->SetRelativeScale3D(FVector(Scale));Pistol->SetRelativeRotation(Rot);Pistol->SetRelativeLocation(FVector(45,28,130)-Rot.RotateVector(Gun->GetBounds().Origin)*Scale);}
  CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
  RideEffects=GetWorld()->SpawnActor<ABattleRideFX>();
@@ -174,11 +175,18 @@ void ABattleBike::UpdateSteeringVisual(){
  // Turn the complete fork around the inclined steerer, retaining wheel spin.
  SteeringAssembly->SetRelativeRotation(FQuat(FVector(-3,0,21).GetSafeNormal(),FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));
 }
-void ABattleBike::RefreshRiderPose(){UpdateSteeringVisual();PoseRider(0);Rider->RefreshBoneTransforms();Rider->MarkRenderDynamicDataDirty();}
+void ABattleBike::RefreshRiderPose(){UpdateSteeringVisual();PoseRider(0);Rider->RefreshBoneTransforms();Rider->MarkRenderDynamicDataDirty();
+ // Manual preview poses can change while the world is paused, so followers do
+ // not receive their normal component tick. Publish the same pose to all parts.
+ if(bDetailedRiderPreview){
+  Rider->RefreshFollowerComponents();
+  for(const auto& Child:Rider->GetAttachChildren())if(!Child->GetAttachSocketName().IsNone()){Child->UpdateComponentToWorld();Child->MarkRenderTransformDirty();}
+ }
+}
 void ABattleBike::PoseRider(float Dt){
  if(ReferencePose.IsEmpty())return;
  TArray<FTransform> Pose=ReferencePose;
- auto Index=[&](const TCHAR* Name){return BoneNames.IndexOfByKey(FName(Name));};
+ auto Index=[&](const TCHAR* Name){FName Key(Name);if(bDetailedRiderPreview){static const TMap<FName,FName> Aliases={{TEXT("Hips"),TEXT("pelvis")},{TEXT("Abdomen"),TEXT("spine_01")},{TEXT("UpperLeg_L"),TEXT("thigh_l")},{TEXT("LowerLeg_L"),TEXT("calf_l")},{TEXT("Foot_L"),TEXT("foot_l")},{TEXT("UpperArm_L"),TEXT("upperarm_l")},{TEXT("LowerArm_L"),TEXT("lowerarm_l")},{TEXT("Hand_L"),TEXT("hand_l")},{TEXT("Index2_L"),TEXT("index_01_l")},{TEXT("Index3_L"),TEXT("index_02_l")},{TEXT("Index4_L"),TEXT("index_03_l")},{TEXT("Middle2_L"),TEXT("middle_01_l")},{TEXT("Middle3_L"),TEXT("middle_02_l")},{TEXT("Middle4_L"),TEXT("middle_03_l")},{TEXT("Ring2_L"),TEXT("ring_01_l")},{TEXT("Ring3_L"),TEXT("ring_02_l")},{TEXT("Ring4_L"),TEXT("ring_03_l")},{TEXT("Pinky2_L"),TEXT("pinky_01_l")},{TEXT("Pinky3_L"),TEXT("pinky_02_l")},{TEXT("Pinky4_L"),TEXT("pinky_03_l")},{TEXT("Thumb2_L"),TEXT("thumb_01_l")},{TEXT("Thumb3_L"),TEXT("thumb_02_l")},{TEXT("UpperLeg_R"),TEXT("thigh_r")},{TEXT("LowerLeg_R"),TEXT("calf_r")},{TEXT("Foot_R"),TEXT("foot_r")},{TEXT("UpperArm_R"),TEXT("upperarm_r")},{TEXT("LowerArm_R"),TEXT("lowerarm_r")},{TEXT("Hand_R"),TEXT("hand_r")},{TEXT("Index2_R"),TEXT("index_01_r")},{TEXT("Index3_R"),TEXT("index_02_r")},{TEXT("Index4_R"),TEXT("index_03_r")},{TEXT("Middle2_R"),TEXT("middle_01_r")},{TEXT("Middle3_R"),TEXT("middle_02_r")},{TEXT("Middle4_R"),TEXT("middle_03_r")},{TEXT("Ring2_R"),TEXT("ring_01_r")},{TEXT("Ring3_R"),TEXT("ring_02_r")},{TEXT("Ring4_R"),TEXT("ring_03_r")},{TEXT("Pinky2_R"),TEXT("pinky_01_r")},{TEXT("Pinky3_R"),TEXT("pinky_02_r")},{TEXT("Pinky4_R"),TEXT("pinky_03_r")},{TEXT("Thumb2_R"),TEXT("thumb_01_r")},{TEXT("Thumb3_R"),TEXT("thumb_02_r")}};if(const FName* Found=Aliases.Find(Key))Key=*Found;}return BoneNames.IndexOfByKey(Key);};
  auto Descendant=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Parents[I];}return false;};
  auto MoveBranch=[&](int Root,FVector Target,FQuat Rotation){if(Root<0)return;FVector Old=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();++I)if(Descendant(I,Root)){Pose[I].SetLocation(Target+Rotation.RotateVector(Pose[I].GetLocation()-Old));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
  const float BrakeLeanTarget=8.f*FMath::Clamp(Ride->Brake,0.f,1.f);
@@ -209,9 +217,17 @@ void ABattleBike::PoseRider(float Dt){
  const FVector FingerAxis=GripTurn.RotateVector(FVector::ForwardVector);
  auto Grip=[&](const TCHAR* Side,float Sign){
   const FString S(Side);const FString HandName=TEXT("Hand_")+S;
-  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,SteeringToRider.TransformPosition(FVector(26,-Sign*25,115)-SteeringAssembly->GetRelativeLocation()),FVector(Sign,0,-.4));
+  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*HandName,SteeringToRider.TransformPosition(FVector(bDetailedRiderPreview?31:26,-Sign*25,115)-SteeringAssembly->GetRelativeLocation()),FVector(Sign,0,-.4));
   const int Hand=Index(*HandName);if(Hand<0)return;
-  const FQuat Facing=GripTurn*FQuat(FVector::UpVector,FMath::DegreesToRadians(Sign*90.f));
+  FQuat Facing=GripTurn*FQuat(FVector::UpVector,FMath::DegreesToRadians(Sign*90.f));
+  if(bDetailedRiderPreview){
+   const int Middle=Index(*(TEXT("Middle2_")+S)),IndexFinger=Index(*(TEXT("Index2_")+S)),Pinky=Index(*(TEXT("Pinky2_")+S));
+   if(Middle>=0&&IndexFinger>=0&&Pinky>=0){
+    const FVector Long=ReferencePose[Middle].GetLocation()-ReferencePose[Hand].GetLocation();
+    const FVector Across=ReferencePose[IndexFinger].GetLocation()-ReferencePose[Pinky].GetLocation();
+    Facing=GripTurn*FRotationMatrix::MakeFromXY(FVector::RightVector,FVector(-Sign,0,0)).ToQuat()*FRotationMatrix::MakeFromXY(Long,Across).ToQuat().Inverse();
+   }
+  }
   MoveBranch(Hand,Pose[Hand].GetLocation(),Facing*ReferencePose[Hand].GetRotation()*Pose[Hand].GetRotation().Inverse());
   for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")}){
    for(int Joint=2;Joint<=4;Joint++){

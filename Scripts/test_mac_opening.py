@@ -2,13 +2,16 @@
 import argparse,json,re,subprocess,plistlib,uuid,shutil,struct
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--skip',action='store_true');p.add_argument('--review',action='store_true');p.add_argument('--escape',action='store_true');p.add_argument('--report');p.add_argument('--grip',action='store_true');p.add_argument('--editor',action='store_true');a=p.parse_args();assert sum([a.skip,a.review,a.escape])<=1
+p=argparse.ArgumentParser();p.add_argument('--skip',action='store_true');p.add_argument('--review',action='store_true');p.add_argument('--escape',action='store_true');p.add_argument('--report');p.add_argument('--detailed-rider',action='store_true');p.add_argument('--grip',action='store_true');p.add_argument('--editor',action='store_true');a=p.parse_args();assert sum([a.skip,a.review,a.escape])<=1
 mode='escape' if a.escape else 'review' if a.review else 'skip' if a.skip else 'complete'
 bundle=root/'Saved/StagedBuilds/Mac/AuraPlayground.app';app=bundle/'Contents/MacOS/AuraPlayground'
 bid=plistlib.loads((bundle/'Contents/Info.plist').read_bytes())['CFBundleIdentifier']
 capture=Path.home()/'Library/Containers'/bid/'Data/Documents/BattleOpeningReview'/uuid.uuid4().hex;capture.mkdir(parents=True)
 out=root/'work'/f'build042-opening-{mode}';out.mkdir(exist_ok=True)
 flags=['-RenderOffscreen','-windowed','-ResX=1280','-ResY=720','-ForceRes','-BattleOpeningReview',f'-BattleHUDReviewDir={capture}'] if a.review else ['-nullrhi','-BattleOpeningAudit']
+if a.detailed_rider:
+ assert a.editor and a.review
+ flags+=['-BattleDetailedRider']
 if a.grip:
  assert a.review
  flags+=['-BattleOpeningGripReview']
@@ -23,7 +26,10 @@ if a.review and d['passed']:
  for i in range(3):
   dest=out/f'opening{i}.png';shutil.copy2(capture/dest.name,dest);assert struct.unpack('>II',dest.read_bytes()[16:24])==(1280,720);d['images'].append(str(dest.relative_to(root)))
  d['visual_review']='pending'
-d['editor']=a.editor;d['grip_closeup']=a.grip
+d['editor']=a.editor;d['grip_closeup']=a.grip;d['detailed_rider_preview']=a.detailed_rider
+if a.detailed_rider:
+ d['detailed_assets_loaded']='DetailedRiderPreview: body=m_tal_nrw_body outfit_parts=4' in (out/'run.log').read_text()
+ d['passed']=bool(d['passed'] and d['detailed_assets_loaded'])
 if a.grip:
  rows=re.findall(r'BattleGripReach: steer=([-0-9.]+) side=(-?1) error_cm=([0-9.]+)',(out/'run.log').read_text())
  d['wrist_reach']=[{'steer':float(t),'side':int(side),'error_cm':float(error)} for t,side,error in rows]

@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "exit_code": 0,
+  "images": [
+    "work/detailed-rider-grip-sync/opening0.png",
+    "work/detailed-rider-grip-sync/opening1.png",
+    "work/detailed-rider-grip-sync/opening2.png"
+  ],
+  "visual_review": "Inspected all three 1280x720 captures: clothing, face and hair follow full-left, straight-braking, full-right body poses without previously detached sleeves or displaced head/hair. Hands meet bar. Not final character animation, thumb articulation, moving gameplay, crash, on-foot or performance acceptance.",
+  "editor": true,
+  "grip_closeup": true,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "wrist_reach": [
+    {
+      "steer": -1.0,
+      "side": -1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": -1.0,
+      "side": 1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 0.0,
+      "side": -1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 0.0,
+      "side": 1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 1.0,
+      "side": -1,
+      "error_cm": 0.0002
+    },
+    {
+      "steer": 1.0,
+      "side": 1,
+      "error_cm": 0.0002
+    }
+  ],
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

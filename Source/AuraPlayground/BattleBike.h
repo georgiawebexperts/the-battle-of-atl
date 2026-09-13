@@ -158,6 +158,8 @@ private:
  float ShotCooldown=0,ReloadTimer=0,GunHold=0;
  void PoseRider(float Dt);
  void UpdateSteeringVisual();
+ void InitializeDetailedRiderPreview();
+ bool bDetailedRiderPreview=false;
  void ToggleHandling(){Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;}
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;
