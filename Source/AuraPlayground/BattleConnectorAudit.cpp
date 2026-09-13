@@ -15,6 +15,8 @@
 #include "PiedmontPedestrian.h"
 #include "PiedmontDarkZone.h"
 
+bool PrepareScooterRideAudit(APlayerController* PC,float Dt);
+bool ReportScooterRideAudit();
 // Opt-in cooked-game physics test. Only each leg's starting fixture is teleported;
 // the entire crossing is traversed through ordinary keyboard input and movement.
 void ABattleMacController::TickConnectorAudit(float Dt){
@@ -25,6 +27,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  const bool Krog=FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit"));
  const bool Eastside=Hill||Home||Krog||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"));
  if(GetWorld()->GetTimeSeconds()<5)return;
+ if(!PrepareScooterRideAudit(this,Dt))return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike)return;
  struct FTrafficObservation{TWeakObjectPtr<UWorld> World;float SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max(),MinZ=TNumericLimits<float>::Max(),MaxZ=-TNumericLimits<float>::Max(),MaxGrade=0;};static FTrafficObservation Traffic;
  if(Traffic.World!=GetWorld()){Traffic=FTrafficObservation();Traffic.World=GetWorld();}
@@ -43,6 +46,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   Traffic.MaxLive=FMath::Max(Traffic.MaxLive,Live);Traffic.MaxMoving=FMath::Max(Traffic.MaxMoving,Moving);if(Nearby)++Traffic.NearbySamples;
  }
  auto Finish=[&](bool Passed){
+  Passed=ReportScooterRideAudit()&&Passed;
   UE_LOG(LogTemp,Display,TEXT("HandlingRouteAudit: {\"realistic\":%s,\"elevation_span_cm\":%.2f,\"max_grade\":%.4f}"),Bike->Ride->bRealHandling?TEXT("true"):TEXT("false"),Traffic.MaxZ-Traffic.MinZ,Traffic.MaxGrade);
   UE_LOG(LogTemp,Display,TEXT("CrowdRideAudit: {\"max_live_people\":%d,\"max_walking_people\":%d,\"nearby_samples\":%d,\"nearest_person_cm\":%.2f}"),Traffic.MaxPeople,Traffic.MaxWalking,Traffic.PeopleNearby,Traffic.MaxPeople?Traffic.NearestPerson:-1.f);
   UE_LOG(LogTemp,Display,TEXT("TrafficRideAudit: {\"samples\":%d,\"max_live_cars\":%d,\"max_moving_cars\":%d,\"nearby_samples\":%d,\"nearest_car_cm\":%.2f}"),Traffic.Samples,Traffic.MaxLive,Traffic.MaxMoving,Traffic.NearbySamples,Traffic.MaxLive?Traffic.Nearest:-1.f);

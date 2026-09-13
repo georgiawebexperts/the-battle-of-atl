@@ -2,19 +2,19 @@
 import json,re,subprocess,argparse,hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--buildings',action='store_true');parser.add_argument('--finish-route',action='store_true');parser.add_argument('--rail',action='store_true');parser.add_argument('--world',action='store_true');parser.add_argument("--crowds",action="store_true");parser.add_argument("--main",action="store_true");parser.add_argument("--real-handling",action="store_true");args=parser.parse_args()
-assert sum([args.level_floor,args.continuous_shell,args.buildings,args.rail,args.world,args.main])<=1
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--buildings',action='store_true');parser.add_argument('--finish-route',action='store_true');parser.add_argument('--rail',action='store_true');parser.add_argument('--world',action='store_true');parser.add_argument("--crowds",action="store_true");parser.add_argument("--main",action="store_true");parser.add_argument("--real-handling",action="store_true");parser.add_argument("--scooter",action="store_true");args=parser.parse_args()
+assert sum([args.level_floor,args.continuous_shell,args.buildings,args.rail,args.world,args.main,args.scooter])<=1
 assert Path(args.report).name==args.report
 app=Path('/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd')
-variant = 'main' if args.main else 'world' if args.world else 'rail' if args.rail else 'buildings' if args.buildings else 'continuous-shell' if args.continuous_shell else 'level-floor' if args.level_floor else 'candidate'
+variant = 'scooter' if args.scooter else 'main' if args.main else 'world' if args.world else 'rail' if args.rail else 'buildings' if args.buildings else 'continuous-shell' if args.continuous_shell else 'level-floor' if args.level_floor else 'candidate'
 route = 'finish-drive' if args.finish_route else 'drive'
 log = root / f'work/krog-{variant}-{route}.log'
-map_name = ('PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
+map_name = ('PiedmontScooterReview' if args.scooter else 'PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
             'PiedmontKrogShellReview' if args.continuous_shell else
             'PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview')
 with log.open('w') as stream:
     run=subprocess.run([str(app),str(root/'AuraPlayground.uproject'),f'/Game/PiedmontRide/Maps/{map_name}?Difficulty=Easy?AutoStart=1','-game','-BattleSkipTutorial','-RCWebControlDisable',
-        '-nullrhi','-unattended','-nosound','-BattleHomeDriveAudit' if args.finish_route else '-BattleKrogAudit','-stdout']+(['-BattleKeepCrowds'] if args.crowds else [])+(['-BattleRealHandlingRoute'] if args.real_handling else []),stdout=stream,stderr=subprocess.STDOUT,timeout=600)
+        '-nullrhi','-unattended','-nosound','-BattleHomeDriveAudit' if args.finish_route else '-BattleKrogAudit','-stdout']+(['-BattleKeepCrowds'] if args.crowds else [])+(['-BattleScooterRideAudit'] if args.scooter else [])+(['-BattleRealHandlingRoute'] if args.real_handling else []),stdout=stream,stderr=subprocess.STDOUT,timeout=600)
 matches=re.findall(r'BattleConnectorAudit: (\{[^\n]+\})',log.read_text())
 result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
 ground=re.findall(r'TrailGroundAudit: samples=(\d+) paved=(\d+)',log.read_text())
@@ -40,6 +40,10 @@ if args.crowds:
 if args.real_handling:
     result['passed']=bool(result['passed'] and result['handling'] and result['handling']['realistic'])
     result['scope']+=' Realistic handling uses test-driver Space braking before mapped bends and nearby cars; this is not player autopilot or complete handling acceptance.'
+if args.scooter:
+    rows=re.findall(r'ScooterRideAudit: (\{[^\n]+\})',log.read_text());result['scooter_scene']=json.loads(rows[-1]) if rows else None
+    result['passed']=bool(result['passed'] and result['scooter_scene'] and result['scooter_scene']['passed'])
+    result['scope']+=' Forced scooter scene assembled before route traversal in navigation review map; normal random selection and rendered appearance unverified.'
 (root/'Tests/Results'/args.report).write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result),flush=True)
 if not result['passed']:raise SystemExit(1)

@@ -19,7 +19,11 @@ bool ABattleScooterScene::IsOffscreen() const{
  // Entire conservative 5m scene sphere must be behind the camera, not just its origin.
  return FVector::DotProduct(ToScene,PC->PlayerCameraManager->GetCameraRotation().Vector()) < -500;
 }
-void ABattleScooterScene::AbortScene(){for(auto P:Participants)if(IsValid(P))P->Destroy();Participants.Empty();Destroy();}
+void ABattleScooterScene::EndPlay(const EEndPlayReason::Type Reason){
+ for(auto P:Participants)if(IsValid(P)&&!P->IsActorBeingDestroyed())P->Destroy();
+ Participants.Empty();Super::EndPlay(Reason);
+}
+void ABattleScooterScene::AbortScene(){Destroy();}
 bool ABattleScooterScene::SpawnScene(){
  FCollisionQueryParams Q(SCENE_QUERY_STAT(ScooterSite),false,this);
  const FVector Offsets[]={FVector(0,0,0),FVector(-40,-100,0),FVector(145,90,0)};
@@ -66,6 +70,6 @@ void ABattleScooterScene::Tick(float Dt){
   bPosesSet=true;SetupAge=0;return;}
   for(auto P:Participants)P->SetActorHiddenInGame(false);SetActorHiddenInGame(false);bSceneReady=true;return;
  }
- auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(Pawn&&FVector::Dist2D(Pawn->GetActorLocation(),GetActorLocation())<1500)bVisitStarted=true;
+ auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(Pawn&&FVector::Dist2D(Pawn->GetActorLocation(),GetActorLocation())<2500)bVisitStarted=true;
  if(bVisitStarted){VisitAge+=Dt;if(VisitAge>25&&!bReleased){for(auto P:Participants)if(IsValid(P)){P->ReleaseIncidentPose();P->PauseRemaining=1;}bReleased=true;}}
 }

@@ -9,6 +9,7 @@ class AURAPLAYGROUND_API ABattleScooterScene : public AActor {
 public:
  ABattleScooterScene();
  virtual void Tick(float Dt) override;
+ virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) float AppearanceChance=.18f;
  UPROPERTY(BlueprintReadOnly) bool bSelected=false;
  UPROPERTY(BlueprintReadOnly) bool bSceneReady=false;
