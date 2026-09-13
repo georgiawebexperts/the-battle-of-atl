@@ -5,6 +5,7 @@
 #include "BattleRider.h"
 #include "BattleZombie.h"
 #include "Camera/CameraComponent.h"
+#include "Camera/CameraActor.h"
 #include "Components/PoseableMeshComponent.h"
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
@@ -73,6 +74,11 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
  if(S.Stage==4){if(S.Clock>=S.NextIdleLog){S.NextIdleLog+=.25f;UE_LOG(LogTemp,Display,TEXT("SwimIdle: t=%.2f dt=%.3f w=%d up=%d pedal=%.1f speed=%.1f velocity=%s location=%s parked=%d"),S.Clock,Dt,PC->IsInputKeyDown(EKeys::W),PC->IsInputKeyDown(EKeys::Up),S.Bike->Ride->Pedal,S.Bike->Ride->Speed,*S.Bike->Ride->Velocity.ToString(),*S.Bike->GetActorLocation().ToString(),S.Bike->bParked);}SWIM_CHECK(PC->GetPawn()==S.Bike.Get()&&!S.Bike->bParked&&S.Bike->Ride->Recovery<=0,"Remount did not remain stable");SWIM_CHECK(S.Bike->Ride->Speed<5,"Bike accelerated after forward key release");if(S.Clock>2)End(true,TEXT("Shoreline entry, swim, fixed-bike return and stable remount pass"));return;}
  if(S.Stage==6){if(S.Clock<.2f)return;Key(EKeys::E,false);SWIM_CHECK(PC->GetPawn()==S.Bike.Get(),"E failed to remount at bank");Capture(TEXT("returned"));S.Stage=4;S.Clock=0;return;}
  auto* P=Cast<ABattleRider>(PC->GetPawn());
+ if(P&&P->bSwimming&&FParse::Param(FCommandLine::Get(),TEXT("BattleSwimSideReview"))){
+  static TWeakObjectPtr<ACameraActor> Camera;if(!Camera.IsValid())Camera=W->SpawnActor<ACameraActor>();
+  const FVector Eye=P->GetActorLocation()+P->GetActorRightVector()*310+P->GetActorForwardVector()*80+FVector(0,0,90),Target=P->GetActorLocation()+FVector(0,0,-20);
+  Camera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());PC->SetViewTarget(Camera.Get());
+ }
  if(S.Stage==1){if(!P)return;SWIM_CHECK(S.Bike.IsValid()&&S.Bike->bParked,"Lake did not park bike");S.Bank=S.Bike->GetActorLocation();S.Start=P->GetActorLocation();S.EntryBankDistance=FVector::Dist2D(S.Bank,S.Start);if(FParse::Param(FCommandLine::Get(),TEXT("BattleSwimDeepDrop"))){SWIM_CHECK(S.EntryBankDistance>600,"Deep drop fixture was too close to bank");}Key(EKeys::W,true);S.Stage=2;S.Clock=0;return;}
  SWIM_CHECK(P&&S.Bike.IsValid(),"Lost swimmer or parked bike");
  S.Drift=FMath::Max(S.Drift,float(FVector::Distance(S.Bank,S.Bike->GetActorLocation())));
@@ -82,9 +88,12 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   const FName Hand=BattleUseDetailedRider()?FName(TEXT("hand_l")):FName(TEXT("Hand_L"));
   const float Z=P->Body->GetBoneLocationByName(Hand,EBoneSpaces::ComponentSpace).Z;S.MinHand=FMath::Min(S.MinHand,Z);S.MaxHand=FMath::Max(S.MaxHand,Z);
   if(!FParse::Param(FCommandLine::Get(),TEXT("BattleFootBodyReview"))){
-   SWIM_CHECK(P->FirstPersonArms->IsVisible(),"Swimming first-person hands hidden");
-   const float HandZ=P->FirstPersonArms->GetBoneLocationByName(Hand,EBoneSpaces::ComponentSpace).Z;S.ViewMin=FMath::Min(S.ViewMin,HandZ);S.ViewMax=FMath::Max(S.ViewMax,HandZ);
-   if(S.Clock>1){const float EyeAboveWater=P->Camera->GetComponentLocation().Z-(P->GetActorLocation().Z-35);SWIM_CHECK(EyeAboveWater>10&&EyeAboveWater<50,"Swimming eye is not near the surface");}
+   SWIM_CHECK(P->Body->IsVisible()&&!P->FirstPersonArms->IsVisible(),"Third-person swimmer body/arm visibility incorrect");
+   if(S.Clock>1){
+    const float CameraDistance=FVector::Dist(P->Camera->GetComponentLocation(),P->GetActorLocation());
+    const float EyeAboveWater=P->Camera->GetComponentLocation().Z-P->GetActorLocation().Z+35;
+    SWIM_CHECK(CameraDistance>120&&CameraDistance<650&&EyeAboveWater>10,"Swimming camera is not outside the visible body above water");
+   }
   }
   if(S.Clock>1&&!S.Shot){Capture(TEXT("swimming"));S.Shot=true;}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleSwimViewAudit"))){
@@ -96,7 +105,7 @@ void TickBattleSwimAudit(ABattleMacController* PC,float Dt){
   SWIM_CHECK(P->bSwimming&&S.SwimDistance>250,"Did not swim away from shore");SWIM_CHECK(!P->ToggleDrawWeapon()&&!P->Fire()&&!P->MountBike(),"Swimming allowed gun or remount");
   TInlineComponentArray<UPoseableMeshComponent*> Parts(P);for(auto* Part:Parts)if(Part->GetFName()==TEXT("DetailedM1911"))SWIM_CHECK(!Part->IsVisible(),"Pistol visible in water");
   SWIM_CHECK(S.MaxHand-S.MinHand>15,"Swimming arms did not stroke");
-  if(S.ViewMin<MAX_flt){SWIM_CHECK(S.ViewMax-S.ViewMin>5,"First-person swim hands did not stroke");UE_LOG(LogTemp,Display,TEXT("BattleSwimView: eye_above_surface_cm=%.2f hand_stroke_cm=%.2f"),P->Camera->GetComponentLocation().Z-P->GetActorLocation().Z+35,S.ViewMax-S.ViewMin);}
+  UE_LOG(LogTemp,Display,TEXT("BattleSwimView: third_person=1 camera_distance_cm=%.2f eye_above_surface_cm=%.2f body_stroke_cm=%.2f"),FVector::Dist(P->Camera->GetComponentLocation(),P->GetActorLocation()),P->Camera->GetComponentLocation().Z-P->GetActorLocation().Z+35,S.MaxHand-S.MinHand);
 
   S.Stage=3;S.Clock=0;
   FString RoutePath;if(FParse::Value(FCommandLine::Get(),TEXT("BattleSwimRoute="),RoutePath)){

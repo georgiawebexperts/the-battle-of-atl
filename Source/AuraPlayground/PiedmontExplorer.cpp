@@ -98,8 +98,8 @@ void APiedmontExplorer::AnimateBody(float Dt){
  }
  SwimPoseBlend=FMath::FInterpTo(SwimPoseBlend,bSwimming?FMath::Clamp(GetVelocity().Size2D()/160.f,0.f,1.f):0.f,Dt,4.f);
  if(bSwimming&&bDetailedPlayerRig){
-  const FVector Treading(0,0,-150+1.5f*FMath::Sin(Gait));
-  Body->SetRelativeLocation(FMath::Lerp(Treading,FVector(-65,0,-75+SwimStandingHalfHeight-35),SwimPoseBlend));
+  const FVector Treading(0,0,-165+1.5f*FMath::Sin(Gait));
+  Body->SetRelativeLocation(FMath::Lerp(Treading,FVector(-65,0,-95+SwimStandingHalfHeight-35),SwimPoseBlend));
   Body->SetRelativeRotation(FRotator(0,-90,90*SwimPoseBlend));
  }else{
   Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75+SwimStandingHalfHeight-35):FVector(0,0,BodyHeight));
@@ -131,7 +131,7 @@ void APiedmontExplorer::AnimateBody(float Dt){
   if(bSwimming&&bDetailedPlayerRig){
    const float Phase=Gait+(Side<0?PI:0.f);
    const FVector Tread(Side*(35+8*FMath::Sin(Gait)),20+12*FMath::Cos(Gait),100+5*FMath::Sin(Gait));
-   const FVector Crawl(Side*(24+8*FMath::Sin(Phase)),10+25*FMath::Sin(Phase),145+40*FMath::Cos(Phase));
+   const FVector Crawl(Side*(24+8*FMath::Sin(Phase)),8+30*FMath::Sin(Phase),150+55*FMath::Cos(Phase));
    Hand=FMath::Lerp(Tread,Crawl,SwimPoseBlend);
   }
   if(bWeaponDrawn)Hand=Side==1?FVector(5,40,128):FVector(-15,45,130);
@@ -140,8 +140,14 @@ void APiedmontExplorer::AnimateBody(float Dt){
   if(!bWeaponDrawn&&!bSwimming)Hand=AdjustVisitorHand(Side,Hand);
   const bool OverrideHand=!bAuthoredLocomotion||bWeaponDrawn||HandIndex<0||!Hand.Equals(Pose[HandIndex].GetLocation(),.01f);
   if(OverrideHand){
-  if(Side==1)Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),Hand,FVector(1,1,0));
-  else Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),Hand,FVector(-1,1,0));
+  FVector Elbow(Side,1,0);
+  if(bSwimming&&bDetailedPlayerRig){
+   // Pull under the surface, then lift the elbow for the return to entry.
+   const float Recovery=FMath::SmoothStep(0.f,.65f,FMath::Max(0.f,-FMath::Sin(Gait+(Side<0?PI:0.f))));
+   Elbow=FMath::Lerp(Elbow,FVector(Side*.6f,FMath::Lerp(1.f,-1.f,Recovery),.3f),SwimPoseBlend);
+  }
+  if(Side==1)Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),Hand,Elbow);
+  else Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),Hand,Elbow);
   }
   if(bSwimming&&bDetailedPlayerRig&&HandIndex>=0){
    const TCHAR* Suffix=Side==1?TEXT("l"):TEXT("r");
@@ -155,7 +161,13 @@ void APiedmontExplorer::AnimateBody(float Dt){
    }
   }
   const int Leg=Index(Side==1?TEXT("UpperLeg_L"):TEXT("UpperLeg_R"));
-  if(Leg>=0&&!bAuthoredLocomotion)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait*(bSwimming&&bDetailedPlayerRig?2.f:1.f))*(bSwimming?FMath::Lerp(5.f,12.f,SwimPoseBlend):28.f*Blend))));
+  if(Leg>=0&&!bAuthoredLocomotion)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait*(bSwimming&&bDetailedPlayerRig?2.f:1.f))*(bSwimming?FMath::Lerp(5.f,8.f,SwimPoseBlend):28.f*Blend))));
+  if(bSwimming&&bDetailedPlayerRig){
+   const int Knee=Index(Side==1?TEXT("LowerLeg_L"):TEXT("LowerLeg_R")),Foot=Index(Side==1?TEXT("Foot_L"):TEXT("Foot_R"));
+   const float Kick=FMath::Max(0.f,Side*FMath::Sin(Gait*2.f));
+   if(Knee>=0)MoveBranch(Knee,Pose[Knee].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-(8.f+10.f*Kick)*SwimPoseBlend)));
+   if(Foot>=0)MoveBranch(Foot,Pose[Foot].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-55.f*SwimPoseBlend)));
+  }
  }
  // Keep the support foot down after translation retargeting; fade this correction
  // out for running, where both feet may legitimately be airborne in the stride.
