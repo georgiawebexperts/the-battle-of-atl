@@ -16,6 +16,9 @@
 #include "TimerManager.h"
 #include "Engine/GameViewportClient.h"
 #include "GameFramework/GameUserSettings.h"
+#include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
+#include "Camera/PlayerCameraManager.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Widgets/SOverlay.h"
 #include "Widgets/Layout/SBorder.h"
@@ -172,6 +175,7 @@ void ABattleMacController::RemoveMenu(){
 void ABattleMacController::EndPlay(const EEndPlayReason::Type Reason){if(bOpeningActive&&GetWorld())GetWorld()->bIsCameraMoveableWhenPaused=bOpeningOldCameraMoveable;bOpeningActive=false;RemoveMenu();Super::EndPlay(Reason);}
 void ABattleMacController::ResumeRide(){
  SetViewTarget(GetPawn());
+ if(!bOpeningActive&&OpeningCamera){OpeningCamera->Destroy();OpeningCamera=nullptr;}
  RemoveMenu();bStarted=true;SetPause(false);bShowMouseCursor=false;ResetIgnoreMoveInput();ResetIgnoreLookInput();SetInputMode(FInputModeGameOnly());
  FlushPressedKeys();
  UE_LOG(LogTemp,Display,TEXT("BattleMac: ride resumed"));
@@ -184,6 +188,26 @@ void ABattleMacController::ToggleMenu(){
 }
 void ABattleMacController::ShowMenu(FString Page){
  bCelebrating=Page==TEXT("Celebration");
+
+ // Possession may follow controller BeginPlay, after the title menu pauses the
+ // world. A core ticker sets the authored opening view once the pawn is available.
+ if(!bStarted)FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){
+  auto* C=Weak.Get();if(!C||C->bStarted||!C->GetWorld())return false;
+  auto* Bike=Cast<ABattleBike>(C->GetPawn());if(!Bike)return true;
+  if(!C->OpeningCamera)C->OpeningCamera=C->GetWorld()->SpawnActor<ACameraActor>();
+  if(!C->OpeningCamera)return false;
+  const FVector Eye=Bike->GetActorLocation()+FVector(-450,-650,250);
+  const FVector Target=Bike->GetActorLocation()+FVector(0,0,65);
+  C->OpeningCamera->GetCameraComponent()->SetFieldOfView(62);
+  C->OpeningCamera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());
+  Bike->RefreshRiderPose();C->SetViewTarget(C->OpeningCamera);
+  const bool CameraWhilePaused=C->GetWorld()->bIsCameraMoveableWhenPaused;
+  C->GetWorld()->bIsCameraMoveableWhenPaused=true;
+  if(C->PlayerCameraManager)C->PlayerCameraManager->UpdateCamera(0.f);
+  C->GetWorld()->bIsCameraMoveableWhenPaused=CameraWhilePaused;
+  UE_LOG(LogTemp,Display,TEXT("BattleTitleCamera: initialized authored view after possession"));
+  return false;
+ }),.01f);
 
  RemoveMenu();SetPause(true);bShowMouseCursor=true;ResetIgnoreMoveInput();ResetIgnoreLookInput();SetIgnoreMoveInput(true);SetIgnoreLookInput(true);
  TSharedRef<SVerticalBox> Items=SNew(SVerticalBox);

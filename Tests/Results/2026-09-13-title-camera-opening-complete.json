@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-complete-c9505c8da6ab4342b4fafc910c8b9a14/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "exit_code": 0,
+  "editor": true,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}
