@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/e2e19e67e8bf43878f26a2d9960a2fb7/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/e2e19e67e8bf43878f26a2d9960a2fb7/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/e2e19e67e8bf43878f26a2d9960a2fb7/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/e2e19e67e8bf43878f26a2d9960a2fb7/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/e2e19e67e8bf43878f26a2d9960a2fb7/visible-shooter.png"
+  ],
+  "visual_review": {
+    "author": "2026-09-13 [codex-maclaptop]",
+    "image": "visible-shooter.png",
+    "observations": [
+      "Body no longer displaced below ground.",
+      "Severe clothing distortion absent in inspected frame after independent clip bone mapping.",
+      "Authored one-handed stance replaces crossed procedural arms."
+    ],
+    "accepted_for_default": false,
+    "remaining": [
+      "Pistol/hand contact and finger pose",
+      "Foot planting",
+      "Continuous transitions and movement",
+      "Physics death",
+      "Packaged validation"
+    ]
+  }
+}

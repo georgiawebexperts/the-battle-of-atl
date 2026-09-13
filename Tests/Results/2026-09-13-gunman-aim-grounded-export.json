@@ -1,0 +1,10 @@
+{
+  "clip": "/Game/BattleRetarget/Gunman/AimGrounded/GunmanPointing.GunmanPointing",
+  "frames": 50,
+  "pelvis_offset": [
+    0.08199015259742737,
+    -8.498799119323731,
+    93.93480705810546
+  ],
+  "visual_acceptance": false
+}

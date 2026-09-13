@@ -12,6 +12,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "Animation/AnimSequence.h"
+#include "Animation/Skeleton.h"
 #include "Components/PoseableMeshComponent.h"
 #include "PhysicsEngine/PhysicsAsset.h"
 #include "UObject/ConstructorHelpers.h"
@@ -39,8 +40,14 @@ void ABattleGunman::BeginPlay(){
   for(const FString& Path:TArray<FString>{MeshRoot+TEXT("scoopneck"),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),Root+TEXT("f_001/Face/f_001_nrw_FaceMesh")})Parts.Add(LoadObject<USkeletalMesh>(nullptr,*Path));
   if(Mesh&&HairMesh&&Idle&&Walk&&Quick&&!Parts.Contains(nullptr)){
    Body->SetSkinnedAssetAndUpdate(Mesh);bNativeCrowdRig=bDetailedPlayerRig=true;
-   GunIdle=nullptr;RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
+   GunIdle=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/BattleRetarget/Gunman/AimGrounded/GunmanPointing"));RelaxedIdle=Idle;GunWalk=Walk;GunRun=Quick;
    DeathAsset=Mesh->GetPhysicsAsset();
+   if(GunIdle)for(const TCHAR* Name:{TEXT("root"),TEXT("pelvis"),TEXT("spine_01"),TEXT("hand_r")}){
+    const auto& AimRef=GunIdle->GetSkeleton()->GetReferenceSkeleton();const auto& WalkRef=GunWalk->GetSkeleton()->GetReferenceSkeleton();const auto& MeshRef=Mesh->GetRefSkeleton();
+    const int A=AimRef.FindBoneIndex(Name),W=WalkRef.FindBoneIndex(Name),R=MeshRef.FindBoneIndex(Name);
+    if(A>=0&&R>=0){FTransform T;GunIdle->GetBoneTransform(T,FSkeletonPoseBoneIndex(A),FAnimExtractContext(.5),false);UE_LOG(LogTemp,Display,TEXT("GunmanPose: bone=%s aim_index=%d walk_index=%d bind=%s sample=%s"),Name,A,W,*MeshRef.GetRefBonePose()[R].ToString(),*T.ToString());}
+   }
+
    for(int I=0;I<Parts.Num();I++){
     auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("GunmanOutfit%d"),I));AddInstanceComponent(Part);Part->SetupAttachment(Body);
     Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();

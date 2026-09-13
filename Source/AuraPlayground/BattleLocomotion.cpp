@@ -80,7 +80,9 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  // Fill the cache before retaining references: a TMap growth may relocate values.
  Clip(IdleAnimation);Clip(WalkAnimation);Clip(RunAnimation);
  const auto& Idle=Clip(IdleAnimation);const auto& Walk=Clip(WalkAnimation);const auto& Run=Clip(RunAnimation);
- const auto& Skeleton=WalkAnimation->GetSkeleton()->GetReferenceSkeleton();
+ const auto& IdleSkeleton=IdleAnimation->GetSkeleton()->GetReferenceSkeleton();
+ const auto& WalkSkeleton=WalkAnimation->GetSkeleton()->GetReferenceSkeleton();
+ const auto& RunSkeleton=RunAnimation->GetSkeleton()->GetReferenceSkeleton();
  const float Speed=GetVelocity().Size2D();
  LocomotionSpeed=FMath::Lerp(LocomotionSpeed,Speed,1.f-FMath::Exp(-10.f*Dt));
  const float RunWeight=bDetailedPlayerRig?FMath::Clamp((LocomotionSpeed-240.f)/200.f,0.f,1.f):FMath::Clamp((LocomotionSpeed-180.f)/170.f,0.f,1.f);
@@ -92,9 +94,15 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  const int32 RootIndex=Bones.IndexOfByKey(FName(TEXT("Root")));
  FQuat AuthoredRootRotation=FQuat::Identity;
  for(int32 I=0;I<Pose.Num();I++){
-  const int32 Bone=Skeleton.FindBoneIndex(Bones[I]);if(Bone<0)continue;
-  FTransform Moving;Moving.Blend(Sample(Walk,Bone,LocomotionPhase),Sample(Run,Bone,LocomotionPhase),RunWeight);
-  Pose[I].Blend(Sample(Idle,Bone,IdleClock/IdleAnimation->GetPlayLength()),Moving,MoveWeight);
+  // Each clip may use a different reference-skeleton ordering after retargeting.
+  const int32 IdleBone=IdleSkeleton.FindBoneIndex(Bones[I]);
+  const int32 WalkBone=WalkSkeleton.FindBoneIndex(Bones[I]);
+  const int32 RunBone=RunSkeleton.FindBoneIndex(Bones[I]);
+  const FTransform IdlePose=IdleBone>=0?Sample(Idle,IdleBone,IdleClock/IdleAnimation->GetPlayLength()):RestPose[I];
+  const FTransform WalkPose=WalkBone>=0?Sample(Walk,WalkBone,LocomotionPhase):RestPose[I];
+  const FTransform RunPose=RunBone>=0?Sample(Run,RunBone,LocomotionPhase):RestPose[I];
+  FTransform Moving;Moving.Blend(WalkPose,RunPose,RunWeight);
+  Pose[I].Blend(IdlePose,Moving,MoveWeight);
   if(BodyAction){
    const int32 ActionBone=BodyAction->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(Bones[I]);
    if(ActionBone>=0){
