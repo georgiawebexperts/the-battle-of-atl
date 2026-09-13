@@ -1,0 +1,21 @@
+{
+  "materials": [
+    {
+      "material": "/Game/PiedmontRide/Materials/M_ParkConcreteWorld",
+      "previously_enabled": false,
+      "nanite_usage": true
+    },
+    {
+      "material": "/Game/PiedmontRide/Materials/M_ParkAsphaltWorld",
+      "previously_enabled": false,
+      "nanite_usage": true
+    },
+    {
+      "material": "/Game/BattleForTheA/Weapons/Rifle/Rifle/Materials/Atlas",
+      "previously_enabled": false,
+      "nanite_usage": true
+    }
+  ],
+  "scope": "Persisted material usage only; fresh cook/runtime fallback and visual checks still required.",
+  "packaged_verified": false
+}

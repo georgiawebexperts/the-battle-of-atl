@@ -15,16 +15,20 @@ paths = [
 # Resolve and validate all assets before changing any of them.
 materials = [unreal.load_asset(path) for path in paths]
 for path, material in zip(paths, materials):
-    assert isinstance(material, unreal.Material), f'Expected base material: {path}'
+    assert isinstance(material, (unreal.Material, unreal.MaterialInstanceConstant)), f'Unsupported material: {path}'
 
+lib = unreal.MaterialEditingLibrary
+usage = unreal.MaterialUsage.MATUSAGE_NANITE
 rows = []
 for path, material in zip(paths, materials):
-    before = bool(material.get_editor_property('used_with_nanite'))
+    before = lib.has_material_usage(material, usage)
     if not before:
-        material.set_editor_property('used_with_nanite', True)
-        unreal.MaterialEditingLibrary.recompile_material(material)
+        if isinstance(material, unreal.MaterialInstanceConstant):
+            lib.set_material_usage_override(material, usage, True, True)
+        else:
+            lib.set_base_material_usage(material, usage, True)
         assert unreal.EditorAssetLibrary.save_loaded_asset(material), path
-    assert material.get_editor_property('used_with_nanite'), path
+    assert lib.has_material_usage(material, usage), path
     rows.append({'material': path, 'previously_enabled': before, 'nanite_usage': True})
 
 unreal.PiedmontWorldTools.finish_editor_asset_loading()

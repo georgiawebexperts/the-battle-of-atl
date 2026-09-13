@@ -67,7 +67,7 @@
   "candidate": {
     "build": 59,
     "version": "0.59.0-dev",
-    "status": "Held after negative058 playtest: movement/drone tuning in editor, mouse-look and continuous play review pending; material instance repair and recook still needed.",
+    "status": "Material flags repaired; normal-window menu interaction unresolved. Movement/drone/mouse fixes await live acceptance and corrected recook; installed058 unchanged.",
     "author": "2026-09-13 [codex-maclaptop]",
     "scope": "Detailed default gunman/M1911/standing aim and transitions; clearer gunfire warnings; articulated shotgun reload; compact blood spray; per-clip bone mapping fix.",
     "compiled_source": "487e276ad7206c6df5c8e68e08357b1465c94f0c"

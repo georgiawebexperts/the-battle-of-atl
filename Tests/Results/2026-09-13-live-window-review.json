@@ -1,0 +1,18 @@
+{
+  "material_usage_report": "Tests/Results/material-usage-repair-20260913T135810Z.json",
+  "material_fallback_warnings": [],
+  "menu_events": [
+    "[2026.09.13-13.59.40:699][332]LogTemp: Display: BattleMac: menu Home"
+  ],
+  "observed": [
+    "Normal1280x720 development window loaded park and characters.",
+    "CUA E key dismounted to hands-free view.",
+    "CUA drag followed by Escape eventually showed a changed view toward gate; subjective mouse control not accepted.",
+    "Pause menu appeared with corrected unnumbered playtest footer.",
+    "Repeated automated mouse click/Tab/Return/Escape did not navigate pause menu; cause unverified.",
+    "Native window-close AX action closed owned review app."
+  ],
+  "passed": false,
+  "scope": "Manual automation observations, not full gameplay acceptance. Need distinguish Slate input/focus defect from automation behavior; instructions scrolling not accepted.",
+  "process_exit": 1
+}
