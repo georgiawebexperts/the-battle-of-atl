@@ -43,7 +43,8 @@ public:
  UPROPERTY(BlueprintReadOnly) float SlideRemaining=0;
  UPROPERTY(BlueprintReadOnly) float BoostRemaining=0;
  float Pedal=0,Steer=0,Brake=0,Cadence=0;
- FVector LastSafeLocation;
+ FVector LastSafeLocation,LastDryLocation;
+ bool bHasDryLocation=false;
  void Wipeout(const FString& Reason,bool Water=false);
  void Shift(int32 Delta){Gear=FMath::Clamp(Gear+Delta,1,5);}
 private:
@@ -139,6 +140,7 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 LastFootWeapon=0;
  UFUNCTION(BlueprintCallable) bool GiveWeapon(int32 Slot,int32 Rounds);
  UFUNCTION(BlueprintCallable) bool Dismount();
+ bool EnterLake(const FVector& Impact,const FVector& Bank);
  bool Remount(ABattleRider* Person);
  UFUNCTION(BlueprintCallable) void ToggleCamera();
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);

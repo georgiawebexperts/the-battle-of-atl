@@ -1,5 +1,6 @@
-#include "HAL/IConsoleManager.h"
 #include "BattleMacController.h"
+#include "BattleSwimAudit.h"
+#include "HAL/IConsoleManager.h"
 #include "BattleRunRecords.h"
 #include "BattleBike.h"
 #include "BattleQuest.h"
@@ -117,6 +118,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperChaseAudit")))TickBattleSleeperChaseAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperAudit")))TickBattleSleeperAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGeographyAudit")))TickGeographyAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSwimAudit")))TickBattleSwimAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHealthAudit")))TickHealthAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit")))TickPickupAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiscAudit")))TickDiscAudit(Dt);

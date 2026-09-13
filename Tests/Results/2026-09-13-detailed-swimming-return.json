@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "reason": "Real shoreline entry, swim away, return and fixed-bike remount pass",
+  "stage": 3,
+  "swim_cm": 522.52,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-46d342549bf342c6b76bd3eecda8e9fe/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-46d342549bf342c6b76bd3eecda8e9fe/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-46d342549bf342c6b76bd3eecda8e9fe/returned.png"
+  ],
+  "functional_passed": true,
+  "visual_accepted": false,
+  "visual_findings": [
+    "Swimming area renders as grass; visible lake surface missing at tested shoreline.",
+    "Walking and gun-draw HUD prompts remain during swimming.",
+    "Returned image is already remounted, not a swimmer exiting shore."
+  ]
+}

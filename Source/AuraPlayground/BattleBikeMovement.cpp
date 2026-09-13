@@ -57,6 +57,10 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  PreviousBrake=Brake;PreviousSteer=Steer;Super::TickComponent(Dt,Type,Function);
  // Resolve water after movement refreshes CurrentFloor. A bridge return must not
  // be judged using the underwater floor cached before teleporting to safety.
+ if(CharacterOwner&&Recovery<=0&&IsMovingOnGround()){
+  bool Wet=false;for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wet=true;break;}
+  if(!Wet){LastDryLocation=CharacterOwner->GetActorLocation();bHasDryLocation=true;}
+ }
  if(CharacterOwner&&Recovery<=0){const AActor* Floor=CurrentFloor.HitResult.GetActor();if(!Floor||!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(CharacterOwner->GetActorLocation())){Wipeout(TEXT("Splash"),true);break;}}
 }
 void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float Braking){
@@ -84,6 +88,9 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
 }
 void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
  if(Recovery>0)return;const FVector CrashVelocity=Velocity.IsNearlyZero()?CharacterOwner->GetActorForwardVector()*Speed:Velocity;BoostRemaining=0;Recovery=2;Wipeouts++;RecoveryReason=Reason;bWaterReturn=Water;
+ if(Water&&bHasDryLocation&&FVector::Dist2D(LastDryLocation,CharacterOwner->GetActorLocation())<600.f){
+  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Bike->EnterLake(CharacterOwner->GetActorLocation(),LastDryLocation)){bWaterReturn=false;Recovery=0;return;}
+ }
  ReturnLocation=LastSafeLocation;if(Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))ReturnLocation=Bike->FindPathReturn();
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(Water?1.8f:1.0f,Water);
  if(!Water)if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->StartPhysicalCrash(CrashVelocity);

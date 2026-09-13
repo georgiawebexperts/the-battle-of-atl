@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "reason": "Cannot remount at bank",
+  "stage": 3,
+  "swim_cm": 523.96,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-4c9bc0d530584cb09d11925ef9f428a5/run.log",
+  "images": []
+}
