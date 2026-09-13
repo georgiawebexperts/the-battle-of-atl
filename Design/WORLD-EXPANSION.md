@@ -1159,3 +1159,13 @@ Latest user instruction makes on-foot play a third-person shooter. Ellison shoul
 2026-09-13 [codex-maclaptop]: Opened native editor-game candidate at source 61886f7 (shell session 17683), dismounted through CUA, observed full-body holstered view and readable new gear/jump/boost/horn hints. CUA drag did not establish reliable camera orbit. CUA then reported user changed app; stopped UI actions and asked Elliott whether physical mouse turns on foot. Leave this running candidate alone while user tests; desktop shortcut still installed 058. Added source-only nearest visible pistol-ammo HUD label within 30m; suppresses during danger notices and hides through walls. It is not compiled or rendered yet; trash-can placement remains undone.
 
 2026-09-13 [codex-maclaptop]: Elliott confirmed native mouse orbit works but is far too fast/jerky. Reduced on-foot raw yaw/pitch sensitivity from .18/-.12 to .06/-.04 (one third); this supersedes prior high-sensitivity acceptance. Compile passed; reopened candidate in protected home tutorial (no BattleSkipTutorial), shell session 21359, log work/reduced-mouse-live.log. Await subjective comparison. The nearby-ammo HUD source also compiled in this candidate but still lacks visual acceptance/trash-bin placement. No package installed.
+
+### 2026-09-13 [codex-maclaptop] — STOP REQUEST / resume only when Elliott asks
+Elliott requested wrapping up and a good stopping point because only ~10% usage remains. Stop autonomous feature work/builds/tests. Native candidate closed. Do not mark the full game complete.
+- Installed desktop build remains 058; staged 059 is stale and must not be installed.
+- Third-person candidate and native validation are committed through dae4d0c. User confirmed physical mouse orbit works but rejected both original sensitivity and one-third setting as too sensitive.
+- Final source-only reduction halves it again: raw yaw .03, pitch -.02 (one sixth of original .18/-.12). This final edit is NOT compiled or user-tested; start there next session.
+- Core native checks passed movement/aim, 17-round ammo conservation, drone destruction, handling and jump rewards. These do not prove whole-game quality.
+- Outstanding priorities: acceptable mouse/camera feel, third-person gun/support-hand/pitch alignment, actual hill/ramp riding, police navigation reliability (one failed spawn), visible taser draw/discharge plus voice, ammo near trash cans, environment/art quality, final recook and packaged validation.
+- Nearest visible ammo HUD marker is compiled in the last candidate but not visually accepted. No police source edits were made after the latest sensitivity feedback.
+- Preserve unrelated dirty assets/source. Never inspect or stage Config/DefaultEngine.ini.
