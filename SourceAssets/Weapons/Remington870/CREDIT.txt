@@ -11,3 +11,5 @@ Adapted for The Battle of ATL: combined mesh transforms, normalized scale,
 reduced geometry, revised Mac materials and first-person positioning.
 The source title says CC0; attribution is retained in accordance with the
 CC-BY-4.0 license supplied in the downloadable archive.
+
+Additional adaptation: separated foregrip/collars from the fixed body for pump animation.

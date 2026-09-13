@@ -45,9 +45,10 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
 }
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||(ParkedBike->RiderHealth>0&&ParkedBike->StunRemaining<=0))&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::Tick(float Dt){
+ UpdateShotgunMechanism(Dt);
  ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
  SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/(bDetailedPlayerRig?32.f:80.f),0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
- const float ReloadPose=ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
+ const float ReloadPose=CurrentWeapon==1&&bShotgunReloading?ShotgunReloadBlend:ReloadRemaining>0?FMath::Sin(PI*FMath::Clamp((BattleWeapons::ReloadSeconds(CurrentWeapon)-ReloadRemaining)/BattleWeapons::ReloadSeconds(CurrentWeapon),0.f,1.f)):0;
 
  DrawRemaining=FMath::Max(0.f,DrawRemaining-Dt);
  if(auto* PC=Cast<APlayerController>(GetController())){
@@ -60,6 +61,11 @@ void ABattleRider::Tick(float Dt){
  const FVector ViewPosition=FMath::Lerp(GunRestPosition,CurrentWeapon==1?FVector(65,-1.28f,-9.5f):GunAimPosition,AimBlend);
  Weapon->SetRelativeLocation(ViewPosition+FVector(-4*Kick-4*ReloadPose,-8*ReloadPose,-Kick+Bob*(1.f-.8f*AimBlend)+(bDetailedPlayerRig?(DetailedPistol&&CurrentWeapon==0?16.f:8.f):-8.f)*ReloadPose-65*FMath::Clamp(DrawRemaining/.3f,0.f,1.f)));
  Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick+22*ReloadPose,0,-28*ReloadPose));
+ if(CurrentWeapon==1&&bShotgunReloading){
+  // Present the receiver across the view so shell handling remains visible.
+  Weapon->SetRelativeLocation(FMath::Lerp(ViewPosition,FVector(65,-5,-10),ReloadPose)+FVector(-4*Kick,0,-Kick));
+  Weapon->SetRelativeRotation(GunRestRotation+FRotator(5*Kick,-45*ReloadPose,65*ReloadPose));
+ }
  Super::Tick(Dt);
  const bool Stunned=ParkedBike&&ParkedBike->StunRemaining>0;
  if(!bDetailedBodyReview)Camera->SetRelativeLocation(FVector(0,0,FMath::FInterpTo(Camera->GetRelativeLocation().Z,bSwimming?-7.f:(Stunned?8.f:(bIsCrouched?38.f:64.f)),Dt,8)));
@@ -105,7 +111,7 @@ bool ABattleRider::Fire(){
  if(!CanUseWeapon()||!bWeaponDrawn||DrawRemaining>0||MeleeRemaining>0||ShotCooldown>0||ReloadRemaining>0||Ammo<=0)return false;
  if(CurrentWeapon==3){if(!ABattleDisc::Launch(this,LongGun))return false;Ammo--;ShotsFired++;ShotCooldown=.55f;Kick=.7f;SaveWeapon();return true;}
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->RecordGunfire();
- Ammo--;ShotsFired++;ShotCooldown=CurrentWeapon==1?.85f:CurrentWeapon==2?.085f:CurrentWeapon==4?.12f:.22f;Kick=CurrentWeapon==1?2:1;SaveWeapon();
+ Ammo--;ShotsFired++;ShotCooldown=CurrentWeapon==1?.85f:CurrentWeapon==2?.085f:CurrentWeapon==4?.12f:.22f;Kick=CurrentWeapon==1?2:1;if(CurrentWeapon==1)ShotgunPumpRemaining=.75f;SaveWeapon();
  const auto Shot=CurrentWeapon==0?FireBattlePistol(this,Weapon,bAiming?.1f:.4f):FireBattleLongGun(this,LongGun,CurrentWeapon,bAiming);
  LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.35f;
  if(IsValid(ParkedBike)&&!Shot.HitLabel.IsEmpty()){ParkedBike->ShotNotice=Shot.HitLabel;ParkedBike->ShotNoticeRemaining=.75f;}

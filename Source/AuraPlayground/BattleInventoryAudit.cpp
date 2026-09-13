@@ -24,7 +24,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode||!Mode->Pickups)return;
  static TSet<FString> Captured;
- static bool ShotgunAimPressed=false;FString ReviewDir;const bool Review=FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),ReviewDir);
+ static bool ShotgunAimPressed=false,ShotgunPumpMoved=false;FString ReviewDir;const bool Review=FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),ReviewDir);
  auto Capture=[&](const FString& Name){FString Dir;if(!Captured.Contains(Name)&&FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),Dir)){Captured.Add(Name);
   if(Person&&Person->ShotgunMesh&&Name==TEXT("shotgun")){
    UStaticMesh* Mesh=Person->ShotgunMesh->GetStaticMesh();UE_LOG(LogTemp,Display,TEXT("ShotgunMaterialAudit: mesh=%s nanite=%d triangles=%d"),*GetNameSafe(Mesh),Mesh?Mesh->GetNaniteSettings().bEnabled:0,Mesh?Mesh->GetNumTriangles(0):0);
@@ -37,7 +37,10 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  if(InventoryPhase==3&&InventoryClock>.6f)Capture(TEXT("shotgun"));
  if(Review&&InventoryPhase==3&&InventoryClock>1.f&&!ShotgunAimPressed){ShotgunAimPressed=true;InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Pressed,1.f,false,0));}
  if(InventoryPhase==3&&InventoryClock>1.7f)Capture(TEXT("shotgun-aimed"));
- if(InventoryPhase==5&&InventoryClock>.7f)Capture(TEXT("shotgun-reload"));
+ if(InventoryPhase==5&&Person&&Person->ShotgunPumpTravel>6.f){ShotgunPumpMoved=true;Capture(TEXT("shotgun-pump"));}
+ if(InventoryPhase==5&&InventoryClock>1.15f)Capture(TEXT("shotgun-reload"));
+ if(InventoryPhase==5&&InventoryClock>1.35f)Capture(TEXT("shotgun-insert"));
+ if(InventoryPhase==17&&InventoryClock>.9f)Capture(TEXT("shotgun-next-shell"));
  if(InventoryPhase==7&&InventoryClock>.15f)Capture(TEXT("smg"));
  if(InventoryPhase==12&&InventoryClock>.15f)Capture(TEXT("rifle"));
  if(InventoryPhase==13&&InventoryClock>.7f)Capture(TEXT("rifle-aimed"));
@@ -64,6 +67,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  else if(InventoryPhase==4&&InventoryClock>.1f){CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->Fire()&&!Person->Melee(),"Reload did not block fire/melee");InventoryPhase=5;}
  else if(InventoryPhase==5&&InventoryClock>2.4f){
   CHECK_INVENTORY(Bike->ShotNoticeRemaining==0,"Shot confirmation did not expire");
+  CHECK_INVENTORY(ShotgunPumpMoved&&Person->ShotgunPumpTravel==0,"Shotgun pump did not cycle and return");
   CHECK_INVENTORY(Person->Ammo==6&&Bike->Inventory[1].Reserve==11,"Timed reload did not conserve shells");Z->Destroy();
   auto* Crate=GetWorld()->SpawnActorDeferred<ABattleWeaponCrate>(ABattleWeaponCrate::StaticClass(),FTransform(Person->GetActorLocation()+FVector(70,0,-20)),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);CHECK_INVENTORY(Crate,"SMG crate fixture failed");Crate->WeaponSlot=2;Crate->FinishSpawning(FTransform(Person->GetActorLocation()+FVector(70,0,-20)));InventoryPhase=6;InventoryClock=0;
  }
@@ -76,7 +80,27 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  else if(InventoryPhase==12&&InventoryClock>.4f){CHECK_INVENTORY(Person->CurrentWeapon==4&&Person->Ammo==30,"5 key rifle selection failed");InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Pressed,1.f,false,0));InventoryPhase=13;InventoryClock=0;}
  else if(InventoryPhase==13&&InventoryClock>1){CHECK_INVENTORY(Person->bAiming&&FMath::IsNearlyEqual(Person->Camera->FieldOfView,35.f,.1f),"Rifle zoom not applied");CHECK_INVENTORY(Person->Fire()&&Person->Ammo==29,"Rifle shot ammo incorrect");Key(EKeys::R);InventoryPhase=14;InventoryClock=0;}
  else if(InventoryPhase==14&&InventoryClock>1){CHECK_INVENTORY(Person->ReloadRemaining>0&&!Person->bAiming&&Person->Camera->FieldOfView>84,"Reload did not exit zoom");CHECK_INVENTORY(!Person->Fire(),"Reload allowed rifle fire");InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::RightMouseButton,IE_Released,0.f,false,0));InventoryPhase=15;}
- else if(InventoryPhase==15&&InventoryClock>2.7f){CHECK_INVENTORY(Person->Ammo==30&&Bike->Inventory[4].Reserve==29,"Rifle reload conservation failed");CHECK_INVENTORY(Person->MountBike()&&Bike->Dismount(),"Rifle possession cycle failed");Person=Cast<ABattleRider>(GetPawn());CHECK_INVENTORY(Person&&Person->CurrentWeapon==4&&Person->Ammo==30,"Rifle loadout not retained");Finish(true,TEXT("Crates, all gun keys, combat, reload, death persistence and rifle zoom/reload/remount pass"));return;}
+ else if(InventoryPhase==15&&InventoryClock>2.7f){CHECK_INVENTORY(Person->Ammo==30&&Bike->Inventory[4].Reserve==29,"Rifle reload conservation failed");CHECK_INVENTORY(Person->MountBike()&&Bike->Dismount(),"Rifle possession cycle failed");Person=Cast<ABattleRider>(GetPawn());CHECK_INVENTORY(Person&&Person->CurrentWeapon==4&&Person->Ammo==30,"Rifle loadout not retained");Key(EKeys::Two);InventoryPhase=16;InventoryClock=0;}
+ else if(InventoryPhase==16&&InventoryClock>.5f){
+  CHECK_INVENTORY(Person->CurrentWeapon==1,"Shotgun reselect failed");
+  // Explicit low-magazine fixture: retain the reserve from the earlier reload.
+  Person->Ammo=2;Person->SaveWeapon();Key(EKeys::R);InventoryPhase=17;InventoryClock=0;
+ }
+ else if(InventoryPhase==17&&InventoryClock>1.85f){
+  CHECK_INVENTORY(Person->Ammo==4&&Bike->Inventory[1].Reserve==9&&Person->ReloadRemaining>0,"Shotgun did not insert two individual shells");
+  Key(EKeys::G);InventoryPhase=18;InventoryClock=0;
+ }
+ else if(InventoryPhase==18&&InventoryClock>.7f){
+  CHECK_INVENTORY(!Person->bWeaponDrawn&&Person->ReloadRemaining==0&&Person->Ammo==4&&Bike->Inventory[1].Reserve==9,"Holster did not preserve only inserted shells");
+  Key(EKeys::G);InventoryPhase=19;InventoryClock=0;
+ }
+ else if(InventoryPhase==19&&InventoryClock>.4f){Key(EKeys::R);InventoryPhase=20;InventoryClock=0;}
+ else if(InventoryPhase==20&&InventoryClock>2.2f){
+  CHECK_INVENTORY(Person->Ammo==6&&Bike->Inventory[1].Reserve==7&&Person->ReloadRemaining==0,"Resumed shell reload conservation failed");
+  CHECK_INVENTORY(Person->MountBike()&&Bike->Dismount(),"Shotgun possession cycle failed");Person=Cast<ABattleRider>(GetPawn());
+  CHECK_INVENTORY(Person&&Person->CurrentWeapon==1&&Person->Ammo==6&&Bike->Inventory[1].Reserve==7,"Shotgun partial reload inventory not retained");
+  Finish(true,TEXT("Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass"));return;
+ }
  if(InventoryClock>15)Finish(false,TEXT("Inventory phase timed out"));
 #undef CHECK_INVENTORY
 #endif

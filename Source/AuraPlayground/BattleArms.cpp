@@ -63,7 +63,7 @@ void ABattleRider::PoseArms(float Dt){
   Left=Camera->GetComponentTransform().InverseTransformPosition(DetailedPistol->GetBoneLocationByName(TEXT("Mag"),EBoneSpaces::WorldSpace))+FVector(-6,-4,-2);
  }
  if(CurrentWeapon>0)Left=Gun+Motion.RotateVector(FVector(12,-3,-5));
- if(CurrentWeapon==1){Right=Gun+Motion.RotateVector(FVector(-39,4,-3));Left=Gun+Motion.RotateVector(FVector(4,-3,-4))+FVector(-6,-4,-8)*Reload;}
+ if(CurrentWeapon==1){Right=Gun+Motion.RotateVector(FVector(-39,4,-3));Left=Gun+Motion.RotateVector(bShotgunReloading?ShotgunReloadHand:FVector(4-ShotgunPumpTravel,-3,-4));}
  if(CurrentWeapon==4){Right=Gun+Motion.RotateVector(FVector(-12,3,-16));Left=Gun+Motion.RotateVector(FVector(-12,-3,-14))+FVector(-6,-4,-6)*Reload;}
  if(MeleeRemaining>0){Right=MeleeRoot->GetRelativeTransform().TransformPosition(FVector(0,0,-31));Left=FVector(20,-20,-28);}
  const float Moving=GetCharacterMovement()->IsMovingOnGround()?FMath::Clamp(GetVelocity().Size2D()/(bDetailedPlayerRig?200.f:520.f),0.f,1.5f):0;

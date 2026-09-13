@@ -34,9 +34,11 @@ FString ABattleRider::ReserveLabel() const{return ParkedBike?FString::FromInt(Pa
 void ABattleRider::Reload(){
  if(!CanUseWeapon()||!bWeaponDrawn||DrawRemaining>0||MeleeRemaining>0||ReloadRemaining>0||Ammo>=BattleWeapons::Capacity(CurrentWeapon))return;
  if(!ParkedBike||ParkedBike->Inventory[CurrentWeapon].Reserve<=0)return;
+ if(CurrentWeapon==1){StartShotgunReload();return;}
  ReloadRemaining=BattleWeapons::ReloadSeconds(CurrentWeapon);
 }
 void ABattleRider::FinishReload(){
+ if(CurrentWeapon==1&&bShotgunReloading){FinishShotgunReload();return;}
  if(ParkedBike){auto& Item=ParkedBike->Inventory[CurrentWeapon];const int32 Add=FMath::Min(BattleWeapons::Capacity(CurrentWeapon)-Ammo,Item.Reserve);Ammo+=Add;Item.Reserve-=Add;}
  SaveWeapon();
 }
@@ -52,8 +54,15 @@ void ABattleRider::BuildLongGun(){
  Part(TEXT("DiscHopper"),FVector(8,0,7),FVector(.32,.32,.05),true);
  LongGunParts[5]->SetRelativeRotation(FRotator::ZeroRotator);
  ShotgunMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShotgunModel"));ShotgunMesh->SetupAttachment(LongGun);
- static ConstructorHelpers::FObjectFinder<UStaticMesh> Shotgun(TEXT("/Game/BattleForTheA/Weapons/Remington870/Remington870/StaticMeshes/Remington870.Remington870"));
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Shotgun(TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/ShotgunParts/StaticMeshes/ShotgunBody.ShotgunBody"));
  ShotgunMesh->SetStaticMesh(Shotgun.Object);ShotgunMesh->SetRelativeScale3D(FVector(.8f));ShotgunMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunMesh->SetCanEverAffectNavigation(false);ShotgunMesh->SetOnlyOwnerSee(true);ShotgunMesh->SetCastShadow(false);ShotgunMesh->SetVisibility(false);
+ ShotgunPump=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShotgunPump"));ShotgunPump->SetupAttachment(LongGun);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Pump(TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/ShotgunParts/StaticMeshes/ShotgunPump.ShotgunPump"));
+ ShotgunPump->SetStaticMesh(Pump.Object);ShotgunPump->SetRelativeScale3D(FVector(.8f));ShotgunPump->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunPump->SetCanEverAffectNavigation(false);ShotgunPump->SetOnlyOwnerSee(true);ShotgunPump->SetCastShadow(false);ShotgunPump->SetVisibility(false);
+ ShotgunShell=CreateDefaultSubobject<USceneComponent>(TEXT("ShotgunLoadingShell"));ShotgunShell->SetupAttachment(LongGun);
+ auto ShellPart=[&](const TCHAR* Name,float X,float Length,const TCHAR* Material){auto* M=CreateDefaultSubobject<UStaticMeshComponent>(Name);M->SetupAttachment(ShotgunShell);M->SetStaticMesh(Cylinder.Object);M->SetRelativeRotation(FRotator(90,0,0));M->SetRelativeLocation(FVector(X,0,0));M->SetRelativeScale3D(FVector(.018f,.018f,Length/100.f));M->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,Material));M->SetCollisionEnabled(ECollisionEnabled::NoCollision);M->SetCanEverAffectNavigation(false);M->SetOnlyOwnerSee(true);M->SetCastShadow(false);M->SetVisibility(false);};
+ ShellPart(TEXT("ShotgunShellHull"),0,4.8f,TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/M_ShellRed.M_ShellRed"));
+ ShellPart(TEXT("ShotgunShellHead"),-2.65f,.5f,TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/M_ShellBrass.M_ShellBrass"));
  RifleMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RifleModel"));RifleMesh->SetupAttachment(LongGun);
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Rifle(TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"));RifleMesh->SetStaticMesh(Rifle.Object);RifleMesh->SetRelativeRotation(FRotator(0,-90,0));RifleMesh->SetRelativeScale3D(FVector(.5));RifleMesh->SetRelativeLocation(FVector(-10,0,-10));RifleMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleMesh->SetOnlyOwnerSee(true);RifleMesh->SetCastShadow(false);RifleMesh->SetVisibility(false);
 
@@ -65,6 +74,7 @@ void ABattleRider::UpdateWeaponModel(){
  if(CurrentWeapon>0)Weapon->SetVisibility(false);
  RifleMesh->SetVisibility(Visible&&CurrentWeapon==4);
  ShotgunMesh->SetVisibility(Visible&&CurrentWeapon==1);
+ UpdateShotgunVisual();
  if(LongGunParts.Num()==6){
   LongGunParts[5]->SetVisibility(Visible&&CurrentWeapon==3);LongGunParts[1]->SetRelativeScale3D(CurrentWeapon==3?FVector(.14,.035,.2):FVector(.035,.035,.35));LongGunParts[4]->SetRelativeLocation(CurrentWeapon==2?FVector(3,0,-10):FVector(12,0,-4));LongGunParts[4]->SetRelativeScale3D(CurrentWeapon==2?FVector(.06,.05,.2):FVector(.17,.07,.065));}
  if(CurrentWeapon==4||CurrentWeapon==1)for(auto Part:LongGunParts)Part->SetVisibility(false);
