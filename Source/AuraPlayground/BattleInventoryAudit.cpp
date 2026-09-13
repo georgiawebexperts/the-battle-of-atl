@@ -28,7 +28,7 @@ void ABattleMacController::TickInventoryAudit(float Dt){
  static bool ShotgunAimPressed=false,ShotgunPumpMoved=false;FString ReviewDir;const bool Review=FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),ReviewDir);
  auto Capture=[&](const FString& Name){FString Dir;if(!Captured.Contains(Name)&&FParse::Value(FCommandLine::Get(),TEXT("BattleInventoryReviewDir="),Dir)){Captured.Add(Name);
   if(Person&&Person->ShotgunMesh&&Name==TEXT("shotgun")){
-   UStaticMesh* Mesh=Person->ShotgunMesh->GetStaticMesh();UE_LOG(LogTemp,Display,TEXT("ShotgunMaterialAudit: mesh=%s nanite=%d triangles=%d"),*GetNameSafe(Mesh),Mesh?Mesh->GetNaniteSettings().bEnabled:0,Mesh?Mesh->GetNumTriangles(0):0);
+   UStaticMesh* Mesh=Person->ShotgunMesh->GetStaticMesh();UE_LOG(LogTemp,Display,TEXT("ShotgunMaterialAudit: mesh=%s nanite_data=%d triangles=%d"),*GetNameSafe(Mesh),Mesh?Mesh->HasValidNaniteData():0,Mesh?Mesh->GetNumTriangles(0):0);
    for(int32 I=0;I<Person->ShotgunMesh->GetNumMaterials();I++){
     auto* Interface=Person->ShotgunMesh->GetMaterial(I);auto* Material=Interface?Interface->GetMaterial():nullptr;auto* Resource=Material?Material->GetMaterialResource(GetWorld()->Scene->GetShaderPlatform()):nullptr;
     UE_LOG(LogTemp,Display,TEXT("ShotgunMaterialAudit: slot=%d interface=%s resource=%d shader_complete=%d"),I,*GetPathNameSafe(Interface),Resource!=nullptr,Resource&&Resource->IsGameThreadShaderMapComplete());
