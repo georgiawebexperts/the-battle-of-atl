@@ -27,6 +27,8 @@ public:
  static void FinishEditorAssetLoading();
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|World")
  static void TickSceneReview();
+ UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Navigation")
+ static AActor* CreateGroundNavigationTiles(const TArray<FTransform>& Tiles);
  /** Editor review only: minimum skinned LOD0 vertex clearance above static ground. */
  UFUNCTION(BlueprintCallable,CallInEditor,Category="Piedmont|Validation")
  static bool ReviewSkinGroundClearance(USkinnedMeshComponent* Mesh,float& MinimumClearance,int32& Samples,FVector& ClosestVertex,FVector& GroundPoint,FString& GroundActor);

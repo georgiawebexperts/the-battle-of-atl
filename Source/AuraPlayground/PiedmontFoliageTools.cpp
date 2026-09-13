@@ -116,3 +116,17 @@ bool UPiedmontWorldTools::EnableParkTrunkCollision(AActor* Actor){
  return false;
 #endif
 }
+
+AActor* UPiedmontWorldTools::CreateGroundNavigationTiles(const TArray<FTransform>& Tiles){
+#if WITH_EDITOR
+ auto* World=GEditor?GEditor->GetEditorWorldContext().World():nullptr;
+ if(!World||World->GetName()!=TEXT("PiedmontScooterReview")||Tiles.IsEmpty())return nullptr;
+ auto* Mesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube"));if(!Mesh)return nullptr;
+ auto* Actor=World->SpawnActor<AActor>();Actor->SetActorLabel(TEXT("Scooter grass navigation only"));Actor->Tags.Add(TEXT("RideNavOnly"));Actor->Tags.Add(TEXT("ScooterNavigation"));Actor->SetActorHiddenInGame(true);
+ auto* Instances=NewObject<UHierarchicalInstancedStaticMeshComponent>(Actor,TEXT("GroundNavigationTiles"));Actor->SetRootComponent(Instances);Actor->AddInstanceComponent(Instances);
+ Instances->SetStaticMesh(Mesh);Instances->SetCollisionEnabled(ECollisionEnabled::NoCollision);Instances->SetCustomNavigableGeometry(EHasCustomNavigableGeometry::EvenIfNotCollidable);Instances->SetCanEverAffectNavigation(true);Instances->SetVisibility(false);Instances->RegisterComponent();
+ for(const auto& T:Tiles)Instances->AddInstance(T,true);Instances->BuildTreeIfOutdated(false,true);return Actor;
+#else
+ return nullptr;
+#endif
+}
