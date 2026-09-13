@@ -2,15 +2,16 @@
 import json,re,subprocess,argparse,hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--buildings',action='store_true');parser.add_argument('--finish-route',action='store_true');parser.add_argument('--rail',action='store_true');parser.add_argument('--world',action='store_true');parser.add_argument("--crowds",action="store_true");parser.add_argument("--main",action="store_true");parser.add_argument("--real-handling",action="store_true");parser.add_argument("--scooter",action="store_true");parser.add_argument("--yield-probe",action="store_true");parser.add_argument("--turnarounds",action="store_true");args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-12-krog-candidate-drive.json');parser.add_argument('--level-floor',action='store_true');parser.add_argument('--continuous-shell',action='store_true');parser.add_argument('--buildings',action='store_true');parser.add_argument('--finish-route',action='store_true');parser.add_argument('--rail',action='store_true');parser.add_argument('--world',action='store_true');parser.add_argument("--crowds",action="store_true");parser.add_argument("--main",action="store_true");parser.add_argument("--real-handling",action="store_true");parser.add_argument("--scooter",action="store_true");parser.add_argument("--yield-probe",action="store_true");parser.add_argument("--turnarounds",action="store_true");parser.add_argument("--approach",action="store_true");args=parser.parse_args()
 assert sum([args.level_floor,args.continuous_shell,args.buildings,args.rail,args.world,args.main,args.scooter and not args.main])<=1
 assert Path(args.report).name==args.report
 assert not args.turnarounds or (args.scooter and not args.main)
+assert not args.approach or (args.scooter and not args.main and not args.turnarounds)
 app=Path('/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd')
-variant = 'main-scooter' if args.main and args.scooter else 'turnaround' if args.turnarounds else 'scooter' if args.scooter else 'main' if args.main else 'world' if args.world else 'rail' if args.rail else 'buildings' if args.buildings else 'continuous-shell' if args.continuous_shell else 'level-floor' if args.level_floor else 'candidate'
+variant = 'approach' if args.approach else 'main-scooter' if args.main and args.scooter else 'turnaround' if args.turnarounds else 'scooter' if args.scooter else 'main' if args.main else 'world' if args.world else 'rail' if args.rail else 'buildings' if args.buildings else 'continuous-shell' if args.continuous_shell else 'level-floor' if args.level_floor else 'candidate'
 route = 'finish-drive' if args.finish_route else 'drive'
 log = root / f'work/krog-{variant}-{route}.log'
-map_name = ('PiedmontWorld' if args.main else 'PiedmontKrogTurnaroundReview' if args.turnarounds else 'PiedmontScooterReview' if args.scooter else 'PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
+map_name = ('PiedmontKrogApproachReview' if args.approach else 'PiedmontWorld' if args.main else 'PiedmontKrogTurnaroundReview' if args.turnarounds else 'PiedmontScooterReview' if args.scooter else 'PiedmontWorld' if args.main else 'PiedmontKrogWorldReview' if args.world else 'PiedmontKrogRailReview' if args.rail else 'PiedmontKrogBuildingsReview' if args.buildings else
             'PiedmontKrogShellReview' if args.continuous_shell else
             'PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview')
 with log.open('w') as stream:

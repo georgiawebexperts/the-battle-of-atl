@@ -1,0 +1,9 @@
+{
+  "main_map_changed": false,
+  "offset_cm": 220,
+  "width_cm": 240,
+  "surface_samples": 40,
+  "surface_failures": [],
+  "triangles": 78,
+  "scope": "Authored approach fitted to native ground in separate map; no visual, traffic or navigation acceptance yet."
+}

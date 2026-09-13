@@ -1,0 +1,15 @@
+{
+  "maps": [
+    {
+      "map": "PiedmontWorld",
+      "failures": [],
+      "passed": true
+    },
+    {
+      "map": "PiedmontKrogApproachReview",
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "scope": "Native 62cm sphere sweeps at two rider heights along entire approach, versus static visibility collision. No runtime car clearance or full capsule proof."
+}
