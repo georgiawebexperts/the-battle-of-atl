@@ -1,4 +1,5 @@
 #include "BattlePickup.h"
+#include "BattleSpareBikes.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleCheckpoints.h"
@@ -166,5 +167,6 @@ void ABattlePickupDirector::BeginPlay(){
   UE_LOG(LogTemp,Display,TEXT("BattleTimePickups: spawned=%d desired=10"),TimePickups);
   UE_LOG(LogTemp,Display,TEXT("BattleCrates: spawned=%d desired=%d"),WeaponCrates,Mode->Difficulty.WeaponCrates);
  }
+ if(!ColaAudit)BattleSpareBikes::SpawnStations(this);
  UE_LOG(LogTemp,Display,TEXT("BattlePickups: spawned=%d park=%d trail=%d desired=%d"),Spawned,ParkPickups,TrailPickups,Desired);
 }

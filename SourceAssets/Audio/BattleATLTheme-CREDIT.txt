@@ -1,0 +1,2 @@
+2026-09-13 [codex-maclaptop]
+Battle of the A-T-L: supplied by Elliott as game music. Source: user-provided MP3; converted to 48kHz stereo PCM for Unreal import. No additional authorship or licensing claim inferred.

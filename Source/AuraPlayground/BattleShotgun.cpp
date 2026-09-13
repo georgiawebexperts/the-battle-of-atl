@@ -38,7 +38,7 @@ void ABattleRider::UpdateShotgunMechanism(float Dt){
  const float Loading=Elapsed-ShotgunReloadLead;
  TransferShotgunShells(FMath::Clamp(FMath::FloorToInt(Loading/ShellSeconds),0,ShotgunReloadShells));
  // Reach toward the belt in the body-held weapon frame before loading the port.
- const FVector Fetch(-24,-14,-45),Port(-18,1.3f,1.2f),HandOffset(-10,-1,-3);
+ const FVector Fetch(-24,-14,-37),Port(-18,1.3f,1.2f),HandOffset(-10,-1,-3);
  if(Loading<0){ShotgunReloadHand=FMath::Lerp(ShotgunReloadHand,Fetch+HandOffset,Ease((Elapsed-(ShotgunReloadLead-.25f))/.25f));return;}
  if(Loading>=ShotgunReloadShells*ShellSeconds){ShotgunReloadHand=FMath::Lerp(Port+FVector(6,0,0)+HandOffset,FVector(4,-3,-4),Ease((Loading-ShotgunReloadShells*ShellSeconds)/.35f));return;}
  ShotgunShellPhase=FMath::Fmod(Loading,ShellSeconds)/ShellSeconds;

@@ -20,6 +20,11 @@
 #include "InputKeyEventArgs.h"
 #include "Misc/CommandLine.h"
 #include "UnrealClient.h"
+#include "DrawDebugHelpers.h"
+#include "StaticMeshResources.h"
+#if WITH_EDITOR
+#include "MeshDescription.h"
+#endif
 void ABattleMacController::TickFootAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FootStage<0||GetWorld()->GetTimeSeconds()<5)return;
@@ -46,6 +51,38 @@ void ABattleMacController::TickFootAudit(float Dt){
    const FVector Hand=P->Body->GetSocketLocation(TEXT("hand_r"));
    if(P->CurrentWeapon>0)MaxWeaponHandDistance=FMath::Max(MaxWeaponHandDistance,float(FVector::Dist(P->LongGun->GetComponentLocation(),Hand)));
    Hands[Phase-1]=Hand-P->GetActorLocation();
+   if(FParse::Param(FCommandLine::Get(),TEXT("BattleGripMarkers"))){
+    DrawDebugSphere(GetWorld(),Hand,1.5f,12,FColor::Green,false,2.f,0,1.f);
+    const FVector Knuckle=P->Body->GetSocketLocation(TEXT("middle_01_r"));
+    DrawDebugSphere(GetWorld(),Knuckle,1.5f,12,FColor::Cyan,false,2.f,0,1.f);
+    const FVector GripArt=P->ShotgunMesh->GetComponentTransform().TransformPosition(FVector(-43.75f,0,-2.5f));
+
+    if(auto* Render=P->ShotgunMesh->GetStaticMesh()->GetRenderData()){
+     for(int32 LOD=0;LOD<Render->LODResources.Num();LOD++){
+      auto& Buffer=Render->LODResources[LOD].VertexBuffers.PositionVertexBuffer;
+      UE_LOG(LogTemp,Display,TEXT("GripRenderLOD: lod=%d vertices=%u cpu=%d"),LOD,Buffer.GetNumVertices(),Buffer.GetAllowCPUAccess());
+      if(Buffer.GetAllowCPUAccess()){
+       FVector Closest;double Distance=MAX_dbl;
+       for(uint32 I=0;I<Buffer.GetNumVertices();I++){FVector V(Buffer.VertexPosition(I));double D=FVector::DistSquared(V,FVector(-43.75f,0,-2.5f));if(D<Distance){Distance=D;Closest=V;}}
+       UE_LOG(LogTemp,Display,TEXT("GripRenderVertex: lod=%d nearest=%s distance=%.3f"),LOD,*Closest.ToString(),FMath::Sqrt(Distance));
+      }
+     }
+    }
+#if WITH_EDITOR
+    if(auto* Description=P->ShotgunMesh->GetStaticMesh()->GetMeshDescription(0)){
+     auto Positions=Description->GetVertexPositions();FVector Closest;double Distance=MAX_dbl;
+     for(auto Vertex:Description->Vertices().GetElementIDs()){
+      FVector Position(Positions[Vertex]);const double D=FVector::DistSquared(Position,FVector(-43.75f,0,-2.5f));if(D<Distance){Distance=D;Closest=Position;}
+     }
+     DrawDebugSphere(GetWorld(),P->ShotgunMesh->GetComponentTransform().TransformPosition(Closest),2.f,12,FColor::Red,false,2.f,0,1.f);
+     UE_LOG(LogTemp,Display,TEXT("GripMeshVertex: nearest=%s distance=%.3f"),*Closest.ToString(),FMath::Sqrt(Distance));
+    }
+#endif
+
+    DrawDebugSphere(GetWorld(),GripArt,1.5f,12,FColor::Magenta,false,2.f,0,1.f);
+    UE_LOG(LogTemp,Display,TEXT("GripMarker: phase=%d wrist=%s knuckle=%s art=%s mesh=%s"),Phase,*Hand.ToString(),*Knuckle.ToString(),*GripArt.ToString(),*P->ShotgunMesh->GetComponentTransform().ToString());
+   }
+
    SupportHands[Phase-1]=P->Body->GetSocketLocation(TEXT("hand_l"))-P->GetActorLocation();
    const FVector Focus=P->GetActorLocation()+FVector(0,0,40),Eye=Focus+(FParse::Param(FCommandLine::Get(),TEXT("BattleAimClose"))?FVector(100,FParse::Param(FCommandLine::Get(),TEXT("BattleAimRightSide"))?120:-120,35):FVector(190,-240,65));
    if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(Camera);

@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "BattleSpareBikes.h"
 #include "BattleWeaponGrip.h"
 #include "BattlePlayerCrash.h"
 #include "BattleKnife.h"
@@ -24,6 +25,11 @@ void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weig
  for(int I=0;I<Pose.Num();I++)if(Ref.GetParentIndex(I)>=0)Pose[I]=Pose[I]*Pose[Ref.GetParentIndex(I)];
  auto Child=[&](int I,int Root){while(I>=0){if(I==Root)return true;I=Ref.GetParentIndex(I);}return false;};
  auto Rotate=[&](int Root,FQuat Rotation){if(Root<0)return;Rotation=FQuat::Slerp(FQuat::Identity,Rotation,Weight);const FVector Pivot=Pose[Root].GetLocation();for(int I=Root;I<Pose.Num();I++)if(Child(I,Root)){Pose[I].SetLocation(Pivot+Rotation.RotateVector(Pose[I].GetLocation()-Pivot));Pose[I].SetRotation(Rotation*Pose[I].GetRotation());}};
+ // Blade the shotgun stance so the rear grip clears the chest while the support shoulder reaches forward.
+ if(WeaponSlot==1){
+  Rotate(Ref.FindBoneIndex(TEXT("spine_02")),FQuat(FVector::UpVector,FMath::DegreesToRadians(30.f)));
+  Rotate(Ref.FindBoneIndex(TEXT("neck_01")),FQuat(FVector::UpVector,FMath::DegreesToRadians(-30.f)));
+ }
  // Solve both arms from the current locomotion pose, preserving segment lengths.
  const FVector Right=FVector::CrossProduct(FVector::UpVector,Forward).GetSafeNormal();
  auto Solve=[&](const TCHAR* Side,FVector Target){
@@ -42,7 +48,7 @@ void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weig
  };
  const int Shoulder=Ref.FindBoneIndex(TEXT("upperarm_r"));
  if(Shoulder>=0){
-  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*(WeaponSlot==1?0.f:LongGun?25.f:43.f)-FVector::UpVector*8.f;
+  const FVector GripTarget=Pose[Shoulder].GetLocation()+Forward*(WeaponSlot==1?20.f:LongGun?25.f:43.f)-FVector::UpVector*8.f;
   Solve(TEXT("r"),GripTarget);
   const FVector Delta=LongGun?SupportGrip-BattleWeaponGrip::Right(WeaponSlot):FVector(3,-9,-2);
   Solve(TEXT("l"),GripTarget+Forward*Delta.X+Right*Delta.Y+FVector::CrossProduct(Forward,Right).GetSafeNormal()*Delta.Z);
@@ -147,7 +153,11 @@ void ABattleRider::Tick(float Dt){
  }
  if(IsValid(ParkedBike))Health=ParkedBike->RiderHealth;
 }
-bool ABattleRider::MountBike(){return (!ParkedBike||ParkedBike->StunRemaining<=0)&&Health>0&&!bSwimming&&IsValid(ParkedBike)&&ParkedBike->Remount(this);}
+bool ABattleRider::MountBike(){
+ if(!IsValid(ParkedBike)||ParkedBike->StunRemaining>0||Health<=0||bSwimming)return false;
+ if(auto* Spare=BattleSpareBikes::Nearest(this))if(FVector::DistSquared(Spare->GetActorLocation(),GetActorLocation())<FVector::DistSquared(ParkedBike->GetActorLocation(),GetActorLocation()))return BattleSpareBikes::Mount(this,Spare);
+ return ParkedBike->Remount(this);
+}
 float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
  if(!IsValid(ParkedBike))return 0;
  const float Applied=ParkedBike->ApplyRiderDamage(Amount);Health=ParkedBike->RiderHealth;

@@ -62,6 +62,7 @@ Left Shift               Boost
 H                        Horn (limited uses)
 E                        Get off the bike
 P                        Switch arcade / realistic bike handling
+                         Arcade gently slows for sharp turns.
 Tab                      Change bike camera
 
 ON FOOT
@@ -76,11 +77,14 @@ Left mouse button        Fire while weapon is drawn
 R                        Reload using collected ammunition
 1 / 2 / 3 / 4 / 5        Select acquired pistol / shotgun / SMG / frisbee / rifle
 F                        Melee
-E near your bike         Get back on (after recovery; not while swimming)
+E near a bike            Ride it (after recovery; not while swimming)
+                         Blue watch markers show spare bikes.
 Escape                   Pause/menu
+M                        Music on/off (also in Options)
 
 You start with 17 pistol rounds. Pistol ammo pickups give 17 rounds to
-reserve; reload to use them. Look beside the green slatted trash bins along
+reserve; carry up to 102 spare pistol rounds plus 17 loaded. Reload to use
+them. The HUD labels LOADED and SPARE separately. Look beside the green slatted trash bins along
 the park and trail paths. The timer drains faster while on foot.
 Close the game window or use Command-Q to quit.
 
@@ -105,11 +109,16 @@ UNINSTALL
 Quit the game, then move The Battle of ATL.app from Applications to Trash.
 This does not necessarily remove settings or saved-game data.
 
-Build {{BUILD}} update: rifles, shotguns and SMGs now follow Ellison's body
-and weapon-specific hand positions instead of floating near the camera.
-The skatepark has concrete detail and painted jump-bank guidance. Includes
-the recent ammo-bin landmarks, moving pedals and wall-reverse recovery.
-Fine finger contact, reload animation, weapon art and world polish remain
-in progress.
+Spare bikes: blue watch markers show six parked bikes along the park and
+trail. Walk up and press E to ride one; your abandoned bike stays available.
+Music: press M or use Options to turn the supplied theme on/off.
+Tight arcade turns ease speed gradually. Glancing rail contacts slide;
+hold S/Down to back out of a direct wall hit, then steer clear.
+
+Build {{BUILD}} update: the shotgun uses a turned shoulder stance and visible
+support-hand pump/reload movement. Long guns follow the body independently
+of camera movement. Includes recent skatepark guidance, ammo-bin landmarks,
+moving pedals and wall-reverse recovery. Fine finger contact, other reload
+animations, weapon art and world polish remain in progress.
 Mac pipeline compilation is serialized following a driver startup crash;
 brief first-use shader pauses are possible. Broader stability testing remains.

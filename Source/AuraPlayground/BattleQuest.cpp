@@ -1,4 +1,5 @@
 #include "BattleQuest.h"
+#include "BattleSpareBikes.h"
 #include "BattleTutorialData.h"
 #include "BattleTutorialBlock.h"
 #include "BattleRouteAnchors.h"
@@ -188,6 +189,8 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  Line(Forward*8,-Forward*5+Right*5,FLinearColor::White,2);Line(Forward*8,-Forward*5-Right*5,FLinearColor::White,2);Line(-Forward*5+Right*5,-Forward*5-Right*5,FLinearColor::White,2);
  const auto* Foot=Cast<ABattleRider>(Pawn);const auto* Parked=Foot&&IsValid(Foot->ParkedBike)&&Foot->ParkedBike->bParked?Foot->ParkedBike.Get():nullptr;
  if(Parked){const FVector2D B=Project(FVector2D(Parked->GetActorLocation())).GetClampedToMaxSize(Radius-9);Circle(B,7*UIScale,FLinearColor::Black,4);Circle(B,5*UIScale,FLinearColor(.1,1,1),2);}
+ TArray<FVector> SpareLocations;BattleSpareBikes::Locations(this,SpareLocations);
+ for(FVector P:SpareLocations){const FVector2D B=Project(FVector2D(P)).GetClampedToMaxSize(Radius-10);Circle(B,4*UIScale,FLinearColor(.1f,.75f,1.f),2);Line(B+FVector2D(-5,0)*UIScale,B+FVector2D(5,0)*UIScale,FLinearColor(.1f,.75f,1.f),1);}
  for(FVector P:EnemyLocations){FVector2D D=Project(FVector2D(P));if(D.Size()<Radius-4)Circle(D,2.5f,FLinearColor::Red,2);}
  if(bReady){
   const FVector Target=Practice?BattleTutorialData::Gate:bCollected?RouteTargetLocation:ArtifactLocation;const float Distance=FVector::Dist2D(Pawn->GetActorLocation(),Target);

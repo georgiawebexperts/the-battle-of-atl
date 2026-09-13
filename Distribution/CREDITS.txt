@@ -39,3 +39,5 @@ https://creativecommons.org/publicdomain/zero/1.0/
 
 2026-09-13 [codex-maclaptop]
 The “Stop! APD!” police voice is AI-generated using OpenAI’s built-in cedar voice, not a recording of a police officer.
+
+Game theme: Battle of the A-T-L — supplied by Elliott for this game.

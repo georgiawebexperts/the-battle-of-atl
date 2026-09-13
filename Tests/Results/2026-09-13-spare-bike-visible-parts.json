@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "phase": 4,
+  "bikes": 6,
+  "reason": "Actual spare stations, E interaction, carried ammo/health/horns, swimming guard and riding the abandoned bike again pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-bikes-f57dec2456a949a4b8f9fbf865b0ff8c/spare-bike.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-bikes-f57dec2456a949a4b8f9fbf865b0ff8c/run.log",
+  "exit_code": 0,
+  "packaged": false,
+  "visual_review": {
+    "accepted": true,
+    "finding": "Visible bike model only; camera proxy removed, E prompt and blue watch markers readable."
+  }
+}

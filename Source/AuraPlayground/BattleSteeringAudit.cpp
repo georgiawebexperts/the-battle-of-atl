@@ -8,11 +8,15 @@
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
 #include "Kismet/GameplayStatics.h"
+void TickBattleBridgeTurnAudit(APlayerController* PC,float Dt);
+void TickBattleRailScrapeAudit(APlayerController* PC,float Dt);
 void TickBattleIncidentBikeAudit(APlayerController* PC,float Dt);
 void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt);
 void TickBattleWallRecoveryAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickSteeringAudit(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleBridgeTurnAudit"))){TickBattleBridgeTurnAudit(this,Dt);return;}
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleRailScrapeAudit"))){TickBattleRailScrapeAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleWallRecoveryAudit"))){TickBattleWallRecoveryAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleIncidentBikeAudit"))){TickBattleIncidentBikeAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHandlingSlopeAudit"))){TickBattleHandlingSlopeAudit(this,Dt);return;}
@@ -37,7 +41,7 @@ void ABattleMacController::TickSteeringAudit(float Dt){
  else if(SteeringStage==6&&SteeringClock>.65f){CHECK_STEERING(Bike->Ride->Speed<10,"S brake failed");Key(EKeys::S,false);Key(EKeys::R,true);Key(EKeys::R,false);Next();}
  else if(SteeringStage==7&&SteeringClock>.15f){CHECK_STEERING(Bike->Ride->Gear==2,"R gear up failed");Key(EKeys::Q,true);Key(EKeys::Q,false);Next();}
  else if(SteeringStage==8&&SteeringClock>.15f){CHECK_STEERING(Bike->Ride->Gear==1&&Bike->Dismount(),"Q gear down or dismount failed");Person=Cast<ABattleRider>(GetPawn());CHECK_STEERING(Person&&Person->MountBike()&&Bike->Ride->SmoothedSteer==0&&Bike->LeanAngle==0,"Remount retained steering/lean");SteeringYaw=Bike->GetActorRotation().Yaw;Key(EKeys::Left,true);Next();}
- else if(SteeringStage==9&&SteeringClock>.35f){CHECK_STEERING(Bike->Ride->SmoothedSteer<-.8f&&FMath::Abs(FMath::FindDeltaAngleDegrees(SteeringYaw,Bike->GetActorRotation().Yaw))<.01f,"Stationary bike pivoted in place");Key(EKeys::Left,false);if(FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingAudit"))){CHECK_STEERING(Bike->Ride->bRealHandling,"Remount lost handling mode");Key(EKeys::P,true);Key(EKeys::P,false);Next();return;}Finish(true,TEXT("Actual arrow/WASD pedal/brake, eased steering reversal and lean, Q/R gears, remount reset, stationary heading and 30/120Hz response pass"));}
+ else if(SteeringStage==9&&SteeringClock>.65f){CHECK_STEERING(Bike->Ride->SmoothedSteer<-.8f,"Stationary steering input did not settle");CHECK_STEERING(FMath::Abs(FMath::FindDeltaAngleDegrees(SteeringYaw,Bike->GetActorRotation().Yaw))<.01f,"Stationary bike pivoted in place");Key(EKeys::Left,false);if(FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingAudit"))){CHECK_STEERING(Bike->Ride->bRealHandling,"Remount lost handling mode");Key(EKeys::P,true);Key(EKeys::P,false);Next();return;}Finish(true,TEXT("Actual arrow/WASD pedal/brake, eased steering reversal and lean, Q/R gears, remount reset, stationary heading and 30/120Hz response pass"));}
  else if(SteeringStage==10&&SteeringClock>.15f){CHECK_STEERING(!Bike->Ride->bRealHandling,"P did not return to arcade handling");Finish(true,TEXT("Realistic handling native controls, lean, remount persistence and P toggle both ways passed"));}
  if(SteeringClock>8&&SteeringStage!=99)Finish(false,TEXT("Steering audit timeout"));
 #undef CHECK_STEERING

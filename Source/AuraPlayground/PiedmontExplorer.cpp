@@ -96,9 +96,16 @@ void APiedmontExplorer::AnimateBody(float Dt){
    // Floor distance is measured from the capsule base and remains valid there.
    BodyHeight-=Movement->CurrentFloor.GetDistanceToFloor();
  }
- Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75+SwimStandingHalfHeight-35):FVector(0,0,BodyHeight));
- Body->SetRelativeRotation(bSwimming?FRotator(0,-90,90):FRotator(0,-90,0));
- Gait+=bSwimming?Dt*3.f:GetVelocity().Size2D()*Dt/85.f;
+ SwimPoseBlend=FMath::FInterpTo(SwimPoseBlend,bSwimming?FMath::Clamp(GetVelocity().Size2D()/160.f,0.f,1.f):0.f,Dt,4.f);
+ if(bSwimming&&bDetailedPlayerRig){
+  const FVector Treading(0,0,-150+1.5f*FMath::Sin(Gait));
+  Body->SetRelativeLocation(FMath::Lerp(Treading,FVector(-65,0,-75+SwimStandingHalfHeight-35),SwimPoseBlend));
+  Body->SetRelativeRotation(FRotator(0,-90,90*SwimPoseBlend));
+ }else{
+  Body->SetRelativeLocation(bSwimming?FVector(-65,0,-75+SwimStandingHalfHeight-35):FVector(0,0,BodyHeight));
+  Body->SetRelativeRotation(bSwimming?FRotator(0,-90,90):FRotator(0,-90,0));
+ }
+ Gait+=bSwimming?Dt*FMath::Lerp(2.3f,4.6f,SwimPoseBlend):GetVelocity().Size2D()*Dt/85.f;
  const float Blend=FMath::Clamp(GetVelocity().Size2D()/220.f,0.f,1.f);
  TArray<FTransform> Pose=RestPose;
  bAuthoredLocomotion=!bSwimming&&SampleLocomotion(Dt,Pose);
@@ -121,6 +128,12 @@ void APiedmontExplorer::AnimateBody(float Dt){
  const float Stroke=.5f+.5f*FMath::Sin(Gait);
  for(int Side:{1,-1}){
   FVector Hand=bSwimming?FVector(Side*(20+35*Stroke),20+10*FMath::Cos(Gait),175-45*Stroke):FVector(Side*26,FMath::Sin(Gait)*Side*18*Blend,80);
+  if(bSwimming&&bDetailedPlayerRig){
+   const float Phase=Gait+(Side<0?PI:0.f);
+   const FVector Tread(Side*(35+8*FMath::Sin(Gait)),20+12*FMath::Cos(Gait),100+5*FMath::Sin(Gait));
+   const FVector Crawl(Side*(24+8*FMath::Sin(Phase)),10+25*FMath::Sin(Phase),145+40*FMath::Cos(Phase));
+   Hand=FMath::Lerp(Tread,Crawl,SwimPoseBlend);
+  }
   if(bWeaponDrawn)Hand=Side==1?FVector(5,40,128):FVector(-15,45,130);
   const int HandIndex=Index(Side==1?TEXT("Hand_L"):TEXT("Hand_R"));
   if(bAuthoredLocomotion&&!bWeaponDrawn&&HandIndex>=0)Hand=Pose[HandIndex].GetLocation();
@@ -130,8 +143,19 @@ void APiedmontExplorer::AnimateBody(float Dt){
   if(Side==1)Limb(TEXT("UpperArm_L"),TEXT("LowerArm_L"),TEXT("Hand_L"),Hand,FVector(1,1,0));
   else Limb(TEXT("UpperArm_R"),TEXT("LowerArm_R"),TEXT("Hand_R"),Hand,FVector(-1,1,0));
   }
+  if(bSwimming&&bDetailedPlayerRig&&HandIndex>=0){
+   const TCHAR* Suffix=Side==1?TEXT("l"):TEXT("r");
+   auto Finger=[&](const TCHAR* Name){return Bones.IndexOfByKey(FName(*FString::Printf(TEXT("%s_01_%s"),Name,Suffix)));};
+   const int Middle=Finger(TEXT("middle")),First=Finger(TEXT("index")),Last=Finger(TEXT("pinky"));
+   if(Middle>=0&&First>=0&&Last>=0){
+    const FVector Direction=FMath::Lerp(FVector(0,1,0),FVector(0,0,1),SwimPoseBlend).GetSafeNormal();
+    MoveBranch(HandIndex,Pose[HandIndex].GetLocation(),FQuat::FindBetweenVectors(Pose[Middle].GetLocation()-Pose[HandIndex].GetLocation(),Direction));
+    const FVector Across=FVector::VectorPlaneProject(Pose[Last].GetLocation()-Pose[First].GetLocation(),Direction).GetSafeNormal(),Target(Side,0,0);
+    MoveBranch(HandIndex,Pose[HandIndex].GetLocation(),FQuat(Direction,FMath::Atan2(FVector::DotProduct(FVector::CrossProduct(Across,Target),Direction),FVector::DotProduct(Across,Target))));
+   }
+  }
   const int Leg=Index(Side==1?TEXT("UpperLeg_L"):TEXT("UpperLeg_R"));
-  if(Leg>=0&&!bAuthoredLocomotion)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait)*(bSwimming?8.f:28.f*Blend))));
+  if(Leg>=0&&!bAuthoredLocomotion)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait*(bSwimming&&bDetailedPlayerRig?2.f:1.f))*(bSwimming?FMath::Lerp(5.f,12.f,SwimPoseBlend):28.f*Blend))));
  }
  // Keep the support foot down after translation retargeting; fade this correction
  // out for running, where both feet may legitimately be airborne in the stride.

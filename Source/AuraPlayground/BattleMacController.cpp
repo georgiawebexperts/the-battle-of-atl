@@ -1,4 +1,6 @@
 #include "BattleMacController.h"
+#include "BattleMusic.h"
+#include "BattleSpareBikes.h"
 #include "BattleSwimAudit.h"
 #include "HAL/IConsoleManager.h"
 #include "BattleRunRecords.h"
@@ -41,6 +43,7 @@ ABattleMacController::ABattleMacController(){
 
 void ABattleMacController::BeginPlay(){
  Super::BeginPlay();
+ BattleMusic::Initialize(this);
  // Keep moving silhouettes readable; temporal antialiasing remains enabled.
  if(auto* Blur=IConsoleManager::Get().FindConsoleVariable(TEXT("r.MotionBlurQuality")))Blur->Set(0,ECVF_SetByGameSetting);
  if(GetWorld()->WorldType==EWorldType::Game){
@@ -88,6 +91,8 @@ void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeRideAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleMusicAudit")))BattleMusic::TickAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpareBikeAudit")))BattleSpareBikes::TickAudit(this,Dt);
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperSettleAudit")))TickBattleSleeperSettleAudit(this,Dt);
@@ -162,6 +167,8 @@ void ABattleMacController::StartDifficulty(FName Name){
 }
 void ABattleMacController::SetupInputComponent(){
  Super::SetupInputComponent();
+ FInputKeyBinding MusicBinding(FInputChord(EKeys::M),IE_Pressed);MusicBinding.bExecuteWhenPaused=true;
+ MusicBinding.KeyDelegate.GetDelegateForManualSet().BindLambda([this](){BattleMusic::Toggle(this);});InputComponent->KeyBindings.Add(MusicBinding);
  auto& Binding=InputComponent->BindKey(EKeys::Escape,IE_Pressed,this,&ABattleMacController::ToggleMenu);
  Binding.bExecuteWhenPaused=true;
  auto& Skip=InputComponent->BindKey(EKeys::Enter,IE_Pressed,this,&ABattleMacController::SkipOpening);Skip.bExecuteWhenPaused=true;
@@ -246,6 +253,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
+  Button(BattleMusic::Enabled()?TEXT("MUSIC: ON  /  M"):TEXT("MUSIC: OFF  /  M"),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
   Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);
   for(int Quality:{1,2})Button(Quality==1?TEXT("PERFORMANCE / 1080p"):TEXT("BALANCED / 1080p"),[this,Quality](){if(auto* Settings=UGameUserSettings::GetGameUserSettings()){Settings->SetOverallScalabilityLevel(Quality);Settings->SetScreenResolution(FIntPoint(1920,1080));Settings->SetFullscreenMode(EWindowMode::Windowed);Settings->SetFrameRateLimit(60);Settings->ApplySettings(false);Settings->SaveSettings();}ShowMenu(TEXT("Options"));});
   Button(TEXT("BACK"),[this](){ShowMenu();});

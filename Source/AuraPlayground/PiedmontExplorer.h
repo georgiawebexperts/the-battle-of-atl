@@ -69,6 +69,7 @@ private:
  TArray<int32> Parents;
  TArray<FName> Bones;
  float Gait=0;
+ float SwimPoseBlend=0;
  UPROPERTY() TObjectPtr<UAnimSequence> BodySequence;
  float BodySequenceClock=0;
  bool bBodySequenceLoop=false,bBodySequenceHeld=false;

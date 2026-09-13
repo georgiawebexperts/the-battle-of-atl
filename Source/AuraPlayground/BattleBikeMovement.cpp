@@ -98,7 +98,15 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
    const float Motor=Pedal*Accel[Gear-1]*FMath::Clamp((Cap-Speed)/150.f,0.f,1.f);
    Speed=FMath::Clamp(Speed+(Motor+GradeForce-Resistance-Brake*(bGrass?450.f:850.f))*Dt,0.f,2200.f);
   }
- }else Speed=FMath::Clamp(Speed+(Pedal*Accel[Gear-1]-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
+ }else {
+  // Arcade corner assist eases off the motor and sheds speed progressively at
+  // large steering angles, giving tight bridge turns a smaller turning circle.
+  const float Corner=IsMovingOnGround()?FMath::SmoothStep(.45f,1.f,FMath::Abs(SmoothedSteer)):0.f;
+  const float CornerCap=FMath::Lerp(Cap,FMath::Min(Cap,220.f+80.f*Gear),Corner);
+  const float Motor=Speed<CornerCap?Pedal*Accel[Gear-1]:0.f;
+  Speed=FMath::Clamp(Speed+(Motor-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,Cap);
+  if(Speed>CornerCap)Speed=FMath::FInterpConstantTo(Speed,CornerCap,Dt,550.f*Corner);
+ }
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
  const FVector Horizontal=FMath::Lerp(FVector(Velocity.X,Velocity.Y,0),Desired,1.f-FMath::Exp(-(SlideRemaining>0?2.3f:18.f)*Dt));
  Velocity.X=Horizontal.X;Velocity.Y=Horizontal.Y;
@@ -136,6 +144,17 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
   ContactCooldown=.35f;if(Direct)Wipeout(TEXT("Traffic impact"));else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
  if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree")))++TreeContacts;
+ // Let a glancing rail/wall contact slide instead of repeatedly killing propulsion.
+ // A direct hit still stops the bike and gives the existing small separation nudge.
+ const FVector Normal=Hit.ImpactNormal.GetSafeNormal2D();
+ const FVector Travel=CharacterOwner->GetActorForwardVector()*(ReverseSpeed>Speed?-1.f:1.f);
+ const float Into=FMath::Clamp(-FVector::DotProduct(Travel,Normal),0.f,1.f);
+ if(Into<.65f){
+  const float Retained=FMath::Sqrt(FMath::Max(0.f,1.f-Into*Into));
+  Speed*=Retained;ReverseSpeed*=Retained;ContactCooldown=.2f;
+  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>300)Bike->RideImpact(.12f);
+  return;
+ }
  // Terrain, walls and fences never enter the wipeout state.
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner))if(Speed>100)Bike->RideImpact(.45f);
  BounceDirection=Hit.ImpactNormal.GetSafeNormal2D();BounceRemaining=.16f;ContactCooldown=.25f;Speed=ReverseSpeed=0;

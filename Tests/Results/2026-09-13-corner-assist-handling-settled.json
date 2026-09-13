@@ -1,0 +1,29 @@
+{
+  "packaged": false,
+  "passed": true,
+  "runs": [
+    {
+      "passed": true,
+      "stage": 9,
+      "reason": "Actual arrow/WASD pedal/brake, eased steering reversal and lean, Q/R gears, remount reset, stationary heading and 30/120Hz response pass",
+      "speed": 0.0,
+      "steer": -0.989,
+      "lean": 0.0,
+      "mode": "arcade",
+      "exit_code": 0,
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-arcade-e0ef5709a23e4f4db44b96a1b86d5efe.log"
+    },
+    {
+      "passed": true,
+      "stage": 10,
+      "reason": "Realistic handling native controls, lean, remount persistence and P toggle both ways passed",
+      "speed": 0.0,
+      "steer": -0.3,
+      "lean": 0.0,
+      "mode": "realistic",
+      "exit_code": 0,
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-realistic-3255f96a28234adb86002b8a66e3193f.log"
+    }
+  ],
+  "scope": "Native main-world keyboard pedal/brake/steer, lean and remount; realistic P toggle on/off. No hill, traction-limit, high-speed, jump or rendered HUD acceptance."
+}

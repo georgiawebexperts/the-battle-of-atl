@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "packaged": false,
+  "runs": [
+    {
+      "passed": true,
+      "direction": 1,
+      "max_offset_cm": 64.35,
+      "reason": "Actual curved lake bridge traversed both directions with keyboard steering",
+      "mode": "arcade",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bridge-turn-74b5d0003a004ac2b84dc80d26670f54.log",
+      "exit_code": 0
+    },
+    {
+      "passed": true,
+      "direction": 1,
+      "max_offset_cm": 46.88,
+      "reason": "Actual curved lake bridge traversed both directions with keyboard steering",
+      "mode": "realistic",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bridge-turn-699476cd4f524c8ebf08019299cd2089.log",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Actual lake bridge, both travel directions, keyboard steering. Does not cover every bridge or player steering timing."
+}
