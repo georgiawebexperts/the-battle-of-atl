@@ -1,0 +1,56 @@
+{
+  "passed": false,
+  "completedLegs": 2,
+  "travelCm": 48150.35,
+  "maxCenterlineErrorCm": 34.79,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 47239,
+    "paved": 47239
+  },
+  "lights": {
+    "lit_samples": 3473,
+    "unlit_samples": 0
+  },
+  "traffic_observed": {
+    "samples": 767,
+    "max_live_cars": 22,
+    "max_moving_cars": 21,
+    "nearby_samples": 75,
+    "nearest_car_cm": 358.04
+  },
+  "crowd_observed": {
+    "max_live_people": 29,
+    "max_walking_people": 25,
+    "nearby_samples": 663,
+    "nearest_person_cm": 62.0
+  },
+  "yield_diagnostics": [
+    "leg=0 elapsed=57.9 position=X=24630.538 Y=113862.634 Z=1040.546 reason=person=PiedmontPedestrian_37 ahead=363.1 side=36.0 speed=0.0 pause=0.6 posed=0 dead=0 destination=0",
+    "leg=0 elapsed=74.3 position=X=25140.190 Y=114591.151 Z=1053.952 reason=person=PiedmontPedestrian_84 ahead=407.2 side=28.7 speed=135.0 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=0 elapsed=80.4 position=X=25243.746 Y=114702.155 Z=1056.402 reason=person=PiedmontPedestrian_84 ahead=402.0 side=91.7 speed=0.0 pause=1.2 posed=0 dead=0 destination=0",
+    "leg=1 elapsed=33.8 position=X=25223.448 Y=114676.854 Z=1056.055 reason=person=PiedmontPedestrian_104 ahead=50.7 side=89.6 speed=135.0 pause=0.0 posed=0 dead=0 destination=1",
+    "leg=1 elapsed=54.5 position=X=24529.427 Y=112678.330 Z=1015.062 reason=person=PiedmontPedestrian_90 ahead=407.7 side=47.4 speed=12.1 pause=0.0 posed=0 dead=0 destination=1"
+  ],
+  "queue_diagnostics": [
+    "car=BattleRoadCar_3 position=X=26823.014 Y=116438.385 Z=1077.400 speed=250.0 finished=0 crossing=0 grounded=1 obstacle=",
+    "car=BattleRoadCar_3 position=X=25538.605 Y=117067.006 Z=1092.671 speed=250.0 finished=0 crossing=0 grounded=1 obstacle="
+  ],
+  "diagnostic_probe_only": false,
+  "exit_code": 0,
+  "map": "PiedmontKrogApproachReview",
+  "handling": {
+    "realistic": true,
+    "elevation_span_cm": 206.09,
+    "max_grade": 0.2018
+  },
+  "scope": "Invalid as wider-approach evidence: review map lacked candidate actor/curve due save-map not switching active world. This successful ride actually tested baseline loop/scooter layout with a different traffic seed.",
+  "scooter_scene": {
+    "passed": true,
+    "ready": true,
+    "visit_started": true,
+    "nearest_scene_cm": 1802.06,
+    "participants": 3
+  },
+  "invalid_candidate_evidence": true
+}

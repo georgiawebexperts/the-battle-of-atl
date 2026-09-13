@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/approach-isolation-repair-20260913-021007",
+  "restored_actor_count": 806,
+  "scope": "Removed only misplaced tagged approach actor and restored BattleKrog_2 from the untouched review copy. All original actor GUIDs preserved. Earlier wider-approach ride tested the baseline, not the intended candidate."
+}

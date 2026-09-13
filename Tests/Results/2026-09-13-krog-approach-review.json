@@ -1,5 +1,7 @@
 {
   "main_map_changed": false,
+  "active_world": "PiedmontKrogApproachReview",
+  "main_sha256_preserved": "7717e848f76af2541fe49e328b97c5ea747e45cc3e7eae7250eb591312b737d1",
   "offset_cm": 220,
   "width_cm": 240,
   "surface_samples": 40,

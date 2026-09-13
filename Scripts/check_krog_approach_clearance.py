@@ -4,6 +4,7 @@ root=Path(unreal.Paths.project_dir()).resolve();ea=unreal.get_editor_subsystem(u
 for name in ('PiedmontWorld','PiedmontKrogApproachReview'):
  assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/'+name)
  unreal.PiedmontWorldTools.finish_editor_asset_loading()
+ assert sum(a.actor_has_tag('KrogApproachReview') for a in ea.get_all_level_actors())==(0 if name=='PiedmontWorld' else 1)
  a=next(a for a in ea.get_all_level_actors() if isinstance(a,unreal.PiedmontPathSpline) and a.actor_has_tag('BattleKrog_2'))
  points=[a.centerline.get_location_at_spline_point(i,unreal.SplineCoordinateSpace.WORLD) for i in range(a.centerline.get_number_of_spline_points())];failures=[]
  for i,(p,q) in enumerate(zip(points,points[1:])):

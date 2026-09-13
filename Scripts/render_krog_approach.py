@@ -4,6 +4,7 @@ from pathlib import Path
 root=Path(unreal.Paths.project_dir()).resolve();out=root/'work/krog-approach';out.mkdir(exist_ok=True)
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontKrogApproachReview')
 unreal.PiedmontWorldTools.finish_editor_asset_loading();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
+assert sum(a.actor_has_tag('KrogApproachReview') for a in ea.get_all_level_actors())==1
 for a in ea.get_all_level_actors():
  if isinstance(a,unreal.SkyLight):
   s=a.get_component_by_class(unreal.SkyLightComponent);s.set_editor_property('real_time_capture',False);s.recapture_sky()

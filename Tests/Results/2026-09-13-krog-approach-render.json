@@ -4,5 +4,6 @@
     "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-approach/rider.png"
   ],
   "main_map_changed": false,
-  "visual_accepted": false
+  "visual_accepted": true,
+  "scope": "Both final views inspected: concrete surface renders without checkerboard or observed old-walkway overlap. Accepted for drive testing, not final streetscape art; end shape/curb detailing remain rough."
 }

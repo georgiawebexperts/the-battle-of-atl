@@ -61,6 +61,12 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);
  };
  if(ConnectorPoints.IsEmpty()){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleApproachCandidate"))){
+   int Count=0;for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("KrogApproachReview")))++Count;
+   UE_LOG(LogTemp,Display,TEXT("ApproachCandidateAudit: actors=%d world=%s"),Count,*GetWorld()->GetName());
+   if(Count!=1){Finish(false);return;}
+  }
+
   if(Hill)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->OsmWayId==HillPath){for(int I=0;I<It->Centerline->GetNumberOfSplinePoints();I++)ConnectorPoints.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));break;}
   if(Spirit){for(const FVector& P:BattleSpiritData::Ride)ConnectorPoints.Add(P);}
   else if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);

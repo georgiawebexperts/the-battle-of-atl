@@ -1,0 +1,2814 @@
+{
+  "samples": [
+    {
+      "gap_cm": 8.784581171874947,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        26933.48571,
+        116140.755495,
+        1004.0611925
+      ]
+    },
+    {
+      "gap_cm": 7.4312431973827415,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        26950.4577525,
+        116198.3059075,
+        1004.0611925
+      ]
+    },
+    {
+      "gap_cm": 8.722219726562571,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        26951.6028975,
+        116135.4136975,
+        1003.6688750000001
+      ]
+    },
+    {
+      "gap_cm": 8.33758053190786,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        26945.182120000005,
+        116158.15836666667,
+        1003.9304200000001
+      ]
+    },
+    {
+      "gap_cm": 6.23454822306519,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        26985.56835,
+        116250.50696,
+        1003.668875
+      ]
+    },
+    {
+      "gap_cm": 6.242954755508208,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27003.706905,
+        116245.1576,
+        1003.2765575
+      ]
+    },
+    {
+      "gap_cm": 7.467693571126006,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        26986.713495,
+        116187.61475000001,
+        1003.2765575000001
+      ]
+    },
+    {
+      "gap_cm": 6.63997815822745,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        26991.996250000004,
+        116227.75977,
+        1003.40733
+      ]
+    },
+    {
+      "gap_cm": 8.719633085937517,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27003.08325,
+        116120.2244925,
+        1002.56497
+      ]
+    },
+    {
+      "gap_cm": 7.432823616329188,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27020.07666,
+        116177.7673425,
+        1002.56497
+      ]
+    },
+    {
+      "gap_cm": 8.731967089843693,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27018.30786,
+        116115.72644500001,
+        1002.2456999999999
+      ]
+    },
+    {
+      "gap_cm": 8.296937943179387,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27013.82259,
+        116137.90609333335,
+        1002.4585466666667
+      ]
+    },
+    {
+      "gap_cm": 6.156906592231621,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27053.298717499998,
+        116230.506525,
+        1002.2457
+      ]
+    },
+    {
+      "gap_cm": 6.147049241624472,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27069.527364999998,
+        116225.7028575,
+        1001.92643
+      ]
+    },
+    {
+      "gap_cm": 7.406231071527145,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27051.5299175,
+        116168.4656275,
+        1001.92643
+      ]
+    },
+    {
+      "gap_cm": 6.5559647909486785,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27058.118666666665,
+        116208.22500333333,
+        1002.0328533333334
+      ]
+    },
+    {
+      "gap_cm": 8.514772031250004,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27062.8055525,
+        116102.153245,
+        1001.29944
+      ]
+    },
+    {
+      "gap_cm": 7.3096567344036885,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27080.803,
+        116159.390475,
+        1001.29944
+      ]
+    },
+    {
+      "gap_cm": 8.452352324218737,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27075.849987499998,
+        116097.88175999999,
+        1000.99172
+      ]
+    },
+    {
+      "gap_cm": 8.079981719397438,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27073.152846666668,
+        116119.80849333334,
+        1001.1968666666668
+      ]
+    },
+    {
+      "gap_cm": 6.109330469493898,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27116.85385,
+        116210.532555,
+        1000.99172
+      ]
+    },
+    {
+      "gap_cm": 6.090743699824543,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27134.9072525,
+        116204.437405,
+        1000.684
+      ]
+    },
+    {
+      "gap_cm": 7.248498715296705,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27111.900837499998,
+        116149.02384000001,
+        1000.684
+      ]
+    },
+    {
+      "gap_cm": 6.4856869844931,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27121.220646666665,
+        116187.99793333333,
+        1000.7865733333334
+      ]
+    },
+    {
+      "gap_cm": 8.365452441406205,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27118.2437225,
+        116081.82957999999,
+        999.941075
+      ]
+    },
+    {
+      "gap_cm": 7.070482288163703,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27141.2501375,
+        116137.243145,
+        999.941075
+      ]
+    },
+    {
+      "gap_cm": 8.196299687499959,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27129.53962,
+        116076.144035,
+        999.50587
+      ]
+    },
+    {
+      "gap_cm": 7.756686669653959,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27129.677826666666,
+        116098.40558666669,
+        999.7960066666667
+      ]
+    },
+    {
+      "gap_cm": 5.829385299636897,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27182.5682275,
+        116183.5060825,
+        999.50587
+      ]
+    },
+    {
+      "gap_cm": 5.787016973052914,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27200.879902499997,
+        116174.355455,
+        999.070665
+      ]
+    },
+    {
+      "gap_cm": 6.841374468086201,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27170.85771,
+        116122.4069725,
+        999.070665
+      ]
+    },
+    {
+      "gap_cm": 6.152668797564274,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27184.768613333334,
+        116160.08950333335,
+        999.2157333333333
+      ]
+    },
+    {
+      "gap_cm": 8.708263691406273,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27170.811742500002,
+        116053.60083,
+        998.0846675
+      ]
+    },
+    {
+      "gap_cm": 6.5488892881732,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27200.833935000002,
+        116105.54931249999,
+        998.0846675
+      ]
+    },
+    {
+      "gap_cm": 8.820374023437466,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27182.476292500003,
+        116045.8937975,
+        997.533875
+      ]
+    },
+    {
+      "gap_cm": 7.074427153900956,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27184.707323333336,
+        116068.34797999999,
+        997.90107
+      ]
+    },
+    {
+      "gap_cm": 5.767572005718762,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27247.5274375,
+        116146.554845,
+        997.5338749999999
+      ]
+    },
+    {
+      "gap_cm": 5.784662233520294,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27264.198747500002,
+        116135.61189500001,
+        996.9830824999999
+      ]
+    },
+    {
+      "gap_cm": 6.418624482058817,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27229.169795,
+        116086.89933,
+        996.9830824999999
+      ]
+    },
+    {
+      "gap_cm": 5.988679843284444,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27246.965326666672,
+        116123.02202333332,
+        997.16668
+      ]
+    },
+    {
+      "gap_cm": 9.54011082031252,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27222.969035000002,
+        116017.71672999999,
+        995.887645
+      ]
+    },
+    {
+      "gap_cm": 6.352031175784077,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27257.997987500003,
+        116066.42929500001,
+        995.887645
+      ]
+    },
+    {
+      "gap_cm": 9.911298339843711,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27235.1259175,
+        116008.189645,
+        995.343
+      ]
+    },
+    {
+      "gap_cm": 7.698162096354281,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27238.697646666667,
+        116030.77855666669,
+        995.7060966666668
+      ]
+    },
+    {
+      "gap_cm": 5.703804888070749,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27308.277305000003,
+        116103.23455,
+        995.343
+      ]
+    },
+    {
+      "gap_cm": 5.691326750097119,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27323.527670000003,
+        116091.32723999998,
+        994.7983549999999
+      ]
+    },
+    {
+      "gap_cm": 6.349240294552487,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27285.405235,
+        116044.99489999999,
+        994.7983549999999
+      ]
+    },
+    {
+      "gap_cm": 5.92881725152813,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27305.736736666666,
+        116079.85223,
+        994.9799033333334
+      ]
+    },
+    {
+      "gap_cm": 11.777075644531237,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27275.1631425,
+        115975.82751999999,
+        993.76554
+      ]
+    },
+    {
+      "gap_cm": 6.410986777343737,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27313.2855775,
+        116022.15985999999,
+        993.76554
+      ]
+    },
+    {
+      "gap_cm": 12.229945683593769,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27287.79312,
+        115964.89979,
+        993.27737
+      ]
+    },
+    {
+      "gap_cm": 9.69363697916674,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27292.080613333335,
+        115987.62905666666,
+        993.6028166666667
+      ]
+    },
+    {
+      "gap_cm": 5.684763678244508,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27365.6007925,
+        116056.23310499999,
+        993.27737
+      ]
+    },
+    {
+      "gap_cm": 5.714803738531259,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27379.7935725,
+        116043.97401,
+        992.7892
+      ]
+    },
+    {
+      "gap_cm": 7.273819140624937,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27340.108335,
+        115998.973035,
+        992.7891999999999
+      ]
+    },
+    {
+      "gap_cm": 5.9032831926574545,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27361.834233333335,
+        116033.06005,
+        992.9519233333333
+      ]
+    },
+    {
+      "gap_cm": 8.410301640624994,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27327.780362499998,
+        115929.87047750001,
+        991.8631825
+      ]
+    },
+    {
+      "gap_cm": 8.122948124999994,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27367.4656,
+        115974.87145250001,
+        991.8631825
+      ]
+    },
+    {
+      "gap_cm": 8.471294472656155,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27340.944847500003,
+        115918.02799,
+        991.4253349999999
+      ]
+    },
+    {
+      "gap_cm": 7.251596126302047,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27345.396936666668,
+        115940.92330666668,
+        991.7172333333333
+      ]
+    },
+    {
+      "gap_cm": 5.751841038251882,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27420.5681925,
+        116007.80567500001,
+        991.4253349999999
+      ]
+    },
+    {
+      "gap_cm": 5.721962343351379,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        27433.9855475,
+        115995.73892250001,
+        990.9874875
+      ]
+    },
+    {
+      "gap_cm": 6.570434277343679,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27394.047440000002,
+        115950.9622125,
+        990.9874874999999
+      ]
+    },
+    {
+      "gap_cm": 6.124830709635489,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27416.200393333336,
+        115984.83560333335,
+        991.1334366666667
+      ]
+    },
+    {
+      "gap_cm": 16.24891421569282,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27381.378985,
+        115881.873555,
+        990.0883775
+      ]
+    },
+    {
+      "gap_cm": 6.593138242187479,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27421.3170925,
+        115926.650265,
+        990.0883775
+      ]
+    },
+    {
+      "gap_cm": 15.89036753866992,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27395.2312825,
+        115869.62836,
+        989.627115
+      ]
+    },
+    {
+      "gap_cm": 16.635637914348877,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27399.30912,
+        115892.71739333333,
+        989.9346233333333
+      ]
+    },
+    {
+      "gap_cm": 5.824868906250003,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27474.08751,
+        115960.07109499999,
+        989.627115
+      ]
+    },
+    {
+      "gap_cm": 5.963765097656278,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27486.91982,
+        115948.715215,
+        989.1658525
+      ]
+    },
+    {
+      "gap_cm": 6.564412070312528,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27448.0017,
+        115903.04919,
+        989.1658525
+      ]
+    },
+    {
+      "gap_cm": 6.269557838541687,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27469.669676666672,
+        115937.27849999999,
+        989.3196066666667
+      ]
+    },
+    {
+      "gap_cm": 14.939225754969016,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27436.701505,
+        115833.9102125,
+        988.2632825
+      ]
+    },
+    {
+      "gap_cm": 6.260780058593696,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27475.619625000003,
+        115879.57623749999,
+        988.2632825
+      ]
+    },
+    {
+      "gap_cm": 14.54300456761871,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27451.487119999998,
+        115821.79314,
+        987.8219750000001
+      ]
+    },
+    {
+      "gap_cm": 15.337606731095093,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27454.602750000005,
+        115845.09319666667,
+        988.1161800000001
+      ]
+    },
+    {
+      "gap_cm": 6.330886132812452,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27526.883195,
+        115915.0970075,
+        987.821975
+      ]
+    },
+    {
+      "gap_cm": 6.411307148437459,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27539.228645,
+        115904.9517525,
+        987.3806675
+      ]
+    },
+    {
+      "gap_cm": 16.00604768566768,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27502.75069,
+        115857.31391,
+        987.3806675000001
+      ]
+    },
+    {
+      "gap_cm": 5.160033183593782,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27522.954176666666,
+        115892.45422333335,
+        987.52777
+      ]
+    },
+    {
+      "gap_cm": 13.50666517791717,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27494.6708975,
+        115788.11925250001,
+        986.542715
+      ]
+    },
+    {
+      "gap_cm": 15.6726119099867,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27531.148852500002,
+        115835.75709500001,
+        986.542715
+      ]
+    },
+    {
+      "gap_cm": 13.2368064738273,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27510.72361,
+        115776.7076925,
+        986.14607
+      ]
+    },
+    {
+      "gap_cm": 14.184464868324994,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27512.18112,
+        115800.19468,
+        986.4105000000001
+      ]
+    },
+    {
+      "gap_cm": 5.284436699218759,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27579.495142499996,
+        115874.9127575,
+        986.14607
+      ]
+    },
+    {
+      "gap_cm": 4.9634752929688375,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27591.363477499995,
+        115866.43057750001,
+        985.7494250000001
+      ]
+    },
+    {
+      "gap_cm": 15.092848300602896,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27559.0699,
+        115815.86335500001,
+        985.749425
+      ]
+    },
+    {
+      "gap_cm": 5.384630722656311,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27576.64284,
+        115852.40223,
+        985.8816400000001
+      ]
+    },
+    {
+      "gap_cm": 12.113315513091948,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27556.3541825,
+        115746.7975,
+        985.0734075
+      ]
+    },
+    {
+      "gap_cm": 14.60435593557213,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27588.64776,
+        115797.3647225,
+        985.0734075
+      ]
+    },
+    {
+      "gap_cm": 11.780110325082319,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27574.0637075,
+        115736.7810475,
+        984.794035
+      ]
+    },
+    {
+      "gap_cm": 13.046098040408992,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27573.021883333335,
+        115760.31442333333,
+        984.9802833333333
+      ]
+    },
+    {
+      "gap_cm": 5.212858242187508,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27632.28704,
+        115841.45538500001,
+        984.794035
+      ]
+    },
+    {
+      "gap_cm": 5.245375390624986,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27643.6327425,
+        115834.978825,
+        984.5146625
+      ]
+    },
+    {
+      "gap_cm": 14.386793928885254,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27617.7029875,
+        115780.87171,
+        984.5146625
+      ]
+    },
+    {
+      "gap_cm": 15.77703002284602,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27631.20759,
+        115819.10197333334,
+        984.6077866666667
+      ]
+    },
+    {
+      "gap_cm": 11.012723964605811,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27621.571555000002,
+        115712.9490225,
+        984.0309749999999
+      ]
+    },
+    {
+      "gap_cm": 14.339653599840403,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27647.50131,
+        115767.0561375,
+        984.0309749999999
+      ]
+    },
+    {
+      "gap_cm": 10.896259818922545,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27640.024175000002,
+        115705.61001,
+        983.82666
+      ]
+    },
+    {
+      "gap_cm": 12.065654455914455,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27636.365680000003,
+        115728.53839,
+        983.9628700000001
+      ]
+    },
+    {
+      "gap_cm": 2.848449550781197,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27685.511145,
+        115816.440595,
+        983.82666
+      ]
+    },
+    {
+      "gap_cm": 2.6254577929687457,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27697.591225,
+        115811.7179375,
+        983.622345
+      ]
+    },
+    {
+      "gap_cm": 14.15956984198806,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27678.034010000003,
+        115754.99446749999,
+        983.622345
+      ]
+    },
+    {
+      "gap_cm": 15.588609922632259,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27687.04546,
+        115794.38433333335,
+        983.69045
+      ]
+    },
+    {
+      "gap_cm": 10.549840005312717,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27687.549042500003,
+        115688.488805,
+        983.2308800000001
+      ]
+    },
+    {
+      "gap_cm": 13.9908036268979,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27707.106257500003,
+        115745.212275,
+        983.2308800000001
+      ]
+    },
+    {
+      "gap_cm": 10.491882995377068,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27704.541210000003,
+        115683.42927,
+        983.0437300000001
+      ]
+    },
+    {
+      "gap_cm": 11.845439309532708,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27699.732170000003,
+        115705.71011666668,
+        983.1684966666668
+      ]
+    },
+    {
+      "gap_cm": 2.0578901562499823,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27741.122455,
+        115797.68769749999,
+        983.04373
+      ]
+    },
+    {
+      "gap_cm": 1.9259159375000081,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27755.5814375,
+        115793.43964999999,
+        982.85658
+      ]
+    },
+    {
+      "gap_cm": 14.168631847265488,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27738.5574075,
+        115735.90469249999,
+        982.8565800000001
+      ]
+    },
+    {
+      "gap_cm": 15.787928102275487,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27745.0871,
+        115775.67734666666,
+        982.9189633333334
+      ]
+    },
+    {
+      "gap_cm": 10.519048429606983,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27751.7202225,
+        115669.46898,
+        982.4761625000001
+      ]
+    },
+    {
+      "gap_cm": 14.483735043486035,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27768.7442525,
+        115727.0039375,
+        982.4761625000001
+      ]
+    },
+    {
+      "gap_cm": 10.612869399760939,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27767.448085,
+        115664.8162725,
+        982.282895
+      ]
+    },
+    {
+      "gap_cm": 12.121073911864187,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27762.637520000004,
+        115687.09639666669,
+        982.41174
+      ]
+    },
+    {
+      "gap_cm": 2.216854960937553,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27801.492405,
+        115779.8865525,
+        982.282895
+      ]
+    },
+    {
+      "gap_cm": 2.224454160156256,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27817.2165275,
+        115775.23421000001,
+        982.0896275
+      ]
+    },
+    {
+      "gap_cm": 14.760564075642378,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27800.1962375,
+        115717.69888750001,
+        982.0896275
+      ]
+    },
+    {
+      "gap_cm": 16.519542722989854,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27806.301723333338,
+        115757.60655,
+        982.15405
+      ]
+    },
+    {
+      "gap_cm": 10.826247776993682,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27814.6262525,
+        115650.85901,
+        981.5360125
+      ]
+    },
+    {
+      "gap_cm": 14.949655828812752,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27831.6465425,
+        115708.3943325,
+        981.5360125
+      ]
+    },
+    {
+      "gap_cm": 10.814149310358516,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27830.352435,
+        115646.2067975,
+        981.175665
+      ]
+    },
+    {
+      "gap_cm": 12.36167219431968,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27825.54174333334,
+        115668.48671333335,
+        981.4158966666666
+      ]
+    },
+    {
+      "gap_cm": 2.114568808593731,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27864.393395,
+        115761.27731,
+        981.175665
+      ]
+    },
+    {
+      "gap_cm": 1.962778437499992,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27880.1199575,
+        115756.624965,
+        980.8153175
+      ]
+    },
+    {
+      "gap_cm": 14.991779486582345,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27863.0992875,
+        115699.089775,
+        980.8153175
+      ]
+    },
+    {
+      "gap_cm": 16.595676516979438,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27869.204213333334,
+        115738.99735000002,
+        980.9354333333333
+      ]
+    },
+    {
+      "gap_cm": 10.917008130460431,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27877.531365,
+        115632.25003,
+        980.1545025
+      ]
+    },
+    {
+      "gap_cm": 15.075517144573382,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27894.552035,
+        115689.78521999999,
+        980.1545025
+      ]
+    },
+    {
+      "gap_cm": 10.960535386445144,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27893.257550000002,
+        115627.59782,
+        979.8540350000001
+      ]
+    },
+    {
+      "gap_cm": 12.431850833418252,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27888.446983333335,
+        115649.87769000001,
+        980.0543466666667
+      ]
+    },
+    {
+      "gap_cm": 1.4986272851562035,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27927.2987775,
+        115742.6680675,
+        979.854035
+      ]
+    },
+    {
+      "gap_cm": 1.4874053906249856,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27943.024849999998,
+        115738.015725,
+        979.5535675
+      ]
+    },
+    {
+      "gap_cm": 15.194212146839277,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27926.0042925,
+        115680.4806675,
+        979.5535675000001
+      ]
+    },
+    {
+      "gap_cm": 16.76516735217831,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27932.109306666665,
+        115720.38815333333,
+        979.6537233333333
+      ]
+    },
+    {
+      "gap_cm": 11.011189401862794,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27940.435992500003,
+        115613.6410575,
+        979.0175350000001
+      ]
+    },
+    {
+      "gap_cm": 15.313969786278108,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27957.456550000003,
+        115671.17611500001,
+        979.0175350000001
+      ]
+    },
+    {
+      "gap_cm": 10.98991945532157,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27956.162177500002,
+        115608.9888475,
+        978.78197
+      ]
+    },
+    {
+      "gap_cm": 12.874767334447824,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27951.351573333333,
+        115631.26867333334,
+        978.9390133333334
+      ]
+    },
+    {
+      "gap_cm": 1.9077634570312512,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        27990.2031825,
+        115724.0588275,
+        978.78197
+      ]
+    },
+    {
+      "gap_cm": 1.9361144726562998,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        28005.9292575,
+        115719.4064825,
+        978.546405
+      ]
+    },
+    {
+      "gap_cm": 15.388424323850131,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27988.90881,
+        115661.87156,
+        978.546405
+      ]
+    },
+    {
+      "gap_cm": 17.335091935024707,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        27995.01375,
+        115701.77895666668,
+        978.6249266666667
+      ]
+    },
+    {
+      "gap_cm": 10.995947605130027,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28003.340620000003,
+        115595.03207999999,
+        978.0888124999999
+      ]
+    },
+    {
+      "gap_cm": 15.4764161662971,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28020.3610675,
+        115652.56700249999,
+        978.0888124999999
+      ]
+    },
+    {
+      "gap_cm": 11.050606045612653,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28019.066802499998,
+        115590.37986749999,
+        977.8667849999999
+      ]
+    },
+    {
+      "gap_cm": 12.831571760939596,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28014.25616333334,
+        115612.65965,
+        978.0148033333335
+      ]
+    },
+    {
+      "gap_cm": 2.383996914062436,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        28053.10759,
+        115705.44958249999,
+        977.8667849999999
+      ]
+    },
+    {
+      "gap_cm": 3.096417656249969,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        28068.833665000002,
+        115700.79724,
+        977.6447575
+      ]
+    },
+    {
+      "gap_cm": 15.516465377844384,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28051.813325000003,
+        115643.26244749999,
+        977.6447575
+      ]
+    },
+    {
+      "gap_cm": 17.292530116915827,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28057.91819333334,
+        115683.16975666667,
+        977.7187666666666
+      ]
+    },
+    {
+      "gap_cm": 11.033016805837065,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28066.245245,
+        115576.42310249999,
+        977.24061
+      ]
+    },
+    {
+      "gap_cm": 15.487641405707222,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28083.265585,
+        115633.957895,
+        977.24061
+      ]
+    },
+    {
+      "gap_cm": 11.057816489267566,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28081.97143,
+        115571.7708925,
+        977.05849
+      ]
+    },
+    {
+      "gap_cm": 12.66263513492811,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28077.160753333337,
+        115594.05063,
+        977.1799033333334
+      ]
+    },
+    {
+      "gap_cm": 5.143695078125006,
+      "actor": "Krog route SM_KrogRoute_Concrete_7_2",
+      "xyz": [
+        28116.012285,
+        115686.84092249999,
+        977.05849
+      ]
+    },
+    {
+      "gap_cm": 5.281814006430409,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28131.738644999998,
+        115682.18915749999,
+        976.8763700000001
+      ]
+    },
+    {
+      "gap_cm": 15.341395464507968,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28114.71813,
+        115624.65392,
+        976.87637
+      ]
+    },
+    {
+      "gap_cm": 16.891528722160842,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28120.823020000003,
+        115664.56133333335,
+        976.9370766666668
+      ]
+    },
+    {
+      "gap_cm": 11.257890452917309,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28129.15016,
+        115557.81470749999,
+        976.8240975
+      ]
+    },
+    {
+      "gap_cm": 15.199628536340924,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28146.170675,
+        115615.349945,
+        976.8240975
+      ]
+    },
+    {
+      "gap_cm": 11.254601345263154,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28144.876345,
+        115553.16249749999,
+        976.953945
+      ]
+    },
+    {
+      "gap_cm": 12.711070024849164,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28140.065726666668,
+        115575.44238333334,
+        976.8673800000001
+      ]
+    },
+    {
+      "gap_cm": 5.2697137172064,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28178.917374999997,
+        115668.23297249999,
+        976.953945
+      ]
+    },
+    {
+      "gap_cm": 5.22819790739868,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28194.64356,
+        115663.58076249999,
+        977.0837925000001
+      ]
+    },
+    {
+      "gap_cm": 15.195103799875938,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28177.623045,
+        115606.045525,
+        977.0837925000001
+      ]
+    },
+    {
+      "gap_cm": 16.911426359493248,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28183.727993333334,
+        115645.95308666668,
+        977.0405100000002
+      ]
+    },
+    {
+      "gap_cm": 11.444722939151916,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28192.0548975,
+        115539.20586749999,
+        977.5508550000001
+      ]
+    },
+    {
+      "gap_cm": 15.320398510106884,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28209.075412500002,
+        115596.741105,
+        977.5508550000001
+      ]
+    },
+    {
+      "gap_cm": 11.646341777715179,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28207.78108,
+        115534.5536575,
+        977.88807
+      ]
+    },
+    {
+      "gap_cm": 13.103578620781605,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28202.97046333333,
+        115556.83354333333,
+        977.6632600000002
+      ]
+    },
+    {
+      "gap_cm": 4.9441589602664635,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28241.8221125,
+        115649.62413000001,
+        977.88807
+      ]
+    },
+    {
+      "gap_cm": 4.865186469369405,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28257.548297499998,
+        115644.97191749999,
+        978.225285
+      ]
+    },
+    {
+      "gap_cm": 15.462607327319006,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28240.52778,
+        115587.4366825,
+        978.225285
+      ]
+    },
+    {
+      "gap_cm": 16.658348343259718,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28246.632729999998,
+        115627.34424333334,
+        978.1128800000001
+      ]
+    },
+    {
+      "gap_cm": 12.424628110512458,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28254.959632500002,
+        115520.5970225,
+        979.3282775
+      ]
+    },
+    {
+      "gap_cm": 15.62059311806297,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28271.980150000003,
+        115578.13225750001,
+        979.3282775
+      ]
+    },
+    {
+      "gap_cm": 12.924696244359666,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28270.6858175,
+        115515.94481000002,
+        980.094055
+      ]
+    },
+    {
+      "gap_cm": 13.961018044090451,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28265.8752,
+        115538.22469666667,
+        979.5835366666668
+      ]
+    },
+    {
+      "gap_cm": 5.03101855372222,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28304.726852499996,
+        115631.01528250001,
+        980.094055
+      ]
+    },
+    {
+      "gap_cm": 5.0849744082955795,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28320.453037500003,
+        115626.36307250001,
+        980.8598325
+      ]
+    },
+    {
+      "gap_cm": 16.088196314927018,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28303.43252,
+        115568.827835,
+        980.8598325
+      ]
+    },
+    {
+      "gap_cm": 16.728197908503148,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28309.53747,
+        115608.73539666669,
+        980.6045733333334
+      ]
+    },
+    {
+      "gap_cm": 14.440768497237514,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28317.8643725,
+        115501.98817750001,
+        982.4072550000001
+      ]
+    },
+    {
+      "gap_cm": 16.584177714639054,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28334.88489,
+        115559.523415,
+        982.4072550000001
+      ]
+    },
+    {
+      "gap_cm": 14.848653560060825,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28333.5905575,
+        115497.3359675,
+        983.1889000000001
+      ]
+    },
+    {
+      "gap_cm": 15.319306522848706,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28328.77994,
+        115519.61585333334,
+        982.6678033333334
+      ]
+    },
+    {
+      "gap_cm": 5.243956067882891,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28367.6315925,
+        115612.40644,
+        983.1889000000001
+      ]
+    },
+    {
+      "gap_cm": 5.295553820910754,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28383.3577775,
+        115607.7542275,
+        983.9705450000001
+      ]
+    },
+    {
+      "gap_cm": 17.07045498092384,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28366.33726,
+        115550.21899250001,
+        983.9705450000001
+      ]
+    },
+    {
+      "gap_cm": 17.47536518186189,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28372.44221,
+        115590.12655333335,
+        983.7099966666667
+      ]
+    },
+    {
+      "gap_cm": 16.274343487483748,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28380.76911,
+        115483.379335,
+        985.5269275
+      ]
+    },
+    {
+      "gap_cm": 18.157223249452272,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28397.789627500002,
+        115540.91457000001,
+        985.5269275
+      ]
+    },
+    {
+      "gap_cm": 17.146463541936782,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28396.4952925,
+        115478.727125,
+        986.301665
+      ]
+    },
+    {
+      "gap_cm": 17.218497357214574,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28391.684676666668,
+        115501.00701,
+        985.7851733333334
+      ]
+    },
+    {
+      "gap_cm": 5.413241750041493,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28430.53633,
+        115593.797595,
+        986.301665
+      ]
+    },
+    {
+      "gap_cm": 5.408987478405379,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28446.262515,
+        115589.145385,
+        987.0764025000001
+      ]
+    },
+    {
+      "gap_cm": 20.7301358867403,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28429.241995,
+        115531.61015,
+        987.0764025
+      ]
+    },
+    {
+      "gap_cm": 20.975744234068316,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28435.34694666667,
+        115571.51771000001,
+        986.8181566666667
+      ]
+    },
+    {
+      "gap_cm": 20.9436724378088,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28443.673845,
+        115464.7704925,
+        988.5167325
+      ]
+    },
+    {
+      "gap_cm": 22.900147165775365,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28460.694365,
+        115522.3057275,
+        988.5167325
+      ]
+    },
+    {
+      "gap_cm": 22.079261194390142,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28459.40003,
+        115460.11828,
+        989.182325
+      ]
+    },
+    {
+      "gap_cm": 22.25440686017555,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28454.589413333335,
+        115482.39816666668,
+        988.7385966666667
+      ]
+    },
+    {
+      "gap_cm": 5.199637216017663,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28493.44107,
+        115575.18875,
+        989.182325
+      ]
+    },
+    {
+      "gap_cm": 5.100932243147895,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28509.167255,
+        115570.5365375,
+        989.8479175
+      ]
+    },
+    {
+      "gap_cm": 24.650854873999265,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28492.146735000002,
+        115513.0013025,
+        989.8479175
+      ]
+    },
+    {
+      "gap_cm": 24.47490022515717,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28498.25168666667,
+        115552.90886333332,
+        989.6260533333333
+      ]
+    },
+    {
+      "gap_cm": 25.040337325871747,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28506.578585,
+        115446.161645,
+        991.1584925000001
+      ]
+    },
+    {
+      "gap_cm": 26.305567131305565,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28523.599105,
+        115503.69688,
+        991.1584925000001
+      ]
+    },
+    {
+      "gap_cm": 25.857656573630493,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28522.304770000002,
+        115441.509435,
+        991.8034749999999
+      ]
+    },
+    {
+      "gap_cm": 25.787588449372606,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28517.494153333337,
+        115463.78932000001,
+        991.3734866666666
+      ]
+    },
+    {
+      "gap_cm": 4.937177593513184,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28556.34581,
+        115556.57990499999,
+        991.803475
+      ]
+    },
+    {
+      "gap_cm": 4.908117745103823,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28572.071995,
+        115551.92769499999,
+        992.4484575
+      ]
+    },
+    {
+      "gap_cm": 27.834472276210704,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28555.051475,
+        115494.39246,
+        992.4484574999999
+      ]
+    },
+    {
+      "gap_cm": 27.552031401596878,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28561.15642666667,
+        115534.30002,
+        992.2334633333335
+      ]
+    },
+    {
+      "gap_cm": 27.85115396836875,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28570.112889999997,
+        115427.3740075,
+        993.591955
+      ]
+    },
+    {
+      "gap_cm": 29.153835264956,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28587.133410000002,
+        115484.9092425,
+        993.591955
+      ]
+    },
+    {
+      "gap_cm": 28.027420327954474,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28586.46864,
+        115422.543,
+        994.09047
+      ]
+    },
+    {
+      "gap_cm": 28.963102220106975,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28581.238313333335,
+        115444.94208333333,
+        993.7581266666667
+      ]
+    },
+    {
+      "gap_cm": 4.721329759496598,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28619.250549999997,
+        115537.9710625,
+        994.09047
+      ]
+    },
+    {
+      "gap_cm": 4.795763458972829,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28634.34717,
+        115533.4976475,
+        994.588985
+      ]
+    },
+    {
+      "gap_cm": 30.26863137216742,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28618.58578,
+        115475.60482000001,
+        994.588985
+      ]
+    },
+    {
+      "gap_cm": 30.03373923218794,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28624.061166666666,
+        115515.69117666667,
+        994.4228133333335
+      ]
+    },
+    {
+      "gap_cm": 29.21242859625613,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28636.617935000002,
+        115408.65562749999,
+        995.3678649999999
+      ]
+    },
+    {
+      "gap_cm": 31.047511372167378,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28652.379325,
+        115466.548455,
+        995.3678649999999
+      ]
+    },
+    {
+      "gap_cm": 29.29807897419687,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28655.31486,
+        115404.0726775,
+        995.64823
+      ]
+    },
+    {
+      "gap_cm": 30.71442498839474,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28648.104040000002,
+        115426.42558666666,
+        995.4613200000001
+      ]
+    },
+    {
+      "gap_cm": 4.898701760779659,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28681.349580000002,
+        115521.07945,
+        995.64823
+      ]
+    },
+    {
+      "gap_cm": 5.013892652715299,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28694.558445000002,
+        115517.7176175,
+        995.928595
+      ]
+    },
+    {
+      "gap_cm": 31.608241372167527,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28684.285115,
+        115458.6036725,
+        995.9285950000001
+      ]
+    },
+    {
+      "gap_cm": 31.514786372167578,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28686.731046666668,
+        115499.13358000001,
+        995.8351400000001
+      ]
+    },
+    {
+      "gap_cm": 31.013642706659653,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28707.706830000003,
+        115394.0118325,
+        996.3542025
+      ]
+    },
+    {
+      "gap_cm": 32.03384887216748,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28717.98016,
+        115453.12577749998,
+        996.3542025
+      ]
+    },
+    {
+      "gap_cm": 31.05618426358194,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28728.19301,
+        115391.89577,
+        996.499445
+      ]
+    },
+    {
+      "gap_cm": 31.5809969018012,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28717.96,
+        115413.01112666668,
+        996.4026166666667
+      ]
+    },
+    {
+      "gap_cm": 5.197541755619568,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28741.186145,
+        115510.9480225,
+        996.499445
+      ]
+    },
+    {
+      "gap_cm": 5.27721269104029,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28754.118800000004,
+        115509.6563225,
+        996.6446875
+      ]
+    },
+    {
+      "gap_cm": 32.32433387216747,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28751.398995,
+        115449.718015,
+        996.6446875
+      ]
+    },
+    {
+      "gap_cm": 32.34790346029672,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28748.901313333336,
+        115490.10745333334,
+        996.5962733333336
+      ]
+    },
+    {
+      "gap_cm": 30.97570074242776,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28781.7247975,
+        115388.65022000001,
+        996.7983625
+      ]
+    },
+    {
+      "gap_cm": 32.52674111295596,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28784.4446025,
+        115448.58852749999,
+        996.7983625
+      ]
+    },
+    {
+      "gap_cm": 30.345886252684636,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28801.83775,
+        115388.81243250001,
+        996.806795
+      ]
+    },
+    {
+      "gap_cm": 31.67348484422598,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28789.33571666667,
+        115408.68372666667,
+        996.8011733333334
+      ]
+    },
+    {
+      "gap_cm": 5.531421400555246,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28801.712997500003,
+        115508.68324750001,
+        996.806795
+      ]
+    },
+    {
+      "gap_cm": 5.565731461894302,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28816.2615875,
+        115508.83966,
+        996.8152275
+      ]
+    },
+    {
+      "gap_cm": 32.21111777950671,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28819.106144999998,
+        115448.9071525,
+        996.8152275
+      ]
+    },
+    {
+      "gap_cm": 5.532385450446213,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28812.360243333336,
+        115488.81002000002,
+        996.8124166666668
+      ]
+    },
+    {
+      "gap_cm": 28.835386770665195,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28856.059185,
+        115390.775905,
+        996.9412500000001
+      ]
+    },
+    {
+      "gap_cm": 32.205331329082355,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28853.214627499998,
+        115450.7084125,
+        996.9412500000001
+      ]
+    },
+    {
+      "gap_cm": 29.685317264006358,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28875.6190775,
+        115392.42075250001,
+        997.05884
+      ]
+    },
+    {
+      "gap_cm": 30.570617594607825,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28861.630963333333,
+        115411.30169000001,
+        996.9804466666667
+      ]
+    },
+    {
+      "gap_cm": 5.8723558368333215,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28866.370737499998,
+        115512.01051000001,
+        997.0588400000001
+      ]
+    },
+    {
+      "gap_cm": 6.006523374234121,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28882.371404999998,
+        115513.3801,
+        997.17643
+      ]
+    },
+    {
+      "gap_cm": 32.7685311855347,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28888.7751875,
+        115453.72285,
+        997.17643
+      ]
+    },
+    {
+      "gap_cm": 6.029950607307455,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28879.172443333333,
+        115493.03782000001,
+        997.1372333333334
+      ]
+    },
+    {
+      "gap_cm": 31.514749555515436,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28930.135465,
+        115397.8851175,
+        997.436365
+      ]
+    },
+    {
+      "gap_cm": 6.166716295772858,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28923.7316825,
+        115457.54236749999,
+        997.436365
+      ]
+    },
+    {
+      "gap_cm": 32.67101725270629,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28949.0912925,
+        115400.33504500001,
+        997.57871
+      ]
+    },
+    {
+      "gap_cm": 32.81045930720643,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        28934.319480000002,
+        115418.58751000001,
+        997.4838133333334
+      ]
+    },
+    {
+      "gap_cm": 6.045832159674092,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28934.4879625,
+        115519.4293475,
+        997.57871
+      ]
+    },
+    {
+      "gap_cm": 6.058914607385304,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28951.648025000002,
+        115521.6590775,
+        997.721055
+      ]
+    },
+    {
+      "gap_cm": 6.319953896054471,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28959.847572500003,
+        115462.222025,
+        997.721055
+      ]
+    },
+    {
+      "gap_cm": 6.397137826074186,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28948.661186666668,
+        115501.10348333334,
+        997.6736066666667
+      ]
+    },
+    {
+      "gap_cm": 34.02276538326964,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        29003.4624625,
+        115407.6846225,
+        998.0257299999998
+      ]
+    },
+    {
+      "gap_cm": 6.595873806707914,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        28995.262915,
+        115467.121675,
+        998.0257299999998
+      ]
+    },
+    {
+      "gap_cm": 34.35064245763192,
+      "actor": "USGS Atlanta terrain + authored underwater basin",
+      "xyz": [
+        29021.7177425,
+        115410.35454249999,
+        998.18806
+      ]
+    },
+    {
+      "gap_cm": 6.752556120300255,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29006.81437333333,
+        115428.38694666667,
+        998.0798400000001
+      ]
+    },
+    {
+      "gap_cm": 6.0777320167906055,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29005.135625000003,
+        115529.20311,
+        998.18806
+      ]
+    },
+    {
+      "gap_cm": 6.0777322535519716,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29023.2078825,
+        115531.8474925,
+        998.3503899999998
+      ]
+    },
+    {
+      "gap_cm": 6.773679818025698,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29031.5904525,
+        115472.43597749999,
+        998.35039
+      ]
+    },
+    {
+      "gap_cm": 6.436976191609574,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29019.97798666667,
+        115511.16219333334,
+        998.29628
+      ]
+    },
+    {
+      "gap_cm": 7.265291351862288,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29075.4363125,
+        115418.0368575,
+        998.6778
+      ]
+    },
+    {
+      "gap_cm": 6.855334811400098,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29067.0537425,
+        115477.44837250002,
+        998.6778
+      ]
+    },
+    {
+      "gap_cm": 7.413085851270921,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29092.827344999998,
+        115420.40487,
+        998.8428799999999
+      ]
+    },
+    {
+      "gap_cm": 7.143333749177032,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29078.439133333333,
+        115438.63003333335,
+        998.7328266666667
+      ]
+    },
+    {
+      "gap_cm": 6.089960086111091,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29077.4756375,
+        115539.41023500002,
+        998.84288
+      ]
+    },
+    {
+      "gap_cm": 6.089958737548727,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29096.2801025,
+        115541.9605825,
+        999.00796
+      ]
+    },
+    {
+      "gap_cm": 7.033409807551493,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29103.24924,
+        115482.3667325,
+        999.0079599999999
+      ]
+    },
+    {
+      "gap_cm": 6.453279968355218,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29092.33499333333,
+        115521.24585,
+        998.9529333333334
+      ]
+    },
+    {
+      "gap_cm": 7.939991990782232,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29147.489422500003,
+        115427.146335,
+        999.31173
+      ]
+    },
+    {
+      "gap_cm": 7.150060508264119,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29140.520285,
+        115486.740185,
+        999.31173
+      ]
+    },
+    {
+      "gap_cm": 8.102480260560583,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29165.9560025,
+        115428.96944,
+        999.45042
+      ]
+    },
+    {
+      "gap_cm": 7.807109455629529,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29151.321903333337,
+        115447.61865333334,
+        999.35796
+      ]
+    },
+    {
+      "gap_cm": 6.079479454068064,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29150.8044525,
+        115548.00274,
+        999.45042
+      ]
+    },
+    {
+      "gap_cm": 6.079480380241648,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29168.0577575,
+        115549.67144499999,
+        999.58911
+      ]
+    },
+    {
+      "gap_cm": 7.144689004473662,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29176.24017,
+        115490.23199500001,
+        999.58911
+      ]
+    },
+    {
+      "gap_cm": 6.439307590380736,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29165.03412666667,
+        115529.30206000002,
+        999.5428800000002
+      ]
+    },
+    {
+      "gap_cm": 8.003567650463879,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29226.356605,
+        115437.600555,
+        999.8065825
+      ]
+    },
+    {
+      "gap_cm": 6.983180394967576,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29218.1741925,
+        115497.040005,
+        999.8065825
+      ]
+    },
+    {
+      "gap_cm": 7.8656357957548835,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29251.0373225,
+        115442.73986,
+        999.885365
+      ]
+    },
+    {
+      "gap_cm": 7.623800529353616,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29231.85604,
+        115459.12680666668,
+        999.8328433333334
+      ]
+    },
+    {
+      "gap_cm": 5.904286873784031,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29219.5867775,
+        115557.48386749999,
+        999.885365
+      ]
+    },
+    {
+      "gap_cm": 5.9027960543882045,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29229.181775,
+        115558.48828,
+        999.9641475
+      ]
+    },
+    {
+      "gap_cm": 6.8060211323316935,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29252.4499075,
+        115503.1837225,
+        999.9641475
+      ]
+    },
+    {
+      "gap_cm": 6.204368020167976,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29233.739486666665,
+        115539.71862333333,
+        999.9378866666666
+      ]
+    },
+    {
+      "gap_cm": 7.553088351547217,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29305.45994,
+        115461.9192475,
+        1000.2787999999999
+      ]
+    },
+    {
+      "gap_cm": 6.664085145074409,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29282.1918075,
+        115517.223805,
+        1000.2787999999999
+      ]
+    },
+    {
+      "gap_cm": 7.394186059193771,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29325.6068425,
+        115474.9549175,
+        1000.51467
+      ]
+    },
+    {
+      "gap_cm": 7.211196082086985,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29304.419530000003,
+        115484.69932333333,
+        1000.3574233333334
+      ]
+    },
+    {
+      "gap_cm": 5.76393771185451,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29270.506849999998,
+        115581.1194075,
+        1000.5146699999999
+      ]
+    },
+    {
+      "gap_cm": 5.764327804545587,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29282.090024999998,
+        115589.7104525,
+        1000.75054
+      ]
+    },
+    {
+      "gap_cm": 6.513619339004663,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29313.921885,
+        115538.85051999999,
+        1000.75054
+      ]
+    },
+    {
+      "gap_cm": 6.01836035858139,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29288.83958666667,
+        115569.89346,
+        1000.6719166666667
+      ]
+    },
+    {
+      "gap_cm": 7.260903333547958,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29373.520565,
+        115505.73246,
+        1001.3023225
+      ]
+    },
+    {
+      "gap_cm": 6.528588234132485,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29341.688705,
+        115556.5923925,
+        1001.3023225
+      ]
+    },
+    {
+      "gap_cm": 7.2882535405105955,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29389.70421,
+        115514.8832875,
+        1001.6182349999999
+      ]
+    },
+    {
+      "gap_cm": 7.025317705660086,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29368.304493333337,
+        115525.73604666666,
+        1001.4076266666667
+      ]
+    },
+    {
+      "gap_cm": 5.791707746653628,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29328.2619675,
+        115617.92775,
+        1001.6182349999999
+      ]
+    },
+    {
+      "gap_cm": 5.783296577051033,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29346.66709,
+        115628.40317499998,
+        1001.9341475
+      ]
+    },
+    {
+      "gap_cm": 6.559058468894818,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29376.277472499998,
+        115576.218645,
+        1001.9341474999999
+      ]
+    },
+    {
+      "gap_cm": 6.047788966461326,
+      "actor": "Krog DeKalb road approaches",
+      "xyz": [
+        29350.40217666667,
+        115607.51652333332,
+        1001.8288433333333
+      ]
+    }
+  ],
+  "minimum_gap_cm": 1.4874053906249856,
+  "scope": "Interior triangle samples versus native underlying surfaces with only review strip collision disabled transiently. No map save."
+}

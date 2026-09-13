@@ -16,7 +16,7 @@ map_name = ('PiedmontKrogApproachReview' if args.approach else 'PiedmontWorld' i
             'PiedmontKrogFloorReview' if args.level_floor else 'PiedmontKrogRoadReview')
 with log.open('w') as stream:
     run=subprocess.run([str(app),str(root/'AuraPlayground.uproject'),f'/Game/PiedmontRide/Maps/{map_name}?Difficulty=Easy?AutoStart=1','-game','-BattleSkipTutorial','-RCWebControlDisable',
-        '-nullrhi','-unattended','-nosound','-BattleHomeDriveAudit' if args.finish_route else '-BattleKrogAudit','-stdout']+(['-BattleKeepCrowds'] if args.crowds else [])+(['-BattleScooterRideAudit'] if args.scooter else [])+(['-BattleRealHandlingRoute'] if args.real_handling else [])+(['-BattleRouteYieldProbe'] if args.yield_probe else []),stdout=stream,stderr=subprocess.STDOUT,timeout=600)
+        '-nullrhi','-unattended','-nosound','-BattleHomeDriveAudit' if args.finish_route else '-BattleKrogAudit','-stdout']+(['-BattleKeepCrowds'] if args.crowds else [])+(['-BattleScooterRideAudit'] if args.scooter else [])+(['-BattleRealHandlingRoute'] if args.real_handling else [])+(['-BattleRouteYieldProbe'] if args.yield_probe else [])+(['-BattleApproachCandidate'] if args.approach else []),stdout=stream,stderr=subprocess.STDOUT,timeout=600)
 matches=re.findall(r'BattleConnectorAudit: (\{[^\n]+\})',log.read_text())
 result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
 ground=re.findall(r'TrailGroundAudit: samples=(\d+) paved=(\d+)',log.read_text())
@@ -49,6 +49,9 @@ if args.scooter:
     rows=re.findall(r'ScooterRideAudit: (\{[^\n]+\})',log.read_text());result['scooter_scene']=json.loads(rows[-1]) if rows else None
     result['passed']=bool(result['passed'] and result['scooter_scene'] and result['scooter_scene']['passed'])
     result['scope']+=' Forced scooter scene assembled before route traversal in the selected map; normal random selection and rendered appearance unverified.'
+if args.approach:
+    result['candidate_actor_verified']='ApproachCandidateAudit: actors=1 world=PiedmontKrogApproachReview' in log.read_text()
+    result['passed']=bool(result['passed'] and result['candidate_actor_verified'])
 if args.yield_probe:result['scope']+=' Car-queue probe enabled: may stop early after five seconds waiting behind a car. Consult completedLegs and light checks; a false result alone does not distinguish early exit from a route or lighting failure.'
 (root/'Tests/Results'/args.report).write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result),flush=True)
