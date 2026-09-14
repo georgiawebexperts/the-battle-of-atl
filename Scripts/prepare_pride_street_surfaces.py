@@ -18,7 +18,7 @@ def footprint(file):
   if p and p[0]=='v':v.append((float(p[1]),-float(p[2])))
   elif p and p[0]=='f':f.append(Polygon([v[int(s.split('/')[0])-1] for s in p[1:]]))
  return unary_union(f)
-existing=unary_union([footprint(root/'SourceAssets/Terrain/TenthStreetGraded'/('TenthStreet_'+name+'.obj')) for name in ['Road','CycleTrack','Sidewalk','Separator','RoadSeams']])
+existing=unary_union([footprint(folder/('PrideTenth_'+name+'.obj') if name in ['Sidewalk','Separator'] else root/'SourceAssets/Terrain/TenthStreetGraded'/('TenthStreet_'+name+'.obj')) for name in ['Road','CycleTrack','Sidewalk','Separator','RoadSeams']])
 # Buildings constrain the authored human-scale road and sidewalk widths.
 import xml.etree.ElementTree as ET
 from pyproj import Transformer
@@ -56,5 +56,5 @@ for name,poly,lift in [('PiedmontRoad',road,14),('PiedmontSidewalk',walk,18)]:
   lines.append('f '+' '.join(f'{v+1}/{v+1}' for v in order))
  (folder/(name+'.obj')).write_text('\n'.join(lines)+'\n');meshes.append({'name':name,'triangles':len(faces),'bounds_cm':[[min(v[k] for v in verts) for k in range(3)],[max(v[k] for v in verts) for k in range(3)]],'uncovered_cm2':missing,'building_overlap_cm2':poly.intersection(blocked).area})
 # Sidewalk and street tile share elevation at boundaries except the intentional 4cm lip.
-report={'status':'candidate meshes only; native review pending','road_width_cm':600,'sidewalk_width_cm':120,'terrain':'build074 lake-graded DEM','terrain_unchanged':True,'existing_tenth_footprints_preserved':True,'meshes':meshes,'pending':['Native import and collision checks','Corner/sidewalk visual inspection','Relocate tutorial cutoff with full boundary coverage','Rainbow markings and street signs','Both-direction bike traversal and release']}
+report={'status':'candidate meshes only; native review pending','road_width_cm':600,'sidewalk_width_cm':120,'terrain':'build074 lake-graded DEM','terrain_unchanged':True,'existing_tenth_road_preserved':True,'junction_curb_cutbacks':'cutbacks.json','meshes':meshes,'pending':['Native import and collision checks','Corner/sidewalk visual inspection','Relocate tutorial cutoff with full boundary coverage','Rainbow markings and street signs','Both-direction bike traversal and release']}
 (folder/'surfaces.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

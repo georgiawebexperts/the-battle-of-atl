@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "main_unchanged_sha256": "775833c9092aba37d2755813294aea17a82f587b5638d6873c47e956a2a02dd7",
+  "review_map": "/Game/PiedmontRide/Maps/PiedmontPrideStreetReview",
+  "meshes": [
+    {
+      "name": "SM_PrideTenth_Sidewalk",
+      "bounds_error_cm": 0.0007812500007275958,
+      "triangles": 8607
+    },
+    {
+      "name": "SM_PrideTenth_Separator",
+      "bounds_error_cm": 0.0008968750007625204,
+      "triangles": 437
+    },
+    {
+      "name": "SM_PrideTenth_WhitePaint",
+      "bounds_error_cm": 0.0006749999993189704,
+      "triangles": 8537
+    },
+    {
+      "name": "SM_PrideTenth_YellowPaint",
+      "bounds_error_cm": 0.0007093749991327059,
+      "triangles": 5118
+    },
+    {
+      "name": "SM_PiedmontRoad",
+      "bounds_error_cm": 0.0006154327238618862,
+      "triangles": 5397
+    },
+    {
+      "name": "SM_PiedmontSidewalk",
+      "bounds_error_cm": 0.0002888764865929261,
+      "triangles": 3793
+    }
+  ],
+  "collision_probes": 152,
+  "maximum_error_cm": 0.00011492213971564524,
+  "scope": "Import bounds and sampled native mesh collision only. Static views use diagnostic lighting. Boundary, road seams and moving rider need verification; not installed.",
+  "visual_review": {
+    "accepted": false,
+    "inspected": [
+      "work/pride-street-review/pride-corner.png"
+    ],
+    "findings": [
+      "Old sidewalk no longer crosses either Piedmont mouth; motor-lane paint stops before junction.",
+      "Small grass-colored wedge/seam remains at northwest mouth; diagnose before release.",
+      "Rainbow crossing and street signs absent."
+    ],
+    "moving_bike_tested": false
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "meshes": [
+    {
+      "name": "PrideTenth_Sidewalk",
+      "kind": "Sidewalk",
+      "source_name": "SM_Monroe_SidewalkTrim",
+      "source_sha256": "edabd2c401d24e8fe1b0cec02dc35ede745f3b00a8e27799c192b3d01e9dd2ec",
+      "triangles": 8612,
+      "removed_cm2": 230593.1460965336,
+      "bounds_cm": [
+        [
+          -30750.3,
+          8900.6491,
+          -517.3742
+        ],
+        [
+          13422.1344,
+          14328.1767,
+          415.1731
+        ]
+      ]
+    },
+    {
+      "name": "PrideTenth_Separator",
+      "kind": "Separator",
+      "source_name": "SM_TenthStreet_Separator",
+      "source_sha256": "15ec7f35546e358d5380fea158d82fbc05371c4d839c25fd399edaaa61116ea0",
+      "triangles": 437,
+      "removed_cm2": 3.588102037710428e-14,
+      "bounds_cm": [
+        [
+          -21495.0909,
+          11317.016,
+          -369.2837
+        ],
+        [
+          11727.2169,
+          12411.1283,
+          331.8347
+        ]
+      ]
+    },
+    {
+      "name": "PrideTenth_WhitePaint",
+      "kind": "WhitePaint",
+      "source_name": "SM_TenthStreet_WhitePaint",
+      "source_sha256": "7f2722ee696e6d4f6c1030c4733cb6be5a2b21c759f77fefea615ce8d7c5983c",
+      "triangles": 8537,
+      "removed_cm2": 24105.6444021033,
+      "bounds_cm": [
+        [
+          -30528.6413,
+          11685.5235,
+          -516.8948
+        ],
+        [
+          11676.5509,
+          13946.4939,
+          401.2963
+        ]
+      ]
+    },
+    {
+      "name": "PrideTenth_YellowPaint",
+      "kind": "YellowPaint",
+      "source_name": "SM_TenthStreet_YellowPaint",
+      "source_sha256": "b0b2252c5c081ac287fe1f3b0d2ea6c61afa4d4baae4cb4789d46cd8f15af982",
+      "triangles": 5118,
+      "removed_cm2": 17334.819557744682,
+      "bounds_cm": [
+        [
+          -30436.5989,
+          11963.7536,
+          -510.8917
+        ],
+        [
+          11338.5482,
+          13383.9744,
+          363.6301
+        ]
+      ]
+    }
+  ],
+  "status": "candidate only; original meshes unchanged",
+  "mouth_bounds_cm": [
+    -25119.669820811137,
+    11500.0,
+    -23623.776122617466,
+    14500.0
+  ]
+}

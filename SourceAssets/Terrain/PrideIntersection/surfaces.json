@@ -4,11 +4,12 @@
   "sidewalk_width_cm": 120,
   "terrain": "build074 lake-graded DEM",
   "terrain_unchanged": true,
-  "existing_tenth_footprints_preserved": true,
+  "existing_tenth_road_preserved": true,
+  "junction_curb_cutbacks": "cutbacks.json",
   "meshes": [
     {
       "name": "PiedmontRoad",
-      "triangles": 5421,
+      "triangles": 5397,
       "bounds_cm": [
         [
           -25057.485953439707,
@@ -26,7 +27,7 @@
     },
     {
       "name": "PiedmontSidewalk",
-      "triangles": 3741,
+      "triangles": 3793,
       "bounds_cm": [
         [
           -25179.87884549748,
@@ -39,7 +40,7 @@
           286.3734935178598
         ]
       ],
-      "uncovered_cm2": 0.0008884492730086946,
+      "uncovered_cm2": 0.0009346367148566725,
       "building_overlap_cm2": 0.0
     }
   ],
