@@ -69,7 +69,11 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
   Tube(FString::Printf(TEXT("PedalAxle%d"),Sign),Crank+FVector(0,-Sign*8,Sign*16),Crank+FVector(0,-Sign*12,Sign*16),.8,Rubber.Object);
  }
  Part(TEXT("Battery"),FVector(16,0,59),FVector(.14,.1,.42),false,Rubber.Object)->SetRelativeRotation(FRotator(35,0,0));
- Part(TEXT("Saddle"),FVector(-23,0,88),FVector(.29,.19,.055),false,Rubber.Object);
+ auto* Saddle=Part(TEXT("Saddle"),FVector(-23,0,88),FVector(.29,.19,.055),false,Rubber.Object);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> SaddleMesh(TEXT("/Game/PiedmontRide/Bike/SM_BikeSaddle.SM_BikeSaddle"));
+ if(SaddleMesh.Succeeded()){Saddle->SetStaticMesh(SaddleMesh.Object);Saddle->SetRelativeScale3D(FVector(1));}
+ Tube(TEXT("SeatPost"),Seat,FVector(-23,0,86),1.4,Rubber.Object);
+
  Steered(Tube(TEXT("Stem"),Head,FVector(40,0,112),2,Rubber.Object));Steered(Tube(TEXT("Handlebar"),FVector(40,-30,112),FVector(40,30,112),1.5,Rubber.Object));
  FrontWheel=Part(TEXT("FrontWheel"),Front,FVector(.70,.70,.055),true,Rubber.Object);FrontWheel->SetRelativeRotation(FRotator(0,0,90));Steered(FrontWheel);
  RearWheel=Part(TEXT("RearWheel"),Back,FVector(.70,.70,.055),true,Rubber.Object);RearWheel->SetRelativeRotation(FRotator(0,0,90));

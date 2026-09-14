@@ -1,0 +1,17 @@
+{
+  "vertices": 354,
+  "triangles": 704,
+  "bounds_cm": [
+    [
+      -14,
+      -8.0,
+      -2.2
+    ],
+    [
+      15,
+      8.0,
+      2.2
+    ]
+  ],
+  "purpose": "Rounded rear support and tapered nose instead of the old 29x19x5.5 cm box; static decorative mesh, no collision."
+}

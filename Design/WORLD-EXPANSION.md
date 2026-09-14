@@ -1354,3 +1354,14 @@ Elliott reports an active Apple developer membership and asked to revisit it lat
 Share ZIP: /Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076.zip
 SHA256: d6f669fe743e8fc9fd970e4a09dea58ff19074e5b2f3409249486b9277e832b1
 Compiled source: b78635e7277775b881fe4646a14080b6ff05257a
+
+
+2026-09-13 [codex-maclaptop] — Rounded bicycle saddle, unreleased
+
+Replaced the rectangular saddle with an authored closed mesh: 29 cm long, 16 cm maximum width, 4.4 cm thick, rounded rear and tapered nose; 354 vertices and 704 triangles. Added the missing short seat post connecting the frame to the saddle. The asset remains decorative with no collision. Rider pose and pedal/handlebar contact logic were not changed. Source: Scripts/prepare_bike_saddle.py and SourceAssets/Bike/BikeSaddle.obj. Asset: /Game/PiedmontRide/Bike/SM_BikeSaddle.
+
+The first OBJ import triggered a handled Unreal Interchange ensure because UV indices were absent. Added explicit UVs and reimported successfully (exit 0). Preserve Tests/Results/2026-09-13-saddle-import-missing-uv.json as failed; the later saddle-import.json proves bounds and closed, consistently wound source topology, not animation fit. Editor build succeeded.
+
+Fresh baseline balance check passed before editing. After the change, close-camera native balance check passed: ground error 1.076 cm, pedal error 0.199 cm, wrist error 0.0 cm. Inspected pedaling, stopped and brake-3 images in work/feature-balance-1add1a362cf1465a921152bdb8a00762. The rectangular protrusion is replaced by a visibly rounded saddle. Current checks cover stop/start/braking, not hard landing compression or every rider-mesh intersection. Hard landings and more natural finger contact still need review. Scripts/test_mac_new_features.py now accepts --saddle-close for the balance review camera.
+
+Not packaged. Desktop/share076 remains installed; its source commit is 1b7d46c's parent b78635e. Do not claim this saddle is in076. Broader game goal remains unfinished.

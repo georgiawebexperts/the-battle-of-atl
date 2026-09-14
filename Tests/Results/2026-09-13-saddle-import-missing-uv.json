@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "bounds_cm": [
+    [
+      -14.0,
+      -8.0,
+      -2.200000047683716
+    ],
+    [
+      15.0,
+      8.0,
+      2.200000047683716
+    ]
+  ],
+  "bounds_error_cm": 4.7683715642676816e-08,
+  "triangles": 704,
+  "map_saved": false,
+  "exit_code": 1,
+  "reason": "Unreal OBJ translator ensure on absent UV indices; regenerated with explicit UVs."
+}
