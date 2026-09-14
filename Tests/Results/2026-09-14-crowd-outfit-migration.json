@@ -1,0 +1,207 @@
+{
+  "roots": [
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_buttonOpen",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck_blazer",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_buttonOpen",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck_croppedJacket"
+  ],
+  "copied": [
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck_croppedJacket.uasset",
+      "bytes": 6561679,
+      "sha256": "c89cf9b8d60d65d89349fa47b6f869f694762f4e8eddadb74520effbb33b1a77"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_croppedJacket.uasset",
+      "bytes": 62275,
+      "sha256": "c2025ecaac73e3db773e46460bb5edfd7f1cbf8ce4a8051466a79d537fd07438"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_GreyFabric_sbkjm1p/sbkjm1p_4K_AOR.uasset",
+      "bytes": 8990387,
+      "sha256": "9eec17406c4682b1f859f51af59140128613a754e2e15812c76245370a9d7e71"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_GreyFabric_sbkjm1p/sbkjm1p_4K_Normal.uasset",
+      "bytes": 43980948,
+      "sha256": "a69422a60fd01402e5da252fba14cfbe9bf0c8759dd14390d1f6af39ffbd9bcf"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_GreyFabric_sbkjm1p/sbkjm1p_4K_Albedo_Grey.uasset",
+      "bytes": 17669607,
+      "sha256": "b6ffaef1604839f4541c979b47159fb623680bb80ca5336bab3c32e110cc8785"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/croppedJacket/T_f_tal_nrw_jacket_lod0_PackedA.uasset",
+      "bytes": 441279,
+      "sha256": "372749097b075919e327ebf3900a33d2b5131534c54d6b1dc5b16a3d6eb795c4"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/croppedJacket/T_f_tal_nrw_jacket_lod0_N.uasset",
+      "bytes": 6707750,
+      "sha256": "f2a6b2d96d8ff12ed8b1ef783687e8b23d826f986900e36a31c36bf98f7c7a24"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/croppedJacket/T_f_tal_nrw_jacket_lod0_BN.uasset",
+      "bytes": 441499,
+      "sha256": "c575c6426c70d73c6f6063747c89d973ff4b88be613e1ab83c28b4fad32f082e"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/croppedJacket/T_f_tal_nrw_jacket_lod0_PackedB.uasset",
+      "bytes": 206017,
+      "sha256": "f4a3a9047d4ac584ea716779e33fbb0cf66a9ce235ba0382e5eba8399cee96c8"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_buttonOpen.uasset",
+      "bytes": 8726032,
+      "sha256": "5d029674b66d53d8ec6dac54440aafbdc4abbee8d6c7b530d39873a18bea6d22"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_buttonOpen.uasset",
+      "bytes": 35521,
+      "sha256": "a19c35e8098d53612242767bad664db4d57f5588d6da44e1decfd2ff9c5eb483"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_AOR.uasset",
+      "bytes": 9107430,
+      "sha256": "a674129701441b063060a57426fd0b0e64a88d846e2bde1492154f518a327579"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/buttonOpen/f_top_shirt_Mask_VT.uasset",
+      "bytes": 6917515,
+      "sha256": "20d02815e05d33588d90d3a1bd50b1c2bdea2ec880d3466e01bc1c3af000b7eb"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/buttonOpen/f_top_shirt_AO_VT.uasset",
+      "bytes": 14901262,
+      "sha256": "1699d7ff04497564d1a285d8d9a707334794244017732324340e696f23eecf75"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Female/NormalWeight/Textures/buttonOpen/f_top_shirt_N_VT.uasset",
+      "bytes": 6428856,
+      "sha256": "2020123c449b8df563d1b4c229a45c762c5aa02683bf34a7e976d335d231e2a2"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_buttonDown.uasset",
+      "bytes": 49678,
+      "sha256": "1d6aefe6c0e9ab602c42be42f17551ed308227ca8a96e694f7a89ec80baedd70"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Normal.uasset",
+      "bytes": 28977767,
+      "sha256": "294dbef04bc69958c0217080f9f878a4a7e4f31e957aad7ffc332dfdc64a5b53"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/dressShirt/T_DressShirt_BN.uasset",
+      "bytes": 670553,
+      "sha256": "e39c9e5a2c0954a952af994e957137dee7f89eb38f4ae64c8089a00916717361"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/dressShirt/T_DressShirt_PackedA.uasset",
+      "bytes": 577946,
+      "sha256": "63fbb740f3f4ae90ecc4d291ab866b0b74dac66d09cfb945789909ba311468c9"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/dressShirt/T_DressShirt_N.uasset",
+      "bytes": 3071950,
+      "sha256": "05a773dc88e006a6843e56085ae3c1a73c22d6b01c3f0df9f0699878c8e656c5"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/dressShirt/T_DressShirt_PackedB.uasset",
+      "bytes": 557834,
+      "sha256": "cef44a03df1c8bcb525caad1231b7a07e3c0a7b62317e35f19a01422dbe1512a"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck_blazer.uasset",
+      "bytes": 11324359,
+      "sha256": "2fc7083d5bfa56f49370ae470510db4d83ab109690afc8a7f3af1f29f3b9d016"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_blazer.uasset",
+      "bytes": 47252,
+      "sha256": "b6ea6185d3be7cbe89d2f909a345eb51f6dc7dbc52d861271574a9ed7ce0b665"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset",
+      "bytes": 233121482,
+      "sha256": "b096276eb2bc9a55a92050800c61933208f8f4372f41be30c999dd2626cf0dcd"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_blazer_packedA.uasset",
+      "bytes": 2187641,
+      "sha256": "fc9e9a6e9d3dab4578afc33ed54f62dfbf8c20bc1aa207246a0d6a85f46134c9"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_N.uasset",
+      "bytes": 59386807,
+      "sha256": "b54dc76d2fbedb19b2c64d788b3ea5ab6bcd48033d40d7343bb7cab627dbae53"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_packedB.uasset",
+      "bytes": 4529481,
+      "sha256": "e2d10628e2aa2d7d119238949a9defe53686a567cd0df9d273182cb0ea15f036"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_suit.uasset",
+      "bytes": 44781,
+      "sha256": "0636f40d5367a36cae97a5f3b99462b407e1f68e3a328c5c46bae4fba8dd9013"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_herringbone_N.uasset",
+      "bytes": 88848,
+      "sha256": "8f1c2f6ee97132c0429be605670a39d4bd01ff1ff6989e34096d2cdd53994208"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_herringbone_Pattern.uasset",
+      "bytes": 15167,
+      "sha256": "50721926ea7cc6fe9bea0bd986fde6d13a20ebbef2508fb58339ea3429e439d2"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_buttonOpen.uasset",
+      "bytes": 5638274,
+      "sha256": "1fb503641e054dc3f01ecfa7ca2a0fd49383a8845fdf86121b5bd1d4ed4cf46b"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_buttonOpen.uasset",
+      "bytes": 46309,
+      "sha256": "0ecf2e048474bde3529e0a6dbc06915594c368c51f66fe15a131d9125905aba4"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/buttonOpen/T_m_top_shirt_AO_VT.uasset",
+      "bytes": 1216199,
+      "sha256": "1818d7b5310f7e416228d6701e2dde62f6961d854327fe0f6555abc5a64a9e39"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/buttonOpen/m_top_shirt_N_VT.uasset",
+      "bytes": 3276437,
+      "sha256": "05d818b96cfbfe7623d797df496dec6cb6be2c6394bbcfe248a9eef9955594da"
+    },
+    {
+      "path": "CitySampleCrowd/Character/Male/NormalWeight/Textures/buttonOpen/T_m_top_shirt_Mask_VT.uasset",
+      "bytes": 1428855,
+      "sha256": "57f9cef08ded4b7e69bbd358efe8f7b3d4e9f2a77da8a70823192c7fd5435be6"
+    }
+  ],
+  "preserved_existing": [
+    "/Game/CitySampleCrowd/AssetGuidelines/CitySampleCrowdAssetGuideline_VT_StaticLighting",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_FullPattern_Atlas",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AO_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_AOR",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/leather/oizvcnp_2K_Normal_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/MI_Clothing_Crowd",
+    "/Game/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_scoopneck",
+    "/Game/CitySampleCrowd/Character/Shared/Data/Crowd_LODSettings",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/macro_linen_rbess3s_4K",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/shirt/T_shirt_pp_oxford_height",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/Patterns/Array/T_ShirtPattern_Array",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_Grey",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Normal",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/macros/rm0it1p_4K_Displacement",
+    "/Game/CitySampleCrowd/Character/Shared/Textures/Default/T_Flat_Normal_VT",
+    "/Game/CitySampleCrowd/Character/Shared/Rig/PA_Base",
+    "/Game/CitySampleCrowd/Character/Shared/Materials/Clothing/Textures/QuixelFabric/Fabric_Plain_rbeskmp0/rbeskmp_4K_Albedo_GreyLight",
+    "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck"
+  ],
+  "scope": "Missing hard dependencies copied. Existing project assets preserved; load/appearance compatibility not yet verified."
+}

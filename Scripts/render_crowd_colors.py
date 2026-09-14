@@ -1,6 +1,7 @@
 """Compare exposure in native park/tunnel cameras without saving the map."""
-import json,pathlib,subprocess,uuid
+import json,pathlib,subprocess,uuid,argparse
 root=pathlib.Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--report',default='2026-09-14-crowd-colors.json');args=parser.parse_args();assert pathlib.Path(args.report).name==args.report
 out=root/'work'/('native-exposure-'+uuid.uuid4().hex);out.mkdir();runs=[]
 for scene in ['park']:
  for grade in ['colors']:
@@ -14,4 +15,4 @@ for scene in ['park']:
   print(json.dumps(runs[-1]),flush=True)
   if not runs[-1]['passed']:break
 report={'passed':len(runs)==1 and all(r['passed'] for r in runs),'runs':runs,'map_saved':False,'visual_review':False,'scope':'Native stationary player camera comparison; no movement through exposure transitions or release acceptance.'}
-(root/'Tests/Results/2026-09-14-crowd-colors.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'Tests/Results'/args.report).write_text(json.dumps(report,indent=2)+'\n')

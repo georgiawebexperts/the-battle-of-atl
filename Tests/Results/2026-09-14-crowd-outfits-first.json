@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "scene": "park",
+      "grade": "colors",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-eb4bd6a191054695a9f4f681de17acec/park-colors/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-eb4bd6a191054695a9f4f681de17acec/park-colors/foot.png"
+      ],
+      "passed": true
+    }
+  ],
+  "map_saved": false,
+  "visual_review": false,
+  "scope": "Native stationary player camera comparison; no movement through exposure transitions or release acceptance."
+}

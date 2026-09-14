@@ -19,6 +19,7 @@ void APiedmontPedestrian::InitializeCityAppearance(){
  const FString Prefix=Female?TEXT("f_tal_nrw"):TEXT("m_tal_nrw");
  const FString Face=Female?TEXT("f_001"):TEXT("m_001");
  const FString HairName=Female?TEXT("Hair_S_Coil"):TEXT("Hair_S_AfroFade");
+ const FString Top=Outfit/2==0?(Female?TEXT("scoopneck"):TEXT("crewneck")):Outfit/2==1?TEXT("buttonOpen"):(Female?TEXT("scoopneck_croppedJacket"):TEXT("crewneck_blazer"));
  const FString MeshRoot=Base+Gender+TEXT("/NormalWeight/Meshes/")+Prefix+TEXT("_");
  const FString FaceRoot=Base+Gender+TEXT("/")+Face;
  auto* Mesh=LoadObject<USkeletalMesh>(nullptr,*(MeshRoot+TEXT("body")));
@@ -27,7 +28,7 @@ void APiedmontPedestrian::InitializeCityAppearance(){
  auto* Walk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F"):TEXT("MTN_N_Walk_F"))));
  auto* Quick=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F_Quickly"):TEXT("MTN_N_WalkQuickly_F"))));
  TArray<USkeletalMesh*> Parts;
- for(const FString& Path:TArray<FString>{MeshRoot+(Female?TEXT("scoopneck"):TEXT("crewneck")),MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),FaceRoot+TEXT("/Face/")+Face+TEXT("_nrw_FaceMesh")}){
+ for(const FString& Path:TArray<FString>{MeshRoot+Top,MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),FaceRoot+TEXT("/Face/")+Face+TEXT("_nrw_FaceMesh")}){
   auto* Part=LoadObject<USkeletalMesh>(nullptr,*Path);if(!Part)return;Parts.Add(Part);
  }
  auto* HairMesh=LoadObject<UStaticMesh>(nullptr,*(FaceRoot+TEXT("/Hair/Hair/")+HairName+TEXT("_CardsMesh_Group0_LOD0")));

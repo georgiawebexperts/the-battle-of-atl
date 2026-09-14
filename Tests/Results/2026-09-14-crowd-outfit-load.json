@@ -1,0 +1,35 @@
+{
+  "loaded": [
+    {
+      "mesh": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_buttonOpen",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base.SK_Base",
+      "materials": [
+        "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_buttonOpen.MI_m_nrw_buttonOpen"
+      ]
+    },
+    {
+      "mesh": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_crewneck_blazer",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base.SK_Base",
+      "materials": [
+        "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck.MI_m_nrw_crewneck",
+        "/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_blazer.MI_m_nrw_blazer"
+      ]
+    },
+    {
+      "mesh": "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_buttonOpen",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base.SK_Base",
+      "materials": [
+        "/Game/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_buttonOpen.MI_f_nrw_buttonOpen"
+      ]
+    },
+    {
+      "mesh": "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_scoopneck_croppedJacket",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/SK_Base.SK_Base",
+      "materials": [
+        "/Game/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_scoopneck.MI_f_nrw_scoopneck",
+        "/Game/CitySampleCrowd/Character/Female/NormalWeight/Materials/MI_f_nrw_croppedJacket.MI_f_nrw_croppedJacket"
+      ]
+    }
+  ],
+  "visual_accepted": false
+}
