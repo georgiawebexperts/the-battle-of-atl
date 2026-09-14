@@ -5,11 +5,14 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
+#include "Materials/MaterialInstanceDynamic.h"
 
 void APiedmontPedestrian::InitializeCityAppearance(){
  // Specialized frisbee players and joggers retain their own animation sets until
  // appropriate native clips are integrated. This applies to ordinary walkers.
  if(GetClass()!=APiedmontPedestrian::StaticClass()||Kind!=EPiedmontPedestrianKind::Walker)return;
+ const int32 Outfit=CityOutfitVariant>=0?CityOutfitVariant%6:FMath::RandHelper(6);
+ const FLinearColor Shirts[]={FLinearColor(.65,.12,.08),FLinearColor(.12,.38,.2),FLinearColor(.9,.65,.24),FLinearColor(.12,.28,.65),FLinearColor(.3,.12,.35),FLinearColor(.7,.7,.65)};
  const bool Female=CityAppearanceVariant>=0?CityAppearanceVariant%2!=0:FMath::RandBool();
  const FString Base=TEXT("/Game/CitySampleCrowd/Character/");
  const FString Gender=Female?TEXT("Female"):TEXT("Male");
@@ -40,6 +43,7 @@ void APiedmontPedestrian::InitializeCityAppearance(){
   Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[Index]);
   Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);
   Part->SetLeaderPoseComponent(Body,true,false);Part->RegisterComponent();
+  if(Index==0)for(int32 Slot=0;Slot<Part->GetNumMaterials();++Slot)if(auto* Material=Part->CreateDynamicMaterialInstance(Slot))Material->SetVectorParameterValue(TEXT("A_CrowdColor_main"),Shirts[Outfit]);
  }
  auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("CityHair"));AddInstanceComponent(Hair);
  Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);

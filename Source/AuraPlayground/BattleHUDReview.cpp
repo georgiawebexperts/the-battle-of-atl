@@ -25,6 +25,16 @@
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
  if(HUDReviewStage==0&&HUDReviewClock<.1f){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCrowdVarietyReview"))){
+   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
+   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It){It->DesiredPopulation=0;It->SetActorTickEnabled(false);}
+   APawn* Viewer=GetPawn();for(int32 I=0;I<6;++I){
+    FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*550+Viewer->GetActorRightVector()*((I-2.5f)*105);FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(Viewer);
+    if(GetWorld()->LineTraceSingleByChannel(Hit,Spot+FVector(0,0,500),Spot-FVector(0,0,1000),ECC_Visibility,Q))Spot.Z=Hit.ImpactPoint.Z+98;
+    const FTransform T((Viewer->GetActorLocation()-Spot).Rotation(),Spot);auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),T);Visitor->CityAppearanceVariant=I%2;Visitor->CityOutfitVariant=I;Visitor->FinishSpawning(T);Visitor->PauseRemaining=100;Visitor->GetCharacterMovement()->DisableMovement();
+   }
+  }
+
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleExposureCandidate"))){auto* Volume=GetWorld()->SpawnActor<APostProcessVolume>();Volume->bUnbound=true;Volume->Priority=100;Volume->Settings.bOverride_AutoExposureBias=true;Volume->Settings.AutoExposureBias-=.35f;}
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleTunnelExposureReview")))if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->SetActorLocationAndRotation(FVector(30609,117632,1058),FRotator(0,68,0),false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(FRotator(0,68,0));Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;}
  }

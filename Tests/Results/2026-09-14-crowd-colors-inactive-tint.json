@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "scene": "park",
+      "grade": "colors",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-96b39db81c62476abfaacc9672ffb816/park-colors/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-96b39db81c62476abfaacc9672ffb816/park-colors/foot.png"
+      ],
+      "passed": true
+    }
+  ],
+  "map_saved": false,
+  "visual_review": true,
+  "scope": "Rejected candidate: A_Color_Tint is disabled by material static switches; shirts unchanged. Capture completed but visual objective failed.",
+  "visual_accepted": false
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "scene": "park",
+      "grade": "colors",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-4bacb6eeefb24c6086f8054b0d1013b7/park-colors/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-4bacb6eeefb24c6086f8054b0d1013b7/park-colors/foot.png"
+      ],
+      "passed": true
+    }
+  ],
+  "map_saved": false,
+  "visual_review": true,
+  "scope": "Six deterministic outfit choices on three male/three female walkers; native bike/foot frames inspected. Shirt colors distinct, Ellison unchanged. Static appearance only; existing animation unchanged. Not packaged."
+}

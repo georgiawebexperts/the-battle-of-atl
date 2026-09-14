@@ -23,6 +23,7 @@ public:
  UPROPERTY(BlueprintReadOnly) FString RecoveryDirection;
  UPROPERTY(Transient) TObjectPtr<USkeletalMeshComponent> PhysicsBody;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 CityAppearanceVariant=-1;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 CityOutfitVariant=-1;
  UPROPERTY(BlueprintReadOnly) EPiedmontPedestrianKind Kind=EPiedmontPedestrianKind::Walker;
  UPROPERTY(BlueprintReadOnly) FVector Destination;
  UPROPERTY(BlueprintReadOnly) bool bHasDestination=false;
