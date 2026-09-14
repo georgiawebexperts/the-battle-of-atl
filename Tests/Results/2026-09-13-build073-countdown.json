@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "reason": "Gate event, active countdown pedal/steer/brake keys, timer start and no gate reset pass",
+  "distance_cm": 0.0,
+  "max_error_cm": 0.0,
+  "exit_code": 0,
+  "packaged": true,
+  "scope": "Gate fixture: real pedal/steer/brake keys during countdown, countdown expiry and no repeat-gate reset. Full approach and visual quality require separate review.",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/countdown-f5445a03121e4ed3a10203eeef8d3231/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/countdown-f5445a03121e4ed3a10203eeef8d3231/countdown.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/countdown-f5445a03121e4ed3a10203eeef8d3231/go.png"
+  ]
+}

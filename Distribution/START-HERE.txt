@@ -1,6 +1,11 @@
 THE BATTLE OF ATL — MAC PLAYTEST {{BUILD}}
 Early, unfinished playtest • September 13, 2026
 
+STARTING YOUR RIDE
+Cross the 14th Street gate to begin. The RIDE STARTED countdown keeps
+steering, pedaling, and braking active—keep riding and avoid pedestrians.
+GO! TIMER RUNNING confirms the timed phone search has begun.
+
 WHAT YOU NEED
 An Apple silicon Mac (M1 or newer). This build targets macOS 14 or later.
 Intel Macs, Windows, iPhones and iPads cannot run this build.

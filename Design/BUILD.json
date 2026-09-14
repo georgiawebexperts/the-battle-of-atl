@@ -1,9 +1,9 @@
 {
-  "build": 72,
-  "version": "0.72.0",
+  "build": 73,
+  "version": "0.73.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; forgiving arcade scenery, timed speed pickups and two-song music",
+  "status": "Early playtest; controllable gate countdown and bounded bike catch-up after stalls",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -24,7 +24,8 @@
     "Build069: saddle and frame seat junction lowered 10cm; rider steps 35cm ahead of saddle before lowering at stop, rises before returning to riding pose.",
     "Build070: live eight-second Piedmont lake/bridge flyover then four-second home story; rider/time protected, immediate skip restoration; relaxed stopped elbows with preserved grips.",
     "Build071: longer alternating swim pull/recovery, relaxed knee kick and pointed toes, lower prone/tread waterline; hidden shore camera-blocker repair and clear shallow-bank walking exit; third-person swim and deep-water return checked.",
-    "Build072: arcade scenery/civilian contact no longer knocks Ellison off; realistic impacts and hostile knockdowns retained. Six five-second boost pickups with progressive acceleration/expiry. HUD text fits panel widths. M cycles Off/Song1/Song2/Off with visible sequence and saved selection."
+    "Build072: arcade scenery/civilian contact no longer knocks Ellison off; realistic impacts and hostile knockdowns retained. Six five-second boost pickups with progressive acceleration/expiry. HUD text fits panel widths. M cycles Off/Song1/Song2/Off with visible sequence and saved selection.",
+    "Build073: gate countdown keeps pedal/steering/reverse controls active; readable RIDE STARTED and GO! TIMER RUNNING banners; bike simulation catch-up bounded to50ms after frame stalls. Lake grading remains uninstalled."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -82,51 +83,38 @@
   "unreleased_code_changes": [
     "LakePathGrading candidate exists only in isolated review map; native collision comparison passes. Visuals, route heights/navigation and moving-bike checks pending."
   ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 072/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 071/The Battle of ATL.app",
-  "compiled_source": "05c3abb",
-  "installation_report": "Tests/Results/2026-09-13-build072-install.json",
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 073/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 072/The Battle of ATL.app",
+  "compiled_source": "4532052",
+  "installation_report": "Tests/Results/2026-09-13-build073-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 72,
-    "version": "0.72.0",
-    "source_commit": "05c3abb",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 072/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 071/The Battle of ATL.app",
-    "locally_signed": true,
-    "notarized": false,
-    "machine_code_matches_tested_staged_app": true,
-    "machine_code_sha256": "92e986f9a009baa7db1865a325f2ab9e08c88b8673d78cf4136bf6725c5d9f19",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 072.zip",
-    "zip_sha256": "baadff0b48f3e0490807b7490ed4129f360f1b555b1eb66bc69070152f7d8dde",
-    "zip_bytes": 1325518524,
-    "dirty_source_inputs": {
-      "Source/AuraPlayground/BattleKnifeAudit.cpp": "7529019632a786452a852c71449693fef6fdb53ce610dd6818f51a0c3ff5e4e7",
-      "Source/AuraPlayground/BattleMacController.h": "b0fea135ad089b3684f7e9b31674ffd292815d15bf09c358519dce4edab1d520"
-    },
+    "build": 73,
+    "version": "0.73.0",
+    "source_commit": "4532052",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 073/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 072/The Battle of ATL.app",
+    "machine_code_sha256": "5b8ce0f310de7c14af83408bc170653aa6c42a8863d2a0330cce801fa92800cb",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 073.zip",
+    "zip_sha256": "7b15857f84acebeb8b55e58b4a720b845e6efb7db92092952cb01625ad2ec0a1",
+    "zip_bytes": 1325529304,
+    "reports": [
+      "2026-09-13-build073-countdown.json",
+      "2026-09-13-build073-speed.json",
+      "2026-09-13-build073-jump.json",
+      "2026-09-13-build073-drone.json"
+    ],
     "verification": [
-      "Packaged mounted speed pickup reaches boost cap, expires, and blocks duplicate/dead/foot collection",
-      "Packaged actual tree collisions preserve arcade rider; realistic collision knockdown and live drone recovery pass",
-      "Packaged M-key cycle verifies two looping tracks, Off and saved selection restoration",
-      "Packaged HUD visual review at1280 and1920",
-      "ZIP CRC, signature and staged/installed code match"
+      "Packaged gate fixture: pedal/steer/brake active, countdown expiry and no repeat reset",
+      "Both packaged start banners visually inspected at1280x720",
+      "Packaged speed pickup, hill jump/landing reward and drone fall/recovery/remount pass",
+      "ZIP CRC, deep strict ad-hoc signature and staged/installed machine code match"
     ],
     "remaining": [
-      "Fine finger/support-hand contact, long-gun posing and continuous animation need polish",
-      "Broader freeplay, world art and performance acceptance",
-      "Voice listening/mix review pending",
-      "Not notarized or tested on another Mac",
-      "Mac AGX pipeline-compiler crash mitigation verified enabled; first-use hitches and broader stability remain unproven",
-      "Continuous swimming animation quality, full Atlanta aerial scenery and broader player steering feel remain in progress",
-      "Isolated lake path grading candidate awaits visual, navigation and moving-bike acceptance; not installed"
-    ],
-    "reports": [
-      "2026-09-13-build072-speed.json",
-      "2026-09-13-build072-trees-arcade.json",
-      "2026-09-13-build072-music.json",
-      "2026-09-13-build072-drone.json",
-      "2026-09-13-build072-tree-real.json",
-      "Tests/Results/2026-09-13-build072-visual-acceptance.json"
+      "Lake grading remains isolated and uninstalled",
+      "Full approach driving audit currently fails before gate",
+      "Broader art, animation, handling and performance remain unfinished",
+      "Other Macs untested; no Developer ID or notarization"
     ]
   },
   "latest_wall_fix_playtest": {

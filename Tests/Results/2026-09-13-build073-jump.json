@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "stage": 4,
+  "reason": "Actual J takeoff, clearance, landing +10 once, stationary/midair/stun/end guards pass",
+  "rewards": 1,
+  "peak_cm": 143.49,
+  "air_seconds": 0.717,
+  "hill": true,
+  "downhill": false,
+  "realistic": false,
+  "takeoff_diagnostics": [
+    "grade=0.0781 floor=StaticMeshActor_8 position=X=-1212.199 Y=11623.552 Z=-73.150"
+  ],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-539af3fc85a643848edcf26f39af57ea.log",
+  "pedal_contact": [
+    [
+      "0.424",
+      "140",
+      "12.466"
+    ]
+  ],
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleJumpReview/9494fd8fd9e84a219f0ff4f8db6d8aed/takeoff.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleJumpReview/9494fd8fd9e84a219f0ff4f8db6d8aed/airborne.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleJumpReview/9494fd8fd9e84a219f0ff4f8db6d8aed/landing.png"
+  ],
+  "captures_complete": true
+}

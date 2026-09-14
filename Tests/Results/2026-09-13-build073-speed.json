@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "reason": "Mounted pickup, duplicate/death/foot guards, acceleration and timed expiry pass",
+  "peak_speed_cm_s": 2199.8,
+  "exit_code": 0,
+  "images": [],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/speed-pickup-caa01758049341b7a30704c158eb2870/run.log",
+  "packaged": true
+}
