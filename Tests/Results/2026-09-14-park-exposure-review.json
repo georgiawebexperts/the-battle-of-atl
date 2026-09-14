@@ -1,0 +1,37 @@
+{
+  "lights": [
+    {
+      "actor": "DirectionalLight",
+      "class": "DirectionalLight",
+      "intensity": 4.0
+    },
+    {
+      "actor": "SkyLight",
+      "class": "SkyLight",
+      "intensity": null
+    },
+    {
+      "capture_default_exposure_bias": 1.0
+    }
+  ],
+  "map_saved": false,
+  "scope": "Scene capture comparison only; native gameplay exposure may differ",
+  "passed": true,
+  "visual_review": true,
+  "release_ready": false,
+  "findings": [
+    "Saved sunlight intensity4; no saved post-process volume detected",
+    "Absolute exposure bias-.7 rejected: deep shade became illegible",
+    "Relative default-minus.35 preserves more detail; needs native player-camera and tunnel comparison before adoption"
+  ],
+  "log": "work/park-exposure-relative.log",
+  "exit_code": 0,
+  "images": [
+    "work/park-exposure-review/baseline.png",
+    "work/park-exposure-review/relative_minus035.png"
+  ],
+  "notes": [
+    "Initial ExecutePythonScript capture invalid because TickSceneReview advances only commandlets; corrected run uses -run=pythonscript -AllowCommandletRendering",
+    "First commandlet rendered but exit1 due RemoteControl port conflict; final run with -RCWebControlDisable exit0"
+  ]
+}
