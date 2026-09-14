@@ -29,7 +29,7 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   TCHECK(M->bTutorialActive&&M->StartCountdown==0&&M->RunElapsed==0&&M->TimeRemaining==M->Difficulty.TimeLimitSeconds,"Practice timer ran before gateway");
   TCHECK(!M->AdjustRunTime(30,TEXT("practice"))&&B->ApplyRiderDamage(10)==0,"Practice changed time or damaged rider");
   for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::BarrierCenters);I++){
-   const FVector C=BattleTutorialBlock::BarrierCenters[I]+FVector(0,0,98),D=BattleTutorialBlock::BarrierDirections[I];FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(PracticeFence),false,B);
+   const FVector C=T->BoundaryRoots[I]->GetComponentLocation()+FVector(0,0,98),D=T->BoundaryRoots[I]->GetComponentQuat().RotateVector(BattleTutorialBlock::BarrierDirections[I]);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(PracticeFence),false,B);
    TCHECK(GetWorld()->SweepSingleByChannel(Hit,C-D*220,C+D*220,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(32),Q)&&Hit.GetActor()==T,"Construction fence does not physically block the road");
   }
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview"))){
@@ -46,6 +46,15 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   const FVector G=BattleTutorialData::Gate;
   TCHECK(!T->TryStart(G-FVector(200,0,-500),G+FVector(200,0,500)),"Started above gate");
   TCHECK(!T->TryStart(G-FVector(200,-500,0),G+FVector(200,500,0)),"Started beside gate");
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePrideBoundaryAudit"))){
+   TCHECK(FVector::Dist2D(T->BoundaryRoots[4]->GetComponentLocation(),BattleTutorialBlock::BarrierCenters[4])>5000,"Pride boundary did not relocate");
+   const FVector Old=BattleTutorialBlock::BarrierCenters[4]+FVector(0,0,98),D=BattleTutorialBlock::BarrierDirections[4];FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(PrideOldBoundary),false,B);
+   for(TActorIterator<APawn> Pawn(GetWorld());Pawn;++Pawn)Q.AddIgnoredActor(*Pawn);
+   TCHECK(!GetWorld()->SweepSingleByChannel(Hit,Old-D*220,Old+D*220,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(32),Q),"Old Piedmont cutoff still blocks street");
+   const FVector New=T->BoundaryRoots[4]->GetComponentLocation(),Out=T->BoundaryRoots[4]->GetComponentQuat().RotateVector(D);
+   B->SetActorLocation(New-Out*200+FVector(0,0,98),false,nullptr,ETeleportType::TeleportPhysics);M->ExpansionNoticeRemaining=0;T->Tick(.01f);
+   TCHECK(M->ExpansionNoticeRemaining>0,"Coming-soon notice did not follow moved boundary");End(true,TEXT("All fences block, old cutoff clear, market closed, notice moved"));return;
+  }
   TCHECK(B->Dismount(),"Practice dismount failed");auto* Foot=Cast<ABattleRider>(GetPawn());TCHECK(Foot&&Foot->MountBike(),"Practice remount failed");
   B=Cast<ABattleBike>(GetPawn());TCHECK(B,"Bike possession lost");B->Ride->Gear=2;
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialMarket"))){

@@ -14,6 +14,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Materials/MaterialInterface.h"
 #include "Engine/StaticMesh.h"
+#include "EngineUtils.h"
 #include "Misc/CommandLine.h"
 ABattleTutorial::ABattleTutorial(){
  PrimaryActorTick.bCanEverTick=true;RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("TutorialRoot"));Tags.Add(TEXT("RidePath"));Tags.Add(TEXT("BattleTutorial"));
@@ -74,18 +75,22 @@ ABattleTutorial::ABattleTutorial(){
  for(int Side:{-1,1})for(int X=160;X<=300;X+=35)Part(Trim,H+FVector(Side*X,-600,70),FVector(14,14,140));
  for(int Side:{-1,1})for(int Z:{35,105})Part(Timber,H+FVector(Side*225,-600,Z),FVector(170,12,12));
  Part(Timber,H+FVector(180,-625,70),FVector(14,14,140));Part(Iron,H+FVector(180,-625,145),FVector(100,45,45));
- auto Label=[&](const TCHAR* N,const TCHAR* T,FVector P,float Size,FRotator R){auto* C=CreateDefaultSubobject<UTextRenderComponent>(N);C->SetupAttachment(RootComponent);C->SetRelativeLocation(P);C->SetRelativeRotation(R);C->SetWorldSize(Size);C->SetText(FText::FromString(T));C->SetTextMaterial(TextMat.Object);C->SetTextRenderColor(FColor(255,229,183));C->SetHorizontalAlignment(EHTA_Center);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);};
+ auto Label=[&](const TCHAR* N,const TCHAR* T,FVector P,float Size,FRotator R){auto* C=CreateDefaultSubobject<UTextRenderComponent>(N);C->SetupAttachment(RootComponent);C->SetRelativeLocation(P);C->SetRelativeRotation(R);C->SetWorldSize(Size);C->SetText(FText::FromString(T));C->SetTextMaterial(TextMat.Object);C->SetTextRenderColor(FColor(255,229,183));C->SetHorizontalAlignment(EHTA_Center);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);return C;};
  Label(TEXT("Mailbox"),TEXT("ELLISON"),H+FVector(180,-650,140),16,FRotator(0,-90,0));
  for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::BarrierCenters);I++){
-  const FVector C=BattleTutorialBlock::BarrierCenters[I],D=BattleTutorialBlock::BarrierDirections[I],Right(-D.Y,D.X,0);const FRotator R=D.Rotation();
+  auto* Boundary=CreateDefaultSubobject<USceneComponent>(*FString::Printf(TEXT("BoundaryRoot%d"),I));Boundary->SetupAttachment(RootComponent);Boundary->SetRelativeLocation(BattleTutorialBlock::BarrierCenters[I]);BoundaryRoots.Add(Boundary);
+  auto* BoundaryIron=Group(*FString::Printf(TEXT("BoundaryIron%d"),I),Dark.Object);BoundaryIron->SetupAttachment(Boundary);
+  auto* BoundaryDoor=Group(*FString::Printf(TEXT("BoundaryRed%d"),I),Red.Object);BoundaryDoor->SetupAttachment(Boundary);
+  auto* BoundaryConcrete=Group(*FString::Printf(TEXT("BoundaryConcrete%d"),I),White.Object);BoundaryConcrete->SetupAttachment(Boundary);
+  const FVector C=FVector::ZeroVector,D=BattleTutorialBlock::BarrierDirections[I],Right(-D.Y,D.X,0);const FRotator R=D.Rotation();
   // Closely spaced welded-mesh fence: the visible bars themselves block bikes and walkers.
-  for(int Y=-1000;Y<=1000;Y+=45)Part(Iron,C+Right*Y+FVector(0,0,180),FVector(10,7,360),R);
-  for(int Z=30;Z<=350;Z+=40)Part(Iron,C+FVector(0,0,Z),FVector(10,2050,6),R);
-  Part(Door,C-D*16+FVector(0,0,180),FVector(20,740,145),R);
-  Part(Concrete,C-D*29+FVector(0,0,103),FVector(8,740,14),R);
-  for(int Side:{-1,1}){Part(Concrete,C+Right*Side*440+FVector(0,0,35),FVector(150,150,70),R);Part(Door,C+Right*Side*440+FVector(0,0,78),FVector(55,55,45),R);}
-  Label(*FString::Printf(TEXT("Closure%d"),I),TEXT("UNDER CONSTRUCTION"),C-D*31+FVector(0,0,190),33,(-D).Rotation());
-  Label(*FString::Printf(TEXT("Expansion%d"),I),TEXT("MORE MIDTOWN COMING SOON"),C-D*31+FVector(0,0,142),22,(-D).Rotation());
+  for(int Y=-1000;Y<=1000;Y+=45)Part(BoundaryIron,C+Right*Y+FVector(0,0,180),FVector(10,7,360),R);
+  for(int Z=30;Z<=350;Z+=40)Part(BoundaryIron,C+FVector(0,0,Z),FVector(10,2050,6),R);
+  Part(BoundaryDoor,C-D*16+FVector(0,0,180),FVector(20,740,145),R);
+  Part(BoundaryConcrete,C-D*29+FVector(0,0,103),FVector(8,740,14),R);
+  for(int Side:{-1,1}){Part(BoundaryConcrete,C+Right*Side*440+FVector(0,0,35),FVector(150,150,70),R);Part(BoundaryDoor,C+Right*Side*440+FVector(0,0,78),FVector(55,55,45),R);}
+  Label(*FString::Printf(TEXT("Closure%d"),I),TEXT("UNDER CONSTRUCTION"),C-D*31+FVector(0,0,190),33,(-D).Rotation())->SetupAttachment(Boundary);
+  Label(*FString::Printf(TEXT("Expansion%d"),I),TEXT("MORE MIDTOWN COMING SOON"),C-D*31+FVector(0,0,142),22,(-D).Rotation())->SetupAttachment(Boundary);
  }
  // Stone piers and open iron wings leave the central ride-through clear.
  const FVector G=BattleTutorialData::Gate;
@@ -107,6 +112,13 @@ ABattleTutorial::ABattleTutorial(){
 }
 void ABattleTutorial::BeginPlay(){
  Super::BeginPlay();
+ // A map-authored extension moves the complete visible/colliding closure together.
+ // Maps without this anchor retain the original practice boundaries.
+ for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("PrideStreetBoundary"))&&BoundaryRoots.IsValidIndex(4)){
+  const float DeltaYaw=It->GetActorRotation().Yaw-BattleTutorialBlock::BarrierDirections[4].Rotation().Yaw;
+  BoundaryRoots[4]->SetWorldLocationAndRotation(It->GetActorLocation(),FRotator(0,DeltaYaw,0));
+  UE_LOG(LogTemp,Display,TEXT("PrideBoundary: relocated closure to %s"),*It->GetActorLocation().ToString());break;
+ }
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* B=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(this,0));if(!M||!B)return;
 #if !UE_BUILD_SHIPPING
  for(const TCHAR* Flag:{TEXT("BattleSkipTutorial"),TEXT("BattleFinishAudit"),TEXT("BattleHealthAudit"),TEXT("BattleHomeDriveAudit"),TEXT("BattleHUDReview")})if(FParse::Param(FCommandLine::Get(),Flag)){if(FString(Flag)==TEXT("BattleHUDReview")&&FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialReview")))continue;M->bTutorialActive=false;return;}
@@ -145,7 +157,7 @@ void ABattleTutorial::Tick(float Dt){
   M->bPracticeDismounted|=P->IsA<ABattleRider>();
  }
  for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::BarrierCenters);I++){
-  const FVector D=BattleTutorialBlock::BarrierDirections[I],R(-D.Y,D.X,0),Delta=Current-BattleTutorialBlock::BarrierCenters[I];
+  const USceneComponent* Boundary=BoundaryRoots[I];const FVector D=Boundary->GetComponentQuat().RotateVector(BattleTutorialBlock::BarrierDirections[I]),R(-D.Y,D.X,0),Delta=Current-Boundary->GetComponentLocation();
   const float Along=FVector::DotProduct(Delta,D);
   if(Along>-650&&Along<120&&FMath::Abs(FVector::DotProduct(Delta,R))<250)M->ExpansionNoticeRemaining=1;
  }
