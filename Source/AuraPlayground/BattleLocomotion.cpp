@@ -87,7 +87,9 @@ bool APiedmontExplorer::SampleLocomotion(float Dt,TArray<FTransform>& Pose){
  LocomotionSpeed=FMath::Lerp(LocomotionSpeed,Speed,1.f-FMath::Exp(-10.f*Dt));
  const float RunWeight=bDetailedPlayerRig?FMath::Clamp((LocomotionSpeed-240.f)/200.f,0.f,1.f):FMath::Clamp((LocomotionSpeed-180.f)/170.f,0.f,1.f);
  const float MoveWeight=FMath::Clamp(LocomotionSpeed/45.f,0.f,1.f);
- const float ReferenceSpeed=bDetailedPlayerRig?FMath::Lerp(Walk.TravelSpeed>1.f?Walk.TravelSpeed:140.f,Run.TravelSpeed>1.f?Run.TravelSpeed:350.f,RunWeight):FMath::Lerp(140.f,350.f,RunWeight);
+ // Dedicated crowd runs retain authored root travel for stride-rate matching.
+ const bool MeasuredStride=bDetailedPlayerRig||RunAnimation->GetPathName().StartsWith(TEXT("/Game/BattleRetarget/CrowdRun/"));
+ const float ReferenceSpeed=MeasuredStride?FMath::Lerp(Walk.TravelSpeed>1.f?Walk.TravelSpeed:140.f,Run.TravelSpeed>1.f?Run.TravelSpeed:350.f,RunWeight):FMath::Lerp(140.f,350.f,RunWeight);
  const float CycleSeconds=FMath::Lerp(WalkAnimation->GetPlayLength(),RunAnimation->GetPlayLength(),RunWeight);
  LocomotionPhase=FMath::Frac(LocomotionPhase+Dt*LocomotionSpeed/ReferenceSpeed/CycleSeconds);
  IdleClock=FMath::Fmod(IdleClock+Dt,IdleAnimation->GetPlayLength());

@@ -1,0 +1,21 @@
+{
+  "exports": [
+    {
+      "gender": "Male",
+      "path": "/Game/BattleRetarget/CrowdRun/Male/M_Neutral_Run_Loop_F.M_Neutral_Run_Loop_F",
+      "target": "/Game/CitySampleCrowd/Character/Male/NormalWeight/Meshes/m_tal_nrw_body.m_tal_nrw_body",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "file": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/CrowdRun/Male/M_Neutral_Run_Loop_F.uasset",
+      "sha256": "e09ea41745a863f414189c82d452654a33bc059b7da1b883c89d4e1256d71801"
+    },
+    {
+      "gender": "Female",
+      "path": "/Game/BattleRetarget/CrowdRun/Female/M_Neutral_Run_Loop_F.M_Neutral_Run_Loop_F",
+      "target": "/Game/CitySampleCrowd/Character/Female/NormalWeight/Meshes/f_tal_nrw_body.f_tal_nrw_body",
+      "skeleton": "/Game/CitySampleCrowd/Character/Shared/Rig/metahuman_base_skel.metahuman_base_skel",
+      "file": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Content/BattleRetarget/CrowdRun/Female/M_Neutral_Run_Loop_F.uasset",
+      "sha256": "5aeb703a584389aea6d198eecdfca8b0ceee9b634328cfa72b2937627f439e09"
+    }
+  ],
+  "scope": "Retargeted animations; native visual acceptance pending"
+}

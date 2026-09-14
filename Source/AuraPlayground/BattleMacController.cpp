@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleMusic.h"
 void TickBattleSpeedAudit(APlayerController* PC,float Dt);
+void TickBattlePanicAudit(APlayerController* PC,float Dt);
 #include "BattleSpareBikes.h"
 #include "BattleSwimAudit.h"
 #include "HAL/IConsoleManager.h"
@@ -141,6 +142,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFrisbeeAudit")))TickFrisbeeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmmoAudit")))TickAmmoAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTroubleAudit")))TickTroubleAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePanicAudit")))TickBattlePanicAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFurnitureAudit")))TickFurnitureAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDroneAudit")))TickDroneAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleJumpAudit")))TickJumpAudit(Dt);

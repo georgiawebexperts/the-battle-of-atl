@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Real shots trigger live male/female flight, sustained panic, refresh and walking-speed recovery",
+  "male_travel_cm": 1290.83,
+  "female_travel_cm": 1335.93,
+  "exit_code": 0,
+  "packaged": false,
+  "headless": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-2d50b5099ea8496da370a10d680b5b1b/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-2d50b5099ea8496da370a10d680b5b1b/panic-running.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-2d50b5099ea8496da370a10d680b5b1b/panic-away.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-2d50b5099ea8496da370a10d680b5b1b/panic-recovered.png"
+  ],
+  "visual_review": {
+    "frames_inspected": 3,
+    "finding": "Running poses replace hurried walking; bright speckled patch on male shirt needs follow-up. panic-away capture shows player because view target switched before screenshot rendered; fixed in later audit source. Recovered female walking visible, male off camera.",
+    "accepted_for_release": false
+  }
+}

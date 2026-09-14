@@ -26,18 +26,18 @@ void APiedmontPedestrian::InitializeCityAppearance(){
  const FString AnimRoot=Base+TEXT("Anims/Loco/");
  auto* Idle=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Idle_Base"):TEXT("MTN_N_Idle"))));
  auto* Walk=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F"):TEXT("MTN_N_Walk_F"))));
- auto* Quick=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+(Female?TEXT("FTN_Set/FTN_N_Walk_F_Quickly"):TEXT("MTN_N_WalkQuickly_F"))));
+ auto* Run=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/BattleRetarget/CrowdRun/")+Gender+TEXT("/M_Neutral_Run_Loop_F")));
  TArray<USkeletalMesh*> Parts;
  for(const FString& Path:TArray<FString>{MeshRoot+Top,MeshRoot+TEXT("jeans"),MeshRoot+TEXT("loafers"),FaceRoot+TEXT("/Face/")+Face+TEXT("_nrw_FaceMesh")}){
   auto* Part=LoadObject<USkeletalMesh>(nullptr,*Path);if(!Part)return;Parts.Add(Part);
  }
  auto* HairMesh=LoadObject<UStaticMesh>(nullptr,*(FaceRoot+TEXT("/Hair/Hair/")+HairName+TEXT("_CardsMesh_Group0_LOD0")));
- if(!Mesh||!Idle||!Walk||!Quick||!HairMesh)return;
+ if(!Mesh||!Idle||!Walk||!Run||!HairMesh)return;
  BumpReaction=LoadObject<UAnimSequence>(nullptr,*(AnimRoot+TEXT("FTN_Set/FTN_N_BlockReact_Angry")));
  for(const TCHAR* Side:{TEXT("F"),TEXT("B"),TEXT("L"),TEXT("R")})
   RecoveryClips.Add(LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/BattleRetarget/City/")+Gender+TEXT("/M_ragdoll_getup_stand_")+Side)));
  Body->SetSkinnedAssetAndUpdate(Mesh);
- SetLocomotionClips(Idle,Walk,Quick);bNativeCrowdRig=true;
+ SetLocomotionClips(Idle,Walk,Run);bNativeCrowdRig=true;
  for(int32 Index=0;Index<Parts.Num();++Index){
   auto* Part=NewObject<USkeletalMeshComponent>(this,*FString::Printf(TEXT("CityOutfit%d"),Index));
   AddInstanceComponent(Part);Part->SetupAttachment(Body);

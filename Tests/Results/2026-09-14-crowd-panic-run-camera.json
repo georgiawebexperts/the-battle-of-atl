@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Real shots trigger live male/female flight, sustained panic, refresh and walking-speed recovery",
+  "male_travel_cm": 1290.87,
+  "female_travel_cm": 1336.04,
+  "exit_code": 0,
+  "packaged": false,
+  "headless": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-add63a83d0534002b2aa1e3745cf2e7b/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-add63a83d0534002b2aa1e3745cf2e7b/panic-running.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-add63a83d0534002b2aa1e3745cf2e7b/panic-away.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-add63a83d0534002b2aa1e3745cf2e7b/panic-recovered.png"
+  ],
+  "visual_review": {
+    "frames_inspected": [
+      "panic-running.png",
+      "panic-away.png"
+    ],
+    "findings": [
+      "First frame shows both witnesses in running poses; previous bright male-shirt patch absent in repeat.",
+      "Later frame now tracks witnesses instead of player but male is off camera."
+    ],
+    "limits": [
+      "Packaged check pending",
+      "No exhaustive clothing clipping/footplant verification",
+      "Initial transient clothing artifact preserved in earlier report"
+    ]
+  }
+}

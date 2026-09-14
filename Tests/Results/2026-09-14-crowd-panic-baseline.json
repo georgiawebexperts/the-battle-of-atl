@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Real shots trigger live male/female flight, sustained panic, refresh and walking-speed recovery",
+  "male_travel_cm": 1290.38,
+  "female_travel_cm": 1333.97,
+  "exit_code": 0,
+  "packaged": false,
+  "headless": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-7ad240c6e08545d1b458923319526397/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-7ad240c6e08545d1b458923319526397/panic-running.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-7ad240c6e08545d1b458923319526397/panic-away.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-7ad240c6e08545d1b458923319526397/panic-recovered.png"
+  ],
+  "visual_review": {
+    "inspected": [
+      "panic-running.png"
+    ],
+    "finding": "Both witnesses use hurried walking poses at panic movement speed; dedicated running clips needed. This passing movement test does not establish natural animation."
+  }
+}
