@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "packaged": true,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-6a26a9a9a5854a62bdf18a1bd616c000/bike.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-6a26a9a9a5854a62bdf18a1bd616c000/foot.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-6a26a9a9a5854a62bdf18a1bd616c000/run.log",
+  "visual_review": true,
+  "scope": "Forced presentation states only: phone objectives, danger and drone aim. Images require visual review; no combat balance acceptance.",
+  "visual_report": "2026-09-14-build078-visual.json"
+}

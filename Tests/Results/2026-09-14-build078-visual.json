@@ -1,0 +1,18 @@
+{
+  "release_ready": true,
+  "scope": "078 presentation changes only; not full game acceptance",
+  "inspected": [
+    "work/objective-review-6a26a9a9a5854a62bdf18a1bd616c000/bike.png",
+    "work/objective-review-6a26a9a9a5854a62bdf18a1bd616c000/foot.png",
+    "work/feature-bikes-d3a5b0a7e3644091b9571e9cd37f3d6e/spare-bike.png"
+  ],
+  "findings": [
+    "Objective and danger panels separated; targeted drone highlighted and off-target crosshair white",
+    "Spare bike interaction and foot controls readable"
+  ],
+  "limits": [
+    "Spare-bike frame does not show market footplates; separate saved main-map contact validation covers those",
+    "Recalculating and patio text branches not visually captured",
+    "Broader world and character presentation unfinished"
+  ]
+}

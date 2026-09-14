@@ -1,9 +1,9 @@
 {
-  "build": 77,
-  "version": "0.77.0",
+  "build": 78,
+  "version": "0.78.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; rider contact, landing clearance and grounded pickups",
+  "status": "Early playtest; clearer objective and drone targeting HUD, grounded market footplates",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -29,7 +29,8 @@
     "Build074: three local lake junctions graded, pavement gaps filled, route splines and navigation rebuilt. Shoreline and water preserved. Build073 countdown controls and stall fix retained.",
     "Build075: connected 10th/Piedmont rainbow intersection, Billys street approach, smooth road shading and relocated practice cutoff; full route to14th verified. Existing lake fixes retained.",
     "Build076: connected 10th/Piedmont rainbow intersection, Billys street approach, smooth road shading and relocated practice cutoff; full route to14th verified. Existing lake fixes retained.",
-    "Build077: rounded saddle and seat post, reduced landing pelvis compression, thumb grip correction, grounded pickup cases with brighter labels, and ground-fitted spare wheels at stations and after exchange. Existing076 street and lake improvements retained."
+    "Build077: rounded saddle and seat post, reduced landing pelvis compression, thumb grip correction, grounded pickup cases with brighter labels, and ground-fitted spare wheels at stations and after exchange. Existing076 street and lake improvements retained.",
+    "Build078: ten market stalls have 80 grounded footplates; post-phone watch route instructions, danger panel below objective, red crosshair and distance label when aiming at a live drone. Prior077 improvements retained."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -84,44 +85,37 @@
     "2026-09-13 [codex-maclaptop] Unreleased swimming polish after070: longer alternating crawl reach, distinct underwater pull/recovery elbow pole, smaller hip kick plus knee flex and pointed toes. Side inspection exposed floating body: lowered prone presentation20cm and treading15cm without changing movement/collision surface. Added side-view capture mode and updated obsolete first-person swim audit to current requested third-person behavior (visible body, hidden FPS arms, camera outside body and above water). Native side and real camera entry/stroke/settle/tread/return/E remount pass; parked bike drift0cm, body stroke about101cm, real camera distance326.57cm/height70cm above surface. Selected side/rear stroke and treading frames inspected. Original first-person check failure retained as obsolete diagnostic, then corrected audit passed; no runtime first-person mode introduced. Editor build succeeds. Desktop/share070 unchanged; cooked verification needed before release. Continuous swim breathing/body roll/water effects, wider game quality and finish-the-game goal remain incomplete.",
     "2026-09-13 [codex-maclaptop] Candidate071 package built from3d77a6f, normal side/player swimming passed, deep test failed in headless AND rendered run. Diagnosed actual camera collapse326cm->20cm due initial overlap with StaticMeshActor_56: hidden Lake Clara Meer solid shore, RideWater tag, SM_LakeClaraMeerShore. Native fix makes hidden RideWater support primitives ignore ECC_Camera only; physical channels remain. Camera test then passed but image exposed treading through shallow sloping bank. Added walkable shallow-floor exit (floor above water-45cm with full standing capsule clearance) and placement on actual floor. Deep fixture reaches that bank before2.5s, so audit now explicitly verifies >250cm actual swim/stroke then walking exit/full capsule clearance and fixed-bike remount; normal deep-water/tread window retained elsewhere. Final native deep and normal rendered routes pass, bike drift0, normal camera326.57cm/70cm above surface; standing shore image inspected. Initial diagnostic compile errors fixed; current editor build succeeded. NOT released: desktop/share070 unchanged,071 installer draft unexecuted. New source needs recook and fresh packaged normal/deep checks; retain failed original071 reports. Wider swim/world/camera art and full-game goal incomplete."
   ],
-  "unreleased_code_changes": [
-    "2026-09-14 [codex-maclaptop]: Ten market stalls have80 ground-level canopy/table footplates. Saved review map passed80 contact checks and five aisle clearance probes; main-map validation recorded separately. Not packaged; desktop077 unchanged.",
-    "2026-09-14 [codex-maclaptop]: Collected-phone objective panel explains following the gold watch route; shows recalculation when empty and patio entry after tunnel. Native1280x720 bike/foot presentation inspected. Not packaged; desktop077 unchanged.",
-    "2026-09-14 [codex-maclaptop]: Danger status follows objective-panel height to avoid overlap; live drone aim highlights crosshair and existing distance label. Native targeted/off-target1280x720 views inspected. Not packaged; desktop077 unchanged."
-  ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076/The Battle of ATL.app",
-  "compiled_source": "d13d02a3a9656bf09d5ec7ff241a3d3b7f853d44",
-  "installation_report": "Tests/Results/2026-09-14-build077-install.json",
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 078/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
+  "compiled_source": "583b1e1901a94790502749f802fcb18f4cb1e1d3",
+  "installation_report": "Tests/Results/2026-09-14-build078-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 77,
-    "version": "0.77.0",
-    "source_commit": "d13d02a3a9656bf09d5ec7ff241a3d3b7f853d44",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076/The Battle of ATL.app",
-    "machine_code_sha256": "7e9b26b24622a9e93667c81345108bb8b8d00e7efdb83af63a02c2451be951b5",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077.zip",
-    "zip_sha256": "a472438bf54da7c6e9a6fb611e338760b552d7d81289f061e42d0a4924f49b40",
-    "zip_bytes": 1326252071,
+    "build": 78,
+    "version": "0.78.0",
+    "source_commit": "583b1e1901a94790502749f802fcb18f4cb1e1d3",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 078/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
+    "machine_code_sha256": "097ef136791a74859a0ac5d1b9abdcbfbdae95d414e0a886734808c48a7358d7",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 078.zip",
+    "zip_sha256": "8d395159a16209f3c7ce16abee20cb2301a50b84a58610d69bb5bf9d94d555e7",
+    "zip_bytes": 1326258683,
     "reports": [
-      "2026-09-14-build077-balance.json",
-      "2026-09-14-build077-jump.json",
-      "2026-09-14-build077-ammo-bins.json",
-      "2026-09-14-build077-spare-bikes.json"
+      "2026-09-14-build078-hud.json",
+      "2026-09-14-build078-spare-bikes.json",
+      "2026-09-14-build078-finish.json"
     ],
     "verification": [
-      "Packaged rider stop/pedal/grip checks passed",
-      "Packaged jump landing clearance and single airtime reward passed",
-      "Twelve packaged ammo sites grounded, reachable and grant17 rounds",
-      "Six spare bikes and exchange/return checks passed; fourteen wheel probes under1cm",
-      "Four packaged close review images inspected",
+      "Packaged objective/danger/drone HUD captured and inspected in bike and foot views",
+      "Six spare bikes with actual exchange and return preserve carried supplies",
+      "Packaged finish guards, ordered checkpoints, win menu and saved records pass",
       "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
     ],
     "remaining": [
-      "Street signs in shadow, small surface intersections and older paving beyond the replaced sections need visual refinement",
-      "Broader game art, animation, handling and performance remain unfinished",
-      "Other Macs untested; no Developer ID or notarization"
+      "Intermittent Krog route stall remains unresolved despite a subsequent full movement run passing",
+      "Broader art, animation, combat, handling and performance remain unfinished",
+      "Other Macs untested; Developer ID signing and notarization deferred"
     ]
   },
   "latest_wall_fix_playtest": {

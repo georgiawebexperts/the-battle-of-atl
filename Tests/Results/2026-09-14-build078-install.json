@@ -1,0 +1,27 @@
+{
+  "build": 78,
+  "version": "0.78.0",
+  "source_commit": "583b1e1901a94790502749f802fcb18f4cb1e1d3",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 078/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
+  "machine_code_sha256": "097ef136791a74859a0ac5d1b9abdcbfbdae95d414e0a886734808c48a7358d7",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 078.zip",
+  "zip_sha256": "8d395159a16209f3c7ce16abee20cb2301a50b84a58610d69bb5bf9d94d555e7",
+  "zip_bytes": 1326258683,
+  "reports": [
+    "2026-09-14-build078-hud.json",
+    "2026-09-14-build078-spare-bikes.json",
+    "2026-09-14-build078-finish.json"
+  ],
+  "verification": [
+    "Packaged objective/danger/drone HUD captured and inspected in bike and foot views",
+    "Six spare bikes with actual exchange and return preserve carried supplies",
+    "Packaged finish guards, ordered checkpoints, win menu and saved records pass",
+    "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
+  ],
+  "remaining": [
+    "Intermittent Krog route stall remains unresolved despite a subsequent full movement run passing",
+    "Broader art, animation, combat, handling and performance remain unfinished",
+    "Other Macs untested; Developer ID signing and notarization deferred"
+  ]
+}
