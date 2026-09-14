@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "reason": "Isolated replay crossed the stalled location",
+  "seconds": 14.72,
+  "distance_cm": 1077.74,
+  "waypoint": 7,
+  "points": 8,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crossing-replay-warmed.log",
+  "exit_code": 0,
+  "scope": "Isolated diagnostic with explicit initial reposition near stalled crossing. Does not prove uninterrupted full route. Crowd/enemies removed; runtime traffic not disabled.",
+  "collision_log": [
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26050.000 Y=100350.000 Z=885.467 yaw=90.00 blocked=1 actor=StaticMeshActor_87 component=StaticMeshComponent0 normal=X=0.012 Y=-0.043 Z=0.999 speed=0.00",
+    "position=X=26058.316 Y=100618.870 Z=892.319 yaw=82.76 blocked=0 actor=None component=None normal=X=0.000 Y=0.000 Z=0.000 speed=603.87",
+    "position=X=26031.526 Y=101136.242 Z=895.306 yaw=114.78 blocked=0 actor=None component=None normal=X=0.000 Y=0.000 Z=0.000 speed=472.85"
+  ]
+}

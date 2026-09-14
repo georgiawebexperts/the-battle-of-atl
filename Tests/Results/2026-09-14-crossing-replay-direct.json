@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "reason": "Isolated replay crossed the stalled location",
+  "seconds": 2.23,
+  "distance_cm": 1055.32,
+  "waypoint": 1,
+  "points": 2,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crossing-replay-first.log",
+  "exit_code": 0,
+  "scope": "Isolated diagnostic with explicit initial reposition near stalled crossing. Does not prove uninterrupted full route. Crowd/enemies removed; runtime traffic not disabled.",
+  "collision_log": []
+}
