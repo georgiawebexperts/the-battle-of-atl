@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "missing_report": true,
+  "exit_code": 0,
+  "mode": "arcade",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "stopped_by_agent": true,
+  "reason": "No route audit output after over three minutes; process sample confirmed game ticking. Stopped to add mounted-pawn diagnostic."
+}

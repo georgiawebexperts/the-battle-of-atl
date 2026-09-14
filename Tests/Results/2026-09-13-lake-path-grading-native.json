@@ -5,6 +5,6 @@
   "checks": 2097,
   "maximum_height_error_cm": 0.000140188732302704,
   "failures": [],
-  "scope": "Candidate terrain and pavement collision only. Navigation, moving bike and game visuals pending.",
+  "scope": "Candidate terrain and pavement collision only. Navigation is checked separately; moving bike and game visuals pending.",
   "installed": false
 }

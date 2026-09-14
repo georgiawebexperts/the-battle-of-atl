@@ -1,0 +1,73 @@
+{
+  "map_saved": false,
+  "capture": "Static editor scene, diagnostic light intensity40; refreshed water; full textures; no gameplay acceptance",
+  "images": [
+    {
+      "file": "path61853018-before.png",
+      "eye": [
+        -4450,
+        -2480,
+        -100
+      ],
+      "target": [
+        -5100,
+        -1915,
+        -320
+      ],
+      "map": "PiedmontWorld",
+      "sha256": "7286a2262f44c54845767d0cdafd2a15fcd4cbc3d7cb269b4eada0383e8034cc"
+    },
+    {
+      "file": "path182460439-before.png",
+      "eye": [
+        -8600,
+        -400,
+        50
+      ],
+      "target": [
+        -9020,
+        460,
+        -210
+      ],
+      "map": "PiedmontWorld",
+      "sha256": "b017a1c27d3f02bbdb9dbc3f77c6b2297c53e76c7fcccc0234f61bae5f3542ae"
+    },
+    {
+      "file": "path61853018-candidate.png",
+      "eye": [
+        -4450,
+        -2480,
+        -100
+      ],
+      "target": [
+        -5100,
+        -1915,
+        -320
+      ],
+      "map": "PiedmontLakePathGradingReview",
+      "sha256": "9ebeb907e24b8c78b75d0c361d56350e4cd344b62abf5c1c75ade1d5bb492029"
+    },
+    {
+      "file": "path182460439-candidate.png",
+      "eye": [
+        -8600,
+        -400,
+        50
+      ],
+      "target": [
+        -9020,
+        460,
+        -210
+      ],
+      "map": "PiedmontLakePathGradingReview",
+      "sha256": "8e4f3fc160e718cef9877dace95ef10560e7cdb9539464fcb10452420abe91b0"
+    }
+  ],
+  "passed": true,
+  "scope": "Static ridge and seam appearance only",
+  "observations": [
+    "Both candidate views have smoother path slopes.",
+    "Thin grass seam no longer visible at former slit in path61853018 view.",
+    "Material junctions and broader environment art remain unfinished."
+  ]
+}

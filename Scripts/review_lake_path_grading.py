@@ -11,7 +11,8 @@ meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_tex
 new=import_source_landscape(candidate,meta);assert new
 new.set_editor_property('landscape_material',old.get_editor_property('landscape_material'));new.tags=list(old.tags)
 label=old.get_actor_label();ea.destroy_actor(old);new.set_actor_label(label)
-exec(compile((root/'Scripts/import_lake_graded_connections.py').read_text(),'import_lake_graded_connections.py','exec'))
+exec(compile((root/'Scripts/import_lake_graded_connections.py').read_text(),'import_lake_graded_connections.py','exec'), {'__name__':'__main__'})
+exec(compile((root/'Scripts/import_lake_path_seams.py').read_text(),'import_lake_path_seams.py','exec'), {'__name__':'__main__'})
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 raw=array.array('H');raw.frombytes(candidate.read_bytes())
 if sys.byteorder!='little':raw.byteswap()
@@ -33,6 +34,7 @@ for r in survey['samples']:
  row={'osm_id':r['osm_id'],'xyz':[x,y,expected],'height_error_cm':error};checks.append(row)
  if error is None or abs(error)>.1:fail.append(row)
 assert not fail, str(fail[:5])
+exec(compile((root/'Scripts/update_lake_grading_routes.py').read_text(),'update_lake_grading_routes.py','exec'), {'__name__':'__main__'})
 assert unreal.EditorLoadingAndSavingUtils.save_map(world,review)
 assert hashlib.sha256(main.read_bytes()).hexdigest()==before,'Main map changed unexpectedly'
-(root/'Tests/Results/2026-09-13-lake-path-grading-native.json').write_text(json.dumps({'passed':not fail,'review_map':review,'main_map_unchanged_sha256':before,'checks':len(checks),'maximum_height_error_cm':max(abs(c['height_error_cm']) for c in checks),'failures':fail,'scope':'Candidate terrain and pavement collision only. Navigation, moving bike and game visuals pending.','installed':False},indent=2)+'\n')
+(root/'Tests/Results/2026-09-13-lake-path-grading-native.json').write_text(json.dumps({'passed':not fail,'review_map':review,'main_map_unchanged_sha256':before,'checks':len(checks),'maximum_height_error_cm':max(abs(c['height_error_cm']) for c in checks),'failures':fail,'scope':'Candidate terrain and pavement collision only. Navigation is checked separately; moving bike and game visuals pending.','installed':False},indent=2)+'\n')

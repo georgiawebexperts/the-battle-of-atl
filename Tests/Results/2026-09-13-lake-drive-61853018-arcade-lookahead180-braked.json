@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 8532.92,
+  "maxCenterlineErrorCm": 79.93,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-lookahead180-braked",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance."
+}

@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "missing_report": true,
+  "exit_code": 0,
+  "mode": "arcade",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "failure": "Bike entered lake during traversal, then mounted-pawn guard quit.",
+  "lake_entry": "X=-3735.187 Y=-2509.847 Z=-386.334"
+}

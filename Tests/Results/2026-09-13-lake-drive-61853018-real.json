@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 8951.15,
+  "maxCenterlineErrorCm": 127.55,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance."
+}

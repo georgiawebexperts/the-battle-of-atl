@@ -1,0 +1,17 @@
+{
+  "installed": false,
+  "scope": "Candidate geometry; compares ordinary keyboard drivers, not user-facing feel.",
+  "findings": [
+    "Arcade 350cm lookahead without braking entered lake.",
+    "Arcade 180cm lookahead without braking exceeded180cm path-center error.",
+    "Arcade 180cm lookahead with normal brake input before bends completed loop both directions, max error79.93cm.",
+    "Realistic mode completed loop both directions, max error127.55cm.",
+    "Arcade completed short182460439 connector both directions."
+  ],
+  "gameplay_physics_changed": false,
+  "next": [
+    "Long duplicate61853018 route must be selected explicitly and driven.",
+    "Actual gameplay camera review before integration.",
+    "Preserve broader handling/art requirements beyond these checks."
+  ]
+}

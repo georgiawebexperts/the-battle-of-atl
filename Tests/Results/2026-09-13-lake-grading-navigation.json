@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "changed_routes": [
+    {
+      "label": "OSM path 28798718 part 4",
+      "id": "28798718",
+      "max_shift_cm": 18.19312516490698
+    },
+    {
+      "label": "OSM path 28798751 part 5",
+      "id": "28798751",
+      "max_shift_cm": 15.522721145015105
+    },
+    {
+      "label": "OSM path 61490698 part 9",
+      "id": "61490698",
+      "max_shift_cm": 0.234154223289688
+    },
+    {
+      "label": "OSM path 61853018 part 24",
+      "id": "61853018",
+      "max_shift_cm": 31.176095511213212
+    },
+    {
+      "label": "OSM path 61853018 part 25",
+      "id": "61853018",
+      "max_shift_cm": 34.5511273165658
+    },
+    {
+      "label": "OSM path 102679944 part 33",
+      "id": "102679944",
+      "max_shift_cm": 1.6819592293057184
+    },
+    {
+      "label": "OSM path 182313905 part 61",
+      "id": "182313905",
+      "max_shift_cm": 4.1898935936081445
+    },
+    {
+      "label": "OSM path 182313908 part 63",
+      "id": "182313908",
+      "max_shift_cm": 4.568144512571045
+    },
+    {
+      "label": "OSM path 182460437 part 103",
+      "id": "182460437",
+      "max_shift_cm": 24.730080235016267
+    },
+    {
+      "label": "OSM path 182460439 part 104",
+      "id": "182460439",
+      "max_shift_cm": 27.097214360704346
+    }
+  ],
+  "checks": [
+    {
+      "label": "OSM path 28798718 part 4",
+      "start": "<Struct 'Vector' (0x421ed8ce0) {x: -8581.094555, y: 292.192843, z: -252.464071}>",
+      "end": "<Struct 'Vector' (0x421ed90a0) {x: -9019.104304, y: 903.745241, z: -252.933252}>",
+      "direct_cm": 752.2294171606015,
+      "navigation_cm": 752.2403564453125,
+      "passed": true
+    },
+    {
+      "label": "OSM path 28798751 part 5",
+      "start": "<Struct 'Vector' (0x421ee4c40) {x: -9449.269452, y: 586.546870, z: -187.875455}>",
+      "end": "<Struct 'Vector' (0x421ee5000) {x: -9049.782800, y: -47.199545, z: -180.200206}>",
+      "direct_cm": 749.1882360820707,
+      "navigation_cm": 749.2005004882812,
+      "passed": true
+    },
+    {
+      "label": "OSM path 61490698 part 9",
+      "start": "<Struct 'Vector' (0x421eeaf90) {x: -8437.865319, y: 1358.466306, z: -280.480835}>",
+      "end": "<Struct 'Vector' (0x421eeb350) {x: -9194.920229, y: 1522.330025, z: -269.091675}>",
+      "direct_cm": 774.6697158898195,
+      "navigation_cm": 774.674072265625,
+      "passed": true
+    },
+    {
+      "label": "OSM path 61853018 part 24",
+      "start": "<Struct 'Vector' (0x421ef58c0) {x: -4964.226982, y: -1918.182192, z: -352.380913}>",
+      "end": "<Struct 'Vector' (0x421ef5aa0) {x: -4943.418081, y: -2261.058700, z: -358.635057}>",
+      "direct_cm": 343.56429389276485,
+      "navigation_cm": 343.544921875,
+      "passed": true
+    },
+    {
+      "label": "OSM path 61853018 part 25",
+      "start": "<Struct 'Vector' (0x421f020e0) {x: -4964.226982, y: -1918.182192, z: -352.380913}>",
+      "end": "<Struct 'Vector' (0x421f02360) {x: -5242.507226, y: -2182.347251, z: -319.697244}>",
+      "direct_cm": 385.08608722655714,
+      "navigation_cm": 384.8387451171875,
+      "passed": true
+    },
+    {
+      "label": "OSM path 102679944 part 33",
+      "start": "<Struct 'Vector' (0x421efaef0) {x: -5569.608339, y: -1347.048009, z: -311.740967}>",
+      "end": "<Struct 'Vector' (0x421efb2b0) {x: -5837.790367, y: -2060.083871, z: -301.112199}>",
+      "direct_cm": 761.8757852093759,
+      "navigation_cm": 761.8629760742188,
+      "passed": true
+    },
+    {
+      "label": "OSM path 182313905 part 61",
+      "start": "<Struct 'Vector' (0x421f3f080) {x: -8671.454757, y: 753.924838, z: -266.937304}>",
+      "end": "<Struct 'Vector' (0x421f3f260) {x: -8305.715503, y: 611.815639, z: -274.336057}>",
+      "direct_cm": 392.447407941041,
+      "navigation_cm": 392.52020263671875,
+      "passed": true
+    },
+    {
+      "label": "OSM path 182313908 part 63",
+      "start": "<Struct 'Vector' (0x421f447e0) {x: -8418.492520, y: 370.338297, z: -265.978260}>",
+      "end": "<Struct 'Vector' (0x421f44ba0) {x: -8878.651135, y: 994.548365, z: -266.636611}>",
+      "direct_cm": 775.4899051035521,
+      "navigation_cm": 775.5020141601562,
+      "passed": true
+    },
+    {
+      "label": "OSM path 182460437 part 103",
+      "start": "<Struct 'Vector' (0x421f5d2d0) {x: -9147.743446, y: 356.879217, z: -195.949847}>",
+      "end": "<Struct 'Vector' (0x421f5d370) {x: -9248.064176, y: 287.292281, z: -184.045038}>",
+      "direct_cm": 122.67157322174394,
+      "navigation_cm": 122.47933197021484,
+      "passed": true
+    },
+    {
+      "label": "OSM path 182460439 part 104",
+      "start": "<Struct 'Vector' (0x421f5d500) {x: -8785.234291, y: 604.767634, z: -252.972011}>",
+      "end": "<Struct 'Vector' (0x421f5d690) {x: -9051.810782, y: 423.988189, z: -211.632202}>",
+      "direct_cm": 324.7356049547441,
+      "navigation_cm": 324.39605712890625,
+      "passed": true
+    }
+  ],
+  "navigation_build_finished": true,
+  "installed": false
+}
