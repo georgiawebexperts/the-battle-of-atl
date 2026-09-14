@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "reason": "Rode from park start and collected phone through proximity; no teleport",
+  "seconds": 71.47,
+  "distance_cm": 36097.13,
+  "waypoint": 59,
+  "points": 60,
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/phone-ride-first.log",
+  "fixture": [
+    "phone=X=-7887.006 Y=11401.135 Z=150.722 way=102679946 start=X=-16926.268 Y=-5098.000 Z=200.705 points=60"
+  ],
+  "scope": "One random phone from normal park start with tutorial skipped; ordinary W/A/D/brake. Existing crowd/enemies removed and traffic population disabled. No teleport. Not combat, all possible phone sites, complete start-to-finish or subjective fun acceptance."
+}
