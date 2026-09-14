@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "packaged": false,
+  "vehicle_fixture": true,
+  "runs": [
+    {
+      "passed": true,
+      "phase": 7,
+      "reason": "Walking-speed wall contact, reverse escape, reverse steering, brake-only stop and forward departure pass",
+      "reverse_speed": 0.0,
+      "mode": "arcade",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-2b195647dc844f5a9057cff7570f1e7b.log",
+      "exit_code": 0
+    },
+    {
+      "passed": true,
+      "phase": 7,
+      "reason": "Walking-speed wall contact, reverse escape, reverse steering, brake-only stop and forward departure pass",
+      "reverse_speed": 0.0,
+      "mode": "realistic",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-0c396e8542bd42028efb07b44757af49.log",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Actual key input against stationary box tagged RideVehicle, exercising traffic collision branch. Both modes reverse >100cm, steer backward, stop and depart. Not an actual moving car or Krog reproduction."
+}

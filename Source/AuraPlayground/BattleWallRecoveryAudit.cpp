@@ -11,6 +11,7 @@ void TickBattleWallRecoveryAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  struct FState{int Phase=0;float Clock=0,Yaw=0;FVector Contact,Start;bool Done=false;};static FState S;
  if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
+ const bool Vehicle=FParse::Param(FCommandLine::Get(),TEXT("BattleVehicleRecoveryAudit"));
  auto* B=Cast<ABattleBike>(PC->GetPawn());if(!B)return;auto* M=B->Ride.Get();S.Clock+=Dt;
  auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Passed,const TCHAR* Why){S.Done=true;for(FKey K:{EKeys::W,EKeys::S,EKeys::Right,EKeys::SpaceBar})Key(K,false);UE_LOG(LogTemp,Display,TEXT("WallRecoveryAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"reverse_speed\":%.2f}"),Passed?TEXT("true"):TEXT("false"),S.Phase,Why,M->ReverseSpeed);PC->ConsoleCommand(TEXT("quit"));};
@@ -18,8 +19,8 @@ void TickBattleWallRecoveryAudit(APlayerController* PC,float Dt){
  auto Next=[&](){++S.Phase;S.Clock=0;};
  if(S.Phase==2&&S.Clock>.1f)Key(EKeys::W,false); // Brief nudge into the wall, below riding-impact speed.
  if(S.Phase==0){
-  auto Cube=[&](FVector P,FVector Scale){auto* A=PC->GetWorld()->SpawnActor<AStaticMeshActor>();auto* Mesh=A->GetStaticMeshComponent();Mesh->SetMobility(EComponentMobility::Movable);Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));Mesh->SetCollisionProfileName(TEXT("BlockAll"));A->SetActorScale3D(Scale);A->SetActorLocation(P);A->Tags.Add(TEXT("RidePath"));};
-  Cube(FVector(0,0,30000),FVector(80,80,1));Cube(FVector(350,0,30200),FVector(1,10,3));
+  auto Cube=[&](FVector P,FVector Scale){auto* A=PC->GetWorld()->SpawnActor<AStaticMeshActor>();auto* Mesh=A->GetStaticMeshComponent();Mesh->SetMobility(EComponentMobility::Movable);Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));Mesh->SetCollisionProfileName(TEXT("BlockAll"));A->SetActorScale3D(Scale);A->SetActorLocation(P);A->Tags.Add(TEXT("RidePath"));return A;};
+  Cube(FVector(0,0,30000),FVector(80,80,1));auto* Obstacle=Cube(FVector(350,0,30200),FVector(1,10,3));if(Vehicle)Obstacle->Tags.Add(TEXT("RideVehicle"));
   M->StopMovementImmediately();M->Speed=M->ReverseSpeed=0;M->bRealHandling=FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingAudit"));
   B->SetActorLocationAndRotation(FVector(240,0,30150),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);M->SetMovementMode(MOVE_Walking);M->bForceNextFloorCheck=true;Next();
  }else if(S.Phase==1&&S.Clock>.4f){WCHECK(M->IsMovingOnGround(),"Fixture not grounded");Key(EKeys::W,true);Next();}
