@@ -1365,3 +1365,14 @@ The first OBJ import triggered a handled Unreal Interchange ensure because UV in
 Fresh baseline balance check passed before editing. After the change, close-camera native balance check passed: ground error 1.076 cm, pedal error 0.199 cm, wrist error 0.0 cm. Inspected pedaling, stopped and brake-3 images in work/feature-balance-1add1a362cf1465a921152bdb8a00762. The rectangular protrusion is replaced by a visibly rounded saddle. Current checks cover stop/start/braking, not hard landing compression or every rider-mesh intersection. Hard landings and more natural finger contact still need review. Scripts/test_mac_new_features.py now accepts --saddle-close for the balance review camera.
 
 Not packaged. Desktop/share076 remains installed; its source commit is 1b7d46c's parent b78635e. Do not claim this saddle is in076. Broader game goal remains unfinished.
+
+
+2026-09-13 [codex-maclaptop] — Landing saddle clearance repaired, unreleased
+
+Extended the native jump audit through the post-touchdown compression window: measure pelvis position in the bike frame using the same 96 cm saddle clearance envelope as the stop/start audit, keep checking pedal contact, and check wrist contact during landing. Added --saddle-close to the jump runner for a close side view.
+
+The baseline failed: minimum pelvis Z was 93.619 cm during a real J jump and landing. The existing pose added 8 cm of downward compression after the airborne lift was already settling. Reduced this extra compression to 2 cm, retaining airborne settling, torso recoil and existing limb solves. The failure is retained in Tests/Results/2026-09-13-landing-saddle-before.json.
+
+Editor build and subsequent rendered jumps passed. Level ground: minimum pelvis Z 98.371 cm, maximum pedal error 2.565 cm across 298 samples. Realistic downhill at measured grade -0.0471: minimum pelvis Z 98.274 cm, maximum pedal error 2.404 cm across 342 samples. Both passed hand contact, clean landing, one +10-second reward, and stationary/midair/stun/end guards. Flat before/after landing close-ups were inspected. Reports: 2026-09-13-landing-saddle-fixed.json and 2026-09-13-landing-saddle-downhill-real.json. These checks cover normal J jumps and the tested downhill landing, not every arbitrary drop or every body-surface intersection.
+
+Not packaged. Desktop/share076 remains installed; the rounded saddle and landing correction are source changes for a future build. More natural finger contact on the handlebars remains a visible rider issue. Full game completion is not claimed.

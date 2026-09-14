@@ -219,7 +219,10 @@ void ABattleBike::PoseRider(float Dt){
  // departure this reverses: rise first, then slide back onto the seat.
  const float StandForward=FMath::SmoothStep(0.f,.45f,RiderBalanceBlend);
  const float StandLower=FMath::SmoothStep(.45f,1.f,RiderBalanceBlend);
- const FVector Hip(0,-23+RiderAirBlend*5+StandForward*35,99+RiderAirBlend*9-Compress*8-StandLower*16);
+ // The airborne lift already supplies the landing travel. Only two extra
+ // centimeters of settling fit above the saddle; deeper recoil belongs in
+ // the torso and limb bends, not inside the seat.
+ const FVector Hip(0,-23+RiderAirBlend*5+StandForward*35,99+RiderAirBlend*9-Compress*2-StandLower*16);
  const int Pelvis=Index(TEXT("Hips"));MoveBranch(Pelvis,Hip,FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-28.f+RiderBalanceBlend*12.f-RiderBrakeLean-8.f*FMath::Abs(Ride->SmoothedSteer)-8.f*RiderAirBlend-Compress*7.f)));
  // Let the shoulders follow the bar while the hips remain over the saddle.
  const int Spine=Index(TEXT("Abdomen"));if(Spine>=0)MoveBranch(Spine,Pose[Spine].GetLocation(),FQuat(FVector::UpVector,FMath::DegreesToRadians(Ride->SmoothedSteer*20.f)));

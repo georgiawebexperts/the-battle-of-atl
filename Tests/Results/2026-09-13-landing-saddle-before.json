@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "stage": 4,
+  "reason": "Landing lowered pelvis into saddle clearance envelope",
+  "rewards": 1,
+  "peak_cm": 143.48,
+  "air_seconds": 0.797,
+  "hill": false,
+  "downhill": false,
+  "realistic": false,
+  "takeoff_diagnostics": [],
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "low_speed": false,
+  "crest": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/jump-f59ddc5ed31b4dac97662dd7e5049f28.log",
+  "landing_saddle": [
+    [
+      "93.619",
+      "0"
+    ]
+  ],
+  "pedal_contact": [],
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-a304f07938784cf0918f0127fe9bbf10/takeoff.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-a304f07938784cf0918f0127fe9bbf10/airborne.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hill-jump-review-a304f07938784cf0918f0127fe9bbf10/landing.png"
+  ],
+  "captures_complete": true
+}
