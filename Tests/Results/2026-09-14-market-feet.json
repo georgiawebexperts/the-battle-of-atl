@@ -1,0 +1,968 @@
+{
+  "passed": true,
+  "count": 80,
+  "map_saved": false,
+  "max_absolute_gap_cm": 1.0048097465187311e-06,
+  "feet": [
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 0,
+      "xyz": [
+        -18845.513594137832,
+        2704.014273407121,
+        -149.00758361816406
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 1,
+      "xyz": [
+        -18853.204837952097,
+        3003.9156651487892,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": -5.438778316602111e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 2,
+      "xyz": [
+        -18545.61220239616,
+        2711.705517221385,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 3,
+      "xyz": [
+        -18553.303446210426,
+        3011.6069089630532,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": 9.45419742492959e-10,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 4,
+      "xyz": [
+        -18790.404436871864,
+        2895.49007027303,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 5,
+      "xyz": [
+        -18791.4299360471,
+        2935.476922505253,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": -2.726665115915239e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 6,
+      "xyz": [
+        -18610.463601826865,
+        2900.104816561589,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 1 Metal",
+      "foot": 7,
+      "xyz": [
+        -18611.4891010021,
+        2940.091668793811,
+        -149.00758361816406
+      ],
+      "support": "12th Street market 1 adjustable foot",
+      "bottom_gap_cm": 9.868017514236271e-10,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 0,
+      "xyz": [
+        -18570.73694635775,
+        3691.383410596861,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": 9.799509825825226e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 1,
+      "xyz": [
+        -18563.04567446318,
+        3391.4820195753387,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": 9.888026397675276e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 2,
+      "xyz": [
+        -18870.63833737927,
+        3683.6921387022935,
+        -169.10406494140625
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Concrete_2_15"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 3,
+      "xyz": [
+        -18862.947065484703,
+        3383.7907476807713,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": 3.353741249156883e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 4,
+      "xyz": [
+        -18625.846085695495,
+        3499.9076085709835,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": -1.4003785508975852e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 5,
+      "xyz": [
+        -18624.820582776218,
+        3459.9207564347803,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": -1.1279144018772058e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 6,
+      "xyz": [
+        -18805.78692030841,
+        3495.2928454342427,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": 1.772373252606485e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 2 Metal",
+      "foot": 7,
+      "xyz": [
+        -18804.76141738913,
+        3455.30599329804,
+        -169.10406494140625
+      ],
+      "support": "12th Street market 2 adjustable foot",
+      "bottom_gap_cm": 2.1759638002549764e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 0,
+      "xyz": [
+        -18445.64507181211,
+        2714.2692650230597,
+        -157.89039611816406
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 1,
+      "xyz": [
+        -18453.336315626373,
+        3014.170656764728,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": -1.8108039512299001e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 2,
+      "xyz": [
+        -18145.743680070438,
+        2721.9605088373237,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": 5.052243068348616e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 3,
+      "xyz": [
+        -18153.434923884703,
+        3021.861900578992,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 4,
+      "xyz": [
+        -18390.53591454614,
+        2905.745061888969,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 5,
+      "xyz": [
+        -18391.561413721378,
+        2945.7319141211915,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 6,
+      "xyz": [
+        -18210.59507950114,
+        2910.3598081775276,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 3 Metal",
+      "foot": 7,
+      "xyz": [
+        -18211.620578676375,
+        2950.34666040975,
+        -157.89039611816406
+      ],
+      "support": "12th Street market 3 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 0,
+      "xyz": [
+        -18170.868424032025,
+        3701.6384022127995,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": -7.116659617167898e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 1,
+      "xyz": [
+        -18163.177152137458,
+        3401.7370111912774,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": 4.3238560465397313e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 2,
+      "xyz": [
+        -18470.769815053547,
+        3693.947130318232,
+        -178.24591010515337
+      ],
+      "support": null,
+      "bottom_gap_cm": -3.2593584364803974e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 3,
+      "xyz": [
+        -18463.07854315898,
+        3394.04573929671,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": 3.9238398130692076e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 4,
+      "xyz": [
+        -18225.97756336977,
+        3510.162600186922,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": -3.695299710670952e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 5,
+      "xyz": [
+        -18224.952060450494,
+        3470.175748050719,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": 3.0164073905325495e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 6,
+      "xyz": [
+        -18405.918397982685,
+        3505.5478370501814,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": 3.0534852157870773e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 4 Metal",
+      "foot": 7,
+      "xyz": [
+        -18404.892895063407,
+        3465.5609849139787,
+        -178.24591010515337
+      ],
+      "support": "12th Street market 4 adjustable foot",
+      "bottom_gap_cm": 4.046921731060138e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 0,
+      "xyz": [
+        -18012.019269911423,
+        2728.5685642851568,
+        -167.6277313232422
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 1,
+      "xyz": [
+        -18040.45212491073,
+        3027.2181461643017,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 2,
+      "xyz": [
+        -17713.36968803228,
+        2757.001419284466,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 3,
+      "xyz": [
+        -17741.802543031587,
+        3055.651001163611,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": -9.36279320740141e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 4,
+      "xyz": [
+        -17970.29682836849,
+        2923.399870475144,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 5,
+      "xyz": [
+        -17974.08787570173,
+        2963.2198147256963,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 6,
+      "xyz": [
+        -17791.107079241003,
+        2940.4595834747292,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": -3.971081241616048e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 5 Metal",
+      "foot": 7,
+      "xyz": [
+        -17794.898126574244,
+        2980.279527725282,
+        -167.6277313232422
+      ],
+      "support": "12th Street market 5 adjustable foot",
+      "bottom_gap_cm": -3.840796125587076e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 0,
+      "xyz": [
+        -17806.25032864769,
+        3732.5900364293393,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": 3.078996542171808e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 1,
+      "xyz": [
+        -17777.81751092495,
+        3433.94045100129,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": -3.4986555874638725e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 2,
+      "xyz": [
+        -18104.899914075737,
+        3704.1572187065995,
+        -187.44430359570333
+      ],
+      "support": null,
+      "bottom_gap_cm": 1.0048097465187311e-06,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 3,
+      "xyz": [
+        -18076.467096352997,
+        3405.50763327855,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": 2.6804650588019285e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 4,
+      "xyz": [
+        -17847.972794508896,
+        3537.758735447027,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": -2.3008419702819083e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 5,
+      "xyz": [
+        -17844.181752145865,
+        3497.938790723287,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": -8.419328878517263e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 6,
+      "xyz": [
+        -18027.162545765725,
+        3520.699044813383,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": -1.0311259757145308e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 6 Metal",
+      "foot": 7,
+      "xyz": [
+        -18023.371503402694,
+        3480.879100089643,
+        -187.44430359570333
+      ],
+      "support": "12th Street market 6 adjustable foot",
+      "bottom_gap_cm": -3.19255832437193e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 0,
+      "xyz": [
+        -17570.04185121935,
+        2775.002237368712,
+        -173.2886962890625
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 1,
+      "xyz": [
+        -17625.47576624649,
+        3069.836226360422,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 3.0390538086066954e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 2,
+      "xyz": [
+        -17275.20786222764,
+        2830.4361523958514,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 3,
+      "xyz": [
+        -17330.64177725478,
+        3125.2701413875616,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 4,
+      "xyz": [
+        -17546.183199604864,
+        2972.817213402223,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 1.0772282621474005e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 5,
+      "xyz": [
+        -17553.57438827515,
+        3012.128411934451,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 1.070361577149015e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 6,
+      "xyz": [
+        -17369.282806209838,
+        3006.0775624185067,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 7 Metal",
+      "foot": 7,
+      "xyz": [
+        -17376.673994880122,
+        3045.3887609507346,
+        -173.2886962890625
+      ],
+      "support": "12th Street market 7 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 0,
+      "xyz": [
+        -17456.29197413705,
+        3793.560505715216,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": -2.2626863938057795e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 1,
+      "xyz": [
+        -17400.858083636424,
+        3498.7265121120963,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": 1.3693170330952853e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 2,
+      "xyz": [
+        -17751.125967740172,
+        3738.126615214589,
+        -192.21426338949186
+      ],
+      "support": null,
+      "bottom_gap_cm": 6.544405550812371e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 3,
+      "xyz": [
+        -17695.692077239546,
+        3443.2926216114693,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": -1.0167968866880983e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 4,
+      "xyz": [
+        -17480.150642207278,
+        3595.745531666448,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": 2.1818550521857105e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 5,
+      "xyz": [
+        -17472.759456807195,
+        3556.4343325193654,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": 1.4124452718533576e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 6,
+      "xyz": [
+        -17657.05103836915,
+        3562.485197366072,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": -5.840888661623467e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 8 Metal",
+      "foot": 7,
+      "xyz": [
+        -17649.659852969067,
+        3523.1739982189893,
+        -192.21426338949186
+      ],
+      "support": "12th Street market 8 adjustable foot",
+      "bottom_gap_cm": -1.0705343811423518e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 0,
+      "xyz": [
+        -17128.760452657007,
+        2859.4612512850017,
+        -178.60723876953125
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 1,
+      "xyz": [
+        -17213.540209174764,
+        3147.2326760039778,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 2,
+      "xyz": [
+        -16840.98902793803,
+        2944.2410078027624,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": -1.1095835361629725e-09,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 3,
+      "xyz": [
+        -16925.768784455788,
+        3232.0124325217384,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": -2.7423084247857332e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 4,
+      "xyz": [
+        -17124.90001350779,
+        3058.672438243905,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 5,
+      "xyz": [
+        -17136.203981043494,
+        3097.0419615397686,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 6,
+      "xyz": [
+        -16952.237158676406,
+        3109.5402921545615,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": -1.2068994692526758e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 9 Metal",
+      "foot": 7,
+      "xyz": [
+        -16963.54112621211,
+        3147.909815450425,
+        -178.60723876953125
+      ],
+      "support": "12th Street market 9 adjustable foot",
+      "bottom_gap_cm": -1.2353439160506241e-08,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 0,
+      "xyz": [
+        -17117.936221385597,
+        3884.2943214417187,
+        -189.09922790527344
+      ],
+      "support": null,
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Concrete_2_15"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 1,
+      "xyz": [
+        -17033.156484011422,
+        3596.52289108289,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 4.934101980325067e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 2,
+      "xyz": [
+        -17405.707651744422,
+        3799.514584067545,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 2.575832240836462e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 3,
+      "xyz": [
+        -17320.927914370248,
+        3511.7431537087164,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 4,
+      "xyz": [
+        -17121.796673787052,
+        3685.083134739626,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 5,
+      "xyz": [
+        -17110.492708803828,
+        3646.713610691782,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 2.6533166419540066e-07,
+      "ground": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 6,
+      "xyz": [
+        -17294.459532002347,
+        3634.2152923151216,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    },
+    {
+      "stall": "12th Street market 10 Metal",
+      "foot": 7,
+      "xyz": [
+        -17283.155567019123,
+        3595.845768267278,
+        -189.09922790527344
+      ],
+      "support": "12th Street market 10 adjustable foot",
+      "bottom_gap_cm": 0.0,
+      "ground": "Park pavement SM_Park_Asphalt_2_15"
+    }
+  ]
+}

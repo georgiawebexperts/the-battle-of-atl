@@ -1,0 +1,21 @@
+{
+  "map_saved": false,
+  "main_map_sha256": "7eb85397e6ac45dbcb8ca3a2f91f60322a41c35baf8d09f2fd336ce9ba88fa95",
+  "changed_metal_instances": 10,
+  "new_ground_plates": 80,
+  "images": [
+    "../../../../Projects/AuraPlayground/work/market-grounded-feet/before.png",
+    "../../../../Projects/AuraPlayground/work/market-grounded-feet/after.png"
+  ],
+  "scope": "Transient visual candidate. New metal mesh asset saved, main map unchanged. Native contact and collision acceptance of candidate pending.",
+  "visual_review": true,
+  "findings": [
+    "Before image has wide canopy pads above thin leg extensions.",
+    "After image places wide pads at the supporting ground and adds small table footplates.",
+    "All80 original support contacts already passed native audit. This is an art correction, not a fix for unsupported collision."
+  ],
+  "remaining": [
+    "Candidate is transient; not saved into main map or packaged",
+    "Fresh saved-map contact/collision validation required before release"
+  ]
+}

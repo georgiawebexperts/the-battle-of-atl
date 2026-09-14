@@ -1,0 +1,15 @@
+{
+  "status": "source geometry; native material/import/render/collision acceptance pending",
+  "dimensions_cm": [
+    300,
+    300,
+    285
+  ],
+  "surfaces": [
+    {
+      "file": "SM_MarketStall_Metal.obj",
+      "material": "Metal",
+      "triangles": 448
+    }
+  ]
+}

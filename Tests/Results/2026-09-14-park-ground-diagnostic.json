@@ -1,0 +1,16 @@
+{
+  "map_saved": false,
+  "images": [
+    "../../../../Projects/AuraPlayground/work/park-ground-diagnostic/baseline.png",
+    "../../../../Projects/AuraPlayground/work/park-ground-diagnostic/lod0.png",
+    "../../../../Projects/AuraPlayground/work/park-ground-diagnostic/landscape-hidden.png"
+  ],
+  "force_lod": 0,
+  "scope": "One market station only; does not establish all park pavement is correct.",
+  "visual_review": true,
+  "findings": [
+    "Baseline and forced LOD0 have the same path footprint at the sampled market station.",
+    "With landscape hidden, the same angular island remains absent from the pavement mesh. This sampled grass island is a footprint gap, not evidence of terrain breaking through pavement.",
+    "Original and active heightmaps are identical in a41x41sample region around this station."
+  ]
+}

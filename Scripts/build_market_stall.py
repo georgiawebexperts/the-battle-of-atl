@@ -1,8 +1,9 @@
 """Author an original reusable produce stall; dimensions in game centimetres."""
-import math,json
+import math,json,argparse
+parser=argparse.ArgumentParser();parser.add_argument("--grounded-feet",action="store_true");args=parser.parse_args()
 import numpy as np
 from pathlib import Path
-root=Path(__file__).resolve().parents[1];out=root/'SourceAssets/Terrain/TwelfthMarket/Stall';out.mkdir(exist_ok=True)
+root=Path(__file__).resolve().parents[1];out=root/'SourceAssets/Terrain/TwelfthMarket/Stall';out=out/'GroundedFeet' if args.grounded_feet else out;out.mkdir(parents=True,exist_ok=True)
 groups={k:[] for k in ['Canvas','Metal','Wood','Leaf','Tomato','Cloth']}
 def face(m,p):
  for i in range(1,len(p)-1):groups[m].append([p[0],p[i],p[i+1]])
@@ -23,7 +24,7 @@ for k,(x,y) in enumerate(corners):
   t0=i/20;t1=(i+1)/20
   a=(x+(nx-x)*t0,y+(ny-y)*t0,220-3*math.sin(math.pi*t0));b=(x+(nx-x)*t1,y+(ny-y)*t1,220-3*math.sin(math.pi*t1))
   face('Canvas',[(0,0,285),a,b]);face('Canvas',[a,(a[0],a[1],201),(b[0],b[1],201),b])
- box('Metal',(x,y,3),(16,16,6))
+ if not args.grounded_feet:box('Metal',(x,y,3),(16,16,6))
 # Folding vendor table faces the centre aisle (-Y).
 box('Wood',(0,-60,78),(220,65,5));box('Cloth',(0,-60,81),(224,69,1));box('Cloth',(0,-95,66),(224,1,30))
 for x in [-90,90]:
@@ -45,6 +46,7 @@ for cx in [-73,0,73]:
      face('Leaf' if cx==0 else 'Tomato',[point(lat,lon),point(lat+1,lon),point(lat+1,lon+1),point(lat,lon+1)])
 manifest=[]
 for name,triangles in groups.items():
+ if args.grounded_feet and name!='Metal':continue
  lines=['# Original authored market stall geometry, centimetres']
  for tri in triangles:
   for p in tri:lines.append('v '+' '.join(f'{v:.4f}' for v in p))
