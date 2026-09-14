@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48489.07,
+  "maxCenterlineErrorCm": 103.55,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-rendered-lookahead300-gate",
+  "map": "PiedmontPrideStreetReview",
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/32479ce2d75246c29091fd8a2d92f29b/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/32479ce2d75246c29091fd8a2d92f29b/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/32479ce2d75246c29091fd8a2d92f29b/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/32479ce2d75246c29091fd8a2d92f29b/leg1-view1.png"
+  ],
+  "scope": "Candidate full street-to-gate round trip with real keyboard input, pavement gate and exactly one timer start; not packaged.",
+  "gate_starts": 1,
+  "visual_review": {
+    "image": "leg1-view0.png",
+    "start_banner_readable": true,
+    "finding": "Older tutorial/gate pavement has conspicuous block joins and edge artifacts; visual polish incomplete."
+  }
+}

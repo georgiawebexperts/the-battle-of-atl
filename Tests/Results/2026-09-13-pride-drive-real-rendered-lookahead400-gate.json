@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 47836.1,
+  "maxCenterlineErrorCm": 93.73,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real-rendered-lookahead400-gate",
+  "map": "PiedmontPrideStreetReview",
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/398ce34c169648d4bd81e6e7bd548224/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/398ce34c169648d4bd81e6e7bd548224/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/398ce34c169648d4bd81e6e7bd548224/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/398ce34c169648d4bd81e6e7bd548224/leg1-view1.png"
+  ],
+  "scope": "Candidate full street-to-gate round trip with real keyboard input, pavement gate and exactly one timer start; not packaged.",
+  "gate_starts": 1
+}
