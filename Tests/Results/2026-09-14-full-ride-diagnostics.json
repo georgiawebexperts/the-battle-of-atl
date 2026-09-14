@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "reason": "Phone, ordered checkpoints, tunnel and finish reached through driving",
+  "seconds": 494.03,
+  "distance_cm": 195440.06,
+  "waypoint": 397,
+  "points": 398,
+  "full_route_requested": true,
+  "stages": [
+    "stage=1 points=655 position=X=-13589.752 Y=5608.939 Z=-164.726 target=X=27579.888 Y=49480.913 Z=147.023",
+    "stage=2 points=957 position=X=27465.902 Y=49182.453 Z=241.959 target=X=25807.478 Y=102714.336 Z=814.694",
+    "stage=3 points=398 position=X=25801.124 Y=102397.055 Z=907.687 target=X=30425.109 Y=121416.754 Z=982.753"
+  ],
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/phone-ride-efbe8926da3f4936a1434f89c19f6f45.log",
+  "fixture": [
+    "phone=X=-13474.562 Y=5696.972 Z=-179.739 way=28798697 start=X=-16926.268 Y=-5098.000 Z=200.705 points=21"
+  ],
+  "failure": [],
+  "scope": "One uninterrupted native editor ride, rendering enabled: normal park start with tutorial skipped, actual phone proximity collection, both ordered checkpoints, tunnel crossing and normal win trigger. Ordinary W/A/D/brake inputs, no teleport, no artificial inventory/checkpoint changes. Existing pedestrians/zombies removed; crowd population and enemy spawning disabled. Road traffic retained. Not packaged, all-phone-site, combat, home tutorial, visual/audio quality or subjective fun acceptance.",
+  "finish": [
+    "won=1 elapsed=495.97 remaining=584.03 saved=1"
+  ],
+  "limitations": [
+    "Previous full attempt stalled intermittently before Krog Street Market and remains unresolved.",
+    "Diagnostic waypoint-age timeout can falsely flag a long clear segment; driver must be distinguished from game behavior.",
+    "No full-run video or final-camera image review."
+  ]
+}
