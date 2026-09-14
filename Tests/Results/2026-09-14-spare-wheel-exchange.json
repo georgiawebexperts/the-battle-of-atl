@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "phase": 2,
+  "bikes": 6,
+  "reason": "Switch lost carried state",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-bikes-b760b4bb22124304bc708955b89bb2e9/spare-bike.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-bikes-b760b4bb22124304bc708955b89bb2e9/run.log",
+  "exit_code": 0,
+  "packaged": false
+}

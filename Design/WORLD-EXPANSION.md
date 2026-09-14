@@ -1402,3 +1402,14 @@ Editor build passed. Rendered map audit passed for all twelve pickups: twelve cl
 The same image shows an apparently elevated spare bike beside the bin. Next investigate wheel-to-ground placement of cloned spare-bike parts; do not assume the capsule origin proves wheel contact. Source: BattleSpareBikes.cpp Create/SpawnStations. Current model case artwork is still a simple box and broader terrain/paving/art remain unfinished.
 
 Not packaged. Desktop/share076 remains installed. Rounded saddle, landing correction, thumb grip and grounded pickup case changes await a later playtest.
+
+
+2026-09-14 [codex-maclaptop] — Spare-bike wheel seating repaired, unreleased
+
+Measured visible wheel bounds at all six native spare stations. Baseline gaps ranged from -0.052 to 3.086 cm; the apparent floating was a small physical clearance, not a large displacement. Added a bounded three-pass visual fit using both tire-to-ground probes. It adjusts all cloned bike parts together in pitch and height, leaves the capsule/interaction location intact and retains a 0.2 cm clearance. It rejects unsafe initial sites and restores previous part transforms if a fit cannot be sampled safely. It also fits the parked clone after exchanging it to the abandoned-bike location.
+
+Native editor build passed. Initial fitted review passed six stations and a complete E swap/return. Extended the audit to measure the relocated clone too. That run hit a test interference: automatic nearby ammo collection changed reserve from 34 to 51, triggering exact-state conservation. The failed 2026-09-14-spare-wheel-exchange.json is retained. Disabled automatic weapon/health/horn pickup ticks only inside this transfer audit; their meshes/collision remain, and normal-game collection is unchanged.
+
+Final 2026-09-14-spare-wheel-exchange-isolated.json passed: twelve initial station tire probes plus two relocated tire probes all measured 0.2 cm ground clearance, six stations available, E swap and return to the abandoned bike succeeded, health/ammo/horns retained, swimming mount guard passed. Inspected the first fitted station image; detailed skin/terrain intersections beyond the tire probes are not exhaustively proved. Source files: BattleSpareBikes.cpp and BattleSpareBikeAudit.cpp.
+
+Desktop/share076 unchanged. Rounded saddle, landing clearance, thumb contact, grounded pickup cases and spare-wheel seating are ready for a combined packaged 077 test. Validate packaged balance/jump, ammo collection and spare-bike exchange before changing the shortcut. The park still shows extensive triangular pavement/grass overlaps in review images; investigate terrain/pavement agreement as a higher-impact visual issue next. Full game remains unfinished.

@@ -5,6 +5,7 @@
 #include "PiedmontPathSpline.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SplineComponent.h"
 #include "EngineUtils.h"
@@ -12,6 +13,27 @@
 namespace BattleSpareBikes {
 namespace {
 TWeakObjectPtr<UWorld> StationWorld;TArray<TWeakObjectPtr<AActor>> Stations;
+bool FitWheelsToGround(AActor* Actor){
+ TInlineComponentArray<UStaticMeshComponent*> Parts(Actor);TArray<UStaticMeshComponent*> Wheels;TArray<FTransform> Original;
+ for(auto* Part:Parts){Original.Add(Part->GetRelativeTransform());if(Part->GetStaticMesh()&&Part->GetStaticMesh()->GetName()==TEXT("SM_BikeWheel"))Wheels.Add(Part);}
+ if(Wheels.Num()!=2)return false;
+ if(Wheels[0]->GetRelativeLocation().X<Wheels[1]->GetRelativeLocation().X)Swap(Wheels[0],Wheels[1]);
+ auto Restore=[&](){for(int I=0;I<Parts.Num();I++)Parts[I]->SetRelativeTransform(Original[I]);return false;};
+ for(int Pass=0;Pass<3;Pass++){
+  float Gap[2];
+  for(int I=0;I<2;I++){
+   Wheels[I]->UpdateBounds();const FBox Bounds=Wheels[I]->Bounds.GetBox();const FVector Bottom(Bounds.GetCenter().X,Bounds.GetCenter().Y,Bounds.Min.Z);
+   FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(SpareTireSeat),true,Actor);Q.AddIgnoredActor(UGameplayStatics::GetPlayerPawn(Actor,0));
+   if(!Actor->GetWorld()->LineTraceSingleByChannel(Hit,Bottom+FVector(0,0,40),Bottom-FVector(0,0,80),ECC_Visibility,Q)||Hit.ImpactNormal.Z<.85f)return Restore();
+   Gap[I]=Bottom.Z-Hit.ImpactPoint.Z;if(FMath::Abs(Gap[I])>25.f)return Restore();
+  }
+  const float Span=Wheels[0]->GetRelativeLocation().X-Wheels[1]->GetRelativeLocation().X;if(Span<80)return Restore();
+  const FQuat Tilt=FRotator(FMath::RadiansToDegrees(FMath::Atan2(Gap[1]-Gap[0],Span)),0,0).Quaternion();
+  const float Lower=(Gap[0]+Gap[1])*.5f-.2f;
+  for(auto* Part:Parts){FTransform T=Part->GetRelativeTransform();T.SetLocation(Tilt.RotateVector(T.GetLocation())-FVector(0,0,Lower));T.SetRotation(Tilt*T.GetRotation());Part->SetRelativeTransform(T);}
+ }
+ return true;
+}
 AActor* Create(ABattleBike* Source,FTransform Placement){
  auto* Actor=Source->GetWorld()->SpawnActor<AActor>();if(!Actor)return nullptr;
  auto* Root=NewObject<UCapsuleComponent>(Actor,TEXT("SpareBikeCollision"));Actor->AddInstanceComponent(Root);Actor->SetRootComponent(Root);Root->SetCapsuleSize(32,95);Root->SetCollisionProfileName(TEXT("BlockAll"));Root->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);Root->SetCanEverAffectNavigation(false);Root->RegisterComponent();Actor->SetActorTransform(Placement);
@@ -21,6 +43,7 @@ AActor* Create(ABattleBike* Source,FTransform Placement){
   auto* Copy=NewObject<UStaticMeshComponent>(Actor,*FString::Printf(TEXT("BikePart%d"),Index++));Actor->AddInstanceComponent(Copy);Copy->SetupAttachment(Root);Copy->SetStaticMesh(Part->GetStaticMesh());Copy->SetRelativeTransform(Part->GetComponentTransform().GetRelativeTransform(Source->GetActorTransform()));
   for(int I=0;I<Part->GetNumMaterials();I++)Copy->SetMaterial(I,Part->GetMaterial(I));Copy->SetCollisionEnabled(ECollisionEnabled::NoCollision);Copy->SetCanEverAffectNavigation(false);Copy->RegisterComponent();
  }
+ if(!FitWheelsToGround(Actor)){Actor->Destroy();return nullptr;}
  Actor->Tags.Add(TEXT("BattleSpareBike"));Stations.Add(Actor);return Actor;
 }
 }
@@ -65,7 +88,7 @@ bool Mount(ABattleRider* Person,AActor* Spare){
  UE_LOG(LogTemp,Display,TEXT("BattleSpareMount: recovered_crash=%d"),IsValid(PreviousCrash)?1:0);
  if(IsValid(PreviousCrash))PreviousCrash->Destroy();
  // Keep the player's durable state on the possessed bike; exchange parked locations.
- Spare->SetActorTransform(Abandoned);Spare->SetActorEnableCollision(true);Bike->Ride->LastSafeLocation=Destination.GetLocation();Bike->Ride->LastDryLocation=Destination.GetLocation();Bike->Ride->bHasDryLocation=true;Bike->Ride->bForceNextFloorCheck=true;
+ Spare->SetActorTransform(Abandoned);FitWheelsToGround(Spare);Spare->SetActorEnableCollision(true);Bike->Ride->LastSafeLocation=Destination.GetLocation();Bike->Ride->LastDryLocation=Destination.GetLocation();Bike->Ride->bHasDryLocation=true;Bike->Ride->bForceNextFloorCheck=true;
  return true;
 }
 }

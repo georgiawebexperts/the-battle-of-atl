@@ -87,7 +87,8 @@
     "2026-09-13 [codex-maclaptop]: Rounded, tapered saddle and seat post replace the box seat. Native stop/start/braking and hand/foot contact checks passed; hard landing fit remains unverified. Not packaged; desktop076 unchanged.",
     "2026-09-13 [codex-maclaptop]: Fixed landing pelvis dipping into the saddle: extra compression reduced from 8 cm to 2 cm. Rendered flat and realistic downhill jump/landing checks passed with hand/foot contact and one +10 reward. Not packaged; desktop076 unchanged.",
     "2026-09-14 [codex-maclaptop]: Detailed rider thumbs close around underside of handlebar grips; close-camera balance/contact checks passed. Not packaged; desktop076 unchanged.",
-    "2026-09-14 [codex-maclaptop]: Visible weapon/ammo cases rest on supporting ground; warm white unlit labels improve readability. Twelve-bin/ammo placement and collection audit passed. Not packaged; desktop076 unchanged."
+    "2026-09-14 [codex-maclaptop]: Visible weapon/ammo cases rest on supporting ground; warm white unlit labels improve readability. Twelve-bin/ammo placement and collection audit passed. Not packaged; desktop076 unchanged.",
+    "2026-09-14 [codex-maclaptop]: Spare-bike visuals fit both wheels to local ground, including after exchanging to the abandoned-bike location. Six stations, fourteen tire probes and E swap/return with preserved supplies passed. Not packaged; desktop076 unchanged."
   ],
   "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076/The Battle of ATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 075/The Battle of ATL.app",
