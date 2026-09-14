@@ -117,7 +117,7 @@ void ABattleBike::Tick(float Dt){
   Ride->bReverseRequested=(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down))&&!PC->IsInputKeyDown(EKeys::SpaceBar);
   Ride->Brake=(PC->IsInputKeyDown(EKeys::SpaceBar)||PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down))?1:0;
  }
- if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded||RiderHealth<=0||StunRemaining>0){Ride->Pedal=Ride->Steer=Ride->ReverseSpeed=0;Ride->bReverseRequested=false;}
+ if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded||RiderHealth<=0||StunRemaining>0){Ride->Pedal=Ride->Steer=Ride->ReverseSpeed=0;Ride->bReverseRequested=false;}
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;
  LeanAngle=FMath::Lerp(LeanAngle,(Ride->bRealHandling?FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan(Ride->Speed*FMath::DegreesToRadians(Ride->TurnRateDegrees)/980.f)),-35.f,35.f):Ride->SmoothedSteer*FMath::Min(24.f,Ride->Speed*.035f)),1.f-FMath::Exp(-10.f*Dt));
  float TargetPitch=0;

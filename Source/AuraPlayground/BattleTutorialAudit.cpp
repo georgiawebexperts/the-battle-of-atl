@@ -19,6 +19,11 @@ void ABattleMacController::TickTutorialAudit(float Dt){
 #define TCHECK(C,R) if(!(C)){End(false,TEXT(R));return;}
  TCHECK(M&&B&&T&&M->Quest,"Missing tutorial, bike or quest");
  if(TutorialStage==0){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCountdownControlsAudit"))){
+   B->SetActorLocationAndRotation(BattleTutorialData::Gate+FVector(20,0,98),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);B->Ride->StopMovementImmediately();B->Ride->Speed=0;
+   TCHECK(T->TryStart(BattleTutorialData::Gate-FVector(100,0,0),B->GetActorLocation()),"Gate fixture did not start countdown");TutorialStage=2;TutorialClock=0;return;
+  }
+
   TCHECK(M->bTutorialActive&&M->StartCountdown==0&&M->RunElapsed==0&&M->TimeRemaining==M->Difficulty.TimeLimitSeconds,"Practice timer ran before gateway");
   TCHECK(!M->AdjustRunTime(30,TEXT("practice"))&&B->ApplyRiderDamage(10)==0,"Practice changed time or damaged rider");
   for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::BarrierCenters);I++){
@@ -71,14 +76,18 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
   Key(EKeys::W,true);Key(EKeys::A,Error< -2);Key(EKeys::D,Error>2);
  }else if(TutorialStage==2){
-  TutorialClock+=Dt;if(TutorialClock<4.2f)return;
+  TutorialClock+=Dt;
+  static bool CountdownControlsChecked=false;
+  if(TutorialClock<.2f){for(FKey K:{EKeys::W,EKeys::A,EKeys::SpaceBar})InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,IE_Pressed,1.f,false,0));return;}
+  if(!CountdownControlsChecked){TCHECK(M->StartCountdown>0&&B->Ride->Pedal>0&&B->Ride->Steer<0&&B->Ride->Brake>0,"Countdown blocked pedal, steering or brake input");CountdownControlsChecked=true;FlushPressedKeys();UE_LOG(LogTemp,Display,TEXT("CountdownControls: pedal, steering and brake stay active"));}
+  if(TutorialClock<4.2f)return;
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview"))){
    TActorIterator<ABattleMarketClosure> Closure(GetWorld());TCHECK(!Closure,"Market setup fence remained after tutorial");
    UE_LOG(LogTemp,Display,TEXT("MarketClosureAudit: removed after gateway start"));
   }
   TCHECK(M->StartCountdown==0&&M->RunElapsed>0&&M->TimeRemaining<M->Difficulty.TimeLimitSeconds,"Timer did not start after gateway countdown");
   const float Left=M->TimeRemaining;TCHECK(!T->TryStart(BattleTutorialData::Gate-FVector(100,0,0),BattleTutorialData::Gate+FVector(100,0,98))&&M->TimeRemaining==Left,"Crossing gate again reset the run");
-  End(true,TEXT("Untimed practice, protected clock/health, dismount/remount, actual W/A/D road ride, one-way gate countdown and single-start timer pass"));
+  End(true,FParse::Param(FCommandLine::Get(),TEXT("BattleCountdownControlsAudit"))?TEXT("Gate event, active countdown pedal/steer/brake keys, timer start and no gate reset pass"):TEXT("Untimed practice, actual road ride, controllable gate countdown and single-start timer pass"));
  }
 #undef TCHECK
 #endif

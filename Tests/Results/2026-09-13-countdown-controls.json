@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "reason": "Gate event, active countdown pedal/steer/brake keys, timer start and no gate reset pass",
+  "distance_cm": 0.0,
+  "max_error_cm": 0.0,
+  "scope": "Gate-event fixture with actual pedal, steer and brake key input; countdown expiry and repeat-gate protection. Not full approach or packaged acceptance.",
+  "exit_code": 0,
+  "installed": false
+}

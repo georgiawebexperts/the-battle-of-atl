@@ -60,7 +60,11 @@ void ABattleLabHUD::DrawHUD(){
   Center(Park->bTutorialActive?TEXT("Clock starts at gate"):(Person||Owner->bCrashActive)?FString::Printf(TEXT("%s %.2fx"),Person&&Person->bSwimming?TEXT("SWIMMING"):TEXT("ON FOOT"),Park->FootTimeMultiplier):Park->DifficultyName.ToString(),M+66*S,(Park->bTutorialActive||Person||Owner->bCrashActive)?18:22,(Person||Owner->bCrashActive)?Peach:Muted);
   if(Park->TimeNoticeRemaining>0){Panel(W*.5f-230*S,M+116*S,460*S,46*S);Center(FString::Printf(TEXT("%+.0fs  %s"),Park->LastTimeDelta,*Park->TimeNotice),M+121*S,23,Park->LastTimeDelta>0?FLinearColor(.3,1,.65):FLinearColor(1,.35,.3));}
   if(Park->Quest)Park->Quest->DrawRadar(this,Canvas);
-  if(Park->StartCountdown>0){Panel(W*.5f-100*S,H*.38f,200*S,120*S);Center(FString::FromInt(FMath::CeilToInt(Park->StartCountdown)),H*.38f+12*S,82,Peach);}
+  if(!Park->bTutorialActive&&!Park->bRunEnded&&(Park->StartCountdown>0||Park->RunElapsed<2.5f)){
+   const float Y=M+170*S;Panel(W*.5f-220*S,Y,440*S,92*S);
+   Center(Park->StartCountdown>0?FString::Printf(TEXT("RIDE STARTED  •  %d"),FMath::CeilToInt(Park->StartCountdown)):TEXT("GO! TIMER RUNNING"),Y+10*S,28,Peach);
+   Center(Park->StartCountdown>0?TEXT("Keep riding—controls stay active"):TEXT("Find your phone. Reach Morgan."),Y+52*S,19,Muted);
+  }
  }
  if(Park&&Park->bTutorialActive&&Park->bTutorialHelp){
   const float Y=M+177*S;Panel(M,Y,470*S,240*S);
