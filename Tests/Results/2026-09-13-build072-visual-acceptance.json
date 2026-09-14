@@ -1,0 +1,26 @@
+{
+  "accepted": true,
+  "scope": "Selected packaged HUD panels only: tutorial/bike/foot at1280x720, police warning and danger/bike/foot at1920x1080, active boost countdown. Text readable and inside shown panels; music cycle visible. This is not broad world art, continuous animation, every dynamic string or performance acceptance.",
+  "images": [
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build072-packaged-1280-tutorial/bike.png",
+      "sha256": "27d4a927a6396b4ae527e3287db22481723cbadbc53cd326c067219187a18d79"
+    },
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build072-packaged-1280-tutorial/foot.png",
+      "sha256": "2e9df71a1a1f29268ecc0178a9f8b1ad52855bbb6c11c91c66082c16b5bccf07"
+    },
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build072-packaged-1920/bike.png",
+      "sha256": "d15cae8437f6d10b5b865ddfa56b367406e0d9ec01e1b73f781b39c21cfa5875"
+    },
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build072-packaged-1920/foot.png",
+      "sha256": "3cccf260aa0fc7b27e7579f7da4438a96802868621db42974be97f496b867607"
+    },
+    {
+      "path": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/speed-pickup-29763b5ce7c74ba3b07c704d99b5417d/boost-active.png",
+      "sha256": "524bac8955710fb2114c865a4c43cc64a1aaf34afcebf546033ef81796f69bd2"
+    }
+  ]
+}

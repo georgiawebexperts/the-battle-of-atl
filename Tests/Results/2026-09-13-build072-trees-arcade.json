@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "passed": true,
+    "reason": "Three authored tree types: keyboard near passes clear; direct contacts follow selected handling rules",
+    "completed": 6,
+    "tree": 3,
+    "leg": 0
+  },
+  "scope": "Native keyboard passes beside and into three authored tree instances, one per mesh type. Nearby pedestrians/zombies removed; does not establish full-path clearance, realistic crash animation, on-foot navigation or packaged performance.",
+  "real_handling": false,
+  "packaged": true,
+  "passed": true
+}

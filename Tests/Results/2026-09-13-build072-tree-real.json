@@ -1,0 +1,38 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/882fee7ca7a34fb7b57c7d28fc95a041/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/882fee7ca7a34fb7b57c7d28fc95a041/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/882fee7ca7a34fb7b57c7d28fc95a041/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/882fee7ca7a34fb7b57c7d28fc95a041/live-remounted.png"
+  ],
+  "events": [
+    "started speed=416.6",
+    "recovered on foot health=56.1 ammo=17",
+    "state=1 timer=1 elapsed=6.690 lost=8.357",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Keyboard collision with tree collision proxy, harm, -10 seconds, physical recovery and remount. Authored tree instances have a separate world test; arbitrary terrain and continuous animation quality remain unverified.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": false,
+  "runtime": "packaged",
+  "obstacle": "tree",
+  "spare_after_crash": false,
+  "pose_fits": [
+    {
+      "heading_rms_cm": 84.181,
+      "selected_rms_cm": 48.989
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true
+}
