@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "reason": "Stopped owned test after repeated lack of forward progress before Krog Street Market",
+  "full_route_requested": true,
+  "stages": [
+    "stage=1 points=655 position=X=-455.887 Y=8893.728 Z=-232.043 target=X=27579.888 Y=49480.913 Z=147.023",
+    "stage=2 points=957 position=X=27497.798 Y=49175.036 Z=242.928 target=X=25807.478 Y=102714.336 Z=814.694"
+  ],
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/phone-ride-71ecb6564fc043d0ae3434ef6e3fcf95.log",
+  "fixture": [
+    "phone=X=-320.105 Y=8839.114 Z=-251.064 way=61490796 start=X=-16926.268 Y=-5098.000 Z=200.705 points=33"
+  ],
+  "failure": [],
+  "scope": "One randomly placed phone; ordinary W/A/D/brake inputs. Existing enemies and pedestrians removed, traffic population disabled. No teleport. A guided-driver failure is not by itself evidence of a game defect. Does not establish full combat or finish-loop acceptance.",
+  "termination": "Assistant sent SIGTERM to verified test PID45747 after waypoint931/957 remained unchanged for over40seconds; engine exited0 without terminal audit success.",
+  "observed_stall": {
+    "stage": 2,
+    "waypoint": 931,
+    "points": 957,
+    "position_approx": [
+      26050,
+      100850,
+      894
+    ],
+    "speed_reported_cm_s": [
+      273.8,
+      403.9
+    ],
+    "static_scene_report": "Tests/Results/2026-09-14-krog-route-stall-scene.json"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "map_saved": false,
+  "probes": [
+    {
+      "delta": [
+        0,
+        600
+      ],
+      "hit": null,
+      "xyz": null
+    },
+    {
+      "delta": [
+        0,
+        -600
+      ],
+      "hit": null,
+      "xyz": null
+    },
+    {
+      "delta": [
+        600,
+        0
+      ],
+      "hit": null,
+      "xyz": null
+    },
+    {
+      "delta": [
+        -600,
+        0
+      ],
+      "hit": null,
+      "xyz": null
+    },
+    {
+      "delta": [
+        400,
+        400
+      ],
+      "hit": null,
+      "xyz": null
+    },
+    {
+      "delta": [
+        -400,
+        400
+      ],
+      "hit": null,
+      "xyz": null
+    },
+    {
+      "floor_y": 100650,
+      "hit": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+      "z": 794.5698852539062
+    },
+    {
+      "floor_y": 100675,
+      "hit": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+      "z": 794.6675415039062
+    },
+    {
+      "floor_y": 100700,
+      "hit": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+      "z": 794.7498168945312
+    },
+    {
+      "floor_y": 100725,
+      "hit": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+      "z": 794.8174438476562
+    },
+    {
+      "floor_y": 100750,
+      "hit": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+      "z": 794.9151000976562
+    },
+    {
+      "floor_y": 100775,
+      "hit": "Eastside trail SM_EastsideTrail_Concrete_7_3",
+      "z": 795.052978515625
+    },
+    {
+      "floor_y": 100800,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 795.248291015625
+    },
+    {
+      "floor_y": 100825,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 795.4436645507812
+    },
+    {
+      "floor_y": 100850,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 795.6843872070312
+    },
+    {
+      "floor_y": 100875,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 795.879638671875
+    },
+    {
+      "floor_y": 100900,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.0672607421875
+    },
+    {
+      "floor_y": 100925,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.082275390625
+    },
+    {
+      "floor_y": 100950,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.082275390625
+    },
+    {
+      "floor_y": 100975,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.1627807617188
+    },
+    {
+      "floor_y": 101000,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.3580932617188
+    },
+    {
+      "floor_y": 101025,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.5534057617188
+    },
+    {
+      "floor_y": 101050,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.6531982421875
+    },
+    {
+      "floor_y": 101075,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.7508544921875
+    },
+    {
+      "floor_y": 101100,
+      "hit": "Eastside trail SM_EastsideTrail_Asphalt_7_3",
+      "z": 796.8408203125
+    }
+  ],
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-route-stall/stalled-location.png",
+  "visual_review": true,
+  "findings": [
+    "Six horizontal32cm sphere probes at rider-center height found no static obstruction.",
+    "Nineteen floor probes across450cm rose about2.27cm; no abrupt ground step at sampledX26050.",
+    "Scene capture excludes runtime-spawned vehicles/barriers and the guided driver. Failure cause remains unresolved."
+  ]
+}
