@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "scene": "park",
+      "grade": "baseline",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/park-baseline/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/park-baseline/foot.png"
+      ],
+      "passed": true
+    },
+    {
+      "scene": "park",
+      "grade": "candidate",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/park-candidate/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/park-candidate/foot.png"
+      ],
+      "passed": true
+    },
+    {
+      "scene": "tunnel",
+      "grade": "baseline",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/tunnel-baseline/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/tunnel-baseline/foot.png"
+      ],
+      "passed": true
+    },
+    {
+      "scene": "tunnel",
+      "grade": "candidate",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/tunnel-candidate/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-ee4c666e9c4848d3b4670c8c890ddf8a/tunnel-candidate/foot.png"
+      ],
+      "passed": true
+    }
+  ],
+  "map_saved": false,
+  "visual_review": "Five selected frames inspected: park baseline/candidate bike, tunnel baseline/candidate bike, tunnel candidate foot",
+  "scope": "Four native processes exit0 with8 captures. Selected5 frames inspected; no movement through exposure transitions. Main map unchanged.",
+  "release_ready": false,
+  "decision": "Do not adopt global exposure adjustment. Daylight improvement marginal; tunnel ceiling light halos and material flatness remain. Focus next on local tunnel fixtures/materials."
+}

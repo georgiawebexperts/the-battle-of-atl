@@ -12,6 +12,7 @@
 #include "PiedmontPedestrian.h"
 #include "BattleParkFurniture.h"
 #include "Camera/CameraActor.h"
+#include "Engine/PostProcessVolume.h"
 #include "EngineUtils.h"
 #include "Engine/Engine.h"
 #include "UnrealClient.h"
@@ -23,6 +24,10 @@
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(HUDReviewStage==0&&HUDReviewClock<.1f){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleExposureCandidate"))){auto* Volume=GetWorld()->SpawnActor<APostProcessVolume>();Volume->bUnbound=true;Volume->Priority=100;Volume->Settings.bOverride_AutoExposureBias=true;Volume->Settings.AutoExposureBias-=.35f;}
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTunnelExposureReview")))if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->SetActorLocationAndRotation(FVector(30609,117632,1058),FRotator(0,68,0),false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(FRotator(0,68,0));Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;}
+ }
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleObjectiveReview")))if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->Quest){M->Quest->bCollected=true;M->bItemCollected=true;M->Trouble=4;M->PeopleHit=2;M->Quest->NextCheckpoint=HUDReviewStage<1?0:1;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkaterReview"))){TickSkaterReview(Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHomeReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
