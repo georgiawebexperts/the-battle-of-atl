@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 47956.97,
+  "maxCenterlineErrorCm": 95.46,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real-rendered-lookahead400-gate-main",
+  "map": "PiedmontWorld",
+  "packaged": false,
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/d0e35dd9785d4bc3be38de89d73b21bb/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/d0e35dd9785d4bc3be38de89d73b21bb/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/d0e35dd9785d4bc3be38de89d73b21bb/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/d0e35dd9785d4bc3be38de89d73b21bb/leg1-view1.png"
+  ],
+  "scope": "Editor executable on the main map: full street-to-gate round trip, ordinary keyboard input, pavement checks and exactly one gate start; not packaged.",
+  "gate_starts": 1,
+  "road_cleanup": [
+    90,
+    324,
+    1
+  ]
+}

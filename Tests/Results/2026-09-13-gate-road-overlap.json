@@ -1,0 +1,10 @@
+{
+  "map_saved": false,
+  "map_sha256": "4a3b03caedec2f828ddf804e36f330665071274fe29b87a6eb18619db3a22714",
+  "legacy_instances": 414,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gate-road-overlap/before.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gate-road-overlap/without-cubes.png"
+  ],
+  "scope": "Transient diagnostic hiding all tutorial pavement, not an approved collision change."
+}

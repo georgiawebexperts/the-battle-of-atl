@@ -1,0 +1,8 @@
+{
+  "installed": true,
+  "before_sha256": "4a3b03caedec2f828ddf804e36f330665071274fe29b87a6eb18619db3a22714",
+  "after_sha256": "7eb85397e6ac45dbcb8ca3a2f91f60322a41c35baf8d09f2fd336ce9ba88fa95",
+  "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/PiedmontWorld-before-gate-road-4a3b03caedec.umap",
+  "added_actor": "/Game/PiedmontRide/Maps/PiedmontWorld.PiedmontWorld:PersistentLevel.StaticMeshActor_494",
+  "scope": "One terrain-fitted gate pavement actor added; runtime removes its 42 covered legacy blocks. Packaged verification pending."
+}

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48468.29,
+  "maxCenterlineErrorCm": 100.75,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-rendered-lookahead300-gate-main",
+  "map": "/Game/PiedmontRide/Maps/PiedmontGateRoadReview",
+  "packaged": false,
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/ea3334f92cb645159f19e37522640645/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/ea3334f92cb645159f19e37522640645/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/ea3334f92cb645159f19e37522640645/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/ea3334f92cb645159f19e37522640645/leg1-view1.png"
+  ],
+  "scope": "Isolated map, full keyboard-driven gate route with pavement and timer checks; not installed or packaged.",
+  "gate_starts": 1,
+  "road_cleanup": [
+    90,
+    324,
+    1
+  ]
+}

@@ -4,6 +4,7 @@
 #include "BattleTutorialData.h"
 #include "BattleTutorialBlock.h"
 #include "BattlePrideRoadCleanup.h"
+#include "BattleGateRoadCleanup.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
@@ -115,16 +116,24 @@ void ABattleTutorial::BeginPlay(){
  Super::BeginPlay();
  // The mapped asphalt replaces these complete legacy cube footprints. Keep the
  // old surface on maps without that exact, untransformed replacement mesh.
- bool bMappedPavement=false;
- for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattlePrideStreet"))){
+ bool bMappedPavement=false,bGatePavement=false;
+ for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattlePrideStreet"))||It->ActorHasTag(TEXT("BattleGateRoad"))){
   TInlineComponentArray<UStaticMeshComponent*> Surfaces;It->GetComponents(Surfaces);
   for(const UStaticMeshComponent* Surface:Surfaces)if(Surface->GetStaticMesh()
-   &&Surface->GetStaticMesh()->GetPathName()==TEXT("/Game/BattleForTheA/Environment/PrideIntersection/SM_PiedmontRoad.SM_PiedmontRoad")
    &&Surface->GetComponentTransform().Equals(FTransform::Identity,.01f)
-   &&Surface->GetCollisionEnabled()!=ECollisionEnabled::NoCollision)bMappedPavement=true;
+   &&Surface->GetCollisionEnabled()!=ECollisionEnabled::NoCollision){
+   const FString Path=Surface->GetStaticMesh()->GetPathName();
+   bMappedPavement|=Path==TEXT("/Game/BattleForTheA/Environment/PrideIntersection/SM_PiedmontRoad.SM_PiedmontRoad");
+   bGatePavement|=Path==TEXT("/Game/BattleForTheA/Environment/GateRoad/SM_GateRoad.SM_GateRoad");
+  }
  }
- if(bMappedPavement&&PracticeStreet&&PracticeStreet->GetInstanceCount()==BattlePrideRoadCleanup::OriginalCount){
-  TArray<int32> Covered;for(int32 Index:BattlePrideRoadCleanup::Indices)Covered.Add(Index);
+ if((bMappedPavement||bGatePavement)&&PracticeStreet&&PracticeStreet->GetInstanceCount()==BattlePrideRoadCleanup::OriginalCount){
+  // Both masks refer to the original instance list. Remove once so the first
+  // cleanup cannot shift the indices used by the second replacement.
+  TArray<int32> Covered;
+  if(bMappedPavement)for(int32 Index:BattlePrideRoadCleanup::Indices)Covered.AddUnique(Index);
+  if(bGatePavement)for(int32 Index:BattleGateRoadCleanup::Indices)Covered.AddUnique(Index);
+  Covered.Sort();
   const bool bRemoved=PracticeStreet->RemoveInstances(Covered);
   UE_LOG(LogTemp,Display,TEXT("PrideRoadCleanup: removed=%d remaining=%d success=%d"),Covered.Num(),PracticeStreet->GetInstanceCount(),bRemoved);
  }
