@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "completedLegs": 0,
+  "travelCm": 3801.73,
+  "maxCenterlineErrorCm": 180.08,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade",
+  "map": "PiedmontPrideStreetReview",
+  "captures": [],
+  "scope": "Candidate map, ordinary W/A/D and braking, both directions. Does not test tutorial boundary or release."
+}
