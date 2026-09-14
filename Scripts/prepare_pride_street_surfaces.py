@@ -51,9 +51,15 @@ for name,poly,lift in [('PiedmontRoad',road,14),('PiedmontSidewalk',walk,18)]:
      if t.area>.001:faces.append([[x,y,height(x,y)+lift] for x,y in list(t.exterior.coords)[:3]])
  coverage=unary_union([Polygon([p[:2] for p in f]) for f in faces]);missing=poly.difference(coverage.buffer(.001)).area;assert missing<1,(name,missing)
  verts=[p for f in faces for p in f];lines=['o '+name]+[f'v {x:.5f} {-y:.5f} {h:.5f}' for x,y,h in verts]+[f'vt {x/200:.5f} {y/200:.5f}' for x,y,h in verts]
+ # Continuous source normals change lighting only; vertex positions and collision stay identical.
+ normals=[]
+ for x,y,h in verts:
+  dx=(height(x+sx,y)-height(x-sx,y))/(2*sx);dy=(height(x,y+sy)-height(x,y-sy))/(2*sy);length=math.sqrt(1+dx*dx+dy*dy)
+  normals.append((-dx/length,dy/length,1/length))  # OBJ reverses world Y.
+ lines += [f'vn {a:.8f} {b:.8f} {c:.8f}' for a,b,c in normals]
  for k in range(0,len(verts),3):
   a,b,c=verts[k:k+3];cross=(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);order=(k,k+1,k+2) if cross<0 else (k+2,k+1,k)
-  lines.append('f '+' '.join(f'{v+1}/{v+1}' for v in order))
+  lines.append('f '+' '.join(f'{v+1}/{v+1}/{v+1}' for v in order))
  (folder/(name+'.obj')).write_text('\n'.join(lines)+'\n');meshes.append({'name':name,'triangles':len(faces),'bounds_cm':[[min(v[k] for v in verts) for k in range(3)],[max(v[k] for v in verts) for k in range(3)]],'uncovered_cm2':missing,'building_overlap_cm2':poly.intersection(blocked).area})
 # Sidewalk and street tile share elevation at boundaries except the intentional 4cm lip.
 report={'status':'candidate meshes only; native review pending','road_width_cm':600,'sidewalk_width_cm':120,'terrain':'build074 lake-graded DEM','terrain_unchanged':True,'existing_tenth_road_preserved':True,'junction_curb_cutbacks':'cutbacks.json','meshes':meshes,'pending':['Native import and collision checks','Corner/sidewalk visual inspection','Relocate tutorial cutoff with full boundary coverage','Rainbow markings and street signs','Both-direction bike traversal and release']}

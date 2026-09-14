@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "main_unchanged_sha256": "775833c9092aba37d2755813294aea17a82f587b5638d6873c47e956a2a02dd7",
+  "review_map": "/Game/PiedmontRide/Maps/PiedmontPrideStreetReview",
+  "meshes": [
+    {
+      "name": "SM_PrideTenth_Sidewalk",
+      "bounds_error_cm": 0.0007812500007275958,
+      "triangles": 8607
+    },
+    {
+      "name": "SM_PrideTenth_Separator",
+      "bounds_error_cm": 0.0008968750007625204,
+      "triangles": 437
+    },
+    {
+      "name": "SM_PrideTenth_WhitePaint",
+      "bounds_error_cm": 0.0006749999993189704,
+      "triangles": 8537
+    },
+    {
+      "name": "SM_PrideTenth_YellowPaint",
+      "bounds_error_cm": 0.0007093749991327059,
+      "triangles": 5118
+    },
+    {
+      "name": "SM_PiedmontRoad",
+      "bounds_error_cm": 0.0006154327238618862,
+      "triangles": 5397
+    },
+    {
+      "name": "SM_PiedmontSidewalk",
+      "bounds_error_cm": 0.0002888764865929261,
+      "triangles": 3793
+    }
+  ],
+  "collision_probes": 152,
+  "maximum_error_cm": 0.00011492213971564524,
+  "scope": "Import bounds and sampled native mesh collision only. Static views use diagnostic lighting. Boundary, road seams and moving rider need verification; not installed.",
+  "source_geometry_checks": [
+    {
+      "mesh": "PiedmontRoad",
+      "geometry_identical": true,
+      "geometry_sha256": "47a176e2c08e4d1c6e7348366a2cd32f1c15d6609392fdeb9e341e8959b80166",
+      "normal_count": 16191
+    },
+    {
+      "mesh": "PiedmontSidewalk",
+      "geometry_identical": true,
+      "geometry_sha256": "9112abc496180675cf85b2d31d69721cf33197d3a22a1397c7c8fba5260c3c94",
+      "normal_count": 11379
+    }
+  ],
+  "visual_review": {
+    "inspected": "work/pride-street-review/road-shading.png",
+    "normal_shading_improved": true,
+    "scope": "Large alternating bright/dark triangle facets removed from new road and sidewalk in native diagnostic-light view. Thin sidewalk edge lines remain. Full gameplay-camera rerun and complete street art still pending.",
+    "junction_accepted": false
+  }
+}

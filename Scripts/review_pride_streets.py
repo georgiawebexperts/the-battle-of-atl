@@ -5,6 +5,7 @@ assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/Pied
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem);rows=[]
 for row in json.loads((folder/'cutbacks.json').read_text())['meshes']+json.loads((folder/'surfaces.json').read_text())['meshes']:
  name='SM_'+row['name'];opts=unreal.FbxImportUI();opts.import_as_skeletal=False;opts.import_materials=False;opts.import_textures=False;opts.automated_import_should_detect_type=False;opts.mesh_type_to_import=unreal.FBXImportType.FBXIT_STATIC_MESH;opts.static_mesh_import_data.combine_meshes=True;opts.static_mesh_import_data.auto_generate_collision=False;opts.static_mesh_import_data.remove_degenerates=False
+ if 'source_name' not in row:opts.static_mesh_import_data.normal_import_method=unreal.FBXNormalImportMethod.FBXNIM_IMPORT_NORMALS
  task=unreal.AssetImportTask();task.filename=str(folder/(row['name']+'.obj'));task.destination_path='/Game/BattleForTheA/Environment/PrideIntersection';task.destination_name=name;task.automated=True;task.save=True;task.replace_existing=True;task.options=opts;unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task]);mesh=unreal.load_asset(task.destination_path+'/'+name);assert mesh
  b=mesh.get_bounding_box();bounds=[[b.min.x,b.min.y,b.min.z],[b.max.x,b.max.y,b.max.z]];error=max(abs(bounds[i][j]-row['bounds_cm'][i][j]) for i in range(2) for j in range(3));assert error<.1,(name,error)
  replacement=None
@@ -28,7 +29,7 @@ assert unreal.EditorLoadingAndSavingUtils.save_map(world,'/Game/PiedmontRide/Map
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8);cap.texture_target=tex;cap.capture_source=unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR;cap.capture_every_frame=False;cap.capture_on_movement=False;cap.always_persist_rendering_state=True;cap.fov_angle=75
 for a in ea.get_all_level_actors():
  if isinstance(a,unreal.DirectionalLight):a.get_component_by_class(unreal.DirectionalLightComponent).set_intensity(40)
-for name,pos,target in [('pride-corner',[-26300,15100,2900],[-23800,12100,150]),('billys-approach',[-22400,8000,2600],[-19600,4200,0])]:
+for name,pos,target in [('pride-corner',[-26300,15100,2900],[-23800,12100,150]),('billys-approach',[-22400,8000,2600],[-19600,4200,0]),('road-shading',[-23800,10800,650],[-23300,8500,50])]:
  cam.set_actor_location(unreal.Vector(*pos),False,False);cam.set_actor_rotation(unreal.MathLibrary.find_look_at_rotation(unreal.Vector(*pos),unreal.Vector(*target)),False)
  for _ in range(20):unreal.PiedmontWorldTools.tick_scene_review();cap.capture_scene()
  unreal.RenderingLibrary.export_render_target(world,tex,str(out),name+'.png')
