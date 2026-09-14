@@ -1,0 +1,44 @@
+{
+  "lights": [
+    {
+      "label": "Krog utility light 4",
+      "intensity": 2.0,
+      "radius": 680.0,
+      "location": "<Struct 'Vector' (0x3f0434ec0) {x: 30155.695333, y: 116511.795253, z: 1196.007711}>"
+    },
+    {
+      "label": "Krog utility light 12",
+      "intensity": 2.0,
+      "radius": 680.0,
+      "location": "<Struct 'Vector' (0x3f0435730) {x: 30382.254703, y: 117071.981437, z: 1196.879475}>"
+    },
+    {
+      "label": "Krog utility light 20",
+      "intensity": 2.0,
+      "radius": 680.0,
+      "location": "<Struct 'Vector' (0x3f044d0a0) {x: 30608.814073, y: 117632.167622, z: 1197.751238}>"
+    },
+    {
+      "label": "Krog utility light 28",
+      "intensity": 2.0,
+      "radius": 680.0,
+      "location": "<Struct 'Vector' (0x3f044d370) {x: 30835.432536, y: 118192.329869, z: 1198.623002}>"
+    },
+    {
+      "label": "Krog utility light 36",
+      "intensity": 2.0,
+      "radius": 680.0,
+      "location": "<Struct 'Vector' (0x3f044d320) {x: 31062.617808, y: 118752.262509, z: 1199.494766}>"
+    },
+    {
+      "label": "Krog utility light 44",
+      "intensity": 2.0,
+      "radius": 680.0,
+      "location": "<Struct 'Vector' (0x3f044d2d0) {x: 31289.803080, y: 119312.195149, z: 1200.366530}>"
+    }
+  ],
+  "main_sha256": "acef57c53bcd678037f99bd30b1a4b7457181f616065d954516a2888ee418e89",
+  "main_changed": false,
+  "visual_accepted": false,
+  "scope": "Six downward broad spotlights replace omnidirectional utility points in isolated map; intensity and radius preserved."
+}

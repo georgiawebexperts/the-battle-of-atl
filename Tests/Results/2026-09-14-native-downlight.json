@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "scene": "tunnel",
+      "grade": "downlight",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-056dee98b34e48a2ace5d0adbfc986c3/tunnel-downlight/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-exposure-056dee98b34e48a2ace5d0adbfc986c3/tunnel-downlight/foot.png"
+      ],
+      "passed": true
+    }
+  ],
+  "map_saved": false,
+  "visual_review": true,
+  "scope": "Two native tunnel camera frames inspected; ceiling halos reduced and path/people visible. Stationary center-tunnel views only; not full-route/performance acceptance.",
+  "visual_accepted": true
+}
