@@ -1,0 +1,33 @@
+{
+  "build": 82,
+  "version": "0.82.0",
+  "source_commit": "a5f777f9f374bc7bf44ac646ac4abcba91c3b52b",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 082/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 081/The Battle of ATL.app",
+  "machine_code_sha256": "de1c70dca01ff3dca618b20bc0770cfcf3e177f49bd93197819549424dbd2217",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 082.zip",
+  "zip_sha256": "910a5daf53db639c9767c60af4a7f35253ef9fe8f8a5d9e3810fa6e2290d3f51",
+  "zip_bytes": 1459501934,
+  "reports": [
+    "2026-09-14-steep-brake-fixed.json",
+    "2026-09-14-steep-brake-wall-regression.json",
+    "2026-09-14-build081-panic.json",
+    "2026-09-14-build081-motion.json",
+    "2026-09-14-build081-finish.json",
+    "2026-09-14-build082-handling-packaged.json"
+  ],
+  "verification": [
+    "Packaged live player shots, fleeing movement, repeated-shot panic refresh and recovery verified",
+    "Packaged male/female ordinary walking regression and selected frames pass",
+    "Installed build 082 packaged nine-case handling audit passes, including steep-grass brake hold, reverse and pedal/brake priority",
+    "Steep-grass braking, pedal/brake priority, wall escape and forward departure pass in native audits",
+    "Packaged finish guards, ordered checkpoints, win menu and saved records pass",
+    "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
+  ],
+  "remaining": [
+    "Intermittent Krog route stall remains unresolved despite a subsequent full movement run passing",
+    "Broader art, animation, combat, handling and performance remain unfinished",
+    "Build080 police test had an intermittent Metal pipeline compiler crash; no general crash fix established",
+    "Other Macs untested; Developer ID signing and notarization deferred"
+  ]
+}

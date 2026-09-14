@@ -98,7 +98,8 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
    const FVector Tangent=FVector::VectorPlaneProject(CharacterOwner->GetActorForwardVector(),Normal).GetSafeNormal();
    const float GradeForce=-980.f*Tangent.Z;
    const float Resistance=Speed>0?(bGrass?65.f:12.f)+.000025f*Speed*Speed:0.f;
-   const float Motor=Pedal*Accel[Gear-1]*FMath::Clamp((Cap-Speed)/150.f,0.f,1.f);
+   // An e-bike brake cuts motor assistance even if the pedal key is held.
+   const float Motor=Brake>0?0.f:Pedal*Accel[Gear-1]*FMath::Clamp((Cap-Speed)/150.f,0.f,1.f);
    // Preserve downhill coasting, but let the brake stop and hold on every
    // rideable incline. Otherwise steep grass accelerates through full braking
    // and S can never reach the low-speed threshold needed to back out.

@@ -8,5 +8,5 @@ text=log.read_text();matches=re.findall(r'HandlingSlopeAudit: (\{[^\n]+\})',text
 report=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
 report['samples']=[json.loads(row) for row in re.findall(r'HandlingSlopeSample: (\{[^\n]+\})',text)]
 report.update(exit_code=run.returncode,packaged=a.packaged,log=str(log),scope='Native movement on controlled 10-degree incline, flat road/grass and 35-degree grass downhill planes. Initial positions/speeds injected; braking and steering keyboard input. No actual-world hills, visual, tire simulation or whole-route acceptance.')
-report['passed']=report['passed'] and run.returncode==0 and len(report['samples'])==9
+report['passed']=report['passed'] and run.returncode==0 and len(report['samples'])==11
 (root/'Tests/Results'/a.report).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report));raise SystemExit(0 if report['passed'] else 1)

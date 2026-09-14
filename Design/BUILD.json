@@ -1,9 +1,9 @@
 {
-  "build": 81,
-  "version": "0.81.0",
+  "build": 82,
+  "version": "0.82.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; running crowd response to gunfire",
+  "status": "Early playtest; panic running and improved bike braking",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -33,7 +33,8 @@
     "Build078: ten market stalls have 80 grounded footplates; post-phone watch route instructions, danger panel below objective, red crosshair and distance label when aiming at a live drone. Prior077 improvements retained.",
     "Build079: six tunnel utility lights direct light downward with50/75-degree cones, preserving brightness and range; mounted S/Down reverse hint remains visible at every propulsion speed. Prior078 changes retained.",
     "Build080: ordinary native walkers choose six shirt colors and three top shapes per gender, including open shirts and jackets from local CitySample assets. Ellison unchanged;079 lighting and reverse help retained.",
-    "Build081: native ordinary walkers use dedicated male/female running clips for fleeing with measured stride playback. Live gunfire panic, refresh, recovery and normal walking checked in packaged build."
+    "Build081: native ordinary walkers use dedicated male/female running clips for fleeing with measured stride playback. Live gunfire panic, refresh, recovery and normal walking checked in packaged build.",
+    "Build082: realistic bike braking cuts motor assistance and compensates downhill grade; steep grass stopping, holding, reversing and wall escape audits pass."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -88,33 +89,35 @@
     "2026-09-13 [codex-maclaptop] Unreleased swimming polish after070: longer alternating crawl reach, distinct underwater pull/recovery elbow pole, smaller hip kick plus knee flex and pointed toes. Side inspection exposed floating body: lowered prone presentation20cm and treading15cm without changing movement/collision surface. Added side-view capture mode and updated obsolete first-person swim audit to current requested third-person behavior (visible body, hidden FPS arms, camera outside body and above water). Native side and real camera entry/stroke/settle/tread/return/E remount pass; parked bike drift0cm, body stroke about101cm, real camera distance326.57cm/height70cm above surface. Selected side/rear stroke and treading frames inspected. Original first-person check failure retained as obsolete diagnostic, then corrected audit passed; no runtime first-person mode introduced. Editor build succeeds. Desktop/share070 unchanged; cooked verification needed before release. Continuous swim breathing/body roll/water effects, wider game quality and finish-the-game goal remain incomplete.",
     "2026-09-13 [codex-maclaptop] Candidate071 package built from3d77a6f, normal side/player swimming passed, deep test failed in headless AND rendered run. Diagnosed actual camera collapse326cm->20cm due initial overlap with StaticMeshActor_56: hidden Lake Clara Meer solid shore, RideWater tag, SM_LakeClaraMeerShore. Native fix makes hidden RideWater support primitives ignore ECC_Camera only; physical channels remain. Camera test then passed but image exposed treading through shallow sloping bank. Added walkable shallow-floor exit (floor above water-45cm with full standing capsule clearance) and placement on actual floor. Deep fixture reaches that bank before2.5s, so audit now explicitly verifies >250cm actual swim/stroke then walking exit/full capsule clearance and fixed-bike remount; normal deep-water/tread window retained elsewhere. Final native deep and normal rendered routes pass, bike drift0, normal camera326.57cm/70cm above surface; standing shore image inspected. Initial diagnostic compile errors fixed; current editor build succeeded. NOT released: desktop/share070 unchanged,071 installer draft unexecuted. New source needs recook and fresh packaged normal/deep checks; retain failed original071 reports. Wider swim/world/camera art and full-game goal incomplete."
   ],
-  "unreleased_code_changes": [
-    "Realistic-mode downhill brake assistance prevents steep grass from accelerating through brake input; controlled35degree stopping/holding/reverse test passes. Not packaged.",
-    "Slope audit now has nine cases with unique logs and optional packaged executable."
-  ],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 081/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 080/The Battle of ATL.app",
-  "compiled_source": "4dc1dba9c9eb6dd0d31163160763040e1f30024b",
-  "installation_report": "Tests/Results/2026-09-14-build081-install.json",
+  "unreleased_code_changes": [],
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 082/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 081/The Battle of ATL.app",
+  "compiled_source": "a5f777f9f374bc7bf44ac646ac4abcba91c3b52b",
+  "installation_report": "Tests/Results/2026-09-14-build082-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 81,
-    "version": "0.81.0",
-    "source_commit": "4dc1dba9c9eb6dd0d31163160763040e1f30024b",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 081/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 080/The Battle of ATL.app",
-    "machine_code_sha256": "2585ccc63a5eaab7dff167c288a6143a9d2fc12c963a34071091d0337431808c",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 081.zip",
-    "zip_sha256": "040ebb5c0e1acc5e3d2bdc1a6668fdfb1be0e8208cf539ab62949ca3e2898785",
-    "zip_bytes": 1459508487,
+    "build": 82,
+    "version": "0.82.0",
+    "source_commit": "a5f777f9f374bc7bf44ac646ac4abcba91c3b52b",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 082/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 081/The Battle of ATL.app",
+    "machine_code_sha256": "de1c70dca01ff3dca618b20bc0770cfcf3e177f49bd93197819549424dbd2217",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 082.zip",
+    "zip_sha256": "910a5daf53db639c9767c60af4a7f35253ef9fe8f8a5d9e3810fa6e2290d3f51",
+    "zip_bytes": 1459501934,
     "reports": [
+      "2026-09-14-steep-brake-fixed.json",
+      "2026-09-14-steep-brake-wall-regression.json",
       "2026-09-14-build081-panic.json",
       "2026-09-14-build081-motion.json",
-      "2026-09-14-build081-finish.json"
+      "2026-09-14-build081-finish.json",
+      "2026-09-14-build082-handling-packaged.json"
     ],
     "verification": [
       "Packaged live player shots, fleeing movement, repeated-shot panic refresh and recovery verified",
-      "Packaged male/female open-shirt ordinary walking checks and selected frames pass",
+      "Packaged male/female ordinary walking regression and selected frames pass",
+      "Installed build082 packaged nine-case handling audit passes, including steep-grass brake hold, reverse and pedal/brake priority",
+      "Steep-grass braking, pedal/brake priority, wall escape and forward departure pass in native audits",
       "Packaged finish guards, ordered checkpoints, win menu and saved records pass",
       "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
     ],

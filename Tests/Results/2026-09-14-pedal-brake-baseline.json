@@ -1,0 +1,101 @@
+{
+  "passed": false,
+  "reason": "Slope braking grip or airborne behavior failed",
+  "phase": 9,
+  "samples": [
+    {
+      "phase": 0,
+      "speed": 411.245,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 597,
+      "samples": 597,
+      "passed": true
+    },
+    {
+      "phase": 1,
+      "speed": 746.864,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 562,
+      "samples": 562,
+      "passed": true
+    },
+    {
+      "phase": 2,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 561,
+      "samples": 561,
+      "passed": true
+    },
+    {
+      "phase": 3,
+      "speed": 1526.859,
+      "max_lateral": 673.121,
+      "yaw": 20.619,
+      "ground": 554,
+      "samples": 554,
+      "passed": true
+    },
+    {
+      "phase": 4,
+      "speed": 1475.71,
+      "max_lateral": 344.52,
+      "yaw": 10.808,
+      "ground": 561,
+      "samples": 561,
+      "passed": true
+    },
+    {
+      "phase": 5,
+      "speed": 600.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 0,
+      "samples": 114,
+      "passed": true
+    },
+    {
+      "phase": 6,
+      "speed": 0.0,
+      "max_lateral": 2.134,
+      "yaw": 0.069,
+      "ground": 1083,
+      "samples": 1083,
+      "passed": true
+    },
+    {
+      "phase": 7,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 984,
+      "samples": 984,
+      "passed": true
+    },
+    {
+      "phase": 8,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 1026,
+      "samples": 1026,
+      "passed": true
+    },
+    {
+      "phase": 9,
+      "speed": 236.142,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 1010,
+      "samples": 1010,
+      "passed": false
+    }
+  ],
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-slopes-2ca840f684d341f6b5a54cad748ecf9e.log",
+  "scope": "Native movement on controlled 10-degree incline, flat road/grass and 35-degree grass downhill planes. Initial positions/speeds injected; braking and steering keyboard input. No actual-world hills, visual, tire simulation or whole-route acceptance."
+}
