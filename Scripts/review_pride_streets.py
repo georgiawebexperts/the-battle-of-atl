@@ -24,6 +24,8 @@ for row in json.loads((folder/'surfaces.json').read_text())['meshes']:
  for k in range(0,len(vertices)-2,183):
   f=vertices[k:k+3];x=sum(p[0] for p in f)/3;y=-sum(p[1] for p in f)/3;z=sum(p[2] for p in f)/3;hit=unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x,y,z+2),unreal.Vector(x,y,z-2));error=None if not hit else abs(hit[0].z-z);checks.append({'mesh':row['name'],'xyz':[x,y,z],'error':error,'actor':None if not hit else hit[1].get_actor_label()})
 assert checks and all(c['error'] is not None and c['error']<.1 and c['actor']=='SM_'+c['mesh'] for c in checks),str([c for c in checks if c['error'] is None or c['error']>=.1][:3])
+exec(compile((root/'Scripts/add_pride_crosswalks_review.py').read_text(),'add_pride_crosswalks_review.py','exec'), {'__name__':'__main__'})
+exec(compile((root/'Scripts/add_pride_street_signs_review.py').read_text(),'add_pride_street_signs_review.py','exec'), {'__name__':'__main__'})
 # Save only an isolated review map; tutorial boundary remains intentionally unchanged until integrated.
 assert unreal.EditorLoadingAndSavingUtils.save_map(world,'/Game/PiedmontRide/Maps/PiedmontPrideStreetReview')
 cam=ea.spawn_actor_from_class(unreal.SceneCapture2D,unreal.Vector());cap=cam.get_component_by_class(unreal.SceneCaptureComponent2D);tex=unreal.RenderingLibrary.create_render_target2d(world,1280,720,unreal.TextureRenderTargetFormat.RTF_RGBA8);cap.texture_target=tex;cap.capture_source=unreal.SceneCaptureSource.SCS_FINAL_COLOR_LDR;cap.capture_every_frame=False;cap.capture_on_movement=False;cap.always_persist_rendering_state=True;cap.fov_angle=75

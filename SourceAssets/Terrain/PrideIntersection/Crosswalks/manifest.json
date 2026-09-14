@@ -1,0 +1,87 @@
+{
+  "status": "authored game markings, not surveyed paint dimensions",
+  "approaches": [
+    {
+      "name": "West",
+      "center": [
+        -24976.386522630088,
+        12967.093021493904
+      ],
+      "tangent": [
+        0.9986222699089119,
+        -0.05247439415536349
+      ],
+      "width": 860
+    },
+    {
+      "name": "East",
+      "center": [
+        -23532.36810939221,
+        12902.064652661376
+      ],
+      "tangent": [
+        0.9992320914139917,
+        -0.039181979128424575
+      ],
+      "width": 860
+    },
+    {
+      "name": "North",
+      "center": [
+        -24169.790256020184,
+        12000.0
+      ],
+      "tangent": [
+        -0.2121962715525595,
+        0.977227067952578
+      ],
+      "width": 560
+    },
+    {
+      "name": "South",
+      "center": [
+        -24559.83885685113,
+        13850.0
+      ],
+      "tangent": [
+        -0.2084311030950021,
+        0.9780370520908708
+      ],
+      "width": 560
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Red",
+      "triangles": 144,
+      "collision": "NoCollision"
+    },
+    {
+      "name": "Orange",
+      "triangles": 144,
+      "collision": "NoCollision"
+    },
+    {
+      "name": "Yellow",
+      "triangles": 144,
+      "collision": "NoCollision"
+    },
+    {
+      "name": "Green",
+      "triangles": 144,
+      "collision": "NoCollision"
+    },
+    {
+      "name": "Blue",
+      "triangles": 144,
+      "collision": "NoCollision"
+    },
+    {
+      "name": "Violet",
+      "triangles": 144,
+      "collision": "NoCollision"
+    }
+  ],
+  "support_probes": 1728,
+  "scope": "Four approach crosswalks, six colors; native visual review pending"
+}
