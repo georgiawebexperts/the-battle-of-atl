@@ -1376,3 +1376,16 @@ The baseline failed: minimum pelvis Z was 93.619 cm during a real J jump and lan
 Editor build and subsequent rendered jumps passed. Level ground: minimum pelvis Z 98.371 cm, maximum pedal error 2.565 cm across 298 samples. Realistic downhill at measured grade -0.0471: minimum pelvis Z 98.274 cm, maximum pedal error 2.404 cm across 342 samples. Both passed hand contact, clean landing, one +10-second reward, and stationary/midair/stun/end guards. Flat before/after landing close-ups were inspected. Reports: 2026-09-13-landing-saddle-fixed.json and 2026-09-13-landing-saddle-downhill-real.json. These checks cover normal J jumps and the tested downhill landing, not every arbitrary drop or every body-surface intersection.
 
 Not packaged. Desktop/share076 remains installed; the rounded saddle and landing correction are source changes for a future build. More natural finger contact on the handlebars remains a visible rider issue. Full game completion is not claimed.
+
+
+2026-09-14 [codex-maclaptop] — Handlebar thumb contact repaired, unreleased
+
+Close-camera inspection and steering-frame finger measurements showed that the four fingers curl around the bars, but thumbs dangled behind them. The old detailed-rider pose used the same fixed-axis curl for thumbs as fingers. Thumb distal joints were about 7.35 cm radially away from the bar center.
+
+Changed detailed-rider thumb posing to a two-link solve toward the underside of each grip, preserving segment lengths and wrist targets. Distal joints now sit at bike/steering-local (38.5, +/-20, 110.3), approximately 2.27 cm from the 1.5 cm-radius bar centerline. Legacy rider posing remains unchanged. The native balance audit now rejects thumbs inside the bar or detached from the grip through stopping, departure and braking. Added --grip-close camera and finger diagnostics to Scripts/test_mac_new_features.py.
+
+Editor build passed. The updated rendered balance test passed with 1.032 cm ground contact error, 0.225 cm pedal error and 0.0 cm wrist error. Inspected pedaling and stopped close-ups; dangling thumbs are corrected. Reports: 2026-09-13-grip-before.json, 2026-09-14-thumb-grip-fixed.json and 2026-09-14-thumb-grip-comparison.json. These are bone-envelope and selected visual checks, not exhaustive skin intersection proof.
+
+The close view also exposed a floating trash-can/ammo setup near the gate; investigate its floor placement next. Example image: work/feature-balance-74e25e124d6b4c0dbf770ddbb8e7ffc5/pedaling.png. Do not treat the hovering can as intentional pickup bobbing without checking its actor geometry.
+
+Not packaged. Desktop/share076 remains installed. Rounded saddle, landing clearance and thumb pose changes are source changes awaiting a later playtest. Apple developer membership/signing work is still deferred as requested. Full game remains unfinished.

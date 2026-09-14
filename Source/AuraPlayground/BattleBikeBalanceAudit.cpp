@@ -15,7 +15,7 @@ void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt){
  auto Finish=[&](bool Pass,const TCHAR* Why){UE_LOG(LogTemp,Display,TEXT("BikeBalanceAudit: {\"passed\":%s,\"phase\":%d,\"ground_error_cm\":%.3f,\"pedal_error_cm\":%.3f,\"grip_error_cm\":%.3f,\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Phase,MaxGround,MaxPedal,MaxGrip,Why);Phase=99;Key(EKeys::W,false);Key(EKeys::SpaceBar,false);PC->ConsoleCommand(TEXT("quit"));};
  FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleBalanceReviewDir="),Dir);
  if(!Dir.IsEmpty()){
-  if(!Camera.IsValid())Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FTransform Frame=B->Visual->GetComponentTransform();FVector Eye=Frame.TransformPosition(FVector(140,-290,100)),Target=Frame.TransformPosition(FVector(0,0,65));if(FParse::Param(FCommandLine::Get(),TEXT("BattleAerialWaterReview"))){Eye=FVector(1800,-6500,5000);Target=FVector(-3500,0,-330);}if(FParse::Param(FCommandLine::Get(),TEXT("BattleSaddleCloseReview"))){Eye=Frame.TransformPosition(FVector(65,-150,105));Target=Frame.TransformPosition(FVector(-18,0,85));}Camera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());PC->SetViewTarget(Camera.Get());
+  if(!Camera.IsValid())Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FTransform Frame=B->Visual->GetComponentTransform();FVector Eye=Frame.TransformPosition(FVector(140,-290,100)),Target=Frame.TransformPosition(FVector(0,0,65));if(FParse::Param(FCommandLine::Get(),TEXT("BattleAerialWaterReview"))){Eye=FVector(1800,-6500,5000);Target=FVector(-3500,0,-330);}if(FParse::Param(FCommandLine::Get(),TEXT("BattleSaddleCloseReview"))){Eye=Frame.TransformPosition(FVector(65,-150,105));Target=Frame.TransformPosition(FVector(-18,0,85));}if(FParse::Param(FCommandLine::Get(),TEXT("BattleGripCloseReview"))){Eye=Frame.TransformPosition(FVector(100,-85,150));Target=Frame.TransformPosition(FVector(37,0,112));}Camera->SetActorLocationAndRotation(Eye,(Target-Eye).Rotation());PC->SetViewTarget(Camera.Get());
  }
  auto Shot=[&](const TCHAR* Name){if(!Dir.IsEmpty())FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),true,false);};
  // The old feet-only check missed the lowered pelvis passing through the seat.
@@ -29,6 +29,11 @@ void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt){
    const FVector Grip=B->SteeringAssembly->GetComponentTransform().TransformPosition(FVector(31,-Sign*25,115)-B->SteeringAssembly->GetRelativeLocation());
    MaxGrip=FMath::Max(MaxGrip,float(FVector::Distance(Wrist,Grip)));
    if(MaxGrip>3.f){Finish(false,TEXT("Stop/start pose pulled wrist away from handlebar"));return;}
+   if(B->Rider->GetBoneIndex(TEXT("thumb_03_l"))>=0){
+    const FVector Thumb=B->SteeringAssembly->GetComponentTransform().InverseTransformPosition(B->Rider->GetBoneLocation(Sign>0?TEXT("thumb_03_l"):TEXT("thumb_03_r"),EBoneSpaces::WorldSpace))+B->SteeringAssembly->GetRelativeLocation();
+    const float Radius=FVector2D(Thumb.X-40.f,Thumb.Z-112.f).Size();
+    if(Radius<1.5f||Radius>4.f||FMath::Abs(Thumb.Y+Sign*20.f)>2.f){Finish(false,TEXT("Thumb is inside or detached from the handlebar grip"));return;}
+   }
   }
  }
  auto CheckFeet=[&](bool Grounded){
@@ -43,7 +48,16 @@ void TickBattleBikeBalanceAudit(APlayerController* PC,float Dt){
  };
  if(Phase==0){B->Ride->StopMovementImmediately();B->Ride->Speed=B->Ride->ReverseSpeed=0;Key(EKeys::SpaceBar,true);Clock=0;Phase=1;}
  else if(Phase==1&&Clock>1){Shot(TEXT("stopped"));if(!CheckFeet(true)){Finish(false,TEXT("Stopped shoes did not reach ground"));return;}Key(EKeys::SpaceBar,false);Key(EKeys::W,true);Clock=0;Phase=2;}
- else if(Phase==2&&Clock>1.3f){Shot(TEXT("pedaling"));if(B->Ride->Speed<150||!CheckFeet(false)){Finish(false,TEXT("Moving shoes did not return to pedals"));return;}Key(EKeys::W,false);Key(EKeys::SpaceBar,true);Clock=0;TransitionShots=0;Phase=3;}
+ else if(Phase==2&&Clock>1.3f){
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGripCloseReview"))){
+   const FTransform GripFrame=B->SteeringAssembly->GetComponentTransform();
+   for(const TCHAR* Side:{TEXT("l"),TEXT("r")})for(const TCHAR* Base:{TEXT("hand"),TEXT("index_01"),TEXT("index_02"),TEXT("index_03"),TEXT("middle_01"),TEXT("middle_02"),TEXT("middle_03"),TEXT("thumb_01"),TEXT("thumb_02"),TEXT("thumb_03")}){
+    const FName Name(*FString::Printf(TEXT("%s_%s"),Base,Side));
+    const FVector Position=GripFrame.InverseTransformPosition(B->Rider->GetBoneLocation(Name,EBoneSpaces::WorldSpace))+B->SteeringAssembly->GetRelativeLocation();
+    UE_LOG(LogTemp,Display,TEXT("GripBone: name=%s position=%s"),*Name.ToString(),*Position.ToString());
+   }
+  }
+  Shot(TEXT("pedaling"));if(B->Ride->Speed<150||!CheckFeet(false)){Finish(false,TEXT("Moving shoes did not return to pedals"));return;}Key(EKeys::W,false);Key(EKeys::SpaceBar,true);Clock=0;TransitionShots=0;Phase=3;}
  else if(Phase==3&&Clock>1.7f){Shot(TEXT("stopped-again"));if(B->Ride->Speed>1||!CheckFeet(true)){Finish(false,TEXT("Braking did not plant shoes again"));return;}Clock=0;Phase=4;}
  else if(Phase==4&&Clock>.3f)Finish(true,TEXT("Grounded stop, moving pedal contact, braking and replant pass"));
 #endif

@@ -295,7 +295,13 @@ void ABattleBike::PoseRider(float Dt){
     if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FingerAxis,FMath::DegreesToRadians(Joint==2?-55.f:Joint==3?-65.f:-35.f)));
    }
   }
-  for(int Joint=2;Joint<=3;Joint++){
+  if(bDetailedRiderPreview){
+   // Close the thumb around the underside of the grip. Its joints pivot on
+   // different axes from the fingers; a shared finger curl left it dangling.
+   const FVector ThumbTarget=SteeringToRider.TransformPosition(FVector(38.5,-Sign*20,110.3)-SteeringAssembly->GetRelativeLocation());
+   const FVector ThumbBend=SteeringToRider.TransformVectorNoScale(FVector(-.2f,Sign*.5f,-1.f));
+   Limb(*(TEXT("Thumb2_")+S),*(TEXT("Thumb3_")+S),Sign>0?TEXT("thumb_03_l"):TEXT("thumb_03_r"),ThumbTarget,ThumbBend);
+  }else for(int Joint=2;Joint<=3;Joint++){
    const int I=Index(*FString::Printf(TEXT("Thumb%d_%s"),Joint,Side));
    if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(FingerAxis,FMath::DegreesToRadians(-30.f)));
   }

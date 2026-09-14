@@ -1,0 +1,51 @@
+{
+  "samples": [
+    {
+      "report": "2026-09-13-grip-before.json",
+      "thumb_joints": [
+        {
+          "side": "l",
+          "xyz": [
+            34.509,
+            -19.358,
+            107.108
+          ],
+          "radius_from_bar_cm": 7.3540971573674465
+        },
+        {
+          "side": "r",
+          "xyz": [
+            34.509,
+            19.358,
+            107.108
+          ],
+          "radius_from_bar_cm": 7.3540971573674465
+        }
+      ]
+    },
+    {
+      "report": "2026-09-14-thumb-grip-fixed.json",
+      "thumb_joints": [
+        {
+          "side": "l",
+          "xyz": [
+            38.5,
+            -20.0,
+            110.3
+          ],
+          "radius_from_bar_cm": 2.267156809750929
+        },
+        {
+          "side": "r",
+          "xyz": [
+            38.5,
+            20.0,
+            110.3
+          ],
+          "radius_from_bar_cm": 2.267156809750929
+        }
+      ]
+    }
+  ],
+  "scope": "Bone positions and inspected close-camera frames, not exhaustive skin/handlebar intersection testing."
+}
