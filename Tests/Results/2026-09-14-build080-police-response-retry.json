@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "stage": 8,
+  "reason": "Police pursuit, taser, recovery, gunfire panic and quiet-period alert expiry pass",
+  "people": 3,
+  "police_spawned": 1,
+  "taser_hits": 2,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": {
+    "frames_inspected": 2,
+    "observed": [
+      "Officer holding raised taser with STOP! APD warning and reaction countdown",
+      "Visible blue discharge toward Ellison, TASED notice and -10 second penalty"
+    ],
+    "limits": [
+      "Scripted review camera and positioned officer, not normal live encounter framing",
+      "No audio playback in this run",
+      "Stationary witness fixture proves panic state only, not fleeing movement",
+      "First rendered attempt crashed in Metal pipeline compilation; successful retry does not resolve crash"
+    ]
+  },
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-168c271d1ec343469b2143d7df190a0f.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build080-police-response/police-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build080-police-response/police-discharge.png"
+  ],
+  "capture_complete": true
+}

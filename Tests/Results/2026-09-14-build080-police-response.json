@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "missing_report": true,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": -11,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-a02b239a9c60479783cbc2a451accd3d.log",
+  "images": [],
+  "capture_complete": false
+}
