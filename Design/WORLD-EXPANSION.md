@@ -1337,3 +1337,20 @@ Editor build passed. The isolated map's rendered arcade full round trip passed (
 Main map SHA256 is 7eb85397e6ac45dbcb8ca3a2f91f60322a41c35baf8d09f2fd336ce9ba88fa95. Pre-install backup: work/map-backups/PiedmontWorld-before-gate-road-4a3b03caedec.umap (SHA256 4a3b03caedec2f828ddf804e36f330665071274fe29b87a6eb18619db3a22714). Installer is one-time guarded; do not rerun on the installed map. Review importer saves only PiedmontGateRoadReview; after promotion it needs duplicate-actor handling before reuse.
 
 Not packaged yet. Desktop/share 075 remains installed. Next step: package 076 containing both Billy's and gate pavement cleanup, run a packaged gate route with --require-road-cleanup --expected-cleanup 90, inspect riding captures, verify the share app/ZIP and switch the shortcut only after passing. Do not claim release or full game completion yet.
+
+
+Mac playtest 076 installed
+
+2026-09-13 [codex-maclaptop]
+
+Removed overlapping road blocks beside Billy’s and replaced stacked pavement at the 14th Street gate with a continuous terrain-fitted surface. The two replacements remove 90 legacy blocks. Existing lake, street, construction-boundary and countdown changes remain included.
+
+The packaged full route passed both directions with ordinary keyboard input: 48,731.10 cm traveled, maximum route deviation 82.84 cm, zero falls and exactly one gate timer start. Packaged construction fences, old-cutoff clearance, market closure and the coming-soon notice passed. The packaged riding-camera views beside Billy’s and at the gate were inspected. Realistic mode passed in the editor on the main map; it was not separately rerun in this package. The earlier headless realistic turn failure remains unresolved.
+
+The ZIP passed CRC verification, and the copied app’s machine code matches the staged build. Local ad-hoc signature verification passed. Desktop shortcut now points to 076; 075 remains available. Share ZIP includes updated START-HERE instructions. Full game completion is not claimed: small surface intersections, older paving outside these replacements, dim street signs, scenery, animation, handling and other gameplay work remain.
+
+Elliott reports an active Apple developer membership and asked to revisit it later, possibly tomorrow. This build is not Developer ID signed or notarized; that setup has not been verified.
+
+Share ZIP: /Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076.zip
+SHA256: d6f669fe743e8fc9fd970e4a09dea58ff19074e5b2f3409249486b9277e832b1
+Compiled source: b78635e7277775b881fe4646a14080b6ff05257a

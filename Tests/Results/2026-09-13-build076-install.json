@@ -1,0 +1,26 @@
+{
+  "build": 76,
+  "version": "0.76.0",
+  "source_commit": "b78635e7277775b881fe4646a14080b6ff05257a",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 075/The Battle of ATL.app",
+  "machine_code_sha256": "6a71a2e5f95e5e5ac83464953cd4a0461f7e93c38629143bb156c231c66233dc",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076.zip",
+  "zip_sha256": "d6f669fe743e8fc9fd970e4a09dea58ff19074e5b2f3409249486b9277e832b1",
+  "zip_bytes": 1326213544,
+  "reports": [
+    "2026-09-13-build076-pride-route.json",
+    "2026-09-13-build076-pride-boundary.json"
+  ],
+  "verification": [
+    "Packaged main-map full motel/Billys/14th route passed both directions with one gate start",
+    "Packaged boundary and market-closure checks passed",
+    "Packaged player-camera images inspected",
+    "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
+  ],
+  "remaining": [
+    "Street signs in shadow, small surface intersections and older paving beyond the replaced sections need visual refinement",
+    "Broader game art, animation, handling and performance remain unfinished",
+    "Other Macs untested; this build is not Developer ID signed or notarized"
+  ]
+}

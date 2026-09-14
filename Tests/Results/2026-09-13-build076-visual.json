@@ -1,0 +1,18 @@
+{
+  "release_ready": true,
+  "scope": "Visual acceptance of the pavement cleanup for an early Mac playtest; not full game completion.",
+  "inspected": [
+    "leg0-view1.png",
+    "leg1-view0.png"
+  ],
+  "capture_directory": "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/PrideRouteReview/9385d666061a4bc3a64ee30a4af70176",
+  "findings": [
+    "Packaged Billys approach has continuous asphalt without the overlapping legacy road blocks.",
+    "Packaged 14th Street gate has continuous pavement instead of stacked slabs; the GO timer banner is readable."
+  ],
+  "known_visual_issues": [
+    "Small surface intersections remain around the gate and older paving remains farther from the replaced sections.",
+    "Street signs are dim in shadow; broad scenery and character polish remain unfinished."
+  ],
+  "full_game_complete": false
+}

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 48731.1,
+  "maxCenterlineErrorCm": 82.84,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-rendered-lookahead300-gate-main-packaged",
+  "map": "PiedmontWorld",
+  "packaged": true,
+  "captures": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/PrideRouteReview/9385d666061a4bc3a64ee30a4af70176/leg0-view0.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/PrideRouteReview/9385d666061a4bc3a64ee30a4af70176/leg0-view1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/PrideRouteReview/9385d666061a4bc3a64ee30a4af70176/leg1-view0.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/PrideRouteReview/9385d666061a4bc3a64ee30a4af70176/leg1-view1.png"
+  ],
+  "scope": "Packaged main-map round trip, ordinary keyboard input, pavement checks and exactly one gate start; known visual polish remains.",
+  "gate_starts": 1,
+  "road_cleanup": [
+    90,
+    324,
+    1
+  ]
+}
