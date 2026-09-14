@@ -1,0 +1,17 @@
+{
+  "release_ready": true,
+  "scope": "080 crowd changes only; six inspected frames",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/male/packaged/outfit-2/walk-step.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/female/packaged/outfit-2/walk-step.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/male/packaged/outfit-4/walk-step.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/female/packaged/outfit-4/walk-step.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-outfits-c1ef2211cbc04bbb8b6852d671068e03/bike.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-outfits-c1ef2211cbc04bbb8b6852d671068e03/foot.png"
+  ],
+  "remaining": [
+    "Face/hair/body diversity limited",
+    "All animation poses and performance not accepted",
+    "Full game unfinished"
+  ]
+}

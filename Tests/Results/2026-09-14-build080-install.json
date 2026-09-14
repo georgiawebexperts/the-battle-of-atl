@@ -1,0 +1,27 @@
+{
+  "build": 80,
+  "version": "0.80.0",
+  "source_commit": "8705c44dc9d489e419a79284ca8354fbe5677734",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 080/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 079/The Battle of ATL.app",
+  "machine_code_sha256": "f1e0a5d5c8ed7a464bc284d5d9badf54cf4537668e197882f71bb525fda05d02",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 080.zip",
+  "zip_sha256": "2eb71815773da31742f50ac513b345a35d87ffbdfb4cb84588d65b32aef96a2f",
+  "zip_bytes": 1459444693,
+  "reports": [
+    "2026-09-14-build080-crowd.json",
+    "2026-09-14-build080-motion.json",
+    "2026-09-14-build080-finish.json"
+  ],
+  "verification": [
+    "Packaged early and later six-person crowd views inspected",
+    "Packaged male/female open-shirt and jacket walking checks and selected frames pass",
+    "Packaged finish guards, ordered checkpoints, win menu and saved records pass",
+    "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
+  ],
+  "remaining": [
+    "Intermittent Krog route stall remains unresolved despite a subsequent full movement run passing",
+    "Broader art, animation, combat, handling and performance remain unfinished",
+    "Other Macs untested; Developer ID signing and notarization deferred"
+  ]
+}

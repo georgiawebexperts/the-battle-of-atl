@@ -163,3 +163,6 @@ brief first-use shader pauses are possible. Broader stability testing remains.
 TUNNEL LIGHTING AND REVERSE HELP
 Tunnel utility lights now point down to reduce ceiling glare.
 The riding HUD always shows S/Down to back up; hold it to brake and reverse.
+
+CROWD OUTFITS
+Ordinary walkers now wear varied shirt colors, button shirts, and jackets.

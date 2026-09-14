@@ -1,0 +1,30 @@
+[
+  {
+    "variant": "male",
+    "packaged": true,
+    "outfit": 2,
+    "images_directory": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/male/packaged/outfit-2",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.476 foot_dot=0.889 knee_motion=68.369 travel=808.724"
+    ],
+    "missing_captures": [],
+    "visual_review": "walk-step.png inspected"
+  },
+  {
+    "variant": "female",
+    "packaged": true,
+    "outfit": 2,
+    "images_directory": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/female/packaged/outfit-2",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.820 foot_dot=0.879 knee_motion=56.016 travel=810.198"
+    ],
+    "missing_captures": [],
+    "visual_review": "walk-step.png inspected"
+  }
+]
