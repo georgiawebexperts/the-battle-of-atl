@@ -56,6 +56,7 @@ void ABattleMacController::TickLocomotionReview(float Dt){
    const FTransform T(FRotator::ZeroRotator,Ground.ImpactPoint+FVector(0,0,92));
    auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),T,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
    Visitor->CityAppearanceVariant=FParse::Param(FCommandLine::Get(),TEXT("BattleCityFemale"))?1:0;
+   FParse::Value(FCommandLine::Get(),TEXT("BattleCityOutfit="),Visitor->CityOutfitVariant);
    Visitor->FinishSpawning(T);if(auto* AI=Cast<AAIController>(Visitor->GetController())){AI->StopMovement();AI->UnPossess();}
    Person=Visitor;
   }else Person=GetWorld()->SpawnActor<APiedmontExplorer>(Ground.ImpactPoint+FVector(0,0,92),FRotator::ZeroRotator,Params);

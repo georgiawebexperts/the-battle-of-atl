@@ -1,0 +1,30 @@
+[
+  {
+    "variant": "male",
+    "outfit": 2,
+    "images_directory": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/male/outfit-2",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.476 foot_dot=0.889 knee_motion=67.907 travel=807.757"
+    ],
+    "missing_captures": [],
+    "visual_review": "walk-step.png inspected; no obvious garment distortion in selected side frame",
+    "scope": "Native walking checks and selected side frame only. Does not establish all animation poses, crash clothing, or packaged startup readiness."
+  },
+  {
+    "variant": "female",
+    "outfit": 2,
+    "images_directory": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/native-city-review/female/outfit-2",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.820 foot_dot=0.879 knee_motion=55.667 travel=808.163"
+    ],
+    "missing_captures": [],
+    "visual_review": "walk-step.png inspected; no obvious garment distortion in selected side frame",
+    "scope": "Native walking checks and selected side frame only. Does not establish all animation poses, crash clothing, or packaged startup readiness."
+  }
+]
