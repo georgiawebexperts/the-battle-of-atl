@@ -1,0 +1,14 @@
+{
+  "accepted": true,
+  "riding_images_inspected": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/LakeRouteReview/35821f15d5b949929fa879cd93a52c9c/leg0-view0.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/LakeRouteReview/35821f15d5b949929fa879cd93a52c9c/leg1-view1.png"
+  ],
+  "riding_observation": "Packaged lake junction is smooth and pavement continuous; water visible. Selected opposite-direction views inspected.",
+  "scope": "Terrain and shoreline presentation only; character/animation and wider art unfinished.",
+  "swimming_images_inspected": [
+    "work/swim-bd1ec2d5e3d5438faef5e6116c9a88c8/swimming.png",
+    "work/swim-bd1ec2d5e3d5438faef5e6116c9a88c8/returned.png"
+  ],
+  "swimming_observation": "Water renders, swimming body visible and camera above surface; return view shows bike at bank. Continuous animation/art quality remains unfinished."
+}

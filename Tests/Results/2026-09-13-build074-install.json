@@ -1,0 +1,30 @@
+{
+  "build": 74,
+  "version": "0.74.0",
+  "source_commit": "3fc6e77",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 073/The Battle of ATL.app",
+  "machine_code_sha256": "5b8ce0f310de7c14af83408bc170653aa6c42a8863d2a0330cce801fa92800cb",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074.zip",
+  "zip_sha256": "7536105f5c7cb987c11bdd09f96415329c55784946b09891ce332c1122104fc2",
+  "zip_bytes": 1325169287,
+  "reports": [
+    "2026-09-13-build074-lake-arcade.json",
+    "2026-09-13-build074-lake-short-real.json",
+    "2026-09-13-build074-swim.json",
+    "2026-09-13-build074-deep-swim.json"
+  ],
+  "verification": [
+    "Packaged main-map lake loop traversed both directions in arcade mode",
+    "Packaged second graded junction traversed both directions in realistic mode",
+    "Packaged nearby-bank and deep-bank swimming, fixed bike and remount checks pass",
+    "Packaged riding and swimming images visually inspected",
+    "ZIP CRC, deep strict ad-hoc signature and staged/installed machine code match"
+  ],
+  "remaining": [
+    "Only three local lake terrain repairs; wider landscape and art remain unfinished",
+    "Full approach driving audit currently fails before gate",
+    "Broader art, animation, handling and performance remain unfinished",
+    "Other Macs untested; no Developer ID or notarization"
+  ]
+}

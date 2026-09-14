@@ -4,8 +4,9 @@
   "terrain_candidate_sha256": "b315745993100fdfe0d8edf482d7348afb3cfd1d63b148e118c252cca7d2cd99",
   "backup": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/map-backups/PiedmontWorld-before-lake-5afdef9bc711.umap",
   "saved_main_map": true,
-  "desktop_installed": false,
-  "pending": "Packaged main map checks and remaining shore/swim regression before desktop update.",
+  "desktop_installed": true,
+  "pending": "Broader world art, animation and gameplay improvements remain.",
   "main_gameplay_passed": true,
-  "main_gameplay_report": "2026-09-13-lake-drive-61853018-arcade-lookahead180-braked-review-main.json"
+  "main_gameplay_report": "2026-09-13-lake-drive-61853018-arcade-lookahead180-braked-review-main.json",
+  "installed_build": 74
 }

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 8861.8,
+  "maxCenterlineErrorCm": 85.76,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-lookahead180-braked-review-main-packaged",
+  "path": "61853018",
+  "scope": "Packaged main map, two-direction keyboard traversal. Visual quality requires image review.",
+  "route_selection": [
+    {
+      "osm_id": "61853018",
+      "length_cm": 4247.17,
+      "points": 74
+    }
+  ],
+  "runtime": "packaged",
+  "map": "PiedmontWorld",
+  "minimum_length_cm": 0,
+  "terrain_candidate_sha256": "b315745993100fdfe0d8edf482d7348afb3cfd1d63b148e118c252cca7d2cd99",
+  "captures": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/LakeRouteReview/35821f15d5b949929fa879cd93a52c9c/leg0-view0.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/LakeRouteReview/35821f15d5b949929fa879cd93a52c9c/leg0-view1.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/LakeRouteReview/35821f15d5b949929fa879cd93a52c9c/leg1-view0.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/LakeRouteReview/35821f15d5b949929fa879cd93a52c9c/leg1-view1.png"
+  ]
+}
