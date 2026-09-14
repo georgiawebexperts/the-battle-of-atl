@@ -1,0 +1,74 @@
+{
+  "passed": false,
+  "reason": "Slope braking grip or airborne behavior failed",
+  "phase": 6,
+  "samples": [
+    {
+      "phase": 0,
+      "speed": 416.588,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 586,
+      "samples": 586,
+      "passed": true
+    },
+    {
+      "phase": 1,
+      "speed": 747.012,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 617,
+      "samples": 617,
+      "passed": true
+    },
+    {
+      "phase": 2,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 610,
+      "samples": 610,
+      "passed": true
+    },
+    {
+      "phase": 3,
+      "speed": 1526.839,
+      "max_lateral": 673.128,
+      "yaw": 20.628,
+      "ground": 607,
+      "samples": 607,
+      "passed": true
+    },
+    {
+      "phase": 4,
+      "speed": 1475.778,
+      "max_lateral": 344.52,
+      "yaw": 10.801,
+      "ground": 598,
+      "samples": 598,
+      "passed": true
+    },
+    {
+      "phase": 5,
+      "speed": 600.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 0,
+      "samples": 122,
+      "passed": true
+    },
+    {
+      "phase": 6,
+      "speed": 674.252,
+      "max_lateral": 2.383,
+      "yaw": 0.076,
+      "ground": 1068,
+      "samples": 1068,
+      "passed": false
+    }
+  ],
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-slopes-8924485bd6c449fdbf0345a466859a07.log",
+  "scope": "Native movement on controlled 10-degree incline, flat road/grass and 35-degree grass downhill planes. Initial positions/speeds injected; braking and steering keyboard input. No actual-world hills, visual, tire simulation or whole-route acceptance."
+}

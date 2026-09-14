@@ -99,7 +99,11 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
    const float GradeForce=-980.f*Tangent.Z;
    const float Resistance=Speed>0?(bGrass?65.f:12.f)+.000025f*Speed*Speed:0.f;
    const float Motor=Pedal*Accel[Gear-1]*FMath::Clamp((Cap-Speed)/150.f,0.f,1.f);
-   Speed=FMath::Clamp(Speed+(Motor+GradeForce-Resistance-Brake*(bGrass?450.f:850.f))*Dt,0.f,2200.f);
+   // Preserve downhill coasting, but let the brake stop and hold on every
+   // rideable incline. Otherwise steep grass accelerates through full braking
+   // and S can never reach the low-speed threshold needed to back out.
+   const float BrakeForce=Brake*((bGrass?450.f:850.f)+FMath::Max(0.f,GradeForce));
+   Speed=FMath::Clamp(Speed+(Motor+GradeForce-Resistance-BrakeForce)*Dt,0.f,2200.f);
   }
  }else {
   // Arcade corner assist eases off the motor and sheds speed progressively at

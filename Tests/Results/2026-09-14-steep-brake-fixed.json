@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "reason": "Uphill downhill road/grass grip, airborne behavior, steep-grass braking/holding/reverse passed",
+  "phase": 8,
+  "samples": [
+    {
+      "phase": 0,
+      "speed": 411.371,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 538,
+      "samples": 538,
+      "passed": true
+    },
+    {
+      "phase": 1,
+      "speed": 746.83,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 501,
+      "samples": 501,
+      "passed": true
+    },
+    {
+      "phase": 2,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 506,
+      "samples": 506,
+      "passed": true
+    },
+    {
+      "phase": 3,
+      "speed": 1526.847,
+      "max_lateral": 673.116,
+      "yaw": 20.617,
+      "ground": 494,
+      "samples": 494,
+      "passed": true
+    },
+    {
+      "phase": 4,
+      "speed": 1475.827,
+      "max_lateral": 344.508,
+      "yaw": 10.787,
+      "ground": 490,
+      "samples": 490,
+      "passed": true
+    },
+    {
+      "phase": 5,
+      "speed": 600.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 0,
+      "samples": 102,
+      "passed": true
+    },
+    {
+      "phase": 6,
+      "speed": 0.0,
+      "max_lateral": 2.166,
+      "yaw": 0.071,
+      "ground": 920,
+      "samples": 920,
+      "passed": true
+    },
+    {
+      "phase": 7,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 879,
+      "samples": 879,
+      "passed": true
+    },
+    {
+      "phase": 8,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 891,
+      "samples": 891,
+      "passed": true
+    }
+  ],
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-slopes-606b01f4f8fb4438ab926720574eaf25.log",
+  "scope": "Native movement on controlled 10-degree incline, flat road/grass and 35-degree grass downhill planes. Initial positions/speeds injected; braking and steering keyboard input. No actual-world hills, visual, tire simulation or whole-route acceptance."
+}
