@@ -1,0 +1,14 @@
+{
+  "release_ready": true,
+  "scope": "Playtest081 crowd-running change only; full game unfinished",
+  "reviewed_frames": 4,
+  "reports": [
+    "2026-09-14-build081-panic.json",
+    "2026-09-14-build081-walking.json"
+  ],
+  "limitations": [
+    "No exhaustive running outfit clipping or frame-by-frame footplant check",
+    "Prior intermittent Metal compiler crash unresolved",
+    "Other Macs not tested"
+  ]
+}

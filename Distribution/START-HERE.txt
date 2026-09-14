@@ -166,3 +166,6 @@ The riding HUD always shows S/Down to back up; hold it to brake and reverse.
 
 CROWD OUTFITS
 Ordinary walkers now wear varied shirt colors, button shirts, and jackets.
+
+GUNFIRE AND THE CROWD
+Nearby walkers flee gunfire. More shots prolong their panic; they calm down after a quiet interval.

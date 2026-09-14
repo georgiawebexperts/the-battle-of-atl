@@ -1,0 +1,30 @@
+[
+  {
+    "variant": "male",
+    "packaged": true,
+    "outfit": 2,
+    "images_directory": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build081-walking/male",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.476 foot_dot=0.889 knee_motion=68.367 travel=810.315"
+    ],
+    "missing_captures": [],
+    "visual_review": "Selected walk-step side frame inspected; clothing intact, no new obvious distortion. Not every pose or full footplant acceptance."
+  },
+  {
+    "variant": "female",
+    "packaged": true,
+    "outfit": 2,
+    "images_directory": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/build081-walking/female",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.820 foot_dot=0.879 knee_motion=56.179 travel=810.295"
+    ],
+    "missing_captures": [],
+    "visual_review": "Selected walk-step side frame inspected; clothing intact, no new obvious distortion. Not every pose or full footplant acceptance."
+  }
+]

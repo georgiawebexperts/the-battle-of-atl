@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "stage": 6,
+  "reason": "Real shots trigger live male/female flight, sustained panic, refresh and walking-speed recovery",
+  "male_travel_cm": 1277.69,
+  "female_travel_cm": 1341.96,
+  "exit_code": 0,
+  "packaged": true,
+  "headless": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-376ada58f2f048ceb92222731afebe45/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-376ada58f2f048ceb92222731afebe45/panic-running.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-376ada58f2f048ceb92222731afebe45/panic-away.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/crowd-panic-376ada58f2f048ceb92222731afebe45/panic-recovered.png"
+  ],
+  "visual_review": {
+    "inspected": [
+      "panic-running.png",
+      "panic-recovered.png"
+    ],
+    "observations": [
+      "Both witnesses show running poses; no earlier bright shirt patch in reviewed frame",
+      "Female returns to walking in recovered frame; both restore walking speed in runtime assertions"
+    ],
+    "limits": [
+      "Male off camera in recovered view",
+      "Only selected poses reviewed; no all-outfits/all-camera acceptance",
+      "Crowd/enemy directors frozen to isolate live witness reaction; no live police encounter in this test"
+    ]
+  }
+}
