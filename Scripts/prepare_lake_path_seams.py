@@ -11,7 +11,7 @@ for p in json.loads((terrain/'park-path-network.json').read_text())['paths']:
  if p['tags'].get('bridge')=='yes':continue
  surface=p['tags'].get('surface','asphalt');material='Concrete' if surface in ['concrete','paving_stones'] else 'Gravel' if surface in ['gravel','fine_gravel','compacted','dirt','ground'] else 'Asphalt'
  groups[material].append(LineString([(v[0],-v[1]) for v in p['points_cm']]).buffer(p['width_game_cm']/2,quad_segs=4))
-groups={k:unary_union(v) for k,v in groups.items()};paved=unary_union(list(groups.values()));zone=unary_union([Point(-5050,-1925).buffer(1000),Point(-9000,460).buffer(1000)])
+groups={k:unary_union(v) for k,v in groups.items()};paved=unary_union(list(groups.values()));zone=unary_union([Point(-5050,-1925).buffer(1000),Point(-9000,460).buffer(1000),Point(-5000,-3200).buffer(1000)])
 lake=json.loads((terrain/'lake-clara-meer.json').read_text());water=Polygon([(v[0],-v[1]) for v in lake['outer_cm']],holes=[[(v[0],-v[1]) for v in lake['island_cm']]])
 filler=paved.buffer(20,quad_segs=4).buffer(-20,quad_segs=4).difference(paved).intersection(zone).difference(water.buffer(100))
 assert filler.area<10000 and filler.contains(Point(-5100,-2275)), 'Unexpected fill area or missing target seam'
@@ -38,4 +38,4 @@ rows=[]
 for material,mesh in meshes.items():
  name='LakePathSeams_'+material;lines=['# Authored thin-gap closure of OSM path footprints; candidate DEM planes +3cm',f'o {name}']
  lines += ['v %.6f %.6f %.6f'%v for v in mesh['vertices']];lines += ['vt %.6f %.6f'%(v[0]/100,v[1]/100) for v in mesh['vertices']];lines+=['f '+' '.join(f'{i}/{i}' for i in face) for face in mesh['faces']];(out/(name+'.obj')).write_text('\n'.join(lines)+'\n');rows.append({'file':name+'.obj','material':material,'triangles':len(mesh['faces'])})
-(out/'manifest.json').write_text(json.dumps({'area_m2':filler.area/10000,'max_closing_width_cm':40,'within_two_patches':True,'water_and_100cm_bank_excluded':True,'meshes':rows},indent=2)+'\n');print(json.dumps({'area_m2':filler.area/10000,'meshes':rows}))
+(out/'manifest.json').write_text(json.dumps({'area_m2':filler.area/10000,'max_closing_width_cm':40,'within_three_patches':True,'water_and_100cm_bank_excluded':True,'meshes':rows},indent=2)+'\n');print(json.dumps({'area_m2':filler.area/10000,'meshes':rows}))

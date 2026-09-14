@@ -1,4 +1,4 @@
-"""Draft local path grading, preserving the lake and all terrain outside two small patches.
+"""Draft local path grading, preserving the lake and all terrain outside three small patches.
 
 No Unreal assets or maps are changed. Source DEM identity is checked against
 native collision measurements before preparing the candidate and its pavement.
@@ -21,8 +21,8 @@ def sample(field,x,y):
 errors=[abs(r['xyz'][2]-sample(z,*r['xyz'][:2])-3) for r in survey['samples'] if r['actor'].startswith('Park pavement')]
 assert errors and max(errors)<.01, 'Source DEM does not match current native pavement survey'
 segments=[s for s in survey['segments'] if s['tags'].get('bridge')!='yes' and all(a.startswith('Park pavement') for a in s['actors'])]
-centers=[(-5050.,-1925.),(-9000.,460.)];radius=1000.;inner=400.;sigma=4.
-# Nine-meter real-world smoothing kernel, only within two 10m game-space circles.
+centers=[(-5050.,-1925.),(-9000.,460.),(-5000.,-3200.)];radius=1000.;inner=400.;sigma=4.
+# Nine-meter real-world smoothing kernel, only within three 10m game-space circles.
 k=np.arange(-16,17);kernel=np.exp(-.5*(k/sigma)**2);kernel/=kernel.sum()
 smooth=np.apply_along_axis(lambda a:np.convolve(np.pad(a,(16,16),mode='edge'),kernel,mode='valid'),0,z)
 smooth=np.apply_along_axis(lambda a:np.convolve(np.pad(a,(16,16),mode='edge'),kernel,mode='valid'),1,smooth)

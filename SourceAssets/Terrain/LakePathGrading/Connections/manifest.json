@@ -23,7 +23,7 @@
       "file": "Park_Asphalt_3_16.obj",
       "source_collection": "ParkPavement",
       "original_mesh": "SM_Park_Asphalt_3_16",
-      "changed_vertices": 198,
+      "changed_vertices": 291,
       "max_shift_cm": 6.56504532338632,
       "bounds_cm": [
         [
@@ -61,8 +61,8 @@
       "file": "Park_Concrete_3_16.obj",
       "source_collection": "ParkPavement",
       "original_mesh": "SM_Park_Concrete_3_16",
-      "changed_vertices": 484,
-      "max_shift_cm": 38.28124996232925,
+      "changed_vertices": 916,
+      "max_shift_cm": 39.01924105293844,
       "bounds_cm": [
         [
           -8239.892627,

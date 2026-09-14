@@ -33,7 +33,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  if(GetWorld()->GetTimeSeconds()<5)return;
  if(!PrepareScooterRideAudit(this,Dt))return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike){UE_LOG(LogTemp,Error,TEXT("Connector fixture requires mounted bike; pawn=%s class=%s"),*GetNameSafe(GetPawn()),GetPawn()?*GetPawn()->GetClass()->GetName():TEXT("none"));UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);return;}
- struct FTrafficObservation{TWeakObjectPtr<UWorld> World;int CaptureMask=0;float LegTravel=0,PlannedLength=0,SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max(),MinZ=TNumericLimits<float>::Max(),MaxZ=-TNumericLimits<float>::Max(),MaxGrade=0;};static FTrafficObservation Traffic;
+ struct FTrafficObservation{TWeakObjectPtr<UWorld> World;int CaptureMask=0;float TraceAge=0,LegTravel=0,PlannedLength=0,SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max(),MinZ=TNumericLimits<float>::Max(),MaxZ=-TNumericLimits<float>::Max(),MaxGrade=0;};static FTrafficObservation Traffic;
  if(Traffic.World!=GetWorld()){Traffic=FTrafficObservation();Traffic.World=GetWorld();}
  if(Bike->Ride->IsMovingOnGround()&&Bike->Ride->Speed>100){Traffic.MinZ=FMath::Min(Traffic.MinZ,float(Bike->GetActorLocation().Z));Traffic.MaxZ=FMath::Max(Traffic.MaxZ,float(Bike->GetActorLocation().Z));const FVector N=Bike->Ride->CurrentFloor.HitResult.ImpactNormal;Traffic.MaxGrade=FMath::Max(Traffic.MaxGrade,FMath::Abs(float(FVector::DotProduct(Bike->GetActorForwardVector(),N)/FMath::Max(.01,N.Z))));}
  Traffic.SinceSample+=Dt;
@@ -174,6 +174,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car)if(FVector::Dist2D(Car->GetActorLocation(),Position)<2500)UE_LOG(LogTemp,Display,TEXT("RouteQueueDiagnostic: car=%s position=%s speed=%.1f finished=%d crossing=%d grounded=%d obstacle=%s"),*Car->GetName(),*Car->GetActorLocation().ToString(),Car->Speed,Car->bRouteFinished,Car->bWaitingForCrossing,Car->bGrounded,*Car->LastObstacle);
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleRouteYieldProbe"))&&YieldReason.StartsWith(TEXT("car="))){Finish(false);return;}
   YieldAge=0;}}else YieldAge=0;
+ Traffic.TraceAge+=Dt;if(FParse::Param(FCommandLine::Get(),TEXT("BattleRouteTrace"))&&Traffic.TraceAge>.25f){Traffic.TraceAge=0;UE_LOG(LogTemp,Display,TEXT("LakeDriveTrace: dt=%.4f leg=%d segment=%d error=%.2f center=%.2f speed=%.2f steer=%.2f yawrate=%.2f brake=%d"),Dt,ConnectorLeg,Segment,Error,Best,Bike->Ride->Speed,Bike->Ride->SmoothedSteer,Bike->Ride->TurnRateDegrees,Yield);}
  Key(EKeys::SpaceBar,Yield);Key(EKeys::W,!Yield);Key(EKeys::A,Error < -2);Key(EKeys::D,Error > 2);
 #endif
 }

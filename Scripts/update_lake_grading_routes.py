@@ -23,7 +23,7 @@ lo=[min(getattr(p,k) for p in allpoints) for k in ['x','y','z']];hi=[max(getattr
 started=unreal.PiedmontWorldTools.build_park_navigation(unreal.Vector(*[(a+b)/2 for a,b in zip(lo,hi)]),unreal.Vector(*[(b-a)/2+500 for a,b in zip(lo,hi)]));finished=started and unreal.PiedmontWorldTools.finish_park_navigation_build();assert finished
 checks=[]
 for a,pts in affected:
- for center in [unreal.Vector(-5050,-1925,0),unreal.Vector(-9000,460,0)]:
+ for center in [unreal.Vector(-5050,-1925,0),unreal.Vector(-9000,460,0),unreal.Vector(-5000,-3200,0)]:
   ix=min(range(len(pts)),key=lambda i:(pts[i]-center).length_squared())
   if (pts[ix]-center).length()>1100:continue
   start,end=pts[max(0,ix-6)],pts[min(len(pts)-1,ix+6)];direct=(end-start).length()

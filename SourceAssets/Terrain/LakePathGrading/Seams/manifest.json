@@ -1,13 +1,13 @@
 {
-  "area_m2": 0.7739091871367306,
+  "area_m2": 0.9336849601328556,
   "max_closing_width_cm": 40,
-  "within_two_patches": true,
+  "within_three_patches": true,
   "water_and_100cm_bank_excluded": true,
   "meshes": [
     {
       "file": "LakePathSeams_Asphalt.obj",
       "material": "Asphalt",
-      "triangles": 43
+      "triangles": 46
     },
     {
       "file": "LakePathSeams_Gravel.obj",
@@ -17,7 +17,7 @@
     {
       "file": "LakePathSeams_Concrete.obj",
       "material": "Concrete",
-      "triangles": 98
+      "triangles": 170
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "reason": "Gate event, active countdown pedal/steer/brake keys, timer start and no gate reset pass",
+  "distance_cm": 0.0,
+  "max_error_cm": 0.0,
+  "visual_review": true,
+  "scope": "Gate-event countdown controls plus two1280x720 HUD frames; both start messages readable, fitted and above riding center. Does not accept gate/world art or full approach.",
+  "images": [
+    "work/countdown-review/countdown.png",
+    "work/countdown-review/go.png"
+  ],
+  "installed": false
+}

@@ -12,6 +12,9 @@ UBattleBikeMovement::UBattleBikeMovement(){
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
 }
 void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponentTickFunction* Function){
+ // A rendering stall must not apply stale steering over a long unseen jump.
+ // Bound bike simulation catch-up; the world countdown still uses elapsed time.
+ Dt=FMath::Min(Dt,.05f);
  if(Recovery>0||MovementMode==MOVE_None){ReverseSpeed=0;bReverseRequested=false;}
  JumpGraceRemaining=IsMovingOnGround()?.12f:FMath::Max(0.f,JumpGraceRemaining-Dt);
  if(IsFalling()){AirSeconds+=Dt;if(CharacterOwner)AirPeak=FMath::Max(AirPeak,float(CharacterOwner->GetActorLocation().Z-AirOrigin.Z));}

@@ -1,4 +1,6 @@
 #include "BattleMacController.h"
+#include "UnrealClient.h"
+#include "HAL/FileManager.h"
 #include "BattleTutorial.h"
 #include "BattleMarketClosure.h"
 #include "BattleTutorialData.h"
@@ -79,7 +81,8 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   TutorialClock+=Dt;
   static bool CountdownControlsChecked=false;
   if(TutorialClock<.2f){for(FKey K:{EKeys::W,EKeys::A,EKeys::SpaceBar})InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,IE_Pressed,1.f,false,0));return;}
-  if(!CountdownControlsChecked){TCHECK(M->StartCountdown>0&&B->Ride->Pedal>0&&B->Ride->Steer<0&&B->Ride->Brake>0,"Countdown blocked pedal, steering or brake input");CountdownControlsChecked=true;FlushPressedKeys();UE_LOG(LogTemp,Display,TEXT("CountdownControls: pedal, steering and brake stay active"));}
+  if(!CountdownControlsChecked){TCHECK(M->StartCountdown>0&&B->Ride->Pedal>0&&B->Ride->Steer<0&&B->Ride->Brake>0,"Countdown blocked pedal, steering or brake input");CountdownControlsChecked=true;FString Folder;if(FParse::Value(FCommandLine::Get(),TEXT("BattleCountdownReviewDir="),Folder)){IFileManager::Get().MakeDirectory(*Folder,true);FScreenshotRequest::RequestScreenshot(Folder/TEXT("countdown.png"),true,false);}FlushPressedKeys();UE_LOG(LogTemp,Display,TEXT("CountdownControls: pedal, steering and brake stay active"));}
+  static bool GoCaptured=false;if(TutorialClock>3.3f&&!GoCaptured){GoCaptured=true;FString Folder;if(FParse::Value(FCommandLine::Get(),TEXT("BattleCountdownReviewDir="),Folder))FScreenshotRequest::RequestScreenshot(Folder/TEXT("go.png"),true,false);}
   if(TutorialClock<4.2f)return;
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleMarketClosureReview"))){
    TActorIterator<ABattleMarketClosure> Closure(GetWorld());TCHECK(!Closure,"Market setup fence remained after tutorial");
