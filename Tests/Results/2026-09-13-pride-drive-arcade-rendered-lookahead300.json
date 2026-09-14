@@ -1,36 +1,17 @@
 {
-  "passed": false,
-  "missing_report": true,
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 26389.25,
+  "maxCenterlineErrorCm": 97.54,
+  "wipeouts": 0,
   "exit_code": 0,
   "mode": "arcade-rendered-lookahead300",
   "map": "PiedmontPrideStreetReview",
   "captures": [
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/1952ba0169ae46fc81ef9e66988f3234/leg0-view0.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/1952ba0169ae46fc81ef9e66988f3234/leg0-view1.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/1952ba0169ae46fc81ef9e66988f3234/leg1-view0.png",
-    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/1952ba0169ae46fc81ef9e66988f3234/leg1-view1.png"
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/c6449eb783ad4e9fae97f7f0dae254ee/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/c6449eb783ad4e9fae97f7f0dae254ee/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/c6449eb783ad4e9fae97f7f0dae254ee/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/c6449eb783ad4e9fae97f7f0dae254ee/leg1-view1.png"
   ],
-  "scope": "Candidate map, ordinary W/A/D and braking, both directions. Does not test tutorial boundary or release.",
-  "termination_reason": "Stopped owned test process after repeated unchanged crossing/car wait; not a passing test.",
-  "observed_progress": {
-    "outbound_leg_completed": true,
-    "return_near_motel": true,
-    "stopped_world_cm": [
-      -20851.577,
-      12630.165,
-      414.663
-    ],
-    "car_ahead_cm": 492.5,
-    "car_waiting_for_crossing": true,
-    "route_endpoint_xy": [
-      -20723.886877282832,
-      12629.749345546588
-    ],
-    "endpoint_distance_cm": 127.69
-  },
-  "visual_review": {
-    "image": "leg0-view1.png",
-    "finding": "Road and sidewalk have visible triangle shading; smooth normals need attention. Old tutorial boundary visible ahead.",
-    "accepted": false
-  }
+  "scope": "Candidate map, ordinary W/A/D and braking, both directions. Does not test tutorial boundary or release."
 }

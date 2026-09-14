@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 26035.05,
+  "maxCenterlineErrorCm": 85.42,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real-rendered-lookahead400",
+  "map": "PiedmontPrideStreetReview",
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/19f5a4e0d3304765ac4d4fbf9f9990ee/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/19f5a4e0d3304765ac4d4fbf9f9990ee/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/19f5a4e0d3304765ac4d4fbf9f9990ee/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/pride-drive-captures/19f5a4e0d3304765ac4d4fbf9f9990ee/leg1-view1.png"
+  ],
+  "scope": "Candidate map, ordinary W/A/D and braking, both directions. Does not test tutorial boundary or release."
+}

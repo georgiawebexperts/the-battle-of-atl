@@ -136,7 +136,18 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   // Brake before a mapped bend, using remaining distance and a conservative corner radius.
   const FVector Forward=Bike->GetActorForwardVector().GetSafeNormal2D();
   const float StopLook=Bike->Ride->Speed*Bike->Ride->Speed/1100.f+500.f;
+  float RouteRemaining=FVector::Dist2D(Closest,ConnectorPoints[Segment+1]);
+  for(int I=Segment+1;I+1<ConnectorPoints.Num();I++)RouteRemaining+=FVector::Dist2D(ConnectorPoints[I],ConnectorPoints[I+1]);
   for(TActorIterator<ABattleRoadCar> Car(GetWorld());Car;++Car){const FVector Offset=Car->GetActorLocation()-Position;const float Ahead=FVector::DotProduct(Offset,Forward);const float Side=FMath::Abs(Offset.X*Forward.Y-Offset.Y*Forward.X);if(Ahead>0&&Ahead<StopLook&&Side<350&&FMath::Abs(Offset.Z)<180){
+   // A stopped car beyond the destination must not prevent finishing a clear route.
+   // Sweep the real bike capsule through the remaining endpoint plus a safety margin;
+   // keep ordinary yielding if any part of this car obstructs that movement.
+   if(Car->Speed<1&&RouteRemaining<StopLook&&Ahead>RouteRemaining&&Car->Collision->GetCollisionEnabled()!=ECollisionEnabled::NoCollision){
+    FHitResult EndHit;FVector End=ConnectorPoints.Last();End.Z=Position.Z;End+=(End-Position).GetSafeNormal2D()*75.f;
+    if(!Car->Collision->SweepComponent(EndHit,Position,End,Bike->GetActorQuat(),FCollisionShape::MakeCapsule(Bike->Capsule->GetScaledCapsuleRadius(),Bike->Capsule->GetScaledCapsuleHalfHeight()))){
+     static bool LoggedEndClear=false;if(!LoggedEndClear){UE_LOG(LogTemp,Display,TEXT("RouteEndpointClear: remaining=%.1f car_ahead=%.1f capsule_sweep_clear=1"),RouteRemaining,Ahead);LoggedEndClear=true;}continue;
+    }
+   }
    if(Car->Speed<1&&Car->bObstacleAhead&&Car->LastObstacle==Bike->GetName()&&Car->Collision->GetCollisionEnabled()!=ECollisionEnabled::NoCollision){
     FHitResult ClearanceHit;
     const bool Blocked=Car->Collision->SweepComponent(ClearanceHit,Position,Position+Forward*StopLook,Bike->GetActorQuat(),FCollisionShape::MakeCapsule(Bike->Capsule->GetScaledCapsuleRadius(),Bike->Capsule->GetScaledCapsuleHalfHeight()));
