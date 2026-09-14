@@ -1,0 +1,19 @@
+{
+  "build_succeeded": true,
+  "editor_exit_code": 0,
+  "visual_review": true,
+  "resolution": [
+    1280,
+    720
+  ],
+  "images": [
+    "work/objective-hud/bike.png",
+    "work/objective-hud/foot.png"
+  ],
+  "verified": [
+    "Murder K mounted objective and gold-route instruction fit inside panel",
+    "Krog Street Market on-foot objective and instruction fit inside panel"
+  ],
+  "scope": "Forced HUD presentation fixtures only. Recalculation/patio branches reviewed in code, not captured. Does not replace real objective-flow checks. Not packaged.",
+  "startup_note": "Nonfatal existing PythonTestRunner attribute error logged; native HUD capture completed."
+}

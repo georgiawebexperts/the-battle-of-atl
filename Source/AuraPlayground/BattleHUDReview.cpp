@@ -23,6 +23,7 @@
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleObjectiveReview")))if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->Quest){M->Quest->bCollected=true;M->bItemCollected=true;M->Quest->NextCheckpoint=HUDReviewStage<1?0:1;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkaterReview"))){TickSkaterReview(Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHomeReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBenchReview"))){

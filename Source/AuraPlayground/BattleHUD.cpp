@@ -46,13 +46,20 @@ void ABattleLabHUD::DrawHUD(){
  auto* Bike=Cast<ABattleBike>(GetOwningPawn());auto* Person=Cast<ABattleRider>(GetOwningPawn());auto* Owner=Bike?Bike:Person?Person->ParkedBike.Get():nullptr;
  if(!Owner)return;
  const bool GettingUp=Owner->bCrashActive&&IsValid(Owner->PlayerCrash)&&Owner->PlayerCrash->GetRecoveryPose()!=nullptr;
- Panel(M,M,470*S,106*S);DrawRect(Peach,M,M,5*S,106*S);
+ const bool HasPhone=Park&&Park->Quest&&Park->Quest->bCollected&&!Park->bTutorialActive;
+ const float ObjectiveHeight=HasPhone?144.f:106.f;
+ Panel(M,M,470*S,ObjectiveHeight*S);DrawRect(Peach,M,M,5*S,ObjectiveHeight*S);
  Text(Park&&Park->bTutorialActive?TEXT("FREE RIDE • MIDTOWN"):Park&&Park->Quest&&Park->Quest->bCollected?TEXT("MEET MORGAN"):TEXT("FIND MY LOST PHONE"),M+20*S,M+15*S,25,Peach);
  FString Objective=Park&&Park->Quest?Park->Quest->SearchDirection(GetOwningPawn()->GetActorLocation()):TEXT("Search the park");
  if(Park&&Park->Quest&&Park->Quest->bCollected)Objective=Park->Quest->NextCheckpoint<2?FString(BattleCheckpoints::Anchors[Park->Quest->NextCheckpoint].Name):TEXT("Through Krog Street Tunnel");
  if(Park&&Park->Quest&&Park->Quest->bCollected&&Park->Quest->NextCheckpoint>=2)for(TActorIterator<ABattleHome> It(GetWorld());It;++It)if(It->bTunnelExited){Objective=TEXT("98 Estoria • patio on the right");break;}
  if(Park&&Park->bTutorialActive)Objective=TEXT("Ride to the 14th Street gateway");
  Text(Objective,M+20*S,M+60*S,23,Muted);
+ if(HasPhone){
+  FString Hint=Park->Quest->RoutePoints.Num()>1?TEXT("Follow the gold route on your watch"):TEXT("Watch route is recalculating...");
+  for(TActorIterator<ABattleHome> It(GetWorld());It;++It)if(It->bTunnelExited){Hint=TEXT("Enter the patio to meet Morgan");break;}
+  Text(Hint,M+20*S,M+104*S,18,Peach);
+ }
  if(Park){
   Panel(W*.5f-125*S,M,250*S,106*S);
   const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
