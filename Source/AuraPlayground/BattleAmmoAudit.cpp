@@ -7,6 +7,7 @@
 #include "BattleZombie.h"
 #include "EngineUtils.h"
 #include "Engine/OverlapResult.h"
+#include "Components/StaticMeshComponent.h"
 #include "Camera/CameraActor.h"
 #include "Engine/GameViewportClient.h"
 #include "Misc/CommandLine.h"
@@ -31,6 +32,14 @@ void ABattleMacController::TickAmmoAudit(float Dt){
    for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattleAmmoBin")))Bins.Add(*It);
    for(TActorIterator<ABattleWeaponCrate> It(GetWorld());It;++It)if(It->WeaponSlot==0){CHECK_AMMO(It->ActorHasTag(TEXT("AmmoByBin")),"Ammo missing bin association");Supplies.Add(*It);}
    CHECK_AMMO(Supplies.Num()==12&&Bins.Num()==12,"Expected twelve supplies and persistent bins");
+   for(auto Weak:Bins){
+    AActor* Bin=Weak.Get();auto* Mesh=Bin->FindComponentByClass<UStaticMeshComponent>();CHECK_AMMO(Mesh,"Bin mesh missing");
+    const FBox Bounds=Mesh->Bounds.GetBox();const FVector Base(Bounds.GetCenter().X,Bounds.GetCenter().Y,Bounds.Min.Z);
+    FHitResult Ground;FCollisionQueryParams Query(SCENE_QUERY_STAT(BinGroundAudit),true,Bin);Query.AddIgnoredActor(Bike);
+    const bool Hit=GetWorld()->LineTraceSingleByChannel(Ground,Base+FVector(0,0,10),Base-FVector(0,0,300),ECC_Visibility,Query);
+    UE_LOG(LogTemp,Display,TEXT("BinGroundAudit: bin=%s base=%s gap_cm=%.3f floor=%s component=%s"),*Bin->GetName(),*Base.ToString(),Hit?Base.Z-Ground.ImpactPoint.Z:999.f,*GetNameSafe(Ground.GetActor()),*GetNameSafe(Ground.GetComponent()));
+    CHECK_AMMO(Hit&&Base.Z-Ground.ImpactPoint.Z>=-6.f&&Base.Z-Ground.ImpactPoint.Z<=3.f,"Visible ammo bin is not seated on ground");
+   }
    const FVector Focus=(Supplies[0]->GetActorLocation()+Bins[0]->GetActorLocation())*.5f;
    const FVector Eye=Focus+FVector(280,-360,160);
    Bike->SetActorLocation(Bike->GetActorLocation()+FVector(0,0,1000));Bike->GetCharacterMovement()->DisableMovement();
@@ -40,6 +49,14 @@ void ABattleMacController::TickAmmoAudit(float Dt){
    FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("ammo-bin.png"),false,false);
    Next();
   }else if(AmmoStage==2&&AmmoClock>1){
+   for(auto Weak:Supplies){
+    auto* Crate=Weak.Get();auto* Mesh=Crate->FindComponentByClass<UStaticMeshComponent>();CHECK_AMMO(Mesh,"Visible ammo case missing");
+    const FBox Bounds=Mesh->Bounds.GetBox();const FVector Base(Bounds.GetCenter().X,Bounds.GetCenter().Y,Bounds.Min.Z);
+    FHitResult Ground;FCollisionQueryParams Query(SCENE_QUERY_STAT(AmmoCaseGroundAudit),true,Crate);Query.AddIgnoredActor(Bike);
+    const bool Hit=GetWorld()->LineTraceSingleByChannel(Ground,Base+FVector(0,0,10),Base-FVector(0,0,180),ECC_Visibility,Query);
+    UE_LOG(LogTemp,Display,TEXT("AmmoCaseGroundAudit: gap_cm=%.3f"),Hit?Base.Z-Ground.ImpactPoint.Z:999.f);
+    CHECK_AMMO(Hit&&FMath::Abs(Base.Z-Ground.ImpactPoint.Z)<1.f,"Visible ammo case floats above its pickup surface");
+   }
    TSet<AActor*> Matched;
    for(auto Weak:Supplies){
     auto* Crate=Weak.Get();CHECK_AMMO(Crate,"Map ammo disappeared before collection");AActor* Closest=nullptr;float Distance=MAX_flt;

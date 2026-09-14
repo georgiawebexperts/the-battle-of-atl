@@ -15,8 +15,18 @@ ABattleWeaponCrate::ABattleWeaponCrate(){
  Glow=CreateDefaultSubobject<UPointLightComponent>(TEXT("CrateGlow"));Glow->SetupAttachment(RootComponent);Glow->SetLightColor(FLinearColor(.05,.7,1));Glow->SetIntensity(250);Glow->SetAttenuationRadius(240);Glow->SetCastShadows(false);
 }
 void ABattleWeaponCrate::BeginPlay(){
- Super::BeginPlay();Box->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")));
- auto* Text=NewObject<UTextRenderComponent>(this);AddInstanceComponent(Text);Text->SetupAttachment(RootComponent);Text->SetRelativeLocation(FVector(0,0,35));Text->SetText(FText::FromString(WeaponSlot==0?TEXT("PISTOL AMMO +17"):BattleWeapons::Name(WeaponSlot)));Text->SetWorldSize(12);Text->SetHorizontalAlignment(EHTA_Center);Text->SetTextRenderColor(FColor::Cyan);Text->SetCollisionEnabled(ECollisionEnabled::NoCollision);Text->SetCanEverAffectNavigation(false);Text->RegisterComponent();
+ Super::BeginPlay();
+ // Keep the pickup interaction centered at riding height while seating the
+ // visible case on its supporting surface.
+ FHitResult Floor;FCollisionQueryParams GroundQuery(SCENE_QUERY_STAT(WeaponCaseGround),true,this);
+ GroundQuery.AddIgnoredActor(UGameplayStatics::GetPlayerPawn(this,0));
+ if(GetWorld()->LineTraceSingleByChannel(Floor,GetActorLocation()+FVector(0,0,30),GetActorLocation()-FVector(0,0,180),ECC_Visibility,GroundQuery)
+  &&Floor.GetActor()&&Floor.ImpactNormal.Z>.65f
+  &&(Floor.GetActor()->ActorHasTag(TEXT("RidePath"))||Floor.GetActor()->ActorHasTag(TEXT("RideDirt"))||Floor.GetActor()->ActorHasTag(TEXT("RideGrass"))||Floor.GetActor()->ActorHasTag(TEXT("RideBridge")))){
+  Box->SetRelativeLocation(FVector(0,0,Floor.ImpactPoint.Z-GetActorLocation().Z+15));
+ }
+ Box->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_LockSteel.M_LockSteel")));
+ auto* Text=NewObject<UTextRenderComponent>(this);AddInstanceComponent(Text);Text->SetupAttachment(RootComponent);Text->SetRelativeLocation(FVector(0,0,35));Text->SetText(FText::FromString(WeaponSlot==0?TEXT("PISTOL AMMO +17"):BattleWeapons::Name(WeaponSlot)));Text->SetWorldSize(12);Text->SetHorizontalAlignment(EHTA_Center);Text->SetTextRenderColor(FColor(255,239,204));Text->SetTextMaterial(LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/EngineMaterials/UnlitText.UnlitText")));Text->SetCollisionEnabled(ECollisionEnabled::NoCollision);Text->SetCanEverAffectNavigation(false);Text->RegisterComponent();
 }
 void ABattleWeaponCrate::Tick(float Dt){Super::Tick(Dt);if(auto* Camera=UGameplayStatics::GetPlayerCameraManager(this,0)){TInlineComponentArray<UTextRenderComponent*> Labels(this);for(auto* Label:Labels)Label->SetWorldRotation((Camera->GetCameraLocation()-Label->GetComponentLocation()).Rotation());}Glow->SetIntensity(200+70*FMath::Sin(GetWorld()->GetTimeSeconds()*3));TryCollect(UGameplayStatics::GetPlayerPawn(this,0));}
 bool ABattleWeaponCrate::TryCollect(APawn* Pawn){

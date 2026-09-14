@@ -28,6 +28,8 @@ matches=re.findall(r'BattleAmmoAudit: (\{[^\n]+\})',log.read_text())
 result=json.loads(matches[-1]) if matches else {'passed':False,'missing_report':True}
 result.update(exit_code=run.returncode,difficulty=a.difficulty,visual_review=False,executable=entry[0],log=str(log))
 result.update(bin_layout=a.bins,practice=a.practice,images=[str(capture/'ammo-bin.png')] if a.review and a.bins else [])
+result['bin_ground_gaps_cm']=[float(v) for v in re.findall(r'BinGroundAudit: [^\n]+gap_cm=([-0-9.]+)',log.read_text())]
+result['case_ground_gaps_cm']=[float(v) for v in re.findall(r'AmmoCaseGroundAudit: gap_cm=([-0-9.]+)',log.read_text())]
 result['passed']=bool(result.get('passed') and run.returncode==0)
 Path(a.report).write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result))

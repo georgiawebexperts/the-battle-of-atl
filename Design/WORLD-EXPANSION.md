@@ -1389,3 +1389,16 @@ Editor build passed. The updated rendered balance test passed with 1.032 cm grou
 The close view also exposed a floating trash-can/ammo setup near the gate; investigate its floor placement next. Example image: work/feature-balance-74e25e124d6b4c0dbf770ddbb8e7ffc5/pedaling.png. Do not treat the hovering can as intentional pickup bobbing without checking its actor geometry.
 
 Not packaged. Desktop/share076 remains installed. Rounded saddle, landing clearance and thumb pose changes are source changes awaiting a later playtest. Apple developer membership/signing work is still deferred as requested. Full game remains unfinished.
+
+
+2026-09-14 [codex-maclaptop] — Grounded pickup cases and brighter labels, unreleased
+
+Investigated the apparently floating ammo/bin setup. Native measurements of twelve sampled visible bin bases found them correctly seated (roughly 1–3 cm into terrain). The ammo case centers were intentionally placed 65 cm above the ground, leaving the visible box suspended. Do not claim bin placement was broken on this evidence.
+
+ABattleWeaponCrate now traces its supporting surface during BeginPlay and seats the visible case on it, while retaining the original actor/collection center at riding height. Labels use warm white unlit text for better readability. Pickup range, line of sight and ammunition amounts are unchanged. Added native ground checks for all twelve bin and case bases to BattleAmmoAudit, alongside existing unique pairing, clear approach, persistent bins and +17 collection checks.
+
+Editor build passed. Rendered map audit passed for all twelve pickups: twelve clear approaches, twelve actual collections granting seventeen rounds each, all bins retained, zero measured case-center ground gaps; bin bases were 1.037–2.919 cm below their local ground centers. Inspected work/ammo-bin-5ad15aa166e841958c6efd9992568fed/ammo-bin.png: case rests on paving and label is brighter. Reports: 2026-09-14-bin-ground-baseline.json and 2026-09-14-grounded-ammo-cases.json. These checks measure center/base support, not every corner on arbitrary slopes.
+
+The same image shows an apparently elevated spare bike beside the bin. Next investigate wheel-to-ground placement of cloned spare-bike parts; do not assume the capsule origin proves wheel contact. Source: BattleSpareBikes.cpp Create/SpawnStations. Current model case artwork is still a simple box and broader terrain/paving/art remain unfinished.
+
+Not packaged. Desktop/share076 remains installed. Rounded saddle, landing correction, thumb grip and grounded pickup case changes await a later playtest.
