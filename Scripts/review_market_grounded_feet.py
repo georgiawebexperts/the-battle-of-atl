@@ -17,7 +17,9 @@ market=[a for a in ea.get_all_level_actors() if unreal.Name('TwelfthStreetMarket
 for a in metals:a.static_mesh_component.set_static_mesh(mesh)
 rows=json.loads((root/'Tests/Results/2026-09-14-market-feet.json').read_text())['feet'];pads=[]
 for r in rows:
- x,y,z=r['xyz'];support=bylabel[r['support']] if r['support'] else None
+ x,y,z=r['xyz'];nearby=[a for a in market if 'adjustable foot' in a.get_actor_label() and (a.get_actor_location().x-x)**2+(a.get_actor_location().y-y)**2<.25**2]
+ assert len(nearby)==(1 if r['support'] else 0)
+ support=nearby[0] if nearby else None
  if support:
   origin,extent=support.get_actor_bounds(False);z=origin.z-extent.z
  pad=ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(x,y,z+1.9),bylabel[r['stall']].get_actor_rotation());pad.set_actor_label(r['stall']+' ground plate '+str(r['foot']));pad.tags=[unreal.Name('MarketGroundPlateReview')]

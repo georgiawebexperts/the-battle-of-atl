@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "main_map": true,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "map_saved": false,
+  "plate_count": 80,
+  "metal_count": 10,
+  "minimum_plate_base_gap_cm": -0.10000034986572359,
+  "maximum_plate_base_gap_cm": -0.09999899519013411,
+  "aisle_clearance_probes": [
+    [
+      -18708.125263047677,
+      3197.6988351619516,
+      -171.73440551757812
+    ],
+    [
+      -18308.256740721954,
+      3207.9538267778903,
+      -178.57211303710938
+    ],
+    [
+      -17909.134809485924,
+      3230.5793087891643,
+      -185.34417724609375
+    ],
+    [
+      -17513.16691996268,
+      3284.2813765207397,
+      -192.33575439453125
+    ],
+    [
+      -17123.34834321716,
+      3371.877789739294,
+      -201.17417907714844
+    ]
+  ],
+  "scope": "Saved plate center base contact, no-collision plate profiles, metal collision profiles and five vertical45cm-radius aisle probes. Not full player traversal or packaged acceptance."
+}

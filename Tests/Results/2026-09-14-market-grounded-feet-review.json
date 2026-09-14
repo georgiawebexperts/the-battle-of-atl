@@ -17,5 +17,7 @@
   "remaining": [
     "Candidate is transient; not saved into main map or packaged",
     "Fresh saved-map contact/collision validation required before release"
-  ]
+  ],
+  "superseded_by": "Tests/Results/2026-09-14-market-grounded-feet-saved.json",
+  "correction": "Original transient candidate selected support by nonunique label. Saved candidate resolves by XY and passes all80 contact checks."
 }

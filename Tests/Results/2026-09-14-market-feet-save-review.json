@@ -1,0 +1,8 @@
+{
+  "map": "/Game/PiedmontRide/Maps/PiedmontMarketFeetReview",
+  "main_map": false,
+  "before_sha256": "7eb85397e6ac45dbcb8ca3a2f91f60322a41c35baf8d09f2fd336ce9ba88fa95",
+  "after_sha256": "7eb85397e6ac45dbcb8ca3a2f91f60322a41c35baf8d09f2fd336ce9ba88fa95",
+  "metal_instances": 10,
+  "plates": 80
+}
