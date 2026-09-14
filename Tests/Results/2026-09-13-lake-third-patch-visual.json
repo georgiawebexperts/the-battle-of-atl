@@ -1,7 +1,14 @@
 {
   "geometry_passed": true,
-  "ride_test_passed": false,
+  "ride_test_passed": true,
   "image": "work/lake-capture-61853018-arcade-lookahead180-braked-review/3637a67fee444fcfa33671db60c40fba/leg0-view0.png",
-  "observation": "Actual riding frame now shows smooth junction where previous sharp depression was. Shader preparation still visible so not final character/material acceptance.",
-  "installed": false
+  "observation": "All four actual riding images inspected: repaired junction smooth, pavement continuous, lake visible. Broader material junction aesthetics, character pose and world art unfinished.",
+  "installed": false,
+  "images": [
+    "work/lake-capture-61853018-arcade-lookahead180-braked-review/57732d4240704c0c987ed4fb12f9d3e5/leg0-view0.png",
+    "work/lake-capture-61853018-arcade-lookahead180-braked-review/57732d4240704c0c987ed4fb12f9d3e5/leg0-view1.png",
+    "work/lake-capture-61853018-arcade-lookahead180-braked-review/57732d4240704c0c987ed4fb12f9d3e5/leg1-view0.png",
+    "work/lake-capture-61853018-arcade-lookahead180-braked-review/57732d4240704c0c987ed4fb12f9d3e5/leg1-view1.png"
+  ],
+  "candidate_sha256": "b315745993100fdfe0d8edf482d7348afb3cfd1d63b148e118c252cca7d2cd99"
 }

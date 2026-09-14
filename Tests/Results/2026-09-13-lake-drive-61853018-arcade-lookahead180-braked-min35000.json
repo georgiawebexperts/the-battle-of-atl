@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 82945.95,
+  "maxCenterlineErrorCm": 165.01,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-lookahead180-braked-min35000",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "route_selection": [
+    {
+      "osm_id": "61853018",
+      "length_cm": 38509.89,
+      "points": 637
+    }
+  ],
+  "minimum_length_cm": 35000,
+  "terrain_candidate_sha256": "b315745993100fdfe0d8edf482d7348afb3cfd1d63b148e118c252cca7d2cd99",
+  "captures": []
+}

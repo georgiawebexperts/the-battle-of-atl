@@ -1,11 +1,12 @@
-"""Import source candidate into an isolated review map; never install to PiedmontWorld."""
+"""Import into an isolated review map by default; verified installer may save the main map."""
 import unreal,pathlib,json,sys,hashlib,array
 root=pathlib.Path(unreal.Paths.project_dir());sys.path.insert(0,str(root/'Scripts'))
 from battle_geography import import_source_landscape,require_converted_world
 main=root/'Content/PiedmontRide/Maps/PiedmontWorld.umap';before=hashlib.sha256(main.read_bytes()).hexdigest()
 assert unreal.EditorLoadingAndSavingUtils.load_map('/Game/PiedmontRide/Maps/PiedmontWorld')
 world=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world();require_converted_world(world);ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-review='/Game/PiedmontRide/Maps/PiedmontLakePathGradingReview'
+install_main=bool(globals().get('INSTALL_VERIFIED_LAKE_MAIN',False))
+review='/Game/PiedmontRide/Maps/'+('PiedmontWorld' if install_main else 'PiedmontLakePathGradingReview')
 old=next(a for a in ea.get_all_level_actors() if isinstance(a,unreal.Landscape));old.set_actor_enable_collision(False)
 meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text());candidate=root/'SourceAssets/Terrain/LakePathGrading/atlanta-height-lake-paths-candidate.r16'
 new=import_source_landscape(candidate,meta);assert new
@@ -35,6 +36,6 @@ for r in survey['samples']:
  if error is None or abs(error)>.1:fail.append(row)
 assert not fail, str(fail[:5])
 exec(compile((root/'Scripts/update_lake_grading_routes.py').read_text(),'update_lake_grading_routes.py','exec'), {'__name__':'__main__'})
-assert unreal.EditorLoadingAndSavingUtils.save_map(world,review)
-assert hashlib.sha256(main.read_bytes()).hexdigest()==before,'Main map changed unexpectedly'
-(root/'Tests/Results/2026-09-13-lake-path-grading-native.json').write_text(json.dumps({'passed':not fail,'review_map':review,'main_map_unchanged_sha256':before,'checks':len(checks),'maximum_height_error_cm':max(abs(c['height_error_cm']) for c in checks),'failures':fail,'scope':'Candidate terrain and pavement collision only. Navigation is checked separately; moving bike and game visuals pending.','installed':False},indent=2)+'\n')
+assert (unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level() if install_main else unreal.EditorLoadingAndSavingUtils.save_map(world,review))
+assert install_main or hashlib.sha256(main.read_bytes()).hexdigest()==before,'Main map changed unexpectedly'
+(root/('Tests/Results/2026-09-13-lake-main-collision.json' if install_main else 'Tests/Results/2026-09-13-lake-path-grading-native.json')).write_text(json.dumps({'passed':not fail,'review_map':review,'main_map_before_sha256':before,'main_map_after_sha256':hashlib.sha256(main.read_bytes()).hexdigest(),'checks':len(checks),'maximum_height_error_cm':max(abs(c['height_error_cm']) for c in checks),'failures':fail,'scope':'Candidate terrain and pavement collision only. Navigation is checked separately; moving bike and game visuals pending.','installed':False},indent=2)+'\n')

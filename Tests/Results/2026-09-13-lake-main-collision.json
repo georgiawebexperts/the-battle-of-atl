@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "review_map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "main_map_before_sha256": "5afdef9bc711cd6143a4a4b884387c987b52efbf128c69b00c6e2824bfb9b12f",
+  "main_map_after_sha256": "e4af210b3ea8f140d5f1f3b9943caec95acd00dde308f866e5ef9b81c80d9835",
+  "checks": 2097,
+  "maximum_height_error_cm": 0.00013577675184706095,
+  "failures": [],
+  "scope": "Candidate terrain and pavement collision only. Navigation is checked separately; moving bike and game visuals pending.",
+  "installed": false
+}

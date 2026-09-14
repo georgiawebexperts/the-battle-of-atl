@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 8755.62,
+  "maxCenterlineErrorCm": 88.01,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-lookahead180-braked-review-main",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "route_selection": [
+    {
+      "osm_id": "61853018",
+      "length_cm": 4247.17,
+      "points": 74
+    }
+  ],
+  "map": "PiedmontWorld",
+  "minimum_length_cm": 0,
+  "terrain_candidate_sha256": "b315745993100fdfe0d8edf482d7348afb3cfd1d63b148e118c252cca7d2cd99",
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-arcade-lookahead180-braked-review-main/382f85cc994b4c67aa8dd471db0e8431/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-arcade-lookahead180-braked-review-main/382f85cc994b4c67aa8dd471db0e8431/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-arcade-lookahead180-braked-review-main/382f85cc994b4c67aa8dd471db0e8431/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-arcade-lookahead180-braked-review-main/382f85cc994b4c67aa8dd471db0e8431/leg1-view1.png"
+  ]
+}

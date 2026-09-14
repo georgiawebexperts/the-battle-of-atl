@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 8489.36,
+  "maxCenterlineErrorCm": 88.39,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real-lookahead260-review",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "route_selection": [
+    {
+      "osm_id": "61853018",
+      "length_cm": 4247.17,
+      "points": 74
+    }
+  ],
+  "map": "PiedmontLakePathGradingReview",
+  "minimum_length_cm": 0,
+  "terrain_candidate_sha256": "b315745993100fdfe0d8edf482d7348afb3cfd1d63b148e118c252cca7d2cd99",
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-real-lookahead260-review/ffa2a550eb2b443f83fb02aa6e1579f4/leg0-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-real-lookahead260-review/ffa2a550eb2b443f83fb02aa6e1579f4/leg0-view1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-real-lookahead260-review/ffa2a550eb2b443f83fb02aa6e1579f4/leg1-view0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-real-lookahead260-review/ffa2a550eb2b443f83fb02aa6e1579f4/leg1-view1.png"
+  ]
+}
