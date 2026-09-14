@@ -1,4 +1,6 @@
 #include "BattleMacController.h"
+#include "UnrealClient.h"
+#include "HAL/FileManager.h"
 #include "BattleBike.h"
 #include "BattleRoadCar.h"
 #include "BattleHomeData.h"
@@ -31,7 +33,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  if(GetWorld()->GetTimeSeconds()<5)return;
  if(!PrepareScooterRideAudit(this,Dt))return;
  auto* Bike=Cast<ABattleBike>(GetPawn());if(!Bike){UE_LOG(LogTemp,Error,TEXT("Connector fixture requires mounted bike; pawn=%s class=%s"),*GetNameSafe(GetPawn()),GetPawn()?*GetPawn()->GetClass()->GetName():TEXT("none"));UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);return;}
- struct FTrafficObservation{TWeakObjectPtr<UWorld> World;float LegTravel=0,PlannedLength=0,SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max(),MinZ=TNumericLimits<float>::Max(),MaxZ=-TNumericLimits<float>::Max(),MaxGrade=0;};static FTrafficObservation Traffic;
+ struct FTrafficObservation{TWeakObjectPtr<UWorld> World;int CaptureMask=0;float LegTravel=0,PlannedLength=0,SinceSample=0,Nearest=TNumericLimits<float>::Max();int MaxLive=0,MaxMoving=0,NearbySamples=0,Samples=0,MaxPeople=0,MaxWalking=0,PeopleNearby=0;float NearestPerson=TNumericLimits<float>::Max(),MinZ=TNumericLimits<float>::Max(),MaxZ=-TNumericLimits<float>::Max(),MaxGrade=0;};static FTrafficObservation Traffic;
  if(Traffic.World!=GetWorld()){Traffic=FTrafficObservation();Traffic.World=GetWorld();}
  if(Bike->Ride->IsMovingOnGround()&&Bike->Ride->Speed>100){Traffic.MinZ=FMath::Min(Traffic.MinZ,float(Bike->GetActorLocation().Z));Traffic.MaxZ=FMath::Max(Traffic.MaxZ,float(Bike->GetActorLocation().Z));const FVector N=Bike->Ride->CurrentFloor.HitResult.ImpactNormal;Traffic.MaxGrade=FMath::Max(Traffic.MaxGrade,FMath::Abs(float(FVector::DotProduct(Bike->GetActorForwardVector(),N)/FMath::Max(.01,N.Z))));}
  Traffic.SinceSample+=Dt;
@@ -67,7 +69,8 @@ void ABattleMacController::TickConnectorAudit(float Dt){
    if(Count!=1){Finish(false);return;}
   }
 
-  if(Hill)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->OsmWayId==HillPath){for(int I=0;I<It->Centerline->GetNumberOfSplinePoints();I++)ConnectorPoints.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));break;}
+  float MinimumLength=0;FParse::Value(FCommandLine::Get(),TEXT("BattleRouteMinimumLength="),MinimumLength);
+  if(Hill)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->OsmWayId==HillPath&&It->Centerline->GetSplineLength()>=MinimumLength){UE_LOG(LogTemp,Display,TEXT("LakeRouteSelection: id=%s length_cm=%.2f points=%d"),*HillPath,It->Centerline->GetSplineLength(),It->Centerline->GetNumberOfSplinePoints());for(int I=0;I<It->Centerline->GetNumberOfSplinePoints();I++)ConnectorPoints.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));break;}
   if(Spirit){for(const FVector& P:BattleSpiritData::Ride)ConnectorPoints.Add(P);}
   else if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);
   for(int32 Part=0;!Hill&&!Home&&Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){
@@ -81,7 +84,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   if(Eastside&&!FParse::Param(FCommandLine::Get(),TEXT("BattleKeepCrowds"))){for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();}
  }
  if(ConnectorElapsed==0){
-  Traffic.LegTravel=0;Traffic.PlannedLength=0;for(int I=1;I<ConnectorPoints.Num();I++)Traffic.PlannedLength+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);
+  Traffic.CaptureMask=0;Traffic.LegTravel=0;Traffic.PlannedLength=0;for(int I=1;I<ConnectorPoints.Num();I++)Traffic.PlannedLength+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingRoute")))Bike->Ride->bRealHandling=true;
   FlushPressedKeys();Bike->Ride->Gear=Home?2:Eastside?3:1;Bike->Ride->Speed=0;Bike->Ride->Velocity=FVector::ZeroVector;
   Bike->SetActorLocationAndRotation(ConnectorPoints[0]+FVector(0,0,98),(ConnectorPoints[1]-ConnectorPoints[0]).Rotation(),false,nullptr,ETeleportType::TeleportPhysics);
@@ -104,6 +107,11 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   if(Distance<Best){Best=Distance;Segment=I;Closest=Q;}
  }
  ConnectorMaxError=FMath::Max(ConnectorMaxError,Best);
+ FString CaptureDir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleRouteCaptureDir="),CaptureDir)){
+  const int Stage=Traffic.LegTravel>Traffic.PlannedLength*.5f?1:0;const int Bit=1<<Stage;
+  if(ConnectorElapsed>2&&!(Traffic.CaptureMask&Bit)){Traffic.CaptureMask|=Bit;IFileManager::Get().MakeDirectory(*CaptureDir,true);FScreenshotRequest::RequestScreenshot(CaptureDir/FString::Printf(TEXT("leg%d-view%d.png"),ConnectorLeg,Stage),true,false);UE_LOG(LogTemp,Display,TEXT("LakeRouteCapture: leg=%d stage=%d position=%s"),ConnectorLeg,Stage,*Position.ToString());}
+ }
+
  if(ConnectorElapsed>(Eastside?180:30)||Best>180||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
  // A short connector can finish before two seconds; a closed loop must be ridden before its shared endpoint counts.
  const bool Arrived=Hill ? Traffic.LegTravel>=Traffic.PlannedLength*.85f&&FVector::Dist2D(Position,ConnectorPoints.Last())<FMath::Clamp(Traffic.PlannedLength*.05f,12.f,100.f) : ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100;

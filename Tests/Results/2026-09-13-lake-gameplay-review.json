@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "installed": false,
+  "observed": "Rendered riding view shows sharp-looking path depression/jagged junction near first loop bend; requires geometry inspection. Arcade rendered traversal fails180cm centerline bound despite same keyboard driver passing null-RHI.",
+  "image": "work/lake-capture-61853018-arcade-lookahead180-braked-review/leg0-view0.png",
+  "capture_position": [
+    -4878.138,
+    -2600.522,
+    -277.205
+  ],
+  "failure_position": [
+    -5030.555,
+    -2920.978,
+    -244.03
+  ],
+  "scope": "One actual gameplay-camera frame inspected; not broad visual acceptance.",
+  "next": [
+    "Compare actual rendered-world collision heights and mesh surfaces at junction.",
+    "Check frame-time sensitivity of keyboard driver/steering before attributing rendered route failure.",
+    "Long realistic route passed38511cm path both ways; long arcade still pending."
+  ]
+}

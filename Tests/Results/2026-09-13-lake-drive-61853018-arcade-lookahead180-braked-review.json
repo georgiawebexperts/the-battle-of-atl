@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "completedLegs": 0,
+  "travelCm": 1047.8,
+  "maxCenterlineErrorCm": 180.13,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "arcade-lookahead180-braked-review",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "route_selection": [
+    {
+      "osm_id": "61853018",
+      "length_cm": 4246.51,
+      "points": 74
+    }
+  ],
+  "minimum_length_cm": 0,
+  "captures": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/lake-capture-61853018-arcade-lookahead180-braked-review/leg0-view0.png"
+  ]
+}

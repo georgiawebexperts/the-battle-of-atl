@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 81366.91,
+  "maxCenterlineErrorCm": 140.69,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real-min35000",
+  "path": "61853018",
+  "scope": "Uncooked candidate map, two-direction keyboard traversal. Not visual or packaged acceptance.",
+  "route_selection": {
+    "osm_id": "61853018",
+    "length_cm": 38511.52,
+    "points": 637
+  }
+}
