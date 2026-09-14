@@ -1,9 +1,9 @@
 {
-  "build": 74,
-  "version": "0.74.0",
+  "build": 75,
+  "version": "0.75.0",
   "name": "The Battle of ATL",
   "target": "macOS native .app",
-  "status": "Early playtest; smoother lake junctions and continuous pavement",
+  "status": "Early playtest; Piedmont rainbow intersection and Billys street connection",
   "milestone": "Upgraded default Ellison, hands and pistol; lake swimming and improved ride presentation",
   "author": "2026-09-13 [codex-maclaptop]",
   "included_changes": [
@@ -26,7 +26,8 @@
     "Build071: longer alternating swim pull/recovery, relaxed knee kick and pointed toes, lower prone/tread waterline; hidden shore camera-blocker repair and clear shallow-bank walking exit; third-person swim and deep-water return checked.",
     "Build072: arcade scenery/civilian contact no longer knocks Ellison off; realistic impacts and hostile knockdowns retained. Six five-second boost pickups with progressive acceleration/expiry. HUD text fits panel widths. M cycles Off/Song1/Song2/Off with visible sequence and saved selection.",
     "Build073: gate countdown keeps pedal/steering/reverse controls active; readable RIDE STARTED and GO! TIMER RUNNING banners; bike simulation catch-up bounded to50ms after frame stalls. Lake grading remains uninstalled.",
-    "Build074: three local lake junctions graded, pavement gaps filled, route splines and navigation rebuilt. Shoreline and water preserved. Build073 countdown controls and stall fix retained."
+    "Build074: three local lake junctions graded, pavement gaps filled, route splines and navigation rebuilt. Shoreline and water preserved. Build073 countdown controls and stall fix retained.",
+    "Build075: connected 10th/Piedmont rainbow intersection, Billys street approach, smooth road shading and relocated practice cutoff; full route to14th verified. Existing lake fixes retained."
   ],
   "remaining_work": "Full requested world detail and character/combat animation quality, improved long-gun models, broader gameplay balance and performance acceptance. Not a finished game.",
   "unreleased_author": "2026-09-13 [codex-maclaptop]",
@@ -82,38 +83,34 @@
     "2026-09-13 [codex-maclaptop] Candidate071 package built from3d77a6f, normal side/player swimming passed, deep test failed in headless AND rendered run. Diagnosed actual camera collapse326cm->20cm due initial overlap with StaticMeshActor_56: hidden Lake Clara Meer solid shore, RideWater tag, SM_LakeClaraMeerShore. Native fix makes hidden RideWater support primitives ignore ECC_Camera only; physical channels remain. Camera test then passed but image exposed treading through shallow sloping bank. Added walkable shallow-floor exit (floor above water-45cm with full standing capsule clearance) and placement on actual floor. Deep fixture reaches that bank before2.5s, so audit now explicitly verifies >250cm actual swim/stroke then walking exit/full capsule clearance and fixed-bike remount; normal deep-water/tread window retained elsewhere. Final native deep and normal rendered routes pass, bike drift0, normal camera326.57cm/70cm above surface; standing shore image inspected. Initial diagnostic compile errors fixed; current editor build succeeded. NOT released: desktop/share070 unchanged,071 installer draft unexecuted. New source needs recook and fresh packaged normal/deep checks; retain failed original071 reports. Wider swim/world/camera art and full-game goal incomplete."
   ],
   "unreleased_code_changes": [],
-  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074/The Battle of ATL.app",
-  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 073/The Battle of ATL.app",
-  "compiled_source": "3fc6e77",
-  "installation_report": "Tests/Results/2026-09-13-build074-install.json",
+  "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 075/The Battle of ATL.app",
+  "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074/The Battle of ATL.app",
+  "compiled_source": "88b44a922dfb32519e6298e1961b80ecf0a8a1a4",
+  "installation_report": "Tests/Results/2026-09-13-build075-install.json",
   "candidate": null,
   "share_playtest": {
-    "build": 74,
-    "version": "0.74.0",
-    "source_commit": "3fc6e77",
-    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074/The Battle of ATL.app",
-    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 073/The Battle of ATL.app",
-    "machine_code_sha256": "5b8ce0f310de7c14af83408bc170653aa6c42a8863d2a0330cce801fa92800cb",
-    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074.zip",
-    "zip_sha256": "7536105f5c7cb987c11bdd09f96415329c55784946b09891ce332c1122104fc2",
-    "zip_bytes": 1325169287,
+    "build": 75,
+    "version": "0.75.0",
+    "source_commit": "88b44a922dfb32519e6298e1961b80ecf0a8a1a4",
+    "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 075/The Battle of ATL.app",
+    "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 074/The Battle of ATL.app",
+    "machine_code_sha256": "24edd1cde7a276a736389abd868c3842c103d533b47f89746c6883e4374669b3",
+    "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 075.zip",
+    "zip_sha256": "ddf3ca11add7eaca420637363dbb8f886cf77ae13bf8af80a3ca152ea3ad659d",
+    "zip_bytes": 1326175120,
     "reports": [
-      "2026-09-13-build074-lake-arcade.json",
-      "2026-09-13-build074-lake-short-real.json",
-      "2026-09-13-build074-swim.json",
-      "2026-09-13-build074-deep-swim.json"
+      "2026-09-13-build075-pride-route.json",
+      "2026-09-13-build075-pride-boundary.json"
     ],
     "verification": [
-      "Packaged main-map lake loop traversed both directions in arcade mode",
-      "Packaged second graded junction traversed both directions in realistic mode",
-      "Packaged nearby-bank and deep-bank swimming, fixed bike and remount checks pass",
-      "Packaged riding and swimming images visually inspected",
-      "ZIP CRC, deep strict ad-hoc signature and staged/installed machine code match"
+      "Packaged main-map full motel/Billys/14th route passed both directions with one gate start",
+      "Packaged boundary and market-closure checks passed",
+      "Packaged player-camera images inspected",
+      "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
     ],
     "remaining": [
-      "Only three local lake terrain repairs; wider landscape and art remain unfinished",
-      "Full approach driving audit currently fails before gate",
-      "Broader art, animation, handling and performance remain unfinished",
+      "Street signs in shadow, a small junction artifact and older tutorial paving joins need visual refinement",
+      "Broader game art, animation, handling and performance remain unfinished",
       "Other Macs untested; no Developer ID or notarization"
     ]
   },
