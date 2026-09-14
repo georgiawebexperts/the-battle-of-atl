@@ -1,0 +1,21 @@
+{
+  "release_ready": true,
+  "scope": "Playtest077 rider and pickup changes only; full game remains unfinished",
+  "inspected_images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-99717e6b6fd84d519d38e568a41f272a/pedaling.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleJumpReview/2fd57d10924842258bd278ceb72d0cc9/landing.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattleAmmoReview/7ae6de86da7f4a4f926a2c0a7fb5c196/ammo-bin.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-bikes-a3b7df4e007c4b1fb2e0ec0f96dc7901/spare-bike.png"
+  ],
+  "findings": [
+    "Close hand view shows thumbs around grips",
+    "Landing image shows saddle below pelvis; native landing clearance minimum98.299cm",
+    "Ammo case placement and brighter label inspected; twelve case center bases touch collision ground",
+    "Spare bicycle tires seated in reviewed station; fourteen native wheel probes under1cm"
+  ],
+  "remaining": [
+    "Broad triangular grass/pavement overlaps remain",
+    "Simple ammo case artwork and some overlapping world labels remain",
+    "Animation, environment, gameplay and other Mac performance require further work"
+  ]
+}

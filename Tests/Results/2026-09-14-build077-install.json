@@ -1,0 +1,30 @@
+{
+  "build": 77,
+  "version": "0.77.0",
+  "source_commit": "d13d02a3a9656bf09d5ec7ff241a3d3b7f853d44",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076/The Battle of ATL.app",
+  "machine_code_sha256": "7e9b26b24622a9e93667c81345108bb8b8d00e7efdb83af63a02c2451be951b5",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077.zip",
+  "zip_sha256": "a472438bf54da7c6e9a6fb611e338760b552d7d81289f061e42d0a4924f49b40",
+  "zip_bytes": 1326252071,
+  "reports": [
+    "2026-09-14-build077-balance.json",
+    "2026-09-14-build077-jump.json",
+    "2026-09-14-build077-ammo-bins.json",
+    "2026-09-14-build077-spare-bikes.json"
+  ],
+  "verification": [
+    "Packaged rider stop/pedal/grip checks passed",
+    "Packaged jump landing clearance and single airtime reward passed",
+    "Twelve packaged ammo sites grounded, reachable and grant17 rounds",
+    "Six spare bikes and exchange/return checks passed; fourteen wheel probes under1cm",
+    "Four packaged close review images inspected",
+    "ZIP CRC, ad-hoc signature and staged/installed machine code verified"
+  ],
+  "remaining": [
+    "Street signs in shadow, small surface intersections and older paving beyond the replaced sections need visual refinement",
+    "Broader game art, animation, handling and performance remain unfinished",
+    "Other Macs untested; no Developer ID or notarization"
+  ]
+}
