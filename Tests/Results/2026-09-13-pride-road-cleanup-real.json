@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "completedLegs": 0,
+  "travelCm": 3747.72,
+  "maxCenterlineErrorCm": 180.04,
+  "wipeouts": 0,
+  "exit_code": 0,
+  "mode": "real-lookahead400-gate-main",
+  "map": "PiedmontWorld",
+  "packaged": false,
+  "captures": [],
+  "scope": "Candidate full street-to-gate round trip with real keyboard input, pavement gate and exactly one timer start; not packaged.",
+  "gate_starts": 0,
+  "road_cleanup": [
+    48,
+    366,
+    1
+  ]
+}

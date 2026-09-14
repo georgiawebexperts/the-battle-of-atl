@@ -3,6 +3,7 @@
 #include "BattleMarketClosure.h"
 #include "BattleTutorialData.h"
 #include "BattleTutorialBlock.h"
+#include "BattlePrideRoadCleanup.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
@@ -23,7 +24,7 @@ ABattleTutorial::ABattleTutorial(){
  auto Group=[&](const TCHAR* N,UMaterialInterface* Mat){auto* M=CreateDefaultSubobject<UInstancedStaticMeshComponent>(N);M->SetupAttachment(RootComponent);M->SetStaticMesh(Cube.Object);M->SetMaterial(0,Mat);M->SetCollisionProfileName(TEXT("BlockAll"));return M;};
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> SidingMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Siding.M_Siding")),TrimMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Trim.M_Trim")),HouseDoorMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Door.M_Door")),GlassMat(TEXT("/Game/BattleForTheA/Environment/TutorialHouse/M_Glass.M_Glass"));
  auto* Siding=Group(TEXT("BungalowSiding"),SidingMat.Object);auto* Trim=Group(TEXT("BungalowTrim"),TrimMat.Object);auto* HouseDoor=Group(TEXT("BungalowDoor"),HouseDoorMat.Object);auto* Glass=Group(TEXT("BungalowGlass"),GlassMat.Object);
- auto* Concrete=Group(TEXT("HouseStone"),White.Object);auto* Timber=Group(TEXT("Porch"),Wood.Object);auto* Iron=Group(TEXT("IronAndRoof"),Dark.Object);auto* Door=Group(TEXT("Door"),Red.Object);auto* Road=Group(TEXT("PracticeStreet"),Asphalt.Object);
+ auto* Concrete=Group(TEXT("HouseStone"),White.Object);auto* Timber=Group(TEXT("Porch"),Wood.Object);auto* Iron=Group(TEXT("IronAndRoof"),Dark.Object);auto* Door=Group(TEXT("Door"),Red.Object);auto* Road=Group(TEXT("PracticeStreet"),Asphalt.Object);PracticeStreet=Road;
  auto Part=[&](UInstancedStaticMeshComponent* M,FVector P,FVector Size,FRotator R=FRotator::ZeroRotator){M->AddInstance(FTransform(R,P,Size/100));};
  for(int I=1;I<UE_ARRAY_COUNT(BattleTutorialData::Road);I++){const FVector A=BattleTutorialData::Road[I-1],B=BattleTutorialData::Road[I],D=B-A;Part(Road,(A+B)*.5f-FVector(0,0,12),FVector(D.Size()+3,450,24),D.Rotation());}
  auto Span=[&](FVector A,FVector B){const FVector D=B-A;Part(Road,(A+B)*.5f-FVector(0,0,12),FVector(D.Size()+3,450,24),D.Rotation());};
@@ -112,6 +113,21 @@ ABattleTutorial::ABattleTutorial(){
 }
 void ABattleTutorial::BeginPlay(){
  Super::BeginPlay();
+ // The mapped asphalt replaces these complete legacy cube footprints. Keep the
+ // old surface on maps without that exact, untransformed replacement mesh.
+ bool bMappedPavement=false;
+ for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattlePrideStreet"))){
+  TInlineComponentArray<UStaticMeshComponent*> Surfaces;It->GetComponents(Surfaces);
+  for(const UStaticMeshComponent* Surface:Surfaces)if(Surface->GetStaticMesh()
+   &&Surface->GetStaticMesh()->GetPathName()==TEXT("/Game/BattleForTheA/Environment/PrideIntersection/SM_PiedmontRoad.SM_PiedmontRoad")
+   &&Surface->GetComponentTransform().Equals(FTransform::Identity,.01f)
+   &&Surface->GetCollisionEnabled()!=ECollisionEnabled::NoCollision)bMappedPavement=true;
+ }
+ if(bMappedPavement&&PracticeStreet&&PracticeStreet->GetInstanceCount()==BattlePrideRoadCleanup::OriginalCount){
+  TArray<int32> Covered;for(int32 Index:BattlePrideRoadCleanup::Indices)Covered.Add(Index);
+  const bool bRemoved=PracticeStreet->RemoveInstances(Covered);
+  UE_LOG(LogTemp,Display,TEXT("PrideRoadCleanup: removed=%d remaining=%d success=%d"),Covered.Num(),PracticeStreet->GetInstanceCount(),bRemoved);
+ }
  // A map-authored extension moves the complete visible/colliding closure together.
  // Maps without this anchor retain the original practice boundaries.
  for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("PrideStreetBoundary"))&&BoundaryRoots.IsValidIndex(4)){
