@@ -89,7 +89,7 @@ void ABattleLabHUD::DrawHUD(){
  else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),(Bike->Ride->Speed+Bike->Ride->ReverseSpeed)*.0223694f),W-M-280*S,M+12*S,38);Text((Bike->Ride->ReverseSpeed>1?FString::Printf(TEXT("REVERSE  |  GEAR %d"),Bike->Ride->Gear):FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear)),W-M-280*S,M+65*S,23,Muted);}
  else if(Person->bSwimming){Text(TEXT("SWIMMING"),W-M-280*S,M+12*S,28,Peach);Text(TEXT("Bike stays at the bank"),W-M-280*S,M+55*S,20,Muted);}
  else{Text(Person->ReloadRemaining>0?TEXT("RELOADING"):Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);if(Person->bWeaponDrawn){Text(FString::Printf(TEXT("%d  LOADED"),Person->Ammo),W-M-280*S,M+46*S,24);Text(FString::Printf(TEXT("%s  SPARE"),*Person->ReserveLabel()),W-M-280*S,M+78*S,18,Muted);}else Text(TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,20);}
- if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){Panel(M,M+118*S,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,M+128*S,18,Peach);}}
+ if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){const float DangerY=M+(ObjectiveHeight+12)*S;Panel(M,DangerY,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,DangerY+10*S,18,Peach);}}
  Panel(W-M-300*S,M+118*S,300*S,44*S);Text(FString::Printf(TEXT("%sHORN  %d / 5"),Bike?TEXT("H  "):TEXT(""),Owner->HornUses),W-M-280*S,M+126*S,22,Owner->HornUses>0?Muted:Peach);
  if(Bike){Panel(W-M-300*S,M+174*S,300*S,44*S);Text(Bike->Ride->bRealHandling?TEXT("P  MODE: REALISTIC"):TEXT("P  MODE: ARCADE"),W-M-280*S,M+185*S,18,Muted);}
  const float Bottom=H-M-156*S;
@@ -113,13 +113,14 @@ void ABattleLabHUD::DrawHUD(){
   Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
  }
  if(Bike){Panel(M,Bottom-82*S,310*S,74*S);Text(FString::Printf(TEXT("PISTOL  %d LOADED"),Bike->PistolAmmo),M+18*S,Bottom-74*S,23,Peach);Text(FString::Printf(TEXT("%d SPARE"),Bike->Inventory[0].Reserve),M+18*S,Bottom-41*S,19,Muted);}
- const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;
+ const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;const ABattleDrone* AimedDrone=nullptr;
  if(!Owner->bCrashActive&&!(Person&&Person->bSwimming)){
  if(auto* PC=GetOwningPlayerController()){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(HUDAim),true,GetOwningPawn());Q.AddIgnoredActor(Owner);
   if(GetWorld()->LineTraceSingleByChannel(Hit,Eye,Eye+View.Vector()*14000,ECC_Visibility,Q)){
    auto* Target=Cast<APiedmontExplorer>(Hit.GetActor());
    if(Target&&!Target->bDead){Aim=FLinearColor(1,.3,.22);const FString Name=Target->ActorHasTag(TEXT("BattlePolice"))?TEXT("POLICE -60s"):Target->IsA<ABattleZombie>()?TEXT("ZOMBIE +10s"):Target->IsA<ABattleKnife>()?TEXT("KNIFE ATTACKER"):Target->IsA<ABattleGunman>()?TEXT("GUNMAN"):TEXT("PERSON -10s");Panel(CX-115*S,CY+32*S,230*S,38*S);Center(Name,CY+36*S,22,Aim);}
+   else if(auto* Drone=Cast<ABattleDrone>(Hit.GetActor());Drone&&Drone->Health>0&&!Drone->IsActorBeingDestroyed()){Aim=FLinearColor(1,.3,.22);AimedDrone=Drone;}
   }
  }
  DrawLine(CX-15*S,CY,CX-5*S,CY,Aim,2*S);DrawLine(CX+5*S,CY,CX+15*S,CY,Aim,2*S);DrawLine(CX,CY-15*S,CX,CY-5*S,Aim,2*S);DrawLine(CX,CY+5*S,CX,CY+15*S,Aim,2*S);
@@ -180,7 +181,7 @@ void ABattleLabHUD::DrawHUD(){
   const bool Visible=!GetWorld()->LineTraceSingleByChannel(Hit,Eye,Location,ECC_Visibility,Q)||Hit.GetActor()==*It;
   if(Visible&&PC->ProjectWorldLocationToScreen(Location,Screen)&&Screen.X>105*S&&Screen.X<W-105*S&&Screen.Y>145*S&&Screen.Y<H-170*S){
    Panel(Screen.X-100*S,Screen.Y-48*S,200*S,32*S);
-   Text(FString::Printf(TEXT("DRONE  %.0fm"),Distance),Screen.X-91*S,Screen.Y-46*S,20,Peach);
+   Text(FString::Printf(TEXT("DRONE  %.0fm"),Distance),Screen.X-91*S,Screen.Y-46*S,20,AimedDrone==*It?Aim:Peach);
    DrawLine(Screen.X-12*S,Screen.Y-12*S,Screen.X+12*S,Screen.Y-12*S,Peach,2*S);
    DrawLine(Screen.X-12*S,Screen.Y+12*S,Screen.X+12*S,Screen.Y+12*S,Peach,2*S);
   }

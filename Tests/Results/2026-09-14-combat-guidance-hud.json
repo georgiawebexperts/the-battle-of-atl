@@ -1,0 +1,20 @@
+{
+  "build_succeeded": true,
+  "editor_exit_code": 0,
+  "visual_review": true,
+  "resolution": [
+    1280,
+    720
+  ],
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/combat-guidance-final/bike.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/combat-guidance-final/foot.png"
+  ],
+  "verified": [
+    "Objective route hint and active danger status do not overlap in bike or foot views",
+    "Crosshair and existing drone distance label turn red when aim trace hits a live drone",
+    "Off-target foot view has a white crosshair",
+    "No extra duplicate target-name box added"
+  ],
+  "scope": "Forced presentation fixture, no damage/encounter balance changes. Not packaged."
+}

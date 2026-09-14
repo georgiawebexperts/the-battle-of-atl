@@ -23,7 +23,7 @@
 #include "Kismet/GameplayStatics.h"
 void ABattleMacController::TickHUDReview(float Dt){
 #if !UE_BUILD_SHIPPING
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleObjectiveReview")))if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->Quest){M->Quest->bCollected=true;M->bItemCollected=true;M->Quest->NextCheckpoint=HUDReviewStage<1?0:1;}
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleObjectiveReview")))if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->Quest){M->Quest->bCollected=true;M->bItemCollected=true;M->Trouble=4;M->PeopleHit=2;M->Quest->NextCheckpoint=HUDReviewStage<1?0:1;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkaterReview"))){TickSkaterReview(Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHomeReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceReview"))||FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReview"))){FlushPressedKeys();if(!IsMoveInputIgnored())SetIgnoreMoveInput(true);if(!IsLookInputIgnored())SetIgnoreLookInput(true);if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();}}
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBenchReview"))){
@@ -74,7 +74,7 @@ void ABattleMacController::TickHUDReview(float Dt){
   }
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleDroneReview"))){
    APawn* Viewer=GetPawn();const FVector Spot=Viewer->GetActorLocation()+Viewer->GetActorForwardVector()*360+Viewer->GetActorRightVector()*80+FVector(0,0,110);
-   if(auto* Drone=GetWorld()->SpawnActor<ABattleDrone>(Spot,FRotator(-15,Viewer->GetActorRotation().Yaw+180,0)))Drone->SetActorTickEnabled(false);
+   if(auto* Drone=GetWorld()->SpawnActor<ABattleDrone>(Spot,FRotator(-15,Viewer->GetActorRotation().Yaw+180,0))){Drone->SetActorTickEnabled(false);if(FParse::Param(FCommandLine::Get(),TEXT("BattleDroneAimReview"))){const FVector Eye=Spot+FVector(-500,0,80);auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Spot-Eye).Rotation());SetViewTarget(Camera);}}
   }
   FString Folder;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Folder);
   if(Folder.IsEmpty())Folder=FPaths::ProjectSavedDir()/TEXT("HUDReview");IFileManager::Get().MakeDirectory(*Folder,true);

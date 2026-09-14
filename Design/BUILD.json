@@ -86,7 +86,8 @@
   ],
   "unreleased_code_changes": [
     "2026-09-14 [codex-maclaptop]: Ten market stalls have80 ground-level canopy/table footplates. Saved review map passed80 contact checks and five aisle clearance probes; main-map validation recorded separately. Not packaged; desktop077 unchanged.",
-    "2026-09-14 [codex-maclaptop]: Collected-phone objective panel explains following the gold watch route; shows recalculation when empty and patio entry after tunnel. Native1280x720 bike/foot presentation inspected. Not packaged; desktop077 unchanged."
+    "2026-09-14 [codex-maclaptop]: Collected-phone objective panel explains following the gold watch route; shows recalculation when empty and patio entry after tunnel. Native1280x720 bike/foot presentation inspected. Not packaged; desktop077 unchanged.",
+    "2026-09-14 [codex-maclaptop]: Danger status follows objective-panel height to avoid overlap; live drone aim highlights crosshair and existing distance label. Native targeted/off-target1280x720 views inspected. Not packaged; desktop077 unchanged."
   ],
   "installed_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 077/The Battle of ATL.app",
   "backup_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 076/The Battle of ATL.app",
