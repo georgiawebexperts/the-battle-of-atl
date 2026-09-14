@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "reason": "Phone, ordered checkpoints, tunnel and finish reached through driving",
+  "seconds": 511.23,
+  "distance_cm": 203197.36,
+  "waypoint": 397,
+  "points": 398,
+  "full_route_requested": true,
+  "crossing_replay": false,
+  "traffic_warmup": false,
+  "stages": [
+    "stage=1 points=669 position=X=-13426.265 Y=8026.408 Z=-11.722 target=X=27579.888 Y=49480.913 Z=147.023",
+    "stage=2 points=957 position=X=27461.895 Y=49184.879 Z=241.690 target=X=25807.478 Y=102714.336 Z=814.694",
+    "stage=3 points=398 position=X=25886.711 Y=102405.944 Z=909.329 target=X=30425.109 Y=121416.754 Z=982.753"
+  ],
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/phone-ride-c8c939d5a22449e2919590e1fd22d9c5.log",
+  "fixture": [
+    "phone=X=-13279.945 Y=8024.703 Z=-11.803 way=102679950 start=X=-16926.268 Y=-5098.000 Z=200.705 points=29"
+  ],
+  "failure": [],
+  "scope": "One randomly placed phone, ordinary W/A/D/brake through ordered checkpoints, tunnel and actual finish; no teleport. Existing enemies and pedestrians removed, pedestrian population disabled; road cars retained. No stall in this run. Does not resolve the prior intermittent stall or establish full combat, art, performance or player-experience acceptance.",
+  "actual_crossing_impacts": [],
+  "compiled_source": "f9aa930"
+}

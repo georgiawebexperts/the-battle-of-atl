@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "packaged": false,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-8230beb2c3ae4e7a95bb5d073297123b/bike.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-8230beb2c3ae4e7a95bb5d073297123b/foot.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-8230beb2c3ae4e7a95bb5d073297123b/run.log",
+  "visual_review": true,
+  "scope": "Bike and foot1280x720 images inspected; reverse instruction fits existing mounted panel and foot prompt remains intact. Captured bike stationary; unconditional mounted visibility verified in code. Not packaged."
+}

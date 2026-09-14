@@ -98,7 +98,8 @@ void ABattleLabHUD::DrawHUD(){
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+50*S,274*S,18*S);DrawRect(Owner->RiderHealth<25?FLinearColor(1,.15,.1):FLinearColor(.3,.9,.62),M+18*S,Bottom+50*S,FMath::Clamp(Owner->RiderHealth/100.f,0.f,1.f)*274*S,18*S);
  Text(Owner->Ride->BoostRemaining>0?FString::Printf(TEXT("SPEED BOOST  %.1fs"),Owner->Ride->BoostRemaining):FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);
  DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);
- FString Prompt=Bike&&Bike->Ride->Speed<20?TEXT("E DISMOUNT  |  S/DOWN BACK UP"):TEXT("E  GET OFF THE BIKE");
+ // Keep reverse discoverable even when propulsion speed stays high against a blocker.
+ FString Prompt=TEXT("E DISMOUNT  |  S/DOWN BACK UP");
  const float MusicY=M+(Bike?230.f:174.f)*S;Panel(W-M-300*S,MusicY,300*S,68*S);Text(BattleMusic::Enabled()?FString::Printf(TEXT("M  MUSIC: SONG %d / 2"),BattleMusic::Selection()):TEXT("M  MUSIC: OFF"),W-M-280*S,MusicY+6*S,18,Muted);Text(TEXT("Cycle: Off > 1 > 2 > Off"),W-M-280*S,MusicY+36*S,16,Muted);
  FString Help=TEXT("Q/R gears   J jump   SHIFT boost   H horn");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=BattleSpareBikes::Nearest(Person)?TEXT("E  RIDE THIS BIKE"):Near?TEXT("E  GET ON THE BIKE"):TEXT("FIND A BIKE  /  BLUE WATCH MARKERS");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}
