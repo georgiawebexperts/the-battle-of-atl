@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "packaged": true,
+  "tunnel": true,
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-9c2fa106077c42b9b55b6a7cf3d0c176/bike.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-9c2fa106077c42b9b55b6a7cf3d0c176/foot.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-9c2fa106077c42b9b55b6a7cf3d0c176/run.log",
+  "visual_review": true,
+  "scope": "Packaged stationary tunnel riding/walking captures; downward lighting and readable reverse/foot prompts inspected. No full-route or performance acceptance."
+}

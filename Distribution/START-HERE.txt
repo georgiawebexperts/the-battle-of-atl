@@ -159,3 +159,7 @@ moving pedals and wall-reverse recovery. Fine finger contact, other reload
 animations, weapon art and world polish remain in progress.
 Mac pipeline compilation is serialized following a driver startup crash;
 brief first-use shader pauses are possible. Broader stability testing remains.
+
+TUNNEL LIGHTING AND REVERSE HELP
+Tunnel utility lights now point down to reduce ceiling glare.
+The riding HUD always shows S/Down to back up; hold it to brake and reverse.

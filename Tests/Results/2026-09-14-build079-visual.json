@@ -1,0 +1,17 @@
+{
+  "release_ready": true,
+  "scope": "079 tunnel-light/reverse-hint changes only",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-9c2fa106077c42b9b55b6a7cf3d0c176/bike.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/objective-review-9c2fa106077c42b9b55b6a7cf3d0c176/foot.png"
+  ],
+  "findings": [
+    "Broad ceiling halos reduced; walking path and pedestrians readable",
+    "Reverse hint fits mounted panel; foot prompt intact"
+  ],
+  "remaining": [
+    "Repetitive crowd appearance and material refinement remain",
+    "Intermittent crossing stall unresolved",
+    "Not overall game completion"
+  ]
+}
