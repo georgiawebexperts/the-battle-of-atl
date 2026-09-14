@@ -15,6 +15,9 @@
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
 #include "Misc/CommandLine.h"
+#include "Misc/FileHelper.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
 #include "PiedmontDarkZone.h"
@@ -70,7 +73,19 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   }
 
   float MinimumLength=0;FParse::Value(FCommandLine::Get(),TEXT("BattleRouteMinimumLength="),MinimumLength);
-  if(Hill)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->OsmWayId==HillPath&&It->Centerline->GetSplineLength()>=MinimumLength){UE_LOG(LogTemp,Display,TEXT("LakeRouteSelection: id=%s length_cm=%.2f points=%d"),*HillPath,It->Centerline->GetSplineLength(),It->Centerline->GetNumberOfSplinePoints());for(int I=0;I<It->Centerline->GetNumberOfSplinePoints();I++)ConnectorPoints.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));break;}
+  FString RouteFile;FParse::Value(FCommandLine::Get(),TEXT("BattleRouteFixtureFile="),RouteFile);
+  if(!RouteFile.IsEmpty()){
+   FString Json;TArray<TSharedPtr<FJsonValue>> Values;
+   if(!FFileHelper::LoadFileToString(Json,*RouteFile)||!FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Json),Values)||Values.Num()<2||Values.Num()>5000){Finish(false);return;}
+   for(const auto& Value:Values){
+    if(Value->Type!=EJson::Array||Value->AsArray().Num()!=3){Finish(false);return;}
+    const auto& Coordinates=Value->AsArray();double X,Y,Z;
+    if(!Coordinates[0]->TryGetNumber(X)||!Coordinates[1]->TryGetNumber(Y)||!Coordinates[2]->TryGetNumber(Z)||!FMath::IsFinite(X)||!FMath::IsFinite(Y)||!FMath::IsFinite(Z)){Finish(false);return;}
+    ConnectorPoints.Add(FVector(X,Y,Z));
+   }
+   UE_LOG(LogTemp,Display,TEXT("RouteFixtureFile: points=%d world=%s"),ConnectorPoints.Num(),*GetWorld()->GetName());
+  }
+  if(Hill&&ConnectorPoints.IsEmpty())for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->OsmWayId==HillPath&&It->Centerline->GetSplineLength()>=MinimumLength){UE_LOG(LogTemp,Display,TEXT("LakeRouteSelection: id=%s length_cm=%.2f points=%d"),*HillPath,It->Centerline->GetSplineLength(),It->Centerline->GetNumberOfSplinePoints());for(int I=0;I<It->Centerline->GetNumberOfSplinePoints();I++)ConnectorPoints.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));break;}
   if(Spirit){for(const FVector& P:BattleSpiritData::Ride)ConnectorPoints.Add(P);}
   else if(Home)for(const FVector& P:BattleHomeData::Route)ConnectorPoints.Add(P);
   for(int32 Part=0;!Hill&&!Home&&Part<(Krog?6:(Eastside?8:2));Part++)for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->ActorHasTag(FName(*FString::Printf(TEXT("%s_%d"),Krog?TEXT("BattleKrog"):(Eastside?TEXT("BattleEastside"):TEXT("BattleConnector")),Part)))){

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "reason": "All fences block, old cutoff clear, market closed, notice moved",
+  "distance_cm": 0.0,
+  "max_error_cm": 0.0,
+  "exit_code": 0,
+  "packaged": true,
+  "scope": "Runtime fences, cleared old cutoff, market gate and coming-soon notice; not a full moving gate approach"
+}

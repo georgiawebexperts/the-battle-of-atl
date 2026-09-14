@@ -1,0 +1,15 @@
+{
+  "saved_main": true,
+  "before_sha256": "775833c9092aba37d2755813294aea17a82f587b5638d6873c47e956a2a02dd7",
+  "after_sha256": "4a3b03caedec2f828ddf804e36f330665071274fe29b87a6eb18619db3a22714",
+  "backup": "../../../../Projects/AuraPlayground/work/map-backups/PiedmontWorld-before-pride-775833c9092a.umap",
+  "preserved_tenth_actors": [
+    "/Game/PiedmontRide/Maps/PiedmontWorld.PiedmontWorld:PersistentLevel.StaticMeshActor_126",
+    "/Game/PiedmontRide/Maps/PiedmontWorld.PiedmontWorld:PersistentLevel.StaticMeshActor_125",
+    "/Game/PiedmontRide/Maps/PiedmontWorld.PiedmontWorld:PersistentLevel.StaticMeshActor_127",
+    "/Game/PiedmontRide/Maps/PiedmontWorld.PiedmontWorld:PersistentLevel.StaticMeshActor_128"
+  ],
+  "no_drive_fixtures": true,
+  "desktop_updated": false,
+  "remaining": "Packaged verification. Known visual limitations: dark street signs, small northwest junction artifact and older tutorial pavement joins."
+}

@@ -1,0 +1,18 @@
+{
+  "release_ready": true,
+  "scope": "Early playtest release of the verified street connection; not full visual or game completion.",
+  "inspected": [
+    "leg0-view1.png",
+    "leg1-view0.png"
+  ],
+  "capture_directory": "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/PrideRouteReview/b8a49076886548c69b098028b2ab3ed2",
+  "findings": [
+    "Packaged street is open past the market with smooth new road shading.",
+    "GO timer banner is readable at the gate."
+  ],
+  "known_visual_issues": [
+    "Older tutorial pavement overlaps new road near12th and has block joins at14th.",
+    "Street signs are dim in shadow; small northwest junction artifact remains."
+  ],
+  "full_game_complete": false
+}
