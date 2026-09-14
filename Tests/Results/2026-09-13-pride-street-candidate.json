@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "main_unchanged_sha256": "775833c9092aba37d2755813294aea17a82f587b5638d6873c47e956a2a02dd7",
+  "review_map": "/Game/PiedmontRide/Maps/PiedmontPrideStreetReview",
+  "meshes": [
+    {
+      "name": "SM_PiedmontRoad",
+      "bounds_error_cm": 0.0006154327238618862,
+      "triangles": 5421
+    },
+    {
+      "name": "SM_PiedmontSidewalk",
+      "bounds_error_cm": 0.0002888764865929261,
+      "triangles": 3741
+    }
+  ],
+  "collision_probes": 151,
+  "maximum_error_cm": 0.00029230163566751344,
+  "scope": "Import bounds and sampled native mesh collision only. Static views use diagnostic lighting. Boundary, road seams and moving rider need verification; not installed.",
+  "visual_review": {
+    "inspected": [
+      "pride-corner.png",
+      "billys-approach.png"
+    ],
+    "accepted": false,
+    "findings": [
+      "New source-following road and sidewalk render in the expected corridor.",
+      "Old 10th sidewalk and lane markings remain across intersection mouth; need cutbacks and corner treatment.",
+      "Rainbow markings, street signs and surrounding streetscape incomplete.",
+      "North end needs seam review against runtime tutorial road."
+    ],
+    "installed": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "status": "candidate meshes only; native review pending",
+  "road_width_cm": 600,
+  "sidewalk_width_cm": 120,
+  "terrain": "build074 lake-graded DEM",
+  "terrain_unchanged": true,
+  "existing_tenth_footprints_preserved": true,
+  "meshes": [
+    {
+      "name": "PiedmontRoad",
+      "triangles": 5421,
+      "bounds_cm": [
+        [
+          -25057.485953439707,
+          -1000.0,
+          -161.26041666666666
+        ],
+        [
+          -17905.295537307724,
+          14800.0,
+          266.68219043819806
+        ]
+      ],
+      "uncovered_cm2": 0.0007759283043097982,
+      "building_overlap_cm2": 0.0
+    },
+    {
+      "name": "PiedmontSidewalk",
+      "triangles": 3741,
+      "bounds_cm": [
+        [
+          -25179.87884549748,
+          -1000.0,
+          -158.42845941450278
+        ],
+        [
+          -17779.624711123513,
+          14800.0,
+          286.3734935178598
+        ]
+      ],
+      "uncovered_cm2": 0.0008884492730086946,
+      "building_overlap_cm2": 0.0
+    }
+  ],
+  "pending": [
+    "Native import and collision checks",
+    "Corner/sidewalk visual inspection",
+    "Relocate tutorial cutoff with full boundary coverage",
+    "Rainbow markings and street signs",
+    "Both-direction bike traversal and release"
+  ]
+}
