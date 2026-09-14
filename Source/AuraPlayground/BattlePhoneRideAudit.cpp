@@ -15,7 +15,7 @@
 #include "Misc/Paths.h"
 void TickBattlePhoneRideAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TArray<FVector> Points;FVector Previous;int Next=1,Stage=0;float Clock=0,Distance=0,Still=0,Progress=0,WaypointAge=0;bool Started=false,Done=false;};static FState S;
+ struct FState{TWeakObjectPtr<UWorld> World;TArray<FVector> Points;FVector Previous;int Next=1,Stage=0;float Clock=0,Distance=0,Still=0,Progress=0,WaypointAge=0,BestWaypointDistance=MAX_flt;bool Started=false,Done=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto Key=[&](FKey K,bool Down){if(PC->IsInputKeyDown(K)!=Down)PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto* B=Cast<ABattleBike>(PC->GetPawn());auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(PC));
@@ -45,7 +45,7 @@ void TickBattlePhoneRideAudit(APlayerController* PC,float Dt){
  const int Stage=Q->bCollected?1+Q->NextCheckpoint:0;
  if(Full&&Stage!=S.Stage){
   if(Q->RoutePoints.Num()<2){Key(EKeys::W,false);Key(EKeys::SpaceBar,true);if(S.Still>5)End(false,TEXT("Collected objective has no usable onward route"));return;}
-  S.Stage=Stage;S.Points=Q->RoutePoints;S.Next=1;S.Still=0;S.WaypointAge=0;
+  S.Stage=Stage;S.Points=Q->RoutePoints;S.Next=1;S.Still=0;S.WaypointAge=0;S.BestWaypointDistance=MAX_flt;
   UE_LOG(LogTemp,Display,TEXT("PhoneRideStage: stage=%d points=%d position=%s target=%s"),S.Stage,S.Points.Num(),*P.ToString(),*S.Points.Last().ToString());
  }
  S.Progress+=Dt;if(S.Progress>10){S.Progress=0;UE_LOG(LogTemp,Display,TEXT("PhoneRideProgress: stage=%d seconds=%.1f waypoint=%d/%d position=%s speed=%.1f"),S.Stage,S.Clock,S.Next,S.Points.Num(),*P.ToString(),B->Ride->Speed);}
@@ -59,7 +59,9 @@ void TickBattlePhoneRideAudit(APlayerController* PC,float Dt){
  if(S.WaypointAge>5&&S.WaypointAge-Dt<=5)FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/TEXT("PhoneRouteStall.png"),true,false);
  if(B->bCrashActive||B->RiderHealth<=0){End(false,TEXT("Ride interrupted by crash or death"));return;}
  if(S.Clock>(Replay?25:Full?800:150)||S.Still>12||S.WaypointAge>30){UE_LOG(LogTemp,Display,TEXT("PhoneRideFailure: position=%s target=%s speed=%.2f yaw=%.2f"),*P.ToString(),*S.Points[S.Next].ToString(),B->Ride->Speed,B->GetActorRotation().Yaw);End(false,TEXT("Guided input stalled or timed out; inspect controller and world"));return;}
- const int OldNext=S.Next;while(S.Next<S.Points.Num()-1&&FVector::Dist2D(P,S.Points[S.Next])<160)S.Next++;S.WaypointAge=S.Next!=OldNext?0:S.WaypointAge+Dt;
+ const int OldNext=S.Next;while(S.Next<S.Points.Num()-1&&FVector::Dist2D(P,S.Points[S.Next])<160)S.Next++;const float TargetDistance=FVector::Dist2D(P,S.Points[S.Next]);
+ // Long clear segments are progress, even before reaching the next waypoint.
+ if(S.Next!=OldNext||TargetDistance<S.BestWaypointDistance-50){S.WaypointAge=0;S.BestWaypointDistance=TargetDistance;}else S.WaypointAge+=Dt;
  const float Angle=FMath::FindDeltaAngleDegrees(B->GetActorRotation().Yaw,(S.Points[S.Next]-P).Rotation().Yaw);
  Key(EKeys::A,Angle< -5);Key(EKeys::D,Angle>5);Key(EKeys::W,true);Key(EKeys::SpaceBar,FMath::Abs(Angle)>45&&B->Ride->Speed>220);
 #endif

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "reason": "Isolated replay crossed the stalled location",
+  "seconds": 14.71,
+  "distance_cm": 1075.44,
+  "waypoint": 7,
+  "points": 8,
+  "full_route_requested": false,
+  "crossing_replay": true,
+  "traffic_warmup": true,
+  "stages": [],
+  "exit_code": 0,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/phone-ride-aad150e3f24f43e1a5cd599e2e5c0244.log",
+  "fixture": [
+    "phone=X=-16525.877 Y=12102.264 Z=319.711 way=741964056 start=X=26050.000 Y=100350.000 Z=893.000 points=8"
+  ],
+  "failure": [],
+  "scope": "One randomly placed phone; ordinary W/A/D/brake inputs. Existing enemies and pedestrians removed, pedestrian population disabled; road cars retained. Full and hunt runs do not teleport; crossing replay explicitly positions the bike at its start. A guided-driver failure is not by itself evidence of a game defect. Does not establish full combat or finish-loop acceptance."
+}

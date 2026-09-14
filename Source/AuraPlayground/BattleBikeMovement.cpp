@@ -132,6 +132,9 @@ void UBattleBikeMovement::Wipeout(const FString& Reason,bool Water){
 void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,const FVector& MoveDelta){
  Super::HandleImpact(Hit,TimeSlice,MoveDelta);
 #if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePhoneRideAudit"))&&CharacterOwner&&CharacterOwner->GetActorLocation().Y>100500&&CharacterOwner->GetActorLocation().Y<101400&&Hit.ImpactNormal.Z<.6f){
+  UE_LOG(LogTemp,Display,TEXT("PhoneActualImpact: actor=%s component=%s position=%s normal=%s delta=%s speed=%.2f penetrating=%d"),*GetNameSafe(Hit.GetActor()),*GetNameSafe(Hit.GetComponent()),*CharacterOwner->GetActorLocation().ToString(),*Hit.ImpactNormal.ToString(),*MoveDelta.ToString(),Speed,Hit.bStartPenetrating);
+ }
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit"))&&CharacterOwner&&Hit.ImpactNormal.Z<.6f){
   UE_LOG(LogTemp,Display,TEXT("TutorialImpact: actor=%s component=%s point=%s normal=%s bike=%s speed=%.1f"),*GetNameSafe(Hit.GetActor()),*GetNameSafe(Hit.GetComponent()),*Hit.ImpactPoint.ToString(),*Hit.ImpactNormal.ToString(),*CharacterOwner->GetActorLocation().ToString(),Speed);
  }
