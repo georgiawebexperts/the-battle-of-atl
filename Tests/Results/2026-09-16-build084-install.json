@@ -1,0 +1,27 @@
+{
+  "build": 84,
+  "version": "0.84.0",
+  "source_commit": "721d024",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 084/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 083/The Battle of ATL.app",
+  "machine_code_sha256": "d3cdf35f55d2cd8f3c497102d27db00bbe5162d2991fa4b138a3694f6b9c2772",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 084.zip",
+  "zip_sha256": "c7ad78b432afd8e9fd70285740a3038f85428abc6e28abf51ce2acc2c5539eb0",
+  "zip_bytes": 1459510203,
+  "reports": [
+    "2026-09-16-build084-trouble-packaged.json",
+    "2026-09-16-build084-taser-visual-packaged.json",
+    "2026-09-16-krog-full-route-lookahead.json"
+  ],
+  "verification": [
+    "Packaged police targeting, delayed civilian-only response, visible committed taser aim, dodge miss, airborne gravity and recovery pass.",
+    "Packaged 1280x720 warning and discharge frames visually pass with readable aim line and HUD text.",
+    "Fresh uninterrupted full route reaches the phone, both checkpoints, prior Krog stall location, tunnel and normal finish.",
+    "ZIP CRC, ad-hoc signature, 0.84.0 metadata and Desktop target verified."
+  ],
+  "remaining": [
+    "Physical macOS mouse feel and taser balance require Elliott subjective playtest.",
+    "Broader art, animation, combat, handling and sustained performance work remains.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Police targeting, delayed civilian response, airborne taser gravity and recovery pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-5428d0bf92774c6fa27d948a99e52ab8.log",
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattlePoliceReview/f313e83338e7477bb233916c3b435999/police-warning.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattlePoliceReview/f313e83338e7477bb233916c3b435999/police-discharge.png"
+  ],
+  "capture_complete": true,
+  "visual_findings": [
+    "Packaged warning frame clearly shows the blue committed aim line from the raised taser to Ellison.",
+    "APD countdown and KEEP MOVING cue are readable at 1280x720 with no overflow.",
+    "Discharge frame clearly communicates the hit, time penalty and recovery state."
+  ]
+}

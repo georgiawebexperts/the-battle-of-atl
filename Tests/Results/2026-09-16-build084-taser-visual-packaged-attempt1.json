@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "stage": 2,
+  "reason": "Officer failed actual navigation pursuit",
+  "people": 3,
+  "police_spawned": 1,
+  "taser_hits": 0,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-df4b97e370e445629cd207c03781819e.log",
+  "images": [],
+  "capture_complete": false,
+  "classification": "Rendered audit sampling flake: officer moved 108.1 cm, 11.9 cm below the fixed 120 cm threshold at 1.6 seconds; subsequent identical rendered run passed."
+}
