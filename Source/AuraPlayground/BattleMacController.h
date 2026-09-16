@@ -41,9 +41,11 @@ private:
  FSlateBrush CelebrationBrush;
  bool bCelebrating=false,bCelebrationSeen=false,bCredits=false;
  double CelebrationStart=0,CreditsStart=0;
- bool bStarted=false;
+ bool bStarted=false,bFocusPauseIssued=false;
  void StartDifficulty(FName Name);
  void RunDevelopmentAudit();
+ void ApplyFocusState(bool bActive);
+ void TickStorefrontAudit(float Dt);
  void TickTutorialAudit(float Dt);
  void TickFootAudit(float Dt);
  int32 FootStage=0,FootCaptures=0;float FootClock=0,FootWalkSpeed=0,FootRunSpeed=0,FootArmMin=MAX_flt,FootArmMax=-MAX_flt,FootJumpBase=0;

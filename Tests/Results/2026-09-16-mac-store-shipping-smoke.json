@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "bundle_id": "com.webexperts.battleofatl",
+  "ran_seconds": 12,
+  "terminated_by_test": true,
+  "exit_code": 0,
+  "fatal_log_marker": false,
+  "shipping_audit_strings_absent": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/shipping-smoke.log",
+  "scope": "Locally signed Shipping executable startup smoke test; no gameplay automation is compiled into Shipping."
+}

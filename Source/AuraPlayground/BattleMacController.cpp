@@ -42,6 +42,8 @@ void TickBattleWatchAudit(APlayerController* PC,float Dt);
 #include "UObject/ConstructorHelpers.h"
 #include "Containers/Ticker.h"
 #include "Misc/ConfigCacheIni.h"
+#include "Misc/App.h"
+#include "Framework/Application/SlateApplication.h"
 
 ABattleMacController::ABattleMacController(){
  static ConstructorHelpers::FObjectFinder<UTexture2D> Art(TEXT("/Game/BattleForTheA/Story/T_EstoriaCelebration.T_EstoriaCelebration"));CelebrationArt=Art.Object;
@@ -99,10 +101,11 @@ void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeRideAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
+#if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpeedAudit")))TickBattleSpeedAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMusicAudit")))BattleMusic::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpareBikeAudit")))BattleSpareBikes::TickAudit(this,Dt);
-#if !UE_BUILD_SHIPPING
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleStorefrontAudit")))TickStorefrontAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSleeperSettleAudit")))TickBattleSleeperSettleAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmbientSleeperAudit")))TickBattleAmbientSleeperAudit(this,Dt);
@@ -170,8 +173,15 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
 #endif
+ if(!FApp::IsUnattended()&&FSlateApplication::IsInitialized()){
+  ApplyFocusState(FSlateApplication::Get().IsActive());
+ }
  if(bStarted&&!Menu.IsValid()&&!bOpeningSeen)if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(M->bTutorialActive)BeginOpening();
  if(bStarted&&!Menu.IsValid())if(const auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded)ShowMenu(Mode->bWon?(bCelebrationSeen?TEXT("Win"):TEXT("Celebration")):TEXT("Loss"));
+}
+void ABattleMacController::ApplyFocusState(bool bActive){
+ if(!bActive&&!bFocusPauseIssued&&bStarted&&!Menu.IsValid()&&!bOpeningActive&&!IsPaused()){bFocusPauseIssued=true;ShowMenu();}
+ else if(bActive)bFocusPauseIssued=false;
 }
 void ABattleMacController::StartDifficulty(FName Name){
  SetPause(false);
@@ -282,7 +292,13 @@ void ABattleMacController::ShowMenu(FString Page){
  }else if(Page==TEXT("Options")){
   Button(BattleMusic::Enabled()?FString::Printf(TEXT("MUSIC: SONG %d / 2  /  M"),BattleMusic::Selection()):FString(TEXT("MUSIC: OFF  /  M")),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
   if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))Button(M->bTutorialHelp?TEXT("PERMANENT CONTROLS: ON  /  F1"):TEXT("PERMANENT CONTROLS: OFF  /  F1"),[this](){TogglePracticeHelp();ShowMenu(TEXT("Options"));});
-  Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);
+  if(auto* Settings=UGameUserSettings::GetGameUserSettings()){
+   const bool Fullscreen=Settings->GetFullscreenMode()!=EWindowMode::Windowed;
+   Button(Fullscreen?TEXT("FULLSCREEN: ON"):TEXT("FULLSCREEN: OFF"),[this](){if(auto* S=UGameUserSettings::GetGameUserSettings()){const bool Full=S->GetFullscreenMode()!=EWindowMode::Windowed;S->SetFullscreenMode(Full?EWindowMode::Windowed:EWindowMode::WindowedFullscreen);S->ApplySettings(false);S->SaveSettings();ShowMenu(TEXT("Options"));}});
+   const FIntPoint R=Settings->GetScreenResolution();
+   Button(FString::Printf(TEXT("RESOLUTION: %d × %d  /  CHANGE"),R.X,R.Y),[this](){if(auto* S=UGameUserSettings::GetGameUserSettings()){const FIntPoint R=S->GetScreenResolution();const FIntPoint Next=R.X<1440?FIntPoint(1600,900):R.X<1800?FIntPoint(1920,1080):FIntPoint(1280,720);S->SetScreenResolution(Next);S->ApplySettings(false);S->SaveSettings();ShowMenu(TEXT("Options"));}});
+  }
+  Label(TEXT("DISPLAY PRESETS TARGET 60 FPS."),16,FLinearColor::White);
   for(int Quality:{1,2})Button(Quality==1?TEXT("PERFORMANCE / 1080p"):TEXT("BALANCED / 1080p"),[this,Quality](){if(auto* Settings=UGameUserSettings::GetGameUserSettings()){Settings->SetOverallScalabilityLevel(Quality);Settings->SetScreenResolution(FIntPoint(1920,1080));Settings->SetFullscreenMode(EWindowMode::Windowed);Settings->SetFrameRateLimit(60);Settings->ApplySettings(false);Settings->SaveSettings();}ShowMenu(TEXT("Options"));});
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else{

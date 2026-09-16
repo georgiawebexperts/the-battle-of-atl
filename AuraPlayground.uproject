@@ -2,7 +2,7 @@
   "FileVersion": 3,
   "EngineAssociation": "5.8",
   "Category": "",
-  "Description": "Disposable Aura trial playground created for Elliott, September 10, 2026.",
+  "Description": "The Battle of ATL is a third-person e-bike action game spanning Piedmont Park, the Atlanta BeltLine, and Cabbagetown.",
   "Plugins": [
     {
       "Name": "Aura",

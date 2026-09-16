@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "focus_pause": true,
+  "video_settings": true,
+  "options_menu": true,
+  "exit_code": 0,
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/storefront-f66bcd03cfe34379a6d3a342fa611091/options.png",
+  "scope": "Native focus-loss pause helper, Unreal user-settings resolution/fullscreen state, and rendered Options menu. Physical macOS Space switching remains a manual check."
+}

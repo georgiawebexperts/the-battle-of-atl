@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checks": {
+    "bundle_identifier": true,
+    "team_recorded": true,
+    "no_distribution_setup": true,
+    "sandbox_only": true,
+    "no_network_ats": true,
+    "retina": true,
+    "no_external_runtime_paths": true,
+    "production_map_only": true,
+    "non_placeholder_metadata": true,
+    "icon_complete": true,
+    "license_inventory": true
+  },
+  "maps_to_cook": [
+    "/Game/PiedmontRide/Maps/PiedmontWorld"
+  ],
+  "absolute_runtime_paths": [],
+  "entitlements": {
+    "com.apple.security.app-sandbox": true
+  },
+  "bundle_id": "com.webexperts.battleofatl",
+  "apple_team_id_recorded": "8HAG5A4GS7",
+  "scope": "Static Mac App Store guardrails. Distribution identity, certificate, provisioning, notarization, App Store Connect and upload are intentionally deferred."
+}
