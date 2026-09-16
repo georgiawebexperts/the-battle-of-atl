@@ -1,0 +1,38 @@
+{
+  "build": 92,
+  "version": "0.92.0",
+  "source_commit": "738ede3",
+  "packaging_commit": "368f42f",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 092/The Battle of ATL.app",
+  "desktop_shortcut": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "bundle_identifier": "com.webexperts.battleofatl",
+  "icon_file": "BattleOfATL.icns",
+  "icon_sha256": "95f6a1222442be5a125ac140d8940ee8add4b5aa6d4e379e0307555d9747669e",
+  "machine_code_sha256": "562c3c9b8599768ee1f03a12b2e19d34c399f58adf6ac2eca3dba801c181fe3b",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 092.zip",
+  "zip_sha256": "ca1fccb812f93da0825405a1c53789f08613d4b2b8af236ce75671d928aeef7f",
+  "zip_bytes": 1459583145,
+  "entitlements": {
+    "com.apple.security.app-sandbox": true
+  },
+  "reports": [
+    "2026-09-16-build092-mac-store-readiness.json",
+    "2026-09-16-build092-opening-packaged.json",
+    "2026-09-16-build092-storefront-packaged.json",
+    "2026-09-16-build092-share-sandbox-storefront.json",
+    "2026-09-16-build092-tutorial-direct-packaged.json",
+    "2026-09-16-build092-tutorial-alternate-packaged.json"
+  ],
+  "verification": [
+    "Development playtest and Shipping target compile successfully on Apple silicon Mac.",
+    "Finished The Battle of ATL icon has every required Mac representation and the packaged copy matches source.",
+    "The locally signed share app retains only the App Sandbox entitlement and runs its display/options audit inside the app container.",
+    "Direct and alternate practice rides reach the 14th Street gate using native W/A/D/brake input; the farmers market closes during practice and clears after the countdown.",
+    "Packaged opening visibly shows VERSION 1 \u2022 BUILD 092 in three readable frames.",
+    "ZIP CRC, local signature, com.webexperts.battleofatl identity, 0.92.0 metadata, instructions, and credits verified."
+  ],
+  "remaining": [
+    "Physical playtesting is still needed for subjective steering, downhill feel, crash animation, combat and full-route pacing.",
+    "Other Macs remain untested; distribution signing, provisioning, App Store Connect and upload remain deferred until feature completion."
+  ]
+}
