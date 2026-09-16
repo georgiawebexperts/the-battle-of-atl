@@ -93,13 +93,25 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   CHECK_TROUBLE(Bike->StunRemaining==0&&GetPawn()==Bike&&Bike->Ride->IsMovingOnGround()&&Bike->Deaths==0,"Recovery/remount failed");
   CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==1,"Taser grace failed");Bike->TaserGrace=0;CHECK_TROUBLE(Officer->FireTaser()&&Bike->ApplyRiderDamage(1000)>0,"Death during stun fixture failed");Next();
  }
- else if(TroubleStage==8&&TroubleClock>2.4f){CHECK_TROUBLE(Bike->Deaths==1&&GetPawn()==Bike&&!Bike->bParked&&Bike->StunRemaining==0,"Checkpoint retained stale stun");auto* Witness=Civilian();CHECK_TROUBLE(Witness,"Panic witness missing");
- Mode->bPoliceAlert=false;Mode->RecordGunfire();
- CHECK_TROUBLE(Witness->PanicRemaining==18&&Mode->bPoliceAlert&&Mode->PoliceDelay==6,"Gunfire did not start sustained panic and delayed police response");
- Mode->QuietTime=44;Mode->TickTrouble(2);
- CHECK_TROUBLE(!Mode->bPoliceAlert&&Mode->Trouble==0,"Police alert did not expire after quiet interval");
- for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)CHECK_TROUBLE(It->bDead||It->IsActorBeingDestroyed(),"Live police remained after alert expired");
- Finish(true,TEXT("Police pursuit, taser, recovery, gunfire panic and quiet-period alert expiry pass"));}
+ else if(TroubleStage==8&&TroubleClock>2.4f){
+  CHECK_TROUBLE(Bike->Deaths==1&&GetPawn()==Bike&&!Bike->bParked&&Bike->StunRemaining==0,"Checkpoint retained stale stun");
+  Mode->PeopleHit=0;Mode->AssaultVictims.Empty();Mode->bPoliceAlert=false;Mode->PoliceDelay=0;
+  auto* Witness=Civilian();auto* Sleeper=Civilian();CHECK_TROUBLE(Witness&&Sleeper,"Panic fixtures missing");Sleeper->bAmbientSleeper=true;
+  Mode->RecordGunfire();CHECK_TROUBLE(Witness->PanicRemaining==18&&!Mode->bPoliceAlert,"Gunfire did not panic civilians without summoning police");
+  Mode->RecordPlayerShotHit(Sleeper);CHECK_TROUBLE(!Mode->bPoliceAlert&&Mode->PeopleHit==0,"Shooting a sleeper summoned police");
+  Mode->RecordPlayerShotHit(Witness);CHECK_TROUBLE(Mode->bPoliceAlert&&Mode->PeopleHit==1&&Mode->PoliceDelay==15,"Civilian shooting did not start delayed police response");
+  auto* DodgeOfficer=GetWorld()->SpawnActor<ABattlePolice>(Bike->GetActorLocation()-Bike->GetActorForwardVector()*350,GetControlRotation());CHECK_TROUBLE(DodgeOfficer,"Dodge officer fixture failed");const int32 HitsBeforeDodge=Bike->TaserHits;DodgeOfficer->WarningAimPoint=Bike->GetActorLocation()+Bike->GetActorRightVector()*180;
+  CHECK_TROUBLE(!DodgeOfficer->FireTaser()&&DodgeOfficer->TaserShots==1&&Bike->TaserHits==HitsBeforeDodge,"Committed taser aim still snapped onto dodging rider");DodgeOfficer->Destroy();
+  Mode->bPoliceAlert=false;Mode->Trouble=0;Mode->QuietTime=0;Bike->TaserGrace=0;CHECK_TROUBLE(Bike->Dismount(),"Airborne taser dismount failed");
+  Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Person,"Airborne taser rider missing");Person->LaunchCharacter(FVector(0,0,560),false,true);Next();
+ }else if(TroubleStage==9&&TroubleClock>.12f){
+  Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Person&&Person->GetCharacterMovement()->IsFalling(),"Airborne taser fixture did not leave ground");TroubleAirStartZ=Person->GetActorLocation().Z;
+  CHECK_TROUBLE(Bike->ApplyTaser()&&Person->GetCharacterMovement()->IsFalling()&&Person->GetCharacterMovement()->MovementMode!=MOVE_None,"Taser froze airborne rider");Next();
+ }else if(TroubleStage==10){
+  Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Person,"Airborne taser rider vanished");
+  if(TroubleClock>.2f&&TroubleAirStartZ>-MAX_flt*.5f){CHECK_TROUBLE(Person->GetCharacterMovement()->MovementMode!=MOVE_None&&FMath::Abs(Person->GetActorLocation().Z-TroubleAirStartZ)>2,"Airborne taser stopped gravity");TroubleAirStartZ=-MAX_flt;}
+  if(TroubleClock>3.3f){CHECK_TROUBLE(Bike->StunRemaining==0&&Person->GetCharacterMovement()->MovementMode!=MOVE_None,"Airborne taser did not restore movement");Mode->QuietTime=44;Mode->TickTrouble(2);CHECK_TROUBLE(!Mode->bPoliceAlert&&Mode->Trouble==0,"Police alert did not expire after quiet interval");for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)CHECK_TROUBLE(It->bDead||It->IsActorBeingDestroyed(),"Live police remained after alert expired");Finish(true,TEXT("Police targeting, delayed civilian response, airborne taser gravity and recovery pass"));}
+ }
  if(TroubleClock>18&&TroubleStage!=99)Finish(false,TEXT("Trouble audit timeout"));
 #undef CHECK_TROUBLE
 #endif

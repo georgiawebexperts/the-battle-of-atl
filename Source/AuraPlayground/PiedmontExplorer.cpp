@@ -60,6 +60,7 @@ void APiedmontExplorer::BeginPlay(){
  }
 }
 void APiedmontExplorer::SetupPlayerInputComponent(UInputComponent* Input){Super::SetupPlayerInputComponent(Input);Input->BindKey(EKeys::E,IE_Pressed,this,&APiedmontExplorer::Interact);
+ Input->BindAxisKey(EKeys::MouseX,this,&APiedmontExplorer::LookYaw);Input->BindAxisKey(EKeys::MouseY,this,&APiedmontExplorer::LookPitch);
  Input->BindKey(EKeys::One,IE_Pressed,this,&APiedmontExplorer::ToggleWeapon);
  Input->BindKey(EKeys::LeftMouseButton,IE_Pressed,this,&APiedmontExplorer::PullTrigger);Input->BindKey(EKeys::LeftMouseButton,IE_Released,this,&APiedmontExplorer::ReleaseTrigger);
  Input->BindKey(EKeys::RightMouseButton,IE_Pressed,this,&APiedmontExplorer::AimOn);Input->BindKey(EKeys::RightMouseButton,IE_Released,this,&APiedmontExplorer::AimOff);
@@ -76,11 +77,11 @@ void APiedmontExplorer::Tick(float Dt){
  CameraArm->TargetArmLength=FMath::FInterpTo(CameraArm->TargetArmLength,bAiming?180.f:320.f,Dt,10);
  Camera->SetFieldOfView(FMath::FInterpTo(Camera->FieldOfView,bAiming?AimedFieldOfView():85.f,Dt,10));
  if(auto* PC=Cast<APlayerController>(GetController())){
-  // GetInputMouseDelta already includes the project 0.07 axis sensitivity.
-  // Read device delta once so the pawn does not attenuate mouse look twice.
-  const float X=PC->PlayerInput?PC->PlayerInput->GetRawKeyValue(EKeys::MouseX):0.f;
-  const float Y=PC->PlayerInput?PC->PlayerInput->GetRawKeyValue(EKeys::MouseY):0.f;
-  AddControllerYawInput(X*.03f);AddControllerPitchInput(Y*-.02f);
+  // Mouse look is routed through BindAxisKey so captured macOS mouse motion is
+  // delivered by Unreal's normal input stack in editor and packaged builds.
+  const float KeyYaw=(PC->IsInputKeyDown(EKeys::X)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::Z)?1.f:0.f);
+  const float KeyPitch=(PC->IsInputKeyDown(EKeys::V)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::T)?1.f:0.f);
+  AddControllerYawInput(KeyYaw*90.f*Dt);AddControllerPitchInput(KeyPitch*65.f*Dt);
   const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);
   const float Side=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
   FRotator Heading(0,PC->GetControlRotation().Yaw,0);FVector Move=Heading.Vector()*Forward+FRotationMatrix(Heading).GetUnitAxis(EAxis::Y)*Side;

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Police targeting, delayed civilian response, airborne taser gravity and recovery pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-7d8cfeff5e36498186e0e4975190aa6d.log",
+  "images": [],
+  "capture_complete": true
+}

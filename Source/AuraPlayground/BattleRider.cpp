@@ -92,6 +92,7 @@ void ABattleRider::BeginPlay(){
 }
 void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  ACharacter::SetupPlayerInputComponent(I);
+ I->BindAxisKey(EKeys::MouseX,this,&ABattleRider::LookYaw);I->BindAxisKey(EKeys::MouseY,this,&ABattleRider::LookPitch);
  I->BindKey(EKeys::E,IE_Pressed,this,&ABattleRider::Interact);
  I->BindKey(EKeys::SpaceBar,IE_Pressed,this,&ABattleRider::StartJump);I->BindKey(EKeys::SpaceBar,IE_Released,this,&ABattleRider::EndJump);
  I->BindKey(EKeys::G,IE_Pressed,this,&ABattleRider::DrawWeapon);

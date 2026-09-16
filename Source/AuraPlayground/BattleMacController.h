@@ -77,7 +77,7 @@ private:
  void TickSteeringAudit(float Dt);
  int32 SteeringStage=0;float SteeringClock=0,SteeringYaw=0;FVector SteeringStart=FVector::ZeroVector;
  void TickTroubleAudit(float Dt);
- int32 TroubleStage=0;float TroubleClock=0,TroubleTime=0;
+ int32 TroubleStage=0;float TroubleClock=0,TroubleTime=0,TroubleAirStartZ=0;
  TWeakObjectPtr<AActor> TroubleOfficer;
  FVector TroublePoliceStart=FVector::ZeroVector;
  void TickAmmoAudit(float Dt);

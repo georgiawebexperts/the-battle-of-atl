@@ -108,11 +108,15 @@ bool ABattlePolice::FireTaser(){
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));auto* Target=UGameplayStatics::GetPlayerPawn(this,0);
  if(bDead||!Mode||Mode->StartCountdown>0||Mode->bRunEnded||UGameplayStatics::IsGamePaused(this)||!CanReachTarget(Target))return false;
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Person=Cast<ABattleRider>(Target))Bike=Person->ParkedBike;if(!Bike)return false;
- const FVector End=Target->GetActorLocation(),Start=TaserMuzzle();LastTaserOrigin=Start;const bool Hit=Bike->ApplyTaser();DischargeRemaining=.65f;
+ const FVector End=WarningAimPoint.IsNearlyZero()?Target->GetActorLocation():WarningAimPoint,Start=TaserMuzzle();LastTaserOrigin=Start;
+ // The officer commits to the warned shot instead of snapping the taser onto
+ // the player's latest position. A decisive lateral move, jump, or turn can miss.
+ const float DodgeDistance=FMath::Sqrt(FMath::PointDistToSegmentSquared(Target->GetActorLocation(),Start,End));
+ const bool Hit=DodgeDistance<=75.f&&Bike->ApplyTaser();DischargeRemaining=.65f;
  if(auto* FX=GetWorld()->SpawnActorDeferred<ABattleShotFX>(ABattleShotFX::StaticClass(),FTransform(Start),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){
   FX->Start=Start;FX->End=End;FX->FinishSpawning(FTransform(Start));FX->SetLifeSpan(.65f);auto* M=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_Splash.M_Splash"));FX->Tracer->SetMaterial(0,M);FX->Flash->SetMaterial(0,M);FX->Light->SetLightColor(FLinearColor(.1,.5,1));
  }
- TaserShots++;Cooldown=15;bWarning=false;return Hit;
+ TaserShots++;Cooldown=15;bWarning=false;WarningAimPoint=FVector::ZeroVector;return Hit;
 }
 void ABattlePolice::Tick(float Dt){
  VoiceCooldown=FMath::Max(0.f,VoiceCooldown-Dt);
@@ -125,10 +129,10 @@ void ABattlePolice::Tick(float Dt){
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Person=Cast<ABattleRider>(Target))Bike=Person->ParkedBike;
  if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||Bike->TaserGrace>0){bWarning=false;if(AI)AI->StopMovement();Cooldown=FMath::Max(0.f,Cooldown-Dt);return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);PathDelay-=Dt;
- if(bWarning){if(AI)AI->StopMovement();SetActorRotation(FRotator(0,(Target->GetActorLocation()-GetActorLocation()).Rotation().Yaw,0));
+ if(bWarning){if(AI)AI->StopMovement();if(WarningRemaining>1.1f)WarningAimPoint=Target->GetActorLocation();SetActorRotation(FRotator(0,(WarningAimPoint-GetActorLocation()).Rotation().Yaw,0));
   if(!CanReachTarget(Target)){bWarning=false;Cooldown=3;return;}
   WarningRemaining-=Dt;if(WarningRemaining<=0)FireTaser();return;}
- if(Cooldown<=0&&CanReachTarget(Target)){bWarning=true;WarningRemaining=2.f;
+ if(Cooldown<=0&&CanReachTarget(Target)){bWarning=true;WarningRemaining=2.75f;WarningAimPoint=Target->GetActorLocation();
   if(VoiceCooldown<=0&&WarningVoice->Sound){WarningVoice->Play();WarningVoiceStarts++;VoiceCooldown=6.f;}
   return;}
  if(AI&&PathDelay<=0){PathDelay=.6f;AI->MoveToActor(Target,550,true,true,true,nullptr,true);}

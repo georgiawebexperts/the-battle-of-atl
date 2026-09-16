@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "PiedmontPedestrian.h"
 #include "Kismet/GameplayStatics.h"
 bool ABattleLabMode::AdjustRunTime(float Seconds,const FString& Reason){
  if(bTutorialActive||bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this)||!FMath::IsFinite(Seconds)||Seconds==0)return false;
@@ -10,7 +11,10 @@ bool ABattleLabMode::AdjustRunTime(float Seconds,const FString& Reason){
 }
 void ABattleLabMode::RecordPlayerShotHit(AActor* Victim){
  if(!IsValid(Victim))return;
- if(Victim->ActorHasTag(TEXT("PiedmontTraffic")))RecordAssault(Victim);
+ if(Victim->ActorHasTag(TEXT("PiedmontTraffic"))){
+  const auto* Pedestrian=Cast<APiedmontPedestrian>(Victim);
+  if((!Pedestrian||!Pedestrian->bAmbientSleeper)&&RecordAssault(Victim)&&PeopleHit<3){bPoliceAlert=true;PoliceDelay=15;}
+ }
  if(Victim->ActorHasTag(TEXT("BattleZombie")))AdjustRunTime(10,TEXT("ZOMBIE HIT"));
  else if(Victim->ActorHasTag(TEXT("BattlePolice")))AdjustRunTime(-60,TEXT("POLICE HIT"));
  else if(Victim->ActorHasTag(TEXT("PiedmontTraffic")))AdjustRunTime(-10,TEXT("PEDESTRIAN HIT"));

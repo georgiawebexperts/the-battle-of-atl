@@ -27,7 +27,7 @@ matches = re.findall(r'BattleMouseLookAudit: (\{[^\n]+\})', log.read_text())
 result = json.loads(matches[-1]) if matches else {'passed': False, 'missing_report': True}
 result.update(exit_code=run.returncode, packaged=args.packaged, log=str(log))
 result['passed'] = bool(result.get('passed') and run.returncode == 0)
-result['scope'] = 'Injected engine mouse-axis events after dismount; control, camera and body rotation. Does not verify OS pointer capture or subjective sensitivity.'
+result['scope'] = 'Registered mouse-axis bindings after dismount, camera response, camera-relative walking, shoulder aim, and keyboard look. OS pointer capture remains a manual packaged check.'
 (root / 'Tests/Results' / args.report).write_text(json.dumps(result, indent=2) + '\n')
 print(json.dumps(result))
 raise SystemExit(0 if result['passed'] else 1)

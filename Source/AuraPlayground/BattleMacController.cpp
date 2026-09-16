@@ -38,6 +38,7 @@ void TickBattlePanicAudit(APlayerController* PC,float Dt);
 #include "Engine/Texture2D.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Containers/Ticker.h"
+#include "Misc/ConfigCacheIni.h"
 
 ABattleMacController::ABattleMacController(){
  static ConstructorHelpers::FObjectFinder<UTexture2D> Art(TEXT("/Game/BattleForTheA/Story/T_EstoriaCelebration.T_EstoriaCelebration"));CelebrationArt=Art.Object;
@@ -46,6 +47,7 @@ ABattleMacController::ABattleMacController(){
 void ABattleMacController::BeginPlay(){
  Super::BeginPlay();
  BattleMusic::Initialize(this);
+ if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){bool Show=true;GConfig->GetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),Show,GGameUserSettingsIni);Mode->bTutorialHelp=Show;}
  // Keep moving silhouettes readable; temporal antialiasing remains enabled.
  if(auto* Blur=IConsoleManager::Get().FindConsoleVariable(TEXT("r.MotionBlurQuality")))Blur->Set(0,ECVF_SetByGameSetting);
  if(GetWorld()->WorldType==EWorldType::Game){
@@ -180,7 +182,7 @@ void ABattleMacController::SetupInputComponent(){
  auto& Skip=InputComponent->BindKey(EKeys::Enter,IE_Pressed,this,&ABattleMacController::SkipOpening);Skip.bExecuteWhenPaused=true;
  InputComponent->BindKey(EKeys::F1,IE_Pressed,this,&ABattleMacController::TogglePracticeHelp);
 }
-void ABattleMacController::TogglePracticeHelp(){if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))M->bTutorialHelp=!M->bTutorialHelp;}
+void ABattleMacController::TogglePracticeHelp(){if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){M->bTutorialHelp=!M->bTutorialHelp;GConfig->SetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),M->bTutorialHelp,GGameUserSettingsIni);GConfig->Flush(false,GGameUserSettingsIni);}}
 void ABattleMacController::RemoveMenu(){
  if(Menu.IsValid()&&GetWorld()&&GetWorld()->GetGameViewport())GetWorld()->GetGameViewport()->RemoveViewportWidgetContent(Menu.ToSharedRef());
  Menu.Reset();
@@ -256,10 +258,11 @@ void ABattleMacController::ShowMenu(FString Page){
  }else if(Page==TEXT("Instructions")){
   Label(TEXT("Ellison dropped his cell phone playing frisbee in Piedmont Park. Use Find My Lost Phone on his watch to follow a broad compass direction. Recover it, then race past Murder K and Krog Street Market, through Krog Tunnel and right into 98 Estoria. Morgan is waiting for him at the Cabbagetown party. Make it before the clock runs out and celebrate with a beer."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn (5 uses) | Tab camera\nP arcade / realistic bike physics\nArcade: scenery bumps keep you on the bike\nEnemies, drones and tasers can knock you off\nFind >> 5s tokens for temporary speed\nM music: Off > Song 1 > Song 2 > Off\nE dismount | Left click pistol"),17,FLinearColor::White);
-  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | Esc pause"),17,FLinearColor::White);
+  Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look and aim\nZ/X turn | T/V look up/down\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | F1 full/compact controls | Esc pause"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
   Button(BattleMusic::Enabled()?FString::Printf(TEXT("MUSIC: SONG %d / 2  /  M"),BattleMusic::Selection()):FString(TEXT("MUSIC: OFF  /  M")),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
+  if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))Button(M->bTutorialHelp?TEXT("PERMANENT CONTROLS: ON  /  F1"):TEXT("PERMANENT CONTROLS: OFF  /  F1"),[this](){TogglePracticeHelp();ShowMenu(TEXT("Options"));});
   Label(TEXT("Graphics presets target 1080p with a 60 FPS cap. Actual frame rate depends on the scene."),16,FLinearColor::White);
   for(int Quality:{1,2})Button(Quality==1?TEXT("PERFORMANCE / 1080p"):TEXT("BALANCED / 1080p"),[this,Quality](){if(auto* Settings=UGameUserSettings::GetGameUserSettings()){Settings->SetOverallScalabilityLevel(Quality);Settings->SetScreenResolution(FIntPoint(1920,1080));Settings->SetFullscreenMode(EWindowMode::Windowed);Settings->SetFrameRateLimit(60);Settings->ApplySettings(false);Settings->SaveSettings();}ShowMenu(TEXT("Options"));});
   Button(TEXT("BACK"),[this](){ShowMenu();});

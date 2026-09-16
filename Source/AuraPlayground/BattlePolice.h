@@ -20,6 +20,7 @@ public:
  float WarningRemaining=0,Cooldown=3,PathDelay=0;
  UPROPERTY(BlueprintReadOnly) float TaserDrawBlend=0;
  UPROPERTY(BlueprintReadOnly) FVector LastTaserOrigin=FVector::ZeroVector;
+ UPROPERTY(BlueprintReadOnly) FVector WarningAimPoint=FVector::ZeroVector;
  FVector TaserMuzzle() const;
  UPROPERTY() TObjectPtr<UAnimSequence> TaserAim;
  UPROPERTY() TObjectPtr<UAnimSequence> TaserIdle;

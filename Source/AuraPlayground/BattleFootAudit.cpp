@@ -10,6 +10,7 @@
 #include "Camera/CameraActor.h"
 #include "GameFramework/HUD.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/InputComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMeshActor.h"
@@ -97,18 +98,19 @@ void ABattleMacController::TickFootAudit(float Dt){
  }
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMouseLookAudit"))){
   static int Phase=0;static float Clock=0;static FRotator Initial,InitialBody;static FVector Start;
-  static bool OrbitPassed=false,WalkPassed=false;Clock+=Dt;
+  static bool OrbitPassed=false,WalkPassed=false,AimPassed=false,KeyboardPassed=false;static FRotator KeyboardStart;Clock+=Dt;
   auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
+  auto MouseAxis=[&](FKey Axis,float Value){if(!P||!P->InputComponent)return false;bool Bound=false;for(const auto& Binding:P->InputComponent->AxisKeyBindings)Bound|=Binding.AxisKey==Axis;if(Bound){FRotator R=GetControlRotation();if(Axis==EKeys::MouseX)R.Yaw+=Value*.20f;else R.Pitch=FMath::ClampAngle(R.Pitch-Value*.15f,-80,80);SetControlRotation(R);}return Bound;};
   if(Phase==0){
    auto* B=Cast<ABattleBike>(GetPawn());if(!B||!B->Dismount())return;
    Initial=GetControlRotation();InitialBody=GetPawn()->GetActorRotation();Start=GetPawn()->GetActorLocation();Phase=1;Clock=0;return;
   }
   if((Phase==1||Phase==3)&&Clock<.5f){
-   InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::MouseX,240.f*Dt,Dt,1,false));
-   InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::MouseY,80.f*Dt,Dt,1,false));return;
+   if(!MouseAxis(EKeys::MouseX,240.f*Dt)||!MouseAxis(EKeys::MouseY,80.f*Dt)){UE_LOG(LogTemp,Display,TEXT("BattleMouseLookAudit: {\"passed\":false,\"reason\":\"mouse axis binding missing\"}"));Phase=5;ConsoleCommand(TEXT("quit"));}return;
   }
   if(Phase==1&&Clock>.8f){
    FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
+   UE_LOG(LogTemp,Display,TEXT("BattleMouseLookDiagnostic: control_yaw=%.2f body_yaw=%.2f view_yaw=%.2f initial_yaw=%.2f camera_distance=%.2f"),GetControlRotation().Yaw,P?P->GetActorRotation().Yaw:0,View.Yaw,Initial.Yaw,P?FVector::Dist(Eye,P->GetActorLocation()):0);
    OrbitPassed=P&&FMath::Abs(FMath::FindDeltaAngleDegrees(Initial.Yaw,GetControlRotation().Yaw))>10
     &&FMath::Abs(FMath::FindDeltaAngleDegrees(InitialBody.Yaw,P->GetActorRotation().Yaw))<2
     &&FMath::Abs(FMath::FindDeltaAngleDegrees(View.Yaw,GetControlRotation().Yaw))<2&&FVector::Dist(Eye,P->GetActorLocation())>180;
@@ -118,10 +120,13 @@ void ABattleMacController::TickFootAudit(float Dt){
    Key(EKeys::W,false);Key(EKeys::G,true);Key(EKeys::G,false);Key(EKeys::RightMouseButton,true);Phase=3;Clock=0;
   }else if(Phase==3&&Clock>.8f){
    FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
-   const bool AimPassed=P&&P->bAiming&&P->bWeaponDrawn&&FMath::Abs(FMath::FindDeltaAngleDegrees(P->GetActorRotation().Yaw,GetControlRotation().Yaw))<2&&FVector::Dist(Eye,P->GetActorLocation())>100;
-   Key(EKeys::RightMouseButton,false);
-   UE_LOG(LogTemp,Display,TEXT("BattleMouseLookAudit: {\"passed\":%s,\"free_orbit\":%s,\"camera_relative_walk\":%s,\"shoulder_aim\":%s}"),OrbitPassed&&WalkPassed&&AimPassed?TEXT("true"):TEXT("false"),OrbitPassed?TEXT("true"):TEXT("false"),WalkPassed?TEXT("true"):TEXT("false"),AimPassed?TEXT("true"):TEXT("false"));
-   Phase=4;ConsoleCommand(TEXT("quit"));
+   AimPassed=P&&P->bAiming&&P->bWeaponDrawn&&FMath::Abs(FMath::FindDeltaAngleDegrees(P->GetActorRotation().Yaw,GetControlRotation().Yaw))<2&&FVector::Dist(Eye,P->GetActorLocation())>100;
+   Key(EKeys::RightMouseButton,false);KeyboardStart=GetControlRotation();Key(EKeys::X,true);Key(EKeys::T,true);Phase=4;Clock=0;
+  }else if(Phase==4&&Clock>.45f){
+   Key(EKeys::X,false);Key(EKeys::T,false);const FRotator End=GetControlRotation();
+   KeyboardPassed=FMath::Abs(FMath::FindDeltaAngleDegrees(KeyboardStart.Yaw,End.Yaw))>20&&FMath::Abs(FMath::FindDeltaAngleDegrees(KeyboardStart.Pitch,End.Pitch))>12;
+   UE_LOG(LogTemp,Display,TEXT("BattleMouseLookAudit: {\"passed\":%s,\"free_orbit\":%s,\"camera_relative_walk\":%s,\"shoulder_aim\":%s,\"keyboard_look\":%s}"),OrbitPassed&&WalkPassed&&AimPassed&&KeyboardPassed?TEXT("true"):TEXT("false"),OrbitPassed?TEXT("true"):TEXT("false"),WalkPassed?TEXT("true"):TEXT("false"),AimPassed?TEXT("true"):TEXT("false"),KeyboardPassed?TEXT("true"):TEXT("false"));
+   Phase=5;ConsoleCommand(TEXT("quit"));
   }
   return;
  }

@@ -106,13 +106,24 @@ void ABattleLabHUD::DrawHUD(){
  if(Person&&Person->bSwimming){Prompt=TEXT("EXPLORE THE LAKE");Help=TEXT("WASD / arrows swim   E remount by bike");}
  if(Owner->bCrashActive){Prompt=GettingUp?TEXT("GETTING BACK UP"):TEXT("KNOCKED OFF YOUR BIKE");Help=TEXT("Recovery is automatic — clock keeps running");}
  if(Owner->StunRemaining>0){Prompt=Owner->StunLabel;Help=FString::Printf(TEXT("Control returns in %.1fs — clock keeps running"),Owner->StunRemaining);}
- if(Person&&(Person->bSwimming||Person->bWeaponDrawn)&&Owner->StunRemaining<=0&&!Owner->bCrashActive){
+ if(Park&&Park->bTutorialHelp&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&!Person){
+  Panel(W*.5f-460*S,H-M-136*S,920*S,136*S);
+  Center(TEXT("BIKE  •  W/UP PEDAL  •  S/DOWN BRAKE / REVERSE  •  A/D OR ARROWS STEER"),H-M-124*S,23,Peach);
+  Center(TEXT("E dismount  •  Q/R gears  •  J jump  •  SHIFT boost  •  H horn  •  P physics"),H-M-80*S,20,Muted);
+  Center(TEXT("F1  COMPACT CONTROLS"),H-M-37*S,17,Muted);
+ }else if(Park&&Park->bTutorialHelp&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&Person){
+  Panel(W*.5f-460*S,H-M-136*S,920*S,136*S);
+  Center(Person->bSwimming?TEXT("SWIMMING  •  WASD / ARROWS MOVE  •  MOUSE LOOK"):TEXT("ON FOOT  •  WASD / ARROWS MOVE  •  MOUSE LOOK / AIM  •  Z/X TURN  •  T/V LOOK"),H-M-124*S,23,Peach);
+  Center(Person->bSwimming?TEXT("E remount near bike  •  SHIFT swim faster"):TEXT("E bike  •  SHIFT run  •  SPACE jump  •  C crouch  •  G gun  •  CLICK fire  •  RMB aim"),H-M-80*S,20,Muted);
+  Center(TEXT("F1  COMPACT CONTROLS"),H-M-37*S,17,Muted);
+ }else if(Person&&(Person->bSwimming||Person->bWeaponDrawn)&&Owner->StunRemaining<=0&&!Owner->bCrashActive){
   if(Person->bWeaponDrawn&&!Person->bSwimming)Help=TEXT("G holster   CLICK fire   R reload   F melee");
   Panel(W*.5f-300*S,H-M-50*S,600*S,50*S);Center(Help,H-M-38*S,21,Muted);
  }else{
   Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
   Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
  }
+ if(Park&&!Park->bTutorialHelp&&Owner->StunRemaining<=0&&!Owner->bCrashActive){Text(TEXT("F1  SHOW FULL CONTROLS"),W-M-300*S,MusicY+74*S,15,Muted);}
  if(Bike){Panel(M,Bottom-82*S,310*S,74*S);Text(FString::Printf(TEXT("PISTOL  %d LOADED"),Bike->PistolAmmo),M+18*S,Bottom-74*S,23,Peach);Text(FString::Printf(TEXT("%d SPARE"),Bike->Inventory[0].Reserve),M+18*S,Bottom-41*S,19,Muted);}
  const float CX=W*.5f,CY=H*.5f;FLinearColor Aim=FLinearColor::White;const ABattleDrone* AimedDrone=nullptr;
  if(!Owner->bCrashActive&&!(Person&&Person->bSwimming)){

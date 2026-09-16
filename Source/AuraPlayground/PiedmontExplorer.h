@@ -40,10 +40,10 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
  UFUNCTION(BlueprintCallable) bool Remount();
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
-private:
+protected:
  void Interact();
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
-protected:
+ void LookYaw(float Value){AddControllerYawInput(Value*.20f);}void LookPitch(float Value){AddControllerPitchInput(Value*-.15f);}
  virtual float AimedFieldOfView() const{return 65.f;}
  void PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose=TArray<FTransform>(),float StartTime=0,float EndTime=-1);
  // Full-body authored sequences keep sleeping/get-up poses independent of movement blending.

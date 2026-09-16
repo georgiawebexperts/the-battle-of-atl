@@ -1,0 +1,26 @@
+{
+  "market_review": false,
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build083-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "3584bd9fda4880b65367371f50be5e1b3cebfd94a90a6b8894001efab1cd3117"
+    },
+    {
+      "file": "work/build083-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4a6783edde5f00e0aaf8c11480bd80cbc782d90762393a8b69c6c518db6ab99c"
+    }
+  ],
+  "visual_review": "passed: bike and on-foot permanent control panels are readable at 1280x720 with no text overflow",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}
