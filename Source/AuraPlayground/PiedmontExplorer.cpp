@@ -84,6 +84,9 @@ void APiedmontExplorer::Tick(float Dt){
   AddControllerYawInput(KeyYaw*90.f*Dt);AddControllerPitchInput(KeyPitch*65.f*Dt);
   const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);
   const float Side=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
+  // The swim help advertises Shift as the fast stroke. Flying movement uses
+  // MaxFlySpeed, so changing walking speed alone never made that control work.
+  if(bSwimming)GetCharacterMovement()->MaxFlySpeed=PC->IsInputKeyDown(EKeys::LeftShift)?290.f:200.f;
   FRotator Heading(0,PC->GetControlRotation().Yaw,0);FVector Move=Heading.Vector()*Forward+FRotationMatrix(Heading).GetUnitAxis(EAxis::Y)*Side;
   AddMovementInput(Move.GetSafeNormal(),FMath::Min(1.f,Move.Size()));
  }
@@ -136,7 +139,10 @@ void APiedmontExplorer::AnimateBody(float Dt){
   FVector Hand=bSwimming?FVector(Side*(20+35*Stroke),20+10*FMath::Cos(Gait),175-45*Stroke):FVector(Side*26,FMath::Sin(Gait)*Side*18*Blend,80);
   if(bSwimming&&bDetailedPlayerRig){
    const float Phase=Gait+(Side<0?PI:0.f);
-   const FVector Tread(Side*(35+8*FMath::Sin(Gait)),20+12*FMath::Cos(Gait),100+5*FMath::Sin(Gait));
+   // Treading needs to read as active balance above the water. Keep the hands
+   // high and wide and scull them in opposing ovals instead of leaving the
+   // swimmer in the reference-pose silhouette below the surface.
+   const FVector Tread(Side*(46+11*FMath::Sin(Phase)),34+18*FMath::Cos(Phase),130+7*FMath::Sin(Phase*2.f));
    const FVector Crawl(Side*(24+8*FMath::Sin(Phase)),8+30*FMath::Sin(Phase),150+55*FMath::Cos(Phase));
    Hand=FMath::Lerp(Tread,Crawl,SwimPoseBlend);
   }
@@ -167,12 +173,24 @@ void APiedmontExplorer::AnimateBody(float Dt){
    }
   }
   const int Leg=Index(Side==1?TEXT("UpperLeg_L"):TEXT("UpperLeg_R"));
-  if(Leg>=0&&!bAuthoredLocomotion)MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(Side*FMath::Sin(Gait*(bSwimming&&bDetailedPlayerRig?2.f:1.f))*(bSwimming?FMath::Lerp(5.f,8.f,SwimPoseBlend):28.f*Blend))));
+  if(Leg>=0&&!bAuthoredLocomotion){
+   float LegSwing=Side*FMath::Sin(Gait*(bSwimming&&bDetailedPlayerRig?2.f:1.f))*(bSwimming?FMath::Lerp(10.f,15.f,SwimPoseBlend):28.f*Blend);
+   if(bSwimming&&bDetailedPlayerRig){
+    const float Phase=Gait*1.45f+(Side<0?PI:0.f);
+    const float TreadSwing=10.f+13.f*FMath::Sin(Phase);
+    const float CrawlSwing=15.f*FMath::Sin(Gait*2.f+(Side<0?PI:0.f));
+    LegSwing=FMath::Lerp(TreadSwing,CrawlSwing,SwimPoseBlend);
+   }
+   MoveBranch(Leg,Pose[Leg].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(LegSwing)));
+  }
   if(bSwimming&&bDetailedPlayerRig){
    const int Knee=Index(Side==1?TEXT("LowerLeg_L"):TEXT("LowerLeg_R")),Foot=Index(Side==1?TEXT("Foot_L"):TEXT("Foot_R"));
-   const float Kick=FMath::Max(0.f,Side*FMath::Sin(Gait*2.f));
-   if(Knee>=0)MoveBranch(Knee,Pose[Knee].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-(8.f+10.f*Kick)*SwimPoseBlend)));
-   if(Foot>=0)MoveBranch(Foot,Pose[Foot].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-55.f*SwimPoseBlend)));
+   const float TreadPhase=Gait*1.45f+(Side<0?PI:0.f);
+   const float TreadBend=34.f+18.f*(.5f+.5f*FMath::Sin(TreadPhase));
+   const float Kick=FMath::Max(0.f,FMath::Sin(Gait*2.f+(Side<0?PI:0.f)));
+   const float KneeBend=FMath::Lerp(TreadBend,10.f+22.f*Kick,SwimPoseBlend);
+   if(Knee>=0)MoveBranch(Knee,Pose[Knee].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-KneeBend)));
+   if(Foot>=0)MoveBranch(Foot,Pose[Foot].GetLocation(),FQuat(FVector::ForwardVector,FMath::DegreesToRadians(-FMath::Lerp(20.f,58.f,SwimPoseBlend))));
   }
  }
  // Keep the support foot down after translation retargeting; fade this correction

@@ -1,7 +1,7 @@
 """Native current-map shoreline ride, swimming and parked-bike return."""
 import argparse,json,re,subprocess,uuid,plistlib,shutil
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('--app',type=Path);p.add_argument('--review',action='store_true');p.add_argument('--view-review',action='store_true');p.add_argument('--side-review',action='store_true');p.add_argument('--detailed-rider',action='store_true');p.add_argument('--legacy-rider',action='store_true');p.add_argument('--deep-drop',action='store_true');p.add_argument('--taser',action='store_true');p.add_argument('--route');p.add_argument('--edge',type=int,default=0);p.add_argument('--map',default='/Game/PiedmontRide/Maps/PiedmontWorld');p.add_argument('--report',required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--app',type=Path);p.add_argument('--review',action='store_true');p.add_argument('--view-review',action='store_true');p.add_argument('--side-review',action='store_true');p.add_argument('--detailed-rider',action='store_true');p.add_argument('--legacy-rider',action='store_true');p.add_argument('--deep-drop',action='store_true');p.add_argument('--taser',action='store_true');p.add_argument('--fast',action='store_true');p.add_argument('--route');p.add_argument('--edge',type=int,default=0);p.add_argument('--map',default='/Game/PiedmontRide/Maps/PiedmontWorld');p.add_argument('--report',required=True);a=p.parse_args()
 r=Path(__file__).resolve().parents[1];out=r/'work'/('swim-'+uuid.uuid4().hex);out.mkdir()
 capture=out
 if a.app:
@@ -19,6 +19,7 @@ if a.side_review:
 if a.deep_drop:flags += ['-BattleSwimDeepDrop']
 assert not (a.route and a.taser),'Use separate route and taser checks'
 if a.taser:flags += ['-BattleSwimTaser']
+if a.fast:flags += ['-BattleSwimFastAudit']
 if a.route:flags += ['-BattleSwimRoute='+str(Path(a.route).resolve())]
 assert not (a.detailed_rider and a.legacy_rider)
 if a.legacy_rider:flags+=['-BattleLegacyRider']
