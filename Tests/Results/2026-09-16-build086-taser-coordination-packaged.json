@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Coordinated single-officer taser, squad recovery, dodge, airborne gravity and police expiry pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-9ef952f8e75f45908ce797b120c4cbfc.log",
+  "images": [
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattlePoliceReview/a377d2116b9146659ea62872c296f561/police-warning.png",
+    "/Users/elliottinspace/Library/Containers/com.YourCompany.AuraPlayground/Data/Documents/BattlePoliceReview/a377d2116b9146659ea62872c296f561/police-discharge.png"
+  ],
+  "capture_complete": true,
+  "visual_findings": [
+    "Packaged warning frame clearly shows one raised taser, one blue aim beam, and a readable 2.3-second APD warning.",
+    "The beam remains visually traceable from the officer to Ellison against the park background.",
+    "Packaged discharge frame clearly communicates the taser hit, recovery time, and ten-second clock penalty without text overflow."
+  ]
+}

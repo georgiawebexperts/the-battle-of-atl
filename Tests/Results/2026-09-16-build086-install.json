@@ -1,0 +1,26 @@
+{
+  "build": 86,
+  "version": "0.86.0",
+  "source_commit": "2e94b1b",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 086/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 085/The Battle of ATL.app",
+  "machine_code_sha256": "a90d55e2babe1e62314a5f204429d4297bcdb30881eda078afc475f2f4e61145",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 086.zip",
+  "zip_sha256": "54468d2bb0b55d7d7ae71c875be7c967db6dbd2e4af765e9a033009505392a5e",
+  "zip_bytes": 1459512442,
+  "reports": [
+    "2026-09-16-taser-coordination-editor.json",
+    "2026-09-16-build086-taser-coordination-packaged.json"
+  ],
+  "verification": [
+    "Editor and packaged tests prove only one officer can aim at a time and every shot creates a five-second squad recovery window.",
+    "Committed lateral dodge, obstruction, airborne gravity, stun recovery and police expiry regressions pass.",
+    "Packaged 1280x720 warning and discharge frames retain a readable aim beam, countdown, hit state and time penalty.",
+    "ZIP CRC, ad-hoc signature and 0.86.0 metadata verified."
+  ],
+  "remaining": [
+    "Physical macOS playtesting is still needed to tune the five-second squad recovery window and aiming tolerance by feel.",
+    "Broader art, animation, combat, handling and sustained performance work remains.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}
