@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "reason": "Slope coasting/grip, airborne, steep-grass braking/holding/reverse, pedal/brake priority and release passed",
+  "phase": 10,
+  "samples": [
+    {
+      "phase": 0,
+      "speed": 411.359,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 526,
+      "samples": 526,
+      "passed": true
+    },
+    {
+      "phase": 1,
+      "speed": 746.953,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 498,
+      "samples": 498,
+      "passed": true
+    },
+    {
+      "phase": 2,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 498,
+      "samples": 498,
+      "passed": true
+    },
+    {
+      "phase": 3,
+      "speed": 1526.895,
+      "max_lateral": 673.105,
+      "yaw": 20.593,
+      "ground": 493,
+      "samples": 493,
+      "passed": true
+    },
+    {
+      "phase": 4,
+      "speed": 1475.624,
+      "max_lateral": 344.517,
+      "yaw": 10.811,
+      "ground": 489,
+      "samples": 489,
+      "passed": true
+    },
+    {
+      "phase": 5,
+      "speed": 600.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 0,
+      "samples": 100,
+      "passed": true
+    },
+    {
+      "phase": 6,
+      "speed": 0.0,
+      "max_lateral": 1.949,
+      "yaw": 0.062,
+      "ground": 902,
+      "samples": 902,
+      "passed": true
+    },
+    {
+      "phase": 7,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 867,
+      "samples": 867,
+      "passed": true
+    },
+    {
+      "phase": 8,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 901,
+      "samples": 901,
+      "passed": true
+    },
+    {
+      "phase": 9,
+      "speed": 0.0,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 892,
+      "samples": 892,
+      "passed": true
+    },
+    {
+      "phase": 10,
+      "speed": 660.302,
+      "max_lateral": 0.0,
+      "yaw": 0.0,
+      "ground": 792,
+      "samples": 792,
+      "passed": true
+    }
+  ],
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-slopes-1e75727298954833931a05fc18feb514.log",
+  "scope": "Native movement on controlled 10-degree incline, flat road/grass and 35-degree grass downhill planes. Initial positions/speeds injected; braking and steering keyboard input. No actual-world hills, visual, tire simulation or whole-route acceptance."
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "reason": "Celebration, Version 1 credits and automatic results transition checked",
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "map": "PiedmontKrogWorldReview",
+  "packaged": false,
+  "scope": "Native trigger/guard fixture using teleports for phone, checkpoints and ordered tunnel entry/exit. Easy mounted finish; Hard on-foot finish. Not a complete route playthrough. Audit-only save slot verified in BattleFinish.cpp.",
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/win.png",
+  "visual_review": "pending",
+  "celebration_images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/celebration.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/morgan.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/cheers.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/credits-title.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/credits-developer.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/credits-future.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/krog-world-finish/24f3a3194c59476a88b9d40f28b8112c/win.png"
+  ]
+}

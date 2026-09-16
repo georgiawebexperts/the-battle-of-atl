@@ -39,8 +39,8 @@ private:
  void SkipOpening();
  UPROPERTY() TObjectPtr<class UTexture2D> CelebrationArt;
  FSlateBrush CelebrationBrush;
- bool bCelebrating=false,bCelebrationSeen=false;
- double CelebrationStart=0;
+ bool bCelebrating=false,bCelebrationSeen=false,bCredits=false;
+ double CelebrationStart=0,CreditsStart=0;
  bool bStarted=false;
  void StartDifficulty(FName Name);
  void RunDevelopmentAudit();

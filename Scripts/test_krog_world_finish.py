@@ -13,7 +13,7 @@ with (out/'run.log').open('w') as log:r=subprocess.run(command,stdout=log,stderr
 rows=re.findall(r'BattleFinishAudit: (\{[^\n]+\})',(out/'run.log').read_text());result=json.loads(rows[-1]) if rows else {'passed':False,'missing_report':True}
 result.update(exit_code=r.returncode,difficulty=args.difficulty,map=map_name,packaged=args.packaged,scope='Native trigger/guard fixture using teleports for phone, checkpoints and ordered tunnel entry/exit. Easy mounted finish; Hard on-foot finish. Not a complete route playthrough. Audit-only save slot verified in BattleFinish.cpp.')
 if args.render:result.update(image=str(out/'win.png'),visual_review='pending')
-if args.celebration:result['celebration_images']=[str(out/n) for n in ['celebration.png','morgan.png','cheers.png','win.png']]
+if args.celebration:result['celebration_images']=[str(out/n) for n in ['celebration.png','morgan.png','cheers.png','credits-title.png','credits-developer.png','credits-future.png','win.png']]
 result['passed']=bool(result.get('passed') and r.returncode==0 and (not args.render or (out/'win.png').is_file()))
 if args.celebration:result['passed']=result['passed'] and all(Path(p).is_file() for p in result['celebration_images'])
 report_name=args.report or f'2026-09-12-krog-world-{"celebration" if args.celebration else "finish"}-{args.difficulty}.json'

@@ -109,11 +109,19 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  }else {
   // Arcade corner assist eases off the motor and sheds speed progressively at
   // large steering angles, giving tight bridge turns a smaller turning circle.
+  const FVector Normal=CurrentFloor.HitResult.ImpactNormal.GetSafeNormal();
+  const FVector Tangent=IsMovingOnGround()?FVector::VectorPlaneProject(CharacterOwner->GetActorForwardVector(),Normal).GetSafeNormal():FVector::ZeroVector;
+  // Arcade mode keeps easy steering, but hills still obey gravity. A steep
+  // Piedmont descent can carry the bike beyond its motor-limited gear speed.
+  const float GradeForce=IsMovingOnGround()?-980.f*Tangent.Z:0.f;
   const float Corner=IsMovingOnGround()?FMath::SmoothStep(.45f,1.f,FMath::Abs(SmoothedSteer)):0.f;
   const float CornerCap=FMath::Lerp(Cap,FMath::Min(Cap,220.f+80.f*Gear),Corner);
   const float Motor=Speed<CornerCap?Pedal*Accel[Gear-1]:0.f;
-  Speed=FMath::Clamp(Speed+(Motor-Drag-(Brake>0?(SlideRemaining>0?100.f:1100.f):0))*Dt,0.f,FMath::Max(Cap,Speed));
-  if(Speed>CornerCap)Speed=FMath::FInterpConstantTo(Speed,CornerCap,Dt,FMath::Max(550.f*Corner,BoostRemaining<=0?450.f:0.f));
+  const float BrakeForce=Brake>0?(SlideRemaining>0?100.f:1100.f)+FMath::Max(0.f,GradeForce):0.f;
+  Speed=FMath::Clamp(Speed+(Motor+GradeForce-Drag-BrakeForce)*Dt,0.f,2500.f);
+  // Preserve earned downhill and boost momentum on a straight line. Corner
+  // assist sheds only the speed needed for the requested turn.
+  if(Speed>CornerCap&&Corner>.01f)Speed=FMath::FInterpConstantTo(Speed,CornerCap,Dt,550.f*Corner);
  }
  const FVector Desired=CharacterOwner->GetActorForwardVector()*Speed;
  const FVector Horizontal=FMath::Lerp(FVector(Velocity.X,Velocity.Y,0),Desired,1.f-FMath::Exp(-(SlideRemaining>0?2.3f:18.f)*Dt));

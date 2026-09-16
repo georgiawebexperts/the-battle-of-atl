@@ -213,6 +213,7 @@ void ABattleMacController::ToggleMenu(){
 }
 void ABattleMacController::ShowMenu(FString Page){
  bCelebrating=Page==TEXT("Celebration");
+ bCredits=Page==TEXT("Credits");
 
  // Possession may follow controller BeginPlay, after the title menu pauses the
  // world. A core ticker sets the authored opening view once the pawn is available.
@@ -239,15 +240,21 @@ void ABattleMacController::ShowMenu(FString Page){
  auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).AutoWrapText(true)];};
  auto Button=[&](FString Text,TFunction<void()> Action){Items->AddSlot().AutoHeight().Padding(0,5)[SNew(SButton).ContentPadding(FMargin(18,10)).OnClicked_Lambda([Action](){Action();return FReply::Handled();})[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18))]];};
  Label(TEXT("THE BATTLE OF ATL"),42,FLinearColor(1,.12,.16));
- Items->AddSlot().AutoHeight().Padding(0,2,0,7).HAlign(HAlign_Left)[SNew(SBox).WidthOverride(142)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(1,.72,.42)).Padding(FMargin(12,6))[SNew(STextBlock).Text(FText::FromString(BattleBuild::Label)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18)).ColorAndOpacity(FLinearColor(.025,.035,.045))]]];
+ Items->AddSlot().AutoHeight().Padding(0,2,0,7).HAlign(HAlign_Left)[SNew(SBox).WidthOverride(320)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(1,.72,.42)).Padding(FMargin(12,6))[SNew(STextBlock).Text(FText::FromString(BattleBuild::VersionedLabel)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18)).ColorAndOpacity(FLinearColor(.025,.035,.045))]]];
  const auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  const bool Ended=Park&&Park->bRunEnded;
  Label(Ended?(Park->bWon?TEXT("BATTLE WON"):TEXT("THE A WINS THIS TIME")):(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST")),16,FLinearColor(1,.7,.35));
  if(Page==TEXT("Celebration")&&Park&&Park->bWon){
   bCelebrationSeen=true;CelebrationStart=FPlatformTime::Seconds();
   Items->AddSlot().AutoHeight().Padding(0,8)[SNew(STextBlock).Text_Lambda([this](){const double T=FPlatformTime::Seconds()-CelebrationStart;return FText::FromString(T<4?TEXT("Phone recovered. Party reached."):T<8?TEXT("Morgan: You made it, Ellison!"):TEXT("Ellison: Cheers, Morgan. What a ride."));}).Font(FCoreStyle::GetDefaultFontStyle("Bold",26)).ColorAndOpacity(FLinearColor::White).AutoWrapText(true)];
+  Button(TEXT("CONTINUE TO CREDITS"),[this](){ShowMenu(TEXT("Credits"));});
+  FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){if(Weak.IsValid()&&Weak->bCelebrating)Weak->ShowMenu(TEXT("Credits"));return false;}),12.f);
+ }else if(Page==TEXT("Credits")&&Park&&Park->bWon){
+  CreditsStart=FPlatformTime::Seconds();
+  Items->AddSlot().AutoHeight().Padding(0,14)[SNew(STextBlock).Text_Lambda([this](){const double T=FPlatformTime::Seconds()-CreditsStart;return FText::FromString(T<4?TEXT("THE BATTLE OF ATL\nVERSION 1"):T<8?TEXT("CREATED AND DEVELOPED BY\nELLIOTT INSPACE"):TEXT("THIS IS VERSION 1\nWe will continue expanding the map and enhancing the game in future updates.\n\n— Elliott Inspace"));}).Font(FCoreStyle::GetDefaultFontStyle("Bold",24)).ColorAndOpacity(FLinearColor::White).AutoWrapText(true)];
+  Label(TEXT("Thank you for riding through Atlanta."),16,FLinearColor(1,.72,.42));
   Button(TEXT("CONTINUE TO RESULTS"),[this](){ShowMenu(TEXT("Win"));});
-  FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){if(Weak.IsValid()&&Weak->bCelebrating)Weak->ShowMenu(TEXT("Win"));return false;}),12.f);
+  FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Weak=TWeakObjectPtr<ABattleMacController>(this)](float){if(Weak.IsValid()&&Weak->bCredits)Weak->ShowMenu(TEXT("Win"));return false;}),12.f);
  }else if(Page==TEXT("Win")&&Park&&Park->bWon){
   Label(FString::Printf(TEXT("MADE THE PARTY  |  GRADE %s"),*Park->FinishGrade),30,FLinearColor(.3,1,.65));
   Label(FString::Printf(TEXT("TIME LEFT  %s\nRUN TIME  %s\nZOMBIES  %d   WIPEOUTS  %d\nTOP SPEED  %.0f MPH   NEAR MISSES  %d"),*BattleRecords::Format(Park->TimeRemaining),*BattleRecords::Format(Park->RunElapsed),Park->FinishKills,Park->FinishWipeouts,Park->RunTopSpeed*.0223694f,Park->FinishNearMisses),22,FLinearColor::White);
@@ -287,7 +294,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
   Label(TEXT("The Battle of ATL | Web Experts\nPiedmont Park to Cabbagetown — recover the phone and make the party."),13,FLinearColor(.65,.68,.72));
  }
- if(bCelebrating&&CelebrationArt){
+ if((bCelebrating||bCredits)&&CelebrationArt){
   CelebrationBrush.SetResourceObject(CelebrationArt);CelebrationBrush.ImageSize=FVector2D(CelebrationArt->GetSizeX(),CelebrationArt->GetSizeY());
   Menu=SNew(SOverlay)
    +SOverlay::Slot()[SNew(SScaleBox).Stretch(EStretch::ScaleToFill)[SNew(SImage).Image(&CelebrationBrush)]]

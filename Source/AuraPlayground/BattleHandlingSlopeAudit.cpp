@@ -42,3 +42,37 @@ void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt){
  if(S.Phase==10){Finish(true,TEXT("Slope coasting/grip, airborne, steep-grass braking/holding/reverse, pedal/brake priority and release passed"));return;}++S.Phase;S.Started=false;
 #endif
 }
+
+void TickBattleArcadeDownhillAudit(APlayerController* PC,float Dt){
+#if !UE_BUILD_SHIPPING
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<AStaticMeshActor> Floor;int Phase=0;float Clock=0,StartSpeed=0;bool Started=false,Ready=false,Done=false;};static FState S;
+ if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
+ auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike)return;auto* Move=Bike->Ride.Get();
+ auto Key=[&](FKey K,bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
+ auto Finish=[&](bool Pass,const TCHAR* Why){Key(EKeys::S,false);Key(EKeys::SpaceBar,false);S.Done=true;UE_LOG(LogTemp,Display,TEXT("ArcadeDownhillAudit: {\"passed\":%s,\"reason\":\"%s\",\"phase\":%d,\"speed\":%.2f}"),Pass?TEXT("true"):TEXT("false"),Why,S.Phase,Move->Speed);PC->ConsoleCommand(TEXT("quit"));};
+ if(!S.Started){
+  Key(EKeys::S,false);Key(EKeys::SpaceBar,false);
+  if(!S.Floor.IsValid()){auto* Floor=PC->GetWorld()->SpawnActor<AStaticMeshActor>();S.Floor=Floor;Floor->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);Floor->GetStaticMeshComponent()->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));Floor->GetStaticMeshComponent()->SetCollisionProfileName(TEXT("BlockAll"));Floor->SetActorScale3D(FVector(120,120,1));Floor->Tags.Add(TEXT("RidePath"));}
+  auto* Floor=S.Floor.Get();Floor->SetActorLocationAndRotation(FVector(0,0,30000),FRotator(12,0,0));FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+  if(!PC->GetWorld()->LineTraceSingleByChannel(Hit,FVector(0,0,31000),FVector(0,0,29000),ECC_Visibility,Q)||Hit.GetActor()!=Floor){Finish(false,TEXT("Missing fixture floor"));return;}
+  Move->StopMovementImmediately();Move->Speed=Move->ReverseSpeed=0;Move->Recovery=0;Move->SmoothedSteer=0;Move->bRealHandling=false;Move->Gear=5;Move->SlideRemaining=Move->BoostRemaining=0;
+  const FRotator Facing(0,S.Phase==1?0.f:180.f,0);Bike->SetActorLocationAndRotation(Hit.ImpactPoint+FVector(0,0,98),Facing,false,nullptr,ETeleportType::TeleportPhysics);Move->Velocity=Facing.Vector()*Move->Speed;Move->SetMovementMode(MOVE_Walking);Move->bForceNextFloorCheck=true;
+  S.Clock=0;S.Started=true;S.Ready=false;return;
+ }
+ S.Clock+=Dt;
+ if(!S.Ready){
+  if(S.Clock<.3f)return;
+  if(!Move->IsMovingOnGround()){Finish(false,TEXT("Did not settle on fixture"));return;}
+  S.StartSpeed=S.Phase==0?800.f:S.Phase==1?1000.f:1400.f;Move->Speed=S.StartSpeed;Move->Velocity=Bike->GetActorForwardVector()*Move->Speed;
+  if(S.Phase==2)Key(EKeys::SpaceBar,true);
+  S.Ready=true;S.Clock=0;return;
+ }
+ if(S.Clock<(S.Phase==2?2.f:3.f))return;
+ const bool Grounded=Move->IsMovingOnGround();
+ const bool Pass=S.Phase==0?(Move->Speed>S.StartSpeed+250&&Move->Speed<=2500):S.Phase==1?(Move->Speed<S.StartSpeed-250):(Move->Speed<10);
+ UE_LOG(LogTemp,Display,TEXT("ArcadeDownhillSample: {\"phase\":%d,\"start_speed\":%.2f,\"end_speed\":%.2f,\"grounded\":%s,\"passed\":%s}"),S.Phase,S.StartSpeed,Move->Speed,Grounded?TEXT("true"):TEXT("false"),Pass?TEXT("true"):TEXT("false"));
+ if(!Pass||!Grounded){Finish(false,TEXT("Arcade slope acceleration or braking failed"));return;}
+ if(S.Phase==2){Finish(true,TEXT("Arcade downhill acceleration, uphill drag and downhill braking pass"));return;}
+ ++S.Phase;S.Started=false;
+#endif
+}
