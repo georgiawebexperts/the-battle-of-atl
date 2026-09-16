@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "musicians": 2,
+  "hand_travel_cm": 29.88,
+  "audio_generated": true,
+  "panic_response": true,
+  "exit_code": 0,
+  "editor": false,
+  "visual_review": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/musician-be17b72f7ccc48c2a7859f7c7521023d.log",
+  "images": [
+    "work/build088-musician-review/park-guitarist.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ],
+  "visual_findings": "Packaged 1280x720 frame shows the location-specific lake musician in a visible playing pose; HUD, objective, timer and BUILD 088 badge remain readable."
+}

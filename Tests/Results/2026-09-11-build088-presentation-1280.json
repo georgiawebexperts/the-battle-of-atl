@@ -1,0 +1,27 @@
+{
+  "market_review": false,
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build088-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "88433a53b7ab2956fe64fea2fc8074edfe6cdee49195de48667da71996f606b7"
+    },
+    {
+      "file": "work/build088-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1e69bbef420c98f3a38d51dea95993ea460ba05245914bcbd3a07019e6f78879"
+    }
+  ],
+  "visual_review": true,
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "visual_findings": "Packaged 1280x720 bike and on-foot frames are fully shaded and show a clear gold BUILD 088 badge beside the timer without covering gameplay information."
+}

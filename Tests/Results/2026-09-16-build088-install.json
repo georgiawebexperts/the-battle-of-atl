@@ -1,0 +1,26 @@
+{
+  "build": 88,
+  "version": "0.88.0",
+  "source_commit": "1587004",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 088/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 087/The Battle of ATL.app",
+  "machine_code_sha256": "87cb12b33dccb29b87be2a02f3dce7acc7c666581284bc35ae6834bf3f686645",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 088.zip",
+  "zip_sha256": "74fb95d0bf951cd8c3b5f21370aad3dd3cf3e8b98fd63e7e29b549b234f57474",
+  "zip_bytes": 1459544584,
+  "reports": [
+    "2026-09-16-build088-musicians-packaged.json",
+    "2026-09-11-build088-presentation-1280.json",
+    "2026-09-16-build088-opening-packaged.json"
+  ],
+  "verification": [
+    "Packaged musician audit passes two site-specific City Sample performers, procedural playing motion, generated guitar and sax audio, and panic interruption.",
+    "Packaged 1280x720 bike and on-foot frames show the highlighted BUILD 088 badge without covering HUD information.",
+    "Packaged opening completes in 12 seconds with protected timer and player state, correct camera return, and highlighted BUILD 088 title badge.",
+    "ZIP CRC, ad-hoc signature and 0.88.0 metadata verified."
+  ],
+  "remaining": [
+    "Physical Mac playtesting is still needed to judge the synthesized musician audio and instrument silhouettes in normal play.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}
