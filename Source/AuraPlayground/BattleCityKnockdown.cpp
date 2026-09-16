@@ -15,8 +15,15 @@
 void APiedmontPedestrian::AnimateBody(float Dt){
  if(KnockdownPhase==1)return;
  Super::AnimateBody(Dt);
- if((!bParkDancer&&!bParkMusician)||!bNativeCrowdRig||bDead||bSwimming||StumbleRemaining>0||PanicRemaining>0||bIncidentPosing)return;
+ if((!bParkDancer&&!bParkMusician&&!bPicnicChiller)||!bNativeCrowdRig||bDead||bSwimming||StumbleRemaining>0||PanicRemaining>0||bIncidentPosing)return;
  auto Rotate=[&](const TCHAR* Name,FRotator Delta){const int32 I=Body->GetBoneIndex(Name);if(I<0)return;Body->BoneSpaceTransforms[I].SetRotation((Delta.Quaternion()*Body->BoneSpaceTransforms[I].GetRotation()).GetNormalized());};
+ auto RotateBranch=[&](const TCHAR* Name,FRotator Delta){const FName Root(Name);const int32 RootIndex=Body->GetBoneIndex(Root);if(RootIndex<0)return;const FQuat Q=Delta.Quaternion();const FVector Origin=Body->BoneSpaceTransforms[RootIndex].GetLocation();for(int32 I=0;I<Body->BoneSpaceTransforms.Num();I++){FName Bone=Body->GetBoneName(I);bool Descendant=false;while(!Bone.IsNone()){if(Bone==Root){Descendant=true;break;}Bone=Body->GetParentBone(Bone);}if(!Descendant)continue;auto& T=Body->BoneSpaceTransforms[I];T.SetLocation(Origin+Q.RotateVector(T.GetLocation()-Origin));T.SetRotation((Q*T.GetRotation()).GetNormalized());}};
+ if(bPicnicChiller){
+  ChillClock+=Dt;const float Breath=FMath::Sin(ChillClock*1.8f),Gesture=FMath::Sin(ChillClock*.8f+PicnicPose);
+  if(PicnicPose==1){Body->SetRelativeLocation(FVector(-48,0,-78));Body->SetRelativeRotation(FRotator(0,-90,82));RotateBranch(TEXT("spine_02"),FRotator(3*Breath,0,5));RotateBranch(TEXT("upperarm_r"),FRotator(-28+8*Gesture,0,-20));RotateBranch(TEXT("lowerarm_r"),FRotator(-45,0,-10));}
+  else{Body->SetRelativeLocation(FVector(-40,0,-72));Body->SetRelativeRotation(FRotator(0,-90,68));RotateBranch(TEXT("spine_02"),FRotator(4+2*Breath,0,PicnicPose==2?8:-5));RotateBranch(TEXT("upperarm_r"),FRotator(-28+7*Gesture,0,-24));RotateBranch(TEXT("lowerarm_r"),FRotator(-52,0,-8));}
+  Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();return;
+ }
  if(bParkMusician){
   MusicClock+=Dt;const float Beat=FMath::Sin(MusicClock*(MusicianKind==0?10.f:6.f));
   if(const int32 Hip=Body->GetBoneIndex(TEXT("pelvis"));Hip>=0)Body->BoneSpaceTransforms[Hip].AddToTranslation(FVector(0,0,1.5f*FMath::Abs(Beat)));

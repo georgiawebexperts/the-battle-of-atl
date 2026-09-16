@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": {
+    "passed": true,
+    "reason": "quiet period, ahead placement and two guaranteed visible ignitions passed"
+  },
+  "exit_code": 0,
+  "editor": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/bench-encounters-f4801b2dcd87423db82fad29894a6b2d.log",
+  "scope": "Two guaranteed per-run encounters, quiet period, ahead placement, ignition and exact two-completion cap."
+}

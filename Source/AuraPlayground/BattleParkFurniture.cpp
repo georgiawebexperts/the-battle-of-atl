@@ -90,7 +90,7 @@ void ABattleParkFurniture::Tick(float Dt){
  if(!Mode||!Player)return;
  if(EncounterRun!=Mode->RunNumber){
   if(EncounterVisitor.IsValid())EncounterVisitor->Destroy();EncounterVisitor.Reset();EncounterBench=INDEX_NONE;
-  EncounterRun=Mode->RunNumber;EncounterEligibleTime=0;EncounterWait=0;bEncounterRolled=false;bEncounterAllowed=false;BenchEncounterAttempts=0;
+  EncounterRun=Mode->RunNumber;EncounterEligibleTime=0;EncounterWait=0;bEncounterRolled=false;bEncounterAllowed=false;BenchEncounterAttempts=0;BenchFireEncountersCompleted=0;
  }
  const auto* Lab=Cast<ABattleLabMode>(Mode);
  bool Eligible=bAmbientBenchFire&&!Mode->bRunEnded&&Mode->StartCountdown<=0&&(!Lab||!Lab->bTutorialActive);
@@ -99,28 +99,33 @@ void ABattleParkFurniture::Tick(float Dt){
  if(!Eligible){
   if(EncounterBench!=INDEX_NONE&&EncounterVisitor.IsValid())EncounterVisitor->Destroy();EncounterVisitor.Reset();EncounterBench=INDEX_NONE;return;
  }
- EncounterEligibleTime+=Dt;if(EncounterEligibleTime<45)return;
+ if(EncounterBench==INDEX_NONE&&EncounterVisitor.IsValid()){
+  if(EncounterVisitor->BenchesIgnited>0){++BenchFireEncountersCompleted;EncounterVisitor.Reset();EncounterEligibleTime=-20;bEncounterRolled=bEncounterAllowed=false;}
+  else if(EncounterVisitor->bDead||EncounterVisitor->StumbleRemaining>0){EncounterVisitor.Reset();EncounterEligibleTime=-5;bEncounterRolled=bEncounterAllowed=false;}
+ }
+ if(BenchFireEncountersCompleted>=TargetBenchFireEncounters)return;
+ EncounterEligibleTime+=Dt;if(EncounterEligibleTime<20)return;
  if(!bEncounterRolled){bEncounterRolled=true;bEncounterAllowed=FMath::FRand()<FMath::Clamp(BenchFireRunChance,0.f,1.f);}
  if(!bEncounterAllowed)return;
  if(EncounterBench!=INDEX_NONE){
   auto* Visitor=EncounterVisitor.Get();if(!Visitor){EncounterBench=INDEX_NONE;return;}
   EncounterWait+=Dt;
   if(Visitor->bDead||Visitor->StumbleRemaining>0||Visitor->HornReactions>0){ReleaseBench(EncounterBench,Visitor);EncounterBench=INDEX_NONE;return;}
-  if(FVector::Dist2D(Player->GetActorLocation(),Visitor->GetActorLocation())<650&&FMath::Abs(Player->GetActorLocation().Z-Visitor->GetActorLocation().Z)<140){
+  if(FVector::Dist2D(Player->GetActorLocation(),Visitor->GetActorLocation())<2300&&FMath::Abs(Player->GetActorLocation().Z-Visitor->GetActorLocation().Z)<220){
    const int32 Index=EncounterBench;EncounterBench=INDEX_NONE;
    if(!Visitor->BeginBenchIgnition(this,Index)){ReleaseBench(Index,Visitor);Visitor->PauseRemaining=0;}
    return;
   }
-  if(EncounterWait>60){ReleaseBench(EncounterBench,Visitor);Visitor->PauseRemaining=0;EncounterBench=INDEX_NONE;}
+  if(EncounterWait>12){ReleaseBench(EncounterBench,Visitor);Visitor->PauseRemaining=0;EncounterVisitor.Reset();EncounterBench=INDEX_NONE;EncounterEligibleTime=-5;bEncounterRolled=bEncounterAllowed=false;}
   return;
  }
- if(BenchEncounterAttempts>0)return;
+ if(EncounterVisitor.IsValid())return;
  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
  for(int32 Index=0;Index<Benches.Num();++Index){
   if(!IsBenchAvailable(Index))continue;const auto& T=Benches[Index];const FVector Position=T.TransformPosition(FVector(0,55,90));
   const float Distance=FVector::Dist2D(Player->GetActorLocation(),Position);
-  if(Distance<900||Distance>1700||FMath::Abs(Player->GetActorLocation().Z-Position.Z)>200)continue;
-  if(FVector::DotProduct((Position-Eye).GetSafeNormal(),View.Vector())>-.1f)continue;
+  if(Distance<700||Distance>2200||FMath::Abs(Player->GetActorLocation().Z-Position.Z)>220)continue;
+  if(FVector::DotProduct((Position-Eye).GetSafeNormal(),View.Vector())<.15f)continue;
   const FTransform Spawn(T.TransformVectorNoScale(FVector(0,-1,0)).Rotation(),Position);
   auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),Spawn,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding);
   if(!Visitor)continue;

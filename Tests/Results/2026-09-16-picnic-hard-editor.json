@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "groups": 10,
+  "desired": 10,
+  "chillers": 20,
+  "animated": 20,
+  "hand_travel_cm": 3.46,
+  "panic_response": true,
+  "exit_code": 0,
+  "editor": true,
+  "difficulty": "Hard",
+  "visual_review": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/picnic-551fa48538ed428aa5ba0ebf760dda4a.log",
+  "images": []
+}

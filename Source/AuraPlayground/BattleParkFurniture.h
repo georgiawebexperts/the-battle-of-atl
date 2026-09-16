@@ -11,8 +11,10 @@ public:
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  UPROPERTY(EditAnywhere) bool bAmbientBenchFire=true;
- UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) float BenchFireRunChance=.2f;
+ UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) float BenchFireRunChance=1.f;
+ UPROPERTY(EditAnywhere,meta=(ClampMin="0")) int32 TargetBenchFireEncounters=2;
  UPROPERTY(BlueprintReadOnly) int32 BenchEncounterAttempts=0;
+ UPROPERTY(BlueprintReadOnly) int32 BenchFireEncountersCompleted=0;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UInstancedStaticMeshComponent> Wood;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UInstancedStaticMeshComponent> Frame;
  TArray<FTransform> Benches;

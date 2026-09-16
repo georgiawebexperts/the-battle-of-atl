@@ -35,6 +35,8 @@ public:
  FTransform InitialStartTransform;
  int32 SearchResets=0;
  bool ArtifactVisibleOnRadar(FVector Viewer) const;
+ float WatchSignalStrength(FVector Viewer) const;
+ float WatchFlashHz(FVector Viewer) const;
  void DrawRadar(AHUD* HUD,UCanvas* Canvas) const;
  static bool ClipToCircle(FVector2D& A,FVector2D& B,float Radius);
 private:

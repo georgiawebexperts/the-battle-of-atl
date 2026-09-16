@@ -146,6 +146,11 @@ void ABattleQuest::Tick(float Dt){
 }
 void ABattleQuest::EndPlay(const EEndPlayReason::Type Reason){if(IsValid(Artifact))Artifact->Destroy();for(auto Marker:CheckpointMarkers)if(IsValid(Marker))Marker->Destroy();Super::EndPlay(Reason);}
 bool ABattleQuest::ArtifactVisibleOnRadar(FVector Viewer) const{return false;}
+float ABattleQuest::WatchSignalStrength(FVector Viewer) const{
+ if(!bReady||bCollected)return 0;const float Range=FMath::Min(6000.f,RadarRange*.5f),Distance=FVector::Dist2D(Viewer,ArtifactLocation);
+ return Range>0?1.f-FMath::Clamp(Distance/Range,0.f,1.f):0.f;
+}
+float ABattleQuest::WatchFlashHz(FVector Viewer) const{return FMath::Lerp(1.2f,5.5f,WatchSignalStrength(Viewer));}
 FVector2D ABattleQuest::CoarseDirection(FVector2D Delta){
  if(FMath::Abs(Delta.X)>FMath::Abs(Delta.Y))return FVector2D(Delta.X>=0?1:-1,0);
  return FVector2D(0,Delta.Y>=0?1:-1);
@@ -176,6 +181,7 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!HUD||!Canvas)return;auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
  const auto* PracticeMode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));const bool Practice=PracticeMode&&PracticeMode->bTutorialActive;
  const float UIScale=FMath::Clamp(FMath::Min(Canvas->SizeX/1920.f,Canvas->SizeY/1080.f),.75f,1.5f);const float Radius=140*UIScale;const FVector2D Center(Canvas->SizeX-Radius-40*UIScale,Canvas->SizeY-Radius-45*UIScale),Player(Pawn->GetActorLocation());
+ const float PhoneNearness=Practice?0.f:WatchSignalStrength(Pawn->GetActorLocation()),SignalFlash=.5f+.5f*FMath::Sin(Clock*2*PI*WatchFlashHz(Pawn->GetActorLocation()));
  auto Project=[&](FVector2D World){return RadarOffset(World-Player,Radius/FMath::Max(1.f,RadarRange));};
  auto Line=[&](FVector2D A,FVector2D B,FLinearColor C,float W){HUD->DrawLine(Center.X+A.X,Center.Y+A.Y,Center.X+B.X,Center.Y+B.Y,C,W);};
  for(float Y=-Radius;Y<Radius;Y+=2){const float X=FMath::Sqrt(FMath::Max(0.f,Radius*Radius-Y*Y));HUD->DrawRect(FLinearColor(.008,.016,.025,.9),Center.X-X,Center.Y+Y,X*2,2);}
@@ -200,10 +206,12 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
   if((bCollected||Practice)&&Distance<=RadarRange)Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
   else{const auto F=D.GetSafeNormal(),R=FVector2D(-F.Y,F.X);const auto Tip=F*(Radius-5);Line(Tip,Tip-F*10+R*6,Gold,3);Line(Tip,Tip-F*10-R*6,Gold,3);}
  }
- auto Compass=[&](const TCHAR* Label,FVector2D Offset){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),FLinearColor::White);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};
- HUD->DrawRect(FLinearColor(.008,.016,.025,.9),Center.X-130*UIScale,Center.Y-Radius-(Parked?85:57)*UIScale,260*UIScale,(Parked?54:26)*UIScale);
+ if(PhoneNearness>0){const FLinearColor Signal(1,.48f+.35f*SignalFlash,.05f,.35f+.65f*SignalFlash);Circle(FVector2D::ZeroVector,Radius-2*UIScale,Signal,1+4*PhoneNearness*SignalFlash);}
+ auto Compass=[&](const TCHAR* Label,FVector2D Offset,FLinearColor Color=FLinearColor::White){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),Color);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};
+ const FLinearColor Header=PhoneNearness>0?FLinearColor(1,.42f+.3f*SignalFlash,.04f,.22f+.68f*PhoneNearness*SignalFlash):FLinearColor(.008,.016,.025,.9);
+ HUD->DrawRect(Header,Center.X-130*UIScale,Center.Y-Radius-(Parked?85:57)*UIScale,260*UIScale,(Parked?54:26)*UIScale);
  if(Parked){const FVector Delta=Parked->GetActorLocation()-Pawn->GetActorLocation();const FVector2D D=CoarseDirection(FVector2D(Delta));const TCHAR* Direction=D.X>0?TEXT("EAST"):D.X<0?TEXT("WEST"):D.Y<0?TEXT("NORTH"):TEXT("SOUTH");Compass(*FString::Printf(TEXT("BIKE  %.0f m  %s"),Delta.Size2D()/100,Direction),FVector2D(0,-Radius-80*UIScale));}
- Compass(TEXT("ELLISON’S WATCH"),FVector2D(0,-Radius-52*UIScale));
+ Compass(PhoneNearness>0&&SignalFlash>.35f?TEXT("PHONE SIGNAL • CLOSE"):TEXT("ELLISON’S WATCH"),FVector2D(0,-Radius-52*UIScale),PhoneNearness>0?FLinearColor(1,.82,.42):FLinearColor::White);
  Compass(TEXT("N"),FVector2D(0,-Radius-28*UIScale));Compass(TEXT("S"),FVector2D(0,Radius+3*UIScale));Compass(TEXT("W"),FVector2D(-Radius-18*UIScale,-12*UIScale));Compass(TEXT("E"),FVector2D(Radius+18*UIScale,-12*UIScale));
 
 }

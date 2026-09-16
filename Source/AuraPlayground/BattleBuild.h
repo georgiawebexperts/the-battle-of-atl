@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 
 namespace BattleBuild {
-inline constexpr TCHAR Label[] = TEXT("BUILD 088");
+inline constexpr TCHAR Label[] = TEXT("BUILD 089");
 }

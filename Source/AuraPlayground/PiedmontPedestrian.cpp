@@ -137,7 +137,7 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
 void APiedmontPedestrian::Tick(float Dt){
  Super::Tick(Dt);
  if(KnockdownPhase){TickKnockdown(Dt);return;}
- if((bParkDancer||bParkMusician)&&!bDead&&!bSwimming&&StumbleRemaining<=0&&PanicRemaining<=0&&YieldRemaining<=0&&!bIncidentPosing){
+ if((bParkDancer||bParkMusician||bPicnicChiller)&&!bDead&&!bSwimming&&StumbleRemaining<=0&&PanicRemaining<=0&&YieldRemaining<=0&&!bIncidentPosing){
   if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
   GetCharacterMovement()->StopMovementImmediately();bHasDestination=false;return;
  }

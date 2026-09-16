@@ -8,6 +8,7 @@
 #include "BattleFrisbee.h"
 #include "BattleDance.h"
 #include "BattleMusician.h"
+#include "BattlePicnic.h"
 #include "BattleParkFurniture.h"
 #include "BattleSkatepark.h"
 #include "BattleMacController.h"
@@ -177,6 +178,7 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleParkLifeDirector>();
  GetWorld()->SpawnActor<ABattleDanceCircle>();
  GetWorld()->SpawnActor<ABattleParkMusicDirector>();
+ GetWorld()->SpawnActor<ABattlePicnicDirector>();
  GetWorld()->SpawnActor<ABattleTutorial>();
  // Validate supply placement against the complete world, including tutorial roads and fences.
  Pickups=GetWorld()->SpawnActor<ABattlePickupDirector>();

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "groups": 3,
+  "desired": 3,
+  "chillers": 6,
+  "animated": 6,
+  "hand_travel_cm": 15.92,
+  "panic_response": true,
+  "exit_code": 0,
+  "editor": true,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/picnic-1df080f9f4234521b9c96d5b2ea91bee.log",
+  "images": [
+    "work/build089-picnic-review/easy-picnic-groups.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ],
+  "visual_findings": "Editor 1280x720 frame shows a large visible picnic blanket, two fully shaded City Sample visitors lounging together, picnic bag and drink props, with the BUILD 089 HUD remaining readable."
+}
