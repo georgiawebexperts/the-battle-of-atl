@@ -1,0 +1,46 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/detailed-recovery0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/detailed-recovery1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/detailed-recovery2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/079157e7f25945539c13f84aa8980a90/live-remounted.png"
+  ],
+  "events": [
+    "started speed=416.8",
+    "recovered on foot health=56.1 ammo=17",
+    "state=1 timer=1 elapsed=7.594 lost=9.492",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Keyboard collision with actual pedestrian, harm, -10 seconds, physical recovery and remount. Authored tree instances have a separate world test; arbitrary terrain and continuous animation quality remain unverified.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": true,
+  "runtime": "packaged",
+  "obstacle": "person",
+  "spare_after_crash": false,
+  "pose_fits": [
+    {
+      "heading_rms_cm": 72.487,
+      "selected_rms_cm": 72.487
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true,
+  "visual_review": {
+    "accepted": true,
+    "reviewer": "2026-09-16 [codex-maclaptop]",
+    "reason": "Accepted packaged Build 093: the closer actor-relative camera keeps Ellison, the bicycle, the pedestrian and all three recovery stages readable; nonessential gameplay panels remain hidden until control returns."
+  }
+}

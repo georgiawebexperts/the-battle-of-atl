@@ -12,6 +12,7 @@
 #include "PhysicsEngine/PhysicsAsset.h"
 #include "PhysicsEngine/BodyInstance.h"
 #include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 ABattlePlayerCrash::ABattlePlayerCrash(){PrimaryActorTick.bCanEverTick=true;PrimaryActorTick.TickGroup=TG_PostPhysics;}
@@ -33,7 +34,11 @@ bool ABattlePlayerCrash::Start(ABattleBike* Source,const FVector& Velocity){
  Physics->SetAllPhysicsLinearVelocity(Velocity+FVector(0,0,60));MirrorPose();
  Fallen=GetWorld()->SpawnActor<ABattleFallenBike>();if(!Fallen||!Fallen->InitializeFrom(Bike,Velocity*.75f)){Destroy();return false;}
  Camera=GetWorld()->SpawnActor<ACameraActor>();
- if(Camera){const FVector Focus=Display->GetSocketLocation(HipBone);Camera->SetActorLocation(Focus+FVector(-320,-420,300));}
+ if(Camera){
+  Camera->GetCameraComponent()->SetFieldOfView(62.f);
+  const FVector Focus=Display->GetSocketLocation(HipBone),Forward=Bike->GetActorForwardVector().GetSafeNormal2D(),Right(-Forward.Y,Forward.X,0);
+  Camera->SetActorLocationAndRotation(Focus-Forward*285.f+Right*225.f+FVector(0,0,207.f),(Focus+FVector(0,0,22)-Camera->GetActorLocation()).Rotation());
+ }
  Bike->bCrashActive=true;Bike->bParked=true;Bike->Rider->SetVisibility(false,true);Bike->Ride->Pedal=Bike->Ride->Steer=Bike->Ride->Brake=0;Bike->Ride->DisableMovement();
  Bike->AttachDetailedRiderParts(Display,true);
  ABattleSpirit::CancelForRider(Bike);

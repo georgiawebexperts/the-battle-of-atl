@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "focus_pause": true,
+  "video_settings": true,
+  "options_menu": true,
+  "exit_code": 0,
+  "packaged": true,
+  "app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 093/The Battle of ATL.app/Contents/MacOS/AuraPlayground",
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/storefront-874a94af3d324fdcad899707942ae428/options.png",
+  "scope": "Native focus-loss pause helper, Unreal user-settings resolution/fullscreen state, and rendered Options menu. Physical macOS Space switching remains a manual check.",
+  "visual_review": {
+    "accepted": true,
+    "reviewer": "2026-09-16 [codex-maclaptop]",
+    "reason": "Accepted packaged Options screen: VERSION 1 / BUILD 093, music, permanent controls, fullscreen, resolution, display presets and Back remain readable at 1280x720."
+  }
+}

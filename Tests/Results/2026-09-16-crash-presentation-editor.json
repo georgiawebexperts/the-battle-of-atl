@@ -1,0 +1,46 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "reason": "Keyboard collision, on-foot recovery and E remount",
+    "stage": 4
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/detailed-recovery0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/detailed-recovery1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/detailed-recovery2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/live-fall.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/live-foot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/1964a71603714faba06d9c33473140a6/live-remounted.png"
+  ],
+  "events": [
+    "started speed=416.9",
+    "recovered on foot health=56.1 ammo=17",
+    "state=1 timer=1 elapsed=8.169 lost=10.210",
+    "cycle=1 passed=1 crash_actors=0 fallen_bikes=0"
+  ],
+  "scope": "Keyboard collision with actual pedestrian, harm, -10 seconds, physical recovery and remount. Authored tree instances have a separate world test; arbitrary terrain and continuous animation quality remain unverified.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": true,
+  "runtime": "editor-game",
+  "obstacle": "person",
+  "spare_after_crash": false,
+  "pose_fits": [
+    {
+      "heading_rms_cm": 68.815,
+      "selected_rms_cm": 60.796
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": true,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": true,
+  "visual_review": {
+    "accepted": true,
+    "reviewer": "2026-09-16 [codex-maclaptop]",
+    "reason": "Accepted person collision: closer actor-relative framing keeps Ellison, the fallen bike, the pedestrian and the complete recovery readable; crash-only HUD reduction preserves the timer, objective, health and build badge."
+  }
+}

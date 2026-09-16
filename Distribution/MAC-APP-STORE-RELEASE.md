@@ -41,3 +41,4 @@ Last updated 2026-09-16 [codex-maclaptop]
 - Production bundle identity and sandbox-only, no-network entitlements are configured for Mac packages.
 - Development playtests remain locally signed. Distribution signing is intentionally not configured.
 - A clean Shipping package and runtime smoke test are required after each feature-complete candidate.
+- 2026-09-16 [codex-maclaptop] Build 093 crash-camera and HUD changes compile in Shipping and retain every static store-readiness guardrail. Distribution signing and App Store Connect work remain deferred.
