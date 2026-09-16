@@ -2,10 +2,14 @@
 #include "Engine/StaticMeshActor.h"
 #include "Engine/StaticMesh.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
+#include "PiedmontTrafficDirector.h"
+#include "PiedmontPedestrian.h"
+#include "EngineUtils.h"
 void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<AStaticMeshActor> Floor;int Phase=0,Samples=0,Ground=0;float Clock=0,MaxLateral=0,StartYaw=0;FVector StartPosition;bool Started=false,Ready=false,Done=false;};static FState S;
@@ -73,6 +77,43 @@ void TickBattleArcadeDownhillAudit(APlayerController* PC,float Dt){
  UE_LOG(LogTemp,Display,TEXT("ArcadeDownhillSample: {\"phase\":%d,\"start_speed\":%.2f,\"end_speed\":%.2f,\"grounded\":%s,\"passed\":%s}"),S.Phase,S.StartSpeed,Move->Speed,Grounded?TEXT("true"):TEXT("false"),Pass?TEXT("true"):TEXT("false"));
  if(!Pass||!Grounded){Finish(false,TEXT("Arcade slope acceleration or braking failed"));return;}
  if(S.Phase==2){Finish(true,TEXT("Arcade downhill acceleration, uphill drag and downhill braking pass"));return;}
+ ++S.Phase;S.Started=false;
+#endif
+}
+
+void TickBattleWorldHillAudit(APlayerController* PC,float Dt){
+#if !UE_BUILD_SHIPPING
+ struct FState{TWeakObjectPtr<UWorld> World;int Phase=0,Samples=0,Grounded=0;float Clock=0,StartSpeed=0,StartZ=0,StartGrade=0;bool Started=false,Ready=false,Done=false;TArray<float> Gains;TArray<float> Drops;};static FState S;
+ if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
+ auto* Bike=Cast<ABattleBike>(PC->GetPawn());if(!Bike)return;auto* Move=Bike->Ride.Get();
+ auto Finish=[&](bool Pass,const TCHAR* Why){S.Done=true;UE_LOG(LogTemp,Display,TEXT("WorldHillAudit: {\"passed\":%s,\"reason\":\"%s\",\"arcade_gain_cm_s\":%.2f,\"arcade_drop_cm\":%.2f,\"real_gain_cm_s\":%.2f,\"real_drop_cm\":%.2f}"),Pass?TEXT("true"):TEXT("false"),Why,S.Gains.IsValidIndex(0)?S.Gains[0]:-1,S.Drops.IsValidIndex(0)?S.Drops[0]:-1,S.Gains.IsValidIndex(1)?S.Gains[1]:-1,S.Drops.IsValidIndex(1)?S.Drops[1]:-1);PC->ConsoleCommand(TEXT("quit"));};
+ if(!S.Started){
+  for(TActorIterator<APiedmontTrafficDirector> It(PC->GetWorld());It;++It)It->SetActorTickEnabled(false);
+  for(TActorIterator<APiedmontPedestrian> It(PC->GetWorld());It;++It)It->Destroy();
+  // This is the installed 6.5% mapped hillside beside 10th Street, also used
+  // for the real-world jump check. Start at the high west end and face east.
+  const FVector High(-3814.784366f,11712.364849f,-6.822107f),Low(-829.488810f,11610.492232f,-201.436432f);
+  FHitResult Ground;FCollisionQueryParams Query(SCENE_QUERY_STAT(WorldHillAudit),true,Bike);
+  if(!PC->GetWorld()->LineTraceSingleByChannel(Ground,High+FVector(0,0,1000),High-FVector(0,0,1000),ECC_Visibility,Query)){Finish(false,TEXT("Missing installed hill surface"));return;}
+  const FVector Facing=(Low-High).GetSafeNormal2D();const float Grade=(High.Z-Low.Z)/FVector::Dist2D(High,Low);
+  if(FMath::Abs(Ground.ImpactPoint.Z-High.Z)>60||Grade<.05f||Grade>.09f){Finish(false,TEXT("Installed hill no longer matches sourced profile"));return;}
+  Move->StopMovementImmediately();Move->Speed=Move->ReverseSpeed=0;Move->Recovery=0;Move->SmoothedSteer=0;Move->bRealHandling=S.Phase==1;Move->Gear=7;Move->SlideRemaining=Move->BoostRemaining=0;
+  Bike->SetActorLocationAndRotation(Ground.ImpactPoint+FVector(0,0,Bike->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+3),Facing.Rotation(),false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);Move->bForceNextFloorCheck=true;
+  S.Clock=0;S.Started=true;S.Ready=false;S.Samples=S.Grounded=0;S.StartGrade=Grade;return;
+ }
+ S.Clock+=Dt;
+ if(!S.Ready){
+  if(S.Clock<.35f)return;if(!Move->IsMovingOnGround()){Finish(false,TEXT("Bike did not settle on installed hill"));return;}
+  const FVector N=Move->CurrentFloor.HitResult.ImpactNormal.GetSafeNormal();const float LocalGrade=FMath::Abs(FVector::DotProduct(Bike->GetActorForwardVector(),N)/FMath::Max(.1f,N.Z));
+  if(LocalGrade<.035f){Finish(false,TEXT("Installed ride surface is too flat"));return;}
+  S.StartSpeed=900;S.StartZ=Bike->GetActorLocation().Z;Move->Speed=S.StartSpeed;Move->Velocity=Bike->GetActorForwardVector()*S.StartSpeed;S.Ready=true;S.Clock=0;return;
+ }
+ ++S.Samples;if(Move->IsMovingOnGround())++S.Grounded;
+ if(S.Clock<1.5f)return;
+ const float Gain=Move->Speed-S.StartSpeed,Drop=S.StartZ-Bike->GetActorLocation().Z;S.Gains.Add(Gain);S.Drops.Add(Drop);
+ UE_LOG(LogTemp,Display,TEXT("WorldHillSample: {\"realistic\":%s,\"profile_grade\":%.4f,\"speed_gain_cm_s\":%.2f,\"vertical_drop_cm\":%.2f,\"grounded_samples\":%d,\"samples\":%d}"),Move->bRealHandling?TEXT("true"):TEXT("false"),S.StartGrade,Gain,Drop,S.Grounded,S.Samples);
+ if(S.Grounded!=S.Samples||Drop<55||Gain<(Move->bRealHandling?15.f:40.f)){Finish(false,TEXT("Actual hillside did not preserve downhill momentum"));return;}
+ if(S.Phase==1){Finish(true,TEXT("Measured world hill accelerates and descends in both handling modes"));return;}
  ++S.Phase;S.Started=false;
 #endif
 }

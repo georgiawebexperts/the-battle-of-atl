@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "reason": "Arcade downhill acceleration, uphill drag and downhill braking pass",
+  "phase": 2,
+  "speed": 0.0,
+  "samples": [
+    {
+      "phase": 0,
+      "start_speed": 800.0,
+      "end_speed": 1411.68,
+      "grounded": true,
+      "passed": true
+    },
+    {
+      "phase": 1,
+      "start_speed": 1000.0,
+      "end_speed": 195.13,
+      "grounded": true,
+      "passed": true
+    },
+    {
+      "phase": 2,
+      "start_speed": 1400.0,
+      "end_speed": 0.0,
+      "grounded": true,
+      "passed": true
+    }
+  ],
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/arcade-downhill-c0d22027f4c94a65bf6d12351f9dcd20.log",
+  "scope": "Native arcade movement on a controlled 12-degree plane: downhill coasting, uphill deceleration and downhill braking. World terrain profile and visual feel require separate acceptance."
+}

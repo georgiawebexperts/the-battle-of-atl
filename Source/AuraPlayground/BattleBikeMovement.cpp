@@ -113,7 +113,10 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
   const FVector Tangent=IsMovingOnGround()?FVector::VectorPlaneProject(CharacterOwner->GetActorForwardVector(),Normal).GetSafeNormal():FVector::ZeroVector;
   // Arcade mode keeps easy steering, but hills still obey gravity. A steep
   // Piedmont descent can carry the bike beyond its motor-limited gear speed.
-  const float GradeForce=IsMovingOnGround()?-980.f*Tangent.Z:0.f;
+  // The world is geographically compressed to one-third scale. Give Arcade
+  // descents a little more pull so Piedmont's real grades read at game speed;
+  // Real Bike Physics above continues to use normal 980 cm/s² gravity.
+  const float GradeForce=IsMovingOnGround()?-1150.f*Tangent.Z:0.f;
   const float Corner=IsMovingOnGround()?FMath::SmoothStep(.45f,1.f,FMath::Abs(SmoothedSteer)):0.f;
   const float CornerCap=FMath::Lerp(Cap,FMath::Min(Cap,220.f+80.f*Gear),Corner);
   const float Motor=Speed<CornerCap?Pedal*Accel[Gear-1]:0.f;

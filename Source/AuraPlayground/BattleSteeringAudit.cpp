@@ -14,6 +14,7 @@ void TickBattleRailScrapeAudit(APlayerController* PC,float Dt);
 void TickBattleIncidentBikeAudit(APlayerController* PC,float Dt);
 void TickBattleHandlingSlopeAudit(APlayerController* PC,float Dt);
 void TickBattleArcadeDownhillAudit(APlayerController* PC,float Dt);
+void TickBattleWorldHillAudit(APlayerController* PC,float Dt);
 void TickBattleWallRecoveryAudit(APlayerController* PC,float Dt);
 void ABattleMacController::TickSteeringAudit(float Dt){
 #if !UE_BUILD_SHIPPING
@@ -24,6 +25,7 @@ void ABattleMacController::TickSteeringAudit(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleIncidentBikeAudit"))){TickBattleIncidentBikeAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleHandlingSlopeAudit"))){TickBattleHandlingSlopeAudit(this,Dt);return;}
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleArcadeDownhillAudit"))){TickBattleArcadeDownhillAudit(this,Dt);return;}
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleWorldHillAudit"))){TickBattleWorldHillAudit(this,Dt);return;}
  if(GetWorld()->GetTimeSeconds()<5||SteeringStage==99)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());if(!Bike)return;SteeringClock+=Dt;
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
