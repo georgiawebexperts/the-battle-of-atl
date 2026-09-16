@@ -4,6 +4,6 @@ public class AuraPlayground : ModuleRules {
   if(Target.bBuildEditor)PrivateDependencyModuleNames.AddRange(new string[]{"UnrealEd","LandscapeEditor","Water","MeshDescription","PhysicsUtilities"});
   PrivateDependencyModuleNames.AddRange(new string[]{"ApplicationCore","PCG","Json","PhysicsCore"});
   PCHUsage=PCHUsageMode.UseExplicitOrSharedPCHs;
-  PublicDependencyModuleNames.AddRange(new string[]{"Core","CoreUObject","Engine","InputCore","Landscape","NavigationSystem","AIModule","Slate","SlateCore"});
+  PublicDependencyModuleNames.AddRange(new string[]{"Core","CoreUObject","Engine","AudioExtensions","InputCore","Landscape","NavigationSystem","AIModule","Slate","SlateCore"});
  }
 }

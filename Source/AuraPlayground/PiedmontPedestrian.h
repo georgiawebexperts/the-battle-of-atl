@@ -36,6 +36,9 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bParkDancer=false;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 DanceVariant=0;
  UPROPERTY(BlueprintReadOnly) float DanceClock=0;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bParkMusician=false;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 MusicianKind=0;
+ UPROPERTY(BlueprintReadOnly) float MusicClock=0;
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);
  UFUNCTION(BlueprintCallable) bool BeginIncidentPose(UAnimSequence* Clip,float PoseSeconds,float HoldSeconds);

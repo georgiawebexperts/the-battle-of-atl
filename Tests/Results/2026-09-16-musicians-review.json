@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "musicians": 2,
+  "hand_travel_cm": 34.06,
+  "audio_generated": true,
+  "panic_response": true,
+  "exit_code": 0,
+  "editor": true,
+  "visual_review": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/musician-4e19ae70438f4cadabf0c54f789c3e2d.log",
+  "images": [
+    "work/build088-musician-review/park-guitarist.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ]
+}

@@ -1,4 +1,5 @@
 #include "BattleMacController.h"
+#include "BattleBuild.h"
 #include "BattleMusic.h"
 void TickBattleSpeedAudit(APlayerController* PC,float Dt);
 void TickBattlePanicAudit(APlayerController* PC,float Dt);
@@ -236,6 +237,7 @@ void ABattleMacController::ShowMenu(FString Page){
  auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).AutoWrapText(true)];};
  auto Button=[&](FString Text,TFunction<void()> Action){Items->AddSlot().AutoHeight().Padding(0,5)[SNew(SButton).ContentPadding(FMargin(18,10)).OnClicked_Lambda([Action](){Action();return FReply::Handled();})[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18))]];};
  Label(TEXT("THE BATTLE OF ATL"),42,FLinearColor(1,.12,.16));
+ Items->AddSlot().AutoHeight().Padding(0,2,0,7).HAlign(HAlign_Left)[SNew(SBox).WidthOverride(142)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(1,.72,.42)).Padding(FMargin(12,6))[SNew(STextBlock).Text(FText::FromString(BattleBuild::Label)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18)).ColorAndOpacity(FLinearColor(.025,.035,.045))]]];
  const auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  const bool Ended=Park&&Park->bRunEnded;
  Label(Ended?(Park->bWon?TEXT("BATTLE WON"):TEXT("THE A WINS THIS TIME")):(bStarted?TEXT("PAUSED"):TEXT("PIEDMONT PARK / MAC PLAYTEST")),16,FLinearColor(1,.7,.35));

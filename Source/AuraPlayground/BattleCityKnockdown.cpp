@@ -15,10 +15,23 @@
 void APiedmontPedestrian::AnimateBody(float Dt){
  if(KnockdownPhase==1)return;
  Super::AnimateBody(Dt);
- if(!bParkDancer||!bNativeCrowdRig||bDead||bSwimming||StumbleRemaining>0||PanicRemaining>0||bIncidentPosing)return;
+ if((!bParkDancer&&!bParkMusician)||!bNativeCrowdRig||bDead||bSwimming||StumbleRemaining>0||PanicRemaining>0||bIncidentPosing)return;
+ auto Rotate=[&](const TCHAR* Name,FRotator Delta){const int32 I=Body->GetBoneIndex(Name);if(I<0)return;Body->BoneSpaceTransforms[I].SetRotation((Delta.Quaternion()*Body->BoneSpaceTransforms[I].GetRotation()).GetNormalized());};
+ if(bParkMusician){
+  MusicClock+=Dt;const float Beat=FMath::Sin(MusicClock*(MusicianKind==0?10.f:6.f));
+  if(const int32 Hip=Body->GetBoneIndex(TEXT("pelvis"));Hip>=0)Body->BoneSpaceTransforms[Hip].AddToTranslation(FVector(0,0,1.5f*FMath::Abs(Beat)));
+  Rotate(TEXT("spine_02"),FRotator(4.f,0,MusicianKind==0?-5.f:2.f*Beat));
+  if(MusicianKind==0){
+   Rotate(TEXT("upperarm_l"),FRotator(-52.f,-16.f,44.f));Rotate(TEXT("lowerarm_l"),FRotator(-68.f,0,10.f));
+   Rotate(TEXT("upperarm_r"),FRotator(-38.f+10.f*Beat,12.f,-38.f));Rotate(TEXT("lowerarm_r"),FRotator(-55.f+35.f*Beat,0,-8.f));
+  }else{
+   Rotate(TEXT("upperarm_l"),FRotator(-68.f,-12.f,32.f));Rotate(TEXT("lowerarm_l"),FRotator(-82.f+5.f*Beat,0,5.f));
+   Rotate(TEXT("upperarm_r"),FRotator(-68.f,12.f,-32.f));Rotate(TEXT("lowerarm_r"),FRotator(-82.f-5.f*Beat,0,-5.f));
+  }
+  Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();return;
+ }
  DanceClock+=Dt;
  const float Phase=DanceClock*(2.8f+.22f*(DanceVariant%3))+DanceVariant*1.17f;
- auto Rotate=[&](const TCHAR* Name,FRotator Delta){const int32 I=Body->GetBoneIndex(Name);if(I<0)return;Body->BoneSpaceTransforms[I].SetRotation((Delta.Quaternion()*Body->BoneSpaceTransforms[I].GetRotation()).GetNormalized());};
  if(const int32 Hip=Body->GetBoneIndex(TEXT("pelvis"));Hip>=0){
   auto& T=Body->BoneSpaceTransforms[Hip];T.AddToTranslation(FVector(0,0,3.5f*FMath::Abs(FMath::Sin(Phase))));
   T.SetRotation((FRotator(0,8.f*FMath::Sin(Phase*.5f),5.f*FMath::Sin(Phase)).Quaternion()*T.GetRotation()).GetNormalized());

@@ -13,6 +13,7 @@
 #include "BattleKnife.h"
 #include "PiedmontPedestrian.h"
 #include "BattleCheckpoints.h"
+#include "BattleBuild.h"
 #include "Engine/Canvas.h"
 #include "CanvasItem.h"
 #include "Styling/CoreStyle.h"
@@ -45,6 +46,8 @@ void ABattleLabHUD::DrawHUD(){
  auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  auto* Bike=Cast<ABattleBike>(GetOwningPawn());auto* Person=Cast<ABattleRider>(GetOwningPawn());auto* Owner=Bike?Bike:Person?Person->ParkedBike.Get():nullptr;
  if(!Owner)return;
+ const float BuildX=W*.5f+145*S,BuildW=132*S,BuildH=38*S;
+ Panel(BuildX,M,BuildW,BuildH);DrawRect(Peach,BuildX,M,BuildW,BuildH);Text(BattleBuild::Label,BuildX+13*S,M+8*S,19,Ink);
  const bool GettingUp=Owner->bCrashActive&&IsValid(Owner->PlayerCrash)&&Owner->PlayerCrash->GetRecoveryPose()!=nullptr;
  const bool HasPhone=Park&&Park->Quest&&Park->Quest->bCollected&&!Park->bTutorialActive;
  const float ObjectiveHeight=HasPhone?144.f:106.f;
