@@ -1,0 +1,37 @@
+{
+  "build": 94,
+  "version": "0.94.0",
+  "source_commit": "42f8fd9",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 094/The Battle of ATL.app",
+  "desktop_shortcut": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "bundle_identifier": "com.webexperts.battleofatl",
+  "icon_file": "BattleOfATL.icns",
+  "icon_sha256": "95f6a1222442be5a125ac140d8940ee8add4b5aa6d4e379e0307555d9747669e",
+  "machine_code_sha256": "de907529bb82707cb47970577c1261f1b9331b6fcbe7b89b3a45dc201c5b61a9",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 094.zip",
+  "zip_sha256": "368f000f82abb8ac1d1eaf6a30a1f7323f5d121092aff920ec2a0d817a11b257",
+  "zip_bytes": 1459569673,
+  "entitlements": {
+    "com.apple.security.app-sandbox": true
+  },
+  "reports": [
+    "2026-09-16-build094-swim-packaged.json",
+    "2026-09-16-build094-storefront-packaged.json",
+    "2026-09-16-build094-mac-store-readiness.json"
+  ],
+  "verification": [
+    "Packaged shore entry, active treading, forward crawl, shore return, bicycle recovery and remount complete successfully.",
+    "Shift now raises swimming speed from 200 cm/s to 290 cm/s and the crawl pose adds a stronger reach, pull and flutter kick.",
+    "Deep-water entry and police-taser swimming interruption recover without leaving Ellison suspended or breaking remount flow.",
+    "Development package and Shipping target compile successfully on Apple silicon Mac.",
+    "Packaged Options/focus/resolution audit passes and visibly shows VERSION 1 / BUILD 094.",
+    "The locally signed share app retains only the App Sandbox entitlement; static store-readiness checks all pass.",
+    "ZIP CRC, local signature, com.webexperts.battleofatl identity, 0.94.0 metadata, instructions and credits verified."
+  ],
+  "remaining": [
+    "Physical playtesting is still needed for subjective bike steering, wall recovery, downhill and bowl feel, combat pacing and full-route gameplay.",
+    "Terrain and broad environment art need final visual review before the no-placeholder submission gate can be considered complete.",
+    "Third-party Fab and Mixamo source records and Elliott's music ownership/distribution confirmation still need archiving before submission.",
+    "Other Macs remain untested; distribution signing, provisioning, App Store Connect and upload remain deferred until feature completion."
+  ]
+}
