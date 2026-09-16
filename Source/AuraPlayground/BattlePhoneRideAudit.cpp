@@ -59,10 +59,25 @@ void TickBattlePhoneRideAudit(APlayerController* PC,float Dt){
  if(S.WaypointAge>5&&S.WaypointAge-Dt<=5)FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/TEXT("PhoneRouteStall.png"),true,false);
  if(B->bCrashActive||B->RiderHealth<=0){End(false,TEXT("Ride interrupted by crash or death"));return;}
  if(S.Clock>(Replay?25:Full?800:150)||S.Still>12||S.WaypointAge>30){UE_LOG(LogTemp,Display,TEXT("PhoneRideFailure: position=%s target=%s speed=%.2f yaw=%.2f"),*P.ToString(),*S.Points[S.Next].ToString(),B->Ride->Speed,B->GetActorRotation().Yaw);End(false,TEXT("Guided input stalled or timed out; inspect controller and world"));return;}
- const int OldNext=S.Next;while(S.Next<S.Points.Num()-1&&FVector::Dist2D(P,S.Points[S.Next])<160)S.Next++;const float TargetDistance=FVector::Dist2D(P,S.Points[S.Next]);
+ // Navigation paths can contain points only a few centimetres apart. Chasing
+ // each point directly made the audit circle a missed point at the Krog
+ // approach even though the pavement was clear. Track the nearest forward
+ // segment and steer toward a speed-scaled point farther along the polyline.
+ const int OldNext=S.Next;float NearestDistance=MAX_flt;int NearestSegment=FMath::Max(0,S.Next-12);FVector Closest=S.Points[NearestSegment];
+ const int SearchEnd=FMath::Min(S.Points.Num()-2,S.Next+100);
+ for(int I=FMath::Max(0,S.Next-12);I<=SearchEnd;++I){
+  FVector A=S.Points[I],C=S.Points[I+1],Flat=P;A.Z=C.Z=Flat.Z=0;
+  const FVector Candidate=FMath::ClosestPointOnSegment(Flat,A,C);const float Distance=FVector::Dist2D(Flat,Candidate);
+  if(Distance<NearestDistance){NearestDistance=Distance;NearestSegment=I;Closest=Candidate;}
+ }
+ if(NearestDistance<500)S.Next=FMath::Max(S.Next,NearestSegment+1);
+ while(S.Next<S.Points.Num()-1&&FVector::Dist2D(P,S.Points[S.Next])<160)S.Next++;
+ FVector Target=Closest;float LookAhead=FMath::Clamp(B->Ride->Speed*.65f,300.f,600.f);
+ for(int I=NearestSegment+1;I<S.Points.Num();++I){const float Leg=FVector::Dist2D(Target,S.Points[I]);if(Leg>=LookAhead){Target=FMath::Lerp(Target,S.Points[I],LookAhead/FMath::Max(1.f,Leg));break;}Target=S.Points[I];LookAhead-=Leg;}
+ const float TargetDistance=FVector::Dist2D(P,S.Points[S.Next]);
  // Long clear segments are progress, even before reaching the next waypoint.
  if(S.Next!=OldNext||TargetDistance<S.BestWaypointDistance-50){S.WaypointAge=0;S.BestWaypointDistance=TargetDistance;}else S.WaypointAge+=Dt;
- const float Angle=FMath::FindDeltaAngleDegrees(B->GetActorRotation().Yaw,(S.Points[S.Next]-P).Rotation().Yaw);
+ const float Angle=FMath::FindDeltaAngleDegrees(B->GetActorRotation().Yaw,(Target-P).Rotation().Yaw);
  Key(EKeys::A,Angle< -5);Key(EKeys::D,Angle>5);Key(EKeys::W,true);Key(EKeys::SpaceBar,FMath::Abs(Angle)>45&&B->Ride->Speed>220);
 #endif
 }
