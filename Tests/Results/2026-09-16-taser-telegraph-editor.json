@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": true,
+    "stage": 10,
+    "reason": "Police targeting, delayed civilian response, airborne taser gravity and recovery pass",
+    "people": 1,
+    "police_spawned": 1,
+    "taser_hits": 3
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/hazard-regressions/787e4cc340fe4dbb904ffcd0909e39dc/run.log",
+  "runtime": "editor-game",
+  "scope": "Native headless hazard logic, physical recovery and obstruction fixtures; no rendered appearance or full game acceptance.",
+  "passed": true
+}

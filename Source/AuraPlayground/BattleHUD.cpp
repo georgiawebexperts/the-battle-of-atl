@@ -174,13 +174,14 @@ void ABattleLabHUD::DrawHUD(){
   }
  }
  if(Notice.IsEmpty()&&!Owner->bCrashActive)for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead&&It->bWarning){
-  Notice=FString::Printf(TEXT("APD TASER  |  %.1fs  |  TAKE COVER"),FMath::Max(0.f,It->WarningRemaining));
+  const bool Locked=It->WarningRemaining<=1.1f;
+  Notice=Locked?FString::Printf(TEXT("TASER AIM LOCKED  |  %.1fs  |  DODGE SIDEWAYS"),FMath::Max(0.f,It->WarningRemaining)):FString::Printf(TEXT("APD TASER  |  %.1fs  |  KEEP MOVING"),FMath::Max(0.f,It->WarningRemaining));
   FVector2D Label;
   if(GetOwningPlayerController()->ProjectWorldLocationToScreen(It->GetActorLocation()+FVector(0,0,115),Label)&&Label.X>130*S&&Label.X<W-130*S&&Label.Y>180*S&&Label.Y<H*.60f){
    Panel(Label.X-120*S,Label.Y-38*S,240*S,42*S);
    Text(TEXT("STOP! APD"),Label.X-108*S,Label.Y-34*S,21,Peach);
    DrawRect(FLinearColor(.15,.19,.2),Label.X-108*S,Label.Y-5*S,216*S,4*S);
-   DrawRect(Peach,Label.X-108*S,Label.Y-5*S,216*S*FMath::Clamp(It->WarningRemaining/2.f,0.f,1.f),4*S);
+   DrawRect(Locked?FLinearColor(.2,.65,1):Peach,Label.X-108*S,Label.Y-5*S,216*S*FMath::Clamp(It->WarningRemaining/2.75f,0.f,1.f),4*S);
   }
   break;
  }

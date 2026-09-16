@@ -68,7 +68,7 @@ void ABattleMacController::TickTroubleAudit(float Dt){
    if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceCloseup"))&&GetHUD())GetHUD()->bShowHUD=false;
   }
   Officer->Cooldown=0;Officer->SetActorTickEnabled(true);Next();
- }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Officer->TaserDrawBlend>.7f&&Officer->Weapon->GetComponentLocation().Z>Officer->GetActorLocation().Z&&Officer->Weapon->IsVisible()&&Officer->Weapon->GetStaticMesh()->GetName()==TEXT("Taser")&&Bike->TaserHits==0,"Taser windup absent or reaction window too short");// Put cover behind the muzzle: a muzzle-only ray would incorrectly fire past it.
+ }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Officer->TaserDrawBlend>.7f&&Officer->Weapon->GetComponentLocation().Z>Officer->GetActorLocation().Z&&Officer->Weapon->IsVisible()&&Officer->Weapon->GetStaticMesh()->GetName()==TEXT("Taser")&&Officer->AimBeam->IsVisible()&&Bike->TaserHits==0,"Taser windup, visible aim line or reaction window missing");// Put cover behind the muzzle: a muzzle-only ray would incorrectly fire past it.
   CHECK_TROUBLE(Officer->WarningVoice->Sound&&Officer->WarningVoice->Sound->GetDuration()>1.f&&Officer->WarningVoice->Sound->GetDuration()<2.f&&Officer->WarningVoiceStarts==1,"Warning voice missing, repeated or too long");
   if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceAudioAudit"))){
    CHECK_TROUBLE(Officer->WarningVoice->IsPlaying(),"Warning voice did not start on audio device");

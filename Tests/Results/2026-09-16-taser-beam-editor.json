@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Police targeting, delayed civilian response, airborne taser gravity and recovery pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-c9bd7bc1eaa1436e9537bbcdf4fa99cd.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-4546d9d8f11043ad8f9e3e99e691eff0/police-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-4546d9d8f11043ad8f9e3e99e691eff0/police-discharge.png"
+  ],
+  "capture_complete": true,
+  "visual_findings": [
+    "Blue taser aim line is clearly visible from the raised device to the rider during warning.",
+    "APD countdown and KEEP MOVING cue are readable at 1280x720.",
+    "Discharge frame shows the completed line and tased recovery state without text overflow."
+  ]
+}

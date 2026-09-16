@@ -15,6 +15,7 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bWarning=false;
  UPROPERTY(BlueprintReadOnly) int32 TaserShots=0;
  UPROPERTY() TObjectPtr<class UAudioComponent> WarningVoice;
+ UPROPERTY() TObjectPtr<class UStaticMeshComponent> AimBeam;
  int32 WarningVoiceStarts=0;
  float VoiceCooldown=0;
  float WarningRemaining=0,Cooldown=3,PathDelay=0;
@@ -22,6 +23,7 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector LastTaserOrigin=FVector::ZeroVector;
  UPROPERTY(BlueprintReadOnly) FVector WarningAimPoint=FVector::ZeroVector;
  FVector TaserMuzzle() const;
+ void UpdateTaserBeam();
  UPROPERTY() TObjectPtr<UAnimSequence> TaserAim;
  UPROPERTY() TObjectPtr<UAnimSequence> TaserIdle;
  UPROPERTY() TObjectPtr<UAnimSequence> TaserWalk;

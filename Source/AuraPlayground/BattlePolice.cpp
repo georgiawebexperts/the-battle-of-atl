@@ -25,6 +25,9 @@ ABattlePolice::ABattlePolice(){
  auto& Attenuation=WarningVoice->AttenuationOverrides;Attenuation.bAttenuate=true;Attenuation.bSpatialize=true;
  Attenuation.AttenuationShapeExtents=FVector(300,0,0);Attenuation.FalloffDistance=1800;
  Attenuation.bEnableOcclusion=true;Attenuation.OcclusionVolumeAttenuation=.35f;Attenuation.OcclusionLowPassFilterFrequency=1000;
+ AimBeam=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TaserAimBeam"));AimBeam->SetupAttachment(GetCapsuleComponent());
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> BeamMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));AimBeam->SetStaticMesh(BeamMesh.Object);
+ AimBeam->SetCollisionEnabled(ECollisionEnabled::NoCollision);AimBeam->SetCastShadow(false);AimBeam->SetCanEverAffectNavigation(false);AimBeam->SetVisibility(false);
  Tags.Add(TEXT("BattlePolice"));Tags.Add(TEXT("BattleHostile"));
  AIControllerClass=AAIController::StaticClass();AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;bUseControllerRotationYaw=false;
  GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->MaxWalkSpeed=460;
@@ -40,9 +43,16 @@ void ABattlePolice::BeginPlay(){
  Super::BeginPlay();
  WarningVoice->SetSound(LoadObject<USoundWave>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_APDStop.S_APDStop")));
  if(auto* Mesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Police/Taser/Taser/StaticMeshes/Taser.Taser"))){Weapon->SetStaticMesh(Mesh);Weapon->SetRelativeScale3D(FVector(1));}
+ if(auto* Material=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_Splash.M_Splash")))AimBeam->SetMaterial(0,Material);
  Weapon->SetVisibility(false);
 }
 FVector ABattlePolice::TaserMuzzle() const{return Weapon->GetComponentTransform().TransformPosition(FVector(17.5f,0,4));}
+void ABattlePolice::UpdateTaserBeam(){
+ const bool Visible=!bDead&&bWarning&&!WarningAimPoint.IsNearlyZero();AimBeam->SetVisibility(Visible);if(!Visible)return;
+ const FVector Start=TaserMuzzle(),Delta=WarningAimPoint-Start;
+ AimBeam->SetWorldLocation(Start+Delta*.5f);AimBeam->SetWorldRotation(FQuat::FindBetweenNormals(FVector::UpVector,Delta.GetSafeNormal()));
+ AimBeam->SetWorldScale3D(FVector(.007f,.007f,FMath::Max(1.f,Delta.Size())/100.f));
+}
 // The officer rig calls its hand joints Wrist_L/R; its authored gun clip does
 // not animate those tracks. Solve the arms and grip on this rig explicitly.
 static void PosePoliceHands(UPoseableMeshComponent* Body,float Blend){
@@ -121,20 +131,20 @@ bool ABattlePolice::FireTaser(){
 void ABattlePolice::Tick(float Dt){
  VoiceCooldown=FMath::Max(0.f,VoiceCooldown-Dt);
  DischargeRemaining=FMath::Max(0.f,DischargeRemaining-Dt);
- Super::Tick(Dt);Weapon->SetVisibility(!bDead);
+ Super::Tick(Dt);Weapon->SetVisibility(!bDead);UpdateTaserBeam();
 
- if(bDead){WarningVoice->Stop();Body->SetRelativeRotation(FRotator(0,-90,90));return;}
+ if(bDead){WarningVoice->Stop();Body->SetRelativeRotation(FRotator(0,-90,90));UpdateTaserBeam();return;}
  auto* AI=Cast<AAIController>(GetController());auto* Target=UGameplayStatics::GetPlayerPawn(this,0);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(!Target||!Mode||Mode->StartCountdown>0||Mode->bRunEnded){WarningVoice->Stop();bWarning=false;if(AI)AI->StopMovement();return;}
+ if(!Target||!Mode||Mode->StartCountdown>0||Mode->bRunEnded){WarningVoice->Stop();bWarning=false;if(AI)AI->StopMovement();UpdateTaserBeam();return;}
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Person=Cast<ABattleRider>(Target))Bike=Person->ParkedBike;
- if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||Bike->TaserGrace>0){bWarning=false;if(AI)AI->StopMovement();Cooldown=FMath::Max(0.f,Cooldown-Dt);return;}
+ if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||Bike->TaserGrace>0){bWarning=false;if(AI)AI->StopMovement();Cooldown=FMath::Max(0.f,Cooldown-Dt);UpdateTaserBeam();return;}
  Cooldown=FMath::Max(0.f,Cooldown-Dt);PathDelay-=Dt;
  if(bWarning){if(AI)AI->StopMovement();if(WarningRemaining>1.1f)WarningAimPoint=Target->GetActorLocation();SetActorRotation(FRotator(0,(WarningAimPoint-GetActorLocation()).Rotation().Yaw,0));
-  if(!CanReachTarget(Target)){bWarning=false;Cooldown=3;return;}
-  WarningRemaining-=Dt;if(WarningRemaining<=0)FireTaser();return;}
+  if(!CanReachTarget(Target)){bWarning=false;Cooldown=3;UpdateTaserBeam();return;}
+  WarningRemaining-=Dt;if(WarningRemaining<=0)FireTaser();UpdateTaserBeam();return;}
  if(Cooldown<=0&&CanReachTarget(Target)){bWarning=true;WarningRemaining=2.75f;WarningAimPoint=Target->GetActorLocation();
   if(VoiceCooldown<=0&&WarningVoice->Sound){WarningVoice->Play();WarningVoiceStarts++;VoiceCooldown=6.f;}
-  return;}
+  UpdateTaserBeam();return;}
  if(AI&&PathDelay<=0){PathDelay=.6f;AI->MoveToActor(Target,550,true,true,true,nullptr,true);}
 }
 float ABattlePolice::TakeDamage(float Amount,const FDamageEvent& Event,AController* Instigator,AActor* Causer){
