@@ -1,0 +1,26 @@
+{
+  "build": 85,
+  "version": "0.85.0",
+  "source_commit": "3fce301",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 085/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 084/The Battle of ATL.app",
+  "machine_code_sha256": "26896a13b6255e799bd51f268fd0ed8823e0845e3c6958174114e63da6060332",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 085.zip",
+  "zip_sha256": "a84738a972d5fa8edea4e5a6c1d33d970cbf1b3e515939861b874bf7fc49382b",
+  "zip_bytes": 1459517253,
+  "reports": [
+    "2026-09-11-build085-presentation-1280.json",
+    "2026-09-16-rider-style-editor.json"
+  ],
+  "verification": [
+    "Packaged Peachtree Red style is visibly consistent on the bike and on foot at 1280x720, with readable HUD and controls.",
+    "Editor coverage confirms Peachtree Red and Atlanta Gold persist across bike-to-foot transitions through the shared compiled style path.",
+    "Live packaged title menu copy and layout were visually reviewed at 1280x720 and contain no stale development disclaimer.",
+    "ZIP CRC, ad-hoc signature, 0.85.0 metadata and Desktop target verified."
+  ],
+  "remaining": [
+    "Midnight Black was not separately sampled visually, though it uses the same compiled persistence and material path.",
+    "Physical macOS input feel and broader art, animation, combat, handling and sustained performance require continued playtesting.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}

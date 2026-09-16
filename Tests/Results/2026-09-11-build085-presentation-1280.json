@@ -1,0 +1,31 @@
+{
+  "market_review": false,
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build085-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d323d314468f8705f1170a857aa98cba8f1ecb80f1c209f8cea94220a4dccf5b"
+    },
+    {
+      "file": "work/build085-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c67f33cab42e521c7f882347ef6129eb129f8d927b12a9c36d9dbad988cbacd0"
+    }
+  ],
+  "visual_review": true,
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "visual_findings": [
+    "Packaged Peachtree Red style is clearly visible and consistent in mounted and dismounted frames.",
+    "Detailed rider body remains intact with no new clothing or seat clipping visible in sampled frames.",
+    "HUD and permanent controls remain readable at 1280x720."
+  ]
+}
