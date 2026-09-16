@@ -1,5 +1,12 @@
 THE BATTLE OF ATL — MAC PLAYTEST {{BUILD}}
-Early, unfinished playtest • September 14, 2026
+Early, unfinished playtest • September 16, 2026
+
+BUILD {{BUILD}} UPDATE
+Piedmont and 10th Street descents now carry stronger momentum in Arcade
+mode while Real Bike Physics retains normal gravity. The measured 6.5%
+park hillside accelerates in both modes, and braking still stops the bike.
+The Options menu now includes fullscreen and 1280×720, 1600×900, and
+1920×1080 resolution controls. Moving away from the game pauses the ride.
 
 OBJECTIVE AND MARKET UPDATE
 After finding the phone, follow the gold route shown on your watch.
