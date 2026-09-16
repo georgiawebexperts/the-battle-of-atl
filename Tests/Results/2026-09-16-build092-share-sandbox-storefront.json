@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "focus_pause": true,
+  "video_settings": true,
+  "options_menu": true,
+  "exit_code": 0,
+  "packaged": true,
+  "app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 092/The Battle of ATL.app/Contents/MacOS/AuraPlayground",
+  "image": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/storefront-eefdf055dbab4e3e8309805af86bde8a/options.png",
+  "scope": "Native focus-loss pause helper, Unreal user-settings resolution/fullscreen state, and rendered Options menu. Physical macOS Space switching remains a manual check."
+}

@@ -28,7 +28,7 @@ with plist_path.open('wb') as f:
     plistlib.dump(info,f)
 shutil.copy2(root/'SourceAssets/UI/BattleOfATL.icns',target/'Contents/Resources/BattleOfATL.icns')
 shutil.copy2(root/'SourceAssets/Weapons/Remington870/CREDIT.txt',target/'Contents/Resources/Shotgun-Credits.txt')
-subprocess.run(['codesign','--force','--deep','--sign','-',str(target)],check=True)
+subprocess.run(['codesign','--force','--deep','--sign','-','--entitlements',str(root/'Build/Mac/Resources/Sandbox.NoNet.entitlements'),str(target)],check=True)
 subprocess.run(['codesign','--verify','--deep','--strict',str(target)],check=True)
 desktop=Path('/Users/elliottinspace/Desktop/The Battle of ATL.app')
 if desktop.is_symlink():

@@ -17,6 +17,6 @@ shutil.copy2(root/'SourceAssets/UI/BattleOfATL.icns',app/'Contents/Resources/Bat
 for name in ['START-HERE.txt','CREDITS.txt']:
  (out/name).write_text((root/'Distribution'/name).read_text().replace('{{BUILD}}',args.build))
  shutil.copy2(out/name,app/'Contents/Resources'/name)
-subprocess.run(['codesign','--force','--deep','--sign','-',str(app)],check=True)
+subprocess.run(['codesign','--force','--deep','--sign','-','--entitlements',str(root/'Build/Mac/Resources/Sandbox.NoNet.entitlements'),str(app)],check=True)
 subprocess.run(['codesign','--verify','--deep','--strict',str(app)],check=True)
 print(out)
