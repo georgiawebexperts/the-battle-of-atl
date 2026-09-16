@@ -1,4 +1,5 @@
 #include "PiedmontBike.h"
+#include "BattleBuild.h"
 #include "PiedmontExplorer.h"
 #include "PiedmontPedestrian.h"
 #include "PiedmontCombat.h"
@@ -296,7 +297,7 @@ void APiedmontRideHUD::DrawHUD(){
  if(!Canvas||!Bike)return;auto* M=Bike->Ride.Get();
  float S=Canvas->SizeX/1280.f;auto Text=[&](FString T,float X,float Y,FColor C,float Size){DrawText(T,C,X*S,Y*S,nullptr,Size*S);};
  DrawRect(FLinearColor(.015,.027,.036,.88),24*S,24*S,640*S,96*S);
- Text(TEXT("BATTLE FOR THE ATL / V3 TRANSITION  •  BUILD 0.4.0"),40,37,FColor::White,1.65);
+ Text(FString::Printf(TEXT("THE BATTLE OF ATL  •  %s"),BattleBuild::VersionedLabel),40,37,FColor::White,1.65);
  Text(TEXT("W pedal   ↑ / ↓ gears   ← / → or A / D steer   SPACE brake"),40,72,FColor(193,219,220),1.25);
  Text(TEXT("TAB camera   E bike   H horn   R recover   ESC stop"),40,95,FColor(193,219,220),1.05);
  float Y=Canvas->SizeY/S-140;

@@ -36,7 +36,7 @@ Last updated 2026-09-16 [codex-maclaptop]
 
 ## Current technical status
 
-- App icon source contains 16, 32, 128, 256, 512, and 1024-pixel macOS representations.
+- The finished `THE BATTLE OF ATL` app icon contains 16, 32, 128, 256, 512, and 1024-pixel macOS representations.
 - Pause menu includes Quit.
 - Production bundle identity and sandbox-only, no-network entitlements are configured for Mac packages.
 - Development playtests remain locally signed. Distribution signing is intentionally not configured.

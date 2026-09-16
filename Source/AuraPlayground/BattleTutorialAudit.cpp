@@ -85,7 +85,15 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   const float PredictedYaw=B->GetActorRotation().Yaw+B->Ride->SmoothedSteer*TurnRate*.1f;
   const float Error=FMath::FindDeltaAngleDegrees(PredictedYaw,(Target-P).Rotation().Yaw);
   auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
-  Key(EKeys::W,true);Key(EKeys::A,Error< -2);Key(EKeys::D,Error>2);
+  // The direct street makes a tight left/right bend before the stone gate.
+  // Brake into a large heading correction just as a player should; holding
+  // full throttle through it made this audit leave an otherwise rideable road.
+  const int32 FutureIndex=FMath::Min(Segment+6,Points.Num()-1);
+  const FVector CurrentRoad=Points[Segment+1]-Points[Segment];
+  const FVector FutureRoad=Points[FutureIndex]-Points[Segment+1];
+  const float UpcomingTurn=FutureRoad.IsNearlyZero()?0.f:FMath::Abs(FMath::FindDeltaAngleDegrees(CurrentRoad.Rotation().Yaw,FutureRoad.Rotation().Yaw));
+  const bool BrakeForTurn=(UpcomingTurn>12.f&&B->Ride->Speed>300.f)||(FMath::Abs(Error)>25.f&&B->Ride->Speed>220.f);
+  Key(EKeys::W,true);Key(EKeys::A,Error< -2);Key(EKeys::D,Error>2);Key(EKeys::SpaceBar,BrakeForTurn);
  }else if(TutorialStage==2){
   TutorialClock+=Dt;
   static bool CountdownControlsChecked=false;

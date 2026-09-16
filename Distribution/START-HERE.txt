@@ -2,6 +2,13 @@ THE BATTLE OF ATL — MAC PLAYTEST {{BUILD}}
 Early, unfinished playtest • September 16, 2026
 
 BUILD {{BUILD}} UPDATE
+The app now has finished The Battle of ATL icon artwork at every required
+Mac size. Both practice routes to the 14th Street gate have been rechecked:
+the direct street and the longer 13th Street approach remain untimed, the
+farmers market blocks its entrance, and the market barrier clears after the
+ride starts. Slow down for the tight bends before the stone gate.
+
+BUILD 091 HILL AND DISPLAY UPDATE
 Piedmont and 10th Street descents now carry stronger momentum in Arcade
 mode while Real Bike Physics retains normal gravity. The measured 6.5%
 park hillside accelerates in both modes, and braking still stops the bike.

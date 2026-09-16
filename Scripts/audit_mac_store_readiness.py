@@ -7,6 +7,7 @@ mac=(root/'Config/Mac/MacEngine.ini').read_text()
 game=(root/'Config/DefaultGame.ini').read_text()
 project=json.loads((root/'AuraPlayground.uproject').read_text())
 release=(root/'Distribution/MAC-APP-STORE-RELEASE.md').read_text()
+icon_source=(root/'Scripts/make_mac_icon.swift').read_text()
 info=plistlib.loads((root/'Build/Mac/Resources/Info.Template.plist').read_bytes())
 entitlements=plistlib.loads((root/'Build/Mac/Resources/Sandbox.NoNet.entitlements').read_bytes())
 
@@ -19,7 +20,7 @@ maps=re.findall(r'^\+MapsToCook=\(FilePath="([^"]+)"\)',game,re.M)
 
 with tempfile.TemporaryDirectory() as temporary:
  iconset=pathlib.Path(temporary)/'Battle.iconset'
- subprocess.run(['iconutil','-c','iconset',str(root/'SourceAssets/UI/BattleForTheA.icns'),'-o',str(iconset)],check=True,capture_output=True)
+ subprocess.run(['iconutil','-c','iconset',str(root/'SourceAssets/UI/BattleOfATL.icns'),'-o',str(iconset)],check=True,capture_output=True)
  icon_names={x.name for x in iconset.iterdir()}
  expected={f'icon_{size}x{size}{suffix}.png' for size in (16,32,128,256,512) for suffix in ('','@2x')}
  icon_complete=expected<=icon_names
@@ -35,6 +36,7 @@ checks={
  'production_map_only':maps==['/Game/PiedmontRide/Maps/PiedmontWorld'],
  'non_placeholder_metadata':'Disposable Aura trial' not in project.get('Description',''),
  'icon_complete':icon_complete,
+ 'icon_current_brand':all(x in icon_source for x in ('THE BATTLE OF','ATL')) and 'text("BATTLE"' not in icon_source,
  'license_inventory':all(x in release for x in ('OpenStreetMap','USGS 3DEP','Adobe Mixamo','Quaternius','Remington Model 870','Fab library','Battle of the A-T-L')),
 }
 report={'passed':all(checks.values()),'checks':checks,'maps_to_cook':maps,'absolute_runtime_paths':absolute_runtime_paths,'entitlements':entitlements,'bundle_id':'com.webexperts.battleofatl','apple_team_id_recorded':'8HAG5A4GS7','scope':'Static Mac App Store guardrails. Distribution identity, certificate, provisioning, notarization, App Store Connect and upload are intentionally deferred.'}

@@ -21,12 +21,12 @@ with plist_path.open('rb') as f:
     info=plistlib.load(f)
 info['CFBundleDisplayName']='The Battle of ATL'
 info['CFBundleName']='TheBattleOfATL'
-info['CFBundleIconFile']='BattleForTheA.icns'
+info['CFBundleIconFile']='BattleOfATL.icns'
 info['CFBundleShortVersionString']=version
 info['CFBundleVersion']=version
 with plist_path.open('wb') as f:
     plistlib.dump(info,f)
-shutil.copy2(root/'SourceAssets/UI/BattleForTheA.icns',target/'Contents/Resources/BattleForTheA.icns')
+shutil.copy2(root/'SourceAssets/UI/BattleOfATL.icns',target/'Contents/Resources/BattleOfATL.icns')
 shutil.copy2(root/'SourceAssets/Weapons/Remington870/CREDIT.txt',target/'Contents/Resources/Shotgun-Credits.txt')
 subprocess.run(['codesign','--force','--deep','--sign','-',str(target)],check=True)
 subprocess.run(['codesign','--verify','--deep','--strict',str(target)],check=True)

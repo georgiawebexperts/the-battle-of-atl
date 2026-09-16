@@ -11,9 +11,9 @@ source=root/'Saved/StagedBuilds/Mac/AuraPlayground.app'
 app=out/'The Battle of ATL.app'
 shutil.copytree(source,app,symlinks=True)
 p=app/'Contents/Info.plist';data=plistlib.loads(p.read_bytes())
-data.update(CFBundleDisplayName='The Battle of ATL',CFBundleName='TheBattleOfATL',CFBundleShortVersionString=version,CFBundleVersion=version,CFBundleIconFile='BattleForTheA.icns')
+data.update(CFBundleDisplayName='The Battle of ATL',CFBundleName='TheBattleOfATL',CFBundleShortVersionString=version,CFBundleVersion=version,CFBundleIconFile='BattleOfATL.icns')
 p.write_bytes(plistlib.dumps(data))
-shutil.copy2(root/'SourceAssets/UI/BattleForTheA.icns',app/'Contents/Resources/BattleForTheA.icns')
+shutil.copy2(root/'SourceAssets/UI/BattleOfATL.icns',app/'Contents/Resources/BattleOfATL.icns')
 for name in ['START-HERE.txt','CREDITS.txt']:
  (out/name).write_text((root/'Distribution'/name).read_text().replace('{{BUILD}}',args.build))
  shutil.copy2(out/name,app/'Contents/Resources'/name)
