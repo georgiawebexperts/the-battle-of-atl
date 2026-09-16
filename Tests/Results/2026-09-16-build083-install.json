@@ -1,0 +1,30 @@
+{
+  "build": 83,
+  "version": "0.83.0",
+  "source_commit": "c63fd7f977384a4e9affbb61c28feec3bcc99557",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 083/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 082/The Battle of ATL.app",
+  "machine_code_sha256": "926ae1c461f9260ca3b8f9d9181ac777fff31d8dd836fc10906da9e789d2d6ea",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 083.zip",
+  "zip_sha256": "57acf4cec7dc47d7793999475be6194c0b9372886984f41ed88e21dbd49e01c9",
+  "zip_bytes": 1459518981,
+  "reports": [
+    "2026-09-16-build083-mouse-look-editor.json",
+    "2026-09-16-build083-mouse-look-packaged.json",
+    "2026-09-16-build083-trouble-editor.json",
+    "2026-09-16-build083-trouble-packaged.json",
+    "2026-09-11-build083-presentation-1280.json"
+  ],
+  "verification": [
+    "Packaged on-foot mouse bindings, free orbit, camera-relative walking, shoulder aim and keyboard look pass",
+    "Packaged police targeting, delayed civilian-only response, dodgeable committed taser aim, airborne gravity and stun recovery pass",
+    "Bike and on-foot permanent control panels visually pass at 1280x720 without overflow",
+    "ZIP CRC, ad-hoc signature, version metadata and desktop target verified"
+  ],
+  "remaining": [
+    "Physical macOS mouse feel and taser balance require Elliott's subjective playtest",
+    "Intermittent Krog route stall remains unresolved",
+    "Broader art, animation, combat, handling and performance remain unfinished",
+    "Other Macs remain untested; Developer ID signing and notarization are still deferred"
+  ]
+}
