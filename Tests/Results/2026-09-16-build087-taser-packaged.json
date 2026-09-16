@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Readable taser windup, narrow dodge corridor, coordinated recovery, airborne gravity and police expiry pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-0742b42a451646f2be3599dff8e5e0f7.log",
+  "images": [],
+  "capture_complete": true
+}

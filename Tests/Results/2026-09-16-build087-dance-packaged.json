@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "ready": true,
+  "dancers": 5,
+  "desired": 5,
+  "animated_dancers": 5,
+  "hand_travel_cm": 12.87,
+  "music": true,
+  "panic_response": true,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "editor": false,
+  "visual_review": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/dance-729921df1a524b83b74804cfba0cdbad.log",
+  "images": [
+    "work/build087-dance-review/easy-dance-circle-a.png",
+    "work/build087-dance-review/easy-dance-circle-b.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ],
+  "visual_findings": "Packaged 1280x720 frames show five fully shaded park dancers changing poses around the corrected PARK DJ speaker; controls, objective, timer, music state and compass remain readable."
+}

@@ -1,0 +1,27 @@
+{
+  "market_review": false,
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build087-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a4cb5630c259345de06d6e5c59dca9f6e6a02e4d67e15089c135e100ae0e9e36"
+    },
+    {
+      "file": "work/build087-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "20077bf009e6291bb9b5d76b80db45b74c0e51f63ec46481884c3ee64778ea24"
+    }
+  ],
+  "visual_review": "passed",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "visual_findings": "Packaged bike and on-foot frames are fully shaded at 1280x720; objective, timer, status, music, compass and state-specific controls remain legible without overflow."
+}

@@ -1,0 +1,27 @@
+{
+  "build": 87,
+  "version": "0.87.0",
+  "source_commit": "d344ca8",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 087/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 086/The Battle of ATL.app",
+  "machine_code_sha256": "7fb23c6e0cc2d4ce07f4587b76cf4061ba87649080d2e182777d1d2bb3905da8",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 087.zip",
+  "zip_sha256": "5eb397d829457a62dbd1c0c8a4f29b839c3d6c42b45426106ce467a43876316a",
+  "zip_bytes": 1459525839,
+  "reports": [
+    "2026-09-16-build087-taser-packaged.json",
+    "2026-09-16-build087-dance-packaged.json",
+    "2026-09-11-build087-presentation-1280.json"
+  ],
+  "verification": [
+    "Packaged taser audit passes a 3.5-second warning, 1.6-second committed dodge window, 50 cm hit corridor, 18-second officer cooldown and eight-second squad recovery.",
+    "Packaged dance audit passes five difficulty-scaled City Sample dancers, procedural pose movement, DJ music assignment and panic response.",
+    "Packaged 1280x720 bike, on-foot and dance frames are fully shaded and retain readable HUD and controls.",
+    "ZIP CRC, ad-hoc signature and 0.87.0 metadata verified."
+  ],
+  "remaining": [
+    "Physical macOS playtesting is still needed to judge taser difficulty and procedural dance quality by feel.",
+    "The dance circle uses procedural motion rather than authored Mixamo dance clips.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}
