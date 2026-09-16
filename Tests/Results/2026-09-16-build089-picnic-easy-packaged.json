@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "groups": 3,
+  "desired": 3,
+  "chillers": 6,
+  "animated": 6,
+  "hand_travel_cm": 15.85,
+  "panic_response": true,
+  "exit_code": 0,
+  "editor": false,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/picnic-7aa1b05420804f71b98cbc36606cad17.log",
+  "images": [
+    "work/build089-picnic-review/easy-picnic-groups.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ],
+  "visual_findings": "Packaged Easy capture shows all three picnic blankets as readable yellow landmarks; the nearest pair are fully shaded, connected City Sample characters in recognizable reclining poses with props visible."
+}

@@ -1,0 +1,31 @@
+{
+  "build": 89,
+  "version": "0.89.0",
+  "source_commit": "fd59c33",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 089/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 088/The Battle of ATL.app",
+  "machine_code_sha256": "6650cd31c463fa1f6971f79aa9abb75450a08304b8fd63634e6077d7b04afc24",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 089.zip",
+  "zip_sha256": "b1ba76f7c95a96b6bf13559a9eb0f4c51bb447b8f68c7d55f6832a59edf7d097",
+  "zip_bytes": 1459546630,
+  "reports": [
+    "2026-09-16-build089-picnic-easy-packaged.json",
+    "2026-09-16-build089-picnic-hard-packaged.json",
+    "2026-09-16-build089-watch-packaged.json",
+    "2026-09-16-build089-bench-packaged.json",
+    "2026-09-11-build089-presentation-1280.json"
+  ],
+  "verification": [
+    "Packaged Easy and Hard picnic audits pass 3/6 and 10/20 group/person targets with animated lounging and gunfire panic response.",
+    "Packaged watch audit passes increasing 2.49-4.98 Hz close-range feedback while keeping the phone location hidden.",
+    "Packaged bench audit passes a quiet opening, placement ahead of the rider, two visible ignition encounters and an exact two-completion cap.",
+    "Packaged 1280x720 bike and on-foot frames show a highlighted BUILD 089 badge and legible contextual controls.",
+    "ZIP CRC, ad-hoc signature and 0.89.0 metadata verified."
+  ],
+  "remaining": [
+    "Physical Mac playtesting is still needed to judge the natural timing and visibility of both bench-fire encounters over a full run.",
+    "Picnic lounging uses procedural reclined poses rather than authored lounging animations.",
+    "Park entrance fencing reads taller than the real park fencing and is tracked for map polish.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "market_review": false,
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build089-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "755ce20d2659be54cfb967fb2738b63aff4953ba01433f8aaa3d4df0051537fc"
+    },
+    {
+      "file": "work/build089-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1b108b7509fb0b082f65208ee6e2925ca27012215c0a4a9bfd9e58acb3034278"
+    }
+  ],
+  "visual_review": "passed",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "visual_findings": "Bike and on-foot packaged captures are legible at 1280x720, BUILD 089 is highlighted at top center, contextual controls fit their panels, and the mode transition preserves HUD readability. Park entrance fencing remains visually taller than desired and is tracked for map polish."
+}

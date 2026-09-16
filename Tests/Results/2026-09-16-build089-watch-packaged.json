@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "far_signal": 0.0,
+  "near_signal": 0.3,
+  "hot_signal": 0.88,
+  "near_hz": 2.49,
+  "hot_hz": 4.98,
+  "exact_location_hidden": true,
+  "exit_code": 0,
+  "editor": false,
+  "visual_review": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/watch-2e7836cd68bf43baa20abeedc3ddf121.log",
+  "images": [
+    "work/build089-watch-review/watch-phone-signal.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ],
+  "visual_findings": "Packaged capture shows a bright gold pulsing watch ring and PHONE SIGNAL \u2022 CLOSE banner while the radar remains coarse and does not reveal the phone position."
+}
