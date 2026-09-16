@@ -1,0 +1,31 @@
+{
+  "build": 90,
+  "version": "0.90.0",
+  "source_commit": "a528f18",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 090/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 089/The Battle of ATL.app",
+  "machine_code_sha256": "1af1766faaac8458b79082dd125de586f377978d836ee765fdb7fa27ea57c941",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 090.zip",
+  "zip_sha256": "b1a80b13b40f3855a0ebd2f759c7d5026757e3f7ce732858d7bddc678d92b248",
+  "zip_bytes": 1459504826,
+  "reports": [
+    "2026-09-16-build090-boundaries-editor.json",
+    "2026-09-16-build090-arcade-downhill-packaged.json",
+    "2026-09-16-build090-real-slopes-packaged.json",
+    "2026-09-16-build090-opening-packaged.json",
+    "2026-09-16-build090-celebration-packaged.json"
+  ],
+  "verification": [
+    "Visible park and closure fences are lower while hidden collision preserves route boundaries.",
+    "Packaged arcade bike gains speed downhill, loses speed uphill and stops under braking on a controlled 12-degree grade.",
+    "Packaged realistic handling slope regression passes coasting, braking, grip, airborne behavior and reverse recovery.",
+    "Packaged opening visibly shows VERSION 1 \u2022 BUILD 090.",
+    "Packaged ending visibly shows Black Ellison with white Morgan, then Version 1 credits and Elliott Inspace attribution before results.",
+    "ZIP CRC, ad-hoc signature and 0.90.0 metadata verified."
+  ],
+  "remaining": [
+    "Physical playtesting is still needed to judge speed and steering feel on the real Piedmont bowl and 10th Street terrain.",
+    "Actual-world terrain profiles need comparison against authoritative elevation data before claiming geographic grade accuracy.",
+    "Other Macs remain untested; Developer ID signing and notarization are deferred."
+  ]
+}
