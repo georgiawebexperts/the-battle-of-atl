@@ -34,4 +34,5 @@ protected:
  virtual bool CanUseWeapon() const override{return false;}
 private:
  bool CanReachTarget(APawn* Target) const;
+ bool CanStartTaser(APawn* Target) const;
 };

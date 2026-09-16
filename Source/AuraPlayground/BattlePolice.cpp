@@ -16,6 +16,7 @@
 #include "Engine/StaticMesh.h"
 #include "Engine/SkeletalMesh.h"
 #include "Materials/MaterialInterface.h"
+#include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 ABattlePolice::ABattlePolice(){
@@ -114,6 +115,18 @@ bool ABattlePolice::CanReachTarget(APawn* Target) const{
  if(GetWorld()->LineTraceSingleByChannel(Hit,Shoulder,Start,ECC_Visibility,Q)&&Hit.GetActor()!=Target)return false;
  return !GetWorld()->LineTraceSingleByChannel(Hit,Start,Target->GetActorLocation(),ECC_Visibility,Q)||Hit.GetActor()==Target;
 }
+bool ABattlePolice::CanStartTaser(APawn* Target) const{
+ if(!Target)return false;
+ const float Distance=FVector::DistSquared2D(GetActorLocation(),Target->GetActorLocation());
+ for(TActorIterator<ABattlePolice> It(GetWorld());It;++It){
+  const auto* Other=*It;if(Other==this||Other->bDead||Other->IsActorBeingDestroyed())continue;
+  // Police pursue as a group, but only one officer announces and aims a taser.
+  // Give the closest officer priority so the warning beam is easy to locate.
+  if(Other->bWarning)return false;
+  if(Other->Cooldown<=0&&FVector::DistSquared2D(Other->GetActorLocation(),Target->GetActorLocation())+1.f<Distance)return false;
+ }
+ return true;
+}
 bool ABattlePolice::FireTaser(){
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));auto* Target=UGameplayStatics::GetPlayerPawn(this,0);
  if(bDead||!Mode||Mode->StartCountdown>0||Mode->bRunEnded||UGameplayStatics::IsGamePaused(this)||!CanReachTarget(Target))return false;
@@ -126,7 +139,11 @@ bool ABattlePolice::FireTaser(){
  if(auto* FX=GetWorld()->SpawnActorDeferred<ABattleShotFX>(ABattleShotFX::StaticClass(),FTransform(Start),this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){
   FX->Start=Start;FX->End=End;FX->FinishSpawning(FTransform(Start));FX->SetLifeSpan(.65f);auto* M=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_Splash.M_Splash"));FX->Tracer->SetMaterial(0,M);FX->Flash->SetMaterial(0,M);FX->Light->SetLightColor(FLinearColor(.1,.5,1));
  }
- TaserShots++;Cooldown=15;bWarning=false;WarningAimPoint=FVector::ZeroVector;return Hit;
+ TaserShots++;Cooldown=15;bWarning=false;WarningAimPoint=FVector::ZeroVector;
+ // A shot, hit or miss, opens a squad-wide escape window. Without this, a
+ // second officer can begin charging immediately and make the first dodge moot.
+ for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(*It!=this&&!It->bDead){It->bWarning=false;It->WarningAimPoint=FVector::ZeroVector;It->Cooldown=FMath::Max(It->Cooldown,5.f);It->UpdateTaserBeam();}
+ return Hit;
 }
 void ABattlePolice::Tick(float Dt){
  VoiceCooldown=FMath::Max(0.f,VoiceCooldown-Dt);
@@ -142,7 +159,7 @@ void ABattlePolice::Tick(float Dt){
  if(bWarning){if(AI)AI->StopMovement();if(WarningRemaining>1.1f)WarningAimPoint=Target->GetActorLocation();SetActorRotation(FRotator(0,(WarningAimPoint-GetActorLocation()).Rotation().Yaw,0));
   if(!CanReachTarget(Target)){bWarning=false;Cooldown=3;UpdateTaserBeam();return;}
   WarningRemaining-=Dt;if(WarningRemaining<=0)FireTaser();UpdateTaserBeam();return;}
- if(Cooldown<=0&&CanReachTarget(Target)){bWarning=true;WarningRemaining=2.75f;WarningAimPoint=Target->GetActorLocation();
+ if(Cooldown<=0&&CanReachTarget(Target)&&CanStartTaser(Target)){bWarning=true;WarningRemaining=2.75f;WarningAimPoint=Target->GetActorLocation();
   if(VoiceCooldown<=0&&WarningVoice->Sound){WarningVoice->Play();WarningVoiceStarts++;VoiceCooldown=6.f;}
   UpdateTaserBeam();return;}
  if(AI&&PathDelay<=0){PathDelay=.6f;AI->MoveToActor(Target,550,true,true,true,nullptr,true);}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Coordinated single-officer taser, squad recovery, dodge, airborne gravity and police expiry pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": false,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-035d7ae28395451dba7052a2e418317f.log",
+  "images": [],
+  "capture_complete": true
+}
