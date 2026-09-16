@@ -1,0 +1,34 @@
+{
+  "build": 93,
+  "version": "0.93.0",
+  "source_commit": "2135d0b",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 093/The Battle of ATL.app",
+  "desktop_shortcut": "/Users/elliottinspace/Desktop/The Battle of ATL.app",
+  "bundle_identifier": "com.webexperts.battleofatl",
+  "icon_file": "BattleOfATL.icns",
+  "icon_sha256": "95f6a1222442be5a125ac140d8940ee8add4b5aa6d4e379e0307555d9747669e",
+  "machine_code_sha256": "7e83b33e500bd1e18c5893dc6b7f49b02f4787f560a3f8693b28dfddbe920364",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 093.zip",
+  "zip_sha256": "b0cbd581caf3f6ace59c6e9938614892297bfdb045b13368b3eb729eb4c600f4",
+  "zip_bytes": 1459573507,
+  "entitlements": {
+    "com.apple.security.app-sandbox": true
+  },
+  "reports": [
+    "2026-09-16-build093-crash-packaged.json",
+    "2026-09-16-build093-storefront-packaged.json",
+    "2026-09-16-build093-mac-store-readiness.json"
+  ],
+  "verification": [
+    "Person, tree and police-taser knockdowns complete physical fall, ground recovery, on-foot control and remount without suspended-air or leaked crash actors.",
+    "The closer actor-relative crash camera keeps Ellison, the bicycle and the cause of the crash readable; nonessential HUD panels hide until recovery.",
+    "Development package and Shipping target compile successfully on Apple silicon Mac.",
+    "Packaged Options/focus/resolution audit passes and visibly shows VERSION 1 / BUILD 093.",
+    "The locally signed share app retains only the App Sandbox entitlement; static store-readiness checks all pass.",
+    "ZIP CRC, local signature, com.webexperts.battleofatl identity, 0.93.0 metadata, instructions and credits verified."
+  ],
+  "remaining": [
+    "Physical playtesting is still needed for subjective crash motion, steering, downhill feel, combat and full-route pacing.",
+    "Other Macs remain untested; distribution signing, provisioning, App Store Connect and upload remain deferred until feature completion."
+  ]
+}
