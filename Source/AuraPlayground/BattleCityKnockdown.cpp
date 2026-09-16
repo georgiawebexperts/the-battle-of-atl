@@ -12,7 +12,35 @@
 #include "PhysicsEngine/SkeletalBodySetup.h"
 #include "Misc/CommandLine.h"
 
-void APiedmontPedestrian::AnimateBody(float Dt){if(KnockdownPhase!=1)Super::AnimateBody(Dt);}
+void APiedmontPedestrian::AnimateBody(float Dt){
+ if(KnockdownPhase==1)return;
+ Super::AnimateBody(Dt);
+ if(!bParkDancer||!bNativeCrowdRig||bDead||bSwimming||StumbleRemaining>0||PanicRemaining>0||bIncidentPosing)return;
+ DanceClock+=Dt;
+ const float Phase=DanceClock*(2.8f+.22f*(DanceVariant%3))+DanceVariant*1.17f;
+ auto Rotate=[&](const TCHAR* Name,FRotator Delta){const int32 I=Body->GetBoneIndex(Name);if(I<0)return;Body->BoneSpaceTransforms[I].SetRotation((Delta.Quaternion()*Body->BoneSpaceTransforms[I].GetRotation()).GetNormalized());};
+ if(const int32 Hip=Body->GetBoneIndex(TEXT("pelvis"));Hip>=0){
+  auto& T=Body->BoneSpaceTransforms[Hip];T.AddToTranslation(FVector(0,0,3.5f*FMath::Abs(FMath::Sin(Phase))));
+  T.SetRotation((FRotator(0,8.f*FMath::Sin(Phase*.5f),5.f*FMath::Sin(Phase)).Quaternion()*T.GetRotation()).GetNormalized());
+ }
+ const float Side=FMath::Sin(Phase),Other=FMath::Sin(Phase+PI*.5f);
+ Rotate(TEXT("spine_02"),FRotator(4.f*Other,10.f*Side,7.f*Side));
+ Rotate(TEXT("spine_05"),FRotator(-3.f*Other,7.f*Side,-5.f*Side));
+ if(DanceVariant%3==0){
+  Rotate(TEXT("upperarm_l"),FRotator(-42.f-20.f*Side,-18.f,28.f+14.f*Other));
+  Rotate(TEXT("upperarm_r"),FRotator(-42.f+20.f*Side,18.f,-28.f-14.f*Other));
+  Rotate(TEXT("lowerarm_l"),FRotator(-25.f+12.f*Other,0,0));Rotate(TEXT("lowerarm_r"),FRotator(-25.f-12.f*Other,0,0));
+ }else if(DanceVariant%3==1){
+  Rotate(TEXT("upperarm_l"),FRotator(-78.f,5.f,22.f+22.f*Side));Rotate(TEXT("upperarm_r"),FRotator(-18.f+24.f*Other,-8.f,-30.f));
+  Rotate(TEXT("lowerarm_l"),FRotator(-45.f+18.f*Side,0,0));Rotate(TEXT("lowerarm_r"),FRotator(-55.f-16.f*Side,0,0));
+ }else{
+  Rotate(TEXT("upperarm_l"),FRotator(-25.f+28.f*Side,-12.f,48.f));Rotate(TEXT("upperarm_r"),FRotator(-25.f-28.f*Side,12.f,-48.f));
+  Rotate(TEXT("lowerarm_l"),FRotator(-68.f,0,12.f*Other));Rotate(TEXT("lowerarm_r"),FRotator(-68.f,0,-12.f*Other));
+ }
+ Rotate(TEXT("thigh_l"),FRotator(9.f*Side,0,5.f*Other));Rotate(TEXT("thigh_r"),FRotator(-9.f*Side,0,-5.f*Other));
+ Rotate(TEXT("calf_l"),FRotator(-10.f*FMath::Max(0.f,Side),0,0));Rotate(TEXT("calf_r"),FRotator(10.f*FMath::Min(0.f,Side),0,0));
+ Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();
+}
 
 void APiedmontPedestrian::AttachCityParts(USkinnedMeshComponent* Leader){
  TArray<USkeletalMeshComponent*> Parts;GetComponents(Parts);

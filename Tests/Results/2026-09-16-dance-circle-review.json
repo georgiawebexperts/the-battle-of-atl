@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "dancers": 5,
+  "desired": 5,
+  "hand_travel_cm": 12.83,
+  "music": true,
+  "panic_response": true,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "editor": true,
+  "visual_review": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/dance-2b56cdf3492446eaac3ed2d031f68672.log",
+  "images": [
+    "work/build087-dance-review/easy-dance-circle-a.png",
+    "work/build087-dance-review/easy-dance-circle-b.png"
+  ],
+  "capture_size": [
+    1280,
+    720
+  ],
+  "visual_findings": "Two 1280x720 frames show five fully shaded City Sample park dancers in visibly different poses around a readable PARK DJ speaker; HUD remains readable."
+}

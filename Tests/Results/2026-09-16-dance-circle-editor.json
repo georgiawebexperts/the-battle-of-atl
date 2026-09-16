@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "dancers": 5,
+  "desired": 5,
+  "hand_travel_cm": 28.83,
+  "music": true,
+  "panic_response": true,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "editor": true,
+  "visual_review": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/dance-1c24d3b5b0be48b7afa6c9ee02283ef0.log",
+  "images": []
+}

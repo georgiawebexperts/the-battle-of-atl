@@ -33,6 +33,9 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 BikeContacts=0;
  UPROPERTY(BlueprintReadOnly) int32 CompletedWalks=0;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontPedestrian> GroupLeader;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bParkDancer=false;
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 DanceVariant=0;
+ UPROPERTY(BlueprintReadOnly) float DanceClock=0;
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);
  UFUNCTION(BlueprintCallable) bool BeginIncidentPose(UAnimSequence* Clip,float PoseSeconds,float HoldSeconds);
