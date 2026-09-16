@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "stage": 10,
+  "reason": "Readable taser windup, narrow dodge corridor, coordinated recovery, airborne gravity and police expiry pass",
+  "people": 1,
+  "police_spawned": 1,
+  "taser_hits": 3,
+  "audio_enabled": false,
+  "voice_playback_verified": false,
+  "exit_code": 0,
+  "difficulty": "Easy",
+  "visual_review": true,
+  "executable": "/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/trouble-238670a2d19f4d258d11985f14a73b1c.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-2e5d8bf517ca4252a1a64579b348d0a0/police-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/police-review-2e5d8bf517ca4252a1a64579b348d0a0/police-discharge.png"
+  ],
+  "capture_complete": true,
+  "visual_findings": "1280x720 frames show a clear blue aim beam, readable APD warning and unobscured dodge guidance; discharge frame shows local knockdown and TASED recovery feedback."
+}

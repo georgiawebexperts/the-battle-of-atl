@@ -68,7 +68,7 @@ void ABattleMacController::TickTroubleAudit(float Dt){
    if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceCloseup"))&&GetHUD())GetHUD()->bShowHUD=false;
   }
   Officer->Cooldown=0;Officer->SetActorTickEnabled(true);Next();
- }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>1.f&&Officer->TaserDrawBlend>.7f&&Officer->Weapon->GetComponentLocation().Z>Officer->GetActorLocation().Z&&Officer->Weapon->IsVisible()&&Officer->Weapon->GetStaticMesh()->GetName()==TEXT("Taser")&&Officer->AimBeam->IsVisible()&&Bike->TaserHits==0,"Taser windup, visible aim line or reaction window missing");// Put cover behind the muzzle: a muzzle-only ray would incorrectly fire past it.
+ }else if(TroubleStage==5&&TroubleClock>.4f){CHECK_TROUBLE(Officer->bWarning&&Officer->WarningRemaining>ABattlePolice::TaserAimLockSeconds&&Officer->TaserDrawBlend>.7f&&Officer->Weapon->GetComponentLocation().Z>Officer->GetActorLocation().Z&&Officer->Weapon->IsVisible()&&Officer->Weapon->GetStaticMesh()->GetName()==TEXT("Taser")&&Officer->AimBeam->IsVisible()&&Bike->TaserHits==0,"Taser windup, visible aim line or reaction window missing");// Put cover behind the muzzle: a muzzle-only ray would incorrectly fire past it.
   CHECK_TROUBLE(Officer->WarningVoice->Sound&&Officer->WarningVoice->Sound->GetDuration()>1.f&&Officer->WarningVoice->Sound->GetDuration()<2.f&&Officer->WarningVoiceStarts==1,"Warning voice missing, repeated or too long");
   if(FParse::Param(FCommandLine::Get(),TEXT("BattlePoliceAudioAudit"))){
    CHECK_TROUBLE(Officer->WarningVoice->IsPlaying(),"Warning voice did not start on audio device");
@@ -103,10 +103,10 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   auto* DodgeOfficer=GetWorld()->SpawnActor<ABattlePolice>(Bike->GetActorLocation()-Bike->GetActorForwardVector()*350,GetControlRotation());
   auto* WingOfficer=GetWorld()->SpawnActor<ABattlePolice>(Bike->GetActorLocation()-Bike->GetActorForwardVector()*420+Bike->GetActorRightVector()*80,GetControlRotation());
   CHECK_TROUBLE(DodgeOfficer&&WingOfficer,"Dodge squad fixture failed");const int32 HitsBeforeDodge=Bike->TaserHits;
-  DodgeOfficer->bWarning=true;DodgeOfficer->WarningRemaining=1;DodgeOfficer->WarningAimPoint=Bike->GetActorLocation()+Bike->GetActorRightVector()*180;WingOfficer->Cooldown=0;WingOfficer->Tick(.01f);
+  DodgeOfficer->bWarning=true;DodgeOfficer->WarningRemaining=ABattlePolice::TaserAimLockSeconds;DodgeOfficer->WarningAimPoint=Bike->GetActorLocation()+Bike->GetActorRightVector()*60;WingOfficer->Cooldown=0;WingOfficer->Tick(.01f);
   CHECK_TROUBLE(!WingOfficer->bWarning,"Two officers aimed tasers at once");
   CHECK_TROUBLE(!DodgeOfficer->FireTaser()&&DodgeOfficer->TaserShots==1&&Bike->TaserHits==HitsBeforeDodge,"Committed taser aim still snapped onto dodging rider");
-  CHECK_TROUBLE(WingOfficer->Cooldown>=4.9f&&!WingOfficer->bWarning,"Squad taser recovery window missing");DodgeOfficer->Destroy();WingOfficer->Destroy();
+  CHECK_TROUBLE(WingOfficer->Cooldown>=ABattlePolice::SquadRecoverySeconds-.1f&&!WingOfficer->bWarning,"Squad taser recovery window missing");DodgeOfficer->Destroy();WingOfficer->Destroy();
   Mode->bPoliceAlert=false;Mode->Trouble=0;Mode->QuietTime=0;Bike->TaserGrace=0;CHECK_TROUBLE(Bike->Dismount(),"Airborne taser dismount failed");
   Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Person,"Airborne taser rider missing");Person->LaunchCharacter(FVector(0,0,560),false,true);Next();
  }else if(TroubleStage==9&&TroubleClock>.12f){
@@ -115,7 +115,7 @@ void ABattleMacController::TickTroubleAudit(float Dt){
  }else if(TroubleStage==10){
   Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Person,"Airborne taser rider vanished");
   if(TroubleClock>.2f&&TroubleAirStartZ>-MAX_flt*.5f){CHECK_TROUBLE(Person->GetCharacterMovement()->MovementMode!=MOVE_None&&FMath::Abs(Person->GetActorLocation().Z-TroubleAirStartZ)>2,"Airborne taser stopped gravity");TroubleAirStartZ=-MAX_flt;}
-  if(TroubleClock>3.3f){CHECK_TROUBLE(Bike->StunRemaining==0&&Person->GetCharacterMovement()->MovementMode!=MOVE_None,"Airborne taser did not restore movement");Mode->QuietTime=44;Mode->TickTrouble(2);CHECK_TROUBLE(!Mode->bPoliceAlert&&Mode->Trouble==0,"Police alert did not expire after quiet interval");for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)CHECK_TROUBLE(It->bDead||It->IsActorBeingDestroyed(),"Live police remained after alert expired");Finish(true,TEXT("Coordinated single-officer taser, squad recovery, dodge, airborne gravity and police expiry pass"));}
+  if(TroubleClock>3.3f){CHECK_TROUBLE(Bike->StunRemaining==0&&Person->GetCharacterMovement()->MovementMode!=MOVE_None,"Airborne taser did not restore movement");Mode->QuietTime=44;Mode->TickTrouble(2);CHECK_TROUBLE(!Mode->bPoliceAlert&&Mode->Trouble==0,"Police alert did not expire after quiet interval");for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)CHECK_TROUBLE(It->bDead||It->IsActorBeingDestroyed(),"Live police remained after alert expired");Finish(true,TEXT("Readable taser windup, narrow dodge corridor, coordinated recovery, airborne gravity and police expiry pass"));}
  }
  if(TroubleClock>18&&TroubleStage!=99)Finish(false,TEXT("Trouble audit timeout"));
 #undef CHECK_TROUBLE

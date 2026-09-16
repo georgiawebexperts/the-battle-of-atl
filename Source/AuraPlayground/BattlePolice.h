@@ -6,6 +6,11 @@ UCLASS()
 class AURAPLAYGROUND_API ABattlePolice : public APiedmontExplorer {
  GENERATED_BODY()
 public:
+ static constexpr float TaserWarningSeconds=3.5f;
+ static constexpr float TaserAimLockSeconds=1.6f;
+ static constexpr float TaserHitRadiusCm=50.f;
+ static constexpr float TaserCooldownSeconds=18.f;
+ static constexpr float SquadRecoverySeconds=8.f;
  ABattlePolice();
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
