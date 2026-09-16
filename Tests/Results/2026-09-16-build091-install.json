@@ -1,0 +1,30 @@
+{
+  "build": 91,
+  "version": "0.91.0",
+  "source_commit": "5bbbed7",
+  "gameplay_commit": "296dcd9",
+  "desktop_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 091/The Battle of ATL.app",
+  "previous_desktop_target": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 090/The Battle of ATL.app",
+  "bundle_identifier": "com.webexperts.battleofatl",
+  "machine_code_sha256": "8b1dbd66e5365cc3493e22d98c9c8bd79903596df35f58db42e3ef6e1d1d801e",
+  "zip": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 091.zip",
+  "zip_sha256": "0bc6b0e7550134cbd7c8e2cbb47ad9760194d7b333a26db1105286e458dddd77",
+  "zip_bytes": 1459463641,
+  "reports": [
+    "2026-09-16-build091-world-hill-packaged.json",
+    "2026-09-16-build091-storefront-packaged.json",
+    "2026-09-16-build091-opening-packaged.json"
+  ],
+  "verification": [
+    "Packaged native coasting on the installed measured 6.5% Piedmont/10th hillside gains speed in Arcade and Real Bike Physics while remaining grounded.",
+    "Controlled incline regression retains uphill deceleration and full downhill braking.",
+    "Packaged Options menu visibly provides fullscreen and three resolution choices; focus-loss helper pauses the game.",
+    "Packaged opening visibly shows VERSION 1 \u2022 BUILD 091 in all three frames.",
+    "Only PiedmontWorld is requested for cooking; the extracted packaged AssetRegistry contains no ArcadeBikeLab reference.",
+    "ZIP CRC, local signature, com.webexperts.battleofatl identity, and 0.91.0 metadata verified."
+  ],
+  "remaining": [
+    "Physical playtesting is still needed to judge the stronger downhill feel and steering at speed.",
+    "Other Macs remain untested; distribution signing and App Store Connect remain deferred."
+  ]
+}

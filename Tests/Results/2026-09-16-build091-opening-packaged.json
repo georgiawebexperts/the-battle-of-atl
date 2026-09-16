@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "duration": 12.0,
+  "skipped": false,
+  "protected": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-6f0fa3ce551f4407aec6d8c3862b49d6/run.log",
+  "app": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "exit_code": 0,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-6f0fa3ce551f4407aec6d8c3862b49d6/opening0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-6f0fa3ce551f4407aec6d8c3862b49d6/opening1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/opening-review-6f0fa3ce551f4407aec6d8c3862b49d6/opening2.png"
+  ],
+  "visual_review": "passed: all three 1280x720 frames are readable, correctly framed, and show VERSION 1 \u2022 BUILD 091",
+  "editor": false,
+  "grip_closeup": false,
+  "detailed_rider_preview": true,
+  "detailed_assets_loaded": true,
+  "scope": "Opening camera/story UI, unchanged tutorial clock/player location, input/camera return. No audio, final scenery or animation acceptance."
+}

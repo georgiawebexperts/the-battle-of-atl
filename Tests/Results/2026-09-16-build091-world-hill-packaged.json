@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "reason": "Measured world hill accelerates and descends in both handling modes",
+  "arcade_gain_cm_s": 43.2,
+  "arcade_drop_cm": 77.38,
+  "real_gain_cm_s": 29.82,
+  "real_drop_cm": 77.15,
+  "samples": [
+    {
+      "realistic": false,
+      "profile_grade": 0.0652,
+      "speed_gain_cm_s": 43.2,
+      "vertical_drop_cm": 77.38,
+      "grounded_samples": 90,
+      "samples": 90
+    },
+    {
+      "realistic": true,
+      "profile_grade": 0.0652,
+      "speed_gain_cm_s": 29.82,
+      "vertical_drop_cm": 77.15,
+      "grounded_samples": 90,
+      "samples": 90
+    }
+  ],
+  "exit_code": 0,
+  "packaged": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/world-hill-f04980f122f5482ab3da562a1a048fa0.log",
+  "source": "Installed mapped hillside beside 10th Street; source route OSM 1035389486 over active USGS terrain.",
+  "scope": "Native current-world coasting at 900 cm/s for 1.5 seconds in Arcade and Real Bike Physics. Traffic and pedestrians disabled; subjective feel and full downhill route remain playtest checks."
+}
