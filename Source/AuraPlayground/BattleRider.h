@@ -50,6 +50,7 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> MeleeRoot;
  UPROPERTY(BlueprintReadOnly) float HitFeedback=0;
  virtual void BeginPlay() override;
+ void ApplyRiderStyle();
  virtual void OnStartCrouch(float HalfHeightAdjust,float ScaledHalfHeightAdjust) override;
  virtual void OnEndCrouch(float HalfHeightAdjust,float ScaledHalfHeightAdjust) override;
  virtual void Tick(float Dt) override;

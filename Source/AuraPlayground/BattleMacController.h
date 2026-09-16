@@ -15,6 +15,7 @@ public:
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  void ToggleMenu();
  void TogglePracticeHelp();
+ void CycleRiderStyle();
 private:
  void TickSpiritAudit(float Dt);
  void TickKnifeAudit(float Dt);

@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "styles_tested": [
+    "PEACHTREE RED",
+    "ATLANTA GOLD"
+  ],
+  "contexts_tested": [
+    "mounted third person",
+    "dismounted third person"
+  ],
+  "images": [
+    {
+      "file": "work/rider-style-red-1789558135/bike.png",
+      "sha256": "8e826ca7de2031f3de1f4f5858ca267c61e612f9302d01a0457be7051c6cfef9"
+    },
+    {
+      "file": "work/rider-style-red-1789558135/foot.png",
+      "sha256": "ad4268ea9aaa80c3e49f881d390181e7a25a4026b98650d919296d7f5885dbd5"
+    },
+    {
+      "file": "work/rider-style-gold-1789558085/bike.png",
+      "sha256": "ed373fcca1048a75d179c88c7c5046343bae514011eaee1cc90a0ce73af95d64"
+    },
+    {
+      "file": "work/rider-style-gold-1789558085/foot.png",
+      "sha256": "d5ca1871bc064d1e7cc0eca54c69faa760fd12071f379f341b19dc643730ad40"
+    }
+  ],
+  "visual_review": true,
+  "findings": [
+    "Peachtree Red and Atlanta Gold are clearly distinct on Ellison in mounted and dismounted views.",
+    "Selected color remains consistent through bike-to-foot possession transfer.",
+    "Detailed body, hands and clothing remain present with no new clipping visible in the sampled frames."
+  ],
+  "scope": "Native editor-game controlled 1280x720 captures with explicit rider-style configuration. Menu click persistence and Midnight Black are covered by shared compiled config path but not visually sampled."
+}

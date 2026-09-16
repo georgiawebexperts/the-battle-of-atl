@@ -7,6 +7,7 @@ void TickBattlePanicAudit(APlayerController* PC,float Dt);
 #include "HAL/IConsoleManager.h"
 #include "BattleRunRecords.h"
 #include "BattleBike.h"
+#include "BattleDetailedRider.h"
 #include "BattleQuest.h"
 #include "BattleRider.h"
 #include "PiedmontTrafficDirector.h"
@@ -183,6 +184,12 @@ void ABattleMacController::SetupInputComponent(){
  InputComponent->BindKey(EKeys::F1,IE_Pressed,this,&ABattleMacController::TogglePracticeHelp);
 }
 void ABattleMacController::TogglePracticeHelp(){if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){M->bTutorialHelp=!M->bTutorialHelp;GConfig->SetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),M->bTutorialHelp,GGameUserSettingsIni);GConfig->Flush(false,GGameUserSettingsIni);}}
+void ABattleMacController::CycleRiderStyle(){
+ BattleSetRiderStyle((BattleRiderStyle()+1)%3);
+ if(auto* Bike=Cast<ABattleBike>(GetPawn()))Bike->ApplyRiderStyle();
+ if(auto* Person=Cast<ABattleRider>(GetPawn())){Person->ApplyRiderStyle();if(Person->ParkedBike)Person->ParkedBike->ApplyRiderStyle();}
+ ShowMenu(TEXT("Levels"));
+}
 void ABattleMacController::RemoveMenu(){
  if(Menu.IsValid()&&GetWorld()&&GetWorld()->GetGameViewport())GetWorld()->GetGameViewport()->RemoveViewportWidgetContent(Menu.ToSharedRef());
  Menu.Reset();
@@ -249,11 +256,12 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
  }else if(Page==TEXT("Levels")){
   Label(TEXT("Select a difficulty to start a new ride."),18,FLinearColor::White);
+  Button(TEXT("ELLISON OUTFIT  |  ")+BattleRiderStyleName()+TEXT("  |  CHANGE"),[this](){CycleRiderStyle();});
   if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty")))for(FName Name:{FName(TEXT("Easy")),FName(TEXT("Medium")),FName(TEXT("Hard"))}){
    if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %.0f MIN  |  %s"),*Name.ToString(),Row->TimeLimitSeconds/60,*Row->Warning),[this,Name](){StartDifficulty(Name);});
    const float Best=BattleRecords::Best(Name);if(Best>0)Label(TEXT("BEST RUN  ")+BattleRecords::Format(Best),16,FLinearColor(1,.7,.35));
   }
-  Label(TEXT("Timers and walking crowds scale now. The expanded enemy roster and complete route are still in development."),14,FLinearColor(.7,.72,.75));
+  Label(TEXT("Difficulty changes the timer, crowds, enemy pressure, weapon supplies and search range."),14,FLinearColor(.7,.72,.75));
   Button(TEXT("BACK"),[this,Ended](){const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));ShowMenu(Ended?(M&&M->bWon?TEXT("Win"):TEXT("Loss")):TEXT("Home"));});
  }else if(Page==TEXT("Instructions")){
   Label(TEXT("Ellison dropped his cell phone playing frisbee in Piedmont Park. Use Find My Lost Phone on his watch to follow a broad compass direction. Recover it, then race past Murder K and Krog Street Market, through Krog Tunnel and right into 98 Estoria. Morgan is waiting for him at the Cabbagetown party. Make it before the clock runs out and celebrate with a beer."),16,FLinearColor::White);
@@ -273,7 +281,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("Mac playtest | Web Experts\nPark riding and FPS test. Full route, enemies and campaign are not finished."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("The Battle of ATL | Web Experts\nPiedmont Park to Cabbagetown — recover the phone and make the party."),13,FLinearColor(.65,.68,.72));
  }
  if(bCelebrating&&CelebrationArt){
   CelebrationBrush.SetResourceObject(CelebrationArt);CelebrationBrush.ImageSize=FVector2D(CelebrationArt->GetSizeX(),CelebrationArt->GetSizeY());

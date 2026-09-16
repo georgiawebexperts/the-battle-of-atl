@@ -10,8 +10,21 @@
 #include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
 #include "Misc/CommandLine.h"
+#include "Misc/ConfigCacheIni.h"
 
 bool BattleUseDetailedRider(){return !FParse::Param(FCommandLine::Get(),TEXT("BattleLegacyRider"));}
+int32 BattleRiderStyle(){int32 Style=0;GConfig->GetInt(TEXT("BattleInterface"),TEXT("RiderStyle"),Style,GGameUserSettingsIni);return FMath::Clamp(Style,0,2);}
+void BattleSetRiderStyle(int32 Style){GConfig->SetInt(TEXT("BattleInterface"),TEXT("RiderStyle"),FMath::Clamp(Style,0,2),GGameUserSettingsIni);GConfig->Flush(false,GGameUserSettingsIni);}
+FString BattleRiderStyleName(int32 Style){if(Style<0)Style=BattleRiderStyle();static const TCHAR* Names[]={TEXT("PEACHTREE RED"),TEXT("MIDNIGHT BLACK"),TEXT("ATLANTA GOLD")};return Names[FMath::Clamp(Style,0,2)];}
+static FVector RiderStyleColor(){static const FVector Colors[]={FVector(.58f,.025f,.035f),FVector(.018f,.022f,.03f),FVector(.85f,.45f,.035f)};return Colors[BattleRiderStyle()];}
+
+void ABattleBike::ApplyRiderStyle(){
+ TArray<USkeletalMeshComponent*> Parts;GetComponents(Parts);for(auto* Part:Parts)if(Part->GetName()==TEXT("DetailedRiderPart0"))Part->SetVectorParameterValueOnMaterials(TEXT("A_CrowdColor_main"),RiderStyleColor());
+}
+
+void ABattleRider::ApplyRiderStyle(){
+ TArray<USkeletalMeshComponent*> Parts;GetComponents(Parts);for(auto* Part:Parts)if(Part->GetName()==TEXT("DetailedFootPart0")||Part->GetName()==TEXT("DetailedFirstPersonSleeves"))Part->SetVectorParameterValueOnMaterials(TEXT("A_CrowdColor_main"),RiderStyleColor());
+}
 
 void ABattleBike::InitializeDetailedRiderPreview(){
  if(!BattleUseDetailedRider())return;
@@ -30,7 +43,7 @@ void ABattleBike::InitializeDetailedRiderPreview(){
   Part->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Parts[I]);Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);Part->SetLeaderPoseComponent(Rider,true,false);Part->RegisterComponent();
  }
  auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedRiderHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetupAttachment(Rider);Hair->RegisterComponent();Hair->AttachToComponent(Rider,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
- bDetailedRiderPreview=true;
+ bDetailedRiderPreview=true;ApplyRiderStyle();
  UE_LOG(LogTemp,Display,TEXT("DetailedRiderPreview: body=%s outfit_parts=%d"),*Body->GetName(),Parts.Num());
 }
 
@@ -64,7 +77,7 @@ void ABattleRider::InitializeDetailedArmsPreview(){
  FirstPersonArms->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/M_BodySynthesized")));
  auto* Part=NewObject<USkeletalMeshComponent>(this,TEXT("DetailedFirstPersonSleeves"));AddInstanceComponent(Part);Part->SetupAttachment(FirstPersonArms);
  Part->SetDisablePostProcessBlueprint(true);Part->SetSkeletalMeshAsset(Sleeves);Part->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/CitySampleCrowd/Character/Male/NormalWeight/Materials/MI_m_nrw_crewneck")));Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);
- Part->SetOnlyOwnerSee(true);Part->SetCastShadow(false);Part->SetBoundsScale(10);Part->SetLeaderPoseComponent(FirstPersonArms,true,false);Part->RegisterComponent();
+ Part->SetOnlyOwnerSee(true);Part->SetCastShadow(false);Part->SetBoundsScale(10);Part->SetLeaderPoseComponent(FirstPersonArms,true,false);Part->RegisterComponent();ApplyRiderStyle();
 #if !UE_BUILD_SHIPPING
  Part->SetHiddenInGame(FParse::Param(FCommandLine::Get(),TEXT("BattleHideSleeves")));
 #endif
@@ -98,7 +111,7 @@ void ABattleRider::InitializeDetailedBodyPreview(){
  }
  auto* Hair=NewObject<UStaticMeshComponent>(this,TEXT("DetailedFootHair"));AddInstanceComponent(Hair);Hair->SetMobility(EComponentMobility::Movable);Hair->SetStaticMesh(HairMesh);Hair->SetCollisionEnabled(ECollisionEnabled::NoCollision);Hair->SetCanEverAffectNavigation(false);Hair->SetOwnerNoSee(false);Hair->SetupAttachment(Body);Hair->RegisterComponent();Hair->AttachToComponent(Body,FAttachmentTransformRules::KeepWorldTransform,TEXT("head"));
  GetCharacterMovement()->MaxWalkSpeed=200;GetCharacterMovement()->MaxWalkSpeedCrouched=150;
- bNativeCrowdRig=bDetailedPlayerRig=true;SetLocomotionClips(DetailedIdle,DetailedWalk,DetailedRun);
+ bNativeCrowdRig=bDetailedPlayerRig=true;SetLocomotionClips(DetailedIdle,DetailedWalk,DetailedRun);ApplyRiderStyle();
  if(bDetailedBodyReview){CameraArm->SetComponentTickEnabled(true);Camera->AttachToComponent(CameraArm,FAttachmentTransformRules::SnapToTargetNotIncludingScale,USpringArmComponent::SocketName);Camera->SetRelativeLocation(FVector::ZeroVector);Camera->bUsePawnControlRotation=false;}
  UE_LOG(LogTemp,Display,TEXT("DetailedLanding: loaded=2"));
  UE_LOG(LogTemp,Display,TEXT("DetailedFootPreview: body=%s outfit_parts=4 clips=6"),*Mesh->GetName());
