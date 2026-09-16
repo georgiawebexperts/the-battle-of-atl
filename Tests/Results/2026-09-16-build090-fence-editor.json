@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "editor": true,
+  "image": "work/build090-editor-gate-v3/bike.png",
+  "size": [
+    1280,
+    720
+  ],
+  "sha256": "5bf18f1c9630d375516fa69c3173b8b9dccc24bde3e74ee3195d2f3bde68f1c6",
+  "visual_review": true,
+  "visual_findings": "The 12th Street farmers-market closure now reads at human scale with open views into the park; the reduced rails remain clearly visible as a boundary.",
+  "scope": "Editor native 1280x720 tutorial-start capture; packaged presentation still required."
+}

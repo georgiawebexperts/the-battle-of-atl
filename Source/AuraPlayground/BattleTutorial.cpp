@@ -84,33 +84,41 @@ ABattleTutorial::ABattleTutorial(){
   auto* BoundaryIron=Group(*FString::Printf(TEXT("BoundaryIron%d"),I),Dark.Object);BoundaryIron->SetupAttachment(Boundary);
   auto* BoundaryDoor=Group(*FString::Printf(TEXT("BoundaryRed%d"),I),Red.Object);BoundaryDoor->SetupAttachment(Boundary);
   auto* BoundaryConcrete=Group(*FString::Printf(TEXT("BoundaryConcrete%d"),I),White.Object);BoundaryConcrete->SetupAttachment(Boundary);
+  auto* BoundaryCollision=Group(*FString::Printf(TEXT("BoundaryCollision%d"),I),Dark.Object);BoundaryCollision->SetupAttachment(Boundary);BoundaryCollision->SetVisibility(false,true);BoundaryCollision->SetHiddenInGame(true,true);
   const FVector C=FVector::ZeroVector,D=BattleTutorialBlock::BarrierDirections[I],Right(-D.Y,D.X,0);const FRotator R=D.Rotation();
-  // Closely spaced welded-mesh fence: the visible bars themselves block bikes and walkers.
-  for(int Y=-1000;Y<=1000;Y+=45)Part(BoundaryIron,C+Right*Y+FVector(0,0,180),FVector(10,7,360),R);
-  for(int Z=30;Z<=350;Z+=40)Part(BoundaryIron,C+FVector(0,0,Z),FVector(10,2050,6),R);
-  Part(BoundaryDoor,C-D*16+FVector(0,0,180),FVector(20,740,145),R);
+  // Human-scale temporary fencing still blocks the road without reading as a
+  // prison wall or hiding the park beyond it.
+  constexpr float ClosureFenceTop=190.f;
+  Part(BoundaryCollision,C+FVector(0,0,180),FVector(20,2050,360),R);
+  for(int Y=-1000;Y<=1000;Y+=45)Part(BoundaryIron,C+Right*Y+FVector(0,0,ClosureFenceTop*.5f),FVector(10,7,ClosureFenceTop),R);
+  for(float Z:{25.f,75.f,125.f,ClosureFenceTop-15.f})Part(BoundaryIron,C+FVector(0,0,Z),FVector(10,2050,6),R);
+  Part(BoundaryDoor,C-D*16+FVector(0,0,122),FVector(20,740,78),R);
   Part(BoundaryConcrete,C-D*29+FVector(0,0,103),FVector(8,740,14),R);
   for(int Side:{-1,1}){Part(BoundaryConcrete,C+Right*Side*440+FVector(0,0,35),FVector(150,150,70),R);Part(BoundaryDoor,C+Right*Side*440+FVector(0,0,78),FVector(55,55,45),R);}
-  Label(*FString::Printf(TEXT("Closure%d"),I),TEXT("UNDER CONSTRUCTION"),C-D*31+FVector(0,0,190),33,(-D).Rotation())->SetupAttachment(Boundary);
-  Label(*FString::Printf(TEXT("Expansion%d"),I),TEXT("MORE MIDTOWN COMING SOON"),C-D*31+FVector(0,0,142),22,(-D).Rotation())->SetupAttachment(Boundary);
+  Label(*FString::Printf(TEXT("Closure%d"),I),TEXT("UNDER CONSTRUCTION"),C-D*31+FVector(0,0,142),25,(-D).Rotation())->SetupAttachment(Boundary);
+  Label(*FString::Printf(TEXT("Expansion%d"),I),TEXT("MORE MIDTOWN COMING SOON"),C-D*31+FVector(0,0,111),17,(-D).Rotation())->SetupAttachment(Boundary);
  }
  // Stone piers and open iron wings leave the central ride-through clear.
+ // Keep the side fencing near a five-foot park scale so the entrance preserves
+ // long views into the lawn. The masonry remains tall enough to read as the
+ // 14th Street landmark arch supports.
  const FVector G=BattleTutorialData::Gate;
+ constexpr float GateFenceTop=150.f;
  for(int Side:{-1,1}){
   for(int Z=20;Z<360;Z+=40)for(int X:{-1,1})for(int Y:{-1,1})Part(Concrete,G+FVector(X*36,Side*360+Y*36,Z),FVector(70,70,38));
   Part(Concrete,G+FVector(0,Side*360,365),FVector(170,170,30));Part(Concrete,G+FVector(0,Side*360,405),FVector(85,85,50));
   for(int I=0;I<8;I++){
-   const float Base=BattleGateSupport::BaseZ[Side<0?0:1][I]-G.Z-4.f,Top=240.f;
+   const float Base=BattleGateSupport::BaseZ[Side<0?0:1][I]-G.Z-4.f,Top=GateFenceTop;
    Part(Iron,G+FVector(100+I*35,Side*350,(Base+Top)*.5f),FVector(6,6,Top-Base));
    if(I==0||I==7){
     Part(Iron,G+FVector(100+I*35,Side*350,(Base+Top)*.5f),FVector(10,10,Top-Base));
     Part(Iron,G+FVector(100+I*35,Side*350,Base+5),FVector(18,18,6));
    }
   }
-  for(int Z:{30,230})Part(Iron,G+FVector(220,Side*350,Z),FVector(300,8,8));
+  for(float Z:{30.f,GateFenceTop-10.f})Part(Iron,G+FVector(220,Side*350,Z),FVector(300,8,8));
  }
- Part(Iron,G+FVector(-80,-360,275),FVector(10,200,105));Label(TEXT("ParkName"),TEXT("PIEDMONT PARK"),G+FVector(-88,-360,280),19,FRotator(0,180,0));
- Label(TEXT("GateName"),TEXT("14TH STREET"),G+FVector(-88,-360,244),16,FRotator(0,180,0));
+ Part(Iron,G+FVector(-80,-360,185),FVector(10,200,90));Label(TEXT("ParkName"),TEXT("PIEDMONT PARK"),G+FVector(-88,-360,198),17,FRotator(0,180,0));
+ Label(TEXT("GateName"),TEXT("14TH STREET"),G+FVector(-88,-360,166),14,FRotator(0,180,0));
 }
 void ABattleTutorial::BeginPlay(){
  Super::BeginPlay();
