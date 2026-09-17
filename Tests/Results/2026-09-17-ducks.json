@@ -1,0 +1,41 @@
+{
+  "build": 101,
+  "version": "0.101.0",
+  "feature": "Lake Clara Meer ducks",
+  "requirement": "Design/PLAYTEST revision: add ducks that fly into the pond; a duck collision while swimming briefly forces the swimmer under and costs time. Shooting a pet or duck already costs 10 seconds.",
+  "implementation": {
+    "actors": "Source/AuraPlayground/BattleDuck.* (ABattleDuck, ABattleDuckFlock)",
+    "spawned_by": "ABattleParkMode::StartPlay",
+    "behaviour": "Fly in from 14-22 m up, settle on open water inside the real lake outline, drift and bob, take off when a rider crowds them, circle out and land elsewhere. Shot ducks are destroyed and are tagged BattleDuck so the existing -10 second animal rule applies.",
+    "swimmer_contact": "Within 130 cm of a swimming player: the player is pushed 150 cm under the surface and the run loses 5 seconds with a DUCK! notice, once per duck per 6 seconds. Exact penalty was left as a tuning choice in the design."
+  },
+  "evidence": {
+    "editor": {
+      "command": "-BattleDuckAudit",
+      "passed": true,
+      "ducks": 8,
+      "over_water": 4,
+      "bumps": 1,
+      "time_delta": -5.0,
+      "notice": "DUCK!",
+      "lowest_offset_cm": -112.6
+    },
+    "packaged_staged_app": {
+      "command": "Saved/StagedBuilds/Mac/AuraPlayground.app -BattleDuckAudit",
+      "passed": true,
+      "ducks": 8,
+      "over_water": 7,
+      "lowest_offset_cm": -95.0
+    },
+    "regression": {
+      "command": "-BattleSwimAudit with ducks live",
+      "passed": true,
+      "note": "Shoreline entry, swim, return and remount unaffected by the duck bump."
+    }
+  },
+  "scope_limits": [
+    "No duck audio yet; a quack is the obvious next polish.",
+    "The duck model is a primitive blockout (body, head, beak, tail) sized small enough to read as a bird at play distance.",
+    "The -5 second contact penalty is a tuning choice, not a specified number."
+  ]
+}

@@ -5,6 +5,7 @@
 #include "BattleQuest.h"
 #include "BattleCheckpoints.h"
 #include "BattleBoathouse.h"
+#include "BattleDuck.h"
 #include "BattleRider.h"
 #include "BattlePickup.h"
 #include "BattlePolice.h"
@@ -75,6 +76,27 @@ void ABattleMacController::TickHUDReview(float Dt){
  }
  // Roll up to Murder K so the loitering rent-a-cops heckle on camera.
  // Stand beside the new lakeside boathouse and look back at it.
+ // Stand on the lake shore and bring the ducks in close so they can be judged.
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleDuckReview"))){
+  ABattleDuckFlock* Flock=nullptr;
+  for(TActorIterator<ABattleDuckFlock> It(GetWorld());It;++It)if(!Flock)Flock=*It;
+  if(Flock&&Flock->Ducks.Num()>0){
+   FVector Centre=FVector::ZeroVector;int32 Live=0;
+   for(const auto& Duck:Flock->Ducks)if(IsValid(Duck)){Centre+=Duck->GetActorLocation();++Live;}
+   if(Live>0)Centre/=Live;
+   // Cluster the raft and look at it from just above the water, because the
+   // ducks are far too small to judge from the shore.
+   for(int32 I=0;I<Flock->Ducks.Num();++I)if(IsValid(Flock->Ducks[I])){
+    const float Angle=I*2*PI/FMath::Max(1,Flock->Ducks.Num());
+    Flock->Ducks[I]->FlyTo(FVector(Centre.X+FMath::Cos(Angle)*260.f,Centre.Y+FMath::Sin(Angle)*260.f,0),float(I)*.4f);
+   }
+   const float Surface=Flock->Ducks.Num()&&IsValid(Flock->Ducks[0])?Flock->Ducks[0]->WaterZ:Centre.Z;
+   const FVector LookAt(Centre.X,Centre.Y,Surface+26);
+   const FVector Eye=LookAt+FVector(0,-700,170);
+   if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(LookAt-Eye).Rotation()))SetViewTarget(Camera);
+   UE_LOG(LogTemp,Display,TEXT("DuckReview: centre=%s ducks=%d eye=%s"),*Centre.ToString(),Flock->Ducks.Num(),*Eye.ToString());
+  }
+ }
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBoathouseReview"))){
   for(TActorIterator<ABattleBoathouse> It(GetWorld());It;++It)if(It->bPlaced)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
    const FTransform Xf=It->GetActorTransform();
