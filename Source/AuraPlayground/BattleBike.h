@@ -41,7 +41,10 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 Gear=1;
 UPROPERTY(BlueprintReadOnly) float Recovery=0;
  /** Seconds the rider has held the pedals with the bike pinned against something. */
- UPROPERTY(BlueprintReadOnly) float StuckSeconds=0;
+UPROPERTY(BlueprintReadOnly) float StuckSeconds=0;
+ float GrassSeconds=0;
+ /** Riding the painted cycle track, where traffic keeps clear. */
+ UPROPERTY(BlueprintReadOnly) bool bBikeLane=false;
  UPROPERTY(BlueprintReadOnly) int32 Wipeouts=0;
  UPROPERTY(BlueprintReadOnly) FString RecoveryReason;
  UPROPERTY(BlueprintReadOnly) bool bGrass=false;
@@ -99,7 +102,9 @@ public:
  FString HornNotice;
  int32 AddHornUses(int32 Amount);
  UFUNCTION(BlueprintCallable) void Horn();
- UPROPERTY(BlueprintReadOnly) float Nitro=0;
+UPROPERTY(BlueprintReadOnly) float Nitro=0;
+ /** Stored throttle boosts the rider finds on the route (max 3). */
+ UPROPERTY(BlueprintReadOnly) int32 BoostCharges=0;
  UPROPERTY(BlueprintReadOnly) int32 NearMisses=0;
  UPROPERTY(BlueprintReadOnly) int32 EnemyKills=0;
  UPROPERTY(BlueprintReadOnly) int32 ShotsFired=0;
@@ -199,7 +204,12 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 PeopleHit=0,PoliceSpawned=0;
  UPROPERTY(BlueprintReadOnly) bool bPoliceAlert=false;
  UPROPERTY(BlueprintReadOnly) FString WantedReason;
- UPROPERTY(BlueprintReadOnly) float WantedSeconds=0;
+UPROPERTY(BlueprintReadOnly) float WantedSeconds=0;
+ UPROPERTY(BlueprintReadOnly) FString HintText;
+ UPROPERTY(BlueprintReadOnly) float HintRemaining=0;
+ TSet<FName> HintsSeen;
+ void PushHint(FName Id,const FString& Text,float Seconds=6.f,bool bOnce=true);
+ void TickHints(float Dt);
  TSet<TWeakObjectPtr<AActor>> AssaultVictims;
  float QuietTime=0,PoliceDelay=0;
 

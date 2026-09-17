@@ -7,6 +7,7 @@
 #include "BattleBoathouse.h"
 #include "BattleDuck.h"
 #include "BattleSkyline.h"
+#include "BattleKrogCrash.h"
 #include "BattleTutorialData.h"
 #include "BattleRider.h"
 #include "BattlePickup.h"

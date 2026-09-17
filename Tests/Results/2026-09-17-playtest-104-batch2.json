@@ -1,0 +1,57 @@
+{
+ "build": "104",
+ "batch": "playtest feedback 2",
+ "krog_crash": {
+  "wreck": [
+   29085.298,
+   113517.023,
+   1047.253
+  ],
+  "distance_to_tunnel_cm": 2400,
+  "blocks_road": true,
+  "gap_open": true,
+  "fires": 3,
+  "bodies": 3,
+  "bystanders": 8,
+  "brawlers": 4,
+  "shout": "HELP!",
+  "permanent": true
+ },
+ "hints": {
+  "system": "ABattleLabMode::PushHint/TickHints, HUD panel at 24% height",
+  "triggers": [
+   "ride controls on start",
+   "on-foot mouse look",
+   "wanted",
+   "Krog crash approach",
+   "Trees ATL grass chase"
+  ]
+ },
+ "dismount": {
+  "auto_aim": "nearest APD/zombie within 34 m, else the parked bike",
+  "hop": "spawns 34 cm up with an 8 degree lean"
+ },
+ "grass": {
+  "time_penalty": "-3 s per 1.5 s riding grass above 250 speed",
+  "pursuers": "Trees ATL crew chases 4.5 s on the BeltLine stretch (Y>20000)",
+  "sign": "TREES ATL working on the grass, please keep off"
+ },
+ "boost": {
+  "charges": "speed crates bank a boost charge, max 3",
+  "hop": "jump now works from 90 speed, impulse 720/820"
+ },
+ "spirit": "primitive bear replaced with a spectral human figure (9 parts)",
+ "ground_text": "pickup labels scale with speed",
+ "bike_lane": "cycle-track surfaces flagged bBikeLane from the floor actor name",
+ "audits": {
+  "BattleKrogCrashAudit": "passed",
+  "BattleSpiritAudit": "passed",
+  "BattleTroubleAudit": "passed (103)",
+  "BattleTreeRideAudit": "passed (103)",
+  "BattlePickupAudit": "FAILED pre-existing: no health pickup within 15 m of a landmark anchor; layout counts pass (18 with park/trail split)"
+ },
+ "remaining": [
+  "cars that deliberately steer into the rider and bike-lane pedestrian rules",
+  "the specific bridge the rider cannot pass under (needs the location)"
+ ]
+}

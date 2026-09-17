@@ -22,12 +22,16 @@ ABattleSpirit::ABattleSpirit(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cone(TEXT("/Engine/BasicShapes/Cone.Cone"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
  auto Part=[&](const TCHAR* Name,UStaticMesh* Mesh,FVector Loc,FVector Scale,FRotator Rot=FRotator::ZeroRotator){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Mesh);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(Scale);C->SetRelativeRotation(Rot);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);BearParts.Add(C);return C;};
- Part(TEXT("BearBody"),Sphere.Object,FVector(0,0,78),FVector(1.22,.55,.70));
- Part(TEXT("BearShoulders"),Sphere.Object,FVector(55,0,92),FVector(.70,.62,.72));
- Part(TEXT("BearHead"),Sphere.Object,FVector(102,0,130),FVector(.48,.45,.46));
- Part(TEXT("BearMuzzle"),Sphere.Object,FVector(137,0,116),FVector(.34,.30,.25));
- Part(TEXT("BearEarL"),Cone.Object,FVector(92,-28,168),FVector(.14,.14,.22));Part(TEXT("BearEarR"),Cone.Object,FVector(92,28,168),FVector(.14,.14,.22));
- for(int X:{-55,45})for(int Y:{-32,32})Part(*FString::Printf(TEXT("BearLeg%d_%d"),X,Y),Cylinder.Object,FVector(X,Y,38),FVector(.18,.18,.70));
+ // A tall spectral figure rather than an animal: head, shoulders, torso,
+ // hanging arms and long legs read as a person at any distance.
+ Part(TEXT("FigureTorso"),Sphere.Object,FVector(0,0,116),FVector(.46,.30,.62));
+ Part(TEXT("FigureShoulders"),Sphere.Object,FVector(0,0,150),FVector(.56,.30,.24));
+ Part(TEXT("FigureNeck"),Cylinder.Object,FVector(0,0,163),FVector(.10,.10,.12));
+ Part(TEXT("FigureHead"),Sphere.Object,FVector(6,0,180),FVector(.24,.24,.30));
+ Part(TEXT("FigureHip"),Sphere.Object,FVector(0,0,76),FVector(.30,.24,.20));
+ Part(TEXT("FigureArmL"),Cylinder.Object,FVector(2,-30,120),FVector(.09,.09,.62));
+ Part(TEXT("FigureArmR"),Cylinder.Object,FVector(2,30,120),FVector(.09,.09,.62));
+ for(int X:{-14,10})Part(*FString::Printf(TEXT("FigureLeg%d"),X),Cylinder.Object,FVector(X,0,44),FVector(.13,.13,.95));
  Part(TEXT("BearTail"),Sphere.Object,FVector(-112,0,95),FVector(.34,.22,.25),FRotator(0,0,25));
  auto Wisp=[&](const TCHAR* Name,FVector Loc,float Scale){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Sphere.Object);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(FVector(Scale));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);Wisps.Add(C);};
  Wisp(TEXT("SpiritWispA"),FVector(-65,-85,145),.10f);Wisp(TEXT("SpiritWispB"),FVector(20,80,190),.075f);Wisp(TEXT("SpiritWispC"),FVector(105,-65,210),.055f);

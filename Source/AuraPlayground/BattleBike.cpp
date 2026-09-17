@@ -3,6 +3,8 @@
 #include "BattleSpirit.h"
 #include "BattleScooterTraffic.h"
 #include "BattleSpiritData.h"
+#include "BattleKrogCrash.h"
+#include "BattleHints.h"
 #include "BattleMemorial.h"
 #include "BattleMurderK.h"
 #include "BattleCheckpoints.h"
@@ -13,6 +15,7 @@
 #include "BattleMusician.h"
 #include "BattleBoathouse.h"
 #include "BattleDuck.h"
+#include "BattleSkyline.h"
 #include "BattlePicnic.h"
 #include "BattleParkFurniture.h"
 #include "BattleSkatepark.h"
@@ -188,6 +191,10 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleParkMusicDirector>();
  GetWorld()->SpawnActor<ABattleBoathouse>();
  GetWorld()->SpawnActor<ABattleDuckFlock>();
+ GetWorld()->SpawnActor<ABattleSkyline>();
+ GetWorld()->SpawnActor<ABattleKrogCrash>();
+ GetWorld()->SpawnActor<ABattleGrassWatch>();
+ GetWorld()->SpawnActor<ABattleGrassSign>();
  GetWorld()->SpawnActor<ABattlePicnicDirector>();
  GetWorld()->SpawnActor<ABattleTutorial>();
  // Validate supply placement against the complete world, including tutorial roads and fences.
@@ -196,7 +203,8 @@ void ABattleParkMode::StartPlay(){
 ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUDClass=ABattleLabHUD::StaticClass();}
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){
- AGameModeBase::Tick(Dt);ExpansionNoticeRemaining=FMath::Max(0.f,ExpansionNoticeRemaining-Dt);if(bTutorialActive)return;TickTrouble(Dt);TickDrones(Dt);TickKnife(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);
+ AGameModeBase::Tick(Dt);ExpansionNoticeRemaining=FMath::Max(0.f,ExpansionNoticeRemaining-Dt);if(bTutorialActive)return;TickTrouble(Dt);TickDrones(Dt);TickKnife(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);TickHints(Dt);
+ if(!HintsSeen.Contains(TEXT("ride")))PushHint(TEXT("ride"),TEXT("W/S PEDAL & BRAKE  ·  A/D STEER  ·  J JUMP  ·  SHIFT BOOST  ·  E GET OFF"),8.f);
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
  if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
  APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&(Player->IsA<ABattleRider>()||(Cast<ABattleBike>(Player)&&Cast<ABattleBike>(Player)->bCrashActive))?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
@@ -338,9 +346,12 @@ bool ABattleBike::FirePistol(){
  const auto Shot=FireBattlePistol(this,Pistol,PistolSpread);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.35f;if(!Shot.HitLabel.IsEmpty()){ShotNotice=Shot.HitLabel;ShotNoticeRemaining=.75f;}if(Shot.EnemyKilled)AwardEnemyKill();return true;
 }
 bool ABattleBike::Boost(){
- if(!GetController()||bParked||Ride->Recovery>0||Ride->BoostRemaining>0||Nitro<100)return false;
+ // A full nitro meter burns for free; otherwise spend one found boost charge.
+ const bool bNitro=Nitro>=100;
+ if(!GetController()||bParked||Ride->Recovery>0||Ride->BoostRemaining>0||(!bNitro&&BoostCharges<=0))return false;
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded)return false;
- Nitro=0;Ride->BoostRemaining=3;
+ if(bNitro)Nitro=0;else BoostCharges=FMath::Max(0,BoostCharges-1);
+ Ride->BoostRemaining=3;
  if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Boost.S_Boost")))UGameplayStatics::PlaySound2D(this,Sound);return true;
 }
 void ABattleBike::UpdateNearMisses(){

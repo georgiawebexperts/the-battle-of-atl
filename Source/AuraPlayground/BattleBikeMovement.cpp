@@ -34,6 +34,14 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   }
  }
  BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
+ // Grass is slow and expensive: a visible time loss every second and a half.
+ if(bGrass&&Speed>250&&Recovery<=0&&IsMovingOnGround()){
+  GrassSeconds+=Dt;
+  if(GrassSeconds>=1.5f){
+   GrassSeconds=0;
+   if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->AdjustRunTime(-3,TEXT("OFF THE GRASS"));
+  }
+ }else GrassSeconds=0;
  SmoothedSteer=SteeringResponse(SmoothedSteer,Recovery>0?0.f:Steer,Dt);
  ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);BounceRemaining=FMath::Max(0.f,BounceRemaining-Dt);SlideRemaining=FMath::Max(0.f,SlideRemaining-Dt);
  if(auto* Bike=Cast<ABattleBike>(CharacterOwner);Bike&&Bike->bCrashActive){Recovery=2;Speed=0;return;}
@@ -45,6 +53,9 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  }
  if(CharacterOwner){
   const AActor* Floor=CurrentFloor.HitResult.GetActor();bGrass=Floor&&(Floor->ActorHasTag(TEXT("RideGrass"))||(CurrentFloor.HitResult.GetComponent()&&CurrentFloor.HitResult.GetComponent()->ComponentHasTag(TEXT("RideGrass"))));
+  // Painted cycle track is the safe lane: traffic keeps clear of it.
+  const FString FloorName=Floor?Floor->GetName():FString();
+  bBikeLane=FloorName.Contains(TEXT("CycleTrack"))||FloorName.Contains(TEXT("BikeLane"));
   if(Recovery<=0){
    FRotator Heading=CharacterOwner->GetActorRotation();Heading.Pitch=Heading.Roll=0;
    const float SignedSpeed=Speed-ReverseSpeed;
@@ -201,8 +212,9 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
 
 bool UBattleBikeMovement::Hop(){
  auto* Bike=Cast<ABattleBike>(CharacterOwner);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
- if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||(!IsMovingOnGround()&&(bRealHandling||!IsFalling()||JumpGraceRemaining<=0))||Speed<150)return false;
- JumpGraceRemaining=0;Velocity.Z=FMath::Max(0.f,Velocity.Z)+(bRealHandling?650.f:750.f);SetMovementMode(MOVE_Falling);return true;
+ // A hop works from a slow roll too, so hills and kerbs can be jumped.
+ if(!Bike||!Mode||Mode->bRunEnded||Mode->StartCountdown>0||UGameplayStatics::IsGamePaused(this)||Bike->bParked||Bike->RiderHealth<=0||Bike->StunRemaining>0||Recovery>0||(!IsMovingOnGround()&&(bRealHandling||!IsFalling()||JumpGraceRemaining<=0))||Speed<90)return false;
+ JumpGraceRemaining=0;Velocity.Z=FMath::Max(0.f,Velocity.Z)+(bRealHandling?720.f:820.f);SetMovementMode(MOVE_Falling);return true;
 }
 void UBattleBikeMovement::OnMovementModeChanged(EMovementMode Previous,uint8 Custom){
  Super::OnMovementModeChanged(Previous,Custom);

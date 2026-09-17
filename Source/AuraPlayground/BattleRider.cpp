@@ -1,4 +1,7 @@
 #include "BattleRider.h"
+#include "BattlePolice.h"
+#include "BattleZombie.h"
+#include "EngineUtils.h"
 #include "Misc/App.h"
 #include "BattleSpareBikes.h"
 #include "BattleWeaponGrip.h"
@@ -181,9 +184,19 @@ bool ABattleBike::Dismount(){
  }
  if(!Found)return false;
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
- auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation(),P);if(!Person)return false;
+ // Hop off with a small step and lean instead of popping into place.
+ auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit+FVector(0,0,34),GetActorRotation()+FRotator(8,0,0),P);if(!Person)return false;
  Ride->BoostRemaining=0;Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
- ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());PC->bShowMouseCursor=false;PC->ResetIgnoreLookInput();if(!FApp::IsUnattended())PC->SetInputMode(FInputModeGameOnly());return true;
+ ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);
+ // On foot the player is auto-aimed at the nearest threat, or the bike, and
+ // told that the mouse now drives the camera.
+ FVector Aim=GetActorLocation();float Best=3400.f;
+ for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
+ for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
+ PC->SetControlRotation(FRotator(0,(Aim-Exit).Rotation().Yaw,0));
+ if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))
+  Mode->PushHint(TEXT("onfoot"),TEXT("ON FOOT — MOVE THE MOUSE TO LOOK AROUND  ·  E TO GET BACK ON THE BIKE"),7.f);
+ PC->bShowMouseCursor=false;PC->ResetIgnoreLookInput();if(!FApp::IsUnattended())PC->SetInputMode(FInputModeGameOnly());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
  if(bCrashActive||StunRemaining>0||!IsValid(Person)||Person->ParkedBike!=this)return false;

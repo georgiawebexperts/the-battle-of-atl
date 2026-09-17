@@ -9,6 +9,7 @@
 #include "BattleDrone.h"
 #include "BattlePickup.h"
 #include "BattleZombie.h"
+#include "BattleKrogCrash.h"
 #include "BattlePolice.h"
 #include "BattleKnife.h"
 #include "PiedmontPedestrian.h"
@@ -107,6 +108,7 @@ void ABattleLabHUD::DrawHUD(){
   Text(FString::Printf(TEXT("HEALTH  %.0f"),Owner->RiderHealth),M+18*S,Bottom+10*S,FullHUD?22:18);
   DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+(FullHUD?50.f:42.f)*S,274*S,(FullHUD?18.f:12.f)*S);DrawRect(Owner->RiderHealth<25?FLinearColor(1,.15,.1):FLinearColor(.3,.9,.62),M+18*S,Bottom+(FullHUD?50.f:42.f)*S,FMath::Clamp(Owner->RiderHealth/100.f,0.f,1.f)*274*S,(FullHUD?18.f:12.f)*S);
   if(FullHUD){Text(Owner->Ride->BoostRemaining>0?FString::Printf(TEXT("SPEED BOOST  %.1fs"),Owner->Ride->BoostRemaining):FString::Printf(TEXT("BOOST  %.0f%%"),Owner->Nitro),M+18*S,Bottom+80*S,20,Muted);DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);}
+  if(FullHUD){Text(Owner->Ride->BoostRemaining>0?FString::Printf(TEXT("SPEED BOOST  %.1fs"),Owner->Ride->BoostRemaining):FString::Printf(TEXT("BOOST  %.0f%%   CHARGES %d/3"),Owner->Nitro,FMath::Clamp(Owner->BoostCharges,0,3)),M+18*S,Bottom+80*S,20,Muted);DrawRect(FLinearColor(.15,.19,.2),M+18*S,Bottom+119*S,274*S,12*S);DrawRect(FLinearColor(.15,.75,1),M+18*S,Bottom+119*S,Owner->Nitro/100.f*274*S,12*S);}
  }
  // Keep reverse discoverable even when propulsion speed stays high against a blocker.
  FString Prompt=TEXT("E DISMOUNT  |  S/DOWN BACK UP");
@@ -229,9 +231,16 @@ void ABattleLabHUD::DrawHUD(){
   if(Found){Panel(Label.X-130*S,Label.Y-32*S,260*S,34*S);Text(FString::Printf(TEXT("AMMO +17  |  %.0fm"),Best/100.f),Label.X-118*S,Label.Y-28*S,20,FLinearColor(.45f,.9f,1));}
  }
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
+ // Contextual hints: pop up when they matter and fade away again.
+ if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Rules->HintRemaining>0&&!Rules->HintText.IsEmpty()){
+  Panel(CX-430*S,H*.24f,860*S,54*S);Center(Rules->HintText,H*.24f+11*S,23,Peach);
+ }
  if(!Owner->bCrashActive)if(auto* Viewer=GetOwningPawn()){
   const ABattleZombie* Speaking=nullptr;float Best=2500;
   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->SubtitleRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Speaking=*It;}}
   if(Speaking){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(Speaking->CharacterName()+TEXT(": ")+Speaking->Subtitle,H-M-159*S,24);}
+  const ABattleKrogCrash* Crash=nullptr;
+  if(!Speaking)for(TActorIterator<ABattleKrogCrash> It(GetWorld());It;++It)if(It->ShoutRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Crash=*It;}}
+  if(!Speaking&&Crash){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(FString::Printf(TEXT("BYSTANDER: %s"),*Crash->ShoutText),H-M-159*S,24,FLinearColor(1.f,.72f,.62f));}
  }
 }

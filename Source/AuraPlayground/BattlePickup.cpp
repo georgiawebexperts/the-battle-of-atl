@@ -40,7 +40,15 @@ void ABattleColaPickup::BeginPlay(){
  }
 }
 void ABattleColaPickup::Tick(float Dt){
- Super::Tick(Dt);if(bConsumed)return;Clock+=Dt;SetActorLocation(RestLocation+FVector(0,0,FMath::Sin(Clock*2.5f)*5));AddActorWorldRotation(FRotator(0,45*Dt,0));TryCollect(UGameplayStatics::GetPlayerPawn(this,0));
+ Super::Tick(Dt);if(bConsumed)return;Clock+=Dt;SetActorLocation(RestLocation+FVector(0,0,FMath::Sin(Clock*2.5f)*5));AddActorWorldRotation(FRotator(0,45*Dt,0));
+ // Labels grow with speed so ground text stays readable at pace.
+ APawn* Rider=UGameplayStatics::GetPlayerPawn(this,0);
+ float LabelScale=1.f;
+ if(Rider){auto* Bike=Cast<ABattleBike>(Rider);if(!Bike)if(auto* Person=Cast<ABattleRider>(Rider))Bike=Person->ParkedBike;
+  if(Bike&&Bike->Ride)LabelScale=1.f+FMath::Clamp(Bike->Ride->Speed/1800.f,0.f,1.4f);}
+ TArray<UTextRenderComponent*> Labels;GetComponents(Labels);
+ for(auto* Label:Labels)if(!bTimeBonus&&!bSpeedBonus)Label->SetWorldSize(18.f*LabelScale);
+ TryCollect(Rider);
 }
 bool ABattleColaPickup::TryCollect(APawn* Pawn){
  if(bConsumed||!Pawn||!Pawn->IsPlayerControlled()||FVector::DistSquared(Pawn->GetActorLocation(),GetActorLocation())>FMath::Square(150.f))return false;
@@ -50,7 +58,8 @@ bool ABattleColaPickup::TryCollect(APawn* Pawn){
  if(bSpeedBonus){
   auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
   if(Pawn!=Bike||Bike->bParked||Bike->bCrashActive||Bike->RiderHealth<=0||Bike->StunRemaining>0||Bike->Ride->Recovery>0||!Mode||Mode->bRunEnded||Mode->StartCountdown>0)return false;
-  Bike->Ride->BoostRemaining=FMath::Max(Bike->Ride->BoostRemaining,5.f);
+  // Speed crates now bank a throttle boost instead of firing it immediately.
+  Bike->BoostCharges=FMath::Min(3,Bike->BoostCharges+1);
   bConsumed=true;if(auto* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Boost.S_Boost")))UGameplayStatics::PlaySound2D(this,Sound);Destroy();return true;
  }
  if(bTimeBonus){

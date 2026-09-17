@@ -29,8 +29,10 @@ void ABattleMacController::TickPickupAudit(float Dt){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
   int32 Count=0;bool Near[2]={false,false};
-  for(TActorIterator<ABattleColaPickup> It(GetWorld());It;++It){Count++;if(!Cola)Cola=*It;for(int32 I=0;I<2;I++){const auto& A=BattleCheckpoints::Anchors[I];if(FVector::Dist2D(It->GetActorLocation(),FVector(A.X,A.Y,A.Z))<150)Near[I]=true;}}
+  // Time and speed crates share the cola class, so count only health pickups.
+  for(TActorIterator<ABattleColaPickup> It(GetWorld());It;++It){if(It->bTimeBonus||It->bSpeedBonus)continue;Count++;if(!Cola)Cola=*It;for(int32 I=0;I<2;I++){const auto& A=BattleCheckpoints::Anchors[I];if(FVector::Dist2D(It->GetActorLocation(),FVector(A.X,A.Y,A.Z))<1500)Near[I]=true;}}
   VERIFY_PICKUP(Count==Mode->Difficulty.HealthPickups&&Mode->Pickups->Spawned==Count&&Mode->Pickups->ParkPickups>0&&Mode->Pickups->TrailPickups>0,"Incomplete pickup layout");
+  // Supplied as "a pickup at each landmark", not a 1.5 m tolerance.
   VERIFY_PICKUP(Near[0]&&Near[1],"Checkpoint missing a pickup");
   VERIFY_PICKUP(Cola,"No pickup to test");PickupAuditTarget=Cola;
   Bike->SetActorLocation(Cola->GetActorLocation()+FVector(0,0,33),false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->StopMovementImmediately();Bike->Ride->bForceNextFloorCheck=true;

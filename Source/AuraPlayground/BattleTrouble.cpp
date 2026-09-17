@@ -18,6 +18,7 @@ bool ABattleLabMode::RecordAssault(AActor* Victim){
  if(!IsValid(Victim)||!Victim->ActorHasTag(TEXT("PiedmontTraffic"))||bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this)||AssaultVictims.Contains(Victim))return false;
  AssaultVictims.Add(Victim);PeopleHit++;Trouble=FMath::Min(12.f,Trouble+3);QuietTime=0;
  WantedReason=Victim->ActorHasTag(TEXT("PiedmontTraffic"))?TEXT("STRUCK A PEDESTRIAN"):TEXT("ASSAULT");
+ PushHint(TEXT("wanted"),TEXT("WANTED — KEEP QUIET AND THE HEAT FADES. APD ONLY COMES IF YOU KEEP IT UP."),7.f);
  if(PeopleHit>=3){bPoliceAlert=true;PoliceDelay=0;}
  UE_LOG(LogTemp,Display,TEXT("BattleTrouble: people=%d police=%d heat=%.2f"),PeopleHit,bPoliceAlert,Trouble);return true;
 }
