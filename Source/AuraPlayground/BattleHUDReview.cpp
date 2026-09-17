@@ -6,6 +6,8 @@
 #include "BattleCheckpoints.h"
 #include "BattleBoathouse.h"
 #include "BattleDuck.h"
+#include "BattleSkyline.h"
+#include "BattleTutorialData.h"
 #include "BattleRider.h"
 #include "BattlePickup.h"
 #include "BattlePolice.h"
@@ -77,6 +79,36 @@ void ABattleMacController::TickHUDReview(float Dt){
  // Roll up to Murder K so the loitering rent-a-cops heckle on camera.
  // Stand beside the new lakeside boathouse and look back at it.
  // Stand on the lake shore and bring the ducks in close so they can be judged.
+ // Look south-west from the gate at the downtown skyline. The index picks the
+ // vantage: 0 rider at the gate, 1 aerial over the gate, 2 lake-east shore,
+ // 3 halfway to the cluster, 4 gate just above the canopy.
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleSkylineReview"))){
+  ABattleSkyline* Line=nullptr;
+  for(TActorIterator<ABattleSkyline> It(GetWorld());It;++It)if(!Line)Line=*It;
+  int32 Index=0;FParse::Value(FCommandLine::Get(),TEXT("BattleSkylineReviewIndex="),Index);
+  if(Line)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
+   FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+   const FVector Try=BattleTutorialData::Gate+FVector(400,1400,0);
+   const FVector Spot=GetWorld()->LineTraceSingleByChannel(Ground,Try+FVector(0,0,900),Try-FVector(0,0,1600),ECC_Visibility,Q)?Ground.ImpactPoint+FVector(0,0,98):Try+FVector(0,0,98);
+   const FRotator Facing(0,(Line->Centre-Spot).Rotation().Yaw,0);
+   Bike->SetActorLocationAndRotation(Spot,Facing,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(Facing);
+   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
+   FHitResult Cluster;FCollisionQueryParams CQ;
+   const bool bClusterGround=GetWorld()->LineTraceSingleByChannel(Cluster,Line->Centre+FVector(0,0,20000),Line->Centre-FVector(0,0,20000),ECC_Visibility,CQ);
+   UE_LOG(LogTemp,Display,TEXT("SkylineReview: index=%d spot=%s centre=%s towers=%d distance_m=%.0f cluster_ground=%s base_offset_cm=%.0f"),
+    Index,*Spot.ToString(),*Line->Centre.ToString(),Line->Towers,FVector::Dist2D(Spot,Line->Centre)/100.f,
+    bClusterGround?TEXT("hit"):TEXT("none"),bClusterGround?Line->Centre.Z-Cluster.ImpactPoint.Z:0.f);
+   if(Index>0){
+    const float Lift=Index==1?9000.f:Index==3?6000.f:165.f;
+    const FVector Where=Index==2?FVector(-19000.f,-2000.f,0):Index==3?FVector(-24000.f,20000.f,0):
+     Index==5?FVector(BattleCheckpoints::Anchors[0].X,BattleCheckpoints::Anchors[0].Y,0):
+     Index==6?FVector(-14000.f,3000.f,0):FVector(Try.X,Try.Y,0);
+    FHitResult Camera;const bool bCamera=GetWorld()->LineTraceSingleByChannel(Camera,Where+FVector(0,0,12000),Where-FVector(0,0,20000),ECC_Visibility,Q);
+    const FVector Eye=(bCamera?Camera.ImpactPoint:Where)+FVector(0,0,Lift);
+    if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Line->Centre+FVector(0,0,Index==3?2600.f:1400.f)-Eye).Rotation()))SetViewTarget(Cam);
+   }
+  }
+ }
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleDuckReview"))){
   ABattleDuckFlock* Flock=nullptr;
   for(TActorIterator<ABattleDuckFlock> It(GetWorld());It;++It)if(!Flock)Flock=*It;

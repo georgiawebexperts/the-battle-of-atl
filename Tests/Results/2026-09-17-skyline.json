@@ -1,0 +1,95 @@
+{
+ "build": "102",
+ "audit": "BattleSkylineAudit",
+ "packaged": true,
+ "summary": {
+  "passed": true,
+  "towers": 43,
+  "tallest_m": 222,
+  "clear_vantages": 3,
+  "best_spot": "Murder K",
+  "best_yaw": 45,
+  "best_clear_m": 700
+ },
+ "spots": [
+  {
+   "spot": "Murder",
+   "eye_z": "328",
+   "bearing_yaw": "169",
+   "distance_m": "593",
+   "towers_clear": "5/5",
+   "first_blocker_m": "0",
+   "blocker": "none"
+  },
+  {
+   "spot": "Krog",
+   "eye_z": "980",
+   "bearing_yaw": "-143",
+   "distance_m": "702",
+   "towers_clear": "0/5",
+   "first_blocker_m": "9",
+   "blocker": "StaticMeshActor_138"
+  },
+  {
+   "spot": "gate",
+   "eye_z": "283",
+   "bearing_yaw": "102",
+   "distance_m": "674",
+   "towers_clear": "0/5",
+   "first_blocker_m": "3",
+   "blocker": "BattleTutorial_2147482267"
+  },
+  {
+   "spot": "lake-east",
+   "eye_z": "200",
+   "bearing_yaw": "100",
+   "distance_m": "640",
+   "towers_clear": "1/5",
+   "first_blocker_m": "119",
+   "blocker": "StaticMeshActor_120"
+  },
+  {
+   "spot": "lake-north",
+   "eye_z": "346",
+   "bearing_yaw": "106",
+   "distance_m": "602",
+   "towers_clear": "5/5",
+   "first_blocker_m": "0",
+   "blocker": "none"
+  },
+  {
+   "spot": "lake-centre",
+   "eye_z": "-162",
+   "bearing_yaw": "112",
+   "distance_m": "648",
+   "towers_clear": "5/5",
+   "first_blocker_m": "0",
+   "blocker": "none"
+  },
+  {
+   "spot": "oval",
+   "eye_z": "26",
+   "bearing_yaw": "100",
+   "distance_m": "577",
+   "towers_clear": "1/5",
+   "first_blocker_m": "73",
+   "blocker": "StaticMeshActor_120"
+  }
+ ],
+ "skyline": {
+  "centre": [
+   -30626.016,
+   60910.348,
+   836.618
+  ],
+  "towers": 43,
+  "tallest_authored_m": 222,
+  "distance_from_gate_m": 661,
+  "base_snapped_to_local_ground": true
+ },
+ "review_images": [
+  "work/skv3-1-5EDAF6/bike.png (aerial)",
+  "work/skv4-5-CC2FC8/bike.png (Murder K plaza)"
+ ],
+ "note": "Terrain never blocks the tower tops; near park trees and the market apartments do. Three of seven sampled rideable spots have 5/5 towers clear."
+}
