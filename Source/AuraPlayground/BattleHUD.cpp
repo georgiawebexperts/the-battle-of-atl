@@ -157,6 +157,9 @@ void ABattleLabHUD::DrawHUD(){
  else if(Owner->PickupNoticeRemaining>0)Notice=FString::Printf(TEXT("+%.0f HEALTH"),Owner->LastHealAmount);
  else if(const auto* Controller=Cast<ABattleMacController>(GetOwningPlayerController());Controller&&Controller->AimNoticeRemaining>0)Notice=Controller->AimNotice;
  if(!Owner->bCrashActive&&Notice.IsEmpty())for(TActorIterator<ABattleKnife> It(GetWorld());It;++It)if(!It->bDead&&!It->bEscaped&&FVector::Dist2D(It->GetActorLocation(),GetOwningPawn()->GetActorLocation())<1400){Notice=It->bWindingUp?TEXT("KNIFE STRIKE — MOVE!"):It->Stabs>0?TEXT("KNIFE CHASE — RUN, DEFEND OR REMOUNT"):TEXT("KNIFE ATTACKER — RUN OR G TO DRAW");break;}
+ // The Murder K rent-a-cops heckle in world text above their heads; repeat the
+ // coward call on the HUD so it reads even when the officer is behind you.
+ if(!Owner->bCrashActive&&Notice.IsEmpty())for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bYellingCoward&&It->TauntVisible>0){Notice=TEXT("RENT-A-COP: COWARD!");break;}
  if(auto* PC=GetOwningPlayerController()){
   FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
   const ABattleGunman* Active=nullptr;float Nearest=3000;

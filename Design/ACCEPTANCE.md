@@ -56,3 +56,53 @@ Native Game/Editor compilation and Mac packaging pass. Expanded real packaged he
 Installed complete signed desktop app 0.14.0, retained build 013 under Previous, and confirmed normal branded headless Home startup with a ready Artifact and clean exit. Cleaned two known failed temporary app copies. Mac remains locked on recheck; visual acceptance still awaits unlock. Full V3 world/foliage/life, complete route, enemies/weapons, health/checkpoints, saves/results/outfits/audio/performance/World Partition and final shipping acceptance remain required. Goal stays active.
 
 2026-09-14 [codex-maclaptop] — Native continuous movement evidence: Tests/Results/2026-09-14-full-ride-diagnostics.json passes one park-start → phone → MurderK → KrogStreetMarket → tunnel → 98Estoria win run, no teleport,494.03s/195440.06cm. Combat/crowd removed, road traffic retained; tutorial skipped. This supplements earlier teleport-based objective checks and does not accept the full game, all routes/phone sites, visuals, combat or fun. Earlier fullattempt stalled before KrogMarket; retained as unresolved intermittent issue.
+
+
+## Current status — Build 099 — 2026-09-17 [codex-maclaptop]
+
+This ledger's per-gate rows above still describe the build-014 era. The current
+state, in one place, so the remaining work is not read off stale notes:
+
+**Built and passing today (native Development and signed share build 099)**
+
+- Bike/FPS modes, gear and steering model, drift, nitro, horn, automatic lights,
+  camera modes, dismount/remount, swimming with stroke animation, crash and
+  taser recovery presentation, health/checkpoints/respawn penalty.
+- Quest loop: randomized phone placement, watch proximity signal, radar with
+  range gating and rim arrow, post-pickup route, Murder K, Krog Market, tunnel,
+  98 Estoria finish, win/loss and level select, best-time records.
+- Weapons: pistol, shotgun, SMG, rifle with zoom, ricocheting frisbee launcher,
+  U-lock melee, crates, enemy drops, ammo supplies, reload/zoom presentation.
+- Enemies and hazards: zombie waves by difficulty, sleepers and bench fires,
+  police taser telegraph with dodge window, drones, knife encounters, scooters
+  and road traffic, spare bikes, boost pickups.
+- Mac delivery: branded 0.99.0 app, sandbox-only entitlements, icon set, BOA
+  desktop shortcut, focus-loss pause, resolution presets, quit, App Store
+  guardrail audit.
+- Player-facing aim sensitivity (25%-200%, Options or `[` / `]`) with a passing
+  scale/persistence audit, and held instruments for the park musicians.
+
+**Named requirements that are still missing (unchanged scope)**
+
+- Landmarks: no boathouse/dock, fountain, promenade, tennis courts, Magnolia
+  Hall/Greystone/Playscape, dog park, bocce, garden, Aquatic Center, Active Oval
+  or skyline geometry exists in code or content today. Gate 2 cannot be accepted
+  until these exist and match references; reference photos are still missing.
+- Foliage: Epic European hornbeam and HillTree canopy stand-ins are in the park;
+  the specified oak/magnolia/hardwood species and photo matching are not.
+- Park life gaps: leashed/crossing dogs, children and playground, football, oval
+  runners, tennis/pool ambience and food vendors do not exist yet. Walkers,
+  joggers, pairs, dancers, musicians, picnics and skaters do.
+- Front end: title art, level select, instructions, options and celebration
+  exist; a full title/logo/golden-hour pan and original dynamic soundtrack do
+  not.
+- Measured performance: rendered 60 fps at 1080p on the target Mac is not yet
+  established for the current build.
+- Final play acceptance per difficulty, and the Apple-side steps (review contact
+  phone, price/release, license confirmations, notarization) remain with
+  Elliott.
+
+Two audits are worth knowing before they mislead anyone: `-BattleMusicAudit`
+fails when the run passes `-nosound`, because no audio device ever reaches
+Playing. Without that flag it passes (`{"passed":true,"tracks":2,...}`,
+2026-09-17).

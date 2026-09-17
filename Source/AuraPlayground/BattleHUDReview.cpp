@@ -3,6 +3,8 @@
 #include "BattleHomeData.h"
 #include "BattleHome.h"
 #include "BattleQuest.h"
+#include "BattleCheckpoints.h"
+#include "BattleBoathouse.h"
 #include "BattleRider.h"
 #include "BattlePickup.h"
 #include "BattlePolice.h"
@@ -60,6 +62,61 @@ void ABattleMacController::TickHUDReview(float Dt){
   const FVector Eye(-20000,2450,650),Target(-18700,3187,20);if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation()))SetViewTarget(Cam);
  }
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingHUD")))if(auto* Bike=Cast<ABattleBike>(GetPawn()))Bike->Ride->bRealHandling=true;
+ // Park beside the lost phone so the watch panel can be judged at full signal.
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleWatchReview"))){
+  if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->Quest&&Mode->Quest->bReady)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
+   const FVector Target=Mode->Quest->ArtifactLocation+FVector(0,900,0);FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+   const FVector Spot=GetWorld()->LineTraceSingleByChannel(Ground,Target+FVector(0,0,1200),Target-FVector(0,0,1500),ECC_Visibility,Q)?Ground.ImpactPoint+FVector(0,0,98):Target+FVector(0,0,98);
+   const FRotator Facing(0,(Mode->Quest->ArtifactLocation-Spot).Rotation().Yaw,0);
+   Bike->SetActorLocationAndRotation(Spot,Facing,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(Facing);
+   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
+   UE_LOG(LogTemp,Display,TEXT("WatchReview: spot=%s phone=%s distance_cm=%.0f"),*Spot.ToString(),*Mode->Quest->ArtifactLocation.ToString(),FVector::Dist2D(Spot,Mode->Quest->ArtifactLocation));
+  }
+ }
+ // Roll up to Murder K so the loitering rent-a-cops heckle on camera.
+ // Stand beside the new lakeside boathouse and look back at it.
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBoathouseReview"))){
+  for(TActorIterator<ABattleBoathouse> It(GetWorld());It;++It)if(It->bPlaced)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
+   const FTransform Xf=It->GetActorTransform();
+   const FVector Hull=Xf.TransformPosition(FVector(-700,0,0));
+   FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+   // Stand on the shore, not in the lake: accept the first offset that traces
+   // dry ground above the water line.
+   FVector Spot=Hull+FVector(0,0,98);
+   for(const FVector Local:{FVector(-2500,1300,0),FVector(-2500,-1300,0),FVector(-1900,1600,0),FVector(300,1500,0),FVector(300,-1500,0),FVector(1500,900,0)}){
+    const FVector Try=Xf.TransformPosition(Local);
+    if(GetWorld()->LineTraceSingleByChannel(Ground,Try+FVector(0,0,700),Try-FVector(0,0,1500),ECC_Visibility,Q)&&Ground.ImpactPoint.Z>It->WaterZ+40){
+     Spot=Ground.ImpactPoint+FVector(0,0,98);break;
+    }
+   }
+   const FRotator Facing(0,(Hull-Spot).Rotation().Yaw,0);
+   Bike->SetActorLocationAndRotation(Spot,Facing,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(Facing);
+   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
+   UE_LOG(LogTemp,Display,TEXT("BoathouseReview: spot=%s hull=%s dock_over_water=%s hull_on_land=%s"),*Spot.ToString(),*Hull.ToString(),
+    It->bDockOverWater?TEXT("true"):TEXT("false"),It->bHullOnLand?TEXT("true"):TEXT("false"));
+   break;
+  }
+ }
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleRentACopReview"))){
+  // Murder K only activates once the phone is collected (or trouble is high),
+  // exactly as it does on a real run home.
+  if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->Quest&&Mode->Enemies)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
+   Mode->Quest->bCollected=true;Mode->bTutorialActive=false;Mode->StartCountdown=0;
+   Mode->Enemies->bFreezeSpawns=false;Bike->DamageGrace=0;
+    const auto& A=BattleCheckpoints::Anchors[0];const FVector Target(A.X,A.Y,A.Z+98);
+   FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+   const FVector Spot=GetWorld()->LineTraceSingleByChannel(Ground,Target+FVector(0,0,500),Target-FVector(0,0,900),ECC_Visibility,Q)?Ground.ImpactPoint+FVector(0,0,98):Target;
+   Bike->SetActorLocationAndRotation(Spot,FRotator(0,A.Yaw+180,0),false,nullptr,ETeleportType::TeleportPhysics);
+   SetControlRotation(FRotator(0,A.Yaw+180,0));Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
+   // Now that the rider is standing in the plaza, the encounter's own approach
+   // gate is satisfied; spawn it deterministically rather than waiting.
+   Mode->Enemies->TickMurderK(0);
+   int32 RentACops=0,Ticking=0;
+   for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(It->bAmbientMurderK){++RentACops;if(It->IsActorTickEnabled())++Ticking;}
+   UE_LOG(LogTemp,Display,TEXT("RentACopReview: spawned_rentacops=%d ticking=%d"),RentACops,Ticking);
+   UE_LOG(LogTemp,Display,TEXT("RentACopReview: spot=%s anchor=%s"),*Spot.ToString(),*Target.ToString());
+  }
+ }
  HUDReviewClock+=Dt;
  if(HUDReviewStage==0&&HUDReviewClock>6){
   if(FParse::Param(FCommandLine::Get(),TEXT("BattleHornReview"))){

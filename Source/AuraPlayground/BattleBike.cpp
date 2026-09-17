@@ -11,6 +11,7 @@
 #include "BattleFrisbee.h"
 #include "BattleDance.h"
 #include "BattleMusician.h"
+#include "BattleBoathouse.h"
 #include "BattlePicnic.h"
 #include "BattleParkFurniture.h"
 #include "BattleSkatepark.h"
@@ -184,6 +185,7 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleParkLifeDirector>();
  GetWorld()->SpawnActor<ABattleDanceCircle>();
  GetWorld()->SpawnActor<ABattleParkMusicDirector>();
+ GetWorld()->SpawnActor<ABattleBoathouse>();
  GetWorld()->SpawnActor<ABattlePicnicDirector>();
  GetWorld()->SpawnActor<ABattleTutorial>();
  // Validate supply placement against the complete world, including tutorial roads and fences.

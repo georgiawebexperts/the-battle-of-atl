@@ -156,10 +156,28 @@ void ABattlePolice::Tick(float Dt){
   auto* Target=UGameplayStatics::GetPlayerPawn(this,0);auto* AI=Cast<AAIController>(GetController());if(AI)AI->StopMovement();
   TauntVisible=FMath::Max(0.f,TauntVisible-Dt);TauntCooldown=FMath::Max(0.f,TauntCooldown-Dt);
   const float Distance=Target?FVector::Dist2D(Target->GetActorLocation(),GetActorLocation()):BIG_NUMBER;
-  if(Target&&Distance<1500){SetActorRotation(FRotator(0,(Target->GetActorLocation()-GetActorLocation()).Rotation().Yaw,0));if(TauntCooldown<=0){
-    static const TCHAR* Lines[]={TEXT("APD: KEEP IT MOVING!"),TEXT("APD: NICE BIKE, TOUR DE MIDTOWN!"),TEXT("APD: DON'T MAKE ME DO PAPERWORK!"),TEXT("APD: WATCH THE POTHOLES, HERO!")};
-    TauntLabel->SetText(FText::FromString(Lines[TauntsHurled%UE_ARRAY_COUNT(Lines)]));TauntsHurled++;TauntVisible=2.4f;TauntCooldown=FMath::FRandRange(7.f,11.f);
-   }}
+  // These are the private security the plaza hires to stand around and watch,
+  // not APD. One of them calls the rider a coward as he arrives, and the rest
+  // heckle him when he rides close enough to hear it.
+  if(Target){
+   if(!bYelledCoward&&!bYellingCoward&&Distance<2600){
+    static TWeakObjectPtr<UWorld> YellWorld;static int32 CowardYells=0;
+    if(YellWorld!=GetWorld()){YellWorld=GetWorld();CowardYells=0;}
+    if(CowardYells==0){
+     CowardYells++;bYelledCoward=bYellingCoward=true;TauntVisible=6.f;TauntCooldown=FMath::FRandRange(6.f,9.f);
+     TauntLabel->SetWorldSize(30);TauntLabel->SetTextRenderColor(FColor(255,225,120));
+     TauntLabel->SetText(FText::FromString(TEXT("COWARD!")));
+     UE_LOG(LogTemp,Display,TEXT("MurderKRentACop: coward_yell=1 officer=%s distance_cm=%.0f"),*GetName(),Distance);
+    }
+   }
+   if(Distance<1500){SetActorRotation(FRotator(0,(Target->GetActorLocation()-GetActorLocation()).Rotation().Yaw,0));
+    if(TauntCooldown<=0){
+     static const TCHAR* Lines[]={TEXT("RENT-A-COP: KEEP IT MOVING!"),TEXT("RENT-A-COP: NICE BIKE, HOTSHOT!"),TEXT("RENT-A-COP: DON'T MAKE ME CALL SOMEBODY!"),TEXT("RENT-A-COP: THIS ISN'T YOUR PARK, HERO!")};
+     TauntLabel->SetWorldSize(22);TauntLabel->SetTextRenderColor(FColor(255,190,80));
+     TauntLabel->SetText(FText::FromString(Lines[TauntsHurled%UE_ARRAY_COUNT(Lines)]));TauntsHurled++;TauntVisible=2.4f;TauntCooldown=FMath::FRandRange(7.f,11.f);
+    }}
+  }
+  if(bYellingCoward&&TauntVisible<=0)bYellingCoward=false;
   TauntLabel->SetVisibility(TauntVisible>0);if(TauntVisible>0&&Target)TauntLabel->SetWorldRotation((Target->GetActorLocation()-TauntLabel->GetComponentLocation()).Rotation());return;
  }
  Weapon->SetVisibility(!bDead);UpdateTaserBeam();

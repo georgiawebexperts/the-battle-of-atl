@@ -86,7 +86,8 @@ void ABattleZombie::Tick(float Dt){
   if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();
   const FVector ToPartner=BrawlPartner->GetActorLocation()-GetActorLocation();SetActorRotation(FRotator(0,ToPartner.Rotation().Yaw,0));
   const float Swing=FMath::Sin(GetWorld()->GetTimeSeconds()*5.f+(GetUniqueID()%7));Body->SetRelativeRotation(FRotator(0,-90,12.f*Swing));
-  if(FMath::Abs(Swing)>.92f&&SubtitleRemaining<=0){Subtitle=TEXT("PUNK: COME ON THEN!");SubtitleRemaining=1.1f;}return;
+  // The HUD already prefixes the speaker, so the line itself must not repeat it.
+  if(FMath::Abs(Swing)>.92f&&SubtitleRemaining<=0){Subtitle=TEXT("COME ON THEN!");SubtitleRemaining=1.1f;}return;
  }
  if(bMurderKBrawler){bMurderKBrawler=false;if(BrawlPartner.IsValid())BrawlPartner->bMurderKBrawler=false;}
  Flinch=FMath::Max(0.f,Flinch-Dt);AttackDelay=FMath::Max(0.f,AttackDelay-Dt);PathDelay-=Dt;

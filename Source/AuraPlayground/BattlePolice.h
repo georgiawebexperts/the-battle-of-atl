@@ -28,6 +28,9 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bAmbientMurderK=false;
  UPROPERTY(VisibleAnywhere) TObjectPtr<class UTextRenderComponent> TauntLabel;
  UPROPERTY(BlueprintReadOnly) int32 TauntsHurled=0;
+ /** The loitering Murder K watchers heckle once with a coward call. */
+ UPROPERTY(BlueprintReadOnly) bool bYelledCoward=false;
+ UPROPERTY(BlueprintReadOnly) bool bYellingCoward=false;
  UPROPERTY(BlueprintReadOnly) FVector LastTaserOrigin=FVector::ZeroVector;
  UPROPERTY(BlueprintReadOnly) FVector WarningAimPoint=FVector::ZeroVector;
  FVector TaserMuzzle() const;

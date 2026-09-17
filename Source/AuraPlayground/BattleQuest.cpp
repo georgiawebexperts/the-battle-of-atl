@@ -150,7 +150,9 @@ float ABattleQuest::WatchSignalStrength(FVector Viewer) const{
  if(!bReady||bCollected)return 0;const float Range=FMath::Min(6000.f,RadarRange*.5f),Distance=FVector::Dist2D(Viewer,ArtifactLocation);
  return Range>0?1.f-FMath::Clamp(Distance/Range,0.f,1.f):0.f;
 }
-float ABattleQuest::WatchFlashHz(FVector Viewer) const{return FMath::Lerp(1.2f,5.5f,WatchSignalStrength(Viewer));}
+// A hot signal used to strobe at 5.5 Hz, which read as a fault rather than a
+// watch. Keep the urgency audible in the rhythm, not in a flicker.
+float ABattleQuest::WatchFlashHz(FVector Viewer) const{return FMath::Lerp(1.f,2.1f,WatchSignalStrength(Viewer));}
 FVector2D ABattleQuest::CoarseDirection(FVector2D Delta){
  if(FMath::Abs(Delta.X)>FMath::Abs(Delta.Y))return FVector2D(Delta.X>=0?1:-1,0);
  return FVector2D(0,Delta.Y>=0?1:-1);
@@ -207,12 +209,20 @@ void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
   if((bCollected||Practice)&&Distance<=RadarRange)Circle(D.GetClampedToMaxSize(Radius-6),3+Pulse*2,Gold,2);
   else{const auto F=D.GetSafeNormal(),R=FVector2D(-F.Y,F.X);const auto Tip=F*(Radius-5);Line(Tip,Tip-F*10+R*6,Gold,3);Line(Tip,Tip-F*10-R*6,Gold,3);}
  }
- if(PhoneNearness>0){const FLinearColor Signal(1,.48f+.35f*SignalFlash,.05f,.35f+.65f*SignalFlash);Circle(FVector2D::ZeroVector,Radius-2*UIScale,Signal,1+4*PhoneNearness*SignalFlash);}
+ if(PhoneNearness>0){const FLinearColor Signal(1,.48f+.35f*SignalFlash,.05f,.45f+.55f*SignalFlash);Circle(FVector2D::ZeroVector,Radius-2*UIScale,Signal,1+2*PhoneNearness*SignalFlash);}
  auto Compass=[&](const TCHAR* Label,FVector2D Offset,FLinearColor Color=FLinearColor::White){if(auto* BattleHUD=Cast<ABattleLabHUD>(HUD)){FCanvasTextItem Item(Center+Offset,FText::FromString(Label),FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(16*UIScale)),Color);Item.Font=BattleHUD->ReadableFont;Item.bCentreX=true;Canvas->DrawItem(Item);}};
+ // The heading never swaps at the flash rate any more; that is what made the
+ // words look glitched. It only changes when the signal genuinely gets close,
+ // with hysteresis so hovering at the boundary cannot flicker it.
+ static TWeakObjectPtr<const ABattleQuest> LabelQuest;static bool bCloseLabel=false;
+ if(LabelQuest.Get()!=this){LabelQuest=this;bCloseLabel=false;}
+ if(PhoneNearness<=0)bCloseLabel=false;
+ else if(PhoneNearness>.45f)bCloseLabel=true;
+ else if(PhoneNearness<.25f)bCloseLabel=false;
  const FLinearColor Header=PhoneNearness>0?FLinearColor(1,.42f+.3f*SignalFlash,.04f,.22f+.68f*PhoneNearness*SignalFlash):FLinearColor(.008,.016,.025,.9);
  HUD->DrawRect(Header,Center.X-130*UIScale,Center.Y-Radius-(Parked?85:57)*UIScale,260*UIScale,(Parked?54:26)*UIScale);
  if(Parked){const FVector Delta=Parked->GetActorLocation()-Pawn->GetActorLocation();const FVector2D D=CoarseDirection(FVector2D(Delta));const TCHAR* Direction=D.X>0?TEXT("EAST"):D.X<0?TEXT("WEST"):D.Y<0?TEXT("NORTH"):TEXT("SOUTH");Compass(*FString::Printf(TEXT("BIKE  %.0f m  %s"),Delta.Size2D()/100,Direction),FVector2D(0,-Radius-80*UIScale));}
- Compass(PhoneNearness>0&&SignalFlash>.35f?TEXT("PHONE SIGNAL • CLOSE"):TEXT("ELLISON’S WATCH"),FVector2D(0,-Radius-52*UIScale),PhoneNearness>0?FLinearColor(1,.82,.42):FLinearColor::White);
+ Compass(bCloseLabel?TEXT("PHONE SIGNAL • CLOSE"):TEXT("ELLISON’S WATCH"),FVector2D(0,-Radius-52*UIScale),PhoneNearness>0?FLinearColor(1,.82,.42):FLinearColor::White);
  Compass(TEXT("N"),FVector2D(0,-Radius-28*UIScale));Compass(TEXT("S"),FVector2D(0,Radius+3*UIScale));Compass(TEXT("W"),FVector2D(-Radius-18*UIScale,-12*UIScale));Compass(TEXT("E"),FVector2D(Radius+18*UIScale,-12*UIScale));
 
 }
