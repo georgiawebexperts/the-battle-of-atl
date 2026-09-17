@@ -1,0 +1,9 @@
+{
+  "status": "installed_pending_playtest",
+  "map": "PiedmontWorld",
+  "water_level_real_m": 267.3599853515625,
+  "outer_spline_points": 131,
+  "island_points": 23,
+  "landscape_components": 288,
+  "shore_collision": "<CollisionTraceFlag.CTF_USE_COMPLEX_AS_SIMPLE: 3>"
+}

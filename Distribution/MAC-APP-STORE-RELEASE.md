@@ -7,8 +7,12 @@ Last updated 2026-09-16 [codex-maclaptop]
 - Product: The Battle of ATL
 - Platform: macOS App Store only
 - Bundle identifier: `com.webexperts.battleofatl`
-- Apple Team ID reserved for later distribution setup: `8HAG5A4GS7`
-- Distribution certificates, provisioning profiles, App Store Connect records, and upload remain deferred until feature completion.
+- Apple Team ID: `8HAG5A4GS7`
+- Apple account: `elliott@webexperts.com`
+- App Store Connect Apple ID: `6812874355`
+- App Store Connect record and explicit bundle ID are registered. Build 096 is uploaded, processed, assigned to the Public Beta group, and waiting for Apple’s external TestFlight review.
+- Public beta page: `https://webexperts.com/battleofatl`
+- Public TestFlight invitation: `https://testflight.apple.com/join/tpHVaTXK` (begins accepting testers after Apple approves Build 096)
 
 ## Submission guardrails
 
@@ -36,10 +40,18 @@ Last updated 2026-09-16 [codex-maclaptop]
 
 ## Current technical status
 
-- The finished `THE BATTLE OF ATL` app icon contains 16, 32, 128, 256, 512, and 1024-pixel macOS representations.
+- The finished `THE BATTLE OF ATL` app icon contains all required 16, 32, 128, 256, 512, and 1024-pixel macOS representations. The current 2026-09-16 v2 artwork is installed in both Build 096 packages and remains recognizable at 16px and 32px.
 - Pause menu includes Quit.
 - Production bundle identity and sandbox-only, no-network entitlements are configured for Mac packages.
-- Development playtests remain locally signed. Distribution signing is intentionally not configured.
+- Development playtests remain locally signed. The Build 096 App Store candidate is signed with the Web Experts Mac App Distribution identity and packaged with the matching Mac Installer Distribution identity.
 - A clean Shipping package and runtime smoke test are required after each feature-complete candidate.
+- 2026-09-16 [codex-maclaptop] Build 096 packaged successfully in Shipping, launched under App Sandbox, and was staged at `/Volumes/Adam Assets/Unreal/Builds/AppStore/The Battle of ATL 0.96.0 Shipping/The Battle of ATL.app`. The staged candidate is ad-hoc signed until Xcode installs the Apple distribution identities.
+- 2026-09-16 [codex-maclaptop] Accepted the current Apple Developer Program agreement, registered `com.webexperts.battleofatl`, and created The Battle of ATL macOS app record (Apple ID `6812874355`).
+- 2026-09-16 [codex-maclaptop] Rebuilt the 1.4 GB Build 096 share ZIP with the v2 icon. `unzip -t` found no archive errors, and `codesign --verify --deep --strict` passed for both the share app and Shipping candidate.
+- 2026-09-16 [codex-maclaptop] Created Mac App Distribution and Mac Installer Distribution certificates expiring 2027-09-16, installed the Apple WWDR G3 chain, and generated the `The Battle of ATL Mac App Store 2026` provisioning profile for `com.webexperts.battleofatl`.
+- 2026-09-16 [codex-maclaptop] Prepared Build 097 with a wider, east-side Murder K plaza and a concrete-and-glass 725 Ponce-inspired landmark, moved hostile encounters away from the center riding line, and changed visible startup branding to `The Battle of ATL built by Web Experts`. The legacy `AuraPlayground` name remains only as the internal Unreal module and executable identifier.
+- 2026-09-16 [codex-maclaptop] Signed and validated Build 096, created a signed 1.3 GB installer package, and uploaded it to App Store Connect. Apple processing completed successfully; only non-blocking missing-dSYM warnings were reported.
+- 2026-09-16 [codex-maclaptop] Created `Web Experts Internal` and `Public Beta` TestFlight groups. Build 096 is `Ready to Submit`; its testing instructions are saved. Beta App Review requires the monitored contact phone number before the build can be added to the public group.
+- 2026-09-16 [codex-maclaptop] Added Build 096 to the Public Beta group and submitted it for external TestFlight review. The build is Waiting for Review. Created the public invitation and linked it from `https://webexperts.com/battleofatl`; the invitation activates when Apple approves the build.
 - 2026-09-16 [codex-maclaptop] Build 093 crash-camera and HUD changes compile in Shipping and retain every static store-readiness guardrail. Distribution signing and App Store Connect work remain deferred.
 - 2026-09-16 [codex-maclaptop] Build 094 swimming motion and fast-stroke control compile in Shipping and retain every static store-readiness guardrail. Distribution signing and App Store Connect work remain deferred.

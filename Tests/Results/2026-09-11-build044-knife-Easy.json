@@ -1,6 +1,13 @@
 {
   "passed": true,
-  "reason": "Actual pursuit, first-hit dismount/recovery, immediate remount escape, second-hit death/phone reset, obstruction, windup, tutorial protection and defeated-attacker cancellation pass",
+  "reason": "Pursuit, first-hit dismount, remount escape, second-hit reset, obstruction/protection and actual G-draw/mouse-fire defense with ammo/heat pass",
   "exit_code": 0,
-  "difficulty": "Easy"
+  "difficulty": "Easy",
+  "images": [
+    "work/build044-knife-review/windup.png",
+    "work/build044-knife-review/first-stab.png",
+    "work/build044-knife-review/defense.png",
+    "work/build044-knife-review/defeated.png"
+  ],
+  "visual_review": "pending"
 }

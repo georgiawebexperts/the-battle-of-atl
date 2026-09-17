@@ -39,6 +39,7 @@ ABattlePolice::ABattlePolice(){
  static ConstructorHelpers::FObjectFinder<UAnimSequence> Walk(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Walk.Animations_CharacterArmature_Walk"));TaserWalk=Walk.Object;
  static ConstructorHelpers::FObjectFinder<UAnimSequence> Run(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Run.Animations_CharacterArmature_Run"));TaserRun=Run.Object;
  for(int32 Side:{-1,1}){auto* Label=CreateDefaultSubobject<UTextRenderComponent>(Side>0?TEXT("PoliceFront"):TEXT("PoliceBack"));Label->SetupAttachment(GetCapsuleComponent());Label->SetRelativeLocation(FVector(Side*22,0,44));Label->SetRelativeRotation(FRotator(0,Side>0?0:180,0));Label->SetText(FText::FromString(TEXT("POLICE")));Label->SetWorldSize(9);Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor::White);Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
+ TauntLabel=CreateDefaultSubobject<UTextRenderComponent>(TEXT("MurderKTaunt"));TauntLabel->SetupAttachment(GetCapsuleComponent());TauntLabel->SetRelativeLocation(FVector(0,0,145));TauntLabel->SetHorizontalAlignment(EHTA_Center);TauntLabel->SetWorldSize(22);TauntLabel->SetTextRenderColor(FColor(255,190,80));TauntLabel->SetCollisionEnabled(ECollisionEnabled::NoCollision);TauntLabel->SetVisibility(false);
 }
 void ABattlePolice::BeginPlay(){
  Super::BeginPlay();
@@ -46,6 +47,7 @@ void ABattlePolice::BeginPlay(){
  if(auto* Mesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Police/Taser/Taser/StaticMeshes/Taser.Taser"))){Weapon->SetStaticMesh(Mesh);Weapon->SetRelativeScale3D(FVector(1));}
  if(auto* Material=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_Splash.M_Splash")))AimBeam->SetMaterial(0,Material);
  Weapon->SetVisibility(false);
+ if(bAmbientMurderK){Tags.Remove(TEXT("BattleHostile"));Cooldown=BIG_NUMBER;Weapon->SetVisibility(false);}
 }
 FVector ABattlePolice::TaserMuzzle() const{return Weapon->GetComponentTransform().TransformPosition(FVector(17.5f,0,4));}
 void ABattlePolice::UpdateTaserBeam(){
@@ -148,7 +150,19 @@ bool ABattlePolice::FireTaser(){
 void ABattlePolice::Tick(float Dt){
  VoiceCooldown=FMath::Max(0.f,VoiceCooldown-Dt);
  DischargeRemaining=FMath::Max(0.f,DischargeRemaining-Dt);
- Super::Tick(Dt);Weapon->SetVisibility(!bDead);UpdateTaserBeam();
+ Super::Tick(Dt);
+ if(bAmbientMurderK){
+  Weapon->SetVisibility(false);bWarning=false;WarningAimPoint=FVector::ZeroVector;UpdateTaserBeam();
+  auto* Target=UGameplayStatics::GetPlayerPawn(this,0);auto* AI=Cast<AAIController>(GetController());if(AI)AI->StopMovement();
+  TauntVisible=FMath::Max(0.f,TauntVisible-Dt);TauntCooldown=FMath::Max(0.f,TauntCooldown-Dt);
+  const float Distance=Target?FVector::Dist2D(Target->GetActorLocation(),GetActorLocation()):BIG_NUMBER;
+  if(Target&&Distance<1500){SetActorRotation(FRotator(0,(Target->GetActorLocation()-GetActorLocation()).Rotation().Yaw,0));if(TauntCooldown<=0){
+    static const TCHAR* Lines[]={TEXT("APD: KEEP IT MOVING!"),TEXT("APD: NICE BIKE, TOUR DE MIDTOWN!"),TEXT("APD: DON'T MAKE ME DO PAPERWORK!"),TEXT("APD: WATCH THE POTHOLES, HERO!")};
+    TauntLabel->SetText(FText::FromString(Lines[TauntsHurled%UE_ARRAY_COUNT(Lines)]));TauntsHurled++;TauntVisible=2.4f;TauntCooldown=FMath::FRandRange(7.f,11.f);
+   }}
+  TauntLabel->SetVisibility(TauntVisible>0);if(TauntVisible>0&&Target)TauntLabel->SetWorldRotation((Target->GetActorLocation()-TauntLabel->GetComponentLocation()).Rotation());return;
+ }
+ Weapon->SetVisibility(!bDead);UpdateTaserBeam();
 
  if(bDead){WarningVoice->Stop();Body->SetRelativeRotation(FRotator(0,-90,90));UpdateTaserBeam();return;}
  auto* AI=Cast<AAIController>(GetController());auto* Target=UGameplayStatics::GetPlayerPawn(this,0);auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));

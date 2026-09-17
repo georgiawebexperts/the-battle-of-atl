@@ -1,8 +1,8 @@
 {
   "passed": true,
   "checks": 29,
-  "reason": "Native lifecycle, mounted restore, quest preservation, rarity boundary, pause, expiry, dismount/remount, stun, death and projectile pass-through pass; presentation pending",
-  "presentation_enabled": false,
+  "reason": "Visible spectral bear, native lifecycle, mounted restore, quest preservation, rarity boundary, pause, expiry, dismount/remount, stun, death and projectile pass-through pass",
+  "presentation_enabled": true,
   "exit_code": 0,
   "difficulty": "Easy"
 }

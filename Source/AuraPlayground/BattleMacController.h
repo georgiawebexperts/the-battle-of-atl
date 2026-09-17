@@ -16,16 +16,30 @@ public:
  void ToggleMenu();
  void TogglePracticeHelp();
  void CycleRiderStyle();
+ // Player-facing aim sensitivity, adjustable in Options or with [ and ].
+ void AdjustAim(int32 Delta);
+ void AimSensitivityDown(){AdjustAim(-1);}
+ void AimSensitivityUp(){AdjustAim(1);}
+ UPROPERTY(BlueprintReadOnly) FString AimNotice;
+ UPROPERTY(BlueprintReadOnly) float AimNoticeRemaining=0;
 private:
  void TickSpiritAudit(float Dt);
+ void TickMurderKAudit(float Dt);
  void TickKnifeAudit(float Dt);
  int KnifeAuditStage=0,KnifeAuditResets=0;float KnifeAuditClock=0,KnifeAuditTime=0;
  FVector KnifeAuditOrigin;
+ int KnifeAuditShots=0,KnifeAuditAmmo=0;float KnifeAuditTrouble=0;
+ bool bKnifeWindupCaptured=false,bKnifeStabCaptured=false,bKnifeDefenseCaptured=false;
  UPROPERTY() TObjectPtr<class ABattleKnife> KnifeAuditActor;
  void TickMemorialReview(float Dt);
  int MemorialReviewStage=0;float MemorialReviewClock=0;
  UPROPERTY() TObjectPtr<class ACameraActor> MemorialReviewCamera;
  bool bSpiritAuditDone=false;
+ int32 SpiritReviewFrames=0;
+ UPROPERTY() TObjectPtr<class ACameraActor> SpiritReviewCamera;
+ bool bMurderKAuditDone=false;
+ int32 MurderKReviewFrames=0;
+ UPROPERTY() TObjectPtr<class ACameraActor> MurderKReviewCamera;
  TSharedPtr<SWidget> Menu;
  UPROPERTY() TObjectPtr<class ACameraActor> OpeningCamera;
  bool bOpeningActive=false,bOpeningSeen=false,bOpeningOldCameraMoveable=false;

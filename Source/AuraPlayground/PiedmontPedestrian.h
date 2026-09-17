@@ -39,6 +39,21 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bParkMusician=false;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 MusicianKind=0;
  UPROPERTY(BlueprintReadOnly) float MusicClock=0;
+ // Guitarist arm pose, in bone space. These put the fretting hand up and to the
+ // performer's left and the strumming hand over the sound hole.
+ // Solved by -BattleGuitarSweep against the reference-pose hold: the fretting
+ // hand lands 132 cm up and 26 cm to the player's left, the strumming hand over
+ // the sound hole at 104 cm. Both land within 1 cm of those marks.
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator GuitarArmL=FRotator(-60,-60,-20);
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator GuitarForeL=FRotator(-95,0,35);
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator GuitarArmR=FRotator(-50,-25,0);
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator GuitarForeR=FRotator(-25,0,35);
+ // Same solve for the saxophonist: upper hand and lower hand both on the body
+ // at 116 cm and 98 cm, in front of the chest.
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator SaxArmL=FRotator(-50,-25,-20);
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator SaxForeL=FRotator(-95,0,20);
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator SaxArmR=FRotator(-65,-45,0);
+ UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator SaxForeR=FRotator(-65,0,-20);
  UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bPicnicChiller=false;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 PicnicPose=0;
  UPROPERTY(BlueprintReadOnly) float ChillClock=0;
@@ -69,6 +84,8 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadOnly,meta=(ClampMin="0.0",ClampMax="1.0")) float AmbientWakeChance=.18f;
  UPROPERTY(BlueprintReadOnly) int32 SleepPhase=0;
  UFUNCTION(BlueprintCallable) bool SetDestinationForValidation(FVector Goal);
+ // Re-evaluates the performer hold after pose constants change. Review only.
+ void SamplePerformerPose(float Dt){AnimateBody(Dt);}
 protected:
  virtual void AnimateBody(float Dt) override;
  float YieldCooldown=0;

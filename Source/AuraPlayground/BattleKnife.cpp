@@ -50,6 +50,7 @@ bool ABattleKnife::ResolveStrike(){
  auto* B=Cast<ABattleBike>(P);if(auto* Foot=Cast<ABattleRider>(P)){if(Foot->bSwimming)return false;B=Foot->ParkedBike;}
  if(!B||!B->ApplyKnifeStab(Stabs>0))return false;
  VictimBike=B;Stabs++;APiedmontBlood::Burst(GetWorld(),P->GetActorLocation()+FVector(0,0,15),(P->GetActorLocation()-GetActorLocation()).GetSafeNormal());
+ if(bSingleLunge)Escape();
  if(B->RiderHealth<=0)Escape();return true;
 }
 void ABattleKnife::Tick(float Dt){

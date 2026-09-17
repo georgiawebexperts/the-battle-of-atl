@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "scope": "Initial local walker/jogger population and controlled real-park interactions; not full-world density or visual acceptance.",
+  "cases": [
+    {
+      "name": "local_population_contains_walkers_and_joggers",
+      "pass": true,
+      "count": 24,
+      "walkers": 18,
+      "joggers": 6
+    },
+    {
+      "name": "walkers_form_pairs",
+      "pass": true
+    },
+    {
+      "name": "visitors_use_ai_controllers_and_move",
+      "pass": true,
+      "moved": 23
+    },
+    {
+      "name": "population_stays_out_of_water",
+      "pass": true
+    },
+    {
+      "name": "walker_yields_to_actual_bike_horn",
+      "pass": true,
+      "moved_cm": 168.1357498845178
+    },
+    {
+      "name": "jogger_does_not_yield_to_horn",
+      "pass": true
+    },
+    {
+      "name": "low_speed_contact_stumbles_and_slows",
+      "pass": true,
+      "speed": 70.73088073730469,
+      "contacts": 1
+    },
+    {
+      "name": "high_speed_contact_crashes_once",
+      "pass": true,
+      "reason": "Collision with park traffic"
+    },
+    {
+      "name": "traffic_crash_has_four_second_recovery",
+      "pass": true,
+      "recovery": 3.9965980052948
+    }
+  ],
+  "stage": 6
+}

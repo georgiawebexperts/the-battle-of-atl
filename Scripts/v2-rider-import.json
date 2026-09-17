@@ -1,0 +1,259 @@
+[
+  {
+    "mesh": "<Object '/Game/PiedmontRide/Rider/Casual.Casual' (0x83f1f7f6400) Class 'SkeletalMesh'>",
+    "bones": [
+      {
+        "name": "CharacterArmature",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      {
+        "name": "Root",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 0.000000, y: 7.228866, z: 0.000000}>"
+      },
+      {
+        "name": "Hips",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -0.034378, y: 5.975790, z: 89.409637}>"
+      },
+      {
+        "name": "Abdomen",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -0.034378, y: 4.505991, z: 99.917793}>"
+      },
+      {
+        "name": "Torso",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -0.034378, y: 3.803582, z: 116.102913}>"
+      },
+      {
+        "name": "Chest",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -0.034378, y: 4.055976, z: 137.730606}>"
+      },
+      {
+        "name": "Neck",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -0.034378, y: 4.308369, z: 151.053284}>"
+      },
+      {
+        "name": "Head",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -0.034378, y: 4.308370, z: 158.726151}>"
+      },
+      {
+        "name": "Head_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -0.034378, y: 4.308371, z: 184.153406}>"
+      },
+      {
+        "name": "Shoulder_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 9.839768, y: 6.368320, z: 139.521118}>"
+      },
+      {
+        "name": "UpperArm_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 15.254336, y: 5.983142, z: 143.210494}>"
+      },
+      {
+        "name": "LowerArm_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 33.441238, y: 5.606538, z: 143.210492}>"
+      },
+      {
+        "name": "Hand_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 56.783771, y: 8.554883, z: 143.210505}>"
+      },
+      {
+        "name": "Index2_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 71.684068, y: 11.559823, z: 143.214944}>"
+      },
+      {
+        "name": "Index3_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 74.901750, y: 11.863746, z: 143.746209}>"
+      },
+      {
+        "name": "Index4_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 77.823984, y: 12.037163, z: 144.135521}>"
+      },
+      {
+        "name": "Index4_L_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 80.450313, y: 12.183698, z: 144.514224}>"
+      },
+      {
+        "name": "Middle2_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 71.936685, y: 8.859446, z: 144.185555}>"
+      },
+      {
+        "name": "Middle3_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 75.958101, y: 8.847101, z: 144.565758}>"
+      },
+      {
+        "name": "Middle4_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 79.987764, y: 8.855780, z: 144.811485}>"
+      },
+      {
+        "name": "Middle4_L_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 82.704088, y: 8.883145, z: 145.141189}>"
+      },
+      {
+        "name": "Ring2_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 71.597260, y: 6.128319, z: 143.695855}>"
+      },
+      {
+        "name": "Ring3_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 74.933328, y: 5.605005, z: 144.035393}>"
+      },
+      {
+        "name": "Ring4_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 78.200113, y: 5.189977, z: 144.439613}>"
+      },
+      {
+        "name": "Ring4_L_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 81.293791, y: 4.740128, z: 144.830165}>"
+      },
+      {
+        "name": "Pinky2_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 70.532548, y: 3.918046, z: 143.681512}>"
+      },
+      {
+        "name": "Pinky3_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 73.074555, y: 3.196972, z: 143.954827}>"
+      },
+      {
+        "name": "Pinky4_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 75.687257, y: 2.378301, z: 144.289314}>"
+      },
+      {
+        "name": "Pinky4_L_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 77.768767, y: 1.733379, z: 144.613010}>"
+      },
+      {
+        "name": "Thumb2_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 64.794038, y: 14.600033, z: 140.897165}>"
+      },
+      {
+        "name": "Thumb3_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 67.221498, y: 16.620715, z: 140.335352}>"
+      },
+      {
+        "name": "Thumb3_L_end",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 70.003282, y: 18.358657, z: 139.948603}>"
+      },
+      {
+        "name": "Shoulder_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -9.839768, y: 6.368320, z: 139.521118}>"
+      },
+      {
+        "name": "UpperArm_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -15.254336, y: 5.983151, z: 143.210495}>"
+      },
+      {
+        "name": "LowerArm_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -33.441236, y: 5.606539, z: 143.210509}>"
+      },
+      {
+        "name": "Hand_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -56.783766, y: 8.554883, z: 143.210493}>"
+      },
+      {
+        "name": "Index2_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -71.684062, y: 11.559823, z: 143.214932}>"
+      },
+      {
+        "name": "Index3_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -74.901744, y: 11.863746, z: 143.746212}>"
+      },
+      {
+        "name": "Index4_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -77.823978, y: 12.037164, z: 144.135525}>"
+      },
+      {
+        "name": "Index4_R_end",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -80.450313, y: 12.183713, z: 144.514235}>"
+      },
+      {
+        "name": "Middle2_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -71.936687, y: 8.859443, z: 144.185559}>"
+      },
+      {
+        "name": "Middle3_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -75.958095, y: 8.847099, z: 144.565792}>"
+      },
+      {
+        "name": "Middle4_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -79.987758, y: 8.855778, z: 144.811489}>"
+      },
+      {
+        "name": "Middle4_R_end",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -82.704076, y: 8.883165, z: 145.141206}>"
+      },
+      {
+        "name": "Ring2_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -71.597262, y: 6.128318, z: 143.695859}>"
+      },
+      {
+        "name": "Ring3_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -74.933322, y: 5.605000, z: 144.035382}>"
+      },
+      {
+        "name": "Ring4_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -78.200099, y: 5.189976, z: 144.439618}>"
+      },
+      {
+        "name": "Ring4_R_end",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -81.293780, y: 4.740139, z: 144.830140}>"
+      },
+      {
+        "name": "Pinky2_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -70.532550, y: 3.918043, z: 143.681516}>"
+      },
+      {
+        "name": "Pinky3_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -73.074550, y: 3.196977, z: 143.954846}>"
+      },
+      {
+        "name": "Pinky4_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -75.687244, y: 2.378301, z: 144.289319}>"
+      },
+      {
+        "name": "Pinky4_R_end",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -77.768762, y: 1.733403, z: 144.613026}>"
+      },
+      {
+        "name": "Thumb2_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -64.794032, y: 14.600031, z: 140.897153}>"
+      },
+      {
+        "name": "Thumb3_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -67.221492, y: 16.620713, z: 140.335370}>"
+      },
+      {
+        "name": "Thumb3_R_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -70.003264, y: 18.358671, z: 139.948612}>"
+      },
+      {
+        "name": "UpperLeg_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 12.059150, y: 4.506383, z: 96.415070}>"
+      },
+      {
+        "name": "LowerLeg_L",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 12.059152, y: 8.739638, z: 53.324585}>"
+      },
+      {
+        "name": "Foot_L",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: 12.059149, y: 6.209549, z: 2.275157}>"
+      },
+      {
+        "name": "Foot_L_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: 12.059442, y: 23.942938, z: 2.369988}>"
+      },
+      {
+        "name": "UpperLeg_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -12.059150, y: 4.506383, z: 96.415070}>"
+      },
+      {
+        "name": "LowerLeg_R",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -12.059150, y: 8.739638, z: 53.324581}>"
+      },
+      {
+        "name": "Foot_R",
+        "position": "<Struct 'Vector' (0x423ab53c0) {x: -12.059147, y: 6.209549, z: 2.275163}>"
+      },
+      {
+        "name": "Foot_R_end",
+        "position": "<Struct 'Vector' (0x423ab52d0) {x: -12.059434, y: 23.942947, z: 2.369997}>"
+      }
+    ]
+  }
+]

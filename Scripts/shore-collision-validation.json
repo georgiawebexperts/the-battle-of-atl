@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "scope": "Short horizontal collision rays across sampled shoreline wall faces; bridge openings remain unverified",
+  "samples": 30,
+  "results": [
+    {
+      "face": 0,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 100,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 200,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 300,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 400,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 500,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 600,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 700,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 800,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 900,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1000,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1100,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1200,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1300,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1400,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1500,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1600,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1700,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1800,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 1900,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2000,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2100,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2200,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2300,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2400,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2500,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2600,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2700,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2800,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    },
+    {
+      "face": 2900,
+      "pass": true,
+      "actor": "Lake Clara Meer solid shore"
+    }
+  ]
+}

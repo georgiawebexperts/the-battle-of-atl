@@ -1,0 +1,6 @@
+{
+  "map": "BikePhysicsLab",
+  "actors": 138,
+  "water": "<Object '/Game/PiedmontRide/Maps/BikePhysicsLab.BikePhysicsLab:PersistentLevel.WaterBodyLake_0' (0xa0ed8841000) Class 'WaterBodyLake'>",
+  "build": "0.2.0-dev"
+}

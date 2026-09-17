@@ -1,8 +1,11 @@
 #include "BattleBike.h"
 #include "BattleDetailedRider.h"
 #include "BattleSpirit.h"
+#include "BattleScooterTraffic.h"
 #include "BattleSpiritData.h"
 #include "BattleMemorial.h"
+#include "BattleMurderK.h"
+#include "BattleCheckpoints.h"
 #include "BattleHome.h"
 #include "BattleTutorial.h"
 #include "BattleFrisbee.h"
@@ -172,7 +175,10 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleSkatepark>(FVector(39000,74000,0),FRotator::ZeroRotator);
  GetWorld()->SpawnActor<ABattleHome>();
  GetWorld()->SpawnActor<ABattleSpirit>();
+ GetWorld()->SpawnActor<ABattleScooterTraffic>();
  GetWorld()->SpawnActor<ABattleMemorial>(BattleSpiritData::Memorial,FRotator(0,BattleSpiritData::MemorialYaw,0));
+ const auto& MurderK=BattleCheckpoints::Anchors[0];
+ GetWorld()->SpawnActor<ABattleMurderK>(FVector(MurderK.X,MurderK.Y,MurderK.Z),FRotator(0,MurderK.Yaw,0));
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;
  Enemies=GetWorld()->SpawnActor<ABattleEnemyDirector>();
  GetWorld()->SpawnActor<ABattleParkLifeDirector>();

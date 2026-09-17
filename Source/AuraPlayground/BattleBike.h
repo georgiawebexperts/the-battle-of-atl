@@ -92,7 +92,7 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> TailLight;
  UPROPERTY(BlueprintReadOnly) bool bLightsOn=false;
  UPROPERTY(BlueprintReadOnly) int32 HornCount=0;
- UPROPERTY(BlueprintReadOnly) int32 HornUses=5;
+ UPROPERTY(BlueprintReadOnly) int32 HornUses=2;
  float HornNoticeRemaining=0;
  FString HornNotice;
  int32 AddHornUses(int32 Amount);
@@ -185,7 +185,7 @@ public:
  void RecordPlayerShotHit(AActor* Victim);
  void RecordGunfire();
  bool RecordAssault(AActor* Victim);
- bool bTutorialActive=false,bTutorialHelp=true;
+ bool bTutorialActive=false,bTutorialHelp=false;
  bool bPracticeSteered=false,bPracticeBraked=false,bPracticeDismounted=false,bPracticeHorn=false;
  float PracticeDistance=0,ExpansionNoticeRemaining=0;
  void TickTrouble(float Dt);

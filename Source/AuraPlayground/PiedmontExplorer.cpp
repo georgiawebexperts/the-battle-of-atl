@@ -59,6 +59,7 @@ void APiedmontExplorer::BeginPlay(){
   for(int32 I=0;I<Ref.GetNum();++I){Parents.Add(Ref.GetParentIndex(I));Bones.Add(Ref.GetBoneName(I));RestPose.Add(Ref.GetRefBonePose()[I]);}
  }
 }
+void APiedmontExplorer::SampleAimLook(float Value){LookYaw(Value);}
 void APiedmontExplorer::SetupPlayerInputComponent(UInputComponent* Input){Super::SetupPlayerInputComponent(Input);Input->BindKey(EKeys::E,IE_Pressed,this,&APiedmontExplorer::Interact);
  Input->BindAxisKey(EKeys::MouseX,this,&APiedmontExplorer::LookYaw);Input->BindAxisKey(EKeys::MouseY,this,&APiedmontExplorer::LookPitch);
  Input->BindKey(EKeys::One,IE_Pressed,this,&APiedmontExplorer::ToggleWeapon);
@@ -81,7 +82,8 @@ void APiedmontExplorer::Tick(float Dt){
   // delivered by Unreal's normal input stack in editor and packaged builds.
   const float KeyYaw=(PC->IsInputKeyDown(EKeys::X)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::Z)?1.f:0.f);
   const float KeyPitch=(PC->IsInputKeyDown(EKeys::V)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::T)?1.f:0.f);
-  AddControllerYawInput(KeyYaw*90.f*Dt);AddControllerPitchInput(KeyPitch*65.f*Dt);
+  const float AimScale=BattleAim::Scale();
+  AddControllerYawInput(KeyYaw*90.f*Dt*AimScale);AddControllerPitchInput(KeyPitch*65.f*Dt*AimScale);
   const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);
   const float Side=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
   // The swim help advertises Shift as the fast stroke. Flying movement uses

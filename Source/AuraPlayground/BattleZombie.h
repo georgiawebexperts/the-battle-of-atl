@@ -27,6 +27,8 @@ public:
  FTransform DeathFootFromLeg[2];
  int32 DeathShoeBodies=0;
  UPROPERTY(BlueprintReadOnly) bool bSprinter=false;
+ UPROPERTY(BlueprintReadWrite) bool bMurderKBrawler=false;
+ UPROPERTY() TWeakObjectPtr<ABattleZombie> BrawlPartner;
  UPROPERTY(BlueprintReadOnly) bool bTelegraphing=false;
  UPROPERTY(BlueprintReadOnly) int32 Attacks=0;
  UPROPERTY(BlueprintReadOnly) int32 PathRequests=0;
@@ -66,8 +68,17 @@ private:
  bool SpawnZombie(bool Wave);
 public:
  void TickGunmen(float Dt);
+ void TickMurderK(float Dt);
  bool SpawnGunman();
  UPROPERTY(BlueprintReadOnly) int32 GunmenSpawned=0;
  UPROPERTY(BlueprintReadOnly) float GunmanDelay=60;
  UPROPERTY() TWeakObjectPtr<ABattleGunman> ActiveGunman;
+ UPROPERTY(BlueprintReadOnly) bool bMurderKActivated=false;
+ UPROPERTY(BlueprintReadOnly) int32 MurderKGunmenSpawned=0;
+ UPROPERTY(BlueprintReadOnly) bool bMurderKKnifeSpawned=false;
+ UPROPERTY(BlueprintReadOnly) int32 MurderKPunksSpawned=0;
+ UPROPERTY(BlueprintReadOnly) int32 MurderKBumsSpawned=0;
+ UPROPERTY(BlueprintReadOnly) int32 MurderKFightSpots=0;
+ UPROPERTY(BlueprintReadOnly) int32 MurderKAmbientPolice=0;
+ UPROPERTY() TArray<TWeakObjectPtr<ABattleGunman>> MurderKGunmen;
 };

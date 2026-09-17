@@ -1,0 +1,25 @@
+{
+  "capture_passed": true,
+  "runs": [
+    {
+      "mode": "arcade",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/d8b481314f6a4cd29a6e65c591c24799/arcade/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/d8b481314f6a4cd29a6e65c591c24799/arcade/foot.png"
+      ],
+      "completed": true
+    },
+    {
+      "mode": "realistic",
+      "exit_code": 0,
+      "images": [
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/d8b481314f6a4cd29a6e65c591c24799/realistic/bike.png",
+        "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-hud/d8b481314f6a4cd29a6e65c591c24799/realistic/foot.png"
+      ],
+      "completed": true
+    }
+  ],
+  "visual_review": "accepted: compact HUD is readable at 1280x720; objective, timer, highlighted build number, status, radar, and F1 help remain visible without covering the play area.",
+  "scope": "1280x720 mounted arcade/realistic labels and on-foot HUD. No whole-game art acceptance."
+}

@@ -61,16 +61,17 @@ void APiedmontPedestrian::ChooseDestination(){
  for(int32 Try=0;Try<5;Try++)if(Nav->GetRandomReachablePointInRadius(GetActorLocation(),3000,Goal)&&FVector::Dist2D(GetActorLocation(),Goal.Location)>600){if(MoveTo(Goal.Location))return;}
 }
 void APiedmontPedestrian::YieldTo(APawn* Source,bool Horn){
- if(!Source||bDead||Kind==EPiedmontPedestrianKind::Jogger||YieldCooldown>0||StumbleRemaining>0)return;
- if(FVector::Dist2D(Source->GetActorLocation(),GetActorLocation())>(Horn?1400:600))return;
+ if(!Source||bDead||(!Horn&&Kind==EPiedmontPedestrianKind::Jogger)||YieldCooldown>0||StumbleRemaining>0)return;
+ if(FVector::Dist2D(Source->GetActorLocation(),GetActorLocation())>(Horn?2200:600))return;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(ParkVisitorWarning),false,this);Q.AddIgnoredActor(Source);FHitResult Hit;
  if(GetWorld()->LineTraceSingleByChannel(Hit,Source->GetActorLocation()+FVector(0,0,35),GetActorLocation()+FVector(0,0,30),ECC_Visibility,Q))return;
  auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());if(!Nav)return;
  FVector Away=(GetActorLocation()-Source->GetActorLocation()).GetSafeNormal2D();
  FVector Side=Source->GetActorRightVector();if(FVector::DotProduct(Away,Side)<0)Side=-Side;
  FNavLocation Goal;
- if(Nav->ProjectPointToNavigation(GetActorLocation()+Side*180+Away*80,Goal,FVector(100,100,180))&&MoveTo(Goal.Location)){
-  PauseRemaining=0;YieldRemaining=2;YieldCooldown=5;if(Horn)HornReactions++;
+ const float SideDistance=Horn?420.f:180.f,BackDistance=Horn?260.f:80.f;
+ if(Nav->ProjectPointToNavigation(GetActorLocation()+Side*SideDistance+Away*BackDistance,Goal,FVector(180,180,220))&&MoveTo(Goal.Location)){
+  PauseRemaining=0;YieldRemaining=Horn?4.f:2.f;YieldCooldown=Horn?7.f:5.f;if(Horn)HornReactions++;
  }
 }
 bool APiedmontPedestrian::BeginBenchReach(){

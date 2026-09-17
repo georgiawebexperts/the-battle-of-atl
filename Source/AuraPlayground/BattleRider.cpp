@@ -1,4 +1,5 @@
 #include "BattleRider.h"
+#include "Misc/App.h"
 #include "BattleSpareBikes.h"
 #include "BattleWeaponGrip.h"
 #include "BattlePlayerCrash.h"
@@ -93,6 +94,8 @@ void ABattleRider::BeginPlay(){
 void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  ACharacter::SetupPlayerInputComponent(I);
  I->BindAxisKey(EKeys::MouseX,this,&ABattleRider::LookYaw);I->BindAxisKey(EKeys::MouseY,this,&ABattleRider::LookPitch);
+ I->BindKey(EKeys::LeftMouseButton,IE_Pressed,this,&ABattleRider::PullTrigger);I->BindKey(EKeys::LeftMouseButton,IE_Released,this,&ABattleRider::ReleaseTrigger);
+ I->BindKey(EKeys::RightMouseButton,IE_Pressed,this,&ABattleRider::AimOn);I->BindKey(EKeys::RightMouseButton,IE_Released,this,&ABattleRider::AimOff);
  I->BindKey(EKeys::E,IE_Pressed,this,&ABattleRider::Interact);
  I->BindKey(EKeys::SpaceBar,IE_Pressed,this,&ABattleRider::StartJump);I->BindKey(EKeys::SpaceBar,IE_Released,this,&ABattleRider::EndJump);
  I->BindKey(EKeys::G,IE_Pressed,this,&ABattleRider::DrawWeapon);
@@ -180,7 +183,7 @@ bool ABattleBike::Dismount(){
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
  auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation(),P);if(!Person)return false;
  Ride->BoostRemaining=0;Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
- ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());return true;
+ ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);PC->SetControlRotation(GetActorRotation());PC->bShowMouseCursor=false;PC->ResetIgnoreLookInput();if(!FApp::IsUnattended())PC->SetInputMode(FInputModeGameOnly());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
  if(bCrashActive||StunRemaining>0||!IsValid(Person)||Person->ParkedBike!=this)return false;
@@ -191,7 +194,7 @@ bool ABattleBike::Remount(ABattleRider* Person){
  // Match the bike movement filter, including the legacy invisible lake barrier.
  for(const auto& Ignored:GetCapsuleComponent()->GetMoveIgnoreActors())Q.AddIgnoredActor(Ignored);
  if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(32,95),Q))return false;
- Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;ClearPhysicalCrash();Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetRelativeLocation(FVector::ZeroVector);Ride->StopMovementImmediately();Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->SetMovementMode(MOVE_Walking);Rider->SetVisibility(!bFirstPerson,true);PC->Possess(this);PC->SetControlRotation(GetActorRotation());Person->Destroy();return true;
+ Person->SaveWeapon();ABattleKnife::OnRemounted(this);bParked=false;ClearPhysicalCrash();Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetRelativeLocation(FVector::ZeroVector);Ride->StopMovementImmediately();Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->SetMovementMode(MOVE_Walking);Rider->SetVisibility(!bFirstPerson,true);PC->Possess(this);PC->SetControlRotation(GetActorRotation());PC->bShowMouseCursor=false;PC->ResetIgnoreLookInput();if(!FApp::IsUnattended())PC->SetInputMode(FInputModeGameOnly());Person->Destroy();return true;
 }
 
 bool ABattleRider::Fire(){

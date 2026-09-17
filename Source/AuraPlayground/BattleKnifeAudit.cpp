@@ -13,13 +13,22 @@
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/DamageEvents.h"
+#include "Camera/CameraComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
+#include "InputKeyEventArgs.h"
+#include "Misc/CommandLine.h"
+#include "UnrealClient.h"
 void ABattleMacController::TickKnifeAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(KnifeAuditStage<0||GetWorld()->GetTimeSeconds()<5)return;
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* P=Cast<ABattleRider>(GetPawn());auto* B=Cast<ABattleBike>(GetPawn());if(P)B=P->ParkedBike;
- auto End=[&](bool Pass,const TCHAR* Why){KnifeAuditStage=-1;UE_LOG(LogTemp,Display,TEXT("BattleKnifeAudit: {\"passed\":%s,\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Why);ConsoleCommand(TEXT("quit"));};
+ auto End=[&](bool Pass,const TCHAR* Why){FlushPressedKeys();KnifeAuditStage=-1;UE_LOG(LogTemp,Display,TEXT("BattleKnifeAudit: {\"passed\":%s,\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Why);ConsoleCommand(TEXT("quit"));};
 #define KCHECK(C,R) if(!(C)){End(false,TEXT(R));return;}
  KCHECK(M&&B&&M->Quest,"Missing running game");KnifeAuditClock+=Dt;
+ auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
+ auto Capture=[&](const TCHAR* Name){if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeReview"))){FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleHUDReviewDir="),Dir);FScreenshotRequest::RequestScreenshot(Dir/(FString(Name)+TEXT(".png")),false,false);}};
+ auto AimAt=[&](){FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((KnifeAuditActor->GetActorLocation()+FVector(0,0,25)-Eye).Rotation());};
  auto Advance=[&](int N){KnifeAuditStage=N;KnifeAuditClock=0;};
  auto Spawn=[&](float Distance){
   FNavLocation Spot;auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());if(!Nav||!Nav->ProjectPointToNavigation(B->GetActorLocation()+B->GetActorForwardVector()*Distance,Spot,FVector(300,300,300)))return false;
@@ -33,13 +42,15 @@ void ABattleMacController::TickKnifeAudit(float Dt){
   KnifeAuditTime=M->TimeRemaining;KCHECK(Spawn(700),"Cannot spawn pursuit fixture");Advance(1);return;
  }
  if(KnifeAuditStage==1){
+  AimAt();if(KnifeAuditActor->bWindingUp&&KnifeAuditActor->WindupRemaining<.5f&&!bKnifeWindupCaptured){Capture(TEXT("windup"));bKnifeWindupCaptured=true;}
   KCHECK(KnifeAuditClock<15,"Initial pursuit or first stab timed out");
-  if(KnifeAuditActor->Stabs==1){KCHECK(P&&B->RiderHealth>0&&B->RiderHealth<100&&B->StunRemaining>0&&B->RespawnRemaining==0&&!P->bWeaponDrawn,"First stab did not force hands-free nonfatal dismount");KCHECK(KnifeAuditActor->PathRequests>0&&FVector::Dist2D(KnifeAuditOrigin,KnifeAuditActor->GetActorLocation())>150,"Attacker did not actually navigate");KCHECK(M->TimeRemaining<KnifeAuditTime,"Clock stopped during attack");Advance(2);}
+  if(KnifeAuditActor->Stabs==1){KCHECK(B->bCrashActive&&B->PlayerCrash&&B->RiderHealth>0&&B->RiderHealth<100&&B->StunRemaining>0&&B->RespawnRemaining==0,"First stab did not force hands-free nonfatal dismount");KCHECK(KnifeAuditActor->PathRequests>0&&FVector::Dist2D(KnifeAuditOrigin,KnifeAuditActor->GetActorLocation())>150,"Attacker did not actually navigate");KCHECK(M->TimeRemaining<KnifeAuditTime,"Clock stopped during attack");Advance(2);}
  }else if(KnifeAuditStage==2){
-  KCHECK(KnifeAuditClock<2&&KnifeAuditActor->Stabs==1,"Second stab during recovery window");
-  if(B->StunRemaining<=0){KCHECK(P&&P->MountBike(),"Could not remount after recovery");KCHECK(KnifeAuditActor->bEscaped&&!KnifeAuditActor->ResolveStrike(),"Remount did not end chase immediately");KnifeAuditActor->Destroy();KCHECK(Spawn(600),"Cannot spawn death-sequence fixture");KnifeAuditResets=M->Quest->SearchResets;Advance(3);}
+  KCHECK(KnifeAuditClock<20&&KnifeAuditActor->Stabs==1,"Second stab during recovery window");
+  if(KnifeAuditClock>.2f&&!bKnifeStabCaptured){Capture(TEXT("first-stab"));bKnifeStabCaptured=true;}
+  if(!B->bCrashActive&&B->StunRemaining<=0){KCHECK(P&&!P->bWeaponDrawn&&P->MountBike(),"Could not remount after recovery");KCHECK(KnifeAuditActor->bEscaped&&!KnifeAuditActor->ResolveStrike(),"Remount did not end chase immediately");KnifeAuditActor->Destroy();KCHECK(Spawn(600),"Cannot spawn death-sequence fixture");KnifeAuditResets=M->Quest->SearchResets;Advance(3);}
  }else if(KnifeAuditStage==3){
-  KCHECK(KnifeAuditClock<18,"Two-hit chase timed out");
+  KCHECK(KnifeAuditClock<30,"Two-hit chase timed out");
   if(KnifeAuditActor->Stabs==2){KCHECK(B->RiderHealth<=0&&B->RespawnRemaining>0&&M->Quest->SearchResets>KnifeAuditResets&&KnifeAuditActor->bEscaped,"Second stab failed death/reset");Advance(4);}
  }else if(KnifeAuditStage==4){
   KCHECK(KnifeAuditClock<7,"Recovery did not complete");
@@ -53,7 +64,19 @@ void ABattleMacController::TickKnifeAudit(float Dt){
   KCHECK(KnifeAuditActor->ResolveStrike()&&KnifeAuditActor->Stabs==1&&B->RiderHealth>0,"Unobstructed control strike failed");
   KnifeAuditActor->bWindingUp=true;KnifeAuditActor->WindupRemaining=0;KCHECK(!KnifeAuditActor->ResolveStrike()&&B->RiderHealth>0,"Stab bypassed recovery protection");
   FDamageEvent Damage;const float ClockBefore=M->TimeRemaining;KCHECK(KnifeAuditActor->TakeDamage(200,Damage,this,GetPawn())==100&&KnifeAuditActor->bDead&&!KnifeAuditActor->bWindingUp&&!KnifeAuditActor->ResolveStrike(),"Defeated attacker continued attacking");M->RecordPlayerShotHit(KnifeAuditActor);KCHECK(M->TimeRemaining==ClockBefore,"Knife attacker incorrectly awarded zombie time");
-  End(true,TEXT("Actual pursuit, first-hit dismount/recovery, immediate remount escape, second-hit death/phone reset, obstruction, windup, tutorial protection and defeated-attacker cancellation pass"));
+  KnifeAuditActor->Destroy();Advance(6);
+ }else if(KnifeAuditStage==6){
+  KCHECK(KnifeAuditClock<20,"Defense recovery timed out");
+  if(B->StunRemaining<=0&&B->Ride->Recovery<=0){KCHECK(P&&!P->bWeaponDrawn,"Defense must begin hands-free");KCHECK(Spawn(700),"Cannot spawn gun-defense fixture");KnifeAuditShots=P->ShotsFired;KnifeAuditAmmo=P->Ammo;KnifeAuditTime=M->TimeRemaining;KnifeAuditTrouble=M->Trouble;Key(EKeys::G,true);Advance(7);}
+ }else if(KnifeAuditStage==7){
+  KCHECK(P&&KnifeAuditClock<8,"Actual gun defense failed or timed out");AimAt();Key(EKeys::G,false);
+  if(KnifeAuditClock>.4f&&!bKnifeDefenseCaptured){Capture(TEXT("defense"));bKnifeDefenseCaptured=true;}
+  if(KnifeAuditClock>.6f){Key(EKeys::RightMouseButton,true);Key(EKeys::LeftMouseButton,true);}
+  if(KnifeAuditActor->bDead){FlushPressedKeys();KCHECK(KnifeAuditActor->DeathPhysics&&KnifeAuditActor->DeathPhysics->IsSimulatingPhysics(TEXT("Hips")),"Shot attacker did not enter physical death");KCHECK(P->ShotsFired-KnifeAuditShots>=3&&P->Ammo<KnifeAuditAmmo&&M->Trouble>KnifeAuditTrouble,"Gun input did not consume ammo and attract trouble");KCHECK(B->RiderHealth>0&&B->RespawnRemaining==0&&M->TimeRemaining<KnifeAuditTime,"Defense killed rider or awarded time");Advance(8);}
+ }else if(KnifeAuditStage==8&&KnifeAuditClock>2.5f){
+  Capture(TEXT("defeated"));Advance(9);
+ }else if(KnifeAuditStage==9&&KnifeAuditClock>.4f){
+  End(true,TEXT("Pursuit, first-hit dismount, remount escape, second-hit reset, obstruction/protection and actual G-draw/mouse-fire defense with ammo/heat pass"));
  }
 #undef KCHECK
 #endif

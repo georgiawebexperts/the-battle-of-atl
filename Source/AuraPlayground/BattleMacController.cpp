@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleBuild.h"
 #include "BattleMusic.h"
+#include "BattleAim.h"
 void TickBattleSpeedAudit(APlayerController* PC,float Dt);
 void TickBattlePanicAudit(APlayerController* PC,float Dt);
 void TickBattleWatchAudit(APlayerController* PC,float Dt);
@@ -52,7 +53,13 @@ ABattleMacController::ABattleMacController(){
 void ABattleMacController::BeginPlay(){
  Super::BeginPlay();
  BattleMusic::Initialize(this);
- if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){bool Show=true;GConfig->GetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),Show,GGameUserSettingsIni);Mode->bTutorialHelp=Show;}
+ if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){
+  int32 LayoutVersion=0;GConfig->GetInt(TEXT("BattleInterface"),TEXT("LayoutVersion"),LayoutVersion,GGameUserSettingsIni);
+  bool Show=false;
+  if(LayoutVersion>=2)GConfig->GetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),Show,GGameUserSettingsIni);
+  else{GConfig->SetInt(TEXT("BattleInterface"),TEXT("LayoutVersion"),2,GGameUserSettingsIni);GConfig->SetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),false,GGameUserSettingsIni);GConfig->Flush(false,GGameUserSettingsIni);}
+  Mode->bTutorialHelp=Show;
+ }
  // Keep moving silhouettes readable; temporal antialiasing remains enabled.
  if(auto* Blur=IConsoleManager::Get().FindConsoleVariable(TEXT("r.MotionBlurQuality")))Blur->Set(0,ECVF_SetByGameSetting);
  if(GetWorld()->WorldType==EWorldType::Game){
@@ -90,6 +97,7 @@ void TickBattleTrafficReview(APlayerController* PC,float Dt);
 void TickBattleMonroeReview(APlayerController* PC,float Dt);
 void TickBattleCanopyReview(APlayerController* PC,float Dt);
 void TickBattleTreeRideAudit(APlayerController* PC,float Dt);
+void TickBattleAimAudit(APlayerController* PC,float Dt);
 void TickBattlePhoneRideAudit(APlayerController* PC,float Dt);
 void TickBattlePlayerCrashReview(APlayerController* PC,float Dt);
 void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt);
@@ -101,9 +109,11 @@ void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeRideAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
+ AimNoticeRemaining=FMath::Max(0.f,AimNoticeRemaining-Dt);
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpeedAudit")))TickBattleSpeedAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMusicAudit")))BattleMusic::TickAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleAimAudit")))TickBattleAimAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpareBikeAudit")))BattleSpareBikes::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleStorefrontAudit")))TickStorefrontAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);
@@ -169,6 +179,7 @@ void ABattleMacController::PlayerTick(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleMurderKAudit")))TickMurderKAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeAudit")))TickKnifeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
@@ -195,8 +206,17 @@ void ABattleMacController::SetupInputComponent(){
  Binding.bExecuteWhenPaused=true;
  auto& Skip=InputComponent->BindKey(EKeys::Enter,IE_Pressed,this,&ABattleMacController::SkipOpening);Skip.bExecuteWhenPaused=true;
  InputComponent->BindKey(EKeys::F1,IE_Pressed,this,&ABattleMacController::TogglePracticeHelp);
+ for(const auto& Chord:TArray<TPair<FKey,int32>>{{EKeys::LeftBracket,-1},{EKeys::RightBracket,1}}){
+  FInputKeyBinding AimBinding(FInputChord(Chord.Key),IE_Pressed);AimBinding.bExecuteWhenPaused=true;
+  const int32 Delta=Chord.Value;
+  AimBinding.KeyDelegate.GetDelegateForManualSet().BindLambda([this,Delta](){AdjustAim(Delta);});InputComponent->KeyBindings.Add(AimBinding);
+ }
 }
 void ABattleMacController::TogglePracticeHelp(){if(auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this))){M->bTutorialHelp=!M->bTutorialHelp;GConfig->SetBool(TEXT("BattleInterface"),TEXT("PermanentControls"),M->bTutorialHelp,GGameUserSettingsIni);GConfig->Flush(false,GGameUserSettingsIni);}}
+void ABattleMacController::AdjustAim(int32 Delta){
+ BattleAim::Cycle(Delta);
+ AimNotice=BattleAim::Label();AimNoticeRemaining=3.f;
+}
 void ABattleMacController::CycleRiderStyle(){
  BattleSetRiderStyle((BattleRiderStyle()+1)%3);
  if(auto* Bike=Cast<ABattleBike>(GetPawn()))Bike->ApplyRiderStyle();
@@ -247,9 +267,10 @@ void ABattleMacController::ShowMenu(FString Page){
 
  RemoveMenu();SetPause(true);bShowMouseCursor=true;ResetIgnoreMoveInput();ResetIgnoreLookInput();SetIgnoreMoveInput(true);SetIgnoreLookInput(true);
  TSharedRef<SVerticalBox> Items=SNew(SVerticalBox);
- auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).AutoWrapText(true)];};
+ auto Label=[&](FString Text,int Size,FLinearColor Color){Items->AddSlot().AutoHeight().Padding(0,6)[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",Size)).ColorAndOpacity(Color).LineHeightPercentage(1.22f).AutoWrapText(true)];};
  auto Button=[&](FString Text,TFunction<void()> Action){Items->AddSlot().AutoHeight().Padding(0,5)[SNew(SButton).ContentPadding(FMargin(18,10)).OnClicked_Lambda([Action](){Action();return FReply::Handled();})[SNew(STextBlock).Text(FText::FromString(Text)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18))]];};
  Label(TEXT("THE BATTLE OF ATL"),42,FLinearColor(1,.12,.16));
+ if(!bStarted&&Page==TEXT("Home"))Label(TEXT("BUILT BY WEB EXPERTS"),18,FLinearColor(.35,1,.86));
  Items->AddSlot().AutoHeight().Padding(0,2,0,7).HAlign(HAlign_Left)[SNew(SBox).WidthOverride(320)[SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush")).BorderBackgroundColor(FLinearColor(1,.72,.42)).Padding(FMargin(12,6))[SNew(STextBlock).Text(FText::FromString(BattleBuild::VersionedLabel)).Font(FCoreStyle::GetDefaultFontStyle("Bold",18)).ColorAndOpacity(FLinearColor(.025,.035,.045))]]];
  const auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  const bool Ended=Park&&Park->bRunEnded;
@@ -288,9 +309,11 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("Ellison dropped his cell phone playing frisbee in Piedmont Park. Use Find My Lost Phone on his watch to follow a broad compass direction. Recover it, then race past Murder K and Krog Street Market, through Krog Tunnel and right into 98 Estoria. Morgan is waiting for him at the Cabbagetown party. Make it before the clock runs out and celebrate with a beer."),16,FLinearColor::White);
   Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn (5 uses) | Tab camera\nP arcade / realistic bike physics\nArcade: scenery bumps keep you on the bike\nEnemies, drones and tasers can knock you off\nFind >> 5s tokens for temporary speed\nM music: Off > Song 1 > Song 2 > Off\nE dismount | Left click pistol"),17,FLinearColor::White);
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look and aim\nZ/X turn | T/V look up/down\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | F1 full/compact controls | Esc pause"),17,FLinearColor::White);
+  Label(TEXT("AIM FEEL\nOptions > AIM SENSITIVITY, or press [ and ] at any time\n25% to 200%, remembered between runs"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
   Button(BattleMusic::Enabled()?FString::Printf(TEXT("MUSIC: SONG %d / 2  /  M"),BattleMusic::Selection()):FString(TEXT("MUSIC: OFF  /  M")),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
+  Button(BattleAim::Label(),[this](){AdjustAim(1);ShowMenu(TEXT("Options"));});
   if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))Button(M->bTutorialHelp?TEXT("PERMANENT CONTROLS: ON  /  F1"):TEXT("PERMANENT CONTROLS: OFF  /  F1"),[this](){TogglePracticeHelp();ShowMenu(TEXT("Options"));});
   if(auto* Settings=UGameUserSettings::GetGameUserSettings()){
    const bool Fullscreen=Settings->GetFullscreenMode()!=EWindowMode::Windowed;
@@ -298,7 +321,7 @@ void ABattleMacController::ShowMenu(FString Page){
    const FIntPoint R=Settings->GetScreenResolution();
    Button(FString::Printf(TEXT("RESOLUTION: %d × %d  /  CHANGE"),R.X,R.Y),[this](){if(auto* S=UGameUserSettings::GetGameUserSettings()){const FIntPoint R=S->GetScreenResolution();const FIntPoint Next=R.X<1440?FIntPoint(1600,900):R.X<1800?FIntPoint(1920,1080):FIntPoint(1280,720);S->SetScreenResolution(Next);S->ApplySettings(false);S->SaveSettings();ShowMenu(TEXT("Options"));}});
   }
-  Label(TEXT("DISPLAY PRESETS TARGET 60 FPS."),16,FLinearColor::White);
+  Label(TEXT("AIM SENSITIVITY SCALES MOUSE AND KEYBOARD LOOK, ON THE BIKE AND ON FOOT. DISPLAY PRESETS TARGET 60 FPS."),16,FLinearColor::White);
   for(int Quality:{1,2})Button(Quality==1?TEXT("PERFORMANCE / 1080p"):TEXT("BALANCED / 1080p"),[this,Quality](){if(auto* Settings=UGameUserSettings::GetGameUserSettings()){Settings->SetOverallScalabilityLevel(Quality);Settings->SetScreenResolution(FIntPoint(1920,1080));Settings->SetFullscreenMode(EWindowMode::Windowed);Settings->SetFrameRateLimit(60);Settings->ApplySettings(false);Settings->SaveSettings();}ShowMenu(TEXT("Options"));});
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else{
@@ -308,7 +331,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("INSTRUCTIONS"),[this](){ShowMenu(TEXT("Instructions"));});
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
-  Label(TEXT("The Battle of ATL | Web Experts\nPiedmont Park to Cabbagetown — recover the phone and make the party."),13,FLinearColor(.65,.68,.72));
+  Label(TEXT("The Battle of ATL built by Web Experts\nPiedmont Park to Cabbagetown — recover the phone and make the party."),13,FLinearColor(.65,.68,.72));
  }
  if((bCelebrating||bCredits)&&CelebrationArt){
   CelebrationBrush.SetResourceObject(CelebrationArt);CelebrationBrush.ImageSize=FVector2D(CelebrationArt->GetSizeX(),CelebrationArt->GetSizeY());

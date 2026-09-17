@@ -1,0 +1,36 @@
+{
+  "exit_code": 0,
+  "audit": {
+    "passed": false,
+    "reason": "Foot state or timer mismatch",
+    "stage": 2
+  },
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/69bec6b6e0cc471aa21ba28bf95f63aa/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/69bec6b6e0cc471aa21ba28bf95f63aa/detailed-recovery0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/69bec6b6e0cc471aa21ba28bf95f63aa/detailed-recovery1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/69bec6b6e0cc471aa21ba28bf95f63aa/detailed-recovery2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/player-crash-live/69bec6b6e0cc471aa21ba28bf95f63aa/live-fall.png"
+  ],
+  "events": [
+    "started speed=649.8",
+    "recovered on foot health=48.3 ammo=17",
+    "state=1 timer=0 elapsed=7.137 lost=8.678"
+  ],
+  "scope": "Collision and remount; fixture suppresses ambient damage until the explicit death probe. Full animation, arbitrary terrain and other hazards not accepted.",
+  "detailed_assets_loaded": true,
+  "detailed_rider_preview": true,
+  "runtime": "editor-game",
+  "pose_fits": [
+    {
+      "heading_rms_cm": 75.906,
+      "selected_rms_cm": 47.833
+    }
+  ],
+  "space_checks": [],
+  "light_events": [],
+  "capture_passed": false,
+  "pose_fit_nonregression": true,
+  "requested_flow_covered": true,
+  "passed": false
+}

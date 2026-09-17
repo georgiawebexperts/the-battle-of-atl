@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "reason": "Remount did not remain stable",
+  "stage": 4,
+  "swim_cm": 521.74,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "edge_requested": 45,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-0b46476ea3914a029c079bd74ccedf82/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-0b46476ea3914a029c079bd74ccedf82/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-0b46476ea3914a029c079bd74ccedf82/returned.png"
+  ]
+}

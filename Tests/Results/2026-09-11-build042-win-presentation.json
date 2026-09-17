@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "reason": "Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass",
+  "capture": "work/build042-win/win.png",
+  "visual_review": "Inspected 1280x720 native win screen: all results and saved best time readable; Ride Again, Level Select and Quit fully visible. Fixture stats are test values, not evidence of a complete player run.",
+  "scope": "Native winning menu after real Artifact/checkpoint triggers and gate guard tests; not full route driving or FPS acceptance."
+}

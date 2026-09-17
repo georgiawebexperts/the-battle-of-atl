@@ -1,0 +1,5825 @@
+{
+  "status": "passed",
+  "scope": "Static installed pavement collision samples; full ride-through and bridges remain unverified",
+  "samples": 727,
+  "passed": 727,
+  "spline_count": 236,
+  "results": [
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 0,
+      "expected_z": -171.82519466666668,
+      "actual_z": -171.8251883284934,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 1,
+      "expected_z": -171.73904066666668,
+      "actual_z": -171.73903507340273,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 2,
+      "expected_z": -172.03410233333332,
+      "actual_z": -172.03410387382894,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 3,
+      "expected_z": -171.77765266666665,
+      "actual_z": -171.77765400471085,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 4,
+      "expected_z": -171.94302466666667,
+      "actual_z": -171.94302358398204,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 5,
+      "expected_z": -171.991761,
+      "actual_z": -171.99176130362878,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 6,
+      "expected_z": -171.39780333333331,
+      "actual_z": -171.39780414386135,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 7,
+      "expected_z": -171.24688066666667,
+      "actual_z": -171.24688016785763,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 8,
+      "expected_z": -170.95833366666668,
+      "actual_z": -170.95834211836956,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 9,
+      "expected_z": -171.012512,
+      "actual_z": -171.01252015204767,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 10,
+      "expected_z": -170.43702499999998,
+      "actual_z": -170.43703795557886,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 11,
+      "expected_z": -170.27808466666667,
+      "actual_z": -170.27809826336753,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 12,
+      "expected_z": -170.14606033333334,
+      "actual_z": -170.14606175299377,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 13,
+      "expected_z": -170.127781,
+      "actual_z": -170.12778542248262,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 14,
+      "expected_z": -170.15832899999998,
+      "actual_z": -170.15834102082576,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 15,
+      "expected_z": -169.84463,
+      "actual_z": -169.844630688007,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_1_15.obj",
+      "triangle": 16,
+      "expected_z": -169.794543,
+      "actual_z": -169.79455028408879,
+      "actor": "Park pavement SM_Park_Concrete_1_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 0,
+      "expected_z": 249.91723933333333,
+      "actual_z": 249.9172579583693,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 109,
+      "expected_z": 193.4956536666667,
+      "actual_z": 193.49564792047977,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 218,
+      "expected_z": 250.45506,
+      "actual_z": 250.45507482963063,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 327,
+      "expected_z": 135.72569433333334,
+      "actual_z": 135.72570406639565,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 436,
+      "expected_z": 69.00144033333333,
+      "actual_z": 69.00143656079776,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 545,
+      "expected_z": 196.40277766666668,
+      "actual_z": 196.4027682429316,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 654,
+      "expected_z": 67.49652800000001,
+      "actual_z": 67.49652666373699,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 763,
+      "expected_z": 166.02083333333334,
+      "actual_z": 166.02082327413262,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 872,
+      "expected_z": 257.93718900000005,
+      "actual_z": 257.93718665271126,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 981,
+      "expected_z": 192.659279,
+      "actual_z": 192.65926888052815,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 1090,
+      "expected_z": 83.12152800000001,
+      "actual_z": 83.12153241615033,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 1199,
+      "expected_z": 114.56725366666667,
+      "actual_z": 114.56724000871338,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_14.obj",
+      "triangle": 1308,
+      "expected_z": 78.77831066666666,
+      "actual_z": 78.77830646549326,
+      "actor": "Park pavement SM_Park_Concrete_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 0,
+      "expected_z": -266.2941313333333,
+      "actual_z": -266.2941419942654,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 466,
+      "expected_z": -250.90559033333332,
+      "actual_z": -250.90559383436354,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 932,
+      "expected_z": -318.614583,
+      "actual_z": -318.61459614972375,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 1398,
+      "expected_z": -378.899011,
+      "actual_z": -378.899009826033,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 1864,
+      "expected_z": -172.11739566666665,
+      "actual_z": -172.11739777488663,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 2330,
+      "expected_z": -168.26893233333334,
+      "actual_z": -168.26894559160792,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 2796,
+      "expected_z": -163.49305566666666,
+      "actual_z": -163.49306708080792,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 3262,
+      "expected_z": -160.72309966666668,
+      "actual_z": -160.7230956251202,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 3728,
+      "expected_z": -133.13356266666668,
+      "actual_z": -133.13356242580036,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 4194,
+      "expected_z": -103.23272966666667,
+      "actual_z": -103.23269697760043,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 4660,
+      "expected_z": -121.21875033333333,
+      "actual_z": -121.2187534160989,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 5126,
+      "expected_z": -9.866776333333334,
+      "actual_z": -9.866768655798978,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_15.obj",
+      "triangle": 5592,
+      "expected_z": -22.28632233333333,
+      "actual_z": -22.28632216911447,
+      "actor": "Park pavement SM_Park_Concrete_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 0,
+      "expected_z": -13.713151333333334,
+      "actual_z": -13.713146472672449,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 429,
+      "expected_z": 6.207546333333333,
+      "actual_z": 6.207530880093131,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 858,
+      "expected_z": 32.379236999999996,
+      "actual_z": 32.37923205885113,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 1287,
+      "expected_z": 5.604166333333333,
+      "actual_z": 5.6041538377833575,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 1716,
+      "expected_z": 70.76101333333334,
+      "actual_z": 70.76101084309897,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 2145,
+      "expected_z": 25.309028,
+      "actual_z": 25.309025949337993,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 2574,
+      "expected_z": 115.84722233333333,
+      "actual_z": 115.84720053238226,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 3003,
+      "expected_z": 108.62056799999999,
+      "actual_z": 108.62058155889088,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 3432,
+      "expected_z": 128.69733999999997,
+      "actual_z": 128.69734260281496,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 3861,
+      "expected_z": 60.291666666666664,
+      "actual_z": 60.291648377256266,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 4290,
+      "expected_z": 93.727966,
+      "actual_z": 93.7279633673951,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 4719,
+      "expected_z": 175.30902799999998,
+      "actual_z": 175.3090286563996,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_2_16.obj",
+      "triangle": 5148,
+      "expected_z": 218.67654866666666,
+      "actual_z": 218.67655815065024,
+      "actor": "Park pavement SM_Park_Concrete_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 0,
+      "expected_z": 65.64113099999999,
+      "actual_z": 65.64113480817412,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 148,
+      "expected_z": 57.88535733333333,
+      "actual_z": 57.8853573824056,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 296,
+      "expected_z": 55.064503,
+      "actual_z": 55.06451300861919,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 444,
+      "expected_z": 3.5136679999999996,
+      "actual_z": 3.513670383625879,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 592,
+      "expected_z": 34.68402766666667,
+      "actual_z": 34.68403737690538,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 740,
+      "expected_z": -74.51127366666667,
+      "actual_z": -74.51127327696642,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 888,
+      "expected_z": 58.38194466666666,
+      "actual_z": 58.381935790159446,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 1036,
+      "expected_z": 75.401331,
+      "actual_z": 75.40133628026918,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 1184,
+      "expected_z": 71.05555566666668,
+      "actual_z": 71.05557126765612,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 1332,
+      "expected_z": 77.00242433333334,
+      "actual_z": 77.00242657424587,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 1480,
+      "expected_z": 54.346587,
+      "actual_z": 54.346598424318216,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 1628,
+      "expected_z": 31.939984666666664,
+      "actual_z": 31.940010977501572,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_14.obj",
+      "triangle": 1776,
+      "expected_z": -23.785803333333334,
+      "actual_z": -23.78574974512206,
+      "actor": "Park pavement SM_Park_Concrete_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 0,
+      "expected_z": -330.76408833333335,
+      "actual_z": -330.76408453161827,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 174,
+      "expected_z": -345.0902776666667,
+      "actual_z": -345.09028115240756,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 348,
+      "expected_z": -357.24086600000004,
+      "actual_z": -357.2408678718102,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 522,
+      "expected_z": -339.10069466666664,
+      "actual_z": -339.1007043569394,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 696,
+      "expected_z": -281.1145833333333,
+      "actual_z": -281.11459109616317,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 870,
+      "expected_z": -311.14930566666663,
+      "actual_z": -311.1492904584981,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 1044,
+      "expected_z": -302.91127466666666,
+      "actual_z": -302.91127139927755,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 1218,
+      "expected_z": -288.40625,
+      "actual_z": -288.4062498603114,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 1392,
+      "expected_z": -288.579861,
+      "actual_z": -288.579846002748,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 1566,
+      "expected_z": -290.471986,
+      "actual_z": -290.4720214339195,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 1740,
+      "expected_z": -309.08962433333335,
+      "actual_z": -309.0896360228429,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 1914,
+      "expected_z": -270.696692,
+      "actual_z": -270.6966953188842,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_15.obj",
+      "triangle": 2088,
+      "expected_z": -169.09436133333332,
+      "actual_z": -169.09436868808876,
+      "actor": "Park pavement SM_Park_Concrete_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 0,
+      "expected_z": -377.1539906666667,
+      "actual_z": -377.1540188696773,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 348,
+      "expected_z": -393.96180566666663,
+      "actual_z": -393.9618023653745,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 696,
+      "expected_z": -257.5034723333333,
+      "actual_z": -257.50346991823596,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 1044,
+      "expected_z": -245.54666133333333,
+      "actual_z": -245.54667939655894,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 1392,
+      "expected_z": -349.787626,
+      "actual_z": -349.78752429018976,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 1740,
+      "expected_z": -367.6597223333333,
+      "actual_z": -367.6597212733402,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 2088,
+      "expected_z": -175.01252866666667,
+      "actual_z": -175.01251909089953,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 2436,
+      "expected_z": -338.6666666666667,
+      "actual_z": -338.6666644956359,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 2784,
+      "expected_z": -313.06831600000004,
+      "actual_z": -313.0683068579201,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 3132,
+      "expected_z": -273.40263699999997,
+      "actual_z": -273.4026556626135,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 3480,
+      "expected_z": -290.7593473333333,
+      "actual_z": -290.75934588845496,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 3828,
+      "expected_z": -284.8472223333333,
+      "actual_z": -284.84721958259917,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_16.obj",
+      "triangle": 4176,
+      "expected_z": -200.750512,
+      "actual_z": -200.75052338250822,
+      "actor": "Park pavement SM_Park_Concrete_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 0,
+      "expected_z": -170.44718233333333,
+      "actual_z": -170.44716909818504,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 33,
+      "expected_z": -165.28238166666665,
+      "actual_z": -165.28236396352725,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 66,
+      "expected_z": -165.05555533333336,
+      "actual_z": -165.05555225654723,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 99,
+      "expected_z": -167.572917,
+      "actual_z": -167.57292150024887,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 132,
+      "expected_z": -143.603197,
+      "actual_z": -143.60317907649025,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 165,
+      "expected_z": -158.97916666666666,
+      "actual_z": -158.9791679315477,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 198,
+      "expected_z": -168.26736100000002,
+      "actual_z": -168.26735626960323,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 231,
+      "expected_z": -161.40972233333332,
+      "actual_z": -161.4097162432368,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 264,
+      "expected_z": -111.897406,
+      "actual_z": -111.89740155711299,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 297,
+      "expected_z": 207.94776366666667,
+      "actual_z": 207.94777276051474,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 330,
+      "expected_z": 199.70138899999998,
+      "actual_z": 199.7013992794177,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 363,
+      "expected_z": 216.19748266666667,
+      "actual_z": 216.19748122604682,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_3_17.obj",
+      "triangle": 396,
+      "expected_z": 210.81949099999997,
+      "actual_z": 210.8194925735861,
+      "actor": "Park pavement SM_Park_Concrete_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 0,
+      "expected_z": -94.36143633333334,
+      "actual_z": -94.36143801063905,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 194,
+      "expected_z": -205.15403233333333,
+      "actual_z": -205.15403222530145,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 388,
+      "expected_z": -174.864583,
+      "actual_z": -174.8645563034978,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 582,
+      "expected_z": -474.56612633333333,
+      "actual_z": -474.56612004157114,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 776,
+      "expected_z": -274.8645833333333,
+      "actual_z": -274.8645854368872,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 970,
+      "expected_z": -90.587137,
+      "actual_z": -90.58717541372495,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 1164,
+      "expected_z": -421.7395833333333,
+      "actual_z": -421.73957915096753,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 1358,
+      "expected_z": -354.11805566666663,
+      "actual_z": -354.11804201995267,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 1552,
+      "expected_z": -420.62572433333327,
+      "actual_z": -420.6257354881462,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 1746,
+      "expected_z": -324.3012516666667,
+      "actual_z": -324.3012524258435,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 1940,
+      "expected_z": -349.8645833333333,
+      "actual_z": -349.86458732600863,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 2134,
+      "expected_z": -366.534101,
+      "actual_z": -366.53411028604773,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_14.obj",
+      "triangle": 2328,
+      "expected_z": -390.923611,
+      "actual_z": -390.923614696861,
+      "actor": "Park pavement SM_Park_Concrete_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 0,
+      "expected_z": -392.35294799999997,
+      "actual_z": -392.3529450142888,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 353,
+      "expected_z": -394.3995796666666,
+      "actual_z": -394.3995753631678,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 706,
+      "expected_z": -369.048611,
+      "actual_z": -369.0486143469876,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 1059,
+      "expected_z": -378.423611,
+      "actual_z": -378.4236150257742,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 1412,
+      "expected_z": -377.7268053333333,
+      "actual_z": -377.7267972231718,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 1765,
+      "expected_z": -384.0044013333333,
+      "actual_z": -384.00440491709065,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 2118,
+      "expected_z": -349.34375,
+      "actual_z": -349.343751247378,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 2471,
+      "expected_z": -428.5457686666667,
+      "actual_z": -428.5457657831083,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 2824,
+      "expected_z": -456.46180566666663,
+      "actual_z": -456.46180215969144,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 3177,
+      "expected_z": -448.5995906666667,
+      "actual_z": -448.59958987370084,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 3530,
+      "expected_z": -338.80563333333333,
+      "actual_z": -338.8056338083679,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 3883,
+      "expected_z": -562.4980566666667,
+      "actual_z": -562.4980454819303,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_15.obj",
+      "triangle": 4236,
+      "expected_z": -587.277778,
+      "actual_z": -587.277791564557,
+      "actor": "Park pavement SM_Park_Concrete_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 0,
+      "expected_z": -362.4109826666667,
+      "actual_z": -362.4109903614525,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 410,
+      "expected_z": -346.70477166666666,
+      "actual_z": -346.7047726798209,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 820,
+      "expected_z": -368.78819466666664,
+      "actual_z": -368.78818545729325,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 1230,
+      "expected_z": -359.2395833333333,
+      "actual_z": -359.23958227152025,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 1640,
+      "expected_z": -367.0520833333333,
+      "actual_z": -367.0520827536826,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 2050,
+      "expected_z": -384.03816466666666,
+      "actual_z": -384.0381620967273,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 2460,
+      "expected_z": -371.3682036666667,
+      "actual_z": -371.3682027516017,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 2870,
+      "expected_z": -583.2908816666667,
+      "actual_z": -583.2908432179302,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 3280,
+      "expected_z": -397.73604133333333,
+      "actual_z": -397.7360637733633,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 3690,
+      "expected_z": -357.878203,
+      "actual_z": -357.8782025524996,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 4100,
+      "expected_z": -627.060793,
+      "actual_z": -627.0607859244743,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 4510,
+      "expected_z": -350.55127666666664,
+      "actual_z": -350.55126335774145,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_16.obj",
+      "triangle": 4920,
+      "expected_z": -725.2620383333333,
+      "actual_z": -725.2620374428018,
+      "actor": "Park pavement SM_Park_Concrete_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 0,
+      "expected_z": -318.06548533333336,
+      "actual_z": -318.0654835060965,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 397,
+      "expected_z": -308.1979166666667,
+      "actual_z": -308.197914848011,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 794,
+      "expected_z": -764.6042536666668,
+      "actual_z": -764.6042779818974,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 1191,
+      "expected_z": -264.013889,
+      "actual_z": -264.01387248285357,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 1588,
+      "expected_z": -220.6111113333333,
+      "actual_z": -220.6111143040897,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 1985,
+      "expected_z": -212.10416666666666,
+      "actual_z": -212.1041648216561,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 2382,
+      "expected_z": -716.704861,
+      "actual_z": -716.7048538484999,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 2779,
+      "expected_z": -674.170139,
+      "actual_z": -674.1701537570763,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 3176,
+      "expected_z": -113.14583333333333,
+      "actual_z": -113.14584063875031,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 3573,
+      "expected_z": 5.494977666666666,
+      "actual_z": 5.49498031437507,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 3970,
+      "expected_z": -608.2901303333333,
+      "actual_z": -608.290120009898,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 4367,
+      "expected_z": -627.46875,
+      "actual_z": -627.4687485070324,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_17.obj",
+      "triangle": 4764,
+      "expected_z": -172.86805566666666,
+      "actual_z": -172.86806099713232,
+      "actor": "Park pavement SM_Park_Concrete_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 0,
+      "expected_z": -174.889991,
+      "actual_z": -174.88999470826803,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 327,
+      "expected_z": -299.0833333333333,
+      "actual_z": -299.08351897320574,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 654,
+      "expected_z": -305.0240083333333,
+      "actual_z": -305.02410501801796,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 981,
+      "expected_z": -321.74719666666664,
+      "actual_z": -321.7471883605279,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 1308,
+      "expected_z": -335.8020833333333,
+      "actual_z": -335.80209272238926,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 1635,
+      "expected_z": -346.5659723333333,
+      "actual_z": -346.5659843167273,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 1962,
+      "expected_z": -613.114269,
+      "actual_z": -613.1142932079957,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 2289,
+      "expected_z": -346.6527776666667,
+      "actual_z": -346.65277751114365,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 2616,
+      "expected_z": -366.8784723333333,
+      "actual_z": -366.87847038486655,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 2943,
+      "expected_z": -372.436932,
+      "actual_z": -372.4369412819067,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 3270,
+      "expected_z": -522.3881726666667,
+      "actual_z": -522.3882707341199,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 3597,
+      "expected_z": -488.7534723333333,
+      "actual_z": -488.7534701265864,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_4_18.obj",
+      "triangle": 3924,
+      "expected_z": -687.7469616666667,
+      "actual_z": -687.7469649356118,
+      "actor": "Park pavement SM_Park_Concrete_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 0,
+      "expected_z": -500.6325903333333,
+      "actual_z": -500.6326057664757,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 70,
+      "expected_z": -488.23638933333336,
+      "actual_z": -488.23638782860365,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 140,
+      "expected_z": -472.2390493333333,
+      "actual_z": -472.23905364210356,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 210,
+      "expected_z": -489.10069433333337,
+      "actual_z": -489.100687397492,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 280,
+      "expected_z": -455.71562166666666,
+      "actual_z": -455.7156266925908,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 350,
+      "expected_z": -489.1875,
+      "actual_z": -489.1875057250444,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 420,
+      "expected_z": -453.7708333333333,
+      "actual_z": -453.7708139633108,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 490,
+      "expected_z": -482.85069433333337,
+      "actual_z": -482.85070024895805,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 560,
+      "expected_z": -440.576389,
+      "actual_z": -440.57638217222154,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 630,
+      "expected_z": -492.35159799999997,
+      "actual_z": -492.3515906543464,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 700,
+      "expected_z": -472.4588626666667,
+      "actual_z": -472.4588695338618,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 770,
+      "expected_z": -464.4182183333333,
+      "actual_z": -464.4182155520334,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_14.obj",
+      "triangle": 840,
+      "expected_z": -460.9055673333333,
+      "actual_z": -460.90554234146504,
+      "actor": "Park pavement SM_Park_Concrete_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 0,
+      "expected_z": -762.5333873333333,
+      "actual_z": -762.5333963512378,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 163,
+      "expected_z": -836.3229166666666,
+      "actual_z": -836.3229249456338,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 326,
+      "expected_z": -779.0674706666667,
+      "actual_z": -779.0674733301471,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 489,
+      "expected_z": -818.623818,
+      "actual_z": -818.6237369334319,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 652,
+      "expected_z": -898.0150313333334,
+      "actual_z": -898.0149674802465,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 815,
+      "expected_z": -883.71875,
+      "actual_z": -883.718779253167,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 978,
+      "expected_z": -893.3968133333333,
+      "actual_z": -893.3968327870635,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 1141,
+      "expected_z": -895.2248563333333,
+      "actual_z": -895.2248359926925,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 1304,
+      "expected_z": -904.2922239999999,
+      "actual_z": -904.2922308041992,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 1467,
+      "expected_z": -882.0277066666666,
+      "actual_z": -882.0277253228965,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 1630,
+      "expected_z": -935.7246896666666,
+      "actual_z": -935.7246919369726,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 1793,
+      "expected_z": -917.0518666666667,
+      "actual_z": -917.051864083544,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_19.obj",
+      "triangle": 1956,
+      "expected_z": -945.4375,
+      "actual_z": -945.4374687566453,
+      "actor": "Park pavement SM_Park_Concrete_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 0,
+      "expected_z": -913.9931876666666,
+      "actual_z": -913.9931945878016,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 249,
+      "expected_z": -953.554118,
+      "actual_z": -953.5541107568504,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 498,
+      "expected_z": -959.0139043333334,
+      "actual_z": -959.0139008917638,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 747,
+      "expected_z": -960.2995583333333,
+      "actual_z": -960.29963693884,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 996,
+      "expected_z": -955.7469483333333,
+      "actual_z": -955.74700828901,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 1245,
+      "expected_z": -946.273897,
+      "actual_z": -946.2738437480458,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 1494,
+      "expected_z": -937.6493763333333,
+      "actual_z": -937.6493723468452,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 1743,
+      "expected_z": -909.782308,
+      "actual_z": -909.7823173495478,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 1992,
+      "expected_z": -907.8506943333333,
+      "actual_z": -907.8506872863923,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 2241,
+      "expected_z": -881.375,
+      "actual_z": -881.3749503374369,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 2490,
+      "expected_z": -812.3645833333334,
+      "actual_z": -812.3645826093693,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_5_20.obj",
+      "triangle": 2739,
+      "expected_z": -803.0356096666668,
+      "actual_z": -803.0356622123262,
+      "actor": "Park pavement SM_Park_Concrete_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 0,
+      "expected_z": -826.5573909999999,
+      "actual_z": -826.5573784720349,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 6,
+      "expected_z": -822.5832186666667,
+      "actual_z": -822.5831658313631,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 12,
+      "expected_z": -825.798525,
+      "actual_z": -825.7984584973101,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 18,
+      "expected_z": -833.228831,
+      "actual_z": -833.2288173888544,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 24,
+      "expected_z": -832.1562496666667,
+      "actual_z": -832.1562443484797,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 30,
+      "expected_z": -826.6875,
+      "actual_z": -826.6874946680293,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 36,
+      "expected_z": -831.414999,
+      "actual_z": -831.4148969648445,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 42,
+      "expected_z": -828.076389,
+      "actual_z": -828.076430861504,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 48,
+      "expected_z": -829.2675573333332,
+      "actual_z": -829.2675401093138,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 54,
+      "expected_z": -824.0491320000001,
+      "actual_z": -824.0491547371764,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 60,
+      "expected_z": -824.3219536666667,
+      "actual_z": -824.3219307589218,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 66,
+      "expected_z": -821.9609616666667,
+      "actual_z": -821.9609925381066,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Concrete_6_20.obj",
+      "triangle": 72,
+      "expected_z": -821.9257186666667,
+      "actual_z": -821.9257296117477,
+      "actor": "Park pavement SM_Park_Concrete_6_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 0,
+      "expected_z": 237.69420633333334,
+      "actual_z": 237.6941805458984,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 418,
+      "expected_z": 71.52452766666666,
+      "actual_z": 71.52452655794269,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 836,
+      "expected_z": 71.18319266666667,
+      "actual_z": 71.18318681250759,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 1254,
+      "expected_z": 204.789661,
+      "actual_z": 204.78965026098854,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 1672,
+      "expected_z": 131.99305566666666,
+      "actual_z": 131.99304686274314,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 2090,
+      "expected_z": 56.421563666666664,
+      "actual_z": 56.42156630359341,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 2508,
+      "expected_z": 167.40972233333332,
+      "actual_z": 167.40970746864102,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 2926,
+      "expected_z": 71.08646066666667,
+      "actual_z": 71.08646572652503,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 3344,
+      "expected_z": -27.208333333333332,
+      "actual_z": -27.20833327865492,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 3762,
+      "expected_z": 113.50347233333333,
+      "actual_z": 113.50347011504566,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 4180,
+      "expected_z": -54.268559333333336,
+      "actual_z": -54.268563252696985,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_14.obj",
+      "triangle": 4598,
+      "expected_z": -139.052101,
+      "actual_z": -139.05212337061988,
+      "actor": "Park pavement SM_Park_Asphalt_2_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 0,
+      "expected_z": -64.42267466666665,
+      "actual_z": -64.4226801933133,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 571,
+      "expected_z": -165.99061666666668,
+      "actual_z": -165.99058034211808,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 1142,
+      "expected_z": -274.9625546666667,
+      "actual_z": -274.96256263597024,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 1713,
+      "expected_z": -198.30208333333334,
+      "actual_z": -198.30209175919688,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 2284,
+      "expected_z": -204.98317466666666,
+      "actual_z": -204.98315830817717,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 2855,
+      "expected_z": -198.69451766666666,
+      "actual_z": -198.69451325199537,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 3426,
+      "expected_z": -166.70486100000002,
+      "actual_z": -166.7048639909156,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 3997,
+      "expected_z": -184.5,
+      "actual_z": -184.5000106416707,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 4568,
+      "expected_z": -174.81971033333332,
+      "actual_z": -174.81970268229043,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 5139,
+      "expected_z": -153.596856,
+      "actual_z": -153.5968613648924,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 5710,
+      "expected_z": -233.28472233333332,
+      "actual_z": -233.2847243644289,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 6281,
+      "expected_z": -152.12152799999998,
+      "actual_z": -152.1215160227473,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_15.obj",
+      "triangle": 6852,
+      "expected_z": -57.52702766666666,
+      "actual_z": -57.52701431089779,
+      "actor": "Park pavement SM_Park_Asphalt_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 0,
+      "expected_z": -55.03049433333334,
+      "actual_z": -55.03053501866036,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 227,
+      "expected_z": -27.034722333333335,
+      "actual_z": -27.034722569088046,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 454,
+      "expected_z": -5.118383333333333,
+      "actual_z": -5.118409702223502,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 681,
+      "expected_z": 3.7318763333333336,
+      "actual_z": 3.731881819692731,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 908,
+      "expected_z": 9.076389,
+      "actual_z": 9.07638929697248,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 1135,
+      "expected_z": 9.25,
+      "actual_z": 9.249994316191234,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 1362,
+      "expected_z": 74.64834033333334,
+      "actual_z": 74.64835128319048,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 1589,
+      "expected_z": 78.954861,
+      "actual_z": 78.95486783600613,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 1816,
+      "expected_z": 27.739583666666665,
+      "actual_z": 27.739581256999315,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 2043,
+      "expected_z": 43.97222233333333,
+      "actual_z": 43.97222290421644,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 2270,
+      "expected_z": 75.30902766666667,
+      "actual_z": 75.30903096196067,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 2497,
+      "expected_z": 90.31138166666666,
+      "actual_z": 90.31137411228701,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_16.obj",
+      "triangle": 2724,
+      "expected_z": 97.53125,
+      "actual_z": 97.53125313621514,
+      "actor": "Park pavement SM_Park_Asphalt_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 0,
+      "expected_z": 99.91066599999999,
+      "actual_z": 99.91065986169947,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 31,
+      "expected_z": 98.22657633333334,
+      "actual_z": 98.22657153423351,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 62,
+      "expected_z": 96.92361133333334,
+      "actual_z": 96.92360979955862,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 93,
+      "expected_z": 95.795139,
+      "actual_z": 95.79513800056638,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 124,
+      "expected_z": 94.49305533333332,
+      "actual_z": 94.49306231236685,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 155,
+      "expected_z": 104.71059733333333,
+      "actual_z": 104.71053670361664,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 186,
+      "expected_z": 93.36458333333333,
+      "actual_z": 93.36458039145319,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 217,
+      "expected_z": 122.34232933333334,
+      "actual_z": 122.34230135459312,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 248,
+      "expected_z": 112.98443266666665,
+      "actual_z": 112.98438921728648,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 279,
+      "expected_z": 91.80208333333333,
+      "actual_z": 91.80208246126726,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 310,
+      "expected_z": 92.06250033333333,
+      "actual_z": 92.0624901023687,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 341,
+      "expected_z": 90.41319433333332,
+      "actual_z": 90.41319388918072,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_2_17.obj",
+      "triangle": 372,
+      "expected_z": 89.432074,
+      "actual_z": 89.43209738456612,
+      "actor": "Park pavement SM_Park_Asphalt_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 0,
+      "expected_z": 68.01868333333333,
+      "actual_z": 68.01867465547768,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 243,
+      "expected_z": 55.973662,
+      "actual_z": 55.97366210507556,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 486,
+      "expected_z": 49.00694433333334,
+      "actual_z": 49.00694624491217,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 729,
+      "expected_z": 41.399617,
+      "actual_z": 41.39961940483765,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 972,
+      "expected_z": -34.23896166666667,
+      "actual_z": -34.238962713513374,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 1215,
+      "expected_z": 75.82301966666667,
+      "actual_z": 75.82301672649452,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 1458,
+      "expected_z": 68.10416666666667,
+      "actual_z": 68.10415780539208,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 1701,
+      "expected_z": 83.98958333333333,
+      "actual_z": 83.98958235188645,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 1944,
+      "expected_z": 36.467958333333335,
+      "actual_z": 36.46802503114459,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 2187,
+      "expected_z": 18.798610999999998,
+      "actual_z": 18.798648574982735,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 2430,
+      "expected_z": 41.019716666666675,
+      "actual_z": 41.01971583913095,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 2673,
+      "expected_z": 68.885417,
+      "actual_z": 68.88541920529451,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_14.obj",
+      "triangle": 2916,
+      "expected_z": 93.84614866666668,
+      "actual_z": 93.84615986802014,
+      "actor": "Park pavement SM_Park_Asphalt_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 0,
+      "expected_z": -327.0503496666667,
+      "actual_z": -327.05034020260354,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 515,
+      "expected_z": -326.4472553333333,
+      "actual_z": -326.44725673857954,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 1030,
+      "expected_z": -292.86586566666665,
+      "actual_z": -292.8658658000363,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 1545,
+      "expected_z": -292.59792799999997,
+      "actual_z": -292.5979303027343,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 2060,
+      "expected_z": -261.6701386666667,
+      "actual_z": -261.67014609572055,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 2575,
+      "expected_z": -279.3408756666667,
+      "actual_z": -279.34088093695635,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 3090,
+      "expected_z": -253.78101166666667,
+      "actual_z": -253.78103565694198,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 3605,
+      "expected_z": -269.74305566666663,
+      "actual_z": -269.74305235321583,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 4120,
+      "expected_z": -295.32359066666663,
+      "actual_z": -295.32359970536663,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 4635,
+      "expected_z": -327.523837,
+      "actual_z": -327.5238447433874,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 5150,
+      "expected_z": -290.71112500000004,
+      "actual_z": -290.7111233689073,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 5665,
+      "expected_z": -299.951389,
+      "actual_z": -299.9513803520449,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_15.obj",
+      "triangle": 6180,
+      "expected_z": -326.4030333333333,
+      "actual_z": -326.4030240362865,
+      "actor": "Park pavement SM_Park_Asphalt_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 0,
+      "expected_z": -263.58179333333334,
+      "actual_z": -263.58175040079345,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 507,
+      "expected_z": -300.5125913333333,
+      "actual_z": -300.51259468336224,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 1014,
+      "expected_z": -285.19444433333337,
+      "actual_z": -285.1944493213779,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 1521,
+      "expected_z": -289.7083333333333,
+      "actual_z": -289.7083344518171,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 2028,
+      "expected_z": -303.23130799999996,
+      "actual_z": -303.23131278215544,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 2535,
+      "expected_z": -273.47569433333337,
+      "actual_z": -273.4756997332885,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 3042,
+      "expected_z": -298.8620303333334,
+      "actual_z": -298.862038506369,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 3549,
+      "expected_z": -280.5069446666667,
+      "actual_z": -280.50693831991236,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 4056,
+      "expected_z": -238.41261800000004,
+      "actual_z": -238.41261626544988,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 4563,
+      "expected_z": -202.55555566666666,
+      "actual_z": -202.55556949579648,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 5070,
+      "expected_z": -165.70810366666663,
+      "actual_z": -165.70811312403393,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 5577,
+      "expected_z": -133.11111100000002,
+      "actual_z": -133.11110978870462,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_16.obj",
+      "triangle": 6084,
+      "expected_z": -82.67708333333333,
+      "actual_z": -82.67708626251817,
+      "actor": "Park pavement SM_Park_Asphalt_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 0,
+      "expected_z": -121.01190566666666,
+      "actual_z": -121.01194052383842,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 339,
+      "expected_z": -89.61772666666667,
+      "actual_z": -89.61771774062801,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 678,
+      "expected_z": -74.466964,
+      "actual_z": -74.46697025671293,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 1017,
+      "expected_z": -76.94791666666667,
+      "actual_z": -76.9479153817968,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 1356,
+      "expected_z": 83.55555566666668,
+      "actual_z": 83.55555313574511,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 1695,
+      "expected_z": -206.63541633333332,
+      "actual_z": -206.6354081624304,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 2034,
+      "expected_z": 59.27089866666666,
+      "actual_z": 59.27090000988326,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 2373,
+      "expected_z": -149.04711466666666,
+      "actual_z": -149.04711679253865,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 2712,
+      "expected_z": -126.60069433333332,
+      "actual_z": -126.60067994352382,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 3051,
+      "expected_z": 22.704860999999998,
+      "actual_z": 22.70485937874814,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 3390,
+      "expected_z": 49.391524000000004,
+      "actual_z": 49.39153370095143,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 3729,
+      "expected_z": 126.35069433333335,
+      "actual_z": 126.3506914405066,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_3_17.obj",
+      "triangle": 4068,
+      "expected_z": 220.68110433333334,
+      "actual_z": 220.68112397816134,
+      "actor": "Park pavement SM_Park_Asphalt_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 0,
+      "expected_z": -187.61836633333334,
+      "actual_z": -187.61836721935987,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 461,
+      "expected_z": -131.78422933333334,
+      "actual_z": -131.7842330816598,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 922,
+      "expected_z": -338.5583596666667,
+      "actual_z": -338.55836660830926,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 1383,
+      "expected_z": -21.980095000000002,
+      "actual_z": -21.980084257371004,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 1844,
+      "expected_z": -122.52083366666666,
+      "actual_z": -122.52082818961102,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 2305,
+      "expected_z": -379.4652776666667,
+      "actual_z": -379.46528705642703,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 2766,
+      "expected_z": -444.74305566666663,
+      "actual_z": -444.7430529644347,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 3227,
+      "expected_z": -505.072917,
+      "actual_z": -505.07291903900125,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 3688,
+      "expected_z": -242.22569433333334,
+      "actual_z": -242.22571265377127,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 4149,
+      "expected_z": -343.52777799999996,
+      "actual_z": -343.5277674354736,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 4610,
+      "expected_z": -370.8630386666667,
+      "actual_z": -370.8630310025163,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 5071,
+      "expected_z": -325.8283256666667,
+      "actual_z": -325.8283038899512,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_14.obj",
+      "triangle": 5532,
+      "expected_z": -357.1961833333333,
+      "actual_z": -357.19618368928604,
+      "actor": "Park pavement SM_Park_Asphalt_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 0,
+      "expected_z": -327.69993800000003,
+      "actual_z": -327.6999369887995,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 394,
+      "expected_z": -551.0440036666666,
+      "actual_z": -551.0440062263607,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 788,
+      "expected_z": -550.7077803333333,
+      "actual_z": -550.707771509333,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 1182,
+      "expected_z": -556.7349203333333,
+      "actual_z": -556.7349068641958,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 1576,
+      "expected_z": -373.70540566666665,
+      "actual_z": -373.7054034971405,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 1970,
+      "expected_z": -567.3993056666667,
+      "actual_z": -567.399313286569,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 2364,
+      "expected_z": -373.515647,
+      "actual_z": -373.51564790625287,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 2758,
+      "expected_z": -361.27132866666665,
+      "actual_z": -361.27134295736437,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 3152,
+      "expected_z": -570.6979166666666,
+      "actual_z": -570.6979165749148,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 3546,
+      "expected_z": -345.263889,
+      "actual_z": -345.2638863601541,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 3940,
+      "expected_z": -331.28819433333337,
+      "actual_z": -331.28819773909487,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 4334,
+      "expected_z": -319.9166666666667,
+      "actual_z": -319.916666520197,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_15.obj",
+      "triangle": 4728,
+      "expected_z": -314.4479166666667,
+      "actual_z": -314.44791579386356,
+      "actor": "Park pavement SM_Park_Asphalt_4_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 0,
+      "expected_z": -312.28797000000003,
+      "actual_z": -312.28797343412407,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 611,
+      "expected_z": -349.6041663333333,
+      "actual_z": -349.60417070736423,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 1222,
+      "expected_z": -519.597189,
+      "actual_z": -519.5971769010189,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 1833,
+      "expected_z": -542.684584,
+      "actual_z": -542.684599332868,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 2444,
+      "expected_z": -488.00680399999993,
+      "actual_z": -488.0067989388177,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 3055,
+      "expected_z": -652.7823413333333,
+      "actual_z": -652.7823537372478,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 3666,
+      "expected_z": -319.9166663333333,
+      "actual_z": -319.9166771960051,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 4277,
+      "expected_z": -372.1477293333333,
+      "actual_z": -372.1477363058852,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 4888,
+      "expected_z": -360.96866066666666,
+      "actual_z": -360.96865838339,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 5499,
+      "expected_z": -646.871359,
+      "actual_z": -646.8713687883668,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 6110,
+      "expected_z": -362.7998786666667,
+      "actual_z": -362.79987217255314,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 6721,
+      "expected_z": -367.22569433333337,
+      "actual_z": -367.2256983652515,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_16.obj",
+      "triangle": 7332,
+      "expected_z": -644.3283816666667,
+      "actual_z": -644.3283921886432,
+      "actor": "Park pavement SM_Park_Asphalt_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 0,
+      "expected_z": -308.58961933333336,
+      "actual_z": -308.5896239788749,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 692,
+      "expected_z": -351.618278,
+      "actual_z": -351.61831856922066,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 1384,
+      "expected_z": -634.0170853333333,
+      "actual_z": -634.0170801615383,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 2076,
+      "expected_z": -292.0520833333333,
+      "actual_z": -292.0520837184211,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 2768,
+      "expected_z": -327.38194466666664,
+      "actual_z": -327.38194049039566,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 3460,
+      "expected_z": -727.3819443333333,
+      "actual_z": -727.3819344832169,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 4152,
+      "expected_z": -701.1668916666666,
+      "actual_z": -701.1669035654722,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 4844,
+      "expected_z": -451.60069466666664,
+      "actual_z": -451.6006866128615,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 5536,
+      "expected_z": -189.17981899999998,
+      "actual_z": -189.17978216373794,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 6228,
+      "expected_z": -641.0104166666666,
+      "actual_z": -641.0104226900295,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 6920,
+      "expected_z": -627.9508743333332,
+      "actual_z": -627.9508593217515,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 7612,
+      "expected_z": -699.6909723333333,
+      "actual_z": -699.6909927781323,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_17.obj",
+      "triangle": 8304,
+      "expected_z": -743.3541666666666,
+      "actual_z": -743.3541772213835,
+      "actor": "Park pavement SM_Park_Asphalt_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 0,
+      "expected_z": 184.9924146666667,
+      "actual_z": 184.9924068356769,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 439,
+      "expected_z": -178.61448566666664,
+      "actual_z": -178.6144835268463,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 878,
+      "expected_z": 109.38984633333332,
+      "actual_z": 109.3898823881712,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 1317,
+      "expected_z": -34.58680566666666,
+      "actual_z": -34.58679074241836,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 1756,
+      "expected_z": -166.08920566666666,
+      "actual_z": -166.08922597173864,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 2195,
+      "expected_z": 8.295138666666666,
+      "actual_z": 8.29503566276017,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 2634,
+      "expected_z": 71.58016933333334,
+      "actual_z": 71.58018885032538,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 3073,
+      "expected_z": -237.90659166666663,
+      "actual_z": -237.90664445570576,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 3512,
+      "expected_z": -675.7245303333333,
+      "actual_z": -675.7244510690571,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 3951,
+      "expected_z": -686.4923516666667,
+      "actual_z": -686.4923716900275,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 4390,
+      "expected_z": -368.77077733333334,
+      "actual_z": -368.77075443448626,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 4829,
+      "expected_z": -734.044587,
+      "actual_z": -734.044350631335,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_18.obj",
+      "triangle": 5268,
+      "expected_z": -735.1826966666667,
+      "actual_z": -735.1827121744969,
+      "actor": "Park pavement SM_Park_Asphalt_4_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 0,
+      "expected_z": -652.634443,
+      "actual_z": -652.6342452609281,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 160,
+      "expected_z": -664.795139,
+      "actual_z": -664.795059135958,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 320,
+      "expected_z": -724.2520493333333,
+      "actual_z": -724.2520671984205,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 480,
+      "expected_z": -740.3911546666667,
+      "actual_z": -740.3911161268373,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 640,
+      "expected_z": -738.0590276666667,
+      "actual_z": -738.0590177560381,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 800,
+      "expected_z": -773.6865743333333,
+      "actual_z": -773.6864227258734,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 960,
+      "expected_z": -724.170139,
+      "actual_z": -724.170101665359,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 1120,
+      "expected_z": -720.3506946666666,
+      "actual_z": -720.3506686109647,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 1280,
+      "expected_z": -775.2919653333333,
+      "actual_z": -775.29198745422,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 1440,
+      "expected_z": -646.0991123333333,
+      "actual_z": -646.098978273669,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 1600,
+      "expected_z": -698.5625,
+      "actual_z": -698.5624905807719,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 1760,
+      "expected_z": -702.0347223333333,
+      "actual_z": -702.034723299944,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_19.obj",
+      "triangle": 1920,
+      "expected_z": -749.9683066666666,
+      "actual_z": -749.9683040808221,
+      "actor": "Park pavement SM_Park_Asphalt_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 0,
+      "expected_z": -714.2851870000001,
+      "actual_z": -714.2851091444145,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 19,
+      "expected_z": -652.3093153333334,
+      "actual_z": -652.309118174761,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 38,
+      "expected_z": -634.5877363333334,
+      "actual_z": -634.5875392926903,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 57,
+      "expected_z": -620.3506943333333,
+      "actual_z": -620.3509462060554,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 76,
+      "expected_z": -620.8715276666667,
+      "actual_z": -620.8715811820327,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 95,
+      "expected_z": -618.5277776666667,
+      "actual_z": -618.5277281806709,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 114,
+      "expected_z": -641.2708336666666,
+      "actual_z": -641.2709726907856,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 133,
+      "expected_z": -663.6666666666666,
+      "actual_z": -663.6666167381356,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 152,
+      "expected_z": -612.8496196666666,
+      "actual_z": -612.8496376382017,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 171,
+      "expected_z": -620.090278,
+      "actual_z": -620.0902881671228,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 190,
+      "expected_z": -628.510417,
+      "actual_z": -628.5104317793225,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 209,
+      "expected_z": -628.857639,
+      "actual_z": -628.8576419778516,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_4_20.obj",
+      "triangle": 228,
+      "expected_z": -631.9060393333333,
+      "actual_z": -631.9060399097605,
+      "actor": "Park pavement SM_Park_Asphalt_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 0,
+      "expected_z": -447.13420633333334,
+      "actual_z": -447.13421031388265,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 272,
+      "expected_z": -451.792114,
+      "actual_z": -451.7921118456347,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 544,
+      "expected_z": -439.378975,
+      "actual_z": -439.37897117686975,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 816,
+      "expected_z": -510.888889,
+      "actual_z": -510.88888748269005,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 1088,
+      "expected_z": -480.68055566666663,
+      "actual_z": -480.6805507603418,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 1360,
+      "expected_z": -500.2640986666667,
+      "actual_z": -500.26410321969354,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 1632,
+      "expected_z": -511.5097396666667,
+      "actual_z": -511.5097349709663,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 1904,
+      "expected_z": -510.19444433333337,
+      "actual_z": -510.1944487238295,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 2176,
+      "expected_z": -393.6929186666667,
+      "actual_z": -393.69285968518216,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 2448,
+      "expected_z": -349.0833333333333,
+      "actual_z": -349.08332462345584,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 2720,
+      "expected_z": -516.9478816666666,
+      "actual_z": -516.947875556498,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 2992,
+      "expected_z": -342.8071466666667,
+      "actual_z": -342.80720839361175,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_14.obj",
+      "triangle": 3264,
+      "expected_z": -357.225202,
+      "actual_z": -357.2252306590742,
+      "actor": "Park pavement SM_Park_Asphalt_5_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 0,
+      "expected_z": -533.7121593333333,
+      "actual_z": -533.7121597913508,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 307,
+      "expected_z": -372.86805566666663,
+      "actual_z": -372.8680484399085,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 614,
+      "expected_z": -546.6527776666667,
+      "actual_z": -546.652773008345,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 921,
+      "expected_z": -384.9340276666667,
+      "actual_z": -384.93401581651267,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 1228,
+      "expected_z": -402.33177,
+      "actual_z": -402.33176661534173,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 1535,
+      "expected_z": -396.1353226666667,
+      "actual_z": -396.1352505093604,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 1842,
+      "expected_z": -408.09898533333336,
+      "actual_z": -408.0990123236377,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 2149,
+      "expected_z": -430.420139,
+      "actual_z": -430.42013448460057,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 2456,
+      "expected_z": -449.3437496666666,
+      "actual_z": -449.34376155869904,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 2763,
+      "expected_z": -446.274656,
+      "actual_z": -446.2746322688889,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 3070,
+      "expected_z": -464.38454666666667,
+      "actual_z": -464.3845580922703,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 3377,
+      "expected_z": -457.4166666666667,
+      "actual_z": -457.4166696420938,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_15.obj",
+      "triangle": 3684,
+      "expected_z": -478.5104166666667,
+      "actual_z": -478.5104163429186,
+      "actor": "Park pavement SM_Park_Asphalt_5_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 0,
+      "expected_z": -482.9141833333333,
+      "actual_z": -482.9141841792217,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 28,
+      "expected_z": -479.11805533333336,
+      "actual_z": -479.11806158965715,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 56,
+      "expected_z": -483.545139,
+      "actual_z": -483.5451345279248,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 84,
+      "expected_z": -483.7932246666667,
+      "actual_z": -483.7932217275173,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 112,
+      "expected_z": -481.982639,
+      "actual_z": -481.98263666604134,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 140,
+      "expected_z": -486.53381433333334,
+      "actual_z": -486.5338140580253,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 168,
+      "expected_z": -484.29340499999995,
+      "actual_z": -484.293405802566,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 196,
+      "expected_z": -483.9791666666667,
+      "actual_z": -483.979168833186,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 224,
+      "expected_z": -486.20312200000006,
+      "actual_z": -486.2031229081569,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 252,
+      "expected_z": -487.3645833333333,
+      "actual_z": -487.36458398058664,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 280,
+      "expected_z": -484.9996283333333,
+      "actual_z": -484.99961861046285,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 308,
+      "expected_z": -427.55555566666663,
+      "actual_z": -427.55560706502183,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_16.obj",
+      "triangle": 336,
+      "expected_z": -421.2200646666667,
+      "actual_z": -421.22002460565557,
+      "actor": "Park pavement SM_Park_Asphalt_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 0,
+      "expected_z": -699.5115959999999,
+      "actual_z": -699.5115977295171,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 66,
+      "expected_z": -715.3362043333333,
+      "actual_z": -715.3362217044722,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 132,
+      "expected_z": -751.0148760000001,
+      "actual_z": -751.0149840928283,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 198,
+      "expected_z": -723.1544463333333,
+      "actual_z": -723.1544347410137,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 264,
+      "expected_z": -662.4703883333333,
+      "actual_z": -662.4704366853854,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 330,
+      "expected_z": -680.4201386666667,
+      "actual_z": -680.4200950391058,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 396,
+      "expected_z": -675.9930556666667,
+      "actual_z": -675.9930659130964,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 462,
+      "expected_z": -666.3576386666667,
+      "actual_z": -666.3576289296858,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 528,
+      "expected_z": -675.0710513333333,
+      "actual_z": -675.0710579601109,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 594,
+      "expected_z": -656.5486113333333,
+      "actual_z": -656.5486205463321,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 660,
+      "expected_z": -663.7560863333333,
+      "actual_z": -663.7560768518624,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 726,
+      "expected_z": -667.9917723333333,
+      "actual_z": -667.9917865872395,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_17.obj",
+      "triangle": 792,
+      "expected_z": -668.0282119999999,
+      "actual_z": -668.0282354901217,
+      "actor": "Park pavement SM_Park_Asphalt_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 0,
+      "expected_z": -740.845339,
+      "actual_z": -740.8453717141565,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 62,
+      "expected_z": -734.2338226666667,
+      "actual_z": -734.2338465750126,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 124,
+      "expected_z": -732.7259476666667,
+      "actual_z": -732.7259529155624,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 186,
+      "expected_z": -728.7044070000001,
+      "actual_z": -728.7044245761671,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 248,
+      "expected_z": -744.031361,
+      "actual_z": -744.0313750290659,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 310,
+      "expected_z": -742.0083226666667,
+      "actual_z": -742.0083243751769,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 372,
+      "expected_z": -727.7291666666666,
+      "actual_z": -727.7291698740426,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 434,
+      "expected_z": -725.1814333333333,
+      "actual_z": -725.1814651218642,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 496,
+      "expected_z": -757.1885139999999,
+      "actual_z": -757.1885367051367,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 558,
+      "expected_z": -780.4201386666667,
+      "actual_z": -780.4201261138772,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 620,
+      "expected_z": -744.1805039999999,
+      "actual_z": -744.1804991215735,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 682,
+      "expected_z": -757.2343616666667,
+      "actual_z": -757.2343672888309,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_18.obj",
+      "triangle": 744,
+      "expected_z": -750.1119156666667,
+      "actual_z": -750.1119267785226,
+      "actor": "Park pavement SM_Park_Asphalt_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 0,
+      "expected_z": -710.9210773333334,
+      "actual_z": -710.9211072120845,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 22,
+      "expected_z": -709.985991,
+      "actual_z": -709.9859774287771,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 44,
+      "expected_z": -715.3159723333333,
+      "actual_z": -715.3159752836513,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 66,
+      "expected_z": -735.4585096666666,
+      "actual_z": -735.4585155050339,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 88,
+      "expected_z": -767.5449103333334,
+      "actual_z": -767.5449164600848,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 110,
+      "expected_z": -770.7407653333333,
+      "actual_z": -770.7407611569873,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 132,
+      "expected_z": -758.2847223333333,
+      "actual_z": -758.2847309399663,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 154,
+      "expected_z": -748.0339913333333,
+      "actual_z": -748.0339932277446,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 176,
+      "expected_z": -764.7876756666668,
+      "actual_z": -764.787669187648,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 198,
+      "expected_z": -751.987589,
+      "actual_z": -751.9876197028441,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 220,
+      "expected_z": -921.115889,
+      "actual_z": -921.1157641324763,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 242,
+      "expected_z": -928.8329883333332,
+      "actual_z": -928.8330195547428,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_19.obj",
+      "triangle": 264,
+      "expected_z": -919.4977813333334,
+      "actual_z": -919.4977488614377,
+      "actor": "Park pavement SM_Park_Asphalt_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 0,
+      "expected_z": -638.7868746666667,
+      "actual_z": -638.7867333687477,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 53,
+      "expected_z": -639.6811563333333,
+      "actual_z": -639.6811554527487,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 106,
+      "expected_z": -658.0243056666667,
+      "actual_z": -658.0243726520818,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 159,
+      "expected_z": -667.0782026666667,
+      "actual_z": -667.0782547616833,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 212,
+      "expected_z": -676.6875,
+      "actual_z": -676.6875323687437,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 265,
+      "expected_z": -685.1810409999999,
+      "actual_z": -685.1810748916463,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 318,
+      "expected_z": -689.3019933333334,
+      "actual_z": -689.302009209941,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 371,
+      "expected_z": -695.4384333333334,
+      "actual_z": -695.4384541573291,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 424,
+      "expected_z": -705.5069443333333,
+      "actual_z": -705.5069776216407,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 477,
+      "expected_z": -786.3772536666667,
+      "actual_z": -786.3772286361701,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 530,
+      "expected_z": -792.8333333333334,
+      "actual_z": -792.8330370259563,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 583,
+      "expected_z": -723.3612243333333,
+      "actual_z": -723.3611692708612,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Asphalt_5_20.obj",
+      "triangle": 636,
+      "expected_z": -722.0026903333334,
+      "actual_z": -722.0026630878771,
+      "actor": "Park pavement SM_Park_Asphalt_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 0,
+      "expected_z": -322.54816766666664,
+      "actual_z": -322.54817590551284,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 160,
+      "expected_z": -348.8229166666667,
+      "actual_z": -348.82289869774746,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 320,
+      "expected_z": -412.616389,
+      "actual_z": -412.61637395749955,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 480,
+      "expected_z": -401.3165713333333,
+      "actual_z": -401.3165917719866,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 640,
+      "expected_z": -166.87847233333332,
+      "actual_z": -166.87847536996338,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 800,
+      "expected_z": -159.84722233333332,
+      "actual_z": -159.84722189265818,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 960,
+      "expected_z": -158.251537,
+      "actual_z": -158.251536355188,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 1120,
+      "expected_z": -156.935533,
+      "actual_z": -156.93554677169027,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 1280,
+      "expected_z": -150.03819433333334,
+      "actual_z": -150.0381926200747,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 1440,
+      "expected_z": -139.23034466666664,
+      "actual_z": -139.23034540577567,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 1600,
+      "expected_z": -131.89583333333334,
+      "actual_z": -131.89583441632533,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 1760,
+      "expected_z": -144.10551333333333,
+      "actual_z": -144.1055106373301,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_15.obj",
+      "triangle": 1920,
+      "expected_z": -147.05228966666667,
+      "actual_z": -147.0522921297453,
+      "actor": "Park pavement SM_Park_Gravel_2_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 0,
+      "expected_z": -120.84676833333333,
+      "actual_z": -120.84677054963088,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 218,
+      "expected_z": -112.258482,
+      "actual_z": -112.25848592133647,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 436,
+      "expected_z": -117.87731566666668,
+      "actual_z": -117.8773216135768,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 654,
+      "expected_z": -122.43402800000001,
+      "actual_z": -122.43403443762098,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 872,
+      "expected_z": -138.40625,
+      "actual_z": -138.4062518933383,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 1090,
+      "expected_z": -140.04679233333334,
+      "actual_z": -140.04679786070244,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 1308,
+      "expected_z": -113.92708333333333,
+      "actual_z": -113.92708412971614,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 1526,
+      "expected_z": -101.94791666666667,
+      "actual_z": -101.94791638638668,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 1744,
+      "expected_z": -115.60715533333332,
+      "actual_z": -115.60714695719703,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 1962,
+      "expected_z": -103.881283,
+      "actual_z": -103.88128356691942,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 2180,
+      "expected_z": -110.888889,
+      "actual_z": -110.88888163487537,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 2398,
+      "expected_z": -117.138889,
+      "actual_z": -117.13888050707003,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_16.obj",
+      "triangle": 2616,
+      "expected_z": -122.173611,
+      "actual_z": -122.17361521768548,
+      "actor": "Park pavement SM_Park_Gravel_2_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 0,
+      "expected_z": -113.35374533333334,
+      "actual_z": -113.35377824736497,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 5,
+      "expected_z": -116.704861,
+      "actual_z": -116.70485142119051,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 10,
+      "expected_z": -120.35069433333332,
+      "actual_z": -120.35069373437963,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 15,
+      "expected_z": -122.681181,
+      "actual_z": -122.68117888687006,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 20,
+      "expected_z": -113.58449766666666,
+      "actual_z": -113.58448650507073,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 25,
+      "expected_z": -118.70138866666666,
+      "actual_z": -118.70138684253455,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 30,
+      "expected_z": -119.482639,
+      "actual_z": -119.48263648128645,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 35,
+      "expected_z": -114.38799266666666,
+      "actual_z": -114.3880013667407,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 40,
+      "expected_z": -115.14155833333332,
+      "actual_z": -115.14157772764933,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 45,
+      "expected_z": -119.13541666666667,
+      "actual_z": -119.1354183624981,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 50,
+      "expected_z": -115.99730633333333,
+      "actual_z": -115.9973008042824,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 55,
+      "expected_z": -116.140282,
+      "actual_z": -116.14027240119857,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_2_17.obj",
+      "triangle": 60,
+      "expected_z": -115.21971366666666,
+      "actual_z": -115.21970608915825,
+      "actor": "Park pavement SM_Park_Gravel_2_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 0,
+      "expected_z": -258.48365633333333,
+      "actual_z": -258.48364404738845,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 27,
+      "expected_z": -262.32216366666665,
+      "actual_z": -262.3221697469494,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 54,
+      "expected_z": -263.22146733333335,
+      "actual_z": -263.2214637676142,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 81,
+      "expected_z": -268.09375,
+      "actual_z": -268.09375123309223,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 108,
+      "expected_z": -269.829861,
+      "actual_z": -269.82986579060486,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 135,
+      "expected_z": -267.6097703333333,
+      "actual_z": -267.6097729858358,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 162,
+      "expected_z": -282.81376,
+      "actual_z": -282.81375752508444,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 189,
+      "expected_z": -282.65982299999996,
+      "actual_z": -282.6598274348827,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 216,
+      "expected_z": -277.0347223333333,
+      "actual_z": -277.034720047974,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 243,
+      "expected_z": -272.0237466666667,
+      "actual_z": -272.02373787684735,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 270,
+      "expected_z": -278.2173143333334,
+      "actual_z": -278.21731657409146,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 297,
+      "expected_z": -286.0703823333333,
+      "actual_z": -286.0703842097863,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_14.obj",
+      "triangle": 324,
+      "expected_z": -287.471341,
+      "actual_z": -287.47134786020405,
+      "actor": "Park pavement SM_Park_Gravel_3_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 0,
+      "expected_z": -286.6186846666667,
+      "actual_z": -286.6186803969395,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 284,
+      "expected_z": -286.5833333333333,
+      "actual_z": -286.58333412885156,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 568,
+      "expected_z": -264.3726246666667,
+      "actual_z": -264.3726284907843,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 852,
+      "expected_z": -400.03819433333337,
+      "actual_z": -400.0381710662525,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 1136,
+      "expected_z": -418.354167,
+      "actual_z": -418.3541564941406,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 1420,
+      "expected_z": -366.09264966666666,
+      "actual_z": -366.09263520480124,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 1704,
+      "expected_z": -371.739583,
+      "actual_z": -371.7395964684914,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 1988,
+      "expected_z": -352.295139,
+      "actual_z": -352.2951224305543,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 2272,
+      "expected_z": -362.784116,
+      "actual_z": -362.7841484391341,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 2556,
+      "expected_z": -178.95484066666666,
+      "actual_z": -178.95484691223274,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 2840,
+      "expected_z": -176.94791666666666,
+      "actual_z": -176.94791371010726,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_15.obj",
+      "triangle": 3124,
+      "expected_z": -168.48672233333332,
+      "actual_z": -168.48672048719175,
+      "actor": "Park pavement SM_Park_Gravel_3_15",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 0,
+      "expected_z": -145.69791666666666,
+      "actual_z": -145.6979162443176,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 365,
+      "expected_z": -190.85839633333333,
+      "actual_z": -190.85841856488494,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 730,
+      "expected_z": -169.39583333333334,
+      "actual_z": -169.39583344532952,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 1095,
+      "expected_z": -165.961692,
+      "actual_z": -165.9616930992502,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 1460,
+      "expected_z": -151.65058399999998,
+      "actual_z": -151.6505837992122,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 1825,
+      "expected_z": -140.311433,
+      "actual_z": -140.31142875906727,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 2190,
+      "expected_z": -141.6866246666667,
+      "actual_z": -141.6866202376301,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 2555,
+      "expected_z": -173.50199233333333,
+      "actual_z": -173.50198760365245,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 2920,
+      "expected_z": -132.06944433333334,
+      "actual_z": -132.0694424583291,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 3285,
+      "expected_z": -145.09027766666668,
+      "actual_z": -145.0902896648838,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 3650,
+      "expected_z": -161.93770200000003,
+      "actual_z": -161.93771071824563,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 4015,
+      "expected_z": -146.183302,
+      "actual_z": -146.1832864343683,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_16.obj",
+      "triangle": 4380,
+      "expected_z": -131.596714,
+      "actual_z": -131.5967206937716,
+      "actor": "Park pavement SM_Park_Gravel_3_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 0,
+      "expected_z": -123.06019266666665,
+      "actual_z": -123.06019137527794,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 54,
+      "expected_z": -133.04086533333333,
+      "actual_z": -133.0408549043059,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 108,
+      "expected_z": -127.98958333333333,
+      "actual_z": -127.98959065114992,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 162,
+      "expected_z": -118.36108133333333,
+      "actual_z": -118.36108265094879,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 216,
+      "expected_z": -122.52297233333333,
+      "actual_z": -122.52297058894176,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 270,
+      "expected_z": -129.45074633333334,
+      "actual_z": -129.45075013502935,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 324,
+      "expected_z": -117.18458866666667,
+      "actual_z": -117.18458692771652,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 378,
+      "expected_z": -116.45856433333334,
+      "actual_z": -116.4585655856443,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 432,
+      "expected_z": -112.19097199999999,
+      "actual_z": -112.19097946587401,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 486,
+      "expected_z": -116.010417,
+      "actual_z": -116.01041098731709,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 540,
+      "expected_z": -117.020931,
+      "actual_z": -117.02092483292797,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 594,
+      "expected_z": -104.168841,
+      "actual_z": -104.16882232114018,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_3_17.obj",
+      "triangle": 648,
+      "expected_z": -109.720031,
+      "actual_z": -109.72002928002662,
+      "actor": "Park pavement SM_Park_Gravel_3_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 0,
+      "expected_z": -204.609004,
+      "actual_z": -204.60901800604154,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 77,
+      "expected_z": -199.25764466666666,
+      "actual_z": -199.25765227511388,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 154,
+      "expected_z": -211.75694433333334,
+      "actual_z": -211.75693446946332,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 231,
+      "expected_z": -242.336603,
+      "actual_z": -242.33658564386536,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 308,
+      "expected_z": -270.262798,
+      "actual_z": -270.26280831564,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 385,
+      "expected_z": -274.34375,
+      "actual_z": -274.34374351255656,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 462,
+      "expected_z": -281.822482,
+      "actual_z": -281.8224975556356,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 539,
+      "expected_z": -281.30710866666664,
+      "actual_z": -281.3071056681518,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 616,
+      "expected_z": -253.12093233333334,
+      "actual_z": -253.1209536992456,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 693,
+      "expected_z": -248.69138333333333,
+      "actual_z": -248.69139389701044,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 770,
+      "expected_z": -257.85069433333337,
+      "actual_z": -257.850698700851,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 847,
+      "expected_z": -257.4389673333333,
+      "actual_z": -257.4389808887785,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_14.obj",
+      "triangle": 924,
+      "expected_z": -280.164289,
+      "actual_z": -280.16427659267873,
+      "actor": "Park pavement SM_Park_Gravel_4_14",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 0,
+      "expected_z": -492.3203676666667,
+      "actual_z": -492.32036867522606,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 103,
+      "expected_z": -508.7004133333333,
+      "actual_z": -508.7004100847227,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 206,
+      "expected_z": -512.625,
+      "actual_z": -512.6249873842359,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 309,
+      "expected_z": -548.5305303333333,
+      "actual_z": -548.5305469082821,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 412,
+      "expected_z": -523.9965276666667,
+      "actual_z": -523.9965197977617,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 515,
+      "expected_z": -562.4666473333333,
+      "actual_z": -562.4666710209106,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 618,
+      "expected_z": -535.28125,
+      "actual_z": -535.2812312363469,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 721,
+      "expected_z": -573.8165943333333,
+      "actual_z": -573.8166504427373,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 824,
+      "expected_z": -540.75,
+      "actual_z": -540.7500000343076,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 927,
+      "expected_z": -553.7708333333334,
+      "actual_z": -553.7708254324988,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 1030,
+      "expected_z": -578.2398053333333,
+      "actual_z": -578.2398019538786,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_16.obj",
+      "triangle": 1133,
+      "expected_z": -563.1458333333334,
+      "actual_z": -563.1458324994704,
+      "actor": "Park pavement SM_Park_Gravel_4_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 0,
+      "expected_z": -601.749303,
+      "actual_z": -601.7493493309742,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 56,
+      "expected_z": -603.442424,
+      "actual_z": -603.4423925632907,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 112,
+      "expected_z": -610.4046306666667,
+      "actual_z": -610.4046109541124,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 168,
+      "expected_z": -612.072213,
+      "actual_z": -612.072217624619,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 224,
+      "expected_z": -603.8576386666667,
+      "actual_z": -603.8576248193938,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 280,
+      "expected_z": -622.0868053333334,
+      "actual_z": -622.0868401632246,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 336,
+      "expected_z": -600.8194443333333,
+      "actual_z": -600.8194375300191,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 392,
+      "expected_z": -602.1215276666667,
+      "actual_z": -602.1215177996705,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 448,
+      "expected_z": -600.3854166666666,
+      "actual_z": -600.3854170648581,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 504,
+      "expected_z": -600.233516,
+      "actual_z": -600.2335202294282,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 560,
+      "expected_z": -616.7048613333333,
+      "actual_z": -616.7048972447828,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 616,
+      "expected_z": -607.0288756666666,
+      "actual_z": -607.028884711706,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_17.obj",
+      "triangle": 672,
+      "expected_z": -607.731298,
+      "actual_z": -607.7313093375619,
+      "actor": "Park pavement SM_Park_Gravel_4_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 0,
+      "expected_z": -257.300053,
+      "actual_z": -257.30008350213166,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 131,
+      "expected_z": -262.45963866666665,
+      "actual_z": -262.4596593592342,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 262,
+      "expected_z": -261.129202,
+      "actual_z": -261.1292642369375,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 393,
+      "expected_z": -278.5972223333333,
+      "actual_z": -278.59725386307065,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 524,
+      "expected_z": -265.515899,
+      "actual_z": -265.5158843055653,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 655,
+      "expected_z": -290.21787133333333,
+      "actual_z": -290.2178624597933,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 786,
+      "expected_z": -295.52430566666663,
+      "actual_z": -295.52434399986055,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 917,
+      "expected_z": -315.17023033333334,
+      "actual_z": -315.17023343596713,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 1048,
+      "expected_z": -322.520833,
+      "actual_z": -322.5208362583436,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 1179,
+      "expected_z": -349.916671,
+      "actual_z": -349.91668586827785,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 1310,
+      "expected_z": -408.91226066666667,
+      "actual_z": -408.9123167009425,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_19.obj",
+      "triangle": 1441,
+      "expected_z": -672.0688443333333,
+      "actual_z": -672.0688170739777,
+      "actor": "Park pavement SM_Park_Gravel_4_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 0,
+      "expected_z": -794.9816139999999,
+      "actual_z": -794.9816271749992,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 58,
+      "expected_z": -796.6922913333334,
+      "actual_z": -796.6922844647091,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 116,
+      "expected_z": -794.9166666666666,
+      "actual_z": -794.9166696849845,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 174,
+      "expected_z": -794.309028,
+      "actual_z": -794.3090339309698,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 232,
+      "expected_z": -794.5749113333333,
+      "actual_z": -794.574908904193,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 290,
+      "expected_z": -802.9291423333334,
+      "actual_z": -802.929155221603,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 348,
+      "expected_z": -805.4662373333334,
+      "actual_z": -805.4662268163903,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 406,
+      "expected_z": -802.6423613333333,
+      "actual_z": -802.6423575266774,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 464,
+      "expected_z": -798.8229166666666,
+      "actual_z": -798.8229058767545,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 522,
+      "expected_z": -799.3469959999999,
+      "actual_z": -799.3469993513532,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 580,
+      "expected_z": -798.0845283333333,
+      "actual_z": -798.0845373519956,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 638,
+      "expected_z": -747.9828000000001,
+      "actual_z": -747.9828977278956,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_4_20.obj",
+      "triangle": 696,
+      "expected_z": -754.9809246666667,
+      "actual_z": -754.9807698248368,
+      "actor": "Park pavement SM_Park_Gravel_4_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 0,
+      "expected_z": -486.2178656666667,
+      "actual_z": -486.2178658279827,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 35,
+      "expected_z": -496.50636966666667,
+      "actual_z": -496.50636751310833,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 70,
+      "expected_z": -492.486111,
+      "actual_z": -492.48611385195653,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 105,
+      "expected_z": -494.829861,
+      "actual_z": -494.82986508595036,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 140,
+      "expected_z": -491.7916666666667,
+      "actual_z": -491.79167173687324,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 175,
+      "expected_z": -464.8623666666667,
+      "actual_z": -464.862334538499,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 210,
+      "expected_z": -501.77430533333336,
+      "actual_z": -501.7743110492592,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 245,
+      "expected_z": -502.2702693333333,
+      "actual_z": -502.270280010624,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 280,
+      "expected_z": -474.02153933333335,
+      "actual_z": -474.0215848895904,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 315,
+      "expected_z": -557.607537,
+      "actual_z": -557.6075471972755,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 350,
+      "expected_z": -564.315047,
+      "actual_z": -564.3150340343233,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 385,
+      "expected_z": -569.621001,
+      "actual_z": -569.6210105375678,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_16.obj",
+      "triangle": 420,
+      "expected_z": -584.3242736666666,
+      "actual_z": -584.3242476935732,
+      "actor": "Park pavement SM_Park_Gravel_5_16",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 0,
+      "expected_z": -574.2569446666666,
+      "actual_z": -574.2569581668546,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 128,
+      "expected_z": -587.5381943333333,
+      "actual_z": -587.5381892507188,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 256,
+      "expected_z": -603.076389,
+      "actual_z": -603.0763884592182,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 384,
+      "expected_z": -620.4375003333333,
+      "actual_z": -620.4375503938363,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 512,
+      "expected_z": -631.3505396666666,
+      "actual_z": -631.3505192478843,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 640,
+      "expected_z": -631.8958333333334,
+      "actual_z": -631.8958158646551,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 768,
+      "expected_z": -642.2893593333333,
+      "actual_z": -642.289423061145,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 896,
+      "expected_z": -659.2174113333334,
+      "actual_z": -659.2174587552311,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 1024,
+      "expected_z": -639.534722,
+      "actual_z": -639.5347040310919,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 1152,
+      "expected_z": -675.8422340000001,
+      "actual_z": -675.8422396828729,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 1280,
+      "expected_z": -653.5104166666666,
+      "actual_z": -653.510421667757,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 1408,
+      "expected_z": -683.574595,
+      "actual_z": -683.5745949264484,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_17.obj",
+      "triangle": 1536,
+      "expected_z": -675.4391006666667,
+      "actual_z": -675.4391127847268,
+      "actor": "Park pavement SM_Park_Gravel_5_17",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 0,
+      "expected_z": -690.9644016666666,
+      "actual_z": -690.9644070594061,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 159,
+      "expected_z": -683.71875,
+      "actual_z": -683.7187413903365,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 318,
+      "expected_z": -713.4787743333333,
+      "actual_z": -713.4787875314943,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 477,
+      "expected_z": -698.9097223333333,
+      "actual_z": -698.9097278567494,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 636,
+      "expected_z": -708.9791666666666,
+      "actual_z": -708.9791672067389,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 795,
+      "expected_z": -723.9097223333333,
+      "actual_z": -723.909707146924,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 954,
+      "expected_z": -727.3426053333333,
+      "actual_z": -727.3426006074494,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 1113,
+      "expected_z": -735.0208336666666,
+      "actual_z": -735.0208528898092,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 1272,
+      "expected_z": -738.4676326666666,
+      "actual_z": -738.4676570611679,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 1431,
+      "expected_z": -749.1099520000001,
+      "actual_z": -749.1099377482125,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 1590,
+      "expected_z": -750.0381943333333,
+      "actual_z": -750.0381894614296,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 1749,
+      "expected_z": -762.9364256666668,
+      "actual_z": -762.936415915837,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_18.obj",
+      "triangle": 1908,
+      "expected_z": -768.4302843333334,
+      "actual_z": -768.4302730792033,
+      "actor": "Park pavement SM_Park_Gravel_5_18",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 0,
+      "expected_z": -775.9688376666668,
+      "actual_z": -775.9687752987536,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 178,
+      "expected_z": -760.0208333333334,
+      "actual_z": -760.0208389278647,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 356,
+      "expected_z": -762.277778,
+      "actual_z": -762.2777941595504,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 534,
+      "expected_z": -664.412111,
+      "actual_z": -664.412136085837,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 712,
+      "expected_z": -632.15625,
+      "actual_z": -632.156209428358,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 890,
+      "expected_z": -587.4226239999999,
+      "actual_z": -587.4226375279521,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 1068,
+      "expected_z": -671.7395833333334,
+      "actual_z": -671.7396419788026,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 1246,
+      "expected_z": -765.3220459999999,
+      "actual_z": -765.3220397731147,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 1424,
+      "expected_z": -779.638889,
+      "actual_z": -779.6388912013367,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 1602,
+      "expected_z": -955.6184806666666,
+      "actual_z": -955.6186761825086,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 1780,
+      "expected_z": -782.0694443333333,
+      "actual_z": -782.0694515824234,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 1958,
+      "expected_z": -770.9029919999999,
+      "actual_z": -770.902932528445,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_19.obj",
+      "triangle": 2136,
+      "expected_z": -805.0729166666666,
+      "actual_z": -805.0728789050077,
+      "actor": "Park pavement SM_Park_Gravel_5_19",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 0,
+      "expected_z": -794.0437526666666,
+      "actual_z": -794.0437483421116,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 16,
+      "expected_z": -820.682676,
+      "actual_z": -820.682611767,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 32,
+      "expected_z": -792.0002116666668,
+      "actual_z": -792.0002092804131,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 48,
+      "expected_z": -792.0624456666666,
+      "actual_z": -792.0624450051855,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 64,
+      "expected_z": -793.5413346666666,
+      "actual_z": -793.5413290658927,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 80,
+      "expected_z": -816.140558,
+      "actual_z": -816.1405683472532,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 96,
+      "expected_z": -788.6666666666666,
+      "actual_z": -788.6666649857701,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 112,
+      "expected_z": -798.5470146666667,
+      "actual_z": -798.5470048532221,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 128,
+      "expected_z": -787.451389,
+      "actual_z": -787.4514000881284,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 144,
+      "expected_z": -793.0157546666666,
+      "actual_z": -793.0157547293998,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 160,
+      "expected_z": -790.576389,
+      "actual_z": -790.5763936584395,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 176,
+      "expected_z": -790.844951,
+      "actual_z": -790.8449619076293,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    },
+    {
+      "mesh": "Park_Gravel_5_20.obj",
+      "triangle": 192,
+      "expected_z": -793.9726326666668,
+      "actual_z": -793.972640009305,
+      "actor": "Park pavement SM_Park_Gravel_5_20",
+      "pass": true
+    }
+  ]
+}

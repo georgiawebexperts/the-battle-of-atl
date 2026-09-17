@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "scope": "Live knife pursuit around Lake Clara Meer using saved park navigation, then first-stab escape.",
+  "route_cm": 10743.3974609375,
+  "straight_cm": 2505.1629952756293,
+  "cases": [
+    {
+      "name": "uses_multi_waypoint_park_navigation",
+      "pass": true
+    },
+    {
+      "name": "takes_land_route_around_lake",
+      "pass": true,
+      "travel_cm": 10599.809198541046,
+      "straight_cm": 2505.1629952756293
+    },
+    {
+      "name": "reaches_player_and_first_stab_dismounts",
+      "pass": true
+    },
+    {
+      "name": "clock_keeps_ticking_during_pursuit",
+      "pass": true
+    },
+    {
+      "name": "can_escape_by_remounting",
+      "pass": true
+    },
+    {
+      "name": "rare_encounter_selects_reachable_spawn",
+      "pass": true
+    },
+    {
+      "name": "encounter_stays_twenty_to_thirty_five_meters_away",
+      "pass": true,
+      "distance_cm": 2208.3890877137637
+    },
+    {
+      "name": "only_one_active_encounter_after_repeated_opportunity",
+      "pass": true
+    },
+    {
+      "name": "validation_does_not_change_rare_encounter_clock",
+      "pass": true
+    }
+  ],
+  "travel_cm": 10599.809198541046,
+  "nav_points_max": 23,
+  "swam": false,
+  "route_requests": 30,
+  "navigation_failure": "",
+  "remaining_cm": 93.11096372634343
+}

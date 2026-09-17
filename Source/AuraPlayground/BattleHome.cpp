@@ -55,13 +55,16 @@ void ABattleHome::BeginPlay(){Super::BeginPlay();auto* Path=GetWorld()->SpawnAct
 void ABattleHome::Tick(float Dt){
  Super::Tick(Dt);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Mode->Quest||!Pawn)return;
  if(!Mode->Quest->bCollected){bTunnelEntered=bTunnelExited=false;return;}if(Mode->Quest->NextCheckpoint<2)return;
- auto Near=[&](FVector P){return FVector::Dist2D(Pawn->GetActorLocation(),P)<350&&FMath::Abs(Pawn->GetActorLocation().Z-P.Z)<200;};
+ // These are route gates, not precision targets. The playable tunnel is wide
+ // enough that a rider can pass either marker away from its surveyed centre.
+ auto Near=[&](FVector P){return FVector::Dist2D(Pawn->GetActorLocation(),P)<650&&FMath::Abs(Pawn->GetActorLocation().Z-P.Z)<350;};
  if(Near(BattleHomeData::TunnelEntry))bTunnelEntered=true;if(bTunnelEntered&&Near(BattleHomeData::TunnelExit))bTunnelExited=true;TryFinish();
 }
 bool ABattleHome::TryFinish(){
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn||!Mode->Quest||!Mode->Quest->bCollected||Mode->Quest->NextCheckpoint<2||!bTunnelExited)return false;
  auto* Bike=Cast<ABattleBike>(Pawn);if(auto* P=Cast<ABattleRider>(Pawn))Bike=P->ParkedBike.Get();if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||Bike->StunRemaining>0||Bike->Ride->Recovery>0)return false;
- if(FVector::Dist2D(Pawn->GetActorLocation(),BattleHomeData::Gate)>190||FMath::Abs(Pawn->GetActorLocation().Z-BattleHomeData::Gate.Z)>160)return false;
- FCollisionQueryParams Q(SCENE_QUERY_STAT(HomeGate),false,Pawn);Q.AddIgnoredActor(Bike);FHitResult H;if(GetWorld()->LineTraceSingleByChannel(H,Pawn->GetActorLocation(),BattleHomeData::Gate+FVector(0,0,95),ECC_Visibility,Q))return false;
+ // Reaching the patio is the finish. Tables, railings, other riders and the
+ // venue itself may block line of sight to the surveyed centre point.
+ if(FVector::Dist2D(Pawn->GetActorLocation(),BattleHomeData::Gate)>650||FMath::Abs(Pawn->GetActorLocation().Z-BattleHomeData::Gate.Z)>300)return false;
  return Mode->CompleteRun(Bike);
 }

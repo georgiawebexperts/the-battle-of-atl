@@ -1,0 +1,75 @@
+{
+  "status": "installed",
+  "meshes": [
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.00012326888645475265,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.00012326888645475265,
+      "pass": true
+    },
+    {
+      "kind": "Wood",
+      "axis_error_cm": 0.00047376610928040463,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.00047376610928040463,
+      "pass": true
+    },
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.0003045832709176466,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0003045832709176466,
+      "pass": true
+    },
+    {
+      "kind": "Wood",
+      "axis_error_cm": 0.0015612160495948046,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0015612160495948046,
+      "pass": true
+    },
+    {
+      "kind": "Wood",
+      "axis_error_cm": 0.001085343239537906,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.001085343239537906,
+      "pass": true
+    },
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.0006407530127034988,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0006407530127034988,
+      "pass": true
+    },
+    {
+      "kind": "Deck",
+      "axis_error_cm": 0.0003288299994892441,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 0.0003288299994892441,
+      "pass": true
+    }
+  ]
+}

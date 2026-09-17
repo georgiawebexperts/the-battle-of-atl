@@ -1,0 +1,12 @@
+{
+  "world": "PiedmontWorld",
+  "landscapes": [
+    {
+      "bounds": "(<Struct 'Vector' (0xa28d571c0) {x: 13722.478658, y: -32564.696489, z: 48.958333}>, <Struct 'Vector' (0xa1f3edf50) {x: 50400.000000, y: 100800.000000, z: 1372.916667}>)",
+      "scale": "<Struct 'Vector' (0xa28d571c0) {x: 66.666667, y: 66.666667, z: 33.333333}>",
+      "location": "<Struct 'Vector' (0xa28d571c0) {x: -36677.521342, y: -133364.696489, z: 0.000000}>",
+      "components": 288
+    }
+  ],
+  "trace_doc": "X.line_trace_single(world_context_object, start, end, trace_channel, trace_complex, actors_to_ignore, draw_debug_type, ignore_self=True, trace_color=[1.000000, 0.000000, 0.000000, 1.000000], trace_hit_color=[0.000000, 1.000000, 0.000000, 1.000000], draw_time=5.000000) -> HitResult or None\nDoes a collision trace along the given line and returns the first blocking hit encountered.\nThis trace finds the objects that RESPONDS to the given TraceChannel\n\nArgs:\n    world_context_object (Object): \n    start (Vector): Start of line segment.\n    end (Vector): End of line segment.\n    trace_channel (TraceTypeQuery): \n    trace_complex (bool): True to test against complex collision, false to test against simplified collision.\n    actors_to_ignore (Array[Actor]): \n    draw_debug_type (DrawDebugTrace): \n    ignore_self (bool): \n    trace_color (LinearColor): \n    trace_hit_color (LinearColor): \n    draw_time (float): \n\nReturns:\n    HitResult or None: True if there was a hit, false otherwise.\n\n    out_hit (HitResult): Properties of the trace hit."
+}

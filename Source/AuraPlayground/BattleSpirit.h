@@ -3,6 +3,10 @@
 #include "GameFramework/Actor.h"
 #include "BattleSpirit.generated.h"
 class ABattleBike;
+class UStaticMeshComponent;
+class UPointLightComponent;
+class UTexture2D;
+class UBillboardComponent;
 enum class EBattleSpiritState : uint8 { Untried, Absent, Appearing, Active, Fading, Resolved };
 
 // One actor per full run. Checkpoint recovery must never recreate or reset it.
@@ -21,8 +25,12 @@ public:
  EBattleSpiritState State=EBattleSpiritState::Untried;
  float Age=0,Fade=0;
  int32 Rewards=0;
- // Presentation remains disabled until bear, flowers and rideable route pass visual review.
- bool bPresentationReady=false;
+ bool bPresentationReady=true;
+ UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> BearParts;
+ UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Wisps;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MoonGlow;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SpiritCard;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UBillboardComponent> SpiritBillboard;
  FVector ApproachPoint=FVector::ZeroVector;
  TArray<FVector> ChaseRoute;
  float RouteDistance=0;

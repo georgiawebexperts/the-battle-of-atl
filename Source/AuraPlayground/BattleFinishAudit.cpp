@@ -37,8 +37,9 @@ void ABattleMacController::TickFinishAudit(float Dt){
  Mode->TimeRemaining=0;FCHECK(!Home->TryFinish(),"Expired timer won");Mode->TimeRemaining=333;
  UGameplayStatics::DeleteGameInSlot(BattleRecords::Slot(),0);FCHECK(BattleRecords::Record(TEXT("Easy"),200)&&BattleRecords::Record(TEXT("Hard"),190)&&BattleRecords::Record(TEXT("Easy"),250)&&BattleRecords::Best(TEXT("Easy"))==200&&BattleRecords::Best(TEXT("Hard"))==190,"Record persistence or difficulty isolation failed");
  Mode->RunElapsed=123.4f;Mode->RunTopSpeed=1500;Bike->EnemyKills=7;Bike->Ride->Wipeouts=2;Bike->NearMisses=9;
- if(Mode->DifficultyName==TEXT("Hard")){Place(BattleHomeData::Gate-BattleHomeData::South*350+FVector(0,0,98));FCHECK(Bike->Dismount(),"Cannot dismount for foot finish");auto* Foot=Cast<ABattleRider>(GetPawn());FCHECK(Foot,"Missing foot rider");Foot->SetActorLocation(BattleHomeData::Gate+FVector(0,0,98),false,nullptr,ETeleportType::TeleportPhysics);}
- FCHECK(Home->TryFinish()&&Mode->bWon&&Mode->bRunEnded&&Mode->bRecordSaved&&!Home->TryFinish(),"Gate win not committed once");
+ const FVector RealArrival=BattleHomeData::Gate+FVector(420,240,98);
+ if(Mode->DifficultyName==TEXT("Hard")){Place(BattleHomeData::Gate-BattleHomeData::South*350+FVector(0,0,98));FCHECK(Bike->Dismount(),"Cannot dismount for foot finish");auto* Foot=Cast<ABattleRider>(GetPawn());FCHECK(Foot,"Missing foot rider");Foot->SetActorLocation(RealArrival,false,nullptr,ETeleportType::TeleportPhysics);}else Place(RealArrival);
+ Home->Tick(.016f);FCHECK(Mode->bWon&&Mode->bRunEnded&&Mode->bRecordSaved&&!Home->TryFinish(),"Real patio arrival did not commit win once");
  FCHECK(FMath::IsNearlyEqual(BattleRecords::Best(Mode->DifficultyName),123.4f)&&Mode->FinishKills==7&&Mode->FinishWipeouts==2&&Mode->FinishNearMisses==9,"Win stats or record incorrect");
  const float Before=Mode->TimeRemaining;Mode->Tick(.2f);FCHECK(Mode->TimeRemaining==Before&&!Mode->AdjustRunTime(30,TEXT("late reward")),"Finished timer changed");
  const bool CelebrationReview=FParse::Param(FCommandLine::Get(),TEXT("BattleCelebrationReview"));

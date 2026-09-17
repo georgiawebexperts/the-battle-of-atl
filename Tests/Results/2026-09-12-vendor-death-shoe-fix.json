@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "reason": "Death did not enter physics",
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible hip tracking, collapse, dead attack-warning suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/298e1ce208fa4bfd8c7b12e853fde28a/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/298e1ce208fa4bfd8c7b12e853fde28a/settled.png"
+  ]
+}

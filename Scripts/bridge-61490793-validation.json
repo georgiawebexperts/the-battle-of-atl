@@ -1,0 +1,18 @@
+{
+  "status": "preview",
+  "cases": [
+    {
+      "name": "dismount_on_deck_above_water",
+      "pass": true
+    },
+    {
+      "name": "walking_on_bridge_is_not_swimming",
+      "pass": true
+    },
+    {
+      "name": "remount_on_bridge",
+      "pass": true
+    }
+  ],
+  "stage": 7
+}

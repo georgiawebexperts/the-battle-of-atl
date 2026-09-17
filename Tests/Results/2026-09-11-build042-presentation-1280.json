@@ -1,0 +1,26 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build042-packaged-1280/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "861aeee29ee3dcd8fd31c9776587f0178776a22106253611d35efed2a71ef667"
+    },
+    {
+      "file": "work/build042-packaged-1280/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "886ab6b59d5daa7799df55d87a424d0d3632344f88033b6f79059f1a9d0cdcf9"
+    }
+  ],
+  "visual_review": "Inspected native aerial and foot captures: continuous patio with no terrain breakthrough, clear riding entrance, circular red canopies. Bar geometry, materials, signage integration, surrounding Cabbagetown and live Morgan animation remain unfinished. Fixture keeps tunnel flags false to prevent winning, so objective text is not route-state acceptance.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance.",
+  "player_score_untouched": true
+}

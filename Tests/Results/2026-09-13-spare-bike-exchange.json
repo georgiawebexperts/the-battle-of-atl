@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "phase": 2,
+  "bikes": 6,
+  "reason": "Switch lost carried state",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-bikes-76014721a88d49f688ee1d19514bcc29/run.log",
+  "exit_code": 0,
+  "packaged": false
+}

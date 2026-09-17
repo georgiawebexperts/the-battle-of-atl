@@ -1,0 +1,11 @@
+[
+  {
+    "name": "StaticMeshActor_76",
+    "label": "Park Drive unified Deck",
+    "tags": [
+      "RideBridge",
+      "RidePath"
+    ],
+    "bounds": "(<Struct 'Vector' (0x42255e8b0) {x: 4151.229126, y: 4866.367432, z: -429.688522}>, <Struct 'Vector' (0x42255e310) {x: 1228.159058, y: 501.007080, z: 75.467026}>)"
+  }
+]

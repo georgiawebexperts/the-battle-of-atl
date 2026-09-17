@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Scripts/import_v2_rider.py", line 21, in <module>
+    bones=[{'name':str(c.get_bone_name(i)),'position':str(c.get_bone_location(c.get_bone_name(i),unreal.BoneSpaces.COMPONENT_SPACE))} for i in range(c.get_num_bones())]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/Scripts/import_v2_rider.py", line 21, in <listcomp>
+    bones=[{'name':str(c.get_bone_name(i)),'position':str(c.get_bone_location(c.get_bone_name(i),unreal.BoneSpaces.COMPONENT_SPACE))} for i in range(c.get_num_bones())]
+                                                          ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SkeletalMeshComponent' object has no attribute 'get_bone_location'

@@ -82,6 +82,13 @@ void ABattleZombie::Tick(float Dt){
  }
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Foot=Cast<ABattleRider>(Target))Bike=Foot->ParkedBike;
  if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||bSwimming){if(AI)AI->StopMovement();return;}
+ if(bMurderKBrawler&&BrawlPartner.IsValid()&&FVector::Dist2D(Target->GetActorLocation(),GetActorLocation())>650){
+  if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();
+  const FVector ToPartner=BrawlPartner->GetActorLocation()-GetActorLocation();SetActorRotation(FRotator(0,ToPartner.Rotation().Yaw,0));
+  const float Swing=FMath::Sin(GetWorld()->GetTimeSeconds()*5.f+(GetUniqueID()%7));Body->SetRelativeRotation(FRotator(0,-90,12.f*Swing));
+  if(FMath::Abs(Swing)>.92f&&SubtitleRemaining<=0){Subtitle=TEXT("PUNK: COME ON THEN!");SubtitleRemaining=1.1f;}return;
+ }
+ if(bMurderKBrawler){bMurderKBrawler=false;if(BrawlPartner.IsValid())BrawlPartner->bMurderKBrawler=false;}
  Flinch=FMath::Max(0.f,Flinch-Dt);AttackDelay=FMath::Max(0.f,AttackDelay-Dt);PathDelay-=Dt;
  const FVector Delta=Target->GetActorLocation()-GetActorLocation();const float Distance=Delta.Size2D();
  SpeechDelay-=Dt;if(SpeechDelay<=0&&Distance<1800){Speak();SpeechDelay=FMath::FRandRange(12.f,20.f);}
@@ -140,6 +147,7 @@ void ABattleEnemyDirector::Tick(float Dt){
  if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies+FMath::CeilToInt(Mode->Trouble*.5f)+(Mode->Quest&&Mode->Quest->bCollected?6:0);LiveZombies=0;
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;}
  TickGunmen(Dt);
+ TickMurderK(Dt);
  if(bFreezeSpawns||Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)return;
  bool InTunnel=false;for(TActorIterator<APiedmontDarkZone> It(GetWorld());It;++It)if(It->Contains(Pawn->GetActorLocation())){InTunnel=true;break;}
  WaveDelay=FMath::Max(0.f,WaveDelay-Dt);

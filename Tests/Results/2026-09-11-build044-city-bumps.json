@@ -4,21 +4,19 @@
     "passed": true,
     "exit_code": 0,
     "measurements": [
-      "pass=1 contacts=1 remaining=0.000 hand_peak=50.901 hand_end=1.585 travel=0.000"
+      "pass=1 contacts=1 remaining=0.000 hand_peak=50.901 hand_end=1.589 travel=0.000"
     ],
     "missing_captures": [],
-    "visual_review": "Inspected bump-1 and bump-3: raised-hand reaction then neutral pose, intact outfit/hair, no whole-body sideways rocking. Crossing NPCs partly occupy female view but subject hands and body remain visible.",
-    "scope": "Direct low-speed response invocation only. Actual riding collision detection, AI path resumption, high-speed falls and continuous transition smoothness remain unverified."
+    "visual_review": "pending"
   },
   {
     "variant": "female",
     "passed": true,
     "exit_code": 0,
     "measurements": [
-      "pass=1 contacts=1 remaining=0.000 hand_peak=50.898 hand_end=-2.067 travel=0.000"
+      "pass=1 contacts=1 remaining=0.000 hand_peak=50.898 hand_end=-2.071 travel=0.000"
     ],
     "missing_captures": [],
-    "visual_review": "Inspected bump-1 and bump-3: raised-hand reaction then neutral pose, intact outfit/hair, no whole-body sideways rocking. Crossing NPCs partly occupy female view but subject hands and body remain visible.",
-    "scope": "Direct low-speed response invocation only. Actual riding collision detection, AI path resumption, high-speed falls and continuous transition smoothness remain unverified."
+    "visual_review": "pending"
   }
 ]

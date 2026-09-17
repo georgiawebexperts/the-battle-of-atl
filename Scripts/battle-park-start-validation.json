@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "V3 controls on existing park and authored bridge routes; not full park/game/route acceptance.",
+  "cases": [
+    {
+      "name": "park_uses_V3_mode_and_arcade_bike",
+      "pass": true
+    },
+    {
+      "name": "spawns_inside_14th_street_gate_facing_inward",
+      "pass": true,
+      "distance_cm": 0.07966439783226457,
+      "heading_error_degrees": 7.707143367952085e-08
+    }
+  ]
+}

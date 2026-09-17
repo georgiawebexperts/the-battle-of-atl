@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.M_Crowd_BodySkin:MaterialExpressionScalarParameter_18",
+    "name": "AtlasSelector",
+    "custom": false,
+    "index": 5,
+    "default": 1.0
+  },
+  {
+    "path": "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.M_Crowd_BodySkin:MaterialExpressionScalarParameter_40",
+    "name": "SourceU",
+    "custom": false,
+    "index": 0,
+    "default": 0.5
+  },
+  {
+    "path": "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.M_Crowd_BodySkin:MaterialExpressionScalarParameter_52",
+    "name": "SourceV",
+    "custom": false,
+    "index": 0,
+    "default": 0.5
+  },
+  {
+    "path": "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.M_Crowd_BodySkin:MaterialExpressionScalarParameter_61",
+    "name": "MelaninRandomSeed",
+    "custom": false,
+    "index": 0,
+    "default": 0.5
+  },
+  {
+    "path": "/Game/CitySampleCrowd/Character/Shared/Materials/MetaHuman/M_Crowd_BodySkin.M_Crowd_BodySkin:MaterialExpressionScalarParameter_63",
+    "name": "RednessRandomSeed",
+    "custom": false,
+    "index": 0,
+    "default": 0.5
+  }
+]

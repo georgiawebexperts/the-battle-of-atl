@@ -1,0 +1,317 @@
+[
+  {
+    "name": "CharacterArmature",
+    "parent": "None",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 100.000000, y: 100.000000, z: 100.000000}}>"
+  },
+  {
+    "name": "Root",
+    "parent": "CharacterArmature",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.707107, y: -0.000000, z: 0.000000, w: -0.707107}, translation: {x: 0.000000, y: 7.228866, z: -0.000000}, scale3d: {x: 100.000000, y: 100.000000, z: 100.000000}}>"
+  },
+  {
+    "name": "Hips",
+    "parent": "Root",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.656306, y: 0.000000, z: -0.000000, w: 0.754494}, translation: {x: -0.034378, y: 5.975790, z: 89.409637}, scale3d: {x: 100.000000, y: 100.000001, z: 100.000001}}>"
+  },
+  {
+    "name": "Abdomen",
+    "parent": "Hips",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.691608, y: -0.000000, z: 0.000000, w: -0.722273}, translation: {x: -0.034378, y: 4.505991, z: 99.917793}, scale3d: {x: 100.000000, y: 100.000013, z: 100.000013}}>"
+  },
+  {
+    "name": "Torso",
+    "parent": "Abdomen",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.711220, y: -0.000000, z: 0.000000, w: 0.702969}, translation: {x: -0.034378, y: 3.803582, z: 116.102913}, scale3d: {x: 100.000000, y: 100.000011, z: 100.000003}}>"
+  },
+  {
+    "name": "Chest",
+    "parent": "Torso",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.713772, y: 0.000000, z: -0.000000, w: -0.700378}, translation: {x: -0.034378, y: 4.055976, z: 137.730606}, scale3d: {x: 100.000000, y: 100.000004, z: 99.999996}}>"
+  },
+  {
+    "name": "Neck",
+    "parent": "Chest",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.707107, y: 0.000000, z: -0.000000, w: 0.707107}, translation: {x: -0.034378, y: 4.308369, z: 151.053284}, scale3d: {x: 100.000000, y: 100.000015, z: 100.000000}}>"
+  },
+  {
+    "name": "Head",
+    "parent": "Neck",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.707107, y: 0.000195, z: -0.000195, w: -0.707107}, translation: {x: -0.034378, y: 4.308370, z: 158.726151}, scale3d: {x: 100.000000, y: 100.000015, z: 100.000000}}>"
+  },
+  {
+    "name": "Head_end",
+    "parent": "Head",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.707107, y: -0.000195, z: 0.000195, w: 0.707107}, translation: {x: -0.034378, y: 4.308371, z: 184.153406}, scale3d: {x: 99.999994, y: 99.999988, z: 99.999976}}>"
+  },
+  {
+    "name": "Shoulder_L",
+    "parent": "Chest",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.124737, y: 0.512172, z: -0.674609, w: -0.516742}, translation: {x: 9.839768, y: 6.368320, z: 139.521118}, scale3d: {x: 100.000003, y: 100.000018, z: 100.000000}}>"
+  },
+  {
+    "name": "UpperArm_L",
+    "parent": "Shoulder_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.000000, y: 0.000000, z: 0.699749, w: 0.714389}, translation: {x: 15.254336, y: 5.983142, z: 143.210494}, scale3d: {x: 100.000006, y: 100.000039, z: 100.000006}}>"
+  },
+  {
+    "name": "LowerArm_L",
+    "parent": "UpperArm_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.003687, y: 0.003251, z: -0.750095, w: -0.661312}, translation: {x: 33.441238, y: 5.606538, z: 143.210492}, scale3d: {x: 100.000001, y: 100.000009, z: 99.999994}}>"
+  },
+  {
+    "name": "Hand_L",
+    "parent": "LowerArm_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.013004, y: 0.009095, z: 0.711039, w: 0.702973}, translation: {x: 56.783771, y: 8.554883, z: 143.210505}, scale3d: {x: 99.999995, y: 100.000021, z: 99.999995}}>"
+  },
+  {
+    "name": "Index2_L",
+    "parent": "Hand_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.044099, y: 0.069879, z: -0.737869, w: -0.669867}, translation: {x: 71.684068, y: 11.559823, z: 143.214944}, scale3d: {x: 99.999996, y: 100.000021, z: 99.999997}}>"
+  },
+  {
+    "name": "Index3_L",
+    "parent": "Index2_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.031432, y: -0.061131, z: 0.726893, w: 0.683302}, translation: {x: 74.901750, y: 11.863746, z: 143.746209}, scale3d: {x: 99.999997, y: 100.000029, z: 99.999985}}>"
+  },
+  {
+    "name": "Index4_L",
+    "parent": "Index3_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.037027, y: 0.063287, z: -0.725397, w: -0.684415}, translation: {x: 77.823984, y: 12.037163, z: 144.135521}, scale3d: {x: 100.000003, y: 100.000014, z: 99.999997}}>"
+  },
+  {
+    "name": "Index4_L_end",
+    "parent": "Index4_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.037027, y: -0.063287, z: 0.725397, w: 0.684415}, translation: {x: 80.450313, y: 12.183698, z: 144.514224}, scale3d: {x: 99.999995, y: 99.999992, z: 99.999960}}>"
+  },
+  {
+    "name": "Middle2_L",
+    "parent": "Hand_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.040068, y: 0.026543, z: -0.704888, w: -0.707689}, translation: {x: 71.936685, y: 8.859446, z: 144.185555}, scale3d: {x: 99.999993, y: 100.000019, z: 100.000006}}>"
+  },
+  {
+    "name": "Middle3_L",
+    "parent": "Middle2_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.024201, y: -0.018861, z: 0.707453, w: 0.706094}, translation: {x: 75.958101, y: 8.847101, z: 144.565758}, scale3d: {x: 99.999980, y: 100.000031, z: 99.999984}}>"
+  },
+  {
+    "name": "Middle4_L",
+    "parent": "Middle3_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.048178, y: 0.037234, z: -0.709000, w: -0.702575}, translation: {x: 79.987764, y: 8.855780, z: 144.811485}, scale3d: {x: 99.999988, y: 100.000021, z: 99.999983}}>"
+  },
+  {
+    "name": "Middle4_L_end",
+    "parent": "Middle4_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.048178, y: -0.037234, z: 0.709000, w: 0.702575}, translation: {x: 82.704088, y: 8.883145, z: 145.141189}, scale3d: {x: 99.999983, y: 99.999998, z: 99.999959}}>"
+  },
+  {
+    "name": "Ring2_L",
+    "parent": "Hand_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.088233, y: -0.026336, z: -0.644296, w: -0.759212}, translation: {x: 71.597260, y: 6.128319, z: 143.695855}, scale3d: {x: 100.000000, y: 100.000027, z: 100.000008}}>"
+  },
+  {
+    "name": "Ring3_L",
+    "parent": "Ring2_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.092715, y: 0.013150, z: 0.654872, w: 0.749916}, translation: {x: 74.933328, y: 5.605005, z: 144.035393}, scale3d: {x: 100.000004, y: 100.000009, z: 99.999998}}>"
+  },
+  {
+    "name": "Ring4_L",
+    "parent": "Ring3_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.094762, y: -0.014874, z: -0.647788, w: -0.755758}, translation: {x: 78.200113, y: 5.189977, z: 144.439613}, scale3d: {x: 100.000005, y: 100.000026, z: 100.000007}}>"
+  },
+  {
+    "name": "Ring4_L_end",
+    "parent": "Ring4_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.094762, y: 0.014874, z: 0.647788, w: 0.755758}, translation: {x: 81.293791, y: 4.740128, z: 144.830165}, scale3d: {x: 99.999994, y: 99.999992, z: 99.999983}}>"
+  },
+  {
+    "name": "Pinky2_L",
+    "parent": "Hand_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.111638, y: -0.062866, z: -0.593139, w: -0.794841}, translation: {x: 70.532548, y: 3.918046, z: 143.681512}, scale3d: {x: 99.999992, y: 100.000029, z: 99.999988}}>"
+  },
+  {
+    "name": "Pinky3_L",
+    "parent": "Pinky2_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.110603, y: 0.048522, z: 0.582552, w: 0.803770}, translation: {x: 73.074555, y: 3.196972, z: 143.954827}, scale3d: {x: 99.999999, y: 100.000034, z: 100.000002}}>"
+  },
+  {
+    "name": "Pinky4_L",
+    "parent": "Pinky3_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.121625, y: -0.041549, z: -0.582099, w: -0.802896}, translation: {x: 75.687257, y: 2.378301, z: 144.289314}, scale3d: {x: 99.999981, y: 100.000013, z: 99.999982}}>"
+  },
+  {
+    "name": "Pinky4_L_end",
+    "parent": "Pinky4_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.121625, y: 0.041550, z: 0.582099, w: 0.802896}, translation: {x: 77.768767, y: 1.733379, z: 144.613010}, scale3d: {x: 99.999994, y: 100.000010, z: 99.999978}}>"
+  },
+  {
+    "name": "Thumb2_L",
+    "parent": "Hand_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.007465, y: -0.100455, z: -0.902711, w: -0.418289}, translation: {x: 64.794038, y: 14.600033, z: 140.897165}, scale3d: {x: 99.999995, y: 100.000019, z: 99.999999}}>"
+  },
+  {
+    "name": "Thumb3_L",
+    "parent": "Thumb2_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.008121, y: 0.071501, z: 0.873521, w: 0.481439}, translation: {x: 67.221498, y: 16.620715, z: 140.335352}, scale3d: {x: 99.999995, y: 100.000003, z: 99.999989}}>"
+  },
+  {
+    "name": "Thumb3_L_end",
+    "parent": "Thumb3_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.008121, y: -0.071501, z: -0.873521, w: -0.481439}, translation: {x: 70.003282, y: 18.358657, z: 139.948603}, scale3d: {x: 99.999976, y: 99.999991, z: 99.999956}}>"
+  },
+  {
+    "name": "Shoulder_R",
+    "parent": "Chest",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.124737, y: 0.512172, z: -0.674609, w: 0.516742}, translation: {x: -9.839768, y: 6.368320, z: 139.521118}, scale3d: {x: 100.000007, y: 100.000001, z: 99.999994}}>"
+  },
+  {
+    "name": "UpperArm_R",
+    "parent": "Shoulder_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.000000, y: 0.000000, z: 0.699749, w: -0.714389}, translation: {x: -15.254336, y: 5.983151, z: 143.210495}, scale3d: {x: 100.000012, y: 100.000014, z: 100.000001}}>"
+  },
+  {
+    "name": "LowerArm_R",
+    "parent": "UpperArm_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.003687, y: 0.003251, z: -0.750095, w: 0.661312}, translation: {x: -33.441236, y: 5.606539, z: 143.210509}, scale3d: {x: 100.000008, y: 99.999991, z: 99.999998}}>"
+  },
+  {
+    "name": "Hand_R",
+    "parent": "LowerArm_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.013004, y: 0.009095, z: 0.711039, w: -0.702973}, translation: {x: -56.783766, y: 8.554883, z: 143.210493}, scale3d: {x: 100.000002, y: 100.000011, z: 99.999990}}>"
+  },
+  {
+    "name": "Index2_R",
+    "parent": "Hand_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.044099, y: 0.069879, z: -0.737869, w: 0.669867}, translation: {x: -71.684062, y: 11.559823, z: 143.214932}, scale3d: {x: 100.000018, y: 100.000016, z: 100.000008}}>"
+  },
+  {
+    "name": "Index3_R",
+    "parent": "Index2_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.031432, y: -0.061131, z: 0.726893, w: -0.683302}, translation: {x: -74.901744, y: 11.863746, z: 143.746212}, scale3d: {x: 100.000019, y: 100.000023, z: 99.999996}}>"
+  },
+  {
+    "name": "Index4_R",
+    "parent": "Index3_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.037027, y: 0.063287, z: -0.725397, w: 0.684415}, translation: {x: -77.823978, y: 12.037164, z: 144.135525}, scale3d: {x: 100.000010, y: 100.000001, z: 100.000001}}>"
+  },
+  {
+    "name": "Index4_R_end",
+    "parent": "Index4_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.037027, y: -0.063287, z: 0.725397, w: -0.684415}, translation: {x: -80.450313, y: 12.183713, z: 144.514235}, scale3d: {x: 99.999988, y: 99.999992, z: 99.999960}}>"
+  },
+  {
+    "name": "Middle2_R",
+    "parent": "Hand_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.040068, y: 0.026543, z: -0.704888, w: 0.707689}, translation: {x: -71.936687, y: 8.859443, z: 144.185559}, scale3d: {x: 100.000007, y: 100.000013, z: 100.000009}}>"
+  },
+  {
+    "name": "Middle3_R",
+    "parent": "Middle2_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.024201, y: -0.018861, z: 0.707453, w: -0.706094}, translation: {x: -75.958095, y: 8.847099, z: 144.565792}, scale3d: {x: 99.999994, y: 100.000016, z: 99.999987}}>"
+  },
+  {
+    "name": "Middle4_R",
+    "parent": "Middle3_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.048178, y: 0.037234, z: -0.709000, w: 0.702575}, translation: {x: -79.987758, y: 8.855778, z: 144.811489}, scale3d: {x: 100.000002, y: 100.000008, z: 99.999986}}>"
+  },
+  {
+    "name": "Middle4_R_end",
+    "parent": "Middle4_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.048178, y: -0.037234, z: 0.709000, w: -0.702575}, translation: {x: -82.704076, y: 8.883165, z: 145.141206}, scale3d: {x: 99.999970, y: 99.999999, z: 99.999960}}>"
+  },
+  {
+    "name": "Ring2_R",
+    "parent": "Hand_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.088233, y: -0.026336, z: -0.644297, w: 0.759212}, translation: {x: -71.597262, y: 6.128318, z: 143.695859}, scale3d: {x: 100.000021, y: 100.000013, z: 100.000009}}>"
+  },
+  {
+    "name": "Ring3_R",
+    "parent": "Ring2_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.092715, y: 0.013150, z: 0.654872, w: -0.749916}, translation: {x: -74.933322, y: 5.605000, z: 144.035382}, scale3d: {x: 100.000027, y: 100.000019, z: 100.000015}}>"
+  },
+  {
+    "name": "Ring4_R",
+    "parent": "Ring3_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.094762, y: -0.014874, z: -0.647788, w: 0.755758}, translation: {x: -78.200099, y: 5.189976, z: 144.439618}, scale3d: {x: 100.000021, y: 100.000022, z: 100.000002}}>"
+  },
+  {
+    "name": "Ring4_R_end",
+    "parent": "Ring4_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.094762, y: 0.014874, z: 0.647788, w: -0.755758}, translation: {x: -81.293780, y: 4.740139, z: 144.830140}, scale3d: {x: 99.999986, y: 100.000006, z: 99.999972}}>"
+  },
+  {
+    "name": "Pinky2_R",
+    "parent": "Hand_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.111638, y: -0.062866, z: -0.593139, w: 0.794840}, translation: {x: -70.532550, y: 3.918043, z: 143.681516}, scale3d: {x: 100.000020, y: 100.000022, z: 99.999991}}>"
+  },
+  {
+    "name": "Pinky3_R",
+    "parent": "Pinky2_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.110603, y: 0.048522, z: 0.582552, w: -0.803770}, translation: {x: -73.074550, y: 3.196977, z: 143.954846}, scale3d: {x: 100.000012, y: 100.000008, z: 99.999996}}>"
+  },
+  {
+    "name": "Pinky4_R",
+    "parent": "Pinky3_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.121625, y: -0.041549, z: -0.582099, w: 0.802896}, translation: {x: -75.687244, y: 2.378301, z: 144.289319}, scale3d: {x: 100.000009, y: 100.000010, z: 99.999992}}>"
+  },
+  {
+    "name": "Pinky4_R_end",
+    "parent": "Pinky4_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.121625, y: 0.041549, z: 0.582099, w: -0.802896}, translation: {x: -77.768762, y: 1.733403, z: 144.613026}, scale3d: {x: 99.999968, y: 100.000000, z: 99.999960}}>"
+  },
+  {
+    "name": "Thumb2_R",
+    "parent": "Hand_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.007465, y: -0.100455, z: -0.902711, w: 0.418289}, translation: {x: -64.794032, y: 14.600031, z: 140.897153}, scale3d: {x: 100.000020, y: 100.000011, z: 100.000009}}>"
+  },
+  {
+    "name": "Thumb3_R",
+    "parent": "Thumb2_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.008121, y: 0.071501, z: 0.873521, w: -0.481439}, translation: {x: -67.221492, y: 16.620713, z: 140.335370}, scale3d: {x: 100.000011, y: 99.999984, z: 99.999990}}>"
+  },
+  {
+    "name": "Thumb3_R_end",
+    "parent": "Thumb3_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.008121, y: -0.071501, z: -0.873521, w: 0.481439}, translation: {x: -70.003264, y: 18.358671, z: 139.948612}, scale3d: {x: 99.999976, y: 99.999967, z: 99.999961}}>"
+  },
+  {
+    "name": "UpperLeg_L",
+    "parent": "Hips",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.523873, y: 0.474929, z: 0.523873, w: -0.474929}, translation: {x: 12.059150, y: 4.506383, z: 96.415070}, scale3d: {x: 100.000004, y: 99.999989, z: 100.000069}}>"
+  },
+  {
+    "name": "LowerLeg_L",
+    "parent": "UpperLeg_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.689383, y: -0.000000, z: -0.000000, w: 0.724397}, translation: {x: 12.059152, y: 8.739638, z: 53.324585}, scale3d: {x: 99.999996, y: 99.999987, z: 100.000067}}>"
+  },
+  {
+    "name": "Foot_L",
+    "parent": "LowerLeg_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.999996, y: 0.000001, z: -0.000028, w: 0.002674}, translation: {x: 12.059149, y: 6.209549, z: 2.275157}, scale3d: {x: 100.000004, y: 99.999988, z: 100.000076}}>"
+  },
+  {
+    "name": "Foot_L_end",
+    "parent": "Foot_L",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.999996, y: -0.000002, z: 0.000029, w: -0.002674}, translation: {x: 12.059442, y: 23.942938, z: 2.369988}, scale3d: {x: 100.000001, y: 99.999984, z: 100.000068}}>"
+  },
+  {
+    "name": "UpperLeg_R",
+    "parent": "Hips",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.523873, y: 0.474929, z: 0.523873, w: 0.474929}, translation: {x: -12.059150, y: 4.506383, z: 96.415070}, scale3d: {x: 100.000004, y: 99.999997, z: 100.000069}}>"
+  },
+  {
+    "name": "LowerLeg_R",
+    "parent": "UpperLeg_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.689383, y: -0.000000, z: -0.000000, w: -0.724397}, translation: {x: -12.059150, y: 8.739638, z: 53.324581}, scale3d: {x: 100.000004, y: 100.000002, z: 100.000059}}>"
+  },
+  {
+    "name": "Foot_R",
+    "parent": "LowerLeg_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: 0.999996, y: 0.000001, z: -0.000028, w: -0.002674}, translation: {x: -12.059147, y: 6.209549, z: 2.275163}, scale3d: {x: 100.000004, y: 100.000018, z: 100.000068}}>"
+  },
+  {
+    "name": "Foot_R_end",
+    "parent": "Foot_R",
+    "transform": "<Struct 'Transform' (0x424add020) {rotation: {x: -0.999996, y: -0.000001, z: 0.000029, w: 0.002674}, translation: {x: -12.059434, y: 23.942947, z: 2.369997}, scale3d: {x: 100.000007, y: 100.000019, z: 100.000063}}>"
+  }
+]

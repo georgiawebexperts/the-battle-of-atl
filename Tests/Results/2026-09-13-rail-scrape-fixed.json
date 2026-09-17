@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "packaged": false,
+  "runs": [
+    {
+      "passed": true,
+      "phase": 4,
+      "forward_cm": 1224.88,
+      "reverse_cm": 313.95,
+      "mode": "arcade",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/rail-scrape-d3054808287644e5b3894c6ff822d1e2.log",
+      "exit_code": 0
+    },
+    {
+      "passed": true,
+      "phase": 4,
+      "forward_cm": 859.59,
+      "reverse_cm": 314.01,
+      "mode": "realistic",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/rail-scrape-382cbb7e6fd74629b4d39b86992f51fe.log",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Actual forward/reverse input alongside a solid rail. Does not prove every bridge turn."
+}

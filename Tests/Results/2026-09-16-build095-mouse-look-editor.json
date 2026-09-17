@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "free_orbit": true,
+  "camera_relative_walk": true,
+  "shoulder_aim": true,
+  "keyboard_look": true,
+  "exit_code": 0,
+  "packaged": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/mouse-look-b215b0373f0d4fdcb6b40d58eb28ee5e.log",
+  "scope": "Registered mouse-axis bindings after dismount, camera response, camera-relative walking, shoulder aim, and keyboard look. OS pointer capture remains a manual packaged check."
+}

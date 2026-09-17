@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.018,
+  "pedal_error_cm": 0.0,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-9.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/depart-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/depart-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-8.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/depart-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/depart-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-0.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-1.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/stopped-again.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-3.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-10.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-2.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-6.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-7.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-5.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/brake-4.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-ede240c9026a40bc99f6003f1230b19d/run.log",
+  "exit_code": 0,
+  "packaged": false
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "actor": "Piedmont lake water zone",
+    "location": "<Struct 'Vector' (0x41fb8f3a0) {x: -5904.575968, y: -1043.872932, z: -421.333822}>",
+    "bounds": "(<Struct 'Vector' (0x41fb8f3a0) {x: -5904.575968, y: -1043.872932, z: -421.333822}>, <Struct 'Vector' (0x41fb8fb70) {x: 4020000.000000, y: 4020000.000000, z: 20000.000000}>)",
+    "components": [
+      {
+        "class": "WaterMeshComponent",
+        "name": "WaterMesh",
+        "bounds": "(<Struct 'Vector' (0x41fb8fb70) {x: -5904.575968, y: -1043.872932, z: -421.333822}>, <Struct 'Vector' (0x41fb8fe40) {x: 4020000.000000, y: 4020000.000000, z: 20000.000000}>, 5685173.5)",
+        "visible": true
+      },
+      {
+        "class": "BoxComponent",
+        "name": "BoundsComponent",
+        "bounds": "(<Struct 'Vector' (0x41fb79000) {x: -5904.575968, y: -1043.872932, z: -421.333822}>, <Struct 'Vector' (0x41fb8fb70) {x: 20000.000000, y: 20000.000000, z: 8192.000000}>, 29446.712890625)",
+        "visible": false
+      },
+      {
+        "class": "BillboardComponent",
+        "name": "Sprite",
+        "bounds": "(<Struct 'Vector' (0x41fb8fb70) {x: -5904.575968, y: -1043.872932, z: -346.333822}>, <Struct 'Vector' (0x41fb8fe40) {x: 256.000000, y: 256.000000, z: 256.000000}>, 443.4049987792969)",
+        "visible": false
+      }
+    ]
+  },
+  {
+    "actor": "Lake Clara Meer",
+    "location": "<Struct 'Vector' (0x41fb794b0) {x: -5904.575968, y: -1043.872932, z: -420.333822}>",
+    "bounds": "(<Struct 'Vector' (0x41fb794b0) {x: -6274.815153, y: 277.963256, z: -617.333822}>, <Struct 'Vector' (0x41fb8fb70) {x: 7590.496882, y: 5903.478517, z: 453.000000}>)",
+    "components": [
+      {
+        "class": "WaterSplineComponent",
+        "name": "WaterSpline",
+        "bounds": "(<Struct 'Vector' (0x41fb8fb70) {x: -6274.815153, y: 277.963256, z: -495.333822}>, <Struct 'Vector' (0x41fb8fe40) {x: 7590.496882, y: 5903.478517, z: 75.000000}>, 9616.2529296875)",
+        "visible": true
+      },
+      {
+        "class": "WaterBodyInfoMeshComponent",
+        "name": "WaterInfoMeshComponent",
+        "bounds": "(<Struct 'Vector' (0x41fb8e180) {x: -6274.815153, y: 277.963256, z: -742.833822}>, <Struct 'Vector' (0x41fb8d5a0) {x: 7590.496882, y: 5903.478517, z: 327.500000}>, 9621.5361328125)",
+        "visible": true,
+        "mesh": "None",
+        "material": "<Object '/Engine/Transient.WaterInfoMID_2' (0x4c69058b400) Class 'MaterialInstanceDynamic'>"
+      },
+      {
+        "class": "WaterBodyInfoMeshComponent",
+        "name": "DilatedWaterInfoMeshComponent",
+        "bounds": "(<Struct 'Vector' (0x41fb8f760) {x: -6274.815153, y: 277.963256, z: -742.833822}>, <Struct 'Vector' (0x41fb8f7b0) {x: 7590.496882, y: 5903.478517, z: 327.500000}>, 9621.5361328125)",
+        "visible": true,
+        "mesh": "None",
+        "material": "<Object '/Engine/Transient.WaterInfoMID_2' (0x4c69058b400) Class 'MaterialInstanceDynamic'>"
+      },
+      {
+        "class": "WaterBodyLakeComponent",
+        "name": "WaterBodyLakeComponent",
+        "bounds": "(<Struct 'Vector' (0x41fb8f850) {x: -6274.815153, y: 277.963256, z: -742.833822}>, <Struct 'Vector' (0x41fb8f6c0) {x: 7590.496882, y: 5903.478517, z: 327.500000}>, 9621.5361328125)",
+        "visible": true
+      },
+      {
+        "class": "BillboardComponent",
+        "name": "BillboardComponent_0",
+        "bounds": "(<Struct 'Vector' (0x41fb8da50) {x: -6274.815153, y: 277.963256, z: -420.333822}>, <Struct 'Vector' (0x41fb8f440) {x: 256.000000, y: 256.000000, z: 256.000000}>, 443.4049987792969)",
+        "visible": false
+      },
+      {
+        "class": "StaticMeshComponent",
+        "name": "LakeMeshComponent",
+        "bounds": "(<Struct 'Vector' (0x41fb8f490) {x: -6274.815153, y: 277.963256, z: -420.333822}>, <Struct 'Vector' (0x41fb8d960) {x: 7590.496882, y: 5903.478517, z: 0.000000}>, 9615.9609375)",
+        "visible": false,
+        "mesh": "<Object '/Water/Meshes/LakeMesh.LakeMesh' (0x4c61696a800) Class 'StaticMesh'>",
+        "material": "<Object '/Engine/Transient.WaterMID_2' (0x4c690589600) Class 'MaterialInstanceDynamic'>"
+      },
+      {
+        "class": "LakeCollisionComponent",
+        "name": "LakeCollisionComponent",
+        "bounds": "(<Struct 'Vector' (0x41fb8f990) {x: -6274.815153, y: 277.963256, z: -670.333822}>, <Struct 'Vector' (0x41fb8f620) {x: 7590.496882, y: 5903.478517, z: 250.000000}>, 9619.2099609375)",
+        "visible": false
+      },
+      {
+        "class": "WaterBodyStaticMeshComponent",
+        "name": "WaterBodyStaticMeshComponent_0",
+        "bounds": "(<Struct 'Vector' (0x41fb8ef90) {x: -5904.575968, y: -1043.872932, z: -420.333822}>, <Struct 'Vector' (0x41fb8f170) {x: 0.000000, y: 0.000000, z: 0.000000}>, 0.0)",
+        "visible": true,
+        "mesh": "<Object '/Game/PiedmontRide/Maps/PiedmontWorld.PiedmontWorld:PersistentLevel.WaterBodyLake_0.WaterBodyMesh_1' (0x4c664bee800) Class 'StaticMesh'>",
+        "material": "<Object '/Engine/Transient.WaterLODMID_2' (0x4c69058a000) Class 'MaterialInstanceDynamic'>"
+      }
+    ]
+  }
+]

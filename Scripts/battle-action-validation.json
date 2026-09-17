@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "scope": "Near-miss nitro and bike pistol/visible shot effects; not full enemy roster or combat feel acceptance.",
+  "cases": [
+    {
+      "name": "close_pass_rewards_nitro_without_contact",
+      "pass": true
+    },
+    {
+      "name": "partial_meter_cannot_boost",
+      "pass": true
+    },
+    {
+      "name": "same_visitor_cannot_be_farmed_immediately",
+      "pass": true
+    },
+    {
+      "name": "shift_consumes_meter_and_boosts_for_three_seconds",
+      "pass": true,
+      "elapsed": 2.9959287494421005,
+      "peak_speed": 1800.0
+    },
+    {
+      "name": "left_click_fires_pistol_from_bike",
+      "pass": true
+    },
+    {
+      "name": "bike_camera_aim_hits_visible_target",
+      "pass": true,
+      "end": "<Struct 'Vector' (0xb58880212b0) {x: -3291.792829, y: 4000.586366, z: 118.525101}>"
+    },
+    {
+      "name": "shot_spawns_renderable_muzzle_and_tracer",
+      "pass": true
+    },
+    {
+      "name": "damage_shows_hit_feedback",
+      "pass": true
+    },
+    {
+      "name": "enemy_kill_refills_nitro",
+      "pass": true
+    },
+    {
+      "name": "riding_at_speed_increases_pistol_spread",
+      "pass": true
+    },
+    {
+      "name": "ground_hit_does_not_show_damage_marker",
+      "pass": true
+    }
+  ],
+  "stage": 7
+}

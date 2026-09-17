@@ -1,0 +1,8 @@
+{
+  "material": "/Game/BattleForTheA/Spirit/M_SpectralBlackBear.M_SpectralBlackBear",
+  "texture": "/Game/BattleForTheA/Spirit/T_SpectralBlackBear.T_SpectralBlackBear",
+  "blend": "masked",
+  "opacity_mask_clip": 0.04,
+  "unlit": true,
+  "two_sided": true
+}

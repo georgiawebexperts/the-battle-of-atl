@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "reason": "Bike accelerated after forward key release",
+  "stage": 4,
+  "swim_cm": 532.69,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 44.97,
+  "edge_used": 45,
+  "fixture": "X=-12611.248 Y=5129.596 Z=-258.512 wet=X=-12556.180 Y=4632.638 Z=-323.334",
+  "edge_requested": 45,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-aeb4e40626a34224b477489313de6f14/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-aeb4e40626a34224b477489313de6f14/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-aeb4e40626a34224b477489313de6f14/returned.png"
+  ]
+}

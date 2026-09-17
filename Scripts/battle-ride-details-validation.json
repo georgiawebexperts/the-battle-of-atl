@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "H_horn_and_repeat_limit",
+      "pass": true
+    },
+    {
+      "name": "walker_moves_aside_for_new_bike_horn",
+      "pass": true
+    },
+    {
+      "name": "jogger_keeps_course_despite_horn",
+      "pass": true
+    },
+    {
+      "name": "daylight_lights_off",
+      "pass": true
+    },
+    {
+      "name": "dark_zone_lights_head_and_tail",
+      "pass": true
+    },
+    {
+      "name": "lights_switch_off_after_leaving_darkness",
+      "pass": true
+    },
+    {
+      "name": "dismount_for_parked_light_test",
+      "pass": true
+    },
+    {
+      "name": "parked_bike_still_turns_lights_on",
+      "pass": true
+    },
+    {
+      "name": "parked_bike_still_turns_lights_off",
+      "pass": true
+    },
+    {
+      "name": "remount_after_light_test",
+      "pass": true
+    },
+    {
+      "name": "blocked_exits_keep_player_safely_on_bike",
+      "pass": true
+    },
+    {
+      "name": "full_speed_25cm_curb_stays_upright_and_crosses",
+      "pass": true,
+      "height": 123.15000194963977,
+      "end_x": -1356.8215027414267
+    },
+    {
+      "name": "glancing_contact_nudges_without_wipeout",
+      "pass": true,
+      "contacts": 1,
+      "wipeouts": 0,
+      "end_x": -2556.757054281753
+    },
+    {
+      "name": "ride_through_saved_shelter_switches_lights_on_then_off",
+      "pass": true
+    }
+  ],
+  "stage": 10
+}

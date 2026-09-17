@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "packaged": false,
+  "runs": [
+    {
+      "passed": false,
+      "phase": 2,
+      "reason": "Did not hit wall without passing through it",
+      "reverse_speed": 0.0,
+      "mode": "arcade",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-84bf2af1874b42b298061669c69b8425.log",
+      "exit_code": 0
+    },
+    {
+      "passed": false,
+      "phase": 2,
+      "reason": "Did not hit wall without passing through it",
+      "reverse_speed": 0.0,
+      "mode": "realistic",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-51b4f53e3a3b455f925bce42fe7a4db0.log",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Actual key input and collision on isolated floor/wall fixture. Does not prove all world corners, slopes, or visual handling feel."
+}

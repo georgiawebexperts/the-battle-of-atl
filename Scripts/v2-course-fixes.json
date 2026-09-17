@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Uphill ramp",
+    "old": "<Struct 'Rotator' (0x427d1f440) {pitch: 15.000000, yaw: 0.000000, roll: -0.000000}>"
+  },
+  {
+    "name": "Downhill ramp",
+    "old": "<Struct 'Rotator' (0x427d1f440) {pitch: -15.000000, yaw: 0.000000, roll: -0.000000}>"
+  }
+]

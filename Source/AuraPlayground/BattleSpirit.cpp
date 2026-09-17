@@ -3,12 +3,42 @@
 #include "BattleBike.h"
 #include "PiedmontBike.h"
 #include "Components/SceneComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/PointLightComponent.h"
+#include "Components/BillboardComponent.h"
+#include "Engine/StaticMesh.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameFramework/PlayerController.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Materials/MaterialInterface.h"
+#include "Engine/Texture2D.h"
+#include "UObject/ConstructorHelpers.h"
 ABattleSpirit::ABattleSpirit(){
  PrimaryActorTick.bCanEverTick=true;
  RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("SpiritRoot"));
  SetCanBeDamaged(false);SetActorEnableCollision(false);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Sphere(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Cone(TEXT("/Engine/BasicShapes/Cone.Cone"));
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+ auto Part=[&](const TCHAR* Name,UStaticMesh* Mesh,FVector Loc,FVector Scale,FRotator Rot=FRotator::ZeroRotator){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Mesh);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(Scale);C->SetRelativeRotation(Rot);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);BearParts.Add(C);return C;};
+ Part(TEXT("BearBody"),Sphere.Object,FVector(0,0,78),FVector(1.22,.55,.70));
+ Part(TEXT("BearShoulders"),Sphere.Object,FVector(55,0,92),FVector(.70,.62,.72));
+ Part(TEXT("BearHead"),Sphere.Object,FVector(102,0,130),FVector(.48,.45,.46));
+ Part(TEXT("BearMuzzle"),Sphere.Object,FVector(137,0,116),FVector(.34,.30,.25));
+ Part(TEXT("BearEarL"),Cone.Object,FVector(92,-28,168),FVector(.14,.14,.22));Part(TEXT("BearEarR"),Cone.Object,FVector(92,28,168),FVector(.14,.14,.22));
+ for(int X:{-55,45})for(int Y:{-32,32})Part(*FString::Printf(TEXT("BearLeg%d_%d"),X,Y),Cylinder.Object,FVector(X,Y,38),FVector(.18,.18,.70));
+ Part(TEXT("BearTail"),Sphere.Object,FVector(-112,0,95),FVector(.34,.22,.25),FRotator(0,0,25));
+ auto Wisp=[&](const TCHAR* Name,FVector Loc,float Scale){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Sphere.Object);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(FVector(Scale));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);Wisps.Add(C);};
+ Wisp(TEXT("SpiritWispA"),FVector(-65,-85,145),.10f);Wisp(TEXT("SpiritWispB"),FVector(20,80,190),.075f);Wisp(TEXT("SpiritWispC"),FVector(105,-65,210),.055f);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> Plane(TEXT("/Engine/BasicShapes/Plane.Plane"));
+ SpiritCard=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpectralBlackBear"));SpiritCard->SetupAttachment(RootComponent);SpiritCard->SetStaticMesh(Plane.Object);SpiritCard->SetRelativeLocation(FVector(0,0,105));SpiritCard->SetRelativeRotation(FRotator(90,0,0));SpiritCard->SetRelativeScale3D(FVector(3.35f,2.25f,1));SpiritCard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritCard->SetCanEverAffectNavigation(false);SpiritCard->SetCastShadow(false);SpiritCard->SetVisibility(false);
+ static ConstructorHelpers::FObjectFinder<UTexture2D> SpiritTexture(TEXT("/Game/BattleForTheA/Spirit/T_SpectralBlackBear.T_SpectralBlackBear"));
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> SpiritMaterial(TEXT("/Game/BattleForTheA/Spirit/M_SpectralBlackBear.M_SpectralBlackBear"));
+ if(SpiritMaterial.Succeeded())SpiritCard->SetMaterial(0,SpiritMaterial.Object);
+ SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackBearBillboard"));SpiritBillboard->SetupAttachment(RootComponent);SpiritBillboard->SetSprite(SpiritTexture.Object);SpiritBillboard->SetRelativeLocation(FVector(0,0,110));SpiritBillboard->SetRelativeScale3D(FVector(1.15f));SpiritBillboard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritBillboard->SetCanEverAffectNavigation(false);SpiritBillboard->SetCastShadow(false);SpiritBillboard->SetVisibility(false);
+ MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.12f,.55f,1.f));MoonGlow->SetAttenuationRadius(900);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+ for(auto& C:BearParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);
 }
 bool ABattleSpirit::IsLiveRun() const {
  const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
@@ -23,7 +53,7 @@ ABattleBike* ABattleSpirit::MountedRider() const {
 bool ABattleSpirit::TryApproach(float Roll){
  if(State!=EBattleSpiritState::Untried||!IsLiveRun()||!FMath::IsFinite(Roll)||Roll<0||Roll>=1)return false;
  State=EBattleSpiritState::Absent;
- if(!MountedRider()||Roll>=.15f)return false;
+ if(!MountedRider()||Roll>=.50f)return false;
  State=EBattleSpiritState::Appearing;Age=Fade=0;return true;
 }
 void ABattleSpirit::Cancel(){
@@ -68,6 +98,19 @@ void ABattleSpirit::Tick(float Dt){
   for(int32 I=1;I<ChaseRoute.Num();I++){const FVector D=ChaseRoute[I]-ChaseRoute[I-1];const float Length=D.Size();if(Left<=Length){SetActorLocation(ChaseRoute[I-1]+D.GetSafeNormal()*Left);SetActorRotation(D.Rotation());break;}Left-=Length;if(I==ChaseRoute.Num()-1)SetActorLocation(ChaseRoute.Last());}
   TryCatch();
  }
+ const bool Visible=State==EBattleSpiritState::Appearing||State==EBattleSpiritState::Active||State==EBattleSpiritState::Fading;
+ const float Reveal=State==EBattleSpiritState::Appearing?FMath::Clamp(Age/1.5f,0.f,1.f):(State==EBattleSpiritState::Fading?1.f-FMath::Clamp(Fade/1.5f,0.f,1.f):(State==EBattleSpiritState::Active?1.f:0.f));
+ for(auto& C:BearParts)C->SetVisibility(Visible);
+ SpiritBillboard->SetVisibility(false);SpiritCard->SetVisibility(false);
+ for(int32 I=0;I<Wisps.Num();I++){auto* C=Wisps[I].Get();C->SetVisibility(Visible);if(Visible)C->AddLocalOffset(FVector(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*2.f+I)*Dt*12.f));}
+ MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?3200.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
 }
 
-void ABattleSpirit::BeginPlay(){Super::BeginPlay();ApproachPoint=BattleSpiritData::Approach;for(const FVector& P:BattleSpiritData::Chase)ChaseRoute.Add(P);}
+void ABattleSpirit::BeginPlay(){
+ Super::BeginPlay();ApproachPoint=BattleSpiritData::Approach;for(const FVector& P:BattleSpiritData::Chase)ChaseRoute.Add(P);
+ auto* Base=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
+ auto* BearMat=UMaterialInstanceDynamic::Create(Base,this);if(BearMat)BearMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.006f,.012f,.025f));
+ auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.08f,.55f,1.f));
+ for(auto& C:BearParts)C->SetMaterial(0,BearMat);for(auto& C:Wisps)C->SetMaterial(0,WispMat);
+ UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: texture=%s material=%s"),*GetNameSafe(SpiritBillboard->Sprite),*GetNameSafe(SpiritCard->GetMaterial(0)));
+}

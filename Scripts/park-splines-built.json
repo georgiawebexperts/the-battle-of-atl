@@ -1,0 +1,1187 @@
+{
+  "status": "passed",
+  "path_count": 236,
+  "scope": "Spline point import only; rideability unverified",
+  "paths": [
+    {
+      "osm_id": 9267232,
+      "points": 23,
+      "pass": true
+    },
+    {
+      "osm_id": 28798697,
+      "points": 378,
+      "pass": true
+    },
+    {
+      "osm_id": 28798710,
+      "points": 504,
+      "pass": true
+    },
+    {
+      "osm_id": 28798713,
+      "points": 67,
+      "pass": true
+    },
+    {
+      "osm_id": 28798718,
+      "points": 260,
+      "pass": true
+    },
+    {
+      "osm_id": 28798751,
+      "points": 462,
+      "pass": true
+    },
+    {
+      "osm_id": 61490695,
+      "points": 173,
+      "pass": true
+    },
+    {
+      "osm_id": 61490696,
+      "points": 101,
+      "pass": true
+    },
+    {
+      "osm_id": 61490697,
+      "points": 51,
+      "pass": true
+    },
+    {
+      "osm_id": 61490698,
+      "points": 184,
+      "pass": true
+    },
+    {
+      "osm_id": 61490788,
+      "points": 19,
+      "pass": true
+    },
+    {
+      "osm_id": 61490789,
+      "points": 28,
+      "pass": true
+    },
+    {
+      "osm_id": 61490790,
+      "points": 91,
+      "pass": true
+    },
+    {
+      "osm_id": 61490791,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 61490793,
+      "points": 36,
+      "pass": true
+    },
+    {
+      "osm_id": 61490795,
+      "points": 103,
+      "pass": true
+    },
+    {
+      "osm_id": 61490796,
+      "points": 27,
+      "pass": true
+    },
+    {
+      "osm_id": 61491213,
+      "points": 18,
+      "pass": true
+    },
+    {
+      "osm_id": 61491561,
+      "points": 82,
+      "pass": true
+    },
+    {
+      "osm_id": 61491562,
+      "points": 20,
+      "pass": true
+    },
+    {
+      "osm_id": 61491563,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 61491564,
+      "points": 36,
+      "pass": true
+    },
+    {
+      "osm_id": 61491566,
+      "points": 49,
+      "pass": true
+    },
+    {
+      "osm_id": 61491567,
+      "points": 27,
+      "pass": true
+    },
+    {
+      "osm_id": 61853018,
+      "points": 74,
+      "pass": true
+    },
+    {
+      "osm_id": 61853018,
+      "points": 637,
+      "pass": true
+    },
+    {
+      "osm_id": 61853020,
+      "points": 76,
+      "pass": true
+    },
+    {
+      "osm_id": 102679931,
+      "points": 20,
+      "pass": true
+    },
+    {
+      "osm_id": 102679933,
+      "points": 51,
+      "pass": true
+    },
+    {
+      "osm_id": 102679936,
+      "points": 12,
+      "pass": true
+    },
+    {
+      "osm_id": 102679938,
+      "points": 31,
+      "pass": true
+    },
+    {
+      "osm_id": 102679940,
+      "points": 156,
+      "pass": true
+    },
+    {
+      "osm_id": 102679943,
+      "points": 24,
+      "pass": true
+    },
+    {
+      "osm_id": 102679944,
+      "points": 57,
+      "pass": true
+    },
+    {
+      "osm_id": 102679946,
+      "points": 215,
+      "pass": true
+    },
+    {
+      "osm_id": 102679950,
+      "points": 161,
+      "pass": true
+    },
+    {
+      "osm_id": 137068085,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 138650136,
+      "points": 92,
+      "pass": true
+    },
+    {
+      "osm_id": 146304978,
+      "points": 104,
+      "pass": true
+    },
+    {
+      "osm_id": 146304979,
+      "points": 380,
+      "pass": true
+    },
+    {
+      "osm_id": 146304980,
+      "points": 14,
+      "pass": true
+    },
+    {
+      "osm_id": 146304982,
+      "points": 28,
+      "pass": true
+    },
+    {
+      "osm_id": 146304983,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 146304984,
+      "points": 12,
+      "pass": true
+    },
+    {
+      "osm_id": 146304985,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 146304987,
+      "points": 10,
+      "pass": true
+    },
+    {
+      "osm_id": 146304988,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 146304989,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 146304990,
+      "points": 34,
+      "pass": true
+    },
+    {
+      "osm_id": 146304991,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 148013141,
+      "points": 10,
+      "pass": true
+    },
+    {
+      "osm_id": 148013143,
+      "points": 60,
+      "pass": true
+    },
+    {
+      "osm_id": 148013144,
+      "points": 41,
+      "pass": true
+    },
+    {
+      "osm_id": 182302106,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 182302109,
+      "points": 767,
+      "pass": true
+    },
+    {
+      "osm_id": 182302110,
+      "points": 193,
+      "pass": true
+    },
+    {
+      "osm_id": 182302111,
+      "points": 108,
+      "pass": true
+    },
+    {
+      "osm_id": 182302113,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 182313900,
+      "points": 53,
+      "pass": true
+    },
+    {
+      "osm_id": 182313901,
+      "points": 29,
+      "pass": true
+    },
+    {
+      "osm_id": 182313902,
+      "points": 28,
+      "pass": true
+    },
+    {
+      "osm_id": 182313905,
+      "points": 65,
+      "pass": true
+    },
+    {
+      "osm_id": 182313907,
+      "points": 87,
+      "pass": true
+    },
+    {
+      "osm_id": 182313908,
+      "points": 111,
+      "pass": true
+    },
+    {
+      "osm_id": 182313909,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 182313910,
+      "points": 27,
+      "pass": true
+    },
+    {
+      "osm_id": 182313912,
+      "points": 25,
+      "pass": true
+    },
+    {
+      "osm_id": 182313915,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 182313921,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 182313922,
+      "points": 107,
+      "pass": true
+    },
+    {
+      "osm_id": 182313923,
+      "points": 7,
+      "pass": true
+    },
+    {
+      "osm_id": 182313924,
+      "points": 89,
+      "pass": true
+    },
+    {
+      "osm_id": 182313926,
+      "points": 25,
+      "pass": true
+    },
+    {
+      "osm_id": 182313927,
+      "points": 294,
+      "pass": true
+    },
+    {
+      "osm_id": 182313928,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 182313929,
+      "points": 26,
+      "pass": true
+    },
+    {
+      "osm_id": 182313930,
+      "points": 18,
+      "pass": true
+    },
+    {
+      "osm_id": 182313931,
+      "points": 23,
+      "pass": true
+    },
+    {
+      "osm_id": 182313933,
+      "points": 20,
+      "pass": true
+    },
+    {
+      "osm_id": 182313934,
+      "points": 73,
+      "pass": true
+    },
+    {
+      "osm_id": 182392756,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 182392760,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182392761,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182392762,
+      "points": 54,
+      "pass": true
+    },
+    {
+      "osm_id": 182395365,
+      "points": 103,
+      "pass": true
+    },
+    {
+      "osm_id": 182395366,
+      "points": 64,
+      "pass": true
+    },
+    {
+      "osm_id": 182395374,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182396487,
+      "points": 42,
+      "pass": true
+    },
+    {
+      "osm_id": 182398390,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 182398392,
+      "points": 16,
+      "pass": true
+    },
+    {
+      "osm_id": 182398393,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182398394,
+      "points": 34,
+      "pass": true
+    },
+    {
+      "osm_id": 182398395,
+      "points": 23,
+      "pass": true
+    },
+    {
+      "osm_id": 182398933,
+      "points": 38,
+      "pass": true
+    },
+    {
+      "osm_id": 182398934,
+      "points": 41,
+      "pass": true
+    },
+    {
+      "osm_id": 182398935,
+      "points": 56,
+      "pass": true
+    },
+    {
+      "osm_id": 182398937,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 182398938,
+      "points": 20,
+      "pass": true
+    },
+    {
+      "osm_id": 182398939,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 182398940,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182398943,
+      "points": 7,
+      "pass": true
+    },
+    {
+      "osm_id": 182398944,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182398945,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 182460437,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 182460439,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182466130,
+      "points": 63,
+      "pass": true
+    },
+    {
+      "osm_id": 182466131,
+      "points": 61,
+      "pass": true
+    },
+    {
+      "osm_id": 182466132,
+      "points": 7,
+      "pass": true
+    },
+    {
+      "osm_id": 182466133,
+      "points": 47,
+      "pass": true
+    },
+    {
+      "osm_id": 182466134,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182466135,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 182466137,
+      "points": 105,
+      "pass": true
+    },
+    {
+      "osm_id": 182466138,
+      "points": 16,
+      "pass": true
+    },
+    {
+      "osm_id": 182466139,
+      "points": 19,
+      "pass": true
+    },
+    {
+      "osm_id": 182466140,
+      "points": 38,
+      "pass": true
+    },
+    {
+      "osm_id": 185624615,
+      "points": 61,
+      "pass": true
+    },
+    {
+      "osm_id": 185631221,
+      "points": 57,
+      "pass": true
+    },
+    {
+      "osm_id": 216568143,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 216568146,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 216568147,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 218548036,
+      "points": 173,
+      "pass": true
+    },
+    {
+      "osm_id": 218548037,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 218548040,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 218548043,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 218548047,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 226119763,
+      "points": 11,
+      "pass": true
+    },
+    {
+      "osm_id": 226119770,
+      "points": 65,
+      "pass": true
+    },
+    {
+      "osm_id": 226119774,
+      "points": 41,
+      "pass": true
+    },
+    {
+      "osm_id": 226119775,
+      "points": 35,
+      "pass": true
+    },
+    {
+      "osm_id": 226119779,
+      "points": 87,
+      "pass": true
+    },
+    {
+      "osm_id": 226324512,
+      "points": 20,
+      "pass": true
+    },
+    {
+      "osm_id": 226324513,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 226324514,
+      "points": 30,
+      "pass": true
+    },
+    {
+      "osm_id": 226324515,
+      "points": 157,
+      "pass": true
+    },
+    {
+      "osm_id": 226324516,
+      "points": 87,
+      "pass": true
+    },
+    {
+      "osm_id": 226324517,
+      "points": 15,
+      "pass": true
+    },
+    {
+      "osm_id": 226638691,
+      "points": 21,
+      "pass": true
+    },
+    {
+      "osm_id": 267254328,
+      "points": 28,
+      "pass": true
+    },
+    {
+      "osm_id": 267254329,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 267254332,
+      "points": 18,
+      "pass": true
+    },
+    {
+      "osm_id": 330648552,
+      "points": 54,
+      "pass": true
+    },
+    {
+      "osm_id": 354587524,
+      "points": 24,
+      "pass": true
+    },
+    {
+      "osm_id": 354587527,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 431545106,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 442709517,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 503237945,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 503237946,
+      "points": 15,
+      "pass": true
+    },
+    {
+      "osm_id": 503237947,
+      "points": 67,
+      "pass": true
+    },
+    {
+      "osm_id": 503237948,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 503237949,
+      "points": 86,
+      "pass": true
+    },
+    {
+      "osm_id": 503237950,
+      "points": 45,
+      "pass": true
+    },
+    {
+      "osm_id": 503237951,
+      "points": 37,
+      "pass": true
+    },
+    {
+      "osm_id": 617721795,
+      "points": 51,
+      "pass": true
+    },
+    {
+      "osm_id": 635800753,
+      "points": 61,
+      "pass": true
+    },
+    {
+      "osm_id": 635800755,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 636977365,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 741964052,
+      "points": 145,
+      "pass": true
+    },
+    {
+      "osm_id": 741964056,
+      "points": 409,
+      "pass": true
+    },
+    {
+      "osm_id": 886024373,
+      "points": 18,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408559,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408561,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408562,
+      "points": 20,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408563,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408565,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408566,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408569,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1029408570,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1032063076,
+      "points": 73,
+      "pass": true
+    },
+    {
+      "osm_id": 1032063077,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 1035224029,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 1035224030,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1035224035,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389473,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389474,
+      "points": 127,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389475,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389486,
+      "points": 255,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389494,
+      "points": 14,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389511,
+      "points": 12,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389511,
+      "points": 21,
+      "pass": true
+    },
+    {
+      "osm_id": 1035389514,
+      "points": 19,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815115,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815117,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815123,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815126,
+      "points": 11,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815127,
+      "points": 13,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815128,
+      "points": 33,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815129,
+      "points": 11,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815130,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 1035815134,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1050793218,
+      "points": 42,
+      "pass": true
+    },
+    {
+      "osm_id": 1050793219,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 1089139297,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 1089139298,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1089185054,
+      "points": 5,
+      "pass": true
+    },
+    {
+      "osm_id": 1089185057,
+      "points": 11,
+      "pass": true
+    },
+    {
+      "osm_id": 1089185058,
+      "points": 6,
+      "pass": true
+    },
+    {
+      "osm_id": 1147672589,
+      "points": 10,
+      "pass": true
+    },
+    {
+      "osm_id": 1147672590,
+      "points": 33,
+      "pass": true
+    },
+    {
+      "osm_id": 1147672591,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 1147674102,
+      "points": 10,
+      "pass": true
+    },
+    {
+      "osm_id": 1147674104,
+      "points": 26,
+      "pass": true
+    },
+    {
+      "osm_id": 1147675507,
+      "points": 10,
+      "pass": true
+    },
+    {
+      "osm_id": 1209254623,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 1278380268,
+      "points": 121,
+      "pass": true
+    },
+    {
+      "osm_id": 1284639617,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 1354064295,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1354064296,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1384339887,
+      "points": 32,
+      "pass": true
+    },
+    {
+      "osm_id": 1384353621,
+      "points": 53,
+      "pass": true
+    },
+    {
+      "osm_id": 1384353622,
+      "points": 12,
+      "pass": true
+    },
+    {
+      "osm_id": 1384366241,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1384366242,
+      "points": 24,
+      "pass": true
+    },
+    {
+      "osm_id": 1386143280,
+      "points": 12,
+      "pass": true
+    },
+    {
+      "osm_id": 1386143282,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1387087344,
+      "points": 8,
+      "pass": true
+    },
+    {
+      "osm_id": 1387087345,
+      "points": 7,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100456,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100457,
+      "points": 4,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100458,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100460,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100461,
+      "points": 54,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100462,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1388100465,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1389725669,
+      "points": 38,
+      "pass": true
+    },
+    {
+      "osm_id": 1389725671,
+      "points": 35,
+      "pass": true
+    },
+    {
+      "osm_id": 1389725672,
+      "points": 58,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654827,
+      "points": 24,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654828,
+      "points": 136,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654830,
+      "points": 3,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654831,
+      "points": 9,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654832,
+      "points": 14,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654840,
+      "points": 21,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654841,
+      "points": 14,
+      "pass": true
+    },
+    {
+      "osm_id": 1396654842,
+      "points": 48,
+      "pass": true
+    },
+    {
+      "osm_id": 1416361869,
+      "points": 225,
+      "pass": true
+    },
+    {
+      "osm_id": 1498096311,
+      "points": 6,
+      "pass": true
+    }
+  ]
+}

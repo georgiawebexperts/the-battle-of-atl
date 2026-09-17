@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "ride_forward",
+      "pass": true,
+      "remaining_cm": 97.24618268090883,
+      "position": [
+        4254.838901579707,
+        37518.786583115005,
+        -708.3104472233636
+      ],
+      "reason": ""
+    },
+    {
+      "name": "ride_reverse",
+      "pass": true,
+      "remaining_cm": 98.55481886477604,
+      "position": [
+        4756.765865843059,
+        38131.77099528594,
+        -563.5786432374223
+      ],
+      "reason": ""
+    },
+    {
+      "name": "dismount_on_deck_above_water",
+      "pass": true
+    },
+    {
+      "name": "walking_on_bridge_is_not_swimming",
+      "pass": true
+    },
+    {
+      "name": "remount_on_bridge",
+      "pass": true
+    }
+  ],
+  "stage": 7
+}

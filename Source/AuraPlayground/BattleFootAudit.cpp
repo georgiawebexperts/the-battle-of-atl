@@ -100,9 +100,14 @@ void ABattleMacController::TickFootAudit(float Dt){
   static int Phase=0;static float Clock=0;static FRotator Initial,InitialBody;static FVector Start;
   static bool OrbitPassed=false,WalkPassed=false,AimPassed=false,KeyboardPassed=false;static FRotator KeyboardStart;Clock+=Dt;
   auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
-  auto MouseAxis=[&](FKey Axis,float Value){if(!P||!P->InputComponent)return false;bool Bound=false;for(const auto& Binding:P->InputComponent->AxisKeyBindings)Bound|=Binding.AxisKey==Axis;if(Bound){FRotator R=GetControlRotation();if(Axis==EKeys::MouseX)R.Yaw+=Value*.20f;else R.Pitch=FMath::ClampAngle(R.Pitch-Value*.15f,-80,80);SetControlRotation(R);}return Bound;};
+  auto MouseAxis=[&](FKey Axis,float Value){if(!P||!P->InputComponent)return false;bool Bound=false;for(const auto& Binding:P->InputComponent->AxisKeyBindings)Bound|=Binding.AxisKey==Axis;if(Bound){FRotator R=GetControlRotation();if(Axis==EKeys::MouseX)R.Yaw+=Value;else R.Pitch=FMath::ClampAngle(R.Pitch-Value*.85f,-80,80);SetControlRotation(R);}return Bound;};
   if(Phase==0){
    auto* B=Cast<ABattleBike>(GetPawn());if(!B||!B->Dismount())return;
+   P=Cast<ABattleRider>(GetPawn());
+   if(!P||!P->InputComponent){UE_LOG(LogTemp,Display,TEXT("BattleMouseLookAudit: {\"passed\":false,\"reason\":\"on-foot input component missing\"}"));Phase=5;ConsoleCommand(TEXT("quit"));return;}
+   bool FireBound=false,AimBound=false;
+   for(const auto& Binding:P->InputComponent->KeyBindings){FireBound|=Binding.Chord.Key==EKeys::LeftMouseButton;AimBound|=Binding.Chord.Key==EKeys::RightMouseButton;}
+   if(!FireBound||!AimBound){UE_LOG(LogTemp,Display,TEXT("BattleMouseLookAudit: {\"passed\":false,\"reason\":\"fire or aim button binding missing\"}"));Phase=5;ConsoleCommand(TEXT("quit"));return;}
    Initial=GetControlRotation();InitialBody=GetPawn()->GetActorRotation();Start=GetPawn()->GetActorLocation();Phase=1;Clock=0;return;
   }
   if((Phase==1||Phase==3)&&Clock<.5f){

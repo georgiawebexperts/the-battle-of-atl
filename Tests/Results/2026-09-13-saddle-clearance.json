@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "phase": 4,
+  "ground_error_cm": 1.026,
+  "pedal_error_cm": 0.086,
+  "reason": "Grounded stop, moving pedal contact, braking and replant pass",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-9fcf5cb409a94987a29b39d444e62f1e/pedaling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-9fcf5cb409a94987a29b39d444e62f1e/stopped.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-9fcf5cb409a94987a29b39d444e62f1e/stopped-again.png"
+  ],
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/feature-balance-9fcf5cb409a94987a29b39d444e62f1e/run.log",
+  "exit_code": 0,
+  "packaged": false
+}

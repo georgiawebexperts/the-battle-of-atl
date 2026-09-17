@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "reason": "Shoreline entry, swim, fixed-bike return and stable remount pass",
+  "stage": 4,
+  "swim_cm": 520.82,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 45.0,
+  "edge_used": 45,
+  "fixture": "X=-12611.248 Y=5129.596 Z=-258.512 wet=X=-12556.180 Y=4632.638 Z=-323.334",
+  "edge_requested": 45,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-91bf9f3c9667412ab572893e70fa617f/run.log",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-91bf9f3c9667412ab572893e70fa617f/swimming.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-91bf9f3c9667412ab572893e70fa617f/returned.png"
+  ]
+}

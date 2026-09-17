@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "phase": 3,
+  "reason": "Practice protected, warning precedes shot, cover blocks, movement dodges locked aim, stationary hit kills",
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/675a1e87be514feebace1919d8d76a0e/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/675a1e87be514feebace1919d8d76a0e/warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/675a1e87be514feebace1919d8d76a0e/behind-warning.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/675a1e87be514feebace1919d8d76a0e/covered-shot.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/675a1e87be514feebace1919d8d76a0e/visible-shooter.png"
+  ]
+}

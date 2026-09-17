@@ -1,0 +1,383 @@
+{
+  "status": "passed",
+  "scope": "V3 controls on existing park and authored bridge routes; not full park/game/route acceptance.",
+  "cases": [
+    {
+      "name": "park_uses_V3_mode_and_arcade_bike",
+      "pass": true
+    },
+    {
+      "name": "park_streams_wandering_visitors",
+      "pass": true,
+      "count": 50
+    },
+    {
+      "name": "actual_park_path_can_be_ridden",
+      "pass": true,
+      "distance_cm": 883.1941172620425
+    },
+    {
+      "name": "real_lake_entry_uses_V3_splash_recovery",
+      "pass": true
+    },
+    {
+      "name": "real_lake_returns_to_clear_path_in_two_seconds",
+      "pass": true,
+      "seconds": 2.014555498957634
+    },
+    {
+      "name": "bridge_lake_crossing_forward",
+      "pass": true,
+      "remaining_cm": 101.93251786389202,
+      "recovery": false,
+      "position": [
+        -4300.348977818635,
+        534.6293868899105,
+        -233.80299515200147
+      ]
+    },
+    {
+      "name": "bridge_lake_crossing_reverse",
+      "pass": true,
+      "remaining_cm": 103.61856708999917,
+      "recovery": false,
+      "position": [
+        -2618.472649786237,
+        -72.41916723635487,
+        -237.44966180912593
+      ]
+    },
+    {
+      "name": "bridge_lake_wood_spur_forward",
+      "pass": true,
+      "remaining_cm": 101.40454632643424,
+      "recovery": false,
+      "position": [
+        -3474.933442119988,
+        344.9477890351194,
+        -228.45912020781225
+      ]
+    },
+    {
+      "name": "bridge_lake_wood_spur_reverse",
+      "pass": true,
+      "remaining_cm": 103.9992611839126,
+      "recovery": false,
+      "position": [
+        -3478.6178310303912,
+        336.5859533757847,
+        -228.45918748478
+      ]
+    },
+    {
+      "name": "bridge_146304984_forward",
+      "pass": true,
+      "remaining_cm": 101.19898775632439,
+      "recovery": false,
+      "position": [
+        4942.020195976325,
+        -963.4863082778745,
+        -474.4603761713666
+      ]
+    },
+    {
+      "name": "bridge_146304984_reverse",
+      "pass": true,
+      "remaining_cm": 104.85309257712669,
+      "recovery": false,
+      "position": [
+        4390.11821870138,
+        -351.6290845344611,
+        -472.4548026941724
+      ]
+    },
+    {
+      "name": "bridge_182302113_forward",
+      "pass": true,
+      "remaining_cm": 103.0319942476904,
+      "recovery": false,
+      "position": [
+        1834.2489966282558,
+        11618.454542308327,
+        -729.9040955450394
+      ]
+    },
+    {
+      "name": "bridge_182302113_reverse",
+      "pass": true,
+      "remaining_cm": 103.03068434350838,
+      "recovery": false,
+      "position": [
+        2545.8763471667853,
+        11253.67534208541,
+        -665.4143256783425
+      ]
+    },
+    {
+      "name": "bridge_226119763_forward",
+      "pass": true,
+      "remaining_cm": 104.58979842530633,
+      "recovery": false,
+      "position": [
+        6145.500088776921,
+        30905.735712693946,
+        -707.5424248867267
+      ]
+    },
+    {
+      "name": "bridge_226119763_reverse",
+      "pass": true,
+      "remaining_cm": 101.34281633502025,
+      "recovery": false,
+      "position": [
+        6048.33873008665,
+        31541.121820707187,
+        -710.4826074124164
+      ]
+    },
+    {
+      "name": "bridge_226324512_forward",
+      "pass": true,
+      "remaining_cm": 102.06642164529015,
+      "recovery": false,
+      "position": [
+        9877.508400561244,
+        38174.563983933804,
+        -807.932226182235
+      ]
+    },
+    {
+      "name": "bridge_226324512_reverse",
+      "pass": true,
+      "remaining_cm": 102.60799937590532,
+      "recovery": false,
+      "position": [
+        8687.613665816081,
+        37584.54683500149,
+        -805.1759301347905
+      ]
+    },
+    {
+      "name": "bridge_226324514_forward",
+      "pass": true,
+      "remaining_cm": 100.50895404126591,
+      "recovery": false,
+      "position": [
+        9079.30229512569,
+        34163.516136666534,
+        -807.0905574814769
+      ]
+    },
+    {
+      "name": "bridge_226324514_reverse",
+      "pass": true,
+      "remaining_cm": 104.16848279162242,
+      "recovery": false,
+      "position": [
+        10993.244124203042,
+        33675.20502581078,
+        -819.0481208580948
+      ]
+    },
+    {
+      "name": "bridge_1032063077_forward",
+      "pass": true,
+      "remaining_cm": 102.62468184337469,
+      "recovery": false,
+      "position": [
+        6634.52060453602,
+        26097.366945248967,
+        -661.5506201103674
+      ]
+    },
+    {
+      "name": "bridge_1032063077_reverse",
+      "pass": true,
+      "remaining_cm": 102.25042839557015,
+      "recovery": false,
+      "position": [
+        6642.363815409053,
+        26491.56225530528,
+        -661.8897129729356
+      ]
+    },
+    {
+      "name": "bridge_1050793219_forward",
+      "pass": true,
+      "remaining_cm": 103.02808614544833,
+      "recovery": false,
+      "position": [
+        1116.644581187521,
+        8258.952212428432,
+        -638.1101712029242
+      ]
+    },
+    {
+      "name": "bridge_1050793219_reverse",
+      "pass": true,
+      "remaining_cm": 104.96178709157326,
+      "recovery": false,
+      "position": [
+        1470.9470461826656,
+        8140.848535375832,
+        -637.9428051268179
+      ]
+    },
+    {
+      "name": "bridge_1384353622_forward",
+      "pass": true,
+      "remaining_cm": 103.47155530871524,
+      "recovery": false,
+      "position": [
+        4260.141745102089,
+        37522.472371721364,
+        -705.1945306915793
+      ]
+    },
+    {
+      "name": "bridge_1384353622_reverse",
+      "pass": true,
+      "remaining_cm": 100.44254675309281,
+      "recovery": false,
+      "position": [
+        4748.413234219009,
+        38135.53825730803,
+        -559.0782681764562
+      ]
+    },
+    {
+      "name": "bridge_1384366242_forward",
+      "pass": true,
+      "remaining_cm": 102.8252382439947,
+      "recovery": false,
+      "position": [
+        6774.004178958866,
+        40728.289067326776,
+        -624.2455881202937
+      ]
+    },
+    {
+      "name": "bridge_1384366242_reverse",
+      "pass": true,
+      "remaining_cm": 102.26228720080354,
+      "recovery": false,
+      "position": [
+        7772.057176882866,
+        41970.83068048454,
+        -632.4681711870776
+      ]
+    },
+    {
+      "name": "bridge_61490793_forward",
+      "pass": true,
+      "remaining_cm": 100.95147042583054,
+      "recovery": false,
+      "position": [
+        5393.208350408871,
+        4657.728544694015,
+        -335.0293060988954
+      ]
+    },
+    {
+      "name": "bridge_61490793_reverse",
+      "pass": true,
+      "remaining_cm": 103.12619666553152,
+      "recovery": false,
+      "position": [
+        3013.9301351860554,
+        5060.244510469195,
+        -272.5283716287672
+      ]
+    },
+    {
+      "name": "bridge_1389725669_forward",
+      "pass": true,
+      "remaining_cm": 100.72908420630779,
+      "recovery": false,
+      "position": [
+        2896.927156227199,
+        4915.981667162985,
+        -239.77563229508962
+      ]
+    },
+    {
+      "name": "bridge_1389725669_reverse",
+      "pass": true,
+      "remaining_cm": 102.00213188313295,
+      "recovery": false,
+      "position": [
+        5403.196876181896,
+        4495.048025934378,
+        -337.4717055819066
+      ]
+    },
+    {
+      "name": "bridge_1389725671_forward",
+      "pass": true,
+      "remaining_cm": 100.59241834962516,
+      "recovery": false,
+      "position": [
+        3055.4025097766207,
+        5232.960258086365,
+        -303.5719747090369
+      ]
+    },
+    {
+      "name": "bridge_1389725671_reverse",
+      "pass": true,
+      "remaining_cm": 100.8826961087527,
+      "recovery": false,
+      "position": [
+        5378.126098338766,
+        4857.694510655041,
+        -344.63148829175606
+      ]
+    },
+    {
+      "name": "bridge_cross_deck_forward",
+      "pass": true,
+      "remaining_cm": 104.7908864369509,
+      "recovery": false,
+      "position": [
+        4250.136881619955,
+        4926.798957645151,
+        -328.94552381610123
+      ]
+    },
+    {
+      "name": "bridge_cross_deck_reverse",
+      "pass": true,
+      "remaining_cm": 104.10981686270723,
+      "recovery": false,
+      "position": [
+        4224.584910559105,
+        4777.875842453978,
+        -317.61476052927844
+      ]
+    },
+    {
+      "name": "V3_dismount_on_lake_bridge",
+      "pass": true
+    },
+    {
+      "name": "bridge_FPS_is_grounded_not_swimming",
+      "pass": true
+    },
+    {
+      "name": "bridge_pistol_fires",
+      "pass": true
+    },
+    {
+      "name": "bridge_remount_restores_arcade_bike",
+      "pass": true
+    }
+  ],
+  "stage": 8,
+  "route": "bridge FPS",
+  "reverse": false,
+  "water_entry_cm": [
+    -3304.32947533136,
+    -154.31796628205723,
+    178.66617838541669
+  ]
+}

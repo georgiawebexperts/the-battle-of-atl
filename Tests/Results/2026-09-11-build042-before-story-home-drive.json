@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "completedLegs": 2,
+  "travelCm": 15056.54,
+  "maxCenterlineErrorCm": 167.55,
+  "wipeouts": 0,
+  "ground_samples": {
+    "total": 1360,
+    "paved": 1360
+  },
+  "lights": {},
+  "exit_code": 0,
+  "scope": "Krog southern exit along sourced Wylie Street to fictional home gate, both directions using real W/A/D input and CharacterMovement; crowds disabled to isolate terrain/decks; appearance unverified."
+}

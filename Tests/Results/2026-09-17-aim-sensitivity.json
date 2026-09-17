@@ -1,0 +1,47 @@
+{
+  "build": 99,
+  "version": "0.99.0",
+  "feature": "Player-facing aim sensitivity",
+  "requirement": "A player should be able to control how sensitive the shooting/aiming is.",
+  "implementation": {
+    "setting": "Options > AIM SENSITIVITY, or [ and ] at any time while playing",
+    "range": "25% to 200% of the authored look rate, in 25/50/75/100/125/150/200 steps",
+    "applies_to": "Mouse look and Z/X/T/V keyboard look through APiedmontExplorer::LookYaw/LookPitch",
+    "persistence": "GGameUserSettingsIni [BattleControls] AimSensitivityStep, flushed on change",
+    "default": "100%, which is the 0.5 authored baseline tuned in build 098",
+    "feedback": "HUD notice shows the new percentage for three seconds"
+  },
+  "evidence": {
+    "editor_headless": {
+      "command": "-BattleAimAudit on PiedmontWorld",
+      "passed": true,
+      "low_percent_yaw": 67.5,
+      "high_percent_yaw": 540.29,
+      "ratio": 8.0,
+      "bracket_key_changes_setting": true,
+      "mouse_axis_bound_to_scaled_handler": true
+    },
+    "staged_packaged_app": {
+      "command": "Saved/StagedBuilds/Mac/AuraPlayground.app -BattleAimAudit",
+      "passed": true,
+      "ratio": 8.12
+    },
+    "signed_share_app": {
+      "command": "The Battle of ATL Mac Playtest 099.app -BattleAimAudit",
+      "passed": true,
+      "ratio": 8.11
+    },
+    "musicians_packaged": {
+      "command": "Scripts/test_mac_musicians.py --review",
+      "passed": true,
+      "hand_travel_cm": 24.27,
+      "audio_generated": true,
+      "panic_response": true
+    }
+  },
+  "scope_limits": [
+    "The measured 8x ratio covers the look-input path both ways call into; engine mouse-axis injection is not exposed, so the mouse check confirms the axis binding plus the shared scaled handler.",
+    "Feel at each step still needs Elliott's hands-on judgement; the setting exists so that judgement is his, not a fixed number.",
+    "Notarization and Apple review are unchanged by this build."
+  ]
+}

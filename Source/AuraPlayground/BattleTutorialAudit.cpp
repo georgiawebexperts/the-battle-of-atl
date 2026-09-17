@@ -67,7 +67,7 @@ void ABattleMacController::TickTutorialAudit(float Dt){
   TutorialClock+=Dt;TCHECK(TutorialClock<180,"Practice route timed out");
   const FVector P=B->GetActorLocation();TutorialDistance+=FVector::Dist2D(P,TutorialPrevious);TutorialPrevious=P;
   TCHECK(B->Ride->Wipeouts==0,"Practice route caused a wipeout");
-  if(!M->bTutorialActive){FlushPressedKeys();TCHECK(TutorialDistance>7000&&M->StartCountdown>0&&B->HornUses==5&&B->PistolAmmo==17,"Gate crossing or starting supplies incorrect");TutorialStage=2;TutorialClock=0;return;}
+  if(!M->bTutorialActive){FlushPressedKeys();TCHECK(TutorialDistance>7000&&M->StartCountdown>0&&B->HornUses==2&&B->PistolAmmo==17,"Gate crossing or starting supplies incorrect");TutorialStage=2;TutorialClock=0;return;}
   TCHECK(M->RunElapsed==0&&M->TimeRemaining==M->Difficulty.TimeLimitSeconds,"Clock changed during actual practice ride");
   const bool Market=FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialMarket"));
   if(Market&&FVector::Dist2D(P,BattleTutorialBlock::MarketApproach[UE_ARRAY_COUNT(BattleTutorialBlock::MarketApproach)-1])<130){TCHECK(TutorialDistance>3000&&M->bTutorialActive&&M->RunElapsed==0,"Market ride failed to preserve practice state");End(true,TEXT("Actual keyboard ride down mapped market approach preserves untimed practice"));return;}

@@ -1,0 +1,24 @@
+[
+  {
+    "variant": "male",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.476 foot_dot=0.889 knee_motion=65.847 travel=809.674"
+    ],
+    "missing_captures": [],
+    "visual_review": "pending"
+  },
+  {
+    "variant": "female",
+    "impact_yaw": null,
+    "passed": true,
+    "exit_code": 0,
+    "measurements": [
+      "pass=1 parts=4 hair=1 foot_gap=0.820 foot_dot=0.879 knee_motion=56.043 travel=808.772"
+    ],
+    "missing_captures": [],
+    "visual_review": "pending"
+  }
+]

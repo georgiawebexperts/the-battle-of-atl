@@ -180,7 +180,8 @@ bool ABattleQuest::ClipToCircle(FVector2D& A,FVector2D& B,float Radius){
 void ABattleQuest::DrawRadar(AHUD* HUD,UCanvas* Canvas) const{
  if(!HUD||!Canvas)return;auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;
  const auto* PracticeMode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));const bool Practice=PracticeMode&&PracticeMode->bTutorialActive;
- const float UIScale=FMath::Clamp(FMath::Min(Canvas->SizeX/1920.f,Canvas->SizeY/1080.f),.75f,1.5f);const float Radius=140*UIScale;const FVector2D Center(Canvas->SizeX-Radius-40*UIScale,Canvas->SizeY-Radius-45*UIScale),Player(Pawn->GetActorLocation());
+ const bool Expanded=PracticeMode&&PracticeMode->bTutorialHelp;
+ const float UIScale=FMath::Clamp(FMath::Min(Canvas->SizeX/1920.f,Canvas->SizeY/1080.f),.75f,1.5f);const float Radius=(Expanded?140.f:108.f)*UIScale;const FVector2D Center(Canvas->SizeX-Radius-40*UIScale,Canvas->SizeY-Radius-45*UIScale),Player(Pawn->GetActorLocation());
  const float PhoneNearness=Practice?0.f:WatchSignalStrength(Pawn->GetActorLocation()),SignalFlash=.5f+.5f*FMath::Sin(Clock*2*PI*WatchFlashHz(Pawn->GetActorLocation()));
  auto Project=[&](FVector2D World){return RadarOffset(World-Player,Radius/FMath::Max(1.f,RadarRange));};
  auto Line=[&](FVector2D A,FVector2D B,FLinearColor C,float W){HUD->DrawLine(Center.X+A.X,Center.Y+A.Y,Center.X+B.X,Center.Y+B.Y,C,W);};

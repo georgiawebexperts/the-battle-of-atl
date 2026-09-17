@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "packaged": false,
+  "runs": [
+    {
+      "passed": false,
+      "missing_report": true,
+      "mode": "arcade",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-bc03a3cd2a874c9faa3b72ce5a63baf9.log",
+      "exit_code": 1
+    },
+    {
+      "passed": false,
+      "missing_report": true,
+      "mode": "realistic",
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/wall-recovery-5ff9d3cea6bf466e8304cb3a0be33090.log",
+      "exit_code": 1
+    }
+  ],
+  "scope": "Actual key input and collision on isolated floor/wall fixture. Does not prove all world corners, slopes, or visual handling feel."
+}

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "reason": "Single locked-aim shot completed; player dodged and shooter returned to idle",
+  "motion_review": true,
+  "grip_review": false,
+  "opposite": false,
+  "detailed_gunman": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/run.log",
+  "fixed_seed": true,
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native stationary encounter fixture; warnings/cover/locked-aim dodge/fatal hit. Natural spawn rarity, incoming-fire direction, animations and rendering not accepted.",
+  "detailed_body_loaded": true,
+  "detailed_weapon_loaded": true,
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-00.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-01.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-02.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-03.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-04.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-05.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-06.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-07.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-08.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-09.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/gunman-review/77d4bfb9e42a41e68ba916bcf9134c4a/motion-10.png"
+  ]
+}

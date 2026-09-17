@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "ride_under_deck_without_climbing_or_crashing",
+      "pass": true,
+      "x": 1050.1133086473437,
+      "z": 96.00000000000003,
+      "floor": 0.0,
+      "reason": ""
+    },
+    {
+      "name": "same_deck_supports_rider_from_above",
+      "pass": true,
+      "z": 291.0
+    }
+  ]
+}

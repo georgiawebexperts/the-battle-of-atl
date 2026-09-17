@@ -7,7 +7,12 @@ root=Path(__file__).resolve().parents[1]
 out=Path('/Volumes/Adam Assets/Unreal/Builds/Share')/f'The Battle of ATL Mac Playtest {args.build}'
 if out.exists(): raise SystemExit('Share folder already exists; inspect before replacing it.')
 out.mkdir(parents=True)
-source=root/'Saved/StagedBuilds/Mac/AuraPlayground.app'
+staged=root/'Saved/StagedBuilds/Mac'
+source=staged/'AuraPlayground.app'
+if not source.exists():
+ source=staged/'AuraPlayground-Mac-Shipping.app'
+if not source.exists():
+ raise SystemExit(f'No staged Mac app found under {staged}')
 app=out/'The Battle of ATL.app'
 shutil.copytree(source,app,symlinks=True)
 p=app/'Contents/Info.plist';data=plistlib.loads(p.read_bytes())

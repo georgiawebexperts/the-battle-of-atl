@@ -1,0 +1,9 @@
+{
+  "component": "<Struct 'Vector' (0x424b1dcd0) {x: -6990.000000, y: 4145.000000, z: -21.000000}>",
+  "right_world": "<Struct 'Vector' (0x424b1dcd0) {x: -6963.999999, y: 4169.000000, z: 149.000001}>",
+  "camera": "<Struct 'Vector' (0x424b1dcd0) {x: -7000.000000, y: 4145.000000, z: 154.000000}>",
+  "mesh": "<Object '/Game/BattleForTheA/Rider/SK_FPSArms.SK_FPSArms' (0x9c179421400) Class 'SkeletalMesh'>",
+  "visible": true,
+  "gun_local_bounds": "(<Struct 'Vector' (0x424b1dcd0) {x: -33.964367, y: -16.160498, z: -40.792175}>, <Struct 'Vector' (0x424b1d820) {x: 147.975739, y: 16.160488, z: 75.363403}>)",
+  "gun_transform": "<Struct 'Transform' (0x424add1d0) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 50.000000, y: 16.000000, z: -5.000000}, scale3d: {x: 0.153897, y: 0.153897, z: 0.153897}}>"
+}

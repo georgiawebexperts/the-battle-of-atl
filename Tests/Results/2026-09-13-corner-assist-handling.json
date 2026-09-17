@@ -1,0 +1,29 @@
+{
+  "packaged": false,
+  "passed": false,
+  "runs": [
+    {
+      "passed": false,
+      "stage": 9,
+      "reason": "Stationary bike pivoted in place",
+      "speed": 0.0,
+      "steer": -0.747,
+      "lean": 0.0,
+      "mode": "arcade",
+      "exit_code": 0,
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-arcade-d911fc7c7ad642379fe196027456285d.log"
+    },
+    {
+      "passed": true,
+      "stage": 10,
+      "reason": "Realistic handling native controls, lean, remount persistence and P toggle both ways passed",
+      "speed": 0.0,
+      "steer": -0.265,
+      "lean": 0.0,
+      "mode": "realistic",
+      "exit_code": 0,
+      "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/handling-realistic-90c3080031b0455b9cdbad18482770d6.log"
+    }
+  ],
+  "scope": "Native main-world keyboard pedal/brake/steer, lean and remount; realistic P toggle on/off. No hill, traction-limit, high-speed, jump or rendered HUD acceptance."
+}

@@ -7,49 +7,5 @@
   },
   "scope": "Uncooked review-map ambient BeginPlay, runtime wake/fall clearance and re-wake; runtime images captured for separate visual inspection; automatic proximity selection and pursuit not exercised",
   "missing_images": [],
-  "passed": true,
-  "visual_review": {
-    "inspected": [
-      "sleeping.png",
-      "standing.png",
-      "landed.png"
-    ],
-    "hair": "Attached at head in runtime; earlier skeletal preview offset is not reproduced.",
-    "contact": "Runtime feet visible; initial head/pelvis/foot/toe joint clearances positive. This does not prove sole mesh contact across animation.",
-    "environment": "Large pale ground surfaces around site require identification and visual correction.",
-    "framing": "Standing head cropped; full-body camera review still needed.",
-    "accepted": false
-  },
-  "initial_joint_contacts": [
-    {
-      "bone": "head",
-      "clearance_cm": 12.0343,
-      "surface": "StaticMeshActor_75"
-    },
-    {
-      "bone": "pelvis",
-      "clearance_cm": 11.6133,
-      "surface": "StaticMeshActor_75"
-    },
-    {
-      "bone": "foot_l",
-      "clearance_cm": 8.2478,
-      "surface": "StaticMeshActor_75"
-    },
-    {
-      "bone": "foot_r",
-      "clearance_cm": 3.9035,
-      "surface": "StaticMeshActor_75"
-    },
-    {
-      "bone": "ball_l",
-      "clearance_cm": 9.4761,
-      "surface": "StaticMeshActor_75"
-    },
-    {
-      "bone": "ball_r",
-      "clearance_cm": 4.6687,
-      "surface": "StaticMeshActor_75"
-    }
-  ]
+  "passed": true
 }

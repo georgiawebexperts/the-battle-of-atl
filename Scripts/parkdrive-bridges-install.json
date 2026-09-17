@@ -1,0 +1,15 @@
+{
+  "status": "installed",
+  "meshes": [
+    {
+      "kind": "Deck",
+      "axis_error_cm": 5.8167005136056105e-05,
+      "pass": true
+    },
+    {
+      "kind": "Rails",
+      "axis_error_cm": 9.419301068191999e-05,
+      "pass": true
+    }
+  ]
+}

@@ -25,6 +25,9 @@ public:
  float VoiceCooldown=0;
  float WarningRemaining=0,Cooldown=3,PathDelay=0;
  UPROPERTY(BlueprintReadOnly) float TaserDrawBlend=0;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bAmbientMurderK=false;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<class UTextRenderComponent> TauntLabel;
+ UPROPERTY(BlueprintReadOnly) int32 TauntsHurled=0;
  UPROPERTY(BlueprintReadOnly) FVector LastTaserOrigin=FVector::ZeroVector;
  UPROPERTY(BlueprintReadOnly) FVector WarningAimPoint=FVector::ZeroVector;
  FVector TaserMuzzle() const;
@@ -34,6 +37,7 @@ public:
  UPROPERTY() TObjectPtr<UAnimSequence> TaserWalk;
  UPROPERTY() TObjectPtr<UAnimSequence> TaserRun;
  float DischargeRemaining=0;
+ float TauntCooldown=1,TauntVisible=0;
 protected:
  virtual void AnimateBody(float Dt) override;
  virtual bool CanUseWeapon() const override{return false;}

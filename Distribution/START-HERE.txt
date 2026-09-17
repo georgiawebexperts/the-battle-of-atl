@@ -123,6 +123,7 @@ E near a bike            Ride it (after recovery; not while swimming)
                          Blue watch markers show spare bikes.
 Escape                   Pause/menu
 M                        Cycle Off > Song 1 > Song 2 > Off (also in Options)
+[ / ]                    Aim sensitivity down / up (25%-200%, also in Options)
 
 You start with 17 pistol rounds. Pistol ammo pickups give 17 rounds to
 reserve; carry up to 102 spare pistol rounds plus 17 loaded. Reload to use
@@ -136,7 +137,8 @@ alignment and balance still need work. Police pursuit can be inconsistent;
 police raise a visible taser and give an AI-generated “Stop! APD!” warning.
 Animation polish remains unfinished.
 Ammo now appears beside persistent park trash bins; cyan markers identify it.
-Mouse sensitivity was recently reduced and still needs feedback.
+Aim feel is yours to set: Options > AIM SENSITIVITY, or [ and ] while
+playing. 25%-200% of the authored rate, remembered between runs.
 Real-world hill/ramp riding, camera transitions and performance need testing.
 The app is locally signed only; Apple has not notarized or reviewed it.
 

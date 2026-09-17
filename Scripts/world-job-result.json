@@ -1,0 +1,9 @@
+{
+  "job": {
+    "script": "validate_ride_feedback.py",
+    "action": "play",
+    "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+    "id": "normal-park-play-build-011"
+  },
+  "status": "executed"
+}

@@ -1,0 +1,25 @@
+{
+  "locomotion_review": false,
+  "captures_passed": true,
+  "exit_code": 0,
+  "images": [
+    {
+      "file": "work/build042-packaged-1280-tutorial/bike.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c565ccf410ccbb8534865b2e8f6c98883733bc9a3f9c5acca489d03c15ba2fb9"
+    },
+    {
+      "file": "work/build042-packaged-1280-tutorial/foot.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2a757fc927c547fb8dfa22c2691a751eda2602381fd60dd52b60940c9a76dd29"
+    }
+  ],
+  "visual_review": "Tutorial heading, timer caption, bike/foot prompts and controls fit their panels and are readable in inspected 1280x720 native captures. Midtown scenery, character art and animation are not accepted as finished.",
+  "scope": "Native cooked Mac game, controlled bike-to-foot fixture; audio disabled; no physical input or FPS acceptance."
+}

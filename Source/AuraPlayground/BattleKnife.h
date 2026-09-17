@@ -22,6 +22,7 @@ public:
  float Health=100,Cooldown=1.5f,WindupRemaining=0,StrikePose=0,PathDelay=0,FarTime=0,DeathTime=0;
  int32 Stabs=0,PathRequests=0;
  bool bWindingUp=false,bEscaped=false;
+ bool bSingleLunge=false;
 protected:
  virtual bool CanUseWeapon() const override{return false;}
  virtual FVector AdjustVisitorHand(int32 Side,FVector Target) const override;

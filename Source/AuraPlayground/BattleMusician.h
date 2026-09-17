@@ -4,6 +4,7 @@
 #include "Sound/SoundWaveProcedural.h"
 #include "BattleMusician.generated.h"
 class APiedmontPedestrian;
+class ACameraActor;
 class UAudioComponent;
 class UStaticMeshComponent;
 
@@ -25,12 +26,15 @@ public:
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
+ void PlaceGuitar(const FVector& LeftHand,const FVector& RightHand,bool bAnnounce=false);
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 InstrumentKind=0;
  UPROPERTY(BlueprintReadOnly) TObjectPtr<APiedmontPedestrian> Performer;
+ bool bGuitarPlaced=false;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UAudioComponent> Music;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> GuitarBody;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> GuitarUpper;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> GuitarNeck;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> GuitarHead;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> GuitarHole;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> GuitarHoleBack;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SaxBody;
@@ -46,9 +50,10 @@ public:
  virtual void BeginPlay() override;
  virtual void Tick(float Dt) override;
  UPROPERTY(BlueprintReadOnly) TArray<TObjectPtr<ABattleMusician>> Musicians;
+ UPROPERTY() TObjectPtr<ACameraActor> ReviewCamera;
 private:
  float AuditClock=0;
  float AuditHandTravel=0;
- bool bAuditSampled=false,bAuditDone=false,bReviewSetup=false;
+ bool bAuditSampled=false,bAuditDone=false,bReviewSetup=false,bBoneLogged=false,bSwept=false;
  TArray<FVector> AuditHands;
 };

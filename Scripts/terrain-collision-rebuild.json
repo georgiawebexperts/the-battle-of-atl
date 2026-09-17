@@ -1,0 +1,226 @@
+{
+  "before": [
+    {
+      "ix": 0,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -36677.521342, y: -132564.696489, z: 948.955786}>"
+    },
+    {
+      "ix": 12,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -35877.521342, y: -132564.696489, z: 951.300208}>"
+    },
+    {
+      "ix": 24,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb95f0) {x: -35077.521342, y: -132564.696489, z: 969.525138}>"
+    },
+    {
+      "ix": 36,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -34277.521342, y: -132564.696489, z: 1010.676940}>"
+    },
+    {
+      "ix": 48,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -33477.521342, y: -132564.696489, z: 1127.341382}>"
+    },
+    {
+      "ix": 60,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 72,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb95f0) {x: -31877.521342, y: -132564.696489, z: 1132.547569}>"
+    },
+    {
+      "ix": 84,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -31077.521342, y: -132564.696489, z: 937.757571}>"
+    },
+    {
+      "ix": 96,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -30277.521342, y: -132564.696489, z: 760.413214}>"
+    },
+    {
+      "ix": 108,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 120,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 132,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb95f0) {x: -27877.521342, y: -132564.696489, z: 768.225829}>"
+    },
+    {
+      "ix": 144,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -27077.521342, y: -132564.696489, z: 781.244826}>"
+    },
+    {
+      "ix": 156,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 168,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -25477.521342, y: -132564.696489, z: 1057.286636}>"
+    },
+    {
+      "ix": 180,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 192,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -23877.521342, y: -132564.696489, z: 1074.474398}>"
+    },
+    {
+      "ix": 204,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -23077.521342, y: -132564.696489, z: 1066.142972}>"
+    },
+    {
+      "ix": 216,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -22277.521342, y: -132564.696489, z: 1109.893640}>"
+    },
+    {
+      "ix": 228,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 240,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 252,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -19877.521342, y: -132564.696489, z: 1092.187071}>"
+    }
+  ],
+  "after": [
+    {
+      "ix": 0,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -36677.521342, y: -132564.696489, z: 948.955786}>"
+    },
+    {
+      "ix": 12,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb95f0) {x: -35877.521342, y: -132564.696489, z: 951.300208}>"
+    },
+    {
+      "ix": 24,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -35077.521342, y: -132564.696489, z: 969.525138}>"
+    },
+    {
+      "ix": 36,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -34277.521342, y: -132564.696489, z: 1010.676940}>"
+    },
+    {
+      "ix": 48,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -33477.521342, y: -132564.696489, z: 1127.341382}>"
+    },
+    {
+      "ix": 60,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 72,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -31877.521342, y: -132564.696489, z: 1132.547569}>"
+    },
+    {
+      "ix": 84,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb95f0) {x: -31077.521342, y: -132564.696489, z: 937.757571}>"
+    },
+    {
+      "ix": 96,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -30277.521342, y: -132564.696489, z: 760.413214}>"
+    },
+    {
+      "ix": 108,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 120,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 132,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9640) {x: -27877.521342, y: -132564.696489, z: 768.225829}>"
+    },
+    {
+      "ix": 144,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -27077.521342, y: -132564.696489, z: 781.244826}>"
+    },
+    {
+      "ix": 156,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 168,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -25477.521342, y: -132564.696489, z: 1057.286636}>"
+    },
+    {
+      "ix": 180,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 192,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -23877.521342, y: -132564.696489, z: 1074.474398}>"
+    },
+    {
+      "ix": 204,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb95f0) {x: -23077.521342, y: -132564.696489, z: 1066.142972}>"
+    },
+    {
+      "ix": 216,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb9690) {x: -22277.521342, y: -132564.696489, z: 1109.893640}>"
+    },
+    {
+      "ix": 228,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 240,
+      "hit": false,
+      "point": null
+    },
+    {
+      "ix": 252,
+      "hit": true,
+      "point": "<Struct 'Vector' (0x41fcb96e0) {x: -19877.521342, y: -132564.696489, z: 1092.187071}>"
+    }
+  ]
+}

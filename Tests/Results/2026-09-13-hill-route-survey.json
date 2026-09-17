@@ -1,0 +1,567 @@
+[
+  {
+    "route": {
+      "osm": 61490695,
+      "name": "Park path",
+      "width": 280,
+      "start": [
+        -3940.647822940567,
+        11868.375893806418,
+        -112.38289388020833
+      ],
+      "end": [
+        -2076.2737527140416,
+        9480.917351025468,
+        -313.6463216145833
+      ],
+      "grade": -0.06644185309824269,
+      "length": 3029.1663815694837,
+      "bend": 64.98226378951513
+    },
+    "samples": [
+      {
+        "x": -3940.647822940567,
+        "y": 11868.375893806418,
+        "source_z": -112.38289388020833,
+        "z": 2.833786160118507,
+        "surface": "SM_TenthStreet_CycleTrack"
+      },
+      {
+        "x": -3785.2833170883564,
+        "y": 11669.42101524134,
+        "source_z": -129.15484619140625,
+        "z": -6.579736709594727,
+        "surface": "Park pavement SM_Park_Concrete_3_14"
+      },
+      {
+        "x": -3629.918811236146,
+        "y": 11470.46613667626,
+        "source_z": -145.92679850260416,
+        "z": 3.648027579318068,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3474.5543053839356,
+        "y": 11271.51125811118,
+        "source_z": -162.69875081380206,
+        "z": 37.1138801574707,
+        "surface": "Park pavement SM_Park_Asphalt_3_14"
+      },
+      {
+        "x": -3319.1897995317254,
+        "y": 11072.556379546102,
+        "source_z": -179.470703125,
+        "z": 43.1153564453125,
+        "surface": "Park pavement SM_Park_Asphalt_3_14"
+      },
+      {
+        "x": -3163.8252936795147,
+        "y": 10873.601500981022,
+        "source_z": -196.24265543619794,
+        "z": 68.46911851409322,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3008.4607878273046,
+        "y": 10674.646622415943,
+        "source_z": -213.01460774739581,
+        "z": 54.55468166575565,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2853.096281975094,
+        "y": 10475.691743850864,
+        "source_z": -229.78656005859375,
+        "z": 12.846134350873399,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2697.7317761228833,
+        "y": 10276.736865285784,
+        "source_z": -246.55851236979163,
+        "z": -35.08167457233458,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2542.367270270673,
+        "y": 10077.781986720705,
+        "source_z": -263.33046468098956,
+        "z": -90.95701046617523,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2387.0027644184624,
+        "y": 9878.827108155627,
+        "source_z": -280.1024169921875,
+        "z": -146.74711003007042,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2231.6382585662523,
+        "y": 9679.872229590546,
+        "source_z": -296.8743693033854,
+        "z": -197.62061111078083,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2076.2737527140416,
+        "y": 9480.917351025468,
+        "source_z": -313.6463216145833,
+        "z": -237.12176342281327,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "route": {
+      "osm": 741964056,
+      "name": "Park path",
+      "width": 320,
+      "start": [
+        2849.4131760438904,
+        -11638.006249225387,
+        -422.1241048177083
+      ],
+      "end": [
+        -168.32595315063372,
+        -11704.661854015043,
+        -234.96183268229166
+      ],
+      "grade": 0.062005569328701694,
+      "length": 3018.4751815314967,
+      "bend": 0.7143014329820501
+    },
+    "samples": [
+      {
+        "x": 2849.4131760438904,
+        "y": -11638.006249225387,
+        "source_z": -422.1241048177083,
+        "z": -746.0300209151792,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 2597.93491527768,
+        "y": -11643.56088295786,
+        "source_z": -406.5272488064236,
+        "z": -758.67431640625,
+        "surface": "Park pavement SM_Park_Concrete_4_17"
+      },
+      {
+        "x": 2346.45665451147,
+        "y": -11649.11551669033,
+        "source_z": -390.93039279513886,
+        "z": -786.0708876028975,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 2094.9783937452594,
+        "y": -11654.6701504228,
+        "source_z": -375.33353678385413,
+        "z": -801.3185424804688,
+        "surface": "Park bridge 182302113 Wood"
+      },
+      {
+        "x": 1843.500132979049,
+        "y": -11660.224784155273,
+        "source_z": -359.73668077256946,
+        "z": -828.7336397945201,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 1592.0218722128386,
+        "y": -11665.779417887745,
+        "source_z": -344.1398247612847,
+        "z": -835.4755415952709,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 1340.5436114466283,
+        "y": -11671.334051620215,
+        "source_z": -328.54296875,
+        "z": -835.4747317177039,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 1089.0653506804179,
+        "y": -11676.888685352686,
+        "source_z": -312.94611273871527,
+        "z": -845.5508767654314,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 837.5870899142078,
+        "y": -11682.443319085158,
+        "source_z": -297.34925672743054,
+        "z": -846.7404473347997,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 586.1088291479973,
+        "y": -11687.99795281763,
+        "source_z": -281.7524007161458,
+        "z": -837.448772510586,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 334.6305683817868,
+        "y": -11693.5525865501,
+        "source_z": -266.1555447048611,
+        "z": -770.203369140625,
+        "surface": "Park pavement SM_Park_Asphalt_4_17"
+      },
+      {
+        "x": 83.15230761557677,
+        "y": -11699.10722028257,
+        "source_z": -250.55868869357639,
+        "z": -664.3590698242188,
+        "surface": "Park pavement SM_Park_Asphalt_4_17"
+      },
+      {
+        "x": -168.32595315063372,
+        "y": -11704.661854015043,
+        "source_z": -234.96183268229166,
+        "z": -556.8249713048176,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "route": {
+      "osm": 741964052,
+      "name": "Park path",
+      "width": 280,
+      "start": [
+        3160.3507520630956,
+        -11539.380118390545,
+        -437.0919596354167
+      ],
+      "end": [
+        113.29166846893106,
+        -11589.864109130576,
+        -249.10164388020834
+      ],
+      "grade": 0.06168719215642209,
+      "length": 3047.4772668938404,
+      "bend": 1.5027284425985394
+    },
+    "samples": [
+      {
+        "x": 3160.3507520630956,
+        "y": -11539.380118390545,
+        "source_z": -437.0919596354167,
+        "z": -723.825749753828,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 2906.4291617635818,
+        "y": -11543.587117618881,
+        "source_z": -421.42609998914935,
+        "z": -746.9112835026631,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 2652.507571464068,
+        "y": -11547.794116847217,
+        "source_z": -405.76024034288196,
+        "z": -757.6828002929688,
+        "surface": "Park pavement SM_Park_Concrete_4_17"
+      },
+      {
+        "x": 2398.5859811645546,
+        "y": -11552.001116075553,
+        "source_z": -390.0943806966146,
+        "z": -767.2776489257812,
+        "surface": "Park bridge 182302113 Wood"
+      },
+      {
+        "x": 2144.664390865041,
+        "y": -11556.208115303889,
+        "source_z": -374.42852105034723,
+        "z": -794.2871704101562,
+        "surface": "Park bridge 182302113 Wood"
+      },
+      {
+        "x": 1890.742800565527,
+        "y": -11560.415114532225,
+        "source_z": -358.7626614040799,
+        "z": -821.0839233398438,
+        "surface": "Park bridge 182302113 Wood"
+      },
+      {
+        "x": 1636.8212102660134,
+        "y": -11564.62211376056,
+        "source_z": -343.0968017578125,
+        "z": -832.415758774991,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 1382.8996199664996,
+        "y": -11568.829112988897,
+        "source_z": -327.43094211154516,
+        "z": -833.9854413337566,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 1128.978029666986,
+        "y": -11573.036112217233,
+        "source_z": -311.7650824652778,
+        "z": -843.8745977949707,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 875.0564393674722,
+        "y": -11577.243111445569,
+        "source_z": -296.09922281901044,
+        "z": -843.2545189633797,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 621.1348490679584,
+        "y": -11581.450110673904,
+        "source_z": -280.43336317274304,
+        "z": -843.2513438921342,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 367.21325876844503,
+        "y": -11585.65710990224,
+        "source_z": -264.7675035264757,
+        "z": -805.894498783276,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": 113.29166846893122,
+        "y": -11589.864109130576,
+        "source_z": -249.10164388020834,
+        "z": -705.6852416992188,
+        "surface": "Park pavement SM_Park_Asphalt_4_17"
+      }
+    ]
+  },
+  {
+    "route": {
+      "osm": 102679946,
+      "name": "Park path",
+      "width": 280,
+      "start": [
+        -5208.896643377375,
+        -11060.86158885931,
+        89.24064127604167
+      ],
+      "end": [
+        -2173.8175917145177,
+        -11229.311079423254,
+        -74.02534993489583
+      ],
+      "grade": -0.05371033507690543,
+      "length": 3039.7500029959638,
+      "bend": 62.13371075505327
+    },
+    "samples": [
+      {
+        "x": -5208.896643377375,
+        "y": -11060.86158885931,
+        "source_z": 89.24064127604167,
+        "z": -86.22292975767687,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -4955.973389072136,
+        "y": -11074.899046406306,
+        "source_z": 75.63514200846355,
+        "z": -88.30648816013854,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -4703.050134766899,
+        "y": -11088.9365039533,
+        "source_z": 62.02964274088542,
+        "z": -89.44299884934844,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -4450.12688046166,
+        "y": -11102.973961500296,
+        "source_z": 48.424143473307296,
+        "z": -91.85058159877644,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -4197.203626156423,
+        "y": -11117.011419047292,
+        "source_z": 34.81864420572917,
+        "z": -97.07065209490156,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3944.280371851184,
+        "y": -11131.048876594286,
+        "source_z": 21.213144938151046,
+        "z": -102.36278005247732,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3691.3571175459465,
+        "y": -11145.086334141282,
+        "source_z": 7.607645670572921,
+        "z": -150.44317443271075,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3438.433863240708,
+        "y": -11159.123791688278,
+        "source_z": -5.997853597005204,
+        "z": -176.3227996826172,
+        "surface": "Park pavement SM_Park_Asphalt_3_17"
+      },
+      {
+        "x": -3185.5106089354704,
+        "y": -11173.161249235272,
+        "source_z": -19.60335286458333,
+        "z": -186.05361938476562,
+        "surface": "Park pavement SM_Park_Asphalt_3_17"
+      },
+      {
+        "x": -2932.587354630232,
+        "y": -11187.198706782268,
+        "source_z": -33.208852132161454,
+        "z": -217.11471218736324,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2679.664100324994,
+        "y": -11201.236164329264,
+        "source_z": -46.81435139973958,
+        "z": -234.67745676749882,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2426.7408460197557,
+        "y": -11215.273621876258,
+        "source_z": -60.419850667317704,
+        "z": -244.2685521080216,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2173.8175917145177,
+        "y": -11229.311079423254,
+        "source_z": -74.02534993489583,
+        "z": -254.8040535245691,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      }
+    ]
+  },
+  {
+    "route": {
+      "osm": 1035389486,
+      "name": "Park path",
+      "width": 280,
+      "start": [
+        -887.1134777436964,
+        -11640.45014437288,
+        -197.53812662760416
+      ],
+      "end": [
+        -3949.1677698834487,
+        -11715.665815025568,
+        -43.64306640625
+      ],
+      "grade": 0.050243607050888435,
+      "length": 3062.9779439498443,
+      "bend": 1.354040045015753e-08
+    },
+    "samples": [
+      {
+        "x": -887.1134777436964,
+        "y": -11640.45014437288,
+        "source_z": -197.53812662760416,
+        "z": -317.49163818359375,
+        "surface": "Park pavement SM_Park_Asphalt_4_17"
+      },
+      {
+        "x": -1142.2846687553424,
+        "y": -11646.718116927272,
+        "source_z": -184.71353827582465,
+        "z": -313.5400390625,
+        "surface": "Park pavement SM_Park_Asphalt_4_17"
+      },
+      {
+        "x": -1397.4558597669884,
+        "y": -11652.986089481661,
+        "source_z": -171.88894992404514,
+        "z": -299.16296049742414,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -1652.6270507786344,
+        "y": -11659.254062036052,
+        "source_z": -159.06436157226562,
+        "z": -253.7649053062555,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -1907.7982417902804,
+        "y": -11665.522034590444,
+        "source_z": -146.23977322048611,
+        "z": -219.7227020263672,
+        "surface": "Park pavement SM_Park_Concrete_4_17"
+      },
+      {
+        "x": -2162.969432801927,
+        "y": -11671.790007144833,
+        "source_z": -133.4151848687066,
+        "z": -228.10977357552156,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2418.1406238135723,
+        "y": -11678.057979699224,
+        "source_z": -120.59059651692708,
+        "z": -226.7777591357285,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2673.311814825219,
+        "y": -11684.325952253615,
+        "source_z": -107.76600816514755,
+        "z": -212.25586621366529,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -2928.4830058368643,
+        "y": -11690.593924808005,
+        "source_z": -94.94141981336806,
+        "z": -190.7082771123264,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3183.6541968485108,
+        "y": -11696.861897362396,
+        "source_z": -82.11683146158853,
+        "z": -160.92599487304688,
+        "surface": "Park pavement SM_Park_Concrete_3_17"
+      },
+      {
+        "x": -3438.8253878601568,
+        "y": -11703.129869916787,
+        "source_z": -69.29224310980902,
+        "z": -135.51642918718835,
+        "surface": "USGS Atlanta terrain + authored underwater basin"
+      },
+      {
+        "x": -3693.9965788718027,
+        "y": -11709.397842471177,
+        "source_z": -56.46765475802951,
+        "z": -130.52056884765625,
+        "surface": "Park pavement SM_Park_Asphalt_3_17"
+      },
+      {
+        "x": -3949.1677698834487,
+        "y": -11715.665815025568,
+        "source_z": -43.64306640625,
+        "z": -118.76847839355469,
+        "surface": "Park pavement SM_Park_Asphalt_3_17"
+      }
+    ]
+  }
+]

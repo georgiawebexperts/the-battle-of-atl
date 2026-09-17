@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "reason": "Fatal damage starts physics, visible hip follows body, head falls and dead zombie attack warning clears",
+  "app": null,
+  "exit_code": 0,
+  "scope": "Native fatal damage physics fixture; visible hip tracking, collapse, dead shooting suppression. Visual ground contact requires image review; not a full combat playtest.",
+  "images": [
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/5c7f5791b8a54f279c43a474861e4bc7/falling.png",
+    "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/zombie-death-review/5c7f5791b8a54f279c43a474861e4bc7/settled.png"
+  ]
+}

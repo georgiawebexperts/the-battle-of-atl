@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "BattleAim.h"
 #include "PiedmontExplorer.generated.h"
 class APiedmontBike;
 class UAnimSequence;
@@ -40,10 +41,17 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
  UFUNCTION(BlueprintCallable) bool Remount();
  UFUNCTION(BlueprintCallable) void ValidationKey(FName Key,bool Pressed);
+ // Review hook: feeds one mouse-look sample so aim sensitivity can be measured.
+ void SampleAimLook(float Value);
 protected:
  void Interact();
  void PullTrigger();void ReleaseTrigger();void AimOn();void AimOff();
- void LookYaw(float Value){AddControllerYawInput(Value*.20f);}void LookPitch(float Value){AddControllerPitchInput(Value*-.15f);}
+ // DefaultInput already scales macOS mouse deltas to 0.07. 1.0 felt too
+ // sensitive and the earlier 0.15-0.20 multiplier felt unresponsive, so 0.5 is
+ // the authored baseline. The player scales it with the persisted AIM
+ // SENSITIVITY setting (Options, or [ and ] while riding).
+ UPROPERTY(EditAnywhere,Category="Controls") float LookSensitivity=0.5f;
+ void LookYaw(float Value){AddControllerYawInput(Value*LookSensitivity*BattleAim::Scale());}void LookPitch(float Value){AddControllerPitchInput(-Value*.85f*LookSensitivity*BattleAim::Scale());}
  virtual float AimedFieldOfView() const{return 65.f;}
  void PlayBodyAction(UAnimSequence* Animation,const TArray<FTransform>& FromPose=TArray<FTransform>(),float StartTime=0,float EndTime=-1);
  // Full-body authored sequences keep sleeping/get-up poses independent of movement blending.

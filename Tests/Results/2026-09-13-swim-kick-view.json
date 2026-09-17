@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "reason": "Swimming first-person hands hidden",
+  "stage": 2,
+  "swim_cm": 0.0,
+  "bike_drift_cm": 0.0,
+  "stroke_cm": 0.0,
+  "route_index": 0,
+  "route_points": 0,
+  "route_distance_cm": 0.0,
+  "alternate_shore": false,
+  "taser_recovery": false,
+  "entry_bank_distance_cm": 525.13,
+  "deep_drop": false,
+  "edge_used": 1,
+  "fixture": "X=-1832.233 Y=-900.862 Z=-255.705 wet=X=-2221.399 Y=-1214.789 Z=-323.334",
+  "edge_requested": 0,
+  "map": "/Game/PiedmontRide/Maps/PiedmontWorld",
+  "exit_code": 0,
+  "detailed": true,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/swim-56837e869a9f4398989beb71b385ff9c/run.log",
+  "images": [],
+  "runtime": "editor-game",
+  "first_person": true,
+  "stop_diagnostics": [],
+  "view_diagnostics": [],
+  "bank_support_diagnostics": [
+    "offset=-60 simple=1 z=-340.86 actor=StaticMeshActor_9 complex=1 z=-340.86 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=0 simple=1 z=-341.38 actor=StaticMeshActor_9 complex=1 z=-341.38 actor=StaticMeshActor_9 tire_z=-339.38",
+    "offset=60 simple=1 z=-342.26 actor=StaticMeshActor_9 complex=1 z=-342.26 actor=StaticMeshActor_9 tire_z=-339.38"
+  ]
+}

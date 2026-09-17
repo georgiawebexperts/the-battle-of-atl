@@ -1,0 +1,16 @@
+{
+  "status": "imported",
+  "paths": [
+    "/Game/BattleForTheA/Rider/SK_FPSArms.SK_FPSArms"
+  ],
+  "materials": [
+    {
+      "slot": "Skin",
+      "reused": true
+    },
+    {
+      "slot": "Purple",
+      "reused": true
+    }
+  ]
+}

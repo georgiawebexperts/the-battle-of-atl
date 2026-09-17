@@ -3,6 +3,10 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
+#include "BattleKnife.h"
+#include "BattlePolice.h"
+#include "PiedmontPedestrian.h"
+#include "BattleCheckpoints.h"
 #include "NavigationSystem.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
@@ -57,4 +61,43 @@ bool ABattleEnemyDirector::SpawnGunman(){
   }
  }
  return false;
+}
+void ABattleEnemyDirector::TickMurderK(float Dt){
+ if(bMurderKActivated||!EncounterAllowed(this))return;
+ auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ if(!Pawn||!Mode)return;
+ const auto& A=BattleCheckpoints::Anchors[0];const FVector Anchor(A.X,A.Y,A.Z);
+ if(FVector::Dist2D(Pawn->GetActorLocation(),Anchor)>3000||FMath::Abs(Pawn->GetActorLocation().Z-Anchor.Z)>600)return;
+ bMurderKActivated=true;
+ const FQuat Frame=FRotator(0,A.Yaw,0).Quaternion();auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+ auto Grounded=[&](FVector Local){FVector Position=Anchor+Frame.RotateVector(Local);FNavLocation OnNav;if(Nav&&Nav->ProjectPointToNavigation(Position,OnNav,FVector(300,300,500)))Position=OnNav.Location;return Position+FVector(0,0,90);};
+ // Murder K is a dense, hostile landmark even on Easy. Two pairs are already
+ // fighting; the rest break toward Ellison when he rides into the plaza.
+ TArray<ABattleZombie*> Brawlers;
+ // Keep the middle of the widened plaza rideable. The crowd occupies both
+ // edges and converges after activation instead of spawning as a solid wall.
+ const FVector PunkOffsets[]={FVector(-1000,850,0),FVector(-720,-850,0),FVector(-300,920,0),FVector(40,-900,0),FVector(470,840,0),FVector(760,-920,0),FVector(1080,850,0),FVector(430,-1180,0),FVector(-470,-1160,0)};
+ const int32 PunkCount=Mode->DifficultyName==TEXT("Easy")?5:(Mode->DifficultyName==TEXT("Medium")?7:9);
+ for(int32 I=0;I<PunkCount;I++){
+  const FVector Position=Grounded(PunkOffsets[I]);FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+  if(auto* Punk=GetWorld()->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn)){
+   Punk->VisualStyle=1;Punk->MoveSpeed=Mode->Difficulty.ZombieSpeed*1.08f;Punk->AttackDamage=Mode->Difficulty.ZombieDamage;Punk->WarningSeconds=Mode->Difficulty.ZombieWarningSeconds;Punk->Emergence=0;Punk->SetLifeSpan(65);Punk->FinishSpawning(FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position));MurderKPunksSpawned++;if(I<4)Brawlers.Add(Punk);
+  }
+ }
+ for(int32 I=0;I+1<Brawlers.Num();I+=2){Brawlers[I]->bMurderKBrawler=Brawlers[I+1]->bMurderKBrawler=true;Brawlers[I]->BrawlPartner=Brawlers[I+1];Brawlers[I+1]->BrawlPartner=Brawlers[I];MurderKFightSpots++;}
+ const FVector BumOffsets[]={FVector(-1250,1180,0),FVector(1120,-1200,0),FVector(140,1280,0)};
+ for(const FVector Offset:BumOffsets){const FVector Position=Grounded(Offset);auto* Bum=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),FTransform(FRotator(0,A.Yaw,0),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);if(Bum){Bum->bAmbientSleeper=true;Bum->AmbientWakeChance=.35f;Bum->Tags.Add(TEXT("MurderKBum"));Bum->FinishSpawning(FTransform(FRotator(0,A.Yaw,0),Position));Bum->SetLifeSpan(90);MurderKBumsSpawned++;}}
+ const FVector CopOffsets[]={FVector(-1450,1380,0),FVector(1380,-1380,0)};const int32 CopCount=Mode->DifficultyName==TEXT("Easy")?1:2;
+ for(int32 I=0;I<CopCount;I++){const FVector Position=Grounded(CopOffsets[I]);auto* Cop=GetWorld()->SpawnActorDeferred<ABattlePolice>(ABattlePolice::StaticClass(),FTransform(FRotator(0,A.Yaw-90,0),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);if(Cop){Cop->bAmbientMurderK=true;Cop->FinishSpawning(FTransform(FRotator(0,A.Yaw-90,0),Position));MurderKAmbientPolice++;}}
+ const FVector GunOffsets[]={FVector(-900,1150,0),FVector(80,-1220,0),FVector(980,1120,0)};
+ for(int32 I=0;I<FMath::Clamp(Mode->Difficulty.KrogerShooters,0,3);I++){
+  FVector Position=Anchor+Frame.RotateVector(GunOffsets[I]);FNavLocation OnNav;if(Nav&&Nav->ProjectPointToNavigation(Position,OnNav,FVector(350,350,500)))Position=OnNav.Location;Position.Z+=90;
+  FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+  if(auto* Gun=GetWorld()->SpawnActor<ABattleGunman>(Position,(Pawn->GetActorLocation()-Position).Rotation(),Params)){Gun->Cooldown=2.5f+I*.55f;Gun->SetLifeSpan(50);MurderKGunmen.Add(Gun);MurderKGunmenSpawned++;GunmenSpawned++;}
+ }
+ if(Mode->Difficulty.KnifeBehavior>0){
+  FVector Position=Anchor+Frame.RotateVector(FVector(-420,-980,0));FNavLocation OnNav;if(Nav&&Nav->ProjectPointToNavigation(Position,OnNav,FVector(350,350,500)))Position=OnNav.Location;Position.Z+=90;
+  FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+  if(auto* Knife=GetWorld()->SpawnActor<ABattleKnife>(Position,(Pawn->GetActorLocation()-Position).Rotation(),Params)){Knife->GetCharacterMovement()->MaxWalkSpeed=Mode->Difficulty.KnifeSpeed;Knife->bSingleLunge=Mode->Difficulty.KnifeBehavior==1;Knife->SetLifeSpan(50);bMurderKKnifeSpawned=true;}
+ }
 }

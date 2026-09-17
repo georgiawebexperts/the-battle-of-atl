@@ -26,14 +26,30 @@ void APiedmontPedestrian::AnimateBody(float Dt){
  }
  if(bParkMusician){
   MusicClock+=Dt;const float Beat=FMath::Sin(MusicClock*(MusicianKind==0?10.f:6.f));
+  // The idle clip animates both arms, so multiplying a hold on top of it made
+  // the arm roots whip like fast logs and left the hands nowhere near the
+  // instrument. Replace the clip's arm rotation with the reference pose plus
+  // one authored hold, faded in over the first second of playing.
+  const float Hold=FMath::Clamp((MusicClock-.2f)/.7f,0.f,1.f);
+  const USkeletalMesh* HoldingMesh=Cast<USkeletalMesh>(Body->GetSkinnedAsset());
+  const FReferenceSkeleton* HoldRef=HoldingMesh?&HoldingMesh->GetRefSkeleton():nullptr;
+  auto HoldBone=[&](const TCHAR* Name,FRotator Pose){
+   const int32 I=Body->GetBoneIndex(Name);if(I<0||!HoldRef||I>=HoldRef->GetNum())return;
+   const FQuat Target=(Pose.Quaternion()*HoldRef->GetRefBonePose()[I].GetRotation()).GetNormalized();
+   const FQuat Current=Body->BoneSpaceTransforms[I].GetRotation().GetNormalized();
+   Body->BoneSpaceTransforms[I].SetRotation(Hold>=1.f?Target:FQuat::Slerp(Current,Target,Hold));
+  };
   if(const int32 Hip=Body->GetBoneIndex(TEXT("pelvis"));Hip>=0)Body->BoneSpaceTransforms[Hip].AddToTranslation(FVector(0,0,1.5f*FMath::Abs(Beat)));
-  Rotate(TEXT("spine_02"),FRotator(4.f,0,MusicianKind==0?-5.f:2.f*Beat));
+  Rotate(TEXT("spine_02"),FRotator(4.f,0,(MusicianKind==0?-5.f:2.f*Beat)*Hold));
   if(MusicianKind==0){
-   Rotate(TEXT("upperarm_l"),FRotator(-52.f,-16.f,44.f));Rotate(TEXT("lowerarm_l"),FRotator(-68.f,0,10.f));
-   Rotate(TEXT("upperarm_r"),FRotator(-38.f+10.f*Beat,12.f,-38.f));Rotate(TEXT("lowerarm_r"),FRotator(-55.f+35.f*Beat,0,-8.f));
+   // Guitarist: left hand frets up the neck, right hand strums the sound hole.
+   // The strum is a few degrees of wrist and forearm, not a full arm swing.
+   HoldBone(TEXT("upperarm_l"),GuitarArmL);HoldBone(TEXT("lowerarm_l"),FRotator(GuitarForeL.Pitch+3.f*Beat,GuitarForeL.Yaw,GuitarForeL.Roll));
+   HoldBone(TEXT("upperarm_r"),GuitarArmR);HoldBone(TEXT("lowerarm_r"),FRotator(GuitarForeR.Pitch+7.f*Beat,GuitarForeR.Yaw,GuitarForeR.Roll));
   }else{
-   Rotate(TEXT("upperarm_l"),FRotator(-68.f,-12.f,32.f));Rotate(TEXT("lowerarm_l"),FRotator(-82.f+5.f*Beat,0,5.f));
-   Rotate(TEXT("upperarm_r"),FRotator(-68.f,12.f,-32.f));Rotate(TEXT("lowerarm_r"),FRotator(-82.f-5.f*Beat,0,-5.f));
+   // Saxophonist: both hands on the body, upper hand above the lower one.
+   HoldBone(TEXT("upperarm_l"),SaxArmL);HoldBone(TEXT("lowerarm_l"),FRotator(SaxForeL.Pitch+3.f*Beat,SaxForeL.Yaw,SaxForeL.Roll));
+   HoldBone(TEXT("upperarm_r"),SaxArmR);HoldBone(TEXT("lowerarm_r"),FRotator(SaxForeR.Pitch+3.f*Beat,SaxForeR.Yaw,SaxForeR.Roll));
   }
   Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();return;
  }
