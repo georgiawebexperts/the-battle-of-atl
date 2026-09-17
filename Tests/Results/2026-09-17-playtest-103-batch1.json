@@ -1,0 +1,54 @@
+{
+ "build": "103",
+ "batch": "playtest feedback 1",
+ "time_limits_seconds": {
+  "Easy": 210,
+  "Medium": 180,
+  "Hard": 150,
+  "note": "-30s across the board"
+ },
+ "wanted": {
+  "reason_field": "WantedReason",
+  "countdown_field": "WantedSeconds",
+  "window_seconds": 45,
+  "apd": "spawns only on bPoliceAlert; ambient rent-a-cops watch the route"
+ },
+ "rent_a_cops": {
+  "easy": 2,
+  "medium_hard": 4
+ },
+ "knock_offs": [
+  "direct pedestrian/vehicle hit",
+  "direct tree hit above 250 speed"
+ ],
+ "stuck_prompt": "HOLD S / DOWN TO BACK OUT after 2.5s pinned while pedalling",
+ "bridge_entry": {
+  "MaxStepHeight_cm": 90,
+  "was": 60
+ },
+ "audits": {
+  "BattleTroubleAudit": "passed",
+  "BattleTreeRideAudit": "passed (direct trunk hit now knocks the rider off)",
+  "BattleMurderKAudit": "passed (timer 210 Easy, ambient_police 2)",
+  "BattleSteeringAudit": "passed",
+  "BattleBikeCarAudit": "passed",
+  "BridgeTurnAudit": "passed both directions, max_offset_cm 74.10"
+ },
+ "packaged_verified": [
+  "BattleTroubleAudit",
+  "BattleMurderKAudit",
+  "BattleSkylineAudit (build 102)"
+ ],
+ "still_pending": [
+  "Krog crash set-piece and violence pass",
+  "hints system",
+  "dismount animation",
+  "cars that deliberately hit the rider",
+  "bear to human",
+  "grass penalty and Trees ATL pursuers",
+  "boost pickups",
+  "ground text readability",
+  "controls/settings menu",
+  "remove realistic mode from player UI"
+ ]
+}

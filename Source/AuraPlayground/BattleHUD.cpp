@@ -95,10 +95,11 @@ void ABattleLabHUD::DrawHUD(){
  else if(Bike){Text(FString::Printf(TEXT("%.0f MPH"),(Bike->Ride->Speed+Bike->Ride->ReverseSpeed)*.0223694f),StatusTextX,M+(FullHUD?12.f:6.f)*S,FullHUD?38:27);Text((Bike->Ride->ReverseSpeed>1?FString::Printf(TEXT("REVERSE  |  GEAR %d"),Bike->Ride->Gear):FString::Printf(TEXT("GEAR %d / 5"),Bike->Ride->Gear)),StatusTextX,M+(FullHUD?65.f:38.f)*S,FullHUD?23:16,Muted);}
  else if(Person->bSwimming){Text(TEXT("SWIMMING"),W-M-280*S,M+12*S,28,Peach);Text(TEXT("Bike stays at the bank"),W-M-280*S,M+55*S,20,Muted);}
  else{Text(Person->ReloadRemaining>0?TEXT("RELOADING"):Person->bWeaponDrawn?BattleWeapons::Name(Person->CurrentWeapon):TEXT("HANDS FREE"),W-M-280*S,M+12*S,28,Peach);if(Person->bWeaponDrawn){Text(FString::Printf(TEXT("%d  LOADED"),Person->Ammo),W-M-280*S,M+46*S,24);Text(FString::Printf(TEXT("%s  SPARE"),*Person->ReserveLabel()),W-M-280*S,M+78*S,18,Muted);}else Text(TEXT("G  DRAW WEAPON"),W-M-280*S,M+55*S,20);}
- if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){const float DangerY=M+(ObjectiveHeight+12)*S;Panel(M,DangerY,420*S,44*S);Text(FString::Printf(TEXT("DANGER %.0f  |  PEOPLE %d/3%s"),Rules->Trouble,Rules->PeopleHit,Rules->bPoliceAlert?TEXT("  POLICE"):TEXT("")),M+12*S,DangerY+10*S,18,Peach);}}
+ // Wanted panel: why the player is wanted, for how much longer, and whether
+ // APD has actually been called. Rent-a-cops watch; APD only answers an alert.
+ if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){if(Rules->Trouble>.1f||Rules->PeopleHit>0){const float DangerY=M+(ObjectiveHeight+12)*S;Panel(M,DangerY,560*S,44*S);Text(FString::Printf(TEXT("WANTED %.0fs  |  %s%s"),Rules->WantedSeconds,Rules->WantedReason.IsEmpty()?TEXT("HEAT"):*Rules->WantedReason,Rules->bPoliceAlert?TEXT("  |  APD RESPONDING"):TEXT("  |  RENT-A-COPS WATCHING")),M+12*S,DangerY+10*S,18,Peach);}}
  if(FullHUD&&!Owner->bCrashActive&&!(Person&&Person->bSwimming)){
   Panel(W-M-300*S,M+118*S,300*S,44*S);Text(FString::Printf(TEXT("%sHORN  %d / 5"),Bike?TEXT("H  "):TEXT(""),Owner->HornUses),W-M-280*S,M+126*S,22,Owner->HornUses>0?Muted:Peach);
-  if(Bike){Panel(W-M-300*S,M+174*S,300*S,44*S);Text(Bike->Ride->bRealHandling?TEXT("P  MODE: REALISTIC"):TEXT("P  MODE: ARCADE"),W-M-280*S,M+185*S,18,Muted);}
  }
  const float Bottom=H-M-(FullHUD?156.f:74.f)*S;
  if(FullHUD||Owner->RiderHealth<100||Owner->Ride->BoostRemaining>0){
@@ -109,6 +110,7 @@ void ABattleLabHUD::DrawHUD(){
  }
  // Keep reverse discoverable even when propulsion speed stays high against a blocker.
  FString Prompt=TEXT("E DISMOUNT  |  S/DOWN BACK UP");
+ if(Bike&&Bike->Ride->StuckSeconds>2.5f)Prompt=TEXT("STUCK?  HOLD S / DOWN TO BACK OUT");
  const float MusicY=M+(Bike?230.f:174.f)*S;if(FullHUD&&!Owner->bCrashActive){Panel(W-M-300*S,MusicY,300*S,78*S);Text(BattleMusic::Enabled()?FString::Printf(TEXT("M  MUSIC: SONG %d / 2"),BattleMusic::Selection()):TEXT("M  MUSIC: OFF"),W-M-280*S,MusicY+8*S,18,Muted);Text(TEXT("Cycle: Off > 1 > 2 > Off"),W-M-280*S,MusicY+45*S,16,Muted);}
  FString Help=TEXT("Q/R gears   J jump   SHIFT boost   H horn");
  if(Person){const bool Near=FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240;Prompt=BattleSpareBikes::Nearest(Person)?TEXT("E  RIDE THIS BIKE"):Near?TEXT("E  GET ON THE BIKE"):TEXT("FIND A BIKE  /  BLUE WATCH MARKERS");Help=Person->bWeaponDrawn?TEXT("G holster  CLICK fire  R reload  F melee"):TEXT("G draw  SHIFT run  SPACE jump  C crouch");}

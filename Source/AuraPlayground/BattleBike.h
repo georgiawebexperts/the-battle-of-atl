@@ -39,7 +39,9 @@ public:
  UPROPERTY(BlueprintReadOnly) float TurnRateDegrees=0;
  static float SteeringResponse(float Current,float Target,float Dt){return FMath::Lerp(Current,FMath::Clamp(Target,-1.f,1.f),1.f-FMath::Exp(-8.f*FMath::Max(0.f,Dt)));}
  UPROPERTY(BlueprintReadOnly) int32 Gear=1;
- UPROPERTY(BlueprintReadOnly) float Recovery=0;
+UPROPERTY(BlueprintReadOnly) float Recovery=0;
+ /** Seconds the rider has held the pedals with the bike pinned against something. */
+ UPROPERTY(BlueprintReadOnly) float StuckSeconds=0;
  UPROPERTY(BlueprintReadOnly) int32 Wipeouts=0;
  UPROPERTY(BlueprintReadOnly) FString RecoveryReason;
  UPROPERTY(BlueprintReadOnly) bool bGrass=false;
@@ -196,6 +198,8 @@ public:
  UPROPERTY(BlueprintReadOnly) float Trouble=0;
  UPROPERTY(BlueprintReadOnly) int32 PeopleHit=0,PoliceSpawned=0;
  UPROPERTY(BlueprintReadOnly) bool bPoliceAlert=false;
+ UPROPERTY(BlueprintReadOnly) FString WantedReason;
+ UPROPERTY(BlueprintReadOnly) float WantedSeconds=0;
  TSet<TWeakObjectPtr<AActor>> AssaultVictims;
  float QuietTime=0,PoliceDelay=0;
 

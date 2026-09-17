@@ -87,7 +87,7 @@ void ABattleEnemyDirector::TickMurderK(float Dt){
  for(int32 I=0;I+1<Brawlers.Num();I+=2){Brawlers[I]->bMurderKBrawler=Brawlers[I+1]->bMurderKBrawler=true;Brawlers[I]->BrawlPartner=Brawlers[I+1];Brawlers[I+1]->BrawlPartner=Brawlers[I];MurderKFightSpots++;}
  const FVector BumOffsets[]={FVector(-1250,1180,0),FVector(1120,-1200,0),FVector(140,1280,0)};
  for(const FVector Offset:BumOffsets){const FVector Position=Grounded(Offset);auto* Bum=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),FTransform(FRotator(0,A.Yaw,0),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);if(Bum){Bum->bAmbientSleeper=true;Bum->AmbientWakeChance=.35f;Bum->Tags.Add(TEXT("MurderKBum"));Bum->FinishSpawning(FTransform(FRotator(0,A.Yaw,0),Position));Bum->SetLifeSpan(90);MurderKBumsSpawned++;}}
- const FVector CopOffsets[]={FVector(-1450,1380,0),FVector(1380,-1380,0)};const int32 CopCount=Mode->DifficultyName==TEXT("Easy")?1:2;
+ const FVector CopOffsets[]={FVector(-1450,1380,0),FVector(1380,-1380,0),FVector(0,1720,0),FVector(-1720,-140,0)};const int32 CopCount=Mode->DifficultyName==TEXT("Easy")?2:4;
  for(int32 I=0;I<CopCount;I++){const FVector Position=Grounded(CopOffsets[I]);auto* Cop=GetWorld()->SpawnActorDeferred<ABattlePolice>(ABattlePolice::StaticClass(),FTransform(FRotator(0,A.Yaw-90,0),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);if(Cop){Cop->bAmbientMurderK=true;Cop->FinishSpawning(FTransform(FRotator(0,A.Yaw-90,0),Position));MurderKAmbientPolice++;}}
  const FVector GunOffsets[]={FVector(-900,1150,0),FVector(80,-1220,0),FVector(980,1120,0)};
  for(int32 I=0;I<FMath::Clamp(Mode->Difficulty.KrogerShooters,0,3);I++){

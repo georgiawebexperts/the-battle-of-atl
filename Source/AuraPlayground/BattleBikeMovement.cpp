@@ -6,7 +6,8 @@
 #include "Components/PrimitiveComponent.h"
 #include "Kismet/GameplayStatics.h"
 UBattleBikeMovement::UBattleBikeMovement(){
- MaxWalkSpeed=2200;MaxAcceleration=800;MaxStepHeight=60;SetWalkableFloorAngle(75);
+ // 90 cm steps instead of 60 keeps bridge decks and curbs rideable on entry.
+ MaxWalkSpeed=2200;MaxAcceleration=800;MaxStepHeight=90;SetWalkableFloorAngle(75);
  bOrientRotationToMovement=false;bUseControllerDesiredRotation=false;bMaintainHorizontalGroundVelocity=true;
  bAlwaysCheckFloor=true;bEnablePhysicsInteraction=false;GravityScale=2;AirControl=1;BrakingDecelerationWalking=0;GroundFriction=0;
  MaxSimulationTimeStep=1.f/120;MaxSimulationIterations=16;
@@ -15,6 +16,9 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  // A rendering stall must not apply stale steering over a long unseen jump.
  // Bound bike simulation catch-up; the world countdown still uses elapsed time.
  Dt=FMath::Min(Dt,.05f);
+ // Pinned against geometry while still pedalling is the stuck state the HUD
+ // warns about; it clears the moment the bike moves again.
+ if(Recovery<=0&&Pedal>0&&Speed<80&&IsMovingOnGround())StuckSeconds+=Dt;else StuckSeconds=0;
  if(Recovery>0||MovementMode==MOVE_None){ReverseSpeed=0;bReverseRequested=false;}
  JumpGraceRemaining=IsMovingOnGround()?.12f:FMath::Max(0.f,JumpGraceRemaining-Dt);
  if(IsFalling()){AirSeconds+=Dt;if(CharacterOwner)AirPeak=FMath::Max(AirPeak,float(CharacterOwner->GetActorLocation().Z-AirOrigin.Z));}
@@ -170,9 +174,14 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
   const bool Direct=Speed>200&&Directness>.35f&&Speed*Directness>150;
   if(auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor()))Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
   if(Direct&&Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic")))if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(CharacterOwner)))Mode->RecordAssault(Hit.GetActor());
-  ContactCooldown=.35f;if(Direct&&(bRealHandling||Hit.GetActor()->ActorHasTag(TEXT("PiedmontHostile"))))CrashImpact(TEXT("Traffic impact"),Speed*Directness);else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
+  // Any square hit on a person or vehicle puts the rider on the ground.
+  ContactCooldown=.35f;if(Direct)CrashImpact(TEXT("Traffic impact"),Speed*Directness);else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
  }
- if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree")))++TreeContacts;
+ if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree"))){
+  ++TreeContacts;
+  const float Directness=-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),Hit.ImpactNormal.GetSafeNormal2D());
+  if(Speed>250&&Directness>.4f){ContactCooldown=.35f;CrashImpact(TEXT("Tree impact"),Speed*Directness);return;}
+ }
  // Let a glancing rail/wall contact slide instead of repeatedly killing propulsion.
  // A direct hit still stops the bike and gives the existing small separation nudge.
  const FVector Normal=Hit.ImpactNormal.GetSafeNormal2D();

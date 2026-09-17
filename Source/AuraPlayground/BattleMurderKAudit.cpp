@@ -28,7 +28,7 @@ void ABattleMacController::TickMurderKAudit(float Dt){
  auto End=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleMurderKAudit: {\"passed\":%s,\"checks\":%d,\"difficulty\":\"%s\",\"timer\":%.0f,\"shooters\":%d,\"punks\":%d,\"bums\":%d,\"fights\":%d,\"ambient_police\":%d,\"knife\":%s,\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Checks,Mode?*Mode->DifficultyName.ToString():TEXT("none"),Mode?Mode->Difficulty.TimeLimitSeconds:0,Mode&&Mode->Enemies?Mode->Enemies->MurderKGunmenSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKPunksSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKBumsSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKFightSpots:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKAmbientPolice:-1,Mode&&Mode->Enemies&&Mode->Enemies->bMurderKKnifeSpawned?TEXT("true"):TEXT("false"),Reason);ConsoleCommand(TEXT("quit"));};
 #define MKCHECK(C,R) if(!(C)){End(false,TEXT(R));return;}else{Checks++;}
  MKCHECK(Mode&&Bike&&Mode->Quest&&Mode->Enemies,"Missing live game state");
- const float Expected=Mode->DifficultyName==TEXT("Easy")?240.f:(Mode->DifficultyName==TEXT("Medium")?210.f:180.f);
+ const float Expected=Mode->DifficultyName==TEXT("Easy")?210.f:(Mode->DifficultyName==TEXT("Medium")?180.f:150.f);
  MKCHECK(FMath::IsNearlyEqual(Mode->Difficulty.TimeLimitSeconds,Expected),"Difficulty timer is stale");
  TActorIterator<ABattleMurderK> StoreIt(GetWorld());ABattleMurderK* Store=StoreIt?*StoreIt:nullptr;
  MKCHECK(Store&&Store->StoreSign&&Store->StoreSign->Text.ToString()==TEXT("MURDER K"),"Murder K landmark or sign missing");
@@ -43,7 +43,7 @@ void ABattleMacController::TickMurderKAudit(float Dt){
  const int ExpectedPunks=Mode->DifficultyName==TEXT("Easy")?5:(Mode->DifficultyName==TEXT("Medium")?7:9);
  MKCHECK(Mode->Enemies->MurderKPunksSpawned==ExpectedPunks&&Mode->Enemies->MurderKFightSpots==2,"Murder K punk crowd or fight spots missing");
  MKCHECK(Mode->Enemies->MurderKBumsSpawned==3,"Murder K sleeping bums missing");
- MKCHECK(Mode->Enemies->MurderKAmbientPolice==(Mode->DifficultyName==TEXT("Easy")?1:2),"Murder K ambient police missing");
+ MKCHECK(Mode->Enemies->MurderKAmbientPolice==(Mode->DifficultyName==TEXT("Easy")?2:4),"Murder K ambient police missing");
  End(true,TEXT("Landmark, four-minute timer family, dense punk/bum crowd, two fights, ambient non-taser police and difficulty encounter pass"));
 #undef MKCHECK
 #endif

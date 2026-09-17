@@ -47,7 +47,8 @@ void TickBattleTreeRideAudit(APlayerController* PC,float Dt){
  S.Clock+=Dt;if(S.Clock<.6f)return;Key(true);
  if(S.Clock>15){UE_LOG(LogTemp,Display,TEXT("TreeRide state: mesh=%s position=%s target=%s speed=%.1f contacts=%d"),*Tree.Mesh,*Bike->GetActorLocation().ToString(),*Tree.Point.ToString(),Move->Speed,Move->TreeContacts-S.Contacts);Finish(false,TEXT("Tree approach timed out"));return;}
  if(S.Leg==0&&Move->TreeContacts!=S.Contacts){Finish(false,TEXT("Near pass hit a trunk"));return;}
- bool Complete=S.Leg==0?Bike->GetActorLocation().X>Tree.Point.X+300:Move->TreeContacts>S.Contacts&&(Move->bRealHandling?(Bike->bCrashActive&&Bike->RiderHealth<100):(!Bike->bCrashActive&&Bike->RiderHealth==100));
+ // A direct trunk hit now knocks the rider off in every handling mode.
+ bool Complete=S.Leg==0?Bike->GetActorLocation().X>Tree.Point.X+300:Move->TreeContacts>S.Contacts&&Bike->bCrashActive&&Bike->RiderHealth<100;
  if(Complete){Key(false);if(S.Leg==1){Bike->ClearPhysicalCrash();Bike->bParked=false;Bike->Rider->SetVisibility(true,true);Move->Recovery=0;}++S.Completed;S.Clock=0;if(S.Leg==0)S.Leg=1;else{S.Leg=0;++S.Tree;}if(S.Tree==3)Finish(true,TEXT("Three authored tree types: keyboard near passes clear; direct contacts follow selected handling rules"));}
 #endif
 }

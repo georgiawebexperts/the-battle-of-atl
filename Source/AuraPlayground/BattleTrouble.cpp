@@ -11,24 +11,29 @@
 void ABattleLabMode::RecordGunfire(){
  if(bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this))return;
  Trouble=FMath::Min(12.f,Trouble+.75f);QuietTime=0;
+ WantedReason=TEXT("GUNFIRE");
  if(auto* Source=UGameplayStatics::GetPlayerPawn(this,0))for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->HearGunfire(Source->GetActorLocation());
 }
 bool ABattleLabMode::RecordAssault(AActor* Victim){
  if(!IsValid(Victim)||!Victim->ActorHasTag(TEXT("PiedmontTraffic"))||bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this)||AssaultVictims.Contains(Victim))return false;
  AssaultVictims.Add(Victim);PeopleHit++;Trouble=FMath::Min(12.f,Trouble+3);QuietTime=0;
+ WantedReason=Victim->ActorHasTag(TEXT("PiedmontTraffic"))?TEXT("STRUCK A PEDESTRIAN"):TEXT("ASSAULT");
  if(PeopleHit>=3){bPoliceAlert=true;PoliceDelay=0;}
  UE_LOG(LogTemp,Display,TEXT("BattleTrouble: people=%d police=%d heat=%.2f"),PeopleHit,bPoliceAlert,Trouble);return true;
 }
 void ABattleLabMode::TickTrouble(float Dt){
  if(bRunEnded||StartCountdown>0||UGameplayStatics::IsGamePaused(this))return;
  QuietTime+=Dt;
+ // The player is wanted until the quiet window runs out; show the countdown.
+ WantedSeconds=FMath::Max(0.f,45.f-QuietTime);
  if(QuietTime>45){bPoliceAlert=false;Trouble=0;for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead)It->Destroy();return;}
  if(QuietTime>20)Trouble=FMath::Max(0.f,Trouble-Dt*.15f);
  auto* Mode=Cast<ABattleParkMode>(this);auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn||(Mode->Enemies&&Mode->Enemies->bFreezeSpawns))return;
  auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Person=Cast<ABattleRider>(Pawn))Bike=Person->ParkedBike;if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0)return;
  int32 Live=0;for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else Live++;}
  PoliceDelay-=Dt;if(PoliceDelay>0)return;PoliceDelay=12;
- if(Live>=2||(!bPoliceAlert&&(Trouble<6||FMath::FRand()>.3f)))return;
+ // APD only responds to an actual alert. Ambient rent-a-cops watch the route.
+ if(Live>=2||!bPoliceAlert)return;
  auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());if(!Nav)return;
  for(int32 Try=0;Try<16;Try++){
   FNavLocation Point;if(!Nav->GetRandomReachablePointInRadius(Pawn->GetActorLocation(),2400,Point)||FVector::Dist2D(Point.Location,Pawn->GetActorLocation())<1100)continue;
