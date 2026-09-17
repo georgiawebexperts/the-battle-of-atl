@@ -2,6 +2,7 @@
 #include "BattleBike.h"
 
 void ABattleLabMode::PushHint(FName Id,const FString& Text,float Seconds,bool bOnce){
+ if(!bHintsEnabled)return;
  if(bOnce&&HintsSeen.Contains(Id))return;
  HintsSeen.Add(Id);HintText=Text;HintRemaining=Seconds;
 }

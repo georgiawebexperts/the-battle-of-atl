@@ -320,6 +320,7 @@ void ABattleMacController::ShowMenu(FString Page){
  }else if(Page==TEXT("Options")){
   Button(BattleMusic::Enabled()?FString::Printf(TEXT("MUSIC: SONG %d / 2  /  M"),BattleMusic::Selection()):FString(TEXT("MUSIC: OFF  /  M")),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});
   Button(BattleAim::Label(),[this](){AdjustAim(1);ShowMenu(TEXT("Options"));});
+  if(const auto* M=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Button(M->bHintsEnabled?TEXT("HINTS: ON  /  TAP TO HIDE"):TEXT("HINTS: OFF  /  TAP TO SHOW"),[this](){if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this))){Rules->bHintsEnabled=!Rules->bHintsEnabled;if(!Rules->bHintsEnabled)Rules->HintRemaining=0;}ShowMenu(TEXT("Options"));});
   if(const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))Button(M->bTutorialHelp?TEXT("PERMANENT CONTROLS: ON  /  F1"):TEXT("PERMANENT CONTROLS: OFF  /  F1"),[this](){TogglePracticeHelp();ShowMenu(TEXT("Options"));});
   if(auto* Settings=UGameUserSettings::GetGameUserSettings()){
    const bool Fullscreen=Settings->GetFullscreenMode()!=EWindowMode::Windowed;

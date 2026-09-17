@@ -37,6 +37,8 @@ public:
  UPROPERTY(BlueprintReadOnly) float Speed=0.f;
  UPROPERTY(BlueprintReadOnly) float DistanceTravelled=0.f;
  UPROPERTY(BlueprintReadOnly) bool bObstacleAhead=false;
+ /** 1 when this car is actively crowding the rider off the road. */
+ UPROPERTY(BlueprintReadOnly) float HostilityBlend=0.f;
  UPROPERTY(BlueprintReadOnly) bool bRouteFinished=false;
  UPROPERTY(BlueprintReadOnly) bool bGrounded=false;
  FString LastObstacle;

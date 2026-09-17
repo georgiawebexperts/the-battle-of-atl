@@ -37,6 +37,22 @@ void APiedmontPedestrian::BeginPlay(){
  if(bAmbientSleeper){CityAppearanceVariant=0;bReturnToSleepAfterChase=true;}
  InitializeCityAppearance();Super::BeginPlay();Configure(Kind);ThinkRemaining=FMath::FRandRange(.1f,.7f);
  if(bAmbientSleeper)BeginSleeping();
+ // Walkers keep out of the painted cycle track. Sleepers and bums may stay.
+ if(!bAmbientSleeper&&GetWorld()){
+  FCollisionQueryParams Q(SCENE_QUERY_STAT(PedestrianLane),false,this);
+  auto FloorName=[&](const FVector& At){FHitResult Hit;return GetWorld()->LineTraceSingleByChannel(Hit,At+FVector(0,0,120),At-FVector(0,0,260),ECC_Visibility,Q)&&Hit.GetActor()?Hit.GetActor()->GetName():FString();};
+  auto OnBikeLane=[&](const FString& Name){return Name.Contains(TEXT("CycleTrack"))||Name.Contains(TEXT("BikeLane"));};
+  if(OnBikeLane(FloorName(GetActorLocation()))){
+   const FVector Side=FVector::CrossProduct(FVector::UpVector,GetActorForwardVector()).GetSafeNormal();
+   for(float Offset:{-240.f,240.f,-430.f,430.f}){
+    const FVector Try=GetActorLocation()+Side*Offset;
+    FHitResult Probe;
+    if(!GetWorld()->LineTraceSingleByChannel(Probe,Try+FVector(0,0,120),Try-FVector(0,0,260),ECC_Visibility,Q))continue;
+    const FString Other=Probe.GetActor()?Probe.GetActor()->GetName():FString();
+    if(!OnBikeLane(Other)){SetActorLocation(Probe.ImpactPoint+FVector(0,0,90),false,nullptr,ETeleportType::TeleportPhysics);break;}
+   }
+  }
+ }
 }
 void APiedmontPedestrian::Configure(EPiedmontPedestrianKind NewKind){
  Kind=NewKind;GetCharacterMovement()->MaxWalkSpeed=Kind==EPiedmontPedestrianKind::Jogger?310:135;

@@ -8,6 +8,8 @@
 #include "Engine/World.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Misc/CommandLine.h"
+#include "Kismet/GameplayStatics.h"
+#include "BattleRider.h"
 #include "Misc/Parse.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -81,6 +83,20 @@ bool ABattleRoadCar::StartRoute(){
 }
 void ABattleRoadCar::Tick(float Dt){
  Super::Tick(Dt);if(!bStarted||bRouteFinished||Dt<=0)return;
+ // Traffic with a grudge: it steers at the rider whenever they are sharing the
+ // car lanes. Riding the painted cycle track keeps the rider safe.
+ float SwerveTarget=0.f;
+ if(auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0)){
+  auto* Bike=Cast<ABattleBike>(Pawn);
+  if(!Bike)if(auto* Person=Cast<ABattleRider>(Pawn))Bike=Person->ParkedBike;
+  const bool bSafe=Bike&&Bike->Ride&&Bike->Ride->bBikeLane;
+  const FVector To=Pawn->GetActorLocation()-GetActorLocation();
+  const FVector Fwd=GetActorForwardVector();
+  const float Ahead=FVector::DotProduct(FVector(To.X,To.Y,0),FVector(Fwd.X,Fwd.Y,0));
+  const float Side=FVector::DotProduct(FVector(To.X,To.Y,0),FVector(-Fwd.Y,Fwd.X,0));
+  if(!bSafe&&Ahead>200.f&&Ahead<5400.f&&FMath::Abs(Side)<430.f)SwerveTarget=FMath::Clamp(Side,-140.f,140.f);
+ }
+ HostilityBlend=FMath::Lerp(HostilityBlend,SwerveTarget,1.f-FMath::Exp(-3.f*Dt));
  // Bound movement steps during hitches; every step sweeps the whole car body.
  float Remaining=FMath::Min(Dt,.25f);
  while(Remaining>SMALL_NUMBER){const float Step=FMath::Min(Remaining,1.f/60.f);Remaining-=Step;
@@ -107,6 +123,7 @@ void ABattleRoadCar::Tick(float Dt){
   const float Travel=FMath::Min(ToEnd,FMath::Min(Available,Speed*Step));const FVector Next=SampleRoute(RouteDistance+Travel);
   FVector Heading=SampleRoute(FMath::Min(Lengths.Last(),RouteDistance+Travel+150))-Next;if(Heading.IsNearlyZero())Heading=GetActorForwardVector();
   FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
+  if(!FMath::IsNearlyZero(HostilityBlend))Pose.SetLocation(Pose.GetLocation()+FVector(-Heading.Y,Heading.X,0).GetSafeNormal()*HostilityBlend);
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
   // Steering follows curvature and wheelbase, not degrees rotated per rendered frame.
   const float WheelSteer=Travel>KINDA_SMALL_NUMBER?FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan(264.2f*FMath::DegreesToRadians(Turn)/Travel)),-55.f,55.f):SteeringAngle;

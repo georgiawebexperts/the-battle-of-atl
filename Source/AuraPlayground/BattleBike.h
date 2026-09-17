@@ -208,6 +208,7 @@ UPROPERTY(BlueprintReadOnly) float WantedSeconds=0;
  UPROPERTY(BlueprintReadOnly) FString HintText;
  UPROPERTY(BlueprintReadOnly) float HintRemaining=0;
  TSet<FName> HintsSeen;
+ UPROPERTY(BlueprintReadOnly) bool bHintsEnabled=true;
  void PushHint(FName Id,const FString& Text,float Seconds=6.f,bool bOnce=true);
  void TickHints(float Dt);
  TSet<TWeakObjectPtr<AActor>> AssaultVictims;

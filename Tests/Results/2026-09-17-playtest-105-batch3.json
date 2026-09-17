@@ -1,0 +1,26 @@
+{
+ "build": "105",
+ "batch": "playtest feedback 3",
+ "cars": {
+  "behaviour": "traffic steers at the rider when they are in the car lanes within 54 m ahead",
+  "safe_lane": "cycle-track surfaces (Ride->bBikeLane) suppress it",
+  "field": "ABattleRoadCar::HostilityBlend"
+ },
+ "pedestrians": "walkers spawned on the cycle track step 2.4-4.3 m off it; sleepers and bums may stay",
+ "hints_toggle": "Options > HINTS: ON/OFF",
+ "bridges": {
+  "probe": "work/bridge-clearance.json; 15 bridge/rail actors found",
+  "change": "MaxStepHeight 90 cm (103) and the stuck prompt remain the entry fixes",
+  "open": "the specific bridge the rider cannot pass under is still unidentified - needs the location from Elliott"
+ },
+ "audits": {
+  "BattleKrogCrashAudit": "passed packaged",
+  "BattleTroubleAudit": "passed packaged",
+  "BattleBikeCarAudit": "passed with swerve live",
+  "BattleRoadContactAudit": "inconclusive - the run clock expired before the audit finished (long driving audit vs the new 210 s Easy clock)"
+ },
+ "still_open": [
+  "the specific low bridge",
+  "controls/settings menu exists (music, aim, hints, F1 help, fullscreen, resolution) - no further mode choice"
+ ]
+}
