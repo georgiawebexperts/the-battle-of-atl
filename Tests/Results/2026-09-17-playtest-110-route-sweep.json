@@ -1,0 +1,21 @@
+{
+ "build": "110",
+ "work": "bring-your-own-input bridge hunt (Elliott was away)",
+ "headroom_sweep": {
+  "splines": 252,
+  "samples": 4426,
+  "spots_under_250cm": 0,
+  "method": "walk every path spline on 2 m centres, find the ground, then trace up for overhanging geometry"
+ },
+ "barrier_sweep": {
+  "samples": 3565,
+  "forward_hits": 29,
+  "result": "all false positives - rendering both flagged locations (6089,-31245 and 5343,-4665) shows open path, so the rays were clipping the path's own surface through a curve or slope",
+  "images": [
+   "work/spot-6089_-31245_90-4936/bike.png",
+   "work/spot-5343_-4665_90-0578/bike.png"
+  ]
+ },
+ "conclusion": "no low bridge exists on the ride route: nothing overhangs below 250 cm and nothing bars the corridor. Combined with build 108 (overhead decks are transparent to the bike), the underpass case should be closed unless the bridge in question is off the route splines.",
+ "new_tool": "-BattleSpotReview=\"X,Y[,Yaw]\" parks the rider at any coordinate and renders their view, so a one-line description of where a problem happens is now enough to look at it"
+}
