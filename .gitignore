@@ -6,3 +6,17 @@ DerivedDataCache/
 .DS_Store
 
 Tools/terrain-venv/
+
+# ---------------------------------------------------------------------------
+# GitHub rejects any push containing a single file larger than 100 MB.
+# Everything listed here is real project content that lives on disk only and
+# travels between machines inside the Drive content zips.
+# Never `git add` these. If one ever needs to be versioned, shrink it first
+# (or set up Git LFS, which this repo does not use).
+#
+# T_m_nrw_blazer_BN.uasset is a 222 MB crowd normal map -- it was purged from
+# history on 2026-09-18 because it blocked the first push. See the Brain note
+# "Battle of ATL" for the full story.
+# ---------------------------------------------------------------------------
+Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset
+Content/EuropeanHornbeam/
