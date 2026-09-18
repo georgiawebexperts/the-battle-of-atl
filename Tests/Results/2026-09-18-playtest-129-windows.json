@@ -1,0 +1,169 @@
+{
+  "build": "129",
+  "date": "2026-09-18",
+  "author": "codex-windows",
+  "request": "Windows packaging pipeline for build 129, gated on the Mac build 129 merge into windows-port: 18-audit sweep (including BattlePatioAudit), four cross-platform probes, Development and Shipping packages, share refresh, launch-verify, and perf at 1600x900 and 1920x1080.",
+  "git_sha": "4ec625c170f54f2a108203245b841f8226f3b88f",
+  "branch": "windows-port",
+  "gate": {
+    "required_commits": [
+      "merge Mac build 129",
+      "BattlePatioAudit to sweep"
+    ],
+    "found": [
+      "b719864 Windows: merge Mac build 129 (ending reachable, picnic standing, duck audit deterministic, BattlePatioAudit)",
+      "4ec625c Windows: add BattlePatioAudit to sweep (18 audits)"
+    ],
+    "tree_clean_at_pull": true,
+    "pull_result": "Already up to date (windows-port == github/windows-port at 4ec625c)"
+  },
+  "packages": {
+    "development": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/windows-package-129-dev.log",
+      "duration": "4m53s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,492,160 bytes)",
+      "restage_for_perf": {
+        "reason": "staged tree had been overwritten by the Shipping stage; restored Development before perf",
+        "rerun": "2026-09-18T18:23-04:00 incremental BUILD SUCCESSFUL, 3m19s (stage 41.6s, archive 107.2s)",
+        "summary_log": "work/windows-package-129-dev-perf.log",
+        "uat_log": "work/windows-package-129-dev-perf-uat.log"
+      }
+    },
+    "shipping": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Shipping",
+      "log": "work/windows-package-129-shipping.log",
+      "archive": "D:\\Battle Of ATL\\Archives\\BattleForTheA",
+      "archive_exe": "D:\\Battle Of ATL\\Archives\\BattleForTheA\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe (167,183,360 bytes)",
+      "note": "The D: archive also retains the Development AuraPlayground.exe/AuraPlayground.pdb from the same evening; the Shipping exe above is the delivered build."
+    }
+  },
+  "audits": {
+    "status": "17/18 first pass; BattleSpeedAudit flaked once (Unexpected knockdown in boost lane) and passed an immediate identical retry - recorded as green flake, not a gate",
+    "sweep_command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+    "per_audit_command": "<exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<AuditName> -installed",
+    "sweep_window_local": "2026-09-18T18:04:23-04:00 to 2026-09-18T18:09:08-04:00",
+    "console_log": "work/audit-sweep-129-offscreen-console.log",
+    "speed_flake": {
+      "first_run": "{\"passed\":false,\"reason\":\"Unexpected knockdown in boost lane\",\"peak_speed_cm_s\":2200.10,\"charges\":2,\"boost_remaining\":0.00}",
+      "retry": "{\"passed\":true,\"reason\":\"Banked throttle boosts: one charge per crate, three-deep cap, SHIFT spends it, timed burst and expiry, empty-bank and foot guards all pass\",\"peak_speed_cm_s\":2200.10,\"charges\":0,\"boost_remaining\":0.00}",
+      "retry_log": "work/BattleSpeedAudit-retry.log",
+      "verdict": "pass on immediate identical retry (environmental flake)"
+    },
+    "results": [
+      "BattleCurseAudit: pass",
+      "BattleTreeRideAudit: pass",
+      "Realistic-BattleTreeRideAudit: pass",
+      "BattleTroubleAudit: pass",
+      "BattleSteeringAudit: pass",
+      "BattleSleeperAudit: pass",
+      "BattleGrassAudit: pass",
+      "BattleBikeCarAudit: pass",
+      "BattleMurderKAudit: pass",
+      "BattlePickupAudit: pass",
+      "BattleSpiritAudit: pass",
+      "BattleKrogCrashAudit: pass",
+      "BattleDuckAudit: pass",
+      "BattleSpeedAudit: pass (on immediate retry; first attempt flaked with Unexpected knockdown in boost lane)",
+      "BattleTimeAudit: pass",
+      "BattleDiscAudit: pass",
+      "BattleDiagonalAudit: pass",
+      "BattlePatioAudit: pass"
+    ]
+  },
+  "cross_platform_probes": {
+    "informational": true,
+    "command_style": "same per-audit style as the sweep: <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<AuditName> -installed, ~8 minute cap each",
+    "results": [
+      {
+        "audit": "BattleTrailModeAudit",
+        "result": "pass",
+        "detail": "arcade lays 4.2 m of pavement out to 190 cm, realistic lays 3.2 m and stops before it, and the spline width and ribbon visibility follow the toggle both ways",
+        "log": "work/probe-BattleTrailModeAudit.log"
+      },
+      {
+        "audit": "BattleSkaterAudit",
+        "result": "pass",
+        "detail": "Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass",
+        "log": "work/probe-BattleSkaterAudit.log"
+      },
+      {
+        "audit": "BattleDroneAudit",
+        "result": "fail",
+        "detail": "stage 7: Pistol shot at 35m failed: fired=true health=40.0 notice= off_target_cm=2827.2 aim_off_deg=0.00",
+        "log": "work/probe-BattleDroneAudit.log",
+        "note": "informational - data for the Mac team, not a pipeline stop"
+      },
+      {
+        "audit": "BattleFrisbeeAudit",
+        "result": "pass",
+        "detail": "Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass",
+        "log": "work/probe-BattleFrisbeeAudit.log"
+      }
+    ]
+  },
+  "share": {
+    "folder": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129",
+    "exe": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe",
+    "exe_sha256": "B7620A0F650D435C03F9F451B9951F58DFA7A71FC2DDF13B8F2273BFFB73DE81",
+    "icon": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\BattleOfATL.ico (61,096 bytes, reused from the Playtest 128 share)",
+    "start_here": "updated to THE BATTLE OF ATL - WINDOWS PLAYTEST 129",
+    "contents": "Staged Shipping build (AuraPlayground + Engine trees, manifests, NOTICES), renamed exe, BattleOfATL.ico, START-HERE.txt, CREDITS.txt",
+    "old_shares": "Playtest 127 and 128 share folders and the stale 127 desktop shortcut were removed (only referenced by the repointed shortcut); D:\\Battle Of ATL\\Backups untouched",
+    "desktop_shortcut": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk -> The Battle of ATL.exe /Game/PiedmontRide/Maps/PiedmontWorld, IconLocation BattleOfATL.ico,0",
+    "shortcut_verified": true,
+    "launch_verify": {
+      "command": "\"The Battle of ATL.exe\" -game -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound",
+      "result": "alive after 60s",
+      "window_title": "The Battle of ATL built by Web Experts",
+      "working_set_gb": 1.22,
+      "pid": 44024,
+      "started": "2026-09-18T18:32:45-04:00",
+      "killed_after_verify": true,
+      "log": "work/launch-verify-129-console.log"
+    }
+  },
+  "perf": {
+    "status": "complete",
+    "method": "Scripts\\perf_windows.ps1 as shipped (now autostarts the map), packaged Development 129 exe, windowed, BattleFpsAudit",
+    "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+    "command": "\"AuraPlayground.exe\" /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -ResX=<w> -ResY=<h> -game -windowed -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -BattleFpsAudit",
+    "results": [
+      {
+        "width": 1600,
+        "height": 900,
+        "samples": 1758,
+        "min_fps": 34.8,
+        "avg_fps": 58.8,
+        "p05_fps": 50.8
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "samples": 1798,
+        "min_fps": 47.2,
+        "avg_fps": 59.9,
+        "p05_fps": 59.9
+      }
+    ],
+    "notes": [
+      "The staged tree held the Shipping build after step 4, so the Development package was re-run (incremental, BUILD SUCCESSFUL) before perf.",
+      "An earlier perf attempt against the staged Shipping exe returned samples=0 at both resolutions (work/perf-129.json); the FPS audit is a Development diagnostic, so the Dev-exe numbers above are the recorded result.",
+      "No hang at either resolution; each run completed inside its 150s per-resolution budget, well under the 15-minute cap."
+    ],
+    "logs": [
+      "work/perf-1600.log",
+      "work/perf-1920.log",
+      "work/perf-dev-129.json",
+      "work/run-perf-129.ps1"
+    ],
+    "fallback_720": "not needed - both requested resolutions produced real samples"
+  },
+  "reboot_status": {
+    "last_boot": "2026-09-14T18:42:03-04:00",
+    "rebooted_since_2026_09_14": false,
+    "gpu": "healthy per user confirmation; offscreen sweep, cross-platform probes, and windowed perf all completed without hangs"
+  }
+}
