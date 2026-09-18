@@ -50,12 +50,14 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
   }
  }
  BoostRemaining=FMath::Max(0.f,BoostRemaining-Dt);
- // Grass is slow and expensive: a visible time loss every second and a half.
- if(bGrass&&Speed>250&&Recovery<=0&&IsMovingOnGround()){
+ // Grass on the BeltLine is slow and expensive: a visible time loss every second
+ // and a half. The park lawn is not - riding it there costs nothing.
+ const bool bBeltGrass=bGrass&&CharacterOwner&&BattleGrassRules::IsBeltLine(CharacterOwner->GetActorLocation());
+ if(bBeltGrass&&Speed>250&&Recovery<=0&&IsMovingOnGround()){
   GrassSeconds+=Dt;
-  if(GrassSeconds>=1.5f){
+  if(GrassSeconds>=2.f){
    GrassSeconds=0;
-   if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->AdjustRunTime(-3,TEXT("OFF THE GRASS"));
+   if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->AdjustRunTime(-1,TEXT("OFF THE GRASS"));
   }
  }else GrassSeconds=0;
  SmoothedSteer=SteeringResponse(SmoothedSteer,Recovery>0?0.f:Steer,Dt);
@@ -120,7 +122,8 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
  }
  static const float Caps[]={420,700,1000,1300,1600};static const float Accel[]={640,500,420,360,320};
  static const float ArcadeCaps[]={650,950,1300,1650,1950};
- const float Cap=(BoostRemaining>0?(bRealHandling?1800.f:2200.f):(bRealHandling?Caps[Gear-1]:ArcadeCaps[Gear-1]))*(bGrass?.85f:1.f);
+ const bool bBeltGrass=bGrass&&BattleGrassRules::IsBeltLine(CharacterOwner->GetActorLocation());
+ const float Cap=(BoostRemaining>0?(bRealHandling?1800.f:2200.f):(bRealHandling?Caps[Gear-1]:ArcadeCaps[Gear-1]))*(bBeltGrass?.85f:1.f);
  const float Drag=Speed>0?22.f+Speed*.012f:0;
  if(BoostRemaining>0&&Brake<=0&&(!bRealHandling||IsMovingOnGround()))Speed=FMath::FInterpConstantTo(Speed,Cap,Dt,1500.f);
  if(bRealHandling){
@@ -128,7 +131,7 @@ void UBattleBikeMovement::CalcVelocity(float Dt,float Friction,bool Fluid,float 
    const FVector Normal=CurrentFloor.HitResult.ImpactNormal.GetSafeNormal();
    const FVector Tangent=FVector::VectorPlaneProject(CharacterOwner->GetActorForwardVector(),Normal).GetSafeNormal();
    const float GradeForce=-980.f*Tangent.Z;
-   const float Resistance=Speed>0?(bGrass?65.f:12.f)+.000025f*Speed*Speed:0.f;
+   const float Resistance=Speed>0?(bBeltGrass?65.f:12.f)+.000025f*Speed*Speed:0.f;
    // An e-bike brake cuts motor assistance even if the pedal key is held.
    const float Motor=Brake>0?0.f:Pedal*Accel[Gear-1]*FMath::Clamp((Cap-Speed)/150.f,0.f,1.f);
    // Preserve downhill coasting, but let the brake stop and hold on every

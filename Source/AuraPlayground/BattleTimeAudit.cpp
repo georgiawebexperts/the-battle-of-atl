@@ -33,6 +33,10 @@ void ABattleMacController::TickTimeAudit(float Dt){
   CHECK_TIME(Pickup,"Pickup fixture missing");Pickup->bTimeBonus=true;Pickup->FinishSpawning(FTransform(Bike->GetActorLocation()+FVector(70,0,-20)));Pickup->SetActorTickEnabled(false);
   CHECK_TIME(Pickup->TryCollect(Bike)&&Mode->TimeRemaining==328&&!Pickup->TryCollect(Bike)&&Mode->TimeRemaining==328,"Bonus collection/repeat guard failed");
   CHECK_TIME(Bike->Dismount(),"Dismount failed");Person=Cast<ABattleRider>(GetPawn());Mode->Tick(2);CHECK_TIME(FMath::IsNearlyEqual(Mode->TimeRemaining,325.5f,.001f),"Foot clock rate wrong");
+  // Dismounting deliberately holsters the pistol, so the on-foot shots below
+  // have to draw first. This audit predates the draw step and was firing a
+  // holstered gun, which is why it reported "Pistol failed".
+  CHECK_TIME(Person&&Person->ToggleDrawWeapon(),"Could not draw the pistol after dismount");
   CHECK_TIME(Target(true),"Zombie fixture missing");Next();
  }else if(TimeAuditStage==1){Aim();if(TimeAuditClock>.4f){const float Before=Mode->TimeRemaining;CHECK_TIME(Person->Fire(),"Pistol failed");CHECK_TIME(FMath::IsNearlyEqual(Mode->TimeRemaining-Before,10.f,.001f),"Zombie hit did not add ten seconds");TimeAuditTarget->Destroy();CHECK_TIME(Target(false),"Pedestrian fixture missing");Next();}}
  else if(TimeAuditStage==2){Aim();if(TimeAuditClock>.4f){const float Before=Mode->TimeRemaining;CHECK_TIME(Person->Fire(),"Second pistol shot failed");CHECK_TIME(FMath::IsNearlyEqual(Mode->TimeRemaining-Before,-10.f,.001f),"Pedestrian hit did not subtract ten seconds");TimeAuditTarget->Destroy();Bike->GiveWeapon(1,18);CHECK_TIME(Person->SelectWeapon(1)&&Target(true),"Shotgun fixture failed");Next();}}

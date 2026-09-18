@@ -14,6 +14,17 @@ class UPoseableMeshComponent;
 class UCameraComponent;
 class USpringArmComponent;
 
+/**
+ * Grass rules. Riding the park lawn is fine and costs nothing. Grass on the
+ * BeltLine stretch is the thing the Trees ATL crew objects to, so the time
+ * penalty and the pursuit both key off this one definition - they used to be
+ * written out separately, which is how they can drift apart.
+ */
+namespace BattleGrassRules {
+inline constexpr float BeltLineY=20000.f;
+inline bool IsBeltLine(const FVector& P){return P.Y>BeltLineY;}
+}
+
 UCLASS()
 class AURAPLAYGROUND_API UBattleBikeMovement : public UCharacterMovementComponent {
  GENERATED_BODY()

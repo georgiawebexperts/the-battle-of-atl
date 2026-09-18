@@ -38,7 +38,7 @@ void ABattleGrassWatch::Tick(float Dt){
  }
  Pursuers=Crew.Num();
  if(!Bike||!Bike->Ride)return;
- const bool bBeltLine=Bike->GetActorLocation().Y>20000.f;
+ const bool bBeltLine=BattleGrassRules::IsBeltLine(Bike->GetActorLocation());
  const bool bOnGrass=Bike->Ride->bGrass&&Bike->Ride->Speed>250&&!Bike->bParked;
  Cooldown-=Dt;
  if(!bBeltLine||!bOnGrass||Cooldown>0||Crew.Num()>=2)return;
