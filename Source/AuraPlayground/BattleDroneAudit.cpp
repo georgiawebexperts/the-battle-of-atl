@@ -59,10 +59,21 @@ void ABattleMacController::TickDroneAudit(float Dt){
   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattleDroneReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("distant-drone.png"),false,false);
   Next();
  }else if(DroneStage==7&&DroneClock>.2f){
-  DCHECK(Person&&Drone&&Person->Fire()&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT"),"Actual pistol shot did not hit distant drone or show feedback");Next();
+  // Fire only once the view has actually swung onto the drone. The aim is
+  // re-applied every tick above, but the player view follows a frame later, so
+  // a fixed 0.2 s of stage clock could fire at where the crosshair had been
+  // rather than where the drone is. This is the shot that failed three packaged
+  // sweeps in a row on 2026-09-18 and passed every standalone run.
+  FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
+  const float Off=(Person&&Drone)?FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(View.Vector(),(Drone->GetActorLocation()-Eye).GetSafeNormal()),-1.f,1.f))):180.f;
+  if(Off<=1.5f){DCHECK(Person&&Drone&&Person->Fire()&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT"),"Actual pistol shot did not hit distant drone or show feedback");Next();}
  }else if(DroneStage==8&&DroneClock>.35f){
-  DCHECK(Person&&Drone&&Person->Fire()&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==15,"Second pistol shot did not destroy drone with correct ammo/feedback");
-  Key(EKeys::RightMouseButton,false);Finish(true,TEXT("Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass"));
+  FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
+  const float Off=(Person&&Drone)?FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(View.Vector(),(Drone->GetActorLocation()-Eye).GetSafeNormal()),-1.f,1.f))):180.f;
+  if(Off<=1.5f){
+   DCHECK(Person&&Drone&&Person->Fire()&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==15,"Second pistol shot did not destroy drone with correct ammo/feedback");
+   Key(EKeys::RightMouseButton,false);Finish(true,TEXT("Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass"));
+  }
  }
  if(DroneClock>18&&DroneStage!=99){
   if(Drone){const FString Why=FString::Printf(TEXT("Drone audit timeout: %s"),*Drone->EndReason);Finish(false,*Why);return;}

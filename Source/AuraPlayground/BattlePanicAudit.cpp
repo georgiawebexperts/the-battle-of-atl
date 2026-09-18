@@ -14,9 +14,24 @@
 
 void TickBattlePanicAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<APiedmontPedestrian> People[2];FVector Starts[2],Source;TWeakObjectPtr<ACameraActor> Camera;int Stage=0;float Clock=0,Travel[2]={0,0};bool Done=false;};static FState S;
- auto* World=PC->GetWorld();if(S.World!=World){S=FState();S.World=World;}if(S.Done||World->GetTimeSeconds()<5)return;
+ struct FState{TWeakObjectPtr<UWorld> World;TWeakObjectPtr<APiedmontPedestrian> People[2];FVector Starts[2],Source;TWeakObjectPtr<ACameraActor> Camera;int Stage=0;float Clock=0,Travel[2]={0,0},NavWait=0;bool Done=false,Ready=false;};static FState S;
+ auto* World=PC->GetWorld();if(S.World!=World){S=FState();S.World=World;}if(S.Done)return;
  auto Finish=[&](bool Pass,const TCHAR* Why){S.Done=true;UE_LOG(LogTemp,Display,TEXT("BattlePanicAudit: {\"passed\":%s,\"stage\":%d,\"reason\":\"%s\",\"male_travel_cm\":%.2f,\"female_travel_cm\":%.2f}"),Pass?TEXT("true"):TEXT("false"),S.Stage,Why,S.Travel[0],S.Travel[1]);PC->ConsoleCommand(TEXT("quit"));};
+ // The runtime navigation mesh for this world builds on wall-clock time, while
+ // this audit's clock is game time. Starting at a fixed 5 s of game time meant
+ // that on a loaded machine the witnesses were spawned - and then asked to
+ // flee - before the mesh existed, so they stood still and the audit reported
+ // a failed flee. Measured 2026-09-18: the identical packaged 120 binary passed
+ // in an idle minute (male_travel 1063 cm, female 1285 cm) and then failed five
+ // runs in a row on a loaded machine (male_travel 305 cm, female 0 cm), in the
+ // editor as well. Wait for the build rather than guessing, with a deadline so
+ // a genuine hang still reports instead of blocking the sweep forever.
+ auto* NavSys=FNavigationSystem::GetCurrent<UNavigationSystemV1>(World);
+ if(!S.Ready){
+  if(World->GetTimeSeconds()<4)return;
+  if(NavSys&&NavSys->IsNavigationBuildInProgress()){S.NavWait+=Dt;if(S.NavWait<150)return;Finish(false,TEXT("Navigation never finished building"));return;}
+  S.Ready=true;
+ }
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(PC));if(!Mode)return;
  auto* Rider=Cast<ABattleRider>(PC->GetPawn());auto* Bike=Rider?Rider->ParkedBike.Get():Cast<ABattleBike>(PC->GetPawn());if(!Bike){Finish(false,TEXT("Missing player"));return;}
  auto Capture=[&](const TCHAR* Name){FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePanicReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/Name,false,false);};
@@ -45,7 +60,10 @@ void TickBattlePanicAudit(APlayerController* PC,float Dt){
  if(S.Stage==2&&S.Clock>1){Capture(TEXT("panic-running.png"));S.Stage=3;}
  if(S.Stage==3&&S.Clock>3){
   for(int I=0;I<2;++I){auto* P=S.People[I].Get();S.Travel[I]=FVector::Dist2D(P->GetActorLocation(),S.Starts[I]);
-   if(S.Travel[I]<450||FVector::Dist2D(P->GetActorLocation(),S.Source)<FVector::Dist2D(S.Starts[I],S.Source)+300||P->PanicRemaining<14||P->GetCharacterMovement()->MaxWalkSpeed<400){Finish(false,TEXT("Live witness did not flee away and remain panicked"));return;}}
+   const float Away=FVector::Dist2D(P->GetActorLocation(),S.Source)-FVector::Dist2D(S.Starts[I],S.Source);
+   // Name the condition that actually failed. "Did not flee" covered four
+   // different things at once, which is how a navmesh race read as a panic bug.
+   if(S.Travel[I]<450||Away<300||P->PanicRemaining<14||P->GetCharacterMovement()->MaxWalkSpeed<400){Finish(false,*FString::Printf(TEXT("Live witness %d did not flee away and remain panicked: travel=%.1f away=%.1f panic=%.1f speed=%.1f"),I,S.Travel[I],Away,P->PanicRemaining,P->GetCharacterMovement()->MaxWalkSpeed));return;}}
   Capture(TEXT("panic-away.png"));S.Stage=4;S.Clock=0;
  }
  // Let the requested screenshot render before switching back to the player.

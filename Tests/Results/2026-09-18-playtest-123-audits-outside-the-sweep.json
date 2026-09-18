@@ -1,0 +1,79 @@
+{
+  "build": "123",
+  "date": "2026-09-18",
+  "author": "codex-maclaptop",
+  "request": "finish the tasks / let me know when i can test, plus a second Windows content bundle",
+  "answer": "Four audits that were red or hanging, and one that fails only in a sweep, are all green and inside the sweep. The sweep is 25 and packaged 123 is 25/25.",
+  "how_this_started": "Build 120 proved that an audit outside Scripts/run_quick_audits.sh can stay red for dozens of builds, because every green sweep said nothing about it. So the next move was to find the remaining reds, not to ship.",
+  "found_and_fixed": [
+    {
+      "audit": "BattleTutorialAudit",
+      "was": "failed in 8 s: \"Practice timer ran before gateway\", distance_cm 0.0",
+      "cause": "The sweep's COMMON flags pass -BattleSkipTutorial. The audit covers tutorial-time behaviour, so it was being run with the feature it tests switched off.",
+      "fix": "run_quick_audits.sh now takes a NoSkipTutorial token per entry that drops -BattleSkipTutorial for that audit only.",
+      "now": "{\"passed\":true,\"reason\":\"Untimed practice, actual road ride, controllable gate countdown and single-start timer pass\",\"distance_cm\":7572.0,\"max_error_cm\":37.2}",
+      "standalone_evidence": "work/opencheck/BattleTutorialAudit-noSkip.log"
+    },
+    {
+      "audit": "BattleMarketImpactAudit",
+      "was": "hung forever with no verdict at all",
+      "cause": "ABattleMarketClosure::Tick destroys the fence the moment bTutorialActive is false. With -BattleSkipTutorial the fence deleted itself before the audit could tick, so the audit never ran and never reported.",
+      "fix": "same NoSkipTutorial token. The fence behaviour is the game's designed behaviour and was left alone.",
+      "now": "{\"passed\":true,\"jump\":false,\"on_foot\":false,\"reason\":\"Real W approach remained outside gate; foot mode sprints; jump requires airtime\",\"closest_cm\":55.08}",
+      "standalone_evidence": "work/opencheck/BattleMarketImpactAudit-noSkip.log"
+    },
+    {
+      "audit": "BattleSpareBikeAudit",
+      "was": "failed packed and editor: phase 1, \"No nearby spare interaction\", bikes 6",
+      "cause": "Stale fixture, not a game bug. Dismount plays a 0.45 s step-off that rewrites the rider's position every tick, and the audit teleported to the spare bike immediately after Dismount(), so the next step-off frame dragged the rider back out of Nearest()'s 240 cm range. BattlePickupAudit had already been taught this lesson in build 112; this audit had not.",
+      "fix": "two new wait phases that hold until StepOffRemaining is 0 before approaching, with a 4 s deadline that reports \"Dismount never settled\". Registers the user-visible spare-bike swap, which is what a player walking up to a spare bike and pressing E relies on.",
+      "now": "{\"passed\":true,\"phase\":4,\"reason\":\"Actual spare stations, E interaction, carried ammo/health/horns, swimming guard and riding the abandoned bike again pass\"}"
+    },
+    {
+      "audit": "BattlePanicAudit",
+      "was": "failed standalone and in sweeps: stage 3, \"Live witness did not flee away and remain panicked\", male_travel 305 cm, female_travel 0 cm",
+      "this_one_looked_impossible": "The identical packaged 120 binary PASSED at 12:03 with male_travel 1063 cm and female_travel 1285 cm, then failed five runs in a row at 12:21 on the same bytes, in the editor as well. The 120 bundle has no symlinks and no file inside it newer than 12:03, so nothing on disk had moved.",
+      "cause": "The audit started at a fixed 5 s of GAME time, while the runtime navigation mesh for this world builds on WALL-CLOCK time. On a loaded machine the witnesses were spawned - and then asked to flee - before the mesh existed, so they stood still. This is the same shape as the BattleTroubleAudit fix in build 112.",
+      "fix": "wait for FNavigationSystem IsNavigationBuildInProgress() to clear instead of guessing, with a 150 s deadline that reports \"Navigation never finished building\" so a real hang still terminates. The stage 3 verdict now names which of the four conditions failed and prints travel, away-distance, panic and speed rather than one message covering all four.",
+      "now": "two clean passes: male 1147.22 / female 1042.17 and male 1146.54 / female 1294.08, against 1063 / 1285 for the one earlier pass - the same profile."
+    },
+    {
+      "audit": "BattleDroneAudit",
+      "was": "stage 7, \"Actual pistol shot did not hit distant drone or show feedback\" - failing in three consecutive packaged sweeps (120 editor, 121, 122) while passing every standalone run",
+      "cause": "Three failures in a row with a standalone pass in between is not random load, so it got fixed rather than waved through. The aim is re-applied every tick, but the player view follows a frame later, so a fixed 0.2 s of stage clock could fire at where the crosshair had been rather than where the drone is.",
+      "fix": "the shot is gated on the view actually being within 1.5 degrees of the drone, for both the wounding shot and the killing shot. The 18 s timeout still guards a genuine miss.",
+      "now": "passes inside the packaged sweep for the first time since build 120"
+    }
+  ],
+  "traps_found": [
+    "A unity-build landmine: editing BattleDroneAudit.cpp changed its size, which shifted UE's unity blob composition and pulled BattleScooterRideAudit.cpp (file-static \"Closest\") into the same blob as BattleTutorialAudit.cpp's local \"Closest\". Under -Werror -Wshadow that failed the build with an error in a file nobody had touched. Renamed the file-static to ScooterClosestCm. Read this as: a build failure after a small edit may point at a different file entirely.",
+    "The sweep had no timeout. BattleTutorialAudit returned \"passed\":true, logged PreExit Game, and then sat at 2% CPU for eighteen minutes while the sweep waited on nothing. run_quick_audits.sh now kills an audit after BATTLE_AUDIT_TIMEOUT (default 420 s) and still reads the verdict afterwards, so an audit that finished and lingered is scored on its own result."
+  ],
+  "sweep": {
+    "count": 25,
+    "packaged_123": "25/25 green",
+    "log": "work/sweep123.txt",
+    "added": "BattlePanicAudit, BattleSpareBikeAudit, BattleTutorialAudit, BattleMarketImpactAudit",
+    "note": "Build 120 was 21. The four new ones are the ones that were red or hanging and unwatched."
+  },
+  "windows_content_bundle_2": {
+    "file": "~/Desktop/BOA/BattleOfATL-windows-content-2-2026-09-18.zip",
+    "size": 4107347596,
+    "sha256": "a5623267f6a810517cf9360da69c1a1527faa83abf69332e531283abea7ef0ed",
+    "entries": 560,
+    "drive": "https://drive.google.com/file/d/1_Hy2rd4t6Pvsa1PCQcmvHfuT17tLoTKT/view?usp=sharing",
+    "verified": "anonymous range request returned content-range total 4107347596 and PK zip magic",
+    "contents": [
+      "Content/EuropeanHornbeam - 34 files, 2.4 GB",
+      "Content/CitySampleCrowd - 379 files, 1.6 GB",
+      "Content/BattleRetarget/City - 8 files, 12 MB",
+      "Content/BattleForTheA/Spirit/T_SpectralBlackBear.uasset and M_SpectralBlackBear.uasset",
+      "Content/BattleForTheA/Environment/KrogIncident/M_ScooterTrim.uasset and M_ScooterMetal.uasset"
+    ],
+    "paths": "project-relative, extract over the project root"
+  },
+  "packaged_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 123/The Battle of ATL.app",
+  "desktop_shortcut": "~/Desktop/BOA/The Battle of ATL.app -> Playtest 123",
+  "signature": "codesign --verify --deep --strict: valid on disk, satisfies its Designated Requirement",
+  "scope": "Audit and harness work only. No player-facing behaviour changed except that the spare-bike swap, the crowd panic and the market gate are now watched by the sweep. No settings menu, option list or saved-settings code was touched."
+}

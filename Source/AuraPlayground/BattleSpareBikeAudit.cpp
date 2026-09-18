@@ -46,7 +46,15 @@ void TickAudit(APlayerController* PC,float Dt){
   if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(PC)))if(Mode->Enemies)Mode->Enemies->bFreezeSpawns=true;
   for(TActorIterator<ABattleZombie> It(PC->GetWorld());It;++It)It->Destroy();
   for(TActorIterator<AActor> It(PC->GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattleSpareBike")))BCHECK(CheckWheels(*It),"Spare wheel floats above or sinks into its ground surface");
-  BCHECK(Bike->Dismount(),"Initial dismount failed");auto* P=Cast<ABattleRider>(PC->GetPawn());BCHECK(P&&Approach(P,Destination),"No walkable approach to spare bike");Phase=1;Clock=0;
+  BCHECK(Bike->Dismount(),"Initial dismount failed");Phase=10;Clock=0;
+ }else if(Phase==10){
+  // Dismount plays a 0.45 s step-off that drives the rider's location every
+  // tick. Teleporting to the spare bike before it settles is silently undone
+  // by the next step-off frame, which leaves the rider back at the saddle and
+  // Nearest() with nothing in range. Wait for the stance, then approach.
+  auto* P=Cast<ABattleRider>(PC->GetPawn());BCHECK(P&&Clock<4,"Dismount never settled");
+  if(P->StepOffRemaining>0)return;
+  BCHECK(Approach(P,Destination),"No walkable approach to spare bike");Phase=1;Clock=0;
  }else if(Phase==1&&Clock>.4f){
   static bool Captured=false;FString ReviewDir;FParse::Value(FCommandLine::Get(),TEXT("BattleSpareBikeReviewDir="),ReviewDir);
   if(!ReviewDir.IsEmpty()&&!Captured){auto* Camera=PC->GetWorld()->SpawnActor<ACameraActor>();const FVector Eye=Destination+FVector(240,-330,150);Camera->SetActorLocationAndRotation(Eye,(Destination+FVector(0,0,10)-Eye).Rotation());PC->SetViewTarget(Camera);FScreenshotRequest::RequestScreenshot(ReviewDir/TEXT("spare-bike.png"),true,false);Captured=true;Clock=0;return;}
@@ -56,7 +64,11 @@ void TickAudit(APlayerController* PC,float Dt){
   bool AbandonedWheelsChecked=false;
   for(TActorIterator<AActor> It(PC->GetWorld());It;++It)if(It->ActorHasTag(TEXT("BattleSpareBike"))&&It->GetActorLocation().Equals(Original.GetLocation(),1.f)){AbandonedWheelsChecked=CheckWheels(*It);break;}
   BCHECK(AbandonedWheelsChecked,"Relocated abandoned bike has unsupported wheels");
-  BCHECK(Bike->Dismount(),"Second dismount failed");auto* P=Cast<ABattleRider>(PC->GetPawn());BCHECK(P&&Approach(P,Original.GetLocation()),"Could not approach abandoned bike");Phase=3;Clock=0;
+  BCHECK(Bike->Dismount(),"Second dismount failed");Phase=20;Clock=0;
+ }else if(Phase==20){
+  auto* P=Cast<ABattleRider>(PC->GetPawn());BCHECK(P&&Clock<4,"Second dismount never settled");
+  if(P->StepOffRemaining>0)return;
+  BCHECK(Approach(P,Original.GetLocation()),"Could not approach abandoned bike");Phase=3;Clock=0;
  }else if(Phase==3&&Clock>.3f){E();Phase=4;Clock=0;}
  else if(Phase==4&&Clock>.3f){BCHECK(PC->GetPawn()==Bike&&FVector::Dist2D(Bike->GetActorLocation(),Original.GetLocation())<30&&Bike->Inventory[0].Reserve>=Reserve,"Could not ride abandoned bike again with supplies");Finish(true,TEXT("Actual spare stations, E interaction, carried ammo/health/horns, swimming guard and riding the abandoned bike again pass"));}
 #undef BCHECK

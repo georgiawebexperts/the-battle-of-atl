@@ -7,11 +7,11 @@
 static TWeakObjectPtr<ABattleScooterScene> RideScene;
 static TWeakObjectPtr<ACameraActor> StagingCamera;
 static bool Prepared=false;
-static float Closest=1.e9f;
+static float ScooterClosestCm=1.e9f;
 bool PrepareScooterRideAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
  if(!FParse::Param(FCommandLine::Get(),TEXT("BattleScooterRideAudit")))return true;
- if(Prepared){if(RideScene.IsValid()&&PC->GetPawn())Closest=FMath::Min(Closest,float(FVector::Dist2D(RideScene->GetActorLocation(),PC->GetPawn()->GetActorLocation())));return true;}
+ if(Prepared){if(RideScene.IsValid()&&PC->GetPawn())ScooterClosestCm=FMath::Min(ScooterClosestCm,float(FVector::Dist2D(RideScene->GetActorLocation(),PC->GetPawn()->GetActorLocation())));return true;}
  const FVector Site(30349.800013,114057.877225,1110.508188);
  if(!RideScene.IsValid()){
   for(TActorIterator<ABattleScooterScene> Existing(PC->GetWorld());Existing;++Existing)Existing->Destroy();
@@ -28,8 +28,8 @@ bool PrepareScooterRideAudit(APlayerController* PC,float Dt){
 bool ReportScooterRideAudit(){
 #if !UE_BUILD_SHIPPING
  if(!FParse::Param(FCommandLine::Get(),TEXT("BattleScooterRideAudit")))return true;
- const bool Pass=RideScene.IsValid()&&RideScene->bSceneReady&&RideScene->bVisitStarted&&Closest<2500;
- UE_LOG(LogTemp,Display,TEXT("ScooterRideAudit: {\"passed\":%s,\"ready\":%s,\"visit_started\":%s,\"nearest_scene_cm\":%.2f,\"participants\":%d}"),Pass?TEXT("true"):TEXT("false"),RideScene.IsValid()&&RideScene->bSceneReady?TEXT("true"):TEXT("false"),RideScene.IsValid()&&RideScene->bVisitStarted?TEXT("true"):TEXT("false"),Closest,RideScene.IsValid()?RideScene->Participants.Num():-1);return Pass;
+ const bool Pass=RideScene.IsValid()&&RideScene->bSceneReady&&RideScene->bVisitStarted&&ScooterClosestCm<2500;
+ UE_LOG(LogTemp,Display,TEXT("ScooterRideAudit: {\"passed\":%s,\"ready\":%s,\"visit_started\":%s,\"nearest_scene_cm\":%.2f,\"participants\":%d}"),Pass?TEXT("true"):TEXT("false"),RideScene.IsValid()&&RideScene->bSceneReady?TEXT("true"):TEXT("false"),RideScene.IsValid()&&RideScene->bVisitStarted?TEXT("true"):TEXT("false"),ScooterClosestCm,RideScene.IsValid()?RideScene->Participants.Num():-1);return Pass;
 #else
  return true;
 #endif
