@@ -101,6 +101,7 @@ void TickBattleCanopyReview(APlayerController* PC,float Dt);
 void TickBattleTreeRideAudit(APlayerController* PC,float Dt);
 void TickBattleCurseAudit(APlayerController* PC,float Dt);
 void TickBattlePropProbe(APlayerController* PC,float Dt);
+void TickBattlePanelProbe(APlayerController* PC,float Dt);
 void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt);
 void TickBattleAimAudit(APlayerController* PC,float Dt);
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
@@ -153,6 +154,8 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCurseAudit")))TickBattleCurseAudit(this,Dt);
  static float PropProbeRadius=0;
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePropProbe"))||FParse::Value(FCommandLine::Get(),TEXT("BattlePropProbe="),PropProbeRadius))TickBattlePropProbe(this,Dt);
+ static float PanelProbeRadius=0;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePanelProbe"))||FParse::Value(FCommandLine::Get(),TEXT("BattlePanelProbe="),PanelProbeRadius))TickBattlePanelProbe(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePhoneRideAudit")))TickBattlePhoneRideAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerRecoveryReview")))TickBattlePlayerRecoveryReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerCrashAudit")))TickBattlePlayerCrashAudit(this,Dt);

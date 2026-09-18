@@ -38,8 +38,8 @@ public:
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> BrickParts;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> DarkParts;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> RedParts;
- UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> GlassParts;
- UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> ConcreteParts;
+UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> GlassParts;
+UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> ConcreteParts;
 private:
  /** Drops a landmark-local point onto whatever ground is there now. */
  FVector GroundAt(const FVector& Local) const;

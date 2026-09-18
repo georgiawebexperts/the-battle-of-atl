@@ -56,6 +56,18 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadOnly) FRotator SaxForeR=FRotator(-65,0,-20);
  UPROPERTY(EditAnywhere,BlueprintReadOnly) bool bPicnicChiller=false;
  UPROPERTY(EditAnywhere,BlueprintReadOnly) int32 PicnicPose=0;
+ // World Z of the cloth the chiller sits on, and the mesh offset that puts them
+ // on it. Measured against the posed skeleton once, then held.
+ UPROPERTY(BlueprintReadOnly) float PicnicClothZ=0.f;
+ // A zero-world-height sentinel would be wrong here: the park sits at a negative
+ // Z, so "not set" has to be its own flag or the pair sit 20 cm low in the grass.
+ bool bPicnicClothSet=false;
+ UPROPERTY(BlueprintReadOnly) float PicnicBodyZ=0.f;
+ // Degrees to yaw the pelvis so the torso faces the way the actor faces. The
+ // crowd rig's rest yaw is not the actor's yaw; measured once, reused.
+ UPROPERTY(BlueprintReadOnly) float PicnicFaceYaw=0.f;
+ bool bPicnicPoseSolved=false;
+ bool bPicnicFaceSolved=false;
  UPROPERTY(BlueprintReadOnly) float ChillClock=0;
  float GroupSide=1;
  void Configure(EPiedmontPedestrianKind NewKind);

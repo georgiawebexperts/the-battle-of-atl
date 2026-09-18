@@ -28,12 +28,15 @@ void ABattlePicnicGroup::BeginPlay(){
  Super::BeginPlay();
  auto* Cloth=LoadObject<UMaterialInterface>(nullptr,GroupVariant%2?TEXT("/Game/BattleForTheA/Materials/M_ColaRed.M_ColaRed"):TEXT("/Game/PiedmontRide/Materials/M_Safety.M_Safety"));
  Blanket->SetMaterial(0,Cloth);PicnicBag->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/PiedmontRide/Materials/M_BridgeWood.M_BridgeWood")));Drink->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_ColaRed.M_ColaRed")));
- const FVector Offsets[]={FVector(-32,-72,88),FVector(42,68,88)};
+ // Side by side across the cloth's short axis, both facing the same way, so the
+ // two seated pairs of legs run parallel instead of into each other.
+ const FVector Offsets[]={FVector(-26,-52,88),FVector(26,52,88)};
+ const float ClothTopZ=Blanket->GetComponentLocation().Z+50.f*Blanket->GetComponentScale().Z;
  for(int32 I=0;I<2;I++){
-  const FTransform T(FRotator(0,GetActorRotation().Yaw+(I?165.f:8.f),0),GetActorLocation()+GetActorRotation().RotateVector(Offsets[I]));
+  const FTransform T(FRotator(0,GetActorRotation().Yaw,0),GetActorLocation()+GetActorRotation().RotateVector(Offsets[I]));
   auto* Person=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),T,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
-  if(!Person)continue;Person->bPicnicChiller=true;Person->PicnicPose=(GroupVariant+I)%3;Person->CityAppearanceVariant=(GroupVariant*2+I)%8;Person->CityOutfitVariant=(GroupVariant*3+I)%8;Person->FinishSpawning(T);Chillers.Add(Person);
- }
+  if(!Person)continue;Person->bPicnicChiller=true;Person->PicnicPose=(GroupVariant+I)%3;Person->PicnicClothZ=ClothTopZ;Person->bPicnicClothSet=true;Person->CityAppearanceVariant=(GroupVariant*2+I)%8;Person->CityOutfitVariant=(GroupVariant*3+I)%8;Person->FinishSpawning(T);Chillers.Add(Person);
+}
  bReady=Chillers.Num()==2;
 }
 void ABattlePicnicGroup::EndPlay(const EEndPlayReason::Type Reason){for(auto P:Chillers)if(IsValid(P))P->Destroy();Super::EndPlay(Reason);}
@@ -59,7 +62,14 @@ void ABattlePicnicDirector::Tick(float Dt){
  if(bAuditDone||!FParse::Param(FCommandLine::Get(),TEXT("BattlePicnicAudit")))return;AuditClock+=Dt;
  if(Groups.Num()!=DesiredGroups){if(AuditClock>3){UE_LOG(LogTemp,Display,TEXT("BattlePicnicAudit: {\"passed\":false,\"groups\":%d,\"desired\":%d,\"failures\":%d}"),Groups.Num(),DesiredGroups,PlacementFailures);bAuditDone=true;if(auto* PC=UGameplayStatics::GetPlayerController(this,0))UKismetSystemLibrary::QuitGame(this,PC,EQuitPreference::Quit,false);}return;}
  FString ReviewDir;const bool Review=FParse::Value(FCommandLine::Get(),TEXT("BattlePicnicReviewDir="),ReviewDir);
- if(Review&&!bReviewSetup&&AuditClock>.25f){const FVector Focus=Groups[0]->GetActorLocation()+FVector(0,0,55),Eye=Focus+FVector(-450,-420,190);if(auto* PC=UGameplayStatics::GetPlayerController(this,0))if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))PC->SetViewTarget(Camera);bReviewSetup=true;}
+ // -BattlePicnicReviewAngle=<degrees> orbits the review camera, so a pose can be
+ // judged from the front instead of only from whichever side the default offset
+ // happens to give. The default is the angle that framed the original defect.
+ if(Review&&!bReviewSetup&&AuditClock>.25f){
+  float Orbit=-47.f;FParse::Value(FCommandLine::Get(),TEXT("BattlePicnicReviewAngle="),Orbit);
+  const FVector Focus=Groups[0]->GetActorLocation()+FVector(0,0,55),Eye=Focus+FRotator(0,Orbit,0).RotateVector(FVector(0,-615,190));
+  if(auto* PC=UGameplayStatics::GetPlayerController(this,0))if(auto* Camera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))PC->SetViewTarget(Camera);bReviewSetup=true;
+ }
  auto* Sample=Groups[0]->Chillers[0].Get();if(!bAuditSampled&&AuditClock>.6f&&Sample){AuditHand=Sample->Body->GetSocketLocation(TEXT("hand_r"));bAuditSampled=true;}
  if(bAuditSampled&&Sample)AuditMotion=FMath::Max(AuditMotion,float(FVector::Dist(AuditHand,Sample->Body->GetSocketLocation(TEXT("hand_r")))));
  if(Review&&!ReviewDir.IsEmpty()&&AuditClock>5.1f&&AuditClock-Dt<=5.1f)FScreenshotRequest::RequestScreenshot(ReviewDir/TEXT("picnic-groups.png"),false,false);

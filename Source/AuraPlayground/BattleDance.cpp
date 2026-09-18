@@ -22,11 +22,31 @@ ABattleDanceCircle::ABattleDanceCircle(){
  PrimaryActorTick.bCanEverTick=true;RootComponent=CreateDefaultSubobject<USceneComponent>(TEXT("DanceCircleRoot"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
- Speaker=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ParkSpeaker"));Speaker->SetupAttachment(RootComponent);Speaker->SetStaticMesh(Cube.Object);Speaker->SetRelativeLocation(FVector(0,0,55));Speaker->SetRelativeScale3D(FVector(.32,.22,.55));
- SpeakerFace=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpeakerCone"));SpeakerFace->SetupAttachment(RootComponent);SpeakerFace->SetStaticMesh(Cylinder.Object);SpeakerFace->SetRelativeLocation(FVector(-17,0,55));SpeakerFace->SetRelativeRotation(FRotator(90,0,0));SpeakerFace->SetRelativeScale3D(FVector(.12,.12,.025));
- Label=CreateDefaultSubobject<UTextRenderComponent>(TEXT("DanceLabel"));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(0,0,125));Label->SetText(FText::FromString(TEXT("PARK DJ")));Label->SetWorldSize(24);Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor(255,185,100));
+ // The rig, not a lone slab. The cabinet used to be centred 55 cm up, so a
+ // 55 cm box floated with 27 cm of grass under it - that pale floating panel in
+ // Elliott's 3:47:39 screenshot is this speaker, identified by -BattlePanelProbe
+ // walking every part within 30 m of the DJ. It is a proper stack now: two
+ // cabinets whose feet are on the lawn, a woofer and a horn on each face, and
+ // the PARK DJ sign above them.
+ //
+ // The actor itself is placed at ground + 8 cm, so a part's relative Z is 8 cm
+ // above the lawn: -8 puts a component's underside on the ground.
+ Speaker=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ParkSpeaker"));Speaker->SetupAttachment(RootComponent);Speaker->SetStaticMesh(Cube.Object);Speaker->SetRelativeLocation(FVector(0,0,19.5f));Speaker->SetRelativeScale3D(FVector(.32,.22,.55));
+ SpeakerFace=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpeakerCone"));SpeakerFace->SetupAttachment(RootComponent);SpeakerFace->SetStaticMesh(Cylinder.Object);SpeakerFace->SetRelativeLocation(FVector(-16.6f,0,18));SpeakerFace->SetRelativeRotation(FRotator(90,0,0));SpeakerFace->SetRelativeScale3D(FVector(.20,.20,.03));
+ Horn=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpeakerHorn"));Horn->SetupAttachment(RootComponent);Horn->SetStaticMesh(Cube.Object);Horn->SetRelativeLocation(FVector(-16.8f,0,36));Horn->SetRelativeScale3D(FVector(.09,.13,.05));
+ Speaker2=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ParkSpeakerB"));Speaker2->SetupAttachment(RootComponent);Speaker2->SetStaticMesh(Cube.Object);Speaker2->SetRelativeLocation(FVector(0,52,14));Speaker2->SetRelativeScale3D(FVector(.28,.20,.44));
+ Speaker2Face=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpeakerConeB"));Speaker2Face->SetupAttachment(RootComponent);Speaker2Face->SetStaticMesh(Cylinder.Object);Speaker2Face->SetRelativeLocation(FVector(-14.6f,52,12));Speaker2Face->SetRelativeRotation(FRotator(90,0,0));Speaker2Face->SetRelativeScale3D(FVector(.16,.16,.03));
+ for(int32 I=0;I<4;++I){
+  auto* Foot=CreateDefaultSubobject<UStaticMeshComponent>(*FString::Printf(TEXT("SpeakerFoot%d"),I));
+  Foot->SetupAttachment(RootComponent);Foot->SetStaticMesh(Cube.Object);
+  Foot->SetRelativeLocation(FVector((I%2)?13.f:-13.f,(I<2)?8.f:60.f,-6.f));
+  Foot->SetRelativeScale3D(FVector(.05,.05,.06));
+  SpeakerFeet.Add(Foot);
+ }
+ Label=CreateDefaultSubobject<UTextRenderComponent>(TEXT("DanceLabel"));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(0,0,62));Label->SetText(FText::FromString(TEXT("PARK DJ")));Label->SetWorldSize(24);Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor(255,185,100));
  Music=CreateDefaultSubobject<UAudioComponent>(TEXT("DanceMusic"));Music->SetupAttachment(RootComponent);Music->bAutoActivate=false;Music->bOverrideAttenuation=true;Music->AttenuationOverrides.bAttenuate=true;Music->AttenuationOverrides.bSpatialize=true;Music->AttenuationOverrides.AttenuationShapeExtents=FVector(120);Music->AttenuationOverrides.FalloffDistance=1700;
- for(auto* Part:{Speaker.Get(),SpeakerFace.Get()}){Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);}
+ for(auto* Part:{Speaker.Get(),SpeakerFace.Get(),Speaker2.Get(),Speaker2Face.Get(),Horn.Get()}){Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);Part->SetCanEverAffectNavigation(false);}
+ for(auto& Foot:SpeakerFeet)if(Foot){Foot->SetCollisionEnabled(ECollisionEnabled::NoCollision);Foot->SetCanEverAffectNavigation(false);}
  Tags.Add(TEXT("BattleDanceCircle"));
 }
 void ABattleDanceCircle::BeginPlay(){
@@ -41,6 +61,11 @@ void ABattleDanceCircle::BeginPlay(){
  if(!Grounded)return;SetActorLocation(Center+FVector(0,0,8));
  Speaker->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/PiedmontRide/Materials/M_GunMetal.M_GunMetal")));
  SpeakerFace->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow")));
+ if(auto* Metal=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/PiedmontRide/Materials/M_GunMetal.M_GunMetal"))){
+  Speaker2->SetMaterial(0,Metal);Horn->SetMaterial(0,Metal);
+  for(auto& Foot:SpeakerFeet)if(Foot)Foot->SetMaterial(0,Metal);
+ }
+ if(auto* Glow=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow")))Speaker2Face->SetMaterial(0,Glow);
  if(auto* Theme=LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_BattleATLTheme2.S_BattleATLTheme2"))){Music->SetSound(Theme);Music->SetVolumeMultiplier(.18f);Music->Play();}
  FActorSpawnParameters Spawn;Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
  for(int32 I=0;I<DesiredDancers;I++){
@@ -48,7 +73,7 @@ void ABattleDanceCircle::BeginPlay(){
   if(!ABattleFrisbeeGroup::Ground(GetWorld(),Desired,Ground,true))continue;
   const FTransform Transform((Center-Ground).Rotation(),Ground+FVector(0,0,88));
   auto* Visitor=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),Transform,this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding);
-  if(!Visitor)continue;Visitor->bParkDancer=true;Visitor->DanceVariant=I%3;Visitor->CityAppearanceVariant=I;Visitor->CityOutfitVariant=I;Visitor->FinishSpawning(Transform);Dancers.Add(Visitor);
+  if(!Visitor)continue;Visitor->bParkDancer=true;Visitor->DanceVariant=I%6;Visitor->CityAppearanceVariant=I;Visitor->CityOutfitVariant=I;Visitor->FinishSpawning(Transform);Dancers.Add(Visitor);
  }
  bReady=Dancers.Num()==DesiredDancers&&DesiredDancers>0;
  UE_LOG(LogTemp,Display,TEXT("BattleDance: ready=%d dancers=%d desired=%d location=%s"),bReady,Dancers.Num(),DesiredDancers,*GetActorLocation().ToString());
