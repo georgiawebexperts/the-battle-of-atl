@@ -21,6 +21,11 @@ void ABattleMacController::TickMeleeAudit(float Dt){
  auto Finish=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleMeleeAudit: {\"passed\":%s,\"phase\":%d,\"reason\":\"%s\",\"swings\":%d,\"hits\":%d,\"kills\":%d}"),Pass?TEXT("true"):TEXT("false"),MeleePhase,Reason,Person?Person->MeleeSwings:0,Person?Person->MeleeHits:0,Bike->EnemyKills);UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);};
 #define CHECK_MELEE(C,R) if(!(C)){Finish(false,TEXT(R));return;}
  auto Place=[&](float Distance){Z->SetActorLocation(Person->GetActorLocation()+FVector(Distance,0,0),false,nullptr,ETeleportType::TeleportPhysics);Z->GetCharacterMovement()->StopMovementImmediately();SetControlRotation(FRotator::ZeroRotator);};
+ // A dismounting character keeps sliding, so the target placed before the windup
+ // is no longer in front of him 0.2 s later by the time the sweep resolves. The
+ // audit has to hold its own precondition: keep the target pinned in front for
+ // the phases that assume it is there, then let it go for the out-of-range test.
+ auto PinTarget=[&](){if(!Z||!Person)return;Z->SetActorLocation(Person->GetActorLocation()+FVector(140,0,0),false,nullptr,ETeleportType::TeleportPhysics);Z->GetCharacterMovement()->StopMovementImmediately();};
  auto Press=[&](){for(bool Down:{true,false})InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::F,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  if(MeleePhase==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
@@ -39,11 +44,19 @@ void ABattleMacController::TickMeleeAudit(float Dt){
  }
  else if(MeleePhase==6&&MeleeAuditClock>.8f){CHECK_MELEE(Z->Health==100&&Person->MeleeHits==2,"Melee hit through wall");MeleeWall->Destroy();Place(400);Press();MeleePhase=7;MeleeAuditClock=0;}
  else if(MeleePhase==7&&MeleeAuditClock>.8f){
-  CHECK_MELEE(Z->Health==100&&Person->MeleeHits==2,"Out of range melee hit");Person->Ammo=5;Person->Reload();CHECK_MELEE(Person->ReloadRemaining>0&&!Person->Melee(),"Melee bypassed reload");Person->ReloadRemaining=0;
+  CHECK_MELEE(Z->Health==100&&Person->MeleeHits==2,"Out of range melee hit");
+  // Reload only starts from a drawn weapon that has reserve rounds and no draw
+  // or melee in flight. The audit has to establish that precondition itself,
+  // exactly as BattleAmmoAudit does, or it is testing the guard rather than the
+  // interaction between reloading and melee.
+  if(Person->ParkedBike){auto& Item=Person->ParkedBike->Inventory[Person->CurrentWeapon];Item.Reserve=FMath::Max(1,Item.Reserve);}
+  Person->Ammo=5;if(!Person->bWeaponDrawn)Person->ToggleDrawWeapon();Person->DrawRemaining=0;Person->Reload();
+  CHECK_MELEE(Person->ReloadRemaining>0&&!Person->Melee(),"Melee bypassed reload");Person->ReloadRemaining=0;
   auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));CHECK_MELEE(Mode,"Missing mode");Mode->bRunEnded=true;CHECK_MELEE(!Person->Melee(),"Melee after end");Mode->bRunEnded=false;
   Bike->ApplyRiderDamage(1000);Person->Health=Bike->RiderHealth;CHECK_MELEE(!Person->Melee(),"Dead rider melee");Finish(true,TEXT("F input, windup, cooldown, 50 damage, kill reward, wall/range, reload and death guards pass"));return;
  }
  if(MeleeAuditClock>10)Finish(false,TEXT("Phase timeout"));
 #undef CHECK_MELEE
+ if(Z&&Person&&MeleePhase>=1&&MeleePhase<=6)PinTarget();
 #endif
 }

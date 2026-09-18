@@ -6,6 +6,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
+#include "Engine/OverlapResult.h"
+#include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
@@ -47,7 +49,12 @@ void ABattleRider::UpdateMelee(float Dt){
 void ABattleRider::ResolveMelee(){
  auto* PC=Cast<APlayerController>(GetController());if(!PC)return;
  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
- const FVector Start=Eye-FVector(0,0,25),End=Start+View.Vector()*185;
+ // The chain lock is swung from Ellison's own hands, so the sweep has to start
+ // at his body, not at the chase camera. PiedmontExplorer parks that camera 320 cm
+ // behind him, so sweeping 185 cm from the eye could only ever reach things
+ // behind his back - a target standing right in front of him was unhittable.
+ // The aim direction still comes from the view, so the swing follows the look.
+ const FVector Start=GetActorLocation(),End=Start+View.Vector()*185.f;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleChainLock),false,this);if(ParkedBike)Q.AddIgnoredActor(ParkedBike);
  FHitResult Hit;if(!GetWorld()->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(28),Q))return;
  auto* Victim=Cast<APiedmontExplorer>(Hit.GetActor());const bool Alive=Victim&&!Victim->bDead;

@@ -41,6 +41,7 @@ AUDITS=(
   "BattleSpeedAudit||"
   "BattleTimeAudit||"
   "BattleDiscAudit||"
+  "BattleMeleeAudit||"
 )
 
 FAILED=0
