@@ -78,7 +78,7 @@ private:
  void TickFurnitureAudit(float Dt);
  bool bFurnitureAudited=false;
  void TickDroneAudit(float Dt);
- int32 DroneStage=0;float DroneClock=0;TWeakObjectPtr<AActor> AuditDrone,AuditDroneWall;
+ int32 DroneStage=0;float DroneClock=0;int32 DroneSettleTicks=0,DroneShotAttempts=0;TWeakObjectPtr<AActor> AuditDrone,AuditDroneWall;
  void TickSkaterReview(float Dt);
  TWeakObjectPtr<AActor> SkateReviewActor,SkateReviewCamera;int32 SkateReviewFrames=0;
  void TickSkaterAudit(float Dt);
