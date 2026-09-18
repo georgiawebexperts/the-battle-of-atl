@@ -1,0 +1,31 @@
+{
+  "build": "126",
+  "date": "2026-09-18",
+  "author": "codex-maclaptop",
+  "request": "continue: the duck audit was the last red thing in the sweep",
+  "answer": "The duck coin flip was the fixture picking a duck near the shore. Packaged 126 is 26/26.",
+  "the_failure_signature": {
+    "pass": "over_water=4, bumps=1, lowest_offset_cm=-95.0, notice DUCK!",
+    "fail": "over_water=5, bumps=0, lowest_offset_cm=-1.0, no notice",
+    "reading": "In the failing mode the rider stops at the water's edge and never gets more than a centimetre below the surface. It was never a load problem: build 125 failed the sweep and then failed 1 of 2 standalone re-runs."
+  },
+  "root_cause": "Phase 0 counts ducks over open water with Lake->ContainsBike, but phase 1 selected the first duck that had settled with no water test at all. When that duck was near the shore the rider was teleported outside the hazard and cannot swim there.",
+  "fix": "Phase 1 requires a settled duck that is provably over open water, using the same predicate phase 0 already trusts, and waits up to 8 s for one instead of failing the moment none has qualified.",
+  "verified": "6 of 6 standalone passes, then green inside the packaged sweep.",
+  "sweep": {
+    "count": 26,
+    "packaged_126": "26/26 green",
+    "log": "work/sweep126.txt",
+    "note": "First fully green sweep since the suite grew past 21. 25 of 26 on build 125, where the only failure was this duck."
+  },
+  "github_blocker_finding": {
+    "reported": "The Windows agent's push fails with GH001 on Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset at 222 MB.",
+    "corrected_scope": "That is the only TRACKED file over GitHub's 100 MB hard limit - 233121482 bytes. The eleven other files over the limit are all inside Content/EuropeanHornbeam, which is entirely untracked on this Mac. `git ls-files Content/EuropeanHornbeam` returns 0.",
+    "warning_to_pass_on": "Do not git add the content extracted from the two Drive zips on the Windows side. EuropeanHornbeam's impostor textures run 105 MB to 207 MB and would put eleven more files over the limit; the push would fail again immediately on the next one.",
+    "repo_state": "Tracked Content totals 992 MB. .git is 1.1 GB across 553 commits. Remote github.com/georgiawebexperts/the-battle-of-atl, main on the server, piedmont-ride-v2 local.",
+    "not_done_deliberately": "Removing the 222 MB texture from history requires a force push that invalidates every existing clone and the 1 GB bundle, and Git LFS on Content/**/*.uasset would exceed the free 1 GB storage tier almost immediately. Both are Elliott's call."
+  },
+  "packaged_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 126/The Battle of ATL.app",
+  "desktop_shortcut": "~/Desktop/BOA/The Battle of ATL.app -> Playtest 126",
+  "signature": "codesign --verify --deep --strict: valid on disk, satisfies its Designated Requirement"
+}

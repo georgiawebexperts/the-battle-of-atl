@@ -41,9 +41,20 @@ void TickBattleDuckAudit(APlayerController* PC,float Dt){
  }
  if(S.Phase==1){
   if(S.Clock<1.5f)return;
+  // Pick a settled duck that is provably over open water, not simply the first
+  // one that settled. Phase 0 already trusts ContainsBike for its over_water
+  // count, but this used to take whatever duck settled first, so when that one
+  // was near the shore the rider was dropped outside the hazard and never began
+  // swimming. That is the coin flip this audit has been showing: a pass reads
+  // lowest_offset_cm -95, a failure -1 with the rider stopped at the water's
+  // edge. Measured 2026-09-18 across a sweep and three standalone runs.
+  APiedmontWaterHazard* Lake=nullptr;
+  for(TActorIterator<APiedmontWaterHazard> It(PC->GetWorld());It;++It)if(!Lake&&It->Polygon.Num()>=3)Lake=*It;
   ABattleDuck* Settled=nullptr;
-  for(const auto& Duck:Flock->Ducks)if(IsValid(Duck)&&Duck->State==1){Settled=Duck;break;}
-  if(!Settled){Report(false,TEXT("no duck settled on the water"),nullptr);return;}
+  for(const auto& Duck:Flock->Ducks)if(IsValid(Duck)&&Duck->State==1&&(!Lake||Lake->ContainsBike(FVector(Duck->GetActorLocation().X,Duck->GetActorLocation().Y,Duck->WaterZ)))){Settled=Duck;break;}
+  // Ducks settle one at a time, so wait for one over open water rather than
+  // failing the moment none has qualified yet.
+  if(!Settled){if(S.Clock>8.f)Report(false,TEXT("no duck settled on open water"),nullptr);return;}
   auto* Person=Cast<APiedmontExplorer>(PC->GetPawn());
   if(!Person){if(S.Clock>10.f)Report(false,TEXT("rider never left the bike"),nullptr);return;}
   Person->SetActorLocation(Settled->GetActorLocation()-FVector(0,0,30),false,nullptr,ETeleportType::TeleportPhysics);
