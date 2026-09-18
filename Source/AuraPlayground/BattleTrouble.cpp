@@ -5,6 +5,7 @@
 #include "PiedmontPedestrian.h"
 #include "BattleQuest.h"
 #include "NavigationSystem.h"
+#include "Misc/CommandLine.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -37,10 +38,15 @@ void ABattleLabMode::TickTrouble(float Dt){
  if(Live>=2||!bPoliceAlert)return;
  auto* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());if(!Nav)return;
  for(int32 Try=0;Try<16;Try++){
-  FNavLocation Point;if(!Nav->GetRandomReachablePointInRadius(Pawn->GetActorLocation(),2400,Point)||FVector::Dist2D(Point.Location,Pawn->GetActorLocation())<1100)continue;
+  FNavLocation Point;const bool bFound=Nav->GetRandomReachablePointInRadius(Pawn->GetActorLocation(),2400,Point);
+  const float Found=FMath::Sqrt(FVector::DistSquared2D(Point.Location,Pawn->GetActorLocation()));
+  // Spawn misses are silent in normal play; the trouble audit needs to know why.
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTroubleAudit")))UE_LOG(LogTemp,Display,TEXT("PoliceSpawnTry: try=%d found=%d distance=%.1f origin=%s"),Try,bFound?1:0,Found,*Pawn->GetActorLocation().ToString());
+  if(!bFound||Found<1100)continue;
   const FVector Spot=Point.Location+FVector(0,0,90);bool Wet=false;for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Spot)){Wet=true;break;}if(Wet)continue;
   FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
   if(auto* Officer=GetWorld()->SpawnActor<ABattlePolice>(Spot,(Pawn->GetActorLocation()-Spot).Rotation(),P)){PoliceSpawned++;UE_LOG(LogTemp,Display,TEXT("BattlePolice: spawned=%d"),PoliceSpawned);return;}
+  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTroubleAudit")))UE_LOG(LogTemp,Display,TEXT("PoliceSpawnBlocked: spot=%s"),*Spot.ToString());
  }
  PoliceDelay=2;
 }

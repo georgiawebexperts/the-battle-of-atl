@@ -122,7 +122,7 @@ void ABattleLabHUD::DrawHUD(){
  if(FullHUD&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&!Person){
   Panel(W*.5f-460*S,H-M-136*S,920*S,136*S);
   Center(TEXT("BIKE  •  W/UP PEDAL  •  S/DOWN BRAKE / REVERSE  •  A/D OR ARROWS STEER"),H-M-124*S,23,Peach);
-  Center(TEXT("E dismount  •  Q/R gears  •  J jump  •  SHIFT boost  •  H horn  •  P physics"),H-M-80*S,20,Muted);
+  Center(TEXT("E dismount  •  Q/R gears  •  J jump  •  SHIFT boost  •  H horn  •  P arcade/realistic"),H-M-80*S,20,Muted);
   Center(TEXT("F1  COMPACT CONTROLS"),H-M-37*S,17,Muted);
  }else if(FullHUD&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&Person){
   Panel(W*.5f-460*S,H-M-136*S,920*S,136*S);
@@ -235,12 +235,20 @@ void ABattleLabHUD::DrawHUD(){
  if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Rules->HintRemaining>0&&!Rules->HintText.IsEmpty()){
   Panel(CX-430*S,H*.24f,860*S,54*S);Center(Rules->HintText,H*.24f+11*S,23,Peach);
  }
- if(!Owner->bCrashActive)if(auto* Viewer=GetOwningPawn()){
+ // A pedestrian the rider just ran into shouts at them. This slot is drawn even
+ // while the crash overlay is up, or the line would never be seen in realistic
+ // handling where a body impact throws the rider off.
+ if(auto* Viewer=GetOwningPawn()){
+  const APiedmontPedestrian* Cursing=nullptr;float CurseDistance=2600;
+  for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)if(It->CurseRemaining>0&&!It->CurseLine.IsEmpty()){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<CurseDistance){CurseDistance=D;Cursing=*It;}}
+  if(Cursing){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(FString::Printf(TEXT("PEDESTRIAN: %s"),*Cursing->CurseLine),H-M-159*S,24,FLinearColor(1,.8f,.7f));}
+  if(!Owner->bCrashActive&&!Cursing){
   const ABattleZombie* Speaking=nullptr;float Best=2500;
   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->SubtitleRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Speaking=*It;}}
   if(Speaking){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(Speaking->CharacterName()+TEXT(": ")+Speaking->Subtitle,H-M-159*S,24);}
   const ABattleKrogCrash* Crash=nullptr;
   if(!Speaking)for(TActorIterator<ABattleKrogCrash> It(GetWorld());It;++It)if(It->ShoutRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Crash=*It;}}
   if(!Speaking&&Crash){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(FString::Printf(TEXT("BYSTANDER: %s"),*Crash->ShoutText),H-M-159*S,24,FLinearColor(1.f,.72f,.62f));}
+  }
  }
 }

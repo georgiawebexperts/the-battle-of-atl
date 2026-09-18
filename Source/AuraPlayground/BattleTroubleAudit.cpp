@@ -49,9 +49,17 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   CHECK_TROUBLE(Mode->RecordAssault(Civilian())&&Mode->bPoliceAlert&&Mode->PeopleHit==3,"Third person did not alert police");
   CHECK_TROUBLE(Mode->Enemies&&Mode->Quest,"Directors missing");
   Mode->Enemies->bFreezeSpawns=false;Mode->PoliceDelay=0;Mode->TickTrouble(.01f);Mode->Enemies->bFreezeSpawns=true;
+  // APD really answers on the next trouble tick, and the runtime navmesh can
+  // still be building this early in a run, so wait for the officer instead of
+  // demanding one in the same frame the alert fires.
+  TroubleStage=12;TroubleClock=0;return;
+ }else if(TroubleStage==12){
+  Mode->Enemies->bFreezeSpawns=false;Mode->PoliceDelay=0;Mode->TickTrouble(.03f);Mode->Enemies->bFreezeSpawns=true;
   if(TActorIterator<ABattlePolice> It(GetWorld());It)Officer=*It;
-  CHECK_TROUBLE(Officer&&Mode->PoliceSpawned==1,"No police spawned on reachable world navigation");
-  TroubleOfficer=Officer;TroublePoliceStart=Officer->GetActorLocation();Officer->Cooldown=100;Next();
+  if(!Officer){if(TroubleClock>16)Finish(false,TEXT("No police spawned on reachable world navigation"));return;}
+  UE_LOG(LogTemp,Display,TEXT("PoliceResponseWait: seconds=%.2f spawned=%d"),TroubleClock,Mode->PoliceSpawned);
+  CHECK_TROUBLE(Mode->PoliceSpawned==1,"Police actor appeared without counting a spawn");
+  TroubleOfficer=Officer;TroublePoliceStart=Officer->GetActorLocation();Officer->Cooldown=100;TroubleStage=2;TroubleClock=0;return;
  }else if(TroubleStage==2&&TroubleClock>1.6f){
   const float Travel=FVector::Dist2D(Officer->GetActorLocation(),TroublePoliceStart);UE_LOG(LogTemp,Display,TEXT("PolicePursuitDiagnostic: travel=%.1f location=%s start=%s target=%s speed=%.1f movement=%d controller=%s"),Travel,*Officer->GetActorLocation().ToString(),*TroublePoliceStart.ToString(),*GetPawn()->GetActorLocation().ToString(),Officer->GetVelocity().Size(),int32(Officer->GetCharacterMovement()->MovementMode),*GetNameSafe(Officer->GetController()));CHECK_TROUBLE(Travel>120,"Officer failed actual navigation pursuit");UE_LOG(LogTemp,Display,TEXT("PolicePursuit: travelled=%.1f"),Travel);
   Officer->SetActorTickEnabled(false);Officer->GetCharacterMovement()->DisableMovement();if(auto* AI=Cast<AAIController>(Officer->GetController()))AI->StopMovement();

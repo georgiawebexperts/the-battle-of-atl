@@ -140,7 +140,10 @@ void APiedmontPedestrian::HearHorn(APawn* Source){
  CancelBenchReach();YieldTo(Source,true);
 }
 void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
- if(bDead||StumbleRemaining>0)return;CancelIncidentPose();CancelBenchReach();CancelSleepBehavior();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
+ if(bDead||StumbleRemaining>0)return;
+ // Shout first: cancelling the sleep behaviour below clears SleepPhase, and a
+ // sleeper woken by the hit should still curse like one.
+ Curse();CancelIncidentPose();CancelBenchReach();CancelSleepBehavior();BikeContacts++;StumbleRemaining=Speed>330?2.3f:1.2f;
  if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();bHasDestination=false;
  if(Speed>330&&BeginKnockdown(Speed,Direction))return;
  // Light contact plays an authored surprise; unavailable rigs retain the fallback.
@@ -151,7 +154,18 @@ void APiedmontPedestrian::BikeImpact(float Speed,FVector Direction){
   UE_LOG(LogTemp,Display,TEXT("CityBump: actor=%s clip=%s duration=%.3f"),*GetName(),*BumpReaction->GetName(),StumbleRemaining);
  }else LaunchCharacter(Direction.GetSafeNormal2D()*FMath::Clamp(Speed*.25f,60.f,240.f)+FVector(0,0,60),true,true);
 }
+void APiedmontPedestrian::Curse(){
+ // The rider just ran into somebody on foot, so they shout about it. Lines stay
+ // short so they still read at speed, and a fresh hit replaces the last one.
+ static const TCHAR* const WalkerLines[]={TEXT("EXCUSE ME?!"),TEXT("HEY, WATCH IT!"),TEXT("WATCH IT, DUDE!"),TEXT("WHAT'S WRONG WITH YOU?!"),TEXT("ASS!"),TEXT("YO, YOU BLIND?!"),TEXT("WALK MUCH?!")};
+ // Sleepers and bums were already down; getting clip'd wakes them up angry.
+ static const TCHAR* const SleeperLines[]={TEXT("AYE! I'M SLEEPIN' HERE!"),TEXT("WHAT THE HELL, MAN?!"),TEXT("YO, EASY!"),TEXT("I'M WALKIN' HERE!")};
+ const bool bWoken=bAmbientSleeper||SleepPhase>0;
+ CurseLine=bWoken?SleeperLines[FMath::RandHelper(UE_ARRAY_COUNT(SleeperLines))]:WalkerLines[FMath::RandHelper(UE_ARRAY_COUNT(WalkerLines))];
+ CurseRemaining=FMath::FRandRange(2.4f,3.4f);
+}
 void APiedmontPedestrian::Tick(float Dt){
+ CurseRemaining=FMath::Max(0.f,CurseRemaining-Dt);
  Super::Tick(Dt);
  if(KnockdownPhase){TickKnockdown(Dt);return;}
  if((bParkDancer||bParkMusician||bPicnicChiller)&&!bDead&&!bSwimming&&StumbleRemaining<=0&&PanicRemaining<=0&&YieldRemaining<=0&&!bIncidentPosing){

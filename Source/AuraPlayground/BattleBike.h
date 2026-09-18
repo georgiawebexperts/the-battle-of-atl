@@ -54,6 +54,11 @@ UPROPERTY(BlueprintReadOnly) float StuckSeconds=0;
  FVector LastSafeLocation,LastDryLocation;
  bool bHasDryLocation=false;
  void Wipeout(const FString& Reason,bool Water=false);
+#if !UE_BUILD_SHIPPING
+ /** Scripted test fixtures re-enter contact deliberately. Returns the previous
+  *  latch so an audit can report what it swallowed. Production never calls it. */
+ float ResetContactLatch(){const float Previous=ContactCooldown;ContactCooldown=0;BounceRemaining=0;return Previous;}
+#endif
  void Shift(int32 Delta){Gear=FMath::Clamp(Gear+Delta,1,5);}
 private:
  bool bPendingLakeEntry=false;
@@ -174,7 +179,7 @@ private:
  void UpdateSteeringVisual();
  void InitializeDetailedRiderPreview();
  bool bDetailedRiderPreview=false;
- void ToggleHandling(){Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;}
+ void ToggleHandling();
  void GearUp(){Ride->Shift(1);}void GearDown(){Ride->Shift(-1);}
  TObjectPtr<UStaticMeshComponent> FrontWheel,RearWheel;
  float RiderBrakeLean=0;

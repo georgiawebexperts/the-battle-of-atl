@@ -97,6 +97,7 @@ void TickBattleTrafficReview(APlayerController* PC,float Dt);
 void TickBattleMonroeReview(APlayerController* PC,float Dt);
 void TickBattleCanopyReview(APlayerController* PC,float Dt);
 void TickBattleTreeRideAudit(APlayerController* PC,float Dt);
+void TickBattleCurseAudit(APlayerController* PC,float Dt);
 void TickBattleAimAudit(APlayerController* PC,float Dt);
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
 void TickBattleSkylineAudit(APlayerController* PC,float Dt);
@@ -143,6 +144,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMonroeReview")))TickBattleMonroeReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCanopyReview")))TickBattleCanopyReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTreeRideAudit")))TickBattleTreeRideAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleCurseAudit")))TickBattleCurseAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePhoneRideAudit")))TickBattlePhoneRideAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerRecoveryReview")))TickBattlePlayerRecoveryReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerCrashAudit")))TickBattlePlayerCrashAudit(this,Dt);

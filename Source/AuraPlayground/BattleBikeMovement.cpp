@@ -199,15 +199,26 @@ void UBattleBikeMovement::HandleImpact(const FHitResult& Hit,float TimeSlice,con
  if(Traffic){
   const float Directness=-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),Hit.ImpactNormal.GetSafeNormal2D());
   const bool Direct=Speed>200&&Directness>.35f&&Speed*Directness>150;
-  if(auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor()))Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
+  auto* Person=Cast<APiedmontPedestrian>(Hit.GetActor());
+  if(Person)Person->BikeImpact(Direct?Speed:Speed*.2f,Direct?CharacterOwner->GetActorForwardVector():-Hit.ImpactNormal.GetSafeNormal2D());
   if(Direct&&Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("PiedmontTraffic")))if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(CharacterOwner)))Mode->RecordAssault(Hit.GetActor());
-  // Any square hit on a person or vehicle puts the rider on the ground.
-  ContactCooldown=.35f;if(Direct)CrashImpact(TEXT("Traffic impact"),Speed*Directness);else {Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.2f);}return;
+  // Vehicles knock the rider off in both modes; a body on foot only does so in
+  // realistic handling. Arcade keeps the rider upright and scolds them.
+  ContactCooldown=.35f;
+  if(Direct&&(bRealHandling||!Person))CrashImpact(TEXT("Traffic impact"),Speed*Directness);
+  else{Speed*=.8f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(Person?.2f:.35f);}return;
  }
  if(Hit.GetActor()&&Hit.GetActor()->ActorHasTag(TEXT("RideTree"))){
   ++TreeContacts;
   const float Directness=-FVector::DotProduct(CharacterOwner->GetActorForwardVector(),Hit.ImpactNormal.GetSafeNormal2D());
-  if(Speed>250&&Directness>.4f){ContactCooldown=.35f;CrashImpact(TEXT("Tree impact"),Speed*Directness);return;}
+  if(Speed>250&&Directness>.4f){
+   ContactCooldown=.35f;
+   // Realistic handling throws the rider off the trunk; arcade scrubs speed and
+   // shakes the rider but leaves them riding.
+   if(bRealHandling){CrashImpact(TEXT("Tree impact"),Speed*Directness);return;}
+   Speed*=.55f;if(auto* Bike=Cast<ABattleBike>(CharacterOwner))Bike->RideImpact(.4f);
+   return;
+  }
  }
  // Let a glancing rail/wall contact slide instead of repeatedly killing propulsion.
  // A direct hit still stops the bike and gives the existing small separation nudge.

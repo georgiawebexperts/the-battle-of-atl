@@ -19,6 +19,11 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector LeftGrip;
  UFUNCTION(BlueprintCallable) bool ToggleDrawWeapon();
  UPROPERTY(BlueprintReadOnly) float DrawRemaining=0;
+ /** Blended step off the bike: the pawn walks down from the saddle to its feet. */
+ UFUNCTION(BlueprintCallable) void BeginStepOff(const FVector& From,const FVector& To,float Seconds=0.45f);
+ UPROPERTY(BlueprintReadOnly) float StepOffRemaining=0;
+ FVector StepOffFrom=FVector::ZeroVector,StepOffTo=FVector::ZeroVector;
+ float StepOffSeconds=0.45f;
  virtual bool Fire() override;
  virtual void Reload() override;
  UFUNCTION(BlueprintCallable) bool SelectWeapon(int32 Slot);

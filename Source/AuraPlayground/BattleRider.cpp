@@ -108,7 +108,19 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  I->BindKey(EKeys::One,IE_Pressed,this,&ABattleRider::SelectPistol);I->BindKey(EKeys::Two,IE_Pressed,this,&ABattleRider::SelectShotgun);I->BindKey(EKeys::Three,IE_Pressed,this,&ABattleRider::SelectSMG);I->BindKey(EKeys::Five,IE_Pressed,this,&ABattleRider::SelectRifle);I->BindKey(EKeys::Four,IE_Pressed,this,&ABattleRider::SelectFrisbee);
 }
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||(ParkedBike->RiderHealth>0&&ParkedBike->StunRemaining<=0))&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
+void ABattleRider::BeginStepOff(const FVector& From,const FVector& To,float Seconds){
+ StepOffFrom=From;StepOffTo=To;StepOffSeconds=FMath::Max(.1f,Seconds);StepOffRemaining=StepOffSeconds;
+}
 void ABattleRider::Tick(float Dt){
+ if(StepOffRemaining>0){
+  StepOffRemaining=FMath::Max(0.f,StepOffRemaining-Dt);
+  const float Alpha=FMath::Clamp(1.f-StepOffRemaining/StepOffSeconds,0.f,1.f);
+  const float Ease=1.f-(1.f-Alpha)*(1.f-Alpha);
+  const float Yaw=GetActorRotation().Yaw;
+  SetActorLocation(FMath::Lerp(StepOffFrom,StepOffTo,Ease),false,nullptr,ETeleportType::TeleportPhysics);
+  // Lean and roll ease out as the rider finds their feet.
+  SetActorRotation(StepOffRemaining<=0.f?FRotator(0,Yaw,0):FRotator(10.f*(1.f-Ease),Yaw,7.f*(1.f-Ease)));
+ }
  UpdateShotgunMechanism(Dt);
  ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);Kick=FMath::FInterpTo(Kick,0.f,Dt,14);
  SwayTime+=Dt*FMath::Clamp(GetVelocity().Size2D()/(bDetailedPlayerRig?32.f:80.f),0.f,11.f);const float Bob=FMath::Sin(SwayTime)*FMath::Min(GetVelocity().Size2D()/850.f,1.f)*.65f;
@@ -185,7 +197,14 @@ bool ABattleBike::Dismount(){
  if(!Found)return false;
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
  // Hop off with a small step and lean instead of popping into place.
- auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit+FVector(0,0,34),GetActorRotation()+FRotator(8,0,0),P);if(!Person)return false;
+ // Step off rather than popping into place: the rider leaves the saddle, comes
+ // down beside the bike and straightens up over about half a second.
+ const FVector Saddle=Exit+(Exit-GetActorLocation()).GetSafeNormal2D()*-90.f+FVector(0,0,58);
+ // Spawn on the clear side first: the saddle point is inside the bike, so
+ // spawning there would fail the collision test, then move into the saddle.
+ auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation()+FRotator(10,0,7),P);if(!Person)return false;
+ Person->SetActorLocation(Saddle,false,nullptr,ETeleportType::TeleportPhysics);
+ Person->BeginStepOff(Saddle,Exit);
  Ride->BoostRemaining=0;Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
  ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);
  // On foot the player is auto-aimed at the nearest threat, or the bike, and

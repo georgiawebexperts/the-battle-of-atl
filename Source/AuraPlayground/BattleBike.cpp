@@ -118,6 +118,13 @@ void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
  Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::P,IE_Pressed,this,&ABattleBike::ToggleHandling);I->BindKey(EKeys::J,IE_Pressed,this,&ABattleBike::HopBike);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::R,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Q,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
 void ABattleBike::ToggleCamera(){if(bCrashActive)return;bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson,true);}
+void ABattleBike::ToggleHandling(){
+ Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;
+ // Say out loud what the two modes actually do, since the difference is now
+ // about getting thrown off by people and trees, not just steering feel.
+ if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))
+  Mode->PushHint(TEXT("Handling"),Ride->bRealHandling?TEXT("REALISTIC — people, trees and hard hits throw you off the bike"):TEXT("ARCADE — people and trees slow you down, you stay up"),4.f,false);
+}
 void ABattleBike::Tick(float Dt){
  Super::Tick(Dt);UpdateHealth(Dt);UpdateStun(Dt);UpdateLights(Dt);UpdateRideFeedback(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);HornNoticeRemaining=FMath::Max(0.f,HornNoticeRemaining-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
  if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0){auto& Item=Inventory[0];const int32 Add=FMath::Min(BattleWeapons::Capacity(0)-PistolAmmo,Item.Reserve);PistolAmmo+=Add;Item.Reserve-=Add;Item.Magazine=PistolAmmo;}}

@@ -74,6 +74,10 @@ public:
  FVector PanicOrigin;
  float PanicRepath=0;
  void BikeImpact(float Speed,FVector Direction);
+ /** Shouted line when the rider runs into them; shown as a HUD subtitle. */
+ UPROPERTY(BlueprintReadOnly) FString CurseLine;
+ UPROPERTY(BlueprintReadOnly) float CurseRemaining=0;
+ void Curse();
  // Opt-in until encounter placement and chase/settle behavior are complete.
  UFUNCTION(BlueprintCallable) bool BeginSleeping();
  UFUNCTION(BlueprintCallable) bool WakeFromSleep();
