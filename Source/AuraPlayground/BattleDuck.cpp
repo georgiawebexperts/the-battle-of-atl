@@ -79,7 +79,9 @@ void ABattleDuck::Tick(float Dt){
    auto* Swimmer=Cast<APiedmontExplorer>(TargetPawn);
    if(Swimmer&&Swimmer->bSwimming&&FVector::Dist2D(Swimmer->GetActorLocation(),Position)<130.f){
     BumpCooldown=6.f;BumpsGiven++;
-    Swimmer->SetActorLocation(Swimmer->GetActorLocation()-FVector(0,0,150),false,nullptr,ETeleportType::TeleportPhysics);
+    const FVector WasAt=Swimmer->GetActorLocation();
+    Swimmer->SetActorLocation(WasAt-FVector(0,0,150),false,nullptr,ETeleportType::TeleportPhysics);
+    LastDunkDepthCm=FMath::Max(LastDunkDepthCm,float(WasAt.Z-Swimmer->GetActorLocation().Z));
     Mode->AdjustRunTime(-5.f,TEXT("DUCK!"));
     UE_LOG(LogTemp,Display,TEXT("BattleDuck: swimmer_ducked=1 duck=%s bumps=%d"),*GetName(),BumpsGiven);
     State=2;Clock=0;return;

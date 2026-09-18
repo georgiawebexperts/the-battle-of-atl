@@ -22,6 +22,11 @@ public:
  UPROPERTY(BlueprintReadOnly) float WaterZ=0;
  UPROPERTY(BlueprintReadOnly) int32 State=0;      // 0 approach, 1 swim, 2 climb out
  UPROPERTY(BlueprintReadOnly) int32 BumpsGiven=0;
+ // How far under the surface the deepest bump actually pushed the swimmer. The
+ // dunk is a teleport inside this actor's tick, so an audit that samples the
+ // swimmer's height on its own tick can miss it entirely; recording the drop
+ // here is the evidence that the dunk happened, and by how much.
+ UPROPERTY(BlueprintReadOnly) float LastDunkDepthCm=0;
 private:
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Body;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Head;

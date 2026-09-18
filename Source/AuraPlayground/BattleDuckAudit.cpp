@@ -57,7 +57,12 @@ void TickBattleDuckAudit(APlayerController* PC,float Dt){
   if(!Settled){if(S.Clock>8.f)Report(false,TEXT("no duck settled on open water"),nullptr);return;}
   auto* Person=Cast<APiedmontExplorer>(PC->GetPawn());
   if(!Person){if(S.Clock>10.f)Report(false,TEXT("rider never left the bike"),nullptr);return;}
-  Person->SetActorLocation(Settled->GetActorLocation()-FVector(0,0,30),false,nullptr,ETeleportType::TeleportPhysics);
+  // Drop him relative to the WATER, not to the duck. A duck's origin floats about
+  // 30 cm above the surface, so "30 cm below the duck" put the swimmer exactly at
+  // the waterline: `lowest_offset_cm -1.0`, bSwimming never set, and the audit
+  // reported "rider never started swimming in the lake" on roughly every other
+  // run. WaterZ is the surface, so this lands him under it every time.
+  Person->SetActorLocation(FVector(Settled->GetActorLocation().X,Settled->GetActorLocation().Y,Settled->WaterZ-30.f),false,nullptr,ETeleportType::TeleportPhysics);
   S.Clock=0;S.Phase=2;return;
  }
  if(S.Phase==2){
@@ -68,9 +73,14 @@ void TickBattleDuckAudit(APlayerController* PC,float Dt){
  }
  if(S.Phase==3){
   auto* Person=Cast<APiedmontExplorer>(PC->GetPawn());
+  // The duck that actually bumped him, not whichever duck happens to be first in
+  // the flock: the dunk teleport below only fires within 200 cm of this one, and
+  // the old first-in-list choice is what left `lowest_offset_cm` at +15 instead of
+  // under the surface when the flock had drifted apart.
   ABattleDuck* Target=nullptr;
   float WaterZ=0;
-  for(const auto& Duck:Flock->Ducks)if(IsValid(Duck)){Target=Duck;WaterZ=Duck->WaterZ;break;}
+  for(const auto& Duck:Flock->Ducks)if(IsValid(Duck)&&Duck->BumpsGiven>0){Target=Duck;WaterZ=Duck->WaterZ;break;}
+  if(!Target)for(const auto& Duck:Flock->Ducks)if(IsValid(Duck)){Target=Duck;WaterZ=Duck->WaterZ;break;}
   if(Person&&Target){
    S.Lowest=FMath::Min(S.Lowest,float(Person->GetActorLocation().Z-WaterZ));
    const FVector Duck=Target->GetActorLocation();
@@ -78,8 +88,13 @@ void TickBattleDuckAudit(APlayerController* PC,float Dt){
     Person->SetActorLocation(FVector(Duck.X,Duck.Y,WaterZ-10),false,nullptr,ETeleportType::TeleportPhysics);
   }
   if(S.Clock>9.f){
-   const bool Ducked=S.Lowest<10.f;
+   // Dunked means the duck's own record of the drop, not this actor's sampling of
+   // the swimmer's height: the teleport happens inside the duck's tick and the
+   // swimmer is back at the surface by the time this tick looks.
+   const float Dunk=Target?Target->LastDunkDepthCm:0.f;
+   const bool Ducked=Dunk>=100.f;
    const bool Charged=Mode->LastTimeDelta==-5.f&&Mode->TimeNotice==TEXT("DUCK!");
+   UE_LOG(LogTemp,Display,TEXT("BattleDuckDunk: duck=%s depth_cm=%.1f sampled_lowest_cm=%.1f"),Target?*Target->GetName():TEXT("none"),Dunk,S.Lowest<BIG_NUMBER?S.Lowest:-1.f);
    Report(Ducked&&Charged,Ducked?(Charged?TEXT("swimmer dunked and charged for the duck"):TEXT("time penalty did not fire")):TEXT("swimmer was never dunked"),Target);
   }
   return;
