@@ -20,39 +20,21 @@ void APiedmontPedestrian::AnimateBody(float Dt){
  auto RotateBranch=[&](const TCHAR* Name,FRotator Delta){const FName Root(Name);const int32 RootIndex=Body->GetBoneIndex(Root);if(RootIndex<0)return;const FQuat Q=Delta.Quaternion();const FVector Origin=Body->BoneSpaceTransforms[RootIndex].GetLocation();for(int32 I=0;I<Body->BoneSpaceTransforms.Num();I++){FName Bone=Body->GetBoneName(I);bool Descendant=false;while(!Bone.IsNone()){if(Bone==Root){Descendant=true;break;}Bone=Body->GetParentBone(Bone);}if(!Descendant)continue;auto& T=Body->BoneSpaceTransforms[I];T.SetLocation(Origin+Q.RotateVector(T.GetLocation()-Origin));T.SetRotation((Q*T.GetRotation()).GetNormalized());}};
  if(bPicnicChiller){
   ChillClock+=Dt;const float Breath=FMath::Sin(ChillClock*1.8f),Gesture=FMath::Sin(ChillClock*.8f+PicnicPose);
-  // A picnic chiller lies on the blanket. The crowd mesh's origin is at the
-  // soles, so the old pose - a 68 to 82 degree roll about the feet - pivoted
-  // the whole body around the ankles and swung the torso up into the air. That
-  // is what Elliott photographed: two people face-down and hovering instead of
-  // two people lying on a blanket. Pitch the body over instead, and pivot it at
-  // the hip (0,0,90 in mesh space) so the torso lands on the blanket and the
-  // feet rest at the end of it.
-  const FVector Hip(0,0,90.f);
-  // Blanket top is 17.5 cm above the group origin (15 cm offset, 5 cm slab), and
-  // half a torso is about 15 cm, so the hip centre rides just above the cloth.
-  const float HipHeight=33.f;
-  // The body is parented to the capsule, whose centre is the actor origin, so
-  // the soles of a standing character sit at -Capsule. Nothing here is on the
-  // ground unless that is subtracted; leaving it out is what kept the pair
-  // hovering a body-height above the blanket.
-  const float Capsule=GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
-  const FRotator Lie=PicnicPose==1?FRotator(-86.f,180.f,0):FRotator(86.f,0.f,0);
-  const FQuat LieQ=Lie.Quaternion();
-  Body->SetRelativeRotation(Lie);
-  Body->SetRelativeLocation((Hip-LieQ.RotateVector(Hip))+FVector(0.f,PicnicPose==1?9.f:-9.f,HipHeight-Hip.Z-Capsule));
-  if(PicnicPose==1){
-   // On the back, one hand behind the head, the other resting on the blanket.
-   RotateBranch(TEXT("spine_02"),FRotator(-4.f+2.f*Breath,0,3));
-   RotateBranch(TEXT("upperarm_l"),FRotator(-38.f+4.f*Gesture,0,-6.f));
-   RotateBranch(TEXT("upperarm_r"),FRotator(-4.f-3.f*Gesture,0,-14.f));
-   RotateBranch(TEXT("lowerarm_l"),FRotator(-62.f,0,0));RotateBranch(TEXT("lowerarm_r"),FRotator(-16.f,0,0));
-  }else{
-   // On the stomach, propped on the elbows, head toward the bag.
-   RotateBranch(TEXT("spine_02"),FRotator(4.f+2.f*Breath,0,PicnicPose==2?6:-4));
-   RotateBranch(TEXT("upperarm_l"),FRotator(-30.f+5.f*Gesture,0,10.f));
-   RotateBranch(TEXT("upperarm_r"),FRotator(-30.f-5.f*Gesture,0,-10.f));
-   RotateBranch(TEXT("lowerarm_l"),FRotator(-54.f,0,0));RotateBranch(TEXT("lowerarm_r"),FRotator(-54.f,0,0));
-  }
+  // STANDING at the blanket. Three attempts at a lying or seated pose all read
+  // as damaged people: rolled about the feet the pair hovered face-down, and the
+  // crowd rig's hip bones do not flex on the axis a naive pitch rotation assumes,
+  // so sitting produced limbs through the cloth and legs in the air. Elliott's
+  // verdict on the lying version was "lying down like they are dead and halfway
+  // in the ground". The standing pose is the one this rig renders correctly
+  // everywhere else in the city, so the pair stand, turn slightly toward each
+  // other across the cloth and breathe. A proper seated pose wants the same
+  // numerical sweep that solved the musician holds, not more guessing.
+  Body->SetRelativeLocation(FVector(0,0,-GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
+  Body->SetRelativeRotation(FRotator(0,PicnicPose==2?28.f:-28.f,0));
+  RotateBranch(TEXT("spine_02"),FRotator(2.f+2.f*Breath,0,PicnicPose==2?5:-5));
+  RotateBranch(TEXT("upperarm_l"),FRotator(-6.f+3.f*Gesture,0,7.f));
+  RotateBranch(TEXT("upperarm_r"),FRotator(-6.f-3.f*Gesture,0,-7.f));
+  RotateBranch(TEXT("lowerarm_l"),FRotator(-22.f,0,0));RotateBranch(TEXT("lowerarm_r"),FRotator(-22.f,0,0));
   Body->MarkRefreshTransformDirty();Body->RefreshBoneTransforms();return;
  }
  if(bParkMusician){

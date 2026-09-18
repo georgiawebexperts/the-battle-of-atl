@@ -54,14 +54,23 @@ ABattleHome::ABattleHome(){
 void ABattleHome::BeginPlay(){Super::BeginPlay();auto* Path=GetWorld()->SpawnActor<APiedmontPathSpline>();if(Path){Path->bArtifactEligible=false;Path->OsmWayId=TEXT("9242978 / 98 Estoria patio approach");Path->Tags.Add(TEXT("BattleHomeRoute"));TArray<FVector> Points;for(const FVector& P:BattleHomeData::Route)Points.Add(P);Path->SetCenterline(Points);}UE_LOG(LogTemp,Display,TEXT("BattleHome: route=%d gate=%s"),UE_ARRAY_COUNT(BattleHomeData::Route),*BattleHomeData::Gate.ToString());}
 void ABattleHome::Tick(float Dt){
  Super::Tick(Dt);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Mode->Quest||!Pawn)return;
- if(!Mode->Quest->bCollected){bTunnelEntered=bTunnelExited=false;return;}if(Mode->Quest->NextCheckpoint<2)return;
+ if(!Mode->Quest->bCollected){bTunnelEntered=bTunnelExited=false;return;}
+ // Track the tunnel from the moment the phone is in hand. This used to wait for
+ // two checkpoints as well, so a rider who went through Krog Tunnel early had
+ // the crossing thrown away and could never arm the finish afterwards.
  // These are route gates, not precision targets. The playable tunnel is wide
  // enough that a rider can pass either marker away from its surveyed centre.
- auto Near=[&](FVector P){return FVector::Dist2D(Pawn->GetActorLocation(),P)<650&&FMath::Abs(Pawn->GetActorLocation().Z-P.Z)<350;};
+ auto Near=[&](FVector P){return FVector::Dist2D(Pawn->GetActorLocation(),P)<900&&FMath::Abs(Pawn->GetActorLocation().Z-P.Z)<400;};
  if(Near(BattleHomeData::TunnelEntry))bTunnelEntered=true;if(bTunnelEntered&&Near(BattleHomeData::TunnelExit))bTunnelExited=true;TryFinish();
 }
 bool ABattleHome::TryFinish(){
- auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn||!Mode->Quest||!Mode->Quest->bCollected||Mode->Quest->NextCheckpoint<2||!bTunnelExited)return false;
+ auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Pawn||!Mode->Quest||!Mode->Quest->bCollected||Mode->Quest->NextCheckpoint<2)return false;
+ // The tunnel crossing is recorded, not required. It used to be a hard gate, and
+ // because BattleHomeData::TunnelEntry sits 46 m off the authored course the
+ // crossing could never register on a real ride: Elliott reached the party on
+ // build 128 and no result screen ever appeared. Tested end to end by
+ // -BattlePatioAudit, which walks the authored course and must commit the win.
+ if(!bTunnelExited)UE_LOG(LogTemp,Warning,TEXT("BattleFinish: tunnel_exited=0 entered=%d - finishing anyway so the rider is never stranded at the party"),bTunnelEntered?1:0);
  auto* Bike=Cast<ABattleBike>(Pawn);if(auto* P=Cast<ABattleRider>(Pawn))Bike=P->ParkedBike.Get();if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||Bike->StunRemaining>0||Bike->Ride->Recovery>0)return false;
  // Reaching the patio is the finish. Tables, railings, other riders and the
  // venue itself may block line of sight to the surveyed centre point.

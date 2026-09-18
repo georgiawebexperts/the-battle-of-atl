@@ -59,6 +59,10 @@ AUDITS=(
   # The two-keys-at-once complaint: holds W, then W+D, then W+A on foot and
   # measures the direction actually travelled against where the camera looks.
   "BattleDiagonalAudit||"
+  # End-to-end guard on the ending: walks the whole authored course and requires
+  # the win to commit at the patio. This is the audit that would have caught a
+  # rider reaching the party with no result screen.
+  "BattlePatioAudit||"
   "BattleTrailModeAudit||"
   "BattleSkaterAudit||"
   "BattleDroneAudit||"
