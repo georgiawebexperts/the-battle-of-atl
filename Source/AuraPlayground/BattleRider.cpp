@@ -196,13 +196,11 @@ bool ABattleBike::Dismount(){
  }
  if(!Found)return false;
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
- // Hop off with a small step and lean instead of popping into place.
- // Step off rather than popping into place: the rider leaves the saddle, comes
- // down beside the bike and straightens up over about half a second.
+ // Spawn on the proven clear point above the exit (a tilted capsule at ground
+ // level can clip a kerb and fail the placement), then ease down from the
+ // saddle so the dismount reads as stepping off instead of popping into place.
+ auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit+FVector(0,0,34),GetActorRotation()+FRotator(8,0,0),P);if(!Person)return false;
  const FVector Saddle=Exit+(Exit-GetActorLocation()).GetSafeNormal2D()*-90.f+FVector(0,0,58);
- // Spawn on the clear side first: the saddle point is inside the bike, so
- // spawning there would fail the collision test, then move into the saddle.
- auto* Person=GetWorld()->SpawnActor<ABattleRider>(Exit,GetActorRotation()+FRotator(10,0,7),P);if(!Person)return false;
  Person->SetActorLocation(Saddle,false,nullptr,ETeleportType::TeleportPhysics);
  Person->BeginStepOff(Saddle,Exit);
  Ride->BoostRemaining=0;Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);

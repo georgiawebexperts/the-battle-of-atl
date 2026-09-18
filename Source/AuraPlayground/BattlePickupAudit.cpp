@@ -53,6 +53,14 @@ void ABattleMacController::TickPickupAudit(float Dt){
  if(PickupPhase==3&&PickupAuditClock>.2f){
   VERIFY_PICKUP(!PickupAuditTarget.IsValid()&&Bike->RiderHealth==75&&Bike->HealthPickups==2,"Unblocked automatic pickup failed");
   VERIFY_PICKUP(Bike->Dismount(),"Dismount fixture failed");Person=Cast<ABattleRider>(GetPawn());VERIFY_PICKUP(Person,"No FPS rider");
+  PickupPhase=8;PickupAuditClock=0;return;
+ }
+ if(PickupPhase==8){
+  // The dismount plays a short step-off. Place the on-foot fixture from the
+  // settled stance, not from mid-air over the saddle, or the pickup and the
+  // later walk-away jump land somewhere else and can pick up a course reward.
+  VERIFY_PICKUP(Person&&PickupAuditClock<4,"Dismount never settled");
+  if(Person->StepOffRemaining>0)return;
   VERIFY_PICKUP(Spawn(Person->GetActorLocation()+Person->GetActorForwardVector()*60-FVector(0,0,25)),"FPS pickup fixture failed");PickupPhase=4;PickupAuditClock=0;return;
  }
  if(PickupPhase==4&&PickupAuditClock>.2f){
