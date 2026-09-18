@@ -20,3 +20,7 @@ Tools/terrain-venv/
 # ---------------------------------------------------------------------------
 Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset
 Content/EuropeanHornbeam/
+
+Build/
+work/
+Scripts/last-seen-release.txt
