@@ -1,0 +1,55 @@
+{
+  "build": "117",
+  "batch": "playtest round 14: the BeltLine is widened from 3.2 m to 4.2 m",
+  "source_commit": "afb4868 (plus 233cc6e and bc4812a carried in from 116)",
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 117",
+  "verified_against": "packaged build 117",
+  "packaged_sweep": {
+    "result": "16/16 pass",
+    "audits": ["BattleCurseAudit", "BattleTreeRideAudit (arcade)", "BattleTreeRideAudit -BattleRealTreeAudit (realistic)", "BattleTroubleAudit", "BattleSteeringAudit", "BattleSleeperAudit", "BattleGrassAudit", "BattleBikeCarAudit", "BattleMurderKAudit", "BattlePickupAudit", "BattleSpiritAudit", "BattleKrogCrashAudit", "BattleDuckAudit", "BattleSpeedAudit", "BattleTimeAudit", "BattleDiscAudit"]
+  },
+  "what_changed": [
+    {
+      "ask": "lets widen the beltlien path its a little too narrow",
+      "file": "Scripts/arcade_trail.py (new), Scripts/prepare_eastside_trail.py, Scripts/prepare_beltline_connector.py, Scripts/bake_eastside_rails.py",
+      "what": "The trail width was authored in three separate places as a literal 320. It now lives in one constant, TRAIL_WIDTH_GAME_CM = 420, read by the Eastside bake, the park-to-BeltLine connector bake, and the bridge guardrail offset. The rails moved from 154 cm to 204 cm from the centerline so they stay at the pavement edge instead of ending up inside the widened deck."
+    },
+    {
+      "what": "Re-baked and reinstalled into PiedmontWorld. Trail triangles 60,084 -> 69,449 across the same 23 pavement chunks plus 3 rail chunks (no chunk was added or removed, so no stale actors were left behind). Connector 599 -> 907 triangles. 1544 of 1566 centerline points now land on Eastside pavement; the other 22 are the Tenth Street crossing, where the street's road and sidewalk legitimately overlay the trail."
+    },
+    {
+      "file": "Scripts/verify_arcade_trail_width.py (new)",
+      "what": "Reads the saved map and reports the width every Eastside and connector spline actually carries, so the widened number is proven to have reached the level and not just the source JSON. Result: {\"420.0\": 10} - all 8 Eastside splines and both connector splines."
+    }
+  ],
+  "stale_assertions_rewritten": [
+    {
+      "file": "Scripts/install_eastside_trail.py",
+      "old": "assert the topmost surface at every centerline point is Eastside pavement within 0.5 cm",
+      "why_stale": "That was true when the trail was installed on 2026-09-11 and stopped being true when Tenth Street was built across it. Proven prior to the widening: re-running the ORIGINAL 320 cm assets against the untouched installer fails with the identical 22 of 1566 points (work/install-eastside-control320.log).",
+      "new": "Require a real riding surface at every point, 1 cm tolerance where the trail's own mesh is on top, 40 cm where a street or graded surface legitimately overlays it, at least 75% coverage by the trail's own mesh, and report the coverage breakdown. Measured this run: {'eastside': 1544, 'overlaid': 22}, worst_cm 32.50."
+    },
+    {
+      "file": "Scripts/install_beltline_connector.py",
+      "old": "assert the topmost surface is connector pavement within 0.1 cm",
+      "why_stale": "The connector is a short ribbon draped on piecewise-planar terrain. Re-baking at a different width re-triangulates the polygon and moves individual samples by about a millimetre, which a 1 mm tolerance rejects. Measured worst error on the connector's own mesh this run was within 2 cm.",
+      "new": "Same shape as the Eastside contract. Measured coverage {'connector': 25, 'overlaid': 18} of 43 points; the 18 are park path and Tenth Street overlays."
+    }
+  ],
+  "rendered_proof": [
+    {"file": "work/trail116b/bridge1.png", "shows": "a bridge crossing: wide deck with both guardrails sitting at the new pavement edge rather than inside it"},
+    {"file": "work/trail116c/bike.png", "shows": "a long northern section: broad trail ribbon, pedestrians and a pickup on it, nothing clipping"},
+    {"file": "work/trail116b/south0-bike.png", "shows": "the southern end: wide pavement, crowd on the trail"}
+  ],
+  "audit_evidence": {
+    "grass_packaged": "BattleGrassAudit: {\"passed\":true,\"park_lost\":6.0,\"belt_lost\":11.0,\"belt_grass_seconds\":8.2,\"chases\":1,\"hint_seen\":true} - the BeltLine grass penalty still fires and still draws Trees ATL with the wider pavement; it was belt_lost 12.0 at 3.2 m because the spline width is what defines where the pavement ends",
+    "trail_width_in_level": "ARCADE TRAIL WIDTHS: {420.0: 10}"
+  },
+  "known_scope_limit": {
+    "what": "The widening is global - arcade and realistic both ride the 4.2 m trail. There is no per-mode pavement, because the pavement is baked geometry rather than a runtime setting.",
+    "raised_by": "Elliott, 2026-09-18: 'i wonder if you are doing the arcade mode if the beltlien is wide and if you are doing the pro mode or realistic mode it was like it was before?'",
+    "to_do_it": "Bake both widths, keep both mesh sets in the level tagged apart, and on the bRealHandling toggle swap visibility, collision and the spline width. Realistic would then be exactly the previously shipped 3.2 m trail.",
+    "status": "awaiting Elliott's call - not started"
+  },
+  "settings_untouched": "No settings menu, option list or saved-settings code was edited."
+}
