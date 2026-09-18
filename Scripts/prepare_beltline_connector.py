@@ -1,5 +1,7 @@
-import json,heapq,math
+import json,heapq,math,sys
 from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from arcade_trail import TRAIL_WIDTH_GAME_CM,width_policy
 from pyproj import Transformer
 root=Path(__file__).resolve().parents[1];d=json.loads((root/'References/piedmont-osm.json').read_text());meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text());t=Transformer.from_crs(4326,32616,always_xy=True)
 coords={};graph={};ways={}
@@ -62,10 +64,10 @@ for edge in chain:
 for group in groups:
  line=LineString([coords[n] for n in group['nodes']]);count=max(2,int(math.ceil(line.length/2))+1)
  group['points_cm']=[world_point(line.interpolate(line.length*i/(count-1)).coords[0]) for i in range(count)]
- group['length_real_m']=line.length;group['width_game_cm']=320;group['artifact_eligible']=False
+ group['length_real_m']=line.length;group['width_game_cm']=TRAIL_WIDTH_GAME_CM;group['artifact_eligible']=False
  group['name']=group['tags'].get('name','Monroe trail crossing')
 result={'source':'OpenStreetMap contributors, ODbL','paths':groups,'length_real_m':dist[end],
- 'start_overlap_error_game_cm':distance,'width_policy':'Authored 320 game cm to match the existing arcade trail width; not a surveyed width.',
+ 'start_overlap_error_game_cm':distance,'width_policy':width_policy('Matches the Eastside trail width so the join is seamless.'),
  'scope':'Park trail to northern Eastside endpoint only; full route remains unfinished'}
 (root/'SourceAssets/Terrain/beltline-connector-network.json').write_text(json.dumps(result,indent=2)+'\n')
 print('Connector prepared:',result['length_real_m'],'real metres; start overlap',distance)

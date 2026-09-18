@@ -2622,7 +2622,7 @@
           71.83202155543918
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 1026.0695552561003,
       "route_part": 0
@@ -2741,7 +2741,7 @@
           72.41905093372374
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 32.778818741303226,
       "route_part": 1
@@ -3345,7 +3345,7 @@
           153.85567726461863
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 225.3035012953032,
       "route_part": 2
@@ -3453,7 +3453,7 @@
           162.73506132531423
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 29.831628515870616,
       "route_part": 3
@@ -4684,7 +4684,7 @@
           354.47865865324434
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 471.7290869081698,
       "route_part": 4
@@ -4797,7 +4797,7 @@
           368.9020926231855
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 30.60904598159293,
       "route_part": 5
@@ -8076,7 +8076,7 @@
           793.2911399310448
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 1280.8718839367566,
       "route_part": 6
@@ -8145,7 +8145,7 @@
           796.3188812014581
         ]
       ],
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "length_real_m": 10.700536445872087,
       "route_part": 7
@@ -8154,7 +8154,7 @@
   "length_real_m": 3107.894057080969,
   "start_node": 2396740017,
   "end_node": 6016404357,
-  "width_policy": "Authored 320 game cm for arcade play; not a surveyed width.",
+  "width_policy": "Authored 420 game cm for arcade play; raised from 320 on 2026-09-18 because the trail rode too narrow. Not a surveyed width. ",
   "height_profiles": "eastside-height-profiles.json",
   "scope": "Monroe to Irwin, including three authored bridge profiles. Tunnel and Cabbagetown remain unfinished."
 }

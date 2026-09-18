@@ -1,7 +1,9 @@
 from pathlib import Path
-import json,math,numpy as np
+import json,math,numpy as np,sys
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 from shapely.geometry import LineString
 from route_height_profiles import RouteHeightProfiles
+from arcade_trail import rail_offset_cm
 root=Path(__file__).resolve().parents[1];out=root/'SourceAssets/Terrain/EastsideTrail'
 h=RouteHeightProfiles(root/'SourceAssets/Terrain/eastside-height-profiles.json');line=h.line
 def quad(m,vs):
@@ -21,7 +23,7 @@ for profile in h.profiles:
  for sign in [-1,1]:
   edge=[]
   for s in stations:
-   p=np.array(line.interpolate(s).coords[0]);a=np.array(line.interpolate(s-1).coords[0]);b=np.array(line.interpolate(s+1).coords[0]);d=b-a;normal=np.array([-d[1],d[0]])/np.linalg.norm(d);q=p+normal*sign*154
+   p=np.array(line.interpolate(s).coords[0]);a=np.array(line.interpolate(s-1).coords[0]);b=np.array(line.interpolate(s+1).coords[0]);d=b-a;normal=np.array([-d[1],d[0]])/np.linalg.norm(d);q=p+normal*sign*rail_offset_cm()
    z=profile['start_z_cm']+(profile['end_z_cm']-profile['start_z_cm'])*(s-profile['blend_start_cm'])/(profile['blend_end_cm']-profile['blend_start_cm'])
    edge.append(np.array([q[0],q[1],z]))
   for a,b in zip(edge,edge[1:]):

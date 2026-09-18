@@ -1,36 +1,37 @@
 {
   "status": "source_baked_not_imported",
   "plaza_osm_ids": [],
-  "coordinates": "OBJ centimeters, Z up, Y negated from Unreal; bounds remain Unreal world coordinates",
+  "coordinates": "OBJ centimeters, Z up, Y negated from retained source ENU; bounds are source ENU, not final actor world bounds",
   "source_splines": "../beltline-connector-network.json",
-  "landscape_clearance_cm": 3,
+  "ground_clearance_cm": 3,
+  "height_profiles": null,
   "terrain_diagonal": "i00-i11",
   "chunks": [
     {
       "file": "BeltlineConnector_Asphalt_5_14.obj",
       "material": "Asphalt",
-      "vertices": 442,
-      "triangles": 599,
+      "vertices": 629,
+      "triangles": 907,
       "bounds_cm": [
         [
-          11195.251565202816,
-          -10886.700102670875,
-          -356.532949710876
+          10829.631929865296,
+          -10935.91451816546,
+          -366.98924356040516
         ],
         [
-          12730.648756713585,
-          -8841.606003596302,
-          -315.5592510693823
+          12779.86317220817,
+          -8359.667747600979,
+          -313.8114308804179
         ]
       ]
     }
   ],
-  "triangle_count": 599,
+  "triangle_count": 907,
   "deferred_bridge_osm_ids": [],
   "coverage_checks": [
     {
       "material": "Asphalt",
-      "relative_coverage_error": 1.820693077749693e-12
+      "relative_coverage_error": 1.2701789853725387e-13
     }
   ],
   "pending": [

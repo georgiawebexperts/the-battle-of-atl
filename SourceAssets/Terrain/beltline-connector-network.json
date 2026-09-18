@@ -173,7 +173,7 @@
         ]
       ],
       "length_real_m": 57.4110291894565,
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "name": "Atlanta Beltline Northeast Trail"
     },
@@ -258,13 +258,13 @@
         ]
       ],
       "length_real_m": 22.166411560593517,
-      "width_game_cm": 320,
+      "width_game_cm": 420,
       "artifact_eligible": false,
       "name": "Monroe trail crossing"
     }
   ],
   "length_real_m": 79.57744075005002,
   "start_overlap_error_game_cm": 0.0,
-  "width_policy": "Authored 320 game cm to match the existing arcade trail width; not a surveyed width.",
+  "width_policy": "Authored 420 game cm for arcade play; raised from 320 on 2026-09-18 because the trail rode too narrow. Not a surveyed width. Matches the Eastside trail width so the join is seamless.",
   "scope": "Park trail to northern Eastside endpoint only; full route remains unfinished"
 }
