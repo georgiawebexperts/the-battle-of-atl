@@ -49,7 +49,7 @@ ABattleFrisbeeGroup::ABattleFrisbeeGroup(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  Disc=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SocialDisc"));Disc->SetupAttachment(RootComponent);Disc->SetStaticMesh(Cylinder.Object);Disc->SetRelativeScale3D(FVector(.28,.28,.025));Disc->SetCollisionEnabled(ECollisionEnabled::NoCollision);Disc->SetCanEverAffectNavigation(false);
  SupplyBag=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DiscSupply"));SupplyBag->SetupAttachment(RootComponent);SupplyBag->SetStaticMesh(Cube.Object);SupplyBag->SetRelativeScale3D(FVector(.45,.3,.32));SupplyBag->SetCollisionEnabled(ECollisionEnabled::NoCollision);SupplyBag->SetCanEverAffectNavigation(false);
- Label=CreateDefaultSubobject<UTextRenderComponent>(TEXT("DiscSupplyLabel"));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(0,0,55));Label->SetWorldSize(13);Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor(120,255,160));Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);Label->SetCanEverAffectNavigation(false);
+ Label=CreateDefaultSubobject<UTextRenderComponent>(TEXT("DiscSupplyLabel"));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(0,0,55));Label->SetWorldSize(20);Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor(120,255,160));Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);Label->SetCanEverAffectNavigation(false);
  Tags.Add(TEXT("BattleFrisbeeGroup"));
 }
 void ABattleFrisbeeGroup::BeginPlay(){

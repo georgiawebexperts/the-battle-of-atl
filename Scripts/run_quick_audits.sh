@@ -38,6 +38,9 @@ AUDITS=(
   "BattleSpiritAudit||"
   "BattleKrogCrashAudit||"
   "BattleDuckAudit||"
+  "BattleSpeedAudit||"
+  "BattleTimeAudit||"
+  "BattleDiscAudit||"
 )
 
 FAILED=0

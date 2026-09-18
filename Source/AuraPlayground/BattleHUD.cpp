@@ -41,7 +41,15 @@ void ABattleLabHUD::DrawHUD(){
   const float Available=FMath::Max(1.f,InPanel?(Centered?2.f*FMath::Min(X-TextPanel.Min.X,TextPanel.Max.X-X)-24*S:TextPanel.Max.X-X-12*S):W-X-M);
   auto Font=FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(Size*S));
   while(Font.Size>1&&Measure->Measure(T,Font).X>Available)--Font.Size;
-  FCanvasTextItem Item(FVector2D(X,Y),FText::FromString(T),Font,C);Item.Font=ReadableFont;Item.bCentreX=Centered;Canvas->DrawItem(Item);
+  // Shrinking to fit must stop before the words stop being readable.
+  if(Font.Size<FMath::RoundToInt(13.f*S))Font=FCoreStyle::GetDefaultFontStyle("Regular",FMath::RoundToInt(13.f*S));
+  FCanvasTextItem Item(FVector2D(X,Y),FText::FromString(T),Font,C);Item.Font=ReadableFont;Item.bCentreX=Centered;
+  // A contrasting drop shadow so HUD words hold up over grass, sky and fire
+  // instead of dissolving into whatever is behind them.
+  const float Luminance=C.R*.3f+C.G*.59f+C.B*.11f;
+  Item.ShadowOffset=FVector2D(FMath::Max(1.f,2.f*S),FMath::Max(1.f,2.f*S));
+  Item.ShadowColor=Luminance>.5f?FLinearColor(0,0,0,.9f):FLinearColor(1,1,1,.65f);
+  Canvas->DrawItem(Item);
  };
  auto Text=[&](const FString& T,float X,float Y,float Size,FLinearColor C=FLinearColor::White){DrawFitted(T,X,Y,Size,C,false);};
  auto Center=[&](const FString& T,float Y,float Size,FLinearColor C=FLinearColor::White){DrawFitted(T,W*.5f,Y,Size,C,true);};

@@ -26,7 +26,7 @@ ABattleColaPickup::ABattleColaPickup(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));Can->SetStaticMesh(Cylinder.Object);Can->SetRelativeScale3D(FVector(.22,.22,.4));Can->SetCollisionEnabled(ECollisionEnabled::NoCollision);Can->SetCanEverAffectNavigation(false);
  Glow=CreateDefaultSubobject<UPointLightComponent>(TEXT("PickupGlow"));Glow->SetupAttachment(RootComponent);Glow->SetIntensity(120);Glow->SetAttenuationRadius(180);Glow->SetLightColor(FLinearColor(1,.12,.04));Glow->SetCastShadows(false);
  for(int32 I=0;I<2;I++){
-  auto* Label=CreateDefaultSubobject<UTextRenderComponent>(*FString::Printf(TEXT("ColaLabel%d"),I));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(I?-12:12,0,3));Label->SetRelativeRotation(FRotator(0,I?180:0,0));Label->SetWorldSize(5);Label->SetText(FText::FromString(TEXT("Coca-Cola")));Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor::White);Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);Label->SetCanEverAffectNavigation(false);
+  auto* Label=CreateDefaultSubobject<UTextRenderComponent>(*FString::Printf(TEXT("ColaLabel%d"),I));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(I?-12:12,0,3));Label->SetRelativeRotation(FRotator(0,I?180:0,0));Label->SetWorldSize(18);Label->SetText(FText::FromString(TEXT("Coca-Cola")));Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor::White);Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);Label->SetCanEverAffectNavigation(false);
  }
  Tags.Add(TEXT("BattleHealthPickup"));
 }
@@ -36,7 +36,7 @@ void ABattleColaPickup::BeginPlay(){
  if(bTimeBonus||bSpeedBonus){
   Tags.Remove(TEXT("BattleHealthPickup"));Tags.Add(bSpeedBonus?TEXT("BattleSpeedPickup"):TEXT("BattleTimePickup"));
   Can->SetRelativeScale3D(FVector(.55,.55,.12));Can->SetRelativeRotation(FRotator(90,0,0));Glow->SetLightColor(FLinearColor(.2,1,.65));
-  TArray<UTextRenderComponent*> Labels;GetComponents(Labels);for(auto* Label:Labels){Label->SetText(FText::FromString(bSpeedBonus?TEXT(">> 5s"):TEXT("+30s")));Label->SetTextRenderColor(FColor(8,25,15));Label->SetWorldSize(16);Label->SetRelativeLocation(Label->GetRelativeLocation()+FVector(0,0,3));}
+  TArray<UTextRenderComponent*> Labels;GetComponents(Labels);for(auto* Label:Labels){Label->SetText(FText::FromString(bSpeedBonus?TEXT(">> 5s"):TEXT("+30s")));Label->SetTextRenderColor(FColor(8,25,15));Label->SetWorldSize(26);Label->SetRelativeLocation(Label->GetRelativeLocation()+FVector(0,0,3));}
  }
 }
 void ABattleColaPickup::Tick(float Dt){

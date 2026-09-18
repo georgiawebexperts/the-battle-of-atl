@@ -22,7 +22,7 @@ void ABattleQuest::SpawnCheckpointMarkers(){
   Mesh->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_ShotGlow.M_ShotGlow")));
   auto* Text=NewObject<UTextRenderComponent>(Marker);Text->SetupAttachment(Mesh);
   Text->SetAbsolute(false,true,true);Text->SetWorldRotation(Heading+FRotator(0,180,0));Text->SetWorldScale3D(FVector(1));
-  Text->SetRelativeLocation(FVector(0,0,70));Text->SetText(FText::FromString(FString::Printf(TEXT("CHECKPOINT\n%s"),A.Name)));Text->SetWorldSize(24);Text->SetHorizontalAlignment(EHTA_Center);Text->SetTextRenderColor(FColor(255,205,70));Text->SetCollisionEnabled(ECollisionEnabled::NoCollision);Text->RegisterComponent();
+  Text->SetRelativeLocation(FVector(0,0,70));Text->SetText(FText::FromString(FString::Printf(TEXT("CHECKPOINT\n%s"),A.Name)));Text->SetWorldSize(30);Text->SetHorizontalAlignment(EHTA_Center);Text->SetTextRenderColor(FColor(255,205,70));Text->SetCollisionEnabled(ECollisionEnabled::NoCollision);Text->RegisterComponent();
   CheckpointMarkers.Add(Marker);
  }
 }
