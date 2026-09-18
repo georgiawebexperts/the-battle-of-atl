@@ -67,8 +67,10 @@
   ],
   "delivery": {
     "branch": "windows-port",
-    "commit": "0acd223c9dd0e00eff347e32d60fff97a2ee3475",
+    "commit": "26f0c75",
     "local_commit_done": true,
-    "github_push": "blocked: Mac history contains Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset at 222 MB, over GitHub 100 MB per-file limit (pre-receive GH001). The Windows branch commit is complete locally; GitHub needs Git LFS or a history cleanup on the Mac side."
+    "github_push": "pushed OK: windows-port is now on GitHub, based on mac build 126 (4f4cf1d) plus the Windows build fixes and the PiedmontWorld startup map change.",
+    "base": "github/piedmont-ride-v2 @ 4f4cf1d (Build 126)",
+    "next": "download the mac build-126 Drive content zips, integrate, package, and re-run the audit sweep for the Windows build 126 playtest"
   }
 }
