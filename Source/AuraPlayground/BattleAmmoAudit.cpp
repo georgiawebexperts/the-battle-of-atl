@@ -20,6 +20,26 @@ void ABattleMacController::TickAmmoAudit(float Dt){
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode)return;AmmoClock+=Dt;
  auto Finish=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleAmmoAudit: {\"passed\":%s,\"reason\":\"%s\",\"stage\":%d}"),Pass?TEXT("true"):TEXT("false"),Reason,AmmoStage);AmmoStage=99;ConsoleCommand(TEXT("quit"));};
 #define CHECK_AMMO(C,R) if(!(C)){Finish(false,TEXT(R));return;}
+ // Dismount refuses on four guards, and separately when none of the exit
+ // directions has a clear spot. "Dismount failed" and "Reload interruption
+ // setup failed" both hid that, and the audit failed at both stages on
+ // different runs. Re-run the same read-only checks and name the cause.
+ auto DismountWhy=[&]()->FString{
+  int32 Grounded=0,WallBlocked=0,Occupied=0;
+  FCollisionQueryParams DQ(SCENE_QUERY_STAT(AmmoDismountDiag),false,Bike);
+  for(const FVector Direction:{Bike->GetActorRightVector(),-Bike->GetActorRightVector(),-Bike->GetActorForwardVector(),Bike->GetActorForwardVector()}){
+   const FVector Candidate=Bike->GetActorLocation()+Direction*145;FHitResult Ground;
+   if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,100),Candidate-FVector(0,0,220),ECC_Visibility,DQ)||Ground.ImpactNormal.Z<.65f)continue;
+   ++Grounded;
+   const float Clearance=88.f+30.f*(1.f/FMath::Max(.65f,Ground.ImpactNormal.Z)-1.f)+2.f;
+   const FVector Exit=Ground.ImpactPoint+FVector(0,0,Clearance);
+   FHitResult Wall;if(GetWorld()->SweepSingleByChannel(Wall,Bike->GetActorLocation(),Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),DQ)){++WallBlocked;continue;}
+   if(GetWorld()->OverlapBlockingTestByChannel(Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),DQ)){++Occupied;continue;}
+  }
+  return FString::Printf(TEXT("controller=%d parked=%d health=%.1f recovery=%.1f grounded=%d wall=%d occupied=%d speed=%.1f at=%s"),
+   Bike->GetController()?1:0,Bike->bParked?1:0,Bike->RiderHealth,Bike->Ride?Bike->Ride->Recovery:-1.f,Grounded,WallBlocked,Occupied,
+   Bike->GetVelocity().Size(),*Bike->GetActorLocation().ToCompactString());
+ };
  auto Next=[&](){AmmoStage++;AmmoClock=0;};
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAmmoBinAudit"))){
   static TArray<TWeakObjectPtr<ABattleWeaponCrate>> Supplies;static TArray<TWeakObjectPtr<AActor>> Bins;
@@ -84,11 +104,25 @@ void ABattleMacController::TickAmmoAudit(float Dt){
   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();Next();
  }else if(AmmoStage==1&&AmmoClock>.3f){CHECK_AMMO(Bike->FirePistol(),"Bike shot failed");AmmoShots++;AmmoClock=0;if(AmmoShots==17)Next();}
  else if(AmmoStage==2&&AmmoClock>2){CHECK_AMMO(Bike->PistolAmmo==0&&!Bike->FirePistol(),"Empty bike generated rounds");CHECK_AMMO(Collect(Bike)&&Bike->Inventory[0].Reserve==17,"Bike pickup or repeat guard failed");CHECK_AMMO(!Bike->FirePistol(),"Empty bike fired before reload");Next();}
- else if(AmmoStage==3&&AmmoClock>2){CHECK_AMMO(Bike->PistolAmmo==17&&Bike->Inventory[0].Reserve==0,"Bike reload failed conservation");CHECK_AMMO(Bike->Dismount(),"Dismount failed");Person=Cast<ABattleRider>(GetPawn());CHECK_AMMO(Person&&Person->Ammo==17,"Possession lost ammunition");CHECK_AMMO(Person->ToggleDrawWeapon(),"Could not draw pistol after dismount");Person->Reload();CHECK_AMMO(Person->ReloadRemaining==0,"Foot reload accepted empty reserve");CHECK_AMMO(Collect(Person)&&Bike->Inventory[0].Reserve==17,"Foot pickup failed");CHECK_AMMO(Collect(Person)&&Bike->Inventory[0].Reserve==34,"Second pickup did not accumulate beyond seventeen");Next();}
+ else if(AmmoStage==3&&AmmoClock>2){
+  CHECK_AMMO(Bike->PistolAmmo==17&&Bike->Inventory[0].Reserve==0,"Bike reload failed conservation");
+  if(!Bike->Dismount()){
+   const FString Why=FString::Printf(TEXT("Dismount failed: %s"),*DismountWhy());
+   Finish(false,*Why);return;
+  }
+  Person=Cast<ABattleRider>(GetPawn());CHECK_AMMO(Person&&Person->Ammo==17,"Possession lost ammunition");CHECK_AMMO(Person->ToggleDrawWeapon(),"Could not draw pistol after dismount");Person->Reload();CHECK_AMMO(Person->ReloadRemaining==0,"Foot reload accepted empty reserve");CHECK_AMMO(Collect(Person)&&Bike->Inventory[0].Reserve==17,"Foot pickup failed");CHECK_AMMO(Collect(Person)&&Bike->Inventory[0].Reserve==34,"Second pickup did not accumulate beyond seventeen");Next();
+ }
  else if(AmmoStage==4&&AmmoClock>.4f){CHECK_AMMO(Person->Fire()&&Person->Ammo==16,"Foot shot failed");Person->Reload();CHECK_AMMO(Person->ReloadRemaining>0,"Reload did not start");Next();}
  else if(AmmoStage==5&&AmmoClock>2){CHECK_AMMO(Person->Ammo==17&&Bike->Inventory[0].Reserve==33,"Foot reload created or lost rounds");CHECK_AMMO(Person->MountBike()&&Bike->PistolAmmo==17,"Remount lost rounds");CHECK_AMMO(Bike->GiveWeapon(0,100)&&Bike->Inventory[0].Reserve==102&&!Bike->GiveWeapon(0,10),"Reserve cap failed");AmmoShots=0;Next();}
  else if(AmmoStage==6&&AmmoClock>.3f){const bool Fired=Bike->FirePistol();if(!Fired)UE_LOG(LogTemp,Warning,TEXT("AmmoAudit shot blocked: ammo=%d reserve=%d health=%.1f parked=%d recovery=%.2f"),Bike->PistolAmmo,Bike->Inventory[0].Reserve,Bike->RiderHealth,Bike->bParked,Bike->Ride->Recovery);CHECK_AMMO(Fired,"Second magazine shot failed");AmmoShots++;AmmoClock=0;if(AmmoShots==17)Next();}
- else if(AmmoStage==7&&AmmoClock>.4f){CHECK_AMMO(!Bike->FirePistol()&&Bike->Dismount(),"Reload interruption setup failed");Next();}
+ else if(AmmoStage==7&&AmmoClock>.4f){
+  const bool bDry=!Bike->FirePistol();
+  if(!bDry||!Bike->Dismount()){
+   const FString Why=FString::Printf(TEXT("Reload interruption setup failed: dry=%d %s"),bDry?1:0,*DismountWhy());
+   Finish(false,*Why);return;
+  }
+  Next();
+ }
  else if(AmmoStage==8&&AmmoClock>2){CHECK_AMMO(Person&&Person->Ammo==0&&Bike->Inventory[0].Reserve==102&&Bike->PistolAmmo==0,"Parked bike consumed rounds during foot possession");CHECK_AMMO(Person->ToggleDrawWeapon(),"Could not draw pistol for interrupted reload recovery");Person->DrawRemaining=0;Person->Reload();Next();}
  else if(AmmoStage==9&&AmmoClock>2){CHECK_AMMO(Person->Ammo==17&&Bike->Inventory[0].Reserve==85&&Person->MountBike()&&Bike->PistolAmmo==17,"Interrupted reload recovery lost rounds");Finish(true,TEXT("Seventeen initial shots, dry fire, pickups, bike/foot reload conservation, possession, interrupted reload and reserve cap pass"));}
  if(AmmoClock>10&&AmmoStage!=99)Finish(false,TEXT("Ammo audit timeout"));

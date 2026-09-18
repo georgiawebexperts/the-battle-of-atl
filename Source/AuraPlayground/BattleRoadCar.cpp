@@ -122,8 +122,15 @@ void ABattleRoadCar::Tick(float Dt){
   Speed=FMath::FInterpConstantTo(Speed,Target,Step,Target<Speed?900.f:250.f);
   const float Travel=FMath::Min(ToEnd,FMath::Min(Available,Speed*Step));const FVector Next=SampleRoute(RouteDistance+Travel);
   FVector Heading=SampleRoute(FMath::Min(Lengths.Last(),RouteDistance+Travel+150))-Next;if(Heading.IsNearlyZero())Heading=GetActorForwardVector();
-  FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Next,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
-  if(!FMath::IsNearlyZero(HostilityBlend))Pose.SetLocation(Pose.GetLocation()+FVector(-Heading.Y,Heading.X,0).GetSafeNormal()*HostilityBlend);
+  // The swerve that steers a car at the rider has to be part of the point the
+  // suspension is solved from, not a shift applied to the finished pose.
+  // GroundPose traces four contacts from the point it is handed and UpdateWheels
+  // places each wheel at its own contact, so shifting the pose afterwards left
+  // the body up to 140 cm from its own wheels - one side poking out of the
+  // fenders like a detached wheel, the other buried under the floor.
+  FVector Solve=Next;
+  if(!FMath::IsNearlyZero(HostilityBlend))Solve+=FVector(-Heading.Y,Heading.X,0).GetSafeNormal()*HostilityBlend;
+  FTransform Pose;TArray<FVector> Contacts;bGrounded=GroundPose(Solve,Heading,Pose,Contacts);if(!bGrounded){Speed=0;break;}
   const float Turn=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Pose.Rotator().Yaw);
   // Steering follows curvature and wheelbase, not degrees rotated per rendered frame.
   const float WheelSteer=Travel>KINDA_SMALL_NUMBER?FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan(264.2f*FMath::DegreesToRadians(Turn)/Travel)),-55.f,55.f):SteeringAngle;

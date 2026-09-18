@@ -240,7 +240,9 @@ ABattleLabMode::ABattleLabMode(){DefaultPawnClass=ABattleBike::StaticClass();HUD
 void ABattleLabMode::StartPlay(){AGameModeBase::StartPlay();if(TActorIterator<APiedmontPathSpline>(GetWorld()))if(auto* Director=GetWorld()->SpawnActor<APiedmontTrafficDirector>())Director->DesiredPopulation=50;}
 void ABattleLabMode::Tick(float Dt){
  AGameModeBase::Tick(Dt);ExpansionNoticeRemaining=FMath::Max(0.f,ExpansionNoticeRemaining-Dt);if(bTutorialActive)return;TickTrouble(Dt);TickDrones(Dt);TickKnife(Dt);TimeNoticeRemaining=FMath::Max(0.f,TimeNoticeRemaining-Dt);TickHints(Dt);
- if(!HintsSeen.Contains(TEXT("ride")))PushHint(TEXT("ride"),TEXT("W/S PEDAL & BRAKE  ·  A/D STEER  ·  J JUMP  ·  SHIFT BOOST  ·  E GET OFF"),8.f);
+ // The gear keys belong here: the HUD shows GEAR 5/5 from the first second, and
+ // the intro line never said how to change it.
+ if(!HintsSeen.Contains(TEXT("ride")))PushHint(TEXT("ride"),TEXT("W/S PEDAL & BRAKE  ·  A/D STEER  ·  Q/R GEARS  ·  J JUMP  ·  SHIFT BOOST  ·  E GET OFF  ·  H HORN"),8.f);
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
  if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
  APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&(Player->IsA<ABattleRider>()||(Cast<ABattleBike>(Player)&&Cast<ABattleBike>(Player)->bCrashActive))?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}

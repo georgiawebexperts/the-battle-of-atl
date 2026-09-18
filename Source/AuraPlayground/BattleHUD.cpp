@@ -128,22 +128,35 @@ void ABattleLabHUD::DrawHUD(){
  if(Person&&Person->bSwimming){Prompt=TEXT("EXPLORE THE LAKE");Help=TEXT("WASD / arrows swim   E remount by bike");}
  if(Owner->bCrashActive){Prompt=GettingUp?TEXT("GETTING BACK UP"):TEXT("KNOCKED OFF YOUR BIKE");Help=TEXT("Recovery is automatic — clock keeps running");}
  if(Owner->StunRemaining>0){Prompt=Owner->StunLabel;Help=FString::Printf(TEXT("Control returns in %.1fs — clock keeps running"),Owner->StunRemaining);}
+ bool bPromptShown=false;
  if(FullHUD&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&!Person){
   Panel(W*.5f-460*S,H-M-136*S,920*S,136*S);
   Center(TEXT("BIKE  •  W/UP PEDAL  •  S/DOWN BRAKE / REVERSE  •  A/D OR ARROWS STEER"),H-M-124*S,23,Peach);
   Center(TEXT("E dismount  •  Q/R gears  •  J jump  •  SHIFT boost  •  H horn  •  P arcade/realistic"),H-M-80*S,20,Muted);
   Center(TEXT("F1  COMPACT CONTROLS"),H-M-37*S,17,Muted);
- }else if(FullHUD&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&Person){
+}else if(FullHUD&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&Person){
   Panel(W*.5f-460*S,H-M-136*S,920*S,136*S);
   Center(Person->bSwimming?TEXT("SWIMMING  •  WASD / ARROWS MOVE  •  MOUSE LOOK"):TEXT("ON FOOT  •  WASD / ARROWS MOVE  •  MOUSE LOOK / AIM  •  Z/X TURN  •  T/V LOOK"),H-M-124*S,23,Peach);
   Center(Person->bSwimming?TEXT("E remount near bike  •  SHIFT swim faster"):TEXT("E bike  •  SHIFT run  •  SPACE jump  •  C crouch  •  G gun  •  CLICK fire  •  RMB aim"),H-M-80*S,20,Muted);
   Center(TEXT("F1  COMPACT CONTROLS"),H-M-37*S,17,Muted);
- }else if(Person&&(Person->bSwimming||Person->bWeaponDrawn)&&Owner->StunRemaining<=0&&!Owner->bCrashActive){
+}else if(Person&&(Person->bSwimming||Person->bWeaponDrawn)&&Owner->StunRemaining<=0&&!Owner->bCrashActive){
   if(Person->bWeaponDrawn&&!Person->bSwimming)Help=TEXT("G holster   CLICK fire   R reload   F melee");
-  Panel(W*.5f-300*S,H-M-50*S,600*S,50*S);Center(Help,H-M-38*S,21,Muted);
- }else if(Owner->bCrashActive||Owner->StunRemaining>0||(Person&&FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240)){
+  Panel(W*.5f-300*S,H-M-50*S,600*S,50*S);Center(Help,H-M-38*S,21,Muted);bPromptShown=true;
+}else if(Owner->bCrashActive||Owner->StunRemaining>0||(Person&&FVector::Dist(Person->GetActorLocation(),Owner->GetActorLocation())<240)){
   Panel(W*.5f-300*S,H-M-100*S,600*S,100*S);
-  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);
+  Center(Prompt,H-M-88*S,29,Peach);Center(Help,H-M-43*S,21,Muted);bPromptShown=true;
+ }
+ // A controls cheat sheet that stays up. Compact mode used to show only
+ // "F1 HELP" for the first twelve seconds, so the gear keys were never on
+ // screen once that faded. This strip is always there unless a prompt owns the
+ // space; F1 still swaps it for the full panel.
+ if(!FullHUD&&!bPromptShown){
+  const FString Strip=Person
+   ?(Person->bWeaponDrawn&&!Person->bSwimming?TEXT("WASD MOVE · Z/X TURN · G HOLSTER · CLICK FIRE · R RELOAD · F1 MORE")
+    :Person->bSwimming?TEXT("WASD SWIM · SHIFT FASTER · E BIKE · F1 MORE")
+    :TEXT("WASD MOVE · SHIFT RUN · SPACE JUMP · G GUN · E BIKE · F1 MORE"))
+   :TEXT("W/UP PEDAL · S/DOWN BRAKE · A/D STEER · Q/R GEARS · J JUMP · SHIFT BOOST · E GET OFF · H HORN · F1 MORE");
+  Panel(W*.5f-470*S,H-M-46*S,940*S,46*S);Center(Strip,H-M-36*S,19,Muted);
  }
  if(!FullHUD&&Owner->StunRemaining<=0&&!Owner->bCrashActive&&Park&&Park->RunElapsed<12.f)Text(TEXT("F1  HELP"),W-M-78*S,M+75*S,13,FLinearColor(.75,.78,.82,.8));
  if(FullHUD&&Bike&&!Owner->bCrashActive){Panel(M,Bottom-82*S,310*S,74*S);Text(FString::Printf(TEXT("PISTOL  %d LOADED"),Bike->PistolAmmo),M+18*S,Bottom-74*S,23,Peach);Text(FString::Printf(TEXT("%d SPARE"),Bike->Inventory[0].Reserve),M+18*S,Bottom-39*S,19,Muted);}
@@ -242,7 +255,12 @@ void ABattleLabHUD::DrawHUD(){
  if(!Notice.IsEmpty()){Panel(CX-360*S,H*.69f,720*S,52*S);Center(Notice,H*.69f+9*S,27,Peach);}
  // Contextual hints: pop up when they matter and fade away again.
  if(auto* Rules=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Rules->HintRemaining>0&&!Rules->HintText.IsEmpty()){
-  Panel(CX-430*S,H*.24f,860*S,54*S);Center(Rules->HintText,H*.24f+11*S,23,Peach);
+  // The GO banner occupies M+170..M+262. The hint panel used to be drawn
+  // straight over its second line, which is the doubled-up text in the "GO!
+  // TIMER RUNNING" screenshot.
+  float HintY=H*.24f;
+  if(Park&&!Park->bTutorialActive&&!Park->bRunEnded&&(Park->StartCountdown>0||Park->RunElapsed<2.5f))HintY=M+278*S;
+  Panel(CX-430*S,HintY,860*S,54*S);Center(Rules->HintText,HintY+11*S,23,Peach);
  }
  // A pedestrian the rider just ran into shouts at them. This slot is drawn even
  // while the crash overlay is up, or the line would never be seen in realistic
