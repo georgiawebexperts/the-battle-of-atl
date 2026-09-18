@@ -194,7 +194,17 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleHome>();
  GetWorld()->SpawnActor<ABattleSpirit>();
  GetWorld()->SpawnActor<ABattleScooterTraffic>();
- GetWorld()->SpawnActor<ABattleMemorial>(BattleSpiritData::Memorial,FRotator(0,BattleSpiritData::MemorialYaw,0));
+ // Seat the flower memorial on the ground that is there now rather than on the
+ // surface the coordinates were captured against.
+ FVector MemorialAt=BattleSpiritData::Memorial;
+ {
+  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(MemorialGround),true);
+  if(GetWorld()->LineTraceSingleByChannel(Hit,BattleSpiritData::Memorial+FVector(0,0,1500),BattleSpiritData::Memorial-FVector(0,0,1500),ECC_Visibility,Q)){
+   if(FMath::Abs(Hit.ImpactPoint.Z-MemorialAt.Z)>2.f)UE_LOG(LogTemp,Display,TEXT("BattleMemorialGround: moved %.0f cm to %s"),Hit.ImpactPoint.Z-MemorialAt.Z,*Hit.ImpactPoint.ToString());
+   MemorialAt=Hit.ImpactPoint;
+  }
+ }
+ GetWorld()->SpawnActor<ABattleMemorial>(MemorialAt,FRotator(0,BattleSpiritData::MemorialYaw,0));
  const auto& MurderK=BattleCheckpoints::Anchors[0];
  GetWorld()->SpawnActor<ABattleMurderK>(FVector(MurderK.X,MurderK.Y,MurderK.Z),FRotator(0,MurderK.Yaw,0));
  Quest=GetWorld()->SpawnActor<ABattleQuest>();if(Quest)Quest->RadarRange=Difficulty.RadarRange;

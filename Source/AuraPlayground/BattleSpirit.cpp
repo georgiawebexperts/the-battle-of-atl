@@ -93,8 +93,11 @@ void ABattleSpirit::Tick(float Dt){
  Super::Tick(Dt);
  if(!bPresentationReady)return;
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
- if(State==EBattleSpiritState::Untried&&Pawn&&FVector::Dist2D(Pawn->GetActorLocation(),ApproachPoint)<700&&FMath::Abs(Pawn->GetActorLocation().Z-ApproachPoint.Z)<200){
-  if(ChaseRoute.Num()>1){SetActorLocation(ChaseRoute[0]);TryApproach(FMath::FRand());}
+ // The encounter used to fire on a coin flip, so half the time a rider who rode
+ // right past it saw nothing at all. Elliott did not see the angel; now it
+ // always appears when he gets near it.
+ if(State==EBattleSpiritState::Untried&&Pawn&&FVector::Dist2D(Pawn->GetActorLocation(),ApproachPoint)<900&&FMath::Abs(Pawn->GetActorLocation().Z-ApproachPoint.Z)<200){
+  if(ChaseRoute.Num()>1){SetActorLocation(ChaseRoute[0]);TryApproach(0.f);}
  }
  AdvanceEncounter(Dt);
  if(State==EBattleSpiritState::Active){
@@ -112,6 +115,28 @@ void ABattleSpirit::Tick(float Dt){
 
 void ABattleSpirit::BeginPlay(){
  Super::BeginPlay();ApproachPoint=BattleSpiritData::Approach;for(const FVector& P:BattleSpiritData::Chase)ChaseRoute.Add(P);
+ // The authored route was captured against an older ground surface, and part of
+ // it now sits inside the Murder K trail apron, so the encounter triggered from
+ // inside the scenery. Snap the approach and the chase line onto the ground that
+ // is actually there now, the same way every placed prop does.
+ auto Ground=[&](const FVector& P,FVector& Out)->bool{
+  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(SpiritGround),true);
+  if(!GetWorld()->LineTraceSingleByChannel(Hit,P+FVector(0,0,1500),P-FVector(0,0,1500),ECC_Visibility,Q))return false;
+  Out=Hit.ImpactPoint;return true;
+ };
+ FVector Snapped;
+ if(Ground(BattleSpiritData::Approach,Snapped)){
+  if(FMath::Abs(Snapped.Z-ApproachPoint.Z)>2.f)UE_LOG(LogTemp,Display,TEXT("BattleSpiritGround: approach moved %.0f cm from %s to %s"),Snapped.Z-ApproachPoint.Z,*ApproachPoint.ToString(),*Snapped.ToString());
+  ApproachPoint=Snapped;
+ }
+ ChaseRoute.Reset();
+ int32 Moved=0;
+ for(const FVector& P:BattleSpiritData::Chase){
+  FVector Q2;
+  if(Ground(P,Q2)){if(FMath::Abs(Q2.Z-P.Z)>2.f)++Moved;ChaseRoute.Add(Q2);}
+  else ChaseRoute.Add(P);
+ }
+ UE_LOG(LogTemp,Display,TEXT("BattleSpiritGround: chase_points=%d regrounded=%d"),ChaseRoute.Num(),Moved);
  auto* Base=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
  auto* BearMat=UMaterialInstanceDynamic::Create(Base,this);if(BearMat)BearMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.006f,.012f,.025f));
  auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.08f,.55f,1.f));
