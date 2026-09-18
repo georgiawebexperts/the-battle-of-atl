@@ -22,7 +22,7 @@ $bin = (Resolve-Path $ExePath).Path
 $gameRoot = $bin | Split-Path | Split-Path | Split-Path
 $resultFile = Join-Path $gameRoot 'Saved\FpsAudit.json'
 
-$map = '/Game/PiedmontRide/Maps/PiedmontWorld'
+$map = '/Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1'
 $common = @('-game', '-windowed', '-ForceRes', '-BattleSkipTutorial', '-unattended', '-nosound', '-stdout', '-BattleFpsAudit')
 
 $results = @()
