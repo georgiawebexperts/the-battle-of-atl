@@ -36,7 +36,7 @@ void ABattleMacController::TickSpiritAudit(float Dt){
  for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
  for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
  auto New=[&](){auto* S=GetWorld()->SpawnActor<ABattleSpirit>(B->GetActorLocation(),FRotator::ZeroRotator);S->SetActorTickEnabled(false);return S;};
-  auto* S=New();SPIRITCHECK(S&&S->bPresentationReady&&S->SpiritBillboard&&S->SpiritBillboard->Sprite&&S->BearParts.Num()>=9&&S->Wisps.Num()>=3&&!S->GetActorEnableCollision()&&!S->CanBeDamaged(),"Visible spectral figure presentation or pass-through safety missing");
+  auto* S=New();SPIRITCHECK(S&&S->bPresentationReady&&S->SpiritBillboard&&S->SpiritBillboard->Sprite&&S->FigureParts.Num()>=9&&S->Wisps.Num()>=3&&!S->GetActorEnableCollision()&&!S->CanBeDamaged(),"Visible spectral figure presentation or pass-through safety missing");
  M->bTutorialActive=true;SPIRITCHECK(!S->TryApproach(0)&&S->State==EBattleSpiritState::Untried,"Tutorial consumed opportunity");M->bTutorialActive=false;
  M->StartCountdown=1;SPIRITCHECK(!S->TryApproach(0),"Countdown spawned spirit");M->StartCountdown=0;
  SPIRITCHECK(!S->TryApproach(-1)&&!S->TryApproach(1)&&S->State==EBattleSpiritState::Untried,"Invalid roll consumed opportunity");
@@ -61,7 +61,7 @@ void ABattleMacController::TickSpiritAudit(float Dt){
  S=New();SPIRITCHECK(S->TryApproach(0),"Stun fixture failed");B->StunRemaining=2;S->AdvanceEncounter(.1f);B->StunRemaining=0;SPIRITCHECK(S->State==EBattleSpiritState::Fading&&!S->TryApproach(0),"Knockoff/stun failed cancellation");S->Destroy();
  S=New();SPIRITCHECK(S->TryApproach(0),"End fixture failed");M->bRunEnded=true;S->AdvanceEncounter(.1f);M->bRunEnded=false;SPIRITCHECK(S->State==EBattleSpiritState::Fading&&!S->TryCatch(),"Run end restored opportunity");S->Destroy();
  S=New();SPIRITCHECK(S->TryApproach(0),"Death fixture failed");B->DamageGrace=0;B->ApplyRiderDamage(1000);SPIRITCHECK(S->State==EBattleSpiritState::Fading&&!S->TryCatch()&&!S->TryApproach(0),"Death failed immediate cancellation");
- End(true,TEXT("Visible spectral bear, native lifecycle, mounted restore, quest preservation, rarity boundary, pause, expiry, dismount/remount, stun, death and projectile pass-through pass"));
+ End(true,TEXT("Visible spectral human figure, native lifecycle, mounted restore, quest preservation, rarity boundary, pause, expiry, dismount/remount, stun, death and projectile pass-through pass"));
 #undef SPIRITCHECK
 #endif
 }

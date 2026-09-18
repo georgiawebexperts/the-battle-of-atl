@@ -26,7 +26,7 @@ public:
  float Age=0,Fade=0;
  int32 Rewards=0;
  bool bPresentationReady=true;
- UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> BearParts;
+ UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> FigureParts;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Wisps;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MoonGlow;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SpiritCard;
