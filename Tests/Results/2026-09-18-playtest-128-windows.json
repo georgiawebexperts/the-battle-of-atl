@@ -84,11 +84,42 @@
     }
   },
   "perf": {
-    "status": "skipped - pending reboot",
-    "reason": "Per instructions, perf runs only when the GPU is healthy. Last boot is 2026-09-14T18:42-04:00 (no reboot since 2026-09-14). Run Scripts\\perf_windows.ps1 at 1920x1080 and 1600x900 after the reboot and record avg/min/p05."
+    "status": "complete",
+    "method": "packaged Development 128 exe, windowed, BattleFpsAudit self-test (30s sample window)",
+    "command": "\"AuraPlayground.exe\" /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -ResX=<w> -ResY=<h> -game -windowed -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -BattleFpsAudit",
+    "harness": "Scripts\\perf_windows.ps1 logic, executed via work\\perf-manual-128.ps1 (same polling + JSON parsing)",
+    "script_as_shipped_note": "Scripts\\perf_windows.ps1 was run first exactly as shipped and captured samples=0 at both sizes: its fixed map URL (no AutoStart) leaves the game at the title state where ABattleMacController::PlayerTick never fires the audit. Build 127 recorded the same zero result (work/perf-dev-127.json). The numbers below come from the identical harness with the sweep-proven URL ?Difficulty=Easy?AutoStart=1.",
+    "results": [
+      {
+        "width": 1600,
+        "height": 900,
+        "samples": 1757,
+        "min_fps": 37.7,
+        "avg_fps": 58.8,
+        "p05_fps": 51.3
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "samples": 1794,
+        "min_fps": 37.8,
+        "avg_fps": 59.8,
+        "p05_fps": 59.8
+      }
+    ],
+    "fallback_720": "not needed - both requested resolutions produced real samples",
+    "logs": [
+      "work/perf-128-1600.log",
+      "work/perf-128-1920.log",
+      "work/perf-dev-128.json",
+      "work/perf-manual-128-console.log"
+    ],
+    "raw_game_json": "Saved\\StagedBuilds\\Windows\\AuraPlayground\\Saved\\FpsAudit.json ({\"passed\":true,\"avg_fps\":59.8,\"min_fps\":37.8,\"p05_fps\":59.8,\"samples\":1794})",
+    "gpu": "healthy per user (2026-09-18 evening probe freeze did not reproduce); no hang in any perf run"
   },
   "reboot_status": {
     "last_boot": "2026-09-14T18:42:03-04:00",
-    "rebooted_since_2026_09_14": false
+    "rebooted_since_2026_09_14": false,
+    "gpu": "healthy per user confirmation; offscreen sweep and windowed perf completed without hangs"
   }
 }
