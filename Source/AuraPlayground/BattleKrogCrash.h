@@ -25,12 +25,13 @@ public:
  UPROPERTY(BlueprintReadOnly) float DistanceToTunnelCm=0;
  UPROPERTY(BlueprintReadOnly) float GapClearanceCm=0;
  UPROPERTY(BlueprintReadOnly) int32 Bystanders=0,Bodies=0,Fires=0,Brawlers=0;
+ /** Wrecked scooters, and how many primitive parts they are built from. */
+ UPROPERTY(BlueprintReadOnly) int32 Scooters=0,ScooterParts=0;
  UPROPERTY(BlueprintReadOnly) FString ShoutText;
  UPROPERTY(BlueprintReadOnly) float ShoutRemaining=0;
 private:
  UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> CrashRoot;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UBoxComponent> RoadBlock;
- UPROPERTY() TSubclassOf<AActor> ScooterClass;
  UPROPERTY() TArray<TWeakObjectPtr<AActor>> Spawned;
  TArray<TWeakObjectPtr<APiedmontPedestrian>> Crowd;
  FVector RoadDir=FVector(1,0,0), RoadSide=FVector(0,1,0);

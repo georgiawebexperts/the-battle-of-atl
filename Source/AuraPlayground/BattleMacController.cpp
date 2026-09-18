@@ -101,6 +101,7 @@ void TickBattleCanopyReview(APlayerController* PC,float Dt);
 void TickBattleTreeRideAudit(APlayerController* PC,float Dt);
 void TickBattleCurseAudit(APlayerController* PC,float Dt);
 void TickBattlePropProbe(APlayerController* PC,float Dt);
+void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt);
 void TickBattleAimAudit(APlayerController* PC,float Dt);
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
 void TickBattleSkylineAudit(APlayerController* PC,float Dt);
@@ -197,6 +198,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiagonalAudit")))TickBattleDiagonalAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePatioAudit")))TickBattlePatioAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleTunnelHazardAudit")))TickBattleTunnelHazardAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMurderKAudit")))TickMurderKAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeAudit")))TickKnifeAudit(Dt);

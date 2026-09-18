@@ -5,6 +5,7 @@
 #include "BattleScooterTraffic.h"
 #include "BattleSpiritData.h"
 #include "BattleKrogCrash.h"
+#include "BattleTunnelHazards.h"
 #include "BattleHints.h"
 #include "BattleMemorial.h"
 #include "BattleMurderK.h"
@@ -229,6 +230,9 @@ void ABattleParkMode::StartPlay(){
  GetWorld()->SpawnActor<ABattleDuckFlock>();
  GetWorld()->SpawnActor<ABattleSkyline>();
  GetWorld()->SpawnActor<ABattleKrogCrash>();
+ // The crash scene outside the mouth, then the bore itself: staggered deep
+ // potholes and scooters along both walls, traced onto whatever floor is there.
+ GetWorld()->SpawnActor<ABattleTunnelHazards>();
  GetWorld()->SpawnActor<ABattleGrassWatch>();
  GetWorld()->SpawnActor<ABattleGrassSign>();
  GetWorld()->SpawnActor<ABattlePicnicDirector>();
