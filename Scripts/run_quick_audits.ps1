@@ -45,7 +45,8 @@ $audits = @(
     [pscustomobject]@{ Name = 'BattleDuckAudit';     Label = 'BattleDuckAudit';         Flag = '' },
     [pscustomobject]@{ Name = 'BattleSpeedAudit';    Label = 'BattleSpeedAudit';        Flag = '' },
     [pscustomobject]@{ Name = 'BattleTimeAudit';     Label = 'BattleTimeAudit';         Flag = '' },
-    [pscustomobject]@{ Name = 'BattleDiscAudit';     Label = 'BattleDiscAudit';         Flag = '' }
+    [pscustomobject]@{ Name = 'BattleDiscAudit';     Label = 'BattleDiscAudit';         Flag = '' },
+    [pscustomobject]@{ Name = 'BattleDiagonalAudit'; Label = 'BattleDiagonalAudit';     Flag = '' }
 )
 
 function Invoke-Audit {

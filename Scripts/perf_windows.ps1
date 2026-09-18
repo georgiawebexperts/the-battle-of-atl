@@ -16,8 +16,11 @@ if (-not $ExePath) {
     $ExePath = Join-Path $projectRoot 'Saved\StagedBuilds\Windows\AuraPlayground\Binaries\Win64\AuraPlayground.exe'
 }
 $bin = (Resolve-Path $ExePath).Path
-$projDir = Split-Path (Split-Path (Split-Path $bin -Parent) -Parent) -Parent
-$resultFile = Join-Path $projDir 'Saved\FpsAudit.json'
+# The audit writes FpsAudit.json into the staged game root's Saved folder. The exe
+# lives at <staged root>\AuraPlayground\Binaries\Win64\AuraPlayground.exe, so the
+# game root is three directory levels up from the exe - not the staged root itself.
+$gameRoot = $bin | Split-Path | Split-Path | Split-Path
+$resultFile = Join-Path $gameRoot 'Saved\FpsAudit.json'
 
 $map = '/Game/PiedmontRide/Maps/PiedmontWorld'
 $common = @('-game', '-windowed', '-ForceRes', '-BattleSkipTutorial', '-unattended', '-nosound', '-stdout', '-BattleFpsAudit')
