@@ -111,22 +111,6 @@ void ABattleMacController::TickHUDReview(float Dt){
   }
  }
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleDuckReview"))){
- // Generic spot check: -BattleSpotReview="X,Y[,Yaw]" parks the rider there and
- // renders from the rider's own view.
- if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleSpotReview"))){
-  FString Where;FParse::Value(FCommandLine::Get(),TEXT("BattleSpotReview="),Where);
-  TArray<FString> Parts;Where.ParseIntoArray(Parts,TEXT(","),true);
-  if(Parts.Num()>=2)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
-   const FVector Try(FCString::Atof(*Parts[0]),FCString::Atof(*Parts[1]),0.f);
-   const float Yaw=Parts.Num()>=3?FCString::Atof(*Parts[2]):90.f;
-   FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
-   const FVector Spot=GetWorld()->LineTraceSingleByChannel(Ground,Try+FVector(0,0,2000),Try-FVector(0,0,3000),ECC_Visibility,Q)?Ground.ImpactPoint+FVector(0,0,98):Try+FVector(0,0,98);
-   const FRotator Facing(0,Yaw,0);
-   Bike->SetActorLocationAndRotation(Spot,Facing,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(Facing);
-   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
-   UE_LOG(LogTemp,Display,TEXT("SpotReview: spot=%s yaw=%.0f"),*Spot.ToString(),Yaw);
-  }
- }
   ABattleDuckFlock* Flock=nullptr;
   for(TActorIterator<ABattleDuckFlock> It(GetWorld());It;++It)if(!Flock)Flock=*It;
   if(Flock&&Flock->Ducks.Num()>0){
@@ -146,7 +130,30 @@ void ABattleMacController::TickHUDReview(float Dt){
    UE_LOG(LogTemp,Display,TEXT("DuckReview: centre=%s ducks=%d eye=%s"),*Centre.ToString(),Flock->Ducks.Num(),*Eye.ToString());
   }
  }
- // Approach the Krog crash from the road side, plus a raised camera that sees
+// Approach the Krog crash from the road side, plus a raised camera that sees
+
+ // Generic spot check: -BattleSpotReview="X,Y[,Yaw]" parks the rider at a
+ // coordinate and renders from the rider's own view. This used to sit inside
+ // the duck-review block and used FParse::Param, which does not match
+ // "-Flag=value", so it silently never fired.
+ {
+  static bool SpotReviewDone=false;
+  FString Where;
+  if(HUDReviewStage==0&&!SpotReviewDone&&HUDReviewClock<20.f&&FParse::Value(FCommandLine::Get(),TEXT("BattleSpotReview="),Where,false)){
+   TArray<FString> Parts;Where.ParseIntoArray(Parts,TEXT(","),true);
+   if(Parts.Num()>=2)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
+    SpotReviewDone=true;
+    const FVector Try(FCString::Atof(*Parts[0]),FCString::Atof(*Parts[1]),0.f);
+    const float Yaw=Parts.Num()>=3?FCString::Atof(*Parts[2]):90.f;
+    FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+    const FVector Spot=GetWorld()->LineTraceSingleByChannel(Ground,Try+FVector(0,0,2000),Try-FVector(0,0,3000),ECC_Visibility,Q)?Ground.ImpactPoint+FVector(0,0,98):Try+FVector(0,0,98);
+    const FRotator Facing(0,Yaw,0);
+    Bike->SetActorLocationAndRotation(Spot,Facing,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(Facing);
+    Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
+    UE_LOG(LogTemp,Display,TEXT("SpotReview: spot=%s yaw=%.0f"),*Spot.ToString(),Yaw);
+   }
+  }
+ }
  // the whole scene the way a player arriving on a bike would.
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleKrogCrashReview"))){
   for(TActorIterator<ABattleKrogCrash> It(GetWorld());It;++It)if(auto* Bike=Cast<ABattleBike>(GetPawn())){

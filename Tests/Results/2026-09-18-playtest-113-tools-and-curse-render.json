@@ -1,0 +1,51 @@
+{
+  "build": "113",
+  "batch": "playtest round 11: rendered proof of the curse line, and tools for the unexplained sighting",
+  "source_commit": "see git log for BUILD 113",
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 113",
+  "verified_against": "packaged build 113",
+  "packaged_sweep": {
+    "result": "13/13 pass",
+    "audits": ["BattleCurseAudit", "BattleTreeRideAudit (arcade)", "BattleTreeRideAudit -BattleRealTreeAudit (realistic)", "BattleTroubleAudit", "BattleSteeringAudit", "BattleSleeperAudit", "BattleGrassAudit", "BattleBikeCarAudit", "BattleMurderKAudit", "BattlePickupAudit", "BattleSpiritAudit", "BattleKrogCrashAudit", "BattleDuckAudit"],
+    "note": "The first sweep lost BattleMurderKAudit to an empty log (the app never started); it passes on retry, so run_quick_audits.sh now retries an audit once when its log is empty."
+  },
+  "rendered_proof": {
+    "file": "work/curse-review/curse-walker.png",
+    "shows": "PEDESTRIAN: WALK MUCH?! in the subtitle slot, rider still up on the bike (arcade)",
+    "how": "added -BattleCurseReviewDir=<absolute path> to -BattleCurseAudit, which requests the frame while the shout is live"
+  },
+  "tools_added": [
+    {
+      "tool": "-BattlePropProbe[=radius_cm]",
+      "file": "Source/AuraPlayground/BattlePropProbe.cpp",
+      "what": "names every actor around the rider - class, label, every mesh part with its world position, tags and visibility - nearest first, then quits. Default radius 120 m.",
+      "why": "the editor cannot see it: park furniture, ammo bins, spare bikes and pickups are all spawned at runtime, so an editor actor dump looks empty and this sighting kept getting guessed at"
+    },
+    {
+      "tool": "Scripts/inspect_park_props.py",
+      "what": "editor-side companion that dumps placed actors (label, class, meshes, location) for the whole map"
+    },
+    {
+      "tool": "-BattleSpotReview=\"X,Y[,Yaw]\"",
+      "status": "repaired",
+      "what": "parks the rider at a coordinate and renders from their own view. It had never worked: it used FParse::Param, which does not match '-Flag=value', it sat inside the duck-review block, and the FString overload of FParse::Value stops at the first comma. All three fixed; verified with SpotReview: spot=X=-10500.000 Y=-3000.000 Z=-54.602 yaw=45"
+    }
+  ],
+  "open_question": {
+    "item": "the object Elliott calls 'the logs'",
+    "state": "unresolved",
+    "what_was_ruled_out": [
+      "not a placed map actor - the editor dump of PiedmontWorld has no cylinder-shaped props near the lake or the gate",
+      "not the park bin (ammo bin) - renders as a green bin with a rim, seen up close in work/prop-review/crop-bin.png",
+      "not the cola pickup - renders as a small red can (M_ColaRed)",
+      "not the time/speed pickup - renders as a glowing disc (work/pickup-review/bike.png)",
+      "not the Trees ATL sign - it is spawned 90 m from BattleHomeData::Gate at Krog/Cabbagetown, not in the park",
+      "not the spare bike - renders as a normal bike (work/prop-review/bike.png, next to the AMMO label)"
+    ],
+    "next_step": "ask Elliott where and when he sees it; -BattleSpotReview plus -BattlePropProbe at that coordinate names it in one run"
+  },
+  "verification_debt": [
+    "BattleRoadContactAudit and BattleKrogRiderAudit still need a quiet machine.",
+    "The nine audits that fail identically on packaged 110 are untouched this round (disc, drone, frisbee, melee, panic, skater, speed, time, tutorial)."
+  ]
+}

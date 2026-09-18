@@ -9,6 +9,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Misc/CommandLine.h"
+#include "UnrealClient.h"
 
 /**
  * Covers the two playtest asks that share one code path: a pedestrian the rider
@@ -17,7 +19,7 @@
  */
 void TickBattleCurseAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;int32 Phase=0;float Clock=0,Total=0;bool Done=false;FString WalkerLine,SleeperLine;int32 WalkerContacts=0;};
+ struct FState{TWeakObjectPtr<UWorld> World;int32 Phase=0;float Clock=0,Total=0;bool Done=false;FString WalkerLine,SleeperLine,ReviewDir;int32 WalkerContacts=0;};
  static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}
  if(S.Done||PC->GetWorld()->GetTimeSeconds()<5||!PC->GetPawn())return;
@@ -63,6 +65,13 @@ void TickBattleCurseAudit(APlayerController* PC,float Dt){
  else if(S.Phase==1&&S.Clock>1.f){
   APiedmontPedestrian* Walker=nullptr;for(TActorIterator<APiedmontPedestrian> It(PC->GetWorld());It;++It)if(It->CurseLine==S.WalkerLine)Walker=*It;
   CHECK_CURSE(Walker&&Walker->CurseLine==S.WalkerLine&&Walker->CurseRemaining>0,"Shout vanished before it had time to read");
+  // Render the line on screen: the shout has to be readable, not just set.
+  static bool bShot=false;
+  if(!bShot)if(FParse::Value(FCommandLine::Get(),TEXT("BattleCurseReviewDir="),S.ReviewDir,false)&&!S.ReviewDir.IsEmpty()){
+   bShot=true;
+   FScreenshotRequest::RequestScreenshot(S.ReviewDir/TEXT("curse-walker.png"),false,false);
+   UE_LOG(LogTemp,Display,TEXT("CurseReview: frame requested dir=%s line=%s"),*S.ReviewDir,*Walker->CurseLine);
+  }
   ADVANCE(2,0.f);
  }
  else if(S.Phase==2&&S.Clock>3.4f){

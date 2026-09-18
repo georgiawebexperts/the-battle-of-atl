@@ -52,6 +52,12 @@ for ENTRY in "${AUDITS[@]}"; do
   LOG="$PROJECT/work/$LABEL.log"
   "$BIN" "${PREFIX[@]}" "${COMMON[@]}" "-$NAME" "${EXTRA[@]}" "${SUFFIX[@]}" > "$LOG" 2>&1
   VERDICT=$(grep -h "\"passed\":" "$LOG" | tail -1)
+  # An empty log means the app never got going; retry once before calling it a
+  # failure so a launch hiccup is not reported as a broken audit.
+  if [[ -z "$VERDICT" ]]; then
+    "$BIN" "${PREFIX[@]}" "${COMMON[@]}" "-$NAME" "${EXTRA[@]}" "${SUFFIX[@]}" > "$LOG" 2>&1
+    VERDICT=$(grep -h "\"passed\":" "$LOG" | tail -1)
+  fi
   if [[ "$VERDICT" == *'"passed":true'* ]]; then
     printf '%s\n' "-- $LABEL: pass"
   else
