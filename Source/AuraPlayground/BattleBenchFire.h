@@ -16,6 +16,11 @@ public:
  virtual void Tick(float Dt) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  static ABattleBenchFire* IgniteBench(ABattleParkFurniture* Furniture,int32 Index,float BurnSeconds=35.f);
+ /** True only for a fire a bench encounter owns. The Krog wreck, Murder K and
+  *  the review fixtures spawn this same actor as scene dressing with no bench
+  *  behind them; they must not count against the two-fire encounter cap, or
+  *  five permanent wreck fires leave every bench in the world unlightable. */
+ bool OwnsBench() const { return ReservedFurniture.IsValid(); }
  UPROPERTY(VisibleAnywhere) TArray<TObjectPtr<UMaterialBillboardComponent>> Flames;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UMaterialBillboardComponent> Smoke;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> Glow;

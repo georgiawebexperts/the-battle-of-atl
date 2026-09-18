@@ -1,0 +1,52 @@
+{
+  "build": "125",
+  "date": "2026-09-18",
+  "author": "codex-maclaptop",
+  "request": "i just playing it and saw a flying log / is this the scooter?",
+  "answer": "Two real bugs found by triaging the audits that had never been run, both user-visible, both fixed and guarded. Bench fires had been dead everywhere in the world since the Krog wreck was built, and the moving scooters never touched the ground.",
+  "how_this_started": "Build 123 proved that an audit outside the sweep stays unknown for dozens of builds. Triaging the 45 wired-but-unwatched audits on packaged 123 gave 27 pass, 12 fail, 2 no-verdict. Two of the failures turned out to be the same real bug, and reading BattleScooterTraffic for a ground trace that was not there named the \"flying log\".",
+  "bug_1_bench_fires_were_dead_everywhere": {
+    "symptom": "Three audits failed on one precondition: BattleBenchFireAudit \"First fire failed to reserve bench\", BattleBenchIgnitionAudit \"Unexpected existing fire\", BattleAmbientBenchAudit \"First visible encounter did not ignite\".",
+    "root_cause": "ABattleBenchFire::IgniteBench enforced its two-burning-bench cap by counting every ABattleBenchFire actor in the world. BattleKrogCrash spawns five decorative fires with a 100000 s duration and no lifespan; BattleMurderK spawns two more with 3600 s. Active therefore sat at 7 from the first seconds of every run and IgniteBench returned nullptr every single time.",
+    "impact": "Pedestrians could never light a bench anywhere in the world, including beside the wreck. The whole bench-fire encounter was unreachable, which is exactly the kind of ambience build 116 was reaching for.",
+    "fix": "The cap counts only fires that own a bench. ABattleBenchFire::OwnsBench() was added for that, IgniteBench uses it, and BattleBenchIgnitionAudit counts encounter fires rather than every actor of the class.",
+    "verified": "All three audits pass: BattleBenchFireAudit (reservation ownership, duplicate rejection, two-fire cap, destruction and expiry), BattleBenchIgnitionAudit (delay, occupancy, horn cancellation, single ignition, reservation transfer, destruction), BattleAmbientBenchAudit (quiet period, ahead placement, two guaranteed visible ignitions). The two-fire cap still works - it is scoped, not removed."
+  },
+  "bug_2_the_flying_log": {
+    "report": "Elliott saw \"a flying log\" while playing; asked if it was the scooter.",
+    "root_cause": "BattleScooterTraffic placed every moving scooter at path spline position + 92 cm and moved it along the spline by teleport each tick, with no ground trace anywhere in the file - the only placed prop in the project that did not trace to its surface. The BeltLine pavement ribbon is separate geometry from the spline and the bridge and park decks sit at their own heights, so wherever the spline ran above the surface a scooter hung in the air and slid along at speed. Eight of them, both directions, route-wide.",
+    "measurement": "The new audit reported \"Scooter 4 floats 120.1 cm above its surface\", worst_gap_cm 120.13, with all 8 riders moving.",
+    "fix": "ScooterGroundedLocation traces down for a walkable surface and snaps to it, keeping the 92 cm convention every other prop uses. It only snaps when the surface is within 150 cm of the spline, so an overpass deck above is never mistaken for the ground below, and the per-tick call ignores the scooter being moved - without that it snapped to the scooter's own body and rode up on itself a little more every tick.",
+    "verified": "worst_gap_cm 0.00 with 8 of 8 riders moving."
+  },
+  "bug_3_the_drone_shot_was_hitting_a_tree": {
+    "symptom": "BattleDroneAudit stage 7 failed in four consecutive packaged sweeps while passing standalone. An earlier attempt to fix it by gating the shot on aim convergence did not help, which was the clue that the diagnosis was wrong.",
+    "diagnosis": "The failure message was rewritten to report which of four things went wrong. Measured: fired=true, health=40.0 (no damage), notice empty, aim_off_deg=0.00, off_target_cm=2012.4 and 2446.4. The shot was aimed perfectly and landed 20 to 24 m short of the drone.",
+    "root_cause": "The park start is full of trees and the rider settles a metre or two differently between runs, so a fixed 35 m forward offset sometimes planted a trunk in the line. The first attempt to fix it swept for a clear bearing from the rider's chest and still failed - because the shot starts at the camera, which rides a 3.2 m spring arm behind the rider, so a trunk beside the rider blocks the shot while never crossing a ray drawn from the chest.",
+    "fix": "The clearance sweep now runs in stage 5, once the camera has settled, from the eye the shot actually uses, and moves the already-spawned drone onto the first clear 15-degree bearing. Distance stays 35 m.",
+    "verified": "4 of 4 standalone, then pass inside the packaged sweep for the first time since build 120."
+  },
+  "still_flaky": {
+    "BattleDuckAudit": "Failed once inside the build 125 sweep and then failed 1 of 2 standalone re-runs, so this is a coin-flip fixture rather than a load artifact. The two signatures are now known, which is new: a pass reads over_water=4, bumps=1, lowest_offset_cm=-95.0 with notice DUCK!; a failure reads over_water=5, bumps=0, lowest_offset_cm=-1.0 and no notice. In the failing mode the rider stops at the water's edge and never gets below the surface by more than a centimetre. Next step is to find out whether it is blocked or simply never accelerates in, not to re-run it more."
+  },
+  "sweep": {
+    "count": 26,
+    "packaged_125": "25/26, the one failure being the duck signature above",
+    "log": "work/sweep125.txt",
+    "added": "BattleScooterTrafficAudit (needs -BattleFurnitureAudit as its parent flag, like the other scooter and review audits)",
+    "triage_log": "work/triage/results.txt - 45 wired-but-unwatched audits, 27 pass, 12 fail, 2 no verdict"
+  },
+  "triage_classification": {
+    "real_bugs_fixed": "bench fire cap (three audit failures), scooter grounding",
+    "context_problems_not_bugs": [
+      "BattleEntranceWalkAudit reads Tests/Results/2026-09-12-irwin-approach-clearance.json from the project directory, which a staged build does not have; it can only ever pass under the editor.",
+      "BattleMonroeOccupancyAudit requires actors tagged MonroeCrossingReview and MonroeCarLaneReview, which exist only in the review map.",
+      "BattleAudit is not an audit, it is a logging switch, so its timeout means nothing."
+    ],
+    "not_yet_classified": "BattleAmmoAudit (reload interruption setup failed, stage 7), BattleGeographyAudit (anchor/compass/island transform), BattleRoadLaneAudit (expected opposing lane candidates, cars 0), BattleSleeperChaseAudit (sleep entry failed), BattleMusicAudit (2 tracks), and the one route-walking audit behind five flags - Connector and Krog pass, Eastside times out, HomeDrive stalls at 0 legs, SpiritRoute wipes out on leg 1."
+  },
+  "packaged_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 125/The Battle of ATL.app",
+  "desktop_shortcut": "~/Desktop/BOA/The Battle of ATL.app -> Playtest 125",
+  "signature": "codesign --verify --deep --strict: valid on disk, satisfies its Designated Requirement",
+  "housekeeping": "Build 124 was cut before the drone fix and moved to Builds/Superseded/ so it cannot be mistaken for a deliverable. No settings menu, option list or saved-settings code was touched."
+}

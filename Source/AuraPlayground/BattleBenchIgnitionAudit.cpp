@@ -15,7 +15,10 @@ void TickBattleBenchIgnitionAudit(APlayerController* PC,float Dt){
  auto Spawn=[&](){const auto T=S.Furniture->Benches[0];FTransform P(T.TransformVectorNoScale(FVector(0,-1,0)).Rotation(),T.TransformPosition(FVector(0,55,90)));
   auto* V=PC->GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),P,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);
   V->CityAppearanceVariant=0;UGameplayStatics::FinishSpawningActor(V,P);V->PauseRemaining=30;return V;};
- auto FireCount=[&](){int N=0;for(TActorIterator<ABattleBenchFire> It(PC->GetWorld());It;++It)if(!It->IsActorBeingDestroyed())++N;return N;};
+ // Encounter fires only. The Krog wreck and Murder K place permanent decorative
+ // fires of this class, so counting every actor made "Unexpected existing fire"
+ // fail on a world that is behaving correctly.
+ auto FireCount=[&](){int N=0;for(TActorIterator<ABattleBenchFire> It(PC->GetWorld());It;++It)if(!It->IsActorBeingDestroyed()&&It->OwnsBench())++N;return N;};
  if(S.Phase==0){
   for(TActorIterator<ABattleParkFurniture> It(PC->GetWorld());It;++It)if(It->Benches.Num()){S.Furniture=*It;break;}
   CHECK_IGNITION(S.Furniture.IsValid(),"No furniture");CHECK_IGNITION(FireCount()==0,"Unexpected existing fire");

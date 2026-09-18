@@ -47,12 +47,28 @@ void ABattleMacController::TickDroneAudit(float Dt){
   DCHECK(Drone&&Drone->bSpent&&Drone->RiderHits==0&&!Bike->bParked,"Drone passed through obstruction");
   const float Health=Drone->Health;FDamageEvent Damage;DCHECK(Drone->TakeDamage(34,Damage,this,Bike)==34&&Drone->Health==Health-34,"Drone cannot be shot");DCHECK(Drone->TakeDamage(34,Damage,this,Bike)==6&&Drone->IsActorBeingDestroyed(),"Drone cannot be destroyed");
   if(AuditDroneWall.IsValid())AuditDroneWall->Destroy();
+  DCHECK(Bike->Dismount(),"Voluntary dismount failed");
   const FVector Spot=Bike->GetActorLocation()+Bike->GetActorForwardVector()*3500+FVector(0,0,650);
   AuditDrone=GetWorld()->SpawnActor<ABattleDrone>(Spot,(Bike->GetActorLocation()-Spot).Rotation());
-  DCHECK(AuditDrone.IsValid()&&Bike->Dismount(),"Distant drone or voluntary dismount failed");
+  DCHECK(AuditDrone.IsValid(),"Distant drone failed to spawn");
   Key(EKeys::G,true);Key(EKeys::G,false);Key(EKeys::RightMouseButton,true);Next();
  }else if(DroneStage==5&&DroneClock>.8f){
   DCHECK(Person&&Drone&&Drone->bWarning&&!Drone->bSpent&&Person->bWeaponDrawn,"Dismount cancelled drone or failed to draw weapon");
+  // Put the drone on a genuinely clear 35 m line, measured from the eye the
+  // shot actually starts at. The camera rides a 3.2 m spring arm behind the
+  // rider, so a trunk beside the rider blocks the shot while never crossing a
+  // ray drawn from the rider's own chest - which is how a correctly aimed shot
+  // kept landing 18 to 24 m short of the drone and read as a miss. Sweep the
+  // bearing in 15 degree steps and keep the first clear one; the distance stays
+  // 35 m either way.
+  FVector AimEye;FRotator AimView;GetPlayerViewPoint(AimEye,AimView);
+  const FVector Pivot=Person->GetActorLocation();
+  for(int32 Step=0;Step<13;++Step){
+   const float Yaw=(Step==0)?0.f:((Step%2)?(Step+1)/2*15.f:-(Step/2)*15.f);
+   const FVector Candidate=Pivot+FRotator(0,Person->GetActorRotation().Yaw+Yaw,0).Vector()*3500+FVector(0,0,650);
+   FHitResult Block;FCollisionQueryParams Q(SCENE_QUERY_STAT(DroneAuditClear),false,Person);
+   if(!GetWorld()->LineTraceSingleByChannel(Block,AimEye,Candidate,ECC_Visibility,Q)){Drone->SetActorLocation(Candidate,false,nullptr,ETeleportType::TeleportPhysics);break;}
+  }
   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((Drone->GetActorLocation()-Eye).Rotation());Next();
  }else if(DroneStage==6&&DroneClock>.35f){
   DCHECK(Person&&Drone&&Person->bAiming,"Distant drone aim failed");
@@ -66,7 +82,19 @@ void ABattleMacController::TickDroneAudit(float Dt){
   // sweeps in a row on 2026-09-18 and passed every standalone run.
   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
   const float Off=(Person&&Drone)?FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(View.Vector(),(Drone->GetActorLocation()-Eye).GetSafeNormal()),-1.f,1.f))):180.f;
-  if(Off<=1.5f){DCHECK(Person&&Drone&&Person->Fire()&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT"),"Actual pistol shot did not hit distant drone or show feedback");Next();}
+  if(Off<=1.5f){
+   // A bare "did not hit" covered four different things: the shot not firing,
+   // the trace landing somewhere else, damage not applying, or the HUD label
+   // not being set. Report which, with the numbers that separate them.
+   const bool Fired=Person&&Person->Fire();
+   if(!(Fired&&Drone&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT"))){
+    const FString Why=FString::Printf(TEXT("Pistol shot at 35m failed: fired=%s health=%.1f notice=%s off_target_cm=%.1f aim_off_deg=%.2f"),
+     Fired?TEXT("true"):TEXT("false"),Drone?Drone->Health:-1.f,*Bike->ShotNotice,
+     (Person&&Drone)?FVector::Dist(Person->LastShotEnd,Drone->GetActorLocation()):-1.f,Off);
+    Finish(false,*Why);return;
+   }
+   Next();
+  }
  }else if(DroneStage==8&&DroneClock>.35f){
   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
   const float Off=(Person&&Drone)?FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(View.Vector(),(Drone->GetActorLocation()-Eye).GetSafeNormal()),-1.f,1.f))):180.f;

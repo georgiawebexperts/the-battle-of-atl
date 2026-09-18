@@ -47,7 +47,11 @@ void ABattleBenchFire::UpdateVisuals(){
 ABattleBenchFire* ABattleBenchFire::IgniteBench(ABattleParkFurniture* Furniture,int32 Index,float BurnSeconds){
  if(!IsValid(Furniture)||!Furniture->IsBenchAvailable(Index))return nullptr;
  UWorld* World=Furniture->GetWorld();int32 Active=0;
- for(TActorIterator<ABattleBenchFire> It(World);It;++It)if(!It->IsActorBeingDestroyed())++Active;
+ // Count bench-encounter fires only. Five Krog wreck fires and two Murder K
+ // fires are the same actor class and never expire, so counting every actor
+ // held Active at 7 for the whole run and IgniteBench returned nullptr every
+ // time - pedestrians could not light a bench anywhere in the world.
+ for(TActorIterator<ABattleBenchFire> It(World);It;++It)if(!It->IsActorBeingDestroyed()&&It->OwnsBench())++Active;
  if(Active>=2)return nullptr;
  const FTransform Transform=Furniture->Benches[Index];
  auto* Fire=World->SpawnActorDeferred<ABattleBenchFire>(StaticClass(),Transform,nullptr,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn);

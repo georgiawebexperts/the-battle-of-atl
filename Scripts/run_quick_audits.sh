@@ -64,6 +64,7 @@ AUDITS=(
   "BattleSpareBikeAudit||"
   "BattleTutorialAudit||NoSkipTutorial"
   "BattleMarketImpactAudit||NoSkipTutorial"
+  "BattleScooterTrafficAudit||BattleFurnitureAudit"
 )
 
 FAILED=0
