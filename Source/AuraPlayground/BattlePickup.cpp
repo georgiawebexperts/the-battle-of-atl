@@ -162,6 +162,21 @@ void ABattlePickupDirector::BeginPlay(){
  };
  const TArray<FVector> AmmoPark=Park,AmmoTrail=Trail;
  Fill(Trail,true,TrailGoal);Fill(Park,false,Desired-TrailGoal);
+ // The design promises a supply at each landmark, so if the anchor itself is
+ // blocked, walk a ring around it until a legal spot accepts a crate.
+ for(const auto& A:BattleCheckpoints::Anchors){
+  const FVector Anchor((float)A.X,(float)A.Y,(float)A.Z);
+  bool bNear=false;
+  for(TActorIterator<ABattleColaPickup> It(GetWorld());It;++It)if(!It->bTimeBonus&&!It->bSpeedBonus&&FVector::Dist2D(It->GetActorLocation(),Anchor)<1500.f){bNear=true;break;}
+  if(bNear)continue;
+  for(const FVector& Offset:{FVector(700,0,0),FVector(-700,0,0),FVector(0,700,0),FVector(0,-700,0),
+                             FVector(1300,0,0),FVector(-1300,0,0),FVector(0,1300,0),FVector(0,-1300,0)})
+   if(SpawnCola(Anchor+Offset,true,Heal))break;
+  // NOTE 2026-09-17: the anchor rings above still fail because the landmark
+  // pavement is not tagged RidePath/RideDirt/RideBridge, which SpawnCola
+  // requires. Fixing it means tagging those surfaces or relaxing that rule -
+  // a design call, recorded in the Brain note rather than guessed here.
+ }
 #if !UE_BUILD_SHIPPING
  const bool ColaAudit=FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit"));
 #else

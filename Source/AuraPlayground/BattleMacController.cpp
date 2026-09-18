@@ -101,6 +101,7 @@ void TickBattleAimAudit(APlayerController* PC,float Dt);
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
 void TickBattleSkylineAudit(APlayerController* PC,float Dt);
 void TickBattleKrogCrashAudit(APlayerController* PC,float Dt);
+void TickBattleGrassAudit(APlayerController* PC,float Dt);
 void TickBattlePhoneRideAudit(APlayerController* PC,float Dt);
 void TickBattlePlayerCrashReview(APlayerController* PC,float Dt);
 void TickBattlePlayerCrashAudit(APlayerController* PC,float Dt);
@@ -120,6 +121,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDuckAudit")))TickBattleDuckAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkylineAudit")))TickBattleSkylineAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKrogCrashAudit")))TickBattleKrogCrashAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleGrassAudit")))TickBattleGrassAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpareBikeAudit")))BattleSpareBikes::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleStorefrontAudit")))TickStorefrontAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);

@@ -167,7 +167,13 @@ void ABattleParkMode::InitGame(const FString& MapName,const FString& Options,FSt
  if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty"))){
   if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(DifficultyName,TEXT("Battle start")))Difficulty=*Row;
  }else UE_LOG(LogTemp,Error,TEXT("Battle difficulty table is missing"));
- TimeRemaining=Difficulty.TimeLimitSeconds;StartCountdown=3;
+ TimeRemaining=Difficulty.TimeLimitSeconds;
+#if !UE_BUILD_SHIPPING
+ // Long route-driving audits need room; the shipped clock is shorter by design.
+ for(const TCHAR* Flag:{TEXT("BattleRoadContactAudit"),TEXT("BattleCarLoopAudit"),TEXT("BattleBridgeTurnAudit"),TEXT("BattleKrogRiderAudit"),TEXT("BattleEntranceWalkAudit"),TEXT("BattleConnectorAudit")})
+  if(FParse::Param(FCommandLine::Get(),Flag)){TimeRemaining=900.f;break;}
+#endif
+ StartCountdown=3;
  UE_LOG(LogTemp,Display,TEXT("BattleDifficulty: %s timer=%.0f crowd=%d radar=%.0f"),*Choice,TimeRemaining,Difficulty.Walkers+Difficulty.Joggers,Difficulty.RadarRange);
 }
 void ABattleParkMode::StartPlay(){

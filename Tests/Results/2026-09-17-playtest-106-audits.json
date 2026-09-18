@@ -1,0 +1,28 @@
+{
+ "build": "106",
+ "batch": "playtest feedback 4 (evidence and audits)",
+ "grass_trees_hints_audit": {
+  "name": "-BattleGrassAudit",
+  "packaged_result": {
+   "passed": true,
+   "time_delta": 15.0,
+   "grass_seconds": 7.0,
+   "chases": 1,
+   "hint_seen": true
+  },
+  "means": "7 s of grass riding cost 15 s of clock (7 natural + 8 penalty), a Trees ATL chase fired and a hint was surfaced"
+ },
+ "long_driving_audits": "route-driving audits now get a 900 s clock instead of the shipped 210 s Easy clock (BattleRoadContactAudit, BattleCarLoopAudit, BattleBridgeTurnAudit, BattleKrogRiderAudit, BattleEntranceWalkAudit, BattleConnectorAudit)",
+ "landmark_crates": {
+  "attempt": "ring search around each checkpoint anchor after normal placement",
+  "result": "still fails",
+  "root_cause": "landmark pavement is not tagged RidePath/RideDirt/RideBridge, which SpawnCola requires",
+  "decision": "left failing and documented; fixing means tagging those surfaces or relaxing the rule - a design call"
+ },
+ "bridge_hunt": {
+  "probe": "work/bridge-clearance.json",
+  "actors": 15,
+  "finding": "11 rideable decks (RideBridge+RidePath), 3 Eastside rail sets (RideBarrier), 1 Park Drive deck; no deck could be shown to trap the rider",
+  "status": "still needs the location from Elliott"
+ }
+}
