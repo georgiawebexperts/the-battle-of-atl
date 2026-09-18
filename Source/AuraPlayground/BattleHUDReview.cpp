@@ -130,6 +130,21 @@ void ABattleMacController::TickHUDReview(float Dt){
    UE_LOG(LogTemp,Display,TEXT("DuckReview: centre=%s ducks=%d eye=%s"),*Centre.ToString(),Flock->Ducks.Num(),*Eye.ToString());
   }
  }
+ // Approach the Krog crash from the road side, plus a raised camera that sees
+ // the whole scene the way a player arriving on a bike would.
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleKrogCrashReview"))){
+  for(TActorIterator<ABattleKrogCrash> It(GetWorld());It;++It)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
+   const FVector Spot=It->Approach+FVector(0,0,0);
+   FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);
+   const FVector Rest=GetWorld()->LineTraceSingleByChannel(Ground,Spot+FVector(0,0,900),Spot-FVector(0,0,1600),ECC_Visibility,Q)?Ground.ImpactPoint+FVector(0,0,98):Spot+FVector(0,0,98);
+   const FRotator Facing(0,(It->WreckSpot-Rest).Rotation().Yaw,0);
+   Bike->SetActorLocationAndRotation(Rest,Facing,false,nullptr,ETeleportType::TeleportPhysics);SetControlRotation(Facing);
+   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->bForceNextFloorCheck=true;
+   // No free camera: judge the scene from the rider's own approach view.
+   UE_LOG(LogTemp,Display,TEXT("KrogCrashReview: wreck=%s spot=%s distance_cm=%.0f"),*It->WreckSpot.ToString(),*Rest.ToString(),FVector::Dist(Rest,It->WreckSpot));
+   break;
+  }
+ }
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleBoathouseReview"))){
   for(TActorIterator<ABattleBoathouse> It(GetWorld());It;++It)if(It->bPlaced)if(auto* Bike=Cast<ABattleBike>(GetPawn())){
    const FTransform Xf=It->GetActorTransform();

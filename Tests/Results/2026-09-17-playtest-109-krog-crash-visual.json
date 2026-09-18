@@ -1,0 +1,12 @@
+{
+ "build": "109",
+ "change": "Krog crash made prominent: a tipped car body and cabin added beside the scooters, fires raised 3 -> 5",
+ "visual_review": {
+  "image": "work/kc4-F99AB9/bike.png (rider's own approach view, 22 m out)",
+  "reads_as": "tipped car mass plus scooter wreck with flames on both sides of the lane, three bodies, bystanders standing and walking in the road, brawl subtitle live"
+ },
+ "packaged_audit": {
+  "BattleKrogCrashAudit": "passed: blocks_road true, before_tunnel true, 2400 cm from the mouth, gap open, fires 5, bodies 3, bystanders 8, brawlers 4, shout HELP!"
+ },
+ "note": "first version rotated the car on the pitch axis so it stood on its nose; corrected to roll"
+}

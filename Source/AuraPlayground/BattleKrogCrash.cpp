@@ -43,6 +43,25 @@ void ABattleKrogCrash::SpawnWreck(){
   if(auto* B=GetWorld()->SpawnActor<AActor>(ScooterClass,WreckSpot+RoadSide*430.f+RoadDir*260.f,FRotator(0,RoadDir.Rotation().Yaw+58.f,96.f)))Spawned.Add(B);
  }
  // Debris field so the lane reads as wreckage rather than a parked scooter.
+ // A car thrown onto its side is what makes the crash read from a distance.
+ if(Cube){
+  auto* Car=NewObject<UStaticMeshComponent>(this);
+  Car->SetupAttachment(CrashRoot);Car->SetStaticMesh(Cube);Car->SetMaterial(0,Metal);
+  Car->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+  Car->SetCollisionResponseToAllChannels(ECR_Block);
+  Car->SetCanEverAffectNavigation(false);
+  Car->RegisterComponent();
+  Car->SetWorldLocation(WreckSpot-RoadSide*300.f+FVector(0,0,110.f));
+  Car->SetWorldScale3D(FVector(4.6f,2.0f,1.25f));
+  Car->SetWorldRotation(FRotator(-7.f,RoadDir.Rotation().Yaw+14.f,84.f));
+  auto* Cabin=NewObject<UStaticMeshComponent>(this);
+  Cabin->SetupAttachment(CrashRoot);Cabin->SetStaticMesh(Cube);Cabin->SetMaterial(0,Wood);
+  Cabin->SetCollisionEnabled(ECollisionEnabled::NoCollision);Cabin->SetCanEverAffectNavigation(false);
+  Cabin->RegisterComponent();
+  Cabin->SetWorldLocation(WreckSpot-RoadSide*300.f+FVector(0,0,210.f));
+  Cabin->SetWorldScale3D(FVector(2.4f,1.8f,1.0f));
+  Cabin->SetWorldRotation(FRotator(-7.f,RoadDir.Rotation().Yaw+14.f,84.f));
+ }
  for(int32 I=0;I<7;++I){
   const float A=I*0.9f;
   auto* Chunk=NewObject<UStaticMeshComponent>(this);
@@ -55,7 +74,7 @@ void ABattleKrogCrash::SpawnWreck(){
   Chunk->SetWorldRotation(FRotator(I*27.f,RoadDir.Rotation().Yaw+I*41.f,I*13.f));
  }
  // Fires burn for the whole run.
- for(int32 I=0;I<3;++I){
+ for(int32 I=0;I<5;++I){
   const FVector Spot=WreckSpot+RoadSide*(I-1)*260.f+RoadDir*(I==1?180.f:-120.f);
   if(auto* Fire=GetWorld()->SpawnActor<ABattleBenchFire>(Spot+FVector(0,0,40.f),FRotator::ZeroRotator)){
    Fire->Duration=100000.f;Fire->SetLifeSpan(0.f);Fires++;
