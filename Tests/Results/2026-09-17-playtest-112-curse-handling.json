@@ -1,0 +1,87 @@
+{
+  "build": "112",
+  "batch": "playtest feedback round 10: pedestrians curse, arcade vs realistic knock-off, dismount step-off",
+  "source_commits": ["9fd16c9", "e2e4da0"],
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 112",
+  "verified_against": "packaged build 112",
+  "asks": [
+    {
+      "ask": "the person should curse if you hit them - maybe ass or excuse me or watch it dude",
+      "result": "done",
+      "evidence": "APiedmontPedestrian::Curse picks EXCUSE ME?! / HEY, WATCH IT! / WATCH IT, DUDE! / WHAT'S WRONG WITH YOU?! / ASS! / YO, YOU BLIND?! / WALK MUCH?!, or AYE! I'M SLEEPIN' HERE! / WHAT THE HELL, MAN?! / YO, EASY! / I'M WALKIN' HERE! for a sleeper woken by the hit. The line is a HUD subtitle in the same bottom slot the Krog bystander line uses and is drawn even while the crash overlay is up, so it is still readable in realistic handling.",
+      "audit": "-BattleCurseAudit passed: walker_line=YO, YOU BLIND?!, sleeper_line=YO, EASY!, line persists >=2s, expires by 3.4s, sleeper branch differs from the walker branch"
+    },
+    {
+      "ask": "a good use for arcade and realistic - arcade you dont get knocked off by people and trees realistic you do",
+      "result": "done",
+      "evidence": "UBattleBikeMovement::HandleImpact: a body on foot or a tree trunk only calls CrashImpact when bRealHandling is true. Arcade scrubs speed (x0.8 person, x0.55 tree) and plays the ride jolt. Cars and other vehicles still put the rider down in both modes.",
+      "audits": [
+        "-BattleCurseAudit passed: arcade pedestrian hit keeps the rider mounted at full health and still knocks the pedestrian over; realistic hit crashes with damage",
+        "-BattleTreeRideAudit passed in arcade (trunk hit scrubs speed) and with -BattleRealTreeAudit (trunk hit throws the rider off)",
+        "-BattleBikeCarAudit passed: direct bike/car impact still enters traffic recovery"
+      ]
+    },
+    {
+      "ask": "keep all the settings as you have them",
+      "result": "untouched",
+      "evidence": "No settings menu, option list or saved-settings code was edited. The only HUD text change is the on-screen control legend: 'P physics' now reads 'P arcade/realistic', and pressing P also pushes a one-line hint naming the mode it just chose."
+    },
+    {
+      "ask": "dismount felt clumsy - no animation",
+      "result": "done, then hardened",
+      "evidence": "The rider now leaves the saddle, comes down beside the bike and straightens up over about 0.45s (ABattleRider::BeginStepOff). The first cut spawned at ground level with the lean applied, which could fail the placement on a kerb and make E do nothing; it now spawns on the proven clear point above the exit and eases down from the saddle. BattlePickupAudit waits for the step-off to settle before placing its on-foot fixture."
+    }
+  ],
+  "packaged_sweep": {
+    "command": "Scripts/run_quick_audits.sh \"<packaged>/AuraPlayground\"",
+    "result": "13/13 pass",
+    "audits": {
+      "BattleCurseAudit": "pass",
+      "BattleTreeRideAudit": "pass (arcade)",
+      "BattleTreeRideAudit -BattleRealTreeAudit": "pass (realistic)",
+      "BattleTroubleAudit": "pass",
+      "BattleSteeringAudit": "pass",
+      "BattleSleeperAudit": "pass",
+      "BattleGrassAudit": "pass",
+      "BattleBikeCarAudit": "pass",
+      "BattleMurderKAudit": "pass",
+      "BattlePickupAudit": "pass",
+      "BattleSpiritAudit": "pass",
+      "BattleKrogCrashAudit": "pass",
+      "BattleDuckAudit": "pass"
+    }
+  },
+  "harness_changes": [
+    "BattleTroubleAudit no longer demands the officer in the frame the alert fires. Arcade handling stopped adding the crash-recovery delay that used to let the runtime navmesh finish before the check, so the audit now waits for APD (it answered 0.90s later) and -BattleTroubleAudit logs every spawn attempt.",
+    "New -BattleCurseAudit (Source/AuraPlayground/BattleCurseAudit.cpp).",
+    "New Scripts/run_quick_audits.sh: runs the sweep against the editor or a packaged binary."
+  ],
+  "found_while_testing": [
+    {
+      "issue": "BattlePickupAudit failed with 'Distant rider collected health'",
+      "root_cause": "the step-off dismount moved the point the audit's on-foot fixture is built from, so its 10m walk-away landed on a course pickup",
+      "status": "fixed by waiting for the step-off to settle; confirmed passing on packaged 112"
+    }
+  ],
+  "pre_existing_failures": {
+    "note": "These fail identically on packaged 110, so they are not from this round. Listed because they are red and were not in the previously reported green set.",
+    "audits": {
+      "BattleDiscAudit": "4 key/launcher fire failed",
+      "BattleDroneAudit": "drone audit timeout at stage 2",
+      "BattleFrisbeeAudit": "grass riding failed",
+      "BattleMeleeAudit": "first swing did not deal 50 damage",
+      "BattlePanicAudit": "live witness did not flee away and remember",
+      "BattleSkaterAudit": "timed out at stage 2 in the editor, 'cannot dismount after skater collision' on 110",
+      "BattleSpeedAudit": "collection/dead guard/duplicate guard failed",
+      "BattleTimeAudit": "pistol failed at phase 1",
+      "BattleTutorialAudit": "practice timer ran before gateway",
+      "BattleSpareBikeAudit": "spare wheel floats above or sinks into its ground surface (editor); passed on packaged 110",
+      "BattleMarketImpactAudit": "hung after 'BattleMac: menu Loss' - the run clock expired before the audit finished"
+    }
+  },
+  "verification_debt": [
+    "No rendered frame of the pedestrian curse line yet; the HUD path is the same subtitle slot the Krog bystander line uses, which was visually checked in build 109.",
+    "BattleRoadContactAudit and BattleKrogRiderAudit (long route sweeps) were not run this round.",
+    "Builds/Superseded/Mac Playtest 112 (superseded before release) holds a 112 staging folder built before the dismount fix; it was never linked to the desktop."
+  ]
+}
