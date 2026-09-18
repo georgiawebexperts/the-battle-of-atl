@@ -1,0 +1,42 @@
+{
+  "build": "114",
+  "batch": "playtest round 12: the Trees ATL sign moved to Monroe and built right, plus an audit guard",
+  "source_commit": "see git log for BUILD 114",
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 114",
+  "verified_against": "packaged build 114",
+  "packaged_sweep": {
+    "result": "13/13 pass",
+    "audits": ["BattleCurseAudit", "BattleTreeRideAudit (arcade)", "BattleTreeRideAudit -BattleRealTreeAudit (realistic)", "BattleTroubleAudit", "BattleSteeringAudit", "BattleSleeperAudit", "BattleGrassAudit", "BattleBikeCarAudit", "BattleMurderKAudit", "BattlePickupAudit", "BattleSpiritAudit", "BattleKrogCrashAudit", "BattleDuckAudit"]
+  },
+  "what_changed": [
+    {
+      "ask": "maybe there is a sign that says please keep off the grass at monroe before you get to the beltline and it says - Trees ATL working on the grass please keep off",
+      "file": "Source/AuraPlayground/BattleGrass.cpp",
+      "what": "ABattleGrassSign now places itself on the park side of the route, about 85 m short of the MonroeCrossing-tagged crossing on the line the rider rides in on. It snaps to the nearest APiedmontPathSpline (200 cm steps) and offsets half-width + 180 cm to the roadside, then ground-traces. Fallback to the old gate-relative placement is retained. Before: the sign spawned 90 m from BattleHomeData::Gate at Krog/Cabbagetown, which is the wrong end of the whole route."
+    },
+    {
+      "bug": "the board was rendering as a sliver floating 2.8 m above the post",
+      "cause": "Post was the actor root and carried a non-uniform scale (0.14, 0.14, 2.0). Board was a child of Post, so it inherited that scale and a 140 cm local Z offset.",
+      "fix": "a plain USceneComponent Root is now the actor root; Post and Board are both children of Root, so the board is a true 6 x 150 x 90 cm panel sitting on the post."
+    },
+    {
+      "guard": "Source/AuraPlayground/BattleGrassAudit.cpp",
+      "what": "the grass audit now asserts the sign exists, its SignBoard measures about 6 x 150 x 90 cm, and the sign stands within 600 cm of a route spline. The audit fails with a specific reason if any of those is untrue."
+    }
+  ],
+  "rendered_proof": {
+    "file": "work/sign114b/bike.png",
+    "shows": "the TREES ATL board standing on its post beside the route on the way to Monroe, reading TREES ATL / WORKING ON THE GRASS / PLEASE KEEP OFF",
+    "editor_run": "work/sign114b/editor.log, SpotReview: spot=X=4399.999 Y=6300.000 Z=-462.844 yaw=30"
+  },
+  "audit_evidence": {
+    "editor": "_BattleGrassAudit passed: \"grass penalty, Trees ATL pursuit, hints and the roadside sign all live\" (work/grass114.log)",
+    "placement_log": "GrassSignPlacement: crossing=X=12210.160 Y=10744.702 Z=-238.153 route_distance_cm=1185 place=X=4903.992 Y=6588.911 Z=-551.472",
+    "packaged": "BattleGrassAudit: {\"passed\":true,\"reason\":\"grass penalty, Trees ATL pursuit, hints and the roadside sign all live\"}"
+  },
+  "settings_untouched": "No settings menu, option list or saved-settings code was edited this round, per Elliott's 'keep all the settings as you have them'. The only HUD change was the control legend line in the review frame.",
+  "verification_debt": [
+    "BattleRoadContactAudit and BattleKrogRiderAudit still need a quiet machine.",
+    "The nine audits that fail identically on packaged 110 are untouched this round (disc, drone, frisbee, melee, panic, skater, speed, time, tutorial)."
+  ]
+}

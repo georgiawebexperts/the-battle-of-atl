@@ -6,6 +6,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
+#include "Components/StaticMeshComponent.h"
+#include "PiedmontPathSpline.h"
+#include "Components/SplineComponent.h"
 
 /**
  * Proves the off-piste rules: riding grass costs extra time on top of the
@@ -54,7 +57,28 @@ void TickBattleGrassAudit(APlayerController* PC,float Dt){
   const bool bTime=Lost>=S.GrassSeen*1.5f+2.f;   // clock plus the grass penalty
   const bool bPursuit=Chases>0;
   const bool bHint=S.bHintSeen;
-  Finish(bTime&&bPursuit&&bHint,bTime?(bPursuit?(bHint?TEXT("grass penalty, Trees ATL pursuit and hints all live"):TEXT("no hint shown")):TEXT("no Trees ATL pursuit")):TEXT("grass time penalty too small"));
+  // The board asked for exists, is built right and stands beside the route on
+  // the way to Monroe. Its board used to be a child of the scaled post, which
+  // crushed it to a sliver floating above the post.
+  bool bSign=false;FString SignReason=TEXT("no Trees ATL sign in the world");
+  for(TActorIterator<ABattleGrassSign> It(PC->GetWorld());It;++It){
+   const UStaticMeshComponent* Board=nullptr;FVector BoardScale=FVector::ZeroVector;
+   TInlineComponentArray<UStaticMeshComponent*> Parts(*It);
+   for(auto* Part:Parts)if(Part->GetName()==TEXT("SignBoard")){Board=Part;BoardScale=Part->GetComponentScale();}
+   const FVector Size=BoardScale*100.f;
+   if(!Board){SignReason=TEXT("sign has no board");break;}
+   if(!FMath::IsNearlyEqual(Size.X,6.f,1.f)||!FMath::IsNearlyEqual(Size.Y,150.f,3.f)||!FMath::IsNearlyEqual(Size.Z,90.f,3.f)){
+    SignReason=FString::Printf(TEXT("board size is %.0fx%.0fx%.0f cm, expected about 6x150x90"),Size.X,Size.Y,Size.Z);break;
+   }
+   float Nearest=BIG_NUMBER;
+   for(TActorIterator<APiedmontPathSpline> Path(PC->GetWorld());Path;++Path)if(auto* Route=Path->Centerline.Get())
+    Nearest=FMath::Min(Nearest,float(FVector::Dist2D(Route->FindLocationClosestToWorldLocation(It->GetActorLocation(),ESplineCoordinateSpace::World),It->GetActorLocation())));
+   if(Nearest>600.f){SignReason=FString::Printf(TEXT("sign stands %.0f cm off the route"),Nearest);break;}
+   bSign=true;
+ }
+  if(!bTime||!bPursuit||!bHint)Finish(false,bTime?(bPursuit?(bHint?TEXT("grass rules live"):TEXT("no hint shown")):TEXT("no Trees ATL pursuit")):TEXT("grass time penalty too small"));
+  else if(!bSign)Finish(false,*SignReason);
+  else Finish(true,TEXT("grass penalty, Trees ATL pursuit, hints and the roadside sign all live"));
  }
 #endif
 }

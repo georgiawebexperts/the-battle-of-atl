@@ -37,6 +37,7 @@ public:
  UPROPERTY(BlueprintReadOnly) FString Message;
  UPROPERTY(BlueprintReadOnly) FVector Place=FVector::ZeroVector;
 private:
+ UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> Root;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Post;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Board;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UTextRenderComponent> Face;
