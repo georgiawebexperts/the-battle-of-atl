@@ -1,0 +1,61 @@
+{
+  "build": "116",
+  "batch": "playtest round 13: the Kroger section becomes the loudest and hardest stop, the junction actually flows, scooters everywhere",
+  "source_commit": "233cc6e (plus bc4812a for the junction fix)",
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 116",
+  "verified_against": "packaged build 116",
+  "packaged_sweep": {
+    "result": "16/16 pass",
+    "audits": ["BattleCurseAudit", "BattleTreeRideAudit (arcade)", "BattleTreeRideAudit -BattleRealTreeAudit (realistic)", "BattleTroubleAudit", "BattleSteeringAudit", "BattleSleeperAudit", "BattleGrassAudit", "BattleBikeCarAudit", "BattleMurderKAudit", "BattlePickupAudit", "BattleSpiritAudit", "BattleKrogCrashAudit", "BattleDuckAudit", "BattleSpeedAudit", "BattleTimeAudit", "BattleDiscAudit"],
+    "flake_note": "The first packaged sweep returned 15/16 with BattleTroubleAudit failing 'No police spawned on reachable world navigation' (police_spawned=0). It passed twice standalone and passed again in a full clean sweep. Treat it as load-sensitive, not a 116 regression: it was green on packaged 115 and is green on packaged 116 in the recorded run."
+  },
+  "what_changed": [
+    {
+      "ask": "the kroger needs to be more chaotic peopel dancing riots etc.",
+      "file": "Source/AuraPlayground/BattleMurderK.cpp, BattleMurderK.h",
+      "what": "ABattleMurderK became a live landmark instead of static dressing: a collisionless DJ stack and MURDER K DJ sign on the north edge of the apron, a six-person dance party around it using the existing bParkDancer/DanceVariant rigs, an eight-strong rioting crowd on the south edge that is kept panicked and re-centred when it strays, and three bodies on the pavement. The middle of the apron stays clear so the crowd is a hazard, not a wall. Population is topped up every six seconds the way the Krog crash does it."
+    },
+    {
+      "ask": "implicit - a crowd shouting needs to read while riding past",
+      "file": "Source/AuraPlayground/BattleHUD.cpp",
+      "what": "The plaza chants on a rotating subtitle shown by the HUD in the existing bystander slot as CROWD: <chant>, gated to 25 m like the Krog crash shouts and suppressed while a pedestrian curse or a zombie line already owns the slot."
+    },
+    {
+      "ask": "its was too easy - i meant the kroger section",
+      "file": "Source/AuraPlayground/BattleGunmanDirector.cpp",
+      "what": "Punk crowd 5/7/9 -> 7/9/11 across Easy/Medium/Hard, a third brawl already in progress on arrival, and a Kroger shooter floor of 1/2/3 so the store is never unguarded. The difficulty table still sets the ceiling."
+    },
+    {
+      "ask": "the intersection with the cars had too many cars all parked - that section should see cards driving though some times they stop some times they keep going and the crowd is stopped",
+      "file": "Source/AuraPlayground/BattleRoadCrossing.cpp",
+      "what": "Root cause: CanEnter() counted every ECC_Pawn occupant as a blocker, and pedestrians cross there constantly, so no car ever read the light as green and they all queued as stationary traffic. It now blocks only for ABattleRoadCar and player-controlled pawns. Kerbside walkers are held with PauseRemaining while the light is green or amber; walkers already in the carriageway are left to clear."
+    },
+    {
+      "ask": "lets bring in scooters as well",
+      "file": "Source/AuraPlayground/BattleScooterTraffic.cpp",
+      "what": "The difficulty table's Scooters=3 was the whole population. The floor is now 8 moving riders spread across the rideable path splines, so scooters are part of the furniture of the whole route including the junctions."
+    }
+  ],
+  "audit_evidence": {
+    "murder_k_packaged": "BattleMurderK: plaza dancers=6 rioters=8 bodies=3",
+    "murder_k_verdict": "BattleMurderKAudit: {\"passed\":true,\"checks\":15,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":6,\"rioters\":8,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\"}",
+    "junction": "RoadCrossingAudit: passed, distance_cm=3998.379 - a walker in the crossing must not hold traffic, a second vehicle must",
+    "editor_sweep": "16/16 green on the editor build before packaging (work/), packaged sweep 16/16 after"
+  },
+  "audit_contract_changes": [
+    "BattleMurderKAudit grew from 12 to 15 checks and now asserts the plaza is already a party and a riot before the rider arrives (dancers>=6, rioters>=8, bodies>=3, non-empty chant), plus the new punk counts (7/9/11), three fights, and the Kroger shooter floor.",
+    "BattleRoadCrossingAudit now asserts a walker does NOT hold the traffic and a second vehicle does, replacing the old contract that counted any pawn as a blocker."
+  ],
+  "deliberately_skipped_for_this_build": {
+    "ask": "lets widen the beltlien path its a little too narrow",
+    "why": "The BeltLine surface is baked geometry, not a runtime parameter. SourceAssets/Terrain/eastside-trail-network.json authors width_game_cm=320 (policy string: 'Authored 320 game cm for arcade play; not a surveyed width'), and that width is baked into 26 OBJ chunks by prepare_eastside_trail.py, imported by install_eastside_trail.py, and mirrored by APiedmontPathSpline::WidthCm for the grass rules. Widening it means re-baking the chunks, re-importing them into PiedmontWorld, updating the beltline and connector spline widths, and re-cooking - a level-geometry change that deserves its own build and its own visual verification rather than riding along with the Kroger work.",
+    "status": "next build, not dropped"
+  },
+  "still_open": [
+    "BattleMeleeAudit is a real bug: ResolveMelee() sweeps 185 cm from the camera, which sits 320 cm behind the rider, so melee can only hit things behind him.",
+    "BattleDroneAudit (timeout), BattleFrisbeeAudit, BattlePanicAudit, BattleSkaterAudit are red and untouched this round.",
+    "BattleRoadContactAudit, BattleKrogRiderAudit and BattleCarLoopAudit still want a quiet machine.",
+    "The object Elliott calls 'the logs' is still unexplained. One coordinate plus -BattleSpotReview and -BattlePropProbe names it in a single run."
+  ],
+  "settings_untouched": "No settings menu, option list or saved-settings code was edited, per 'keep all the settings as you have them'. The only HUD edit is the crowd chant line."
+}
