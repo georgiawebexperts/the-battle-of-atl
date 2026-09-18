@@ -1,0 +1,62 @@
+{
+  "build": "120",
+  "date": "2026-09-18",
+  "author": "codex-maclaptop",
+  "request": "keep the games honest: a drone that dives should connect, a body hit should behave per mode, and the park lawn should not cost you your speed",
+  "answer": "Three audits that had been red and, worse, had been sitting outside the sweep are green and are now inside it. The sweep is 21 and the packaged build is 21/21.",
+  "why_they_were_red": [
+    "BattleSkaterAudit, BattleDroneAudit and BattleFrisbeeAudit were not in Scripts/run_quick_audits.sh. Every green sweep for the last several builds said nothing about them. That is now written into the script as a comment so the next person does not repeat it.",
+    "Two of the three failures were the audit's fault and one was a real gameplay bug. Guessing at the difference is what kept them red, so each was diagnosed with a probe that printed the state the audit could not see."
+  ],
+  "skater_audit": {
+    "was": "stage 2, \"Skater phase timed out\", people_hit 0",
+    "probe_found": "The fixture was holding W while the player was on foot (parked=1, health=20, RecoveryReason=\"Zombie grabbed the wheel\") 25 m from the skater, and a pending RespawnRemaining from that earlier death then fired mid-test and teleported the bike 970 m to the 14th Street Gate: \"BattleHealth: recovered at 14th Street Gate; deaths=1\".",
+    "fixes": [
+      "The fixture clears the field first - kills zombies, zeroes Mode->Trouble and sets DamageGrace before it starts timing.",
+      "The bike is moved onto the skate deck before Bike->Remount(rider), not after.",
+      "StunRemaining and RespawnRemaining are cleared so a previous death cannot teleport the rider mid-audit.",
+      "The stale half of the contract is gone: it demanded a wipeout and PeopleHit==1 from a body hit, but arcade is explicitly \"you dont get knocked off by people\". The audit now tests both halves - arcade counts the assault and keeps the rider up, realistic counts it and throws him off - using the second skater, because RecordAssault remembers victims.",
+      "The final shooting stage now actually draws: Rider->ToggleDrawWeapon() plus a DrawRemaining wait. PeopleHit expectation moved to 2."
+    ],
+    "verdict": "{\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9740.8,\"corners\":6,\"people_hit\":2}"
+  },
+  "drone_audit": {
+    "was": "stage 2, \"Drone audit timeout\", health 100",
+    "probe_found": "The dive was converging smoothly - distance 1133 to 838 to 506 to 124 cm - and then reported \"flew past without touching anything\". The drone committed to DiveTarget = Target->GetActorLocation() once at the start of the dive and never re-read it.",
+    "this_one_was_a_gameplay_bug": "A drone could essentially never hit a rider who was still rolling. The 4.5 s warning is supposed to be the rider's chance to get clear; instead the dive aimed at a spot the rider had already left.",
+    "fix": "Source/AuraPlayground/BattleDrone.cpp: once the dive is running, DiveTarget is re-interpolated toward the bike every tick (VInterpTo, 2.5). Committed dives now track.",
+    "diagnostic_added": "ABattleDrone::EndReason records \"struck the bike\", \"struck the rider on foot\", \"dive blocked by <actor> at <location>\", \"flew past without touching anything\" or \"target lost\", and the audit's timeout message prints it. A blocked dive and a strike used to look identical from outside.",
+    "verdict": "{\"passed\":true,\"stage\":8,\"reason\":\"Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass\",\"health\":100.00}"
+  },
+  "frisbee_audit": {
+    "was": "phase 4, \"Grass riding failed\", peakSpeed 948.256 against a >1000 bar",
+    "probe_found": "Not a gear bug: the probe printed gear 5 and handling arcade. The bike is simply still accelerating at the audit's 5 s cutoff - 42, 87, 156, 245, 352, 465, 577, 699, 819, 948 at half-second intervals - and crosses 1000 at about 5.17 s.",
+    "fix": "Ride until FrisbeePeakSpeed > 1000 with an 8 s hard cap, and assert the ride was mostly on grass (FrisbeeGrassSeconds > FrisbeeClock * 0.6) so the speed is actually earned on the lawn. Added FrisbeePeakGear and FrisbeePeakRealistic to BattleMacController.h.",
+    "verdict": "{\"passed\":true,\"phase\":4,\"reason\":\"Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass\",\"groups\":2,\"throws\":7,\"catches\":5,\"misses\":1,\"retrievals\":1,\"ammo_given\":10,\"supply\":14}",
+    "measured": "distance=2071.886 groundedGrassSeconds=5.171 window=5.171 peakSpeed=1002.503 peakGear=5 peakHandling=0 wipeouts=0"
+  },
+  "flaky_under_load": {
+    "note": "In the editor sweep that ran under load, BattleDuckAudit (\"rider never started swimming in the lake\") and BattleDroneAudit (stage 7, the on-foot 35 m pistol stage) both failed. Both pass clean standalone and both pass in the packaged sweep. They are load flakes, not regressions.",
+    "duck_standalone": "{\"passed\":true,\"reason\":\"swimmer dunked and charged for the duck\",\"ducks\":8,\"over_water\":4,\"bumps\":1,\"time_delta\":-5.0,\"notice\":\"DUCK!\",\"lowest_offset_cm\":-100.1}",
+    "drone_standalone": "{\"passed\":true,\"stage\":8,\"reason\":\"Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass\",\"health\":100.00}"
+  },
+  "sweep": {
+    "editor": "19/21 during the load-heavy run; the two failures are the load flakes above",
+    "packaged": "21/21 green",
+    "new": "BattleSkaterAudit, BattleDroneAudit and BattleFrisbeeAudit are the nineteenth, twentieth and twenty-first",
+    "log": "work/sweep120.txt",
+    "retry_evidence": "work/recheck/BattleDuckAudit.log and work/recheck/BattleDroneAudit.log"
+  },
+  "windows_handoff": {
+    "problem": "The Windows packaging pass compiled and then died on the character skeletons: Content/CitySampleCrowd/Character/Shared/Rig, Content/Characters, the two NormalWeight body meshes and the SportsCar skeleton existed only on this Mac.",
+    "bundle": "~/Desktop/BOA/BattleOfATL-missing-content-2026-09-18.zip - 176 files, 69,107,925 bytes, SHA-256 afe597d37f1f17de2a057f7e8846eb5b94a2295218db63043e485c16d9f6ed7d. Paths are project-relative and extract over the project root.",
+    "drive": "https://drive.google.com/file/d/1prvkgv8HBsPJIbQydNlWWV9Eo_D84Xiw/view?usp=sharing - link-shared, verified anonymously downloadable (content-range total 69107925, PK zip magic). Script-friendly: https://drive.usercontent.google.com/download?id=1prvkgv8HBsPJIbQydNlWWV9Eo_D84Xiw&export=download&confirm=t",
+    "naming_correction": "There is no Vehicles/SportsCar/SportsCar_Skeleton.uasset. The file is SK_SportsCar.uasset, third-person skeleton naming, and it was already tracked in the repo.",
+    "repo_fix": "Content/Characters/ was line 7 of .gitignore, which is exactly why the Mannequins folder never rode along with any copy of the project. The line is gone and commit 2b79e57 adds all 128 files of Content/Characters, the 14 files of the shared Rig folder and both NormalWeight body meshes.",
+    "size_note": "126 MB of Mannequins plus 22 MB of rig, largest single file 22 MB. Under GitHub's per-file limit, but the repo as a whole is already larger than a comfortable GitHub push."
+  },
+  "packaged_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 120/The Battle of ATL.app",
+  "desktop_shortcut": "~/Desktop/BOA/The Battle of ATL.app -> Playtest 120",
+  "signature": "codesign --verify --deep --strict: valid on disk, satisfies its Designated Requirement",
+  "scope": "The three previously-unwatched fixtures are now watched. The drone change is gameplay, not just test scaffolding - dives track a moving rider now. Riding feel, the BeltLine per-mode width and everything else covered by 119 is unchanged."
+}

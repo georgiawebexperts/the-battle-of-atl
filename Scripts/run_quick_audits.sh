@@ -7,6 +7,13 @@
 #
 # The two long route audits (BattleRoadContactAudit, BattleKrogRiderAudit) are
 # deliberately not in here: they drive the whole course and want a quiet machine.
+#
+# The three fixtures at the end are slow - each drives a fixture for 30 to 50
+# seconds - but they are in here now because being outside the sweep is exactly
+# how BattleSkaterAudit, BattleDroneAudit and BattleFrisbeeAudit stayed red
+# without anyone noticing. They cover promises the player can see: a body hit in
+# arcade leaves you up and in realistic throws you off, a drone that dives
+# connects, and the park lawn does not cost you your speed.
 set -u
 PROJECT="/Volumes/Adam Assets/Unreal/Projects/AuraPlayground"
 EDITOR="/Volumes/Adam Assets/Unreal/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor"
@@ -43,6 +50,9 @@ AUDITS=(
   "BattleDiscAudit||"
   "BattleMeleeAudit||"
   "BattleTrailModeAudit||"
+  "BattleSkaterAudit||"
+  "BattleDroneAudit||"
+  "BattleFrisbeeAudit||"
 )
 
 FAILED=0

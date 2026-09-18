@@ -87,6 +87,12 @@ private:
  bool FinishAuditDone=false;
  int32 HornStage=0,HornPresses=0;float HornAuditClock=0;TWeakObjectPtr<AActor> HornReviewActor;
  int32 SkaterStage=0,SkaterInitialWipeouts=0;float SkaterClock=0,SkaterMaxError=0;bool SkaterPushSeen=false,SkaterCoastSeen=false;TWeakObjectPtr<AActor> SkaterTarget;
+ /** The other skater: the realistic half of the contact test needs a victim the
+  *  assault record has not already counted. */
+ TWeakObjectPtr<AActor> SkaterSecond;
+ /** Where the contact fixture put the bike, so the probe can report how far it
+  *  actually travelled rather than only how fast it thinks it is going. */
+ FVector SkaterContactStart=FVector::ZeroVector;
  void TickSkateAudit(float Dt);
  int32 SkateStage=0;float SkateClock=0,SkateTime=0;
  void TickJumpAudit(float Dt);
@@ -107,6 +113,9 @@ private:
  TWeakObjectPtr<AActor> LocoPerson,LocoCamera;
  float HUDReviewClock=0;int32 HUDReviewStage=0;
  int32 FrisbeePhase=0,FrisbeeInitialWipeouts=0;float FrisbeeClock=0,FrisbeeGrassSeconds=0,FrisbeePeakSpeed=0;
+ /** Gear and handling at the moment the speed peak was set: the top-speed half
+  *  of the grass ride is a gear question, not only a speed one. */
+ int32 FrisbeePeakGear=0;bool FrisbeePeakRealistic=false;
  FVector FrisbeeGrassStart;
  TWeakObjectPtr<AActor> FrisbeeAuditGroup;
  int32 DiscPhase=0;float DiscClock=0;

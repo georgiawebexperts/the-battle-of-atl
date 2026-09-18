@@ -32,17 +32,25 @@ void ABattleDrone::Tick(float Dt){
  for(auto Rotor:Rotors)Rotor->AddLocalRotation(FRotator(0,Dt*2200,0));
  auto* Target=UGameplayStatics::GetPlayerPawn(this,0);
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Person=Cast<ABattleRider>(Target))Bike=Person->ParkedBike.Get();
- if(!Bike||Bike->RiderHealth<=0||Bike->StunRemaining>0||Bike->RespawnRemaining>0){bSpent=true;bWarning=false;}
+ if(!Bike||Bike->RiderHealth<=0||Bike->StunRemaining>0||Bike->RespawnRemaining>0){bSpent=true;bWarning=false;EndReason=TEXT("target lost");}
  if(bSpent){AddActorWorldOffset(FVector(0,0,400)*Dt);SetActorRotation(FRotator(-20,GetActorRotation().Yaw,0));return;}
  Clock+=Dt;
  if(bWarning){SetActorRotation((Bike->GetActorLocation()-GetActorLocation()).Rotation());if(Clock<4.5f)return;bWarning=false;Clock=0;DiveStart=GetActorLocation();DiveTarget=Target->GetActorLocation();EscapeDirection=(DiveTarget-DiveStart).GetSafeNormal2D();}
+ // Track the target through the dive. The 4.5 s warning is the rider's chance to
+ // get clear; a dive committed to the exact spot they were standing on when it
+ // began cannot connect with anyone who is still rolling, which is what this
+ // used to do - it read as a drone that always flew past.
+ else DiveTarget=FMath::VInterpTo(DiveTarget,Bike->GetActorLocation(),Dt,2.5f);
  const float T=Clock/1.6f;
  const FVector Next=T<=1?FMath::Lerp(DiveStart,DiveTarget,T):DiveTarget+EscapeDirection*((T-1)*800)+FVector(0,0,FMath::Square(T-1)*650);
  FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(DroneSweep),false,this);
  if(GetWorld()->SweepSingleByChannel(Hit,GetActorLocation(),Next,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(32),Q)){
-  SetActorLocation(Hit.Location);if(Hit.GetActor()==Bike&&Bike->ApplyDroneStrike())RiderHits++;else if(Hit.GetActor()==Target&&Target!=Bike&&Bike->ApplyRiderDamage(15)>0){RiderHits++;Bike->StunRemaining=1.5f;Bike->StunLabel=TEXT("DRONE IMPACT");}bSpent=true;SetLifeSpan(2);return;
+  SetActorLocation(Hit.Location);EndReason=FString::Printf(TEXT("dive blocked by %s at %s"),*GetNameSafe(Hit.GetActor()),*Hit.Location.ToCompactString());
+  if(Hit.GetActor()==Bike&&Bike->ApplyDroneStrike()){RiderHits++;EndReason=TEXT("struck the bike");}
+  else if(Hit.GetActor()==Target&&Target!=Bike&&Bike->ApplyRiderDamage(15)>0){RiderHits++;Bike->StunRemaining=1.5f;Bike->StunLabel=TEXT("DRONE IMPACT");EndReason=TEXT("struck the rider on foot");}
+  bSpent=true;SetLifeSpan(2);return;
  }
- SetActorRotation((Next-GetActorLocation()).Rotation());SetActorLocation(Next);if(T>2){bSpent=true;SetLifeSpan(2);}
+ SetActorRotation((Next-GetActorLocation()).Rotation());SetActorLocation(Next);if(T>2){bSpent=true;EndReason=TEXT("flew past without touching anything");SetLifeSpan(2);}
 }
 void ABattleLabMode::TickDrones(float Dt){
  auto* Mode=Cast<ABattleParkMode>(this);auto* Bike=Cast<ABattleBike>(UGameplayStatics::GetPlayerPawn(this,0));

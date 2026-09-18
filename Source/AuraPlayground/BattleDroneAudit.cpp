@@ -26,6 +26,12 @@ void ABattleMacController::TickDroneAudit(float Dt){
  // Keep the test aim on the target while the shoulder camera settles and recoil recovers.
  if(DroneStage>=5&&DroneStage<=8&&Drone){FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((Drone->GetActorLocation()-Eye).Rotation());}
  auto Key=[&](FKey K,bool Down){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),K,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
+ // A drone that never lands and a drone that was blocked both look like "no
+ // crash" from here, so record what the drone thinks happened while it happens.
+ if(Drone&&DroneStage>=1&&DroneStage<=2&&FMath::Fmod(DroneClock,.5f)<Dt)
+  UE_LOG(LogTemp,Display,TEXT("DroneProbe: stage=%d clock=%.2f drone_clock=%.2f warning=%d spent=%d hits=%d distance=%.0f bike=%s end=%s bike_crash=%d"),
+   DroneStage,DroneClock,Drone->Clock,Drone->bWarning?1:0,Drone->bSpent?1:0,Drone->RiderHits,
+   FVector::Dist(Drone->GetActorLocation(),Bike->GetActorLocation()),*Bike->GetActorLocation().ToCompactString(),*Drone->EndReason,Bike->bCrashActive?1:0);
  if(DroneStage==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
@@ -58,7 +64,10 @@ void ABattleMacController::TickDroneAudit(float Dt){
   DCHECK(Person&&Drone&&Person->Fire()&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==15,"Second pistol shot did not destroy drone with correct ammo/feedback");
   Key(EKeys::RightMouseButton,false);Finish(true,TEXT("Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass"));
  }
- if(DroneClock>18&&DroneStage!=99)Finish(false,TEXT("Drone audit timeout"));
+ if(DroneClock>18&&DroneStage!=99){
+  if(Drone){const FString Why=FString::Printf(TEXT("Drone audit timeout: %s"),*Drone->EndReason);Finish(false,*Why);return;}
+  Finish(false,TEXT("Drone audit timeout: no drone"));
+ }
 #undef DCHECK
 #endif
 }

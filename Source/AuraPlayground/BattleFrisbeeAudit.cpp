@@ -53,10 +53,18 @@ void ABattleMacController::TickFrisbeeAudit(float Dt){
   }
  }
  if(FrisbeePhase==4){
-  if(Bike->Ride->IsMovingOnGround()&&Bike->Ride->bGrass)FrisbeeGrassSeconds+=Dt;FrisbeePeakSpeed=FMath::Max(FrisbeePeakSpeed,Bike->Ride->Speed);
-  if(FrisbeeClock>5){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::W,IE_Released,0.f,false,0));
-   const float Distance=FVector::Dist2D(FrisbeeGrassStart,Bike->GetActorLocation());UE_LOG(LogTemp,Display,TEXT("FrisbeeGrassRide: distance=%.3f groundedGrassSeconds=%.3f peakSpeed=%.3f wipeouts=%d"),Distance,FrisbeeGrassSeconds,FrisbeePeakSpeed,Bike->Ride->Wipeouts-FrisbeeInitialWipeouts);
-   FRISBEE_CHECK(Distance>1800&&FrisbeeGrassSeconds>3&&FrisbeePeakSpeed>1000&&Bike->Ride->Wipeouts==FrisbeeInitialWipeouts&&FMath::Abs(Bike->GetActorRotation().Roll)<.1f,"Grass riding failed");Finish(true,TEXT("Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass"));return;
+  if(Bike->Ride->IsMovingOnGround()&&Bike->Ride->bGrass)FrisbeeGrassSeconds+=Dt;
+  if(Bike->Ride->Speed>FrisbeePeakSpeed){FrisbeePeakSpeed=Bike->Ride->Speed;FrisbeePeakGear=Bike->Ride->Gear;FrisbeePeakRealistic=Bike->Ride->bRealHandling;}
+  if(FMath::Fmod(FrisbeeClock,.5f)<Dt)UE_LOG(LogTemp,Display,TEXT("FrisbeeGrassProbe: clock=%.1f speed=%.1f gear=%d handling=%d grass=%d grounded=%d boost=%.1f"),
+   FrisbeeClock,Bike->Ride->Speed,Bike->Ride->Gear,Bike->Ride->bRealHandling?1:0,Bike->Ride->bGrass?1:0,Bike->Ride->IsMovingOnGround()?1:0,Bike->Ride->BoostRemaining);
+  // Ride until the bike has had time to reach speed, not for a fixed five seconds:
+  // measured 2026-09-18, a fifth-gear arcade ride up the lawn is still climbing at
+  // 947.9 cm/s after 5 s (42, 87, 156, 245, 352, 465, 577, 699, 819, 948), so the
+  // old window was cutting the acceleration off rather than catching a fault.
+  if(FrisbeeClock>5&&(FrisbeePeakSpeed>1000||FrisbeeClock>8)){InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::W,IE_Released,0.f,false,0));
+   const float Distance=FVector::Dist2D(FrisbeeGrassStart,Bike->GetActorLocation());UE_LOG(LogTemp,Display,TEXT("FrisbeeGrassRide: distance=%.3f groundedGrassSeconds=%.3f window=%.3f peakSpeed=%.3f peakGear=%d peakHandling=%d finalGear=%d wipeouts=%d"),Distance,FrisbeeGrassSeconds,FrisbeeClock,FrisbeePeakSpeed,FrisbeePeakGear,FrisbeePeakRealistic?1:0,Bike->Ride->Gear,Bike->Ride->Wipeouts-FrisbeeInitialWipeouts);
+   const bool bOnGrass=FrisbeeGrassSeconds>3&&FrisbeeGrassSeconds>FrisbeeClock*.6f;
+   FRISBEE_CHECK(Distance>1800&&bOnGrass&&FrisbeePeakSpeed>1000&&Bike->Ride->Wipeouts==FrisbeeInitialWipeouts&&FMath::Abs(Bike->GetActorRotation().Roll)<.1f,"Grass riding failed");Finish(true,TEXT("Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass"));return;
   }
  }
  if(FrisbeeClock>40)Finish(false,TEXT("Frisbee audit timed out"));
