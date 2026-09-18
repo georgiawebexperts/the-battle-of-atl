@@ -1,7 +1,7 @@
 param(
     [string]$Build = '115',
     [string]$EngineRoot = 'C:\Program Files\Epic Games\UE_5.8',
-    [string]$ArchiveRoot = (Join-Path $env:USERPROFILE 'Documents\Codex\Builds\BattleForTheA'),
+    [string]$ArchiveRoot = 'D:\Battle Of ATL\Archives\BattleForTheA',
     [string]$BuildConfig = 'Development'
 )
 
