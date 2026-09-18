@@ -1,7 +1,7 @@
 import json,heapq,math,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from arcade_trail import TRAIL_WIDTH_GAME_CM,width_policy
+from arcade_trail import TRAIL_WIDTH_GAME_CM,width_policy,realistic_variant
 from pyproj import Transformer
 root=Path(__file__).resolve().parents[1];d=json.loads((root/'References/piedmont-osm.json').read_text());meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text());t=Transformer.from_crs(4326,32616,always_xy=True)
 coords={};graph={};ways={}
@@ -70,4 +70,5 @@ result={'source':'OpenStreetMap contributors, ODbL','paths':groups,'length_real_
  'start_overlap_error_game_cm':distance,'width_policy':width_policy('Matches the Eastside trail width so the join is seamless.'),
  'scope':'Park trail to northern Eastside endpoint only; full route remains unfinished'}
 (root/'SourceAssets/Terrain/beltline-connector-network.json').write_text(json.dumps(result,indent=2)+'\n')
+realistic_variant(root/'SourceAssets/Terrain/beltline-connector-network.json',root/'SourceAssets/Terrain/beltline-connector-network-realistic.json')
 print('Connector prepared:',result['length_real_m'],'real metres; start overlap',distance)

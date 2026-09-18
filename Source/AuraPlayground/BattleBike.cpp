@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleTrailMode.h"
 #include "BattleDetailedRider.h"
 #include "BattleSpirit.h"
 #include "BattleScooterTraffic.h"
@@ -103,6 +104,10 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
 }
 void ABattleBike::BeginPlay(){
  Super::BeginPlay();
+ // Put the trail in whatever state this handling mode wants before the first
+ // frame, rather than relying on the mode having been toggled at least once.
+ bTrailModeKnown=true;bTrailModeWasRealistic=Ride->bRealHandling;
+ UBattleTrailMode::Apply(this,Ride->bRealHandling);
  InitializeDetailedRiderPreview();
  if(auto* Gun=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/PiedmontRide/Bike/SM_Pistol.SM_Pistol"))){const FVector Size=Gun->GetBounds().BoxExtent*2;const float Scale=28/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);Pistol->SetStaticMesh(Gun);Pistol->SetRelativeScale3D(FVector(Scale));Pistol->SetRelativeRotation(Rot);Pistol->SetRelativeLocation(FVector(45,28,130)-Rot.RotateVector(Gun->GetBounds().Origin)*Scale);}
  CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
@@ -120,13 +125,21 @@ void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
 void ABattleBike::ToggleCamera(){if(bCrashActive)return;bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson,true);}
 void ABattleBike::ToggleHandling(){
  Ride->bRealHandling=!Ride->bRealHandling;Ride->SlideRemaining=0;
+ // The mode is not only a handling feel: the BeltLine pavement itself is
+ // authored twice, so the ribbon the rider is standing on changes with it.
+ UBattleTrailMode::Apply(this,Ride->bRealHandling);
  // Say out loud what the two modes actually do, since the difference is now
- // about getting thrown off by people and trees, not just steering feel.
+ // about the trail width and getting thrown off by people and trees, not just
+ // steering feel.
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))
-  Mode->PushHint(TEXT("Handling"),Ride->bRealHandling?TEXT("REALISTIC — people, trees and hard hits throw you off the bike"):TEXT("ARCADE — people and trees slow you down, you stay up"),4.f,false);
+  Mode->PushHint(TEXT("Handling"),Ride->bRealHandling?TEXT("REALISTIC — the BeltLine is back to 3.2 m, and people, trees and hard hits throw you off"):TEXT("ARCADE — the BeltLine is 4.2 m wide, and people and trees only slow you down"),5.f,false);
 }
 void ABattleBike::Tick(float Dt){
  Super::Tick(Dt);UpdateHealth(Dt);UpdateStun(Dt);UpdateLights(Dt);UpdateRideFeedback(Dt);HornCooldown=FMath::Max(0.f,HornCooldown-Dt);HornNoticeRemaining=FMath::Max(0.f,HornNoticeRemaining-Dt);ShotCooldown=FMath::Max(0.f,ShotCooldown-Dt);HitFeedback=FMath::Max(0.f,HitFeedback-Dt);GunHold=FMath::Max(0.f,GunHold-Dt);
+ // Cheap to check, and it means the mode cannot be changed behind the trail's
+ // back: a review flag or an audit that sets bRealHandling gets the matching
+ // pavement without having to know this exists.
+ if(!bTrailModeKnown||bTrailModeWasRealistic!=Ride->bRealHandling){bTrailModeKnown=true;bTrailModeWasRealistic=Ride->bRealHandling;UBattleTrailMode::Apply(this,Ride->bRealHandling);}
  if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0){auto& Item=Inventory[0];const int32 Add=FMath::Min(BattleWeapons::Capacity(0)-PistolAmmo,Item.Reserve);PistolAmmo+=Add;Item.Reserve-=Add;Item.Magazine=PistolAmmo;}}
  Pistol->SetVisibility(!bParked&&GunHold>0);if(bParked)return;UpdateNearMisses();
  for(auto* View:{Chase.Get(),Handlebar.Get()}){View->PostProcessSettings.bOverride_MotionBlurAmount=true;View->PostProcessSettings.MotionBlurAmount=Ride->BoostRemaining>0?.4f:.1f;}

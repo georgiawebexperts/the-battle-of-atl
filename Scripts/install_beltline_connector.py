@@ -1,4 +1,8 @@
-"""Install only the sourced connector; retain the park map and validate collision/nav before saving."""
+"""Install only the sourced connector; retain the park map and validate collision/nav before saving.
+
+Like the Eastside trail, the connector pavement exists at both authored widths
+and `UBattleTrailMode::Apply` shows one at a time.
+"""
 import unreal,json,pathlib,sys,collections
 root=pathlib.Path(unreal.Paths.project_dir())
 sys.path.insert(0,str(root/'Scripts'))
@@ -10,17 +14,24 @@ assert world.get_name()=='PiedmontWorld'
 require_converted_world(world)
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 ea=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-base=root/'SourceAssets/Terrain/BeltlineConnector'
-manifest=json.loads((base/'manifest.json').read_text())
-network=json.loads((root/'SourceAssets/Terrain/beltline-connector-network.json').read_text())
+terrain=root/'SourceAssets/Terrain'
+network=json.loads((terrain/'beltline-connector-network.json').read_text())
+SETS=[('BeltlineConnector','Eastside connector','BattleTrailArcade',True),
+      ('BeltlineConnectorRealistic','Eastside connector realistic','BattleTrailRealistic',False)]
+chunks=[]
+for directory,label_prefix,tag,bActive in SETS:
+    for chunk in json.loads((terrain/directory/'manifest.json').read_text())['chunks']:
+        chunk.update(_directory=directory,_prefix=label_prefix,_tag=tag,_active=bActive)
+        chunks.append(chunk)
+unreal.log_error('CONNECTOR RIBBONS: installing %d chunks across %d ribbons'%(len(chunks),len(SETS)))
 existing={a.get_actor_label():a for a in ea.get_all_level_actors()}
 rows=[]
-for chunk in manifest['chunks']:
+for chunk in chunks:
     name='SM_'+pathlib.Path(chunk['file']).stem;dest='/Game/BattleForTheA/Environment/BeltLine/Paths'
     options=unreal.FbxImportUI();options.import_as_skeletal=False;options.import_materials=False;options.import_textures=False
     options.automated_import_should_detect_type=False;options.mesh_type_to_import=unreal.FBXImportType.FBXIT_STATIC_MESH
     options.static_mesh_import_data.combine_meshes=True;options.static_mesh_import_data.auto_generate_collision=False;options.static_mesh_import_data.remove_degenerates=False
-    task=unreal.AssetImportTask();task.filename=str(base/chunk['file']);task.destination_path=dest;task.destination_name=name;task.automated=True;task.save=True;task.replace_existing=True;task.options=options
+    task=unreal.AssetImportTask();task.filename=str(terrain/chunk['_directory']/chunk['file']);task.destination_path=dest;task.destination_name=name;task.automated=True;task.save=True;task.replace_existing=True;task.options=options
     unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task]);mesh=unreal.load_asset(dest+'/'+name);assert mesh
     box=mesh.get_bounding_box();bounds=[[box.min.x,box.min.y,box.min.z],[box.max.x,box.max.y,box.max.z]]
     assert max(abs(bounds[i][j]-chunk['bounds_cm'][i][j]) for i in range(2) for j in range(3))<.1
@@ -29,18 +40,20 @@ for chunk in manifest['chunks']:
     nanite.enabled=True;nanite.position_precision=8;nanite.generate_fallback=unreal.NaniteGenerateFallback.ENABLED
     nanite.fallback_target=unreal.NaniteFallbackTarget.PERCENT_TRIANGLES;nanite.fallback_relative_error=0;nanite.fallback_percent_triangles=1
     mesh.set_editor_property('nanite_settings',nanite);mesh.set_material(0,unreal.load_asset('/Game/PiedmontRide/Materials/M_Asphalt'));unreal.EditorAssetLibrary.save_loaded_asset(mesh)
-    label='Eastside connector '+name
+    label=chunk['_prefix']+' '+name
     a=existing.get(label) or ea.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector())
     a.set_actor_label(label);a.set_folder_path('BattleForTheA/BeltLine');a.static_mesh_component.set_static_mesh(mesh)
     place_source_geometry(a)
-    a.static_mesh_component.set_collision_profile_name('BlockAll');a.tags=[unreal.Name('RidePath'),unreal.Name('BattleRouteConnector')]
-    rows.append({'mesh':name,'bounds_match':True})
+    a.static_mesh_component.set_collision_profile_name('BlockAll')
+    a.tags=[unreal.Name('RidePath'),unreal.Name('BattleRouteConnector'),unreal.Name(chunk['_tag'])]
+    a.set_actor_hidden_in_game(not chunk['_active']);a.set_actor_enable_collision(chunk['_active'])
+    rows.append({'mesh':name,'ribbon':chunk['_directory'],'active':chunk['_active'],'bounds_match':True})
 for i,path in enumerate(network['paths']):
     label='Eastside connector spline '+str(i);a=existing.get(label) or ea.spawn_actor_from_class(unreal.PiedmontPathSpline,unreal.Vector())
     a.set_actor_label(label);a.set_folder_path('BattleForTheA/BeltLine')
     a.set_editor_property('osm_way_id',str(path['osm_id']));a.set_editor_property('width_cm',path['width_game_cm']);a.set_editor_property('artifact_eligible',False)
     a.set_centerline([source_vector(v) for v in path['points_cm']])
-    a.tags=[unreal.Name('PiedmontPathSource'),unreal.Name('BattleConnector_'+str(i))]
+    a.tags=[unreal.Name('PiedmontPathSource'),unreal.Name('BattleConnector_'+str(i)),unreal.Name('BattleTrailWidth')]
 samples=[]
 # Contract, rewritten 2026-09-18 [codex-maclaptop]. The old check demanded an
 # absolute 0.1 cm match on the topmost surface. The connector is a short flat
@@ -92,3 +105,7 @@ length=unreal.PiedmontWorldTools.park_route_length(start,end)
 assert length>0,'Connector is not reachable in navigation'
 assert unreal.EditorLoadingAndSavingUtils.save_map(world,'/Game/PiedmontRide/Maps/PiedmontWorld')
 (root/'Tests/Results/2026-09-11-beltline-connector-installed.json').write_text(json.dumps({'passed':True,'collision_samples':samples,'navigation_length_cm':length,'meshes':rows,'scope':'Installed collision and navigation; rendered appearance and physical riding require separate checks'},indent=2))
+# See install_eastside_trail.py: the navigation rebuild only comes back routable
+# under -ExecutePythonScript, not under -run=pythonscript.
+if '-BattleQuitAfterScript' in unreal.SystemLibrary.get_command_line():
+    unreal.SystemLibrary.quit_editor()

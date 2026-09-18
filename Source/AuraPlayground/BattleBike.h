@@ -46,7 +46,7 @@ public:
  UPROPERTY(BlueprintReadOnly) float ReverseSpeed=0;
  bool bReverseRequested=false;
  UPROPERTY(BlueprintReadOnly) float SmoothedSteer=0;
- UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bRealHandling=false;
+UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bRealHandling=false;
  UPROPERTY(BlueprintReadOnly) float TurnRateDegrees=0;
  static float SteeringResponse(float Current,float Target,float Dt){return FMath::Lerp(Current,FMath::Clamp(Target,-1.f,1.f),1.f-FMath::Exp(-8.f*FMath::Max(0.f,Dt)));}
  UPROPERTY(BlueprintReadOnly) int32 Gear=1;
@@ -108,7 +108,12 @@ public:
  UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> Arm;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Chase;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Handlebar;
- UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
+UPROPERTY(BlueprintReadOnly) bool bFirstPerson=false;
+ /** The trail ribbon and spline width follow the handling mode wherever it is
+  *  set from - the P key, a review flag, an audit - so the pavement can never
+  *  disagree with the mode the rider is actually in. */
+ bool bTrailModeKnown=false;
+ bool bTrailModeWasRealistic=false;
  UPROPERTY(VisibleAnywhere) TObjectPtr<USpotLightComponent> Headlight;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> TailLight;
  UPROPERTY(BlueprintReadOnly) bool bLightsOn=false;

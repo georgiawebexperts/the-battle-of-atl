@@ -1,4 +1,5 @@
 #include "BattleMacController.h"
+#include "BattleTrailMode.h"
 #include "BattleBike.h"
 #include "BattleHomeData.h"
 #include "BattleHome.h"
@@ -65,7 +66,10 @@ void ABattleMacController::TickHUDReview(float Dt){
   if(auto* Bike=Cast<ABattleBike>(GetPawn())){const FVector XY(-20108,3187,0);FHitResult Ground;FCollisionQueryParams Q;Q.AddIgnoredActor(Bike);if(GetWorld()->LineTraceSingleByChannel(Ground,XY+FVector(0,0,1000),XY-FVector(0,0,1000),ECC_Visibility,Q)){Bike->SetActorLocationAndRotation(Ground.ImpactPoint+FVector(0,0,98),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->StopMovementImmediately();Bike->Ride->bForceNextFloorCheck=true;SetControlRotation(FRotator::ZeroRotator);}}
   const FVector Eye(-20000,2450,650),Target(-18700,3187,20);if(auto* Cam=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation()))SetViewTarget(Cam);
  }
- if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingHUD")))if(auto* Bike=Cast<ABattleBike>(GetPawn()))Bike->Ride->bRealHandling=true;
+ // Apply the trail immediately as well: the capture below is requested in this
+ // same block, and waiting for the bike's next tick to swap the ribbon would
+ // make the shot depend on tick order.
+ if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleRealHandlingHUD")))if(auto* Bike=Cast<ABattleBike>(GetPawn())){Bike->Ride->bRealHandling=true;UBattleTrailMode::Apply(this,true);}
  // Park beside the lost phone so the watch panel can be judged at full signal.
  if(HUDReviewStage==0&&HUDReviewClock<.1f&&FParse::Param(FCommandLine::Get(),TEXT("BattleWatchReview"))){
   if(auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(Mode->Quest&&Mode->Quest->bReady)if(auto* Bike=Cast<ABattleBike>(GetPawn())){

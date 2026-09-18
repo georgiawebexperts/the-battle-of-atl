@@ -113,6 +113,7 @@ void TickBattleBikeCarAudit(APlayerController* PC,float Dt);
 void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeRideAudit(APlayerController* PC,float Dt);
+void TickBattleTrailModeAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
  AimNoticeRemaining=FMath::Max(0.f,AimNoticeRemaining-Dt);
@@ -124,6 +125,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkylineAudit")))TickBattleSkylineAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKrogCrashAudit")))TickBattleKrogCrashAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleGrassAudit")))TickBattleGrassAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleTrailModeAudit")))TickBattleTrailModeAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpareBikeAudit")))BattleSpareBikes::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleStorefrontAudit")))TickStorefrontAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritRouteAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleHomeDriveAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleConnectorAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleEastsideAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleKrogAudit")))TickConnectorAudit(Dt);

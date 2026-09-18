@@ -1,0 +1,51 @@
+{
+  "build": "119",
+  "date": "2026-09-18",
+  "author": "codex-maclaptop",
+  "request": "i wonder if you are doing the arcade mode if the beltlien is wide and if you are doing the pro mode or realistic mode it was like it was before?",
+  "answer": "Yes, from 119. Arcade rides the 4.2 m BeltLine, realistic rides the original 3.2 m one, and the mode switch swaps the pavement, the guardrails and the spline width the grass rule reads.",
+  "what_changed": [
+    "Scripts/arcade_trail.py now authors two widths (arcade 420, realistic 320) and emits a realistic variant of each prepared network.",
+    "The pavement is baked and installed twice: 23 Eastside chunks plus 3 bridge rail sets plus 1 connector chunk per ribbon, 27 actors each.",
+    "UBattleTrailMode::Apply hides, un-collides and re-widths one ribbon per handling mode; ABattleBike calls it whenever the mode changes, so no caller has to remember.",
+    "Bridge guardrails follow the width: 204 cm from the centreline in arcade, 154 cm in realistic."
+  ],
+  "saved_map_evidence": {
+    "log": "work/verify-trail-ribbons.log",
+    "as_saved": "10 splines carry 420 cm; 27 arcade actors visible and colliding; 27 realistic actors hidden with no collision",
+    "realistic_mode": "10 splines carry 320 cm; 27 arcade actors hidden with no collision; 27 realistic actors visible and colliding",
+    "arcade_again": "back to 420 cm and the arcade ribbon live",
+    "verdict": "TRAIL RIBBONS VERIFIED: both ribbons in the map, arcade 420 cm, realistic 320 cm, swap both ways"
+  },
+  "installer_evidence": {
+    "eastside_log": "work/install-eastside.log",
+    "eastside_coverage": "1544 of 1566 centreline points on trail pavement, 22 on a street that legitimately overlays it",
+    "eastside_ribbon_geometry": "23 chunks, narrow inside wide on every one, 70889 triangles wide and 60116 narrow",
+    "eastside_navigation_cm": 103188.8671875,
+    "connector_log": "work/install-connector.log",
+    "connector_coverage": "25 of 43 points on the connector's own mesh, 18 on park path and Tenth Street overlays"
+  },
+  "runtime_audit": {
+    "name": "BattleTrailModeAudit",
+    "log": "work/BattleTrailModeAudit.log",
+    "verdict": "{\"passed\":true,\"reason\":\"arcade lays 4.2 m of pavement out to 190 cm, realistic lays 3.2 m and stops before it, and the spline width and ribbon visibility follow the toggle both ways\",\"arcade_actors\":27,\"realistic_actors\":27,\"arcade_cm\":420,\"realistic_cm\":320}",
+    "method": "the audit puts the bike into realistic handling and waits, rather than calling the swap itself, so it covers the wiring as well as the geometry"
+  },
+  "renders": [
+    "work/trail119/arcade/bike.png - wide pavement at the trail",
+    "work/trail119/realistic/bike.png - the same spot, narrow pavement",
+    "work/trail119/bridge-arcade/bike.png - rails at the wide offset",
+    "work/trail119/bridge-realistic/bike.png - rails visibly closer together"
+  ],
+  "sweep": {
+    "editor": "18/18 green",
+    "packaged": "18/18 green",
+    "new": "BattleTrailModeAudit is the eighteenth"
+  },
+  "gotchas_found": [
+    "-run=pythonscript loads and imports fine but leaves navigation unroutable: the same map that answers a 103188 cm Monroe-to-Irwin route answers -1 after a commandlet rebuild. The installers now insist on -ExecutePythonScript. Evidence: work/probe-nav-commandlet.log versus work/probe-nav-editor.log.",
+    "AActor::GetActorLabel is editor-only, so an audit that names an actor in its verdict line needs a WITH_EDITOR guard or it fails the game target rather than the editor target."
+  ],
+  "packaged_app": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 119/The Battle of ATL.app",
+  "scope": "Both ribbons, their rails, the runtime swap and the saved map are covered. Riding feel per mode has the existing handling audits; the BeltLine grass rule is covered by BattleGrassAudit in arcade."
+}

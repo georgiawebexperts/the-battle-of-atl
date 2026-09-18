@@ -350,6 +350,14 @@
   "meshes": [
     {
       "mesh": "SM_BeltlineConnector_Asphalt_5_14",
+      "ribbon": "BeltlineConnector",
+      "active": true,
+      "bounds_match": true
+    },
+    {
+      "mesh": "SM_BeltlineConnectorRealistic_Asphalt_5_14",
+      "ribbon": "BeltlineConnectorRealistic",
+      "active": false,
       "bounds_match": true
     }
   ],

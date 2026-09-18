@@ -1,7 +1,7 @@
 import json,heapq,math,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from arcade_trail import TRAIL_WIDTH_GAME_CM,width_policy
+from arcade_trail import TRAIL_WIDTH_GAME_CM,width_policy,realistic_variant
 from pyproj import Transformer
 import numpy as np
 root=Path(__file__).resolve().parents[1];data=json.loads((root/'References/eastside-krog-corridor-osm.json').read_text());meta=json.loads((root/'SourceAssets/Terrain/terrain-georeference.json').read_text());t=Transformer.from_crs(4326,32616,always_xy=True)
@@ -58,4 +58,5 @@ for part,g in enumerate(groups):
  g.update(points_cm=points,width_game_cm=TRAIL_WIDTH_GAME_CM,artifact_eligible=False,length_real_m=local.length,route_part=part)
 result={'source':'OpenStreetMap contributors, ODbL','source_coordinate_system':'east/north/up cm; use battle_geography.py for Unreal placement','paths':groups,'length_real_m':line.length,'start_node':start,'end_node':end,'width_policy':width_policy(''),'height_profiles':'eastside-height-profiles.json','scope':'Monroe to Irwin, including three authored bridge profiles. Tunnel and Cabbagetown remain unfinished.'}
 (root/'SourceAssets/Terrain/eastside-trail-network.json').write_text(json.dumps(result,indent=2)+'\n')
+realistic_variant(root/'SourceAssets/Terrain/eastside-trail-network.json',root/'SourceAssets/Terrain/eastside-trail-network-realistic.json')
 print('Prepared',len(groups),'parts',line.length,'real metres')

@@ -1,0 +1,42 @@
+{
+  "status": "source_baked_not_imported",
+  "plaza_osm_ids": [],
+  "coordinates": "OBJ centimeters, Z up, Y negated from retained source ENU; bounds are source ENU, not final actor world bounds",
+  "source_splines": "../beltline-connector-network-realistic.json",
+  "ground_clearance_cm": 3,
+  "height_profiles": null,
+  "terrain_diagonal": "i00-i11",
+  "chunks": [
+    {
+      "file": "BeltlineConnectorRealistic_Asphalt_5_14.obj",
+      "material": "Asphalt",
+      "vertices": 548,
+      "triangles": 755,
+      "bounds_cm": [
+        [
+          10879.20061202193,
+          -10886.700102670875,
+          -363.5590768346574
+        ],
+        [
+          12730.648756713585,
+          -8409.236429757599,
+          -315.5592510693823
+        ]
+      ]
+    }
+  ],
+  "triangle_count": 755,
+  "deferred_bridge_osm_ids": [],
+  "coverage_checks": [
+    {
+      "material": "Asphalt",
+      "relative_coverage_error": 1.6893467934873788e-13
+    }
+  ],
+  "pending": [
+    "Unreal import orientation and collision validation",
+    "Bridge deck reconstruction",
+    "All path connectivity and ride-through acceptance"
+  ]
+}

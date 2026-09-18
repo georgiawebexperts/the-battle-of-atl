@@ -481,7 +481,7 @@
   "coverage_checks": [
     {
       "material": "Concrete",
-      "relative_coverage_error": 2.011373086064507e-13
+      "relative_coverage_error": 1.9416253783003346e-13
     },
     {
       "material": "Asphalt",
@@ -493,5 +493,7 @@
     "Reference-matched bridge architecture",
     "All path connectivity and ride-through acceptance"
   ],
-  "rail_policy": "Authored 104 cm guardrail height, two horizontal rails, posts spaced at most 180 cm; reference architecture remains pending."
+  "rail_policy": "Authored 104 cm guardrail height, two horizontal rails, posts spaced at most 180 cm; reference architecture remains pending.",
+  "rail_width_game_cm": 420,
+  "rail_offset_cm": 204.0
 }

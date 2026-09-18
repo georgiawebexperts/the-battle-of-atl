@@ -8154,7 +8154,7 @@
   "length_real_m": 3107.894057080969,
   "start_node": 2396740017,
   "end_node": 6016404357,
-  "width_policy": "Authored 420 game cm for arcade play; raised from 320 on 2026-09-18 because the trail rode too narrow. Not a surveyed width. ",
+  "width_policy": "Authored 420 game cm for arcade play and 320 game cm for realistic play, chosen at runtime by handling mode. The 420 came from 2026-09-18 because the trail rode too narrow; 320 is the original width realistic keeps. Not a surveyed width. ",
   "height_profiles": "eastside-height-profiles.json",
   "scope": "Monroe to Irwin, including three authored bridge profiles. Tunnel and Cabbagetown remain unfinished."
 }
