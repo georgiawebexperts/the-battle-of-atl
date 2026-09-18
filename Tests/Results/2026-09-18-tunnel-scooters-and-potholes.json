@@ -30,9 +30,13 @@
     "BattleKrogCrashAudit": "still passes - blocks_road=true, before_tunnel=true, distance_to_tunnel_cm=2400, gap_open=true, fires=5, bodies=3, bystanders=8, brawlers=4",
     "BattlePotholeRideAudit": "still passes - the pre-existing audit still finds its own fixture; the tunnel potholes carry the tag TunnelPothole, not AuthoredPothole, so they cannot hijack it"
   },
+  "scooter_traffic": {
+    "what": "The moving BeltLine scooters were the same placeholder cylinder. They now hide that cylinder and carry the authored scooter on the same actor, which still owns the motion along the path spline.",
+    "proof": "BattleScooterTrafficAudit passes (riders 8, moved 8, worst_gap_cm 0.00) run as -BattleFurnitureAudit -BattleScooterTrafficAudit, and -BattlePropProbe=90000 lists each rider as 11 visible parts - a deck on MID_M_ScooterTrim, M_Rubber grip tape, M_ScooterMetal stem/handle/hubs and two wheels - with the old Cylinder now marked (hidden).",
+    "trap_found": "-BattleScooterTrafficAudit alone does nothing and the run hangs: the flag is dispatched from TickFurnitureAudit, which is only reached when -BattleFurnitureAudit is also passed (BattleMacController.cpp:186, BattleFurnitureAudit.cpp:18). Two runs were wasted before that was read."
+  },
   "still_open": [
     "Tunnel length. The bore is 4608 cm portal to portal and Elliott wants it a lot longer. That is baked tunnel geometry (bake_krog_structure.py / SM_KrogTunnel_*), not a runtime parameter, so it was left open rather than half-attempted. Extending it means regenerating the shell, re-importing, re-verifying bike and car traversal and re-cooking.",
-    "Scooter traffic still rides BP_ScooterRider - the moving scooters on the BeltLine are the same placeholder cylinder that made the parked ones read as debris. BattleScooterProp.h makes the fix small but BattleScooterTraffic.cpp was another agent's to touch during this session and was left alone.",
     "Punkers inside the bore: the brawlers live in the crash scene outside the mouth. The tunnel itself has pedestrians walking through it, not a fight.",
     "A full audit sweep after every agent's change from this session was never run as one batch - the individual audits named above were run one at a time."
   ]

@@ -1,8 +1,10 @@
 #include "BattleScooterTraffic.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattleScooterProp.h"
 #include "PiedmontPathSpline.h"
 #include "Components/SplineComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
@@ -47,6 +49,14 @@ void ABattleScooterTraffic::BeginPlay(){
   FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
   if(auto* Rider=GetWorld()->SpawnActor<AActor>(ScooterClass,Location,Direction.Rotation(),Params)){
    Rider->SetActorTickEnabled(false);Rider->Tags.Add(TEXT("BattleScooterRider"));
+   // BP_ScooterRider's only visible part is an untextured engine cylinder, so
+   // every moving scooter on the trail was a grey tube. Hide the placeholder -
+   // after the scooter is built, so the new parts are not hidden with it - and
+   // put the authored scooter on the same actor, which still owns the motion.
+   TArray<UStaticMeshComponent*> Placeholder;
+   Rider->GetComponents(Placeholder);
+   for(auto* Part:Placeholder)Part->SetVisibility(false,true);
+   BuildBattleScooter(Rider,Rider->GetRootComponent(),Location-FVector(0,0,92.f),FRotator(0,Direction.Rotation().Yaw,0),SpawnedScooters,false);
    const float Speeds[]={Mode->Difficulty.ScooterSlowSpeed,Mode->Difficulty.ScooterMediumSpeed,Mode->Difficulty.ScooterFastSpeed};
    Scooters.Add({Rider,Path,Distance,Speeds[I%3],Reverse});SpawnedScooters++;
   }
