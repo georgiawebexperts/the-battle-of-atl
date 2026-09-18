@@ -46,7 +46,11 @@ $audits = @(
     [pscustomobject]@{ Name = 'BattleSpeedAudit';    Label = 'BattleSpeedAudit';        Flag = '' },
     [pscustomobject]@{ Name = 'BattleTimeAudit';     Label = 'BattleTimeAudit';         Flag = '' },
     [pscustomobject]@{ Name = 'BattleDiscAudit';     Label = 'BattleDiscAudit';         Flag = '' },
-    [pscustomobject]@{ Name = 'BattleDiagonalAudit'; Label = 'BattleDiagonalAudit';     Flag = '' }
+    [pscustomobject]@{ Name = 'BattleDiagonalAudit'; Label = 'BattleDiagonalAudit';     Flag = '' },
+    # End-to-end guard on the ending: walks the whole authored course and requires
+    # the win to commit at the patio. This is the audit that would have caught a
+    # rider reaching the party with no result screen.
+    [pscustomobject]@{ Name = 'BattlePatioAudit';   Label = 'BattlePatioAudit';       Flag = '' }
 )
 
 function Invoke-Audit {
