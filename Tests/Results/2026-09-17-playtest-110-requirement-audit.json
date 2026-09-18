@@ -1,0 +1,97 @@
+{
+ "build": "110",
+ "sweep": "packaged quick-audit sweep, all green",
+ "requirements": [
+  {
+   "ask": "wanted panel says why and for how long",
+   "evidence": "BattleTroubleAudit passed; WantedReason/WantedSeconds on ABattleLabMode, HUD WANTED line",
+   "build": "103"
+  },
+  {
+   "ask": "rent-a-cops, no cops unless something happens",
+   "evidence": "BattleMurderKAudit passed (ambient_police 2 on Easy); APD spawn gated on bPoliceAlert",
+   "build": "103"
+  },
+  {
+   "ask": "fall off the bike hitting a person or tree",
+   "evidence": "BattleTreeRideAudit passed; BattleBikeCarAudit passed",
+   "build": "103"
+  },
+  {
+   "ask": "shorter clock",
+   "evidence": "BattleMurderKAudit passed with timer=210 (Easy), 180 Medium, 150 Hard",
+   "build": "103"
+  },
+  {
+   "ask": "stuck help telling you to back out",
+   "evidence": "Ride->StuckSeconds drives the HOLD S / DOWN prompt",
+   "build": "103"
+  },
+  {
+   "ask": "Krog crash prominent, before the tunnel, blocking, permanent, people scattering and screaming",
+   "evidence": "BattleKrogCrashAudit passed (2400 cm before the mouth, blocks road, gap open, 5 fires, 3 bodies, 8 bystanders, 4 brawlers, HELP! shout); visual pass in 109",
+   "build": "104/109"
+  },
+  {
+   "ask": "bear becomes human",
+   "evidence": "BattleSpiritAudit passed with the nine-part spectral figure",
+   "build": "104"
+  },
+  {
+   "ask": "violence: fights, bodies, fires",
+   "evidence": "Krog audit counts; reviewed frame shows the tipped car burning with a brawl subtitle live",
+   "build": "104/109"
+  },
+  {
+   "ask": "hints",
+   "evidence": "BattleGrassAudit passed with hint_seen true; hints toggle in Options",
+   "build": "104/105"
+  },
+  {
+   "ask": "auto-aim off the bike plus look hint",
+   "evidence": "Dismount sets control rotation to the nearest officer/zombie else the bike, and pushes the on-foot hint",
+   "build": "104"
+  },
+  {
+   "ask": "jumping on hills, throttle boost, findable boosts",
+   "evidence": "hop works from 90 speed with 720/820 impulse; speed crates bank charges capped at 3",
+   "build": "104"
+  },
+  {
+   "ask": "grass penalty with visible loss, Trees ATL pursuers, warning sign",
+   "evidence": "BattleGrassAudit passed (15 s lost over 7 s of grass, 1 chase, hint seen)",
+   "build": "104"
+  },
+  {
+   "ask": "cars try to hit you, bike lane keeps you safe, pedestrians out of the lane, punks may sleep there",
+   "evidence": "ABattleRoadCar::HostilityBlend steers at the rider unless Ride->bBikeLane; walkers step off the track, sleepers exempt",
+   "build": "105"
+  },
+  {
+   "ask": "trapped on bridges, needs help, easier to pass, one bridge unpassable",
+   "evidence": "stuck prompt (103), 90 cm step height (103), overhead decks transparent to the bike (108); route sweep found no low bridge on any of the 252 path splines (110)",
+   "build": "103/108/110"
+  },
+  {
+   "ask": "landmark supply crates",
+   "evidence": "BattlePickupAudit passed phase 7",
+   "build": "107"
+  }
+ ],
+ "audits_passed_on_110": [
+  "BattleTroubleAudit",
+  "BattleTreeRideAudit",
+  "BattleGrassAudit",
+  "BattlePickupAudit",
+  "BattleSpiritAudit",
+  "BattleBikeCarAudit",
+  "BattleSteeringAudit",
+  "BattleMurderKAudit",
+  "BattleKrogCrashAudit"
+ ],
+ "soft_spots": [
+  "dismount is a hop plus auto-aim, not a true leg-swing animation",
+  "the Trees ATL sign sits on the way out of the park toward Krog rather than at Monroe exactly",
+  "BattleRoadContactAudit and BattleKrogRiderAudit still need a quiet machine (1 fps under audit)"
+ ]
+}
