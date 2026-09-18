@@ -56,6 +56,9 @@ AUDITS=(
   "BattleTimeAudit||"
   "BattleDiscAudit||"
   "BattleMeleeAudit||"
+  # The two-keys-at-once complaint: holds W, then W+D, then W+A on foot and
+  # measures the direction actually travelled against where the camera looks.
+  "BattleDiagonalAudit||"
   "BattleTrailModeAudit||"
   "BattleSkaterAudit||"
   "BattleDroneAudit||"

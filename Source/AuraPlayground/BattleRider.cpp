@@ -185,14 +185,39 @@ float ABattleRider::TakeDamage(float Amount,const FDamageEvent& Event,AControlle
 bool ABattleBike::Dismount(){
  auto* PC=Cast<APlayerController>(GetController());if(!PC||bParked||RiderHealth<=0||Ride->Recovery>0)return false;
  FVector Exit;bool Found=false;FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleDismount),false,this);
- for(const FVector Direction:{GetActorRightVector(),-GetActorRightVector(),-GetActorForwardVector(),GetActorForwardVector()}){
-  const FVector Candidate=GetActorLocation()+Direction*145;FHitResult Ground;
-  if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,100),Candidate-FVector(0,0,220),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.65f)continue;
-  // A vertical capsule needs extra clearance above a sloped plane.
-  const float Clearance=88.f+30.f*(1.f/FMath::Max(.65f,Ground.ImpactNormal.Z)-1.f)+2.f;
-  Exit=Ground.ImpactPoint+FVector(0,0,Clearance);
-  FHitResult Wall;if(GetWorld()->SweepSingleByChannel(Wall,GetActorLocation(),Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
-  if(!GetWorld()->OverlapBlockingTestByChannel(Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q)){Found=true;break;}
+ // The bike sits with its origin at ground level, so sweeping a full-height rider
+ // capsule from GetActorLocation() started the sweep buried in the road and every
+ // direction reported a phantom wall. On a slope that made Dismount refuse
+ // outright - press E and nothing happens. Sweep the rider's body between saddle
+ // height and standing height instead, and try a nearer and a farther step before
+ // giving up, since one distance can be blocked by a parked car or a kerb.
+ const FVector Lift(0,0,90);
+ // Eight directions, not four, and five distances, not three. A rider thrown off
+ // by a skater lands with the skater's capsule within a couple of metres, which
+ // used to block every one of the four cardinal exits and leave Dismount
+ // refusing - `BattleSkaterAudit` caught exactly that.
+ const FVector Right=GetActorRightVector(),Fwd=GetActorForwardVector();
+ for(const float Reach:{145.f,190.f,115.f,80.f,50.f}){
+  for(const FVector Direction:{Right,-Right,-Fwd,Fwd,(Right-Fwd).GetSafeNormal(),(Right+Fwd).GetSafeNormal(),(-Right-Fwd).GetSafeNormal(),(-Right+Fwd).GetSafeNormal()}){
+   const FVector Candidate=GetActorLocation()+Direction*Reach;FHitResult Ground;
+   if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,100),Candidate-FVector(0,0,220),ECC_Visibility,Q)||Ground.ImpactNormal.Z<.65f)continue;
+   // A vertical capsule needs extra clearance above a sloped plane.
+   const float Clearance=88.f+30.f*(1.f/FMath::Max(.65f,Ground.ImpactNormal.Z)-1.f)+2.f;
+   Exit=Ground.ImpactPoint+FVector(0,0,Clearance);
+   FHitResult Wall;if(GetWorld()->SweepSingleByChannel(Wall,GetActorLocation()+Lift,Exit+Lift,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q))continue;
+   if(!GetWorld()->OverlapBlockingTestByChannel(Exit,FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(30,88),Q)){Found=true;break;}
+  }
+  if(Found)break;
+ }
+ // Last resort: step off in place. The query ignores the bike itself, so the
+ // rider's own seat is always somewhere to stand; without this, E silently did
+ // nothing whenever every direction out was blocked by a wall, a parked car or
+ // the very pedestrian he had just hit.
+ if(!Found){
+  FHitResult Ground;const FVector Candidate=GetActorLocation();
+  if(GetWorld()->LineTraceSingleByChannel(Ground,Candidate+FVector(0,0,100),Candidate-FVector(0,0,220),ECC_Visibility,Q)&&Ground.ImpactNormal.Z>=.65f){
+   Exit=Ground.ImpactPoint+FVector(0,0,90);Found=true;
+  }
  }
  if(!Found)return false;
  FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;

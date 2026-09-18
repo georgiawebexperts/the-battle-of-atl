@@ -5,6 +5,7 @@
 void TickBattleSpeedAudit(APlayerController* PC,float Dt);
 void TickBattlePanicAudit(APlayerController* PC,float Dt);
 void TickBattleWatchAudit(APlayerController* PC,float Dt);
+void TickBattleDiagonalAudit(APlayerController* PC,float Dt);
 #include "BattleSpareBikes.h"
 #include "BattleSwimAudit.h"
 #include "HAL/IConsoleManager.h"
@@ -194,6 +195,7 @@ void ABattleMacController::PlayerTick(float Dt){
 #endif
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiagonalAudit")))TickBattleDiagonalAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMurderKAudit")))TickMurderKAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeAudit")))TickKnifeAudit(Dt);
