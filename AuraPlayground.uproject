@@ -5,13 +5,6 @@
   "Description": "The Battle of ATL is a third-person e-bike action game spanning Piedmont Park, the Atlanta BeltLine, and Cabbagetown.",
   "Plugins": [
     {
-      "Name": "Aura",
-      "Enabled": true,
-      "TargetAllowList": [
-        "Editor"
-      ]
-    },
-    {
       "Name": "Water",
       "Enabled": true
     },
