@@ -38,7 +38,7 @@ public:
  UPROPERTY(BlueprintReadOnly) int32 TrailPickups=0;
  UPROPERTY(BlueprintReadOnly) int32 PlacementFailures=0;
 private:
- bool SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot=-1);
+ bool SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot=-1,bool bLandmark=false);
  TArray<FVector> Locations;
 };
 

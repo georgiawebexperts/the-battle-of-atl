@@ -110,14 +110,22 @@ AActor* SpawnAmmoBin(AActor* Owner,FVector Base,UStaticMesh* Asset){
  return Bin;
 }
 }
-bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot){
+bool ABattlePickupDirector::SpawnCola(FVector Surface,bool Trail,float Heal,int32 WeaponSlot,bool bLandmark){
  // Ammo may sit near other supplies, but keep a clear eight-metre separation.
- const float Spacing=WeaponSlot==0?800.f:1600.f;
+ // Landmark crates are deliberately placed, so they only need breathing room.
+ const float Spacing=bLandmark?600.f:(WeaponSlot==0?800.f:1600.f);
  for(const FVector& P:Locations)if(FVector::DistSquared2D(P,Surface)<FMath::Square(Spacing))return false;
  auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return false;
  FHitResult Ground;FCollisionQueryParams Q(SCENE_QUERY_STAT(ColaPlacement),false,Pawn);
  if(!GetWorld()->LineTraceSingleByChannel(Ground,Surface+FVector(0,0,150),Surface-FVector(0,0,150),ECC_Visibility,Q)||!Ground.GetActor())return false;
- const auto* Floor=Ground.GetActor();if(!Floor->ActorHasTag(TEXT("RidePath"))&&!Floor->ActorHasTag(TEXT("RideDirt"))&&!Floor->ActorHasTag(TEXT("RideBridge")))return false;
+ const auto* Floor=Ground.GetActor();
+ const bool bRideSurface=Floor->ActorHasTag(TEXT("RidePath"))||Floor->ActorHasTag(TEXT("RideDirt"))||Floor->ActorHasTag(TEXT("RideBridge"));
+ if(!bRideSurface){
+  // The landmark plazas are paved with meshes the route rules never tagged.
+  // A landmark crate is an authored promise, so accept dry, flat pavement.
+  if(!bLandmark||Ground.ImpactNormal.Z<.85f)return false;
+  for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Ground.ImpactPoint+FVector(0,0,98)))return false;
+ }
  FVector Spot=Ground.ImpactPoint+FVector(0,0,65);FVector BinBase;UStaticMesh* BinAsset=nullptr;
  if(!Floor->ActorHasTag(TEXT("RideBridge")))for(TActorIterator<APiedmontWaterHazard> It(GetWorld());It;++It)if(It->ContainsBike(Ground.ImpactPoint+FVector(0,0,98)))return false;
  if(WeaponSlot==0){
@@ -152,7 +160,18 @@ void ABattlePickupDirector::BeginPlay(){
 #endif
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Mode)return;
  const int32 Desired=Mode->Difficulty.HealthPickups;const int32 TrailGoal=FMath::Min(Desired,FMath::Max(2,Desired/3));const float Heal=Mode->Difficulty.ColaHealAmount;
- for(const auto& A:BattleCheckpoints::Anchors)if(TrailPickups<TrailGoal)SpawnCola(FVector(A.X,A.Y,A.Z),true,Heal);
+ // A supply is promised at each landmark. Those plazas are paved with meshes
+ // the route rules never tagged, so the landmark rule accepts dry flat
+ // pavement; if the anchor itself is taken, walk a ring around it. These count
+ // toward the trail goal, so the totals stay exactly as the difficulty asks.
+ for(const auto& A:BattleCheckpoints::Anchors){
+  if(TrailPickups>=TrailGoal)break;
+  const FVector Anchor((float)A.X,(float)A.Y,(float)A.Z);
+  if(SpawnCola(Anchor,true,Heal,-1,true))continue;
+  for(const FVector& Offset:{FVector(700,0,0),FVector(-700,0,0),FVector(0,700,0),FVector(0,-700,0),
+                             FVector(1300,0,0),FVector(-1300,0,0),FVector(0,1300,0),FVector(0,-1300,0)})
+   if(SpawnCola(Anchor+Offset,true,Heal,-1,true))break;
+ }
  TArray<FVector> Park,Trail;
  for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It){auto* S=It->Centerline.Get();auto& Candidates=It->bArtifactEligible?Park:Trail;
   for(float D=FMath::Min(500.f,S->GetSplineLength()*.5f);D<S->GetSplineLength();D+=1800)Candidates.Add(S->GetLocationAtDistanceAlongSpline(D,ESplineCoordinateSpace::World));
@@ -162,21 +181,6 @@ void ABattlePickupDirector::BeginPlay(){
  };
  const TArray<FVector> AmmoPark=Park,AmmoTrail=Trail;
  Fill(Trail,true,TrailGoal);Fill(Park,false,Desired-TrailGoal);
- // The design promises a supply at each landmark, so if the anchor itself is
- // blocked, walk a ring around it until a legal spot accepts a crate.
- for(const auto& A:BattleCheckpoints::Anchors){
-  const FVector Anchor((float)A.X,(float)A.Y,(float)A.Z);
-  bool bNear=false;
-  for(TActorIterator<ABattleColaPickup> It(GetWorld());It;++It)if(!It->bTimeBonus&&!It->bSpeedBonus&&FVector::Dist2D(It->GetActorLocation(),Anchor)<1500.f){bNear=true;break;}
-  if(bNear)continue;
-  for(const FVector& Offset:{FVector(700,0,0),FVector(-700,0,0),FVector(0,700,0),FVector(0,-700,0),
-                             FVector(1300,0,0),FVector(-1300,0,0),FVector(0,1300,0),FVector(0,-1300,0)})
-   if(SpawnCola(Anchor+Offset,true,Heal))break;
-  // NOTE 2026-09-17: the anchor rings above still fail because the landmark
-  // pavement is not tagged RidePath/RideDirt/RideBridge, which SpawnCola
-  // requires. Fixing it means tagging those surfaces or relaxing that rule -
-  // a design call, recorded in the Brain note rather than guessed here.
- }
 #if !UE_BUILD_SHIPPING
  const bool ColaAudit=FParse::Param(FCommandLine::Get(),TEXT("BattlePickupAudit"));
 #else

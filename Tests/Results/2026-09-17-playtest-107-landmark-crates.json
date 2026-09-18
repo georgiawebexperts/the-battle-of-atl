@@ -1,0 +1,20 @@
+{
+ "build": "107",
+ "landmark_crates": {
+  "fix": "landmark rule in SpawnCola accepts dry flat pavement when the plaza is not tagged as ride ground, and the anchor ring search runs before the trail fill so totals stay exact",
+  "result": "BattlePickupAudit passes phase 7 in the editor and in the packaged build (spawned=18 park=12 trail=6)"
+ },
+ "packaged_audits": {
+  "BattlePickupAudit": "passed",
+  "BattleGrassAudit": "passed",
+  "BattleKrogCrashAudit": "passed",
+  "BattleDuckAudit": "passed"
+ },
+ "pending_verification": {
+  "BattleRoadContactAudit": "long route drive; clock raised to 900 s, result not yet in",
+  "BattleKrogRiderAudit": "same - the world streams very slowly under audit, needs a longer window"
+ },
+ "still_open": [
+  "the specific bridge the rider cannot pass under - needs the location from Elliott"
+ ]
+}
