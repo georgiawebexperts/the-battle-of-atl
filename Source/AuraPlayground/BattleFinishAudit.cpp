@@ -28,7 +28,12 @@ void ABattleMacController::TickFinishAudit(float Dt){
  Place(Mode->Quest->ArtifactLocation+FVector(0,0,53));Mode->Quest->Tick(.016f);FCHECK(Mode->Quest->bCollected,"Real Artifact collection failed");
  Place(BattleHomeData::Gate+FVector(0,0,98));Home->bTunnelExited=true;FCHECK(!Home->TryFinish(),"Won before checkpoints");Home->bTunnelExited=false;
  for(const FVector& C:Mode->Quest->CheckpointLocations){Place(C+FVector(0,0,98));Mode->Quest->Tick(.016f);}FCHECK(Mode->Quest->NextCheckpoint==2,"Real checkpoint collection failed");
- Place(BattleHomeData::Gate+FVector(0,0,98));FCHECK(!Home->TryFinish(),"Won without tunnel crossing");
+ // The tunnel crossing is recorded rather than required now: BattleHomeData's
+ // TunnelEntry sits 46 m off the authored course, so requiring it left a real
+ // rider stranded at the party with no result screen. That the course still
+ // reaches the patio and commits the win is proved end to end by
+ // -BattlePatioAudit; here we keep proving the tunnel is tracked in order.
+ Place(BattleHomeData::Gate+FVector(0,0,98));
  Place(BattleHomeData::TunnelExit+FVector(0,0,98));Home->Tick(.016f);FCHECK(!Home->bTunnelExited,"Tunnel exit accepted before entrance");
  Place(BattleHomeData::TunnelEntry+FVector(0,0,98));Home->Tick(.016f);Place(BattleHomeData::TunnelExit+FVector(0,0,98));Home->Tick(.016f);FCHECK(Home->bTunnelEntered&&Home->bTunnelExited&&!Mode->bWon,"Ordered tunnel traversal failed");
  Place(BattleHomeData::Gate+FVector(0,0,500));FCHECK(!Home->TryFinish(),"Won above gate");Place(BattleHomeData::Gate+FVector(0,0,98));
