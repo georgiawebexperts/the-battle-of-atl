@@ -1,0 +1,54 @@
+{
+  "build": "118",
+  "batch": "playtest round 15: the bear's last remnant removed, and melee actually reaches what you are looking at",
+  "source_commit": "e9a8d50 (spirit), 78e3b40 (melee), on top of afb4868 (BeltLine width)",
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 118",
+  "verified_against": "packaged build 118",
+  "packaged_sweep": {
+    "result": "17/17 pass",
+    "audits": ["BattleCurseAudit", "BattleTreeRideAudit (arcade)", "BattleTreeRideAudit -BattleRealTreeAudit (realistic)", "BattleTroubleAudit", "BattleSteeringAudit", "BattleSleeperAudit", "BattleGrassAudit", "BattleBikeCarAudit", "BattleMurderKAudit", "BattlePickupAudit", "BattleSpiritAudit", "BattleKrogCrashAudit", "BattleDuckAudit", "BattleSpeedAudit", "BattleTimeAudit", "BattleDiscAudit", "BattleMeleeAudit"],
+    "note": "BattleMeleeAudit is new to the sweep. It had been red and is now fixed, so the sweep is 17 rather than 16."
+  },
+  "what_changed": [
+    {
+      "ask": "the bear at kroger is very bad just make a human angle",
+      "file": "Source/AuraPlayground/BattleSpirit.cpp, BattleSpirit.h",
+      "what": "The apparition had already been rebuilt as a human silhouette, but a leftover BearTail - a 34 x 22 x 25 cm sphere at local x = -112 - was still in the array that gets made visible, so it rendered as a person with a detached blob floating ~1.1 m behind its back. Removed. BearParts renamed FigureParts and the local BearMat renamed FigureMat, since they no longer hold a bear. The always-hidden spectral bear card and billboard are left in place: they are forced invisible and the audit reads the billboard sprite as a presentation check.",
+      "proof": "Saved/Screenshots/MacEditor/HighresScreenshot00015.png (blob present) vs 00016.png (clean figure). BattleSpiritAudit 29 checks, green."
+    },
+    {
+      "bug": "melee could only ever hit things behind Ellison",
+      "file": "Source/AuraPlayground/BattleMelee.cpp",
+      "cause": "ResolveMelee() swept 185 cm from PC->GetPlayerViewPoint, and the Explorer camera arm is 320 cm long (PiedmontExplorer.cpp:40). The sweep therefore ended 135 cm behind his back. A target standing directly in front of him was unhittable.",
+      "fix": "The sweep now starts at Ellison's own body. The aim direction still comes from the view, so the swing follows the look.",
+      "how_found": "Logged the sweep instead of guessing. The log showed the sweep running 185 cm forward and hitting nothing, then a widened diagnostic showed the single target zombie 90 cm to the side and 58 cm up from where the audit had placed it."
+    },
+    {
+      "test_preconditions_fixed": "Source/AuraPlayground/BattleMeleeAudit.cpp",
+      "what": [
+        "Place() set the target down once, then the dismounting rider kept sliding, so the windup resolved against a target that had drifted 90 cm sideways and 58 cm up. The audit now pins the target in front of the rider for the phases that assume it is there, and releases it for the out-of-range phase.",
+        "The reload phase set Ammo and called Reload() without drawing the weapon or guaranteeing reserve rounds. Reload() bails on an undrawn weapon, so that check was testing its own guard. It now establishes the precondition the way BattleAmmoAudit does."
+      ]
+    },
+    {
+      "guard": "Scripts/run_quick_audits.sh",
+      "what": "BattleMeleeAudit added to the sweep so a melee regression cannot ship silently again."
+    }
+  ],
+  "audit_evidence": {
+    "melee_packaged": "BattleMeleeAudit: {\"passed\":true,\"phase\":7,\"swings\":4,\"hits\":2,\"kills\":1,\"reason\":\"F input, windup, cooldown, 50 damage, kill reward, wall/range, reload and death guards pass\"}",
+    "spirit_packaged": "BattleSpiritAudit: {\"passed\":true,\"checks\":29}",
+    "sweep": "17/17 on the packaged build 118"
+  },
+  "flaky_audits": {
+    "BattleDuckAudit": "Failed once inside a full editor sweep ('rider never started swimming in the lake') and passed twice standalone plus once in the packaged sweep. It drives the rider into the lake, so it needs frames. Treat a lone failure as load, but re-run it - do not wave it through.",
+    "BattleTroubleAudit": "Same class. Failed once on the packaged 116 sweep with police_spawned=0, green on every other run including packaged 118."
+  },
+  "still_open": [
+    "BattleDroneAudit (timeout), BattleFrisbeeAudit, BattlePanicAudit, BattleSkaterAudit remain red and untouched - they are not in the sweep.",
+    "BattleRoadContactAudit, BattleKrogRiderAudit and BattleCarLoopAudit want a quiet machine.",
+    "Per-mode BeltLine width (arcade wide, realistic the old 3.2 m) is still awaiting Elliott's call - see the 117 evidence file.",
+    "The object Elliott calls 'the logs' is still unexplained. One coordinate plus -BattleSpotReview and -BattlePropProbe names it in a single run."
+  ],
+  "settings_untouched": "No settings menu, option list or saved-settings code was edited."
+}
