@@ -79,7 +79,7 @@ ABattleGrassSign::ABattleGrassSign(){
  Face=CreateDefaultSubobject<UTextRenderComponent>(TEXT("SignFace"));Face->SetupAttachment(Root);
  Face->SetText(FText::FromString(TEXT("TREES ATL\nWORKING ON THE GRASS\nPLEASE KEEP OFF")));
   // Just in front of the board, facing the same way the actor does, sized to fit.
- Face->SetWorldSize(15.f);Face->SetTextRenderColor(FColor(250,246,232));
+ Face->SetWorldSize(22.f);Face->SetTextRenderColor(FColor(250,246,232));
  Face->SetHorizontalAlignment(EHTA_Center);Face->SetRelativeLocation(FVector(4,0,170));Face->SetRelativeRotation(FRotator::ZeroRotator);
  Message=TEXT("TREES ATL working on the grass, please keep off");
 }
