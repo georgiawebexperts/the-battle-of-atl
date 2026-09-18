@@ -76,12 +76,15 @@ void ABattleEnemyDirector::TickMurderK(float Dt){
  TArray<ABattleZombie*> Brawlers;
  // Keep the middle of the widened plaza rideable. The crowd occupies both
  // edges and converges after activation instead of spawning as a solid wall.
- const FVector PunkOffsets[]={FVector(-1000,850,0),FVector(-720,-850,0),FVector(-300,920,0),FVector(40,-900,0),FVector(470,840,0),FVector(760,-920,0),FVector(1080,850,0),FVector(430,-1180,0),FVector(-470,-1160,0)};
- const int32 PunkCount=Mode->DifficultyName==TEXT("Easy")?5:(Mode->DifficultyName==TEXT("Medium")?7:9);
+ const FVector PunkOffsets[]={FVector(-1000,850,0),FVector(-720,-850,0),FVector(-300,920,0),FVector(40,-900,0),FVector(470,840,0),FVector(760,-920,0),FVector(1080,850,0),FVector(430,-1180,0),FVector(-470,-1160,0),FVector(-1450,-760,0),FVector(1480,780,0),FVector(830,1200,0)};
+ // Kroger is the hardest stop on the route on every difficulty. Elliott rode
+ // through and called it too easy, so the plaza is now packed and three brawls
+ // are already going before the rider arrives.
+ const int32 PunkCount=Mode->DifficultyName==TEXT("Easy")?7:(Mode->DifficultyName==TEXT("Medium")?9:11);
  for(int32 I=0;I<PunkCount;I++){
   const FVector Position=Grounded(PunkOffsets[I]);FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
   if(auto* Punk=GetWorld()->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn)){
-   Punk->VisualStyle=1;Punk->MoveSpeed=Mode->Difficulty.ZombieSpeed*1.08f;Punk->AttackDamage=Mode->Difficulty.ZombieDamage;Punk->WarningSeconds=Mode->Difficulty.ZombieWarningSeconds;Punk->Emergence=0;Punk->SetLifeSpan(65);Punk->FinishSpawning(FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position));MurderKPunksSpawned++;if(I<4)Brawlers.Add(Punk);
+   Punk->VisualStyle=1;Punk->MoveSpeed=Mode->Difficulty.ZombieSpeed*1.08f;Punk->AttackDamage=Mode->Difficulty.ZombieDamage;Punk->WarningSeconds=Mode->Difficulty.ZombieWarningSeconds;Punk->Emergence=0;Punk->SetLifeSpan(65);Punk->FinishSpawning(FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position));MurderKPunksSpawned++;if(I<6)Brawlers.Add(Punk);
   }
  }
  for(int32 I=0;I+1<Brawlers.Num();I+=2){Brawlers[I]->bMurderKBrawler=Brawlers[I+1]->bMurderKBrawler=true;Brawlers[I]->BrawlPartner=Brawlers[I+1];Brawlers[I+1]->BrawlPartner=Brawlers[I];MurderKFightSpots++;}
@@ -89,8 +92,11 @@ void ABattleEnemyDirector::TickMurderK(float Dt){
  for(const FVector Offset:BumOffsets){const FVector Position=Grounded(Offset);auto* Bum=GetWorld()->SpawnActorDeferred<APiedmontPedestrian>(APiedmontPedestrian::StaticClass(),FTransform(FRotator(0,A.Yaw,0),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);if(Bum){Bum->bAmbientSleeper=true;Bum->AmbientWakeChance=.35f;Bum->Tags.Add(TEXT("MurderKBum"));Bum->FinishSpawning(FTransform(FRotator(0,A.Yaw,0),Position));Bum->SetLifeSpan(90);MurderKBumsSpawned++;}}
  const FVector CopOffsets[]={FVector(-1450,1380,0),FVector(1380,-1380,0),FVector(0,1720,0),FVector(-1720,-140,0)};const int32 CopCount=Mode->DifficultyName==TEXT("Easy")?2:4;
  for(int32 I=0;I<CopCount;I++){const FVector Position=Grounded(CopOffsets[I]);auto* Cop=GetWorld()->SpawnActorDeferred<ABattlePolice>(ABattlePolice::StaticClass(),FTransform(FRotator(0,A.Yaw-90,0),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);if(Cop){Cop->bAmbientMurderK=true;Cop->FinishSpawning(FTransform(FRotator(0,A.Yaw-90,0),Position));MurderKAmbientPolice++;}}
+ // The store is never unguarded: the difficulty table sets the ceiling, this
+ // sets the floor, so Kroger stays a violent stretch even on Easy.
  const FVector GunOffsets[]={FVector(-900,1150,0),FVector(80,-1220,0),FVector(980,1120,0)};
- for(int32 I=0;I<FMath::Clamp(Mode->Difficulty.KrogerShooters,0,3);I++){
+ const int32 KrogerShooters=FMath::Clamp(FMath::Max(Mode->Difficulty.KrogerShooters,Mode->DifficultyName==TEXT("Easy")?1:(Mode->DifficultyName==TEXT("Medium")?2:3)),0,3);
+ for(int32 I=0;I<KrogerShooters;I++){
   FVector Position=Anchor+Frame.RotateVector(GunOffsets[I]);FNavLocation OnNav;if(Nav&&Nav->ProjectPointToNavigation(Position,OnNav,FVector(350,350,500)))Position=OnNav.Location;Position.Z+=90;
   FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
   if(auto* Gun=GetWorld()->SpawnActor<ABattleGunman>(Position,(Pawn->GetActorLocation()-Position).Rotation(),Params)){Gun->Cooldown=2.5f+I*.55f;Gun->SetLifeSpan(50);MurderKGunmen.Add(Gun);MurderKGunmenSpawned++;GunmenSpawned++;}

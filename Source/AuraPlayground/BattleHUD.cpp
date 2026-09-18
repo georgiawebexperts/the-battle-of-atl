@@ -10,6 +10,7 @@
 #include "BattlePickup.h"
 #include "BattleZombie.h"
 #include "BattleKrogCrash.h"
+#include "BattleMurderK.h"
 #include "BattlePolice.h"
 #include "BattleKnife.h"
 #include "PiedmontPedestrian.h"
@@ -257,6 +258,11 @@ void ABattleLabHUD::DrawHUD(){
   const ABattleKrogCrash* Crash=nullptr;
   if(!Speaking)for(TActorIterator<ABattleKrogCrash> It(GetWorld());It;++It)if(It->ShoutRemaining>0){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Crash=*It;}}
   if(!Speaking&&Crash){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(FString::Printf(TEXT("BYSTANDER: %s"),*Crash->ShoutText),H-M-159*S,24,FLinearColor(1.f,.72f,.62f));}
+  // The Murder K plaza riot chants in the same slot, so the loudest stretch on
+  // the route reads as a crowd even in the second it takes to ride through it.
+  const ABattleMurderK* Riot=nullptr;
+  if(!Speaking&&!Crash)for(TActorIterator<ABattleMurderK> It(GetWorld());It;++It)if(It->ShoutRemaining>0&&!It->ShoutText.IsEmpty()){const float D=FVector::Dist2D(Viewer->GetActorLocation(),It->GetActorLocation());if(D<Best){Best=D;Riot=*It;}}
+  if(!Speaking&&!Crash&&Riot){Panel(CX-440*S,H-M-166*S,880*S,48*S);Center(FString::Printf(TEXT("CROWD: %s"),*Riot->ShoutText),H-M-159*S,24,FLinearColor(1.f,.62f,.72f));}
   }
  }
 }

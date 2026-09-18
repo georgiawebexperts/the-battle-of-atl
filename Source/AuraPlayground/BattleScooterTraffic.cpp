@@ -16,7 +16,10 @@ void ABattleScooterTraffic::BeginPlay(){
  Super::BeginPlay();auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Mode||!ScooterClass)return;
  TArray<APiedmontPathSpline*> Paths;for(TActorIterator<APiedmontPathSpline> It(GetWorld());It;++It)if(It->bArtifactEligible&&!It->bBridge&&It->Centerline&&It->Centerline->GetSplineLength()>1800)Paths.Add(*It);
  Paths.Sort([](const APiedmontPathSpline& A,const APiedmontPathSpline& B){return A.OsmWayId<B.OsmWayId;});
- FRandomStream Random(9602);const int32 Count=FMath::Min(Mode->Difficulty.Scooters,Paths.Num()*2);
+ // Scooters are part of the furniture of the whole ride, not a rarity: Elliott
+ // asked for them by name after riding the junctions. The difficulty table sets
+ // the requested count; this raises the floor so they are always around.
+ FRandomStream Random(9602);const int32 Count=FMath::Min(FMath::Max(Mode->Difficulty.Scooters,8),Paths.Num()*2);
  for(int32 I=0;I<Count;I++){
   auto* Path=Paths[I%Paths.Num()];const float Length=Path->Centerline->GetSplineLength();const float Distance=Random.FRandRange(250.f,Length-250.f);
   const bool Reverse=Random.FRand()<Mode->Difficulty.ScooterWrongWayFraction;FVector Location=Path->Centerline->GetLocationAtDistanceAlongSpline(Distance,ESplineCoordinateSpace::World)+FVector(0,0,92);
