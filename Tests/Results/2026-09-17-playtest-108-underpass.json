@@ -1,0 +1,19 @@
+{
+ "build": "108",
+ "batch": "playtest feedback 6",
+ "bridge_underpass": {
+  "fix": "UBattleBikeMovement now ignores any RideBridge actor whose underside sits above the rider's head, so an overhead deck can never become the bike's ground or a wall; a deck the rider is standing on is unaffected because its underside is below their feet",
+  "why": "the symptom was 'trapped hitting bridges / cannot go under'; the geometry probe could not isolate a single culprit deck (15 bridge actors measured, headroom sampling kept hitting the deck's own beams)",
+  "regression": "BattleTreeRideAudit, BattleSteeringAudit and BattleBikeCarAudit all pass with the change"
+ },
+ "packaged_audits": {
+  "BattlePickupAudit": "passed phase 7 in build 108"
+ },
+ "pending": {
+  "BattleRoadContactAudit": "900 s clock in place; the run was stopped to rebuild for 108 and needs a fresh window",
+  "BattleKrogRiderAudit": "same"
+ },
+ "open": [
+  "if a specific bridge still blocks the rider, the location is needed"
+ ]
+}

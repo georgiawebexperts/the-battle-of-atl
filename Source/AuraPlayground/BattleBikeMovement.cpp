@@ -4,6 +4,7 @@
 #include "EngineUtils.h"
 #include "Engine/World.h"
 #include "Components/PrimitiveComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 UBattleBikeMovement::UBattleBikeMovement(){
  // 90 cm steps instead of 60 keeps bridge decks and curbs rideable on entry.
@@ -16,6 +17,21 @@ void UBattleBikeMovement::TickComponent(float Dt,ELevelTick Type,FActorComponent
  // A rendering stall must not apply stale steering over a long unseen jump.
  // Bound bike simulation catch-up; the world countdown still uses elapsed time.
  Dt=FMath::Min(Dt,.05f);
+ // A bridge deck overhead must never become the bike's ground or a wall. Only
+ // decks whose underside sits above the rider's head are skipped, so a surface
+ // the rider is actually standing on is never affected.
+ if(CharacterOwner)if(auto* Capsule=CharacterOwner->GetCapsuleComponent()){
+  const FVector Here=CharacterOwner->GetActorLocation();
+  for(TActorIterator<AActor> It(GetWorld());It;++It){
+   if(!It->ActorHasTag(TEXT("RideBridge")))continue;
+   FVector Origin,Extent;It->GetActorBounds(false,Origin,Extent);
+   if(Origin.Z-Extent.Z<Here.Z+180.f)continue;
+   if(FMath::Abs(Origin.X-Here.X)>Extent.X+300.f||FMath::Abs(Origin.Y-Here.Y)>Extent.Y+300.f)continue;
+   bool bIgnored=false;
+   for(const AActor* Other:Capsule->GetMoveIgnoreActors())if(Other==*It){bIgnored=true;break;}
+   if(!bIgnored)Capsule->IgnoreActorWhenMoving(*It,true);
+  }
+ }
  // Pinned against geometry while still pedalling is the stuck state the HUD
  // warns about; it clears the moment the bike moves again.
  if(Recovery<=0&&Pedal>0&&Speed<80&&IsMovingOnGround())StuckSeconds+=Dt;else StuckSeconds=0;
