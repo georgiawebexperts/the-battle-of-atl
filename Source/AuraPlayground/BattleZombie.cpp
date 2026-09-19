@@ -109,7 +109,9 @@ void ABattleZombie::Tick(float Dt){
  }
  if(Flinch>0){if(AI)AI->StopMovement();Body->AddLocalRotation(FRotator(0,0,-20*Flinch));return;}
  if(Distance<120&&FMath::Abs(Delta.Z)<130&&Clear&&AttackDelay<=0){bTelegraphing=true;WarningRemaining=WarningSeconds;if(AI)AI->StopMovement();return;}
- if(AI&&PathDelay<=0){
+ // The Kroger punk wall holds the line: the punks are the wall, so the only way
+ // past is to shoot through. They still swing if the rider tries to squeeze by.
+ if(AI&&PathDelay<=0&&!Tags.Contains(TEXT("BattlePunkWall"))){
   PathDelay=.6f;PathRequests++;
   if(VisualStyle==0){
    auto* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,GetActorLocation(),Target->GetActorLocation(),this);
