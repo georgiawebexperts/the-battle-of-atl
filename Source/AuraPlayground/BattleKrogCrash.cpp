@@ -51,9 +51,10 @@ void ABattleKrogCrash::SpawnWreck(){
   WreckSpot+RoadSide*520.f+RoadDir*140.f,
   WreckSpot+RoadSide*-420.f+RoadDir*-180.f};
  for(int32 I=0;I<UE_ARRAY_COUNT(DownSpots);++I){
-  // Laid over: 80-100 degrees of roll about the deck, and the matching lift so
-  // the deck, not the wheels, is what touches the pavement.
-  const FRotator Lay(78.f+(I%3)*9.f,(float)(Yaw+(I%2?38:-31)),86.f+(I%2?-14:6));
+  // Laid over: 82-102 degrees of roll about the deck axis, and the matching lift
+  // so the deck, not the wheels, is what touches the pavement. The angle used to
+  // sit in Pitch, which stands a scooter on its nose instead of laying it down.
+  const FRotator Lay(2.f+(I%3)*4.f,(float)(Yaw+(I%2?38:-31)),92.f+(I%2?-12:8));
   ScooterParts+=BuildBattleScooter(this,CrashRoot,DownSpots[I]+FVector(0,0,12.f),Lay,I,false);
   ++Scooters;
  }

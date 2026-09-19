@@ -3,10 +3,14 @@
 #include "BattleRider.h"
 #include "BattleScooterProp.h"
 #include "PiedmontPathSpline.h"
+#include "Camera/CameraActor.h"
 #include "Components/SplineComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "Misc/CommandLine.h"
+#include "UnrealClient.h"
 #include "UObject/ConstructorHelpers.h"
 
 ABattleScooterTraffic::ABattleScooterTraffic(){
@@ -56,7 +60,13 @@ void ABattleScooterTraffic::BeginPlay(){
    TArray<UStaticMeshComponent*> Placeholder;
    Rider->GetComponents(Placeholder);
    for(auto* Part:Placeholder)Part->SetVisibility(false,true);
-   BuildBattleScooter(Rider,Rider->GetRootComponent(),Location-FVector(0,0,92.f),FRotator(0,Direction.Rotation().Yaw,0),SpawnedScooters,false);
+   // The prop's anchor is the deck plane, and a scooter standing on its wheels
+   // wants that anchor 18 cm above the pavement. The actor origin sits 92 cm up,
+   // so the anchor goes at Location - 74. It used to go at Location - 92, which
+   // put the deck level with the surface and buried both wheels: a plank with a
+   // stick through it, sliding along the trail, which is the thing Elliott has
+   // been calling a log since the trail opened.
+   BuildBattleScooter(Rider,Rider->GetRootComponent(),Location-FVector(0,0,74.f),FRotator(0,Direction.Rotation().Yaw,0),SpawnedScooters,false);
    const float Speeds[]={Mode->Difficulty.ScooterSlowSpeed,Mode->Difficulty.ScooterMediumSpeed,Mode->Difficulty.ScooterFastSpeed};
    Scooters.Add({Rider,Path,Distance,Speeds[I%3],Reverse});SpawnedScooters++;
   }
@@ -64,10 +74,37 @@ void ABattleScooterTraffic::BeginPlay(){
  UE_LOG(LogTemp,Display,TEXT("BattleScooters: visible moving riders=%d requested=%d"),SpawnedScooters,Mode->Difficulty.Scooters);
 }
 void ABattleScooterTraffic::Tick(float Dt){
- Super::Tick(Dt);ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Foot=Cast<ABattleRider>(Pawn))Bike=Foot->ParkedBike;
+ Super::Tick(Dt);TickScooterReview(Dt);ContactCooldown=FMath::Max(0.f,ContactCooldown-Dt);auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);auto* Bike=Cast<ABattleBike>(Pawn);if(auto* Foot=Cast<ABattleRider>(Pawn))Bike=Foot->ParkedBike;
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Mode||Mode->bRunEnded)return;
  for(auto& Moving:Scooters){auto* Rider=Moving.Actor.Get();auto* Path=Moving.Path.Get();if(!Rider||!Path||!Path->Centerline)continue;const float Length=Path->Centerline->GetSplineLength();Moving.Distance+=Moving.Speed*Dt*(Moving.Reverse?-1.f:1.f);while(Moving.Distance>Length)Moving.Distance-=Length;while(Moving.Distance<0)Moving.Distance+=Length;
   const FVector Location=ScooterGroundedLocation(GetWorld(),this,Rider,Path->Centerline->GetLocationAtDistanceAlongSpline(Moving.Distance,ESplineCoordinateSpace::World));FVector Direction=Path->Centerline->GetDirectionAtDistanceAlongSpline(Moving.Distance,ESplineCoordinateSpace::World)*(Moving.Reverse?-1.f:1.f);Rider->SetActorLocationAndRotation(Location,Direction.Rotation(),false,nullptr,ETeleportType::TeleportPhysics);
   if(Pawn&&Bike&&ContactCooldown<=0&&FVector::DistSquared(Pawn->GetActorLocation(),Location)<FMath::Square(125.f)){PlayerContacts++;ContactCooldown=2;Bike->Ride->Wipeout(TEXT("Scooter rider clipped the bike"));}
  }
+}
+
+// Development-only visual QA for the scooter prop. Two angles, because the
+// defect this exists to catch - wheels buried so the scooter reads as a plank,
+// or a pose that stands it on its nose - is invisible from the rider's seat.
+void ABattleScooterTraffic::TickScooterReview(float Dt){
+#if !UE_BUILD_SHIPPING
+ FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleScooterTrafficReviewDir="),Dir);if(Dir.IsEmpty()||Scooters.IsEmpty())return;
+ auto* Target=Scooters[0].Actor.Get();if(!Target)return;
+ ReviewClock+=Dt;
+ const FVector P=Target->GetActorLocation();
+ const FVector Eye=P+FVector(300,-230,140),Look=P-FVector(0,0,45);
+ if(!ReviewCamera)ReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Look-Eye).Rotation());
+ if(ReviewCamera){
+  ReviewCamera->SetActorLocationAndRotation(Eye,(Look-Eye).Rotation());
+  if(auto* PC=UGameplayStatics::GetPlayerController(this,0))PC->SetViewTarget(ReviewCamera);
+ }
+ if(ReviewStage==0&&ReviewClock>.8f){FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-side.png"),false,false);++ReviewStage;ReviewClock=0;return;}
+ if(ReviewStage==1&&ReviewClock>.4f){
+  const FVector Behind=P+FVector(-110,0,115),At=P+FVector(0,0,35);
+  if(ReviewCamera)ReviewCamera->SetActorLocationAndRotation(Behind,(At-Behind).Rotation());
+  ++ReviewStage;ReviewClock=0;return;
+ }
+ if(ReviewStage==2&&ReviewClock>.6f){FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-back.png"),false,false);++ReviewStage;ReviewClock=0;return;}
+ if(ReviewStage==3&&ReviewClock>.4f)
+  if(auto* PC=UGameplayStatics::GetPlayerController(this,0))UKismetSystemLibrary::QuitGame(this,PC,EQuitPreference::Quit,false);
+#endif
 }

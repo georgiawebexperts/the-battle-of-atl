@@ -202,7 +202,10 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiagonalAudit")))TickBattleDiagonalAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePatioAudit")))TickBattlePatioAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTunnelHazardAudit")))TickBattleTunnelHazardAudit(this,Dt);
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
+ // The review lives inside the audit tick, so asking for the review alone used
+ // to leave the game running with nobody drawing it: -BattleSpiritReview must
+ // dispatch this too, or the process never captures and never quits.
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritReview")))TickSpiritAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMurderKAudit")))TickMurderKAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeAudit")))TickKnifeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);

@@ -14,10 +14,12 @@
 #include "Camera/CameraActor.h"
 #include "BattleSpiritData.h"
 #include "Misc/CommandLine.h"
+#include "UnrealClient.h"
 void ABattleMacController::TickSpiritAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritReview"))){
   if(GetWorld()->GetTimeSeconds()<5)return;
+  FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleSpiritReviewDir="),Dir);
   if(!SpiritReviewCamera){
    TActorIterator<ABattleSpirit> It(GetWorld());auto* S=It?*It:nullptr;auto* B=Cast<ABattleBike>(GetPawn());if(!S||!B){ConsoleCommand(TEXT("quit"));return;}
    B->SetActorLocation(BattleSpiritData::Approach);S->SetActorLocation(BattleSpiritData::Chase[0]);S->TryApproach(0);S->AdvanceEncounter(2);
@@ -25,7 +27,24 @@ void ABattleMacController::TickSpiritAudit(float Dt){
    SpiritReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation());SetViewTarget(SpiritReviewCamera);
    S->Tick(.01f);
   }
-  SpiritReviewFrames++;if(SpiritReviewFrames==45)ConsoleCommand(TEXT("HighResShot 1280x720"));if(SpiritReviewFrames>90)ConsoleCommand(TEXT("quit"));return;
+  // FScreenshotRequest, not HighResShot: every other review in this project
+  // writes through it, and a console HighResShot under -RenderOffscreen never
+  // came back - this branch used to hang here instead of producing a picture.
+  SpiritReviewFrames++;
+  if(!Dir.IsEmpty()&&SpiritReviewFrames==45)FScreenshotRequest::RequestScreenshot(Dir/TEXT("spirit-three-quarter.png"),false,false);
+  if(!Dir.IsEmpty()&&SpiritReviewFrames==70){
+   // And the view that matters: off the approach, which is how the rider meets
+   // it, rather than from the side the art was authored to be looked at.
+   TActorIterator<ABattleSpirit> It(GetWorld());auto* Bear=It?*It:nullptr;
+   if(Bear&&SpiritReviewCamera){
+    const FVector P=Bear->GetActorLocation();
+    // Square on to the bear's own flank: the silhouette is what has to read.
+    const FVector From=P-Bear->GetActorForwardVector()*180.f+Bear->GetActorRightVector()*520.f+FVector(0,0,140);
+    SpiritReviewCamera->SetActorLocationAndRotation(From,(P+FVector(0,0,80)-From).Rotation());
+   }
+  }
+  if(!Dir.IsEmpty()&&SpiritReviewFrames==95)FScreenshotRequest::RequestScreenshot(Dir/TEXT("spirit-approach.png"),false,false);
+  if(SpiritReviewFrames>130)ConsoleCommand(TEXT("quit"));return;
  }
  if(bSpiritAuditDone||GetWorld()->GetTimeSeconds()<5)return;bSpiritAuditDone=true;
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* B=Cast<ABattleBike>(GetPawn());int Checks=0;

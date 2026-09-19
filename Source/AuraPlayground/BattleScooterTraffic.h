@@ -18,4 +18,11 @@ private:
  TArray<FMovingScooter> Scooters;
  UPROPERTY() TSubclassOf<AActor> ScooterClass;
  float ContactCooldown=0;
+ // Visual QA, Development only: -BattleScooterTrafficReviewDir=<folder> frames
+ // the first moving scooter from the side and from behind, which is the only way
+ // to see a prop defect that the rider's own view hides.
+ void TickScooterReview(float Dt);
+ float ReviewClock=0;
+ int32 ReviewStage=0;
+ UPROPERTY() TObjectPtr<class ACameraActor> ReviewCamera;
 };

@@ -153,9 +153,14 @@ void ABattleTunnelHazards::StrewnScooters(){
   FVector Ground;
   if(!TunnelFloorAt(GetWorld(),this,A,B,T,Lateral,Ground))continue;
   // Laid over on the shoulder, not parked: yawed across the bore and rolled onto
-  // its side. The parts carry no collision so a heap of scooters changes the
-  // look of the tunnel without ever becoming a wall the rider cannot pass.
-  const FRotator Down(80.f+(I%3)*8.f,Yaw+(I%2?34.f:-26.f),90.f+(I%2?-12.f:0.f));
+  // its side. The tilt belongs in Roll - the prop's local X runs along the deck,
+  // so rolling about it lays the deck on its side with the wheels flat on the
+  // pavement. The original pose put 80-96 in Pitch instead, which stood the
+  // scooter on its nose with the deck vertical and the stem out sideways: a
+  // plank with a bar through it, floating, which is not a scooter from any
+  // angle. The parts carry no collision so a heap of them changes the look of
+  // the tunnel without ever becoming a wall the rider cannot pass.
+  const FRotator Down(2.f+(I%3)*3.f,Yaw+(I%2?34.f:-26.f),92.f+(I%2?-10.f:8.f));
   if(BuildBattleScooter(this,GetRootComponent(),Ground+FVector(0,0,12.f),Down,I,false)>0){
    if(!bHasScooterSpot){FirstScooterSpot=Ground;bHasScooterSpot=true;}
    ++Scooters;
