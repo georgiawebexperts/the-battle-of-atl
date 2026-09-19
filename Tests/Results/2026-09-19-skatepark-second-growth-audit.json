@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "stage": 9,
+  "reason": "Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass",
+  "air_rewards": 3,
+  "air_peak_cm": 84.93,
+  "x": 40349.24,
+  "z": 748.15,
+  "exit_code": 0,
+  "packaged": false,
+  "real": false,
+  "log": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/work/skate-71ce23068afe478facf0bff9791bce2d/run.log",
+  "visual_review": false,
+  "images": [],
+  "observed_handling": "arcade"
+}

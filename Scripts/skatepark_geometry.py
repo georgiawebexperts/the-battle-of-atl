@@ -28,6 +28,8 @@ Everything over the park is one of five shapes:
   quarters   a wall rising to a lip at the footprint's edge.
   pyramids   a raised hip with a flat cap, plus volcano cones and beveled pads
              and ledges, all positive.
+  loops      a pump track: a ring-shaped band of rollers, the one shape here
+             that carries speed all the way round rather than to a destination.
 
 The two bowls and the kicker that were already installed keep their centres,
 radii, depths and heights exactly: they are what the audit and the three bonus
@@ -47,6 +49,12 @@ BLOCKS = [
     ("southwest", -3300, -1200, -2400, -1600), # new: lowest ground, deep bowl
     ("southeast", -1200, 1800, -2400, -1200),  # new: quarter pipe and street
     ("north", -1800, 1800, 1200, 2200),        # new: high ground, hips only
+    # Second growth - Elliott's second "way bigger". The DEM says the ground in
+    # the far west and the whole south strip runs 127-500 cm, the lowest land on
+    # the block, so the deep things go there and the deck still lands on 650.
+    ("west_far", -5700, -3300, -1600, 1200),       # vert wall and a pump line
+    ("southwest_far", -5700, -3300, -4400, -1600), # the Quarry pair
+    ("south_far", -3300, 1800, -4400, -2400),      # pump track, half-pipe, wall
 ]
 
 # cx, cy, rx, ry, depth
@@ -59,6 +67,11 @@ BOWLS = [
     ("The Cauldron", -2600, -1500, 640, 470, 300),     # new, deepest
     ("Little Cauldron", -3000, -2100, 280, 250, 180),  # new, deepest corner
     ("Pocket bowl", -1900, -2050, 460, 330, 130),      # new, transfer bowl
+    # The far south-west corner is the lowest ground under the park, which is
+    # what lets these be deep rather than shallow: a 380 cm bowl needs the ground
+    # under it to be no higher than 252 cm, and this is where that is true.
+    ("The Quarry", -4500, -3000, 700, 520, 380),       # second growth, deepest
+    ("Little Quarry", -5300, -4000, 300, 260, 240),    # second growth
 ]
 
 # y axis, x0, x_apex0, x_apex1, x1, height, half width, side fade
@@ -77,6 +90,27 @@ QUARTERS = [
     # grid row (y = -2400), so the wall reaches its full height in the mesh
     # instead of being sampled off at 1032 cm between rows.
     ("South quarter pipe", -300, 1500, -1850, -2400, 430, 250),
+    # A half-pipe is two of these facing each other across a flat floor: the
+    # shape that rewards committing to a wall instead of reading a line, which
+    # is what "more fun" means on a bike.
+    ("Half-pipe north wall", -1100, 400, -2650, -2400, 480, 200),
+    ("Half-pipe south wall", -1100, 400, -3400, -3650, 480, 200),
+    # The far south lip, reaching the block's own south edge at y = -4400.
+    ("South vert wall", 500, 1700, -3400, -4400, 560, 300),
+]
+
+# y0, y1, x_inner, x_edge, height, side fade  (the same wall a quarter turn
+# round, for a lip on the west or east edge instead of on a y edge)
+QUARTERS_X = [
+    ("West vert wall", -900, 900, -4500, -5700, 560, 260),
+]
+
+# cx, cy, ring radius, half width, rollers, amplitude, base berm height
+LOOPS = [
+    # A pump track: ride the ring and the surface lifts and drops under you all
+    # the way round, so speed is kept by pumping rather than pedalling. The base
+    # berm carries the wheels and the ripple is the pump.
+    ("The Loop", -2400, -3400, 640, 240, 8, 95, 55),
 ]
 
 # y axis, x0, x1, height, wavelength
@@ -86,6 +120,7 @@ ROLLERS = [
     # that carries speed from the pad into the spine: six rollers, 300 apart,
     # shallow enough to pump rather than jump.
     ("Core pump line", -1000, -200, 1500, 70, 300),
+    ("Far west pump line", -1250, -4400, -3500, 85, 320),
 ]
 
 # cx, cy, half_x, half_y, cap, height  (cap is the flat top as a fraction)
@@ -175,6 +210,28 @@ def _quarter(x, y, x0, x1, y_inner, y_edge, height, fade):
     return height * t * t * min(1.0, (x - x0 + fade) / fade, (x1 + fade - x) / fade)
 
 
+def _quarter_x(x, y, y0, y1, x_inner, x_edge, height, fade):
+    """_quarter rotated a quarter turn: the lip sits on an x edge."""
+    lo, hi = min(x_inner, x_edge), max(x_inner, x_edge)
+    if not (y0 - fade <= y <= y1 + fade) or not (lo <= x <= hi):
+        return 0.0
+    t = _clamp01((x - x_inner) / (x_edge - x_inner))
+    return height * t * t * min(1.0, (y - y0 + fade) / fade, (y1 + fade - y) / fade)
+
+
+def _loop(x, y, cx, cy, radius, half, rollers, amplitude, base):
+    """A ring of rollers: a pump track's band, with a ripple on top of a berm."""
+    dx, dy = x - cx, y - cy
+    d = math.hypot(dx, dy)
+    off = abs(d - radius)
+    if off >= half:
+        return 0.0
+    fall = 1.0 - (off / half) ** 2
+    # rollers is an integer, so the ripple closes on itself at the +-pi seam.
+    ripple = 0.5 - 0.5 * math.cos(rollers * math.atan2(dy, dx))
+    return fall * (base + amplitude * ripple)
+
+
 def _roller(x, y, y_axis, x0, x1, height, wavelength):
     if not (x0 <= x <= x1) or abs(y - y_axis) > wavelength * 0.5:
         return 0.0
@@ -226,6 +283,8 @@ def feature(x, y):
         0.0,
         max(_kicker(x, y, *k[1:]) for k in KICKERS),
         max(_quarter(x, y, *q[1:]) for q in QUARTERS),
+        max(_quarter_x(x, y, *q[1:]) for q in QUARTERS_X),
+        max(_loop(x, y, *l[1:]) for l in LOOPS),
         max(_roller(x, y, *r[1:]) for r in ROLLERS),
         max(_pyramid(x, y, *p[1:]) for p in PYRAMIDS),
         max(_volcano(x, y, *v[1:]) for v in VOLCANOES),

@@ -129,7 +129,7 @@ void ABattleMacController::TickDroneAudit(float Dt){
    // the trace landing somewhere else, damage not applying, or the HUD label
    // not being set. Report which, with the numbers that separate them.
    const bool Fired=Person&&Person->Fire();
-   if(Fired&&Drone&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT")){Next();}
+   if(Fired&&Drone&&Drone->Health==6&&Bike->ShotNotice==TEXT("DRONE HIT")){DroneShotAttempts=0;DroneSettleTicks=0;Next();}
    else{
     DroneShotAttempts++;
     if(DroneShotAttempts<3){DroneSettleTicks=0;DroneClock=0;}
@@ -152,11 +152,28 @@ void ABattleMacController::TickDroneAudit(float Dt){
    }
   }
  }else if(DroneStage==8&&DroneClock>.35f){
+  // Stage 7 waits for the measured aim to hold inside tolerance for several
+  // consecutive ticks before it fires, because the view follows a frame behind
+  // the aim and under load that frame is a miss. Stage 8 fired on the first
+  // tick the aim was inside 1.5 degrees and so re-inherited exactly the failure
+  // stage 7 had just been hardened against: red inside a sweep, green
+  // standalone on the same binary, drone health still 100. Same rule here - a
+  // settled aim, and a re-shot if a settled shot still grazes past.
   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);
   const float Off=(Person&&Drone)?FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(View.Vector(),(Drone->GetActorLocation()-Eye).GetSafeNormal()),-1.f,1.f))):180.f;
-  if(Off<=1.5f){
-   DCHECK(Person&&Drone&&Person->Fire()&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==15,"Second pistol shot did not destroy drone with correct ammo/feedback");
-   Key(EKeys::RightMouseButton,false);Finish(true,TEXT("Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass"));
+  if(Off<=1.5f){DroneSettleTicks++;}else{DroneSettleTicks=0;}
+  if(DroneSettleTicks>=4){
+   const int32 Before=Person?Person->Ammo:0;
+   const bool Fired=Person&&Person->Fire();
+   if(Fired&&Drone&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==Before-1){
+    Key(EKeys::RightMouseButton,false);Finish(true,TEXT("Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass"));
+   }else if(++DroneShotAttempts<3){
+    UE_LOG(LogTemp,Display,TEXT("DroneAuditSecondShot: fired=%s health=%.1f notice=%s ammo=%d off_deg=%.2f - retrying"),
+     Fired?TEXT("true"):TEXT("false"),Drone?Drone->Health:-1.f,*Bike->ShotNotice,Person?Person->Ammo:-1,Off);
+    DroneSettleTicks=0;DroneClock=0;
+   }else{
+    DCHECK(Person&&Drone&&Drone->IsActorBeingDestroyed()&&Bike->ShotNotice==TEXT("DRONE DOWN")&&Person->Ammo==Before-1,"Second pistol shot did not destroy drone with correct ammo/feedback");
+   }
   }
  }
  if(DroneClock>18&&DroneStage!=99){

@@ -1,0 +1,466 @@
+{
+  "author": "2026-09-19 [codex-maclaptop]",
+  "question": "Does the bigger skatepark still fit the retained ground, and does it still keep the audit's lanes and pinned heights?",
+  "deck_z_needed": 650.0,
+  "deck_z_expected": 650.0,
+  "footprint_cm": [
+    -5700,
+    1800,
+    -4400,
+    2200
+  ],
+  "footprint_m": [
+    75.0,
+    66.0
+  ],
+  "footprint_area_m2": 4536.0,
+  "installed_area_m2": 864.0,
+  "fill_cm": {
+    "min": 24.7,
+    "mean": 296.1,
+    "max": 523.1
+  },
+  "features": [
+    {
+      "feature": "Fourth Ward bowl",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -1600,
+        -300,
+        -950,
+        250
+      ],
+      "ground_min": 310.8,
+      "ground_max": 419.6,
+      "feature_low_cm": -180.0,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 50.4,
+      "deck_would_need": 610
+    },
+    {
+      "feature": "Fourth Ward bowl north",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -1550,
+        -350,
+        -150,
+        950
+      ],
+      "ground_min": 334.8,
+      "ground_max": 439.7,
+      "feature_low_cm": -174.6,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 35.8,
+      "deck_would_need": 610
+    },
+    {
+      "feature": "The Cauldron",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -3240,
+        -1960,
+        -1970,
+        -1030
+      ],
+      "ground_min": 205.5,
+      "ground_max": 240.7,
+      "feature_low_cm": -300.0,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 109.3,
+      "deck_would_need": 550
+    },
+    {
+      "feature": "Little Cauldron",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -3280,
+        -2720,
+        -2350,
+        -1850
+      ],
+      "ground_min": 206.3,
+      "ground_max": 231.1,
+      "feature_low_cm": -180.0,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 238.9,
+      "deck_would_need": 420
+    },
+    {
+      "feature": "Pocket bowl",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -2360,
+        -1440,
+        -2380,
+        -1720
+      ],
+      "ground_min": 200.3,
+      "ground_max": 369.9,
+      "feature_low_cm": -155.3,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 124.8,
+      "deck_would_need": 450
+    },
+    {
+      "feature": "The Quarry",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -5200,
+        -3800,
+        -3520,
+        -2480
+      ],
+      "ground_min": 150.5,
+      "ground_max": 214.0,
+      "feature_low_cm": -380.0,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 56.0,
+      "deck_would_need": 600
+    },
+    {
+      "feature": "Little Quarry",
+      "note": "bowl, dug down",
+      "local_box_cm": [
+        -5600,
+        -5000,
+        -4260,
+        -3740
+      ],
+      "ground_min": 133.5,
+      "ground_max": 247.9,
+      "feature_low_cm": -240.0,
+      "feature_high_cm": 0.0,
+      "headroom_cm": 162.1,
+      "deck_would_need": 450
+    },
+    {
+      "feature": "Fourth Ward launch bank",
+      "note": "kicker, built up",
+      "local_box_cm": [
+        250,
+        1350,
+        -880,
+        -120
+      ],
+      "ground_min": 397.6,
+      "ground_max": 443.7,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 300.0,
+      "headroom_cm": 206.3,
+      "deck_would_need": 470
+    },
+    {
+      "feature": "West launch bank",
+      "note": "kicker, built up",
+      "local_box_cm": [
+        -3300,
+        -2050,
+        500,
+        1100
+      ],
+      "ground_min": 429.7,
+      "ground_max": 553.9,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 240.0,
+      "headroom_cm": 96.1,
+      "deck_would_need": 580
+    },
+    {
+      "feature": "South quarter pipe",
+      "note": "quarter pipe, built up",
+      "local_box_cm": [
+        -300,
+        1500,
+        -2400,
+        -1850
+      ],
+      "ground_min": 391.9,
+      "ground_max": 403.6,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 480.0,
+      "headroom_cm": 246.4,
+      "deck_would_need": 430
+    },
+    {
+      "feature": "Half-pipe north wall",
+      "note": "quarter pipe, built up",
+      "local_box_cm": [
+        -1100,
+        400,
+        -2650,
+        -2400
+      ],
+      "ground_min": 375.1,
+      "ground_max": 403.7,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 480.0,
+      "headroom_cm": 246.3,
+      "deck_would_need": 430
+    },
+    {
+      "feature": "Half-pipe south wall",
+      "note": "quarter pipe, built up",
+      "local_box_cm": [
+        -1100,
+        400,
+        -3650,
+        -3400
+      ],
+      "ground_min": 388.8,
+      "ground_max": 404.3,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 480.0,
+      "headroom_cm": 245.7,
+      "deck_would_need": 430
+    },
+    {
+      "feature": "South vert wall",
+      "note": "quarter pipe, built up",
+      "local_box_cm": [
+        500,
+        1700,
+        -4400,
+        -3400
+      ],
+      "ground_min": 390.7,
+      "ground_max": 461.5,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 560.0,
+      "headroom_cm": 188.5,
+      "deck_would_need": 460
+    },
+    {
+      "feature": "West vert wall",
+      "note": "quarter pipe (x edge)",
+      "local_box_cm": [
+        -5700,
+        -4500,
+        -900,
+        900
+      ],
+      "ground_min": 237.8,
+      "ground_max": 504.7,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 560.0,
+      "headroom_cm": 145.3,
+      "deck_would_need": 530
+    },
+    {
+      "feature": "The Loop",
+      "note": "pump-track ring",
+      "local_box_cm": [
+        -3280,
+        -1520,
+        -4280,
+        -2520
+      ],
+      "ground_min": 126.9,
+      "ground_max": 387.5,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 149.0,
+      "headroom_cm": 262.5,
+      "deck_would_need": 410
+    },
+    {
+      "feature": "West pump rollers",
+      "note": "rollers, built up",
+      "local_box_cm": [
+        -3300,
+        -2150,
+        -1040,
+        -360
+      ],
+      "ground_min": 232.5,
+      "ground_max": 262.9,
+      "feature_low_cm": -0.6,
+      "feature_high_cm": 181.8,
+      "headroom_cm": 386.5,
+      "deck_would_need": 280
+    },
+    {
+      "feature": "Core pump line",
+      "note": "rollers, built up",
+      "local_box_cm": [
+        -200,
+        1500,
+        -1300,
+        -700
+      ],
+      "ground_min": 392.9,
+      "ground_max": 415.5,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 300.0,
+      "headroom_cm": 234.5,
+      "deck_would_need": 440
+    },
+    {
+      "feature": "Far west pump line",
+      "note": "rollers, built up",
+      "local_box_cm": [
+        -4400,
+        -3500,
+        -1570,
+        -930
+      ],
+      "ground_min": 233.1,
+      "ground_max": 243.2,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 85.0,
+      "headroom_cm": 406.8,
+      "deck_would_need": 270
+    },
+    {
+      "feature": "North pyramid",
+      "note": "pyramid, built up",
+      "local_box_cm": [
+        -300,
+        1300,
+        1330,
+        2170
+      ],
+      "ground_min": 481.3,
+      "ground_max": 610.5,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 200.0,
+      "headroom_cm": 39.5,
+      "deck_would_need": 630
+    },
+    {
+      "feature": "Northwest volcano",
+      "note": "volcano, built up",
+      "local_box_cm": [
+        -1870,
+        -430,
+        980,
+        2420
+      ],
+      "ground_min": 424.7,
+      "ground_max": 518.1,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 240.0,
+      "headroom_cm": 131.9,
+      "deck_would_need": 540
+    },
+    {
+      "feature": "Manual pad",
+      "note": "pad, built up",
+      "local_box_cm": [
+        300,
+        1300,
+        270,
+        830
+      ],
+      "ground_min": 404.3,
+      "ground_max": 597.3,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 70.0,
+      "headroom_cm": 52.7,
+      "deck_would_need": 620
+    },
+    {
+      "feature": "South plaza",
+      "note": "pad, built up",
+      "local_box_cm": [
+        -200,
+        900,
+        -1750,
+        -1450
+      ],
+      "ground_min": 393.4,
+      "ground_max": 404.1,
+      "feature_low_cm": 0.0,
+      "feature_high_cm": 55.0,
+      "headroom_cm": 245.9,
+      "deck_would_need": 430
+    }
+  ],
+  "pinned_heights": {
+    "flat_deck_at_park_centre_cm": {
+      "local_cm": [
+        0,
+        0
+      ],
+      "surface_z_cm": 650.0
+    },
+    "launch_bank_top_cm": {
+      "local_cm": [
+        1100,
+        -500
+      ],
+      "surface_z_cm": 950.0
+    },
+    "bowl_south_floor_cm": {
+      "local_cm": [
+        -950,
+        -350
+      ],
+      "surface_z_cm": 470.0
+    },
+    "bowl_north_floor_cm": {
+      "local_cm": [
+        -950,
+        400
+      ],
+      "surface_z_cm": 510.0
+    },
+    "cauldron_floor_cm": {
+      "local_cm": [
+        -2600,
+        -1500
+      ],
+      "surface_z_cm": 350.0
+    },
+    "pocket_bowl_floor_cm": {
+      "local_cm": [
+        -1900,
+        -2050
+      ],
+      "surface_z_cm": 520.0
+    },
+    "quarry_floor_cm": {
+      "local_cm": [
+        -4500,
+        -3000
+      ],
+      "surface_z_cm": 270.0
+    },
+    "pump_track_berm_cm": {
+      "local_cm": [
+        -1760,
+        -3400
+      ],
+      "surface_z_cm": 705.0
+    },
+    "pyramid_cap_cm": {
+      "local_cm": [
+        500,
+        1750
+      ],
+      "surface_z_cm": 850.0
+    }
+  },
+  "audit_lanes": {
+    "entry_and_exit_lane": {
+      "local_cm": [
+        600,
+        2900,
+        168
+      ],
+      "bumps": [],
+      "bump_count": 0,
+      "clear": true
+    },
+    "west_return_lane": {
+      "local_cm": [
+        -3300,
+        -1800,
+        1100
+      ],
+      "bumps": [],
+      "bump_count": 0,
+      "clear": true
+    }
+  },
+  "buried_features": [],
+  "features_that_would_raise_the_deck": []
+}
