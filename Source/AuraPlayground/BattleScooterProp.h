@@ -31,8 +31,10 @@ inline int32 BuildBattleScooter(AActor* Owner,USceneComponent* Attach,const FVec
  UStaticMesh* Cylinder=LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
  UMaterialInterface* Metal=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Environment/KrogIncident/M_ScooterMetal.M_ScooterMetal"));
  UMaterialInterface* Trim=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Environment/KrogIncident/M_ScooterTrim.M_ScooterTrim"));
- UMaterialInterface* Rubber=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_Rubber.M_Rubber"));
- if(!Rubber)Rubber=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BeltLineGlide/Materials/M_Rubber.M_Rubber"));
+ // One path, the one that exists. The first attempt used to name
+ // /Game/BattleForTheA/Materials/M_Rubber, which is not in the project, so every
+ // scooter logged a failed load and fell through to this one.
+ UMaterialInterface* Rubber=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BeltLineGlide/Materials/M_Rubber.M_Rubber"));
  if(!Cube||!Cylinder)return 0;
  auto* Anchor=NewObject<USceneComponent>(Owner,*FString::Printf(TEXT("ScooterAnchor%d"),++Scaffold));
  Anchor->SetupAttachment(Attach);

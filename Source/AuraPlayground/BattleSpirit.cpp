@@ -22,25 +22,47 @@ ABattleSpirit::ABattleSpirit(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cone(TEXT("/Engine/BasicShapes/Cone.Cone"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
  auto Part=[&](const TCHAR* Name,UStaticMesh* Mesh,FVector Loc,FVector Scale,FRotator Rot=FRotator::ZeroRotator){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Mesh);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(Scale);C->SetRelativeRotation(Rot);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);FigureParts.Add(C);return C;};
- // A tall spectral figure rather than an animal: head, shoulders, torso,
- // hanging arms and long legs read as a person at any distance.
- Part(TEXT("FigureTorso"),Sphere.Object,FVector(0,0,116),FVector(.46,.30,.62));
- Part(TEXT("FigureShoulders"),Sphere.Object,FVector(0,0,150),FVector(.56,.30,.24));
- Part(TEXT("FigureNeck"),Cylinder.Object,FVector(0,0,163),FVector(.10,.10,.12));
- Part(TEXT("FigureHead"),Sphere.Object,FVector(6,0,180),FVector(.24,.24,.30));
- Part(TEXT("FigureHip"),Sphere.Object,FVector(0,0,76),FVector(.30,.24,.20));
- Part(TEXT("FigureArmL"),Cylinder.Object,FVector(2,-30,120),FVector(.09,.09,.62));
- Part(TEXT("FigureArmR"),Cylinder.Object,FVector(2,30,120),FVector(.09,.09,.62));
- for(int X:{-14,10})Part(*FString::Printf(TEXT("FigureLeg%d"),X),Cylinder.Object,FVector(X,0,44),FVector(.13,.13,.95));
+ // A black bear, built so it reads as a bear from the trail. The encounter is on
+ // the southbound approach to Murder K and Elliott rode straight past the old
+ // figure and could only call it "the bear or whatever that is looks bad": nine
+ // opaque primitive parts standing upright, roughly person sized, with no
+ // silhouette to name. Design/BLACK-BEAR-SPIRIT.md asks for a black bear with a
+ // dark translucent body, a fine silver-blue rim and a faint drifting trail, and
+ // warns against an unreviewed primitive placeholder.
+ //
+ // Bear proportions, side on: a long low barrel, a shoulder hump that is the
+ // shape that says "bear", a heavy head carried low with a snout and round ears,
+ // four planted legs and a short tail. About 2 m nose to tail and 80 cm at the
+ // shoulder, which is a black bear next to a 1.8 m rider.
+ Part(TEXT("BearBody"),Sphere.Object,FVector(0,0,52),FVector(.95,.44,.42));
+ Part(TEXT("BearHump"),Sphere.Object,FVector(-30,0,72),FVector(.30,.34,.24));
+ Part(TEXT("BearRump"),Sphere.Object,FVector(44,0,54),FVector(.38,.40,.34));
+ Part(TEXT("BearChest"),Sphere.Object,FVector(-52,0,52),FVector(.32,.36,.32));
+ Part(TEXT("BearNeck"),Sphere.Object,FVector(-76,0,54),FVector(.22,.24,.22));
+ Part(TEXT("BearHead"),Sphere.Object,FVector(-98,0,52),FVector(.26,.24,.22));
+ Part(TEXT("BearSnout"),Cone.Object,FVector(-120,0,44),FVector(.10,.10,.14),FRotator(-90,0,0));
+ for(int Side:{-1,1})Part(*FString::Printf(TEXT("BearEar%d"),Side),Sphere.Object,FVector(-104,Side*15,68),FVector(.08,.05,.08));
+ for(int32 I=0;I<4;I++)Part(*FString::Printf(TEXT("BearLeg%d"),I),Cylinder.Object,FVector((I<2)?-40.f:40.f,(I%2)?20.f:-20.f,24),FVector(.15,.15,.48));
+ Part(TEXT("BearTail"),Sphere.Object,FVector(62,0,54),FVector(.09,.09,.09));
+ for(int Side:{-1,1})Part(*FString::Printf(TEXT("BearEye%d"),Side),Sphere.Object,FVector(-112,Side*10,58),FVector(.035,.035,.035));
  auto Wisp=[&](const TCHAR* Name,FVector Loc,float Scale){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Sphere.Object);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(FVector(Scale));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);Wisps.Add(C);};
  Wisp(TEXT("SpiritWispA"),FVector(-65,-85,145),.10f);Wisp(TEXT("SpiritWispB"),FVector(20,80,190),.075f);Wisp(TEXT("SpiritWispC"),FVector(105,-65,210),.055f);
+ // The painted spectral bear, which is the art the design note asked for and
+ // which was already authored for this scene. It is unlit and two-sided, so it
+ // reads the same from any angle the rider approaches from. Sized to a real
+ // black bear next to a rider: about 2.7 m of card, 1.85 m tall, feet on the
+ // ground. The primitive figure below is only the fallback if this art fails to
+ // load, because an opaque primitives bear is what looked bad in the first
+ // place.
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Plane(TEXT("/Engine/BasicShapes/Plane.Plane"));
- SpiritCard=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpectralBlackBear"));SpiritCard->SetupAttachment(RootComponent);SpiritCard->SetStaticMesh(Plane.Object);SpiritCard->SetRelativeLocation(FVector(0,0,105));SpiritCard->SetRelativeRotation(FRotator(90,0,0));SpiritCard->SetRelativeScale3D(FVector(3.35f,2.25f,1));SpiritCard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritCard->SetCanEverAffectNavigation(false);SpiritCard->SetCastShadow(false);SpiritCard->SetVisibility(false);
+ SpiritCard=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpectralBlackBear"));SpiritCard->SetupAttachment(RootComponent);SpiritCard->SetStaticMesh(Plane.Object);SpiritCard->SetRelativeLocation(FVector(0,0,92));SpiritCard->SetRelativeRotation(FRotator(90,0,0));SpiritCard->SetRelativeScale3D(FVector(2.70f,1.85f,1));SpiritCard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritCard->SetCanEverAffectNavigation(false);SpiritCard->SetCastShadow(false);SpiritCard->SetVisibility(false);
  static ConstructorHelpers::FObjectFinder<UTexture2D> SpiritTexture(TEXT("/Game/BattleForTheA/Spirit/T_SpectralBlackBear.T_SpectralBlackBear"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> SpiritMaterial(TEXT("/Game/BattleForTheA/Spirit/M_SpectralBlackBear.M_SpectralBlackBear"));
  if(SpiritMaterial.Succeeded())SpiritCard->SetMaterial(0,SpiritMaterial.Object);
  SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackBearBillboard"));SpiritBillboard->SetupAttachment(RootComponent);SpiritBillboard->SetSprite(SpiritTexture.Object);SpiritBillboard->SetRelativeLocation(FVector(0,0,110));SpiritBillboard->SetRelativeScale3D(FVector(1.15f));SpiritBillboard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritBillboard->SetCanEverAffectNavigation(false);SpiritBillboard->SetCastShadow(false);SpiritBillboard->SetVisibility(false);
  MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.12f,.55f,1.f));MoonGlow->SetAttenuationRadius(900);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+ // Card visible, primitive bear hidden. If the material or the mesh is missing
+ // the card is skipped at runtime and the primitives carry the scene.
  for(auto& C:FigureParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);
 }
 bool ABattleSpirit::IsLiveRun() const {
@@ -106,8 +128,24 @@ void ABattleSpirit::Tick(float Dt){
  }
  const bool Visible=State==EBattleSpiritState::Appearing||State==EBattleSpiritState::Active||State==EBattleSpiritState::Fading;
  const float Reveal=State==EBattleSpiritState::Appearing?FMath::Clamp(Age/1.5f,0.f,1.f):(State==EBattleSpiritState::Fading?1.f-FMath::Clamp(Fade/1.5f,0.f,1.f):(State==EBattleSpiritState::Active?1.f:0.f));
- for(auto& C:FigureParts)C->SetVisibility(Visible);
- SpiritBillboard->SetVisibility(false);SpiritCard->SetVisibility(false);
+ // The painted bear is the presentation; the primitive figure is the fallback.
+ const bool bCard=SpiritCard&&SpiritCard->GetStaticMesh()&&SpiritCard->GetMaterial(0)!=nullptr;
+ for(auto& C:FigureParts)C->SetVisibility(Visible&&!bCard);
+ SpiritBillboard->SetVisibility(false);SpiritCard->SetVisibility(Visible&&bCard);
+ if(bCard){
+  // The art is a side view, so it is turned to face the rider rather than to
+  // face the direction of travel. That way the bear reads as a bear from the
+  // trail instead of as a dark shape running away.
+  const float S=Visible?FMath::Lerp(.80f,1.f,Reveal):1.f;
+  SpiritCard->SetRelativeScale3D(FVector(2.70f,1.85f,1)*S);
+  SpiritCard->SetRelativeLocation(FVector(0,0,92.f*S));
+  if(Visible)if(const APawn* Rider=UGameplayStatics::GetPlayerPawn(this,0)){
+   const FVector To=Rider->GetActorLocation()-GetActorLocation();
+   // Pitch 90 lays the card upright with its normal along -X at yaw 0, so the
+   // yaw that points that normal at the rider is the rider's bearing plus 180.
+   if(!To.IsNearlyZero())SpiritCard->SetWorldRotation(FRotator(90,To.Rotation().Yaw+180,0));
+  }
+ }
  for(int32 I=0;I<Wisps.Num();I++){auto* C=Wisps[I].Get();C->SetVisibility(Visible);if(Visible)C->AddLocalOffset(FVector(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*2.f+I)*Dt*12.f));}
  MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?3200.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
 }
