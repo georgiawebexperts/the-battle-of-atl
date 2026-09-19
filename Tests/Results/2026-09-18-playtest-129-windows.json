@@ -247,5 +247,111 @@
         "log": "work/validation2-launch-verify-129.log"
       }
     }
-  }
+  },
+  "round2": {
+      "git_sha": "31c4f449ad153eeece1371c405b0112887c4f56f",
+      "description": "Round-2 validation of commits 8d817fc (music audit runs with audio and joins the sweep, Home centerline bound 200->210) and 31c4f44 (Spirit route exempt from the 99-percent-paved Eastside ground guard, 1.75x travel threshold restored). Tree clean at 31c4f44 and up to date with github/windows-port; validation-only, no Source changes made.",
+      "gate": {
+        "required_commits": [
+          "8d817fc Harden music/home/spirit audits (round 2)",
+          "31c4f44 Correct spirit route guard: exempt pavement ratio, restore 1.75x travel threshold"
+        ],
+        "tree_clean_at_pull": true,
+        "pull_result": "Already up to date (windows-port == github/windows-port at 31c4f44)"
+      },
+      "development_package": {
+        "status": "BUILD SUCCESSFUL",
+        "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+        "log": "work/windows-package.log",
+        "duration": "4m20s",
+        "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,493,184 bytes)"
+      },
+      "targeted_runs": {
+        "method": "packaged Dev exe, standard per-audit command: <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed (BattleMusicAudit without -nosound, matching its sweep Audio attribute)",
+        "caps": "BattleMusicAudit 6 min; Home/Spirit 10 min; Eastside 11 min external",
+        "results": [
+          {
+            "audit": "BattleMusicAudit",
+            "runs": 3,
+            "outcome": "3/3 pass",
+            "detail": "runs WITH audio: phases 1-2 report state=0 (Playing) and phase 3 reports state=1, which is EAudioComponentPlayState::Stopped in UE 5.8, so the phase-3 Stopped-state check passes; cycle off-song1-song2-off and preference_restored true every run; durations 15.2s/15.0s/15.0s",
+            "logs": [
+              "work/round2-BattleMusicAudit-run1.log",
+              "work/round2-BattleMusicAudit-run2.log",
+              "work/round2-BattleMusicAudit-run3.log"
+            ]
+          },
+          {
+            "audit": "BattleHomeDriveAudit",
+            "runs": 2,
+            "outcome": "2/2 fail",
+            "detail": "the new 210cm bound is still too tight at the leg-0 segment-41 bend: maxCenterlineErrorCm 211.22 and 210.18 (round 1 was 200.51 and 201.80 against 200); travelCm 2104.21 and 2118.11 before the bound fired; genuine bound miss, not a flake; durations 15s/20s",
+            "logs": [
+              "work/round2-BattleHomeDriveAudit-run1.log",
+              "work/round2-BattleHomeDriveAudit-run2.log"
+            ]
+          },
+          {
+            "audit": "BattleSpiritRouteAudit",
+            "runs": 2,
+            "outcome": "2/2 pass",
+            "detail": "2 legs completed with travel 6501.56cm and 6498.70cm against the restored 1.75x planned-length threshold (~5425cm), maxCenterlineError 107.04/111.29, 0 wipeouts, pavement guard exempted (287/878 and 288/877 paved recorded but not enforced); durations 25.1s/25.1s",
+            "logs": [
+              "work/round2-BattleSpiritRouteAudit-run1.log",
+              "work/round2-BattleSpiritRouteAudit-run2.log"
+            ]
+          },
+          {
+            "audit": "BattleEastsideAudit",
+            "runs": 1,
+            "outcome": "no verdict - killed at the 11-minute external cap (663.8s)",
+            "detail": "root cause identified: BattleDifficulty shows Easy timer=210 and the run ends in a Loss menu at ~210s (BattleMac: menu Loss), before the internal 420s budget; ABattleParkMode::InitGame extends TimeRemaining to 900s only for a whitelist of audit flags that does not include BattleEastsideAudit; the prior focus-loss theory is superseded (-unattended disables the focus-pause path, a focus-keep loop re-asserted foreground every 15s, and the Loss menu lands exactly at the 210s timer); last progress: leg 0, elapsed 180s, travel 93,753cm; reported, not fixed (validation-only task)",
+            "logs": [
+              "work/round2-BattleEastsideAudit-run1.log"
+            ]
+          }
+        ],
+        "summary_json": "work/round2-129-results.json"
+      },
+      "sweep": {
+        "status": "19/19 pass with one green flake",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+        "console_log": "work/round2-sweep-129-console.log",
+        "window_local": "2026-09-18T21:42:49-04:00 to 2026-09-18T21:48:04-04:00",
+        "offscreen": true,
+        "no_hang": true,
+        "duck_flake": {
+          "first_run": "{\"passed\":false,\"reason\":\"fewer than three ducks landed on open water\",\"ducks\":8,\"over_water\":2,\"bumps\":0,\"time_delta\":0.0,\"notice\":\"\",\"lowest_offset_cm\":-1.0}",
+          "retry": "{\"passed\":true,\"reason\":\"swimmer dunked and charged for the duck\",\"ducks\":8,\"over_water\":4,\"bumps\":1,\"time_delta\":-5.0,\"notice\":\"DUCK!\",\"lowest_offset_cm\":-95.0}",
+          "retry_log": "work/round2-BattleDuckAudit-retry.log",
+          "verdict": "pass on immediate identical retry (green flake, prior convention)"
+        },
+        "results": [
+          "BattleCurseAudit: pass (16.9s)",
+          "BattleTreeRideAudit: pass (28.4s)",
+          "Realistic-BattleTreeRideAudit: pass (25.7s)",
+          "BattleTroubleAudit: pass (30.7s)",
+          "BattleSteeringAudit: pass (13.8s)",
+          "BattleSleeperAudit: pass (19.7s)",
+          "BattleGrassAudit: pass (24.6s)",
+          "BattleBikeCarAudit: pass (11.6s)",
+          "BattleMurderKAudit: pass (8.6s)",
+          "BattlePickupAudit: pass (10.6s)",
+          "BattleSpiritAudit: pass (8.6s)",
+          "BattleKrogCrashAudit: pass (8.6s)",
+          "BattleDuckAudit: pass on immediate identical retry (first pass FAIL, 8.6s; retry 25.2s)",
+          "BattleSpeedAudit: pass (14.7s)",
+          "BattleTimeAudit: pass (11.7s)",
+          "BattleDiscAudit: pass (19.6s)",
+          "BattleDiagonalAudit: pass (10.6s)",
+          "BattleMusicAudit: pass with audio (11.7s)",
+          "BattlePatioAudit: pass (9.7s)"
+        ]
+      },
+      "shipping_repackage": {
+        "status": "SKIPPED - gate failed",
+        "reason": "every targeted run must be green before Shipping is repackaged and the share is refreshed; BattleHomeDriveAudit failed 2/2 and BattleEastsideAudit produced no verdict, so step 3 (Shipping repackage + share refresh) was not run",
+        "share_state": "unchanged from the harness-fix round: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon"
+      }
+    }
 }
