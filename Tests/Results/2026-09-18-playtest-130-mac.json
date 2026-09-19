@@ -1,0 +1,50 @@
+{
+  "build": "130",
+  "date": "2026-09-18",
+  "author": "codex-maclaptop",
+  "platform": "mac",
+  "request": "act on Elliott's playtest notes: the picnic people lying down like they are dead and half in the ground, the Kroger plaza being a mess, no scooter and no length or hazard in the Krog Street Tunnel, and the end scene never triggering",
+  "answer": "The full 28-audit sweep is green, including the drone audit that came back red on both platforms earlier the same evening.",
+  "sweep": {
+    "command": "Scripts/run_quick_audits.sh",
+    "audits": 28,
+    "passed": 28,
+    "failed": 0,
+    "log": "work/sweep130.txt"
+  },
+  "the_picnic_pose": {
+    "why_it_was_wrong": "Three earlier attempts applied the hip pitch in bone space. This crowd rig's bone axes are not the actor's axes, so the femur swung out of the sagittal plane - legs through the cloth, knees in the air, and finally a standing pair nobody asked for. Build 129 stopped them lying and stood them up, which is not a picnic.",
+    "fix": [
+      "Limb rotations are built in component space about the actor's own axes (BoneSpace = ParentComp^-1 * D * ParentComp * BoneSpace).",
+      "AimBone turns a limb onto an absolute world direction with FQuat::FindBetweenNormals, so the idle clip's pose does not matter.",
+      "The torso yaw is measured once from the shoulder bones, because the rig's rest yaw is not the actor's yaw; without it the legs pointed one way and the chest faced another.",
+      "The body is dropped until the lowest sampled leg point (minus a per-bone radius) sits on the measured cloth height."
+    ],
+    "bug_found_on_the_way": "The 'cloth height was set' test was PicnicClothZ > 0, and the park sits at a negative world Z, so every chiller fell back to ground height and sat ~21 cm into the grass and cloth. It is an explicit flag now.",
+    "evidence": "BattlePicnicAudit green (groups 3, chillers 6, animated 6, hand_travel_cm 5.81, panic true); front-view capture work/picnic-angle20c/picnic-groups.png; new -BattlePicnicReviewAngle=<degrees> review flag"
+  },
+  "krog_street_tunnel": {
+    "author": "krog_tunnel subagent",
+    "content": "46.08 m bore (was much shorter), 12 hazard stations all grounded, 6 deep and 6 shallow potholes that can throw the rider, 5 scooters along the walls, on the crash scene outside the mouth"
+  },
+  "kroger_plaza": {
+    "author": "kroger_area subagent",
+    "content": "dancer variety (BattleDanceAudit green: 5 dancers, all animated, 11.04 cm hand travel), the DJ rig, plaza and traffic work"
+  },
+  "drone_audit": {
+    "problem": "BattleDroneAudit stage 7 failed on the Mac sweep (off_target_cm 2830.6, aim_off_deg 0.00, drone health untouched) and on the Windows packaged build (2827.2). Two platforms, the same number, so it was never a platform difference.",
+    "cause": "The eye the shot starts from is on a 3.2 m spring arm, so under load it is not the eye the stage-5 clearance sweep measured. Retrying the shot - which HEAD already did three times - cannot fix a line that runs into scenery; the line has to be re-made.",
+    "fix": [
+      "Before firing, the audit re-checks the sightline the shot will actually take, from the eye it will actually start at, ignoring the drone itself.",
+      "If that line is blocked it re-places the drone on a clear bearing, bounded to three attempts so a genuinely blocked world still fails the audit.",
+      "The failure line now names the blocker (eye, view, shot_end, cam_block, at_cm, muzzle) instead of leaving four causes indistinguishable."
+    ],
+    "evidence": "BattleDroneAudit green in the 28-audit sweep and in three standalone runs"
+  },
+  "still_open": [
+    "The pale flat panel floating near the PARK DJ set is still unnamed. The probe can now be aimed at a spot (-BattlePropProbeOrigin), prints every part's material and prints instanced transforms, but the identification needs one landmark from Elliott.",
+    "Audits outside the sweep: BattleAmmoAudit stage 7, BattleGeographyAudit, BattleRoadLaneAudit, BattleMusicAudit, the route-walk family, and BattleKrogRiderAudit (an audit-harness problem: the scripted rider stops inside the crossing, where the two cars are correct to keep waiting).",
+    "Waiting on Elliott: TestFlight review-contact phone number, App Store price plus music and asset licence confirmations, the trailer, BeltLine width, and which bridge the rider still cannot pass under."
+  ],
+  "note": "The Mac and the Windows machine share one repo; content drops travel as GitHub releases and both branches carry every Mac commit. One editor at a time, and the work/ue-lock lock covers builds as well as runs - three agents building at once cost a linker failure and two runs that died before the map loaded."
+}
