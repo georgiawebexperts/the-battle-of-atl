@@ -12,6 +12,7 @@
 #include "BattleShot.h"
 #include "BattleDisc.h"
 #include "BattleBike.h"
+#include "BattleQuest.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -252,12 +253,26 @@ bool ABattleBike::Dismount(){
  Person->BeginStepOff(Saddle,Exit);
  Ride->BoostRemaining=0;Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
  ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);
- // On foot the player is auto-aimed at the nearest threat, or the bike, and
- // told that the mouse now drives the camera.
- FVector Aim=GetActorLocation();float Best=3400.f;
+ // On foot the player is auto-aimed at the nearest threat, and told that the
+ // mouse now drives the camera.
+ // Elliott, 2026-09-19: "when I jump off the bike it would be nice to be
+ // heading in the direction I should be going". The default used to be the
+ // bike's own spot, and the bike is directly behind the rider the moment he
+ // steps off it, so the camera came up looking back down the trail he had just
+ // ridden. Point him down the route he is meant to be riding instead - the next
+ // stretch of trail, not the far end of the course - and let a pursuer close
+ // enough to matter take the aim back, the way it always could.
+ auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ FVector Aim=Park&&Park->Quest?ABattleQuest::FootHeadingTarget(Exit,Park->Quest->RoutePoints,Park->Quest->RouteTargetLocation,Park->Quest->ArtifactLocation):Exit+GetActorForwardVector()*1200.f;
+ float Best=3400.f;
  for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
- PC->SetControlRotation(FRotator(0,(Aim-Exit).Rotation().Yaw,0));
+ // The body turns with the camera, so the pawn he is now driving does not read
+ // as standing in the saddle's orientation with the view cranked 180 degrees
+ // round from it.
+ const float Facing=(Aim-Exit).Rotation().Yaw;
+ Person->SetActorRotation(FRotator(0,Facing,0));
+ PC->SetControlRotation(FRotator(0,Facing,0));
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))
   // Elliott: "sometimes when you get off the bike its disorienting - it should
   // tell the person to grab the mouse". The hint was already here, but it took

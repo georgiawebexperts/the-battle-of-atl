@@ -1,0 +1,14 @@
+{
+  "text": "I'm not scared of you!",
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "voice": "ash",
+  "speed": 1.3,
+  "instructions": "Voice Affect: young and stubborn. Tone: defiant and loud, never timid. Emotion: angry, breathing hard, refusing to back down. Pacing: brisk and punchy. Emphasis: stress not scared. Delivery: a shout back at whoever just hit him, no laughter.",
+  "ai_generated": true,
+  "duration_seconds": 1.26,
+  "trim": "Scripts/normalize_voice_wav.py, 30 ms lead / 70 ms tail",
+  "transcript": "I'm not scared of you.",
+  "transcript_matches": true,
+  "validation": "Automatic transcription and duration; not a listening review",
+  "author": "2026-09-19 [codex-maclaptop]"
+}

@@ -11,7 +11,7 @@
 #include "Serialization/JsonSerializer.h"
 void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState {TWeakObjectPtr<UWorld> World;TArray<TPair<FVector,FVector>> Routes;TWeakObjectPtr<ABattleRider> Rider;int32 Route=0,Leg=0,Completed=0;float Clock=0,Settle=0,Falling=0;bool Started=false,Done=false;};static FState S;
+ struct FState {TWeakObjectPtr<UWorld> World;TArray<TPair<FVector,FVector>> Routes;TWeakObjectPtr<ABattleRider> Rider;int32 Route=0,Leg=0,Completed=0;float Clock=0,Settle=0,Falling=0;bool Started=false,Done=false,Placed=false;};static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
  auto Finish=[&](bool Pass,const TCHAR* Why){S.Done=true;if(S.Rider.IsValid())S.Rider->GetCharacterMovement()->StopMovementImmediately();UE_LOG(LogTemp,Display,TEXT("EntranceWalkAudit: {\"passed\":%s,\"reason\":\"%s\",\"completed_legs\":%d,\"route\":%d}"),Pass?TEXT("true"):TEXT("false"),Why,S.Completed,S.Route);PC->ConsoleCommand(TEXT("quit"));};
  if(!S.Started){
@@ -26,18 +26,44 @@ void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt){
  }
  auto* P=S.Rider.Get();if(!P||PC->GetPawn()!=P){Finish(false,TEXT("Lost rider possession"));return;}
  auto* Move=P->GetCharacterMovement();
- if(S.Settle==0){Move->StopMovementImmediately();P->SetActorLocation(S.Routes[S.Route].Key+FVector(0,0,P->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+5),false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);S.Settle=.001f;S.Clock=0;S.Falling=0;}
+ if(S.Settle==0){
+  // Clear the dismount's step-off before placing the rider. It lerps the rider
+  // back to the bike's side on every frame for 0.45 s, so a teleport issued
+  // underneath it is silently undone: on 2026-09-19 this stage spent its whole
+  // window walking from the world start towards a route 1.2 km away
+  // (`EntranceWalkStuck: p=(-15822,-3072,105) goal=(27073,100435,761)`) and
+  // every leg read as stalled. This clears a presentation detail the harness
+  // cannot see; it does not change what the stage walks or asserts.
+  if(P->StepOffRemaining>0){P->StepOffRemaining=0;P->SetActorRotation(FRotator(0,P->GetActorRotation().Yaw,0));}
+  Move->StopMovementImmediately();P->SetActorLocation(S.Routes[S.Route].Key+FVector(0,0,P->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+5),false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);S.Settle=.001f;S.Clock=0;S.Falling=0;S.Placed=false;
+ }
  if(S.Settle<.5f){S.Settle+=Dt;return;}
+ // Say so plainly if the placement did not take, rather than reporting the walk
+ // that follows it as stalled.
+ if(!S.Placed){S.Placed=true;if(FVector::Dist2D(P->GetActorLocation(),S.Routes[S.Route].Key)>200){Finish(false,TEXT("Rider did not arrive at the approach start"));return;}}
  S.Clock+=Dt;S.Falling=Move->IsFalling()?S.Falling+Dt:0;
  if(S.Falling>.5f){Finish(false,TEXT("Approach lost sustained ground support"));return;}
  const FVector Goal=S.Leg==0?S.Routes[S.Route].Value:S.Routes[S.Route].Key;
  const FVector Delta=Goal-P->GetActorLocation();
- if(Delta.Size2D()<18&&Move->IsMovingOnGround()){
+ // Arrival is "reached the far end", not "sampled a frame inside 18 cm of it".
+ // Under load the frame is long enough that a rider walking at 400 cm/s steps
+ // right over the 18 cm window and comes about on the far side of it, so the
+ // stage could walk a leg perfectly and still read it as stalled - which is how
+ // it failed three legs in inside the sweep and then passed alone. Crossing the
+ // goal line counts, and the distance check stays for the ordinary case.
+ const FVector From2D=S.Leg==0?S.Routes[S.Route].Key:S.Routes[S.Route].Value;
+ const float LegLength=FVector::Dist2D(From2D,Goal);
+ const float Along=LegLength>1.f?FVector::DotProduct(FVector(P->GetActorLocation().X,P->GetActorLocation().Y,0)-FVector(From2D.X,From2D.Y,0),(FVector(Goal.X,Goal.Y,0)-FVector(From2D.X,From2D.Y,0))/LegLength):0.f;
+ if((Delta.Size2D()<18||(LegLength>1.f&&Along>=LegLength-5.f))&&Move->IsMovingOnGround()){
   Move->StopMovementImmediately();++S.Completed;S.Clock=0;
   if(S.Leg==0){S.Leg=1;return;}S.Leg=0;++S.Route;S.Settle=0;
   if(S.Route==S.Routes.Num())Finish(true,TEXT("Ellison walked seven approaches in both directions with ground support"));return;
  }
- if(S.Clock>6){UE_LOG(LogTemp,Display,TEXT("EntranceWalkStuck: p=%s goal=%s"),*P->GetActorLocation().ToString(),*Goal.ToString());Finish(false,TEXT("Walking leg stalled"));return;}
+ // Twelve seconds of game clock for a leg that takes about one on an idle
+ // machine: a hitch costs movement a character never gets back, because the
+ // movement component clamps its own step. The claim is unchanged - the leg
+ // still has to be walked - and the stuck line still says where it stopped.
+ if(S.Clock>12){UE_LOG(LogTemp,Display,TEXT("EntranceWalkStuck: p=%s goal=%s"),*P->GetActorLocation().ToString(),*Goal.ToString());Finish(false,TEXT("Walking leg stalled"));return;}
  PC->SetControlRotation(Delta.GetSafeNormal2D().Rotation());P->AddMovementInput(Delta.GetSafeNormal2D(),1.f);
 #endif
 }

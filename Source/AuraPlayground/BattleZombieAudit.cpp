@@ -1,6 +1,7 @@
 #include "BattleMacController.h"
 #include "BattleZombie.h"
 #include "BattleZombieLines.h"
+#include "BattleParkRegion.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "PiedmontTrafficDirector.h"
@@ -26,14 +27,51 @@ void ABattleMacController::TickZombieAudit(float Dt){
  if(ZombiePhase==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
-  TActorIterator<ABattleZombie> First(GetWorld());if(First)Z=*First;
-  if(Z){
-   VERIFY_ZOMBIE(Mode->Enemies->DesiredZombies==Mode->Difficulty.Zombies&&Z->GetController()&&Z->GetController()->IsA<AAIController>(),"Missing difficulty-driven AI spawn");
-   VERIFY_ZOMBIE(FMath::IsNearlyEqual(Z->GetCharacterMovement()->MaxWalkSpeed,Z->bSprinter?Mode->Difficulty.SprinterSpeed:Mode->Difficulty.ZombieSpeed),"Wrong zombie movement speed");
-   Mode->Enemies->bFreezeSpawns=true;ZombieAuditTarget=Z;ZombieAuditInitial=Z->GetActorLocation();ZombiePhase=1;ZombieAuditClock=0;
+  // Choose a subject that is allowed to walk.
+  //
+  // This map is authored with three zombies and all three are Krog bore punks:
+  // they carry BattleTunnelPunk, their Tick stops their movement before it ever
+  // counts a path request, and that is deliberate - untagged they walked two
+  // hundred metres out of the bore and took the rider off head-on (see the
+  // BattleTunnelPunk branch in BattleZombie.cpp). A director-spawned chaser is
+  // the only thing this stage can honestly watch move, so "the first zombie in
+  // the world" was the wrong pick: on 2026-09-19 it took `BattleZombie_4
+  // style=1 tunnel_punk=1 in_region=0 zombies=3` and spent twenty-five seconds
+  // reporting `paths=0 moved=0` - scenery being asked to chase.
+  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)
+   if(!It->bDead&&!It->Tags.Contains(TEXT("BattleTunnelPunk"))&&!It->Tags.Contains(TEXT("BattlePunkWall"))){Z=*It;break;}
+  if(!Z){
+   // Wait for the director rather than freezing its spawns before it has given
+   // us anything to watch. Phase 1 invalidates the navigation mesh by destroying
+   // the pedestrians, so the first spawn attempts can legitimately fail while it
+   // rebuilds; the wait is bounded and says what it is waiting for either way.
+   if(ZombieAuditClock>60.f){Finish(false,TEXT("No director-spawned zombie in sixty seconds"));return;}
+   int32 Present=0;for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)Present++;
+   if(FMath::Fmod(ZombieAuditClock,5.f)<Dt)UE_LOG(LogTemp,Display,TEXT("BattleZombieAudit: waiting for a spawned chaser spawned=%d desired=%d countdown=%.1f zombies=%d clock=%.1f"),
+    Mode->Enemies->Spawned,Mode->Enemies->DesiredZombies,Mode->StartCountdown,Present,ZombieAuditClock);
+   return;
   }
+  UE_LOG(LogTemp,Display,TEXT("BattleZombieAudit: subject=%s style=%d tunnel_punk=%d punk_wall=%d in_region=%d spawned=%d distance=%.0f"),
+   *GetNameSafe(Z),Z->VisualStyle,Z->Tags.Contains(TEXT("BattleTunnelPunk"))?1:0,Z->Tags.Contains(TEXT("BattlePunkWall"))?1:0,
+   BattleParkRegion::Contains(Z->GetActorLocation())?1:0,Mode->Enemies->Spawned,FVector::Dist2D(Z->GetActorLocation(),Bike->GetActorLocation()));
+  VERIFY_ZOMBIE(Mode->Enemies->DesiredZombies==Mode->Difficulty.Zombies&&Mode->Enemies->Spawned>0&&Z->GetController()&&Z->GetController()->IsA<AAIController>(),"Missing difficulty-driven AI spawn");
+  VERIFY_ZOMBIE(FMath::IsNearlyEqual(Z->GetCharacterMovement()->MaxWalkSpeed,Z->bSprinter?Mode->Difficulty.SprinterSpeed:Mode->Difficulty.ZombieSpeed),"Wrong zombie movement speed");
+  Mode->Enemies->bFreezeSpawns=true;ZombieAuditTarget=Z;ZombieAuditInitial=Z->GetActorLocation();ZombiePhase=1;ZombieAuditClock=0;
  }
  else if(ZombiePhase==1&&ZombieAuditClock>3){
+  // Wait for the AI rather than giving it three seconds. Phase 0 destroys every
+  // pedestrian in the world, which invalidates the navmesh and starts a rebuild -
+  // and a zombie cannot request a path until that finishes. On a loaded machine
+  // this stage went red twice with `spawned 0` while the population audit passed,
+  // which is the tell that the director was fine and the wait was not. The
+  // assertion is unchanged; only the window it is given is.
+  if(Z && (Z->PathRequests<=0 || FVector::Dist2D(Z->GetActorLocation(),ZombieAuditInitial)<=50)){
+   if(FMath::Fmod(ZombieAuditClock,1.f)<Dt)UE_LOG(LogTemp,Display,TEXT("BattleZombieAudit: waiting for AI paths=%d moved=%.0f clock=%.1f"),
+    Z->PathRequests,FVector::Dist2D(Z->GetActorLocation(),ZombieAuditInitial),ZombieAuditClock);
+   if(ZombieAuditClock<35.f)return;
+   Finish(false,TEXT("AI did not navigate and move in thirty-five seconds"));
+   return;
+  }
   VERIFY_ZOMBIE(Z&&Z->PathRequests>0&&FVector::Dist2D(Z->GetActorLocation(),ZombieAuditInitial)>50,"AI did not navigate and move");
   Z->SetActorLocation(Bike->GetActorLocation()+Bike->GetActorForwardVector()*100-FVector(0,0,8),false,nullptr,ETeleportType::TeleportPhysics);Z->GetCharacterMovement()->StopMovementImmediately();ZombiePhase=2;ZombieAuditClock=0;
  }
@@ -69,7 +107,10 @@ void ABattleMacController::TickZombieAudit(float Dt){
  else if(ZombiePhase==7&&ZombieAuditClock>5.2f){
   VERIFY_ZOMBIE(!ZombieAuditTarget.IsValid()&&!ZombieAuditCorpse.IsValid(),"Corpses did not clean up");Finish(true,TEXT("Spawn, navigation, telegraph, health damage, pistol body/head hits and cleanup pass"));return;
  }
- if(ZombieAuditClock>25)Finish(false,TEXT("Phase timeout"));
+ // Phase 0 owns the only wait longer than this: it may have to sit through the
+ // navigation mesh rebuild that follows the pedestrian teardown before the
+ // director can deliver a chaser to watch. Every other phase keeps the 25 s cap.
+ if(ZombieAuditClock>(ZombiePhase==0?60.f:25.f))Finish(false,TEXT("Phase timeout"));
 #undef VERIFY_ZOMBIE
 #endif
 }

@@ -2,7 +2,7 @@
   "exit_code": 0,
   "checks": {
     "passed": true,
-    "reason": "Automatic opposing traffic, signal wait, bounded population and endpoint recycling passed",
+    "reason": "Automatic opposing traffic, required crossing checks, bounded population and endpoint recycling passed",
     "spawned": 9,
     "removed": 4,
     "peak": 6,

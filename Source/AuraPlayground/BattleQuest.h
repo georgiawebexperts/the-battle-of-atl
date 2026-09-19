@@ -31,6 +31,9 @@ public:
  UPROPERTY(BlueprintReadOnly) TObjectPtr<AActor> Artifact;
  void ResetAfterDeath();
  FString SearchDirection(FVector Viewer) const;
+ // Where a rider on foot should be pointing. Shared by the dismount and its
+ // audit so both ask the same question of the same route data.
+ static FVector FootHeadingTarget(const FVector& From,const TArray<FVector>& RoutePoints,const FVector& RouteTarget,const FVector& Artifact);
  static FVector2D CoarseDirection(FVector2D Delta);
  FTransform InitialStartTransform;
  int32 SearchResets=0;

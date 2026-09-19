@@ -39,8 +39,16 @@ void ABattleMacController::TickTroubleAudit(float Dt){
  if(TroubleStage==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
-  CHECK_TROUBLE(Mode->PeopleHit==0&&!Mode->bPoliceAlert&&Mode->PoliceSpawned==0,"Police active before incident");
-  auto* P=Civilian();CHECK_TROUBLE(P,"Civilian fixture failed");
+ CHECK_TROUBLE(Mode->PeopleHit==0&&!Mode->bPoliceAlert&&Mode->PoliceSpawned==0,"Police active before incident");
+  // The fixture spends time no player would: it crashes the rider, shoots a
+  // police officer (-60) and takes two tasers (-10 each). With the run budget
+  // trimmed by two minutes on 2026-09-19 (Easy is 90 s now) that arithmetic ran
+  // the clock to zero inside the fixture, and a run that has ended refuses
+  // damage - so the death-blow check at stage 7 could never land. Give the
+  // fixture its own headroom: the difficulty's real budget is BattleTimeAudit's
+  // and BattleMurderKAudit's business, not this one's.
+  Mode->TimeRemaining=FMath::Max(Mode->TimeRemaining,300.f);
+ auto* P=Civilian();CHECK_TROUBLE(P,"Civilian fixture failed");
   FHitResult Impact(P,P->GetCapsuleComponent(),P->GetActorLocation(),-Bike->GetActorForwardVector());Impact.bBlockingHit=true;Bike->Ride->Speed=650;Bike->Ride->HandleImpact(Impact,.016f,Bike->GetActorForwardVector()*10);
   CHECK_TROUBLE(Mode->PeopleHit==1&&!Mode->bPoliceAlert&&!Mode->RecordAssault(P)&&Mode->PeopleHit==1,"Impact routing or repeated-person guard failed");Next();
  }else if(TroubleStage==1&&TroubleClock>2.4f){
@@ -97,6 +105,16 @@ void ABattleMacController::TickTroubleAudit(float Dt){
  else if(TroubleStage==6&&Bike->TaserHits>0){
   FString Dir;if(FParse::Value(FCommandLine::Get(),TEXT("BattlePoliceReviewDir="),Dir))FScreenshotRequest::RequestScreenshot(Dir/TEXT("police-discharge.png"),false,false);
   CHECK_TROUBLE(Officer->LastTaserOrigin.Z>Officer->GetActorLocation().Z&&FVector::Dist(Officer->LastTaserOrigin,Officer->Weapon->GetComponentLocation())<40,"Taser discharge did not originate at raised device");
+  // Elliott, 2026-09-19: "when you are getting attacked Ellison needs to at
+  // least scream or say stop ... and the screen should flash red". A taser costs
+  // no health, so it never reaches the damage funnel - which makes it the one
+  // attack that proves the yell is wired to the attack rather than to the
+  // health bar. The flash is pinned down exactly where damage is applied
+  // synchronously, further down; here it only has to still be running.
+  CHECK_TROUBLE(Bike->HurtVoice&&Bike->HurtVoice->Sound&&Bike->HurtVoiceLines.Num()==3&&Bike->HurtVoice->Sound->GetDuration()>.6f&&Bike->HurtVoice->Sound->GetDuration()<2.f,"Rider hurt voice takes missing or out of the bark window");
+  CHECK_TROUBLE(Bike->HurtVoiceStarts>0,"Taser did not make Ellison yell");
+  CHECK_TROUBLE(Bike->DamageFlashRemaining>0&&Bike->DamageFlashRemaining<=Bike->DamageFlashSeconds,"Taser did not arm the red damage flash");
+  UE_LOG(LogTemp,Display,TEXT("RiderHurtVoiceAudit: takes=%d duration=%.2f starts=%d flash=%.2f"),Bike->HurtVoiceLines.Num(),Bike->HurtVoice->Sound->GetDuration(),Bike->HurtVoiceStarts,Bike->DamageFlashRemaining);
   Person=Cast<ABattleRider>(GetPawn());CHECK_TROUBLE(Bike->bCrashActive&&Bike->bParked&&Bike->StunRemaining>0&&Bike->Deaths==0&&Bike->RiderHealth==100,"Taser did not knock rider off locally");
   CHECK_TROUBLE(!Bike->FirePistol()&&!Bike->Dismount()&&!Bike->ApplyTaser()&&Bike->TaserHits==1,"Stun actions or repeat-hit guard failed");
   CHECK_TROUBLE(Mode->LastTimeDelta==-10&&Mode->TimeNotice==TEXT("TASED")&&Mode->TimeRemaining<TroubleTime-10,"Taser time penalty missing");Officer->SetActorTickEnabled(false);Next();
@@ -104,7 +122,12 @@ void ABattleMacController::TickTroubleAudit(float Dt){
   if(Bike->bCrashActive||!Person){if(TroubleClock>18)Finish(false,TEXT("Taser physical recovery failed"));return;}
   const bool Mounted=MountRecovered();if(!Mounted){if(TroubleClock>18)Finish(false,TEXT("Taser remount approach failed"));return;}
   CHECK_TROUBLE(Bike->StunRemaining==0&&GetPawn()==Bike&&Bike->Ride->IsMovingOnGround()&&Bike->Deaths==0,"Recovery/remount failed");
-  CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==1,"Taser grace failed");Bike->TaserGrace=0;CHECK_TROUBLE(Officer->FireTaser()&&Bike->ApplyRiderDamage(1000)>0,"Death during stun fixture failed");Next();
+  CHECK_TROUBLE(!Officer->FireTaser()&&Bike->TaserHits==1,"Taser grace failed");Bike->TaserGrace=0;
+  // The death-blow fixture is the one place a hit is applied and inspected in
+  // the same frame, so the flash can be pinned exactly: one voice line for the
+  // taser that just landed, one for the hit, and the red at full strength.
+  const int32 VoiceBefore=Bike->HurtVoiceStarts;
+  CHECK_TROUBLE(Officer->FireTaser()&&Bike->ApplyRiderDamage(1000)>0&&Bike->HurtVoiceStarts==VoiceBefore+2&&Bike->DamageFlashRemaining>=Bike->DamageFlashSeconds-.001f,"Death during stun fixture failed, or the hit neither yelled nor flashed red");Next();
  }
  else if(TroubleStage==8&&TroubleClock>2.4f){
   CHECK_TROUBLE(Bike->Deaths==1&&GetPawn()==Bike&&!Bike->bParked&&Bike->StunRemaining==0,"Checkpoint retained stale stun");

@@ -60,6 +60,9 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  Inventory.SetNum(BattleWeapons::Count);Inventory[0].Owned=true;Inventory[0].Magazine=17;Inventory[0].Reserve=0;
  AsphaltAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("AsphaltTires"));GrassAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("GrassTires"));MotorAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("ElectricMotor"));
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()}){Audio->SetupAttachment(GetCapsuleComponent());Audio->bAutoActivate=false;Audio->SetVolumeMultiplier(0);}
+ // Ellison's own voice: no attenuation on purpose, so a hit sounds like it
+ // happened to the player rather than to something down the road.
+ HurtVoice=CreateDefaultSubobject<UAudioComponent>(TEXT("RiderVoice"));HurtVoice->SetupAttachment(GetCapsuleComponent());HurtVoice->bAutoActivate=false;
  PrimaryActorTick.bCanEverTick=true;bUseControllerRotationYaw=false;
  Capsule=GetCapsuleComponent();Capsule->InitCapsuleSize(32,96);Capsule->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
  GetMesh()->SetVisibility(false);GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -127,6 +130,9 @@ void ABattleBike::BeginPlay(){
  CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
  RideEffects=GetWorld()->SpawnActor<ABattleRideFX>();
  AsphaltAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Asphalt.S_Asphalt")));GrassAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Grass.S_Grass")));MotorAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Motor.S_Motor")));
+ // Three takes on being hit, loaded by path the way the officer's warning line
+ // is, so a missing asset degrades to silence instead of breaking the build.
+ for(const TCHAR* Take:{TEXT("S_RiderHurt1"),TEXT("S_RiderHurt2"),TEXT("S_RiderHurt3")})if(auto* Line=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/BattleForTheA/Audio/%s.%s"),Take,Take)))HurtVoiceLines.Add(Line);
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()})Audio->Play();
  for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("RideWater")))Capsule->IgnoreActorWhenMoving(*It,true);
  if(auto* Mesh=Cast<USkeletalMesh>(Rider->GetSkinnedAsset())){

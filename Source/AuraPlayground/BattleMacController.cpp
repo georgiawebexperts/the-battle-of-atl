@@ -348,7 +348,10 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("Select a difficulty to start a new ride."),18,FLinearColor::White);
   Button(TEXT("ELLISON OUTFIT  |  ")+BattleRiderStyleName()+TEXT("  |  CHANGE"),[this](){CycleRiderStyle();});
   if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty")))for(FName Name:{FName(TEXT("Easy")),FName(TEXT("Medium")),FName(TEXT("Hard"))}){
-   if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %.0f MIN  |  %s"),*Name.ToString(),Row->TimeLimitSeconds/60,*Row->Warning),[this,Name](){StartDifficulty(Name);});
+   // The budget is under an hour, and since the 2026-09-19 two-minute trim it is
+   // under two minutes on the hardest row, where "%.0f MIN" printed "0 MIN".
+   // Show the real clock as M:SS instead of rounding it away.
+   if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %s  |  %s"),*Name.ToString(),*BattleRecords::Format(Row->TimeLimitSeconds),*Row->Warning),[this,Name](){StartDifficulty(Name);});
    const float Best=BattleRecords::Best(Name);if(Best>0)Label(TEXT("BEST RUN  ")+BattleRecords::Format(Best),16,FLinearColor(1,.7,.35));
   }
   Label(TEXT("Difficulty changes the timer, crowds, enemy pressure, weapon supplies and search range."),14,FLinearColor(.7,.72,.75));

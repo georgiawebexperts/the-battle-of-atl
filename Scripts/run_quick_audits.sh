@@ -101,6 +101,19 @@ FLAKY=0
 #
 # They run with a tighter timeout by default, because an untriaged audit that
 # hangs should cost two minutes rather than seven.
+#
+# Three audits are deliberately NOT here and cannot be added back: they read
+# actors that only exist in a review map, and only PiedmontWorld is cooked into
+# the share, so against the sweep's map they answer "Review actors missing",
+# "Expected opposing lane candidates" or nothing at all. Those three reds sat in
+# the first extended run as if the game were broken. Each has its own harness:
+#
+#   BattleMonroeOccupancyAudit    python3 Scripts/test_native_monroe_occupancy.py
+#   BattleTrafficPopulationAudit  python3 Scripts/test_native_traffic_population.py
+#   BattleRoadLaneAudit           zsh Scripts/run_road_lane_audit.sh
+#
+# All three are green there (2026-09-19: occupancy 2.001 s held, population
+# spawned 9 with a signal wait, lanes 2 cars over 81397 cm).
 if [[ "${BATTLE_SWEEP_EXTENDED:-0}" == "1" ]]; then
   AUDITS+=(
     "BattleAimAudit||"
@@ -122,12 +135,10 @@ if [[ "${BATTLE_SWEEP_EXTENDED:-0}" == "1" ]]; then
     "BattleConnectorAudit||"
     "BattleCrossingReservationAudit||"
     "BattleEntranceWalkAudit||"
-    "BattleMonroeOccupancyAudit||"
     "BattlePhoneRideAudit||"
     "BattlePlayerCrashAudit||"
     "BattlePotholeAudit||"
     "BattlePotholeRideAudit||"
-    "BattleTrafficPopulationAudit||"
     "BattleZombiePopulationAudit||"
     "BattleAmbientBenchAudit||"
     "BattleAmbientSleeperAudit||"
@@ -137,7 +148,6 @@ if [[ "${BATTLE_SWEEP_EXTENDED:-0}" == "1" ]]; then
     "BattleRoadAmberAudit||"
     "BattleRoadCarAudit||"
     "BattleRoadCrossingAudit||"
-    "BattleRoadLaneAudit||"
     "BattleRoadTrafficAudit||"
     "BattleSleeperChaseAudit||"
     "BattleSleeperSettleAudit||"

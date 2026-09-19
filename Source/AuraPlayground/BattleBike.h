@@ -8,6 +8,7 @@
 #include "BattleBike.generated.h"
 class ABattleQuest;class ABattleEnemyDirector;class ABattlePickupDirector;class ABattleGhostRider;
 class ABattleRideFX;class UAudioComponent;
+class USoundBase;
 class USpotLightComponent;class UPointLightComponent;
 class ABattleRider;class ABattlePlayerCrash;
 class UPoseableMeshComponent;
@@ -159,6 +160,20 @@ UPROPERTY(BlueprintReadOnly) float Nitro=0;
  void ClearPhysicalCrash();
  UPROPERTY(BlueprintReadOnly) float RiderHealth=100;
  UPROPERTY(BlueprintReadOnly) float HurtCooldown=0;
+ // Elliott, 2026-09-19: "when you are getting attacked Ellison needs to at
+ // least scream or say stop ... and the screen should flash red letting the
+ // person know they are getting attacked". Both are driven from the damage
+ // funnel in BattleHealth.cpp, which is the one door every attacker in the game
+ // comes through - traffic, potholes, zombies, gunmen, the knife and the drone,
+ // on the bike and on foot alike.
+ UPROPERTY(VisibleAnywhere,BlueprintReadOnly) TObjectPtr<UAudioComponent> HurtVoice;
+ UPROPERTY(BlueprintReadOnly) TArray<TObjectPtr<USoundBase>> HurtVoiceLines;
+ UPROPERTY(BlueprintReadOnly) int32 HurtVoiceStarts=0;
+ UPROPERTY(BlueprintReadOnly) int32 HurtVoiceIndex=0;
+ void PlayHurtVoice();
+ // The HUD paints the whole screen with this for as long as it lasts.
+ UPROPERTY(BlueprintReadOnly) float DamageFlashRemaining=0;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite) float DamageFlashSeconds=.45f;
  UPROPERTY(BlueprintReadOnly) float RespawnRemaining=0;
  UPROPERTY(BlueprintReadOnly) float DamageGrace=0;
  UPROPERTY(BlueprintReadOnly) FTransform CheckpointTransform;

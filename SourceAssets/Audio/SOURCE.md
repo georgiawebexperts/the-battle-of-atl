@@ -5,3 +5,6 @@ S_Skid.wav, S_Splash.wav, S_Bump.wav, S_Asphalt.wav, S_Grass.wav, S_Motor.wav: o
 
 2026-09-13 [codex-maclaptop]
 S_APDStop.wav: AI-generated fictional police voice, OpenAI built-in cedar voice. Generated with the speech skill; exact prompt and automatic transcription in VoiceTakes/APDStop.json. No human officer recording or voice clone. Duration 1.58 seconds; automatic transcription confirms “Stop. APD.” Listening review remains pending.
+
+2026-09-19 [codex-maclaptop]
+S_RiderHurt1.wav, S_RiderHurt2.wav, S_RiderHurt3.wav: AI-generated fictional rider voice for Ellison, OpenAI built-in ash voice, prompted as a young rider shouting back at whoever just hit him. Written for Elliott's request that the rider "needs to at least scream or say stop ... im not chicken or something" when the player is attacked. Exact prompts and automatic transcriptions in VoiceTakes/RiderHurt1.json, RiderHurt2.json and RiderHurt3.json. No human recording and no voice clone. Durations 1.44 / 1.01 / 1.26 seconds; automatic transcription confirms every line. The streamed takes were trimmed of lead and tail silence by Scripts/normalize_voice_wav.py, which also rewrites a readable header, and imported by Scripts/import_rider_voice.py, which asserts each one stays inside the 0.6-2.0 second bark window. Listening review remains pending, as it does for the officer line.
