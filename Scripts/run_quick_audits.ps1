@@ -73,9 +73,9 @@ $audits = @(
 # sweep (75 exist total; these had never run in any sweep). They get a tighter
 # two-minute cap by default, because an untriaged audit that hangs should cost
 # two minutes rather than seven.
-\ = (\ -eq '1')
-if (\) {
-    \ += @(
+$extended = ($env:BATTLE_SWEEP_EXTENDED -eq '1')
+if ($extended) {
+    $audits += @(
         [pscustomobject]@{ Name = 'BattleAimAudit'; Label = 'BattleAimAudit'; Flag = '' },
         [pscustomobject]@{ Name = 'BattleAmmoAudit'; Label = 'BattleAmmoAudit'; Flag = '' },
         [pscustomobject]@{ Name = 'BattleFinishAudit'; Label = 'BattleFinishAudit'; Flag = '' },
