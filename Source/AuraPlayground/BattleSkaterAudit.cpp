@@ -146,6 +146,16 @@ void ABattleMacController::TickSkaterAudit(float Dt){
   // get off, not that he can do it on the first frame.
   if(Cast<ABattleBike>(GetPawn())&&!Bike->Ride->IsMovingOnGround())return;
   if(Cast<ABattleBike>(GetPawn())&&!Bike->Dismount()){
+   // A parked bike means the rider is already off it, which is the whole
+   // promise this stage tests: the realistic knock-off threw him. The refusal
+   // line from the 2026-09-19 sweep was parked=1 with health 100, recovery 0,
+   // crash 0 and the bike grounded - the state the test was asking for, read as
+   // a failure because the check called Dismount on it anyway. Say so and move
+   // on rather than spending the phase retrying an impossible request.
+   if(Bike->bParked){
+    UE_LOG(LogTemp,Display,TEXT("SkaterDismount: rider is already off (bike parked) at %s"),*Bike->GetActorLocation().ToCompactString());
+    Next();return;
+   }
    // Say which refusal it was. Dismount refuses on health, recovery, a parked
    // bike or when all forty of its exit spots are blocked, and "cannot dismount"
    // on its own sent the next reader looking in the wrong place.
