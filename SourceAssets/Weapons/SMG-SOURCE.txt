@@ -1,0 +1,14 @@
+SMG.gltf - Quaternius Zombie Apocalypse Kit (March 2024), CC0 1.0 Universal.
+Creator and pack page: https://quaternius.com/packs/zombieapocalypsekit.html
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Public mirror used for the download (same repository the rifle came from):
+  https://raw.githubusercontent.com/agentkaerf/FreeModels/HEAD/Zombie%20Apocalypse%20Kit%20-%20March%202024/Weapons/glTF/SMG.gltf
+Retrieved 2026-09-19 [codex-maclaptop] for The Battle of ATL.
+sha256 ab3d953e70d045b9bf2d69459be7342165af0fb3b9629c346a0ebbf56cf51c54
+Self-contained: 174144 bytes, one mesh, one material, geometry and texture
+embedded in the buffer. Imported by Scripts/import_smg.py.
+
+Note on SMG-MIRROR-License.txt beside this file: the mirror's own License.txt
+inside that pack folder names the "Ultimate Platformer Pack", not this kit, so it
+is kept as retrieved and treated as unreliable. The CC0 claim above is the
+Quaternius pack page's own license, not that file.

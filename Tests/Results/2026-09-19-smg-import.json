@@ -1,0 +1,7 @@
+[
+  {
+    "path": "/Game/BattleForTheA/Weapons/SMG/SMG/StaticMeshes/SMG.SMG",
+    "min": "<Struct 'Vector' (0xb3bc8f47040) {x: -7.533050, y: -20.039007, z: -19.668274}>",
+    "max": "<Struct 'Vector' (0xb3bc8f47058) {x: 7.533064, y: 79.358894, z: 27.518660}>"
+  }
+]

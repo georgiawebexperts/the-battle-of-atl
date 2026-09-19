@@ -48,6 +48,14 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   Pass&=Check(Bike->GiveWeapon(4,20)&&Bike->ActiveWeapon==1,TEXT("an ammo top-up for an owned gun yanked the gun away"));
   Pass&=Check(Bike->SelectRidingWeapon(0)&&Bike->SelectRidingWeapon(4),TEXT("weapon selection refused an owned slot"));
   Pass&=Check(!Bike->SelectRidingWeapon(3),TEXT("weapon selection accepted an unowned slot"));
+  // The machine gun used to show the rifle's model; slot 2 owns a CC0 mesh now.
+  Pass&=Check(Bike->GiveWeapon(2,60),TEXT("SMG pickup was refused"));
+  Pass&=Check(Bike->ActiveWeapon==2,TEXT("SMG pickup did not take the hand"));
+  Bike->ReadyWeapon();  // the rifle shot above is still inside its 0.25 s cadence
+  Pass&=Check(Bike->FirePistol(),TEXT("SMG would not fire"));
+  Bike->UpdateRidingWeaponModel();
+  Pass&=Check(Bike->SMGProp->IsVisible()&&!Bike->RifleProp->IsVisible()&&!Bike->ShotgunProp->IsVisible()&&!Bike->Pistol->IsVisible(),TEXT("the machine gun did not put its own mesh in the hand"));
+  Pass&=Check(Bike->SelectRidingWeapon(4),TEXT("could not go back to the rifle after the SMG"));
   // The dismount prompt has to survive a remount: it was pushed with bOnce, so
   // the second step-off in a session said nothing at all.
   auto HintShows=[&]{return Mode->HintRemaining>0&&Mode->HintText.Contains(TEXT("MOUSE"));};

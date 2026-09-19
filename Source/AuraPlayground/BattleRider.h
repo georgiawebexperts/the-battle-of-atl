@@ -34,6 +34,7 @@ public:
  void UpdateWeaponModel();
  UPROPERTY() TObjectPtr<USceneComponent> LongGun;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> RifleMesh;
+ UPROPERTY() TObjectPtr<UStaticMeshComponent> SMGMesh;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> ShotgunMesh;
  UPROPERTY() TObjectPtr<UStaticMeshComponent> ShotgunPump;
  UPROPERTY() TObjectPtr<USceneComponent> ShotgunShell;

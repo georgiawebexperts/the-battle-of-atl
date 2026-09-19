@@ -97,6 +97,7 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  TailLight=CreateDefaultSubobject<UPointLightComponent>(TEXT("AutomaticRearLight"));TailLight->SetupAttachment(Capsule);TailLight->SetRelativeLocation(FVector(-65,0,-15));TailLight->SetIntensity(25);TailLight->SetAttenuationRadius(90);TailLight->SetLightColor(FLinearColor(1,.015,.01));TailLight->SetVisibility(false);
  Pistol=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingPistol"));Pistol->SetupAttachment(Visual);Pistol->SetCollisionEnabled(ECollisionEnabled::NoCollision);Pistol->SetVisibility(false);
  RifleProp=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingRifle"));RifleProp->SetupAttachment(Visual);RifleProp->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleProp->SetVisibility(false);
+ SMGProp=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingSMG"));SMGProp->SetupAttachment(Visual);SMGProp->SetCollisionEnabled(ECollisionEnabled::NoCollision);SMGProp->SetVisibility(false);
  ShotgunProp=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingShotgun"));ShotgunProp->SetupAttachment(Visual);ShotgunProp->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunProp->SetVisibility(false);
  Rider=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("RiggedRider"));Rider->SetupAttachment(Visual);Rider->SetRelativeRotation(FRotator(0,-90,0));Rider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  static ConstructorHelpers::FObjectFinder<USkeletalMesh> Human(TEXT("/Game/PiedmontRide/Rider/Casual.Casual"));
@@ -116,6 +117,10 @@ void ABattleBike::BeginPlay(){
  // Same anchoring rule as the pistol above, normalised to each weapon's own
  // length, so the long guns sit in the rider's hand instead of at the origin.
  if(auto* Rifle=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"))){const FVector Size=Rifle->GetBounds().BoxExtent*2;const float Scale=88/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);RifleProp->SetStaticMesh(Rifle);RifleProp->SetRelativeScale3D(FVector(Scale));RifleProp->SetRelativeRotation(Rot);RifleProp->SetRelativeLocation(FVector(52,26,132)-Rot.RotateVector(Rifle->GetBounds().Origin)*Scale);}
+ // Slot 2 used to show the rifle because there was no machine gun mesh. The
+ // Quaternius Zombie Apocalypse Kit SMG is the same CC0 pack the rifle is from,
+ // so it sits in the hand the same way and at the same scale.
+ if(auto* SMG=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Weapons/SMG/SMG/StaticMeshes/SMG.SMG"))){const FVector Size=SMG->GetBounds().BoxExtent*2;const float Scale=64/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);SMGProp->SetStaticMesh(SMG);SMGProp->SetRelativeScale3D(FVector(Scale));SMGProp->SetRelativeRotation(Rot);SMGProp->SetRelativeLocation(FVector(52,26,132)-Rot.RotateVector(SMG->GetBounds().Origin)*Scale);}
  if(auto* Body=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/ShotgunParts/StaticMeshes/ShotgunBody.ShotgunBody"))){const FVector Size=Body->GetBounds().BoxExtent*2;const float Scale=76/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);ShotgunProp->SetStaticMesh(Body);ShotgunProp->SetRelativeScale3D(FVector(Scale));ShotgunProp->SetRelativeRotation(Rot);ShotgunProp->SetRelativeLocation(FVector(52,26,132)-Rot.RotateVector(Body->GetBounds().Origin)*Scale);}
  CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
  RideEffects=GetWorld()->SpawnActor<ABattleRideFX>();

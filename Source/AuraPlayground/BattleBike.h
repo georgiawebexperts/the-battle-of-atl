@@ -138,10 +138,14 @@ UPROPERTY(BlueprintReadOnly) float Nitro=0;
  UPROPERTY(BlueprintReadOnly) FVector LastShotEnd;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Pistol;
  UFUNCTION(BlueprintCallable) bool FirePistol();
+ // Test and review helper: drop the trigger cadence and any reload in flight so
+ // the next FirePistol answers for the weapon, not for the last shot's timer.
+ UFUNCTION(BlueprintCallable) void ReadyWeapon(){ShotCooldown=0;ReloadTimer=0;}
  // Riding used to show one pistol no matter what was picked up: the crate
  // added the rifle or SMG to Inventory and the prop never moved. These are the
  // same assets ABattleRider already loads on foot, held at the pistol anchor.
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> RifleProp;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SMGProp;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> ShotgunProp;
  UPROPERTY(BlueprintReadOnly) int32 ActiveWeapon=0;
  UFUNCTION(BlueprintCallable) bool SelectRidingWeapon(int32 Slot);

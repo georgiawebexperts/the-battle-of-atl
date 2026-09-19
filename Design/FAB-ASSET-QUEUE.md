@@ -22,3 +22,24 @@ Sources: https://www.fab.com/listings/343098bf-bcfa-4d3a-8260-96e9c77b8635 ; htt
 2026-09-11 [codex-maclaptop]: First verified Mixamo motion acquired: Sleeping Idle (Sleeping Deeply), Default Character, FBX Binary with skin,30fps, no keyframe reduction,207 displayed frames. SourceAssets/Mixamo/SleepingIdle_WithSkin.fbx (2,323,904 bytes, provenance JSON beside it). Imported reference mesh/skeleton/animation at /Game/BattleRetarget/Mixamo/SleepingReference using Scripts/import_mixamo_sleep_reference.py; not retargeted or wired to gameplay. Native Launcher remains locked; Mixamo browser session works.
 
 2026-09-13 [codex-maclaptop]: M1911 migrated into actual game Content/M1911 (28 dependency packages, inspect/copy reports). Rigged pistol and magazine motion now in opt-in detailed player preview; native control/ammo/magazine checks pass and final reload render inspected. Not installed/default yet; continuous hand contact, muzzle alignment, interruptions/performance remain pending. Qi Gong remains staged only.
+
+2026-09-19 [codex-maclaptop]: Elliott asked "cant you find assets like you did last time?"
+after the machine gun still had no mesh of its own. Second successful route, and the
+one to prefer while the Mac is locked: the CC0 mirror repo `agentkaerf/FreeModels`
+holds Quaternius packs as plain glTF over raw.githubusercontent.com, with no login,
+no Launcher and no browser session. Downloaded **SMG.gltf** from the same Zombie
+Apocalypse Kit the rifle came from (174 KB, self-contained, sha256 in
+SourceAssets/Weapons/SMG-SOURCE.txt) and wired it to slot 2 on the bike and on foot.
+
+The browser routes remain blocked, not refused: the Fab library and Sketchfab
+downloads need Elliott's signed-in session, and the Codex browser bridge reports no
+auth token while the Mac is locked. Ask again with the Mac unlocked and the same
+free-asset sweep can continue from the queue above.
+
+What that mirror does **not** have: a bear. Its animal models are wolf, fox, husky,
+deer, stag, cow, bull, donkey, alpaca, horse and shiba inu (Ultimate Animated
+Animals), plus cat, dog, horse, pig, raccoon, sheep, wolf, chicken and chick (Cube
+World). The spectral black bear therefore still needs the Sketchfab lead already
+recorded in Design/BLACK-BEAR-SPIRIT.md, a Fab listing, or a paid purchase - all of
+which need the browser session. Do not substitute a wolf or a low-poly stand-in:
+that note explicitly forbids it.

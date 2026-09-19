@@ -136,8 +136,25 @@ void ABattleMacController::TickSkaterAudit(float Dt){
  else if(SkaterStage==4){
   // A realistic knock-off throws the rider off and takes a few seconds to settle;
   // wait for that instead of assuming the bike is still under him.
-  if(Bike->bCrashActive||Bike->Ride->Recovery>0)return;
-  if(Cast<ABattleBike>(GetPawn()))KCHECK(Bike->Dismount(),"Cannot dismount after skater collision");
+ if(Bike->bCrashActive||Bike->Ride->Recovery>0)return;
+  // The riderless bike coasts on after the knock-off, and Dismount refuses when
+  // the rider capsule has no free spot to step into - which one frame of a bike
+  // still settling on a slope will do. Wait for it to be on a floor, then give
+  // it up to four seconds of the phase's sixteen. This audit failed twice in a
+  // row on 2026-09-19 purely on where the bike ended up, and passed on the same
+  // build afterwards; the promise being tested is that a knocked-off rider can
+  // get off, not that he can do it on the first frame.
+  if(Cast<ABattleBike>(GetPawn())&&!Bike->Ride->IsMovingOnGround())return;
+  if(Cast<ABattleBike>(GetPawn())&&!Bike->Dismount()){
+   // Say which refusal it was. Dismount refuses on health, recovery, a parked
+   // bike or when all forty of its exit spots are blocked, and "cannot dismount"
+   // on its own sent the next reader looking in the wrong place.
+   if(FMath::Fmod(SkaterClock,.5f)<Dt)UE_LOG(LogTemp,Display,TEXT("SkaterDismount: refused bike=%s health=%.0f recovery=%.2f crash=%d parked=%d grounded=%d clock=%.1f floor=%s"),
+    *Bike->GetActorLocation().ToCompactString(),Bike->RiderHealth,Bike->Ride->Recovery,Bike->bCrashActive?1:0,
+    Bike->bParked?1:0,Bike->Ride->IsMovingOnGround()?1:0,SkaterClock,*GetNameSafe(Bike->Ride->CurrentFloor.HitResult.GetActor()));
+   if(SkaterClock<4.f)return;
+   KCHECK(false,"Cannot dismount after skater collision");
+  }
   // Move to a clear shooting lane after recovery, away from the parked bike.
   if(auto* Foot=Cast<ABattleRider>(GetPawn()))Foot->SetActorLocation(Skater->GetActorLocation()+FVector(0,-350,110),false,nullptr,ETeleportType::TeleportPhysics);Next();}
  else if(SkaterStage==5){KCHECK(Rider,"Missing on-foot rider");
