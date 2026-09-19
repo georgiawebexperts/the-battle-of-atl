@@ -2,10 +2,10 @@
 #include "CoreMinimal.h"
 
 namespace BattleBuild {
-// 148, not 147: this side had already packaged and shared 147 (the bear's
-// light-based look) before the merge, and Windows is packaging its own 147 with
-// the 200 HP punk wall. Two different builds must not carry one number.
-inline constexpr TCHAR Label[] = TEXT("BUILD 148");
+// 149, not 148: the Mac side had already packaged and shared 148 before this merge,
+// and Windows is packaging its own 149 with the Ghost Rider unlock.
+// Two different builds must not carry one number.
+inline constexpr TCHAR Label[] = TEXT("BUILD 149");
 inline constexpr TCHAR Version[] = TEXT("VERSION 1");
-inline constexpr TCHAR VersionedLabel[] = TEXT("VERSION 1  •  BUILD 148");
+inline constexpr TCHAR VersionedLabel[] = TEXT("VERSION 1  •  BUILD 149");
 }

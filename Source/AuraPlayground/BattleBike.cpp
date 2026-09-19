@@ -22,6 +22,8 @@
 #include "BattleParkFurniture.h"
 #include "BattleSkatepark.h"
 #include "BattleMacController.h"
+#include "BattleGhostRider.h"
+#include "BattleRunRecords.h"
 #include "BattleQuest.h"
 #include "BattleZombie.h"
 #include "BattlePickup.h"
@@ -191,6 +193,14 @@ void ABattleBike::ValidationKey(FName Key,bool Pressed){
 #endif
 }
 ABattleParkMode::ABattleParkMode(){CourseLabel=TEXT("PIEDMONT PARK | DEVELOPMENT");PlayerControllerClass=ABattleMacController::StaticClass();}
+void ABattleParkMode::SpawnGhost(){
+ Ghost=nullptr;bGhostRiding=false;
+ if(BattleRecords::Wins(DifficultyName)<5)return;
+ const TArray<FVector> Route=BattleRecords::BestRoute(DifficultyName);
+ if(Route.Num()<2)return;
+ Ghost=GetWorld()->SpawnActor<ABattleGhostRider>();
+ if(Ghost){Ghost->LoadRoute(Route,.5f);bGhostRiding=true;PushHint(TEXT("ghostrider"),TEXT("GHOST RIDER: BEAT YOUR BEST TIME!"),6.f);}
+}
 void ABattleParkMode::InitGame(const FString& MapName,const FString& Options,FString& ErrorMessage){
  Super::InitGame(MapName,Options,ErrorMessage);
  FString Choice=UGameplayStatics::ParseOption(Options,TEXT("Difficulty"));
@@ -210,6 +220,7 @@ void ABattleParkMode::InitGame(const FString& MapName,const FString& Options,FSt
 }
 void ABattleParkMode::StartPlay(){
  Super::StartPlay();
+ RouteSamples.Reset();RouteSampleClock=0;bGhostBeaten=false;bGhostRiding=false;bGhostCheckDone=false;Ghost=nullptr;
  for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It){
   It->DesiredPopulation=Difficulty.Walkers+Difficulty.Joggers;
   It->JoggerShare=float(Difficulty.Joggers)/FMath::Max(1,It->DesiredPopulation);
@@ -259,7 +270,7 @@ void ABattleLabMode::Tick(float Dt){
  // the intro line never said how to change it.
  if(!HintsSeen.Contains(TEXT("ride")))PushHint(TEXT("ride"),TEXT("W/S PEDAL & BRAKE  ·  A/D STEER  ·  Q/R GEARS  ·  J JUMP  ·  SHIFT BOOST  ·  E GET OFF  ·  H HORN"),8.f);
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
- if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
+ if(!bRunEnded){if(auto* Park=Cast<ABattleParkMode>(this)){Park->RunElapsed+=Dt;if(!Park->bGhostCheckDone){Park->bGhostCheckDone=true;Park->SpawnGhost();}Park->RouteSampleClock+=Dt;if(Park->RouteSampleClock>=.5f){Park->RouteSampleClock-=.5f;if(APawn* Player=UGameplayStatics::GetPlayerPawn(this,0))Park->RouteSamples.Add(Player->GetActorLocation());}if(Park->Ghost&&Park->bGhostRiding)Park->Ghost->Advance(Park->RunElapsed);for(TActorIterator<ABattleBike> It(GetWorld());It;++It)Park->RunTopSpeed=FMath::Max(Park->RunTopSpeed,It->Ride->Speed);}
  APawn* Player=UGameplayStatics::GetPlayerPawn(this,0);const float Rate=Player&&(Player->IsA<ABattleRider>()||(Cast<ABattleBike>(Player)&&Cast<ABattleBike>(Player)->bCrashActive))?FootTimeMultiplier:1.f;TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt*Rate);if(TimeRemaining<=0)bRunEnded=true;}
 }
 void ABattleBike::UpdateSteeringVisual(){

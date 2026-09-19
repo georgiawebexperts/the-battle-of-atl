@@ -6,7 +6,7 @@
 #include "BattleDifficulty.h"
 #include "BattleInventory.h"
 #include "BattleBike.generated.h"
-class ABattleQuest;class ABattleEnemyDirector;class ABattlePickupDirector;
+class ABattleQuest;class ABattleEnemyDirector;class ABattlePickupDirector;class ABattleGhostRider;
 class ABattleRideFX;class UAudioComponent;
 class USpotLightComponent;class UPointLightComponent;
 class ABattleRider;class ABattlePlayerCrash;
@@ -268,8 +268,11 @@ class AURAPLAYGROUND_API ABattleParkMode : public ABattleLabMode {
 public:
  ABattleParkMode();
  bool CompleteRun(ABattleBike* Bike);
- bool bWon=false,bRecordSaved=false;
- float RunElapsed=0,RunTopSpeed=0;
+ void SpawnGhost();
+ bool bWon=false,bRecordSaved=false,bGhostRiding=false,bGhostBeaten=false,bGhostCheckDone=false;
+ float RunElapsed=0,RunTopSpeed=0,RouteSampleClock=0;
+ TArray<FVector> RouteSamples;
+ UPROPERTY() TObjectPtr<ABattleGhostRider> Ghost;
  int32 FinishKills=0,FinishWipeouts=0,FinishNearMisses=0;
  FString FinishGrade;
  virtual void InitGame(const FString& MapName,const FString& Options,FString& ErrorMessage) override;
