@@ -26,7 +26,13 @@ void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt){
  }
  auto* P=S.Rider.Get();if(!P||PC->GetPawn()!=P){Finish(false,TEXT("Lost rider possession"));return;}
  auto* Move=P->GetCharacterMovement();
- if(S.Settle==0){Move->StopMovementImmediately();P->SetActorLocation(S.Routes[S.Route].Key+FVector(0,0,P->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+5),false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);S.Settle=.001f;S.Clock=0;S.Falling=0;}
+ if(S.Settle==0){
+  // The dismount's step-off animation repositions the rider every tick while it
+  // runs (BattleRider::Tick), which snaps the pawn back to the bike and made this
+  // audit stall at the spawn with completed_legs 0 on both platforms. Wait it out
+  // before placing the rider on the measured route.
+  if(P->StepOffRemaining>0){Move->StopMovementImmediately();return;}
+  Move->StopMovementImmediately();P->SetActorLocation(S.Routes[S.Route].Key+FVector(0,0,P->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+5),false,nullptr,ETeleportType::TeleportPhysics);Move->SetMovementMode(MOVE_Walking);S.Settle=.001f;S.Clock=0;S.Falling=0;}
  if(S.Settle<.5f){S.Settle+=Dt;return;}
  S.Clock+=Dt;S.Falling=Move->IsFalling()?S.Falling+Dt:0;
  if(S.Falling>.5f){Finish(false,TEXT("Approach lost sustained ground support"));return;}
