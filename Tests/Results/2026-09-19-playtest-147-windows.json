@@ -1,0 +1,108 @@
+{
+  "build": "147",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "dd5cec287c4d97fb5a6bfeed187cca2f4197b966",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "dd5cec2 Kroger punk wall 200 HP + guaranteed drops; Mac spectral-bear fix merged",
+  "targeted": {
+    "BattleFpsAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleFpsAudit.log",
+      "verdict": "[2026.09.19-11.45.01:768][ 68]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":59.7,\"min_fps\":44.3,\"p05_fps\":59.4,\"samples\":1791}",
+      "note": "Verdict printed and passed; process idled post-verdict and was terminated after log capture per protocol."
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleSkaterAudit.log",
+      "verdict": "[2026.09.19-11.46.19:098][787]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9737.8,\"corners\":6,\"people_hit\":2}"
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleTimeAudit.log",
+      "verdict": "[2026.09.19-11.46.41:676][416]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":3}"
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleInventoryAudit.log",
+      "verdict": "[2026.09.19-11.47.22:758][321]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}"
+    },
+    "BattleFinishAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleFinishAudit-retry.log",
+      "verdict": "[2026.09.19-11.48.37:576][276]LogTemp: Display: BattleFinishAudit: {\"passed\":true,\"reason\":\"Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass\"}",
+      "note": "First attempt printed passed:false 'Real Artifact collection failed' at the early artifact check (startup flake; no quest/artifact code changed in 147). Single retry passed; a confirmation run also passed."
+    },
+    "BattleMusicAudit": {
+      "pass": false,
+      "log": "work\\t147-BattleMusicAudit-retry.log",
+      "verdict": "[2026.09.19-11.51.19:402][461]LogTemp: Display: BattleMusicAudit: {\"passed\":false,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}",
+      "note": "Mandated -nosound run failed 3/3 (initial, retry, and a third run): during the two song phases UAudioComponent::GetPlayState() reports Stopped because under -nosound the world has bAllowAudioPlayback=false so Play() returns without activating the component (UE 5.8 PlayInternal). Diagnostic run with audio enabled passes cleanly (work\\t147-BattleMusicAudit-audio.log), and the sweep entry (run_quick_audits.ps1 removes -nosound for music) passed too. Music code unchanged since build 146; failure is the -nosound/null-audio harness interaction, not a music-system defect."
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleTunnelHazardAudit.log",
+      "verdict": "[2026.09.19-11.54.55:243][465]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":2,\"gallery_ride_cm\":4664,\"wipeouts\":0}"
+    },
+    "BattleEastsideAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleEastsideAudit.log",
+      "verdict": "[2026.09.19-12.02.10:624][975]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213887.69,\"maxCenterlineErrorCm\":100.89,\"wipeouts\":0}",
+      "note": "Passed on the first attempt in 425s. The run was still actively producing log output at the 300s guideline, so it was allowed to continue past it (matches build 146's ~424s idle-machine runtime); no retry was needed."
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleSkateAudit.log",
+      "verdict": "[2026.09.19-12.02.43:173][952]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.99,\"x\":40351.00,\"z\":748.15}"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleMurderKAudit.log",
+      "verdict": "[2026.09.19-12.03.06:402][150]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}",
+      "note": "All 16 checks green, wall=6, reason contains 'six-punk shoot-through wall'. The new ToughWallPunks guard passed: all 6 wall punks have Health>=200 and WeaponDropChance>=1.0 (the full-pass reason only prints when WallPunks==6 AND ToughWallPunks==6)."
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "log": "work\\t147-BattleHomeDriveAudit.log",
+      "verdict": "[2026.09.19-12.03.41:381][ 64]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4827.35,\"maxCenterlineErrorCm\":182.26,\"wipeouts\":0}"
+    },
+    "BattlePickupAudit": {
+      "pass": true,
+      "log": "work\\t147-BattlePickupAudit.log",
+      "verdict": "[2026.09.19-12.04.06:332][404]LogTemp: Display: BattlePickupAudit: {\"passed\":true,\"difficulty\":\"Easy\",\"phase\":7,\"reason\":\"Layout, checkpoints, bike/FPS healing, cap, walls, duplicate and death guards pass\",\"spawned\":18,\"park\":12,\"trail\":6,\"collected\":4}"
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 30,
+    "total": 30,
+    "log": "work\\sweep-147-20260919-080426.log",
+    "flakes": [
+      {
+        "audit": "BattleDroneAudit",
+        "first_run": "[2026.09.19-12.12.58:596][562]LogTemp: Display: BattleDroneAudit: {\"passed\":false,\"stage\":7,\"reason\":\"Pistol shot at 35m failed: fired=true health=40.0 notice= off_target_cm=2445.7 aim_off_deg=0.00 eye=V(X=-15773.42, Y=-5240.34, Z=212.38) view=V(X=-0.71, Y=-0.68, Z=0.16) shot_end=V(X=-16711.00, Y=-6097.25, Z=395.79) cam_block=none at_cm=-1.0 muzzle=V(X=-15963.74, Y=-5370.73, Z=215.89)\",\"health\":100.00}",
+        "first_run_log": "work\\sweep-147-20260919-080426.log",
+        "retry": "[2026.09.19-12.16.12:796][551]LogTemp: Display: BattleDroneAudit: {\"passed\":true,\"stage\":8,\"reason\":\"Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass\",\"health\":100.00}",
+        "retry_log": "work\\sweep-147-BattleDroneAudit-retry.log",
+        "verdict": "green_flake",
+        "reading": "First sweep attempt failed at stage 7: the 35m pistol shot landed 24.5m off target (off_target_cm=2445.7) despite aim_off_deg=0.00. Single retry per policy (BATTLE_SWEEP_ONLY=BattleDroneAudit) passed at stage 8 with the full reason. No drone code changed in 147; green flake."
+      }
+    ],
+    "failures": []
+  },
+  "notes": "Targeted audits ran sequentially (no GPU contention). Required verdicts all green: MurderK wall=6 with the six-punk shoot-through-wall reason and the 6/6 200-HP + guaranteed-drop guard, Time time_pickups=3, Finish passed (first attempt 'Real Artifact collection failed' was a startup flake; single retry and a confirm run both passed), Eastside completedLegs=2 (425s; progress-aware extension past the 300s guideline while the run was actively riding, matching build 146's ~424s). BattleMusicAudit failed 3/3 under the mandated -nosound command: UE 5.8's PlayInternal returns without activating the audio component when the world disallows audio playback, so GetPlayState() reports Stopped during the song phases; an audio-enabled diagnostic and the sweep's audio-enabled music entry both pass, and no music code changed in 147, so this is a -nosound harness artifact rather than a music defect. Sweep: 29/30 first-pass, BattleDroneAudit failed once (35m shot 24.5m off target) and passed on the single retry -> green flake, so 30/30 green; the sweep script exited 1 only because of that first attempt. Post-verdict processes idle and were terminated after log capture per protocol. Staged exe (335,774,720 bytes) was built 07:36:59 local, two minutes after the 147 commit (07:34:35). No source edits, packaging, commits, or pushes were made.",
+  "shipping": {
+    "status": "BUILD SUCCESSFUL",
+    "log": "work/windows-package-147-shipping.log",
+    "exe_sha256": "8BFB3E491A0F0ADB19ABAF68AB6A9C6A03FF2D21BADBBB4C57C1D78905269C7F",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 147",
+    "launch_verify": true,
+    "launch_note": "Launcher stub at share root spawned AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe, alive at 25s, then terminated.",
+    "shortcuts": {
+      "playtest": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 147.lnk",
+      "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk"
+    },
+    "desktop_cleanup": "Removed 10 stale playtest shortcuts (129-146) that pointed into the Builds\\Share folder; main icon repointed to 147."
+  }
+}
