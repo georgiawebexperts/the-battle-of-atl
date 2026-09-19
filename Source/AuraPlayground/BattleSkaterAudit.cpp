@@ -180,7 +180,13 @@ void ABattleMacController::TickSkaterAudit(float Dt){
   if(!Rider){
    if(FMath::Fmod(SkaterClock,.5f)<Dt)UE_LOG(LogTemp,Display,TEXT("SkaterFootWait: pawn=%s bike_parked=%d health=%.0f recovery=%.2f clock=%.1f"),
     *GetNameSafe(GetPawn()),Bike->bParked?1:0,Bike->RiderHealth,Bike->Ride->Recovery,SkaterClock);
-   if(SkaterClock>6.f)KCHECK(false,"No on-foot rider six seconds after the bike parked");
+   // Twenty seconds, not six. The park-and-hand-over is asynchronous, and on
+   // 2026-09-19 this stage went red inside the 31-audit sweep with the pawn
+   // still BattleBike_2147482372 for the whole six-second window - parked,
+   // health 100, recovery 0 - then passed alone on the same binary. The promise
+   // is that a knocked-off rider ends up on his feet; how many seconds the swap
+   // takes on a busy machine is not part of it.
+   if(SkaterClock>20.f)KCHECK(false,"No on-foot rider twenty seconds after the bike parked");
    return;
   }
   // Fire() refuses with the weapon holstered, and a rider who has just been
@@ -189,7 +195,7 @@ void ABattleMacController::TickSkaterAudit(float Dt){
   if(!Rider->bWeaponDrawn){KCHECK(Rider->ToggleDrawWeapon(),"Could not draw a weapon to shoot the skater");return;}
   if(Rider->DrawRemaining>0)return;
   FVector Eye;FRotator View;GetPlayerViewPoint(Eye,View);SetControlRotation((Skater->GetActorLocation()-Eye).Rotation());if(SkaterClock<=.5f)return;FCollisionQueryParams Q(SCENE_QUERY_STAT(SkaterShotAudit),true,Rider);FHitResult Sight;GetWorld()->LineTraceSingleByChannel(Sight,Eye,Eye+View.Vector()*1500,ECC_Visibility,Q);UE_LOG(LogTemp,Display,TEXT("SkaterShotSight: actor=%s eye=%s target=%s"),*GetNameSafe(Sight.GetActor()),*Eye.ToString(),*Skater->GetActorLocation().ToString());KCHECK(Sight.GetActor()==Skater,"Skater camera aim obstructed");const float Before=Mode->TimeRemaining;const bool Fired=Rider->Fire();UE_LOG(LogTemp,Display,TEXT("SkaterShot: fired=%d dead=%d delta=%.2f"),Fired,Skater->bDead,Mode->TimeRemaining-Before);KCHECK(Fired&&Skater->bDead&&FMath::IsNearlyEqual(Mode->TimeRemaining-Before,-10.f,.001f),"Shooting skater did not apply civilian time penalty");KCHECK(Mode->PeopleHit==2,"Same victim counted twice");Finish(true,TEXT("Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass"));}
- if(SkaterClock>(SkaterStage==1?40:(SkaterStage==4?16:8))&&SkaterStage!=99)Finish(false,TEXT("Skater phase timed out"));
+ if(SkaterClock>(SkaterStage==1?40:(SkaterStage==4?16:(SkaterStage==5?22:8)))&&SkaterStage!=99)Finish(false,TEXT("Skater phase timed out"));
 #undef KCHECK
 #endif
 }
