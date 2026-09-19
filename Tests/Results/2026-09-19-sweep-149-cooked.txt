@@ -1,0 +1,85 @@
+Build 149 (the spirit bear back on its own authored material)
+Sweep: Scripts/run_quick_audits.sh against
+  Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground
+Run 2026-09-19 08:24-08:44. This is the sweep's own console transcript.
+
+-- BattleCurseAudit: pass
+-- BattleTreeRideAudit: pass
+-- Realistic-BattleTreeRideAudit: pass
+-- BattleTroubleAudit: pass
+-- BattleSteeringAudit: pass
+-- BattleSleeperAudit: pass
+-- BattleGrassAudit: pass
+-- BattleBikeCarAudit: pass
+-- BattleMurderKAudit: pass
+-- BattlePickupAudit: pass
+-- BattleSpiritAudit: pass
+-- BattleKrogCrashAudit: pass
+-- BattleDuckAudit: pass
+-- BattleSpeedAudit: pass
+-- BattleTimeAudit: pass
+-- BattleDiscAudit: pass
+-- BattleMeleeAudit: pass
+-- BattleDiagonalAudit: pass
+-- BattlePatioAudit: pass
+-- BattleTunnelHazardAudit: FAIL {"passed":false,"reason":"Traversal timed out","phase":1,
+     "bore_cm":4608,"grounded_stations":12,"deep_holes":6,"shallow_holes":6,"scooters":5,
+     "punks":3,"punk_seats":3,"gallery_columns":37,"gallery_blocked":0,"gallery_traffic":2,
+     "gallery_ride_cm":30283,"wipeouts":0}; re-running alone after 8s
+-- BattleTunnelHazardAudit: FAIL twice {"passed":false,"reason":"Traversal timed out","phase":1,
+     "gallery_ride_cm":30309}
+-- BattleTrailModeAudit: pass
+-- BattleSkaterAudit: pass
+-- BattleDroneAudit: pass
+-- BattleFrisbeeAudit: pass
+-- BattlePanicAudit: pass
+-- BattleSpareBikeAudit: pass
+-- BattleTutorialAudit: pass
+-- BattleMarketImpactAudit: pass
+-- BattleScooterTrafficAudit: pass
+-- BattleMusicAudit: pass
+
+29 of 30 green on the first pass.
+
+The one red: BattleTunnelHazardAudit, twice, at 08:38:34 and 08:39:06 - inside
+the two minutes after four orphaned UnrealEditor-Cmd processes from the crashed
+chat were killed, each of which had been spinning 11% of a core for 20 to 36
+minutes and holding 560 MB. Every field of the audit's report is correct except
+the wall clock (bore 4608 cm, 12 grounded stations, 6 deep and 6 shallow holes,
+37 gallery columns, 0 blocked, gallery_ride_cm ~30,300), so nothing about the
+tunnel regressed - the traversal did not finish in its window on a busy machine.
+
+Re-checked alone on a quiet machine:
+
+  BATTLE_SWEEP_ONLY=BattleTunnelHazardAudit zsh Scripts/run_quick_audits.sh \
+    Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground
+  -- BattleTunnelHazardAudit: pass            (08:44, 16.9 s)
+
+So the honest reading is 30 of 30 with one contention red, not a clean sweep.
+The entry is the same one that has flaked before; unlike the earlier instances
+it failed twice, which is why it is written down rather than called a flake.
+
+From the assembled share
+(/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 149),
+which is what the Desktop shortcut points at:
+
+  -- BattleSpiritAudit: pass                  (08:46, 24.1 s, -installed)
+
+The bear, in the cooked build, from work/spirit-review-8.log:
+
+  BattleSpiritVisual: bear_body=SM_SpectralBear
+    material=MID_M_SpectralBearBody_2147482307 source=M_SpectralBearBody
+    authored=1 eyes=2 scale=0.334
+  BattleSpiritReview: state=3 ... body_visible=1 ... rendered=1
+
+authored=1 and a MID whose parent is the authored graph is the branch this build
+changed, and the same log line printed MID_BasicShapeMaterial_* in build 148.
+
+NOT verified, and this is the gap: the cooked build produced no screenshot.
+FScreenshotRequest is issued (the review reaches its 45th and 95th frame and
+logs rendered=1) and work/spirit-review-8/ stays empty, so the packaged app's
+screenshot request does not complete the way the editor's does. The visual
+acceptance for what ships is therefore still Elliott's eye; what is proven here
+is which material the shipped app puts on the body, not how it looks on screen.
+Fixing that capture path is the next session's first job, because right now no
+visual claim about a packaged build can be checked from this harness.
