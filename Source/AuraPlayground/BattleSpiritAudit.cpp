@@ -15,6 +15,9 @@
 #include "BattleSpiritData.h"
 #include "Misc/CommandLine.h"
 #include "UnrealClient.h"
+#include "Components/SceneCaptureComponent2D.h"
+#include "Engine/TextureRenderTarget2D.h"
+#include "Kismet/KismetRenderingLibrary.h"
 void ABattleMacController::TickSpiritAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritReview"))){
@@ -27,15 +30,87 @@ void ABattleMacController::TickSpiritAudit(float Dt){
    SpiritReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation());SetViewTarget(SpiritReviewCamera);
    S->Tick(.01f);
   }
-  // FScreenshotRequest, not HighResShot: every other review in this project
-  // writes through it, and a console HighResShot under -RenderOffscreen never
-  // came back - this branch used to hang here instead of producing a picture.
+  // A scene capture onto a render target, not FScreenshotRequest: this is the
+  // one capture path that works in a packaged build, and until it existed no
+  // shipped build's look had ever been checked.
+  //
+  // What was wrong with the two that came before. A console HighResShot under
+  // -RenderOffscreen never came back - this branch used to hang here instead of
+  // producing a picture. FScreenshotRequest did produce pictures from the
+  // editor, which is why it looked like the answer for a whole day, but the
+  // editor was not the one writing them: its log opens with "Requested
+  // channels: 'cpu,gpu,frame,log,bookmark,screenshot,region'", so the trace
+  // screenshot channel was servicing the request. A cooked build has no trace
+  // server - its log says "UTS: The Unreal Trace Server binary is not
+  // available" - so build 149's review reached its 45th and 95th frame, logged
+  // rendered=1, and left an empty directory. Capturing in-process removes the
+  // dependency on anything being staged and enabled around the game.
+  auto EnsureCapture=[&](){
+   if(SpiritReviewCapture||Dir.IsEmpty()||!SpiritReviewCamera)return;
+   SpiritReviewTarget=NewObject<UTextureRenderTarget2D>(this);
+   SpiritReviewTarget->RenderTargetFormat=RTF_RGBA8;
+   SpiritReviewTarget->InitAutoFormat(1280,720);
+   SpiritReviewTarget->UpdateResourceImmediate(true);
+   SpiritReviewCapture=NewObject<USceneCaptureComponent2D>(this);
+   SpiritReviewCapture->TextureTarget=SpiritReviewTarget;
+   // Final colour, not the scene colour: the review has to show what the
+   // player sees, tone mapping and all, because the complaint being checked
+   // was about how a pale body and its rim read on screen.
+   SpiritReviewCapture->CaptureSource=ESceneCaptureSource::SCS_FinalColorLDR;
+   // Every frame, and keeping its render state between them, because a one-shot
+   // capture has no eye adaptation to work from: the first attempt at this wrote
+   // a correctly framed picture of the right scene, about four stops dark - it
+   // rendered as dusk what the player sees as midday, which would have been a
+   // worse review than no review at all. Persistent state lets the capture's
+   // exposure settle the way a viewport's does.
+   SpiritReviewCapture->bCaptureEveryFrame=true;
+   SpiritReviewCapture->bAlwaysPersistRenderingState=true;
+   SpiritReviewCapture->bCaptureOnMovement=false;
+   SpiritReviewCapture->RegisterComponent();
+  };
+  auto Capture=[&](const TCHAR* Name){
+   if(Dir.IsEmpty()||!SpiritReviewTarget)return;
+   UKismetRenderingLibrary::ExportRenderTarget(this,SpiritReviewTarget,Dir,Name);
+   // A packaged Mac build runs sandboxed - its own savegames land under
+   // ~/Library/Containers/com.webexperts.battleofatl/Data/... - so the first
+   // cooked attempt at this wrote nothing and said so only as a Blueprint
+   // warning: "ExportRenderTarget: FileWrite failed to create", because the
+   // review directory the harness passes lives on the assets volume, outside the
+   // container. Nothing in the editor can reproduce that, which is why it took a
+   // packaged run to find. Fall back to a directory the app is allowed to write,
+   // and say which one it used so the caller can collect from there.
+   FString Written=Dir;
+   if(!IFileManager::Get().FileExists(*FPaths::Combine(Dir,Name))){
+    Written=FPaths::ProjectSavedDir()/TEXT("SpiritReview");
+    IFileManager::Get().MakeDirectory(*Written,true);
+    UKismetRenderingLibrary::ExportRenderTarget(this,SpiritReviewTarget,Written,Name);
+   }
+   UE_LOG(LogTemp,Display,TEXT("BattleSpiritReview: capture %s -> %s/%s"),Name,*Written,Name);
+  };
+  // Frame counts are the wrong clock for this review, and measuring that cost a
+  // second pass: the trace-captured editor run and the packaged run both
+  // exported "frame 45" and "frame 95", and the bear was pale in one and near
+  // black in the same view in the other. Nothing about the material differed -
+  // `state=3` (Active, so Reveal is pinned at 1) in both logs. What differed was
+  // wall-clock time: the traced run's frames were far slower, so its frame 95
+  // arrived seconds later, and the ghost's own light pulses on time
+  // (`SetIntensity(950 * Reveal * Pulse)`). A review that samples an oscillating
+  // light by frame number measures the machine. Seconds after setup instead.
   SpiritReviewFrames++;
+  SpiritReviewClock+=Dt;
+  // The capture draws every frame, so it follows the camera every frame - the
+  // camera itself is moved at frame 70 for the approach view, and the capture
+  // has to be standing where it is by the time that frame is exported.
+  if(Dir.IsEmpty()==false&&SpiritReviewCamera){
+   EnsureCapture();
+   if(SpiritReviewCapture)SpiritReviewCapture->SetWorldLocationAndRotation(SpiritReviewCamera->GetActorLocation(),SpiritReviewCamera->GetActorRotation());
+  }
   // Say what the capture is actually looking at. A review that writes two
   // pictures and no numbers cannot tell "the spirit is not there" from "the
   // spirit is there and invisible", which is exactly the mistake that cost a
   // pass over the bear's material.
-  if(SpiritReviewFrames==45||SpiritReviewFrames==95){
+  if(SpiritReviewClock>=3.0f&&SpiritReviewShot<1||SpiritReviewClock>=4.5f&&SpiritReviewShot<2){
+   SpiritReviewShot++;
    TActorIterator<ABattleSpirit> It(GetWorld());auto* S=It?*It:nullptr;
    if(S&&S->BearBody){
     const FBoxSphereBounds B=S->BearBody->Bounds;
@@ -48,8 +123,9 @@ void ABattleMacController::TickSpiritAudit(float Dt){
     UE_LOG(LogTemp,Display,TEXT("BattleSpiritReview: no spirit actor or no bear body component"));
    }
   }
-  if(!Dir.IsEmpty()&&SpiritReviewFrames==45)FScreenshotRequest::RequestScreenshot(Dir/TEXT("spirit-three-quarter.png"),false,false);
-  if(!Dir.IsEmpty()&&SpiritReviewFrames==70){
+  if(SpiritReviewClock>=3.0f&&SpiritReviewShot==1&&!bSpiritReviewTookThreeQuarter){bSpiritReviewTookThreeQuarter=true;Capture(TEXT("spirit-three-quarter.png"));}
+  if(!Dir.IsEmpty()&&SpiritReviewClock>=4.0f&&!bSpiritReviewMoved){
+   bSpiritReviewMoved=true;
    // And the view that matters: off the approach, which is how the rider meets
    // it, rather than from the side the art was authored to be looked at.
    TActorIterator<ABattleSpirit> It(GetWorld());auto* Bear=It?*It:nullptr;
@@ -60,8 +136,8 @@ void ABattleMacController::TickSpiritAudit(float Dt){
     SpiritReviewCamera->SetActorLocationAndRotation(From,(P+FVector(0,0,80)-From).Rotation());
    }
   }
-  if(!Dir.IsEmpty()&&SpiritReviewFrames==95)FScreenshotRequest::RequestScreenshot(Dir/TEXT("spirit-approach.png"),false,false);
-  if(SpiritReviewFrames>130)ConsoleCommand(TEXT("quit"));return;
+  if(SpiritReviewClock>=4.5f&&!bSpiritReviewTookApproach){bSpiritReviewTookApproach=true;Capture(TEXT("spirit-approach.png"));}
+  if(SpiritReviewClock>6.f)ConsoleCommand(TEXT("quit"));return;
  }
  if(bSpiritAuditDone||GetWorld()->GetTimeSeconds()<5)return;bSpiritAuditDone=true;
  auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* B=Cast<ABattleBike>(GetPawn());int Checks=0;

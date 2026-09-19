@@ -23,7 +23,11 @@ void ABattleMacController::TickGeographyAudit(float Dt){
  };
  if(!Water){Finish(false,TEXT("Missing lake hazard"));return;}
  if(GeographyPhase==0){
-  FVector Start=Bike->GetActorLocation();for(TActorIterator<APlayerStart> It(GetWorld());It;++It){Start=It->GetActorLocation();break;}
+  // No `break` inside the loop: clang rejects that as
+  // -Wunreachable-code-loop-increment and this project builds with -Werror, so
+  // the loop form only compiled while unity grouping kept this file in a blob
+  // that happened not to be recompiled. The iterator is asked once instead.
+  FVector Start=Bike->GetActorLocation();{TActorIterator<APlayerStart> It(GetWorld());if(It)Start=It->GetActorLocation();}
   const bool Anchors=GetWorld()->GetWorldSettings()->ActorHasTag(TEXT("BattleGeography_ESU_v1"))&&FMath::Abs(Start.X+16926.2)<1&&FMath::Abs(Start.Y+5098)<1&&BattleRouteAnchors::ParkExitY>10729;
   const FVector2D North=ABattleQuest::RadarOffset(FVector2D(0,-100),1),East=ABattleQuest::RadarOffset(FVector2D(100,0),1);
   const bool Compass=North.Y<0&&North.X==0&&East.X>0&&East.Y==0&&FVector::DotProduct(FRotationMatrix(FRotator::ZeroRotator).GetUnitAxis(EAxis::Y),FVector(0,-1,0))<-.99;
