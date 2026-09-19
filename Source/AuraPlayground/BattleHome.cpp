@@ -114,6 +114,13 @@ void ABattleHome::RefreshBestTimeBoard(FName Difficulty,bool bForce){
  ShownDifficulty=Difficulty;
  auto* Board=BestTimeBoard.Get();
  if(!Board||!Board->GetTextRender())return;
- const float Best=BattleRecords::Best(Difficulty);
- Board->GetTextRender()->SetText(Best>0.f?FText::FromString(FString::Printf(TEXT("BEST TIME %s %s"),*Difficulty.ToString().ToUpper(),*BattleRecords::Format(Best))):FText::FromString(TEXT("NO BEST TIME YET")));
+ static const TCHAR* Names[3]={TEXT("Easy"),TEXT("Medium"),TEXT("Hard")};
+ FString Lines;
+ for(int i=0;i<3;i++){
+  const FName Name(Names[i]);
+  const float Best=BattleRecords::Best(Name);
+  if(Lines.Len())Lines+=TEXT("\n");
+  Lines+=FString::Printf(TEXT("%s%s  %s"),Name==Difficulty?TEXT("*"):TEXT(" "),Names[i],Best>0.f?*BattleRecords::Format(Best):TEXT("--:--"));
+ }
+ Board->GetTextRender()->SetText(FText::FromString(TEXT("BEST TIMES\n")+Lines));
 }

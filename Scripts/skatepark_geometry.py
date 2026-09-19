@@ -82,6 +82,10 @@ QUARTERS = [
 # y axis, x0, x1, height, wavelength
 ROLLERS = [
     ("West pump rollers", -700, -3300, -2150, 95, 340),
+    # The core strip south of the manual pad was flat and empty. This is the run
+    # that carries speed from the pad into the spine: six rollers, 300 apart,
+    # shallow enough to pump rather than jump.
+    ("Core pump line", -1000, -200, 1500, 70, 300),
 ]
 
 # cx, cy, half_x, half_y, cap, height  (cap is the flat top as a fraction)
@@ -105,6 +109,23 @@ BANKS = [
     ("Bank to bank, west", -3300, -2880, -640, 40, 220, 200),
     ("Bank to bank, east", -2600, -2180, -640, 40, 220, 200),
     ("Southeast landing bank", -1150, -650, -1500, -2050, 220, 170),
+]
+
+# x0, x1, y_axis, half, height  (rides up to a ridge along y_axis and back down)
+#
+# Elliott asked for the park to be bigger "and more fun". Size went up 2.6x but
+# everything in it was a destination - a bowl, a bank, a pad - with nothing that
+# carries speed from one to the next, which on a bike is the whole point. A
+# spine is the classic fix: you approach along its length, the surface lifts
+# under the wheels and drops away on the far side, and it can be hit from either
+# side. Placed in the core where the deck was empty, running parallel to the
+# manual pad, so a line exists: pad, pump rollers, spine, bank, bowl.
+SPINES = [
+    # East end of the south-east block: the only wide, empty deck left. Its
+    # north half sits in the core block and its south half in the south-east
+    # block, which is fine - both are deck - and the core pump line runs into it
+    # from the west, so the two features make one line rather than two props.
+    ("Core spine", 1000, 1700, -1300, 300, 190),
 ]
 
 
@@ -190,6 +211,14 @@ def _bank(x, y, x0, x1, y0, y1, bevel, height):
     return height * min(1.0, (x - x0) / bevel, (x1 - x) / bevel, (y - y0) / bevel, (y1 - y) / bevel)
 
 
+def _spine(x, y, x0, x1, y_axis, half, height):
+    """A ridge: full height on y_axis, zero at half either side, faded at the ends."""
+    if not (x0 <= x <= x1) or abs(y - y_axis) >= half:
+        return 0.0
+    end = _clamp01((x - x0) / 260.0) * _clamp01((x1 - x) / 260.0)
+    return height * max(0.0, 1.0 - abs(y - y_axis) / half) * end
+
+
 def feature(x, y):
     """Height of the park surface relative to the deck, in cm."""
     down = min([0.0] + [_bowl(x, y, *b[1:]) for b in BOWLS])
@@ -202,6 +231,7 @@ def feature(x, y):
         max(_volcano(x, y, *v[1:]) for v in VOLCANOES),
         max(_pad(x, y, *p[1:]) for p in PADS),
         max(_bank(x, y, *b[1:]) for b in BANKS),
+        max(_spine(x, y, *s[1:]) for s in SPINES),
     ]
     return down + max(up)
 

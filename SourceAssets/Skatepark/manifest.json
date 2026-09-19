@@ -176,6 +176,14 @@
         -2150
       ],
       "height_cm": 95
+    },
+    {
+      "name": "Core pump line",
+      "span_local_x_cm": [
+        -200,
+        1500
+      ],
+      "height_cm": 70
     }
   ],
   "pyramids": [
