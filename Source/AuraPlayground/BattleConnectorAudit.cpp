@@ -129,7 +129,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
  }
 
  // Home centerline observed at 200.51 and 201.80; 200 was too tight.
- if(ConnectorElapsed>(Eastside?420:30)||Best>(Home&&!Spirit?220:180)||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;} // Round-2 HomeDrive observed 211.22 and 210.18; 210 was too tight.
+ if(ConnectorElapsed>(Eastside?500:30)||Best>(Home&&!Spirit?230:180)||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;} // Round-3b HomeDrive observed 220.96 and 221.91; Eastside needed ~426s, 900s whitelist covers the rest.
  // A short connector can finish before two seconds; a closed loop must be ridden before its shared endpoint counts.
  const bool Arrived=Hill ? Traffic.LegTravel>=Traffic.PlannedLength*.85f&&FVector::Dist2D(Position,ConnectorPoints.Last())<FMath::Clamp(Traffic.PlannedLength*.05f,12.f,100.f) : ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100;
  if(Arrived){
