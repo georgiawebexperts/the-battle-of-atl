@@ -69,6 +69,56 @@ $audits = @(
     [pscustomobject]@{ Name = 'BattleScooterTrafficAudit'; Label = 'BattleScooterTrafficAudit'; Flag = 'BattleFurnitureAudit' }
     [pscustomobject]@{ Name = 'BattleStreakAudit'; Label = 'BattleStreakAudit'; Flag = '' }
 )
+# BATTLE_SWEEP_EXTENDED=1 adds the 39 audits Mac build 152 brought into the
+# sweep (75 exist total; these had never run in any sweep). They get a tighter
+# two-minute cap by default, because an untriaged audit that hangs should cost
+# two minutes rather than seven.
+\ = (\ -eq '1')
+if (\) {
+    \ += @(
+        [pscustomobject]@{ Name = 'BattleAimAudit'; Label = 'BattleAimAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleAmmoAudit'; Label = 'BattleAmmoAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleFinishAudit'; Label = 'BattleFinishAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleFootAudit'; Label = 'BattleFootAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleGeographyAudit'; Label = 'BattleGeographyAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleHealthAudit'; Label = 'BattleHealthAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleHornAudit'; Label = 'BattleHornAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleInventoryAudit'; Label = 'BattleInventoryAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleJumpAudit'; Label = 'BattleJumpAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleKnifeAudit'; Label = 'BattleKnifeAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleSkateAudit'; Label = 'BattleSkateAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleSkylineAudit'; Label = 'BattleSkylineAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleStorefrontAudit'; Label = 'BattleStorefrontAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleSwimAudit'; Label = 'BattleSwimAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleWatchAudit'; Label = 'BattleWatchAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleZombieAudit'; Label = 'BattleZombieAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleConnectorAudit'; Label = 'BattleConnectorAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleCrossingReservationAudit'; Label = 'BattleCrossingReservationAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleEntranceWalkAudit'; Label = 'BattleEntranceWalkAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleMonroeOccupancyAudit'; Label = 'BattleMonroeOccupancyAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattlePhoneRideAudit'; Label = 'BattlePhoneRideAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattlePlayerCrashAudit'; Label = 'BattlePlayerCrashAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattlePotholeAudit'; Label = 'BattlePotholeAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattlePotholeRideAudit'; Label = 'BattlePotholeRideAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleTrafficPopulationAudit'; Label = 'BattleTrafficPopulationAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleZombiePopulationAudit'; Label = 'BattleZombiePopulationAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleAmbientBenchAudit'; Label = 'BattleAmbientBenchAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleAmbientSleeperAudit'; Label = 'BattleAmbientSleeperAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleBenchFireAudit'; Label = 'BattleBenchFireAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleBenchIgnitionAudit'; Label = 'BattleBenchIgnitionAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleBenchReachAudit'; Label = 'BattleBenchReachAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleRoadAmberAudit'; Label = 'BattleRoadAmberAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleRoadCarAudit'; Label = 'BattleRoadCarAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleRoadCrossingAudit'; Label = 'BattleRoadCrossingAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleRoadLaneAudit'; Label = 'BattleRoadLaneAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleRoadTrafficAudit'; Label = 'BattleRoadTrafficAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleSleeperChaseAudit'; Label = 'BattleSleeperChaseAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleSleeperSettleAudit'; Label = 'BattleSleeperSettleAudit'; Flag = '' },
+        [pscustomobject]@{ Name = 'BattleSleeperTriggerAudit'; Label = 'BattleSleeperTriggerAudit'; Flag = '' }
+    )
+    if (-not $env:BATTLE_AUDIT_TIMEOUT) { $env:BATTLE_AUDIT_TIMEOUT = '120' }
+}
+
 
 # BATTLE_SWEEP_ONLY=Name,Name runs just those entries, for verifying one audit
 # without paying for the full launch list (mirrors the Mac sweep script).
