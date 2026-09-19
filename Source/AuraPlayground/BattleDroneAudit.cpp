@@ -41,6 +41,8 @@ void ABattleMacController::TickDroneAudit(float Dt){
   if(auto* AuditMode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(AuditMode->Enemies)AuditMode->Enemies->bFreezeSpawns=true;
   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
   for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)It->Destroy();
+  TArray<APawn*> LockTargets;for(TActorIterator<APawn> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("PiedmontHostile"))||It->ActorHasTag(TEXT("BattleHostile"))||It->ActorHasTag(TEXT("BattlePolice")))LockTargets.Add(*It);
+  for(APawn* Hostile:LockTargets)if(!Hostile->IsA<ABattleBike>()&&!Hostile->IsA<ABattleRider>())Hostile->Destroy();
   Bike->DamageGrace=0;AuditDrone=GetWorld()->SpawnActor<ABattleDrone>(Bike->GetActorLocation()+FVector(-600,0,400),FRotator::ZeroRotator);Next();
  }else if(DroneStage==1&&DroneClock>1){DCHECK(Drone&&Drone->bWarning&&Bike->RiderHealth==100,"Missing warning or premature hit");Next();}
  else if(DroneStage==2&&Bike->bCrashActive){DCHECK(Drone&&Drone->RiderHits==1&&Bike->RiderHealth==85&&Bike->StunRemaining>0&&!Bike->Dismount()&&!Bike->FirePistol()&&!Bike->ApplyDroneStrike(),"Swept hit, harm, dismount or repeat guard failed");Next();}
