@@ -1,4 +1,5 @@
 #include "BattleKrogCrash.h"
+#include "BattleScooterProp.h"
 #include "BattleBike.h"
 #include "BattleHomeData.h"
 #include "BattleCheckpoints.h"
@@ -27,8 +28,6 @@ ABattleKrogCrash::ABattleKrogCrash(){
  RoadBlock->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
  RoadBlock->SetCollisionResponseToAllChannels(ECR_Block);
  RoadBlock->SetCanEverAffectNavigation(false);RoadBlock->SetHiddenInGame(true);
- static ConstructorHelpers::FClassFinder<AActor> Scooter(TEXT("/Game/BeltLineGlide/BP_ScooterRider"));
- ScooterClass=Scooter.Class;
 }
 
 void ABattleKrogCrash::SpawnWreck(){
@@ -36,31 +35,78 @@ void ABattleKrogCrash::SpawnWreck(){
  UStaticMesh* Cube=nullptr;Mesh(TEXT("/Engine/BasicShapes/Cube.Cube"),Cube);
  auto* Wood=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Furniture/M_BenchWood.M_BenchWood"));
  auto* Metal=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/PiedmontRide/Materials/M_GunMetal.M_GunMetal"));
- // Two scooters: one down in the lane, one thrown onto the shoulder.
- if(ScooterClass){
-  const FRotator Down(RoadDir.Rotation().Pitch+78.f,RoadDir.Rotation().Yaw,RoadDir.Rotation().Roll+112.f);
-  if(auto* A=GetWorld()->SpawnActor<AActor>(ScooterClass,WreckSpot+RoadSide*40.f,Down))Spawned.Add(A);
-  if(auto* B=GetWorld()->SpawnActor<AActor>(ScooterClass,WreckSpot+RoadSide*430.f+RoadDir*260.f,FRotator(0,RoadDir.Rotation().Yaw+58.f,96.f)))Spawned.Add(B);
+ // The scooters in the wreck.
+ //
+ // These used to be BP_ScooterRider, which is an untextured engine cylinder -
+ // the same placeholder the moving traffic uses. Elliott rode this stretch and
+ // asked where the scooters were, and he was right: there were six of them and
+ // all six were a grey tube. They are authored from parts now, and they wear the
+ // KrogIncident scooter materials that had been sitting unused in the project.
+ const int32 Yaw=(int32)RoadDir.Rotation().Yaw;
+ const FVector DownSpots[]={
+  WreckSpot+RoadSide*-30.f+RoadDir*60.f,
+  WreckSpot+RoadSide*430.f+RoadDir*260.f,
+  WreckSpot+RoadSide*-260.f+RoadDir*300.f,
+  WreckSpot+RoadSide*180.f+RoadDir*-380.f,
+  WreckSpot+RoadSide*520.f+RoadDir*140.f,
+  WreckSpot+RoadSide*-420.f+RoadDir*-180.f};
+ for(int32 I=0;I<UE_ARRAY_COUNT(DownSpots);++I){
+  // Laid over: 82-102 degrees of roll about the deck axis, and the matching lift
+  // so the deck, not the wheels, is what touches the pavement. The angle used to
+  // sit in Pitch, which stands a scooter on its nose instead of laying it down.
+  const FRotator Lay(2.f+(I%3)*4.f,(float)(Yaw+(I%2?38:-31)),92.f+(I%2?-12:8));
+  ScooterParts+=BuildBattleScooter(this,CrashRoot,DownSpots[I]+FVector(0,0,12.f),Lay,I,false);
+  ++Scooters;
  }
+ // One still on its wheels, slewed across the wheel line, as if it was just
+ // clipped - the thing the rider is looking for when he asks about scooters.
+ScooterParts+=BuildBattleScooter(this,CrashRoot,WreckSpot+RoadSide*-520.f+RoadDir*620.f+FVector(0,0,18.f),FRotator(6.f,(float)(Yaw+124),-7.f),2,false);
+ ++Scooters;
  // Debris field so the lane reads as wreckage rather than a parked scooter.
- // A car thrown onto its side is what makes the crash read from a distance.
- if(Cube){
+ // A car thrown onto its side is what makes the crash read from a distance, and
+ // it has to look like a car: the first version of this was a scaled engine
+ // cube in gun metal, which on screen was a two-tonne grey slab with a bonfire
+ // under it. This is the same body the road cars use, rolled onto its side.
+ if(auto* Hull=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Vehicles/SportsCar/SM_SportsCar.SM_SportsCar"))){
   auto* Car=NewObject<UStaticMeshComponent>(this);
-  Car->SetupAttachment(CrashRoot);Car->SetStaticMesh(Cube);Car->SetMaterial(0,Metal);
+  Car->SetupAttachment(CrashRoot);Car->SetStaticMesh(Hull);
   Car->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
   Car->SetCollisionResponseToAllChannels(ECR_Block);
   Car->SetCanEverAffectNavigation(false);
   Car->RegisterComponent();
-  Car->SetWorldLocation(WreckSpot-RoadSide*300.f+FVector(0,0,110.f));
-  Car->SetWorldScale3D(FVector(4.6f,2.0f,1.25f));
-  Car->SetWorldRotation(FRotator(-7.f,RoadDir.Rotation().Yaw+14.f,84.f));
+  Car->SetWorldLocation(WreckSpot-RoadSide*300.f+FVector(0,0,118.f));
+  Car->SetWorldRotation(FRotator(0,RoadDir.Rotation().Yaw+14.f,87.f));
+  if(auto* Paint=Car->CreateDynamicMaterialInstance(0))Paint->SetVectorParameterValue(TEXT("Paint Tint"),FLinearColor(.72f,.18f,.03f));
+  if(auto* GlassMesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Vehicles/SportsCar/SM_SportsCar_Glass.SM_SportsCar_Glass"))){
+   auto* Glass=NewObject<UStaticMeshComponent>(this);
+   Glass->SetupAttachment(Car);Glass->SetStaticMesh(GlassMesh);
+   // The glass carries the hull's own template offset, exactly as the road car
+   // does it, so the two meshes stay aligned when the wreck is rolled over.
+   Glass->SetRelativeLocation(FVector(-12,0,-59));
+   Glass->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+   Glass->RegisterComponent();
+  }
+  // Wheels off the car and scattered, which is what a wreck looks like.
+  if(auto* WheelMesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Vehicles/SportsCar/SM_SportsCar_Wheel.SM_SportsCar_Wheel"))){
+   for(int32 I=0;I<3;++I){
+    auto* Loose=NewObject<UStaticMeshComponent>(this);
+    Loose->SetupAttachment(CrashRoot);Loose->SetStaticMesh(WheelMesh);
+    Loose->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    Loose->SetCanEverAffectNavigation(false);
+    Loose->RegisterComponent();
+    Loose->SetWorldLocation(WreckSpot+RoadSide*FMath::Cos(I*2.1f)*430.f+RoadDir*FMath::Sin(I*2.1f)*560.f+FVector(0,0,38.f));
+    Loose->SetWorldRotation(FRotator(90.f,I*57.f,0.f));
+   }
+  }
+ }
+ if(Cube){
   auto* Cabin=NewObject<UStaticMeshComponent>(this);
   Cabin->SetupAttachment(CrashRoot);Cabin->SetStaticMesh(Cube);Cabin->SetMaterial(0,Wood);
   Cabin->SetCollisionEnabled(ECollisionEnabled::NoCollision);Cabin->SetCanEverAffectNavigation(false);
   Cabin->RegisterComponent();
-  Cabin->SetWorldLocation(WreckSpot-RoadSide*300.f+FVector(0,0,210.f));
-  Cabin->SetWorldScale3D(FVector(2.4f,1.8f,1.0f));
-  Cabin->SetWorldRotation(FRotator(-7.f,RoadDir.Rotation().Yaw+14.f,84.f));
+  Cabin->SetWorldLocation(WreckSpot-RoadSide*690.f+RoadDir*120.f+FVector(0,0,26.f));
+  Cabin->SetWorldScale3D(FVector(1.9f,1.1f,.42f));
+  Cabin->SetWorldRotation(FRotator(9.f,RoadDir.Rotation().Yaw+38.f,7.f));
  }
  for(int32 I=0;I<7;++I){
   const float A=I*0.9f;
@@ -105,8 +151,8 @@ void ABattleKrogCrash::BeginPlay(){
  TopUp();
  // Keep a shout live even before the rider arrives, so the scene is never mute.
  ShoutText=KrogShouts[0];ShoutRemaining=3.4f;
- UE_LOG(LogTemp,Display,TEXT("BattleKrogCrash: wreck=%s approach=%s tunnel_distance_cm=%.0f gap_cm=%.0f gap_open=%s fires=%d bodies=%d bystanders=%d brawlers=%d"),
-  *WreckSpot.ToString(),*Approach.ToString(),DistanceToTunnelCm,GapClearanceCm,GapIsRideable()?TEXT("true"):TEXT("false"),Fires,Bodies,Bystanders,Brawlers);
+ UE_LOG(LogTemp,Display,TEXT("BattleKrogCrash: wreck=%s approach=%s tunnel_distance_cm=%.0f gap_cm=%.0f gap_open=%s fires=%d bodies=%d bystanders=%d brawlers=%d scooters=%d scooter_parts=%d"),
+  *WreckSpot.ToString(),*Approach.ToString(),DistanceToTunnelCm,GapClearanceCm,GapIsRideable()?TEXT("true"):TEXT("false"),Fires,Bodies,Bystanders,Brawlers,Scooters,ScooterParts);
 }
 
 bool ABattleKrogCrash::GapIsRideable() const{

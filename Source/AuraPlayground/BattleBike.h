@@ -138,6 +138,14 @@ UPROPERTY(BlueprintReadOnly) float Nitro=0;
  UPROPERTY(BlueprintReadOnly) FVector LastShotEnd;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Pistol;
  UFUNCTION(BlueprintCallable) bool FirePistol();
+ // Riding used to show one pistol no matter what was picked up: the crate
+ // added the rifle or SMG to Inventory and the prop never moved. These are the
+ // same assets ABattleRider already loads on foot, held at the pistol anchor.
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> RifleProp;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> ShotgunProp;
+ UPROPERTY(BlueprintReadOnly) int32 ActiveWeapon=0;
+ UFUNCTION(BlueprintCallable) bool SelectRidingWeapon(int32 Slot);
+ void UpdateRidingWeaponModel();
  UFUNCTION(BlueprintCallable) bool Boost();
  void AwardEnemyKill(){EnemyKills++;Nitro=FMath::Min(100.f,Nitro+25);}
  UPROPERTY(BlueprintReadOnly) bool bParked=false;

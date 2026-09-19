@@ -146,7 +146,15 @@ void ABattleEnemyDirector::Tick(float Dt){
 #endif
  auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
  if(!Mode||!Pawn)return;DesiredZombies=Mode->Difficulty.Zombies+FMath::CeilToInt(Mode->Trouble*.5f)+(Mode->Quest&&Mode->Quest->bCollected?6:0);LiveZombies=0;
- for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;}
+ for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){
+  // Authored scene punks inside the Krog bore are scenery, not wave budget.
+  // They are placed at world start, 100 m or more from the rider's start, so
+  // this distance cull used to delete all three before he ever reached the
+  // tunnel - the tunnel read as empty while the spawn log said punks=3. They
+  // are neither culled nor counted: counting them would suppress wave spawns.
+  if(It->ActorHasTag(TEXT("BattleTunnelPunk")))continue;
+  if(FVector::DistSquared2D(It->GetActorLocation(),Pawn->GetActorLocation())>FMath::Square(7500.f))It->Destroy();else LiveZombies++;
+ }
  TickGunmen(Dt);
  TickMurderK(Dt);
  if(bFreezeSpawns||Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)return;

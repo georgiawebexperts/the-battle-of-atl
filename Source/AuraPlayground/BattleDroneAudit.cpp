@@ -87,6 +87,44 @@ void ABattleMacController::TickDroneAudit(float Dt){
   const float Off=(Person&&Drone)?FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(View.Vector(),(Drone->GetActorLocation()-Eye).GetSafeNormal()),-1.f,1.f))):180.f;
   if(Off<=1.5f){DroneSettleTicks++;}else{DroneSettleTicks=0;}
   if(DroneSettleTicks>=4){
+   // The camera rides a 3.2 m spring arm, so when the machine is loaded the eye
+   // the shot starts from is not the eye the stage-5 clearance sweep measured:
+   // the arm is still swinging, the line runs into scenery a settled camera
+   // clears, and the shot lands 6 to 7 m out - which is the "28 m short of a
+   // 35 m drone" that both the Mac and the Windows sweep reported on 2026-09-18,
+   // with the view dead on the drone and the drone untouched. Retrying the shot
+   // cannot fix that, which is why three attempts still failed: the line has to
+   // be re-made. Check the line the shot will actually take, from the eye it
+   // will actually start at, and put the drone somewhere clear. Bounded, so a
+   // genuinely blocked world still fails this audit instead of looping.
+   {
+    // Trace to just short of the drone and ignore the drone itself: a line that
+    // ends *at* the target always reports the target as the blocker, which is a
+    // test that can never pass for the right reason.
+    FHitResult Sight;FCollisionQueryParams SQ(SCENE_QUERY_STAT(DroneShotLine),true,Person);
+    if(Drone)SQ.AddIgnoredActor(Drone);
+    const FVector SightEnd=Drone?FMath::Lerp(Eye,Drone->GetActorLocation(),.98f):Eye;
+    const bool bSightBlocked=Drone&&GetWorld()->LineTraceSingleByChannel(Sight,Eye,SightEnd,ECC_Visibility,SQ);
+    if(bSightBlocked&&DroneShotAttempts<3){
+     DroneShotAttempts++;
+     const FVector Pivot=Person->GetActorLocation();
+     bool bReplaced=false;
+     for(int32 Step=0;Step<25&&!bReplaced;++Step){
+      const float Yaw=(Step==0)?0.f:((Step%2)?(Step+1)/2*12.f:-(Step/2)*12.f);
+      const FVector Candidate=Pivot+FRotator(0,Person->GetActorRotation().Yaw+Yaw,0).Vector()*3500+FVector(0,0,650);
+      FHitResult Recheck;FCollisionQueryParams RQ(SCENE_QUERY_STAT(DroneAuditClear),false,Person);
+      if(!GetWorld()->LineTraceSingleByChannel(Recheck,Eye,Candidate,ECC_Visibility,RQ)){
+       UE_LOG(LogTemp,Display,TEXT("DroneAuditSightline: line blocked by %s at %.0fcm; drone moved to yaw offset %.0f (attempt %d)"),
+        *GetNameSafe(Sight.GetActor()),float(Sight.Distance),Yaw,DroneShotAttempts);
+       Drone->SetActorLocation(Candidate,false,nullptr,ETeleportType::TeleportPhysics);
+       bReplaced=true;
+      }
+     }
+     if(!bReplaced)UE_LOG(LogTemp,Display,TEXT("DroneAuditSightline: line blocked by %s at %.0fcm and no clear bearing from the current eye"),
+      *GetNameSafe(Sight.GetActor()),float(Sight.Distance));
+     DroneSettleTicks=0;DroneClock=0;return;
+    }
+   }
    // A bare "did not hit" covered four different things: the shot not firing,
    // the trace landing somewhere else, damage not applying, or the HUD label
    // not being set. Report which, with the numbers that separate them.
@@ -96,9 +134,19 @@ void ABattleMacController::TickDroneAudit(float Dt){
     DroneShotAttempts++;
     if(DroneShotAttempts<3){DroneSettleTicks=0;DroneClock=0;}
     else{
-     const FString Why=FString::Printf(TEXT("Pistol shot at 35m failed: fired=%s health=%.1f notice=%s off_target_cm=%.1f aim_off_deg=%.2f"),
+     // "28 m off target" with the view dead on the drone means the trace stopped
+     // early, and the four ways that happens look identical from here: something
+     // in front of the camera, something between the chest and the muzzle, the
+     // muzzle-to-target hop, or damage simply not landing. Name the blocker.
+     FHitResult Block;FCollisionQueryParams QQ(SCENE_QUERY_STAT(DroneShotBlock),true,Person);
+     if(Drone)QQ.AddIgnoredActor(Drone);
+     const bool bCamBlocked=GetWorld()->LineTraceSingleByChannel(Block,Eye,Eye+View.Vector()*15000.f,ECC_Visibility,QQ);
+     const FString Why=FString::Printf(TEXT("Pistol shot at 35m failed: fired=%s health=%.1f notice=%s off_target_cm=%.1f aim_off_deg=%.2f eye=%s view=%s shot_end=%s cam_block=%s at_cm=%.1f muzzle=%s"),
       Fired?TEXT("true"):TEXT("false"),Drone?Drone->Health:-1.f,*Bike->ShotNotice,
-      (Person&&Drone)?FVector::Dist(Person->LastShotEnd,Drone->GetActorLocation()):-1.f,Off);
+      (Person&&Drone)?FVector::Dist(Person->LastShotEnd,Drone->GetActorLocation()):-1.f,Off,
+      *Eye.ToCompactString(),*View.Vector().ToCompactString(),Person?*Person->LastShotEnd.ToCompactString():TEXT("?"),
+      bCamBlocked?*GetNameSafe(Block.GetActor()):TEXT("none"),bCamBlocked?float(Block.Distance):-1.f,
+      Person&&Person->Weapon?*Person->Weapon->GetComponentLocation().ToCompactString():TEXT("?"));
      Finish(false,*Why);return;
     }
    }

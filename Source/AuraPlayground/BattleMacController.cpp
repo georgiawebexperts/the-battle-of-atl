@@ -101,6 +101,8 @@ void TickBattleCanopyReview(APlayerController* PC,float Dt);
 void TickBattleTreeRideAudit(APlayerController* PC,float Dt);
 void TickBattleCurseAudit(APlayerController* PC,float Dt);
 void TickBattlePropProbe(APlayerController* PC,float Dt);
+void TickBattlePanelProbe(APlayerController* PC,float Dt);
+void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt);
 void TickBattleAimAudit(APlayerController* PC,float Dt);
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
 void TickBattleSkylineAudit(APlayerController* PC,float Dt);
@@ -153,6 +155,8 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleCurseAudit")))TickBattleCurseAudit(this,Dt);
  static float PropProbeRadius=0;
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePropProbe"))||FParse::Value(FCommandLine::Get(),TEXT("BattlePropProbe="),PropProbeRadius))TickBattlePropProbe(this,Dt);
+ static float PanelProbeRadius=0;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattlePanelProbe"))||FParse::Value(FCommandLine::Get(),TEXT("BattlePanelProbe="),PanelProbeRadius))TickBattlePanelProbe(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePhoneRideAudit")))TickBattlePhoneRideAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerRecoveryReview")))TickBattlePlayerRecoveryReview(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePlayerCrashAudit")))TickBattlePlayerCrashAudit(this,Dt);
@@ -198,7 +202,11 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleFootAudit")))TickFootAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDiagonalAudit")))TickBattleDiagonalAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattlePatioAudit")))TickBattlePatioAudit(this,Dt);
- if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit")))TickSpiritAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleTunnelHazardAudit")))TickBattleTunnelHazardAudit(this,Dt);
+ // The review lives inside the audit tick, so asking for the review alone used
+ // to leave the game running with nobody drawing it: -BattleSpiritReview must
+ // dispatch this too, or the process never captures and never quits.
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritAudit"))||FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritReview")))TickSpiritAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMurderKAudit")))TickMurderKAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKnifeAudit")))TickKnifeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);

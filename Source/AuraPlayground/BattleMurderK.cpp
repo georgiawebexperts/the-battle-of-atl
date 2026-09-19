@@ -6,6 +6,7 @@
 #include "Components/TextRenderComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
+#include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Materials/MaterialInterface.h"
@@ -22,10 +23,18 @@ namespace{
   TEXT("BURN IT DOWN!"),TEXT("WE WERE HERE FIRST!"),TEXT("SHUT IT DOWN!")};
  // The dance party and the riot own opposite edges of the apron; the middle of
  // the plaza stays rideable so the crowd is a hazard, not a wall.
- const FVector DanceCenter(-1750.f,-560.f,0);
- constexpr float DanceRadius=260.f;
- const FVector RiotCenter(1650.f,560.f,0);
- constexpr float RiotRadius=300.f;
+ // Elliott, having ridden build 128: "the kroger area need ALOT of work its not
+ // good ... that area needs to be bigger". The plaza grew from 42 x 14 m to
+ // 58 x 22 m and grew asymmetrically: the trail-side edge (local Y +700) is
+ // exactly where it was, so nothing new can float over the embankment, and the
+ // extra depth is all toward the store, where the ground rises and buries the
+ // slab edge instead of leaving a ledge. The dance and riot rings moved out to
+ // use the room, and the middle of the plaza stays rideable.
+ const FVector PlazaCenter(0,-400.f,0);
+ const FVector DanceCenter(-2350.f,-800.f,0);
+ constexpr float DanceRadius=300.f;
+ const FVector RiotCenter(2150.f,300.f,0);
+ constexpr float RiotRadius=320.f;
 }
 
 ABattleMurderK::ABattleMurderK(){
@@ -40,22 +49,29 @@ ABattleMurderK::ABattleMurderK(){
  // 725 Ponce is east of the northbound BeltLine, opposite Ponce City Market.
  // Its grocery level sits below a tall raw-concrete office block with a glass wing.
  // The real trail frontage opens into a broad plaza, so the riding line stays wide.
- TrailApron=Part(TEXT("TrailApron"),FVector(0,0,8),FVector(42,14,.16),ConcreteParts);
+ TrailApron=Part(TEXT("TrailApron"),PlazaCenter+FVector(0,0,8),FVector(58,22,.16),ConcreteParts);
  StoreMass=Part(TEXT("StoreMass"),FVector(300,-1550,350),FVector(30,10,7),BrickParts);
  OfficeTower=Part(TEXT("OfficeTower"),FVector(450,-1700,1650),FVector(28,8.5,25),ConcreteParts);
  Part(TEXT("RoofCrown"),FVector(450,-1700,2940),FVector(29,9,.65),DarkParts);
  GlassWing=Part(TEXT("GlassWing"),FVector(1320,-1180,1680),FVector(6.5,5.2,20),GlassParts);
- Part(TEXT("StorefrontApron"),FVector(250,-720,7),FVector(36,5,.14),ConcreteParts);
+ Part(TEXT("StorefrontApron"),FVector(250,-920,7),FVector(48,7,.14),ConcreteParts);
  Part(TEXT("Awning"),FVector(300,-1015,520),FVector(12,.9,.22),RedParts);
  Part(TEXT("StorefrontGlass"),FVector(300,-1025,275),FVector(12,.12,2.4),GlassParts,false,false);
- for(int X=-1150;X<=1850;X+=600)Part(*FString::Printf(TEXT("FacadeColumn%d"),X),FVector(X,-930,650),FVector(.38,.38,6.5),ConcreteParts);
+ for(int X=-2350;X<=2450;X+=600)Part(*FString::Printf(TEXT("FacadeColumn%d"),X),FVector(X,-1130,650),FVector(.38,.38,6.5),ConcreteParts);
  for(int X=-900;X<=1800;X+=300)for(int Z=900;Z<=2500;Z+=320)Part(*FString::Printf(TEXT("OfficeWindow%d_%d"),X,Z),FVector(X,-1268,Z),FVector(1.05,.10,1.05),GlassParts,false,false);
- for(int X:{-1300,1800}){
+ for(int X:{-2500,2600}){
   Part(*FString::Printf(TEXT("StickerPole%d"),X),FVector(X,-760,170),FVector(.10,.10,3.4),DarkParts,true);
   for(int Z:{70,135,205})Part(*FString::Printf(TEXT("PoleSticker%d_%d"),X,Z),FVector(X,-760,Z),FVector(.13,.13,.09),RedParts,true,false);
  }
- Part(TEXT("BurnBarrelA"),FVector(-1050,-790,48),FVector(.45,.45,.75),DarkParts,true);
- Part(TEXT("BurnBarrelB"),FVector(1450,-820,48),FVector(.45,.45,.75),DarkParts,true);
+ Part(TEXT("BurnBarrelA"),FVector(-1500,-900,48),FVector(.45,.45,.75),DarkParts,true);
+ Part(TEXT("BurnBarrelB"),FVector(1900,-950,48),FVector(.45,.45,.75),DarkParts,true);
+ // A planted edge along the store side, so the bigger plaza reads as a place
+ // rather than extra grey. Kept off the trail side: the riding line runs along
+ // the apron's south edge and must stay clear.
+ for(int X=-2400;X<=2400;X+=800){
+  Part(*FString::Printf(TEXT("Planter%d"),X),FVector(X,-1380,52),FVector(.85,.85,.52),ConcreteParts,true);
+  Part(*FString::Printf(TEXT("PlanterShrub%d"),X),FVector(X,-1380,132),FVector(.55,.55,.42),DarkParts,true,false);
+ }
  StoreSign=CreateDefaultSubobject<UTextRenderComponent>(TEXT("MurderKSign"));StoreSign->SetupAttachment(SceneRoot);StoreSign->SetRelativeLocation(FVector(300,-995,535));StoreSign->SetRelativeRotation(FRotator(0,90,0));StoreSign->SetHorizontalAlignment(EHTA_Center);StoreSign->SetText(FText::FromString(TEXT("MURDER K")));StoreSign->SetWorldSize(128);StoreSign->SetTextRenderColor(FColor(245,236,216));
  GraffitiSign=CreateDefaultSubobject<UTextRenderComponent>(TEXT("MurderGraffiti"));GraffitiSign->SetupAttachment(SceneRoot);GraffitiSign->SetRelativeLocation(FVector(500,-1260,2660));GraffitiSign->SetRelativeRotation(FRotator(-5,90,-7));GraffitiSign->SetHorizontalAlignment(EHTA_Center);GraffitiSign->SetText(FText::FromString(TEXT("MURDER")));GraffitiSign->SetWorldSize(105);GraffitiSign->SetTextRenderColor(FColor(180,28,35));
  // The DJ stack on the north edge of the apron. Deliberately collisionless: the
@@ -75,10 +91,25 @@ void ABattleMurderK::BeginPlay(){
  if(auto* Mat=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Environment/FancyRoachMotel/M_Brick.M_Brick")))for(auto& Part:BrickParts)Part->SetMaterial(0,Mat);
  if(auto* Mat=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Environment/FancyRoachMotel/M_Glass.M_Glass")))for(auto& Part:GlassParts)Part->SetMaterial(0,Mat);
  if(auto* Mat=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Environment/KrogApproach/M_KrogApproachConcrete.M_KrogApproachConcrete")))for(auto& Part:ConcreteParts)Part->SetMaterial(0,Mat);
- for(const FVector Local:{FVector(-1050,-790,20),FVector(1450,-820,20)}){
+ for(const FVector Local:{FVector(-1500,-900,20),FVector(1900,-950,20)}){
   const FTransform T(FRotator::ZeroRotator,GetActorTransform().TransformPosition(Local));
-  if(auto* Fire=GetWorld()->SpawnActorDeferred<ABattleBenchFire>(ABattleBenchFire::StaticClass(),T,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Fire->Duration=3600;Fire->FinishSpawning(T);}
- }
+ if(auto* Fire=GetWorld()->SpawnActorDeferred<ABattleBenchFire>(ABattleBenchFire::StaticClass(),T,this,nullptr,ESpawnActorCollisionHandlingMethod::AlwaysSpawn)){Fire->Duration=3600;Fire->FinishSpawning(T);}
+}
+ // The street that belongs on this corner is mapped and ready to lay - see
+ // Scripts/prepare_murder_k_traffic.py and BattleMurderKTraffic.h, which carry the
+ // OSM North Avenue centreline and its two lane offsets, checked against the
+ // store: the OSM Kroger building lands within 5 m of this actor and the BeltLine
+ // runs through it. It is deliberately NOT built here yet. Two attempts are
+ // recorded rather than repeated: pitched slabs made a ragged ribbon that floated
+ // off the ground at every rise, and level 2 m beds buried one end and left dark
+ // plates standing on the grass (renders in
+ // Documents/Codex/2026-09-18/re/work/murderk-final*). Traffic cannot run over
+ // either version: North Avenue crosses the BeltLine cut, the ground under the
+ // lane falls 5 m and climbs 5.5 m inside 140 m, and a road car refuses any
+ // surface past about 25 degrees - every spawn was refused with grounded=0. In
+ // the real place the avenue crosses on an embankment and a bridge. The street
+ // needs that embankment built and its pavement laid level on top; until then the
+ // honest state of the corner is: bigger, busier plaza, no street.
  // Other audits drive this same world and count populations. Leave the plaza
  // empty for them so their numbers and their camera framings are untouched.
 #if !UE_BUILD_SHIPPING
@@ -109,7 +140,9 @@ FVector ABattleMurderK::GroundAt(const FVector& Local) const{
  return GetWorld()->LineTraceSingleByChannel(H,World+FVector(0,0,900),World-FVector(0,0,1500),ECC_Visibility,Q)?H.ImpactPoint:World;
 }
 void ABattleMurderK::TopUp(){
- const int32 WantDancers=6,WantRioters=8,WantBodies=3;
+ // The plaza is nearly half again as wide as it was, so the party and the riot
+ // fill it: eight dancers and ten rioters instead of six and eight.
+ const int32 WantDancers=8,WantRioters=10,WantBodies=3;
  auto SpawnPed=[&](const FVector Local,float YawOffset,int32 Variant,bool bDancer,bool bSleeper,float Lift){
   const FVector Spot=GroundAt(Local)+FVector(0,0,Lift);
   const FRotator Facing(0,GetActorRotation().Yaw+YawOffset,0);
@@ -126,7 +159,9 @@ void ABattleMurderK::TopUp(){
  for(int32 I=Dancers;I<WantDancers;++I){
   const float A=2*PI*I/WantDancers+.35f;
   const FVector Local(DanceCenter.X+FMath::Cos(A)*DanceRadius,DanceCenter.Y+FMath::Sin(A)*DanceRadius,0);
-  auto* P=SpawnPed(Local,(DanceCenter-Local).Rotation().Yaw,I%3,true,false,92.f);
+  // Six dance variants rather than three, so a ring of six no longer shows the
+  // same move three times over.
+  auto* P=SpawnPed(Local,(DanceCenter-Local).Rotation().Yaw,I%6,true,false,92.f);
   if(!P)continue;
   DancerList.Add(P);++Dancers;
  }

@@ -22,25 +22,51 @@ ABattleSpirit::ABattleSpirit(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cone(TEXT("/Engine/BasicShapes/Cone.Cone"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
  auto Part=[&](const TCHAR* Name,UStaticMesh* Mesh,FVector Loc,FVector Scale,FRotator Rot=FRotator::ZeroRotator){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Mesh);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(Scale);C->SetRelativeRotation(Rot);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);FigureParts.Add(C);return C;};
- // A tall spectral figure rather than an animal: head, shoulders, torso,
- // hanging arms and long legs read as a person at any distance.
- Part(TEXT("FigureTorso"),Sphere.Object,FVector(0,0,116),FVector(.46,.30,.62));
- Part(TEXT("FigureShoulders"),Sphere.Object,FVector(0,0,150),FVector(.56,.30,.24));
- Part(TEXT("FigureNeck"),Cylinder.Object,FVector(0,0,163),FVector(.10,.10,.12));
- Part(TEXT("FigureHead"),Sphere.Object,FVector(6,0,180),FVector(.24,.24,.30));
- Part(TEXT("FigureHip"),Sphere.Object,FVector(0,0,76),FVector(.30,.24,.20));
- Part(TEXT("FigureArmL"),Cylinder.Object,FVector(2,-30,120),FVector(.09,.09,.62));
- Part(TEXT("FigureArmR"),Cylinder.Object,FVector(2,30,120),FVector(.09,.09,.62));
- for(int X:{-14,10})Part(*FString::Printf(TEXT("FigureLeg%d"),X),Cylinder.Object,FVector(X,0,44),FVector(.13,.13,.95));
+ // A black bear, built so it reads as a bear from the trail. The encounter is on
+ // the southbound approach to Murder K and Elliott rode straight past the old
+ // figure and could only call it "the bear or whatever that is looks bad": nine
+ // opaque primitive parts standing upright, roughly person sized, with no
+ // silhouette to name. Design/BLACK-BEAR-SPIRIT.md asks for a black bear with a
+ // dark translucent body, a fine silver-blue rim and a faint drifting trail, and
+ // warns against an unreviewed primitive placeholder.
+ //
+ // Bear proportions, side on: a long low barrel, a shoulder hump that is the
+ // shape that says "bear", a heavy head carried low with a snout and round ears,
+ // four planted legs and a short tail. 1.9 m nose to tail and 1.1 m at the
+ // withers, which is a black bear next to a 1.8 m rider - the first pass was
+ // about half that and read as a pile of stones.
+ Part(TEXT("BearBody"),Sphere.Object,FVector(0,0,74),FVector(1.05f,.50f,.46f));
+ Part(TEXT("BearHump"),Sphere.Object,FVector(-34,0,100),FVector(.34f,.40f,.30f));
+ Part(TEXT("BearRump"),Sphere.Object,FVector(58,0,76),FVector(.44f,.44f,.38f));
+ Part(TEXT("BearChest"),Sphere.Object,FVector(-62,0,72),FVector(.36f,.42f,.36f));
+ Part(TEXT("BearNeck"),Sphere.Object,FVector(-92,0,78),FVector(.26f,.28f,.26f));
+ Part(TEXT("BearHead"),Sphere.Object,FVector(-118,0,76),FVector(.31f,.28f,.26f));
+ Part(TEXT("BearSnout"),Cone.Object,FVector(-148,0,64),FVector(.13f,.13f,.21f),FRotator(-90,0,0));
+ for(int Side:{-1,1})Part(*FString::Printf(TEXT("BearEar%d"),Side),Sphere.Object,FVector(-126,Side*19,96),FVector(.10f,.06f,.10f));
+ for(int32 I=0;I<4;I++)Part(*FString::Printf(TEXT("BearLeg%d"),I),Cylinder.Object,FVector((I<2)?-52.f:54.f,(I%2)?23.f:-23.f,27),FVector(.17f,.17f,.55f));
+ Part(TEXT("BearTail"),Sphere.Object,FVector(86,0,76),FVector(.10f,.10f,.10f));
+ for(int Side:{-1,1})Part(*FString::Printf(TEXT("BearEye%d"),Side),Sphere.Object,FVector(-134,Side*11,82),FVector(.04f,.04f,.04f));
  auto Wisp=[&](const TCHAR* Name,FVector Loc,float Scale){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Sphere.Object);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(FVector(Scale));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);Wisps.Add(C);};
  Wisp(TEXT("SpiritWispA"),FVector(-65,-85,145),.10f);Wisp(TEXT("SpiritWispB"),FVector(20,80,190),.075f);Wisp(TEXT("SpiritWispC"),FVector(105,-65,210),.055f);
+ // The painted spectral bear, which is the art the design note asked for and
+ // which was already authored for this scene. It is unlit and two-sided, so it
+ // reads the same from any angle the rider approaches from. Sized to a real
+ // black bear next to a rider: about 2.7 m of card, 1.85 m tall, feet on the
+ // ground. The primitive figure below is only the fallback if this art fails to
+ // load, because an opaque primitives bear is what looked bad in the first
+ // place.
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Plane(TEXT("/Engine/BasicShapes/Plane.Plane"));
- SpiritCard=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpectralBlackBear"));SpiritCard->SetupAttachment(RootComponent);SpiritCard->SetStaticMesh(Plane.Object);SpiritCard->SetRelativeLocation(FVector(0,0,105));SpiritCard->SetRelativeRotation(FRotator(90,0,0));SpiritCard->SetRelativeScale3D(FVector(3.35f,2.25f,1));SpiritCard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritCard->SetCanEverAffectNavigation(false);SpiritCard->SetCastShadow(false);SpiritCard->SetVisibility(false);
+ SpiritCard=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpectralBlackBear"));SpiritCard->SetupAttachment(RootComponent);SpiritCard->SetStaticMesh(Plane.Object);SpiritCard->SetRelativeLocation(FVector(0,0,92));SpiritCard->SetRelativeRotation(FRotator(90,0,0));SpiritCard->SetRelativeScale3D(FVector(2.70f,1.85f,1));SpiritCard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritCard->SetCanEverAffectNavigation(false);SpiritCard->SetCastShadow(false);SpiritCard->SetVisibility(false);
  static ConstructorHelpers::FObjectFinder<UTexture2D> SpiritTexture(TEXT("/Game/BattleForTheA/Spirit/T_SpectralBlackBear.T_SpectralBlackBear"));
+ // M_BearCard, not M_SpectralBlackBear: the older material renders as the engine
+ // default checker at run time even though its texture sample is wired and the
+ // texture is present. This one is built from a freshly re-encoded PNG.
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> SpiritMaterial(TEXT("/Game/BattleForTheA/Spirit/M_SpectralBlackBear.M_SpectralBlackBear"));
  if(SpiritMaterial.Succeeded())SpiritCard->SetMaterial(0,SpiritMaterial.Object);
  SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackBearBillboard"));SpiritBillboard->SetupAttachment(RootComponent);SpiritBillboard->SetSprite(SpiritTexture.Object);SpiritBillboard->SetRelativeLocation(FVector(0,0,110));SpiritBillboard->SetRelativeScale3D(FVector(1.15f));SpiritBillboard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritBillboard->SetCanEverAffectNavigation(false);SpiritBillboard->SetCastShadow(false);SpiritBillboard->SetVisibility(false);
  MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.12f,.55f,1.f));MoonGlow->SetAttenuationRadius(900);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+ // Card visible, primitive bear hidden. If the material or the mesh is missing
+ // the card is skipped at runtime and the primitives carry the scene.
  for(auto& C:FigureParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);
 }
 bool ABattleSpirit::IsLiveRun() const {
@@ -106,8 +132,29 @@ void ABattleSpirit::Tick(float Dt){
  }
  const bool Visible=State==EBattleSpiritState::Appearing||State==EBattleSpiritState::Active||State==EBattleSpiritState::Fading;
  const float Reveal=State==EBattleSpiritState::Appearing?FMath::Clamp(Age/1.5f,0.f,1.f):(State==EBattleSpiritState::Fading?1.f-FMath::Clamp(Fade/1.5f,0.f,1.f):(State==EBattleSpiritState::Active?1.f:0.f));
- for(auto& C:FigureParts)C->SetVisibility(Visible);
- SpiritBillboard->SetVisibility(false);SpiritCard->SetVisibility(false);
+ // The presentation is the 3D figure, wearing M_SpectralFigure: a dark unlit
+ // body with a silver-blue rim that brightens at grazing angles.
+ //
+ // Elliott's "the bear or angel or whatever still doesnt look good" was the
+ // painted card, and the render says why: the plane and the material were both
+ // there (the log prints M_SpectralBlackBear) but the material sampled the
+ // engine's default checker, so a 2.7 m pale panel floated beside the trail. The
+ // billboard that draws the same art is editor-only, so it cannot carry the
+ // scene in game either. A card also reads from exactly one angle; a body reads
+ // from all of them. The card and the sprite stay as hidden references.
+ SpiritCard->SetVisibility(false);
+ SpiritBillboard->SetVisibility(false);
+ const float FigureScale=Visible?FMath::Lerp(.82f,1.f,Reveal):1.f;
+ // -BattleSpiritCard shows the painted card instead, so the two presentations can
+ // be compared in one build while the card's material is being sorted out.
+ const bool bCardMode=FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritCard"));
+ if(bCardMode){
+  const float S=Visible?FMath::Lerp(.80f,1.f,Reveal):1.f;
+  SpiritCard->SetRelativeScale3D(FVector(2.70f,1.85f,1)*S);
+  SpiritCard->SetRelativeLocation(FVector(0,0,92.f*S));
+  SpiritCard->SetVisibility(Visible);
+ }
+ for(auto& C:FigureParts){C->SetVisibility(Visible&&!bCardMode);if(Visible)C->SetRelativeScale3D(FVector(FigureScale));}
  for(int32 I=0;I<Wisps.Num();I++){auto* C=Wisps[I].Get();C->SetVisibility(Visible);if(Visible)C->AddLocalOffset(FVector(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*2.f+I)*Dt*12.f));}
  MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?3200.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
 }
@@ -137,8 +184,16 @@ void ABattleSpirit::BeginPlay(){
  }
  UE_LOG(LogTemp,Display,TEXT("BattleSpiritGround: chase_points=%d regrounded=%d"),ChaseRoute.Num(),Moved);
  auto* Base=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
- auto* FigureMat=UMaterialInstanceDynamic::Create(Base,this);if(FigureMat)FigureMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.006f,.012f,.025f));
+ // Tinted at runtime from an engine material, not from M_SpectralFigure. Every
+ // material this project's editor scripts create - M_SpectralFigure included,
+ // with no texture sample anywhere in it - renders as the engine's default
+ // checker in game, so the drawn look has to come from a material that already
+ // works. A near-black blue body under a cold rim light reads as spectral, and
+ // it is the tint the figure shipped with before the painted card was tried.
+ auto* FigureMat=UMaterialInstanceDynamic::Create(Base,this);
+ if(FigureMat)FigureMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.020f,.045f,.105f));
+ for(auto& C:FigureParts)C->SetMaterial(0,FigureMat);
  auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.08f,.55f,1.f));
- for(auto& C:FigureParts)C->SetMaterial(0,FigureMat);for(auto& C:Wisps)C->SetMaterial(0,WispMat);
+ for(auto& C:Wisps)C->SetMaterial(0,WispMat);
  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: texture=%s material=%s"),*GetNameSafe(SpiritBillboard->Sprite),*GetNameSafe(SpiritCard->GetMaterial(0)));
 }

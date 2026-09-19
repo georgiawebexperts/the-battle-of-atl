@@ -14,7 +14,23 @@ bool ABattleBike::GiveWeapon(int32 Slot,int32 Rounds){
  auto& Item=Inventory[Slot];const bool New=!Item.Owned;const int32 Old=Item.Reserve;
  if(New){Item.Owned=true;Item.Magazine=FMath::Min(Rounds,BattleWeapons::Capacity(Slot));Rounds-=Item.Magazine;}
  Item.Reserve=FMath::Min(BattleWeapons::ReserveLimit(Slot),Item.Reserve+Rounds);
+ // Elliott: "the gun never changes even though i pick up a machine gun or a
+ // rifle". A new weapon is now the one in the rider's hand; picking up more
+ // ammunition for something already owned must not yank the gun away.
+ if(New)ActiveWeapon=Slot;
  return New||Item.Reserve>Old;
+}
+bool ABattleBike::SelectRidingWeapon(int32 Slot){
+ if(Slot<0||Slot>=BattleWeapons::Count||!Inventory.IsValidIndex(Slot)||!Inventory[Slot].Owned)return false;
+ ActiveWeapon=Slot;UpdateRidingWeaponModel();return true;
+}
+void ABattleBike::UpdateRidingWeaponModel(){
+ const bool Visible=!bParked&&GunHold>0;
+ // Slot 2 is the SMG; it has audio and inventory but no authored mesh, so it
+ // borrows the rifle prop rather than showing nothing.
+ Pistol->SetVisibility(Visible&&ActiveWeapon==0);
+ RifleProp->SetVisibility(Visible&&(ActiveWeapon==2||ActiveWeapon==4));
+ ShotgunProp->SetVisibility(Visible&&ActiveWeapon==1);
 }
 void ABattleRider::SaveWeapon(){
  if(!ParkedBike||!ParkedBike->Inventory.IsValidIndex(CurrentWeapon))return;

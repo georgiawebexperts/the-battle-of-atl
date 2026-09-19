@@ -51,7 +51,10 @@ $audits = @(
     # End-to-end guard on the ending: walks the whole authored course and requires
     # the win to commit at the patio. This is the audit that would have caught a
     # rider reaching the party with no result screen.
-    [pscustomobject]@{ Name = 'BattlePatioAudit';   Label = 'BattlePatioAudit';       Flag = '' }
+    [pscustomobject]@{ Name = 'BattlePatioAudit';   Label = 'BattlePatioAudit';       Flag = '' },
+    # The Krog Street Tunnel: bore length, hazard stations on the tunnel floor,
+    # and a pothole that can actually throw the rider (mirrors the Mac sweep).
+    [pscustomobject]@{ Name = 'BattleTunnelHazardAudit'; Label = 'BattleTunnelHazardAudit'; Flag = '' }
 )
 
 function Invoke-Audit {

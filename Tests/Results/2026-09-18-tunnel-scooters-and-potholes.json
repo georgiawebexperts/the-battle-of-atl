@@ -1,0 +1,43 @@
+{
+  "build": "130 (unpackaged at the time of writing; source commit f1aea00)",
+  "batch": "playtest round 16: the Krog Street Tunnel gets scooters that are scooters, and potholes that throw you",
+  "author": "[codex-maclaptop], Mac",
+  "source_commit": "f1aea00 on piedmont-ride-v2, pushed",
+  "verified_against": "editor build (AuraPlaygroundEditor Mac Development) on PiedmontWorld",
+  "asks": [
+    {
+      "ask": "why is there no scooter - at krog street tunnel",
+      "finding": "There were six, and all six were the same untextured engine cylinder. Every scooter in the project is /Game/BeltLineGlide/BP_ScooterRider, whose only visible component is a Cylinder with DefaultMaterial - -BattlePropProbe prints it as `BP_ScooterRider_C | [KrogWreckScooter] Cylinder@V(...) mat=DefaultMaterial`. The only real scooter in the game was hand-built inside ABattleScooterScene.",
+      "what": "That geometry is now BattleScooterProp.h, a shared helper (deck, grip tape, stem, stem band, handle, two grips, two wheels, two hubs, four deck colours, KrogIncident scooter materials). ABattleKrogCrash builds 7 of them around the wreck (77 parts) and ABattleTunnelHazards lays 5 more in the bore, one still upright against the wall.",
+      "proof": "BattleKrogCrash log line now carries scooters=7 scooter_parts=77; BattleTunnelHazards reports scooters=5. Visual: work/crash-after3/wreck-zoom.png shows recognisable scooters lying on the road, and work/tunnel-review4/tunnel-scooters.png shows one in the bore."
+    },
+    {
+      "ask": "trecherous potholes that can knock you off the bike",
+      "finding": "There were no potholes anywhere in the world. ABattlePothole had only ever been spawned by its own audit; nothing authored one into PiedmontWorld.",
+      "what": "New ABattleTunnelHazards traces 12 stations down the tunnel bore and places 6 deep and 6 shallow craters, staggered shoulder to shoulder so a rider holding one line meets every one. Deep holes wipe the rider out above 520 cm/s and scrub 28% of the speed below it. Each crater carries a dark disc and six rubble chunks at the rim.",
+      "placement_rule": "A station is only accepted when the trace lands within 200 cm of the portal-to-portal height profile and on a surface with normal Z >= 0.6, so the rail deck above the bore can never be mistaken for the tunnel floor.",
+      "proof": "BattleTunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike\",\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"wipeouts\":1}"
+    },
+    {
+      "ask": "the bear or whatever that is looks bad / the wreck reads badly",
+      "finding": "The wrecked car was a scaled engine Cube in gun metal - on screen a two-tonne grey slab with a bonfire under it.",
+      "what": "It is now the same SM_SportsCar body the road cars use, rolled onto its side and painted, with the matching glass mesh, three loose wheels scattered around it and the crate moved off the car.",
+      "proof": "work/crash-after3/wreck-zoom.png against work/krog-crash/wreck-zoom.png, both captured from the same -BattleKrogCrashReview camera."
+    }
+  ],
+  "audits": {
+    "BattleTunnelHazardAudit": "new, passes - 12/12 stations grounded on the tunnel floor, 6 deep, 6 shallow, 5 scooters, one wipeout from a deep hole",
+    "BattleKrogCrashAudit": "still passes - blocks_road=true, before_tunnel=true, distance_to_tunnel_cm=2400, gap_open=true, fires=5, bodies=3, bystanders=8, brawlers=4",
+    "BattlePotholeRideAudit": "still passes - the pre-existing audit still finds its own fixture; the tunnel potholes carry the tag TunnelPothole, not AuthoredPothole, so they cannot hijack it"
+  },
+  "scooter_traffic": {
+    "what": "The moving BeltLine scooters were the same placeholder cylinder. They now hide that cylinder and carry the authored scooter on the same actor, which still owns the motion along the path spline.",
+    "proof": "BattleScooterTrafficAudit passes (riders 8, moved 8, worst_gap_cm 0.00) run as -BattleFurnitureAudit -BattleScooterTrafficAudit, and -BattlePropProbe=90000 lists each rider as 11 visible parts - a deck on MID_M_ScooterTrim, M_Rubber grip tape, M_ScooterMetal stem/handle/hubs and two wheels - with the old Cylinder now marked (hidden).",
+    "trap_found": "-BattleScooterTrafficAudit alone does nothing and the run hangs: the flag is dispatched from TickFurnitureAudit, which is only reached when -BattleFurnitureAudit is also passed (BattleMacController.cpp:186, BattleFurnitureAudit.cpp:18). Two runs were wasted before that was read."
+  },
+  "still_open": [
+    "Tunnel length. The bore is 4608 cm portal to portal and Elliott wants it a lot longer. That is baked tunnel geometry (bake_krog_structure.py / SM_KrogTunnel_*), not a runtime parameter, so it was left open rather than half-attempted. Extending it means regenerating the shell, re-importing, re-verifying bike and car traversal and re-cooking.",
+    "Punkers inside the bore: the brawlers live in the crash scene outside the mouth. The tunnel itself has pedestrians walking through it, not a fight.",
+    "A full audit sweep after every agent's change from this session was never run as one batch - the individual audits named above were run one at a time."
+  ]
+}

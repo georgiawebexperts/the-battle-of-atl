@@ -1,0 +1,5338 @@
+{
+  "author": "2026-09-19 [codex-maclaptop]",
+  "question": "How far can the Krog bore extend and stay underground?",
+  "current_bore_game_cm": 4221.1,
+  "roof_top_above_floor_cm": 310.0,
+  "extension_available_before_portal_cm": 0.0,
+  "extension_available_after_portal_cm": 0.0,
+  "samples": [
+    {
+      "station_cm": 7607.0,
+      "floor_z_cm": 939.5,
+      "roof_top_cm": 1249.5,
+      "bare_earth_cm": 868.9,
+      "cover_cm": -380.6,
+      "clear_of_roads_cm": 3796.9
+    },
+    {
+      "station_cm": 7632.0,
+      "floor_z_cm": 939.6,
+      "roof_top_cm": 1249.6,
+      "bare_earth_cm": 869.3,
+      "cover_cm": -380.3,
+      "clear_of_roads_cm": 3782.9
+    },
+    {
+      "station_cm": 7657.0,
+      "floor_z_cm": 939.6,
+      "roof_top_cm": 1249.6,
+      "bare_earth_cm": 869.5,
+      "cover_cm": -380.1,
+      "clear_of_roads_cm": 3769.1
+    },
+    {
+      "station_cm": 7682.0,
+      "floor_z_cm": 939.6,
+      "roof_top_cm": 1249.6,
+      "bare_earth_cm": 869.7,
+      "cover_cm": -379.9,
+      "clear_of_roads_cm": 3755.4
+    },
+    {
+      "station_cm": 7707.0,
+      "floor_z_cm": 939.7,
+      "roof_top_cm": 1249.7,
+      "bare_earth_cm": 869.9,
+      "cover_cm": -379.8,
+      "clear_of_roads_cm": 3741.8
+    },
+    {
+      "station_cm": 7732.0,
+      "floor_z_cm": 939.7,
+      "roof_top_cm": 1249.7,
+      "bare_earth_cm": 870.1,
+      "cover_cm": -379.6,
+      "clear_of_roads_cm": 3728.3
+    },
+    {
+      "station_cm": 7757.0,
+      "floor_z_cm": 939.7,
+      "roof_top_cm": 1249.7,
+      "bare_earth_cm": 870.3,
+      "cover_cm": -379.4,
+      "clear_of_roads_cm": 3714.9
+    },
+    {
+      "station_cm": 7782.0,
+      "floor_z_cm": 939.8,
+      "roof_top_cm": 1249.8,
+      "bare_earth_cm": 870.5,
+      "cover_cm": -379.2,
+      "clear_of_roads_cm": 3701.7
+    },
+    {
+      "station_cm": 7807.0,
+      "floor_z_cm": 939.8,
+      "roof_top_cm": 1249.8,
+      "bare_earth_cm": 871.8,
+      "cover_cm": -378.1,
+      "clear_of_roads_cm": 3688.5
+    },
+    {
+      "station_cm": 7832.0,
+      "floor_z_cm": 939.8,
+      "roof_top_cm": 1249.8,
+      "bare_earth_cm": 870.9,
+      "cover_cm": -378.9,
+      "clear_of_roads_cm": 3675.5
+    },
+    {
+      "station_cm": 7857.0,
+      "floor_z_cm": 939.9,
+      "roof_top_cm": 1249.9,
+      "bare_earth_cm": 872.5,
+      "cover_cm": -377.3,
+      "clear_of_roads_cm": 3662.6
+    },
+    {
+      "station_cm": 7882.0,
+      "floor_z_cm": 939.9,
+      "roof_top_cm": 1249.9,
+      "bare_earth_cm": 871.9,
+      "cover_cm": -378.0,
+      "clear_of_roads_cm": 3649.9
+    },
+    {
+      "station_cm": 7907.0,
+      "floor_z_cm": 940.0,
+      "roof_top_cm": 1250.0,
+      "bare_earth_cm": 869.1,
+      "cover_cm": -380.9,
+      "clear_of_roads_cm": 3637.3
+    },
+    {
+      "station_cm": 7932.0,
+      "floor_z_cm": 940.0,
+      "roof_top_cm": 1250.0,
+      "bare_earth_cm": 873.1,
+      "cover_cm": -376.9,
+      "clear_of_roads_cm": 3624.8
+    },
+    {
+      "station_cm": 7957.0,
+      "floor_z_cm": 940.0,
+      "roof_top_cm": 1250.0,
+      "bare_earth_cm": 872.2,
+      "cover_cm": -377.8,
+      "clear_of_roads_cm": 3612.4
+    },
+    {
+      "station_cm": 7982.0,
+      "floor_z_cm": 940.1,
+      "roof_top_cm": 1250.1,
+      "bare_earth_cm": 869.9,
+      "cover_cm": -380.2,
+      "clear_of_roads_cm": 3600.0
+    },
+    {
+      "station_cm": 8007.0,
+      "floor_z_cm": 940.1,
+      "roof_top_cm": 1250.1,
+      "bare_earth_cm": 873.5,
+      "cover_cm": -376.6,
+      "clear_of_roads_cm": 3587.6
+    },
+    {
+      "station_cm": 8032.0,
+      "floor_z_cm": 940.1,
+      "roof_top_cm": 1250.1,
+      "bare_earth_cm": 872.6,
+      "cover_cm": -377.6,
+      "clear_of_roads_cm": 3575.4
+    },
+    {
+      "station_cm": 8057.0,
+      "floor_z_cm": 940.2,
+      "roof_top_cm": 1250.2,
+      "bare_earth_cm": 871.1,
+      "cover_cm": -379.0,
+      "clear_of_roads_cm": 3563.3
+    },
+    {
+      "station_cm": 8082.0,
+      "floor_z_cm": 940.2,
+      "roof_top_cm": 1250.2,
+      "bare_earth_cm": 873.8,
+      "cover_cm": -376.4,
+      "clear_of_roads_cm": 3551.3
+    },
+    {
+      "station_cm": 8107.0,
+      "floor_z_cm": 940.2,
+      "roof_top_cm": 1250.2,
+      "bare_earth_cm": 871.9,
+      "cover_cm": -378.3,
+      "clear_of_roads_cm": 3539.4
+    },
+    {
+      "station_cm": 8132.0,
+      "floor_z_cm": 940.3,
+      "roof_top_cm": 1250.3,
+      "bare_earth_cm": 872.2,
+      "cover_cm": -378.1,
+      "clear_of_roads_cm": 3527.7
+    },
+    {
+      "station_cm": 8157.0,
+      "floor_z_cm": 940.3,
+      "roof_top_cm": 1250.3,
+      "bare_earth_cm": 873.9,
+      "cover_cm": -376.4,
+      "clear_of_roads_cm": 3516.2
+    },
+    {
+      "station_cm": 8182.0,
+      "floor_z_cm": 940.4,
+      "roof_top_cm": 1250.4,
+      "bare_earth_cm": 872.4,
+      "cover_cm": -377.9,
+      "clear_of_roads_cm": 3504.8
+    },
+    {
+      "station_cm": 8207.0,
+      "floor_z_cm": 940.4,
+      "roof_top_cm": 1250.4,
+      "bare_earth_cm": 872.8,
+      "cover_cm": -377.6,
+      "clear_of_roads_cm": 3493.5
+    },
+    {
+      "station_cm": 8232.0,
+      "floor_z_cm": 940.4,
+      "roof_top_cm": 1250.4,
+      "bare_earth_cm": 874.4,
+      "cover_cm": -376.0,
+      "clear_of_roads_cm": 3482.4
+    },
+    {
+      "station_cm": 8257.0,
+      "floor_z_cm": 940.5,
+      "roof_top_cm": 1250.5,
+      "bare_earth_cm": 873.7,
+      "cover_cm": -376.7,
+      "clear_of_roads_cm": 3471.4
+    },
+    {
+      "station_cm": 8282.0,
+      "floor_z_cm": 940.5,
+      "roof_top_cm": 1250.5,
+      "bare_earth_cm": 874.0,
+      "cover_cm": -376.5,
+      "clear_of_roads_cm": 3460.5
+    },
+    {
+      "station_cm": 8307.0,
+      "floor_z_cm": 940.5,
+      "roof_top_cm": 1250.5,
+      "bare_earth_cm": 874.4,
+      "cover_cm": -376.2,
+      "clear_of_roads_cm": 3449.8
+    },
+    {
+      "station_cm": 8332.0,
+      "floor_z_cm": 940.6,
+      "roof_top_cm": 1250.6,
+      "bare_earth_cm": 874.7,
+      "cover_cm": -375.9,
+      "clear_of_roads_cm": 3439.3
+    },
+    {
+      "station_cm": 8357.0,
+      "floor_z_cm": 940.6,
+      "roof_top_cm": 1250.6,
+      "bare_earth_cm": 875.0,
+      "cover_cm": -375.6,
+      "clear_of_roads_cm": 3428.9
+    },
+    {
+      "station_cm": 8382.0,
+      "floor_z_cm": 940.6,
+      "roof_top_cm": 1250.6,
+      "bare_earth_cm": 876.7,
+      "cover_cm": -373.9,
+      "clear_of_roads_cm": 3418.6
+    },
+    {
+      "station_cm": 8407.0,
+      "floor_z_cm": 940.7,
+      "roof_top_cm": 1250.7,
+      "bare_earth_cm": 876.2,
+      "cover_cm": -374.5,
+      "clear_of_roads_cm": 3408.4
+    },
+    {
+      "station_cm": 8432.0,
+      "floor_z_cm": 940.7,
+      "roof_top_cm": 1250.7,
+      "bare_earth_cm": 875.7,
+      "cover_cm": -375.1,
+      "clear_of_roads_cm": 3398.2
+    },
+    {
+      "station_cm": 8457.0,
+      "floor_z_cm": 940.8,
+      "roof_top_cm": 1250.8,
+      "bare_earth_cm": 876.7,
+      "cover_cm": -374.1,
+      "clear_of_roads_cm": 3388.1
+    },
+    {
+      "station_cm": 8482.0,
+      "floor_z_cm": 940.8,
+      "roof_top_cm": 1250.8,
+      "bare_earth_cm": 876.2,
+      "cover_cm": -374.6,
+      "clear_of_roads_cm": 3378.2
+    },
+    {
+      "station_cm": 8507.0,
+      "floor_z_cm": 940.8,
+      "roof_top_cm": 1250.8,
+      "bare_earth_cm": 874.2,
+      "cover_cm": -376.6,
+      "clear_of_roads_cm": 3368.4
+    },
+    {
+      "station_cm": 8532.0,
+      "floor_z_cm": 940.9,
+      "roof_top_cm": 1250.9,
+      "bare_earth_cm": 877.2,
+      "cover_cm": -373.7,
+      "clear_of_roads_cm": 3358.8
+    },
+    {
+      "station_cm": 8557.0,
+      "floor_z_cm": 940.9,
+      "roof_top_cm": 1250.9,
+      "bare_earth_cm": 876.5,
+      "cover_cm": -374.4,
+      "clear_of_roads_cm": 3349.3
+    },
+    {
+      "station_cm": 8582.0,
+      "floor_z_cm": 940.9,
+      "roof_top_cm": 1250.9,
+      "bare_earth_cm": 874.8,
+      "cover_cm": -376.1,
+      "clear_of_roads_cm": 3340.0
+    },
+    {
+      "station_cm": 8607.0,
+      "floor_z_cm": 941.0,
+      "roof_top_cm": 1251.0,
+      "bare_earth_cm": 877.7,
+      "cover_cm": -373.3,
+      "clear_of_roads_cm": 3330.9
+    },
+    {
+      "station_cm": 8632.0,
+      "floor_z_cm": 941.0,
+      "roof_top_cm": 1251.0,
+      "bare_earth_cm": 877.0,
+      "cover_cm": -374.0,
+      "clear_of_roads_cm": 3321.9
+    },
+    {
+      "station_cm": 8657.0,
+      "floor_z_cm": 941.0,
+      "roof_top_cm": 1251.0,
+      "bare_earth_cm": 875.9,
+      "cover_cm": -375.1,
+      "clear_of_roads_cm": 3313.1
+    },
+    {
+      "station_cm": 8682.0,
+      "floor_z_cm": 941.1,
+      "roof_top_cm": 1251.1,
+      "bare_earth_cm": 878.3,
+      "cover_cm": -372.8,
+      "clear_of_roads_cm": 3304.5
+    },
+    {
+      "station_cm": 8707.0,
+      "floor_z_cm": 941.1,
+      "roof_top_cm": 1251.1,
+      "bare_earth_cm": 877.0,
+      "cover_cm": -374.1,
+      "clear_of_roads_cm": 3296.0
+    },
+    {
+      "station_cm": 8732.0,
+      "floor_z_cm": 941.1,
+      "roof_top_cm": 1251.1,
+      "bare_earth_cm": 877.3,
+      "cover_cm": -373.8,
+      "clear_of_roads_cm": 3287.7
+    },
+    {
+      "station_cm": 8757.0,
+      "floor_z_cm": 941.2,
+      "roof_top_cm": 1251.2,
+      "bare_earth_cm": 878.7,
+      "cover_cm": -372.5,
+      "clear_of_roads_cm": 3279.6
+    },
+    {
+      "station_cm": 8782.0,
+      "floor_z_cm": 941.2,
+      "roof_top_cm": 1251.2,
+      "bare_earth_cm": 877.8,
+      "cover_cm": -373.4,
+      "clear_of_roads_cm": 3271.6
+    },
+    {
+      "station_cm": 8807.0,
+      "floor_z_cm": 941.3,
+      "roof_top_cm": 1251.3,
+      "bare_earth_cm": 878.1,
+      "cover_cm": -373.2,
+      "clear_of_roads_cm": 3263.7
+    },
+    {
+      "station_cm": 8832.0,
+      "floor_z_cm": 941.3,
+      "roof_top_cm": 1251.3,
+      "bare_earth_cm": 878.9,
+      "cover_cm": -372.4,
+      "clear_of_roads_cm": 3255.7
+    },
+    {
+      "station_cm": 8857.0,
+      "floor_z_cm": 941.3,
+      "roof_top_cm": 1251.3,
+      "bare_earth_cm": 878.5,
+      "cover_cm": -372.8,
+      "clear_of_roads_cm": 3248.0
+    },
+    {
+      "station_cm": 8882.0,
+      "floor_z_cm": 941.4,
+      "roof_top_cm": 1251.4,
+      "bare_earth_cm": 878.7,
+      "cover_cm": -372.6,
+      "clear_of_roads_cm": 3240.4
+    },
+    {
+      "station_cm": 8907.0,
+      "floor_z_cm": 941.4,
+      "roof_top_cm": 1251.4,
+      "bare_earth_cm": 878.9,
+      "cover_cm": -372.5,
+      "clear_of_roads_cm": 3233.0
+    },
+    {
+      "station_cm": 8932.0,
+      "floor_z_cm": 941.4,
+      "roof_top_cm": 1251.4,
+      "bare_earth_cm": 879.2,
+      "cover_cm": -372.2,
+      "clear_of_roads_cm": 3225.7
+    },
+    {
+      "station_cm": 8957.0,
+      "floor_z_cm": 941.5,
+      "roof_top_cm": 1251.5,
+      "bare_earth_cm": 880.0,
+      "cover_cm": -371.5,
+      "clear_of_roads_cm": 3218.7
+    },
+    {
+      "station_cm": 8982.0,
+      "floor_z_cm": 941.5,
+      "roof_top_cm": 1251.5,
+      "bare_earth_cm": 881.6,
+      "cover_cm": -369.9,
+      "clear_of_roads_cm": 3211.8
+    },
+    {
+      "station_cm": 9007.0,
+      "floor_z_cm": 941.5,
+      "roof_top_cm": 1251.5,
+      "bare_earth_cm": 881.0,
+      "cover_cm": -370.5,
+      "clear_of_roads_cm": 3205.1
+    },
+    {
+      "station_cm": 9032.0,
+      "floor_z_cm": 941.6,
+      "roof_top_cm": 1251.6,
+      "bare_earth_cm": 880.4,
+      "cover_cm": -371.2,
+      "clear_of_roads_cm": 3198.5
+    },
+    {
+      "station_cm": 9057.0,
+      "floor_z_cm": 941.6,
+      "roof_top_cm": 1251.6,
+      "bare_earth_cm": 881.9,
+      "cover_cm": -369.7,
+      "clear_of_roads_cm": 3192.2
+    },
+    {
+      "station_cm": 9082.0,
+      "floor_z_cm": 941.7,
+      "roof_top_cm": 1251.7,
+      "bare_earth_cm": 881.3,
+      "cover_cm": -370.3,
+      "clear_of_roads_cm": 3185.9
+    },
+    {
+      "station_cm": 9107.0,
+      "floor_z_cm": 941.7,
+      "roof_top_cm": 1251.7,
+      "bare_earth_cm": 880.8,
+      "cover_cm": -370.9,
+      "clear_of_roads_cm": 3180.0
+    },
+    {
+      "station_cm": 9132.0,
+      "floor_z_cm": 941.7,
+      "roof_top_cm": 1251.7,
+      "bare_earth_cm": 882.3,
+      "cover_cm": -369.4,
+      "clear_of_roads_cm": 3174.2
+    },
+    {
+      "station_cm": 9157.0,
+      "floor_z_cm": 941.8,
+      "roof_top_cm": 1251.8,
+      "bare_earth_cm": 881.8,
+      "cover_cm": -370.0,
+      "clear_of_roads_cm": 3168.7
+    },
+    {
+      "station_cm": 9182.0,
+      "floor_z_cm": 941.8,
+      "roof_top_cm": 1251.8,
+      "bare_earth_cm": 880.2,
+      "cover_cm": -371.6,
+      "clear_of_roads_cm": 3163.1
+    },
+    {
+      "station_cm": 9207.0,
+      "floor_z_cm": 941.8,
+      "roof_top_cm": 1251.8,
+      "bare_earth_cm": 882.8,
+      "cover_cm": -369.0,
+      "clear_of_roads_cm": 3157.6
+    },
+    {
+      "station_cm": 9232.0,
+      "floor_z_cm": 941.9,
+      "roof_top_cm": 1251.9,
+      "bare_earth_cm": 882.2,
+      "cover_cm": -369.6,
+      "clear_of_roads_cm": 3152.3
+    },
+    {
+      "station_cm": 9257.0,
+      "floor_z_cm": 941.9,
+      "roof_top_cm": 1251.9,
+      "bare_earth_cm": 881.2,
+      "cover_cm": -370.7,
+      "clear_of_roads_cm": 3147.2
+    },
+    {
+      "station_cm": 9282.0,
+      "floor_z_cm": 941.9,
+      "roof_top_cm": 1251.9,
+      "bare_earth_cm": 883.2,
+      "cover_cm": -368.7,
+      "clear_of_roads_cm": 3142.2
+    },
+    {
+      "station_cm": 9307.0,
+      "floor_z_cm": 942.0,
+      "roof_top_cm": 1252.0,
+      "bare_earth_cm": 882.7,
+      "cover_cm": -369.3,
+      "clear_of_roads_cm": 3137.5
+    },
+    {
+      "station_cm": 9332.0,
+      "floor_z_cm": 942.0,
+      "roof_top_cm": 1252.0,
+      "bare_earth_cm": 882.1,
+      "cover_cm": -369.9,
+      "clear_of_roads_cm": 3132.9
+    },
+    {
+      "station_cm": 9357.0,
+      "floor_z_cm": 942.0,
+      "roof_top_cm": 1252.0,
+      "bare_earth_cm": 882.4,
+      "cover_cm": -369.6,
+      "clear_of_roads_cm": 3128.5
+    },
+    {
+      "station_cm": 9382.0,
+      "floor_z_cm": 942.1,
+      "roof_top_cm": 1252.1,
+      "bare_earth_cm": 882.8,
+      "cover_cm": -369.3,
+      "clear_of_roads_cm": 3124.3
+    },
+    {
+      "station_cm": 9407.0,
+      "floor_z_cm": 942.1,
+      "roof_top_cm": 1252.1,
+      "bare_earth_cm": 883.2,
+      "cover_cm": -368.9,
+      "clear_of_roads_cm": 3120.4
+    },
+    {
+      "station_cm": 9432.0,
+      "floor_z_cm": 942.2,
+      "roof_top_cm": 1252.2,
+      "bare_earth_cm": 883.6,
+      "cover_cm": -368.5,
+      "clear_of_roads_cm": 3116.6
+    },
+    {
+      "station_cm": 9457.0,
+      "floor_z_cm": 942.2,
+      "roof_top_cm": 1252.2,
+      "bare_earth_cm": 884.1,
+      "cover_cm": -368.1,
+      "clear_of_roads_cm": 3113.0
+    },
+    {
+      "station_cm": 9482.0,
+      "floor_z_cm": 942.2,
+      "roof_top_cm": 1252.2,
+      "bare_earth_cm": 884.5,
+      "cover_cm": -367.7,
+      "clear_of_roads_cm": 3109.6
+    },
+    {
+      "station_cm": 9507.0,
+      "floor_z_cm": 942.3,
+      "roof_top_cm": 1252.3,
+      "bare_earth_cm": 885.0,
+      "cover_cm": -367.3,
+      "clear_of_roads_cm": 3106.4
+    },
+    {
+      "station_cm": 9532.0,
+      "floor_z_cm": 942.3,
+      "roof_top_cm": 1252.3,
+      "bare_earth_cm": 888.3,
+      "cover_cm": -364.0,
+      "clear_of_roads_cm": 3103.3
+    },
+    {
+      "station_cm": 9557.0,
+      "floor_z_cm": 942.3,
+      "roof_top_cm": 1252.3,
+      "bare_earth_cm": 887.0,
+      "cover_cm": -365.4,
+      "clear_of_roads_cm": 3100.2
+    },
+    {
+      "station_cm": 9582.0,
+      "floor_z_cm": 942.4,
+      "roof_top_cm": 1252.4,
+      "bare_earth_cm": 882.4,
+      "cover_cm": -370.0,
+      "clear_of_roads_cm": 3097.2
+    },
+    {
+      "station_cm": 9607.0,
+      "floor_z_cm": 942.4,
+      "roof_top_cm": 1252.4,
+      "bare_earth_cm": 888.5,
+      "cover_cm": -363.9,
+      "clear_of_roads_cm": 3094.5
+    },
+    {
+      "station_cm": 9632.0,
+      "floor_z_cm": 942.4,
+      "roof_top_cm": 1252.4,
+      "bare_earth_cm": 887.3,
+      "cover_cm": -365.1,
+      "clear_of_roads_cm": 3091.9
+    },
+    {
+      "station_cm": 9657.0,
+      "floor_z_cm": 942.5,
+      "roof_top_cm": 1252.5,
+      "bare_earth_cm": 884.7,
+      "cover_cm": -367.8,
+      "clear_of_roads_cm": 3089.6
+    },
+    {
+      "station_cm": 9682.0,
+      "floor_z_cm": 942.5,
+      "roof_top_cm": 1252.5,
+      "bare_earth_cm": 888.5,
+      "cover_cm": -364.0,
+      "clear_of_roads_cm": 3087.4
+    },
+    {
+      "station_cm": 9707.0,
+      "floor_z_cm": 942.6,
+      "roof_top_cm": 1252.6,
+      "bare_earth_cm": 887.8,
+      "cover_cm": -364.8,
+      "clear_of_roads_cm": 3085.4
+    },
+    {
+      "station_cm": 9732.0,
+      "floor_z_cm": 942.6,
+      "roof_top_cm": 1252.6,
+      "bare_earth_cm": 886.3,
+      "cover_cm": -366.3,
+      "clear_of_roads_cm": 3083.7
+    },
+    {
+      "station_cm": 9757.0,
+      "floor_z_cm": 942.6,
+      "roof_top_cm": 1252.6,
+      "bare_earth_cm": 889.2,
+      "cover_cm": -363.4,
+      "clear_of_roads_cm": 3082.1
+    },
+    {
+      "station_cm": 9782.0,
+      "floor_z_cm": 942.7,
+      "roof_top_cm": 1252.7,
+      "bare_earth_cm": 887.2,
+      "cover_cm": -365.4,
+      "clear_of_roads_cm": 3080.8
+    },
+    {
+      "station_cm": 9807.0,
+      "floor_z_cm": 942.7,
+      "roof_top_cm": 1252.7,
+      "bare_earth_cm": 887.7,
+      "cover_cm": -365.0,
+      "clear_of_roads_cm": 3079.6
+    },
+    {
+      "station_cm": 9832.0,
+      "floor_z_cm": 942.7,
+      "roof_top_cm": 1252.7,
+      "bare_earth_cm": 889.9,
+      "cover_cm": -362.8,
+      "clear_of_roads_cm": 3078.7
+    },
+    {
+      "station_cm": 9857.0,
+      "floor_z_cm": 942.8,
+      "roof_top_cm": 1252.8,
+      "bare_earth_cm": 888.8,
+      "cover_cm": -364.0,
+      "clear_of_roads_cm": 3077.9
+    },
+    {
+      "station_cm": 9882.0,
+      "floor_z_cm": 942.8,
+      "roof_top_cm": 1252.8,
+      "bare_earth_cm": 889.2,
+      "cover_cm": -363.6,
+      "clear_of_roads_cm": 3077.3
+    },
+    {
+      "station_cm": 9907.0,
+      "floor_z_cm": 942.8,
+      "roof_top_cm": 1252.8,
+      "bare_earth_cm": 890.6,
+      "cover_cm": -362.3,
+      "clear_of_roads_cm": 3076.6
+    },
+    {
+      "station_cm": 9932.0,
+      "floor_z_cm": 942.9,
+      "roof_top_cm": 1252.9,
+      "bare_earth_cm": 890.0,
+      "cover_cm": -362.9,
+      "clear_of_roads_cm": 3076.1
+    },
+    {
+      "station_cm": 9957.0,
+      "floor_z_cm": 942.9,
+      "roof_top_cm": 1252.9,
+      "bare_earth_cm": 890.5,
+      "cover_cm": -362.4,
+      "clear_of_roads_cm": 3075.9
+    },
+    {
+      "station_cm": 9982.0,
+      "floor_z_cm": 943.0,
+      "roof_top_cm": 1253.0,
+      "bare_earth_cm": 891.1,
+      "cover_cm": -361.8,
+      "clear_of_roads_cm": 3075.8
+    },
+    {
+      "station_cm": 10007.0,
+      "floor_z_cm": 943.0,
+      "roof_top_cm": 1253.0,
+      "bare_earth_cm": 891.6,
+      "cover_cm": -361.3,
+      "clear_of_roads_cm": 3075.9
+    },
+    {
+      "station_cm": 10032.0,
+      "floor_z_cm": 943.0,
+      "roof_top_cm": 1253.0,
+      "bare_earth_cm": 892.2,
+      "cover_cm": -360.9,
+      "clear_of_roads_cm": 3076.2
+    },
+    {
+      "station_cm": 10057.0,
+      "floor_z_cm": 943.1,
+      "roof_top_cm": 1253.1,
+      "bare_earth_cm": 892.6,
+      "cover_cm": -360.4,
+      "clear_of_roads_cm": 3076.7
+    },
+    {
+      "station_cm": 10082.0,
+      "floor_z_cm": 943.1,
+      "roof_top_cm": 1253.1,
+      "bare_earth_cm": 893.0,
+      "cover_cm": -360.1,
+      "clear_of_roads_cm": 3077.5
+    },
+    {
+      "station_cm": 10107.0,
+      "floor_z_cm": 943.1,
+      "roof_top_cm": 1253.1,
+      "bare_earth_cm": 893.6,
+      "cover_cm": -359.5,
+      "clear_of_roads_cm": 3078.4
+    },
+    {
+      "station_cm": 10132.0,
+      "floor_z_cm": 943.2,
+      "roof_top_cm": 1253.2,
+      "bare_earth_cm": 895.6,
+      "cover_cm": -357.5,
+      "clear_of_roads_cm": 3079.5
+    },
+    {
+      "station_cm": 10157.0,
+      "floor_z_cm": 943.2,
+      "roof_top_cm": 1253.2,
+      "bare_earth_cm": 894.9,
+      "cover_cm": -358.3,
+      "clear_of_roads_cm": 3080.9
+    },
+    {
+      "station_cm": 10182.0,
+      "floor_z_cm": 943.2,
+      "roof_top_cm": 1253.2,
+      "bare_earth_cm": 894.1,
+      "cover_cm": -359.1,
+      "clear_of_roads_cm": 3082.4
+    },
+    {
+      "station_cm": 10207.0,
+      "floor_z_cm": 943.3,
+      "roof_top_cm": 1253.3,
+      "bare_earth_cm": 896.2,
+      "cover_cm": -357.1,
+      "clear_of_roads_cm": 3084.1
+    },
+    {
+      "station_cm": 10232.0,
+      "floor_z_cm": 943.3,
+      "roof_top_cm": 1253.3,
+      "bare_earth_cm": 895.4,
+      "cover_cm": -357.9,
+      "clear_of_roads_cm": 3085.9
+    },
+    {
+      "station_cm": 10257.0,
+      "floor_z_cm": 943.3,
+      "roof_top_cm": 1253.3,
+      "bare_earth_cm": 892.9,
+      "cover_cm": -360.4,
+      "clear_of_roads_cm": 3087.7
+    },
+    {
+      "station_cm": 10282.0,
+      "floor_z_cm": 943.4,
+      "roof_top_cm": 1253.4,
+      "bare_earth_cm": 896.7,
+      "cover_cm": -356.7,
+      "clear_of_roads_cm": 3089.7
+    },
+    {
+      "station_cm": 10307.0,
+      "floor_z_cm": 943.4,
+      "roof_top_cm": 1253.4,
+      "bare_earth_cm": 895.8,
+      "cover_cm": -357.6,
+      "clear_of_roads_cm": 3091.9
+    },
+    {
+      "station_cm": 10332.0,
+      "floor_z_cm": 943.5,
+      "roof_top_cm": 1253.5,
+      "bare_earth_cm": 894.3,
+      "cover_cm": -359.1,
+      "clear_of_roads_cm": 3094.3
+    },
+    {
+      "station_cm": 10357.0,
+      "floor_z_cm": 943.5,
+      "roof_top_cm": 1253.5,
+      "bare_earth_cm": 896.9,
+      "cover_cm": -356.6,
+      "clear_of_roads_cm": 3096.9
+    },
+    {
+      "station_cm": 10382.0,
+      "floor_z_cm": 943.5,
+      "roof_top_cm": 1253.5,
+      "bare_earth_cm": 896.1,
+      "cover_cm": -357.4,
+      "clear_of_roads_cm": 3099.7
+    },
+    {
+      "station_cm": 10407.0,
+      "floor_z_cm": 943.6,
+      "roof_top_cm": 1253.6,
+      "bare_earth_cm": 895.4,
+      "cover_cm": -358.2,
+      "clear_of_roads_cm": 3102.7
+    },
+    {
+      "station_cm": 10432.0,
+      "floor_z_cm": 943.6,
+      "roof_top_cm": 1253.6,
+      "bare_earth_cm": 897.4,
+      "cover_cm": -356.2,
+      "clear_of_roads_cm": 3105.8
+    },
+    {
+      "station_cm": 10457.0,
+      "floor_z_cm": 943.6,
+      "roof_top_cm": 1253.6,
+      "bare_earth_cm": 896.3,
+      "cover_cm": -357.3,
+      "clear_of_roads_cm": 3109.2
+    },
+    {
+      "station_cm": 10482.0,
+      "floor_z_cm": 943.7,
+      "roof_top_cm": 1253.7,
+      "bare_earth_cm": 896.7,
+      "cover_cm": -356.9,
+      "clear_of_roads_cm": 3112.8
+    },
+    {
+      "station_cm": 10507.0,
+      "floor_z_cm": 943.7,
+      "roof_top_cm": 1253.7,
+      "bare_earth_cm": 898.0,
+      "cover_cm": -355.7,
+      "clear_of_roads_cm": 3116.6
+    },
+    {
+      "station_cm": 10532.0,
+      "floor_z_cm": 943.7,
+      "roof_top_cm": 1253.7,
+      "bare_earth_cm": 897.6,
+      "cover_cm": -356.1,
+      "clear_of_roads_cm": 3120.6
+    },
+    {
+      "station_cm": 10557.0,
+      "floor_z_cm": 943.8,
+      "roof_top_cm": 1253.8,
+      "bare_earth_cm": 898.0,
+      "cover_cm": -355.7,
+      "clear_of_roads_cm": 3124.7
+    },
+    {
+      "station_cm": 10582.0,
+      "floor_z_cm": 943.8,
+      "roof_top_cm": 1253.8,
+      "bare_earth_cm": 898.7,
+      "cover_cm": -355.1,
+      "clear_of_roads_cm": 3128.9
+    },
+    {
+      "station_cm": 10607.0,
+      "floor_z_cm": 943.9,
+      "roof_top_cm": 1253.9,
+      "bare_earth_cm": 898.8,
+      "cover_cm": -355.1,
+      "clear_of_roads_cm": 3133.2
+    },
+    {
+      "station_cm": 10632.0,
+      "floor_z_cm": 943.9,
+      "roof_top_cm": 1253.9,
+      "bare_earth_cm": 899.1,
+      "cover_cm": -354.8,
+      "clear_of_roads_cm": 3137.6
+    },
+    {
+      "station_cm": 10657.0,
+      "floor_z_cm": 943.9,
+      "roof_top_cm": 1253.9,
+      "bare_earth_cm": 901.8,
+      "cover_cm": -352.1,
+      "clear_of_roads_cm": 3142.2
+    },
+    {
+      "station_cm": 10682.0,
+      "floor_z_cm": 944.0,
+      "roof_top_cm": 1254.0,
+      "bare_earth_cm": 901.1,
+      "cover_cm": -352.9,
+      "clear_of_roads_cm": 3147.0
+    },
+    {
+      "station_cm": 10707.0,
+      "floor_z_cm": 944.0,
+      "roof_top_cm": 1254.0,
+      "bare_earth_cm": 900.4,
+      "cover_cm": -353.6,
+      "clear_of_roads_cm": 3151.9
+    },
+    {
+      "station_cm": 10732.0,
+      "floor_z_cm": 944.0,
+      "roof_top_cm": 1254.0,
+      "bare_earth_cm": 902.3,
+      "cover_cm": -351.7,
+      "clear_of_roads_cm": 3157.1
+    },
+    {
+      "station_cm": 10757.0,
+      "floor_z_cm": 944.1,
+      "roof_top_cm": 1254.1,
+      "bare_earth_cm": 901.8,
+      "cover_cm": -352.3,
+      "clear_of_roads_cm": 3162.5
+    },
+    {
+      "station_cm": 10782.0,
+      "floor_z_cm": 944.1,
+      "roof_top_cm": 1254.1,
+      "bare_earth_cm": 901.2,
+      "cover_cm": -352.9,
+      "clear_of_roads_cm": 3167.5
+    },
+    {
+      "station_cm": 10807.0,
+      "floor_z_cm": 944.1,
+      "roof_top_cm": 1254.1,
+      "bare_earth_cm": 903.0,
+      "cover_cm": -351.1,
+      "clear_of_roads_cm": 3173.1
+    },
+    {
+      "station_cm": 10832.0,
+      "floor_z_cm": 944.2,
+      "roof_top_cm": 1254.2,
+      "bare_earth_cm": 902.5,
+      "cover_cm": -351.7,
+      "clear_of_roads_cm": 3178.9
+    },
+    {
+      "station_cm": 10857.0,
+      "floor_z_cm": 944.2,
+      "roof_top_cm": 1254.2,
+      "bare_earth_cm": 900.7,
+      "cover_cm": -353.5,
+      "clear_of_roads_cm": 3184.9
+    },
+    {
+      "station_cm": 10882.0,
+      "floor_z_cm": 944.2,
+      "roof_top_cm": 1254.2,
+      "bare_earth_cm": 903.6,
+      "cover_cm": -350.6,
+      "clear_of_roads_cm": 3191.0
+    },
+    {
+      "station_cm": 10907.0,
+      "floor_z_cm": 944.3,
+      "roof_top_cm": 1254.3,
+      "bare_earth_cm": 903.1,
+      "cover_cm": -351.2,
+      "clear_of_roads_cm": 3197.3
+    },
+    {
+      "station_cm": 10932.0,
+      "floor_z_cm": 944.3,
+      "roof_top_cm": 1254.3,
+      "bare_earth_cm": 901.9,
+      "cover_cm": -352.5,
+      "clear_of_roads_cm": 3203.8
+    },
+    {
+      "station_cm": 10957.0,
+      "floor_z_cm": 944.4,
+      "roof_top_cm": 1254.4,
+      "bare_earth_cm": 904.2,
+      "cover_cm": -350.1,
+      "clear_of_roads_cm": 3210.3
+    },
+    {
+      "station_cm": 10982.0,
+      "floor_z_cm": 944.4,
+      "roof_top_cm": 1254.4,
+      "bare_earth_cm": 903.8,
+      "cover_cm": -350.6,
+      "clear_of_roads_cm": 3216.9
+    },
+    {
+      "station_cm": 11007.0,
+      "floor_z_cm": 944.4,
+      "roof_top_cm": 1254.4,
+      "bare_earth_cm": 903.1,
+      "cover_cm": -351.3,
+      "clear_of_roads_cm": 3223.6
+    },
+    {
+      "station_cm": 11032.0,
+      "floor_z_cm": 944.5,
+      "roof_top_cm": 1254.5,
+      "bare_earth_cm": 905.3,
+      "cover_cm": -349.2,
+      "clear_of_roads_cm": 3230.5
+    },
+    {
+      "station_cm": 11057.0,
+      "floor_z_cm": 944.5,
+      "roof_top_cm": 1254.5,
+      "bare_earth_cm": 904.3,
+      "cover_cm": -350.2,
+      "clear_of_roads_cm": 3237.6
+    },
+    {
+      "station_cm": 11082.0,
+      "floor_z_cm": 944.5,
+      "roof_top_cm": 1254.5,
+      "bare_earth_cm": 904.8,
+      "cover_cm": -349.7,
+      "clear_of_roads_cm": 3244.8
+    },
+    {
+      "station_cm": 11107.0,
+      "floor_z_cm": 944.6,
+      "roof_top_cm": 1254.6,
+      "bare_earth_cm": 906.3,
+      "cover_cm": -348.3,
+      "clear_of_roads_cm": 3252.3
+    },
+    {
+      "station_cm": 11132.0,
+      "floor_z_cm": 944.6,
+      "roof_top_cm": 1254.6,
+      "bare_earth_cm": 905.8,
+      "cover_cm": -348.8,
+      "clear_of_roads_cm": 3259.9
+    },
+    {
+      "station_cm": 11157.0,
+      "floor_z_cm": 944.6,
+      "roof_top_cm": 1254.6,
+      "bare_earth_cm": 906.5,
+      "cover_cm": -348.2,
+      "clear_of_roads_cm": 3267.5
+    },
+    {
+      "station_cm": 11182.0,
+      "floor_z_cm": 944.7,
+      "roof_top_cm": 1254.7,
+      "bare_earth_cm": 907.1,
+      "cover_cm": -347.6,
+      "clear_of_roads_cm": 3275.2
+    },
+    {
+      "station_cm": 11207.0,
+      "floor_z_cm": 944.7,
+      "roof_top_cm": 1254.7,
+      "bare_earth_cm": 907.7,
+      "cover_cm": -347.0,
+      "clear_of_roads_cm": 3282.9
+    },
+    {
+      "station_cm": 11232.0,
+      "floor_z_cm": 944.8,
+      "roof_top_cm": 1254.8,
+      "bare_earth_cm": 908.2,
+      "cover_cm": -346.5,
+      "clear_of_roads_cm": 3290.6
+    },
+    {
+      "station_cm": 11257.0,
+      "floor_z_cm": 944.8,
+      "roof_top_cm": 1254.8,
+      "bare_earth_cm": 906.4,
+      "cover_cm": -348.4,
+      "clear_of_roads_cm": 3298.3
+    },
+    {
+      "station_cm": 11282.0,
+      "floor_z_cm": 944.8,
+      "roof_top_cm": 1254.8,
+      "bare_earth_cm": 910.5,
+      "cover_cm": -344.3,
+      "clear_of_roads_cm": 3306.1
+    },
+    {
+      "station_cm": 11307.0,
+      "floor_z_cm": 944.9,
+      "roof_top_cm": 1254.9,
+      "bare_earth_cm": 910.0,
+      "cover_cm": -344.9,
+      "clear_of_roads_cm": 3314.1
+    },
+    {
+      "station_cm": 11332.0,
+      "floor_z_cm": 944.9,
+      "roof_top_cm": 1254.9,
+      "bare_earth_cm": 907.8,
+      "cover_cm": -347.1,
+      "clear_of_roads_cm": 3322.3
+    },
+    {
+      "station_cm": 11357.0,
+      "floor_z_cm": 944.9,
+      "roof_top_cm": 1254.9,
+      "bare_earth_cm": 911.3,
+      "cover_cm": -343.6,
+      "clear_of_roads_cm": 3330.7
+    },
+    {
+      "station_cm": 11382.0,
+      "floor_z_cm": 945.0,
+      "roof_top_cm": 1255.0,
+      "bare_earth_cm": 910.9,
+      "cover_cm": -344.1,
+      "clear_of_roads_cm": 3339.2
+    },
+    {
+      "station_cm": 11407.0,
+      "floor_z_cm": 945.0,
+      "roof_top_cm": 1255.0,
+      "bare_earth_cm": 909.3,
+      "cover_cm": -345.7,
+      "clear_of_roads_cm": 3347.9
+    },
+    {
+      "station_cm": 11432.0,
+      "floor_z_cm": 945.0,
+      "roof_top_cm": 1255.0,
+      "bare_earth_cm": 912.3,
+      "cover_cm": -342.8,
+      "clear_of_roads_cm": 3356.7
+    },
+    {
+      "station_cm": 11457.0,
+      "floor_z_cm": 945.1,
+      "roof_top_cm": 1255.1,
+      "bare_earth_cm": 911.7,
+      "cover_cm": -343.3,
+      "clear_of_roads_cm": 3365.7
+    },
+    {
+      "station_cm": 11482.0,
+      "floor_z_cm": 945.1,
+      "roof_top_cm": 1255.1,
+      "bare_earth_cm": 910.7,
+      "cover_cm": -344.4,
+      "clear_of_roads_cm": 3374.8
+    },
+    {
+      "station_cm": 11507.0,
+      "floor_z_cm": 945.2,
+      "roof_top_cm": 1255.2,
+      "bare_earth_cm": 913.1,
+      "cover_cm": -342.0,
+      "clear_of_roads_cm": 3383.8
+    },
+    {
+      "station_cm": 11532.0,
+      "floor_z_cm": 945.2,
+      "roof_top_cm": 1255.2,
+      "bare_earth_cm": 911.6,
+      "cover_cm": -343.6,
+      "clear_of_roads_cm": 3392.9
+    },
+    {
+      "station_cm": 11557.0,
+      "floor_z_cm": 945.2,
+      "roof_top_cm": 1255.2,
+      "bare_earth_cm": 912.1,
+      "cover_cm": -343.1,
+      "clear_of_roads_cm": 3401.9
+    },
+    {
+      "station_cm": 11582.0,
+      "floor_z_cm": 945.3,
+      "roof_top_cm": 1255.3,
+      "bare_earth_cm": 914.2,
+      "cover_cm": -341.1,
+      "clear_of_roads_cm": 3411.0
+    },
+    {
+      "station_cm": 11607.0,
+      "floor_z_cm": 945.3,
+      "roof_top_cm": 1255.3,
+      "bare_earth_cm": 913.3,
+      "cover_cm": -342.0,
+      "clear_of_roads_cm": 3420.0
+    },
+    {
+      "station_cm": 11632.0,
+      "floor_z_cm": 945.3,
+      "roof_top_cm": 1255.3,
+      "bare_earth_cm": 913.9,
+      "cover_cm": -341.4,
+      "clear_of_roads_cm": 3429.1
+    },
+    {
+      "station_cm": 11657.0,
+      "floor_z_cm": 945.4,
+      "roof_top_cm": 1255.4,
+      "bare_earth_cm": 915.3,
+      "cover_cm": -340.0,
+      "clear_of_roads_cm": 3438.1
+    },
+    {
+      "station_cm": 11682.0,
+      "floor_z_cm": 945.4,
+      "roof_top_cm": 1255.4,
+      "bare_earth_cm": 915.1,
+      "cover_cm": -340.3,
+      "clear_of_roads_cm": 3447.2
+    },
+    {
+      "station_cm": 11707.0,
+      "floor_z_cm": 945.4,
+      "roof_top_cm": 1255.4,
+      "bare_earth_cm": 915.5,
+      "cover_cm": -339.9,
+      "clear_of_roads_cm": 3456.3
+    },
+    {
+      "station_cm": 11732.0,
+      "floor_z_cm": 945.5,
+      "roof_top_cm": 1255.5,
+      "bare_earth_cm": 915.9,
+      "cover_cm": -339.6,
+      "clear_of_roads_cm": 3465.6
+    },
+    {
+      "station_cm": 11757.0,
+      "floor_z_cm": 945.5,
+      "roof_top_cm": 1255.5,
+      "bare_earth_cm": 916.3,
+      "cover_cm": -339.2,
+      "clear_of_roads_cm": 3465.1
+    },
+    {
+      "station_cm": 11782.0,
+      "floor_z_cm": 945.5,
+      "roof_top_cm": 1255.5,
+      "bare_earth_cm": 916.7,
+      "cover_cm": -338.8,
+      "clear_of_roads_cm": 3473.0
+    },
+    {
+      "station_cm": 11807.0,
+      "floor_z_cm": 945.6,
+      "roof_top_cm": 1255.6,
+      "bare_earth_cm": 917.2,
+      "cover_cm": -338.4,
+      "clear_of_roads_cm": 3480.9
+    },
+    {
+      "station_cm": 11832.0,
+      "floor_z_cm": 945.6,
+      "roof_top_cm": 1255.6,
+      "bare_earth_cm": 917.6,
+      "cover_cm": -338.0,
+      "clear_of_roads_cm": 3488.8
+    },
+    {
+      "station_cm": 11857.0,
+      "floor_z_cm": 945.7,
+      "roof_top_cm": 1255.7,
+      "bare_earth_cm": 918.3,
+      "cover_cm": -337.4,
+      "clear_of_roads_cm": 3496.7
+    },
+    {
+      "station_cm": 11882.0,
+      "floor_z_cm": 945.7,
+      "roof_top_cm": 1255.7,
+      "bare_earth_cm": 918.3,
+      "cover_cm": -337.4,
+      "clear_of_roads_cm": 3504.6
+    },
+    {
+      "station_cm": 11907.0,
+      "floor_z_cm": 945.7,
+      "roof_top_cm": 1255.7,
+      "bare_earth_cm": 918.6,
+      "cover_cm": -337.1,
+      "clear_of_roads_cm": 3512.6
+    },
+    {
+      "station_cm": 11932.0,
+      "floor_z_cm": 945.8,
+      "roof_top_cm": 1255.8,
+      "bare_earth_cm": 918.9,
+      "cover_cm": -336.8,
+      "clear_of_roads_cm": 3520.8
+    },
+    {
+      "station_cm": 11957.0,
+      "floor_z_cm": 945.8,
+      "roof_top_cm": 1255.8,
+      "bare_earth_cm": 919.2,
+      "cover_cm": -336.6,
+      "clear_of_roads_cm": 3529.0
+    },
+    {
+      "station_cm": 11982.0,
+      "floor_z_cm": 945.8,
+      "roof_top_cm": 1255.8,
+      "bare_earth_cm": 920.0,
+      "cover_cm": -335.8,
+      "clear_of_roads_cm": 3537.1
+    },
+    {
+      "station_cm": 12007.0,
+      "floor_z_cm": 945.9,
+      "roof_top_cm": 1255.9,
+      "bare_earth_cm": 921.9,
+      "cover_cm": -334.0,
+      "clear_of_roads_cm": 3543.7
+    },
+    {
+      "station_cm": 12032.0,
+      "floor_z_cm": 945.9,
+      "roof_top_cm": 1255.9,
+      "bare_earth_cm": 921.1,
+      "cover_cm": -334.8,
+      "clear_of_roads_cm": 3550.0
+    },
+    {
+      "station_cm": 12057.0,
+      "floor_z_cm": 945.9,
+      "roof_top_cm": 1255.9,
+      "bare_earth_cm": 920.4,
+      "cover_cm": -335.5,
+      "clear_of_roads_cm": 3556.4
+    },
+    {
+      "station_cm": 12082.0,
+      "floor_z_cm": 946.0,
+      "roof_top_cm": 1256.0,
+      "bare_earth_cm": 922.3,
+      "cover_cm": -333.7,
+      "clear_of_roads_cm": 3562.7
+    },
+    {
+      "station_cm": 12107.0,
+      "floor_z_cm": 946.0,
+      "roof_top_cm": 1256.0,
+      "bare_earth_cm": 921.8,
+      "cover_cm": -334.2,
+      "clear_of_roads_cm": 3569.1
+    },
+    {
+      "station_cm": 12132.0,
+      "floor_z_cm": 946.1,
+      "roof_top_cm": 1256.1,
+      "bare_earth_cm": 920.0,
+      "cover_cm": -336.1,
+      "clear_of_roads_cm": 3557.4
+    },
+    {
+      "station_cm": 12157.0,
+      "floor_z_cm": 946.1,
+      "roof_top_cm": 1256.1,
+      "bare_earth_cm": 923.0,
+      "cover_cm": -333.1,
+      "clear_of_roads_cm": 3534.0
+    },
+    {
+      "station_cm": 12182.0,
+      "floor_z_cm": 946.1,
+      "roof_top_cm": 1256.1,
+      "bare_earth_cm": 922.7,
+      "cover_cm": -333.4,
+      "clear_of_roads_cm": 3510.5
+    },
+    {
+      "station_cm": 12207.0,
+      "floor_z_cm": 946.2,
+      "roof_top_cm": 1256.2,
+      "bare_earth_cm": 923.8,
+      "cover_cm": -332.3,
+      "clear_of_roads_cm": 3487.1
+    },
+    {
+      "station_cm": 12232.0,
+      "floor_z_cm": 946.2,
+      "roof_top_cm": 1256.2,
+      "bare_earth_cm": 924.0,
+      "cover_cm": -332.2,
+      "clear_of_roads_cm": 3463.7
+    },
+    {
+      "station_cm": 12257.0,
+      "floor_z_cm": 946.2,
+      "roof_top_cm": 1256.2,
+      "bare_earth_cm": 924.1,
+      "cover_cm": -332.1,
+      "clear_of_roads_cm": 3440.3
+    },
+    {
+      "station_cm": 12282.0,
+      "floor_z_cm": 946.3,
+      "roof_top_cm": 1256.3,
+      "bare_earth_cm": 925.0,
+      "cover_cm": -331.3,
+      "clear_of_roads_cm": 3416.9
+    },
+    {
+      "station_cm": 12307.0,
+      "floor_z_cm": 946.3,
+      "roof_top_cm": 1256.3,
+      "bare_earth_cm": 925.5,
+      "cover_cm": -330.8,
+      "clear_of_roads_cm": 3393.5
+    },
+    {
+      "station_cm": 12332.0,
+      "floor_z_cm": 946.3,
+      "roof_top_cm": 1256.3,
+      "bare_earth_cm": 925.7,
+      "cover_cm": -330.7,
+      "clear_of_roads_cm": 3412.4
+    },
+    {
+      "station_cm": 12357.0,
+      "floor_z_cm": 946.4,
+      "roof_top_cm": 1256.4,
+      "bare_earth_cm": 926.9,
+      "cover_cm": -329.4,
+      "clear_of_roads_cm": 3388.1
+    },
+    {
+      "station_cm": 12382.0,
+      "floor_z_cm": 946.4,
+      "roof_top_cm": 1256.4,
+      "bare_earth_cm": 927.3,
+      "cover_cm": -329.1,
+      "clear_of_roads_cm": 3363.8
+    },
+    {
+      "station_cm": 12407.0,
+      "floor_z_cm": 946.4,
+      "roof_top_cm": 1256.4,
+      "bare_earth_cm": 928.0,
+      "cover_cm": -328.4,
+      "clear_of_roads_cm": 3339.6
+    },
+    {
+      "station_cm": 12432.0,
+      "floor_z_cm": 946.5,
+      "roof_top_cm": 1256.5,
+      "bare_earth_cm": 928.5,
+      "cover_cm": -328.0,
+      "clear_of_roads_cm": 3315.3
+    },
+    {
+      "station_cm": 12457.0,
+      "floor_z_cm": 946.5,
+      "roof_top_cm": 1256.5,
+      "bare_earth_cm": 928.9,
+      "cover_cm": -327.6,
+      "clear_of_roads_cm": 3291.0
+    },
+    {
+      "station_cm": 12482.0,
+      "floor_z_cm": 946.6,
+      "roof_top_cm": 1256.6,
+      "bare_earth_cm": 929.6,
+      "cover_cm": -327.0,
+      "clear_of_roads_cm": 3266.7
+    },
+    {
+      "station_cm": 12507.0,
+      "floor_z_cm": 946.6,
+      "roof_top_cm": 1256.6,
+      "bare_earth_cm": 930.2,
+      "cover_cm": -326.4,
+      "clear_of_roads_cm": 3242.5
+    },
+    {
+      "station_cm": 12532.0,
+      "floor_z_cm": 946.6,
+      "roof_top_cm": 1256.6,
+      "bare_earth_cm": 930.8,
+      "cover_cm": -325.8,
+      "clear_of_roads_cm": 3218.2
+    },
+    {
+      "station_cm": 12557.0,
+      "floor_z_cm": 946.7,
+      "roof_top_cm": 1256.7,
+      "bare_earth_cm": 931.6,
+      "cover_cm": -325.1,
+      "clear_of_roads_cm": 3193.9
+    },
+    {
+      "station_cm": 12582.0,
+      "floor_z_cm": 946.7,
+      "roof_top_cm": 1256.7,
+      "bare_earth_cm": 932.3,
+      "cover_cm": -324.4,
+      "clear_of_roads_cm": 3169.6
+    },
+    {
+      "station_cm": 12607.0,
+      "floor_z_cm": 946.7,
+      "roof_top_cm": 1256.7,
+      "bare_earth_cm": 933.0,
+      "cover_cm": -323.7,
+      "clear_of_roads_cm": 3211.0
+    },
+    {
+      "station_cm": 12632.0,
+      "floor_z_cm": 946.8,
+      "roof_top_cm": 1256.8,
+      "bare_earth_cm": 933.6,
+      "cover_cm": -323.2,
+      "clear_of_roads_cm": 3186.1
+    },
+    {
+      "station_cm": 12657.0,
+      "floor_z_cm": 946.8,
+      "roof_top_cm": 1256.8,
+      "bare_earth_cm": 934.6,
+      "cover_cm": -322.2,
+      "clear_of_roads_cm": 3161.2
+    },
+    {
+      "station_cm": 12682.0,
+      "floor_z_cm": 946.8,
+      "roof_top_cm": 1256.8,
+      "bare_earth_cm": 934.7,
+      "cover_cm": -322.2,
+      "clear_of_roads_cm": 3136.2
+    },
+    {
+      "station_cm": 12707.0,
+      "floor_z_cm": 946.9,
+      "roof_top_cm": 1256.9,
+      "bare_earth_cm": 936.7,
+      "cover_cm": -320.2,
+      "clear_of_roads_cm": 3111.3
+    },
+    {
+      "station_cm": 12732.0,
+      "floor_z_cm": 946.9,
+      "roof_top_cm": 1256.9,
+      "bare_earth_cm": 936.1,
+      "cover_cm": -320.8,
+      "clear_of_roads_cm": 3086.3
+    },
+    {
+      "station_cm": 12757.0,
+      "floor_z_cm": 947.0,
+      "roof_top_cm": 1257.0,
+      "bare_earth_cm": 936.8,
+      "cover_cm": -320.2,
+      "clear_of_roads_cm": 3061.4
+    },
+    {
+      "station_cm": 12782.0,
+      "floor_z_cm": 947.0,
+      "roof_top_cm": 1257.0,
+      "bare_earth_cm": 938.8,
+      "cover_cm": -318.2,
+      "clear_of_roads_cm": 3036.4
+    },
+    {
+      "station_cm": 12807.0,
+      "floor_z_cm": 947.0,
+      "roof_top_cm": 1257.0,
+      "bare_earth_cm": 938.3,
+      "cover_cm": -318.8,
+      "clear_of_roads_cm": 3011.5
+    },
+    {
+      "station_cm": 12832.0,
+      "floor_z_cm": 947.1,
+      "roof_top_cm": 1257.1,
+      "bare_earth_cm": 940.2,
+      "cover_cm": -316.8,
+      "clear_of_roads_cm": 2986.5
+    },
+    {
+      "station_cm": 12857.0,
+      "floor_z_cm": 947.1,
+      "roof_top_cm": 1257.1,
+      "bare_earth_cm": 940.4,
+      "cover_cm": -316.7,
+      "clear_of_roads_cm": 2961.6
+    },
+    {
+      "station_cm": 12882.0,
+      "floor_z_cm": 947.1,
+      "roof_top_cm": 1257.1,
+      "bare_earth_cm": 940.7,
+      "cover_cm": -316.4,
+      "clear_of_roads_cm": 2936.6
+    },
+    {
+      "station_cm": 12907.0,
+      "floor_z_cm": 947.2,
+      "roof_top_cm": 1257.2,
+      "bare_earth_cm": 941.2,
+      "cover_cm": -316.0,
+      "clear_of_roads_cm": 2911.7
+    },
+    {
+      "station_cm": 12932.0,
+      "floor_z_cm": 947.2,
+      "roof_top_cm": 1257.2,
+      "bare_earth_cm": 941.9,
+      "cover_cm": -315.3,
+      "clear_of_roads_cm": 2886.8
+    },
+    {
+      "station_cm": 12957.0,
+      "floor_z_cm": 947.2,
+      "roof_top_cm": 1257.2,
+      "bare_earth_cm": 942.0,
+      "cover_cm": -315.2,
+      "clear_of_roads_cm": 2786.7
+    },
+    {
+      "station_cm": 12982.0,
+      "floor_z_cm": 947.3,
+      "roof_top_cm": 1257.3,
+      "bare_earth_cm": 943.0,
+      "cover_cm": -314.3,
+      "clear_of_roads_cm": 2761.8
+    },
+    {
+      "station_cm": 13007.0,
+      "floor_z_cm": 947.3,
+      "roof_top_cm": 1257.3,
+      "bare_earth_cm": 943.0,
+      "cover_cm": -314.3,
+      "clear_of_roads_cm": 2736.9
+    },
+    {
+      "station_cm": 13032.0,
+      "floor_z_cm": 947.4,
+      "roof_top_cm": 1257.4,
+      "bare_earth_cm": 943.2,
+      "cover_cm": -314.2,
+      "clear_of_roads_cm": 2711.9
+    },
+    {
+      "station_cm": 13057.0,
+      "floor_z_cm": 947.4,
+      "roof_top_cm": 1257.4,
+      "bare_earth_cm": 943.2,
+      "cover_cm": -314.1,
+      "clear_of_roads_cm": 2687.0
+    },
+    {
+      "station_cm": 13082.0,
+      "floor_z_cm": 947.4,
+      "roof_top_cm": 1257.4,
+      "bare_earth_cm": 943.4,
+      "cover_cm": -314.0,
+      "clear_of_roads_cm": 2662.1
+    },
+    {
+      "station_cm": 13107.0,
+      "floor_z_cm": 947.5,
+      "roof_top_cm": 1257.5,
+      "bare_earth_cm": 943.4,
+      "cover_cm": -314.1,
+      "clear_of_roads_cm": 2637.1
+    },
+    {
+      "station_cm": 13132.0,
+      "floor_z_cm": 947.5,
+      "roof_top_cm": 1257.5,
+      "bare_earth_cm": 944.0,
+      "cover_cm": -313.5,
+      "clear_of_roads_cm": 2612.2
+    },
+    {
+      "station_cm": 13157.0,
+      "floor_z_cm": 947.5,
+      "roof_top_cm": 1257.5,
+      "bare_earth_cm": 944.2,
+      "cover_cm": -313.4,
+      "clear_of_roads_cm": 2587.3
+    },
+    {
+      "station_cm": 13182.0,
+      "floor_z_cm": 947.6,
+      "roof_top_cm": 1257.6,
+      "bare_earth_cm": 945.3,
+      "cover_cm": -312.3,
+      "clear_of_roads_cm": 2562.4
+    },
+    {
+      "station_cm": 13207.0,
+      "floor_z_cm": 947.6,
+      "roof_top_cm": 1257.6,
+      "bare_earth_cm": 944.7,
+      "cover_cm": -312.9,
+      "clear_of_roads_cm": 2537.5
+    },
+    {
+      "station_cm": 13232.0,
+      "floor_z_cm": 947.6,
+      "roof_top_cm": 1257.6,
+      "bare_earth_cm": 945.3,
+      "cover_cm": -312.3,
+      "clear_of_roads_cm": 2512.5
+    },
+    {
+      "station_cm": 13257.0,
+      "floor_z_cm": 947.7,
+      "roof_top_cm": 1257.7,
+      "bare_earth_cm": 945.1,
+      "cover_cm": -312.6,
+      "clear_of_roads_cm": 2487.6
+    },
+    {
+      "station_cm": 13282.0,
+      "floor_z_cm": 947.7,
+      "roof_top_cm": 1257.7,
+      "bare_earth_cm": 946.7,
+      "cover_cm": -311.0,
+      "clear_of_roads_cm": 2462.7
+    },
+    {
+      "station_cm": 13307.0,
+      "floor_z_cm": 947.7,
+      "roof_top_cm": 1257.7,
+      "bare_earth_cm": 946.8,
+      "cover_cm": -311.0,
+      "clear_of_roads_cm": 2437.8
+    },
+    {
+      "station_cm": 13332.0,
+      "floor_z_cm": 947.8,
+      "roof_top_cm": 1257.8,
+      "bare_earth_cm": 947.1,
+      "cover_cm": -310.7,
+      "clear_of_roads_cm": 2412.9
+    },
+    {
+      "station_cm": 13357.0,
+      "floor_z_cm": 947.8,
+      "roof_top_cm": 1257.8,
+      "bare_earth_cm": 947.3,
+      "cover_cm": -310.5,
+      "clear_of_roads_cm": 2388.0
+    },
+    {
+      "station_cm": 13382.0,
+      "floor_z_cm": 947.9,
+      "roof_top_cm": 1257.9,
+      "bare_earth_cm": 948.2,
+      "cover_cm": -309.7,
+      "clear_of_roads_cm": 2363.1
+    },
+    {
+      "station_cm": 13407.0,
+      "floor_z_cm": 947.9,
+      "roof_top_cm": 1257.9,
+      "bare_earth_cm": 947.8,
+      "cover_cm": -310.1,
+      "clear_of_roads_cm": 2338.2
+    },
+    {
+      "station_cm": 13432.0,
+      "floor_z_cm": 947.9,
+      "roof_top_cm": 1257.9,
+      "bare_earth_cm": 949.2,
+      "cover_cm": -308.7,
+      "clear_of_roads_cm": 2313.3
+    },
+    {
+      "station_cm": 13457.0,
+      "floor_z_cm": 948.0,
+      "roof_top_cm": 1258.0,
+      "bare_earth_cm": 949.3,
+      "cover_cm": -308.7,
+      "clear_of_roads_cm": 2116.2
+    },
+    {
+      "station_cm": 13482.0,
+      "floor_z_cm": 948.0,
+      "roof_top_cm": 1258.0,
+      "bare_earth_cm": 949.1,
+      "cover_cm": -308.9,
+      "clear_of_roads_cm": 2093.1
+    },
+    {
+      "station_cm": 13507.0,
+      "floor_z_cm": 948.0,
+      "roof_top_cm": 1258.0,
+      "bare_earth_cm": 949.2,
+      "cover_cm": -308.9,
+      "clear_of_roads_cm": 2069.9
+    },
+    {
+      "station_cm": 13532.0,
+      "floor_z_cm": 948.1,
+      "roof_top_cm": 1258.1,
+      "bare_earth_cm": 950.9,
+      "cover_cm": -307.2,
+      "clear_of_roads_cm": 2046.8
+    },
+    {
+      "station_cm": 13557.0,
+      "floor_z_cm": 948.1,
+      "roof_top_cm": 1258.1,
+      "bare_earth_cm": 950.8,
+      "cover_cm": -307.3,
+      "clear_of_roads_cm": 2023.8
+    },
+    {
+      "station_cm": 13582.0,
+      "floor_z_cm": 948.1,
+      "roof_top_cm": 1258.1,
+      "bare_earth_cm": 950.7,
+      "cover_cm": -307.4,
+      "clear_of_roads_cm": 2000.8
+    },
+    {
+      "station_cm": 13607.0,
+      "floor_z_cm": 948.2,
+      "roof_top_cm": 1258.2,
+      "bare_earth_cm": 950.7,
+      "cover_cm": -307.5,
+      "clear_of_roads_cm": 1977.8
+    },
+    {
+      "station_cm": 13632.0,
+      "floor_z_cm": 948.2,
+      "roof_top_cm": 1258.2,
+      "bare_earth_cm": 952.4,
+      "cover_cm": -305.8,
+      "clear_of_roads_cm": 1954.8
+    },
+    {
+      "station_cm": 13657.0,
+      "floor_z_cm": 948.3,
+      "roof_top_cm": 1258.3,
+      "bare_earth_cm": 952.5,
+      "cover_cm": -305.8,
+      "clear_of_roads_cm": 1931.8
+    },
+    {
+      "station_cm": 13682.0,
+      "floor_z_cm": 948.3,
+      "roof_top_cm": 1258.3,
+      "bare_earth_cm": 952.3,
+      "cover_cm": -306.0,
+      "clear_of_roads_cm": 1908.8
+    },
+    {
+      "station_cm": 13707.0,
+      "floor_z_cm": 948.3,
+      "roof_top_cm": 1258.3,
+      "bare_earth_cm": 953.6,
+      "cover_cm": -304.8,
+      "clear_of_roads_cm": 1885.8
+    },
+    {
+      "station_cm": 13732.0,
+      "floor_z_cm": 948.4,
+      "roof_top_cm": 1258.4,
+      "bare_earth_cm": 953.7,
+      "cover_cm": -304.7,
+      "clear_of_roads_cm": 1862.9
+    },
+    {
+      "station_cm": 13757.0,
+      "floor_z_cm": 948.4,
+      "roof_top_cm": 1258.4,
+      "bare_earth_cm": 953.8,
+      "cover_cm": -304.6,
+      "clear_of_roads_cm": 1840.0
+    },
+    {
+      "station_cm": 13782.0,
+      "floor_z_cm": 948.4,
+      "roof_top_cm": 1258.4,
+      "bare_earth_cm": 953.7,
+      "cover_cm": -304.7,
+      "clear_of_roads_cm": 1817.2
+    },
+    {
+      "station_cm": 13807.0,
+      "floor_z_cm": 948.5,
+      "roof_top_cm": 1258.5,
+      "bare_earth_cm": 955.5,
+      "cover_cm": -303.0,
+      "clear_of_roads_cm": 1794.4
+    },
+    {
+      "station_cm": 13832.0,
+      "floor_z_cm": 948.5,
+      "roof_top_cm": 1258.5,
+      "bare_earth_cm": 955.6,
+      "cover_cm": -302.9,
+      "clear_of_roads_cm": 1771.7
+    },
+    {
+      "station_cm": 13857.0,
+      "floor_z_cm": 948.5,
+      "roof_top_cm": 1258.5,
+      "bare_earth_cm": 955.6,
+      "cover_cm": -303.0,
+      "clear_of_roads_cm": 1749.1
+    },
+    {
+      "station_cm": 13882.0,
+      "floor_z_cm": 948.6,
+      "roof_top_cm": 1258.6,
+      "bare_earth_cm": 955.5,
+      "cover_cm": -303.1,
+      "clear_of_roads_cm": 1726.5
+    },
+    {
+      "station_cm": 13907.0,
+      "floor_z_cm": 948.6,
+      "roof_top_cm": 1258.6,
+      "bare_earth_cm": 957.0,
+      "cover_cm": -301.6,
+      "clear_of_roads_cm": 1704.0
+    },
+    {
+      "station_cm": 13932.0,
+      "floor_z_cm": 948.6,
+      "roof_top_cm": 1258.6,
+      "bare_earth_cm": 957.1,
+      "cover_cm": -301.5,
+      "clear_of_roads_cm": 1681.6
+    },
+    {
+      "station_cm": 13957.0,
+      "floor_z_cm": 948.7,
+      "roof_top_cm": 1258.7,
+      "bare_earth_cm": 957.1,
+      "cover_cm": -301.6,
+      "clear_of_roads_cm": 1659.1
+    },
+    {
+      "station_cm": 13982.0,
+      "floor_z_cm": 948.7,
+      "roof_top_cm": 1258.7,
+      "bare_earth_cm": 956.9,
+      "cover_cm": -301.8,
+      "clear_of_roads_cm": 1636.6
+    },
+    {
+      "station_cm": 14007.0,
+      "floor_z_cm": 948.8,
+      "roof_top_cm": 1258.8,
+      "bare_earth_cm": 958.2,
+      "cover_cm": -300.5,
+      "clear_of_roads_cm": 1614.1
+    },
+    {
+      "station_cm": 14032.0,
+      "floor_z_cm": 948.8,
+      "roof_top_cm": 1258.8,
+      "bare_earth_cm": 959.9,
+      "cover_cm": -298.9,
+      "clear_of_roads_cm": 1591.6
+    },
+    {
+      "station_cm": 14057.0,
+      "floor_z_cm": 948.8,
+      "roof_top_cm": 1258.8,
+      "bare_earth_cm": 958.6,
+      "cover_cm": -300.2,
+      "clear_of_roads_cm": 1569.1
+    },
+    {
+      "station_cm": 14082.0,
+      "floor_z_cm": 948.9,
+      "roof_top_cm": 1258.9,
+      "bare_earth_cm": 960.0,
+      "cover_cm": -298.9,
+      "clear_of_roads_cm": 1546.6
+    },
+    {
+      "station_cm": 14107.0,
+      "floor_z_cm": 948.9,
+      "roof_top_cm": 1258.9,
+      "bare_earth_cm": 959.9,
+      "cover_cm": -299.0,
+      "clear_of_roads_cm": 1524.1
+    },
+    {
+      "station_cm": 14132.0,
+      "floor_z_cm": 948.9,
+      "roof_top_cm": 1258.9,
+      "bare_earth_cm": 961.7,
+      "cover_cm": -297.3,
+      "clear_of_roads_cm": 1681.8
+    },
+    {
+      "station_cm": 14157.0,
+      "floor_z_cm": 949.0,
+      "roof_top_cm": 1259.0,
+      "bare_earth_cm": 960.7,
+      "cover_cm": -298.3,
+      "clear_of_roads_cm": 1657.1
+    },
+    {
+      "station_cm": 14182.0,
+      "floor_z_cm": 949.0,
+      "roof_top_cm": 1259.0,
+      "bare_earth_cm": 961.7,
+      "cover_cm": -297.4,
+      "clear_of_roads_cm": 1632.5
+    },
+    {
+      "station_cm": 14207.0,
+      "floor_z_cm": 949.0,
+      "roof_top_cm": 1259.0,
+      "bare_earth_cm": 960.9,
+      "cover_cm": -298.1,
+      "clear_of_roads_cm": 1607.8
+    },
+    {
+      "station_cm": 14232.0,
+      "floor_z_cm": 949.1,
+      "roof_top_cm": 1259.1,
+      "bare_earth_cm": 962.8,
+      "cover_cm": -296.3,
+      "clear_of_roads_cm": 1583.1
+    },
+    {
+      "station_cm": 14257.0,
+      "floor_z_cm": 949.1,
+      "roof_top_cm": 1259.1,
+      "bare_earth_cm": 962.8,
+      "cover_cm": -296.3,
+      "clear_of_roads_cm": 1558.5
+    },
+    {
+      "station_cm": 14282.0,
+      "floor_z_cm": 949.2,
+      "roof_top_cm": 1259.2,
+      "bare_earth_cm": 964.8,
+      "cover_cm": -294.3,
+      "clear_of_roads_cm": 1533.8
+    },
+    {
+      "station_cm": 14307.0,
+      "floor_z_cm": 949.2,
+      "roof_top_cm": 1259.2,
+      "bare_earth_cm": 963.5,
+      "cover_cm": -295.6,
+      "clear_of_roads_cm": 1509.1
+    },
+    {
+      "station_cm": 14332.0,
+      "floor_z_cm": 949.2,
+      "roof_top_cm": 1259.2,
+      "bare_earth_cm": 964.4,
+      "cover_cm": -294.8,
+      "clear_of_roads_cm": 1484.5
+    },
+    {
+      "station_cm": 14357.0,
+      "floor_z_cm": 949.3,
+      "roof_top_cm": 1259.3,
+      "bare_earth_cm": 963.8,
+      "cover_cm": -295.5,
+      "clear_of_roads_cm": 1459.8
+    },
+    {
+      "station_cm": 14382.0,
+      "floor_z_cm": 949.3,
+      "roof_top_cm": 1259.3,
+      "bare_earth_cm": 965.8,
+      "cover_cm": -293.5,
+      "clear_of_roads_cm": 1435.1
+    },
+    {
+      "station_cm": 14407.0,
+      "floor_z_cm": 949.3,
+      "roof_top_cm": 1259.3,
+      "bare_earth_cm": 965.9,
+      "cover_cm": -293.4,
+      "clear_of_roads_cm": 1410.5
+    },
+    {
+      "station_cm": 14432.0,
+      "floor_z_cm": 949.4,
+      "roof_top_cm": 1259.4,
+      "bare_earth_cm": 967.8,
+      "cover_cm": -291.6,
+      "clear_of_roads_cm": 1385.8
+    },
+    {
+      "station_cm": 14457.0,
+      "floor_z_cm": 949.4,
+      "roof_top_cm": 1259.4,
+      "bare_earth_cm": 966.6,
+      "cover_cm": -292.8,
+      "clear_of_roads_cm": 1361.1
+    },
+    {
+      "station_cm": 14482.0,
+      "floor_z_cm": 949.4,
+      "roof_top_cm": 1259.4,
+      "bare_earth_cm": 967.5,
+      "cover_cm": -291.9,
+      "clear_of_roads_cm": 1336.5
+    },
+    {
+      "station_cm": 14507.0,
+      "floor_z_cm": 949.5,
+      "roof_top_cm": 1259.5,
+      "bare_earth_cm": 967.0,
+      "cover_cm": -292.5,
+      "clear_of_roads_cm": 1311.8
+    },
+    {
+      "station_cm": 14532.0,
+      "floor_z_cm": 949.5,
+      "roof_top_cm": 1259.5,
+      "bare_earth_cm": 968.8,
+      "cover_cm": -290.8,
+      "clear_of_roads_cm": 1287.1
+    },
+    {
+      "station_cm": 14557.0,
+      "floor_z_cm": 949.6,
+      "roof_top_cm": 1259.6,
+      "bare_earth_cm": 968.8,
+      "cover_cm": -290.7,
+      "clear_of_roads_cm": 1262.4
+    },
+    {
+      "station_cm": 14582.0,
+      "floor_z_cm": 949.6,
+      "roof_top_cm": 1259.6,
+      "bare_earth_cm": 969.2,
+      "cover_cm": -290.4,
+      "clear_of_roads_cm": 1308.4
+    },
+    {
+      "station_cm": 14607.0,
+      "floor_z_cm": 949.6,
+      "roof_top_cm": 1259.6,
+      "bare_earth_cm": 969.6,
+      "cover_cm": -290.0,
+      "clear_of_roads_cm": 1283.5
+    },
+    {
+      "station_cm": 14632.0,
+      "floor_z_cm": 949.7,
+      "roof_top_cm": 1259.7,
+      "bare_earth_cm": 970.7,
+      "cover_cm": -288.9,
+      "clear_of_roads_cm": 1258.5
+    },
+    {
+      "station_cm": 14657.0,
+      "floor_z_cm": 949.7,
+      "roof_top_cm": 1259.7,
+      "bare_earth_cm": 970.4,
+      "cover_cm": -289.3,
+      "clear_of_roads_cm": 1233.6
+    },
+    {
+      "station_cm": 14682.0,
+      "floor_z_cm": 949.7,
+      "roof_top_cm": 1259.7,
+      "bare_earth_cm": 972.3,
+      "cover_cm": -287.5,
+      "clear_of_roads_cm": 1208.6
+    },
+    {
+      "station_cm": 14707.0,
+      "floor_z_cm": 949.8,
+      "roof_top_cm": 1259.8,
+      "bare_earth_cm": 972.3,
+      "cover_cm": -287.5,
+      "clear_of_roads_cm": 1183.6
+    },
+    {
+      "station_cm": 14732.0,
+      "floor_z_cm": 949.8,
+      "roof_top_cm": 1259.8,
+      "bare_earth_cm": 973.6,
+      "cover_cm": -286.2,
+      "clear_of_roads_cm": 1158.7
+    },
+    {
+      "station_cm": 14757.0,
+      "floor_z_cm": 949.8,
+      "roof_top_cm": 1259.8,
+      "bare_earth_cm": 973.6,
+      "cover_cm": -286.3,
+      "clear_of_roads_cm": 1133.7
+    },
+    {
+      "station_cm": 14782.0,
+      "floor_z_cm": 949.9,
+      "roof_top_cm": 1259.9,
+      "bare_earth_cm": 973.6,
+      "cover_cm": -286.3,
+      "clear_of_roads_cm": 1108.7
+    },
+    {
+      "station_cm": 14807.0,
+      "floor_z_cm": 949.9,
+      "roof_top_cm": 1259.9,
+      "bare_earth_cm": 973.8,
+      "cover_cm": -286.1,
+      "clear_of_roads_cm": 1083.8
+    },
+    {
+      "station_cm": 14832.0,
+      "floor_z_cm": 949.9,
+      "roof_top_cm": 1259.9,
+      "bare_earth_cm": 974.6,
+      "cover_cm": -285.3,
+      "clear_of_roads_cm": 1058.8
+    },
+    {
+      "station_cm": 14857.0,
+      "floor_z_cm": 950.0,
+      "roof_top_cm": 1260.0,
+      "bare_earth_cm": 974.3,
+      "cover_cm": -285.7,
+      "clear_of_roads_cm": 1033.9
+    },
+    {
+      "station_cm": 14882.0,
+      "floor_z_cm": 950.0,
+      "roof_top_cm": 1260.0,
+      "bare_earth_cm": 975.5,
+      "cover_cm": -284.5,
+      "clear_of_roads_cm": 1008.9
+    },
+    {
+      "station_cm": 14907.0,
+      "floor_z_cm": 950.1,
+      "roof_top_cm": 1260.1,
+      "bare_earth_cm": 975.6,
+      "cover_cm": -284.4,
+      "clear_of_roads_cm": 983.9
+    },
+    {
+      "station_cm": 14932.0,
+      "floor_z_cm": 950.1,
+      "roof_top_cm": 1260.1,
+      "bare_earth_cm": 974.7,
+      "cover_cm": -285.4,
+      "clear_of_roads_cm": 959.0
+    },
+    {
+      "station_cm": 14957.0,
+      "floor_z_cm": 950.1,
+      "roof_top_cm": 1260.1,
+      "bare_earth_cm": 976.4,
+      "cover_cm": -283.7,
+      "clear_of_roads_cm": 934.0
+    },
+    {
+      "station_cm": 14982.0,
+      "floor_z_cm": 950.2,
+      "roof_top_cm": 1260.2,
+      "bare_earth_cm": 976.9,
+      "cover_cm": -283.3,
+      "clear_of_roads_cm": 909.0
+    },
+    {
+      "station_cm": 15007.0,
+      "floor_z_cm": 950.2,
+      "roof_top_cm": 1260.2,
+      "bare_earth_cm": 977.2,
+      "cover_cm": -283.0,
+      "clear_of_roads_cm": 884.1
+    },
+    {
+      "station_cm": 15032.0,
+      "floor_z_cm": 950.2,
+      "roof_top_cm": 1260.2,
+      "bare_earth_cm": 977.4,
+      "cover_cm": -282.8,
+      "clear_of_roads_cm": 859.1
+    },
+    {
+      "station_cm": 15057.0,
+      "floor_z_cm": 950.3,
+      "roof_top_cm": 1260.3,
+      "bare_earth_cm": 978.6,
+      "cover_cm": -281.7,
+      "clear_of_roads_cm": 834.2
+    },
+    {
+      "station_cm": 15082.0,
+      "floor_z_cm": 950.3,
+      "roof_top_cm": 1260.3,
+      "bare_earth_cm": 978.1,
+      "cover_cm": -282.2,
+      "clear_of_roads_cm": 809.2
+    },
+    {
+      "station_cm": 15107.0,
+      "floor_z_cm": 950.3,
+      "roof_top_cm": 1260.3,
+      "bare_earth_cm": 979.7,
+      "cover_cm": -280.6,
+      "clear_of_roads_cm": 784.2
+    },
+    {
+      "station_cm": 15132.0,
+      "floor_z_cm": 950.4,
+      "roof_top_cm": 1260.4,
+      "bare_earth_cm": 979.8,
+      "cover_cm": -280.6,
+      "clear_of_roads_cm": 759.3
+    },
+    {
+      "station_cm": 15157.0,
+      "floor_z_cm": 950.4,
+      "roof_top_cm": 1260.4,
+      "bare_earth_cm": 980.1,
+      "cover_cm": -280.3,
+      "clear_of_roads_cm": 734.3
+    },
+    {
+      "station_cm": 15182.0,
+      "floor_z_cm": 950.5,
+      "roof_top_cm": 1260.5,
+      "bare_earth_cm": 980.4,
+      "cover_cm": -280.0,
+      "clear_of_roads_cm": 547.9
+    },
+    {
+      "station_cm": 15207.0,
+      "floor_z_cm": 950.5,
+      "roof_top_cm": 1260.5,
+      "bare_earth_cm": 981.7,
+      "cover_cm": -278.8,
+      "clear_of_roads_cm": 524.1
+    },
+    {
+      "station_cm": 15232.0,
+      "floor_z_cm": 950.5,
+      "roof_top_cm": 1260.5,
+      "bare_earth_cm": 980.9,
+      "cover_cm": -279.6,
+      "clear_of_roads_cm": 500.3
+    },
+    {
+      "station_cm": 15257.0,
+      "floor_z_cm": 950.6,
+      "roof_top_cm": 1260.6,
+      "bare_earth_cm": 983.2,
+      "cover_cm": -277.3,
+      "clear_of_roads_cm": 476.4
+    },
+    {
+      "station_cm": 15282.0,
+      "floor_z_cm": 950.6,
+      "roof_top_cm": 1260.6,
+      "bare_earth_cm": 982.7,
+      "cover_cm": -277.9,
+      "clear_of_roads_cm": 452.6
+    },
+    {
+      "station_cm": 15307.0,
+      "floor_z_cm": 950.6,
+      "roof_top_cm": 1260.6,
+      "bare_earth_cm": 982.8,
+      "cover_cm": -277.8,
+      "clear_of_roads_cm": 428.7
+    },
+    {
+      "station_cm": 15332.0,
+      "floor_z_cm": 950.7,
+      "roof_top_cm": 1260.7,
+      "bare_earth_cm": 982.8,
+      "cover_cm": -277.8,
+      "clear_of_roads_cm": 404.9
+    },
+    {
+      "station_cm": 15357.0,
+      "floor_z_cm": 950.7,
+      "roof_top_cm": 1260.7,
+      "bare_earth_cm": 984.4,
+      "cover_cm": -276.3,
+      "clear_of_roads_cm": 381.0
+    },
+    {
+      "station_cm": 15382.0,
+      "floor_z_cm": 950.7,
+      "roof_top_cm": 1260.7,
+      "bare_earth_cm": 984.5,
+      "cover_cm": -276.2,
+      "clear_of_roads_cm": 357.2
+    },
+    {
+      "station_cm": 15407.0,
+      "floor_z_cm": 950.8,
+      "roof_top_cm": 1260.8,
+      "bare_earth_cm": 984.6,
+      "cover_cm": -276.2,
+      "clear_of_roads_cm": 333.3
+    },
+    {
+      "station_cm": 15432.0,
+      "floor_z_cm": 950.8,
+      "roof_top_cm": 1260.8,
+      "bare_earth_cm": 985.1,
+      "cover_cm": -275.7,
+      "clear_of_roads_cm": 309.5
+    },
+    {
+      "station_cm": 15457.0,
+      "floor_z_cm": 950.8,
+      "roof_top_cm": 1260.8,
+      "bare_earth_cm": 985.1,
+      "cover_cm": -275.7,
+      "clear_of_roads_cm": 285.6
+    },
+    {
+      "station_cm": 15482.0,
+      "floor_z_cm": 950.9,
+      "roof_top_cm": 1260.9,
+      "bare_earth_cm": 985.6,
+      "cover_cm": -275.3,
+      "clear_of_roads_cm": 261.8
+    },
+    {
+      "station_cm": 15507.0,
+      "floor_z_cm": 950.9,
+      "roof_top_cm": 1260.9,
+      "bare_earth_cm": 985.3,
+      "cover_cm": -275.7,
+      "clear_of_roads_cm": 3.6
+    },
+    {
+      "station_cm": 15532.0,
+      "floor_z_cm": 951.0,
+      "roof_top_cm": 1261.0,
+      "bare_earth_cm": 985.9,
+      "cover_cm": -275.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15557.0,
+      "floor_z_cm": 951.0,
+      "roof_top_cm": 1261.0,
+      "bare_earth_cm": 986.0,
+      "cover_cm": -275.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15582.0,
+      "floor_z_cm": 951.0,
+      "roof_top_cm": 1261.0,
+      "bare_earth_cm": 986.0,
+      "cover_cm": -275.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15607.0,
+      "floor_z_cm": 951.1,
+      "roof_top_cm": 1261.1,
+      "bare_earth_cm": 985.9,
+      "cover_cm": -275.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15632.0,
+      "floor_z_cm": 951.1,
+      "roof_top_cm": 1261.1,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -274.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15657.0,
+      "floor_z_cm": 951.1,
+      "roof_top_cm": 1261.1,
+      "bare_earth_cm": 986.4,
+      "cover_cm": -274.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15682.0,
+      "floor_z_cm": 951.2,
+      "roof_top_cm": 1261.2,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -274.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15707.0,
+      "floor_z_cm": 951.2,
+      "roof_top_cm": 1261.2,
+      "bare_earth_cm": 986.3,
+      "cover_cm": -274.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15732.0,
+      "floor_z_cm": 951.2,
+      "roof_top_cm": 1261.2,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -274.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15757.0,
+      "floor_z_cm": 951.3,
+      "roof_top_cm": 1261.3,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -274.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15782.0,
+      "floor_z_cm": 951.3,
+      "roof_top_cm": 1261.3,
+      "bare_earth_cm": 987.6,
+      "cover_cm": -273.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15807.0,
+      "floor_z_cm": 951.4,
+      "roof_top_cm": 1261.4,
+      "bare_earth_cm": 987.3,
+      "cover_cm": -274.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15832.0,
+      "floor_z_cm": 951.4,
+      "roof_top_cm": 1261.4,
+      "bare_earth_cm": 987.6,
+      "cover_cm": -273.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15857.0,
+      "floor_z_cm": 951.4,
+      "roof_top_cm": 1261.4,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -274.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15882.0,
+      "floor_z_cm": 951.5,
+      "roof_top_cm": 1261.5,
+      "bare_earth_cm": 987.9,
+      "cover_cm": -273.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15907.0,
+      "floor_z_cm": 951.5,
+      "roof_top_cm": 1261.5,
+      "bare_earth_cm": 987.7,
+      "cover_cm": -273.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15932.0,
+      "floor_z_cm": 951.5,
+      "roof_top_cm": 1261.5,
+      "bare_earth_cm": 989.2,
+      "cover_cm": -272.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15957.0,
+      "floor_z_cm": 951.6,
+      "roof_top_cm": 1261.6,
+      "bare_earth_cm": 988.6,
+      "cover_cm": -273.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 15982.0,
+      "floor_z_cm": 951.6,
+      "roof_top_cm": 1261.6,
+      "bare_earth_cm": 989.4,
+      "cover_cm": -272.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16007.0,
+      "floor_z_cm": 951.6,
+      "roof_top_cm": 1261.6,
+      "bare_earth_cm": 989.5,
+      "cover_cm": -272.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16032.0,
+      "floor_z_cm": 951.7,
+      "roof_top_cm": 1261.7,
+      "bare_earth_cm": 989.5,
+      "cover_cm": -272.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16057.0,
+      "floor_z_cm": 951.7,
+      "roof_top_cm": 1261.7,
+      "bare_earth_cm": 989.3,
+      "cover_cm": -272.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16082.0,
+      "floor_z_cm": 951.8,
+      "roof_top_cm": 1261.8,
+      "bare_earth_cm": 989.7,
+      "cover_cm": -272.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16107.0,
+      "floor_z_cm": 951.8,
+      "roof_top_cm": 1261.8,
+      "bare_earth_cm": 989.3,
+      "cover_cm": -272.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16132.0,
+      "floor_z_cm": 951.8,
+      "roof_top_cm": 1261.8,
+      "bare_earth_cm": 989.0,
+      "cover_cm": -272.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16157.0,
+      "floor_z_cm": 951.9,
+      "roof_top_cm": 1261.9,
+      "bare_earth_cm": 988.7,
+      "cover_cm": -273.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16182.0,
+      "floor_z_cm": 951.9,
+      "roof_top_cm": 1261.9,
+      "bare_earth_cm": 988.3,
+      "cover_cm": -273.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16207.0,
+      "floor_z_cm": 951.9,
+      "roof_top_cm": 1261.9,
+      "bare_earth_cm": 987.9,
+      "cover_cm": -274.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16232.0,
+      "floor_z_cm": 952.0,
+      "roof_top_cm": 1262.0,
+      "bare_earth_cm": 987.7,
+      "cover_cm": -274.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16257.0,
+      "floor_z_cm": 952.0,
+      "roof_top_cm": 1262.0,
+      "bare_earth_cm": 987.4,
+      "cover_cm": -274.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16282.0,
+      "floor_z_cm": 952.0,
+      "roof_top_cm": 1262.0,
+      "bare_earth_cm": 987.8,
+      "cover_cm": -274.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16307.0,
+      "floor_z_cm": 952.1,
+      "roof_top_cm": 1262.1,
+      "bare_earth_cm": 987.2,
+      "cover_cm": -274.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16332.0,
+      "floor_z_cm": 952.1,
+      "roof_top_cm": 1262.1,
+      "bare_earth_cm": 986.7,
+      "cover_cm": -275.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16357.0,
+      "floor_z_cm": 952.1,
+      "roof_top_cm": 1262.1,
+      "bare_earth_cm": 987.7,
+      "cover_cm": -274.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16382.0,
+      "floor_z_cm": 952.2,
+      "roof_top_cm": 1262.2,
+      "bare_earth_cm": 986.9,
+      "cover_cm": -275.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16407.0,
+      "floor_z_cm": 952.2,
+      "roof_top_cm": 1262.2,
+      "bare_earth_cm": 986.7,
+      "cover_cm": -275.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16432.0,
+      "floor_z_cm": 952.3,
+      "roof_top_cm": 1262.3,
+      "bare_earth_cm": 987.4,
+      "cover_cm": -274.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16457.0,
+      "floor_z_cm": 952.3,
+      "roof_top_cm": 1262.3,
+      "bare_earth_cm": 987.0,
+      "cover_cm": -275.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16482.0,
+      "floor_z_cm": 952.3,
+      "roof_top_cm": 1262.3,
+      "bare_earth_cm": 987.6,
+      "cover_cm": -274.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16507.0,
+      "floor_z_cm": 952.4,
+      "roof_top_cm": 1262.4,
+      "bare_earth_cm": 987.7,
+      "cover_cm": -274.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16532.0,
+      "floor_z_cm": 952.4,
+      "roof_top_cm": 1262.4,
+      "bare_earth_cm": 987.8,
+      "cover_cm": -274.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16557.0,
+      "floor_z_cm": 952.4,
+      "roof_top_cm": 1262.4,
+      "bare_earth_cm": 987.9,
+      "cover_cm": -274.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16582.0,
+      "floor_z_cm": 952.5,
+      "roof_top_cm": 1262.5,
+      "bare_earth_cm": 987.1,
+      "cover_cm": -275.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16607.0,
+      "floor_z_cm": 952.5,
+      "roof_top_cm": 1262.5,
+      "bare_earth_cm": 987.9,
+      "cover_cm": -274.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16632.0,
+      "floor_z_cm": 952.5,
+      "roof_top_cm": 1262.5,
+      "bare_earth_cm": 987.9,
+      "cover_cm": -274.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16657.0,
+      "floor_z_cm": 952.6,
+      "roof_top_cm": 1262.6,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -275.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16682.0,
+      "floor_z_cm": 952.6,
+      "roof_top_cm": 1262.6,
+      "bare_earth_cm": 986.4,
+      "cover_cm": -276.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16707.0,
+      "floor_z_cm": 952.7,
+      "roof_top_cm": 1262.7,
+      "bare_earth_cm": 987.1,
+      "cover_cm": -275.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16732.0,
+      "floor_z_cm": 952.7,
+      "roof_top_cm": 1262.7,
+      "bare_earth_cm": 987.0,
+      "cover_cm": -275.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16757.0,
+      "floor_z_cm": 952.7,
+      "roof_top_cm": 1262.7,
+      "bare_earth_cm": 987.0,
+      "cover_cm": -275.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16782.0,
+      "floor_z_cm": 952.8,
+      "roof_top_cm": 1262.8,
+      "bare_earth_cm": 986.2,
+      "cover_cm": -276.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16807.0,
+      "floor_z_cm": 952.8,
+      "roof_top_cm": 1262.8,
+      "bare_earth_cm": 986.7,
+      "cover_cm": -276.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16832.0,
+      "floor_z_cm": 952.8,
+      "roof_top_cm": 1262.8,
+      "bare_earth_cm": 986.6,
+      "cover_cm": -276.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16857.0,
+      "floor_z_cm": 952.9,
+      "roof_top_cm": 1262.9,
+      "bare_earth_cm": 985.5,
+      "cover_cm": -277.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16882.0,
+      "floor_z_cm": 952.9,
+      "roof_top_cm": 1262.9,
+      "bare_earth_cm": 985.0,
+      "cover_cm": -277.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16907.0,
+      "floor_z_cm": 952.9,
+      "roof_top_cm": 1262.9,
+      "bare_earth_cm": 986.8,
+      "cover_cm": -276.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16932.0,
+      "floor_z_cm": 953.0,
+      "roof_top_cm": 1263.0,
+      "bare_earth_cm": 985.3,
+      "cover_cm": -277.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16957.0,
+      "floor_z_cm": 953.0,
+      "roof_top_cm": 1263.0,
+      "bare_earth_cm": 985.7,
+      "cover_cm": -277.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 16982.0,
+      "floor_z_cm": 953.0,
+      "roof_top_cm": 1263.0,
+      "bare_earth_cm": 985.1,
+      "cover_cm": -277.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17007.0,
+      "floor_z_cm": 953.1,
+      "roof_top_cm": 1263.1,
+      "bare_earth_cm": 985.8,
+      "cover_cm": -277.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17032.0,
+      "floor_z_cm": 953.1,
+      "roof_top_cm": 1263.1,
+      "bare_earth_cm": 985.8,
+      "cover_cm": -277.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17057.0,
+      "floor_z_cm": 953.2,
+      "roof_top_cm": 1263.2,
+      "bare_earth_cm": 984.7,
+      "cover_cm": -278.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17082.0,
+      "floor_z_cm": 953.2,
+      "roof_top_cm": 1263.2,
+      "bare_earth_cm": 984.3,
+      "cover_cm": -278.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17107.0,
+      "floor_z_cm": 953.2,
+      "roof_top_cm": 1263.2,
+      "bare_earth_cm": 985.7,
+      "cover_cm": -277.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17132.0,
+      "floor_z_cm": 953.3,
+      "roof_top_cm": 1263.3,
+      "bare_earth_cm": 984.5,
+      "cover_cm": -278.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17157.0,
+      "floor_z_cm": 953.3,
+      "roof_top_cm": 1263.3,
+      "bare_earth_cm": 984.2,
+      "cover_cm": -279.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17182.0,
+      "floor_z_cm": 953.3,
+      "roof_top_cm": 1263.3,
+      "bare_earth_cm": 984.5,
+      "cover_cm": -278.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17207.0,
+      "floor_z_cm": 953.4,
+      "roof_top_cm": 1263.4,
+      "bare_earth_cm": 984.5,
+      "cover_cm": -278.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17232.0,
+      "floor_z_cm": 953.4,
+      "roof_top_cm": 1263.4,
+      "bare_earth_cm": 984.6,
+      "cover_cm": -278.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17257.0,
+      "floor_z_cm": 953.4,
+      "roof_top_cm": 1263.4,
+      "bare_earth_cm": 984.6,
+      "cover_cm": -278.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17282.0,
+      "floor_z_cm": 953.5,
+      "roof_top_cm": 1263.5,
+      "bare_earth_cm": 983.8,
+      "cover_cm": -279.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17307.0,
+      "floor_z_cm": 953.5,
+      "roof_top_cm": 1263.5,
+      "bare_earth_cm": 984.0,
+      "cover_cm": -279.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17332.0,
+      "floor_z_cm": 953.6,
+      "roof_top_cm": 1263.6,
+      "bare_earth_cm": 983.4,
+      "cover_cm": -280.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17357.0,
+      "floor_z_cm": 953.6,
+      "roof_top_cm": 1263.6,
+      "bare_earth_cm": 983.0,
+      "cover_cm": -280.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17382.0,
+      "floor_z_cm": 953.6,
+      "roof_top_cm": 1263.6,
+      "bare_earth_cm": 982.5,
+      "cover_cm": -281.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17407.0,
+      "floor_z_cm": 953.7,
+      "roof_top_cm": 1263.7,
+      "bare_earth_cm": 982.3,
+      "cover_cm": -281.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17432.0,
+      "floor_z_cm": 953.7,
+      "roof_top_cm": 1263.7,
+      "bare_earth_cm": 982.2,
+      "cover_cm": -281.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17457.0,
+      "floor_z_cm": 953.7,
+      "roof_top_cm": 1263.7,
+      "bare_earth_cm": 982.0,
+      "cover_cm": -281.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17482.0,
+      "floor_z_cm": 953.8,
+      "roof_top_cm": 1263.8,
+      "bare_earth_cm": 981.2,
+      "cover_cm": -282.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17507.0,
+      "floor_z_cm": 953.8,
+      "roof_top_cm": 1263.8,
+      "bare_earth_cm": 981.5,
+      "cover_cm": -282.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17532.0,
+      "floor_z_cm": 953.8,
+      "roof_top_cm": 1263.8,
+      "bare_earth_cm": 981.3,
+      "cover_cm": -282.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17557.0,
+      "floor_z_cm": 953.9,
+      "roof_top_cm": 1263.9,
+      "bare_earth_cm": 980.4,
+      "cover_cm": -283.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17582.0,
+      "floor_z_cm": 953.9,
+      "roof_top_cm": 1263.9,
+      "bare_earth_cm": 980.0,
+      "cover_cm": -284.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17607.0,
+      "floor_z_cm": 954.0,
+      "roof_top_cm": 1264.0,
+      "bare_earth_cm": 979.7,
+      "cover_cm": -284.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17632.0,
+      "floor_z_cm": 954.0,
+      "roof_top_cm": 1264.0,
+      "bare_earth_cm": 979.5,
+      "cover_cm": -284.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17657.0,
+      "floor_z_cm": 954.0,
+      "roof_top_cm": 1264.0,
+      "bare_earth_cm": 979.0,
+      "cover_cm": -285.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17682.0,
+      "floor_z_cm": 954.1,
+      "roof_top_cm": 1264.1,
+      "bare_earth_cm": 978.7,
+      "cover_cm": -285.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17707.0,
+      "floor_z_cm": 954.1,
+      "roof_top_cm": 1264.1,
+      "bare_earth_cm": 977.8,
+      "cover_cm": -286.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17732.0,
+      "floor_z_cm": 954.1,
+      "roof_top_cm": 1264.1,
+      "bare_earth_cm": 977.1,
+      "cover_cm": -287.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17757.0,
+      "floor_z_cm": 954.2,
+      "roof_top_cm": 1264.2,
+      "bare_earth_cm": 977.3,
+      "cover_cm": -286.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17782.0,
+      "floor_z_cm": 954.2,
+      "roof_top_cm": 1264.2,
+      "bare_earth_cm": 977.4,
+      "cover_cm": -286.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17807.0,
+      "floor_z_cm": 954.2,
+      "roof_top_cm": 1264.2,
+      "bare_earth_cm": 974.6,
+      "cover_cm": -289.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17832.0,
+      "floor_z_cm": 954.3,
+      "roof_top_cm": 1264.3,
+      "bare_earth_cm": 975.8,
+      "cover_cm": -288.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17857.0,
+      "floor_z_cm": 954.3,
+      "roof_top_cm": 1264.3,
+      "bare_earth_cm": 976.1,
+      "cover_cm": -288.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17882.0,
+      "floor_z_cm": 954.3,
+      "roof_top_cm": 1264.3,
+      "bare_earth_cm": 976.4,
+      "cover_cm": -287.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17907.0,
+      "floor_z_cm": 954.4,
+      "roof_top_cm": 1264.4,
+      "bare_earth_cm": 974.2,
+      "cover_cm": -290.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17932.0,
+      "floor_z_cm": 954.4,
+      "roof_top_cm": 1264.4,
+      "bare_earth_cm": 973.6,
+      "cover_cm": -290.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17957.0,
+      "floor_z_cm": 954.5,
+      "roof_top_cm": 1264.5,
+      "bare_earth_cm": 973.6,
+      "cover_cm": -290.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 17982.0,
+      "floor_z_cm": 954.5,
+      "roof_top_cm": 1264.5,
+      "bare_earth_cm": 972.6,
+      "cover_cm": -291.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18007.0,
+      "floor_z_cm": 954.5,
+      "roof_top_cm": 1264.5,
+      "bare_earth_cm": 972.0,
+      "cover_cm": -292.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18032.0,
+      "floor_z_cm": 954.6,
+      "roof_top_cm": 1264.6,
+      "bare_earth_cm": 972.5,
+      "cover_cm": -292.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18057.0,
+      "floor_z_cm": 954.6,
+      "roof_top_cm": 1264.6,
+      "bare_earth_cm": 972.7,
+      "cover_cm": -291.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18082.0,
+      "floor_z_cm": 954.6,
+      "roof_top_cm": 1264.6,
+      "bare_earth_cm": 970.7,
+      "cover_cm": -293.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18107.0,
+      "floor_z_cm": 954.7,
+      "roof_top_cm": 1264.7,
+      "bare_earth_cm": 971.8,
+      "cover_cm": -292.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18132.0,
+      "floor_z_cm": 954.7,
+      "roof_top_cm": 1264.7,
+      "bare_earth_cm": 970.8,
+      "cover_cm": -293.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18157.0,
+      "floor_z_cm": 954.7,
+      "roof_top_cm": 1264.7,
+      "bare_earth_cm": 970.2,
+      "cover_cm": -294.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18182.0,
+      "floor_z_cm": 954.8,
+      "roof_top_cm": 1264.8,
+      "bare_earth_cm": 969.4,
+      "cover_cm": -295.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18207.0,
+      "floor_z_cm": 954.8,
+      "roof_top_cm": 1264.8,
+      "bare_earth_cm": 968.8,
+      "cover_cm": -296.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18232.0,
+      "floor_z_cm": 954.9,
+      "roof_top_cm": 1264.9,
+      "bare_earth_cm": 969.3,
+      "cover_cm": -295.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18257.0,
+      "floor_z_cm": 954.9,
+      "roof_top_cm": 1264.9,
+      "bare_earth_cm": 969.4,
+      "cover_cm": -295.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18282.0,
+      "floor_z_cm": 954.9,
+      "roof_top_cm": 1264.9,
+      "bare_earth_cm": 966.7,
+      "cover_cm": -298.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18307.0,
+      "floor_z_cm": 955.0,
+      "roof_top_cm": 1265.0,
+      "bare_earth_cm": 967.8,
+      "cover_cm": -297.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18332.0,
+      "floor_z_cm": 955.0,
+      "roof_top_cm": 1265.0,
+      "bare_earth_cm": 967.9,
+      "cover_cm": -297.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18357.0,
+      "floor_z_cm": 955.0,
+      "roof_top_cm": 1265.0,
+      "bare_earth_cm": 967.0,
+      "cover_cm": -298.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18382.0,
+      "floor_z_cm": 955.1,
+      "roof_top_cm": 1265.1,
+      "bare_earth_cm": 966.6,
+      "cover_cm": -298.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18407.0,
+      "floor_z_cm": 955.1,
+      "roof_top_cm": 1265.1,
+      "bare_earth_cm": 966.3,
+      "cover_cm": -298.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18432.0,
+      "floor_z_cm": 955.1,
+      "roof_top_cm": 1265.1,
+      "bare_earth_cm": 965.9,
+      "cover_cm": -299.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18457.0,
+      "floor_z_cm": 955.2,
+      "roof_top_cm": 1265.2,
+      "bare_earth_cm": 966.4,
+      "cover_cm": -298.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18482.0,
+      "floor_z_cm": 955.2,
+      "roof_top_cm": 1265.2,
+      "bare_earth_cm": 965.3,
+      "cover_cm": -299.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18507.0,
+      "floor_z_cm": 955.2,
+      "roof_top_cm": 1265.2,
+      "bare_earth_cm": 964.9,
+      "cover_cm": -300.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18532.0,
+      "floor_z_cm": 955.3,
+      "roof_top_cm": 1265.3,
+      "bare_earth_cm": 966.0,
+      "cover_cm": -299.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18557.0,
+      "floor_z_cm": 955.3,
+      "roof_top_cm": 1265.3,
+      "bare_earth_cm": 966.3,
+      "cover_cm": -299.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18582.0,
+      "floor_z_cm": 955.4,
+      "roof_top_cm": 1265.4,
+      "bare_earth_cm": 965.0,
+      "cover_cm": -300.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18607.0,
+      "floor_z_cm": 955.4,
+      "roof_top_cm": 1265.4,
+      "bare_earth_cm": 964.5,
+      "cover_cm": -300.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18632.0,
+      "floor_z_cm": 955.4,
+      "roof_top_cm": 1265.4,
+      "bare_earth_cm": 964.1,
+      "cover_cm": -301.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18657.0,
+      "floor_z_cm": 955.5,
+      "roof_top_cm": 1265.5,
+      "bare_earth_cm": 964.5,
+      "cover_cm": -301.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18682.0,
+      "floor_z_cm": 955.5,
+      "roof_top_cm": 1265.5,
+      "bare_earth_cm": 963.3,
+      "cover_cm": -302.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18707.0,
+      "floor_z_cm": 955.5,
+      "roof_top_cm": 1265.5,
+      "bare_earth_cm": 962.9,
+      "cover_cm": -302.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18732.0,
+      "floor_z_cm": 955.6,
+      "roof_top_cm": 1265.6,
+      "bare_earth_cm": 964.2,
+      "cover_cm": -301.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18757.0,
+      "floor_z_cm": 955.6,
+      "roof_top_cm": 1265.6,
+      "bare_earth_cm": 964.8,
+      "cover_cm": -300.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18782.0,
+      "floor_z_cm": 955.6,
+      "roof_top_cm": 1265.6,
+      "bare_earth_cm": 961.4,
+      "cover_cm": -304.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18807.0,
+      "floor_z_cm": 955.7,
+      "roof_top_cm": 1265.7,
+      "bare_earth_cm": 963.7,
+      "cover_cm": -301.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18832.0,
+      "floor_z_cm": 955.7,
+      "roof_top_cm": 1265.7,
+      "bare_earth_cm": 962.6,
+      "cover_cm": -303.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18857.0,
+      "floor_z_cm": 955.8,
+      "roof_top_cm": 1265.8,
+      "bare_earth_cm": 962.1,
+      "cover_cm": -303.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18882.0,
+      "floor_z_cm": 955.8,
+      "roof_top_cm": 1265.8,
+      "bare_earth_cm": 961.4,
+      "cover_cm": -304.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18907.0,
+      "floor_z_cm": 955.8,
+      "roof_top_cm": 1265.8,
+      "bare_earth_cm": 960.8,
+      "cover_cm": -305.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18932.0,
+      "floor_z_cm": 955.9,
+      "roof_top_cm": 1265.9,
+      "bare_earth_cm": 962.0,
+      "cover_cm": -303.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18957.0,
+      "floor_z_cm": 955.9,
+      "roof_top_cm": 1265.9,
+      "bare_earth_cm": 963.0,
+      "cover_cm": -302.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 18982.0,
+      "floor_z_cm": 955.9,
+      "roof_top_cm": 1265.9,
+      "bare_earth_cm": 958.4,
+      "cover_cm": -307.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19007.0,
+      "floor_z_cm": 956.0,
+      "roof_top_cm": 1266.0,
+      "bare_earth_cm": 960.9,
+      "cover_cm": -305.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19032.0,
+      "floor_z_cm": 956.0,
+      "roof_top_cm": 1266.0,
+      "bare_earth_cm": 957.5,
+      "cover_cm": -308.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19057.0,
+      "floor_z_cm": 956.0,
+      "roof_top_cm": 1266.0,
+      "bare_earth_cm": 957.2,
+      "cover_cm": -308.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19082.0,
+      "floor_z_cm": 956.1,
+      "roof_top_cm": 1266.1,
+      "bare_earth_cm": 956.7,
+      "cover_cm": -309.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19107.0,
+      "floor_z_cm": 956.1,
+      "roof_top_cm": 1266.1,
+      "bare_earth_cm": 958.6,
+      "cover_cm": -307.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19132.0,
+      "floor_z_cm": 956.2,
+      "roof_top_cm": 1266.2,
+      "bare_earth_cm": 950.7,
+      "cover_cm": -315.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19157.0,
+      "floor_z_cm": 956.2,
+      "roof_top_cm": 1266.2,
+      "bare_earth_cm": 954.1,
+      "cover_cm": -312.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19182.0,
+      "floor_z_cm": 956.2,
+      "roof_top_cm": 1266.2,
+      "bare_earth_cm": 949.6,
+      "cover_cm": -316.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19207.0,
+      "floor_z_cm": 956.3,
+      "roof_top_cm": 1266.3,
+      "bare_earth_cm": 949.4,
+      "cover_cm": -316.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19232.0,
+      "floor_z_cm": 956.3,
+      "roof_top_cm": 1266.3,
+      "bare_earth_cm": 949.7,
+      "cover_cm": -316.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19257.0,
+      "floor_z_cm": 956.3,
+      "roof_top_cm": 1266.3,
+      "bare_earth_cm": 949.9,
+      "cover_cm": -316.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19282.0,
+      "floor_z_cm": 956.4,
+      "roof_top_cm": 1266.4,
+      "bare_earth_cm": 949.0,
+      "cover_cm": -317.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19307.0,
+      "floor_z_cm": 956.4,
+      "roof_top_cm": 1266.4,
+      "bare_earth_cm": 949.5,
+      "cover_cm": -316.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19332.0,
+      "floor_z_cm": 956.4,
+      "roof_top_cm": 1266.4,
+      "bare_earth_cm": 949.3,
+      "cover_cm": -317.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19357.0,
+      "floor_z_cm": 956.5,
+      "roof_top_cm": 1266.5,
+      "bare_earth_cm": 949.4,
+      "cover_cm": -317.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19382.0,
+      "floor_z_cm": 956.5,
+      "roof_top_cm": 1266.5,
+      "bare_earth_cm": 949.5,
+      "cover_cm": -317.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19407.0,
+      "floor_z_cm": 956.5,
+      "roof_top_cm": 1266.5,
+      "bare_earth_cm": 949.7,
+      "cover_cm": -316.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19432.0,
+      "floor_z_cm": 956.6,
+      "roof_top_cm": 1266.6,
+      "bare_earth_cm": 950.1,
+      "cover_cm": -316.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19457.0,
+      "floor_z_cm": 956.6,
+      "roof_top_cm": 1266.6,
+      "bare_earth_cm": 950.2,
+      "cover_cm": -316.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19482.0,
+      "floor_z_cm": 956.7,
+      "roof_top_cm": 1266.7,
+      "bare_earth_cm": 950.3,
+      "cover_cm": -316.3,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19507.0,
+      "floor_z_cm": 956.7,
+      "roof_top_cm": 1266.7,
+      "bare_earth_cm": 951.0,
+      "cover_cm": -315.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19532.0,
+      "floor_z_cm": 956.7,
+      "roof_top_cm": 1266.7,
+      "bare_earth_cm": 949.9,
+      "cover_cm": -316.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19557.0,
+      "floor_z_cm": 956.8,
+      "roof_top_cm": 1266.8,
+      "bare_earth_cm": 950.9,
+      "cover_cm": -315.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19582.0,
+      "floor_z_cm": 956.8,
+      "roof_top_cm": 1266.8,
+      "bare_earth_cm": 950.1,
+      "cover_cm": -316.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19607.0,
+      "floor_z_cm": 956.8,
+      "roof_top_cm": 1266.8,
+      "bare_earth_cm": 950.1,
+      "cover_cm": -316.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19632.0,
+      "floor_z_cm": 956.9,
+      "roof_top_cm": 1266.9,
+      "bare_earth_cm": 950.5,
+      "cover_cm": -316.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19657.0,
+      "floor_z_cm": 956.9,
+      "roof_top_cm": 1266.9,
+      "bare_earth_cm": 943.1,
+      "cover_cm": -323.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19682.0,
+      "floor_z_cm": 956.9,
+      "roof_top_cm": 1266.9,
+      "bare_earth_cm": 964.4,
+      "cover_cm": -302.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19707.0,
+      "floor_z_cm": 957.0,
+      "roof_top_cm": 1267.0,
+      "bare_earth_cm": 951.9,
+      "cover_cm": -315.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19732.0,
+      "floor_z_cm": 957.0,
+      "roof_top_cm": 1267.0,
+      "bare_earth_cm": 969.9,
+      "cover_cm": -297.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19757.0,
+      "floor_z_cm": 957.1,
+      "roof_top_cm": 1267.1,
+      "bare_earth_cm": 970.3,
+      "cover_cm": -296.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19782.0,
+      "floor_z_cm": 957.1,
+      "roof_top_cm": 1267.1,
+      "bare_earth_cm": 1011.7,
+      "cover_cm": -255.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19807.0,
+      "floor_z_cm": 957.1,
+      "roof_top_cm": 1267.1,
+      "bare_earth_cm": 994.4,
+      "cover_cm": -272.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19832.0,
+      "floor_z_cm": 957.2,
+      "roof_top_cm": 1267.2,
+      "bare_earth_cm": 1001.5,
+      "cover_cm": -265.7,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19857.0,
+      "floor_z_cm": 957.2,
+      "roof_top_cm": 1267.2,
+      "bare_earth_cm": 1009.2,
+      "cover_cm": -258.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19882.0,
+      "floor_z_cm": 957.2,
+      "roof_top_cm": 1267.2,
+      "bare_earth_cm": 1050.4,
+      "cover_cm": -216.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19907.0,
+      "floor_z_cm": 957.3,
+      "roof_top_cm": 1267.3,
+      "bare_earth_cm": 1024.1,
+      "cover_cm": -243.2,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19932.0,
+      "floor_z_cm": 957.3,
+      "roof_top_cm": 1267.3,
+      "bare_earth_cm": 1091.7,
+      "cover_cm": -175.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19957.0,
+      "floor_z_cm": 957.3,
+      "roof_top_cm": 1267.3,
+      "bare_earth_cm": 1089.8,
+      "cover_cm": -177.6,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 19982.0,
+      "floor_z_cm": 957.4,
+      "roof_top_cm": 1267.4,
+      "bare_earth_cm": 1091.3,
+      "cover_cm": -176.1,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20007.0,
+      "floor_z_cm": 957.4,
+      "roof_top_cm": 1267.4,
+      "bare_earth_cm": 1097.6,
+      "cover_cm": -169.8,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20032.0,
+      "floor_z_cm": 957.4,
+      "roof_top_cm": 1267.4,
+      "bare_earth_cm": 1118.4,
+      "cover_cm": -149.0,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20057.0,
+      "floor_z_cm": 957.5,
+      "roof_top_cm": 1267.5,
+      "bare_earth_cm": 1112.1,
+      "cover_cm": -155.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20082.0,
+      "floor_z_cm": 957.5,
+      "roof_top_cm": 1267.5,
+      "bare_earth_cm": 1133.6,
+      "cover_cm": -133.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20107.0,
+      "floor_z_cm": 957.6,
+      "roof_top_cm": 1267.6,
+      "bare_earth_cm": 1133.0,
+      "cover_cm": -134.5,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20132.0,
+      "floor_z_cm": 957.6,
+      "roof_top_cm": 1267.6,
+      "bare_earth_cm": 1140.2,
+      "cover_cm": -127.4,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20157.0,
+      "floor_z_cm": 957.6,
+      "roof_top_cm": 1267.6,
+      "bare_earth_cm": 1135.8,
+      "cover_cm": -131.9,
+      "clear_of_roads_cm": 0.0
+    },
+    {
+      "station_cm": 20182.0,
+      "floor_z_cm": 957.7,
+      "roof_top_cm": 1267.7,
+      "bare_earth_cm": 1137.7,
+      "cover_cm": -129.9,
+      "clear_of_roads_cm": 6.9
+    },
+    {
+      "station_cm": 20207.0,
+      "floor_z_cm": 957.7,
+      "roof_top_cm": 1267.7,
+      "bare_earth_cm": 1138.2,
+      "cover_cm": -129.5,
+      "clear_of_roads_cm": 31.9
+    },
+    {
+      "station_cm": 20232.0,
+      "floor_z_cm": 957.7,
+      "roof_top_cm": 1267.7,
+      "bare_earth_cm": 1129.8,
+      "cover_cm": -137.9,
+      "clear_of_roads_cm": 56.9
+    },
+    {
+      "station_cm": 20257.0,
+      "floor_z_cm": 957.8,
+      "roof_top_cm": 1267.8,
+      "bare_earth_cm": 1129.8,
+      "cover_cm": -138.0,
+      "clear_of_roads_cm": 81.9
+    },
+    {
+      "station_cm": 20282.0,
+      "floor_z_cm": 957.8,
+      "roof_top_cm": 1267.8,
+      "bare_earth_cm": 1124.3,
+      "cover_cm": -143.5,
+      "clear_of_roads_cm": 106.9
+    },
+    {
+      "station_cm": 20307.0,
+      "floor_z_cm": 957.8,
+      "roof_top_cm": 1267.8,
+      "bare_earth_cm": 1124.6,
+      "cover_cm": -143.3,
+      "clear_of_roads_cm": 131.9
+    },
+    {
+      "station_cm": 20332.0,
+      "floor_z_cm": 957.9,
+      "roof_top_cm": 1267.9,
+      "bare_earth_cm": 1124.9,
+      "cover_cm": -143.0,
+      "clear_of_roads_cm": 156.9
+    },
+    {
+      "station_cm": 20357.0,
+      "floor_z_cm": 957.9,
+      "roof_top_cm": 1267.9,
+      "bare_earth_cm": 1123.6,
+      "cover_cm": -144.3,
+      "clear_of_roads_cm": 181.9
+    },
+    {
+      "station_cm": 20382.0,
+      "floor_z_cm": 958.0,
+      "roof_top_cm": 1268.0,
+      "bare_earth_cm": 1122.2,
+      "cover_cm": -145.8,
+      "clear_of_roads_cm": 206.9
+    },
+    {
+      "station_cm": 20407.0,
+      "floor_z_cm": 958.0,
+      "roof_top_cm": 1268.0,
+      "bare_earth_cm": 1118.5,
+      "cover_cm": -149.5,
+      "clear_of_roads_cm": 231.9
+    },
+    {
+      "station_cm": 20432.0,
+      "floor_z_cm": 958.0,
+      "roof_top_cm": 1268.0,
+      "bare_earth_cm": 1118.0,
+      "cover_cm": -150.1,
+      "clear_of_roads_cm": 256.9
+    },
+    {
+      "station_cm": 20457.0,
+      "floor_z_cm": 958.1,
+      "roof_top_cm": 1268.1,
+      "bare_earth_cm": 1116.2,
+      "cover_cm": -151.9,
+      "clear_of_roads_cm": 281.9
+    },
+    {
+      "station_cm": 20482.0,
+      "floor_z_cm": 958.1,
+      "roof_top_cm": 1268.1,
+      "bare_earth_cm": 1115.3,
+      "cover_cm": -152.8,
+      "clear_of_roads_cm": 306.9
+    },
+    {
+      "station_cm": 20507.0,
+      "floor_z_cm": 958.1,
+      "roof_top_cm": 1268.1,
+      "bare_earth_cm": 1118.1,
+      "cover_cm": -150.0,
+      "clear_of_roads_cm": 331.9
+    },
+    {
+      "station_cm": 20532.0,
+      "floor_z_cm": 958.2,
+      "roof_top_cm": 1268.2,
+      "bare_earth_cm": 1117.7,
+      "cover_cm": -150.5,
+      "clear_of_roads_cm": 356.9
+    },
+    {
+      "station_cm": 20557.0,
+      "floor_z_cm": 958.2,
+      "roof_top_cm": 1268.2,
+      "bare_earth_cm": 1117.8,
+      "cover_cm": -150.4,
+      "clear_of_roads_cm": 381.9
+    },
+    {
+      "station_cm": 20582.0,
+      "floor_z_cm": 958.2,
+      "roof_top_cm": 1268.2,
+      "bare_earth_cm": 1117.9,
+      "cover_cm": -150.3,
+      "clear_of_roads_cm": 406.9
+    },
+    {
+      "station_cm": 20607.0,
+      "floor_z_cm": 958.3,
+      "roof_top_cm": 1268.3,
+      "bare_earth_cm": 1119.2,
+      "cover_cm": -149.1,
+      "clear_of_roads_cm": 431.9
+    },
+    {
+      "station_cm": 20632.0,
+      "floor_z_cm": 958.3,
+      "roof_top_cm": 1268.3,
+      "bare_earth_cm": 1118.5,
+      "cover_cm": -149.8,
+      "clear_of_roads_cm": 456.9
+    },
+    {
+      "station_cm": 20657.0,
+      "floor_z_cm": 958.4,
+      "roof_top_cm": 1268.4,
+      "bare_earth_cm": 1120.4,
+      "cover_cm": -148.0,
+      "clear_of_roads_cm": 481.9
+    },
+    {
+      "station_cm": 20682.0,
+      "floor_z_cm": 958.4,
+      "roof_top_cm": 1268.4,
+      "bare_earth_cm": 1120.3,
+      "cover_cm": -148.1,
+      "clear_of_roads_cm": 506.9
+    },
+    {
+      "station_cm": 20707.0,
+      "floor_z_cm": 958.4,
+      "roof_top_cm": 1268.4,
+      "bare_earth_cm": 1120.1,
+      "cover_cm": -148.3,
+      "clear_of_roads_cm": 531.9
+    },
+    {
+      "station_cm": 20732.0,
+      "floor_z_cm": 958.5,
+      "roof_top_cm": 1268.5,
+      "bare_earth_cm": 1120.0,
+      "cover_cm": -148.4,
+      "clear_of_roads_cm": 556.9
+    },
+    {
+      "station_cm": 20757.0,
+      "floor_z_cm": 958.5,
+      "roof_top_cm": 1268.5,
+      "bare_earth_cm": 1119.7,
+      "cover_cm": -148.8,
+      "clear_of_roads_cm": 581.9
+    },
+    {
+      "station_cm": 20782.0,
+      "floor_z_cm": 958.5,
+      "roof_top_cm": 1268.5,
+      "bare_earth_cm": 1120.1,
+      "cover_cm": -148.4,
+      "clear_of_roads_cm": 606.9
+    },
+    {
+      "station_cm": 20807.0,
+      "floor_z_cm": 958.6,
+      "roof_top_cm": 1268.6,
+      "bare_earth_cm": 1118.8,
+      "cover_cm": -149.8,
+      "clear_of_roads_cm": 631.9
+    },
+    {
+      "station_cm": 20832.0,
+      "floor_z_cm": 958.6,
+      "roof_top_cm": 1268.6,
+      "bare_earth_cm": 1118.7,
+      "cover_cm": -149.9,
+      "clear_of_roads_cm": 656.9
+    },
+    {
+      "station_cm": 20857.0,
+      "floor_z_cm": 958.6,
+      "roof_top_cm": 1268.6,
+      "bare_earth_cm": 1116.7,
+      "cover_cm": -151.9,
+      "clear_of_roads_cm": 681.9
+    },
+    {
+      "station_cm": 20882.0,
+      "floor_z_cm": 958.7,
+      "roof_top_cm": 1268.7,
+      "bare_earth_cm": 1117.8,
+      "cover_cm": -150.9,
+      "clear_of_roads_cm": 706.9
+    },
+    {
+      "station_cm": 20907.0,
+      "floor_z_cm": 958.7,
+      "roof_top_cm": 1268.7,
+      "bare_earth_cm": 1116.9,
+      "cover_cm": -151.8,
+      "clear_of_roads_cm": 731.9
+    },
+    {
+      "station_cm": 20932.0,
+      "floor_z_cm": 958.7,
+      "roof_top_cm": 1268.7,
+      "bare_earth_cm": 1117.0,
+      "cover_cm": -151.7,
+      "clear_of_roads_cm": 756.9
+    },
+    {
+      "station_cm": 20957.0,
+      "floor_z_cm": 958.8,
+      "roof_top_cm": 1268.8,
+      "bare_earth_cm": 1115.5,
+      "cover_cm": -153.3,
+      "clear_of_roads_cm": 781.9
+    },
+    {
+      "station_cm": 20982.0,
+      "floor_z_cm": 958.8,
+      "roof_top_cm": 1268.8,
+      "bare_earth_cm": 1116.1,
+      "cover_cm": -152.7,
+      "clear_of_roads_cm": 806.9
+    },
+    {
+      "station_cm": 21007.0,
+      "floor_z_cm": 958.9,
+      "roof_top_cm": 1268.9,
+      "bare_earth_cm": 1114.8,
+      "cover_cm": -154.0,
+      "clear_of_roads_cm": 831.9
+    },
+    {
+      "station_cm": 21032.0,
+      "floor_z_cm": 958.9,
+      "roof_top_cm": 1268.9,
+      "bare_earth_cm": 1114.9,
+      "cover_cm": -154.0,
+      "clear_of_roads_cm": 856.9
+    },
+    {
+      "station_cm": 21057.0,
+      "floor_z_cm": 958.9,
+      "roof_top_cm": 1268.9,
+      "bare_earth_cm": 1115.0,
+      "cover_cm": -154.0,
+      "clear_of_roads_cm": 881.9
+    },
+    {
+      "station_cm": 21082.0,
+      "floor_z_cm": 959.0,
+      "roof_top_cm": 1269.0,
+      "bare_earth_cm": 1114.8,
+      "cover_cm": -154.1,
+      "clear_of_roads_cm": 906.9
+    },
+    {
+      "station_cm": 21107.0,
+      "floor_z_cm": 959.0,
+      "roof_top_cm": 1269.0,
+      "bare_earth_cm": 1114.2,
+      "cover_cm": -154.8,
+      "clear_of_roads_cm": 931.9
+    },
+    {
+      "station_cm": 21132.0,
+      "floor_z_cm": 959.0,
+      "roof_top_cm": 1269.0,
+      "bare_earth_cm": 1114.6,
+      "cover_cm": -154.5,
+      "clear_of_roads_cm": 956.9
+    },
+    {
+      "station_cm": 21157.0,
+      "floor_z_cm": 959.1,
+      "roof_top_cm": 1269.1,
+      "bare_earth_cm": 1113.9,
+      "cover_cm": -155.2,
+      "clear_of_roads_cm": 981.9
+    },
+    {
+      "station_cm": 21182.0,
+      "floor_z_cm": 959.1,
+      "roof_top_cm": 1269.1,
+      "bare_earth_cm": 1113.9,
+      "cover_cm": -155.2,
+      "clear_of_roads_cm": 1006.9
+    },
+    {
+      "station_cm": 21207.0,
+      "floor_z_cm": 959.1,
+      "roof_top_cm": 1269.1,
+      "bare_earth_cm": 1113.5,
+      "cover_cm": -155.7,
+      "clear_of_roads_cm": 1031.9
+    },
+    {
+      "station_cm": 21232.0,
+      "floor_z_cm": 959.2,
+      "roof_top_cm": 1269.2,
+      "bare_earth_cm": 1113.8,
+      "cover_cm": -155.4,
+      "clear_of_roads_cm": 1056.9
+    },
+    {
+      "station_cm": 21257.0,
+      "floor_z_cm": 959.2,
+      "roof_top_cm": 1269.2,
+      "bare_earth_cm": 1113.5,
+      "cover_cm": -155.7,
+      "clear_of_roads_cm": 1081.9
+    },
+    {
+      "station_cm": 21282.0,
+      "floor_z_cm": 959.3,
+      "roof_top_cm": 1269.3,
+      "bare_earth_cm": 1113.7,
+      "cover_cm": -155.6,
+      "clear_of_roads_cm": 1106.9
+    },
+    {
+      "station_cm": 21307.0,
+      "floor_z_cm": 959.3,
+      "roof_top_cm": 1269.3,
+      "bare_earth_cm": 1112.5,
+      "cover_cm": -156.8,
+      "clear_of_roads_cm": 1131.9
+    },
+    {
+      "station_cm": 21332.0,
+      "floor_z_cm": 959.3,
+      "roof_top_cm": 1269.3,
+      "bare_earth_cm": 1112.7,
+      "cover_cm": -156.6,
+      "clear_of_roads_cm": 1156.9
+    },
+    {
+      "station_cm": 21357.0,
+      "floor_z_cm": 959.4,
+      "roof_top_cm": 1269.4,
+      "bare_earth_cm": 1111.9,
+      "cover_cm": -157.4,
+      "clear_of_roads_cm": 1181.9
+    },
+    {
+      "station_cm": 21382.0,
+      "floor_z_cm": 959.4,
+      "roof_top_cm": 1269.4,
+      "bare_earth_cm": 1112.0,
+      "cover_cm": -157.4,
+      "clear_of_roads_cm": 1206.9
+    },
+    {
+      "station_cm": 21407.0,
+      "floor_z_cm": 959.4,
+      "roof_top_cm": 1269.4,
+      "bare_earth_cm": 1112.2,
+      "cover_cm": -157.3,
+      "clear_of_roads_cm": 1231.9
+    },
+    {
+      "station_cm": 21432.0,
+      "floor_z_cm": 959.5,
+      "roof_top_cm": 1269.5,
+      "bare_earth_cm": 1112.1,
+      "cover_cm": -157.4,
+      "clear_of_roads_cm": 1256.9
+    },
+    {
+      "station_cm": 21457.0,
+      "floor_z_cm": 959.5,
+      "roof_top_cm": 1269.5,
+      "bare_earth_cm": 1112.0,
+      "cover_cm": -157.5,
+      "clear_of_roads_cm": 1281.9
+    },
+    {
+      "station_cm": 21482.0,
+      "floor_z_cm": 959.5,
+      "roof_top_cm": 1269.5,
+      "bare_earth_cm": 1111.3,
+      "cover_cm": -158.2,
+      "clear_of_roads_cm": 1306.9
+    },
+    {
+      "station_cm": 21507.0,
+      "floor_z_cm": 959.6,
+      "roof_top_cm": 1269.6,
+      "bare_earth_cm": 1111.7,
+      "cover_cm": -157.8,
+      "clear_of_roads_cm": 1331.9
+    },
+    {
+      "station_cm": 21532.0,
+      "floor_z_cm": 959.6,
+      "roof_top_cm": 1269.6,
+      "bare_earth_cm": 1110.2,
+      "cover_cm": -159.4,
+      "clear_of_roads_cm": 1356.9
+    },
+    {
+      "station_cm": 21557.0,
+      "floor_z_cm": 959.6,
+      "roof_top_cm": 1269.6,
+      "bare_earth_cm": 1111.0,
+      "cover_cm": -158.7,
+      "clear_of_roads_cm": 1381.9
+    },
+    {
+      "station_cm": 21582.0,
+      "floor_z_cm": 959.7,
+      "roof_top_cm": 1269.7,
+      "bare_earth_cm": 1110.1,
+      "cover_cm": -159.6,
+      "clear_of_roads_cm": 1406.9
+    },
+    {
+      "station_cm": 21607.0,
+      "floor_z_cm": 959.7,
+      "roof_top_cm": 1269.7,
+      "bare_earth_cm": 1110.0,
+      "cover_cm": -159.8,
+      "clear_of_roads_cm": 1431.9
+    },
+    {
+      "station_cm": 21632.0,
+      "floor_z_cm": 959.8,
+      "roof_top_cm": 1269.8,
+      "bare_earth_cm": 1109.8,
+      "cover_cm": -160.0,
+      "clear_of_roads_cm": 1456.9
+    },
+    {
+      "station_cm": 21657.0,
+      "floor_z_cm": 959.8,
+      "roof_top_cm": 1269.8,
+      "bare_earth_cm": 1109.8,
+      "cover_cm": -160.0,
+      "clear_of_roads_cm": 1481.9
+    },
+    {
+      "station_cm": 21682.0,
+      "floor_z_cm": 959.8,
+      "roof_top_cm": 1269.8,
+      "bare_earth_cm": 1109.8,
+      "cover_cm": -160.1,
+      "clear_of_roads_cm": 1506.9
+    },
+    {
+      "station_cm": 21707.0,
+      "floor_z_cm": 959.9,
+      "roof_top_cm": 1269.9,
+      "bare_earth_cm": 1109.4,
+      "cover_cm": -160.4,
+      "clear_of_roads_cm": 1531.9
+    },
+    {
+      "station_cm": 21732.0,
+      "floor_z_cm": 959.9,
+      "roof_top_cm": 1269.9,
+      "bare_earth_cm": 1110.3,
+      "cover_cm": -159.6,
+      "clear_of_roads_cm": 1556.9
+    },
+    {
+      "station_cm": 21757.0,
+      "floor_z_cm": 959.9,
+      "roof_top_cm": 1269.9,
+      "bare_earth_cm": 1110.2,
+      "cover_cm": -159.8,
+      "clear_of_roads_cm": 1581.9
+    },
+    {
+      "station_cm": 21782.0,
+      "floor_z_cm": 960.0,
+      "roof_top_cm": 1270.0,
+      "bare_earth_cm": 1110.3,
+      "cover_cm": -159.6,
+      "clear_of_roads_cm": 1606.9
+    },
+    {
+      "station_cm": 21807.0,
+      "floor_z_cm": 960.0,
+      "roof_top_cm": 1270.0,
+      "bare_earth_cm": 1110.6,
+      "cover_cm": -159.4,
+      "clear_of_roads_cm": 1631.9
+    },
+    {
+      "station_cm": 21832.0,
+      "floor_z_cm": 960.0,
+      "roof_top_cm": 1270.0,
+      "bare_earth_cm": 1111.4,
+      "cover_cm": -158.7,
+      "clear_of_roads_cm": 1656.9
+    },
+    {
+      "station_cm": 21857.0,
+      "floor_z_cm": 960.1,
+      "roof_top_cm": 1270.1,
+      "bare_earth_cm": 1111.2,
+      "cover_cm": -158.9,
+      "clear_of_roads_cm": 1681.9
+    },
+    {
+      "station_cm": 21882.0,
+      "floor_z_cm": 960.1,
+      "roof_top_cm": 1270.1,
+      "bare_earth_cm": 1111.5,
+      "cover_cm": -158.6,
+      "clear_of_roads_cm": 1706.9
+    },
+    {
+      "station_cm": 21907.0,
+      "floor_z_cm": 960.2,
+      "roof_top_cm": 1270.2,
+      "bare_earth_cm": 1111.6,
+      "cover_cm": -158.6,
+      "clear_of_roads_cm": 1731.9
+    },
+    {
+      "station_cm": 21932.0,
+      "floor_z_cm": 960.2,
+      "roof_top_cm": 1270.2,
+      "bare_earth_cm": 1111.7,
+      "cover_cm": -158.5,
+      "clear_of_roads_cm": 1756.9
+    },
+    {
+      "station_cm": 21957.0,
+      "floor_z_cm": 960.2,
+      "roof_top_cm": 1270.2,
+      "bare_earth_cm": 1111.8,
+      "cover_cm": -158.4,
+      "clear_of_roads_cm": 1781.9
+    },
+    {
+      "station_cm": 21982.0,
+      "floor_z_cm": 960.3,
+      "roof_top_cm": 1270.3,
+      "bare_earth_cm": 1112.2,
+      "cover_cm": -158.1,
+      "clear_of_roads_cm": 1806.9
+    },
+    {
+      "station_cm": 22007.0,
+      "floor_z_cm": 960.3,
+      "roof_top_cm": 1270.3,
+      "bare_earth_cm": 1111.9,
+      "cover_cm": -158.4,
+      "clear_of_roads_cm": 1831.9
+    },
+    {
+      "station_cm": 22032.0,
+      "floor_z_cm": 960.3,
+      "roof_top_cm": 1270.3,
+      "bare_earth_cm": 1113.0,
+      "cover_cm": -157.3,
+      "clear_of_roads_cm": 1856.9
+    },
+    {
+      "station_cm": 22057.0,
+      "floor_z_cm": 960.4,
+      "roof_top_cm": 1270.4,
+      "bare_earth_cm": 1113.0,
+      "cover_cm": -157.4,
+      "clear_of_roads_cm": 1881.9
+    },
+    {
+      "station_cm": 22082.0,
+      "floor_z_cm": 960.4,
+      "roof_top_cm": 1270.4,
+      "bare_earth_cm": 1114.2,
+      "cover_cm": -156.2,
+      "clear_of_roads_cm": 1906.9
+    },
+    {
+      "station_cm": 22107.0,
+      "floor_z_cm": 960.4,
+      "roof_top_cm": 1270.4,
+      "bare_earth_cm": 1114.1,
+      "cover_cm": -156.3,
+      "clear_of_roads_cm": 1931.9
+    },
+    {
+      "station_cm": 22132.0,
+      "floor_z_cm": 960.5,
+      "roof_top_cm": 1270.5,
+      "bare_earth_cm": 1113.9,
+      "cover_cm": -156.6,
+      "clear_of_roads_cm": 1956.9
+    },
+    {
+      "station_cm": 22157.0,
+      "floor_z_cm": 960.5,
+      "roof_top_cm": 1270.5,
+      "bare_earth_cm": 1114.0,
+      "cover_cm": -156.5,
+      "clear_of_roads_cm": 1981.9
+    },
+    {
+      "station_cm": 22182.0,
+      "floor_z_cm": 960.6,
+      "roof_top_cm": 1270.6,
+      "bare_earth_cm": 1114.9,
+      "cover_cm": -155.7,
+      "clear_of_roads_cm": 2007.1
+    },
+    {
+      "station_cm": 22207.0,
+      "floor_z_cm": 960.6,
+      "roof_top_cm": 1270.6,
+      "bare_earth_cm": 1114.3,
+      "cover_cm": -156.3,
+      "clear_of_roads_cm": 2032.1
+    },
+    {
+      "station_cm": 22232.0,
+      "floor_z_cm": 960.6,
+      "roof_top_cm": 1270.6,
+      "bare_earth_cm": 1115.8,
+      "cover_cm": -154.9,
+      "clear_of_roads_cm": 2057.1
+    },
+    {
+      "station_cm": 22257.0,
+      "floor_z_cm": 960.7,
+      "roof_top_cm": 1270.7,
+      "bare_earth_cm": 1115.7,
+      "cover_cm": -154.9,
+      "clear_of_roads_cm": 2082.1
+    },
+    {
+      "station_cm": 22282.0,
+      "floor_z_cm": 960.7,
+      "roof_top_cm": 1270.7,
+      "bare_earth_cm": 1117.3,
+      "cover_cm": -153.4,
+      "clear_of_roads_cm": 2107.1
+    },
+    {
+      "station_cm": 22307.0,
+      "floor_z_cm": 960.7,
+      "roof_top_cm": 1270.7,
+      "bare_earth_cm": 1116.1,
+      "cover_cm": -154.6,
+      "clear_of_roads_cm": 2132.1
+    },
+    {
+      "station_cm": 22332.0,
+      "floor_z_cm": 960.8,
+      "roof_top_cm": 1270.8,
+      "bare_earth_cm": 1116.9,
+      "cover_cm": -153.9,
+      "clear_of_roads_cm": 2157.1
+    },
+    {
+      "station_cm": 22357.0,
+      "floor_z_cm": 960.8,
+      "roof_top_cm": 1270.8,
+      "bare_earth_cm": 1116.4,
+      "cover_cm": -154.4,
+      "clear_of_roads_cm": 2182.1
+    },
+    {
+      "station_cm": 22382.0,
+      "floor_z_cm": 960.8,
+      "roof_top_cm": 1270.8,
+      "bare_earth_cm": 1118.3,
+      "cover_cm": -152.6,
+      "clear_of_roads_cm": 2207.1
+    },
+    {
+      "station_cm": 22407.0,
+      "floor_z_cm": 960.9,
+      "roof_top_cm": 1270.9,
+      "bare_earth_cm": 1118.2,
+      "cover_cm": -152.6,
+      "clear_of_roads_cm": 2232.1
+    },
+    {
+      "station_cm": 22432.0,
+      "floor_z_cm": 960.9,
+      "roof_top_cm": 1270.9,
+      "bare_earth_cm": 1119.5,
+      "cover_cm": -151.4,
+      "clear_of_roads_cm": 2257.1
+    },
+    {
+      "station_cm": 22457.0,
+      "floor_z_cm": 960.9,
+      "roof_top_cm": 1270.9,
+      "bare_earth_cm": 1119.4,
+      "cover_cm": -151.6,
+      "clear_of_roads_cm": 2282.1
+    },
+    {
+      "station_cm": 22482.0,
+      "floor_z_cm": 961.0,
+      "roof_top_cm": 1271.0,
+      "bare_earth_cm": 1119.0,
+      "cover_cm": -152.0,
+      "clear_of_roads_cm": 2307.1
+    },
+    {
+      "station_cm": 22507.0,
+      "floor_z_cm": 961.0,
+      "roof_top_cm": 1271.0,
+      "bare_earth_cm": 1119.1,
+      "cover_cm": -151.9,
+      "clear_of_roads_cm": 2332.1
+    },
+    {
+      "station_cm": 22532.0,
+      "floor_z_cm": 961.1,
+      "roof_top_cm": 1271.1,
+      "bare_earth_cm": 1119.2,
+      "cover_cm": -151.8,
+      "clear_of_roads_cm": 2357.1
+    },
+    {
+      "station_cm": 22557.0,
+      "floor_z_cm": 961.1,
+      "roof_top_cm": 1271.1,
+      "bare_earth_cm": 1119.7,
+      "cover_cm": -151.4,
+      "clear_of_roads_cm": 2382.1
+    },
+    {
+      "station_cm": 22582.0,
+      "floor_z_cm": 961.1,
+      "roof_top_cm": 1271.1,
+      "bare_earth_cm": 1119.6,
+      "cover_cm": -151.5,
+      "clear_of_roads_cm": 2407.1
+    },
+    {
+      "station_cm": 22607.0,
+      "floor_z_cm": 961.2,
+      "roof_top_cm": 1271.2,
+      "bare_earth_cm": 1119.6,
+      "cover_cm": -151.5,
+      "clear_of_roads_cm": 2432.1
+    },
+    {
+      "station_cm": 22632.0,
+      "floor_z_cm": 961.2,
+      "roof_top_cm": 1271.2,
+      "bare_earth_cm": 1119.7,
+      "cover_cm": -151.5,
+      "clear_of_roads_cm": 2457.1
+    },
+    {
+      "station_cm": 22657.0,
+      "floor_z_cm": 961.2,
+      "roof_top_cm": 1271.2,
+      "bare_earth_cm": 1119.6,
+      "cover_cm": -151.7,
+      "clear_of_roads_cm": 2482.1
+    },
+    {
+      "station_cm": 22682.0,
+      "floor_z_cm": 961.3,
+      "roof_top_cm": 1271.3,
+      "bare_earth_cm": 1119.5,
+      "cover_cm": -151.8,
+      "clear_of_roads_cm": 2507.1
+    },
+    {
+      "station_cm": 22707.0,
+      "floor_z_cm": 961.3,
+      "roof_top_cm": 1271.3,
+      "bare_earth_cm": 1119.7,
+      "cover_cm": -151.6,
+      "clear_of_roads_cm": 2532.1
+    },
+    {
+      "station_cm": 22732.0,
+      "floor_z_cm": 961.3,
+      "roof_top_cm": 1271.3,
+      "bare_earth_cm": 1119.6,
+      "cover_cm": -151.7,
+      "clear_of_roads_cm": 2557.1
+    },
+    {
+      "station_cm": 22757.0,
+      "floor_z_cm": 961.4,
+      "roof_top_cm": 1271.4,
+      "bare_earth_cm": 1119.0,
+      "cover_cm": -152.4,
+      "clear_of_roads_cm": 2582.1
+    },
+    {
+      "station_cm": 22782.0,
+      "floor_z_cm": 961.4,
+      "roof_top_cm": 1271.4,
+      "bare_earth_cm": 1119.4,
+      "cover_cm": -152.0,
+      "clear_of_roads_cm": 2607.1
+    },
+    {
+      "station_cm": 22807.0,
+      "floor_z_cm": 961.5,
+      "roof_top_cm": 1271.5,
+      "bare_earth_cm": 1118.1,
+      "cover_cm": -153.4,
+      "clear_of_roads_cm": 2632.1
+    },
+    {
+      "station_cm": 22832.0,
+      "floor_z_cm": 961.5,
+      "roof_top_cm": 1271.5,
+      "bare_earth_cm": 1118.4,
+      "cover_cm": -153.1,
+      "clear_of_roads_cm": 2657.1
+    },
+    {
+      "station_cm": 22857.0,
+      "floor_z_cm": 961.5,
+      "roof_top_cm": 1271.5,
+      "bare_earth_cm": 1118.1,
+      "cover_cm": -153.5,
+      "clear_of_roads_cm": 2682.1
+    },
+    {
+      "station_cm": 22882.0,
+      "floor_z_cm": 961.6,
+      "roof_top_cm": 1271.6,
+      "bare_earth_cm": 1117.9,
+      "cover_cm": -153.7,
+      "clear_of_roads_cm": 2707.1
+    },
+    {
+      "station_cm": 22907.0,
+      "floor_z_cm": 961.6,
+      "roof_top_cm": 1271.6,
+      "bare_earth_cm": 1117.8,
+      "cover_cm": -153.8,
+      "clear_of_roads_cm": 2732.1
+    },
+    {
+      "station_cm": 22932.0,
+      "floor_z_cm": 961.6,
+      "roof_top_cm": 1271.6,
+      "bare_earth_cm": 1116.0,
+      "cover_cm": -155.7,
+      "clear_of_roads_cm": 2757.1
+    },
+    {
+      "station_cm": 22957.0,
+      "floor_z_cm": 961.7,
+      "roof_top_cm": 1271.7,
+      "bare_earth_cm": 1121.3,
+      "cover_cm": -150.4,
+      "clear_of_roads_cm": 2782.1
+    },
+    {
+      "station_cm": 22982.0,
+      "floor_z_cm": 961.7,
+      "roof_top_cm": 1271.7,
+      "bare_earth_cm": 1121.2,
+      "cover_cm": -150.5,
+      "clear_of_roads_cm": 2807.1
+    },
+    {
+      "station_cm": 23007.0,
+      "floor_z_cm": 961.7,
+      "roof_top_cm": 1271.7,
+      "bare_earth_cm": 1121.4,
+      "cover_cm": -150.4,
+      "clear_of_roads_cm": 2832.1
+    },
+    {
+      "station_cm": 23032.0,
+      "floor_z_cm": 961.8,
+      "roof_top_cm": 1271.8,
+      "bare_earth_cm": 1121.6,
+      "cover_cm": -150.1,
+      "clear_of_roads_cm": 2857.1
+    },
+    {
+      "station_cm": 23057.0,
+      "floor_z_cm": 961.8,
+      "roof_top_cm": 1271.8,
+      "bare_earth_cm": 1122.1,
+      "cover_cm": -149.7,
+      "clear_of_roads_cm": 2882.1
+    },
+    {
+      "station_cm": 23082.0,
+      "floor_z_cm": 961.8,
+      "roof_top_cm": 1271.8,
+      "bare_earth_cm": 1122.3,
+      "cover_cm": -149.6,
+      "clear_of_roads_cm": 2907.1
+    },
+    {
+      "station_cm": 23107.0,
+      "floor_z_cm": 961.9,
+      "roof_top_cm": 1271.9,
+      "bare_earth_cm": 1121.0,
+      "cover_cm": -150.9,
+      "clear_of_roads_cm": 2932.1
+    },
+    {
+      "station_cm": 23132.0,
+      "floor_z_cm": 961.9,
+      "roof_top_cm": 1271.9,
+      "bare_earth_cm": 1121.0,
+      "cover_cm": -151.0,
+      "clear_of_roads_cm": 2957.1
+    },
+    {
+      "station_cm": 23157.0,
+      "floor_z_cm": 962.0,
+      "roof_top_cm": 1272.0,
+      "bare_earth_cm": 1120.2,
+      "cover_cm": -151.8,
+      "clear_of_roads_cm": 2982.1
+    },
+    {
+      "station_cm": 23182.0,
+      "floor_z_cm": 962.0,
+      "roof_top_cm": 1272.0,
+      "bare_earth_cm": 1120.5,
+      "cover_cm": -151.5,
+      "clear_of_roads_cm": 3007.1
+    },
+    {
+      "station_cm": 23207.0,
+      "floor_z_cm": 962.0,
+      "roof_top_cm": 1272.0,
+      "bare_earth_cm": 1120.2,
+      "cover_cm": -151.8,
+      "clear_of_roads_cm": 3032.1
+    },
+    {
+      "station_cm": 23232.0,
+      "floor_z_cm": 962.1,
+      "roof_top_cm": 1272.1,
+      "bare_earth_cm": 1120.2,
+      "cover_cm": -151.9,
+      "clear_of_roads_cm": 3057.1
+    },
+    {
+      "station_cm": 23257.0,
+      "floor_z_cm": 962.1,
+      "roof_top_cm": 1272.1,
+      "bare_earth_cm": 1119.7,
+      "cover_cm": -152.4,
+      "clear_of_roads_cm": 3082.1
+    },
+    {
+      "station_cm": 23282.0,
+      "floor_z_cm": 962.1,
+      "roof_top_cm": 1272.1,
+      "bare_earth_cm": 1120.1,
+      "cover_cm": -152.0,
+      "clear_of_roads_cm": 3107.1
+    },
+    {
+      "station_cm": 23307.0,
+      "floor_z_cm": 962.2,
+      "roof_top_cm": 1272.2,
+      "bare_earth_cm": 1118.9,
+      "cover_cm": -153.2,
+      "clear_of_roads_cm": 3132.1
+    },
+    {
+      "station_cm": 23332.0,
+      "floor_z_cm": 962.2,
+      "roof_top_cm": 1272.2,
+      "bare_earth_cm": 1118.9,
+      "cover_cm": -153.3,
+      "clear_of_roads_cm": 3157.1
+    },
+    {
+      "station_cm": 23357.0,
+      "floor_z_cm": 962.2,
+      "roof_top_cm": 1272.2,
+      "bare_earth_cm": 1118.9,
+      "cover_cm": -153.4,
+      "clear_of_roads_cm": 3182.1
+    },
+    {
+      "station_cm": 23382.0,
+      "floor_z_cm": 962.3,
+      "roof_top_cm": 1272.3,
+      "bare_earth_cm": 1118.8,
+      "cover_cm": -153.5,
+      "clear_of_roads_cm": 3207.1
+    },
+    {
+      "station_cm": 23407.0,
+      "floor_z_cm": 962.3,
+      "roof_top_cm": 1272.3,
+      "bare_earth_cm": 1118.3,
+      "cover_cm": -154.0,
+      "clear_of_roads_cm": 3232.1
+    },
+    {
+      "station_cm": 23432.0,
+      "floor_z_cm": 962.4,
+      "roof_top_cm": 1272.4,
+      "bare_earth_cm": 1118.6,
+      "cover_cm": -153.7,
+      "clear_of_roads_cm": 3257.1
+    },
+    {
+      "station_cm": 23457.0,
+      "floor_z_cm": 962.4,
+      "roof_top_cm": 1272.4,
+      "bare_earth_cm": 1117.2,
+      "cover_cm": -155.2,
+      "clear_of_roads_cm": 3282.1
+    },
+    {
+      "station_cm": 23482.0,
+      "floor_z_cm": 962.4,
+      "roof_top_cm": 1272.4,
+      "bare_earth_cm": 1117.3,
+      "cover_cm": -155.2,
+      "clear_of_roads_cm": 3307.1
+    },
+    {
+      "station_cm": 23507.0,
+      "floor_z_cm": 962.5,
+      "roof_top_cm": 1272.5,
+      "bare_earth_cm": 1116.6,
+      "cover_cm": -155.9,
+      "clear_of_roads_cm": 3332.1
+    },
+    {
+      "station_cm": 23532.0,
+      "floor_z_cm": 962.5,
+      "roof_top_cm": 1272.5,
+      "bare_earth_cm": 1117.0,
+      "cover_cm": -155.5,
+      "clear_of_roads_cm": 3357.1
+    },
+    {
+      "station_cm": 23557.0,
+      "floor_z_cm": 962.5,
+      "roof_top_cm": 1272.5,
+      "bare_earth_cm": 1116.8,
+      "cover_cm": -155.7,
+      "clear_of_roads_cm": 3382.1
+    },
+    {
+      "station_cm": 23582.0,
+      "floor_z_cm": 962.6,
+      "roof_top_cm": 1272.6,
+      "bare_earth_cm": 1116.7,
+      "cover_cm": -155.8,
+      "clear_of_roads_cm": 3407.1
+    },
+    {
+      "station_cm": 23607.0,
+      "floor_z_cm": 962.6,
+      "roof_top_cm": 1272.6,
+      "bare_earth_cm": 1116.6,
+      "cover_cm": -156.0,
+      "clear_of_roads_cm": 3432.1
+    },
+    {
+      "station_cm": 23632.0,
+      "floor_z_cm": 962.6,
+      "roof_top_cm": 1272.6,
+      "bare_earth_cm": 1115.4,
+      "cover_cm": -157.2,
+      "clear_of_roads_cm": 3457.1
+    },
+    {
+      "station_cm": 23657.0,
+      "floor_z_cm": 962.7,
+      "roof_top_cm": 1272.7,
+      "bare_earth_cm": 1116.7,
+      "cover_cm": -156.0,
+      "clear_of_roads_cm": 3482.1
+    },
+    {
+      "station_cm": 23682.0,
+      "floor_z_cm": 962.7,
+      "roof_top_cm": 1272.7,
+      "bare_earth_cm": 1113.6,
+      "cover_cm": -159.1,
+      "clear_of_roads_cm": 3507.1
+    },
+    {
+      "station_cm": 23707.0,
+      "floor_z_cm": 962.8,
+      "roof_top_cm": 1272.8,
+      "bare_earth_cm": 1113.8,
+      "cover_cm": -158.9,
+      "clear_of_roads_cm": 3532.1
+    },
+    {
+      "station_cm": 23732.0,
+      "floor_z_cm": 962.8,
+      "roof_top_cm": 1272.8,
+      "bare_earth_cm": 1112.5,
+      "cover_cm": -160.2,
+      "clear_of_roads_cm": 3557.1
+    },
+    {
+      "station_cm": 23757.0,
+      "floor_z_cm": 962.8,
+      "roof_top_cm": 1272.8,
+      "bare_earth_cm": 1108.8,
+      "cover_cm": -164.0,
+      "clear_of_roads_cm": 3582.1
+    },
+    {
+      "station_cm": 23782.0,
+      "floor_z_cm": 962.9,
+      "roof_top_cm": 1272.9,
+      "bare_earth_cm": 1082.1,
+      "cover_cm": -190.7,
+      "clear_of_roads_cm": 3607.1
+    },
+    {
+      "station_cm": 23807.0,
+      "floor_z_cm": 962.9,
+      "roof_top_cm": 1272.9,
+      "bare_earth_cm": 1095.5,
+      "cover_cm": -177.4,
+      "clear_of_roads_cm": 3632.1
+    },
+    {
+      "station_cm": 23832.0,
+      "floor_z_cm": 962.9,
+      "roof_top_cm": 1272.9,
+      "bare_earth_cm": 1007.0,
+      "cover_cm": -266.0,
+      "clear_of_roads_cm": 3657.1
+    },
+    {
+      "station_cm": 23857.0,
+      "floor_z_cm": 963.0,
+      "roof_top_cm": 1273.0,
+      "bare_earth_cm": 1023.4,
+      "cover_cm": -249.5,
+      "clear_of_roads_cm": 3682.1
+    },
+    {
+      "station_cm": 23882.0,
+      "floor_z_cm": 963.0,
+      "roof_top_cm": 1273.0,
+      "bare_earth_cm": 998.8,
+      "cover_cm": -274.2,
+      "clear_of_roads_cm": 3707.1
+    },
+    {
+      "station_cm": 23907.0,
+      "floor_z_cm": 963.0,
+      "roof_top_cm": 1273.0,
+      "bare_earth_cm": 1001.0,
+      "cover_cm": -272.0,
+      "clear_of_roads_cm": 3732.1
+    },
+    {
+      "station_cm": 23932.0,
+      "floor_z_cm": 963.1,
+      "roof_top_cm": 1273.1,
+      "bare_earth_cm": 996.4,
+      "cover_cm": -276.7,
+      "clear_of_roads_cm": 3757.1
+    },
+    {
+      "station_cm": 23957.0,
+      "floor_z_cm": 963.1,
+      "roof_top_cm": 1273.1,
+      "bare_earth_cm": 993.9,
+      "cover_cm": -279.2,
+      "clear_of_roads_cm": 3782.1
+    },
+    {
+      "station_cm": 23982.0,
+      "floor_z_cm": 963.1,
+      "roof_top_cm": 1273.1,
+      "bare_earth_cm": 995.0,
+      "cover_cm": -278.1,
+      "clear_of_roads_cm": 3807.1
+    },
+    {
+      "station_cm": 24007.0,
+      "floor_z_cm": 963.2,
+      "roof_top_cm": 1273.2,
+      "bare_earth_cm": 988.9,
+      "cover_cm": -284.3,
+      "clear_of_roads_cm": 3832.1
+    },
+    {
+      "station_cm": 24032.0,
+      "floor_z_cm": 963.2,
+      "roof_top_cm": 1273.2,
+      "bare_earth_cm": 981.5,
+      "cover_cm": -291.8,
+      "clear_of_roads_cm": 3857.1
+    },
+    {
+      "station_cm": 24057.0,
+      "floor_z_cm": 963.3,
+      "roof_top_cm": 1273.3,
+      "bare_earth_cm": 974.9,
+      "cover_cm": -298.4,
+      "clear_of_roads_cm": 3882.1
+    },
+    {
+      "station_cm": 24082.0,
+      "floor_z_cm": 963.3,
+      "roof_top_cm": 1273.3,
+      "bare_earth_cm": 970.1,
+      "cover_cm": -303.1,
+      "clear_of_roads_cm": 3907.1
+    },
+    {
+      "station_cm": 24107.0,
+      "floor_z_cm": 963.3,
+      "roof_top_cm": 1273.3,
+      "bare_earth_cm": 967.6,
+      "cover_cm": -305.7,
+      "clear_of_roads_cm": 3932.1
+    },
+    {
+      "station_cm": 24132.0,
+      "floor_z_cm": 963.4,
+      "roof_top_cm": 1273.4,
+      "bare_earth_cm": 961.8,
+      "cover_cm": -311.5,
+      "clear_of_roads_cm": 3957.1
+    },
+    {
+      "station_cm": 24157.0,
+      "floor_z_cm": 963.4,
+      "roof_top_cm": 1273.4,
+      "bare_earth_cm": 954.6,
+      "cover_cm": -318.8,
+      "clear_of_roads_cm": 3982.1
+    },
+    {
+      "station_cm": 24182.0,
+      "floor_z_cm": 963.4,
+      "roof_top_cm": 1273.4,
+      "bare_earth_cm": 965.7,
+      "cover_cm": -307.8,
+      "clear_of_roads_cm": 4007.1
+    },
+    {
+      "station_cm": 24207.0,
+      "floor_z_cm": 963.5,
+      "roof_top_cm": 1273.5,
+      "bare_earth_cm": 962.7,
+      "cover_cm": -310.8,
+      "clear_of_roads_cm": 4032.1
+    },
+    {
+      "station_cm": 24232.0,
+      "floor_z_cm": 963.5,
+      "roof_top_cm": 1273.5,
+      "bare_earth_cm": 973.4,
+      "cover_cm": -300.1,
+      "clear_of_roads_cm": 4057.1
+    }
+  ]
+}

@@ -20,6 +20,10 @@ public:
  UPROPERTY(BlueprintReadOnly) bool bReady=false;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Speaker;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SpeakerFace;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Speaker2;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Speaker2Face;
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Horn;
+ UPROPERTY(VisibleAnywhere) TArray<TObjectPtr<UStaticMeshComponent>> SpeakerFeet;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UTextRenderComponent> Label;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UAudioComponent> Music;
 private:
