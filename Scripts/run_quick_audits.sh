@@ -90,6 +90,62 @@ AUDITS=(
 FAILED=0
 FLAKY=0
 
+# Audits that exist but are not in the list above. Some were left out on purpose
+# (the four long route audits), some are fixtures another harness drives, and
+# some were simply never triaged - and "outside the sweep" is exactly how
+# BattleSkaterAudit, BattleDroneAudit and BattleFrisbeeAudit stayed red without
+# anyone noticing. BattleFinishAudit is the sharpest example: it now guards the
+# ghost rider, a shipped feature, and nothing ran it in a sweep.
+#
+#   BATTLE_SWEEP_EXTENDED=1 zsh Scripts/run_quick_audits.sh <binary>
+#
+# They run with a tighter timeout by default, because an untriaged audit that
+# hangs should cost two minutes rather than seven.
+if [[ "${BATTLE_SWEEP_EXTENDED:-0}" == "1" ]]; then
+  AUDITS+=(
+    "BattleAimAudit||"
+    "BattleAmmoAudit||"
+    "BattleFinishAudit||"
+    "BattleFootAudit||"
+    "BattleGeographyAudit||"
+    "BattleHealthAudit||"
+    "BattleHornAudit||"
+    "BattleInventoryAudit||"
+    "BattleJumpAudit||"
+    "BattleKnifeAudit||"
+    "BattleSkateAudit||"
+    "BattleSkylineAudit||"
+    "BattleStorefrontAudit||"
+    "BattleSwimAudit||"
+    "BattleWatchAudit||"
+    "BattleZombieAudit||"
+    "BattleConnectorAudit||"
+    "BattleCrossingReservationAudit||"
+    "BattleEntranceWalkAudit||"
+    "BattleMonroeOccupancyAudit||"
+    "BattlePhoneRideAudit||"
+    "BattlePlayerCrashAudit||"
+    "BattlePotholeAudit||"
+    "BattlePotholeRideAudit||"
+    "BattleTrafficPopulationAudit||"
+    "BattleZombiePopulationAudit||"
+    "BattleAmbientBenchAudit||"
+    "BattleAmbientSleeperAudit||"
+    "BattleBenchFireAudit||"
+    "BattleBenchIgnitionAudit||"
+    "BattleBenchReachAudit||"
+    "BattleRoadAmberAudit||"
+    "BattleRoadCarAudit||"
+    "BattleRoadCrossingAudit||"
+    "BattleRoadLaneAudit||"
+    "BattleRoadTrafficAudit||"
+    "BattleSleeperChaseAudit||"
+    "BattleSleeperSettleAudit||"
+    "BattleSleeperTriggerAudit||"
+  )
+  : "${BATTLE_AUDIT_TIMEOUT:=120}"
+fi
+
 # Launch one audit with a hard timeout. An audit that returns its verdict and
 # then fails to exit used to hang the whole sweep with no output at all:
 # BattleTutorialAudit did exactly that on build 123 - it logged "passed":true,

@@ -1,0 +1,119 @@
+Build 152 - Windows round 15 (the Ghost Rider) merged, and the first measurement
+of how much of this project's audit coverage was never being run.
+
+## The standard sweep
+
+Scripts/run_quick_audits.sh against
+  Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground
+Run 2026-09-19 11:14-11:28, 31 entries.
+
+-- BattleCurseAudit: pass
+-- BattleTreeRideAudit: pass
+-- Realistic-BattleTreeRideAudit: pass
+-- BattleTroubleAudit: pass
+-- BattleSteeringAudit: pass
+-- BattleSleeperAudit: pass
+-- BattleGrassAudit: pass
+-- BattleBikeCarAudit: pass
+-- BattleMurderKAudit: pass
+-- BattlePickupAudit: pass
+-- BattleSpiritAudit: pass
+-- BattleKrogCrashAudit: pass
+-- BattleDuckAudit: pass
+-- BattleSpeedAudit: pass
+-- BattleTimeAudit: pass
+-- BattleDiscAudit: pass
+-- BattleMeleeAudit: pass
+-- BattleDiagonalAudit: pass
+-- BattleGamepadAudit: pass
+-- BattlePatioAudit: pass
+-- BattleTunnelHazardAudit: FAIL "Traversal timed out", phase 1; re-running alone
+-- BattleTunnelHazardAudit: fail in sweep, PASS alone
+-- BattleTrailModeAudit: pass
+-- BattleSkaterAudit: pass
+-- BattleDroneAudit: pass
+-- BattleFrisbeeAudit: pass
+-- BattlePanicAudit: pass
+-- BattleSpareBikeAudit: FAIL "Spare wheel floats above or sinks into its ground
+     surface", phase 0; re-running alone
+-- BattleSpareBikeAudit: fail in sweep, PASS alone
+-- BattleTutorialAudit: pass
+-- BattleMarketImpactAudit: pass
+-- BattleScooterTrafficAudit: pass
+-- BattleMusicAudit: pass
+
+29 pass first-try, 2 flakes that passed alone on the same binary, 0 real
+failures. Both flakes are the class this project has fixed five times - a stage
+that waits on something asynchronous with a window that is generous on an idle
+machine - and both are on the list to fix rather than re-run. Note that the same
+two entries were green first-try on build 151 an hour earlier, and this machine
+had been running sweeps continuously for two hours when this one ran:
+BattleTunnelHazardAudit's own report is correct in every field but the wall clock
+(bore 4608 cm, 12 grounded stations, 6 deep and 6 shallow holes, 37 gallery
+columns, 0 blocked, gallery_ride_cm 30289).
+
+## The Ghost Rider
+
+`BattleFinishAudit` is Windows' gate on the feature they shipped in round 15 -
+five wins on a difficulty, a recorded best route, a ghost that rides it on the
+real clock, and a beaten flag when you beat your best while it rides. It passes
+here from all three binaries, which is the convergence they asked for when they
+pushed `4cc3a7f`:
+
+  editor (the extended run):  -- BattleFinishAudit: pass
+  the staged cooked build:    -- BattleFinishAudit: pass
+  the assembled share:        -- BattleFinishAudit: pass
+
+The share is the artifact the Desktop shortcut runs, so this is the packaged
+proof rather than an editor one.
+
+## How much of the coverage was never run
+
+75 audit entry points exist in `BattleMacController.cpp`; the standard sweep ran
+31 of them. The other 44 had never been run by anything, and "outside the sweep"
+is exactly how this project's own notes say BattleSkaterAudit, BattleDroneAudit
+and BattleFrisbeeAudit stayed red unnoticed. Two of the 44 are gates on features
+shipped the same day: `BattleFinishAudit` (the ghost) and `BattleInventoryAudit`
+(the weapon models behind the "the gun should change" complaint).
+
+They are now runnable without slowing the standard sweep:
+
+  BATTLE_SWEEP_EXTENDED=1 zsh Scripts/run_quick_audits.sh <binary>
+
+with a two-minute cap each rather than seven.
+
+### First extended run: 39 entries, 33 pass, 1 flake, 5 red
+
+Passed (all of these guard something shipped or promised): BattleAimAudit,
+BattleAmmoAudit, BattleFinishAudit, BattleFootAudit, BattleGeographyAudit,
+BattleHealthAudit, BattleHornAudit, BattleInventoryAudit, BattleJumpAudit,
+BattleKnifeAudit, BattleSkateAudit, BattleSkylineAudit, BattleStorefrontAudit,
+BattleSwimAudit, BattleWatchAudit, BattleConnectorAudit,
+BattleCrossingReservationAudit, BattlePlayerCrashAudit, BattlePotholeAudit,
+BattlePotholeRideAudit, BattleZombiePopulationAudit, BattleAmbientBenchAudit,
+BattleAmbientSleeperAudit, BattleBenchFireAudit, BattleBenchIgnitionAudit,
+BattleBenchReachAudit, BattleRoadAmberAudit, BattleRoadCarAudit,
+BattleRoadCrossingAudit, BattleRoadTrafficAudit, BattleSleeperChaseAudit,
+BattleSleeperSettleAudit, BattleSleeperTriggerAudit.
+
+Flaked (passed alone): BattlePhoneRideAudit - "Guided input stalled or timed
+out", waypoint 35 of 62.
+
+Red twice, with their own words:
+
+  BattleZombieAudit: {"passed":false,"phase":1,"reason":"AI did not navigate and
+    move","spawned":0,"desired":3,"kills":0,"nitro":0.0,"subtitleLines":30}
+  BattleEntranceWalkAudit: {"passed":false,"reason":"Walking leg stalled",
+    "completed_legs":0,"route":0}
+  BattleMonroeOccupancyAudit: {"passed":false,"reason":"Review actors missing",
+    "both_stopped_seconds":0.000}
+  BattleTrafficPopulationAudit: no verdict inside 120 s, twice
+  BattleRoadLaneAudit: {"passed":false,"reason":"Expected opposing lane
+    candidates","cars":0,"total_distance_cm":0.000}
+
+Reading, not conclusion: MonroeOccupancy wants review actors that only exist in a
+review map, and TrafficPopulation producing no verdict in two minutes reads as
+slow or hanging - both look like fixtures. The other three describe a promise not
+kept, and `BattleZombiePopulationAudit` passing while `BattleZombieAudit` reports
+`spawned 0` says the population director works and the zombie audit is looking
+somewhere else. That is the next block's first job.
