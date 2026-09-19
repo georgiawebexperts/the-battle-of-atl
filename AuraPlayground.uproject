@@ -23,6 +23,10 @@
     {
       "Name": "RigLogic",
       "Enabled": true
+    },
+    {
+      "Name": "Aura",
+      "Enabled": false
     }
   ],
   "Modules": [

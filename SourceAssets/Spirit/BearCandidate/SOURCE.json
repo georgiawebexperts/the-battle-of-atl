@@ -1,0 +1,46 @@
+{
+  "staged": "2026-09-19",
+  "staged_by": "codex-maclaptop",
+  "what": "Bear candidate mesh for the spectral black bear spirit (ABattleSpirit).",
+  "status": "candidate only - not imported into the game, not approved, and ABattleSpirit::bPresentationReady stays false until Elliott reviews a native render.",
+  "listing": {
+    "title": "Low Poly Bear",
+    "author": "mathildelea",
+    "site": "OpenGameArt.org",
+    "url": "https://opengameart.org/content/low-poly-bear",
+    "published": "2022-07-23",
+    "license": "CC-BY 4.0 (attribution required)",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "page_preview": "source-preview.png (downloaded from the listing page, not a render of this project)"
+  },
+  "files": [
+    {
+      "name": "Bear.fbx",
+      "bytes": 35852,
+      "sha256": "f6b8e5396b88e8ab1b3649ccd34e1dcaaf1f35408021847c432f527bca110e1f",
+      "note": "Binary FBX 7.x. Quadruped bear, low poly. Rig/animations not yet inspected."
+    },
+    {
+      "name": "Bear_BaseColor.png",
+      "bytes": 110727,
+      "sha256": "48f6fe70647e52fe23592056ab1e569e9b2214be466494da018805c80412fd49",
+      "note": "Base colour only. No normal/roughness maps in the archive."
+    }
+  ],
+  "why_this_route": "Fab and Sketchfab need Elliott's signed-in browser session and the Mac was locked, so only unauthenticated HTTP was reachable. OpenGameArt serves files directly. The CC0 GitHub mirror already used for the SMG has no bear of any kind (its 2049-entry tree was checked: wolf, fox, husky, deer, stag, cow, bull, donkey, alpaca, horse, shiba inu, cat, dog, pig, raccoon, sheep, chicken, chick).",
+  "rejected": [
+    {
+      "title": "White Bear Low Poly",
+      "url": "https://opengameart.org/content/white-bear-low-poly",
+      "license": "CC0",
+      "reason": "Ships only as Bear.blend; no FBX/OBJ/glTF in the archive and Blender is not installed on this Mac, so it cannot be imported without a conversion step."
+    },
+    {
+      "title": "Animal Figurines",
+      "url": "https://opengameart.org/content/animal-figurines",
+      "license": "CC0 (pack mixes licences)",
+      "reason": "The bear is a carved-wood figurine with a squared-off muzzle and no ears in silhouette. Kept as a second choice behind the CC-BY mesh."
+    }
+  ],
+  "attribution_note": "CC-BY 4.0 requires a visible credit. If this mesh ships, the game needs a credits entry naming mathildelea and the OpenGameArt listing URL. That is a separate decision from the design note's rule that the personal inspiration behind the spirit stays out of credits and game text."
+}
