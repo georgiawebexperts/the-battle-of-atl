@@ -165,5 +165,87 @@
     "last_boot": "2026-09-14T18:42:03-04:00",
     "rebooted_since_2026_09_14": false,
     "gpu": "healthy per user confirmation; offscreen sweep, cross-platform probes, and windowed perf all completed without hangs"
+  },
+  "harness_fixes": {
+    "git_sha": "5e26834f0af1068221f09ad1845d3cda8f6e9c56",
+    "description": "Validation + repackage of the audit-harness fix commit (music-off state, zombie freeze list for route walks, Home centerline bound 200, Eastside budget 420s, geography PlayerStart anchor). Tree was clean at 5e26834; no Source changes made.",
+    "development_package": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/validation2-129-dev-uat.log",
+      "duration": "5m50s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,493,184 bytes)"
+    },
+    "fixed_audit_runs": {
+      "method": "packaged Dev exe, standard per-audit command: <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+      "caps": "10 min each except BattleEastsideAudit 8 min",
+      "results": [
+        {
+          "audit": "BattleMusicAudit",
+          "runs": 3,
+          "outcome": "3/3 fail",
+          "detail": "cycle off-song1-song2-off completes and preference is restored every run, but the phase-3 off check fails under -nosound: after the off toggle the AudioComponent still reports GetPlayState()==Playing (state=1) despite SetSound(nullptr)+Stop()+SetActiveFlag(false), so Pass stays false",
+          "logs": ["work/fixes-BattleMusicAudit-run1.log", "work/fixes-BattleMusicAudit-run2.log", "work/fixes-BattleMusicAudit-run3.log"]
+        },
+        {
+          "audit": "BattleHomeDriveAudit",
+          "runs": 2,
+          "outcome": "2/2 fail",
+          "detail": "centerline error exceeded the new 200cm Home bound before finishing leg 0: maxCenterlineErrorCm 200.51 and 201.80 (bound is 200 for Home && !Spirit)",
+          "logs": ["work/fixes-BattleHomeDriveAudit-run1.log", "work/fixes-BattleHomeDriveAudit-run2.log"]
+        },
+        {
+          "audit": "BattleSpiritRouteAudit",
+          "runs": 2,
+          "outcome": "2/2 fail",
+          "detail": "completed 2 legs with no wipeouts and maxCenterlineError ~109.5cm, but total travel (6521cm / 6507cm) did not clear the leg-2 finish threshold of 1.75x the planned route length (Spirit sets Home=true, which selects that threshold)",
+          "logs": ["work/fixes-BattleSpiritRouteAudit-run1.log", "work/fixes-BattleSpiritRouteAudit-run2.log"]
+        },
+        {
+          "audit": "BattleGeographyAudit",
+          "runs": 3,
+          "outcome": "3/3 pass",
+          "detail": "saved frame, island, and persistent swimmer/bank separation checks pass; recovery ~2.0s, 1 wipeout per run",
+          "logs": ["work/fixes-BattleGeographyAudit-run1.log", "work/fixes-BattleGeographyAudit-run2.log", "work/fixes-BattleGeographyAudit-run3.log"]
+        },
+        {
+          "audit": "BattleEastsideAudit",
+          "runs": 1,
+          "outcome": "no verdict - killed at the 8-minute external cap (482.7s)",
+          "detail": "last progress: leg 0, elapsed 180s, travel 93,624cm; a 'BattleMac: menu Loss' focus event at ~200s appears to have paused the game before the internal 420s budget could conclude. Anticipated cap case per instructions.",
+          "logs": ["work/fixes-BattleEastsideAudit-run1.log"]
+        }
+      ],
+      "summary_json": "work/fixes-129-results.json"
+    },
+    "sweep": {
+      "status": "18/18 pass",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+      "console_log": "work/validation2-sweep-129-console.log",
+      "offscreen": true,
+      "no_hang": true
+    },
+    "shipping_repackage": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Shipping",
+      "log": "work/validation2-129-shipping-uat.log",
+      "duration": "3m57s",
+      "archive": "D:\\Battle Of ATL\\Archives\\BattleForTheA",
+      "share_refreshed": true,
+      "share_exe": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00)",
+      "icon": "regenerated from SourceAssets\\UI\\BattleOfATL.png (61,096 bytes)",
+      "start_here": "THE BATTLE OF ATL - WINDOWS PLAYTEST 129",
+      "shortcut": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk repointed and verified (target, /Game/PiedmontRide/Maps/PiedmontWorld, icon)",
+      "launch_verify": {
+        "command": "\"The Battle of ATL.exe\" -game -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound",
+        "result": "alive after 60s",
+        "window_title": "The Battle of ATL built by Web Experts",
+        "working_set_gb": 1.23,
+        "pid": 53484,
+        "started": "2026-09-18T20:42:03-04:00",
+        "killed_after_verify": true,
+        "log": "work/validation2-launch-verify-129.log"
+      }
+    }
   }
 }
