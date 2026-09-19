@@ -1,5 +1,34 @@
 # Piedmont Ride V2 — Web Experts
 
+> ## STATUS BANNER — read this first, added 2026-09-19 [codex-maclaptop]
+>
+> **This file is a historical ledger.** Its header says "Build: 0.2.1-dev" and
+> its last entry is build 048 (2026-09-12). The project has not been at that
+> build for a long time: the current one is **BUILD 146 / 0.146.0-dev**, and it
+> is a different game from the "Piedmont Ride V2" this document was written for
+> (it is now The Battle of ATL, with a run, a timer, a finish, and a Windows
+> port built by a second machine).
+>
+> Nothing below was deleted, because the milestone history is real and this
+> project's whole habit is to keep the record and correct it in place. But do
+> not read the status lines below as current — several of them describe work
+> that has since shipped, and at least one (the route-walk family) describes a
+> red state that re-measurement has since shown to be green.
+>
+> **Where live status actually is:**
+>
+> - `Brain/Battle of ATL.md` in Elliott's Brain vault — the dated, signed log
+>   every agent appends to, and the only place that is kept current.
+> - `Brain/History/*.md` — one note per work block, with the evidence.
+> - `Tests/Results/` in this repo — the evidence files themselves
+>   (`2031-…-playtest-NNN-mac.json`, sweep logs, probe JSON).
+> - `Scripts/run_quick_audits.sh` — the 30-entry gate that decides whether a
+>   build earns the Desktop shortcut.
+>
+> A future agent should fold the still-open items from this ledger into the
+> vault note rather than treating the ledger's "IN PROGRESS / Pending" lines as
+> a task list.
+
 Author: Web Experts — www.webexperts.com
 Build: 0.2.1-dev (bike validation extended; world in progress)
 

@@ -127,12 +127,20 @@ for ENTRY in "${AUDITS[@]}"; do
   LOG="$PROJECT/work/$LABEL.log"
   AUDIT_TIMED_OUT=0
   # The next process starts while the last one is still tearing down, and a
-  # sweep of twenty-nine driven audits has now produced four false reds on this
-  # machine that pass standalone on the same binary on the same day
+  # sweep of thirty driven audits has now produced a long list of false reds on
+  # this machine that pass standalone on the same binary on the same day
   # (BattleTunnelHazardAudit, BattleSkaterAudit, BattleFrisbeeAudit,
-  # BattleSleeperAudit and BattleSpareBikeAudit). Letting the machine settle is
-  # the cheap half of the fix.
-  sleep "${BATTLE_SWEEP_SETTLE:-3}"
+  # BattleSleeperAudit, BattleSpareBikeAudit, BattleDroneAudit).
+  #
+  # Three seconds was not enough. On 2026-09-19 the sweep went one-red-per-run
+  # three sweeps in a row - a different audit every time, each passing alone -
+  # which is the signature of the harness rather than of three unrelated gates:
+  # every one of those stages waits for something asynchronous (a knock-off, a
+  # mount, a pawn swap, a fired shot) with a window that is generous on an idle
+  # machine and tight on a busy one. Six seconds, and the same wait before the
+  # first audit, costs ninety seconds over a sweep and buys the difference
+  # between measuring the game and measuring the machine.
+  sleep "${BATTLE_SWEEP_SETTLE:-6}"
   LaunchAudit
   VERDICT=$(grep -h "\"passed\":" "$LOG" | tail -1)
   # An empty log means the app never got going; retry once before calling it a

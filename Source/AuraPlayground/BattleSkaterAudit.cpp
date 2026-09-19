@@ -167,7 +167,22 @@ void ABattleMacController::TickSkaterAudit(float Dt){
   }
   // Move to a clear shooting lane after recovery, away from the parked bike.
   if(auto* Foot=Cast<ABattleRider>(GetPawn()))Foot->SetActorLocation(Skater->GetActorLocation()+FVector(0,-350,110),false,nullptr,ETeleportType::TeleportPhysics);Next();}
- else if(SkaterStage==5){KCHECK(Rider,"Missing on-foot rider");
+ else if(SkaterStage==5){
+  // The realistic knock-off parks the bike and hands the player to an on-foot
+  // pawn, and that swap is not synchronous with the park. On 2026-09-19 this
+  // stage went red inside a 30-audit sweep - "Missing on-foot rider", 17 ms
+  // after the "rider is already off (bike parked)" line, with wipeouts 1->2 and
+  // recovery 2.0 already logged - and passed alone on the same binary. The
+  // promise is that a knocked-off rider ends up on his feet and can shoot, not
+  // that the pawn has swapped on the same frame the bike stopped. Wait for the
+  // pawn the stage needs, and if it never arrives say what the state was rather
+  // than reporting the symptom.
+  if(!Rider){
+   if(FMath::Fmod(SkaterClock,.5f)<Dt)UE_LOG(LogTemp,Display,TEXT("SkaterFootWait: pawn=%s bike_parked=%d health=%.0f recovery=%.2f clock=%.1f"),
+    *GetNameSafe(GetPawn()),Bike->bParked?1:0,Bike->RiderHealth,Bike->Ride->Recovery,SkaterClock);
+   if(SkaterClock>6.f)KCHECK(false,"No on-foot rider six seconds after the bike parked");
+   return;
+  }
   // Fire() refuses with the weapon holstered, and a rider who has just been
   // thrown off the bike is holstered - which the old version of this stage never
   // accounted for because the fixture used to leave him in the saddle.
