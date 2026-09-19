@@ -47,6 +47,7 @@ $audits = @(
     [pscustomobject]@{ Name = 'BattleTimeAudit';     Label = 'BattleTimeAudit';         Flag = '' },
     [pscustomobject]@{ Name = 'BattleDiscAudit';     Label = 'BattleDiscAudit';         Flag = '' },
     [pscustomobject]@{ Name = 'BattleDiagonalAudit'; Label = 'BattleDiagonalAudit';     Flag = '' },
+    [pscustomobject]@{ Name = 'BattleMusicAudit';    Label = 'BattleMusicAudit';        Flag = ''; Audio = $true },
     # End-to-end guard on the ending: walks the whole authored course and requires
     # the win to commit at the patio. This is the audit that would have caught a
     # rider reaching the party with no result screen.
@@ -54,8 +55,9 @@ $audits = @(
 )
 
 function Invoke-Audit {
-    param([string]$AuditName, [string]$AuditFlag, [string]$Log)
+    param([string]$AuditName, [string]$AuditFlag, [string]$Log, [switch]$Audio)
     $runArgs = @($prefix) + @($common)
+    if ($Audio) { $runArgs = @($runArgs | Where-Object { $_ -ne '-nosound' }) }
     if ($AuditName) { $runArgs += "-$AuditName" }
     if ($AuditFlag) { $runArgs += "-$AuditFlag" }
     $runArgs += @($suffix)
@@ -65,10 +67,11 @@ function Invoke-Audit {
 $failed = 0
 foreach ($audit in $audits) {
     $log = Join-Path $workDir "$($audit.Label).log"
-    Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log
+    $audio = if ($audit.PSObject.Properties['Audio']) { [bool]$audit.PSObject.Properties['Audio'].Value } else { $false }
+    Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log -Audio:$audio
     $verdict = Select-String -Path $log -Pattern '"passed":' | Select-Object -Last 1
     if (-not $verdict) {
-        Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log
+        Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log -Audio:$audio
         $verdict = Select-String -Path $log -Pattern '"passed":' | Select-Object -Last 1
     }
     if ($verdict -and $verdict.Line -match '"passed":\s*true') {

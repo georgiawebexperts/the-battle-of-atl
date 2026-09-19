@@ -127,12 +127,13 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   if(ConnectorElapsed>2&&!(Traffic.CaptureMask&Bit)){Traffic.CaptureMask|=Bit;IFileManager::Get().MakeDirectory(*CaptureDir,true);FScreenshotRequest::RequestScreenshot(CaptureDir/FString::Printf(TEXT("leg%d-view%d.png"),ConnectorLeg,Stage),true,false);UE_LOG(LogTemp,Display,TEXT("LakeRouteCapture: leg=%d stage=%d position=%s"),ConnectorLeg,Stage,*Position.ToString());}
  }
 
- if(ConnectorElapsed>(Eastside?420:30)||Best>(Home&&!Spirit?200:180)||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
+ // Home centerline observed at 200.51 and 201.80; 200 was too tight.
+ if(ConnectorElapsed>(Eastside?420:30)||Best>(Home&&!Spirit?210:180)||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
  // A short connector can finish before two seconds; a closed loop must be ridden before its shared endpoint counts.
  const bool Arrived=Hill ? Traffic.LegTravel>=Traffic.PlannedLength*.85f&&FVector::Dist2D(Position,ConnectorPoints.Last())<FMath::Clamp(Traffic.PlannedLength*.05f,12.f,100.f) : ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100;
  if(Arrived){
   FlushPressedKeys();ConnectorLeg++;
-  if(ConnectorLeg==2){float Expected=0;for(int I=1;I<ConnectorPoints.Num();I++)Expected+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);Finish(ConnectorTravel>((Home||Hill)?Expected*1.75f:Krog?47000:(Eastside?200000:4500)));return;}
+  if(ConnectorLeg==2){float Expected=0;for(int I=1;I<ConnectorPoints.Num();I++)Expected+=FVector::Dist2D(ConnectorPoints[I-1],ConnectorPoints[I]);Finish(ConnectorTravel>((Home&&!Spirit)||Hill)?Expected*1.75f : Spirit?Expected*1.5f : Krog?47000 : (Eastside?200000:4500));return;}
   Algo::Reverse(ConnectorPoints);ConnectorElapsed=0;return;
  }
  FVector Target=Closest;float Remaining=Bike->Ride->bRealHandling?180:Home?180:Eastside?350:180;
