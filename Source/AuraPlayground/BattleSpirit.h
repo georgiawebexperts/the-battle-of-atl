@@ -28,6 +28,10 @@ public:
  bool bPresentationReady=true;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> FigureParts;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Wisps;
+ // The two cold eyes on the 3D body. Separate from FigureParts because they
+ // belong to the imported mesh's frame, not the primitive figure's, and they
+ // have to be visible when the body is (the figure's own eyes are not).
+ UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> BodyEyes;
  /** Recent body positions, newest first: the drifting trail the note asks for. */
  UPROPERTY() TArray<FVector> TrailPoints;
  float TrailClock=0;

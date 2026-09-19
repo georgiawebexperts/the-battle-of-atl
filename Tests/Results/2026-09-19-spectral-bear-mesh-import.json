@@ -24,9 +24,10 @@
   "fade_name": "SpiritFade",
   "shading_model": "<MaterialShadingModel.MSM_UNLIT: 0>",
   "blend_mode": "<BlendMode.BLEND_OPAQUE: 0>",
-  "expression_count": 9,
+  "expression_count": 15,
   "mesh": "/Game/BattleForTheA/Spirit/SM_SpectralBear.SM_SpectralBear",
   "mesh_materials": [
     "M_SpectralBearBody"
-  ]
+  ],
+  "eye_material": "/Game/BattleForTheA/Spirit/M_SpiritEye.M_SpiritEye"
 }
