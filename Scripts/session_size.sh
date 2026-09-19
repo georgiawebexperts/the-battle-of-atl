@@ -10,11 +10,11 @@
 #   * two sessions died with "413 Payload Too Large" at live windows of
 #     50.7 MB and 53.9 MB, both windows 47-58 MB of base64 screenshots
 #   * healthy windows ran 0.8-28 MB (about 1.5 hours of real work)
-#   * auto-compaction fires at about 0.7 x model_auto_compact_token_limit
-#     (400000 -> fired at 262k-288k tokens), which is far too late: a
-#     screenshot-heavy 275k-token window is already 40-50 MB
+#   * auto-compaction fires when the window reaches model_auto_compact_token_limit
+#     (measured: 404375 tokens with the limit at 400000), which is far too late:
+#     a screenshot-heavy 320k-token window is already 50 MB
 # The fix is a lower limit in ~/.codex/config.toml:
-#     model_auto_compact_token_limit = 120000   # compacts near 84k tokens
+#     model_auto_compact_token_limit = 120000   # compacts at 120k tokens, ~15 MB
 #
 #   Scripts/session_size.sh              # sessions touched in the last 3 hours
 #   Scripts/session_size.sh 01a0b727      # one thread id, any age
