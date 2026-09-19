@@ -5,6 +5,7 @@
 #include "BattleHome.h"
 #include "BattleHomeData.h"
 #include "BattleRunRecords.h"
+#include "BattleGhostRider.h"
 #include "BattleZombie.h"
 #include "PiedmontPedestrian.h"
 #include "PiedmontTrafficDirector.h"
@@ -40,13 +41,19 @@ void ABattleMacController::TickFinishAudit(float Dt){
  Bike->RiderHealth=0;FCHECK(!Home->TryFinish(),"Dead rider won");Bike->RiderHealth=100;Mode->StartCountdown=1;FCHECK(!Home->TryFinish(),"Countdown won");Mode->StartCountdown=0;
  SetPause(true);FCHECK(!Home->TryFinish(),"Paused run won");SetPause(false);
  Mode->TimeRemaining=0;FCHECK(!Home->TryFinish(),"Expired timer won");Mode->TimeRemaining=333;
- UGameplayStatics::DeleteGameInSlot(BattleRecords::Slot(),0);FCHECK(BattleRecords::Record(TEXT("Easy"),200)&&BattleRecords::Record(TEXT("Hard"),190)&&BattleRecords::Record(TEXT("Easy"),250)&&BattleRecords::Best(TEXT("Easy"))==200&&BattleRecords::Best(TEXT("Hard"))==190,"Record persistence or difficulty isolation failed");
- Mode->RunElapsed=123.4f;Mode->RunTopSpeed=1500;Bike->EnemyKills=7;Bike->Ride->Wipeouts=2;Bike->NearMisses=9;
+ UGameplayStatics::DeleteGameInSlot(BattleRecords::Slot(),0);
+ TArray<FVector> SeedRoute;for(int i=0;i<21;i++)SeedRoute.Add(BattleHomeData::Gate+FVector(-1200+i*60,0,98));
+ FCHECK(BattleRecords::Record(TEXT("Easy"),200,SeedRoute)&&BattleRecords::Record(TEXT("Hard"),190)&&BattleRecords::Record(TEXT("Easy"),250)&&BattleRecords::Best(TEXT("Easy"))==200&&BattleRecords::Best(TEXT("Hard"))==190&&BattleRecords::BestRoute(TEXT("Easy")).Num()==21,"Record persistence, ghost route persistence or difficulty isolation failed");
+ for(int i=0;i<5;i++)FCHECK(BattleRecords::AddWin(Mode->DifficultyName),"Ghost win seeding failed");
+ Mode->SpawnGhost();FCHECK(Mode->Ghost&&Mode->bGhostRiding,"Ghost rider did not ride at 5 wins with a stored route");
+ Mode->Ghost->Advance(5.f);FCHECK(FVector::Dist2D(Mode->Ghost->GetActorLocation(),BattleHomeData::Gate+FVector(-600,0,98))<250,"Ghost rider fell off its recorded route");
+ Mode->RunElapsed=123.4f;Mode->RunTopSpeed=1500;Bike->EnemyKills=7;Bike->Ride->Wipeouts=2;Bike->NearMisses=9;Mode->RouteSamples.Reset();
  const FVector RealArrival=BattleHomeData::Gate+FVector(420,240,98);
  if(Mode->DifficultyName==TEXT("Hard")){Place(BattleHomeData::Gate-BattleHomeData::South*350+FVector(0,0,98));FCHECK(Bike->Dismount(),"Cannot dismount for foot finish");auto* Foot=Cast<ABattleRider>(GetPawn());FCHECK(Foot,"Missing foot rider");Foot->SetActorLocation(RealArrival,false,nullptr,ETeleportType::TeleportPhysics);}else Place(RealArrival);
  Home->Tick(.016f);FCHECK(Mode->bWon&&Mode->bRunEnded&&Mode->bRecordSaved&&!Home->TryFinish(),"Real patio arrival did not commit win once");
  FCHECK(FMath::IsNearlyEqual(BattleRecords::Best(Mode->DifficultyName),123.4f)&&Mode->FinishKills==7&&Mode->FinishWipeouts==2&&Mode->FinishNearMisses==9,"Win stats or record incorrect");
- FCHECK(BattleRecords::Wins(Mode->DifficultyName)==1&&(Mode->DifficultyName==TEXT("Easy")?BattleRecords::Wins(TEXT("Hard"))==0:BattleRecords::Wins(TEXT("Easy"))==0),"Win count persistence or difficulty isolation failed");
+ FCHECK(BattleRecords::Wins(Mode->DifficultyName)==6&&(Mode->DifficultyName==TEXT("Easy")?BattleRecords::Wins(TEXT("Hard"))==0:BattleRecords::Wins(TEXT("Easy"))==0),"Win count persistence or difficulty isolation failed");
+ FCHECK(Mode->bGhostBeaten,"Beating the ghost on a new best did not register");
  const float Before=Mode->TimeRemaining;Mode->Tick(.2f);FCHECK(Mode->TimeRemaining==Before&&!Mode->AdjustRunTime(30,TEXT("late reward")),"Finished timer changed");
  const bool CelebrationReview=FParse::Param(FCommandLine::Get(),TEXT("BattleCelebrationReview"));
  ShowMenu(CelebrationReview?TEXT("Celebration"):TEXT("Win"));FCHECK(IsPaused()&&Menu.IsValid(),"Win menu missing");

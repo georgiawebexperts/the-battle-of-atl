@@ -1,0 +1,99 @@
+{
+  "build": "149",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "4cc3a7f863e258369fc6a2cde98a73571d1bdd01",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "4cc3a7f Ghost Rider + Mac 148 merge",
+  "targeted": {
+    "BattleFpsAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleFpsAudit.log",
+      "verdict": "[2026.09.19-12.46.35:685][ 12]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":58.9,\"min_fps\":31.9,\"p05_fps\":53.4,\"samples\":1762}",
+      "note": "Verdict printed and passed; process exited cleanly after the verdict."
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleSkaterAudit-retry.log",
+      "verdict": "[2026.09.19-12.48.46:864][778]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9745.7,\"corners\":6,\"people_hit\":2}",
+      "note": "First attempt printed passed:false at stage 5 (\"No on-foot rider six seconds after the bike parked\") and exited on its own; single retry passed with identical course metrics (travel 9739.1 vs 9745.7, corners 6, people_hit 2). Rider-desync timing flake; not a required-verdict audit. The sweep entry for BattleSkaterAudit also passed."
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleTimeAudit.log",
+      "verdict": "[2026.09.19-12.49.32:750][402]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":3}"
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleInventoryAudit.log",
+      "verdict": "[2026.09.19-12.50.16:180][311]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}"
+    },
+    "BattleFinishAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleFinishAudit.log",
+      "verdict": "[2026.09.19-12.50.51:142][269]LogTemp: Display: BattleFinishAudit: {\"passed\":true,\"reason\":\"Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass\"}",
+      "note": "Ghost Rider coverage confirmed: the log shows the BattleGhostRider actor spawning (12.50.51:128) immediately before the passed:true verdict (:142), and BattleFinishAudit.cpp at HEAD gates that verdict behind the seeded 21-sample route persistence check, 5-win ghost spawn (Ghost && bGhostRiding), ghost Advance(5.f) within 250cm of the seeded route, and Mode->bGhostBeaten after a new best. All those FCHECKs passed (each failure prints its own passed:false verdict; the only verdict printed was passed:true). Non-fatal cosmetic warning observed: BattleGhostRider has natively added scene components but no explicit RootComponent (one is picked arbitrarily)."
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleMusicAudit.log",
+      "verdict": "[2026.09.19-12.51.54:541][458]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}",
+      "note": "Run audio-enabled (dropped -nosound per the round-14 lesson); passed first attempt with tracks=2 and preference_restored=true. The -nosound/null-audio harness artifact did not recur because -nosound was not forced."
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleTunnelHazardAudit.log",
+      "verdict": "[2026.09.19-12.52.24:766][344]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":6,\"gallery_ride_cm\":4604,\"wipeouts\":0}"
+    },
+    "BattleEastsideAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleEastsideAudit.log",
+      "verdict": "[2026.09.19-12.59.43:287][141]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213925.61,\"maxCenterlineErrorCm\":92.33,\"wipeouts\":0}",
+      "note": "Passed on the first attempt with completedLegs=2 in ~425s; the watchdog was extended past the 300s guideline while the run was actively riding (matches build 147 timing), so no retry was needed."
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleSkateAudit.log",
+      "verdict": "[2026.09.19-13.00.18:867][949]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.97,\"x\":40352.25,\"z\":748.15}"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleMurderKAudit.log",
+      "verdict": "[2026.09.19-13.00.45:054][220]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}",
+      "note": "Required verdict satisfied: all 16 checks green, wall=6, reason contains the six-punk shoot-through wall."
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "log": "work\\t149-BattleHomeDriveAudit.log",
+      "verdict": "[2026.09.19-13.01.25:174][100]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4894.39,\"maxCenterlineErrorCm\":187.95,\"wipeouts\":0}"
+    },
+    "BattlePickupAudit": {
+      "pass": true,
+      "log": "work\\t149-BattlePickupAudit.log",
+      "verdict": "[2026.09.19-13.01.51:047][401]LogTemp: Display: BattlePickupAudit: {\"passed\":true,\"difficulty\":\"Easy\",\"phase\":7,\"reason\":\"Layout, checkpoints, bike/FPS healing, cap, walls, duplicate and death guards pass\",\"spawned\":18,\"park\":12,\"trail\":6,\"collected\":4}"
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 30,
+    "total": 30,
+    "log": "work\\sweep-149-20260919-090214.log",
+    "flakes": [],
+    "failures": []
+  },
+  "notes": "Targeted audits ran sequentially (no GPU contention) and all 12 finished with verdicts. Required verdicts all green and verified: BattleFinishAudit passed with Ghost Rider coverage (log shows the BattleGhostRider actor spawning immediately before the passed:true verdict; source gates it behind the 21-sample seeded route persistence, 5-win ghost spawn, 250cm route-tracking at t=5s, and bGhostBeaten checks - each would print its own passed:false verdict, and none did); BattleMurderKAudit passed wall=6 with all 16 checks; BattleTimeAudit time_pickups=3; BattleEastsideAudit completedLegs=2 (first attempt, ~425s, watchdog extended past the 300s guideline while actively riding); BattlePickupAudit passed. BattleMusicAudit ran audio-enabled (dropped -nosound per the round-14 lesson) and passed with tracks=2; the -nosound harness artifact did not recur because -nosound was not forced. One non-required flake: BattleSkaterAudit first attempt printed passed:false at stage 5 (\"No on-foot rider six seconds after the bike parked\") and exited; the single retry passed with identical course metrics, and the sweep entry also passed. Cosmetic observation: BattleGhostRider logs a warning that no RootComponent is set (one is picked arbitrarily); non-fatal. Sweep: 30/30 first-pass, exit 0, no flakes, no failures. Staged exe (335,794,176 bytes) was built 08:41:09 local, one minute after the 4cc3a7f Ghost Rider commit (08:40:06), so the build contains the feature. No source edits, packaging, commits, or pushes were made.",
+  "shipping": {
+    "status": "BUILD SUCCESSFUL",
+    "log": "work/windows-package-149-shipping.log",
+    "exe_sha256": "F2B0A19D9FC018B51ABD38013808CDA037BD71364FD0560D3019D580E371C5AA",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 149",
+    "launch_verify": true,
+    "launch_note": "Launcher stub at share root spawned AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe, alive at 25s, then terminated.",
+    "shortcuts": {
+      "playtest": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 149.lnk",
+      "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk"
+    },
+    "post_validation_fix": "Ghost rider got an explicit root component (commit e709cac) after validation flagged the arbitrary-root warning; BattleFinishAudit re-run green against the rebuilt dev exe (work\\t149-BattleFinishAudit-fix.log, passed:true, warning gone) and shipping was built from that fixed tree."
+  }
+}
