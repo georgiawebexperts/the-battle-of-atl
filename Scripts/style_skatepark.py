@@ -18,11 +18,18 @@ def polygon(points):
 # Thin white lines identify the usable bank width, following every mesh row.
 for cy in [-750,-250]:
  for x in range(250,1000,50):polygon([(x,cy-4),(x+50,cy-4),(x+50,cy+4),(x,cy+4)])
+# Same pair on the west launch bank (axis y = 800), added 2026-09-19 with the bigger park.
+for cy in [550,1050]:
+ for x in range(-3200,-2200,50):polygon([(x,cy-4),(x+50,cy-4),(x+50,cy+4),(x,cy+4)])
+# The quarter pipe's foot, where the roll-in starts, along its whole span.
+for x in range(-300,1500,50):polygon([(x,-1854),(x+50,-1854),(x+50,-1846),(x,-1846)])
+# The south plaza ledge edge.
+for x in range(-200,900,50):polygon([(x,-1454),(x+50,-1454),(x+50,-1446),(x,-1446)])
 def arrow(cx,cy,direction=1):
  def convert(points):return [(cx+direction*x,cy+direction*y) for x,y in points]
  polygon(convert([(-75,-12),(20,-12),(20,12),(-75,12)]))
  polygon(convert([(0,-65),(95,0),(0,65)]))
-arrow(-120,-500);arrow(120,-500);arrow(2150,170,-1)
+arrow(-120,-500);arrow(120,-500);arrow(2150,170,-1);arrow(-3150,700);arrow(-2150,700,-1);arrow(600,-2050)
 lines=['# Original skatepark wayfinding paint; centimetres; 1.2cm surface offset']
 lines+=['v %.6f %.6f %.6f'%(x,-y,h) for x,y,h in verts]
 lines+=['vt %.6f %.6f'%(x/200,y/200) for x,y,h in verts]
@@ -41,5 +48,5 @@ job=unreal.AssetImportTask();job.filename=str(base/'Markings.obj');job.destinati
 mesh=unreal.load_asset(dest+'/SM_SkateMarkings');assert mesh;mesh.set_material(0,paint);unreal.EditorAssetLibrary.save_loaded_asset(mesh)
 concrete=unreal.load_asset(dest+'/SM_SkateConcrete');assert concrete;concrete.set_material(0,mat);unreal.EditorAssetLibrary.save_loaded_asset(concrete)
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
-(root/'work/skate-style-import.json').write_text(json.dumps({'paint_triangles':len(faces),'material':mat.get_path_name(),'geometry':'Existing concrete and berm unchanged; noncolliding surface-following paint only','author':'2026-09-13 [codex-maclaptop]'},indent=2)+'\n')
+(root/'work/skate-style-import.json').write_text(json.dumps({'paint_triangles':len(faces),'material':mat.get_path_name(),'geometry':'Noncolliding surface-following paint only; the concrete and berm meshes themselves are baked by prepare_skatepark.py','author':'2026-09-19 [codex-maclaptop]'},indent=2)+'\n')
 unreal.SystemLibrary.quit_editor()

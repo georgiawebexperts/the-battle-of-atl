@@ -27,11 +27,16 @@ void ABattleMacController::TickSkateAudit(float Dt){
   for(auto Bonus:Park->Bonuses)Bonus->SetActorTickEnabled(false);
   Bike->Ride->bRealHandling=FParse::Param(FCommandLine::Get(),TEXT("BattleSkateReal"));
   UE_LOG(LogTemp,Display,TEXT("BattleSkateHandling: %s"),Bike->Ride->bRealHandling?TEXT("realistic"):TEXT("arcade"));
-  if(FParse::Param(FCommandLine::Get(),TEXT("RenderOffscreen"))){const FVector Focus=Park->GetActorLocation()+FVector(0,0,650),Eye=Focus+FVector(1000,-2800,2200);if(auto* C=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(C);}
+  // The review camera has to frame the whole park now: 57 x 46 m, five bowls,
+  // the quarter pipe and the north hips, not the 36 x 24 m pad it started as.
+  if(FParse::Param(FCommandLine::Get(),TEXT("RenderOffscreen"))){const FVector Focus=Park->GetActorLocation()+FVector(-500,-200,300),Eye=Focus+FVector(-2500,-7500,5200);if(auto* C=GetWorld()->SpawnActor<ACameraActor>(Eye,(Focus-Eye).Rotation()))SetViewTarget(C);}
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
   FCollisionQueryParams Q(SCENE_QUERY_STAT(SkateSurfaceAudit),false,Bike);
-  for(FVector P:{FVector(38050,73650,470),FVector(38050,74400,510),FVector(40100,73500,950),FVector(39000,74000,650)}){FHitResult H;const bool Hit=GetWorld()->LineTraceSingleByChannel(H,P+FVector(0,0,300),P-FVector(0,0,150),ECC_Visibility,Q);UE_LOG(LogTemp,Display,TEXT("SkateSurface: expected=%s hit=%s actor=%s"),*P.ToString(),*H.ImpactPoint.ToString(),*GetNameSafe(H.GetActor()));SCHECK(Hit&&H.GetActor()==Park&&FMath::Abs(H.ImpactPoint.Z-P.Z)<4,"Bowl/ramp surface missing or obstructed");}
+  // Four probes for the park as it was, three for the bigger park: the deep
+  // bowl, the transfer bowl and the pyramid cap. If the deck rises or a feature
+  // moves, these fail here rather than as a rider falling through the world.
+  for(FVector P:{FVector(38050,73650,470),FVector(38050,74400,510),FVector(40100,73500,950),FVector(39000,74000,650),FVector(36400,72500,350),FVector(37100,71950,520),FVector(39500,75750,850)}){FHitResult H;const bool Hit=GetWorld()->LineTraceSingleByChannel(H,P+FVector(0,0,300),P-FVector(0,0,150),ECC_Visibility,Q);UE_LOG(LogTemp,Display,TEXT("SkateSurface: expected=%s hit=%s actor=%s"),*P.ToString(),*H.ImpactPoint.ToString(),*GetNameSafe(H.GetActor()));SCHECK(Hit&&H.GetActor()==Park&&FMath::Abs(H.ImpactPoint.Z-P.Z)<4,"Bowl/ramp surface missing or obstructed");}
   Place(FVector(41600,74168,580),180,700);Key(true);Next();
  }else if(SkateStage==1&&SkateClock>2.2f){
   SCHECK(Bike->GetActorLocation().X<40750&&Bike->Ride->CurrentFloor.HitResult.GetActor()==Park&&Bike->Ride->Wipeouts==0,"Cannot ride from trail into skatepark");
@@ -43,7 +48,10 @@ void ABattleMacController::TickSkateAudit(float Dt){
   SCHECK(Park->Bonuses[0]->TryCollect(Bike)&&Park->Bonuses[0]->bConsumed&&Mode->TimeRemaining>SkateTime+29,"Bowl bonus did not grant thirty seconds");SCHECK(!Park->Bonuses[0]->TryCollect(Bike),"Bowl bonus repeated");SCHECK(Bike->Ride->CurrentFloor.HitResult.GetActor()==Park&&Bike->GetActorLocation().Z>560,"Bike fell through bowl");Place(FVector(39700,74168,748),0,700);Key(true);Next();
  }
  else if(SkateStage==5&&Bike->GetActorLocation().X>41810){Key(false);Bike->Ride->Speed=0;Bike->Ride->StopMovementImmediately();Next();}
- else if(SkateStage==6&&SkateClock>.3f){SCHECK(Bike->Ride->IsMovingOnGround()&&Bike->Ride->Wipeouts==0&&Bike->Ride->CurrentFloor.HitResult.GetActor()&&Bike->Ride->CurrentFloor.HitResult.GetActor()->ActorHasTag(TEXT("BattleEastsideRoute")),"Return from skatepark to trail failed");Finish(true,TEXT("Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus pass"));}
+ else if(SkateStage==6&&SkateClock>.3f){SCHECK(Bike->Ride->IsMovingOnGround()&&Bike->Ride->Wipeouts==0&&Bike->Ride->CurrentFloor.HitResult.GetActor()&&Bike->Ride->CurrentFloor.HitResult.GetActor()->ActorHasTag(TEXT("BattleEastsideRoute")),"Return from skatepark to trail failed");Place(FVector(37100,75100,748),180,750);Key(true);Next();}
+ else if(SkateStage==7&&(Bike->GetActorLocation().X<36150||SkateClock>2.6f)){SCHECK(Bike->GetActorLocation().X<36150&&Bike->Ride->Wipeouts==0&&Bike->Ride->CurrentFloor.HitResult.GetActor()==Park,"The west half of the bigger park is not rideable deck");Capture(TEXT("west_half"));Key(false);Place(FVector(35850,74800,748),0,1150);SkateTime=float(Bike->Ride->AirRewards);Key(true);Next();}
+ else if(SkateStage==8&&Bike->Ride->IsFalling()&&Bike->Ride->AirPeak>65){SCHECK(Bike->GetActorLocation().X>36300,"Unexpected takeoff before the west launch bank's lip");Next();}
+ else if(SkateStage==9&&Bike->Ride->IsMovingOnGround()){Key(false);SCHECK(Bike->Ride->AirRewards>int32(SkateTime)&&Bike->Ride->Wipeouts==0&&Bike->Ride->CurrentFloor.HitResult.GetActor()==Park,"The west launch bank did not award a clean landing");Finish(true,TEXT("Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass"));}
  if(SkateClock>8&&SkateStage!=99)Finish(false,TEXT("Skatepark phase timeout"));
 #undef SCHECK
 #endif

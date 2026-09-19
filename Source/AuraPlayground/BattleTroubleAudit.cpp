@@ -56,7 +56,12 @@ void ABattleMacController::TickTroubleAudit(float Dt){
  }else if(TroubleStage==12){
   Mode->Enemies->bFreezeSpawns=false;Mode->PoliceDelay=0;Mode->TickTrouble(.03f);Mode->Enemies->bFreezeSpawns=true;
   if(TActorIterator<ABattlePolice> It(GetWorld());It)Officer=*It;
-  if(!Officer){if(TroubleClock>16)Finish(false,TEXT("No police spawned on reachable world navigation"));return;}
+  // 40 s, not 16: the officer comes from GetRandomReachablePointInRadius on the
+  // runtime navmesh, and on a machine busy enough to be running something else
+  // the build-and-query can miss every 0.03 s retry for a quarter of a minute.
+  // This audit failed that way once in the build-136 sweep and passed twice
+  // standalone on the same binary, so the wait was measuring the machine.
+  if(!Officer){if(TroubleClock>40)Finish(false,TEXT("No police spawned on reachable world navigation"));return;}
   UE_LOG(LogTemp,Display,TEXT("PoliceResponseWait: seconds=%.2f spawned=%d"),TroubleClock,Mode->PoliceSpawned);
   CHECK_TROUBLE(Mode->PoliceSpawned==1,"Police actor appeared without counting a spawn");
   TroubleOfficer=Officer;TroublePoliceStart=Officer->GetActorLocation();Officer->Cooldown=100;TroubleStage=2;TroubleClock=0;return;

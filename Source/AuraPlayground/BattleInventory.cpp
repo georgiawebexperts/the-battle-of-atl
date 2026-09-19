@@ -26,10 +26,12 @@ bool ABattleBike::SelectRidingWeapon(int32 Slot){
 }
 void ABattleBike::UpdateRidingWeaponModel(){
  const bool Visible=!bParked&&GunHold>0;
- // Slot 2 is the SMG; it has audio and inventory but no authored mesh, so it
- // borrows the rifle prop rather than showing nothing.
+ // Slot 2 is the SMG; it carried audio and inventory for two days before it had
+ // a mesh of its own, and borrowed the rifle until the CC0 Quaternius SMG was
+ // imported on 2026-09-19.
  Pistol->SetVisibility(Visible&&ActiveWeapon==0);
- RifleProp->SetVisibility(Visible&&(ActiveWeapon==2||ActiveWeapon==4));
+ RifleProp->SetVisibility(Visible&&ActiveWeapon==4);
+ SMGProp->SetVisibility(Visible&&ActiveWeapon==2);
  ShotgunProp->SetVisibility(Visible&&ActiveWeapon==1);
 }
 void ABattleRider::SaveWeapon(){
@@ -81,6 +83,8 @@ void ABattleRider::BuildLongGun(){
  ShellPart(TEXT("ShotgunShellHead"),-2.65f,.5f,TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/M_ShellBrass.M_ShellBrass"));
  RifleMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RifleModel"));RifleMesh->SetupAttachment(LongGun);
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Rifle(TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"));RifleMesh->SetStaticMesh(Rifle.Object);RifleMesh->SetRelativeRotation(FRotator(0,-90,0));RifleMesh->SetRelativeScale3D(FVector(.5));RifleMesh->SetRelativeLocation(FVector(-10,0,-10));RifleMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleMesh->SetOnlyOwnerSee(true);RifleMesh->SetCastShadow(false);RifleMesh->SetVisibility(false);
+ SMGMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SMGModel"));SMGMesh->SetupAttachment(LongGun);
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> SMG(TEXT("/Game/BattleForTheA/Weapons/SMG/SMG/StaticMeshes/SMG.SMG"));SMGMesh->SetStaticMesh(SMG.Object);SMGMesh->SetRelativeRotation(FRotator(0,-90,0));SMGMesh->SetRelativeScale3D(FVector(.62));SMGMesh->SetRelativeLocation(FVector(-6,0,-10));SMGMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);SMGMesh->SetOnlyOwnerSee(true);SMGMesh->SetCastShadow(false);SMGMesh->SetVisibility(false);
 
 }
 void ABattleRider::UpdateWeaponModel(){
@@ -89,12 +93,14 @@ void ABattleRider::UpdateWeaponModel(){
  USceneComponent* Parent=CurrentWeapon==3?static_cast<USceneComponent*>(Camera.Get()):GetRootComponent();
  if(LongGun->GetAttachParent()!=Parent)LongGun->AttachToComponent(Parent,FAttachmentTransformRules::KeepWorldTransform);
  LongGun->SetRelativeLocation(Weapon->GetRelativeLocation());LongGun->SetRelativeRotation(Weapon->GetRelativeRotation()-GunRestRotation);
- LongGun->SetRelativeScale3D(FVector(CurrentWeapon==2?.7f:1.f,1,1));LongGun->SetVisibility(Visible,true);
+ LongGun->SetRelativeScale3D(FVector(1));LongGun->SetVisibility(Visible,true);
  if(CurrentWeapon>0)Weapon->SetVisibility(false);
  RifleMesh->SetVisibility(Visible&&CurrentWeapon==4);
+ SMGMesh->SetVisibility(Visible&&CurrentWeapon==2);
  ShotgunMesh->SetVisibility(Visible&&CurrentWeapon==1);
  UpdateShotgunVisual();
  if(LongGunParts.Num()==6){
   LongGunParts[5]->SetVisibility(Visible&&CurrentWeapon==3);LongGunParts[1]->SetRelativeScale3D(CurrentWeapon==3?FVector(.14,.035,.2):FVector(.035,.035,.35));LongGunParts[4]->SetRelativeLocation(CurrentWeapon==2?FVector(3,0,-10):FVector(12,0,-4));LongGunParts[4]->SetRelativeScale3D(CurrentWeapon==2?FVector(.06,.05,.2):FVector(.17,.07,.065));}
- if(CurrentWeapon==4||CurrentWeapon==1)for(auto Part:LongGunParts)Part->SetVisibility(false);
+ // The three authored meshes stand in for the primitive long-gun parts.
+ if(CurrentWeapon==4||CurrentWeapon==2||CurrentWeapon==1)for(auto Part:LongGunParts)Part->SetVisibility(false);
 }

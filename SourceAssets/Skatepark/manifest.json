@@ -4,40 +4,221 @@
     74000.0,
     0
   ],
-  "deck_z": 650,
+  "deck_z": 650.0,
   "trail_connection": [
     41703.21309731,
     74167.72982629,
     475.11337638
   ],
   "grid_spacing_cm": 50,
-  "vertex_count": 8249,
+  "vertex_count": 14859,
   "triangles": {
-    "Concrete": 7212,
-    "Berm": 7622
+    "Concrete": 17616,
+    "Berm": 11590
   },
   "bounds": [
     [
-      -2400.0,
-      -1800.0,
-      210.41421443566742
+      -3900.0,
+      -3000.0,
+      188.60470352724636
     ],
     [
-      3200.0,
-      1800.0,
-      950
+      2400.0,
+      2800.0,
+      1080.0
     ]
+  ],
+  "blocks": [
+    {
+      "name": "core",
+      "local_cm": [
+        -1800,
+        1800,
+        -1200,
+        1200
+      ]
+    },
+    {
+      "name": "west",
+      "local_cm": [
+        -3300,
+        -1800,
+        -1600,
+        1200
+      ]
+    },
+    {
+      "name": "southwest",
+      "local_cm": [
+        -3300,
+        -1200,
+        -2400,
+        -1600
+      ]
+    },
+    {
+      "name": "southeast",
+      "local_cm": [
+        -1200,
+        1800,
+        -2400,
+        -1200
+      ]
+    },
+    {
+      "name": "north",
+      "local_cm": [
+        -1800,
+        1800,
+        1200,
+        2200
+      ]
+    }
+  ],
+  "bowls": [
+    {
+      "name": "Fourth Ward bowl",
+      "center_local_cm": [
+        -950,
+        -350
+      ],
+      "radii_cm": [
+        650,
+        600
+      ],
+      "depth_cm": 180
+    },
+    {
+      "name": "Fourth Ward bowl north",
+      "center_local_cm": [
+        -950,
+        400
+      ],
+      "radii_cm": [
+        600,
+        550
+      ],
+      "depth_cm": 140
+    },
+    {
+      "name": "The Cauldron",
+      "center_local_cm": [
+        -2600,
+        -1500
+      ],
+      "radii_cm": [
+        640,
+        470
+      ],
+      "depth_cm": 300
+    },
+    {
+      "name": "Little Cauldron",
+      "center_local_cm": [
+        -3000,
+        -2100
+      ],
+      "radii_cm": [
+        280,
+        250
+      ],
+      "depth_cm": 180
+    },
+    {
+      "name": "Pocket bowl",
+      "center_local_cm": [
+        -1900,
+        -2050
+      ],
+      "radii_cm": [
+        460,
+        330
+      ],
+      "depth_cm": 130
+    }
+  ],
+  "kickers": [
+    {
+      "name": "Fourth Ward launch bank",
+      "axis_local_y_cm": -500,
+      "run_cm": [
+        250,
+        1350
+      ],
+      "height_cm": 300
+    },
+    {
+      "name": "West launch bank",
+      "axis_local_y_cm": 800,
+      "run_cm": [
+        -3300,
+        -2050
+      ],
+      "height_cm": 240
+    }
+  ],
+  "quarters": [
+    {
+      "name": "South quarter pipe",
+      "span_local_x_cm": [
+        -300,
+        1500
+      ],
+      "edge_local_y_cm": -2400,
+      "height_cm": 430
+    }
+  ],
+  "rollers": [
+    {
+      "name": "West pump rollers",
+      "span_local_x_cm": [
+        -3300,
+        -2150
+      ],
+      "height_cm": 95
+    }
+  ],
+  "pyramids": [
+    {
+      "name": "North pyramid",
+      "center_local_cm": [
+        500,
+        1750
+      ],
+      "height_cm": 200
+    }
+  ],
+  "volcanoes": [
+    {
+      "name": "Northwest volcano",
+      "center_local_cm": [
+        -1150,
+        1700
+      ],
+      "radius_cm": 720,
+      "height_cm": 240
+    }
+  ],
+  "pads": [
+    {
+      "name": "Manual pad",
+      "height_cm": 70
+    },
+    {
+      "name": "South plaza",
+      "height_cm": 55
+    }
   ],
   "bonuses": [
     [
       38050.0,
       73650.0,
-      510.0
+      510
     ],
     [
       38050.0,
       74400.0,
-      550.0
+      550
     ],
     [
       40100.0,
@@ -48,12 +229,13 @@
   "ramp_start": [
     39100.0,
     73500.0,
-    748
+    748.0
   ],
   "bowl_start": [
     38050.0,
     73650.0,
     568.0
   ],
-  "policy": "Original playable adaptation of mapped Fourth Ward skatepark. Two connected bowls, street launch bank and manual pad. Berm/entrance meet retained terrain. Landscape untouched."
+  "area_m2": 2172.0,
+  "policy": "Original playable adaptation of mapped Fourth Ward skatepark. Five bowls, two launch banks, a south quarter pipe, north pyramid and volcano, west pump rollers, ledges and bank-to-banks over 2.6x the first footprint. Berm/entrance meet retained terrain. Landscape untouched."
 }
