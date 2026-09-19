@@ -1,0 +1,89 @@
+Build 150 (Windows round 14 merged: 200 HP shoot-through wall + the bear on its
+authored material) - and the first look at a packaged build this project has ever
+had.
+
+Sweep: Scripts/run_quick_audits.sh against
+  Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground
+Run 2026-09-19 09:00-09:11. Console transcript.
+
+-- BattleCurseAudit: pass
+-- BattleTreeRideAudit: pass
+-- Realistic-BattleTreeRideAudit: pass
+-- BattleTroubleAudit: pass
+-- BattleSteeringAudit: pass
+-- BattleSleeperAudit: pass
+-- BattleGrassAudit: pass
+-- BattleBikeCarAudit: pass
+-- BattleMurderKAudit: pass
+-- BattlePickupAudit: pass
+-- BattleSpiritAudit: pass
+-- BattleKrogCrashAudit: pass
+-- BattleDuckAudit: pass
+-- BattleSpeedAudit: pass
+-- BattleTimeAudit: pass
+-- BattleDiscAudit: pass
+-- BattleMeleeAudit: pass
+-- BattleDiagonalAudit: pass
+-- BattlePatioAudit: pass
+-- BattleTunnelHazardAudit: pass
+-- BattleTrailModeAudit: pass
+-- BattleSkaterAudit: pass
+-- BattleDroneAudit: pass
+-- BattleFrisbeeAudit: pass
+-- BattlePanicAudit: pass
+-- BattleSpareBikeAudit: pass
+-- BattleTutorialAudit: pass
+-- BattleMarketImpactAudit: pass
+-- BattleScooterTrafficAudit: pass
+-- BattleMusicAudit: pass
+
+30 of 30 on the first pass. No flake line, no retry, no audit timed out. That
+includes BattleTunnelHazardAudit, which was the one red on build 149 under
+contention and is green here on a quiet machine.
+
+The three features Windows asked this side to keep. These are the audits' own
+JSON, from the cooked build:
+
+BattleTimeAudit:  {"passed":true,"phase":4,"time_pickups":3, ...}
+BattleMurderKAudit: {"passed":true,"checks":16,"wall":6,"punks":7, ...
+  "reason":"... a six-punk shoot-through wall ... all pass"}
+BattleSpiritAudit: {"passed":true,"checks":29,"presentation_enabled":true, ...}
+
+The wall's 200 HP and guaranteed drop are guarded inside that audit's 16 checks
+(`WallPunks==6 && ToughWallPunks==6`, where a tough punk is Health>=200 and
+WeaponDropChance>=1.0), so "wall: 6" here means six punks that each drop gear.
+
+## The bear, from a packaged build
+
+Builds 148 and 149 are the first two in this project's life that could not be
+photographed at all: the review's PNGs came from the editor's trace screenshot
+channel, a cooked build has no trace server, and a packaged Mac build is
+sandboxed so it cannot write into the project either. Three fixes later
+(in-process scene capture, persistent render state, sandbox-aware output) there
+is a picture, and Scripts/review_spirit_bear.sh reproduces it for any executable.
+
+From the staged app:
+  work/spirit-review-cooked-150/spirit-approach.png
+From the assembled share, which is the artifact Elliott's shortcut runs:
+  work/spirit-review-share-150/spirit-approach.png
+
+Both logs read the same and name the authored material:
+
+  BattleSpiritVisual: bear_body=SM_SpectralBear
+    material=MID_M_SpectralBearBody_2147482306 source=M_SpectralBearBody
+    authored=1 eyes=2 scale=0.334
+  BattleSpiritReview: state=3 ... body_visible=1 ... rendered=1
+
+What the picture shows, and it is the first time this claim could be made about a
+build rather than about the editor: a pale blue-grey body with a dark navy flank,
+four legs, a head and ears, reading as an animal from the approach angle the
+rider meets it on. Still Elliott's call on whether it looks good - but it is now
+a picture of the thing he will actually run.
+
+## Note for the next reader
+
+The review clock used to be frame counts (45 and 95) while the ghost's light
+pulses on wall-clock time, so a slow run and a fast run photographed different
+moments and disagreed about the same material. It now samples 3.0 s and 4.5 s
+after setup. If a future review ever disagrees with itself between machines,
+check what it is counting in before believing it about the art.

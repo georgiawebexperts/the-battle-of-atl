@@ -35,8 +35,15 @@ private:
  int MemorialReviewStage=0;float MemorialReviewClock=0;
  UPROPERTY() TObjectPtr<class ACameraActor> MemorialReviewCamera;
  bool bSpiritAuditDone=false;
- int32 SpiritReviewFrames=0;
- UPROPERTY() TObjectPtr<class ACameraActor> SpiritReviewCamera;
+int32 SpiritReviewFrames=0;
+ float SpiritReviewClock=0.f;
+ int32 SpiritReviewShot=0;
+ bool bSpiritReviewTookThreeQuarter=false;
+ bool bSpiritReviewTookApproach=false;
+ bool bSpiritReviewMoved=false;
+UPROPERTY() TObjectPtr<class ACameraActor> SpiritReviewCamera;
+ UPROPERTY() TObjectPtr<class UTextureRenderTarget2D> SpiritReviewTarget;
+ UPROPERTY() TObjectPtr<class USceneCaptureComponent2D> SpiritReviewCapture;
  bool bMurderKAuditDone=false;
  int32 MurderKReviewFrames=0;
  UPROPERTY() TObjectPtr<class ACameraActor> MurderKReviewCamera;
