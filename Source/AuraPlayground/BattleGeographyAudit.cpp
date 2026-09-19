@@ -4,6 +4,7 @@
 #include "BattleQuest.h"
 #include "BattleRouteAnchors.h"
 #include "GameFramework/WorldSettings.h"
+#include "GameFramework/PlayerStart.h"
 #include "EngineUtils.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -22,7 +23,7 @@ void ABattleMacController::TickGeographyAudit(float Dt){
  };
  if(!Water){Finish(false,TEXT("Missing lake hazard"));return;}
  if(GeographyPhase==0){
-  const FVector Start=Bike->GetActorLocation();
+  FVector Start=Bike->GetActorLocation();for(TActorIterator<APlayerStart> It(GetWorld());It;++It){Start=It->GetActorLocation();break;}
   const bool Anchors=GetWorld()->GetWorldSettings()->ActorHasTag(TEXT("BattleGeography_ESU_v1"))&&FMath::Abs(Start.X+16926.2)<1&&FMath::Abs(Start.Y+5098)<1&&BattleRouteAnchors::ParkExitY>10729;
   const FVector2D North=ABattleQuest::RadarOffset(FVector2D(0,-100),1),East=ABattleQuest::RadarOffset(FVector2D(100,0),1);
   const bool Compass=North.Y<0&&North.X==0&&East.X>0&&East.Y==0&&FVector::DotProduct(FRotationMatrix(FRotator::ZeroRotator).GetUnitAxis(EAxis::Y),FVector(0,-1,0))<-.99;

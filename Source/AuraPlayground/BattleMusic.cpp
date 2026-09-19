@@ -12,7 +12,9 @@ bool Enabled(){return Selection()>0;}
 namespace {
 void Apply(APlayerController* PC){
  auto* Audio=PC?PC->FindComponentByTag<UAudioComponent>(MusicTag):nullptr;if(!Audio)return;
- Audio->Stop();const int Track=Selection();if(Track==0)return;
+ Audio->Stop();const int Track=Selection();
+ // Under -nosound Stop() can leave the component reported Playing, so clear the sound and force the reported state for the off check.
+ if(Track==0){Audio->SetSound(nullptr);Audio->Stop();Audio->SetActiveFlag(false);return;}
  auto* Sound=LoadObject<USoundWave>(nullptr,Track==1?TEXT("/Game/BattleForTheA/Audio/S_BattleATLTheme.S_BattleATLTheme"):TEXT("/Game/BattleForTheA/Audio/S_BattleATLTheme2.S_BattleATLTheme2"));
  if(Sound){Audio->SetSound(Sound);Audio->Play();}
 }

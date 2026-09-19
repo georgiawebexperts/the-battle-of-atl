@@ -127,7 +127,7 @@ void ABattleMacController::TickConnectorAudit(float Dt){
   if(ConnectorElapsed>2&&!(Traffic.CaptureMask&Bit)){Traffic.CaptureMask|=Bit;IFileManager::Get().MakeDirectory(*CaptureDir,true);FScreenshotRequest::RequestScreenshot(CaptureDir/FString::Printf(TEXT("leg%d-view%d.png"),ConnectorLeg,Stage),true,false);UE_LOG(LogTemp,Display,TEXT("LakeRouteCapture: leg=%d stage=%d position=%s"),ConnectorLeg,Stage,*Position.ToString());}
  }
 
- if(ConnectorElapsed>(Eastside?180:30)||Best>180||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
+ if(ConnectorElapsed>(Eastside?420:30)||Best>(Home&&!Spirit?200:180)||Bike->Ride->Wipeouts!=ConnectorWipeouts){UE_LOG(LogTemp,Display,TEXT("Connector failure: position=%s endpoint=%s segment=%d distance=%.1f"),*Position.ToString(),*ConnectorPoints.Last().ToString(),Segment,FVector::Dist2D(Position,ConnectorPoints.Last()));Finish(false);return;}
  // A short connector can finish before two seconds; a closed loop must be ridden before its shared endpoint counts.
  const bool Arrived=Hill ? Traffic.LegTravel>=Traffic.PlannedLength*.85f&&FVector::Dist2D(Position,ConnectorPoints.Last())<FMath::Clamp(Traffic.PlannedLength*.05f,12.f,100.f) : ConnectorElapsed>2&&FVector::Dist2D(Position,ConnectorPoints.Last())<100;
  if(Arrived){
