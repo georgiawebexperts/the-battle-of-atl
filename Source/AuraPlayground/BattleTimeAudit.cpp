@@ -25,7 +25,7 @@ void ABattleMacController::TickTimeAudit(float Dt){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
-  CHECK_TIME(Mode->Pickups&&Mode->Pickups->TimePickups==10,"Incomplete bonus-time layout");
+  CHECK_TIME(Mode->Pickups&&Mode->Pickups->TimePickups==5,"Incomplete bonus-time layout");
   Mode->TimeRemaining=300;Mode->StartCountdown=1;CHECK_TIME(!Mode->AdjustRunTime(30,TEXT("invalid"))&&Mode->TimeRemaining==300,"Countdown guard failed");Mode->StartCountdown=0;
   SetPause(true);CHECK_TIME(!Mode->AdjustRunTime(30,TEXT("invalid")),"Pause guard failed");SetPause(false);
   Mode->Tick(2);CHECK_TIME(FMath::IsNearlyEqual(Mode->TimeRemaining,298.f,.001f),"Bike clock rate wrong");

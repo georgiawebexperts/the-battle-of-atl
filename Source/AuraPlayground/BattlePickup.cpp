@@ -193,7 +193,7 @@ void ABattlePickupDirector::BeginPlay(){
   TArray<FVector> Supplies=Park;Supplies.Append(Trail);
   while(!Supplies.IsEmpty()&&WeaponCrates<Mode->Difficulty.WeaponCrates){const int32 I=FMath::RandHelper(Supplies.Num());const FVector P=Supplies[I];Supplies.RemoveAtSwap(I);SpawnCola(P,false,0,1+WeaponCrates%4);}
   auto FillTime=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&TimePickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-2);}};
-  FillTime(Park,false,5);FillTime(Trail,true,10);
+  FillTime(Park,false,2);FillTime(Trail,true,5);
   auto FillHorns=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&HornPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-3);}};
   FillHorns(Park,false,3);FillHorns(Trail,true,6);
   auto FillSpeed=[&](TArray<FVector> Candidates,bool IsTrail,int32 Goal){while(!Candidates.IsEmpty()&&SpeedPickups<Goal){const int32 I=FMath::RandHelper(Candidates.Num());const FVector P=Candidates[I];Candidates.RemoveAtSwap(I);SpawnCola(P,IsTrail,0,-4);}};
@@ -201,7 +201,7 @@ void ABattlePickupDirector::BeginPlay(){
   UE_LOG(LogTemp,Display,TEXT("BattleSpeedPickups: spawned=%d desired=6"),SpeedPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleHornPickups: spawned=%d desired=6"),HornPickups);
   UE_LOG(LogTemp,Display,TEXT("BattleAmmoPickups: spawned=%d desired=12"),AmmoPickups);
-  UE_LOG(LogTemp,Display,TEXT("BattleTimePickups: spawned=%d desired=10"),TimePickups);
+  UE_LOG(LogTemp,Display,TEXT("BattleTimePickups: spawned=%d desired=5"),TimePickups);
   UE_LOG(LogTemp,Display,TEXT("BattleCrates: spawned=%d desired=%d"),WeaponCrates,Mode->Difficulty.WeaponCrates);
  }
  if(!ColaAudit)BattleSpareBikes::SpawnStations(this);
