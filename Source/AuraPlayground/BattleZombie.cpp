@@ -82,6 +82,7 @@ void ABattleZombie::Tick(float Dt){
  }
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Foot=Cast<ABattleRider>(Target))Bike=Foot->ParkedBike;
  if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||bSwimming){if(AI)AI->StopMovement();return;}
+ if(Tags.Contains(TEXT("BattleTunnelPunk"))){if(AI)AI->StopMovement();return;}
  if(bMurderKBrawler&&BrawlPartner.IsValid()&&FVector::Dist2D(Target->GetActorLocation(),GetActorLocation())>650){
   if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();
   const FVector ToPartner=BrawlPartner->GetActorLocation()-GetActorLocation();SetActorRotation(FRotator(0,ToPartner.Rotation().Yaw,0));
