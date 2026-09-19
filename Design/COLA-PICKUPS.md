@@ -1,3 +1,8 @@
+
+## Trademark rename
+
+2026-09-19 [codex-windows]: visible can lettering renamed from Coca-Cola to
+'Soda Pop' (trademark - do not restore brand text). Internal code names unchanged.
 # Coca-Cola health pickups
 
 2026-09-11 [codex-maclaptop]

@@ -26,7 +26,7 @@ ABattleColaPickup::ABattleColaPickup(){
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));Can->SetStaticMesh(Cylinder.Object);Can->SetRelativeScale3D(FVector(.22,.22,.4));Can->SetCollisionEnabled(ECollisionEnabled::NoCollision);Can->SetCanEverAffectNavigation(false);
  Glow=CreateDefaultSubobject<UPointLightComponent>(TEXT("PickupGlow"));Glow->SetupAttachment(RootComponent);Glow->SetIntensity(120);Glow->SetAttenuationRadius(180);Glow->SetLightColor(FLinearColor(1,.12,.04));Glow->SetCastShadows(false);
  for(int32 I=0;I<2;I++){
-  auto* Label=CreateDefaultSubobject<UTextRenderComponent>(*FString::Printf(TEXT("ColaLabel%d"),I));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(I?-12:12,0,3));Label->SetRelativeRotation(FRotator(0,I?180:0,0));Label->SetWorldSize(18);Label->SetText(FText::FromString(TEXT("Coca-Cola")));Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor::White);Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);Label->SetCanEverAffectNavigation(false);
+  auto* Label=CreateDefaultSubobject<UTextRenderComponent>(*FString::Printf(TEXT("ColaLabel%d"),I));Label->SetupAttachment(RootComponent);Label->SetRelativeLocation(FVector(I?-12:12,0,3));Label->SetRelativeRotation(FRotator(0,I?180:0,0));Label->SetWorldSize(18);Label->SetText(FText::FromString(TEXT("Soda Pop")));Label->SetHorizontalAlignment(EHTA_Center);Label->SetTextRenderColor(FColor::White);Label->SetCollisionEnabled(ECollisionEnabled::NoCollision);Label->SetCanEverAffectNavigation(false);
  }
  Tags.Add(TEXT("BattleHealthPickup"));
 }
