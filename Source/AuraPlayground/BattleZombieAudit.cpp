@@ -26,11 +26,24 @@ void ABattleMacController::TickZombieAudit(float Dt){
  if(ZombiePhase==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
-  TActorIterator<ABattleZombie> First(GetWorld());if(First)Z=*First;
-  if(Z){
-   VERIFY_ZOMBIE(Mode->Enemies->DesiredZombies==Mode->Difficulty.Zombies&&Z->GetController()&&Z->GetController()->IsA<AAIController>(),"Missing difficulty-driven AI spawn");
-   VERIFY_ZOMBIE(FMath::IsNearlyEqual(Z->GetCharacterMovement()->MaxWalkSpeed,Z->bSprinter?Mode->Difficulty.SprinterSpeed:Mode->Difficulty.ZombieSpeed),"Wrong zombie movement speed");
-   Mode->Enemies->bFreezeSpawns=true;ZombieAuditTarget=Z;ZombieAuditInitial=Z->GetActorLocation();ZombiePhase=1;ZombieAuditClock=0;
+  // The first zombie in the world is usually a Krog bore scenery punk (spawned at
+  // map start, tagged BattleTunnelPunk, and told to stand still), which is why this
+  // audit failed identically on Mac and Windows with "spawned 0, desired 3". Wait
+  // for the director's first spawn and target the live zombie nearest the rider
+  // instead: director spawns land 900-3000 cm away, scenery punks live at the far
+  // end of the course.
+  if(Mode->Enemies->Spawned>0){
+   float Best=FLT_MAX;
+   for(TActorIterator<ABattleZombie> It(GetWorld());It;++It){
+    if(It->Tags.Contains(TEXT("BattleTunnelPunk")))continue;
+    const float D=FVector::Dist2D(It->GetActorLocation(),Bike->GetActorLocation());
+    if(D<Best){Best=D;Z=*It;}
+   }
+   if(Z){
+    VERIFY_ZOMBIE(Mode->Enemies->DesiredZombies==Mode->Difficulty.Zombies&&Z->GetController()&&Z->GetController()->IsA<AAIController>(),"Missing difficulty-driven AI spawn");
+    VERIFY_ZOMBIE(FMath::IsNearlyEqual(Z->GetCharacterMovement()->MaxWalkSpeed,Z->bSprinter?Mode->Difficulty.SprinterSpeed:Mode->Difficulty.ZombieSpeed),"Wrong zombie movement speed");
+    Mode->Enemies->bFreezeSpawns=true;ZombieAuditTarget=Z;ZombieAuditInitial=Z->GetActorLocation();ZombiePhase=1;ZombieAuditClock=0;
+   }
   }
  }
  else if(ZombiePhase==1&&ZombieAuditClock>3){
