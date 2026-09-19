@@ -36,7 +36,14 @@ void ABattleMacController::TickDiscAudit(float Dt){
   CHECK_DISC(Crate,"No real launcher crate");Bike->SetActorLocation(Crate->GetActorLocation()+FVector(0,0,33),false,nullptr,ETeleportType::TeleportPhysics);Bike->Ride->bForceNextFloorCheck=true;DiscPhase=1;DiscClock=0;
  }
  else if(DiscPhase==1&&DiscClock>.3f){
-  CHECK_DISC(Bike->Inventory[3].Owned&&Bike->Inventory[3].Magazine==8&&Bike->Inventory[3].Reserve==8,"Launcher crate supply failed");
+  // The crate's pickup volume needs a frame or two after the teleport, and under
+  // load 0.3 s is not always enough: this failed phase 1 in one packaged sweep
+  // ("Launcher crate supply failed") while passing 3 of 3 on its own. Poll to a
+  // bounded 1.5 s before calling it a failure, the same shape as the drone and
+  // speed audit fixes.
+  const bool Supplied=Bike->Inventory[3].Owned&&Bike->Inventory[3].Magazine==8&&Bike->Inventory[3].Reserve==8;
+  if(!Supplied&&DiscClock<1.5f)return;
+  CHECK_DISC(Supplied,"Launcher crate supply failed");
   // The arena needs dry, level, open ground. The bike's checkpoint is over a
   // water polygon, and the old floating arena does not survive that: the swim
   // code pulls the rider straight back down to the water surface, so the arena
