@@ -83,3 +83,45 @@ inspiration behind the spirit stays out of credits and game text.
 `ABattleSpirit::bPresentationReady` is untouched and remains false. Nothing was
 installed, placed or enabled; the staged actors are transient and the map was not
 saved.
+
+## The body replaces the card — 2026-09-19 [codex-maclaptop]
+
+Elliott's "the bear or angel or whatever still doesnt look good" was aimed at a
+**flat painted card**: a 2.7 x 1.85 m unlit plane (`SpiritCard`) standing in the
+trail. No art on a plane fixes that, because a plane reads as a cut-out from
+every angle except the one it was drawn for.
+
+The spirit now carries the 3D bear staged above as its primary body
+(`SM_SpectralBear`, `BearBody` in `ABattleSpirit`): yawed so the nose points down
+the actor's forward, scaled to **1.90 m nose to tail and 1.12 m at the withers**
+beside a 1.8 m rider. The file's pivot is not at the animal — its bounding box
+sits 279 cm along local X with the feet 7 cm above the origin — so the body is
+centred from its own bounds rather than from a hard-coded nudge.
+
+Three findings, all from renders rather than reasoning, and all worth keeping:
+
+1. **A translucent unlit material renders nothing in this project.** The body
+   was genuinely drawn — `WasRecentlyRendered` returned true — and left no
+   pixels. Two screenshots with no numbers cannot tell that apart from "the bear
+   is not there", which is how a pass was lost. `-BattleSpiritReview` now logs
+   state, component visibility, world bounds, camera position and
+   `WasRecentlyRendered` at each capture.
+2. **A material built by these editor scripts still does not come out right.**
+   `M_SpectralBearBody` (kept in the repo for whoever sorts that out) drew as
+   default lit grey with the moonlight picking out a blue edge. The body is
+   therefore tinted from `/Engine/BasicShapes/BasicShapeMaterial` at
+   `(.015, .020, .045)` — the one material this project has repeatedly seen draw
+   in a cooked build.
+3. **Writing a material graph and looking at a picture is not verification.**
+   The first opaque pass was reported as working because a bear-shaped thing
+   appeared in frame; it was the default material.
+
+The card and the nine-primitive figure remain as hidden fallbacks, and
+`-BattleSpiritCard` still swaps the card back in for comparison. The encounter's
+rules, the approach, the chase route and `bPresentationReady` are unchanged —
+only the thing being looked at changed.
+
+Still open, and both are Elliott's call rather than an implementation detail:
+the mesh is **static, with no skeleton and no animations**, so a bear that walks
+or turns its head is not available from this file; and **CC-BY 4.0 requires a
+visible credit for mathildelea**, which is a credits-file change.
