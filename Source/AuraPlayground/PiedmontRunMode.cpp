@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "EngineUtils.h"
 #include "Engine/StaticMeshActor.h"
+#include "BattleInput.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "Components/SplineComponent.h"
@@ -25,7 +26,7 @@ void APiedmontRideMode::Tick(float Dt){
   RunBike=Cast<APiedmontBike>(PC->GetPawn());if(!RunBike)return;
   StartLocation=RunBike->GetActorLocation();StartRotation=RunBike->GetActorRotation();bAnchored=true;RestartRun();
  }
- if(bRunEnded){if(PC->WasInputKeyJustPressed(EKeys::Enter))RestartRun();return;}
+ if(bRunEnded){if(PC->WasInputKeyJustPressed(EKeys::Enter)||PC->WasInputKeyJustPressed(EKeys::Gamepad_FaceButton_Bottom)||PC->WasInputKeyJustPressed(EKeys::Gamepad_Special_Right))RestartRun();return;}
  if(StartCountdown>0){StartCountdown=FMath::Max(0.f,StartCountdown-Dt);return;}
  TimeRemaining=FMath::Max(0.f,TimeRemaining-Dt);if(TimeRemaining<=0){EndRun(TEXT("Time expired"));return;}
  EncounterCountdown-=Dt;if(EncounterCountdown<=0){EncounterCountdown=300;ConsiderEncounter();}

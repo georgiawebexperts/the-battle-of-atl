@@ -104,6 +104,20 @@ void TickBattlePropProbe(APlayerController* PC,float Dt);
 void TickBattlePanelProbe(APlayerController* PC,float Dt);
 void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt);
 void TickBattleAimAudit(APlayerController* PC,float Dt);
+void TickGamepadAudit(APlayerController* PC,float Dt);
+void GamepadAuditInject(APlayerController* PC,float Dt);
+void ABattleMacController::TickActor(float DeltaSeconds,ELevelTick TickType,FActorTickFunction& ThisTickFunction){
+#if !UE_BUILD_SHIPPING
+ // A synthetic pad has to be pushed in before this frame's input processing, the
+ // way a real device's samples arrive. Injecting it from PlayerTick - which runs
+ // after TickPlayerInput - is a frame too late: the pawn ticks before the
+ // controller, and a gamepad axis is cleared again when a frame arrives without
+ // a fresh sample, so the bike never saw the stick while this audit could read
+ // it back perfectly. See BattleGamepadAudit.cpp.
+ if(TickType==LEVELTICK_All&&FParse::Param(FCommandLine::Get(),TEXT("BattleGamepadAudit")))GamepadAuditInject(this,DeltaSeconds);
+#endif
+ Super::TickActor(DeltaSeconds,TickType,ThisTickFunction);
+}
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
 void TickBattleSkylineAudit(APlayerController* PC,float Dt);
 void TickBattleKrogCrashAudit(APlayerController* PC,float Dt);
@@ -126,6 +140,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpeedAudit")))TickBattleSpeedAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMusicAudit")))BattleMusic::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAimAudit")))TickBattleAimAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleGamepadAudit")))TickGamepadAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDuckAudit")))TickBattleDuckAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkylineAudit")))TickBattleSkylineAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKrogCrashAudit")))TickBattleKrogCrashAudit(this,Dt);

@@ -20,6 +20,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "BattleInput.h"
 #include "Kismet/GameplayStatics.h"
 namespace {
 void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,int32 WeaponSlot,FVector SupportGrip){
@@ -106,6 +107,26 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  I->BindKey(EKeys::R,IE_Pressed,this,&ABattleRider::ReloadPistol);
  I->BindKey(EKeys::F,IE_Pressed,this,&ABattleRider::StartMelee);
  I->BindKey(EKeys::One,IE_Pressed,this,&ABattleRider::SelectPistol);I->BindKey(EKeys::Two,IE_Pressed,this,&ABattleRider::SelectShotgun);I->BindKey(EKeys::Three,IE_Pressed,this,&ABattleRider::SelectSMG);I->BindKey(EKeys::Five,IE_Pressed,this,&ABattleRider::SelectRifle);I->BindKey(EKeys::Four,IE_Pressed,this,&ABattleRider::SelectFrisbee);
+ // The pad, on foot, on the same handlers as the keys: A jump, B interact and
+ // get back on the bike, X reload, Y draw, left shoulder melee, right stick
+ // click crouch, the d-pad for weapons, and the triggers for aim and fire -
+ // which is the one place the layout differs from riding, and deliberately so:
+ // on a bike the left trigger is the boost, on foot it is the aim.
+ I->BindKey(EKeys::Gamepad_FaceButton_Bottom,IE_Pressed,this,&ABattleRider::StartJump);
+ I->BindKey(EKeys::Gamepad_FaceButton_Bottom,IE_Released,this,&ABattleRider::EndJump);
+ I->BindKey(EKeys::Gamepad_FaceButton_Right,IE_Pressed,this,&ABattleRider::Interact);
+ I->BindKey(EKeys::Gamepad_FaceButton_Left,IE_Pressed,this,&ABattleRider::ReloadPistol);
+ I->BindKey(EKeys::Gamepad_FaceButton_Top,IE_Pressed,this,&ABattleRider::DrawWeapon);
+ I->BindKey(EKeys::Gamepad_LeftShoulder,IE_Pressed,this,&ABattleRider::StartMelee);
+ I->BindKey(EKeys::Gamepad_RightThumbstick,IE_Pressed,this,&ABattleRider::ToggleCrouch);
+ I->BindKey(EKeys::Gamepad_LeftTrigger,IE_Pressed,this,&ABattleRider::AimOn);
+ I->BindKey(EKeys::Gamepad_LeftTrigger,IE_Released,this,&ABattleRider::AimOff);
+ I->BindKey(EKeys::Gamepad_RightTrigger,IE_Pressed,this,&ABattleRider::PullTrigger);
+ I->BindKey(EKeys::Gamepad_RightTrigger,IE_Released,this,&ABattleRider::ReleaseTrigger);
+ I->BindKey(EKeys::Gamepad_DPad_Up,IE_Pressed,this,&ABattleRider::SelectPistol);
+ I->BindKey(EKeys::Gamepad_DPad_Right,IE_Pressed,this,&ABattleRider::SelectShotgun);
+ I->BindKey(EKeys::Gamepad_DPad_Down,IE_Pressed,this,&ABattleRider::SelectSMG);
+ I->BindKey(EKeys::Gamepad_DPad_Left,IE_Pressed,this,&ABattleRider::SelectRifle);
 }
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||(ParkedBike->RiderHealth>0&&ParkedBike->StunRemaining<=0))&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::BeginStepOff(const FVector& From,const FVector& To,float Seconds){
@@ -128,9 +149,10 @@ void ABattleRider::Tick(float Dt){
 
  DrawRemaining=FMath::Max(0.f,DrawRemaining-Dt);
  if(auto* PC=Cast<APlayerController>(GetController())){
-  GetCharacterMovement()->MaxWalkSpeed=(PC->IsInputKeyDown(EKeys::LeftShift)?700:400);
-  bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
-  if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
+  // Sprint, aim and fire answer to the pad as well as the keys. See BattleInput.h.
+  GetCharacterMovement()->MaxWalkSpeed=(BattleInput::Sprint(PC)?700:400);
+  bAiming=BattleInput::Aim(PC)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
+  if(BattleInput::Fire(PC))Fire();
  }
  bUseControllerRotationYaw=bWeaponDrawn;
  GetCharacterMovement()->bOrientRotationToMovement=!bWeaponDrawn;

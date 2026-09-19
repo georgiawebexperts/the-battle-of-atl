@@ -12,6 +12,10 @@ public:
  virtual void BeginPlay() override;
  virtual void SetupInputComponent() override;
  virtual void PlayerTick(float DeltaTime) override;
+ // Only for pushing a synthetic controller's samples in before the frame's
+ // input processing - see BattleGamepadAudit.cpp for why the audit's injection
+ // cannot happen in PlayerTick.
+ virtual void TickActor(float DeltaSeconds,ELevelTick TickType,FActorTickFunction& ThisTickFunction) override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  void ToggleMenu();
  void TogglePracticeHelp();
