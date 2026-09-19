@@ -101,11 +101,36 @@ SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackB
   BearBody->SetCastShadow(false);
   if(BearBodySource.Succeeded())BearBody->SetMaterial(0,BearBodySource.Object);
   BearBody->SetVisibility(false);
+  // Two small cold eyes on the body. A rim says "something is there"; eyes say
+  // "an animal". They are attached to the body component rather than to the
+  // actor, so they sit on the mesh's own axes - the first attempt placed them
+  // in actor coordinates and put them inside the chest, which is why the last
+  // review render had a bear with no face. Their position comes from the mesh's
+  // own bounds: the file is authored nose along +Y, so the head is at the far
+  // +Y end and a little above the middle of the body.
+  const FVector HeadLocal(
+   BearBounds.Origin.X,
+   BearBounds.Origin.Y+BearBounds.BoxExtent.Y*0.60f,
+   BearBounds.Origin.Z+BearBounds.BoxExtent.Z*0.26f);
+  for(int Side:{-1,1}){
+   auto* Eye=CreateDefaultSubobject<UStaticMeshComponent>(*FString::Printf(TEXT("SpiritBodyEye%d"),Side));
+   Eye->SetupAttachment(BearBody);
+   Eye->SetStaticMesh(Sphere.Object);
+   Eye->SetRelativeLocation(HeadLocal+FVector(Side*BearBounds.BoxExtent.X*0.15f,0,0));
+   // The body is scaled to 0.334, so an eye authored at 5.5 cm of world size is
+   // 5.5/0.334 in the body's own units.
+   Eye->SetRelativeScale3D(FVector(.055f/BearScale));
+   Eye->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+   Eye->SetCanEverAffectNavigation(false);
+   Eye->SetCastShadow(false);
+   Eye->SetVisibility(false);
+   BodyEyes.Add(Eye);
+  }
  }
-MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.12f,.55f,1.f));MoonGlow->SetAttenuationRadius(900);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.10f,.42f,1.f));MoonGlow->SetAttenuationRadius(620);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
  // Card visible, primitive bear hidden. If the material or the mesh is missing
  // the card is skipped at runtime and the primitives carry the scene.
- for(auto& C:FigureParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);
+ for(auto& C:FigureParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);for(auto& C:BodyEyes)C->SetVisibility(false);
 }
 bool ABattleSpirit::IsLiveRun() const {
  const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
@@ -206,6 +231,7 @@ void ABattleSpirit::Tick(float Dt){
   SpiritCard->SetVisibility(Visible);
  }
  for(auto& C:FigureParts){const bool bShow=Visible&&!bCardMode&&!bBody;C->SetVisibility(bShow);if(bShow)C->SetRelativeScale3D(FVector(FigureScale));}
+ for(auto& C:BodyEyes){if(auto* E=C.Get())E->SetVisibility(Visible&&bBody);}
  // The trail is a record of where the body has been: sample the position while
  // the encounter is live, then place the last five samples behind the animal,
  // shrinking as they age. They are world-space, so they hang back where the
@@ -229,7 +255,12 @@ void ABattleSpirit::Tick(float Dt){
   const float T=1.f-float(Age)/float(FMath::Max(1,TrailPoints.Num()));
   C->SetWorldScale3D(FVector((0.04f+0.07f*T)*Reveal));
  }
- MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?3200.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
+ // The cold light that used to sit here was 3200 at a 900 cm radius, which lit
+ // the deck under the bear to a white blowout - in the review capture it read
+ // as a headlight on the ground rather than as a spirit, and it washed out the
+ // animal's own legs. The body carries its own emissive now, so this only has
+ // to be the faint pool of cold light the design note asks for.
+ MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?420.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
 }
 
 void ABattleSpirit::BeginPlay(){
@@ -268,21 +299,39 @@ void ABattleSpirit::BeginPlay(){
  for(auto& C:FigureParts)C->SetMaterial(0,FigureMat);
 auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.08f,.55f,1.f));
  for(auto& C:Wisps)C->SetMaterial(0,WispMat);
- // The body is tinted from the same engine material the primitive figure and
- // the wisps use, not from M_SpectralBearBody. The authored graph is kept in
- // the repo for reference, but every material this project's editor scripts
- // create has come out wrong in the game - and this one did too: the bear drew
- // as the default lit grey with the moonlight picking out a blue edge, which is
- // the "bear or angel or whatever" that Elliott could not name. The engine
- // material is the one thing here that is known to draw.
+ // The eyes stay the one bright thing on the figure: small, no outline, and
+ // emissive so they glow rather than sitting in the bear's own shadow as a dark
+ // bead - which is what the first body-eyed pass produced. EmissiveMeshMaterial
+ // is an engine material, and engine materials are the ones that draw here.
+ auto* EyeMat=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/EngineMaterials/EmissiveMeshMaterial.EmissiveMeshMaterial"));
+ for(auto& C:BodyEyes)if(auto* E=C.Get())E->SetMaterial(0,EyeMat?EyeMat:WispMat);
+ UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: eye_material=%s"),*GetNameSafe(EyeMat?EyeMat:WispMat));
+ // The body is drawn with an ENGINE material, and that is now a measured
+ // decision rather than a superstition.
+ //
+ // Three passes at a spectral look for this bear failed, and on 2026-09-19 the
+ // reason was isolated with one experiment instead of three pictures: the
+ // authored material was rebuilt as unlit emissive PURE RED - a value no engine
+ // default, no sunlight and no tone mapper can produce by accident - and the
+ // bear still rendered grey. The material is simply not drawn. Engine materials
+ // are: the same mesh, component and slot drew a dark navy body from the
+ // BasicShapeMaterial tint on build 144.
+ //
+ // So M_SpectralBearBody stays in the repo as the authored intent (a dark body
+ // with a fine silver-blue rim, with the reveal wired through SpiritFade), and
+ // Scripts/debug_spirit_material_red.py stays as the experiment that proves what
+ // happens to it. The look in the meantime comes from material that draws: a
+ // tinted engine body under a cold light, plus emissive eyes.
  if(BearBody){
   auto* Source=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
   if(!Source)Source=BearBody->GetMaterial(0);
   BearBodyMaterial=Source?UMaterialInstanceDynamic::Create(Source,this):nullptr;
-  if(BearBodyMaterial)BearBodyMaterial->SetVectorParameterValue(TEXT("Color"),FLinearColor(.015f,.020f,.045f));
+  // Not near-black. A lit body this dark has no interior at all, and the review
+  // render at (.015,.020,.045) read as a flat lump rather than as an animal.
+  if(BearBodyMaterial)BearBodyMaterial->SetVectorParameterValue(TEXT("Color"),FLinearColor(.050f,.068f,.125f));
   if(BearBodyMaterial)BearBody->SetMaterial(0,BearBodyMaterial);
-  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: bear_body=%s material=%s source=%s scale=%.3f"),
-   *GetNameSafe(BearBody->GetStaticMesh()),*GetNameSafe(BearBody->GetMaterial(0)),*GetNameSafe(Source),BearBody->GetRelativeScale3D().X);
+  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: bear_body=%s material=%s source=%s eyes=%d scale=%.3f"),
+   *GetNameSafe(BearBody->GetStaticMesh()),*GetNameSafe(BearBody->GetMaterial(0)),*GetNameSafe(Source),BodyEyes.Num(),BearBody->GetRelativeScale3D().X);
  }else{
   UE_LOG(LogTemp,Warning,TEXT("BattleSpiritVisual: no bear body mesh - falling back to the card"));
  }
