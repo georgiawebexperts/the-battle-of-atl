@@ -48,8 +48,9 @@ void ABattleMacController::TickStreakAudit(float Dt){
   StreakPhase=4;StreakAuditClock=0;
  }
  else if(StreakPhase==4&&StreakAuditClock>5.5f){
+  Bike->ShotNotice.Empty();const float HealthBefore=Bike->RiderHealth;
   auto* Z=SpawnPunk();SCHECK(Z,"Fourth fixture punk did not spawn");StreakTarget=Z;KillPunk(Z);
-  SCHECK(Bike->Streak==1&&Bike->BestStreak==3&&Bike->RiderHealth==65,"Late kill did not reset the chain while keeping the best streak");
+  SCHECK(Bike->Streak==1&&Bike->BestStreak==3&&FMath::IsNearlyEqual(Bike->RiderHealth,HealthBefore)&&!Bike->ShotNotice.Contains(TEXT("+15")),"Late kill did not reset the chain without healing while keeping the best streak");
   StreakPhase=5;StreakAuditClock=0;
  }
  else if(StreakPhase==5){

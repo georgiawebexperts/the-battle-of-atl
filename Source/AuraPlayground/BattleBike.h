@@ -154,8 +154,8 @@ UPROPERTY(BlueprintReadOnly) float Nitro=0;
  void AwardEnemyKill(){EnemyKills++;Nitro=FMath::Min(100.f,Nitro+25);
  const float Now=GetWorld()?GetWorld()->GetTimeSeconds():0.f;
  if(Now-LastKillAt<=5.f)Streak++;else Streak=1;LastKillAt=Now;BestStreak=FMath::Max(BestStreak,Streak);
- if(Streak%3==0){RiderHealth=FMath::Min(100.f,RiderHealth+15);ShotNotice=FString::Printf(TEXT("STREAK x%d - +15 HEALTH"),Streak);}else ShotNotice=FString::Printf(TEXT("STREAK x%d"),Streak);
- ShotNoticeRemaining=1.5f;}
+ // x1/x2 keep the weapon's own label (ZOMBIE DOWN, DRONE DOWN); the streak banner takes over at x3.
+ if(Streak>=3){if(Streak%3==0)RiderHealth=FMath::Min(100.f,RiderHealth+15);ShotNotice=(Streak%3==0)?FString::Printf(TEXT("STREAK x%d - +15 HEALTH"),Streak):FString::Printf(TEXT("STREAK x%d"),Streak);ShotNoticeRemaining=1.5f;}}
  UPROPERTY(BlueprintReadOnly) int32 Streak=0;
  UPROPERTY(BlueprintReadOnly) int32 BestStreak=0;
  float LastKillAt=-1e9f;
