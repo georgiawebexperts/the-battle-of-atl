@@ -17,11 +17,13 @@ int32 BattleRecords::Wins(FName Difficulty){auto* R=Cast<UBattleRunRecords>(UGam
 TArray<FVector> BattleRecords::BestRoute(FName Difficulty){auto* R=Cast<UBattleRunRecords>(UGameplayStatics::LoadGameFromSlot(Slot(),0));return R&&R->BestRoute.Contains(Difficulty)?R->BestRoute[Difficulty].Points:TArray<FVector>();}
 bool BattleRecords::GhostUnlocked(FName Difficulty){return Wins(Difficulty)>=5&&BestRoute(Difficulty).Num()>1;}
 bool BattleRecords::AddWin(FName Difficulty){auto* R=Cast<UBattleRunRecords>(UGameplayStatics::LoadGameFromSlot(Slot(),0));if(!R)R=Cast<UBattleRunRecords>(UGameplayStatics::CreateSaveGameObject(UBattleRunRecords::StaticClass()));if(!R)return false;R->WinCounts.Add(Difficulty,R->WinCounts.FindRef(Difficulty)+1);return UGameplayStatics::SaveGameToSlot(R,Slot(),0);}
+int32 BattleRecords::BestStreak(FName Difficulty){auto* R=Cast<UBattleRunRecords>(UGameplayStatics::LoadGameFromSlot(Slot(),0));return R&&R->BestStreak.Contains(Difficulty)?R->BestStreak[Difficulty]:0;}
+bool BattleRecords::RecordStreak(FName Difficulty,int32 Streak){if(Streak<=0)return false;auto* R=Cast<UBattleRunRecords>(UGameplayStatics::LoadGameFromSlot(Slot(),0));if(!R)R=Cast<UBattleRunRecords>(UGameplayStatics::CreateSaveGameObject(UBattleRunRecords::StaticClass()));if(!R)return false;if(R->BestStreak.FindRef(Difficulty)>=Streak)return true;R->BestStreak.Add(Difficulty,Streak);return UGameplayStatics::SaveGameToSlot(R,Slot(),0);}
 bool ABattleParkMode::CompleteRun(ABattleBike* Bike){
  if(!Bike||Bike->RiderHealth<=0||bRunEnded||StartCountdown>0||TimeRemaining<=0||UGameplayStatics::IsGamePaused(this))return false;
  bWon=true;bRunEnded=true;FinishKills=Bike->EnemyKills;FinishWipeouts=Bike->Ride->Wipeouts;FinishNearMisses=Bike->NearMisses;
  const float Fraction=TimeRemaining/FMath::Max(1.f,Difficulty.TimeLimitSeconds);FinishGrade=Fraction>=.5f?TEXT("A"):Fraction>=.25f?TEXT("B"):Fraction>=.1f?TEXT("C"):TEXT("D");
  const float OldBest=BattleRecords::Best(DifficultyName);const bool TimeSaved=BattleRecords::Record(DifficultyName,RunElapsed,RouteSamples);const bool WinSaved=BattleRecords::AddWin(DifficultyName);bRecordSaved=TimeSaved&&WinSaved;bGhostBeaten=bGhostRiding&&TimeSaved&&RunElapsed<OldBest;Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();
  ABattleHome::RefreshBestTimeBoard(DifficultyName,true);
- UE_LOG(LogTemp,Display,TEXT("BattleFinish: won=1 elapsed=%.2f remaining=%.2f saved=%d"),RunElapsed,TimeRemaining,bRecordSaved);return true;
+ UE_LOG(LogTemp,Display,TEXT("BattleFinish: won=1 elapsed=%.2f remaining=%.2f saved=%d streak=%d"),RunElapsed,TimeRemaining,bRecordSaved,Bike->BestStreak);return true;
 }

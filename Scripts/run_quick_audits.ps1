@@ -67,6 +67,7 @@ $audits = @(
     [pscustomobject]@{ Name = 'BattleTutorialAudit';  Label = 'BattleTutorialAudit';      Flag = ''; NoSkip = $true },
     [pscustomobject]@{ Name = 'BattleMarketImpactAudit'; Label = 'BattleMarketImpactAudit'; Flag = ''; NoSkip = $true },
     [pscustomobject]@{ Name = 'BattleScooterTrafficAudit'; Label = 'BattleScooterTrafficAudit'; Flag = 'BattleFurnitureAudit' }
+    [pscustomobject]@{ Name = 'BattleStreakAudit'; Label = 'BattleStreakAudit'; Flag = '' }
 )
 
 # BATTLE_SWEEP_ONLY=Name,Name runs just those entries, for verifying one audit

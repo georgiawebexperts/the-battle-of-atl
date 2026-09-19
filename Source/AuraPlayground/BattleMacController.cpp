@@ -195,6 +195,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTimeAudit")))TickTimeAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleInventoryAudit")))TickInventoryAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMeleeAudit")))TickMeleeAudit(Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleStreakAudit")))TickStreakAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombieAudit")))TickZombieAudit(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleZombiePopulationAudit")))TickZombiePopulationAudit(Dt);
 #endif
@@ -320,7 +321,9 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(FString::Printf(TEXT("TIME LEFT  %s\nRUN TIME  %s\nZOMBIES  %d   WIPEOUTS  %d\nTOP SPEED  %.0f MPH   NEAR MISSES  %d"),*BattleRecords::Format(Park->TimeRemaining),*BattleRecords::Format(Park->RunElapsed),Park->FinishKills,Park->FinishWipeouts,Park->RunTopSpeed*.0223694f,Park->FinishNearMisses),22,FLinearColor::White);
   Label(Park->bRecordSaved?FString::Printf(TEXT("BEST %s  %s"),*Park->DifficultyName.ToString(),*BattleRecords::Format(BattleRecords::Best(Park->DifficultyName))):TEXT("Best time could not be saved."),18,FLinearColor(1,.7,.35));
   const int32 TotalWins=BattleRecords::Wins(Park->DifficultyName);
+  const int32 TopStreak=BattleRecords::BestStreak(Park->DifficultyName);
   Label(FString::Printf(TEXT("TOTAL WINS  %d"),TotalWins),18,FLinearColor(1,.7,.35));
+  Label(FString::Printf(TEXT("BEST STREAK  %d  -  x3 HEALS"),TopStreak),18,FLinearColor(.55,1,.95));
   if(Park->bGhostBeaten)Label(TEXT("GHOST RIDER BEATEN!"),22,FLinearColor(.55,1,.95));
   if(TotalWins>=5&&!Park->bGhostBeaten)Label(FString::Printf(TEXT("%d WINS!  THE GHOST RIDER RACES YOU NEXT RUN"),TotalWins),18,FLinearColor(.55,1,.95));
   Button(TEXT("RIDE AGAIN"),[this](){const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));StartDifficulty(M?M->DifficultyName:FName(TEXT("Easy")));});Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
@@ -343,6 +346,7 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("BIKE\nW/Up pedal | S/Down brake\nA/D or Left/Right steer | Q/R gears\nSpace brake/drift | J bike jump\nShift nitro | H horn (5 uses) | Tab camera\nP arcade / realistic bike physics\nArcade: scenery bumps keep you on the bike\nEnemies, drones and tasers can knock you off\nFind >> 5s tokens for temporary speed\nM music: Off > Song 1 > Song 2 > Off\nE dismount | Left click pistol"),17,FLinearColor::White);
   Label(TEXT("ON FOOT\nWASD / arrows move | Mouse look and aim\nZ/X turn | T/V look up/down\nShift sprint | Space jump | C/Control crouch\nG draw/holster weapon\nLeft click fire | Right click aim | R reload\n1 pistol | 2 shotgun | 3 SMG | 4 frisbee | 5 rifle\nFind weapon crates | Rifle: right click zoom\nF swing U-lock\nE near bike to remount | F1 full/compact controls | Esc pause"),17,FLinearColor::White);
   Label(TEXT("AIM FEEL\nOptions > AIM SENSITIVITY, or press [ and ] at any time\n25% to 200%, remembered between runs"),17,FLinearColor::White);
+ Label(TEXT("STREAK\nChain kills within 5 seconds: STREAK xN\nEvery 3rd kill in a chain heals +15 health"),17,FLinearColor::White);
   Button(TEXT("BACK"),[this](){ShowMenu();});
  }else if(Page==TEXT("Options")){
   Button(BattleMusic::Enabled()?FString::Printf(TEXT("MUSIC: SONG %d / 2  /  M"),BattleMusic::Selection()):FString(TEXT("MUSIC: OFF  /  M")),[this](){BattleMusic::Toggle(this);ShowMenu(TEXT("Options"));});

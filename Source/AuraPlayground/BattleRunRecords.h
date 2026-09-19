@@ -14,6 +14,7 @@ public:
  UPROPERTY(SaveGame) TMap<FName,float> BestElapsed;
  UPROPERTY(SaveGame) TMap<FName,int32> WinCounts;
  UPROPERTY(SaveGame) TMap<FName,FBattleGhostRoute> BestRoute;
+ UPROPERTY(SaveGame) TMap<FName,int32> BestStreak;
 };
 namespace BattleRecords {
  FString Slot();
@@ -21,6 +22,8 @@ namespace BattleRecords {
  bool Record(FName Difficulty,float Elapsed,const TArray<FVector>& Route=TArray<FVector>());
  TArray<FVector> BestRoute(FName Difficulty);
  bool GhostUnlocked(FName Difficulty);
+ int32 BestStreak(FName Difficulty);
+ bool RecordStreak(FName Difficulty,int32 Streak);
  int32 Wins(FName Difficulty);
  bool AddWin(FName Difficulty);
  FString Format(float Seconds);
