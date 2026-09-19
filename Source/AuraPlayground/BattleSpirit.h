@@ -28,6 +28,9 @@ public:
  bool bPresentationReady=true;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> FigureParts;
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Wisps;
+ /** Recent body positions, newest first: the drifting trail the note asks for. */
+ UPROPERTY() TArray<FVector> TrailPoints;
+ float TrailClock=0;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MoonGlow;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SpiritCard;
  /** The 3D body. Replaces the flat card as the presentation the player sees. */
