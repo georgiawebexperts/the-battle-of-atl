@@ -1,0 +1,49 @@
+{
+  "build": "142",
+  "date": "2026-09-19",
+  "author": "codex-maclaptop",
+  "git_sha": "82b60c4",
+  "branch": "piedmont-ride-v2",
+  "exe": "Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 142",
+  "desktop_shortcut": "Desktop/BOA/The Battle of ATL.app -> Mac Playtest 142",
+  "sweep": {
+    "command": "Scripts/run_quick_audits.sh <staged binary>",
+    "pass": 29,
+    "fail": 0,
+    "flaky": 0,
+    "log": "work/sweep142b.log",
+    "notes": "Clean 29/29 after the sweep script learned to settle between audits and to re-run a red one alone before calling it a failure. The first pass on this same binary before that change was 27/29: BattleSleeperAudit ('Second sleep failed', phase 3) and BattleSpareBikeAudit ('Spare wheel floats above or sinks into its ground surface', phase 0), both of which pass standalone on the same binary in under 30 seconds (work/standalone142-BattleSleeperAudit.log, work/standalone142-BattleSpareBikeAudit.log)."
+  },
+  "what_is_in_this_build": {
+    "tunnel": "Cut-and-cover gallery south of the bore: gallery_columns 37, gallery_blocked 0, gallery_ride_cm 4681, passed true",
+    "kroger": "The Windows punk wall, the +30s tokens cut from ten to five and the best-time board, merged from windows-port",
+    "spirit": "The spirit's body is the 3D bear (SM_SpectralBear) instead of the flat painted card",
+    "aura": "Disabled in the .uproject; a fresh run logs no Aura lines"
+  },
+  "spirit_body": {
+    "mesh": "/Game/BattleForTheA/Spirit/SM_SpectralBear",
+    "source": "SourceAssets/Spirit/BearCandidate/Bear.fbx (OpenGameArt, mathildelea, CC-BY 4.0)",
+    "editor_review": {
+      "command": "UnrealEditor <project> <map> -game ... -BattleSpiritReview -BattleSpiritReviewDir=<dir>",
+      "log": "work/spirit-review-editor.log",
+      "images": ["work/spirit-review-editor/spirit-three-quarter.png", "work/spirit-review-editor/spirit-approach.png"],
+      "verdict": "state=3, body_visible=1, world bounds 1.9 m long by 1.12 m tall standing on the approach ground, material=MID_BasicShapeMaterial. The capture shows a near-black blue bear with the moonlight along its edge."
+    },
+    "cooked_review": {
+      "command": "<share>/Contents/MacOS/AuraPlayground /Game/PiedmontRide/Maps/PiedmontWorld -installed -game ... -BattleSpiritReview -BattleSpiritReviewDir=<dir>",
+      "log": "work/spirit-review-cooked.log",
+      "verdict": "state=3, body_visible=1, rendered=1, material=MID_BasicShapeMaterial, extent 77.9 x 105.8 x 57.3 cm at the actor. The body is present and passed through the renderer in the packaged build.",
+      "limitation": "No picture from the packaged build: FScreenshotRequest writes nothing in the installed app (the directory stays empty and there are no PNGs anywhere under the share), so the cooked evidence is the log line and the picture is the editor capture. This is stated rather than glossed."
+    },
+    "not_done": [
+      "The mesh is static - no skeleton, no animations - so the bear cannot walk.",
+      "CC-BY 4.0 requires a visible credit for mathildelea; no credits file has been changed."
+    ]
+  },
+  "environment": {
+    "macos_locked": true,
+    "editor_gui": "never launched",
+    "note": "Fab and Sketchfab remained unreachable (no browser session while the Mac is locked); OpenGameArt over plain HTTP is the route that works."
+  }
+}
