@@ -8,7 +8,8 @@
 ABattleGhostRider::ABattleGhostRider(){
  PrimaryActorTick.bCanEverTick=false;
  SetActorHiddenInGame(true);
- Visual=CreateDefaultSubobject<USceneComponent>(TEXT("GhostLeanAssembly"));Visual->SetupAttachment(RootComponent);Visual->SetRelativeLocation(FVector(0,0,-96));
+ auto* GhostRoot=CreateDefaultSubobject<USceneComponent>(TEXT("GhostRoot"));SetRootComponent(GhostRoot);
+ Visual=CreateDefaultSubobject<USceneComponent>(TEXT("GhostLeanAssembly"));Visual->SetupAttachment(GhostRoot);Visual->SetRelativeLocation(FVector(0,0,-96));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
  static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> Glow(TEXT("/Game/BattleForTheA/Materials/M_DiscGlow.M_DiscGlow"));
