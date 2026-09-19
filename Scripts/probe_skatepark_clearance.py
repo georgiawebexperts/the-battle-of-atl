@@ -10,23 +10,20 @@ first - buildings, trees, benches, cars, poles, the Eastside trail itself.
 Read-only. Prints a summary and writes work/skatepark-expansion-clearance.json.
 """
 import json
+import sys
 from pathlib import Path
 
 import unreal
 
 root = Path(unreal.Paths.project_dir()).resolve()
+sys.path.insert(0, str(root / "Scripts"))
 ea = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-CX, CY, DECK = 39000.0, 74000.0, 650.0
 
-# The proposed shape: the installed core, plus a west block, a north block and
-# a south block. Not one rectangle, so the east ramp down to the trail keeps
-# working exactly as it does today.
-BLOCKS = [
-    ("core", -1800, 1800, -1200, 1200),
-    ("west", -3400, -1800, -1600, 1600),
-    ("north", -1800, 1800, 1200, 2400),
-    ("south", -1800, 1800, -2400, -1200),
-]
+# The proposed shape is whatever Scripts/skatepark_geometry.py says it is. It
+# used to be a copy typed in here, which can disagree with the baker the moment
+# anyone edits the shape - the one home is the point of that file.
+from skatepark_geometry import BLOCKS, CX, CY, DECK  # noqa: E402
+
 SKIP_CLASSES = {"Landscape", "WorldSettings", "Brush", "SkySphereBlueprint_C", "DirectionalLight"}
 
 assert unreal.EditorLoadingAndSavingUtils.load_map("/Game/PiedmontRide/Maps/PiedmontWorld")

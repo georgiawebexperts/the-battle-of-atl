@@ -32,9 +32,11 @@ from skatepark_geometry import (  # noqa: E402
     CY,
     DECK,
     KICKERS,
+    LOOPS,
     PADS,
     PYRAMIDS,
     QUARTERS,
+    QUARTERS_X,
     ROLLERS,
     VOLCANOES,
     feature,
@@ -103,6 +105,21 @@ rows += [
     box_stats(q[0], q[1], q[2], min(q[3], q[4]), max(q[3], q[4]), "quarter pipe, built up")
     for q in QUARTERS
 ]
+rows += [
+    box_stats(q[0], min(q[3], q[4]), max(q[3], q[4]), q[1], q[2], "quarter pipe (x edge)")
+    for q in QUARTERS_X
+]
+rows += [
+    box_stats(
+        l[0],
+        l[1] - l[3] - l[4],
+        l[1] + l[3] + l[4],
+        l[2] - l[3] - l[4],
+        l[2] + l[3] + l[4],
+        "pump-track ring",
+    )
+    for l in LOOPS
+]
 rows += [box_stats(r[0], r[2], r[3], r[1] - r[5], r[1] + r[5], "rollers, built up") for r in ROLLERS]
 rows += [
     box_stats(p[0], p[1] - p[3], p[1] + p[3], p[2] - p[4], p[2] + p[4], "pyramid, built up")
@@ -122,6 +139,8 @@ pins = {
     "bowl_north_floor_cm": [-950, 400, DECK + feature(-950, 400)],
     "cauldron_floor_cm": [-2600, -1500, DECK + feature(-2600, -1500)],
     "pocket_bowl_floor_cm": [-1900, -2050, DECK + feature(-1900, -2050)],
+    "quarry_floor_cm": [-4500, -3000, DECK + feature(-4500, -3000)],
+    "pump_track_berm_cm": [-1760, -3400, DECK + feature(-1760, -3400)],
     "pyramid_cap_cm": [500, 1750, DECK + feature(500, 1750)],
 }
 lanes = {}

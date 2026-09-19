@@ -11,21 +11,21 @@
     475.11337638
   ],
   "grid_spacing_cm": 50,
-  "vertex_count": 14859,
+  "vertex_count": 27475,
   "triangles": {
-    "Concrete": 17616,
-    "Berm": 11590
+    "Concrete": 36528,
+    "Berm": 17192
   },
   "bounds": [
     [
-      -3900.0,
-      -3000.0,
-      188.60470352724636
+      -6300.0,
+      -5000.0,
+      126.05420307237989
     ],
     [
       2400.0,
       2800.0,
-      1080.0
+      1210.0
     ]
   ],
   "blocks": [
@@ -72,6 +72,33 @@
         1800,
         1200,
         2200
+      ]
+    },
+    {
+      "name": "west_far",
+      "local_cm": [
+        -5700,
+        -3300,
+        -1600,
+        1200
+      ]
+    },
+    {
+      "name": "southwest_far",
+      "local_cm": [
+        -5700,
+        -3300,
+        -4400,
+        -1600
+      ]
+    },
+    {
+      "name": "south_far",
+      "local_cm": [
+        -3300,
+        1800,
+        -4400,
+        -2400
       ]
     }
   ],
@@ -135,6 +162,30 @@
         330
       ],
       "depth_cm": 130
+    },
+    {
+      "name": "The Quarry",
+      "center_local_cm": [
+        -4500,
+        -3000
+      ],
+      "radii_cm": [
+        700,
+        520
+      ],
+      "depth_cm": 380
+    },
+    {
+      "name": "Little Quarry",
+      "center_local_cm": [
+        -5300,
+        -4000
+      ],
+      "radii_cm": [
+        300,
+        260
+      ],
+      "depth_cm": 240
     }
   ],
   "kickers": [
@@ -166,6 +217,33 @@
       ],
       "edge_local_y_cm": -2400,
       "height_cm": 430
+    },
+    {
+      "name": "Half-pipe north wall",
+      "span_local_x_cm": [
+        -1100,
+        400
+      ],
+      "edge_local_y_cm": -2400,
+      "height_cm": 480
+    },
+    {
+      "name": "Half-pipe south wall",
+      "span_local_x_cm": [
+        -1100,
+        400
+      ],
+      "edge_local_y_cm": -3650,
+      "height_cm": 480
+    },
+    {
+      "name": "South vert wall",
+      "span_local_x_cm": [
+        500,
+        1700
+      ],
+      "edge_local_y_cm": -4400,
+      "height_cm": 560
     }
   ],
   "rollers": [
@@ -184,6 +262,14 @@
         1500
       ],
       "height_cm": 70
+    },
+    {
+      "name": "Far west pump line",
+      "span_local_x_cm": [
+        -4400,
+        -3500
+      ],
+      "height_cm": 85
     }
   ],
   "pyramids": [
@@ -244,6 +330,6 @@
     73650.0,
     568.0
   ],
-  "area_m2": 2172.0,
+  "area_m2": 4536.0,
   "policy": "Original playable adaptation of mapped Fourth Ward skatepark. Five bowls, two launch banks, a south quarter pipe, north pyramid and volcano, west pump rollers, ledges and bank-to-banks over 2.6x the first footprint. Berm/entrance meet retained terrain. Landscape untouched."
 }
