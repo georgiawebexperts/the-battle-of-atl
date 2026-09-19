@@ -88,44 +88,81 @@ inline int32 BuildBattleScooterRider(AActor* Owner,USceneComponent* Attach,const
   MoveBranch(U,Origin,FQuat::FindBetweenVectors(Pose[L].GetLocation()-Origin,Joint-Origin));
   MoveBranch(L,Joint,FQuat::FindBetweenVectors(Pose[E].GetLocation()-Pose[L].GetLocation(),Goal-Joint));
  };
- // Points the solver aims at, all in scooter space, converted once.
- // A staggered stance, both soles flat on the deck between the wheels. The
- // stance and the lean walk a little with the variant so a line of riders does
- // not read as one person copied eight times.
- const float Stagger=7.f+3.f*float(((Variant%4)+4)%4);
- const FVector LeftSole=ScooterToRider(FVector(Stagger,-8,0));
- const FVector RightSole=ScooterToRider(FVector(-Stagger,8,0));
- // Wrists at the grips: 5 cm tubes at x=+48, y=+/-18, z=100 (deck plane).
- const FVector LeftWrist=ScooterToRider(FVector(46,-17,100));
- const FVector RightWrist=ScooterToRider(FVector(46,17,100));
- // Lean the whole body in from the hips. A negative turn about the character's
- // own left axis is forward, the same sense the bike's rider leans with.
- const float Lean=-(7.f+1.5f*float(((Variant%4)+4)%4));
+ // Everything below is written in the scooter's own frame and converted once.
+ // The numbers read against the prop: deck 110 long and 20 wide, bar at x=48.
+ const float Drift=float(((Variant%4)+4)%4);
+ // A scooter stance, not a stride. The front foot goes forward on the tape and
+ // the rear foot turns across it; two parallel feet under a straight-legged
+ // body is a person halted mid-walk, which is what this read as.
+ const FVector FrontSole=ScooterToRider(FVector(25.f+Drift,-5,0));
+ const FVector RearSole =ScooterToRider(FVector(-21.f+Drift,5,0));
+ // Grips are 5 cm tubes at x=48, y=+/-18, z=100 in scooter space. The soles
+ // ride 4.5 above the anchor, so the tube is 95.5 above the mesh origin.
+ const FVector LeftGrip =ScooterToRider(FVector(48,-18,95.5f));
+ const FVector RightGrip=ScooterToRider(FVector(48,18,95.5f));
+ // The tube runs along the scooter's Y, which is the mesh's X. Fingers curl
+ // about that, the way ABattleBike curls them about its own bar.
+ const FVector GripAxis(1,0,0);
+ // Crouch and lean from the hips, then re-solve the legs below, so the knees
+ // carry the weight and the soles stay where they were put.
+ const float Lean=-(15.f+2.f*Drift);
  const int Hips=Index(TEXT("Hips"));
- if(Hips>=0)MoveBranch(Hips,Pose[Hips].GetLocation(),FQuat(FVector(1,0,0),FMath::DegreesToRadians(Lean)));
- // Then plant the feet again, so the lean moves the chest and leaves the soles
- // where they were. The ankle sits 8 cm above and 12 cm behind the sole, the
- // same offset the bike's solver uses on this mesh.
+ if(Hips>=0)MoveBranch(Hips,Pose[Hips].GetLocation()+FVector(0,-4,-13),
+  FQuat(FVector(1,0,0),FMath::DegreesToRadians(Lean)));
+ // Plant the feet. The ankle sits 8 cm above and 12 cm behind the sole - the
+ // offset ABattleBike uses on this mesh - and the bend is FORWARD, the same
+ // hint the bike passes. Bend(0,-1,0) bows both knees backwards, and a rider
+ // with backward knees standing bolt upright is most of why this did not read
+ // as riding a scooter.
  const FVector AnkleOffset(0,-12,8);
- Limb(TEXT("UpperLeg_L"),TEXT("LowerLeg_L"),TEXT("Foot_L"),LeftSole+AnkleOffset,FVector(0,-1,0));
- Limb(TEXT("UpperLeg_R"),TEXT("LowerLeg_R"),TEXT("Foot_R"),RightSole+AnkleOffset,FVector(0,-1,0));
- // Leg IK locates the ankles but rotates the attached shoes with them. Put each
- // shoe back in its bind orientation so it stays flat on the deck.
+ Limb(TEXT("UpperLeg_L"),TEXT("LowerLeg_L"),TEXT("Foot_L"),FrontSole+AnkleOffset,FVector(0,1,0));
+ Limb(TEXT("UpperLeg_R"),TEXT("LowerLeg_R"),TEXT("Foot_R"),RearSole+AnkleOffset,FVector(0,1,0));
+ // Leg IK carries the shoe round with the ankle. Put each shoe back flat on the
+ // tape, then turn the rear one across the deck the way a rider stands.
  for(const TCHAR* Name:{TEXT("Foot_L"),TEXT("Foot_R")}){
   const int Foot=Index(Name);
   if(Foot>=0)MoveBranch(Foot,Pose[Foot].GetLocation(),ReferencePose[Foot].GetRotation()*Pose[Foot].GetRotation().Inverse());
  }
+ const int RearFoot=Index(TEXT("Foot_R"));
+ if(RearFoot>=0)MoveBranch(RearFoot,Pose[RearFoot].GetLocation(),FQuat(FVector(0,0,1),FMath::DegreesToRadians(48.f)));
  for(int Sign:{-1,1}){
   const TCHAR* Side=Sign>0?TEXT("L"):TEXT("R");
-  const FVector Wrist=Sign>0?LeftWrist:RightWrist;
   const FString S(Side);
-  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*(TEXT("Hand_")+S),Wrist,FVector(Sign*1.f,0,-.5f));
-  // The hands are left in the bind pose. They land on the grips as open, which
-  // reads as a hand resting on a bar; a curl would need the tube axis solved per
-  // hand and is the first thing to look at if the grip read is wrong.
+  const FVector Grip=Sign>0?LeftGrip:RightGrip;
+  const int Upper=Index(*(TEXT("UpperArm_")+S));
+  // Stop the wrist short of the tube so the palm, not the wrist, meets the bar.
+  const FVector Wrist=Upper>=0?Grip-(Grip-Pose[Upper].GetLocation()).GetSafeNormal()*10.f:Grip;
+  Limb(*(TEXT("UpperArm_")+S),*(TEXT("LowerArm_")+S),*(TEXT("Hand_")+S),Wrist,FVector(Sign,.5f,-1.f));
+  // Then close the hand over it. Fingers left open beside a pole is the other
+  // half of why this did not read as riding.
+  for(const TCHAR* Finger:{TEXT("Index"),TEXT("Middle"),TEXT("Ring"),TEXT("Pinky")})
+   for(int Joint=2;Joint<=4;Joint++){
+    const int I=Index(*FString::Printf(TEXT("%s%d_%s"),Finger,Joint,Side));
+    if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(GripAxis,FMath::DegreesToRadians(Joint==2?-55.f:Joint==3?-65.f:-35.f)));
+   }
+  for(int Joint=2;Joint<=3;Joint++){
+   const int I=Index(*FString::Printf(TEXT("Thumb%d_%s"),Joint,Side));
+   if(I>=0)MoveBranch(I,Pose[I].GetLocation(),FQuat(GripAxis,FMath::DegreesToRadians(-30.f)));
+  }
  }
+ // The lean tips the whole body. A rider looks where he is going, not at the
+ // deck, so put the head back level.
+ const int Head=Index(TEXT("Head"));
+ if(Head>=0)MoveBranch(Head,Pose[Head].GetLocation(),FQuat(FVector(1,0,0),FMath::DegreesToRadians(Lean*-.9f)));
  for(int I=0;I<Pose.Num();++I)Body->BoneSpaceTransforms[I]=Parents[I]>=0?Pose[I].GetRelativeTransform(Pose[Parents[I]]):Pose[I];
  Body->MarkRefreshTransformDirty();
  Body->RefreshBoneTransforms();
+#if !UE_BUILD_SHIPPING
+ // The one thing a render cannot settle comfortably: are the soles on the tape?
+ // Mesh z=0 is the sole plane and the ankle solves 8 above it, so both feet
+ // should land near 8 with no shortfall. A shortfall means the leg was asked to
+ // reach further than it is long and the solver clamped, which leaves a rider
+ // standing on air above the deck.
+ const int FL=Index(TEXT("Foot_L")),FR=Index(TEXT("Foot_R"));
+ if(FL>=0&&FR>=0)UE_LOG(LogTemp,Display,TEXT("ScooterRider: variant=%d ankle_z=%.1f/%.1f short=%.1f/%.1f head_z=%.1f"),
+  Variant,Pose[FL].GetLocation().Z,Pose[FR].GetLocation().Z,
+  FVector::Dist(Pose[FL].GetLocation(),FrontSole+AnkleOffset),FVector::Dist(Pose[FR].GetLocation(),RearSole+AnkleOffset),
+  Head>=0?Pose[Head].GetLocation().Z:0.f);
+#endif
  return 1;
 }

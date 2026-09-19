@@ -104,10 +104,19 @@ void ABattleScooterTraffic::TickScooterReview(float Dt){
  if(!Target)return;
  ReviewClock+=Dt;
  const FVector P=Target->GetActorLocation();
- // Square on to the scooter's own flank, which is the silhouette that has to
- // read, rather than a fixed world direction that can end up inside a wall.
+ // Two angles. Square on to the scooter's own flank is the silhouette that has
+ // to read; from ahead and off the shoulder is the one place both hands on the
+ // bar and the turned-in rear foot are visible. The camera has to be set from
+ // one place, per stage: while it was also re-aimed on every tick, the second
+ // angle was overwritten by the first before its shot was taken, so both files
+ // came back from the same camera and the second showed nothing new.
+ // Aim above the deck, not down at it - aiming low put the rider's head behind
+ // the timer banner, so the pose could not be judged at all.
+ const bool bFront=ReviewStage>=1;
  const FVector Right=Target->GetActorRightVector(),Forward=Target->GetActorForwardVector();
- const FVector Eye=P+Right*300.f+Forward*90.f+FVector(0,0,150),Look=P-FVector(0,0,40);
+ const FVector Eye=bFront?P+Right*150.f+Forward*330.f+FVector(0,0,140)
+                         :P+Right*380.f+Forward*110.f+FVector(0,0,120);
+ const FVector Look=bFront?P+FVector(0,0,100):P+FVector(0,0,45);
  if(!ReviewCamera)ReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Look-Eye).Rotation());
  if(ReviewCamera){
   ReviewCamera->SetActorLocationAndRotation(Eye,(Look-Eye).Rotation());
@@ -118,13 +127,11 @@ void ABattleScooterTraffic::TickScooterReview(float Dt){
    *Target->GetName(),*P.ToCompactString(),Target->GetActorRotation().Yaw,*Eye.ToCompactString(),FVector::Dist(Eye,P));
   FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-side.png"),false,false);++ReviewStage;ReviewClock=0;return;
  }
- if(ReviewStage==1&&ReviewClock>.4f){
-  const FVector Behind=P+FVector(-110,0,115),At=P+FVector(0,0,35);
-  if(ReviewCamera)ReviewCamera->SetActorLocationAndRotation(Behind,(At-Behind).Rotation());
-  ++ReviewStage;ReviewClock=0;return;
+ if(ReviewStage==1&&ReviewClock>.6f){
+  UE_LOG(LogTemp,Display,TEXT("ScooterTrafficReview: front camera=%s distance_cm=%.0f"),*Eye.ToCompactString(),FVector::Dist(Eye,P));
+  FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-front.png"),false,false);++ReviewStage;ReviewClock=0;return;
  }
- if(ReviewStage==2&&ReviewClock>.6f){FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-back.png"),false,false);++ReviewStage;ReviewClock=0;return;}
- if(ReviewStage==3&&ReviewClock>.4f)
+ if(ReviewStage==2&&ReviewClock>.4f)
   if(auto* PC=UGameplayStatics::GetPlayerController(this,0))UKismetSystemLibrary::QuitGame(this,PC,EQuitPreference::Quit,false);
 #endif
 }
