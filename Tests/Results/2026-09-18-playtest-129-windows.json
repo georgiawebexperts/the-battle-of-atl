@@ -354,4 +354,108 @@
         "share_state": "unchanged from the harness-fix round: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon"
       }
     }
+,
+  "round3": {
+  "git_sha": "0748242ae3da085c3a1abb0e9aedbeca69eeb85c",
+  "description": "Round-3 validation of the four feature commits (time tokens 10->5; best-time board; Kroger punk wall; Home centerline 210->220 + Eastside timer whitelist). Build SUCCESSFUL and commits pushed, but every packaged run dies at boot with a fatal error in the new BattleHome patio-board code (commit 841b613), so targeted runs produced no verdicts and the sweep is 0/19; Shipping repackage and share refresh skipped per the gate; reported, not fixed (validation-only task, no Source changes made).",
+  "gate": {
+    "required_commits": [
+      "b92b6ed Reduce +30s time tokens from 10 to 5",
+      "841b613 Add best-time board (HUD line + patio board)",
+      "eb501dd Add Kroger punk wall (shoot through to pass)",
+      "0748242 Harden Home centerline bound and Eastside audit timer"
+    ],
+    "tree_check": "tree at 467d256 with exactly the 10 expected feature files modified (git status --porcelain); no other dirty files; four commits created and pushed: github/windows-port 467d256..0748242"
+  },
+  "development_package": {
+    "status": "BUILD SUCCESSFUL",
+    "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+    "log": "work/windows-package.log",
+    "transcript": "work/round3-build-transcript.log",
+    "duration": "6m21s",
+    "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,508,544 bytes)"
+  },
+  "targeted_runs": {
+    "method": "packaged Dev exe, standard per-audit command (same style as Scripts\\run_quick_audits.ps1 -ExePath <staged exe>): <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+    "caps": "HomeDrive/MurderK/Time 10 min; Eastside 12 min external cap with foreground re-asserted every 15s (focus-keep loop, matching round 2)",
+    "results": [
+      {
+        "audit": "BattleHomeDriveAudit",
+        "runs": 2,
+        "outcome": "2/2 no verdict - boot crash",
+        "detail": "process died ~5s in with the fatal BattleHome.cpp:75 error before any centerline data; the new 220cm bound was never exercised; durations 5.2s/5.0s",
+        "logs": [
+          "work/round3-BattleHomeDriveAudit-run1.log",
+          "work/round3-BattleHomeDriveAudit-run2.log"
+        ]
+      },
+      {
+        "audit": "BattleMurderKAudit",
+        "runs": 2,
+        "outcome": "2/2 no verdict - boot crash",
+        "detail": "same boot crash; the 6-punk wall assertions were never reached; durations 5.0s/5.0s",
+        "logs": [
+          "work/round3-BattleMurderKAudit-run1.log",
+          "work/round3-BattleMurderKAudit-run2.log"
+        ]
+      },
+      {
+        "audit": "BattleTimeAudit",
+        "runs": 1,
+        "outcome": "1/1 no verdict - boot crash",
+        "detail": "same boot crash; the 5-token expectation was never reached; duration 5.0s",
+        "logs": [
+          "work/round3-BattleTimeAudit-run1.log"
+        ]
+      },
+      {
+        "audit": "BattleEastsideAudit",
+        "runs": 1,
+        "outcome": "1/1 no verdict - boot crash",
+        "detail": "same boot crash 5s in; the 900s timer and internal 420s budget were never reached, so the new whitelist entry could not be exercised; the process exited on its own (nothing was killed at the cap); duration 5.0s",
+        "logs": [
+          "work/round3-BattleEastsideAudit-run1.log"
+        ]
+      }
+    ],
+    "summary_json": "work/round3-129-targeted-results.json",
+    "console_log": "work/round3-targeted-console.log"
+  },
+  "sweep": {
+    "status": "0/19 pass - every audit died at boot before any verdict; the script-level no-verdict retry also crashed every time; no flakes (deterministic crash)",
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+    "console_log": "work/round3-sweep-console.log",
+    "window_local": "2026-09-18T22:19:35-04:00 to 2026-09-18T22:21:49-04:00",
+    "offscreen": true,
+    "no_hang": true,
+    "fatal_error": "FObjectFinders can't be used outside of constructors to find /Engine/EngineMaterials/UnlitText.UnlitText - ABattleHome::BeginPlay() at Source/AuraPlayground/BattleHome.cpp:75 (new patio TextRender board, commit 841b613); deterministic, present in all 19 sweep logs and all 6 targeted logs",
+    "note": "round-2 sweep logs preserved at work/round2-sweep-backup/ before the sweep overwrote work/<Label>.log",
+    "results": [
+      "BattleCurseAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.7s)",
+      "BattleTreeRideAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "Realistic-BattleTreeRideAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleTroubleAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleSteeringAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleSleeperAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleGrassAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.8s)",
+      "BattleBikeCarAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleMurderKAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattlePickupAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleSpiritAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleKrogCrashAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleDuckAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleSpeedAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleTimeAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleDiscAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.1s)",
+      "BattleDiagonalAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleMusicAudit: FAIL (no verdict; boot crash with audio, 2 attempts, last 3.2s)",
+      "BattlePatioAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)"
+    ]
+  },
+  "shipping_repackage": {
+    "status": "SKIPPED - gate failed",
+    "reason": "step 5 requires all targeted runs and the sweep to be green; every round-3 run crashed at boot on the new BattleHome patio-board code, so Shipping was not repackaged and the share was not refreshed",
+    "share_state": "unchanged: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon; folder also has Engine/, BattleOfATL.ico, START-HERE.txt, CREDITS.txt, NOTICES.txt and the three Manifest files from 2026-09-18T20:40-04:00"
+  }
+}
 }
