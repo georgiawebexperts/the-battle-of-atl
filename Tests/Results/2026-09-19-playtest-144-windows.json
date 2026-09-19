@@ -1,0 +1,152 @@
+{
+  "build": "144",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "ed227bb",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "ed227bb merged Mac smoothed bear, drifting trail, PiedmontCarLaneReview map, audit classification; both sides BUILD 144",
+  "targeted": {
+    "BattleEastsideAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleEastsideAudit.log",
+      "verdict": "[2026.09.19-09.09.14:561][112]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213804.55,\"maxCenterlineErrorCm\":88.18,\"wipeouts\":0}"
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "runs": [
+        {
+          "run": 1,
+          "log": "work\\t144-BattleHomeDriveAudit-run1.log",
+          "verdict": "[2026.09.19-09.09.37:923][ 63]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4869.84,\"maxCenterlineErrorCm\":188.07,\"wipeouts\":0}"
+        },
+        {
+          "run": 2,
+          "log": "work\\t144-BattleHomeDriveAudit-run2.log",
+          "verdict": "[2026.09.19-09.10.03:069][ 64]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4861.43,\"maxCenterlineErrorCm\":193.92,\"wipeouts\":0}"
+        }
+      ]
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleTunnelHazardAudit.log",
+      "verdict": "[2026.09.19-09.10.18:021][457]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":2,\"gallery_ride_cm\":4690,\"wipeouts\":0}"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleMurderKAudit.log",
+      "verdict": "[2026.09.19-09.10.30:058][223]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}"
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleTimeAudit.log",
+      "verdict": "[2026.09.19-09.10.42:293][404]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":5}"
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleMusicAudit.log",
+      "verdict": "[2026.09.19-09.10.58:136][459]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}"
+    },
+    "BattleFpsAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleFpsAudit.log",
+      "verdict": "[2026.09.19-09.11.40:108][ 47]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":59.1,\"min_fps\":36.3,\"p05_fps\":54.3,\"samples\":1770}",
+      "note": "Verdict printed and passed; process idled in a post-verdict loop and was terminated after log capture."
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleSkateAudit.log",
+      "verdict": "[2026.09.19-09.12.04:575][941]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.87,\"x\":40350.77,\"z\":748.15}"
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleSkaterAudit.log",
+      "verdict": "[2026.09.19-09.12.59:171][828]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9742.2,\"corners\":6,\"people_hit\":2}"
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleInventoryAudit.log",
+      "verdict": "[2026.09.19-09.13.28:890][316]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}"
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 20,
+    "total": 20,
+    "log": "work\\sweep-144-20260919-051401.log",
+    "flakes": [],
+    "failures": []
+  },
+  "road_lane": {
+    "pass": true,
+    "map": "/Game/PiedmontRide/Maps/PiedmontCarLaneReview",
+    "log": "work/road-lane-audit.log",
+    "verdict": "RoadLaneAudit: {\"passed\":true,\"reason\":\"Both opposing road lanes traversed with wheel support and endpoint stops\",\"cars\":2,\"total_distance_cm\":81396.344}",
+    "note": "Editor run; review map is not cooked into the share. Windows runner: Scripts/run_road_lane_audit.ps1"
+  },
+  "shipping": {
+    "status": "BUILD SUCCESSFUL",
+    "log": "work/windows-package-144-shipping.log",
+    "exe_sha256": "A4F48815B8A2BAA3C07013371C74B6365E11727B4C870F2B73E65DC73BFD7BD7",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 144",
+    "launch_verify": true,
+    "launch_note": "Root is the UAT launcher stub (171520 bytes); it spawned AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe which stayed alive at 25s. Clean-archive fix in package_windows.ps1 held: no manual share repair needed this round.",
+    "shortcuts": {
+      "playtest": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 144.lnk",
+      "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk"
+    }
+  },
+  "parity": {
+    "BattleMeleeAudit": {
+      "pass": true,
+      "log": "work\\BattleMeleeAudit.log",
+      "verdict": "[2026.09.19-09.22.53:625][482]LogTemp: Display: BattleMeleeAudit: {\"passed\":true,\"phase\":7,\"reason\":\"F input, windup, cooldown, 50 damage, kill reward, wall/range, reload and death guards pass\",\"swings\":4,\"hits\":2,\"kills\":1}"
+    },
+    "BattleTrailModeAudit": {
+      "pass": true,
+      "log": "work\\BattleTrailModeAudit.log",
+      "verdict": "[2026.09.19-09.23.07:416][370]LogTemp: Display: BattleTrailModeAudit: {\"passed\":true,\"reason\":\"arcade lays 4.2 m of pavement out to 190 cm, realistic lays 3.2 m and stops before it, and the spline width and ribbon visibility follow the toggle both ways\",\"arcade_actors\":27,\"realistic_actors\":27,\"stations\":1,\"arcade_cm\":420,\"realistic_cm\":320,\"station\":\"V(X=11328.91, Y=8947.64, Z=-347.35),V(X=-0.79, Y=0.61)\"}"
+    },
+    "BattleDroneAudit": {
+      "pass": true,
+      "log": "work\\BattleDroneAudit.log",
+      "verdict": "[2026.09.19-09.23.41:839][549]LogTemp: Display: BattleDroneAudit: {\"passed\":true,\"stage\":8,\"reason\":\"Warning, knockoff/recovery, wall obstruction and 35m on-foot pistol engagement after voluntary dismount pass\",\"health\":100.00}"
+    },
+    "BattleFrisbeeAudit": {
+      "pass": true,
+      "log": "work\\BattleFrisbeeAudit.log",
+      "verdict": "[2026.09.19-09.24.15:522][522]LogTemp: Display: BattleFrisbeeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass\",\"groups\":2,\"throws\":7,\"catches\":5,\"misses\":1,\"retrievals\":1,\"ammo_given\":10,\"supply\":14}"
+    },
+    "BattlePanicAudit": {
+      "pass": true,
+      "log": "work\\BattlePanicAudit.log",
+      "verdict": "[2026.09.19-09.24.49:657][576]LogTemp: Display: BattlePanicAudit: {\"passed\":true,\"stage\":6,\"reason\":\"Real shots trigger live male/female flight, sustained panic, refresh and walking-speed recovery\",\"male_travel_cm\":1151.93,\"female_travel_cm\":1290.86}"
+    },
+    "BattleSpareBikeAudit": {
+      "pass": true,
+      "log": "work\\BattleSpareBikeAudit.log",
+      "verdict": "[2026.09.19-09.25.04:871][397]LogTemp: Display: SpareBikeAudit: {\"passed\":true,\"phase\":4,\"bikes\":6,\"reason\":\"Actual spare stations, E interaction, carried ammo/health/horns, swimming guard and riding the abandoned bike again pass\"}"
+    },
+    "BattleTutorialAudit": {
+      "pass": true,
+      "log": "work\\BattleTutorialAudit.log",
+      "verdict": "[2026.09.19-09.25.35:523][308]LogTemp: Display: BattleTutorialAudit: {\"passed\":true,\"reason\":\"Untimed practice, actual road ride, controllable gate countdown and single-start timer pass\",\"distance_cm\":7636.6,\"max_error_cm\":52.7}"
+    },
+    "BattleMarketImpactAudit": {
+      "pass": true,
+      "log": "work\\BattleMarketImpactAudit.log",
+      "verdict": "[2026.09.19-09.25.54:196][625]LogTemp: Display: MarketImpactAudit: {\"passed\":true,\"jump\":false,\"on_foot\":false,\"reason\":\"Real W approach remained outside gate; foot mode sprints; jump requires airtime\",\"offset_cm\":0.00,\"closest_cm\":55.07,\"peak_cm\":5.25,\"airborne\":false}"
+    },
+    "BattleScooterTrafficAudit": {
+      "pass": true,
+      "log": "work\\BattleScooterTrafficAudit.log",
+      "verdict": "[2026.09.19-09.26.08:896][396]LogTemp: Display: ScooterTrafficAudit: {\"passed\":true,\"reason\":\"every moving scooter sits on its surface and travels\",\"riders\":8,\"moved\":8,\"worst_gap_cm\":0.00}"
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t144-BattleSkaterAudit.log",
+      "verdict": "[2026.09.19-09.12.59:171][828]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9742.2,\"corners\":6,\"people_hit\":2}",
+      "note": "covered by targeted run"
+    }
+  }
+}

@@ -54,27 +54,62 @@ $audits = @(
     [pscustomobject]@{ Name = 'BattlePatioAudit';   Label = 'BattlePatioAudit';       Flag = '' },
     # The Krog Street Tunnel: bore length, hazard stations on the tunnel floor,
     # and a pothole that can actually throw the rider (mirrors the Mac sweep).
-    [pscustomobject]@{ Name = 'BattleTunnelHazardAudit'; Label = 'BattleTunnelHazardAudit'; Flag = '' }
+    [pscustomobject]@{ Name = 'BattleTunnelHazardAudit'; Label = 'BattleTunnelHazardAudit'; Flag = '' },
+    # Entries added for parity with the Mac 30-entry sweep (their classification
+    # pass found these outside the sweep, unblocking but unclassified on Windows).
+    [pscustomobject]@{ Name = 'BattleMeleeAudit';     Label = 'BattleMeleeAudit';         Flag = '' },
+    [pscustomobject]@{ Name = 'BattleTrailModeAudit'; Label = 'BattleTrailModeAudit';     Flag = '' },
+    [pscustomobject]@{ Name = 'BattleSkaterAudit';    Label = 'BattleSkaterAudit';        Flag = '' },
+    [pscustomobject]@{ Name = 'BattleDroneAudit';     Label = 'BattleDroneAudit';         Flag = '' },
+    [pscustomobject]@{ Name = 'BattleFrisbeeAudit';   Label = 'BattleFrisbeeAudit';       Flag = '' },
+    [pscustomobject]@{ Name = 'BattlePanicAudit';     Label = 'BattlePanicAudit';         Flag = '' },
+    [pscustomobject]@{ Name = 'BattleSpareBikeAudit'; Label = 'BattleSpareBikeAudit';     Flag = '' },
+    [pscustomobject]@{ Name = 'BattleTutorialAudit';  Label = 'BattleTutorialAudit';      Flag = ''; NoSkip = $true },
+    [pscustomobject]@{ Name = 'BattleMarketImpactAudit'; Label = 'BattleMarketImpactAudit'; Flag = ''; NoSkip = $true },
+    [pscustomobject]@{ Name = 'BattleScooterTrafficAudit'; Label = 'BattleScooterTrafficAudit'; Flag = 'BattleFurnitureAudit' }
 )
 
+# BATTLE_SWEEP_ONLY=Name,Name runs just those entries, for verifying one audit
+# without paying for the full launch list (mirrors the Mac sweep script).
+$only = $env:BATTLE_SWEEP_ONLY
+if ($only) {
+    $wanted = @($only -split ',') | ForEach-Object { $_.Trim() } | Where-Object { $_ }
+    $audits = @($audits | Where-Object { $wanted -contains $_.Name -or $wanted -contains $_.Label })
+}
+
 function Invoke-Audit {
-    param([string]$AuditName, [string]$AuditFlag, [string]$Log, [switch]$Audio)
+    param([string]$AuditName, [string]$AuditFlag, [string]$Log, [switch]$Audio, [switch]$NoSkip)
     $runArgs = @($prefix) + @($common)
+    if ($NoSkip) { $runArgs = @($runArgs | Where-Object { $_ -ne '-BattleSkipTutorial' }) }
     if ($Audio) { $runArgs = @($runArgs | Where-Object { $_ -ne '-nosound' }) }
     if ($AuditName) { $runArgs += "-$AuditName" }
     if ($AuditFlag) { $runArgs += "-$AuditFlag" }
     $runArgs += @($suffix)
-    & $bin @runArgs 2>&1 | Out-File -Encoding utf8 -FilePath $Log
+    # Run with a hard timeout, mirroring the Mac sweep: an audit that prints its
+    # verdict and then fails to exit is killed and still scored on its verdict.
+    $errLog = "$Log.err"
+    $proc = Start-Process -FilePath $bin -ArgumentList $runArgs -PassThru -RedirectStandardOutput $Log -RedirectStandardError $errLog
+    if (-not $proc.WaitForExit($auditTimeoutSec * 1000)) {
+        Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
+        Start-Sleep -Seconds 2
+    }
 }
+
+$auditTimeoutSec = if ($env:BATTLE_AUDIT_TIMEOUT) { [int]$env:BATTLE_AUDIT_TIMEOUT } else { 420 }
+$settleSec = if ($env:BATTLE_SWEEP_SETTLE) { [int]$env:BATTLE_SWEEP_SETTLE } else { 3 }
 
 $failed = 0
 foreach ($audit in $audits) {
+    # Let the machine settle between launches so the previous game teardown
+    # cannot produce a false red on the next one (mirrors the Mac sweep).
+    Start-Sleep -Seconds $settleSec
     $log = Join-Path $workDir "$($audit.Label).log"
     $audio = if ($audit.PSObject.Properties['Audio']) { [bool]$audit.PSObject.Properties['Audio'].Value } else { $false }
-    Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log -Audio:$audio
+    $noskip = if ($audit.PSObject.Properties['NoSkip']) { [bool]$audit.PSObject.Properties['NoSkip'].Value } else { $false }
+    Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log -Audio:$audio -NoSkip:$noskip
     $verdict = Select-String -Path $log -Pattern '"passed":' | Select-Object -Last 1
     if (-not $verdict) {
-        Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log -Audio:$audio
+        Invoke-Audit -AuditName $audit.Name -AuditFlag $audit.Flag -Log $log -Audio:$audio -NoSkip:$noskip
         $verdict = Select-String -Path $log -Pattern '"passed":' | Select-Object -Last 1
     }
     if ($verdict -and $verdict.Line -match '"passed":\s*true') {
