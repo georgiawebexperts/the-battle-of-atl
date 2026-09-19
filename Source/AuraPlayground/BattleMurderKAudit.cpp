@@ -66,7 +66,7 @@ void ABattleMacController::TickMurderKAudit(float Dt){
   return;
  }
  if(bMurderKAuditDone||GetWorld()->GetTimeSeconds()<5)return;bMurderKAuditDone=true;
- auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Bike=Cast<ABattleBike>(GetPawn());int32 Checks=0,WallPunks=0;
+ auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Bike=Cast<ABattleBike>(GetPawn());int32 Checks=0,WallPunks=0,ToughWallPunks=0;
  TActorIterator<ABattleMurderK> StoreIt(GetWorld());ABattleMurderK* Store=StoreIt?*StoreIt:nullptr;
  auto End=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleMurderKAudit: {\"passed\":%s,\"checks\":%d,\"difficulty\":\"%s\",\"timer\":%.0f,\"shooters\":%d,\"punks\":%d,\"wall\":%d,\"bums\":%d,\"fights\":%d,\"ambient_police\":%d,\"knife\":%s,\"dancers\":%d,\"rioters\":%d,\"plaza_bodies\":%d,\"chant\":\"%s\",\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Checks,Mode?*Mode->DifficultyName.ToString():TEXT("none"),Mode?Mode->Difficulty.TimeLimitSeconds:0,Mode&&Mode->Enemies?Mode->Enemies->MurderKGunmenSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKPunksSpawned:-1,WallPunks,Mode&&Mode->Enemies?Mode->Enemies->MurderKBumsSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKFightSpots:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKAmbientPolice:-1,Mode&&Mode->Enemies&&Mode->Enemies->bMurderKKnifeSpawned?TEXT("true"):TEXT("false"),Store?Store->Dancers:-1,Store?Store->Rioters:-1,Store?Store->BodiesDown:-1,Store?*Store->ShoutText:TEXT(""),Reason);ConsoleCommand(TEXT("quit"));};
 #define MKCHECK(C,R) if(!(C)){End(false,TEXT(R));return;}else{Checks++;}
@@ -84,8 +84,8 @@ void ABattleMacController::TickMurderKAudit(float Dt){
  MKCHECK(!Store->ShoutText.IsEmpty(),"Murder K chant is silent");
  const auto& A=BattleCheckpoints::Anchors[0];Bike->SetActorLocation(FVector(A.X,A.Y,A.Z+100),false,nullptr,ETeleportType::TeleportPhysics);Mode->Quest->bCollected=true;Mode->bTutorialActive=false;Mode->StartCountdown=0;Bike->DamageGrace=0;Bike->RespawnRemaining=0;Mode->Enemies->TickMurderK(0);
  MKCHECK(Mode->Enemies->bMurderKActivated,"Murder K encounter did not activate");
- WallPunks=0;for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->Tags.Contains(TEXT("BattlePunkWall")))WallPunks++;
- MKCHECK(Mode->Enemies->Tags.Contains(TEXT("MurderKPunkWallActivated"))&&WallPunks==6,"Murder K punk wall missing or wrong size");
+ WallPunks=0;ToughWallPunks=0;for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(It->Tags.Contains(TEXT("BattlePunkWall"))){WallPunks++;if(It->Health>=200&&It->WeaponDropChance>=1.f)ToughWallPunks++;}
+ MKCHECK(Mode->Enemies->Tags.Contains(TEXT("MurderKPunkWallActivated"))&&WallPunks==6&&ToughWallPunks==6,"Murder K punk wall missing, wrong size, or not shoot-through grade");
  const int32 WantShooters=FMath::Clamp(FMath::Max(Mode->Difficulty.KrogerShooters,Mode->DifficultyName==TEXT("Easy")?1:(Mode->DifficultyName==TEXT("Medium")?2:3)),0,3);
  MKCHECK(Mode->Enemies->MurderKGunmenSpawned==WantShooters,"Murder K shooter count does not match the Kroger floor");
  MKCHECK(Mode->Enemies->bMurderKKnifeSpawned==(Mode->Difficulty.KnifeBehavior>0),"Murder K knife behavior does not match difficulty");
