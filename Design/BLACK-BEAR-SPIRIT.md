@@ -125,3 +125,17 @@ Still open, and both are Elliott's call rather than an implementation detail:
 the mesh is **static, with no skeleton and no animations**, so a bear that walks
 or turns its head is not available from this file; and **CC-BY 4.0 requires a
 visible credit for mathildelea**, which is a credits-file change.
+
+## The drifting trail — 2026-09-19 [codex-maclaptop]
+
+The note above asks for "a fine silver-blue rim and a faint drifting trail". The
+rim comes from the moon glow. The trail is now real: while the encounter is
+visible, the body records its position every 0.22 s and the last five samples
+are placed behind it as shrinking wisps. They are **world-space**, so they hang
+back along the route the animal took instead of following it around, and they
+reset when the encounter ends. Five more wisp components were added for this;
+the three ambient ones still drift upward as before.
+
+`-BattleSpiritReview` captures it: at the Murder K approach the bear is a
+near-black body with the cold light along its upper edge and a line of small
+blue points trailing back along its path.
