@@ -12,6 +12,20 @@
     "failed": 0,
     "log": "work/sweep130.txt"
   },
+  "packaged_sweep": {
+    "command": "Scripts/run_quick_audits.sh \"/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 130/The Battle of ATL.app/Contents/MacOS/AuraPlayground\"",
+    "audits": 28,
+    "passed": 28,
+    "failed": 0,
+    "log": "work/sweep130-packaged.txt"
+  },
+  "package": {
+    "path": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 130",
+    "bundle_version": "0.130.0",
+    "signed": true,
+    "shortcut": "/Users/elliottinspace/Desktop/BOA/The Battle of ATL.app -> Playtest 130",
+    "packaging_note": "Scripts/package_mac.sh reported Error_UnknownCookFailure after the cook had finished (LogCook: Done!). The cause is the Aura editor plugin: with it enabled the run logs a LogGameFeatures error about a missing AssetManager rule for GameFeatureData, and a commandlet exits non-zero when its error summary is non-empty. 129 packaged only because the editor had Aura disabled in the working tree at that moment. 130 was packaged with Aura disabled and the .uproject restored to true afterwards; the plugin is TargetAllowList Editor-only, so it is not in the shipped app either way."
+  },
   "the_picnic_pose": {
     "why_it_was_wrong": "Three earlier attempts applied the hip pitch in bone space. This crowd rig's bone axes are not the actor's axes, so the femur swung out of the sagittal plane - legs through the cloth, knees in the air, and finally a standing pair nobody asked for. Build 129 stopped them lying and stood them up, which is not a picnic.",
     "fix": [
