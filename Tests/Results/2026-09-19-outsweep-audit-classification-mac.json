@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-19",
+  "author": "codex-maclaptop",
+  "git_sha": "8061d7e",
+  "branch": "piedmont-ride-v2",
+  "why": "The Brain's open list carried four audits as 'outside the sweep, unclassified and unblocking'. Unclassified is worse than red: nobody knows whether to act. Each was run and is now either green or has a named, non-game reason for being red.",
+  "build": "staged 144 (packaged, 29/29 on the cooked build)",
+  "results": [
+    {
+      "audit": "BattleAmmoAudit",
+      "verdict": "pass",
+      "detail": {"reason": "Seventeen initial shots, dry fire, pickups, bike/foot reload conservation, possession, interrupted reload and reserve cap pass"},
+      "log": "work/outsweep-BattleAmmoAudit.log",
+      "classification": "green - the 'stage 7' note was stale"
+    },
+    {
+      "audit": "BattleGeographyAudit",
+      "verdict": "pass",
+      "detail": {"phase": 2, "reason": "Saved frame, island and persistent swimmer/bank separation checked", "recoverySeconds": 2.0, "wipeouts": 1},
+      "log": "work/outsweep-BattleGeographyAudit.log",
+      "classification": "green - the wipeout is the swimmer fixture doing its job, not a failure"
+    },
+    {
+      "audit": "BattleMusicAudit",
+      "verdict": "pass",
+      "detail": {"tracks": 2, "cycle": "off-song1-song2-off", "preference_restored": true},
+      "logs": ["work/outsweep-BattleMusicAudit.log", "work/outsweep-music-withaudio.log"],
+      "classification": "not a game defect: with the sweep's own -nosound the audio component never reports Playing, so the audit failed on the flag. It is now a sweep entry carrying a WithAudio token that drops -nosound for that audit only - the same trap as NoSkipTutorial, one flag over. Verified through the sweep script: BATTLE_SWEEP_ONLY=BattleMusicAudit -> pass."
+    },
+    {
+      "audit": "BattleRoadLaneAudit",
+      "verdict": "pass on its review map, not applicable to the main world",
+      "detail": {"reason": "Both opposing road lanes traversed with wheel support and endpoint stops", "cars": 2, "total_distance_cm": 81397.656},
+      "logs": ["work/outsweep-roadlane-editor.log", "work/road-lane-audit.log", "work/outsweep-roadlane-reviewmap.log"],
+      "classification": "The audit collects actors tagged TenthCarLaneReview (or MonroeCarLaneReview with -BattleMonroeLanes). Those live in Content/PiedmontRide/Maps/PiedmontCarLaneReview, which is deliberately not cooked into the share, so: against PiedmontWorld it always says 'Expected opposing lane candidates' (0 cars, no lane-review actors exist there) and from a packaged build it cannot load the map at all. It passes in the editor against the review map. Scripts/run_road_lane_audit.sh now runs it the correct way and is documented with both traps."
+    }
+  ],
+  "sweep_after": "The sweep is 30 entries with the music audit added; the other three were already green or are runner-script audits rather than sweep entries."
+}

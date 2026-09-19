@@ -48,6 +48,10 @@ ABattleSpirit::ABattleSpirit(){
  for(int Side:{-1,1})Part(*FString::Printf(TEXT("BearEye%d"),Side),Sphere.Object,FVector(-134,Side*11,82),FVector(.04f,.04f,.04f));
  auto Wisp=[&](const TCHAR* Name,FVector Loc,float Scale){auto* C=CreateDefaultSubobject<UStaticMeshComponent>(Name);C->SetupAttachment(RootComponent);C->SetStaticMesh(Sphere.Object);C->SetRelativeLocation(Loc);C->SetRelativeScale3D(FVector(Scale));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetCanEverAffectNavigation(false);C->SetCastShadow(false);Wisps.Add(C);};
  Wisp(TEXT("SpiritWispA"),FVector(-65,-85,145),.10f);Wisp(TEXT("SpiritWispB"),FVector(20,80,190),.075f);Wisp(TEXT("SpiritWispC"),FVector(105,-65,210),.055f);
+ // Five more, for the drifting trail: the design note asks for a faint trail
+ // behind the animal, and a trail needs more than three points to read as a
+ // path rather than as three floating specks.
+ for(int32 I=0;I<5;I++)Wisp(*FString::Printf(TEXT("SpiritTrail%d"),I),FVector(-140-60*I,0,60),.09f-.012f*I);
  // The painted spectral bear, which is the art the design note asked for and
  // which was already authored for this scene. It is unlit and two-sided, so it
  // reads the same from any angle the rider approaches from. Sized to a real
@@ -202,7 +206,29 @@ void ABattleSpirit::Tick(float Dt){
   SpiritCard->SetVisibility(Visible);
  }
  for(auto& C:FigureParts){const bool bShow=Visible&&!bCardMode&&!bBody;C->SetVisibility(bShow);if(bShow)C->SetRelativeScale3D(FVector(FigureScale));}
- for(int32 I=0;I<Wisps.Num();I++){auto* C=Wisps[I].Get();C->SetVisibility(Visible);if(Visible)C->AddLocalOffset(FVector(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*2.f+I)*Dt*12.f));}
+ // The trail is a record of where the body has been: sample the position while
+ // the encounter is live, then place the last five samples behind the animal,
+ // shrinking as they age. They are world-space, so they hang back where the
+ // bear was rather than following it around.
+ TrailClock+=Dt;
+ if(Visible&&TrailClock>.22f){
+  TrailClock=0;
+  TrailPoints.Insert(GetActorLocation()-GetActorForwardVector()*40.f+FVector(0,0,70),0);
+  while(TrailPoints.Num()>5)TrailPoints.RemoveAt(TrailPoints.Num()-1);
+ }
+ if(!Visible)TrailPoints.Reset();
+ const int32 AmbientWisps=FMath::Max(0,Wisps.Num()-5);
+ for(int32 I=0;I<Wisps.Num();I++){
+  auto* C=Wisps[I].Get();if(!C)continue;
+  const bool bTrail=I>=AmbientWisps;
+  if(!bTrail){C->SetVisibility(Visible);if(Visible)C->AddLocalOffset(FVector(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*2.f+I)*Dt*12.f));continue;}
+  const int32 Age=I-AmbientWisps;
+  if(!Visible||Age>=TrailPoints.Num()){C->SetVisibility(false);continue;}
+  C->SetVisibility(true);
+  C->SetWorldLocation(TrailPoints[Age]);
+  const float T=1.f-float(Age)/float(FMath::Max(1,TrailPoints.Num()));
+  C->SetWorldScale3D(FVector((0.04f+0.07f*T)*Reveal));
+ }
  MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?3200.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
 }
 

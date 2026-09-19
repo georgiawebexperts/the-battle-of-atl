@@ -88,16 +88,31 @@ void ABattleScooterTraffic::Tick(float Dt){
 void ABattleScooterTraffic::TickScooterReview(float Dt){
 #if !UE_BUILD_SHIPPING
  FString Dir;FParse::Value(FCommandLine::Get(),TEXT("BattleScooterTrafficReviewDir="),Dir);if(Dir.IsEmpty()||Scooters.IsEmpty())return;
- auto* Target=Scooters[0].Actor.Get();if(!Target)return;
+ // Wait for the run to settle and the traffic to be placed before framing
+ // anything: a capture taken during the start countdown framed a wall, which
+ // says nothing about whether a scooter reads as a scooter.
+ if(GetWorld()->GetTimeSeconds()<8)return;
+ // Nearest scooter to the rider, not the first in the list.
+ auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);
+ AActor* Target=nullptr;float Best=TNumericLimits<float>::Max();
+ for(const FMovingScooter& Entry:Scooters){auto* Actor=Entry.Actor.Get();if(!Actor)continue;const float D=Pawn?FVector::Dist2D(Actor->GetActorLocation(),Pawn->GetActorLocation()):0.f;if(D<Best){Best=D;Target=Actor;}}
+ if(!Target)return;
  ReviewClock+=Dt;
  const FVector P=Target->GetActorLocation();
- const FVector Eye=P+FVector(300,-230,140),Look=P-FVector(0,0,45);
+ // Square on to the scooter's own flank, which is the silhouette that has to
+ // read, rather than a fixed world direction that can end up inside a wall.
+ const FVector Right=Target->GetActorRightVector(),Forward=Target->GetActorForwardVector();
+ const FVector Eye=P+Right*300.f+Forward*90.f+FVector(0,0,150),Look=P-FVector(0,0,40);
  if(!ReviewCamera)ReviewCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Look-Eye).Rotation());
  if(ReviewCamera){
   ReviewCamera->SetActorLocationAndRotation(Eye,(Look-Eye).Rotation());
   if(auto* PC=UGameplayStatics::GetPlayerController(this,0))PC->SetViewTarget(ReviewCamera);
  }
- if(ReviewStage==0&&ReviewClock>.8f){FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-side.png"),false,false);++ReviewStage;ReviewClock=0;return;}
+ if(ReviewStage==0&&ReviewClock>.8f){
+  UE_LOG(LogTemp,Display,TEXT("ScooterTrafficReview: scooter=%s at %s yaw=%.0f camera=%s distance_cm=%.0f"),
+   *Target->GetName(),*P.ToCompactString(),Target->GetActorRotation().Yaw,*Eye.ToCompactString(),FVector::Dist(Eye,P));
+  FScreenshotRequest::RequestScreenshot(Dir/TEXT("scooter-traffic-side.png"),false,false);++ReviewStage;ReviewClock=0;return;
+ }
  if(ReviewStage==1&&ReviewClock>.4f){
   const FVector Behind=P+FVector(-110,0,115),At=P+FVector(0,0,35);
   if(ReviewCamera)ReviewCamera->SetActorLocationAndRotation(Behind,(At-Behind).Rotation());

@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-19",
+  "author": "codex-maclaptop",
+  "git_sha": "9105dba",
+  "branch": "piedmont-ride-v2",
+  "exe": "Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground",
+  "why": "The Brain's open-work list said this family was red on the Mac: 'the route-walk family (Eastside times out, HomeDrive stalls at 0 legs, SpiritRoute wipes out on leg 1)'. Re-measured against the current build rather than trusted, because a stale red list is how a working course gets re-diagnosed from scratch.",
+  "results": [
+    {
+      "audit": "BattleHomeDriveAudit",
+      "pass": true,
+      "verdict": {"passed": true, "completedLegs": 2, "travelCm": 4890.21, "maxCenterlineErrorCm": 194.30, "wipeouts": 0},
+      "trail_ground": {"samples": 764, "paved": 764},
+      "log": "work/homedrive143.log",
+      "windows_comparison": "Windows round 4/5 reported 195.25 / 194.12 cm - the same course, the same result."
+    },
+    {
+      "audit": "BattleSpiritRouteAudit",
+      "pass": true,
+      "verdict": {"passed": true, "completedLegs": 2, "travelCm": 6503.21, "maxCenterlineErrorCm": 111.38, "wipeouts": 0},
+      "trail_ground": {"samples": 878, "paved": 85},
+      "log": "work/route-BattleSpiritRouteAudit.log"
+    },
+    {
+      "audit": "BattleEastsideAudit",
+      "pass": true,
+      "verdict": {"passed": true, "completedLegs": 2, "travelCm": 213863.86, "maxCenterlineErrorCm": 103.74, "wipeouts": 0},
+      "trail_ground": {"samples": 24636, "paved": 23251},
+      "log": "work/route-BattleEastsideAudit.log",
+      "windows_comparison": "Windows reported completedLegs 2, travel 213816 cm, wipeouts 0 after their punk-freeze fix - which is now merged here as 3e1bc71 and is the likely reason this passes."
+    }
+  ],
+  "note_on_the_pavement_rule": "BattleEastsideAudit requires 94% of ground samples to be on RidePath/RideDirt, not 99%: the threshold was set in round 3c after the route was measured at 95.2-95.3%, with the comment that 94% still catches real off-route detours. This run measured 94.38%, so the pass is a real pass against the real rule rather than a gate that let itself through.",
+  "not_claimed": "These three are still outside the 29-audit sweep because they drive the whole course and take minutes each. Their passing here is a measurement, not a schedule."
+}

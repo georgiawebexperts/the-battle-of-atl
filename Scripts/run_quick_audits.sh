@@ -77,6 +77,10 @@ AUDITS=(
   "BattleTutorialAudit||NoSkipTutorial"
   "BattleMarketImpactAudit||NoSkipTutorial"
   "BattleScooterTrafficAudit||BattleFurnitureAudit"
+  # The music audit needs the audio device: with the sweep's -nosound the wave
+  # never reports Playing, so it fails on the flag rather than on the game. It
+  # passes with audio (tracks 2, cycle off-song1-song2-off, preference restored).
+  "BattleMusicAudit||WithAudio"
 )
 
 FAILED=0
@@ -98,6 +102,9 @@ LaunchAudit() {
 
 for ENTRY in "${AUDITS[@]}"; do
   NAME="${ENTRY%%|*}"
+  # BATTLE_SWEEP_ONLY=Name,Name runs just those, for verifying one entry without
+  # paying for twenty-nine launches.
+  if [[ -n "${BATTLE_SWEEP_ONLY:-}" && ",${BATTLE_SWEEP_ONLY}," != *",$NAME,"* ]]; then continue; fi
   REST="${ENTRY#*|}"
   TAG="${REST%%|*}"
   FLAGS="${REST#*|}"
@@ -108,6 +115,10 @@ for ENTRY in "${AUDITS[@]}"; do
     for TOKEN in ${(s:,:)FLAGS}; do
       if [[ "$TOKEN" == "NoSkipTutorial" ]]; then
         RUN=("${RUN[@]:#-BattleSkipTutorial}")
+      elif [[ "$TOKEN" == "WithAudio" ]]; then
+        # Same trap as NoSkipTutorial, one flag over: an audit that tests audio
+        # cannot be run with the sweep's -nosound.
+        RUN=("${RUN[@]:#-nosound}")
       else
         EXTRA+=("-$TOKEN")
       fi

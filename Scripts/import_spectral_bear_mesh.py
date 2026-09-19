@@ -36,6 +36,16 @@ options.set_editor_property("import_materials", False)
 options.set_editor_property("import_textures", False)
 options.set_editor_property("import_animations", False)
 options.set_editor_property("mesh_type_to_import", unreal.FBXImportType.FBXIT_STATIC_MESH)
+# The FBX carries no smoothing groups ("No smoothing group information was found
+# for this mesh 'Plane'"), so a plain import computes one normal per triangle and
+# the bear renders as flat-shaded facets - which is most of why a shape that is
+# definitely a bear still reads as a lump of rocks. Computing the normals gets
+# averaged, smooth shading instead.
+# It lives on the import data, not on the UI object itself (that mistake cost a
+# run: "Failed to find property 'normal_import_method' ... on 'FbxImportUI'").
+smooth = options.get_editor_property("static_mesh_import_data")
+smooth.set_editor_property("normal_import_method", unreal.FBXNormalImportMethod.FBXNIM_COMPUTE_NORMALS)
+options.set_editor_property("static_mesh_import_data", smooth)
 task.options = options
 unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])
 
@@ -114,12 +124,13 @@ report["fade_name"] = str(fade.get_editor_property("parameter_name"))
 # What the material actually ended up as, read back from the asset: a graph that
 # is drawn in the editor but not connected to the material properties renders as
 # the default lit grey, which is what the first opaque pass looked like.
-report["shading_model"] = str(mat.get_editor_property("shading_model"))
-report["blend_mode"] = str(mat.get_editor_property("blend_mode"))
-report["emissive_inputs"] = [str(e.get_class().get_name())
-                             for e in lib.get_inputs_for_material_property(mat, unreal.MaterialProperty.MP_EMISSIVE_COLOR)]
-report["base_inputs"] = [str(e.get_class().get_name())
-                         for e in lib.get_inputs_for_material_property(mat, unreal.MaterialProperty.MP_BASE_COLOR)]
+# get_inputs_for_material_property does not exist in this engine's Python API
+# (checked the hard way), so the graph is reported by its expression list alone.
+for key, getter in (("shading_model", "shading_model"), ("blend_mode", "blend_mode")):
+    try:
+        report[key] = str(mat.get_editor_property(getter))
+    except Exception as error:  # noqa: BLE001 - a missing property must not stop the import
+        report[key] = "unavailable: " + str(error)
 report["expression_count"] = len(lib.get_material_expressions(mat))
 
 # StaticMaterial takes (material_interface, material_slot_name) - the slot name
