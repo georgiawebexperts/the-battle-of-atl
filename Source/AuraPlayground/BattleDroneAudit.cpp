@@ -57,6 +57,8 @@ void ABattleMacController::TickDroneAudit(float Dt){
   const FVector Spot=Bike->GetActorLocation()+Bike->GetActorForwardVector()*3500+FVector(0,0,650);
   AuditDrone=GetWorld()->SpawnActor<ABattleDrone>(Spot,(Bike->GetActorLocation()-Spot).Rotation());
   DCHECK(AuditDrone.IsValid(),"Distant drone failed to spawn");
+  // Pin the 35 m target: a live drone begins its dive ~4.5 s after spawning, and under sweep load the aim stages take longer than that, so the shot would be chasing a diving drone. The wall-obstruction and warning phases use the first drone; this one only needs to hover and be shot.
+  AuditDrone->SetActorTickEnabled(false);
   Key(EKeys::G,true);Key(EKeys::G,false);Key(EKeys::RightMouseButton,true);Next();
  }else if(DroneStage==5&&DroneClock>.8f){
   DCHECK(Person&&Drone&&Drone->bWarning&&!Drone->bSpent&&Person->bWeaponDrawn,"Dismount cancelled drone or failed to draw weapon");
