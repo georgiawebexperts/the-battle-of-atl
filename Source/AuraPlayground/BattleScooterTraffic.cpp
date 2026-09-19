@@ -2,6 +2,7 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleScooterProp.h"
+#include "BattleScooterRider.h"
 #include "PiedmontPathSpline.h"
 #include "Camera/CameraActor.h"
 #include "Components/SplineComponent.h"
@@ -67,6 +68,10 @@ void ABattleScooterTraffic::BeginPlay(){
    // stick through it, sliding along the trail, which is the thing Elliott has
    // been calling a log since the trail opened.
    BuildBattleScooter(Rider,Rider->GetRootComponent(),Location-FVector(0,0,74.f),FRotator(0,Direction.Rotation().Yaw,0),SpawnedScooters,false);
+   // And the person on it. The prop above is the vehicle; this is the rider, on
+   // the same anchor and facing the same way, so the two move as one.
+   const int32 Yaw=Direction.Rotation().Yaw;
+   BuildBattleScooterRider(Rider,Rider->GetRootComponent(),Location-FVector(0,0,74.f),FRotator(0,float(Yaw),0),SpawnedScooters);
    const float Speeds[]={Mode->Difficulty.ScooterSlowSpeed,Mode->Difficulty.ScooterMediumSpeed,Mode->Difficulty.ScooterFastSpeed};
    Scooters.Add({Rider,Path,Distance,Speeds[I%3],Reverse});SpawnedScooters++;
   }
