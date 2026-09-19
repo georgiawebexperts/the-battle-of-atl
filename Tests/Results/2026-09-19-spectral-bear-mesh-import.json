@@ -28,6 +28,5 @@
   "mesh": "/Game/BattleForTheA/Spirit/SM_SpectralBear.SM_SpectralBear",
   "mesh_materials": [
     "M_SpectralBearBody"
-  ],
-  "eye_material": "/Game/BattleForTheA/Spirit/M_SpiritEye.M_SpiritEye"
+  ]
 }

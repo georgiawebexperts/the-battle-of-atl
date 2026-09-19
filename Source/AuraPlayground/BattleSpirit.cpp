@@ -335,15 +335,30 @@ auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->Se
  // happens to it. The look in the meantime comes from material that draws: a
  // tinted engine body under a cold light, plus emissive eyes.
  if(BearBody){
-  auto* Source=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
+  // The authored graph first, and this is a correction rather than a repeat of
+  // the 2026-09-19 morning: the body DID draw as authored once. The review
+  // capture at 09:25 shows a dark body with the cold rim along its upper edge,
+  // taken while this code preferred M_SpectralBearBody. What followed - the
+  // "it is never drawn" conclusion - rested on one experiment that deleted the
+  // material while the mesh still referenced it and then rebuilt it at the same
+  // path, which is exactly the pattern the vault already warns about, so that
+  // result was the experiment's fault rather than the material's.
+  //
+  // What is still true: nothing here is set up to notice a material that does
+  // not draw, the painted card's checker is an unset texture parameter sampling
+  // the engine's default checker texture rather than a missing material, and the
+  // engine fallback stays because it is the one thing known to draw if the
+  // authored graph ever does not.
+  auto* Authored=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Spirit/M_SpectralBearBody.M_SpectralBearBody"));
+  auto* Source=Authored?Authored:LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
   if(!Source)Source=BearBody->GetMaterial(0);
   BearBodyMaterial=Source?UMaterialInstanceDynamic::Create(Source,this):nullptr;
-  // Not near-black. A lit body this dark has no interior at all, and the review
-  // render at (.015,.020,.045) read as a flat lump rather than as an animal.
-  if(BearBodyMaterial)BearBodyMaterial->SetVectorParameterValue(TEXT("Color"),FLinearColor(.050f,.068f,.125f));
+  // Only the engine fallback has a colour parameter; the authored graph carries
+  // its own values and is driven by SpiritFade.
+  if(BearBodyMaterial&&!Authored)BearBodyMaterial->SetVectorParameterValue(TEXT("Color"),FLinearColor(.050f,.068f,.125f));
   if(BearBodyMaterial)BearBody->SetMaterial(0,BearBodyMaterial);
-  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: bear_body=%s material=%s source=%s eyes=%d scale=%.3f"),
-   *GetNameSafe(BearBody->GetStaticMesh()),*GetNameSafe(BearBody->GetMaterial(0)),*GetNameSafe(Source),BodyEyes.Num(),BearBody->GetRelativeScale3D().X);
+  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: bear_body=%s material=%s source=%s authored=%d eyes=%d scale=%.3f"),
+   *GetNameSafe(BearBody->GetStaticMesh()),*GetNameSafe(BearBody->GetMaterial(0)),*GetNameSafe(Source),Authored?1:0,BodyEyes.Num(),BearBody->GetRelativeScale3D().X);
  }else{
   UE_LOG(LogTemp,Warning,TEXT("BattleSpiritVisual: no bear body mesh - falling back to the card"));
  }

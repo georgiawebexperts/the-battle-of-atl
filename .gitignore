@@ -6,6 +6,7 @@ DerivedDataCache/
 .DS_Store
 
 Tools/terrain-venv/
+Tools/road-geometry-venv/
 
 # ---------------------------------------------------------------------------
 # GitHub rejects any push containing a single file larger than 100 MB.
