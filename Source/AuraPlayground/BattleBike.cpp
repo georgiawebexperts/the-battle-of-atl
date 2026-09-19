@@ -96,6 +96,8 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  Headlight=CreateDefaultSubobject<USpotLightComponent>(TEXT("AutomaticHeadlight"));Headlight->SetupAttachment(Capsule);Headlight->SetRelativeLocation(FVector(58,0,18));Headlight->SetIntensity(8000);Headlight->SetAttenuationRadius(3000);Headlight->SetInnerConeAngle(16);Headlight->SetOuterConeAngle(28);Headlight->SetLightColor(FLinearColor(1,.93,.8));Headlight->SetVisibility(false);
  TailLight=CreateDefaultSubobject<UPointLightComponent>(TEXT("AutomaticRearLight"));TailLight->SetupAttachment(Capsule);TailLight->SetRelativeLocation(FVector(-65,0,-15));TailLight->SetIntensity(25);TailLight->SetAttenuationRadius(90);TailLight->SetLightColor(FLinearColor(1,.015,.01));TailLight->SetVisibility(false);
  Pistol=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingPistol"));Pistol->SetupAttachment(Visual);Pistol->SetCollisionEnabled(ECollisionEnabled::NoCollision);Pistol->SetVisibility(false);
+ RifleProp=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingRifle"));RifleProp->SetupAttachment(Visual);RifleProp->SetCollisionEnabled(ECollisionEnabled::NoCollision);RifleProp->SetVisibility(false);
+ ShotgunProp=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RidingShotgun"));ShotgunProp->SetupAttachment(Visual);ShotgunProp->SetCollisionEnabled(ECollisionEnabled::NoCollision);ShotgunProp->SetVisibility(false);
  Rider=CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("RiggedRider"));Rider->SetupAttachment(Visual);Rider->SetRelativeRotation(FRotator(0,-90,0));Rider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  static ConstructorHelpers::FObjectFinder<USkeletalMesh> Human(TEXT("/Game/PiedmontRide/Rider/Casual.Casual"));
  Rider->SetSkinnedAssetAndUpdate(Human.Object);
@@ -111,6 +113,10 @@ void ABattleBike::BeginPlay(){
  UBattleTrailMode::Apply(this,Ride->bRealHandling);
  InitializeDetailedRiderPreview();
  if(auto* Gun=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/PiedmontRide/Bike/SM_Pistol.SM_Pistol"))){const FVector Size=Gun->GetBounds().BoxExtent*2;const float Scale=28/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);Pistol->SetStaticMesh(Gun);Pistol->SetRelativeScale3D(FVector(Scale));Pistol->SetRelativeRotation(Rot);Pistol->SetRelativeLocation(FVector(45,28,130)-Rot.RotateVector(Gun->GetBounds().Origin)*Scale);}
+ // Same anchoring rule as the pistol above, normalised to each weapon's own
+ // length, so the long guns sit in the rider's hand instead of at the origin.
+ if(auto* Rifle=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Weapons/Rifle/Rifle/StaticMeshes/Rifle.Rifle"))){const FVector Size=Rifle->GetBounds().BoxExtent*2;const float Scale=88/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);RifleProp->SetStaticMesh(Rifle);RifleProp->SetRelativeScale3D(FVector(Scale));RifleProp->SetRelativeRotation(Rot);RifleProp->SetRelativeLocation(FVector(52,26,132)-Rot.RotateVector(Rifle->GetBounds().Origin)*Scale);}
+ if(auto* Body=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/BattleForTheA/Weapons/ShotgunParts/ShotgunParts/StaticMeshes/ShotgunBody.ShotgunBody"))){const FVector Size=Body->GetBounds().BoxExtent*2;const float Scale=76/FMath::Max(Size.X,Size.Y);const FRotator Rot(0,Size.Y>Size.X?-90:0,0);ShotgunProp->SetStaticMesh(Body);ShotgunProp->SetRelativeScale3D(FVector(Scale));ShotgunProp->SetRelativeRotation(Rot);ShotgunProp->SetRelativeLocation(FVector(52,26,132)-Rot.RotateVector(Body->GetBounds().Origin)*Scale);}
  CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
  RideEffects=GetWorld()->SpawnActor<ABattleRideFX>();
  AsphaltAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Asphalt.S_Asphalt")));GrassAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Grass.S_Grass")));MotorAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Motor.S_Motor")));
@@ -142,7 +148,7 @@ void ABattleBike::Tick(float Dt){
  // pavement without having to know this exists.
  if(!bTrailModeKnown||bTrailModeWasRealistic!=Ride->bRealHandling){bTrailModeKnown=true;bTrailModeWasRealistic=Ride->bRealHandling;UBattleTrailMode::Apply(this,Ride->bRealHandling);}
  if(ReloadTimer>0){ReloadTimer=FMath::Max(0.f,ReloadTimer-Dt);if(ReloadTimer<=0){auto& Item=Inventory[0];const int32 Add=FMath::Min(BattleWeapons::Capacity(0)-PistolAmmo,Item.Reserve);PistolAmmo+=Add;Item.Reserve-=Add;Item.Magazine=PistolAmmo;}}
- Pistol->SetVisibility(!bParked&&GunHold>0);if(bParked)return;UpdateNearMisses();
+ UpdateRidingWeaponModel();if(bParked)return;UpdateNearMisses();
  for(auto* View:{Chase.Get(),Handlebar.Get()}){View->PostProcessSettings.bOverride_MotionBlurAmount=true;View->PostProcessSettings.MotionBlurAmount=Ride->BoostRemaining>0?.4f:.1f;}
  Chase->SetFieldOfView(FMath::FInterpTo(Chase->FieldOfView,Ride->BoostRemaining>0?98.f:85.f,Dt,5));
  Handlebar->SetFieldOfView(FMath::FInterpTo(Handlebar->FieldOfView,Ride->BoostRemaining>0?108.f:95.f,Dt,5));
@@ -382,9 +388,14 @@ void ABattleBike::PoseRider(float Dt){
 bool ABattleBike::FirePistol(){
  if(!GetController()||bParked||StunRemaining>0||RiderHealth<=0||Ride->Recovery>0||ShotCooldown>0||ReloadTimer>0)return false;
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->StartCountdown>0||Mode->bRunEnded)return false;
- if(PistolAmmo<=0){if(Inventory[0].Reserve>0)ReloadTimer=1.5f;return false;}
+ // Fire whatever is in the rider's hand. Slot 0 keeps using PistolAmmo because
+ // the HUD and the on-foot loadout both read it; every other slot reloads from
+ // its own magazine and reserve.
+ const int32 Slot=(Inventory.IsValidIndex(ActiveWeapon)&&Inventory[ActiveWeapon].Owned)?ActiveWeapon:0;
+ int32& Magazine=Slot==0?PistolAmmo:Inventory[Slot].Magazine;
+ if(Magazine<=0){if(Inventory[Slot].Reserve>0)ReloadTimer=BattleWeapons::ReloadSeconds(Slot);return false;}
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))Mode->RecordGunfire();
- PistolAmmo--;Inventory[0].Magazine=PistolAmmo;ShotsFired++;ShotCooldown=.25f;GunHold=.8f;PistolSpread=FMath::Lerp(.15f,3.f,FMath::Clamp(Ride->Speed/1600.f,0.f,1.f));
+ Magazine--;Inventory[Slot].Magazine=Magazine;if(Slot==0)PistolAmmo=Magazine;ShotsFired++;ShotCooldown=.25f;GunHold=.8f;PistolSpread=FMath::Lerp(.15f,3.f,FMath::Clamp(Ride->Speed/1600.f,0.f,1.f));
  const auto Shot=FireBattlePistol(this,Pistol,PistolSpread);LastShotEnd=Shot.End;if(Shot.Damage>0)HitFeedback=.35f;if(!Shot.HitLabel.IsEmpty()){ShotNotice=Shot.HitLabel;ShotNoticeRemaining=.75f;}if(Shot.EnemyKilled)AwardEnemyKill();return true;
 }
 bool ABattleBike::Boost(){

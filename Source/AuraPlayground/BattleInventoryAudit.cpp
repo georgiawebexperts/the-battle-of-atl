@@ -26,6 +26,32 @@ void ABattleMacController::TickInventoryAudit(float Dt){
 #if !UE_BUILD_SHIPPING
  if(GetWorld()->GetTimeSeconds()<5)return;
  auto* Person=Cast<ABattleRider>(GetPawn());auto* Bike=Person?Person->ParkedBike.Get():Cast<ABattleBike>(GetPawn());auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));if(!Bike||!Mode||!Mode->Pickups)return;
+ // Standalone check for Elliott's playtest note: "the gun never changes even
+ // though i pick up a machine gun or a rifle". Run with -BattleInventoryAudit
+ // -BattleRidingGunAudit; this block answers and quits before the phases start.
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleRidingGunAudit"))){
+  static bool Done=false;if(Done)return;
+  auto Check=[&](bool Condition,const TCHAR* What){if(!Condition&&!Done)UE_LOG(LogTemp,Error,TEXT("RidingGunAudit: FAILED - %s"),What);return Condition;};
+  bool Pass=true;
+  Pass&=Check(Bike->GiveWeapon(4,60),TEXT("rifle pickup was refused"));
+  Pass&=Check(Bike->ActiveWeapon==4,TEXT("rifle pickup did not take the hand"));
+  const int32 RifleBefore=Bike->Inventory[4].Magazine;
+  Pass&=Check(Bike->FirePistol(),TEXT("rifle would not fire"));
+  Pass&=Check(Bike->Inventory[4].Magazine==RifleBefore-1,TEXT("firing did not spend rifle rounds"));
+  Bike->UpdateRidingWeaponModel();
+  Pass&=Check(Bike->RifleProp->IsVisible(),TEXT("rifle prop is not the visible gun"));
+  Pass&=Check(!Bike->Pistol->IsVisible(),TEXT("pistol prop still drawn with a rifle in hand"));
+  Pass&=Check(Bike->GiveWeapon(1,18),TEXT("shotgun pickup was refused"));
+  Pass&=Check(Bike->ActiveWeapon==1,TEXT("shotgun pickup did not take the hand"));
+  Bike->UpdateRidingWeaponModel();
+  Pass&=Check(Bike->ShotgunProp->IsVisible()&&!Bike->RifleProp->IsVisible(),TEXT("shotgun prop did not replace the rifle"));
+  Pass&=Check(Bike->GiveWeapon(4,20)&&Bike->ActiveWeapon==1,TEXT("an ammo top-up for an owned gun yanked the gun away"));
+  Pass&=Check(Bike->SelectRidingWeapon(0)&&Bike->SelectRidingWeapon(4),TEXT("weapon selection refused an owned slot"));
+  Pass&=Check(!Bike->SelectRidingWeapon(3),TEXT("weapon selection accepted an unowned slot"));
+  Done=true;
+  UE_LOG(LogTemp,Display,TEXT("RidingGunAudit: {\"passed\":%s,\"rifle_magazine\":%d,\"shotgun_magazine\":%d}"),Pass?TEXT("true"):TEXT("false"),Bike->Inventory[4].Magazine,Bike->Inventory[1].Magazine);
+  ConsoleCommand(TEXT("quit"));return;
+ }
  static TSet<FString> Captured;
  static float HandError=0,HandLow=MAX_flt,HandHigh=-MAX_flt;static int PumpHandSamples=0,ReloadHandSamples=0;
  const bool HandAudit=FParse::Param(FCommandLine::Get(),TEXT("BattleShotgunHandAudit"));
