@@ -72,8 +72,8 @@ void ABattleHome::BeginPlay(){
    Text->SetTextRenderColor(FColor(255,229,183));
    Text->SetHorizontalAlignment(EHTA_Center);
    Text->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-   static ConstructorHelpers::FObjectFinder<UMaterialInterface> BoardTextMat(TEXT("/Engine/EngineMaterials/UnlitText.UnlitText"));
-   if(BoardTextMat.Succeeded())Text->SetTextMaterial(BoardTextMat.Object);
+   UMaterialInterface* UnlitTextMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/EngineMaterials/UnlitText.UnlitText"));
+   if(UnlitTextMaterial)Text->SetTextMaterial(UnlitTextMaterial);
   }
   BestTimeBoard=Board;
  }
