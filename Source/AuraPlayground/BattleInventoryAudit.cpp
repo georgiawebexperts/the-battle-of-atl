@@ -48,6 +48,15 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   Pass&=Check(Bike->GiveWeapon(4,20)&&Bike->ActiveWeapon==1,TEXT("an ammo top-up for an owned gun yanked the gun away"));
   Pass&=Check(Bike->SelectRidingWeapon(0)&&Bike->SelectRidingWeapon(4),TEXT("weapon selection refused an owned slot"));
   Pass&=Check(!Bike->SelectRidingWeapon(3),TEXT("weapon selection accepted an unowned slot"));
+  // The dismount prompt has to survive a remount: it was pushed with bOnce, so
+  // the second step-off in a session said nothing at all.
+  auto HintShows=[&]{return Mode->HintRemaining>0&&Mode->HintText.Contains(TEXT("MOUSE"));};
+  Pass&=Check(Bike->Dismount()&&HintShows(),TEXT("dismount did not tell the player to grab the mouse"));
+  if(auto* Off=Cast<ABattleRider>(GetPawn()))if(Off->MountBike())if(auto* Back=Cast<ABattleBike>(GetPawn())){
+   Mode->HintRemaining=0;
+   Pass&=Check(Back->Dismount()&&HintShows(),TEXT("the mouse prompt shows only on the first dismount"));
+   Pass&=Check(Back->ActiveWeapon==4,TEXT("the held weapon did not survive a dismount and remount"));
+  }
   Done=true;
   UE_LOG(LogTemp,Display,TEXT("RidingGunAudit: {\"passed\":%s,\"rifle_magazine\":%d,\"shotgun_magazine\":%d}"),Pass?TEXT("true"):TEXT("false"),Bike->Inventory[4].Magazine,Bike->Inventory[1].Magazine);
   ConsoleCommand(TEXT("quit"));return;

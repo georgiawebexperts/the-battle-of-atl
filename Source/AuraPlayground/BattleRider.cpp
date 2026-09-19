@@ -237,7 +237,11 @@ bool ABattleBike::Dismount(){
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
  PC->SetControlRotation(FRotator(0,(Aim-Exit).Rotation().Yaw,0));
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))
-  Mode->PushHint(TEXT("onfoot"),TEXT("ON FOOT — MOVE THE MOUSE TO LOOK AROUND  ·  E TO GET BACK ON THE BIKE"),7.f);
+  // Elliott: "sometimes when you get off the bike its disorienting - it should
+  // tell the person to grab the mouse". The hint was already here, but it took
+  // PushHint's default bOnce, so HintsSeen swallowed it after the first
+  // dismount of the session and every later step-off happened in silence.
+  Mode->PushHint(TEXT("onfoot"),TEXT("GRAB THE MOUSE — MOVE IT TO LOOK AROUND  ·  E TO RIDE AGAIN"),9.f,false);
  PC->bShowMouseCursor=false;PC->ResetIgnoreLookInput();if(!FApp::IsUnattended())PC->SetInputMode(FInputModeGameOnly());return true;
 }
 bool ABattleBike::Remount(ABattleRider* Person){
