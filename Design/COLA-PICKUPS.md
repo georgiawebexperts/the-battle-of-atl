@@ -1,9 +1,10 @@
 
 ## Trademark rename
 
-2026-09-19 [codex-windows]: visible can lettering renamed from Coca-Cola to
+2026-09-19 [codex-windows]: visible can lettering renamed from the branded cola text to
 'Soda Pop' (trademark - do not restore brand text). Internal code names unchanged.
-# Coca-Cola health pickups
+
+# Soda Pop health pickups
 
 2026-09-11 [codex-maclaptop]
 
@@ -15,7 +16,7 @@ park paths and the return trail. Difficulty.csv/DT_Difficulty tune count and hea
 amount:18/12/8cans on Easy/Medium/Hard, healing35points each. The current splits
 are12park+6trail,8+4and6+2. No regeneration of consumed cans is implemented.
 
-Cans bob/rotate, have a red material, Coca-Cola lettering, a small glow and an
+Cans bob/rotate, have a red material, Soda Pop lettering, a small glow and an
 original generated can-opening/fizz sound. Collection is automatic within150cm
 of the controlled player with an unobstructed sight line. Both bike and foot use
 the bike-owned shared health. Healing caps at100and does not reset the damage

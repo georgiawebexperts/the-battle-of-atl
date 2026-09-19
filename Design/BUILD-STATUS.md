@@ -423,7 +423,7 @@ build019-native-geography.json and build019-native-krog.json (same date prefix).
 Installed and locally signed complete native0.19.0 behind the desktop icon;
 build018 retained under Previous. The Mac remains locked on a fresh CUA check,
 so window/physical-input, HUD/marker rendering, audio and performance acceptance
-are pending. Coke pickups, full enemy damage encounters and presentation,
+are pending. Soda Pop pickups, full enemy damage encounters and presentation,
 Cabbagetown/home/results/saves, world/foliage/life and remaining V3 scope still
 require implementation and acceptance. The goal remains active.
 
@@ -477,14 +477,14 @@ Installed and locally signed complete native0.20.0 behind the desktop icon,
 with019retained under Previous. The Mac remains locked on a fresh CUA check;
 rendered enemies/HUD, audio, physical controls, game balance and performance are
 unverified. Full V3 remains unfinished: other enemies/vehicles/weapons/crates,
-Coke pickups, world/foliage/life/landmarks, Cabbagetown/home/results/saves and final
+Soda Pop pickups, world/foliage/life/landmarks, Cabbagetown/home/results/saves and final
 presentation/World Partition/shipping acceptance still require work. Goal stays
 active.
 
 
 ## Build021 — 0.21.0-dev — 2026-09-11 [codex-maclaptop]
 
-Added the V3 Coca-Cola health pickups. Difficulty rows now tune18/12/8cans and
+Added the V3 Soda Pop health pickups. Difficulty rows now tune18/12/8cans and
 35health per can. Layout checks actual path/gravel/bridge collision, clearance,
 water exclusion and complete navigation from the start. Both checkpoints are
 prioritized, with the remaining supply divided between park and trail. Counts

@@ -144,7 +144,7 @@ While riding, the player can fire the pistol one handed with the left mouse butt
 
 ### Health
 
-A health bar. Enemies do damage. Health regenerates slowly when not taking damage. Health pickups are cans of Coca-Cola, because Atlanta. Health hitting zero is a wipeout and a respawn at the last checkpoint with 10 seconds off the clock.
+A health bar. Enemies do damage. Health regenerates slowly when not taking damage. Health pickups are cans of Soda Pop, because Atlanta. Health hitting zero is a wipeout and a respawn at the last checkpoint with 10 seconds off the clock.
 
 ## Enemies
 

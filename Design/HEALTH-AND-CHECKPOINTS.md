@@ -28,7 +28,7 @@ Cabbagetown finish remains unimplemented, so the final current target is the
 southern Krog exit, with no shortcut victory.
 
 The health bar and nitro meter are placed at the lower left in both bike and
-FPS modes. Coke pickups are implemented in BattlePickup and documented in COLA-PICKUPS.md.
+FPS modes. Soda Pop pickups are implemented in BattlePickup and documented in COLA-PICKUPS.md.
 Expanded enemy attacks, full death presentation,
 checkpoint artwork, final HUD styling and rendered acceptance remain pending.
 
