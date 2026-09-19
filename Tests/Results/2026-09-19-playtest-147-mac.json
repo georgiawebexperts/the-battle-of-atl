@@ -1,0 +1,63 @@
+{
+  "author": "2026-09-19 [codex-maclaptop]",
+  "build": 147,
+  "version": "0.147.0-dev",
+  "where": "cooked app in Saved/StagedBuilds/Mac, 30-entry sweep, 6 s settle",
+  "carries": [
+    "the spirit bear: engine-material body, emissive eyes, two cold lights for the glow and the rim",
+    "the CC-BY credit line for the Low Poly Bear, in the pause menu, plus CREDITS.md",
+    "the Windows best-time board for all three difficulties",
+    "the skatepark second growth (75 x 66 m, pump track, half-pipe)",
+    "three gates fixed rather than re-run: tunnel, drone, skater, spare bike"
+  ],
+  "entries": {
+    "BattleCurseAudit": "pass",
+    "BattleTreeRideAudit": "pass",
+    "Realistic-BattleTreeRideAudit": "pass",
+    "BattleTroubleAudit": "pass",
+    "BattleSteeringAudit": "pass",
+    "BattleSleeperAudit": "pass",
+    "BattleGrassAudit": "pass",
+    "BattleBikeCarAudit": "pass",
+    "BattleMurderKAudit": "pass",
+    "BattlePickupAudit": "pass",
+    "BattleSpiritAudit": "pass",
+    "BattleKrogCrashAudit": "pass",
+    "BattleDuckAudit": "pass",
+    "BattleSpeedAudit": "pass",
+    "BattleTimeAudit": "pass",
+    "BattleDiscAudit": "pass",
+    "BattleMeleeAudit": "pass",
+    "BattleDiagonalAudit": "pass",
+    "BattlePatioAudit": "pass",
+    "BattleTunnelHazardAudit": "pass",
+    "BattleTrailModeAudit": "pass",
+    "BattleSkaterAudit": "pass",
+    "BattleDroneAudit": "pass",
+    "BattleFrisbeeAudit": "pass",
+    "BattlePanicAudit": "pass",
+    "BattleSpareBikeAudit": "pass",
+    "BattleTutorialAudit": "pass",
+    "BattleMarketImpactAudit": "pass",
+    "BattleScooterTrafficAudit": "pass",
+    "BattleMusicAudit": "pass"
+  },
+  "passed": 30,
+  "failed_in_sweep": 0,
+  "flake_lines": [],
+  "sweeps_before_this_one": {
+    "145": "28 pass + 2 flaked (tunnel, drone) - both fixed",
+    "146": "30 of 30 clean",
+    "147a": "29 pass + 1 flaked (skater) - fixed",
+    "147b": "29 pass + 1 flaked (spare bike) - fixed, and the sweep settle went 3 s -> 6 s",
+    "147c": "30 of 30 clean, no flake line"
+  },
+  "share": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 147/The Battle of ATL.app",
+  "share_boot_verify": {
+    "BattleCurseAudit": "pass, exit 0",
+    "BattleSpiritAudit": "pass, exit 0, checks 29, presentation_enabled true",
+    "BattleSpareBikeAudit": "pass, exit 0, phase 4 - the gate that flaked in 147b now passes from the shipped app"
+  },
+  "desktop_shortcut": "/Users/elliottinspace/Desktop/BOA/The Battle of ATL.app -> Playtest 147",
+  "bear": "improved and credited, not confirmed - Elliott's eye is the acceptance"
+}
