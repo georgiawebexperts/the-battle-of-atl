@@ -248,7 +248,7 @@ void ABattleTunnelHazards::Tick(float Dt){
 
 void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;TArray<FVector> GallerySpine;int32 Phase=0,Wipeouts=0,PunkCount=0,PunkSeats=0,GalleryColumns=0,GalleryBlocked=0,GalleryTraffic=0;float Clock=0,GalleryRideStartX=0,BikeX=0,GalleryLengthCm=0;bool Done=false;FVector GalleryMouth=FVector::ZeroVector;};
+struct FState{TWeakObjectPtr<UWorld> World;TArray<FVector> GallerySpine;int32 Phase=0,Wipeouts=0,PunkCount=0,PunkSeats=0,GalleryColumns=0,GalleryBlocked=0,GalleryTraffic=0;float Clock=0,GalleryRideStartX=0,BikeX=0,GalleryLengthCm=0,BestGap=1e9f,BestGapClock=0;bool Done=false;FVector GalleryMouth=FVector::ZeroVector;};
  static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}
  if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
@@ -354,7 +354,7 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->Recovery=0;Bike->Ride->Gear=5;
   Bike->SetActorLocationAndRotation(Rest+FVector(0,0,98),Facing,false,nullptr,ETeleportType::TeleportPhysics);
   Bike->Ride->SetMovementMode(MOVE_Walking);Bike->Ride->bForceNextFloorCheck=true;
-  S.Wipeouts=Bike->Ride->Wipeouts;S.Phase=1;S.Clock=0;
+  S.Wipeouts=Bike->Ride->Wipeouts;S.Phase=1;S.Clock=0;S.BestGap=1e9f;S.BestGapClock=0;
   return;
  }
  Key(true);
@@ -372,20 +372,21 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
    S.GalleryRideStartX=Bike->GetActorLocation().X;S.Phase=2;S.Clock=0;
    return;
   }
-  if(FVector::Dist2D(Bike->GetActorLocation(),Hazards->FirstDeepHole)>2600.f){Finish(false,TEXT("Rode past the deep hole without a wipeout"),Hazards,0);return;}
-  // Twenty seconds was not enough under load. This phase is a ride-up-and-be-
-  // thrown, and the pit only fires above its crash speed, so the window covers
-  // the approach rather than the promise. It failed twice on the cooked build
-  // in a row - once inside a 29-audit sweep, once immediately after a cook -
-  // while nothing else was running, and passed twice standalone on the same
-  // binary. The sleep that follows is not a fix in itself: if this ever fails
-  // again, the log now names where the bike actually was.
-  if(S.Clock>45){
+  const float Gap=FVector::Dist2D(Bike->GetActorLocation(),Hazards->FirstDeepHole);
+  if(Gap>2600.f){Finish(false,TEXT("Rode past the deep hole without a wipeout"),Hazards,0);return;}
+  // Twenty seconds was not enough under load, then forty-five was not either: on
+  // 2026-09-19 this went red inside a sweep and green standalone on the same
+  // binary, and the hardening log said why - the bike was 1418 cm from the pit,
+  // on the ground, pedalling, doing 1952 cm/s. Nothing was wrong with the pit;
+  // the ride up to it is variable (it goes through the gallery's columns) and a
+  // wall clock cannot tell "the approach is long" from "the bike is stuck".
+  // Wait for progress instead: the gate is the throw-off, not the approach.
+  if(Gap<S.BestGap-50.f){S.BestGap=Gap;S.BestGapClock=S.Clock;}
+  if(S.Clock-S.BestGapClock>15.f||S.Clock>150){
    const FVector B=Bike->GetActorLocation();
-   const float Gap=FVector::Dist2D(B,Hazards->FirstDeepHole);
    UE_LOG(LogTemp,Display,TEXT("TunnelHazardAuditTimeout: {\"bike\":[%.0f,%.0f,%.0f],\"hole\":[%.0f,%.0f,%.0f],\"gap_cm\":%.0f,\"speed\":%.0f,\"ground\":%d,\"pedal\":%.1f}"),
-    B.X,B.Y,B.Z,Hazards->FirstDeepHole.X,Hazards->FirstDeepHole.Y,Hazards->FirstDeepHole.Z,Gap,
-    Bike->Ride?Bike->Ride->Speed:0.f,Bike->Ride?(Bike->Ride->IsMovingOnGround()?1:0):0,Bike->Ride?Bike->Ride->Pedal:0.f);
+   B.X,B.Y,B.Z,Hazards->FirstDeepHole.X,Hazards->FirstDeepHole.Y,Hazards->FirstDeepHole.Z,Gap,
+   Bike->Ride?Bike->Ride->Speed:0.f,Bike->Ride?(Bike->Ride->IsMovingOnGround()?1:0):0,Bike->Ride?Bike->Ride->Pedal:0.f);
    Finish(false,TEXT("Traversal timed out"),Hazards,0);return;
   }
   return;
