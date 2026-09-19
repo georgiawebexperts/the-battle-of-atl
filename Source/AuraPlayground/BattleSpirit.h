@@ -36,6 +36,10 @@ public:
  UPROPERTY() TArray<FVector> TrailPoints;
  float TrailClock=0;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MoonGlow;
+ // The wide cold light above the animal's back. The material path that would
+ // have drawn a rim cannot be rendered (see BattleSpirit.cpp), so the rim is
+ // made of light: this one catches the shoulders from above and behind.
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> SpiritBackGlow;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SpiritCard;
  /** The 3D body. Replaces the flat card as the presentation the player sees. */
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> BearBody;

@@ -127,7 +127,14 @@ SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackB
    BodyEyes.Add(Eye);
   }
  }
-MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.10f,.42f,1.f));MoonGlow->SetAttenuationRadius(620);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+ // Two lights, because the body cannot emit on its own: the material that would
+ // have made it glow is the one this project's scripts cannot get drawn (see the
+ // note on BearBodyMaterial below). A light inside the chest lights the animal
+ // from within, and a second, wider one above it catches the back and reads as
+ // moonlight along the shoulders - which is the rim the design note asks for,
+ // made out of light instead of a shader.
+MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.10f,.42f,1.f));MoonGlow->SetAttenuationRadius(300);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+SpiritBackGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritBackGlow"));SpiritBackGlow->SetupAttachment(RootComponent);SpiritBackGlow->SetRelativeLocation(FVector(-70,0,215));SpiritBackGlow->SetLightColor(FLinearColor(.15f,.52f,1.f));SpiritBackGlow->SetAttenuationRadius(760);SpiritBackGlow->SetIntensity(0);SpiritBackGlow->SetCastShadows(false);
  // Card visible, primitive bear hidden. If the material or the mesh is missing
  // the card is skipped at runtime and the primitives carry the scene.
  for(auto& C:FigureParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);for(auto& C:BodyEyes)C->SetVisibility(false);
@@ -260,7 +267,12 @@ void ABattleSpirit::Tick(float Dt){
  // as a headlight on the ground rather than as a spirit, and it washed out the
  // animal's own legs. The body carries its own emissive now, so this only has
  // to be the faint pool of cold light the design note asks for.
- MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?420.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
+ const float Pulse=.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f);
+ // The core light carries the animal and a small pool of cold light on the
+ // ground under it; the back light is what makes the silhouette read from any
+ // approach angle, which a view-dependent rim material never did.
+ MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?950.f*Reveal*Pulse:0.f);
+ SpiritBackGlow->SetVisibility(Visible);SpiritBackGlow->SetIntensity(Visible?340.f*Reveal*Pulse:0.f);
 }
 
 void ABattleSpirit::BeginPlay(){

@@ -1,5 +1,25 @@
 # BATTLE FOR THE A — V3 acceptance ledger
 
+> ## STATUS BANNER — read this first, added 2026-09-19 [codex-maclaptop]
+>
+> **This ledger is historical.** It was reviewed on 2026-09-10 against the V3
+> spec, and the project has moved far past every gate it describes: the current
+> build is **BUILD 146 / 0.146.0-dev**, shipped to a Desktop playtest shortcut
+> and swept 30 of 30 on the cooked app. The gates below were never formally
+> re-adjudicated, so their wording is the *original* requirement set rather than
+> a statement of what is now true.
+>
+> Live status lives in `Brain/Battle of ATL.md` (Elliott's Brain vault) with the
+> per-block evidence in `Brain/History/*.md` and `Tests/Results/` in this repo.
+> The one gate in here that has been continuously maintained as a real gate is
+> exit criteria expressed as audits: `Scripts/run_quick_audits.sh` is the list,
+> and a build only replaces the Desktop shortcut when all 30 pass.
+>
+> Do not treat the "Incomplete" cells below as an open task list without
+> checking them against the vault first — several describe work that has since
+> shipped under a different name (the Krog tunnel, the Kroger plaza, the run's
+> finish and saved records, the spirit encounter).
+
 Active spec: V3-SPEC.md plus V3-DECISIONS.md (native Mac delivery overrides Windows packaging). Reviewed 2026-09-10 [codex-maclaptop]. No V3 milestone or full-game acceptance yet. Old evidence is scoped/historical, not V3 acceptance.
 
 | Gate | Required evidence / current state |
