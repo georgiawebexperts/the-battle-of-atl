@@ -1,0 +1,54 @@
+{
+  "build": "153",
+  "date": "2026-09-19",
+  "author": "codex-maclaptop",
+  "git_sha": "cbf0a92",
+  "branch": "piedmont-ride-v2",
+  "exe": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 153/The Battle of ATL.app/Contents/MacOS/AuraPlayground",
+  "what_this_build_carries": "Elliott's four asks from the post-scooter-rider playtest: the timer is two minutes shorter on every difficulty; Ellison yells and the screen flashes red when he is attacked; stepping off the bike faces him down the route.",
+  "sweep": {
+    "audits": 31,
+    "passed_first_try": 31,
+    "flakes": 0,
+    "timeouts": 0,
+    "log": "Tests/Results/2026-09-19-sweep-153-cooked.txt",
+    "note": "Ran against the packaged executable, not the editor, so this also proves the cooked data table carries the new timers."
+  },
+  "targeted": {
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work/BattleMurderKAudit.log",
+      "verdict": "BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":90,...}",
+      "note": "The cooked DT_Difficulty answers timer=90 for Easy, and the audit's 90/60/30 family check passes, which is the cook-side proof that the trim shipped rather than only landing in the CSV."
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work/BattleTimeAudit.log",
+      "verdict": "BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":3}"
+    },
+    "BattleTroubleAudit": {
+      "pass": true,
+      "log": "work/BattleTroubleAudit.log",
+      "verdict": "RiderHurtVoiceAudit: takes=3 duration=1.44 starts=1 flash=0.45",
+      "note": "Three hurt takes resolve through LoadObject in the cooked build, the component plays, and the damage flash is set to the full 0.45 s. The audit's stage 0 also lifts the run clock, because its no-player time (a crash, a -60 police shot, two -10 tasers) could otherwise spend the whole 90 s Easy budget and make the stage-7 assertion unreachable."
+    },
+    "BattleFootAudit": {
+      "pass": true,
+      "log": "work/BattleFootAudit.log",
+      "verdict": "DismountFacing: body=51.0 view=51.0 expected=51.0",
+      "note": "Body and camera agree with the route heading after a dismount, which is the whole point of the change."
+    },
+    "BattlePatioAudit": {
+      "pass": true,
+      "log": "work/BattlePatioAudit.log",
+      "note": "The whole-course drive, and the audit the timer trim could most easily have broken: it walks the authored route under what is now a 90 s Easy budget and still commits the win."
+    }
+  },
+  "share": {
+    "folder": "/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 153",
+    "bundle_version": "0.153.0",
+    "signed": true,
+    "desktop_shortcut": "~/Desktop/BOA/The Battle of ATL.app repointed to 153",
+    "trap": "None this time: the uproject already carries \"Aura\" Enabled:false, so the cook reported no Error_UnknownCookFailure."
+  }
+}
