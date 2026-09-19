@@ -5,6 +5,8 @@
 #include "BattleFallenBike.h"
 #include "Engine/DamageEvents.h"
 #include "BattleRider.h"
+#include "BattleZombie.h"
+#include "BattlePolice.h"
 #include "PiedmontTrafficDirector.h"
 #include "PiedmontPedestrian.h"
 #include "EngineUtils.h"
@@ -35,6 +37,10 @@ void ABattleMacController::TickDroneAudit(float Dt){
  if(DroneStage==0){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();
+  // Hold the shot precondition like the melee audit holds its target: arcade aim-assist locks onto nearby hostiles, so a stray punk or officer near the 35 m lane steals the pistol shot from the drone (the drone is not a lock candidate). Freeze spawns and clear hostiles once, at audit start.
+  if(auto* AuditMode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this)))if(AuditMode->Enemies)AuditMode->Enemies->bFreezeSpawns=true;
+  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
+  for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)It->Destroy();
   Bike->DamageGrace=0;AuditDrone=GetWorld()->SpawnActor<ABattleDrone>(Bike->GetActorLocation()+FVector(-600,0,400),FRotator::ZeroRotator);Next();
  }else if(DroneStage==1&&DroneClock>1){DCHECK(Drone&&Drone->bWarning&&Bike->RiderHealth==100,"Missing warning or premature hit");Next();}
  else if(DroneStage==2&&Bike->bCrashActive){DCHECK(Drone&&Drone->RiderHits==1&&Bike->RiderHealth==85&&Bike->StunRemaining>0&&!Bike->Dismount()&&!Bike->FirePistol()&&!Bike->ApplyDroneStrike(),"Swept hit, harm, dismount or repeat guard failed");Next();}
