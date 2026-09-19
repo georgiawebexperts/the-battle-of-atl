@@ -167,7 +167,11 @@ void TickBattlePanelProbe(APlayerController* PC,float Dt){
  for(TActorIterator<AActor> It(World);It;++It){
   AActor* Actor=*It;
   if(Actor==PC->GetPawn()||Actor->IsA(ALandscape::StaticClass()))continue;
-  if(Actor->GetClass()->GetName().Contains(TEXT("Sky")))continue;
+  // Sky and light plumbing is normally noise, but the skyline is a cluster of
+  // pale instanced cubes and it was the one pale flat geometry in the world that
+  // this probe could never report - which is the shape of the floating panel
+  // sighting. -BattlePanelProbeSky includes it.
+  if(Actor->GetClass()->GetName().Contains(TEXT("Sky"))&&!FParse::Param(FCommandLine::Get(),TEXT("BattlePanelProbeSky")))continue;
   for(UActorComponent* Component:Actor->GetComponents()){
    if(auto* Instanced=Cast<UInstancedStaticMeshComponent>(Component)){
     UStaticMesh* Mesh=Instanced->GetStaticMesh();

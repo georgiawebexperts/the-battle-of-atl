@@ -63,6 +63,11 @@ AUDITS=(
   # the win to commit at the patio. This is the audit that would have caught a
   # rider reaching the party with no result screen.
   "BattlePatioAudit||"
+  # The Krog Street Tunnel: the bore's length, that its hazard stations landed
+  # on the tunnel floor rather than on the deck above, and that a pothole can
+  # actually throw the rider. Outside the sweep is how three audits stayed red
+  # for several builds, so this one goes in with the work it covers.
+  "BattleTunnelHazardAudit||"
   "BattleTrailModeAudit||"
   "BattleSkaterAudit||"
   "BattleDroneAudit||"
