@@ -1,8 +1,10 @@
 #include "BattleShot.h"
 #include "BattleBike.h"
+#include "BattleRider.h"
 #include "BattleZombie.h"
 #include "PiedmontCombat.h"
 #include "PiedmontExplorer.h"
+#include "EngineUtils.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Engine/StaticMesh.h"
@@ -12,6 +14,36 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "UObject/ConstructorHelpers.h"
+// Elliott: "should lock in automatically on bad targets if you are playing
+// arcade mode - maybe not if you are play the other mode". The handling toggle
+// the rider already has (T, and the HUD says ARCADE or REALISTIC) is the mode:
+// arcade pulls the shot onto a bad target near the camera line, realistic
+// leaves raw aim alone.
+static bool InArcadeMode(const APawn* Shooter){
+ const UBattleBikeMovement* Ride=nullptr;
+ if(const auto* Bike=Cast<ABattleBike>(Shooter))Ride=Bike->Ride;
+ else if(const auto* Person=Cast<ABattleRider>(Shooter))if(Person->ParkedBike)Ride=Person->ParkedBike->Ride;
+ return Ride!=nullptr&&!Ride->bRealHandling;
+}
+static FVector ArcadeLockAimPoint(const AActor* Target){return Target->GetActorLocation()+FVector(0,0,55.f);}
+// Bad targets only: zombies, police and tagged hostiles. Pedestrians and dog
+// owners share the explorer base class with zombies, so they are deliberately
+// not candidates - the assist must not aim at a bystander.
+static const AActor* ArcadeLockTarget(const APawn* Shooter,const FVector& Eye,const FVector& ViewDir){
+ const float MaxAngle=25.f,MaxRange=4500.f;const AActor* Best=nullptr;float BestScore=MAX_flt;
+ for(TActorIterator<APawn> It(Shooter->GetWorld());It;++It){
+  const APawn* P=*It;if(P==Shooter)continue;
+  const bool Bad=([&]{if(const auto* Z=Cast<ABattleZombie>(P))return !Z->bDead;return P->ActorHasTag(TEXT("PiedmontHostile"))||P->ActorHasTag(TEXT("BattlePolice"));})();
+  if(!Bad)continue;
+  const FVector D=ArcadeLockAimPoint(P)-Eye;const float Range=D.Size();
+  if(Range<80.f||Range>MaxRange)continue;
+  const float Angle=FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(FVector::DotProduct(D.GetSafeNormal(),ViewDir),-1.f,1.f)));
+  if(Angle>MaxAngle)continue;
+  const float Score=Angle+Range/1000.f;
+  if(Score<BestScore){BestScore=Score;Best=P;}
+ }
+ return Best;
+}
 static FString ConfirmedHitLabel(const APiedmontExplorer* Victim){
  if(!Victim)return TEXT("TARGET HIT");
  if(Victim->IsA<ABattleZombie>())return Victim->bDead?TEXT("ZOMBIE DOWN"):TEXT("ZOMBIE HIT");
@@ -37,7 +69,10 @@ void ABattleShotFX::BeginPlay(){
 }
 FBattleShotResult FireBattlePistol(APawn* Shooter,USceneComponent* Gun,float Spread){
  FBattleShotResult Result;if(!Shooter||!Gun)return Result;auto* PC=Cast<APlayerController>(Shooter->GetController());if(!PC)return Result;
- FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);const FVector Aim=FMath::VRandCone(View.Vector(),FMath::DegreesToRadians(Spread));
+ FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);
+ FVector Base=View.Vector();
+ if(InArcadeMode(Shooter))if(const AActor* Lock=ArcadeLockTarget(Shooter,Eye,Base)){Base=(ArcadeLockAimPoint(Lock)-Eye).GetSafeNormal();Spread*=.35f;}
+ const FVector Aim=FMath::VRandCone(Base,FMath::DegreesToRadians(Spread));
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattlePistol),true,Shooter);FHitResult CameraHit,Hit;
  const FVector Far=Eye+Aim*15000;Shooter->GetWorld()->LineTraceSingleByChannel(CameraHit,Eye,Far,ECC_Visibility,Q);
  const FVector Target=CameraHit.bBlockingHit?CameraHit.ImpactPoint:Far;const FVector Muzzle=Gun->GetComponentLocation()+View.Vector()*14;
@@ -57,12 +92,14 @@ FBattleShotResult FireBattlePistol(APawn* Shooter,USceneComponent* Gun,float Spr
 FBattleShotResult FireBattleLongGun(APawn* Shooter,USceneComponent* Gun,int32 Slot,bool Aiming){
  FBattleShotResult Result;auto* PC=Shooter?Cast<APlayerController>(Shooter->GetController()):nullptr;if(!PC||!Gun)return Result;
  FVector Eye;FRotator View;PC->GetPlayerViewPoint(Eye,View);const bool Shotgun=Slot==1;const int32 Pellets=Shotgun?8:1;
- const float Range=Shotgun?2400:Slot==4?15000:11000,Spread=Shotgun?(Aiming?3.f:5.f):(Aiming?(Slot==4?.15f:1.f):3.f);
+ const float Range=Shotgun?2400:Slot==4?15000:11000;float Spread=Shotgun?(Aiming?3.f:5.f):(Aiming?(Slot==4?.15f:1.f):3.f);
+ FVector Base=View.Vector();
+ if(InArcadeMode(Shooter))if(const AActor* Lock=ArcadeLockTarget(Shooter,Eye,Base)){Base=(ArcadeLockAimPoint(Lock)-Eye).GetSafeNormal();Spread*=.35f;}
  const FVector Muzzle=Shotgun?Gun->GetComponentTransform().TransformPosition(FVector(40,1.28f,8)):Gun->GetComponentLocation()+View.Vector()*30;
  FCollisionQueryParams Q(SCENE_QUERY_STAT(BattleLongGun),true,Shooter);
  TSet<AActor*> TimedVictims;
  for(int32 I=0;I<Pellets;I++){
-  const FVector Aim=FMath::VRandCone(View.Vector(),FMath::DegreesToRadians(Spread));FHitResult CameraHit,Hit;
+  const FVector Aim=FMath::VRandCone(Base,FMath::DegreesToRadians(Spread));FHitResult CameraHit,Hit;
   Shooter->GetWorld()->LineTraceSingleByChannel(CameraHit,Eye,Eye+Aim*Range,ECC_Visibility,Q);const FVector Target=CameraHit.bBlockingHit?CameraHit.ImpactPoint:Eye+Aim*Range;
   if(!Shooter->GetWorld()->LineTraceSingleByChannel(Hit,Eye,Muzzle,ECC_Visibility,Q))Shooter->GetWorld()->LineTraceSingleByChannel(Hit,Muzzle,Target+(Target-Muzzle).GetSafeNormal()*3,ECC_Visibility,Q);
   Result.End=Hit.bBlockingHit?Hit.ImpactPoint:Target;AActor* HitActor=Hit.GetActor();auto* Victim=Cast<APiedmontExplorer>(HitActor);const bool Alive=Victim&&!Victim->bDead;

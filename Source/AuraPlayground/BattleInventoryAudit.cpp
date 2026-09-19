@@ -61,6 +61,46 @@ void ABattleMacController::TickInventoryAudit(float Dt){
   UE_LOG(LogTemp,Display,TEXT("RidingGunAudit: {\"passed\":%s,\"rifle_magazine\":%d,\"shotgun_magazine\":%d}"),Pass?TEXT("true"):TEXT("false"),Bike->Inventory[4].Magazine,Bike->Inventory[1].Magazine);
   ConsoleCommand(TEXT("quit"));return;
  }
+ // Elliott: "should lock in automatically on bad targets if you are playing
+ // arcade mode - maybe not if you are play the other mode". Run with
+ // -BattleInventoryAudit -BattleArcadeLockAudit. A punk is placed 18 degrees off
+ // the camera line, which a raw shot misses, so a hit proves the assist moved
+ // the shot and a miss in realistic proves it is arcade-only.
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleArcadeLockAudit"))){
+  static int32 Stage=0;static float Clock=0;static bool Pass=true,ArcadeHit=false,RealMiss=false;
+  static TWeakObjectPtr<ABattleZombie> ArcadeTarget,RealTarget;
+  APlayerController* PC=this;
+  Clock+=Dt;
+  auto OffLine=[&](float Degrees,FVector& Eye){
+   FRotator View;PC->GetPlayerViewPoint(Eye,View);
+   return (Eye+View.Vector().RotateAngleAxis(Degrees,FVector::UpVector)*1500.f);
+  };
+  auto Place=[&](const FVector& At){
+   FActorSpawnParameters P;P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+   return Bike->GetWorld()->SpawnActor<ABattleZombie>(ABattleZombie::StaticClass(),FTransform(At),P);
+  };
+  if(Stage==0){
+   Bike->Ride->bRealHandling=false;
+   FVector Eye;const FVector At=OffLine(18.f,Eye);ArcadeTarget=Place(At);ArcadeHit=Bike->FirePistol();
+   Stage=1;Clock=0;return;
+  }
+  if(Stage==1&&Clock>.45f){
+   ArcadeHit=ArcadeHit&&ArcadeTarget.IsValid()&&ArcadeTarget->Health<100.f;
+   Pass&=ArcadeHit;
+   if(ArcadeTarget.IsValid())ArcadeTarget->Destroy();
+   Bike->Ride->bRealHandling=true;
+   FVector Eye;const FVector At=OffLine(18.f,Eye);RealTarget=Place(At);Bike->FirePistol();
+   Stage=2;Clock=0;return;
+  }
+  if(Stage==2&&Clock>.45f){
+   RealMiss=RealTarget.IsValid()&&RealTarget->Health>=100.f;
+   Pass&=RealMiss;
+   if(RealTarget.IsValid())RealTarget->Destroy();
+   UE_LOG(LogTemp,Display,TEXT("ArcadeLockAudit: {\"passed\":%s,\"arcade_hit\":%s,\"realistic_miss\":%s}"),Pass?TEXT("true"):TEXT("false"),ArcadeHit?TEXT("true"):TEXT("false"),RealMiss?TEXT("true"):TEXT("false"));
+   ConsoleCommand(TEXT("quit"));return;
+  }
+  return;
+ }
  static TSet<FString> Captured;
  static float HandError=0,HandLow=MAX_flt,HandHigh=-MAX_flt;static int PumpHandSamples=0,ReloadHandSamples=0;
  const bool HandAudit=FParse::Param(FCommandLine::Get(),TEXT("BattleShotgunHandAudit"));
