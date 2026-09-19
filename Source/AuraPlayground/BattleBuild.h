@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 
 namespace BattleBuild {
-inline constexpr TCHAR Label[] = TEXT("BUILD 129");
+inline constexpr TCHAR Label[] = TEXT("BUILD 130");
 inline constexpr TCHAR Version[] = TEXT("VERSION 1");
-inline constexpr TCHAR VersionedLabel[] = TEXT("VERSION 1  •  BUILD 129");
+inline constexpr TCHAR VersionedLabel[] = TEXT("VERSION 1  •  BUILD 130");
 }

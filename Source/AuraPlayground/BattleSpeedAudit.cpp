@@ -93,42 +93,48 @@ void TickBattleSpeedAudit(APlayerController* PC,float Dt){
  if(S.Stage==1&&S.Clock>1.f){
   // SHIFT is the real binding, so press the real key rather than calling Boost().
   // The press is recorded now and dispatched on the next input tick, so the
-  // charge is checked in the stage below rather than in this frame.
+  // charge is polled below until it arrives instead of being checked at one
+  // fixed time - a single frame hitch used to turn this into a false red.
   Key(EKeys::LeftShift,true);
   S.Stage=2;
  }
- if(S.Stage==2&&S.Clock>1.35f){
-  Key(EKeys::LeftShift,false);
+ if(S.Stage==2){
   if(Base->BoostCharges!=2){
-   // Separate "the key never reached the binding" from "Boost() refused".
-   const bool Direct=Base->Boost();
-   UE_LOG(LogTemp,Display,TEXT("SpeedAudit: shift_pre recovery=%.2f grounded=%d parked=%d ctrl=%s run_ended=%d countdown=%.2f direct_call=%d"),Base->Ride->Recovery,Base->Ride->IsMovingOnGround()?1:0,Base->bParked?1:0,*GetNameSafe(Base->GetController()),Mode->bRunEnded?1:0,Mode->StartCountdown,Direct?1:0);
-   if(Direct){Finish(false,TEXT("SHIFT key never reached Boost()"));return;}
-   Finish(false,TEXT("Boost() refused with a full bank"));return;
+   if(S.Clock>3.f){
+    Key(EKeys::LeftShift,false);
+    // Separate "the key never reached the binding" from "Boost() refused".
+    const bool Direct=Base->Boost();
+    UE_LOG(LogTemp,Display,TEXT("SpeedAudit: shift_pre recovery=%.2f grounded=%d parked=%d ctrl=%s run_ended=%d countdown=%.2f direct_call=%d"),Base->Ride->Recovery,Base->Ride->IsMovingOnGround()?1:0,Base->bParked?1:0,*GetNameSafe(Base->GetController()),Mode->bRunEnded?1:0,Mode->StartCountdown,Direct?1:0);
+    if(Direct){Finish(false,TEXT("SHIFT key never reached Boost()"));return;}
+    Finish(false,TEXT("Boost() refused with a full bank"));return;
+   }
+   return;
   }
+  Key(EKeys::LeftShift,false);
   if(Base->Ride->BoostRemaining<=0){Finish(false,TEXT("SHIFT did not start the burst"));return;}
+  S.Clock=0;
   S.Stage=3;
  }
- if(S.Stage==3&&S.Clock>2.6f){
+ if(S.Stage==3&&S.Clock>1.25f){
   // Gear 1 arcade tops out at 650 cm/s, so anything past 1500 is the burst.
   if(S.Peak<1500||Base->Ride->BoostRemaining<=0){Finish(false,TEXT("Burst did not reach temporary speed"));return;}
   Shot(TEXT("boost-active.png"));Key(EKeys::S,true);S.Stage=4;
  }
- if(S.Stage==4&&S.Clock>4.4f){
+ if(S.Stage==4&&S.Clock>3.05f){
   if(Base->Ride->BoostRemaining>0){Finish(false,TEXT("Burst did not expire on its own"));return;}
   Shot(TEXT("boost-expired.png"));S.Stage=5;
  }
- if(S.Stage==5&&S.Clock>4.7f){
+ if(S.Stage==5&&S.Clock>3.35f){
   Key(EKeys::S,false);
   if(Base->Ride->Speed>700){Finish(false,TEXT("Braking did not shed the earned speed"));return;}
   S.Stage=6;
  }
- if(S.Stage==6&&S.Clock>5.1f){
+ if(S.Stage==6&&S.Clock>3.75f){
   Base->BoostCharges=0;Base->Nitro=0;
   if(Base->Boost()){Finish(false,TEXT("Boost fired with an empty bank"));return;}
   S.Stage=7;
  }
- if(S.Stage==7&&S.Clock>5.5f){
+ if(S.Stage==7&&S.Clock>4.15f){
   Base->Ride->Speed=0;Base->Ride->StopMovementImmediately();
   if(!Base->Dismount()){Finish(false,TEXT("Dismount failed"));return;}
   auto* Person=Cast<ABattleRider>(PC->GetPawn());if(!Person){Finish(false,TEXT("Missing FPS rider"));return;}
