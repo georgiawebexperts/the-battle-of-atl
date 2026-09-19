@@ -1,0 +1,104 @@
+{
+  "build": "145",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "b77b3f404363d71f9351f68b3cb1236e72b6e122",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "b77b3f4 merged Mac skatepark spine + core pump line; best-time board now lists Easy/Medium/Hard with active starred",
+  "targeted": {
+    "BattleFpsAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleFpsAudit.log",
+      "verdict": "[2026.09.19-09.49.20:990][ 26]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":58.6,\"min_fps\":36.7,\"p05_fps\":51.9,\"samples\":1752}",
+      "note": "Verdict printed and passed; process idled in a post-verdict loop and was terminated after log capture."
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleSkaterAudit.log",
+      "verdict": "[2026.09.19-09.50.42:747][841]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9740.2,\"corners\":6,\"people_hit\":2}"
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleTimeAudit.log",
+      "verdict": "[2026.09.19-09.48.20:896][414]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":5}"
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleInventoryAudit.log",
+      "verdict": "[2026.09.19-09.51.09:966][314]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}"
+    },
+    "BattleFinishAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleFinishAudit.log",
+      "verdict": "[2026.09.19-09.51.19:444][275]LogTemp: Display: BattleFinishAudit: {\"passed\":true,\"reason\":\"Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass\"}"
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleMusicAudit.log",
+      "verdict": "[2026.09.19-09.48.33:560][457]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}"
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleTunnelHazardAudit.log",
+      "verdict": "[2026.09.19-09.47.52:300][459]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":2,\"gallery_ride_cm\":4711,\"wipeouts\":0}"
+    },
+    "BattleEastsideAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleEastsideAudit.log",
+      "verdict": "[2026.09.19-09.46.37:092][112]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213807.88,\"maxCenterlineErrorCm\":93.73,\"wipeouts\":0}"
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleSkateAudit.log",
+      "verdict": "[2026.09.19-09.49.49:939][927]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.91,\"x\":40350.68,\"z\":748.15}"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work\\t145-BattleMurderKAudit.log",
+      "verdict": "[2026.09.19-09.48.02:015][225]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}"
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "runs": [
+        {
+          "run": 1,
+          "log": "work\\t145-BattleHomeDriveAudit-run1.log",
+          "verdict": "[2026.09.19-09.47.09:258][107]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4888.60,\"maxCenterlineErrorCm\":187.21,\"wipeouts\":0}"
+        },
+        {
+          "run": 2,
+          "log": "work\\t145-BattleHomeDriveAudit-run2.log",
+          "verdict": "[2026.09.19-09.47.32:938][106]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4901.17,\"maxCenterlineErrorCm\":187.09,\"wipeouts\":0}"
+        }
+      ]
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 30,
+    "total": 30,
+    "log": "work\\sweep-145-20260919-055130.log",
+    "flakes": [],
+    "failures": []
+  },
+  "road_lane": {
+    "pass": true,
+    "map": "/Game/PiedmontRide/Maps/PiedmontCarLaneReview",
+    "log": "work/road-lane-audit.log",
+    "verdict": "RoadLaneAudit: {\"passed\":true,\"reason\":\"Both opposing road lanes traversed with wheel support and endpoint stops\",\"cars\":2,\"total_distance_cm\":81396.344}",
+    "note": "Editor run from round 11; review map and lane code unchanged this round. Windows runner: Scripts/run_road_lane_audit.ps1"
+  },
+  "shipping": {
+    "status": "BUILD SUCCESSFUL",
+    "log": "work/windows-package-145-shipping.log",
+    "exe_sha256": "34088AD92CEE78E5CC7222325EEF1DF2E63CE3845C25DADBBC15CC2FCE17DF7A",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 145",
+    "launch_verify": true,
+    "launch_note": "Launcher stub at root spawned AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe, alive at 25s.",
+    "shortcuts": {
+      "playtest": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 145.lnk",
+      "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk"
+    }
+  }
+}

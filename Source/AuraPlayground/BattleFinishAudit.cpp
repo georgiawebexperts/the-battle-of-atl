@@ -46,6 +46,7 @@ void ABattleMacController::TickFinishAudit(float Dt){
  if(Mode->DifficultyName==TEXT("Hard")){Place(BattleHomeData::Gate-BattleHomeData::South*350+FVector(0,0,98));FCHECK(Bike->Dismount(),"Cannot dismount for foot finish");auto* Foot=Cast<ABattleRider>(GetPawn());FCHECK(Foot,"Missing foot rider");Foot->SetActorLocation(RealArrival,false,nullptr,ETeleportType::TeleportPhysics);}else Place(RealArrival);
  Home->Tick(.016f);FCHECK(Mode->bWon&&Mode->bRunEnded&&Mode->bRecordSaved&&!Home->TryFinish(),"Real patio arrival did not commit win once");
  FCHECK(FMath::IsNearlyEqual(BattleRecords::Best(Mode->DifficultyName),123.4f)&&Mode->FinishKills==7&&Mode->FinishWipeouts==2&&Mode->FinishNearMisses==9,"Win stats or record incorrect");
+ FCHECK(BattleRecords::Wins(Mode->DifficultyName)==1&&(Mode->DifficultyName==TEXT("Easy")?BattleRecords::Wins(TEXT("Hard"))==0:BattleRecords::Wins(TEXT("Easy"))==0),"Win count persistence or difficulty isolation failed");
  const float Before=Mode->TimeRemaining;Mode->Tick(.2f);FCHECK(Mode->TimeRemaining==Before&&!Mode->AdjustRunTime(30,TEXT("late reward")),"Finished timer changed");
  const bool CelebrationReview=FParse::Param(FCommandLine::Get(),TEXT("BattleCelebrationReview"));
  ShowMenu(CelebrationReview?TEXT("Celebration"):TEXT("Win"));FCHECK(IsPaused()&&Menu.IsValid(),"Win menu missing");

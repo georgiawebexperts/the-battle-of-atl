@@ -319,6 +319,9 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(FString::Printf(TEXT("MADE THE PARTY  |  GRADE %s"),*Park->FinishGrade),30,FLinearColor(.3,1,.65));
   Label(FString::Printf(TEXT("TIME LEFT  %s\nRUN TIME  %s\nZOMBIES  %d   WIPEOUTS  %d\nTOP SPEED  %.0f MPH   NEAR MISSES  %d"),*BattleRecords::Format(Park->TimeRemaining),*BattleRecords::Format(Park->RunElapsed),Park->FinishKills,Park->FinishWipeouts,Park->RunTopSpeed*.0223694f,Park->FinishNearMisses),22,FLinearColor::White);
   Label(Park->bRecordSaved?FString::Printf(TEXT("BEST %s  %s"),*Park->DifficultyName.ToString(),*BattleRecords::Format(BattleRecords::Best(Park->DifficultyName))):TEXT("Best time could not be saved."),18,FLinearColor(1,.7,.35));
+  const int32 TotalWins=BattleRecords::Wins(Park->DifficultyName);
+  Label(FString::Printf(TEXT("TOTAL WINS  %d"),TotalWins),18,FLinearColor(1,.7,.35));
+  if(TotalWins>=5)Label(FString::Printf(TEXT("%d WINS!  BEAT YOUR BEST TIME FOR THE GHOST RIDER"),TotalWins),18,FLinearColor(.55,1,.95));
   Button(TEXT("RIDE AGAIN"),[this](){const auto* M=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));StartDifficulty(M?M->DifficultyName:FName(TEXT("Easy")));});Button(TEXT("LEVEL SELECT"),[this](){ShowMenu(TEXT("Levels"));});Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
  }else if(Page==TEXT("Loss")){
   Label(TEXT("Time ran out. Pick a difficulty and ride again."),18,FLinearColor::White);
