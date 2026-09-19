@@ -65,7 +65,12 @@ mesh_asset = skeletal or static
 origin, extent = mesh_asset.get_bounds().origin, mesh_asset.get_bounds().box_extent
 report["bounds_cm"] = {"origin": [origin.x, origin.y, origin.z], "extent": [extent.x, extent.y, extent.z],
                        "longest_axis_cm": 2 * max(extent.x, extent.y, extent.z)}
-report["materials"] = [str(m.get_name()) for m in mesh_asset.get_editor_property("materials" if skeletal else "static_materials") or []]
+if skeletal:
+    report["materials"] = [str(m.get_name()) for m in skeletal.get_editor_property("materials") or []]
+else:
+    report["materials"] = [str(slot.material_interface.get_name())
+                           for slot in static.get_editor_property("static_materials") or []
+                           if slot.material_interface]
 if skeletal:
     report["skeleton"] = str(skeletal.get_editor_property("skeleton").get_name()) if skeletal.get_editor_property("skeleton") else None
     report["bone_count"] = len(skeletal.get_editor_property("skeleton").get_editor_property("bone_tree") or []) if skeletal.get_editor_property("skeleton") else 0
@@ -78,11 +83,17 @@ ea = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 world = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
 unreal.PiedmontWorldTools.finish_editor_asset_loading()
 
-# Somewhere flat and open: the Fourth Ward pad, west of the skatepark.
-spot = unreal.Vector(37000.0, 75000.0, 8000.0)
-hit = unreal.PiedmontWorldTools.trace_world_surface(spot, spot - unreal.Vector(0, 0, 6000))
-assert hit[0], "no ground under the bear review spot"
-ground = hit[1]
+# Somewhere flat and open near the Fourth Ward park. The trace has to reach
+# below world zero: the park deck sits at 650 and the ground under it at
+# 200-600, so a six-metre drop from eight thousand finds nothing at all.
+ground = None
+for x, y in ((37000.0, 75000.0), (35000.0, 73000.0), (41000.0, 76000.0), (32000.0, 78000.0)):
+    hit = unreal.PiedmontWorldTools.trace_world_surface(unreal.Vector(x, y, 8000.0),
+                                                        unreal.Vector(x, y, -4000.0))
+    if hit:
+        ground = hit[0]  # (impact point, hit actor)
+        break
+assert ground is not None, "no ground under any bear review spot"
 report["ground"] = [ground.x, ground.y, ground.z]
 
 if skeletal:
@@ -111,6 +122,41 @@ height = 2 * extent.z * scale
 
 # ------------------------------------------------------- a spectral preview material
 lib = unreal.MaterialEditingLibrary
+
+# The author's own texture, so the first two views show the mesh as intended
+# rather than the engine's default grid.
+tex_task = unreal.AssetImportTask()
+tex_task.filename = str(root / "SourceAssets/Spirit/BearCandidate/Bear_BaseColor.png")
+tex_task.destination_path = dest
+tex_task.destination_name = "T_BearCandidate_BaseColor"
+tex_task.automated = True
+tex_task.replace_existing = True
+tex_task.save = True
+unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([tex_task])
+base_tex = unreal.load_asset(dest + "/T_BearCandidate_BaseColor")
+assert base_tex, "base colour texture did not import"
+
+lit = unreal.load_asset(dest + "/M_BearCandidateLit")
+if not lit:
+    lit = unreal.AssetToolsHelpers.get_asset_tools().create_asset(
+        "M_BearCandidateLit", dest, unreal.Material, unreal.MaterialFactoryNew())
+lib.delete_all_material_expressions(lit)
+# A flat bear-brown base colour, deliberately not the author's texture: a
+# texture-sample graph compiled and saved but rendered black in the capture
+# pass, and a review render that lies about the mesh is worse than a plain one.
+# The texture is still imported as T_BearCandidate_BaseColor for whoever wires
+# the real presentation material.
+fur = lib.create_material_expression(lit, unreal.MaterialExpressionConstant3Vector, -400, 0)
+fur.set_editor_property("constant", unreal.LinearColor(0.24, 0.16, 0.11, 1.0))
+rough = lib.create_material_expression(lit, unreal.MaterialExpressionConstant, -400, 260)
+rough.set_editor_property("r", 0.85)
+lib.connect_material_property(fur, "", unreal.MaterialProperty.MP_BASE_COLOR)
+lib.connect_material_property(rough, "", unreal.MaterialProperty.MP_ROUGHNESS)
+lib.recompile_material(lit)
+unreal.EditorAssetLibrary.save_loaded_asset(lit, False)
+for i in range(comp.get_num_materials()):
+    comp.set_material(i, lit)
+
 mat = unreal.load_asset(dest + "/M_BearSpectralPreview")
 if not mat:
     mat = unreal.AssetToolsHelpers.get_asset_tools().create_asset(
@@ -120,19 +166,21 @@ mat.set_editor_property("blend_mode", unreal.BlendMode.BLEND_TRANSLUCENT)
 mat.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_UNLIT)
 mat.set_editor_property("two_sided", True)
 fresnel = lib.create_material_expression(mat, unreal.MaterialExpressionFresnel, -600, 0)
-fresnel.set_editor_property("exponent", 3.0)
-fresnel.set_editor_property("base_reflect_fraction", 0.15)
+fresnel.set_editor_property("exponent", 2.0)
+fresnel.set_editor_property("base_reflect_fraction", 0.35)
 rim = lib.create_material_expression(mat, unreal.MaterialExpressionConstant3Vector, -400, -160)
-rim.set_editor_property("constant", unreal.LinearColor(0.42, 0.62, 0.95, 1.0))
+rim.set_editor_property("constant", unreal.LinearColor(0.35, 0.6, 1.0, 1.0))
 body = lib.create_material_expression(mat, unreal.MaterialExpressionConstant3Vector, -400, 120)
-body.set_editor_property("constant", unreal.LinearColor(0.02, 0.02, 0.03, 1.0))
+body.set_editor_property("constant", unreal.LinearColor(0.05, 0.05, 0.08, 1.0))
 mul = lib.create_material_expression(mat, unreal.MaterialExpressionMultiply, -200, -160)
+mul.set_editor_property("const_b", 2.5)
+rim_only = lib.create_material_expression(mat, unreal.MaterialExpressionMultiply, -300, -60)
 opacity = lib.create_material_expression(mat, unreal.MaterialExpressionLinearInterpolate, -200, 200)
-opacity.set_editor_property("const_a", 0.22)
-opacity.set_editor_property("const_b", 0.92)
-lib.connect_material_expressions(mul, "", opacity, "alpha")
+opacity.set_editor_property("const_a", 0.62)
+opacity.set_editor_property("const_b", 1.0)
 lib.connect_material_expressions(fresnel, "", mul, "a")
 lib.connect_material_expressions(rim, "", mul, "b")
+lib.connect_material_expressions(mul, "", opacity, "alpha")
 lib.connect_material_expressions(body, "", opacity, "a")
 lib.connect_material_expressions(rim, "", opacity, "b")
 lib.connect_material_property(mul, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
@@ -158,7 +206,7 @@ capture.set_editor_property("capture_on_movement", False)
 capture.set_editor_property("fov_angle", 45)
 
 centre = ground + unreal.Vector(0, 0, height * 0.5)
-distance = max(420.0, height * 3.0)
+distance = max(560.0, height * 4.0)
 
 
 def render(name, offset, look_from):
@@ -181,7 +229,7 @@ views = []
 views.append(render("authored-three-quarter", unreal.Vector(-distance, -distance, distance * 0.45), centre))
 views.append(render("authored-side", unreal.Vector(distance * 1.2, 0, distance * 0.25), centre))
 
-for i in range(comp.get_num_materials() if not skeletal else len(skeletal.get_editor_property("materials"))):
+for i in range(comp.get_num_materials()):
     comp.set_material(i, mat)
 views.append(render("spectral-three-quarter", unreal.Vector(-distance, -distance, distance * 0.45), centre))
 views.append(render("spectral-front", unreal.Vector(0, -distance * 1.3, height * 0.7), centre))
@@ -191,4 +239,4 @@ report["scope"] = ("Shape and spectral-read review only. The staged actors are t
                    "saved, no gameplay, encounter rule or presentation flag was changed, and the CC-BY 4.0 "
                    "attribution is not yet in any credits file.")
 (out / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
-print(json.dumps({k: report[k] for k in ("kinds", "bounds_cm", "authored_length_cm", "animations", "bone_count")}))
+print(json.dumps({k: report.get(k) for k in ("kinds", "bounds_cm", "authored_length_cm", "materials")}))

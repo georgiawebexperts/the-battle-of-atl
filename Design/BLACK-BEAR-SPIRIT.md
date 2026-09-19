@@ -45,3 +45,41 @@ Placement is on the right of the southbound retained Eastside route, 2,200 game 
 The adjacent route passed actual W/A/D bike traversal in both directions: 6,055.32 cm travelled, 20.33 cm maximum centerline deviation, 590/590 paved ground samples, zero wipeouts. This proves the trail is rideable with the memorial present, not that a bear chase is balanced or complete. `ABattleSpirit::BeginPlay` now receives the sourced approach and chase points. `bPresentationReady` remains false pending bear model/animation, spectral appearance, audio and full encounter playtest. Desktop build 042 is unchanged.
 
 Import caveat: UnrealEditor saved all assets and produced its import manifest, then encountered a shutdown fatal error in editor ModeManagerInteractiveToolsContext teardown. The owned failed editor process was closed. Subsequent packaging succeeded and fresh native renders verified the saved assets. Do not describe the import process itself as a clean editor exit.
+
+## Bear candidate found and rendered — 2026-09-19 [codex-maclaptop]
+
+The blocker has always been the mesh: the CC0 GitHub mirror used for the rifle and
+SMG has no bear anywhere in its 2049 files, and Fab/Sketchfab need Elliott's signed-in
+browser session, which is unreachable while the Mac is locked. OpenGameArt serves its
+files over plain HTTP with no login, so the hunt moved there. Two candidates actually
+read as bears:
+
+1. **Low Poly Bear** by mathildelea, **CC-BY 4.0**, `https://opengameart.org/content/low-poly-bear`.
+   Binary FBX, 35,852 bytes, plus a base-colour PNG. Staged at
+   `SourceAssets/Spirit/BearCandidate/` with the sha256s and licence in `SOURCE.json`.
+2. **Animal Figurines** (CC0), whose bear is a carved-wood figurine — second choice,
+   squared muzzle and no ears in silhouette.
+
+Rejected: **White Bear Low Poly** (CC0) ships only as `Bear.blend`, and Blender is not
+installed on this Mac, so it cannot be converted here.
+
+`Scripts/preview_bear_candidate.py` imports the candidate into a scratch folder,
+builds a flat-brown material and a spectral preview material (near-black translucent
+body, Fresnel silver-blue rim), stages the mesh on the Fourth Ward grass and renders
+four views to `work/bear-candidate-review/`. Native results, both inspected: the
+authored view reads unmistakably as a quadruped bear at 180 cm nose to tail (the file
+is authored 569 cm long and the preview scales it), and the spectral view reads as a
+translucent ghost that lets the grass through, which is the intended treatment.
+
+What this is not: the mesh is a **static** import with no skeleton and no animations,
+so a bear that walks or turns is not available from this file. Two things have to be
+decided before it ships. First, does Elliott accept a low-poly mesh for a figure that
+only appears for about twelve seconds, halfway to translucent? The note above forbids
+calling an unreviewed low-poly substitute finished — this is the review material, not
+the acceptance. Second, CC-BY 4.0 requires a visible credit for mathildelea, which is
+a credits-file change and a separate decision from the rule that the personal
+inspiration behind the spirit stays out of credits and game text.
+
+`ABattleSpirit::bPresentationReady` is untouched and remains false. Nothing was
+installed, placed or enabled; the staged actors are transient and the map was not
+saved.

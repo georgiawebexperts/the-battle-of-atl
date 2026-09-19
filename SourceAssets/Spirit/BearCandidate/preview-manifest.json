@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-09-19T05:58:15.999696+00:00",
+  "source": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Spirit/BearCandidate/Bear.fbx",
+  "source_sha256": "f6b8e5396b88e8ab1b3649ccd34e1dcaaf1f35408021847c432f527bca110e1f",
+  "map_saved": false,
+  "bPresentationReady_touched": false,
+  "imported": [
+    "BearCandidate",
+    "M_BearCandidateLit",
+    "M_BearSpectralPreview",
+    "T_BearCandidate_BaseColor"
+  ],
+  "kinds": {
+    "skeletal": null,
+    "static": "/Game/BattleForTheA/Spirit/BearCandidate/BearCandidate.BearCandidate"
+  },
+  "bounds_cm": {
+    "origin": [
+      278.9189758300781,
+      0.77349853515625,
+      175.2362401485443
+    ],
+    "extent": [
+      136.42886352539062,
+      284.5849609375,
+      168.2044641971588
+    ],
+    "longest_axis_cm": 569.169921875
+  },
+  "materials": [
+    "WorldGridMaterial"
+  ],
+  "animations": [],
+  "ground": [
+    36999.9995565678,
+    75000.00054523988,
+    451.41421272849675
+  ],
+  "authored_length_cm": 569.169921875,
+  "review_scale": 0.3162500214470772,
+  "spectral_material": "/Game/BattleForTheA/Spirit/BearCandidate/M_BearSpectralPreview.M_BearSpectralPreview",
+  "images": [
+    {
+      "file": "authored-three-quarter.png",
+      "sha256": "eba39dc8830404c94808c34670f5e9934bfea354678da5ee5176cc2c05072547",
+      "camera": [
+        36439.9995565678,
+        74440.00054523988,
+        756.6088781383423
+      ]
+    },
+    {
+      "file": "authored-side.png",
+      "sha256": "8edacca6031c54999242c8e7f2d5e5ad7f34c3a522767661c9da73ed5386b26f",
+      "camera": [
+        37671.9995565678,
+        75000.00054523988,
+        644.6088781383423
+      ]
+    },
+    {
+      "file": "spectral-three-quarter.png",
+      "sha256": "e5db284529d5d8c362b41ff049fa79afdedf1e8424e86af6f26e527152d22c4b",
+      "camera": [
+        36439.9995565678,
+        74440.00054523988,
+        756.6088781383423
+      ]
+    },
+    {
+      "file": "spectral-front.png",
+      "sha256": "916971a1ea6f8ec1ecf98fb236fe8cb06690ee39d36919d9b7f684d59a3d435b",
+      "camera": [
+        36999.9995565678,
+        74272.00054523988,
+        579.0814097121262
+      ]
+    }
+  ],
+  "scope": "Shape and spectral-read review only. The staged actors are transient, the map is not saved, no gameplay, encounter rule or presentation flag was changed, and the CC-BY 4.0 attribution is not yet in any credits file."
+}
