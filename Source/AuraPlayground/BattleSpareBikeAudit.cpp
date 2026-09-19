@@ -70,7 +70,21 @@ void TickAudit(APlayerController* PC,float Dt){
   if(P->StepOffRemaining>0)return;
   BCHECK(Approach(P,Original.GetLocation()),"Could not approach abandoned bike");Phase=3;Clock=0;
  }else if(Phase==3&&Clock>.3f){E();Phase=4;Clock=0;}
- else if(Phase==4&&Clock>.3f){BCHECK(PC->GetPawn()==Bike&&FVector::Dist2D(Bike->GetActorLocation(),Original.GetLocation())<30&&Bike->Inventory[0].Reserve>=Reserve,"Could not ride abandoned bike again with supplies");Finish(true,TEXT("Actual spare stations, E interaction, carried ammo/health/horns, swimming guard and riding the abandoned bike again pass"));}
+ else if(Phase==4){
+  // Mounting is asynchronous: E starts a step-on that puts the pawn on the bike
+  // a few frames later, and this phase asserted 0.3 s after the key press. Under
+  // sweep load that is a coin flip - the build-147b sweep failed here with
+  // "Could not ride abandoned bike again with supplies", with the bike present
+  // and the key already sent, and the same binary passed alone. The promise is
+  // that the abandoned bike can be ridden again and kept its supplies, not that
+  // the mount lands inside a third of a second, so wait for the mount and then
+  // check the promise.
+  if(PC->GetPawn()!=Bike){
+   if(FMath::Fmod(Clock,.5f)<Dt)UE_LOG(LogTemp,Display,TEXT("SpareBikeMountWait: pawn=%s bike=%s clock=%.1f"),*GetNameSafe(PC->GetPawn()),*GetNameSafe(Bike),Clock);
+   BCHECK(Clock<4.f,"Could not ride abandoned bike again with supplies");
+   return;
+  }
+  BCHECK(FVector::Dist2D(Bike->GetActorLocation(),Original.GetLocation())<30&&Bike->Inventory[0].Reserve>=Reserve,"Could not ride abandoned bike again with supplies");Finish(true,TEXT("Actual spare stations, E interaction, carried ammo/health/horns, swimming guard and riding the abandoned bike again pass"));}
 #undef BCHECK
 #endif
 }

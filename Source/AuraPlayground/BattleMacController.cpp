@@ -362,6 +362,11 @@ void ABattleMacController::ShowMenu(FString Page){
   Button(TEXT("OPTIONS"),[this](){ShowMenu(TEXT("Options"));});
   Button(TEXT("QUIT"),[this](){UKismetSystemLibrary::QuitGame(this,this,EQuitPreference::Quit,false);});
   Label(TEXT("The Battle of ATL built by Web Experts\nPiedmont Park to Cabbagetown — recover the phone and make the party."),13,FLinearColor(.65,.68,.72));
+  // The bear ships, so its licence's attribution has to ship with it. CC-BY 4.0
+  // asks for the author, the work, the licence and a link, visible in the
+  // distributed build - not only in a design note. Keep this line in step with
+  // CREDITS.md, and add the Remington credit before that asset ever ships.
+  Label(TEXT("Art: Low Poly Bear by Mathilde_Lea (CC-BY 4.0, opengameart.org) · weapons, characters and crowds by Quaternius (CC0) and Epic Games · full list in CREDITS.md"),12,FLinearColor(.58,.61,.65));
  }
  if((bCelebrating||bCredits)&&CelebrationArt){
   CelebrationBrush.SetResourceObject(CelebrationArt);CelebrationBrush.ImageSize=FVector2D(CelebrationArt->GetSizeX(),CelebrationArt->GetSizeY());
