@@ -31,6 +31,23 @@ void ABattleMacController::TickSpiritAudit(float Dt){
   // writes through it, and a console HighResShot under -RenderOffscreen never
   // came back - this branch used to hang here instead of producing a picture.
   SpiritReviewFrames++;
+  // Say what the capture is actually looking at. A review that writes two
+  // pictures and no numbers cannot tell "the spirit is not there" from "the
+  // spirit is there and invisible", which is exactly the mistake that cost a
+  // pass over the bear's material.
+  if(SpiritReviewFrames==45||SpiritReviewFrames==95){
+   TActorIterator<ABattleSpirit> It(GetWorld());auto* S=It?*It:nullptr;
+   if(S&&S->BearBody){
+    const FBoxSphereBounds B=S->BearBody->Bounds;
+    UE_LOG(LogTemp,Display,TEXT("BattleSpiritReview: state=%d actor=%s body_visible=%d origin=%s extent=%s material=%s camera=%s rendered=%d"),
+     int32(S->State),*S->GetActorLocation().ToCompactString(),S->BearBody->IsVisible()?1:0,
+     *B.Origin.ToCompactString(),*B.BoxExtent.ToCompactString(),*GetNameSafe(S->BearBody->GetMaterial(0)),
+     SpiritReviewCamera?*SpiritReviewCamera->GetActorLocation().ToCompactString():TEXT("none"),
+     S->BearBody->WasRecentlyRendered(1.f)?1:0);
+   }else{
+    UE_LOG(LogTemp,Display,TEXT("BattleSpiritReview: no spirit actor or no bear body component"));
+   }
+  }
   if(!Dir.IsEmpty()&&SpiritReviewFrames==45)FScreenshotRequest::RequestScreenshot(Dir/TEXT("spirit-three-quarter.png"),false,false);
   if(!Dir.IsEmpty()&&SpiritReviewFrames==70){
    // And the view that matters: off the approach, which is how the rider meets

@@ -30,6 +30,9 @@ public:
  UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Wisps;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MoonGlow;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SpiritCard;
+ /** The 3D body. Replaces the flat card as the presentation the player sees. */
+ UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> BearBody;
+ UPROPERTY() TObjectPtr<UMaterialInstanceDynamic> BearBodyMaterial;
  UPROPERTY(VisibleAnywhere) TObjectPtr<UBillboardComponent> SpiritBillboard;
  FVector ApproachPoint=FVector::ZeroVector;
  TArray<FVector> ChaseRoute;

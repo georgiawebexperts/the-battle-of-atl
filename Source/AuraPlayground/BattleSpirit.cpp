@@ -63,8 +63,42 @@ ABattleSpirit::ABattleSpirit(){
  // texture is present. This one is built from a freshly re-encoded PNG.
  static ConstructorHelpers::FObjectFinder<UMaterialInterface> SpiritMaterial(TEXT("/Game/BattleForTheA/Spirit/M_SpectralBlackBear.M_SpectralBlackBear"));
  if(SpiritMaterial.Succeeded())SpiritCard->SetMaterial(0,SpiritMaterial.Object);
- SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackBearBillboard"));SpiritBillboard->SetupAttachment(RootComponent);SpiritBillboard->SetSprite(SpiritTexture.Object);SpiritBillboard->SetRelativeLocation(FVector(0,0,110));SpiritBillboard->SetRelativeScale3D(FVector(1.15f));SpiritBillboard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritBillboard->SetCanEverAffectNavigation(false);SpiritBillboard->SetCastShadow(false);SpiritBillboard->SetVisibility(false);
- MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.12f,.55f,1.f));MoonGlow->SetAttenuationRadius(900);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
+SpiritBillboard=CreateDefaultSubobject<UBillboardComponent>(TEXT("SpectralBlackBearBillboard"));SpiritBillboard->SetupAttachment(RootComponent);SpiritBillboard->SetSprite(SpiritTexture.Object);SpiritBillboard->SetRelativeLocation(FVector(0,0,110));SpiritBillboard->SetRelativeScale3D(FVector(1.15f));SpiritBillboard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SpiritBillboard->SetCanEverAffectNavigation(false);SpiritBillboard->SetCastShadow(false);SpiritBillboard->SetVisibility(false);
+ // The 3D body, and the reason it exists: the card above is a flat cut-out, so
+ // from the bike it reads as a painted sign standing in the trail. A real
+ // quadruped reads as a bear from every angle the rider can approach from.
+ // Found on 2026-09-19 (OpenGameArt, CC-BY 4.0 - see
+ // Design/BLACK-BEAR-SPIRIT.md for the licence and the credit it requires).
+ // Hard references on purpose: an asset this project loads by string does not
+ // get cooked, and a material that fails to load falls back to the engine's
+ // checker, which is the failure that made the card look wrong in the first
+ // place.
+ static ConstructorHelpers::FObjectFinder<UStaticMesh> BearBodyMesh(TEXT("/Game/BattleForTheA/Spirit/SM_SpectralBear.SM_SpectralBear"));
+ static ConstructorHelpers::FObjectFinder<UMaterialInterface> BearBodySource(TEXT("/Game/BattleForTheA/Spirit/M_SpectralBearBody.M_SpectralBearBody"));
+ if(BearBodyMesh.Succeeded()){
+  BearBody=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BearBodyMesh"));
+  BearBody->SetupAttachment(RootComponent);
+  BearBody->SetStaticMesh(BearBodyMesh.Object);
+  // Authored nose along +Y and standing on its own origin; the actor faces +X,
+  // so the nose is yawed forward and the body scaled to 1.9 m nose to tail.
+  const float BearScale=0.334f;
+  const FRotator BearFacing(0,-90,0);
+  // The file's pivot is not at the animal: its bounding box centre sits 279 cm
+  // along local X with the feet 7 cm above the origin. Cancelling that from the
+  // bounds, rather than from a number measured once, keeps the body on the actor
+  // if the mesh is ever replaced.
+  const FBoxSphereBounds BearBounds=BearBodyMesh.Object->GetBounds();
+  const FVector BearFeetCentre(BearBounds.Origin.X,BearBounds.Origin.Y,BearBounds.Origin.Z-BearBounds.BoxExtent.Z);
+  BearBody->SetRelativeLocation(-BearFacing.RotateVector(BearFeetCentre*BearScale));
+  BearBody->SetRelativeRotation(BearFacing);
+  BearBody->SetRelativeScale3D(FVector(BearScale));
+  BearBody->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+  BearBody->SetCanEverAffectNavigation(false);
+  BearBody->SetCastShadow(false);
+  if(BearBodySource.Succeeded())BearBody->SetMaterial(0,BearBodySource.Object);
+  BearBody->SetVisibility(false);
+ }
+MoonGlow=CreateDefaultSubobject<UPointLightComponent>(TEXT("SpiritMoonGlow"));MoonGlow->SetupAttachment(RootComponent);MoonGlow->SetRelativeLocation(FVector(25,0,115));MoonGlow->SetLightColor(FLinearColor(.12f,.55f,1.f));MoonGlow->SetAttenuationRadius(900);MoonGlow->SetIntensity(0);MoonGlow->SetCastShadows(false);
  // Card visible, primitive bear hidden. If the material or the mesh is missing
  // the card is skipped at runtime and the primitives carry the scene.
  for(auto& C:FigureParts)C->SetVisibility(false);for(auto& C:Wisps)C->SetVisibility(false);
@@ -145,16 +179,29 @@ void ABattleSpirit::Tick(float Dt){
  SpiritCard->SetVisibility(false);
  SpiritBillboard->SetVisibility(false);
  const float FigureScale=Visible?FMath::Lerp(.82f,1.f,Reveal):1.f;
+ // Body first, and the card and the primitives only as fallbacks: if the mesh
+ // asset is missing the actor still has something to show rather than nothing.
+ const bool bCardMode=FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritCard"));
+ const bool bBody=BearBody!=nullptr&&!bCardMode;
+ if(BearBody){
+  BearBody->SetVisibility(Visible&&bBody);
+  // The reveal grows the body into place and the dissolve fades it out through
+  // the material's SpiritFade scalar, so the encounter's own timing drives the
+  // look rather than a second clock.
+  if(Visible&&bBody){
+   BearBody->SetRelativeScale3D(FVector(0.334f*FMath::Lerp(.86f,1.f,Reveal)));
+   if(BearBodyMaterial)BearBodyMaterial->SetScalarParameterValue(TEXT("SpiritFade"),FMath::Clamp(Reveal,0.f,1.f));
+  }
+ }
  // -BattleSpiritCard shows the painted card instead, so the two presentations can
  // be compared in one build while the card's material is being sorted out.
- const bool bCardMode=FParse::Param(FCommandLine::Get(),TEXT("BattleSpiritCard"));
  if(bCardMode){
   const float S=Visible?FMath::Lerp(.80f,1.f,Reveal):1.f;
   SpiritCard->SetRelativeScale3D(FVector(2.70f,1.85f,1)*S);
   SpiritCard->SetRelativeLocation(FVector(0,0,92.f*S));
   SpiritCard->SetVisibility(Visible);
  }
- for(auto& C:FigureParts){C->SetVisibility(Visible&&!bCardMode);if(Visible)C->SetRelativeScale3D(FVector(FigureScale));}
+ for(auto& C:FigureParts){const bool bShow=Visible&&!bCardMode&&!bBody;C->SetVisibility(bShow);if(bShow)C->SetRelativeScale3D(FVector(FigureScale));}
  for(int32 I=0;I<Wisps.Num();I++){auto* C=Wisps[I].Get();C->SetVisibility(Visible);if(Visible)C->AddLocalOffset(FVector(0,0,FMath::Sin(GetWorld()->GetTimeSeconds()*2.f+I)*Dt*12.f));}
  MoonGlow->SetVisibility(Visible);MoonGlow->SetIntensity(Visible?3200.f*Reveal*(.85f+.15f*FMath::Sin(GetWorld()->GetTimeSeconds()*5.f)):0.f);
 }
@@ -193,7 +240,25 @@ void ABattleSpirit::BeginPlay(){
  auto* FigureMat=UMaterialInstanceDynamic::Create(Base,this);
  if(FigureMat)FigureMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.020f,.045f,.105f));
  for(auto& C:FigureParts)C->SetMaterial(0,FigureMat);
- auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.08f,.55f,1.f));
+auto* WispMat=UMaterialInstanceDynamic::Create(Base,this);if(WispMat)WispMat->SetVectorParameterValue(TEXT("Color"),FLinearColor(.08f,.55f,1.f));
  for(auto& C:Wisps)C->SetMaterial(0,WispMat);
+ // The body is tinted from the same engine material the primitive figure and
+ // the wisps use, not from M_SpectralBearBody. The authored graph is kept in
+ // the repo for reference, but every material this project's editor scripts
+ // create has come out wrong in the game - and this one did too: the bear drew
+ // as the default lit grey with the moonlight picking out a blue edge, which is
+ // the "bear or angel or whatever" that Elliott could not name. The engine
+ // material is the one thing here that is known to draw.
+ if(BearBody){
+  auto* Source=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
+  if(!Source)Source=BearBody->GetMaterial(0);
+  BearBodyMaterial=Source?UMaterialInstanceDynamic::Create(Source,this):nullptr;
+  if(BearBodyMaterial)BearBodyMaterial->SetVectorParameterValue(TEXT("Color"),FLinearColor(.015f,.020f,.045f));
+  if(BearBodyMaterial)BearBody->SetMaterial(0,BearBodyMaterial);
+  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: bear_body=%s material=%s source=%s scale=%.3f"),
+   *GetNameSafe(BearBody->GetStaticMesh()),*GetNameSafe(BearBody->GetMaterial(0)),*GetNameSafe(Source),BearBody->GetRelativeScale3D().X);
+ }else{
+  UE_LOG(LogTemp,Warning,TEXT("BattleSpiritVisual: no bear body mesh - falling back to the card"));
+ }
  UE_LOG(LogTemp,Display,TEXT("BattleSpiritVisual: texture=%s material=%s"),*GetNameSafe(SpiritBillboard->Sprite),*GetNameSafe(SpiritCard->GetMaterial(0)));
 }
