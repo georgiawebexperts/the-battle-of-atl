@@ -1,0 +1,102 @@
+{
+  "build": "136",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "661a7f5",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "bb5c679 (Krog gallery cover, bear candidate, Aura disabled, tunnel-punk fix merged back; Windows features preserved)",
+  "targeted": {
+    "BattleEastsideAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.19.33:780][105]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213798.31,\"maxCenterlineErrorCm\":90.29,\"wipeouts\":0}",
+      "log": "work/t136-BattleEastsideAudit.log",
+      "notes": "completedLegs 2 and wipeouts 0 as expected; travelCm 213798.31; maxCenterlineErrorCm 90.29. ~7 min run"
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.20.28:031][ 82]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4870.69,\"maxCenterlineErrorCm\":193.91,\"wipeouts\":0}",
+      "log": "work/t136-BattleHomeDriveAudit-run2.log",
+      "notes": "run twice, both pass. run1: completedLegs 2, travelCm 4851.60, maxCenterlineErrorCm 186.94, wipeouts 0 (work/t136-BattleHomeDriveAudit-run1.log). run2: completedLegs 2, travelCm 4870.69, maxCenterlineErrorCm 193.91, wipeouts 0 (work/t136-BattleHomeDriveAudit-run2.log)"
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.20.48:668][452]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":2,\"gallery_ride_cm\":4692,\"wipeouts\":0}",
+      "log": "work/t136-BattleTunnelHazardAudit.log",
+      "notes": "new Krog gallery cover checks all green: punks 3 on 3 punk_seats, scooters 5, grounded_stations 12; gallery_columns 37, gallery_blocked 0, gallery_traffic 2, gallery_ride_cm 4692, wipeouts 0"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.21.05:072][216]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}",
+      "log": "work/t136-BattleMurderKAudit.log",
+      "notes": "16/16 checks; wall = 6 punks as expected; timer 210; shooters 1; punks 7; bums 3; fights 3; ambient_police 2; knife false; dancers 8; rioters 10; plaza_bodies 3"
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.21.23:071][414]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":5}",
+      "log": "work/t136-BattleTimeAudit.log",
+      "notes": "time_pickups == 5 as expected; phase 4"
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.21.40:698][461]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}",
+      "log": "work/t136-BattleMusicAudit.log",
+      "notes": "audio on (-nosound removed); preference_restored true as expected; tracks 2; cycle off-song1-song2-off"
+    },
+    "BattleFpsAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.22.26:113][957]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":56.6,\"min_fps\":27.9,\"p05_fps\":45.8,\"samples\":1681}",
+      "log": "work/t136-BattleFpsAudit.log",
+      "notes": "extra targeted run (not in run_quick_audits.ps1 sweep list). avg_fps 56.6, min_fps 27.9, p05_fps 45.8, samples 1681. Verdict emitted ~38s in; the game lingered after the verdict (known build 135 behavior) and was force-closed once after ~8 min so the audit batch could continue. Verdict unaffected."
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.28.07:052][944]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.95,\"x\":40350.83,\"z\":748.15}",
+      "log": "work/t136-BattleSkateAudit.log",
+      "notes": "new 2.6x skatepark from Mac build 136; stage 9; air_rewards 3; air_peak_cm 79.95"
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.29.06:813][777]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9740.3,\"corners\":6,\"people_hit\":2}",
+      "log": "work/t136-BattleSkaterAudit.log",
+      "notes": "new skatepark skater checks from Mac build 136; stage 5; travel_cm 9740.3; corners 6; people_hit 2"
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-06.29.39:877][312]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}",
+      "log": "work/t136-BattleInventoryAudit.log",
+      "notes": "new SMG checks from Mac build 136; phase 20; crates 20 of desired 20; kills 2; deaths 1"
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 20,
+    "total": 20,
+    "log": "work/sweep-136-20260919-062952.log",
+    "flakes": [
+      {
+        "audit": "BattleDuckAudit",
+        "first_run": "[2026.09.19-06.33.36:669][272]LogTemp: Display: BattleDuckAudit: {\"passed\":false,\"reason\":\"fewer than three ducks landed on open water\",\"ducks\":8,\"over_water\":2,\"bumps\":0,\"time_delta\":0.0,\"notice\":\"\",\"lowest_offset_cm\":-1.0}",
+        "first_run_log": "work/BattleDuckAudit.log",
+        "retry": "[2026.09.19-06.35.41:249][889]LogTemp: Display: BattleDuckAudit: {\"passed\":true,\"reason\":\"swimmer dunked and charged for the duck\",\"ducks\":8,\"over_water\":6,\"bumps\":1,\"time_delta\":-5.0,\"notice\":\"DUCK!\",\"lowest_offset_cm\":-94.7}",
+        "retry_log": "work/t136-BattleDuckAudit-retry.log",
+        "verdict": "green_flake",
+        "reading": "First sweep attempt failed with over_water=2, lowest_offset_cm=-1.0, no notice (same shore-duck signature seen in build 125/126 flakes). Single immediate retry per policy passed with over_water=6, notice DUCK!."
+      }
+    ],
+    "failures": [],
+    "note": "run_quick_audits.ps1 -ExePath staged exe; 19/20 passed on first try, BattleDuckAudit failed once and passed on the single immediate retry => green flake, so 20/20 green overall. The script itself exited 1 because of the first duck attempt (no auto-retry when a false verdict exists). Sweep window 06:30:06-06:35:11 UTC. Sweep list = 20 audits incl. BattleMusicAudit (audio) and BattleTunnelHazardAudit; it does not include BattleEastsideAudit, BattleFpsAudit, BattleSkateAudit, BattleSkaterAudit or BattleInventoryAudit, all covered by targeted runs above."
+  },
+  "notes": "Staged exe verified present before any run (335,762,432 bytes, LastWriteTime 2026-09-19 02:08:16 local). HEAD 661a7f5 with merge bb5c679 confirmed; tree clean, nothing committed. All 11 targeted runs green on first try. BattleFpsAudit printed its green verdict then lingered and was force-closed once (verdict unaffected).",
+  "shipping": {
+    "status": "BUILD SUCCESSFUL",
+    "log": "work/windows-package-136-shipping.log",
+    "exe_sha256": "5198B1CDEC91E0280C20F98896446F242ACCE0403FCF6EFAF8D58D4AE4A781DF",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 136",
+    "launch_verify": true,
+    "shortcuts": {
+      "playtest": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 136.lnk",
+      "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk"
+    }
+  }
+}
