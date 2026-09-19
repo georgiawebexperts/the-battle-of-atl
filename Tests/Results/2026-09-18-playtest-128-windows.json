@@ -1,0 +1,125 @@
+{
+  "build": "128",
+  "date": "2026-09-18",
+  "author": "codex-windows",
+  "request": "Windows packaging pipeline for build 128, gated on the Mac build 128 merge into windows-port, with the 17-point audit sweep (including BattleDiagonalAudit), Shipping delivery share, and desktop shortcut.",
+  "git_sha": "db59f5b6724f4182dcf0b0aae8706fc1992a5048",
+  "branch": "windows-port",
+  "gate": {
+    "required_commits": [
+      "merge Mac build 128",
+      "BattleDiagonalAudit"
+    ],
+    "found": [
+      "aecd95b Windows: merge Mac build 128 (picnic, car wheels, dismount, HUD, diagonal audit)",
+      "db59f5b Windows: harness path fix + BattleDiagonalAudit in sweep"
+    ],
+    "tree_clean_at_pull": true,
+    "pull_result": "Already up to date (windows-port tracked github/windows-port)"
+  },
+  "packages": {
+    "development": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 128 -BuildConfig Development",
+      "log": "work/windows-package-128-dev.log",
+      "duration": "4m58s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,487,040 bytes)"
+    },
+    "shipping": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 128 -BuildConfig Shipping",
+      "log": "work/windows-package-128-shipping.log",
+      "duration": "4m9s",
+      "archive": "D:\\Battle Of ATL\\Archives\\BattleForTheA",
+      "archive_exe": "D:\\Battle Of ATL\\Archives\\BattleForTheA\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe (167,183,872 bytes)",
+      "note": "The D: archive also retains the earlier Development-run AuraPlayground.exe/AuraPlayground.pdb from the same evening; the Shipping exe above is the delivered build."
+    }
+  },
+  "audits": {
+    "status": "17/17 green on packaged Development 128",
+    "method": "packaged dev exe, -RenderOffscreen -windowed 640x360 -unattended -nosound",
+    "sweep_command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+    "per_audit_command": "<exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<AuditName> [-BattleRealTreeAudit] -installed",
+    "sweep_start": "2026-09-18T17:25:21-04:00",
+    "sweep_end": "2026-09-18T17:30:17-04:00",
+    "console_log": "work/audit-sweep-128-offscreen-console.log",
+    "log_dir": "work/",
+    "gpu_note": "PC last booted 2026-09-14T18:42-04:00, so the known DXGI_ERROR_HUNG (0x80000555) risk for -RenderOffscreen launches was flagged in advance. The offscreen sweep completed without hanging (17/17 in 4m56s). A post-reboot re-run is still recommended for rigor.",
+    "results": [
+      "BattleCurseAudit: pass",
+      "BattleTreeRideAudit: pass",
+      "Realistic-BattleTreeRideAudit: pass",
+      "BattleTroubleAudit: pass",
+      "BattleSteeringAudit: pass",
+      "BattleSleeperAudit: pass",
+      "BattleGrassAudit: pass",
+      "BattleBikeCarAudit: pass",
+      "BattleMurderKAudit: pass",
+      "BattlePickupAudit: pass",
+      "BattleSpiritAudit: pass",
+      "BattleKrogCrashAudit: pass",
+      "BattleDuckAudit: pass",
+      "BattleSpeedAudit: pass",
+      "BattleTimeAudit: pass",
+      "BattleDiscAudit: pass",
+      "BattleDiagonalAudit: pass"
+    ]
+  },
+  "share": {
+    "folder": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 128",
+    "exe": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 128\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe",
+    "exe_sha256": "4BFB69629913536C4D7A00C068FE2BC23209674F6F4BFBE8AC1FCC2F3B80DFE6",
+    "icon": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 128\\BattleOfATL.ico (multi-size ICO generated from SourceAssets\\UI\\BattleOfATL.png)",
+    "contents": "Staged Shipping build (AuraPlayground + Engine trees, manifests, NOTICES), renamed exe, BattleOfATL.ico, START-HERE.txt, CREDITS.txt",
+    "desktop_shortcut": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk -> The Battle of ATL.exe /Game/PiedmontRide/Maps/PiedmontWorld, IconLocation BattleOfATL.ico,0",
+    "shortcut_verified": true,
+    "launch_verify": {
+      "command": "\"The Battle of ATL.exe\" -game -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound",
+      "result": "alive after 60s",
+      "window_title": "The Battle of ATL built by Web Experts",
+      "working_set_gb": 1.21,
+      "pid": 39532,
+      "started": "2026-09-18T17:36:11-04:00",
+      "killed_after_verify": true
+    }
+  },
+  "perf": {
+    "status": "complete",
+    "method": "packaged Development 128 exe, windowed, BattleFpsAudit self-test (30s sample window)",
+    "command": "\"AuraPlayground.exe\" /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -ResX=<w> -ResY=<h> -game -windowed -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -BattleFpsAudit",
+    "harness": "Scripts\\perf_windows.ps1 logic, executed via work\\perf-manual-128.ps1 (same polling + JSON parsing)",
+    "script_as_shipped_note": "Scripts\\perf_windows.ps1 was run first exactly as shipped and captured samples=0 at both sizes: its fixed map URL (no AutoStart) leaves the game at the title state where ABattleMacController::PlayerTick never fires the audit. Build 127 recorded the same zero result (work/perf-dev-127.json). The numbers below come from the identical harness with the sweep-proven URL ?Difficulty=Easy?AutoStart=1.",
+    "results": [
+      {
+        "width": 1600,
+        "height": 900,
+        "samples": 1757,
+        "min_fps": 37.7,
+        "avg_fps": 58.8,
+        "p05_fps": 51.3
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "samples": 1794,
+        "min_fps": 37.8,
+        "avg_fps": 59.8,
+        "p05_fps": 59.8
+      }
+    ],
+    "fallback_720": "not needed - both requested resolutions produced real samples",
+    "logs": [
+      "work/perf-128-1600.log",
+      "work/perf-128-1920.log",
+      "work/perf-dev-128.json",
+      "work/perf-manual-128-console.log"
+    ],
+    "raw_game_json": "Saved\\StagedBuilds\\Windows\\AuraPlayground\\Saved\\FpsAudit.json ({\"passed\":true,\"avg_fps\":59.8,\"min_fps\":37.8,\"p05_fps\":59.8,\"samples\":1794})",
+    "gpu": "healthy per user (2026-09-18 evening probe freeze did not reproduce); no hang in any perf run"
+  },
+  "reboot_status": {
+    "last_boot": "2026-09-14T18:42:03-04:00",
+    "rebooted_since_2026_09_14": false,
+    "gpu": "healthy per user confirmation; offscreen sweep and windowed perf completed without hangs"
+  }
+}

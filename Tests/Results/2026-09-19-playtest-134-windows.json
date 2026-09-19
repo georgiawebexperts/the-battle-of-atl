@@ -1,0 +1,96 @@
+{
+  "build": "134",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "ce576a0",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "targeted": {
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-04.14.58:691][379]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike\",\"phase\":1,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"wipeouts\":1}",
+      "log": "work/t134-BattleTunnelHazardAudit.log",
+      "notes": "bore_cm 4608; grounded_stations 12; deep_holes 6; shallow_holes 6; scooters 5; punks 3 on 3 punk_seats; 1 wipeout"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-04.15.14:266][241]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}",
+      "log": "work/t134-BattleMurderKAudit.log",
+      "notes": "16/16 checks; Kroger wall = 6 punks; timer 210; shooters 1; punks 7; bums 3; fights 3; ambient_police 2; knife false; dancers 8; rioters 10; plaza_bodies 3"
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-04.16.11:055][ 72]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4875.11,\"maxCenterlineErrorCm\":194.12,\"wipeouts\":0}",
+      "log": "work/t134-BattleHomeDriveAudit-run1.log",
+      "notes": "run twice, both pass. run1: maxCenterlineErrorCm 195.25, travelCm 4859.58, completedLegs 2, wipeouts 0 (work/t134-BattleHomeDriveAudit-run1.log). run2: maxCenterlineErrorCm 194.12, travelCm 4875.11, completedLegs 2, wipeouts 0 (work/t134-BattleHomeDriveAudit-run2.log). No eastside pavement % reported in either log"
+    },
+    "BattleEastsideAudit": {
+      "pass": false,
+      "verdict": "[2026.09.19-04.23.14:261][760]LogTemp: Display: BattleConnectorAudit: {\"passed\":false,\"completedLegs\":0,\"travelCm\":99546.18,\"maxCenterlineErrorCm\":90.21,\"wipeouts\":1}",
+      "log": "work/t134-BattleEastsideAudit-retry.log",
+      "notes": "failed twice with near-identical numbers; not treated as a flake. run1: completedLegs 0, travelCm 99547.96, maxCenterlineErrorCm 87.85, wipeouts 1 (work/t134-BattleEastsideAudit.log). run2: completedLegs 0, travelCm 99546.18, maxCenterlineErrorCm 90.21, wipeouts 1 (work/t134-BattleEastsideAudit-retry.log). Both runs drove leg 0 for ~190s then hit Connector failure at segment 1450, ~71 m short of the endpoint (run1 distance 7095.1, run2 distance 7081.8)"
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-04.23.32:951][414]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":5}",
+      "log": "work/t134-BattleTimeAudit.log",
+      "notes": "time_pickups == 5 as expected; phase 4"
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-04.23.50:839][459]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}",
+      "log": "work/t134-BattleMusicAudit.log",
+      "notes": "audio on (-nosound removed); preference_restored true; tracks 2; cycle off-song1-song2-off; final BattleMusicState phase=3 selection=0 state=1 sound=None (Stopped=1)"
+    },
+    "BattleFpsAudit": {
+      "pass": true,
+      "verdict": "[2026.09.19-04.30.41:210][959]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":56.7,\"min_fps\":34.7,\"p05_fps\":48.0,\"samples\":1692}",
+      "log": "work/t134-BattleFpsAudit.log",
+      "notes": "extra targeted run (not in run_quick_audits.ps1 sweep list). avg_fps 56.7, min_fps 34.7, p05_fps 48.0, samples 1692. Verdict emitted ~35s in; the game lingered on the loss menu afterward and was force-closed"
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 20,
+    "total": 20,
+    "log": "work/sweep-134-20260919-002407.log",
+    "flakes": [],
+    "failures": [],
+    "note": "run_quick_audits.ps1 -ExePath staged exe; all 20 audits passed on first try, script exit code 0, no retries needed. Sweep list = 129 list plus BattleMusicAudit (audio) and BattleTunnelHazardAudit; it does not include BattleEastsideAudit or BattleFpsAudit, both covered by targeted runs above"
+  },
+  "round5_fix": {
+    "fix": "BattleZombie::Tick early-returns for the BattleTunnelPunk tag so the three Krog bore scenery punks stay on the shoulders instead of chasing (Mac-authored BattleTunnelHazards punks had no MoveSpeed override and walked out to head-on crash the Eastside connector rider)",
+    "targeted_post_fix": {
+      "BattleEastsideAudit": {
+        "pass": true,
+        "verdict": "passed:true completedLegs:2 travelCm:213816.20 maxCenterlineErrorCm:94.66 wipeouts:0",
+        "log": "work/t134fix-BattleEastsideAudit.log"
+      },
+      "BattleTunnelHazardAudit": {
+        "pass": true,
+        "verdict": "passed:true bore_cm:4608 grounded_stations:12 deep_holes:6 shallow_holes:6 scooters:5 punks:3 punk_seats:3",
+        "log": "work/t134fix-BattleTunnelHazardAudit.log"
+      },
+      "BattleMurderKAudit": {
+        "pass": true,
+        "verdict": "passed:true checks:16 wall:6",
+        "log": "work/t134fix-BattleMurderKAudit.log"
+      }
+    },
+    "sweep_post_fix": {
+      "pass": true,
+      "passed_count": 20,
+      "total": 20,
+      "log": "work/sweep-134fix-20260919-010630.log",
+      "flakes": [],
+      "failures": []
+    },
+    "shipping": {
+      "status": "BUILD SUCCESSFUL",
+      "exe_sha256": "F3125463E358FEFA496F4F1EF0A0FA11741973F53B060EAB21676F5288999673",
+      "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 134",
+      "launch_verify": true
+    },
+    "fix_commit": "0358442"
+  }
+}

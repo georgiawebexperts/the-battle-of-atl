@@ -137,7 +137,7 @@ void ABattleEnemyDirector::BeginPlay(){
  Super::BeginPlay();
  #if !UE_BUILD_SHIPPING
  // Existing opt-in terrain/quest fixtures isolate the subsystem they validate.
- for(const TCHAR* Flag:{TEXT("BattleFurnitureAudit"),TEXT("BattleDroneAudit"),TEXT("BattleJumpAudit"),TEXT("BattleSteeringAudit"),TEXT("BattleTroubleAudit"),TEXT("BattleTimeAudit"),TEXT("BattleAmmoAudit"),TEXT("BattleHUDReview"),TEXT("BattleFrisbeeAudit"),TEXT("BattleDiscAudit"),TEXT("BattleInventoryAudit"),TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattlePickupAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit")})if(FParse::Param(FCommandLine::Get(),Flag))bFreezeSpawns=true;
+ for(const TCHAR* Flag:{TEXT("BattleFurnitureAudit"),TEXT("BattleDroneAudit"),TEXT("BattleJumpAudit"),TEXT("BattleSteeringAudit"),TEXT("BattleTroubleAudit"),TEXT("BattleTimeAudit"),TEXT("BattleAmmoAudit"),TEXT("BattleHUDReview"),TEXT("BattleFrisbeeAudit"),TEXT("BattleDiscAudit"),TEXT("BattleInventoryAudit"),TEXT("BattleMeleeAudit"),TEXT("BattleAudit"),TEXT("BattleHealthAudit"),TEXT("BattlePickupAudit"),TEXT("BattleGeographyAudit"),TEXT("BattleSpiritRouteAudit"),TEXT("BattleHomeDriveAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit"),TEXT("BattleKrogAudit")})if(FParse::Param(FCommandLine::Get(),Flag))bFreezeSpawns=true;
  #endif
 }
 void ABattleEnemyDirector::Tick(float Dt){

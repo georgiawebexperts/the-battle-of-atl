@@ -118,6 +118,7 @@ void TickBattleEntranceWalkAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeAudit(APlayerController* PC,float Dt);
 void TickBattlePotholeRideAudit(APlayerController* PC,float Dt);
 void TickBattleTrailModeAudit(APlayerController* PC,float Dt);
+void TickBattleFpsAudit(APlayerController* PC,float Dt);
 void ABattleMacController::PlayerTick(float Dt){
  Super::PlayerTick(Dt);
  AimNoticeRemaining=FMath::Max(0.f,AimNoticeRemaining-Dt);
@@ -211,6 +212,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMemorialReview")))TickMemorialReview(Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleTutorialAudit")))TickTutorialAudit(Dt);
 #endif
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleFpsAudit")))TickBattleFpsAudit(this,Dt);
  if(!FApp::IsUnattended()&&FSlateApplication::IsInitialized()){
   ApplyFocusState(FSlateApplication::Get().IsActive());
  }

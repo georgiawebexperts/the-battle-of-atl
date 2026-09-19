@@ -106,4 +106,19 @@ void ABattleEnemyDirector::TickMurderK(float Dt){
   FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
   if(auto* Knife=GetWorld()->SpawnActor<ABattleKnife>(Position,(Pawn->GetActorLocation()-Position).Rotation(),Params)){Knife->GetCharacterMovement()->MaxWalkSpeed=Mode->Difficulty.KnifeSpeed;Knife->bSingleLunge=Mode->Difficulty.KnifeBehavior==1;Knife->SetLifeSpan(50);bMurderKKnifeSpawned=true;}
  }
+ // The punk wall: six punks in two staggered rows spanning the ride path
+ // perpendicular to the ride line ahead of the plaza. The punks are the
+ // wall, so the only way past is to shoot through. Own flag, so it can
+ // never double-spawn.
+ if(!Tags.Contains(TEXT("MurderKPunkWallActivated"))){
+  Tags.Add(TEXT("MurderKPunkWallActivated"));
+  Mode->PushHint(TEXT("murderkpunkwall"),TEXT("PUNK WALL AHEAD - SHOOT THROUGH"),6.f);
+  const FVector WallOffsets[]={FVector(-950,-350,0),FVector(-950,0,0),FVector(-950,350,0),FVector(-700,-150,0),FVector(-700,250,0),FVector(-700,550,0)};
+  for(const FVector Offset:WallOffsets){
+   const FVector Position=Grounded(Offset);FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+   if(auto* Punk=GetWorld()->SpawnActorDeferred<ABattleZombie>(ABattleZombie::StaticClass(),FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position),this,nullptr,ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn)){
+    Punk->VisualStyle=1;Punk->MoveSpeed=Mode->Difficulty.ZombieSpeed*1.08f;Punk->AttackDamage=Mode->Difficulty.ZombieDamage;Punk->WarningSeconds=Mode->Difficulty.ZombieWarningSeconds;Punk->Emergence=0;Punk->Tags.Add(TEXT("BattlePunkWall"));Punk->SetLifeSpan(65);Punk->FinishSpawning(FTransform((Pawn->GetActorLocation()-Position).Rotation(),Position));
+   }
+  }
+ }
 }

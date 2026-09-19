@@ -1,0 +1,53 @@
+{
+  "build": "127",
+  "date": "2026-09-18",
+  "author": "codex-windows",
+  "request": "The user reported the Windows game felt choppy; also integrate the Mac content-3 release and keep the two agents in sync.",
+  "answer": "Packaged Development 127 and Shipping 127. The Shipping (optimized) build is the delivered playtest because it fixes the choppiness; it boots into PiedmontWorld and was launch-verified on the desktop. The full 16-point audit sweep then ran green against the packaged Development 127.",
+  "content_3": {
+    "release": "content-3-2026-09-18",
+    "sha256": "6bda65c3319bac235f971676b6ae0edab4fa8fd83fbe216344cb57a4a39f237c",
+    "integrated": true,
+    "note": "122 files, 172 MB uncompressed. The 16 files with uncommitted Mac edits were restored on disk after the merge. The 222 MB blazer texture stays gitignored and was never staged."
+  },
+  "packages": {
+    "development": "packaged OK (audits ran against this exe)",
+    "shipping": "packaged OK and delivered"
+  },
+  "share": {
+    "folder": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 127",
+    "desktop_shortcut": "The Battle of ATL Windows Playtest 127.lnk -> The Battle of ATL.exe /Game/PiedmontRide/Maps/PiedmontWorld",
+    "launch_verified": "window 'The Battle of ATL built by Web Experts' responding, 1.22 GB working set, PiedmontWorld loaded"
+  },
+  "audits": {
+    "status": "16/16 green on packaged Development 127",
+    "method": "packaged dev exe, -RenderOffscreen -windowed 640x360 -unattended -nosound",
+    "sweep_start": "2026-09-18T15:42:45-04:00",
+    "sweep_end": "2026-09-18T15:47:55-04:00",
+    "log_dir": "work/",
+    "results": [
+      "BattleCurseAudit: pass",
+      "BattleTreeRideAudit: pass",
+      "Realistic-BattleTreeRideAudit: pass",
+      "BattleTroubleAudit: pass",
+      "BattleSteeringAudit: pass",
+      "BattleSleeperAudit: pass",
+      "BattleGrassAudit: pass",
+      "BattleBikeCarAudit: pass",
+      "BattleMurderKAudit: pass",
+      "BattlePickupAudit: pass",
+      "BattleSpiritAudit: pass",
+      "BattleKrogCrashAudit: pass",
+      "BattleDuckAudit: pass",
+      "BattleSpeedAudit: pass",
+      "BattleTimeAudit: pass",
+      "BattleDiscAudit: pass"
+    ]
+  },
+  "sync": {
+    "channel": "GitHub releases are now the delivery channel (Drive folder polling retired)",
+    "last_seen_release": "content-3-2026-09-18",
+    "watcher": "automation battle-of-atl-sync-check checks releases, commits, and issue 1 comments hourly",
+    "mac_reply": "commented on issue 1 confirming releases work and content 3 is integrated; windows-port pushed (823af6d)"
+  }
+}

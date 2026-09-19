@@ -1,0 +1,76 @@
+{
+  "build": "115",
+  "batch": "Windows port of playtest build 115, first all-green Windows packaged sweep",
+  "source_commit": "6bc49d1 on piedmont-ride-v2 (Windows-port changes committed on windows-port)",
+  "share": "C:/Users/webex/Documents/Codex/Builds/Share/The Battle of ATL Windows Playtest 115",
+  "verified_against": "packaged Windows Development build 115, exe under Windows/AuraPlayground/Binaries/Win64/AuraPlayground.exe",
+  "packaged_sweep": {
+    "result": "16/16 pass",
+    "audits": [
+      "BattleCurseAudit",
+      "BattleTreeRideAudit (arcade)",
+      "BattleTreeRideAudit -BattleRealTreeAudit (realistic)",
+      "BattleTroubleAudit",
+      "BattleSteeringAudit",
+      "BattleSleeperAudit",
+      "BattleGrassAudit",
+      "BattleBikeCarAudit",
+      "BattleMurderKAudit",
+      "BattlePickupAudit",
+      "BattleSpiritAudit",
+      "BattleKrogCrashAudit",
+      "BattleDuckAudit",
+      "BattleSpeedAudit",
+      "BattleTimeAudit",
+      "BattleDiscAudit"
+    ],
+    "logs": "work/BattleCurseAudit.log .. work/BattleDiscAudit.log (second Windows run, 16 green)"
+  },
+  "windows_port_fixes": [
+    {
+      "fix": ".NET Framework 4.6.2 reference assembly shim",
+      "what": "No admin rights to install the 4.6.2 targeting pack, so HKCU Software/Microsoft/Microsoft SDKs/NETFXSDK/4.6.2 points at a local KitsInstallationFolder with the um include and lib files. Any fresh Windows machine needs the same shim or the Dev Pack."
+    },
+    {
+      "fix": "MSVC shadow-variable warnings down to Warning level",
+      "what": "AuraPlayground.Target.cs and AuraPlaygroundEditor.Target.cs set ShadowVariableWarningLevel=WarningLevel.Warning and bOverrideBuildEnvironment=true so MSVC compiles the codebase the way clang already did on Mac."
+    },
+    {
+      "fix": "BattleTreeRideAudit.cpp static_cast on Capsule.Radius*T.GetScale3D().GetMax()",
+      "what": "MSVC flagged a float/double narrowing where clang did not; the audit code is unchanged in behavior."
+    },
+    {
+      "fix": "Aura plugin removed from AuraPlayground.uproject",
+      "what": "The Editor-only Aura plugin does not exist on Windows and blocked the editor. Gameplay is unaffected; the Mac project keeps its own copy."
+    },
+    {
+      "fix": "package_windows.ps1 CookDir expanded",
+      "what": "Now cooks CitySampleCrowd, BattleRetarget, EuropeanHornbeam, BattleForTheA/Spirit and BattleForTheA/Environment/KrogIncident alongside the PiedmontWorld map so the packaged build carries every asset the audits exercise."
+    },
+    {
+      "fix": "prepare_windows_share.py reads START-HERE/CREDITS as utf-8",
+      "what": "The template files use curly quotes; the script now decodes utf-8 instead of the Windows default code page."
+    }
+  ],
+  "missing_content_recovered": {
+    "round_1": "BattleOfATL-missing-content-2026-09-18.zip: crowd body meshes (m_tal_nrw_body, f_tal_nrw_body), Shared/Rig control rigs, Mannequins, SK_SportsCar",
+    "round_2": "BattleOfATL-windows-content-2-2026-09-18.zip: Content/EuropeanHornbeam (park trees), full Content/CitySampleCrowd (clothing, faces, hair, loco anims), Content/BattleRetarget/City recovery clips, Spirit texture and material, Krog scooter materials",
+    "first_windows_sweep": "11/16 green; the 5 failures (Curse, both TreeRide variants, Sleeper, Spirit) were all traced to these missing Mac-only assets, none to code."
+  },
+  "content_not_in_git": [
+    "Content/EuropeanHornbeam and Content/CitySampleCrowd are too large for GitHub (individual textures over 200 MB) and travel by Drive zip instead. They are recorded here so a fresh clone knows to fetch BattleOfATL-windows-content-2-2026-09-18.zip.",
+    "Content/Characters is gitignored (starter mannequin content)."
+  ],
+  "settings_untouched": "No settings menu, option list or saved-settings code was edited on Windows; gameplay source is identical to Mac build 115 apart from the compiler-level fixes above.",
+  "verification_debt": [
+    "The share folder stub exe at the top level was smoke-tested with BattleDuckAudit from the renamed The Battle of ATL.exe and passes; the full sweep ran from the real exe in Windows/AuraPlayground/Binaries/Win64."
+  ],
+  "delivery": {
+    "branch": "windows-port",
+    "commit": "26f0c75",
+    "local_commit_done": true,
+    "github_push": "pushed OK: windows-port is now on GitHub, based on mac build 126 (4f4cf1d) plus the Windows build fixes and the PiedmontWorld startup map change.",
+    "base": "github/piedmont-ride-v2 @ 4f4cf1d (Build 126)",
+    "next": "download the mac build-126 Drive content zips, integrate, package, and re-run the audit sweep for the Windows build 126 playtest"
+  }
+}

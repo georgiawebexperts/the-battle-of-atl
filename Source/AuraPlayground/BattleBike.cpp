@@ -202,7 +202,7 @@ void ABattleParkMode::InitGame(const FString& MapName,const FString& Options,FSt
  TimeRemaining=Difficulty.TimeLimitSeconds;
 #if !UE_BUILD_SHIPPING
  // Long route-driving audits need room; the shipped clock is shorter by design.
- for(const TCHAR* Flag:{TEXT("BattleRoadContactAudit"),TEXT("BattleCarLoopAudit"),TEXT("BattleBridgeTurnAudit"),TEXT("BattleKrogRiderAudit"),TEXT("BattleEntranceWalkAudit"),TEXT("BattleConnectorAudit")})
+ for(const TCHAR* Flag:{TEXT("BattleRoadContactAudit"),TEXT("BattleCarLoopAudit"),TEXT("BattleBridgeTurnAudit"),TEXT("BattleKrogRiderAudit"),TEXT("BattleEntranceWalkAudit"),TEXT("BattleConnectorAudit"),TEXT("BattleEastsideAudit")})
   if(FParse::Param(FCommandLine::Get(),Flag)){TimeRemaining=900.f;break;}
 #endif
  StartCountdown=3;

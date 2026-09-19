@@ -3,10 +3,12 @@
 #include "BattleBike.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
+#include "BattleRunRecords.h"
 #include "PiedmontPathSpline.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/TextRenderActor.h"
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
@@ -51,9 +53,36 @@ ABattleHome::ABattleHome(){
  Label(TEXT("PatioWelcome"),TEXT("CABBAGETOWN"),FVector(0,-431,307),18);
 
 }
-void ABattleHome::BeginPlay(){Super::BeginPlay();auto* Path=GetWorld()->SpawnActor<APiedmontPathSpline>();if(Path){Path->bArtifactEligible=false;Path->OsmWayId=TEXT("9242978 / 98 Estoria patio approach");Path->Tags.Add(TEXT("BattleHomeRoute"));TArray<FVector> Points;for(const FVector& P:BattleHomeData::Route)Points.Add(P);Path->SetCenterline(Points);}UE_LOG(LogTemp,Display,TEXT("BattleHome: route=%d gate=%s"),UE_ARRAY_COUNT(BattleHomeData::Route),*BattleHomeData::Gate.ToString());}
+void ABattleHome::BeginPlay(){
+ Super::BeginPlay();
+ auto* Path=GetWorld()->SpawnActor<APiedmontPathSpline>();
+ if(Path){Path->bArtifactEligible=false;Path->OsmWayId=TEXT("9242978 / 98 Estoria patio approach");Path->Tags.Add(TEXT("BattleHomeRoute"));TArray<FVector> Points;for(const FVector& P:BattleHomeData::Route)Points.Add(P);Path->SetCenterline(Points);}
+ UE_LOG(LogTemp,Display,TEXT("BattleHome: route=%d gate=%s"),UE_ARRAY_COUNT(BattleHomeData::Route),*BattleHomeData::Gate.ToString());
+ // Arcade best-time board beside the patio finish line, facing the approach.
+ const FRotator Facing(0,BattleHomeData::South.Rotation().Yaw-90,0);
+ const FTransform House(Facing,BattleHomeData::Home);
+ auto* Board=GetWorld()->SpawnActor<ATextRenderActor>();
+ if(Board){
+  Board->Tags.Add(TEXT("BattleBestTimeBoard"));
+  Board->SetActorLocation(House.TransformPosition(FVector(-920,470,BattleHomeData::Gate.Z-BattleHomeData::Home.Z+230)));
+  Board->SetActorRotation(FRotator(0,Facing.Yaw-90,0));
+  auto* Text=Board->GetTextRender();
+  if(Text){
+   Text->SetWorldSize(36);
+   Text->SetTextRenderColor(FColor(255,229,183));
+   Text->SetHorizontalAlignment(EHTA_Center);
+   Text->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+   UMaterialInterface* UnlitTextMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/EngineMaterials/UnlitText.UnlitText"));
+   if(UnlitTextMaterial)Text->SetTextMaterial(UnlitTextMaterial);
+  }
+  BestTimeBoard=Board;
+ }
+ auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ RefreshBestTimeBoard(Mode?Mode->DifficultyName:FName(),true);
+}
 void ABattleHome::Tick(float Dt){
  Super::Tick(Dt);auto* Mode=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Mode||!Mode->Quest||!Pawn)return;
+ if(Mode)RefreshBestTimeBoard(Mode->DifficultyName);
  if(!Mode->Quest->bCollected){bTunnelEntered=bTunnelExited=false;return;}
  // Track the tunnel from the moment the phone is in hand. This used to wait for
  // two checkpoints as well, so a rider who went through Krog Tunnel early had
@@ -76,4 +105,15 @@ bool ABattleHome::TryFinish(){
  // venue itself may block line of sight to the surveyed centre point.
  if(FVector::Dist2D(Pawn->GetActorLocation(),BattleHomeData::Gate)>650||FMath::Abs(Pawn->GetActorLocation().Z-BattleHomeData::Gate.Z)>300)return false;
  return Mode->CompleteRun(Bike);
+}
+
+TWeakObjectPtr<ATextRenderActor> ABattleHome::BestTimeBoard;
+void ABattleHome::RefreshBestTimeBoard(FName Difficulty,bool bForce){
+ static FName ShownDifficulty;
+ if(!bForce&&ShownDifficulty==Difficulty)return;
+ ShownDifficulty=Difficulty;
+ auto* Board=BestTimeBoard.Get();
+ if(!Board||!Board->GetTextRender())return;
+ const float Best=BattleRecords::Best(Difficulty);
+ Board->GetTextRender()->SetText(Best>0.f?FText::FromString(FString::Printf(TEXT("BEST TIME %s %s"),*Difficulty.ToString().ToUpper(),*BattleRecords::Format(Best))):FText::FromString(TEXT("NO BEST TIME YET")));
 }

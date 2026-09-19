@@ -1,0 +1,56 @@
+{
+  "build": 126,
+  "batch": "Windows port of playtest build 126, synced from Mac piedmont-ride-v2 @ 4f4cf1d",
+  "source_commit": "4f4cf1d on piedmont-ride-v2; Windows deltas committed on windows-port (7d7c7ee, 52485c2)",
+  "share": "C:/Users/webex/Documents/Codex/Builds/Share/The Battle of ATL Windows Playtest 126",
+  "verified_against": "packaged Windows Development build 126, exe under Windows/AuraPlayground/Binaries/Win64/AuraPlayground.exe",
+  "packaged_sweep": {
+    "result": "16/16 pass",
+    "audits": [
+      "BattleCurseAudit",
+      "BattleTreeRideAudit (arcade)",
+      "BattleTreeRideAudit -BattleRealTreeAudit (realistic)",
+      "BattleTroubleAudit",
+      "BattleSteeringAudit",
+      "BattleSleeperAudit",
+      "BattleGrassAudit",
+      "BattleBikeCarAudit",
+      "BattleMurderKAudit",
+      "BattlePickupAudit",
+      "BattleSpiritAudit",
+      "BattleKrogCrashAudit",
+      "BattleDuckAudit",
+      "BattleSpeedAudit",
+      "BattleTimeAudit",
+      "BattleDiscAudit"
+    ],
+    "first_run": "14/16 pass; BattleTroubleAudit failed at stage 7 (taser physical recovery failed) and BattleSpiritAudit failed (texture=None, material=WorldGridMaterial)",
+    "fix": "restored Drive-shipped content that was missing from the working copy: Content/BattleRetarget/City/{Male,Female}/M_ragdoll_getup_stand_{B,F,L,R}.uasset and Content/BattleForTheA/Spirit/{M_SpectralBlackBear,T_SpectralBlackBear}.uasset, recommitted on windows-port (52485c2)",
+    "second_run": "BattleTroubleAudit passed (stage 10), BattleSpiritAudit passed (29 checks); full sweep 16/16"
+  },
+  "windows_port_fixes": [
+    "AuraPlayground.uproject: Aura plugin removed (Windows packaging blocker; Mac keeps it)",
+    "Source/AuraPlayground.Target.cs and AuraPlaygroundEditor.Target.cs: MSVC shadow-variable warning level set to Warning with bOverrideBuildEnvironment",
+    "Source/AuraPlayground/BattleTreeRideAudit.cpp: static_cast<float> around the capsule radius product for MSVC",
+    "Config/DefaultEngine.ini: GameDefaultMap boots straight into PiedmontWorld instead of the BeltLineGlide test map",
+    "Scripts/package_windows.ps1, Scripts/prepare_windows_share.py, Scripts/run_quick_audits.ps1: Windows packaging/audit tooling"
+  ],
+  "missing_content_recovered": {
+    "city_getups": "Content/BattleRetarget/City Male+Female M_ragdoll_getup_stand clips restored from the build-115 Windows snapshot (Drive round-1 content)",
+    "spirit": "M_SpectralBlackBear + T_SpectralBlackBear restored from the build-115 Windows snapshot (Drive round-2 content)",
+    "still_waiting_on_mac": "blazer normal map (Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset, 222 MB) ships in the Mac Drive content zips and is not yet on this machine; cook only warns about its material dependency"
+  },
+  "content_not_in_git": [
+    "Content/EuropeanHornbeam/ and the blazer normal map are gitignored by Mac (4f4cf1d) and travel in the Drive content zips",
+    "Large recovered content dirs stay on disk only"
+  ],
+  "settings_untouched": "No settings menu, option list or saved-settings code was edited on Windows; gameplay source is identical to Mac build 126 plus the MSVC-only deltas above.",
+  "delivery": {
+    "branch": "windows-port",
+    "commit": "52485c2",
+    "local_commit_done": true,
+    "github_push": "pushed OK",
+    "desktop_shortcut": "The Battle of ATL Windows Playtest 126.lnk -> real packaged exe with /Game/PiedmontRide/Maps/PiedmontWorld",
+    "old_share": "playtest 115 share folder and shortcut removed"
+  }
+}

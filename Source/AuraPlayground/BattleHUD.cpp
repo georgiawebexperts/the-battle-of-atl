@@ -17,6 +17,7 @@
 #include "BattleCheckpoints.h"
 #include "BattleBuild.h"
 #include "BattleMacController.h"
+#include "BattleRunRecords.h"
 #include "Engine/Canvas.h"
 #include "CanvasItem.h"
 #include "Styling/CoreStyle.h"
@@ -80,6 +81,12 @@ void ABattleLabHUD::DrawHUD(){
   const int Seconds=FMath::CeilToInt(Park->TimeRemaining);
   Center(Park->bTutorialActive?TEXT("UNTIMED"):FString::Printf(TEXT("%02d:%02d"),Seconds/60,Seconds%60),M+(FullHUD?6.f:2.f)*S,Park->bTutorialActive?(FullHUD?34:21):(FullHUD?50:29),Seconds<60?FLinearColor(1,.2,.2):FLinearColor::White);
   if(FullHUD)Center(Park->bTutorialActive?TEXT("Clock starts at gate"):(Person||Owner->bCrashActive)?FString::Printf(TEXT("%s %.2fx"),Person&&Person->bSwimming?TEXT("SWIMMING"):TEXT("ON FOOT"),Park->FootTimeMultiplier):Park->DifficultyName.ToString(),M+66*S,(Park->bTutorialActive||Person||Owner->bCrashActive)?18:22,(Person||Owner->bCrashActive)?Peach:Muted);
+  // The standing best changes only when a run finishes, so the save slot is
+  // re-read at most once a second instead of paying a save-game load per frame.
+  static FName BestBoardDifficulty; static float BestBoardTime=-1.f,BestBoardRefresh=-1.f; static const UWorld* BestBoardWorld=nullptr;
+  const float BestBoardNow=GetWorld()->GetTimeSeconds();
+  if(BestBoardWorld!=GetWorld()||BestBoardDifficulty!=Park->DifficultyName||BestBoardRefresh<0.f||BestBoardNow>BestBoardRefresh+1.f){BestBoardWorld=GetWorld();BestBoardDifficulty=Park->DifficultyName;BestBoardTime=BattleRecords::Best(BestBoardDifficulty);BestBoardRefresh=BestBoardNow;}
+  Center(FString::Printf(TEXT("BEST %s %s"),*BestBoardDifficulty.ToString().ToUpper(),BestBoardTime>0.f?*BattleRecords::Format(BestBoardTime):TEXT("--:--")),M+(FullHUD?116.f:58.f)*S,FullHUD?16:13,BestBoardTime>0.f?Peach:Muted);
   if(Park->TimeNoticeRemaining>0){Panel(W*.5f-230*S,M+116*S,460*S,46*S);Center(FString::Printf(TEXT("%+.0fs  %s"),Park->LastTimeDelta,*Park->TimeNotice),M+121*S,23,Park->LastTimeDelta>0?FLinearColor(.3,1,.65):FLinearColor(1,.35,.3));}
   if(Park->Quest&&!Owner->bCrashActive)Park->Quest->DrawRadar(this,Canvas);
   if(!Park->bTutorialActive&&!Park->bRunEnded&&(Park->StartCountdown>0||Park->RunElapsed<2.5f)){

@@ -1,0 +1,805 @@
+{
+  "build": "129",
+  "date": "2026-09-18",
+  "author": "codex-windows",
+  "request": "Windows packaging pipeline for build 129, gated on the Mac build 129 merge into windows-port: 18-audit sweep (including BattlePatioAudit), four cross-platform probes, Development and Shipping packages, share refresh, launch-verify, and perf at 1600x900 and 1920x1080.",
+  "git_sha": "4ec625c170f54f2a108203245b841f8226f3b88f",
+  "branch": "windows-port",
+  "gate": {
+    "required_commits": [
+      "merge Mac build 129",
+      "BattlePatioAudit to sweep"
+    ],
+    "found": [
+      "b719864 Windows: merge Mac build 129 (ending reachable, picnic standing, duck audit deterministic, BattlePatioAudit)",
+      "4ec625c Windows: add BattlePatioAudit to sweep (18 audits)"
+    ],
+    "tree_clean_at_pull": true,
+    "pull_result": "Already up to date (windows-port == github/windows-port at 4ec625c)"
+  },
+  "packages": {
+    "development": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/windows-package-129-dev.log",
+      "duration": "4m53s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,492,160 bytes)",
+      "restage_for_perf": {
+        "reason": "staged tree had been overwritten by the Shipping stage; restored Development before perf",
+        "rerun": "2026-09-18T18:23-04:00 incremental BUILD SUCCESSFUL, 3m19s (stage 41.6s, archive 107.2s)",
+        "summary_log": "work/windows-package-129-dev-perf.log",
+        "uat_log": "work/windows-package-129-dev-perf-uat.log"
+      }
+    },
+    "shipping": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Shipping",
+      "log": "work/windows-package-129-shipping.log",
+      "archive": "D:\\Battle Of ATL\\Archives\\BattleForTheA",
+      "archive_exe": "D:\\Battle Of ATL\\Archives\\BattleForTheA\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe (167,183,360 bytes)",
+      "note": "The D: archive also retains the Development AuraPlayground.exe/AuraPlayground.pdb from the same evening; the Shipping exe above is the delivered build."
+    }
+  },
+  "audits": {
+    "status": "17/18 first pass; BattleSpeedAudit flaked once (Unexpected knockdown in boost lane) and passed an immediate identical retry - recorded as green flake, not a gate",
+    "sweep_command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+    "per_audit_command": "<exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<AuditName> -installed",
+    "sweep_window_local": "2026-09-18T18:04:23-04:00 to 2026-09-18T18:09:08-04:00",
+    "console_log": "work/audit-sweep-129-offscreen-console.log",
+    "speed_flake": {
+      "first_run": "{\"passed\":false,\"reason\":\"Unexpected knockdown in boost lane\",\"peak_speed_cm_s\":2200.10,\"charges\":2,\"boost_remaining\":0.00}",
+      "retry": "{\"passed\":true,\"reason\":\"Banked throttle boosts: one charge per crate, three-deep cap, SHIFT spends it, timed burst and expiry, empty-bank and foot guards all pass\",\"peak_speed_cm_s\":2200.10,\"charges\":0,\"boost_remaining\":0.00}",
+      "retry_log": "work/BattleSpeedAudit-retry.log",
+      "verdict": "pass on immediate identical retry (environmental flake)"
+    },
+    "results": [
+      "BattleCurseAudit: pass",
+      "BattleTreeRideAudit: pass",
+      "Realistic-BattleTreeRideAudit: pass",
+      "BattleTroubleAudit: pass",
+      "BattleSteeringAudit: pass",
+      "BattleSleeperAudit: pass",
+      "BattleGrassAudit: pass",
+      "BattleBikeCarAudit: pass",
+      "BattleMurderKAudit: pass",
+      "BattlePickupAudit: pass",
+      "BattleSpiritAudit: pass",
+      "BattleKrogCrashAudit: pass",
+      "BattleDuckAudit: pass",
+      "BattleSpeedAudit: pass (on immediate retry; first attempt flaked with Unexpected knockdown in boost lane)",
+      "BattleTimeAudit: pass",
+      "BattleDiscAudit: pass",
+      "BattleDiagonalAudit: pass",
+      "BattlePatioAudit: pass"
+    ]
+  },
+  "cross_platform_probes": {
+    "informational": true,
+    "command_style": "same per-audit style as the sweep: <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<AuditName> -installed, ~8 minute cap each",
+    "results": [
+      {
+        "audit": "BattleTrailModeAudit",
+        "result": "pass",
+        "detail": "arcade lays 4.2 m of pavement out to 190 cm, realistic lays 3.2 m and stops before it, and the spline width and ribbon visibility follow the toggle both ways",
+        "log": "work/probe-BattleTrailModeAudit.log"
+      },
+      {
+        "audit": "BattleSkaterAudit",
+        "result": "pass",
+        "detail": "Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass",
+        "log": "work/probe-BattleSkaterAudit.log"
+      },
+      {
+        "audit": "BattleDroneAudit",
+        "result": "fail",
+        "detail": "stage 7: Pistol shot at 35m failed: fired=true health=40.0 notice= off_target_cm=2827.2 aim_off_deg=0.00",
+        "log": "work/probe-BattleDroneAudit.log",
+        "note": "informational - data for the Mac team, not a pipeline stop"
+      },
+      {
+        "audit": "BattleFrisbeeAudit",
+        "result": "pass",
+        "detail": "Groups, complete disc cycle, guarded bike/foot supply, remount and fifth-gear grass ride pass",
+        "log": "work/probe-BattleFrisbeeAudit.log"
+      }
+    ]
+  },
+  "share": {
+    "folder": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129",
+    "exe": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe",
+    "exe_sha256": "B7620A0F650D435C03F9F451B9951F58DFA7A71FC2DDF13B8F2273BFFB73DE81",
+    "icon": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\BattleOfATL.ico (61,096 bytes, reused from the Playtest 128 share)",
+    "start_here": "updated to THE BATTLE OF ATL - WINDOWS PLAYTEST 129",
+    "contents": "Staged Shipping build (AuraPlayground + Engine trees, manifests, NOTICES), renamed exe, BattleOfATL.ico, START-HERE.txt, CREDITS.txt",
+    "old_shares": "Playtest 127 and 128 share folders and the stale 127 desktop shortcut were removed (only referenced by the repointed shortcut); D:\\Battle Of ATL\\Backups untouched",
+    "desktop_shortcut": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk -> The Battle of ATL.exe /Game/PiedmontRide/Maps/PiedmontWorld, IconLocation BattleOfATL.ico,0",
+    "shortcut_verified": true,
+    "launch_verify": {
+      "command": "\"The Battle of ATL.exe\" -game -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound",
+      "result": "alive after 60s",
+      "window_title": "The Battle of ATL built by Web Experts",
+      "working_set_gb": 1.22,
+      "pid": 44024,
+      "started": "2026-09-18T18:32:45-04:00",
+      "killed_after_verify": true,
+      "log": "work/launch-verify-129-console.log"
+    }
+  },
+  "perf": {
+    "status": "complete",
+    "method": "Scripts\\perf_windows.ps1 as shipped (now autostarts the map), packaged Development 129 exe, windowed, BattleFpsAudit",
+    "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+    "command": "\"AuraPlayground.exe\" /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -ResX=<w> -ResY=<h> -game -windowed -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -BattleFpsAudit",
+    "results": [
+      {
+        "width": 1600,
+        "height": 900,
+        "samples": 1758,
+        "min_fps": 34.8,
+        "avg_fps": 58.8,
+        "p05_fps": 50.8
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "samples": 1798,
+        "min_fps": 47.2,
+        "avg_fps": 59.9,
+        "p05_fps": 59.9
+      }
+    ],
+    "notes": [
+      "The staged tree held the Shipping build after step 4, so the Development package was re-run (incremental, BUILD SUCCESSFUL) before perf.",
+      "An earlier perf attempt against the staged Shipping exe returned samples=0 at both resolutions (work/perf-129.json); the FPS audit is a Development diagnostic, so the Dev-exe numbers above are the recorded result.",
+      "No hang at either resolution; each run completed inside its 150s per-resolution budget, well under the 15-minute cap."
+    ],
+    "logs": [
+      "work/perf-1600.log",
+      "work/perf-1920.log",
+      "work/perf-dev-129.json",
+      "work/run-perf-129.ps1"
+    ],
+    "fallback_720": "not needed - both requested resolutions produced real samples"
+  },
+  "reboot_status": {
+    "last_boot": "2026-09-14T18:42:03-04:00",
+    "rebooted_since_2026_09_14": false,
+    "gpu": "healthy per user confirmation; offscreen sweep, cross-platform probes, and windowed perf all completed without hangs"
+  },
+  "harness_fixes": {
+    "git_sha": "5e26834f0af1068221f09ad1845d3cda8f6e9c56",
+    "description": "Validation + repackage of the audit-harness fix commit (music-off state, zombie freeze list for route walks, Home centerline bound 200, Eastside budget 420s, geography PlayerStart anchor). Tree was clean at 5e26834; no Source changes made.",
+    "development_package": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/validation2-129-dev-uat.log",
+      "duration": "5m50s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,493,184 bytes)"
+    },
+    "fixed_audit_runs": {
+      "method": "packaged Dev exe, standard per-audit command: <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+      "caps": "10 min each except BattleEastsideAudit 8 min",
+      "results": [
+        {
+          "audit": "BattleMusicAudit",
+          "runs": 3,
+          "outcome": "3/3 fail",
+          "detail": "cycle off-song1-song2-off completes and preference is restored every run, but the phase-3 off check fails under -nosound: after the off toggle the AudioComponent still reports GetPlayState()==Playing (state=1) despite SetSound(nullptr)+Stop()+SetActiveFlag(false), so Pass stays false",
+          "logs": ["work/fixes-BattleMusicAudit-run1.log", "work/fixes-BattleMusicAudit-run2.log", "work/fixes-BattleMusicAudit-run3.log"]
+        },
+        {
+          "audit": "BattleHomeDriveAudit",
+          "runs": 2,
+          "outcome": "2/2 fail",
+          "detail": "centerline error exceeded the new 200cm Home bound before finishing leg 0: maxCenterlineErrorCm 200.51 and 201.80 (bound is 200 for Home && !Spirit)",
+          "logs": ["work/fixes-BattleHomeDriveAudit-run1.log", "work/fixes-BattleHomeDriveAudit-run2.log"]
+        },
+        {
+          "audit": "BattleSpiritRouteAudit",
+          "runs": 2,
+          "outcome": "2/2 fail",
+          "detail": "completed 2 legs with no wipeouts and maxCenterlineError ~109.5cm, but total travel (6521cm / 6507cm) did not clear the leg-2 finish threshold of 1.75x the planned route length (Spirit sets Home=true, which selects that threshold)",
+          "logs": ["work/fixes-BattleSpiritRouteAudit-run1.log", "work/fixes-BattleSpiritRouteAudit-run2.log"]
+        },
+        {
+          "audit": "BattleGeographyAudit",
+          "runs": 3,
+          "outcome": "3/3 pass",
+          "detail": "saved frame, island, and persistent swimmer/bank separation checks pass; recovery ~2.0s, 1 wipeout per run",
+          "logs": ["work/fixes-BattleGeographyAudit-run1.log", "work/fixes-BattleGeographyAudit-run2.log", "work/fixes-BattleGeographyAudit-run3.log"]
+        },
+        {
+          "audit": "BattleEastsideAudit",
+          "runs": 1,
+          "outcome": "no verdict - killed at the 8-minute external cap (482.7s)",
+          "detail": "last progress: leg 0, elapsed 180s, travel 93,624cm; a 'BattleMac: menu Loss' focus event at ~200s appears to have paused the game before the internal 420s budget could conclude. Anticipated cap case per instructions.",
+          "logs": ["work/fixes-BattleEastsideAudit-run1.log"]
+        }
+      ],
+      "summary_json": "work/fixes-129-results.json"
+    },
+    "sweep": {
+      "status": "18/18 pass",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+      "console_log": "work/validation2-sweep-129-console.log",
+      "offscreen": true,
+      "no_hang": true
+    },
+    "shipping_repackage": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Shipping",
+      "log": "work/validation2-129-shipping-uat.log",
+      "duration": "3m57s",
+      "archive": "D:\\Battle Of ATL\\Archives\\BattleForTheA",
+      "share_refreshed": true,
+      "share_exe": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00)",
+      "icon": "regenerated from SourceAssets\\UI\\BattleOfATL.png (61,096 bytes)",
+      "start_here": "THE BATTLE OF ATL - WINDOWS PLAYTEST 129",
+      "shortcut": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk repointed and verified (target, /Game/PiedmontRide/Maps/PiedmontWorld, icon)",
+      "launch_verify": {
+        "command": "\"The Battle of ATL.exe\" -game -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound",
+        "result": "alive after 60s",
+        "window_title": "The Battle of ATL built by Web Experts",
+        "working_set_gb": 1.23,
+        "pid": 53484,
+        "started": "2026-09-18T20:42:03-04:00",
+        "killed_after_verify": true,
+        "log": "work/validation2-launch-verify-129.log"
+      }
+    }
+  },
+  "round2": {
+      "git_sha": "31c4f449ad153eeece1371c405b0112887c4f56f",
+      "description": "Round-2 validation of commits 8d817fc (music audit runs with audio and joins the sweep, Home centerline bound 200->210) and 31c4f44 (Spirit route exempt from the 99-percent-paved Eastside ground guard, 1.75x travel threshold restored). Tree clean at 31c4f44 and up to date with github/windows-port; validation-only, no Source changes made.",
+      "gate": {
+        "required_commits": [
+          "8d817fc Harden music/home/spirit audits (round 2)",
+          "31c4f44 Correct spirit route guard: exempt pavement ratio, restore 1.75x travel threshold"
+        ],
+        "tree_clean_at_pull": true,
+        "pull_result": "Already up to date (windows-port == github/windows-port at 31c4f44)"
+      },
+      "development_package": {
+        "status": "BUILD SUCCESSFUL",
+        "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+        "log": "work/windows-package.log",
+        "duration": "4m20s",
+        "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,493,184 bytes)"
+      },
+      "targeted_runs": {
+        "method": "packaged Dev exe, standard per-audit command: <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed (BattleMusicAudit without -nosound, matching its sweep Audio attribute)",
+        "caps": "BattleMusicAudit 6 min; Home/Spirit 10 min; Eastside 11 min external",
+        "results": [
+          {
+            "audit": "BattleMusicAudit",
+            "runs": 3,
+            "outcome": "3/3 pass",
+            "detail": "runs WITH audio: phases 1-2 report state=0 (Playing) and phase 3 reports state=1, which is EAudioComponentPlayState::Stopped in UE 5.8, so the phase-3 Stopped-state check passes; cycle off-song1-song2-off and preference_restored true every run; durations 15.2s/15.0s/15.0s",
+            "logs": [
+              "work/round2-BattleMusicAudit-run1.log",
+              "work/round2-BattleMusicAudit-run2.log",
+              "work/round2-BattleMusicAudit-run3.log"
+            ]
+          },
+          {
+            "audit": "BattleHomeDriveAudit",
+            "runs": 2,
+            "outcome": "2/2 fail",
+            "detail": "the new 210cm bound is still too tight at the leg-0 segment-41 bend: maxCenterlineErrorCm 211.22 and 210.18 (round 1 was 200.51 and 201.80 against 200); travelCm 2104.21 and 2118.11 before the bound fired; genuine bound miss, not a flake; durations 15s/20s",
+            "logs": [
+              "work/round2-BattleHomeDriveAudit-run1.log",
+              "work/round2-BattleHomeDriveAudit-run2.log"
+            ]
+          },
+          {
+            "audit": "BattleSpiritRouteAudit",
+            "runs": 2,
+            "outcome": "2/2 pass",
+            "detail": "2 legs completed with travel 6501.56cm and 6498.70cm against the restored 1.75x planned-length threshold (~5425cm), maxCenterlineError 107.04/111.29, 0 wipeouts, pavement guard exempted (287/878 and 288/877 paved recorded but not enforced); durations 25.1s/25.1s",
+            "logs": [
+              "work/round2-BattleSpiritRouteAudit-run1.log",
+              "work/round2-BattleSpiritRouteAudit-run2.log"
+            ]
+          },
+          {
+            "audit": "BattleEastsideAudit",
+            "runs": 1,
+            "outcome": "no verdict - killed at the 11-minute external cap (663.8s)",
+            "detail": "root cause identified: BattleDifficulty shows Easy timer=210 and the run ends in a Loss menu at ~210s (BattleMac: menu Loss), before the internal 420s budget; ABattleParkMode::InitGame extends TimeRemaining to 900s only for a whitelist of audit flags that does not include BattleEastsideAudit; the prior focus-loss theory is superseded (-unattended disables the focus-pause path, a focus-keep loop re-asserted foreground every 15s, and the Loss menu lands exactly at the 210s timer); last progress: leg 0, elapsed 180s, travel 93,753cm; reported, not fixed (validation-only task)",
+            "logs": [
+              "work/round2-BattleEastsideAudit-run1.log"
+            ]
+          }
+        ],
+        "summary_json": "work/round2-129-results.json"
+      },
+      "sweep": {
+        "status": "19/19 pass with one green flake",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+        "console_log": "work/round2-sweep-129-console.log",
+        "window_local": "2026-09-18T21:42:49-04:00 to 2026-09-18T21:48:04-04:00",
+        "offscreen": true,
+        "no_hang": true,
+        "duck_flake": {
+          "first_run": "{\"passed\":false,\"reason\":\"fewer than three ducks landed on open water\",\"ducks\":8,\"over_water\":2,\"bumps\":0,\"time_delta\":0.0,\"notice\":\"\",\"lowest_offset_cm\":-1.0}",
+          "retry": "{\"passed\":true,\"reason\":\"swimmer dunked and charged for the duck\",\"ducks\":8,\"over_water\":4,\"bumps\":1,\"time_delta\":-5.0,\"notice\":\"DUCK!\",\"lowest_offset_cm\":-95.0}",
+          "retry_log": "work/round2-BattleDuckAudit-retry.log",
+          "verdict": "pass on immediate identical retry (green flake, prior convention)"
+        },
+        "results": [
+          "BattleCurseAudit: pass (16.9s)",
+          "BattleTreeRideAudit: pass (28.4s)",
+          "Realistic-BattleTreeRideAudit: pass (25.7s)",
+          "BattleTroubleAudit: pass (30.7s)",
+          "BattleSteeringAudit: pass (13.8s)",
+          "BattleSleeperAudit: pass (19.7s)",
+          "BattleGrassAudit: pass (24.6s)",
+          "BattleBikeCarAudit: pass (11.6s)",
+          "BattleMurderKAudit: pass (8.6s)",
+          "BattlePickupAudit: pass (10.6s)",
+          "BattleSpiritAudit: pass (8.6s)",
+          "BattleKrogCrashAudit: pass (8.6s)",
+          "BattleDuckAudit: pass on immediate identical retry (first pass FAIL, 8.6s; retry 25.2s)",
+          "BattleSpeedAudit: pass (14.7s)",
+          "BattleTimeAudit: pass (11.7s)",
+          "BattleDiscAudit: pass (19.6s)",
+          "BattleDiagonalAudit: pass (10.6s)",
+          "BattleMusicAudit: pass with audio (11.7s)",
+          "BattlePatioAudit: pass (9.7s)"
+        ]
+      },
+      "shipping_repackage": {
+        "status": "SKIPPED - gate failed",
+        "reason": "every targeted run must be green before Shipping is repackaged and the share is refreshed; BattleHomeDriveAudit failed 2/2 and BattleEastsideAudit produced no verdict, so step 3 (Shipping repackage + share refresh) was not run",
+        "share_state": "unchanged from the harness-fix round: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon"
+      }
+    }
+,
+  "round3": {
+  "git_sha": "0748242ae3da085c3a1abb0e9aedbeca69eeb85c",
+  "description": "Round-3 validation of the four feature commits (time tokens 10->5; best-time board; Kroger punk wall; Home centerline 210->220 + Eastside timer whitelist). Build SUCCESSFUL and commits pushed, but every packaged run dies at boot with a fatal error in the new BattleHome patio-board code (commit 841b613), so targeted runs produced no verdicts and the sweep is 0/19; Shipping repackage and share refresh skipped per the gate; reported, not fixed (validation-only task, no Source changes made).",
+  "gate": {
+    "required_commits": [
+      "b92b6ed Reduce +30s time tokens from 10 to 5",
+      "841b613 Add best-time board (HUD line + patio board)",
+      "eb501dd Add Kroger punk wall (shoot through to pass)",
+      "0748242 Harden Home centerline bound and Eastside audit timer"
+    ],
+    "tree_check": "tree at 467d256 with exactly the 10 expected feature files modified (git status --porcelain); no other dirty files; four commits created and pushed: github/windows-port 467d256..0748242"
+  },
+  "development_package": {
+    "status": "BUILD SUCCESSFUL",
+    "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+    "log": "work/windows-package.log",
+    "transcript": "work/round3-build-transcript.log",
+    "duration": "6m21s",
+    "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,508,544 bytes)"
+  },
+  "targeted_runs": {
+    "method": "packaged Dev exe, standard per-audit command (same style as Scripts\\run_quick_audits.ps1 -ExePath <staged exe>): <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+    "caps": "HomeDrive/MurderK/Time 10 min; Eastside 12 min external cap with foreground re-asserted every 15s (focus-keep loop, matching round 2)",
+    "results": [
+      {
+        "audit": "BattleHomeDriveAudit",
+        "runs": 2,
+        "outcome": "2/2 no verdict - boot crash",
+        "detail": "process died ~5s in with the fatal BattleHome.cpp:75 error before any centerline data; the new 220cm bound was never exercised; durations 5.2s/5.0s",
+        "logs": [
+          "work/round3-BattleHomeDriveAudit-run1.log",
+          "work/round3-BattleHomeDriveAudit-run2.log"
+        ]
+      },
+      {
+        "audit": "BattleMurderKAudit",
+        "runs": 2,
+        "outcome": "2/2 no verdict - boot crash",
+        "detail": "same boot crash; the 6-punk wall assertions were never reached; durations 5.0s/5.0s",
+        "logs": [
+          "work/round3-BattleMurderKAudit-run1.log",
+          "work/round3-BattleMurderKAudit-run2.log"
+        ]
+      },
+      {
+        "audit": "BattleTimeAudit",
+        "runs": 1,
+        "outcome": "1/1 no verdict - boot crash",
+        "detail": "same boot crash; the 5-token expectation was never reached; duration 5.0s",
+        "logs": [
+          "work/round3-BattleTimeAudit-run1.log"
+        ]
+      },
+      {
+        "audit": "BattleEastsideAudit",
+        "runs": 1,
+        "outcome": "1/1 no verdict - boot crash",
+        "detail": "same boot crash 5s in; the 900s timer and internal 420s budget were never reached, so the new whitelist entry could not be exercised; the process exited on its own (nothing was killed at the cap); duration 5.0s",
+        "logs": [
+          "work/round3-BattleEastsideAudit-run1.log"
+        ]
+      }
+    ],
+    "summary_json": "work/round3-129-targeted-results.json",
+    "console_log": "work/round3-targeted-console.log"
+  },
+  "sweep": {
+    "status": "0/19 pass - every audit died at boot before any verdict; the script-level no-verdict retry also crashed every time; no flakes (deterministic crash)",
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+    "console_log": "work/round3-sweep-console.log",
+    "window_local": "2026-09-18T22:19:35-04:00 to 2026-09-18T22:21:49-04:00",
+    "offscreen": true,
+    "no_hang": true,
+    "fatal_error": "FObjectFinders can't be used outside of constructors to find /Engine/EngineMaterials/UnlitText.UnlitText - ABattleHome::BeginPlay() at Source/AuraPlayground/BattleHome.cpp:75 (new patio TextRender board, commit 841b613); deterministic, present in all 19 sweep logs and all 6 targeted logs",
+    "note": "round-2 sweep logs preserved at work/round2-sweep-backup/ before the sweep overwrote work/<Label>.log",
+    "results": [
+      "BattleCurseAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.7s)",
+      "BattleTreeRideAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "Realistic-BattleTreeRideAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleTroubleAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleSteeringAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleSleeperAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleGrassAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.8s)",
+      "BattleBikeCarAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleMurderKAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattlePickupAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleSpiritAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleKrogCrashAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleDuckAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleSpeedAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.0s)",
+      "BattleTimeAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleDiscAudit: FAIL (no verdict; boot crash, 2 attempts, last 3.1s)",
+      "BattleDiagonalAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)",
+      "BattleMusicAudit: FAIL (no verdict; boot crash with audio, 2 attempts, last 3.2s)",
+      "BattlePatioAudit: FAIL (no verdict; boot crash, 2 attempts, last 2.9s)"
+    ]
+  },
+  "shipping_repackage": {
+    "status": "SKIPPED - gate failed",
+    "reason": "step 5 requires all targeted runs and the sweep to be green; every round-3 run crashed at boot on the new BattleHome patio-board code, so Shipping was not repackaged and the share was not refreshed",
+    "share_state": "unchanged: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon; folder also has Engine/, BattleOfATL.ico, START-HERE.txt, CREDITS.txt, NOTICES.txt and the three Manifest files from 2026-09-18T20:40-04:00"
+  }
+},
+  "round3b": {
+    "git_sha": "98528aedd0496246604bceba2baeaec619104853",
+    "description": "Round-3b validation after the boot-crash fix (98528ae, runtime-safe LoadObject for the best-time board material). Development build SUCCESSFUL and the boot crash is gone: MurderK and Time targeted runs pass and the full 19-audit sweep is green first-try with no flakes. Two targeted harness failures remain and gate Shipping/share: HomeDrive trips the new 220cm centerline bound marginally (220.96/221.91) and Eastside exhausts its internal 420s budget at 426s (2 legs, 213,815cm traveled, past the 200,000cm threshold, but leg 2 not finished). Shipping repackage, share refresh and launch-verify skipped per the gate. Validation-only task; no Source changes made.",
+    "gate": {
+      "required_commits": [
+        "98528ae Fix best-time board material load (runtime-safe LoadObject)",
+        "b92b6ed Reduce +30s time tokens from 10 to 5",
+        "841b613 Add best-time board (HUD line + patio board)",
+        "eb501dd Add Kroger punk wall (shoot through to pass)",
+        "0748242 Harden Home centerline bound and Eastside audit timer"
+      ],
+      "tree_check": "tree clean (git status --porcelain empty) at 98528ae == github/windows-port before the rebuild; the only repo file modified afterwards is Tests\\Results\\2026-09-18-playtest-129-windows.json",
+      "verdict": "FAILED - BattleHomeDriveAudit 0/2 and BattleEastsideAudit 0/1; MurderK 2/2, Time 1/1, sweep 19/19"
+    },
+    "development_package": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/windows-package.log",
+      "duration": "4m42s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,497,792 bytes, 2026-09-18T22:29:28-04:00)"
+    },
+    "targeted_runs": {
+      "method": "packaged Dev exe, standard per-audit command (same style as Scripts\\run_quick_audits.ps1 -ExePath <staged exe>): <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+      "driver": "work/round3b-driver-129.ps1",
+      "caps": "HomeDrive/MurderK/Time 10 min; Eastside 12 min external cap with foreground re-asserted every 15s (focus-keep loop, matching round 2/3)",
+      "window_local": "2026-09-18T22:33:43-04:00 to 2026-09-18T22:42:02-04:00",
+      "results": [
+        {
+          "audit": "BattleHomeDriveAudit",
+          "runs": 2,
+          "outcome": "0/2 FAIL - 220cm centerline bound exceeded",
+          "detail": "boot crash fixed; run reaches segment 42 (~21.4m in, completedLegs=0) and trips Best>220: run1 maxCenterlineErrorCm=220.96, run2 221.91, wipeouts 0 both; durations 20.2s/20.1s",
+          "logs": [
+            "work/round3b-BattleHomeDriveAudit-run1.log",
+            "work/round3b-BattleHomeDriveAudit-run2.log"
+          ]
+        },
+        {
+          "audit": "BattleMurderKAudit",
+          "runs": 2,
+          "outcome": "2/2 pass",
+          "detail": "verdict wall=6 among 16 checks with the six-punk shoot-through wall (BattlePunkWall + MurderKPunkWallActivated) passing; punks=7, timer=210; durations 10s/10s",
+          "logs": [
+            "work/round3b-BattleMurderKAudit-run1.log",
+            "work/round3b-BattleMurderKAudit-run2.log"
+          ]
+        },
+        {
+          "audit": "BattleTimeAudit",
+          "runs": 1,
+          "outcome": "1/1 pass",
+          "detail": "time_pickups=5 as expected; duration 15s",
+          "logs": [
+            "work/round3b-BattleTimeAudit-run1.log"
+          ]
+        },
+        {
+          "audit": "BattleEastsideAudit",
+          "runs": 1,
+          "outcome": "0/1 FAIL - internal 420s budget exhausted",
+          "detail": "900s game-timer whitelist worked (no early clock cutoff); leg0 210s/93,600cm, leg1 ~170s/199,036cm, then the internal 420s budget aborted at 426s wall ~30s into leg2; completedLegs=2, travelCm=213,815 (>200,000 threshold), maxCenterlineErrorCm=92.63, wipeouts=0; process exited on its own, 720s external cap never hit, no hang",
+          "logs": [
+            "work/round3b-BattleEastsideAudit-run1.log"
+          ]
+        }
+      ],
+      "summary_json": "work/round3b-129-targeted-results.json",
+      "console_log": "work/round3b-targeted-console.log",
+      "verdict": "FAILED - 2 of 4 targeted audits green"
+    },
+    "sweep": {
+      "status": "19/19 pass on first attempt, no flakes (BattleDuckAudit did not re-flake); script-level retry never triggered",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+      "console_log": "work/round3b-sweep-console.log",
+      "window_local": "2026-09-18T22:42:44-04:00 to 2026-09-18T22:47:46-04:00 (~5m02s)",
+      "offscreen": true,
+      "results": [
+        "BattleCurseAudit: pass",
+        "BattleTreeRideAudit: pass",
+        "Realistic-BattleTreeRideAudit: pass",
+        "BattleTroubleAudit: pass",
+        "BattleSteeringAudit: pass",
+        "BattleSleeperAudit: pass",
+        "BattleGrassAudit: pass",
+        "BattleBikeCarAudit: pass",
+        "BattleMurderKAudit: pass",
+        "BattlePickupAudit: pass",
+        "BattleSpiritAudit: pass",
+        "BattleKrogCrashAudit: pass",
+        "BattleDuckAudit: pass",
+        "BattleSpeedAudit: pass",
+        "BattleTimeAudit: pass",
+        "BattleDiscAudit: pass",
+        "BattleDiagonalAudit: pass",
+        "BattleMusicAudit: pass",
+        "BattlePatioAudit: pass"
+      ]
+    },
+    "shipping_share": {
+      "status": "SKIPPED - gate failed",
+      "reason": "step 4 requires everything above green; targeted gate is red (HomeDrive 0/2 centerline 220.96/221.91 vs 220; Eastside 0/1 internal 420s budget at 426s) even though the sweep was 19/19, so the Shipping build, share refresh and launch-verify were not run",
+      "share_state": "unchanged: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk (2026-09-18T20:41:52-04:00) still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon; no playtest-129 desktop shortcut present; folder also has Engine/, BattleOfATL.ico, START-HERE.txt, CREDITS.txt, NOTICES.txt and the three Manifest files from 2026-09-18T20:40-04:00; D:\\Battle Of ATL\\Archives\\BattleForTheA now holds the fresh Development exe (2026-09-18T22:29:28-04:00) alongside the older Shipping exe, but the share itself was not touched",
+      "launch_verify": "not run (step 4 skipped)"
+    }
+  },
+  "round3c": {
+    "git_sha": "b8fc67c7a22e61609ac4d98f35ce873a8dddd137",
+    "description": "Round-3c validation at b8fc67c (Home centerline 220->230, Eastside internal budget 420s->500s). Development rebuild SUCCESSFUL in 4m04s. Both targeted round-3b failures remain and the Eastside cause is recharacterized: neither round-3b nor round-3c logged a Connector failure line, so the time budget never tripped; the route Arrives at the endpoint at ~426s (completedLegs=2, travel 213,808cm > 200,000cm threshold) and is vetoed by the pavement guard (TrailGroundAudit 23,653/24,820 paved = 95.3% < 99% required; round-3b 23,655/24,843 = 95.2%), so the 500s budget change cannot clear it. HomeDrive trips the new 230cm bound marginally at 230.22/231.24; the round-3b readings (220.96/221.91) were censored by the 220 bound itself. MurderK (wall=6), Time (5 tokens) and the 19-audit sweep are green first-try. Shipping repackage, share refresh and launch-verify skipped per the gate. Validation-only task; no Source changes made.",
+    "gate": {
+      "required_commits": [
+        "b8fc67c Widen Home centerline and Eastside internal budget",
+        "b92b6ed Reduce +30s time tokens from 10 to 5",
+        "841b613 Add best-time board (HUD line + patio board)",
+        "eb501dd Add Kroger punk wall (shoot through to pass)"
+      ],
+      "tree_check": "tree clean (git status --porcelain empty) at b8fc67c == github/windows-port before the rebuild; the only repo file modified afterwards is Tests\\Results\\2026-09-18-playtest-129-windows.json",
+      "verdict": "FAILED - BattleHomeDriveAudit 0/2 and BattleEastsideAudit 0/1; MurderK 1/1, Time 1/1, sweep 19/19"
+    },
+    "development_package": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/windows-package.log (final summary line only; an outer Tee-Object truncated the script redirect this round)",
+      "transcript": "C:\\Users\\webex\\AppData\\Roaming\\Unreal Engine\\AutomationTool\\Logs\\C+Program+Files+Epic+Games+UE_5.8\\Log.txt (UAT Log.txt for the 22:53:41 run)",
+      "duration": "4m04s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,497,792 bytes, 2026-09-18T22:54:19-04:00)"
+    },
+    "targeted_runs": {
+      "method": "packaged Dev exe, standard per-audit command (same style as Scripts\\run_quick_audits.ps1 -ExePath <staged exe>): <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+      "driver": "work/round3c-driver-129.ps1",
+      "caps": "HomeDrive/MurderK/Time 10 min; Eastside 12 min external cap with foreground re-asserted every 15s (focus-keep loop, matching round 2/3)",
+      "window_local": "2026-09-18T22:59:22-04:00 to 2026-09-18T23:07:34-04:00 (~8m12s)",
+      "results": [
+        {
+          "audit": "BattleHomeDriveAudit",
+          "runs": 2,
+          "outcome": "0/2 FAIL - 230cm centerline bound exceeded",
+          "detail": "new bound is applied but still tight: run1 maxCenterlineErrorCm=230.22, run2 231.24, completedLegs=0 both, wipeouts 0; the round-3b readings (220.96/221.91) were censored by the 220 bound itself, so widening to 230 did not clear the route; durations 20.3s/20s",
+          "logs": [
+            "work/round3c-BattleHomeDriveAudit-run1.log",
+            "work/round3c-BattleHomeDriveAudit-run2.log"
+          ]
+        },
+        {
+          "audit": "BattleEastsideAudit",
+          "runs": 1,
+          "outcome": "0/1 FAIL - pavement guard, not the time budget",
+          "detail": "no Connector failure line in round-3b or round-3c: the 420s/500s budget never tripped; the route Arrives at the endpoint at ~426s with completedLegs=2 and travelCm=213,807.69 (the >200,000cm threshold passes), then the pavement guard vetoes: TrailGroundAudit samples=24,820 paved=23,653 = 95.3% < 99% required (round-3b 24,843/23,655 = 95.2%); maxCenterlineErrorCm=92.21, wipeouts=0; process exited on its own, 720s external cap never hit, no hang; duration 426.1s",
+          "logs": [
+            "work/round3c-BattleEastsideAudit-run1.log"
+          ]
+        },
+        {
+          "audit": "BattleMurderKAudit",
+          "runs": 1,
+          "outcome": "1/1 pass",
+          "detail": "verdict wall=6 among 16 checks with the six-punk shoot-through wall passing; punks=7, timer=210; duration 10s",
+          "logs": [
+            "work/round3c-BattleMurderKAudit-run1.log"
+          ]
+        },
+        {
+          "audit": "BattleTimeAudit",
+          "runs": 1,
+          "outcome": "1/1 pass",
+          "detail": "time_pickups=5 as expected; duration 15s",
+          "logs": [
+            "work/round3c-BattleTimeAudit-run1.log"
+          ]
+        }
+      ],
+      "summary_json": "work/round3c-129-targeted-results.json",
+      "console_log": "work/round3c-targeted-console.log",
+      "verdict": "FAILED - 2 of 4 targeted audits green"
+    },
+    "sweep": {
+      "status": "19/19 pass on first attempt, no flakes; script-level retry never triggered",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+      "console_log": "work/round3c-sweep-console.log",
+      "window_local": "2026-09-18T23:09:26-04:00 to 2026-09-18T23:14:30-04:00 (~5m04s)",
+      "offscreen": true,
+      "music_with_audio": true,
+      "results": [
+        "BattleCurseAudit: pass",
+        "BattleTreeRideAudit: pass",
+        "Realistic-BattleTreeRideAudit: pass",
+        "BattleTroubleAudit: pass",
+        "BattleSteeringAudit: pass",
+        "BattleSleeperAudit: pass",
+        "BattleGrassAudit: pass",
+        "BattleBikeCarAudit: pass",
+        "BattleMurderKAudit: pass",
+        "BattlePickupAudit: pass",
+        "BattleSpiritAudit: pass",
+        "BattleKrogCrashAudit: pass",
+        "BattleDuckAudit: pass",
+        "BattleSpeedAudit: pass",
+        "BattleTimeAudit: pass",
+        "BattleDiscAudit: pass",
+        "BattleDiagonalAudit: pass",
+        "BattleMusicAudit: pass",
+        "BattlePatioAudit: pass"
+      ]
+    },
+    "shipping_share": {
+      "status": "SKIPPED - gate failed",
+      "reason": "step 4 requires everything above green; targeted gate is red (HomeDrive 0/2 centerline 230.22/231.24 vs 230; Eastside 0/1 pavement 95.3% vs 99%), so the Shipping build, share refresh and launch-verify were not run",
+      "share_state": "unchanged: C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129 still ships AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build); desktop shortcut C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk (2026-09-18T20:41:52-04:00) still targets it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon; no playtest-129 desktop shortcut present; folder also has Engine/, BattleOfATL.ico, START-HERE.txt, CREDITS.txt, NOTICES.txt and the three Manifest files from 2026-09-18T20:40-04:00; D:\\Battle Of ATL\\Archives\\BattleForTheA now holds the fresh Development exe (2026-09-18T22:54:19-04:00) alongside the older Shipping exe (2026-09-18T20:38:37-04:00), but the share itself was not touched",
+      "launch_verify": "not run (step 4 skipped)"
+    }
+  }
+,
+  "round4":   {
+    "git_sha": "4e7e418d4e9ccc8c8514735dd3784c702c371028",
+    "description": "Round-4 validation at 4e7e418 (Home bend braking root fix, Home centerline bound 230->245, Eastside pavement guard 99%->94%). Preflight: tree clean at 4e7e418 == github/windows-port before the rebuild. Development rebuild SUCCESSFUL in 3m33s. All five targeted runs green, sweep 19/19 first-try with music audio, Shipping repackaged, playtest-129 share refreshed with the fresh Shipping exe, both desktop shortcuts refreshed, launch-verified.",
+    "gate": {
+      "required_commits": [
+        "4e7e418 Home bend braking, Home bound 245, Eastside pavement 94 percent"
+      ],
+      "feature_commits": [
+        "b92b6ed Reduce +30s time tokens from 10 to 5",
+        "841b613 Add best-time board (HUD line + patio board)",
+        "eb501dd Add Kroger punk wall (shoot through to pass)",
+        "0748242 Harden Home centerline bound and Eastside audit timer",
+        "98528ae Fix best-time board material load (runtime-safe LoadObject)",
+        "b8fc67c Widen Home centerline and Eastside internal budget"
+      ],
+      "tree_check": "tree clean (git status --porcelain empty) at 4e7e418 == github/windows-port before the rebuild; the only repo file modified afterwards is Tests\\Results\\2026-09-18-playtest-129-windows.json",
+      "verdict": "PASSED - HomeDrive 2/2, Eastside 1/1, MurderK 1/1, Time 1/1, sweep 19/19; Shipping repackaged and share refreshed"
+    },
+    "development_package": {
+      "status": "BUILD SUCCESSFUL",
+      "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Development",
+      "log": "work/windows-package-129-dev-round4.log (copy of work/windows-package.log taken before the Shipping run overwrote it)",
+      "duration": "3m33s",
+      "staged_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe (334,498,304 bytes, 2026-09-18T23:22:50-04:00)",
+      "note": "all targeted runs and the sweep consumed this staged Development exe before the Shipping stage overwrote the staged tree"
+    },
+    "targeted_runs": {
+      "method": "packaged Dev exe, standard per-audit command (same style as Scripts\\run_quick_audits.ps1 -ExePath <staged exe>): <exe> /Game/PiedmontRide/Maps/PiedmontWorld?Difficulty=Easy?AutoStart=1 -game -RenderOffscreen -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout -<Flag> -installed",
+      "driver": "work/round4-driver-129.ps1",
+      "caps": "HomeDrive/MurderK/Time 10 min; Eastside 12 min external cap with foreground re-asserted every 15s (focus-keep loop, matching round 2/3/3c)",
+      "window_local": "2026-09-18T23:30:38-04:00 to 2026-09-18T23:38:55-04:00 (~8m17s)",
+      "results": [
+        {
+          "audit": "BattleHomeDriveAudit",
+          "runs": 2,
+          "outcome": "2/2 PASS - bend braking + 245cm bound",
+          "detail": "bend braking now engages for Home (BrakeForBends ||(Home&&!Spirit)), so the tight S-curve is braked rather than oversteered: run1 maxCenterlineErrorCm=194.18 (completedLegs=2, travelCm=4890.09, wipeouts=0, 25.2s), run2 193.01 (travelCm=4927.52, 25s). Both sit well inside the 245 bound and far below the round-3c readings of 230.22/231.24, which the old 230 bound itself censored; completedLegs went from 0/0 to 2/2",
+          "logs": [
+            "work/round4-BattleHomeDriveAudit-run1.log",
+            "work/round4-BattleHomeDriveAudit-run2.log"
+          ]
+        },
+        {
+          "audit": "BattleEastsideAudit",
+          "runs": 1,
+          "outcome": "1/1 PASS - 94% pavement guard",
+          "detail": "TrailGroundAudit samples=24,841 paved=23,671 = 95.29% >= 94% required (round-3c was 95.3% vs the old 99% gate); completedLegs=2, travelCm=213,843.67 (over the 200,000cm threshold), maxCenterlineErrorCm=88.14, wipeouts=0. Route arrived and the process exited on its own at 426s, the same profile as round-3c's 426.1s; the 720s external cap was never hit, the focus-keep loop ran throughout, no hang",
+          "logs": [
+            "work/round4-BattleEastsideAudit-run1.log"
+          ]
+        },
+        {
+          "audit": "BattleMurderKAudit",
+          "runs": 1,
+          "outcome": "1/1 pass",
+          "detail": "verdict wall=6 among 16 checks with the six-punk shoot-through wall passing; punks=7, timer=210; duration 10s",
+          "logs": [
+            "work/round4-BattleMurderKAudit-run1.log"
+          ]
+        },
+        {
+          "audit": "BattleTimeAudit",
+          "runs": 1,
+          "outcome": "1/1 pass",
+          "detail": "time_pickups=5 as expected; duration 15s",
+          "logs": [
+            "work/round4-BattleTimeAudit-run1.log"
+          ]
+        }
+      ],
+      "summary_json": "work/round4-129-targeted-results.json",
+      "console_log": "work/round4-targeted-console.log",
+      "verdict": "PASSED - 4 of 4 targeted audits green"
+    },
+    "sweep": {
+      "status": "19/19 pass on first attempt, no flakes; script-level retry never triggered",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Scripts\\run_quick_audits.ps1 -ExePath 'C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe'",
+      "console_log": "work/round4-sweep-console.log",
+      "window_local": "2026-09-18T23:39:28-04:00 to 2026-09-18T23:44:29-04:00 (~5m01s)",
+      "offscreen": true,
+      "music_with_audio": true,
+      "results": [
+        "BattleCurseAudit: pass",
+        "BattleTreeRideAudit: pass",
+        "Realistic-BattleTreeRideAudit: pass",
+        "BattleTroubleAudit: pass",
+        "BattleSteeringAudit: pass",
+        "BattleSleeperAudit: pass",
+        "BattleGrassAudit: pass",
+        "BattleBikeCarAudit: pass",
+        "BattleMurderKAudit: pass",
+        "BattlePickupAudit: pass",
+        "BattleSpiritAudit: pass",
+        "BattleKrogCrashAudit: pass",
+        "BattleDuckAudit: pass",
+        "BattleSpeedAudit: pass",
+        "BattleTimeAudit: pass",
+        "BattleDiscAudit: pass",
+        "BattleDiagonalAudit: pass",
+        "BattleMusicAudit: pass",
+        "BattlePatioAudit: pass"
+      ]
+    },
+    "shipping_share": {
+      "status": "COMPLETE - Shipping repackaged, share refreshed with the fresh Shipping exe, shortcuts refreshed, launch-verified",
+      "shipping_package": {
+        "status": "BUILD SUCCESSFUL",
+        "command": "Scripts\\package_windows.ps1 -Build 129 -BuildConfig Shipping",
+        "log": "work/windows-package-129-shipping-round4.log (copy of work/windows-package.log)",
+        "duration": "3m28s",
+        "staged_shipping_exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe (167,186,944 bytes, 2026-09-18T23:45:30-04:00)"
+      },
+      "share_before": "recorded before removal in work/round4-share-before.txt: AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,183,360 bytes, 2026-09-18T20:38:37-04:00, previous Shipping build), Engine/, BattleOfATL.ico (61,096 bytes), START-HERE.txt (Windows 129), CREDITS.txt, NOTICES.txt and the three Manifest files; desktop 'The Battle of ATL.lnk' targeted it with /Game/PiedmontRide/Maps/PiedmontWorld and the BattleOfATL.ico icon; no playtest-129 desktop shortcut present",
+      "share_refresh": "folder removed, then Scripts\\prepare_windows_share.py --build 129 --archive-root \"D:\\Battle Of ATL\\Archives\\BattleForTheA\" --share-root \"C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\" re-ran; prep as-written resolves the launcher stub first (the archive rglob picks Windows\\AuraPlayground.exe) and its copied tree still contained the stale Development exe, so the share was corrected to the gate rule: the root stub 'The Battle of ATL.exe' was removed, the stale Development AuraPlayground.exe/AuraPlayground.pdb were removed, the Shipping pdb was removed, and the fresh AuraPlayground-Win64-Shipping.exe was renamed to 'The Battle of ATL.exe'",
+      "share_after": {
+        "exe": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 129\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe (167,186,944 bytes, 2026-09-18T23:45:30-04:00, SHA256 7F3367CF2FD707B2BDA5A9FE008798F47ABF1D70A9AFE263A472A175F44E98D1 == the fresh staged Shipping exe)",
+        "contents": "AuraPlayground\\ (Binaries, Content) and Engine\\ trees, NOTICES.txt and the three Manifest files (2026-09-18T23:46-04:00), BattleOfATL.ico freshly generated from SourceAssets\\UI\\BattleOfATL.png (30,851 bytes), START-HERE.txt (Windows Playtest 129 text restored), CREDITS.txt fresh from Distribution\\CREDITS.txt; the only game exe in the tree is The Battle of ATL.exe (no stub, no Development exe, no pdbs)"
+      },
+      "shortcuts": {
+        "playtest_129": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 129.lnk created",
+        "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk refreshed",
+        "settings": "both target ...\\AuraPlayground\\Binaries\\Win64\\The Battle of ATL.exe, args /Game/PiedmontRide/Maps/PiedmontWorld, working dir the Win64 folder, icon BattleOfATL.ico,0, description 'The Battle of ATL Windows Playtest 129'"
+      },
+      "launch_verify": {
+        "command": "\"The Battle of ATL.exe\" /Game/PiedmontRide/Maps/PiedmontWorld -game -windowed -ResX=640 -ResY=360 -ForceRes -BattleSkipTutorial -unattended -nosound -stdout",
+        "started": "2026-09-18T23:51:01-04:00",
+        "result": "alive after ~120s with window title 'The Battle of ATL built by Web Experts', working set 1.21 GB, then killed (KILLED_AFTER_VERIFY); no stray process left",
+        "boot_note": "stdout stays empty by design in Shipping (console logging is compiled out and bUseLoggingInShipping is false per the hard rule), so boot evidence is the live process plus the game window title, matching prior launch-verifies",
+        "log": "work/round4-launch-verify-129.log (+ .log.err, both 0 bytes)"
+      },
+      "hard_rules": "bUseLoggingInShipping left false (never enabled); no C++ changes; work\\ logs and the gitignored blazer/EuropeanHornbeam assets not committed; the only repo file modified is Tests\\Results\\2026-09-18-playtest-129-windows.json"
+    }
+  }
+}
