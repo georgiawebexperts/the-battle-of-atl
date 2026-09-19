@@ -20,6 +20,14 @@ if (-not (Test-Path $runUat)) {
 New-Item -ItemType Directory -Force -Path $workDir | Out-Null
 New-Item -ItemType Directory -Force -Path $ArchiveRoot | Out-Null
 
+# UAT's -archive merges into an existing archive tree and leaves stale files
+# behind (old Engine folder, previous configs). Start from a clean archive
+# target so the share prep step never picks up stale artifacts.
+$archiveTarget = Join-Path $ArchiveRoot 'Windows'
+if (Test-Path $archiveTarget) {
+    Remove-Item -LiteralPath $archiveTarget -Recurse -Force
+}
+
 $cookDirs = "$projectRoot\Content\CitySampleCrowd+$projectRoot\Content\BattleRetarget+$projectRoot\Content\EuropeanHornbeam+$projectRoot\Content\BattleForTheA\Spirit+$projectRoot\Content\BattleForTheA\Environment\KrogIncident"
 $buildArgs = @(
     'BuildCookRun',

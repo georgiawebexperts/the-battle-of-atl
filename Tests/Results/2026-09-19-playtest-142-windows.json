@@ -1,0 +1,100 @@
+{
+  "build": "142",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "a32d6cf",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "a32d6cf merged Mac 3D spectral bear; both sides BUILD 142",
+  "targeted": {
+    "BattleEastsideAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleEastsideAudit.log",
+      "verdict": "[2026.09.19-08.14.39:072][ 66]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213805.75,\"maxCenterlineErrorCm\":90.27,\"wipeouts\":0}"
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "runs": [
+        {
+          "run": 1,
+          "log": "work\\t142-BattleHomeDriveAudit-run1.log",
+          "verdict": "[2026.09.19-08.15.10:810][ 62]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4882.31,\"maxCenterlineErrorCm\":194.39,\"wipeouts\":0}"
+        },
+        {
+          "run": 2,
+          "log": "work\\t142-BattleHomeDriveAudit-run2.log",
+          "verdict": "[2026.09.19-08.15.42:371][ 69]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4894.16,\"maxCenterlineErrorCm\":192.81,\"wipeouts\":0}"
+        }
+      ]
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleTunnelHazardAudit.log",
+      "verdict": "[2026.09.19-08.16.04:015][439]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":4,\"gallery_ride_cm\":4667,\"wipeouts\":0}"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleMurderKAudit.log",
+      "verdict": "[2026.09.19-08.16.21:799][223]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}"
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleTimeAudit.log",
+      "verdict": "[2026.09.19-08.16.42:309][411]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":5}"
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleMusicAudit.log",
+      "verdict": "[2026.09.19-08.17.04:508][401]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}"
+    },
+    "BattleFpsAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleFpsAudit.log",
+      "verdict": "[2026.09.19-08.18.01:799][974]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":57.0,\"min_fps\":32.0,\"p05_fps\":49.2,\"samples\":1699}",
+      "note": "Verdict printed and passed; process idled in a post-verdict loop and was terminated after log capture."
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleSkateAudit.log",
+      "verdict": "[2026.09.19-08.18.28:938][949]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.94,\"x\":40354.87,\"z\":748.15}"
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleSkaterAudit.log",
+      "verdict": "[2026.09.19-08.19.29:877][841]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9741.1,\"corners\":6,\"people_hit\":2}"
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "log": "work\\t142-BattleInventoryAudit.log",
+      "verdict": "[2026.09.19-08.20.05:489][317]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}"
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 19,
+    "total": 20,
+    "log": "work\\sweep-142-20260919-042022.log",
+    "flakes": [
+      {
+        "audit": "BattleTroubleAudit",
+        "sweep_verdict": "[2026.09.19-08.21.40:842][276]LogTemp: Display: BattleTroubleAudit: {\"passed\":false,\"stage\":0,\"reason\":\"Impact routing or repeated-person guard failed\",\"people\":0,\"police_spawned\":0,\"taser_hits\":0}",
+        "rerun_log": "work\\t142-BattleTroubleAudit-rerun.log",
+        "rerun_verdict": "[2026.09.19-08.26.15:117][577]LogTemp: Display: BattleTroubleAudit: {\"passed\":true,\"stage\":10,\"reason\":\"Readable taser windup, narrow dodge corridor, coordinated recovery, airborne gravity and police expiry pass\",\"people\":1,\"police_spawned\":1,\"taser_hits\":3}"
+      }
+    ],
+    "failures": []
+  },
+  "shipping": {
+    "status": "BUILD SUCCESSFUL",
+    "log": "work/windows-package-142-shipping.log",
+    "exe_sha256": "1DAF13F083123CDBBE420526B462C39883903B4D6FAA27F891A61AE3BCE7241E",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 142",
+    "launch_verify": true,
+    "launch_note": "Root is the UAT launcher stub; it spawns AuraPlayground\\Binaries\\Win64\\AuraPlayground-Win64-Shipping.exe which stayed alive at 25s. Real exe must stay inside Binaries\\Win64; replacing the root stub with the big exe makes it exit code 1.",
+    "share_note": "Archive was polluted with a stale Engine folder from earlier builds; refreshed archive from Saved\\StagedBuilds\\Windows before preparing the share.",
+    "shortcuts": {
+      "playtest": "C:\\Users\\webex\\Desktop\\The Battle of ATL Windows Playtest 142.lnk",
+      "main": "C:\\Users\\webex\\Desktop\\The Battle of ATL.lnk"
+    }
+  }
+}
