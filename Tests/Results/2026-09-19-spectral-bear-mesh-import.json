@@ -1,0 +1,29 @@
+{
+  "source": "/Volumes/Adam Assets/Unreal/Projects/AuraPlayground/SourceAssets/Spirit/BearCandidate/Bear.fbx",
+  "folder": "/Game/BattleForTheA/Spirit",
+  "bounds_cm": {
+    "origin": [
+      278.9189758300781,
+      0.77349853515625,
+      175.2362401485443
+    ],
+    "extent": [
+      136.42886352539062,
+      284.5849609375,
+      168.2044641971588
+    ]
+  },
+  "length_cm": 569.169921875,
+  "scale": 0.3338194670830259,
+  "height_cm": 112.29984919856292,
+  "material": "/Game/BattleForTheA/Spirit/M_SpectralBearBody.M_SpectralBearBody",
+  "scalar_parameters": [
+    "SpiritFade"
+  ],
+  "fade_default": 1.0,
+  "fade_name": "SpiritFade",
+  "mesh": "/Game/BattleForTheA/Spirit/SM_SpectralBear.SM_SpectralBear",
+  "mesh_materials": [
+    "M_SpectralBearBody"
+  ]
+}
