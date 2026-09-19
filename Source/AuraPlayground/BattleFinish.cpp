@@ -1,4 +1,5 @@
 #include "BattleBike.h"
+#include "BattleHome.h"
 #include "BattleRunRecords.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/CommandLine.h"
@@ -17,5 +18,6 @@ bool ABattleParkMode::CompleteRun(ABattleBike* Bike){
  bWon=true;bRunEnded=true;FinishKills=Bike->EnemyKills;FinishWipeouts=Bike->Ride->Wipeouts;FinishNearMisses=Bike->NearMisses;
  const float Fraction=TimeRemaining/FMath::Max(1.f,Difficulty.TimeLimitSeconds);FinishGrade=Fraction>=.5f?TEXT("A"):Fraction>=.25f?TEXT("B"):Fraction>=.1f?TEXT("C"):TEXT("D");
  bRecordSaved=BattleRecords::Record(DifficultyName,RunElapsed);Bike->Ride->Speed=Bike->Ride->Pedal=Bike->Ride->Steer=0;Bike->Ride->StopMovementImmediately();
+ ABattleHome::RefreshBestTimeBoard(DifficultyName,true);
  UE_LOG(LogTemp,Display,TEXT("BattleFinish: won=1 elapsed=%.2f remaining=%.2f saved=%d"),RunElapsed,TimeRemaining,bRecordSaved);return true;
 }
