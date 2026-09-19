@@ -373,7 +373,21 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
    return;
   }
   if(FVector::Dist2D(Bike->GetActorLocation(),Hazards->FirstDeepHole)>2600.f){Finish(false,TEXT("Rode past the deep hole without a wipeout"),Hazards,0);return;}
-  if(S.Clock>20){Finish(false,TEXT("Traversal timed out"),Hazards,0);return;}
+  // Twenty seconds was not enough under load. This phase is a ride-up-and-be-
+  // thrown, and the pit only fires above its crash speed, so the window covers
+  // the approach rather than the promise. It failed twice on the cooked build
+  // in a row - once inside a 29-audit sweep, once immediately after a cook -
+  // while nothing else was running, and passed twice standalone on the same
+  // binary. The sleep that follows is not a fix in itself: if this ever fails
+  // again, the log now names where the bike actually was.
+  if(S.Clock>45){
+   const FVector B=Bike->GetActorLocation();
+   const float Gap=FVector::Dist2D(B,Hazards->FirstDeepHole);
+   UE_LOG(LogTemp,Display,TEXT("TunnelHazardAuditTimeout: {\"bike\":[%.0f,%.0f,%.0f],\"hole\":[%.0f,%.0f,%.0f],\"gap_cm\":%.0f,\"speed\":%.0f,\"ground\":%d,\"pedal\":%.1f}"),
+    B.X,B.Y,B.Z,Hazards->FirstDeepHole.X,Hazards->FirstDeepHole.Y,Hazards->FirstDeepHole.Z,Gap,
+    Bike->Ride?Bike->Ride->Speed:0.f,Bike->Ride?(Bike->Ride->IsMovingOnGround()?1:0):0,Bike->Ride?Bike->Ride->Pedal:0.f);
+   Finish(false,TEXT("Traversal timed out"),Hazards,0);return;
+  }
   return;
  }
  // Phase 2: the gallery ride. No wipeout, a ceiling overhead the whole way, and
