@@ -82,6 +82,10 @@ void ABattleZombie::Tick(float Dt){
  }
  auto* Bike=Cast<ABattleBike>(Target);if(auto* Foot=Cast<ABattleRider>(Target))Bike=Foot->ParkedBike;
  if(!Bike||Bike->RiderHealth<=0||Bike->RespawnRemaining>0||bSwimming){if(AI)AI->StopMovement();return;}
+ // The Krog bore punks are scenery. They stand on the tunnel's shoulders and
+ // must not chase: without this they walked two hundred metres out of the bore
+ // into the Eastside connector and took the rider off head-on, which is what
+ // failed BattleEastsideAudit on Windows (their 0358442, merged back here).
  if(Tags.Contains(TEXT("BattleTunnelPunk"))){if(AI)AI->StopMovement();return;}
  if(bMurderKBrawler&&BrawlPartner.IsValid()&&FVector::Dist2D(Target->GetActorLocation(),GetActorLocation())>650){
   if(AI)AI->StopMovement();GetCharacterMovement()->StopMovementImmediately();

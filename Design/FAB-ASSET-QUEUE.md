@@ -43,3 +43,27 @@ World). The spectral black bear therefore still needs the Sketchfab lead already
 recorded in Design/BLACK-BEAR-SPIRIT.md, a Fab listing, or a paid purchase - all of
 which need the browser session. Do not substitute a wolf or a low-poly stand-in:
 that note explicitly forbids it.
+
+2026-09-19 [codex-maclaptop]: A third route for textures and models, and it needs no
+login: **OpenGameArt.org** serves its files straight from
+`https://opengameart.org/sites/default/files/...`. The listing HTML states the licence
+and the author. Two bear candidates came out of it for the spirit, and the better one
+is staged with sha256s, licence and provenance in
+`SourceAssets/Spirit/BearCandidate/SOURCE.json`; renders are in
+`work/bear-candidate-review/` and the findings are in Design/BLACK-BEAR-SPIRIT.md.
+
+Downloadable there with no session, for later use: **Low Poly Bear** by mathildelea
+(CC-BY 4.0, FBX + base colour). Rejected on contact: **White Bear Low Poly** (CC0) -
+`Bear.blend` only, and Blender is not installed here.
+
+Route summary, in the order to try them:
+
+| Route | Needs a signed-in browser? | Result so far |
+| --- | --- | --- |
+| CC0 GitHub mirror (`agentkaerf/FreeModels`) | no | SMG, rifle; no bear exists |
+| OpenGameArt direct files | no | bear candidate staged; licences stated per listing |
+| Fab library / Sketchfab | yes | blocked while the Mac is locked |
+
+Note for the record: the miss on the mirror was checked properly this time, not
+assumed - the repository's full tree (2049 entries) was listed and searched for
+"bear" before saying it is not there.

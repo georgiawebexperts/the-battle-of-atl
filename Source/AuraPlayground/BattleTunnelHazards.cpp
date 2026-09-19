@@ -3,12 +3,16 @@
 #include "BattlePothole.h"
 #include "BattleHomeData.h"
 #include "BattleBike.h"
+#include "BattleRider.h"
 #include "BattleZombie.h"
+#include "PiedmontPathSpline.h"
+#include "Components/SplineComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
 #include "Engine/StaticMesh.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
+#include "GameFramework/Pawn.h"
 #include "GenericPlatform/GenericPlatformInputDeviceMapper.h"
 #include "InputKeyEventArgs.h"
 #include "Materials/MaterialInstanceDynamic.h"
@@ -244,7 +248,7 @@ void ABattleTunnelHazards::Tick(float Dt){
 
 void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;int32 Phase=0,Wipeouts=0,PunkCount=0,PunkSeats=0;float Clock=0;bool Done=false;};
+ struct FState{TWeakObjectPtr<UWorld> World;TArray<FVector> GallerySpine;int32 Phase=0,Wipeouts=0,PunkCount=0,PunkSeats=0,GalleryColumns=0,GalleryBlocked=0,GalleryTraffic=0;float Clock=0,GalleryRideStartX=0,BikeX=0,GalleryLengthCm=0;bool Done=false;FVector GalleryMouth=FVector::ZeroVector;};
  static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}
  if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
@@ -252,11 +256,13 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
  auto Key=[&](bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::W,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Pass,const TCHAR* Reason,const ABattleTunnelHazards* Hazards,int32 Wipeouts){
   Key(false);S.Done=true;
-  UE_LOG(LogTemp,Display,TEXT("TunnelHazardAudit: {\"passed\":%s,\"reason\":\"%s\",\"phase\":%d,\"bore_cm\":%.0f,\"grounded_stations\":%d,\"deep_holes\":%d,\"shallow_holes\":%d,\"scooters\":%d,\"punks\":%d,\"punk_seats\":%d,\"wipeouts\":%d}"),
-   Pass?TEXT("true"):TEXT("false"),Reason,S.Phase,Hazards?Hazards->BoreLengthCm:0.f,Hazards?Hazards->StationsGrounded:0,Hazards?Hazards->DeepHoles:0,Hazards?Hazards->ShallowHoles:0,Hazards?Hazards->Scooters:0,S.PunkCount,S.PunkSeats,Wipeouts);
+  const float GalleryRideCm=FMath::Max(0.f,S.BikeX-S.GalleryRideStartX);
+  UE_LOG(LogTemp,Display,TEXT("TunnelHazardAudit: {\"passed\":%s,\"reason\":\"%s\",\"phase\":%d,\"bore_cm\":%.0f,\"grounded_stations\":%d,\"deep_holes\":%d,\"shallow_holes\":%d,\"scooters\":%d,\"punks\":%d,\"punk_seats\":%d,\"gallery_columns\":%d,\"gallery_blocked\":%d,\"gallery_traffic\":%d,\"gallery_ride_cm\":%.0f,\"wipeouts\":%d}"),
+   Pass?TEXT("true"):TEXT("false"),Reason,S.Phase,Hazards?Hazards->BoreLengthCm:0.f,Hazards?Hazards->StationsGrounded:0,Hazards?Hazards->DeepHoles:0,Hazards?Hazards->ShallowHoles:0,Hazards?Hazards->Scooters:0,S.PunkCount,S.PunkSeats,S.GalleryColumns,S.GalleryBlocked,S.GalleryTraffic,GalleryRideCm,Wipeouts);
   PC->ConsoleCommand(TEXT("quit"));
  };
  auto* Bike=Cast<ABattleBike>(PC->GetPawn());
+ if(Bike)S.BikeX=Bike->GetActorLocation().X;
  TActorIterator<ABattleTunnelHazards> HazardsIt(PC->GetWorld());
  ABattleTunnelHazards* Hazards=HazardsIt?*HazardsIt:nullptr;
  if(!Hazards){Finish(false,TEXT("No tunnel hazards actor in the world"),Hazards,0);return;}
@@ -296,6 +302,51 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
   }
   if(S.PunkCount<3){Finish(false,TEXT("Fewer than three punks were placed in the tunnel"),Hazards,0);return;}
   if(S.PunkSeats<S.PunkCount){Finish(false,TEXT("A tunnel punk is off the floor or outside the tunnel profile"),Hazards,0);return;}
+  // The cut-and-cover gallery, added south of the bore on 2026-09-19 because
+  // Elliott called the tunnel "way too short". It is followed by its own spine,
+  // placed with the geometry: sampling a diagonal gallery's bounding box finds
+  // the middle of the box, not the middle of the road, and the first two
+  // versions of this check failed for exactly that reason. For every spine
+  // station: the road is under it, the lid is overhead, and a 62 cm rider
+  // sphere clears at 110 cm above the road - the same sphere the ride audits
+  // use. The promise is 38 m of covered, rideable road; the bake adds 40.
+  S.GallerySpine.Reset();
+  for(TActorIterator<APiedmontPathSpline> It(PC->GetWorld());It;++It){
+   if(!It->ActorHasTag(TEXT("KrogGallerySpine")))continue;
+   const int32 Points=It->Centerline->GetNumberOfSplinePoints();
+   for(int32 I=0;I<Points;++I)S.GallerySpine.Add(It->Centerline->GetLocationAtSplinePoint(I,ESplineCoordinateSpace::World));
+  }
+  if(S.GallerySpine.Num()<5){Finish(false,TEXT("No cut-and-cover gallery spine in the world"),Hazards,0);return;}
+  FCollisionQueryParams GQ(SCENE_QUERY_STAT(TunnelGallery),true,Bike);
+  float SpineLength=0.f;
+  for(int32 I=0;I<S.GallerySpine.Num();++I){
+   const FVector P=S.GallerySpine[I];
+   if(I>0)SpineLength+=FVector::Dist2D(P,S.GallerySpine[I-1]);
+   FHitResult Road,Ceiling,Rider;
+   const bool bRoad=PC->GetWorld()->LineTraceSingleByChannel(Road,FVector(P.X,P.Y,P.Z+250),FVector(P.X,P.Y,P.Z-500),ECC_Visibility,GQ);
+   const bool bCeil=bRoad&&PC->GetWorld()->LineTraceSingleByChannel(Ceiling,Road.ImpactPoint+FVector(0,0,150),Road.ImpactPoint+FVector(0,0,700),ECC_Visibility,GQ);
+   const bool bRider=bCeil&&PC->GetWorld()->SweepSingleByChannel(Rider,Road.ImpactPoint+FVector(0,0,110),Road.ImpactPoint+FVector(0,0,110),FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(62.f),GQ);
+   // Traffic is not construction. The BeltLine scooter riders are moving pawns
+   // that happen to be crossing the new covered stretch when the audit measures
+   // it; they were the only two "blocked" stations out of thirty-seven. The
+   // promise this check makes is that the gallery's own shell, columns and lid
+   // leave the road rideable, so a hit on a pawn or a BattleScooterRider is
+   // counted separately and does not fail the gallery.
+   const bool bTraffic=bRider&&Rider.GetActor()&&(Rider.GetActor()->IsA<APawn>()||Rider.GetActor()->ActorHasTag(TEXT("BattleScooterRider")));
+   if(bTraffic)++S.GalleryTraffic;
+   if(!bRoad||!bCeil||(bRider&&!bTraffic)){
+    const FString Which=bRider?(Rider.GetActor()?Rider.GetActor()->GetActorNameOrLabel():TEXT("unknown")):(bCeil?TEXT("no road"):TEXT("no ceiling"));
+    UE_LOG(LogTemp,Display,TEXT("TunnelHazardAuditBlocked: {\"i\":%d,\"x\":%.0f,\"y\":%.0f,\"z\":%.0f,\"road\":%s,\"ceiling\":%s,\"rider\":%s,\"hit\":\"%s\"}"),
+     I,P.X,P.Y,P.Z,bRoad?TEXT("true"):TEXT("false"),bCeil?TEXT("true"):TEXT("false"),bRider?TEXT("true"):TEXT("false"),
+     *Which);
+    ++S.GalleryBlocked;continue;
+   }
+   ++S.GalleryColumns;
+   if(S.GalleryMouth.IsZero())S.GalleryMouth=Road.ImpactPoint;
+  }
+  S.GalleryLengthCm=SpineLength;
+  if(SpineLength<3800.f){Finish(false,TEXT("The cut-and-cover gallery is shorter than thirty-eight metres"),Hazards,0);return;}
+  if(S.GalleryBlocked>0){Finish(false,TEXT("The cut-and-cover gallery blocks the rider somewhere in its length"),Hazards,0);return;}
   FVector Start=Hazards->FirstDeepHoleApproach,Rest=Start;
   FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(TunnelHazardStart),true,Bike);
   if(PC->GetWorld()->LineTraceSingleByChannel(Hit,Start+FVector(0,0,250),Start-FVector(0,0,420),ECC_Visibility,Q))Rest=Hit.ImpactPoint;
@@ -307,8 +358,34 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
   return;
  }
  Key(true);
- if(Bike->Ride->Wipeouts>S.Wipeouts){Finish(true,TEXT("The deep tunnel hole threw the rider off the bike"),Hazards,Bike->Ride->Wipeouts-S.Wipeouts);return;}
- if(FVector::Dist2D(Bike->GetActorLocation(),Hazards->FirstDeepHole)>2600.f){Finish(false,TEXT("Rode past the deep hole without a wipeout"),Hazards,0);return;}
- if(S.Clock>20){Finish(false,TEXT("Traversal timed out"),Hazards,0);return;}
+ if(S.Phase==1){
+  if(Bike->Ride->Wipeouts>S.Wipeouts){
+   // The deep hole did its job. Now the new stretch has to be rideable, not
+   // just covered: put the rider back on the bike at the far mouth of the
+   // cut-and-cover gallery and ride it into the bore on W alone.
+   S.Wipeouts=Bike->Ride->Wipeouts;
+   Bike->Ride->Recovery=0;Bike->RiderHealth=100;Bike->StunRemaining=0;
+   if(auto* Foot=Cast<ABattleRider>(PC->GetPawn()))Bike->Remount(Foot);
+   Bike->Ride->StopMovementImmediately();Bike->Ride->Speed=0;Bike->Ride->Gear=5;
+   Bike->SetActorLocationAndRotation(S.GalleryMouth+FVector(0,0,98),FRotator::ZeroRotator,false,nullptr,ETeleportType::TeleportPhysics);
+   Bike->Ride->SetMovementMode(MOVE_Walking);Bike->Ride->bForceNextFloorCheck=true;
+   S.GalleryRideStartX=Bike->GetActorLocation().X;S.Phase=2;S.Clock=0;
+   return;
+  }
+  if(FVector::Dist2D(Bike->GetActorLocation(),Hazards->FirstDeepHole)>2600.f){Finish(false,TEXT("Rode past the deep hole without a wipeout"),Hazards,0);return;}
+  if(S.Clock>20){Finish(false,TEXT("Traversal timed out"),Hazards,0);return;}
+  return;
+ }
+ // Phase 2: the gallery ride. No wipeout, a ceiling overhead the whole way, and
+ // far enough up the road to reach the bore's south portal.
+ if(Bike->Ride->Wipeouts>S.Wipeouts){Finish(false,TEXT("The cut-and-cover gallery threw the rider off"),Hazards,Bike->Ride->Wipeouts-S.Wipeouts);return;}
+ if(S.Clock>1.f){
+  FHitResult Ceiling;
+  FCollisionQueryParams CQ(SCENE_QUERY_STAT(TunnelGalleryRide),true,Bike);
+  if(!PC->GetWorld()->LineTraceSingleByChannel(Ceiling,Bike->GetActorLocation()+FVector(0,0,120),Bike->GetActorLocation()+FVector(0,0,700),ECC_Visibility,CQ)){Finish(false,TEXT("The rider left the covered gallery mid-ride"),Hazards,0);return;}
+  if(Bike->GetActorLocation().X>BattleHomeData::TunnelEntry.X-150.f){Finish(true,TEXT("The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout"),Hazards,Bike->Ride->Wipeouts-S.Wipeouts);return;}
+ }
+ if(S.Clock>30){Finish(false,TEXT("The ride through the cut-and-cover gallery timed out"),Hazards,0);return;}
+ return;
 #endif
 }

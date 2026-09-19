@@ -1,0 +1,112 @@
+{
+  "author": "2026-09-19 [codex-maclaptop]",
+  "purpose": "Cut-and-cover gallery extending the Krog bore south toward DeKalb",
+  "extension_cm": 4000.0,
+  "portal_station_cm": 19606.96645224921,
+  "station_step_cm": 120.0,
+  "stations_cm": [
+    15607.0,
+    15727.0,
+    15847.0,
+    15967.0,
+    16087.0,
+    16207.0,
+    16327.0,
+    16447.0,
+    16567.0,
+    16687.0,
+    16807.0,
+    16927.0,
+    17047.0,
+    17167.0,
+    17287.0,
+    17407.0,
+    17527.0,
+    17647.0,
+    17767.0,
+    17887.0,
+    18007.0,
+    18127.0,
+    18247.0,
+    18367.0,
+    18487.0,
+    18607.0,
+    18727.0,
+    18847.0,
+    18967.0,
+    19087.0,
+    19207.0,
+    19327.0,
+    19447.0,
+    19567.0,
+    19687.0,
+    19807.0,
+    19847.0
+  ],
+  "cross_section": {
+    "roof_slab": "road+270..road+310, lateral -660..+380",
+    "walls": "lateral -640/-620 and +340/+360, road-32..road+270",
+    "columns": "lateral -318..-282, every 280 cm, road..road+282",
+    "cover": "earth from the roof edge to the measured ground at -1300/+1000"
+  },
+  "deck_source": "measured road surface from work/krog-gallery-probe.json",
+  "chunks": [
+    {
+      "file": "KrogGallery_Shell.obj",
+      "material": "Concrete",
+      "structure": "Shell",
+      "triangles": 1960,
+      "vertices": 3920,
+      "bounds_cm": [
+        [
+          25678.57687034361,
+          -116916.70745685483,
+          941.1521207719029
+        ],
+        [
+          30278.466137156967,
+          -115160.29634190506,
+          1313.398691083666
+        ]
+      ]
+    },
+    {
+      "file": "KrogGallery_Columns.obj",
+      "material": "Concrete",
+      "structure": "Columns",
+      "triangles": 180,
+      "vertices": 360,
+      "bounds_cm": [
+        [
+          25907.47803658426,
+          -116574.92624145039,
+          973.4893122711087
+        ],
+        [
+          29671.50930342266,
+          -115784.27033302053,
+          1284.2503187036325
+        ]
+      ]
+    },
+    {
+      "file": "KrogGallery_Cover.obj",
+      "material": "Grass",
+      "structure": "Cover",
+      "triangles": 372,
+      "vertices": 744,
+      "bounds_cm": [
+        [
+          25349.763456043947,
+          -117553.6156596375,
+          888.9928320146774
+        ],
+        [
+          30868.235638598308,
+          -114565.76537260774,
+          1322.6296511033918
+        ]
+      ]
+    }
+  ]
+}
