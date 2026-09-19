@@ -3,6 +3,7 @@
 #include "BattlePothole.h"
 #include "BattleHomeData.h"
 #include "BattleBike.h"
+#include "BattleZombie.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
 #include "Engine/StaticMesh.h"
@@ -60,8 +61,30 @@ void ABattleTunnelHazards::BeginPlay(){
  BoreAxis=(FVector(B.X,B.Y,0)-FVector(A.X,A.Y,0)).GetSafeNormal();
  CarveHoles();
  StrewnScooters();
- UE_LOG(LogTemp,Display,TEXT("BattleTunnelHazards: length_cm=%.0f stations=%d grounded=%d deep=%d shallow=%d scooters=%d first_deep=%s audit_approach=%s"),
-  BoreLengthCm,StationsProbed,StationsGrounded,DeepHoles,ShallowHoles,Scooters,*FirstDeepHole.ToString(),*FirstDeepHoleApproach.ToString());
+ TunnelPunks();
+ UE_LOG(LogTemp,Display,TEXT("BattleTunnelHazards: length_cm=%.0f stations=%d grounded=%d deep=%d shallow=%d scooters=%d punks=%d first_deep=%s audit_approach=%s"),
+  BoreLengthCm,StationsProbed,StationsGrounded,DeepHoles,ShallowHoles,Scooters,Punks,*FirstDeepHole.ToString(),*FirstDeepHoleApproach.ToString());
+}
+
+// Punks inside the bore, not only in the crash scene outside the mouth. Elliott
+// asked for them by name. They stand on the shoulders so the lane stays
+// rideable, and they use the same traced floor as the craters, so a punk is
+// never left floating over a hole or standing on the rail deck above.
+void ABattleTunnelHazards::TunnelPunks(){
+ const FVector A=BattleHomeData::TunnelEntry,B=BattleHomeData::TunnelExit;
+ FActorSpawnParameters Params;Params.Owner=this;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+ const FRotator Facing(0,(A-B).Rotation().Yaw,0);
+ for(int32 I=0;I<3;++I){
+  const float T=.28f+.20f*I;
+  const float Lateral=(I%2?-1.f:1.f)*175.f;
+  FVector Ground;
+  if(!TunnelFloorAt(GetWorld(),this,A,B,T,Lateral,Ground))continue;
+  if(auto* Punk=GetWorld()->SpawnActor<ABattleZombie>(ABattleZombie::StaticClass(),FTransform(Facing,Ground+FVector(0,0,96.f)),Params)){
+   Punk->VisualStyle=1;Punk->bMurderKBrawler=true;Punk->Emergence=0;
+   Punk->Tags.Add(TEXT("BattleTunnelPunk"));
+   ++Punks;
+  }
+ }
 }
 
 void ABattleTunnelHazards::CarveHoles(){
@@ -221,7 +244,7 @@ void ABattleTunnelHazards::Tick(float Dt){
 
 void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
 #if !UE_BUILD_SHIPPING
- struct FState{TWeakObjectPtr<UWorld> World;int32 Phase=0,Wipeouts=0;float Clock=0;bool Done=false;};
+ struct FState{TWeakObjectPtr<UWorld> World;int32 Phase=0,Wipeouts=0,PunkCount=0,PunkSeats=0;float Clock=0;bool Done=false;};
  static FState S;
  if(S.World!=PC->GetWorld()){S=FState();S.World=PC->GetWorld();}
  if(S.Done||PC->GetWorld()->GetTimeSeconds()<5)return;
@@ -229,8 +252,8 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
  auto Key=[&](bool Down){PC->InputKey(FInputKeyEventArgs(nullptr,IPlatformInputDeviceMapper::Get().GetDefaultInputDevice(),EKeys::W,Down?IE_Pressed:IE_Released,Down?1.f:0.f,false,0));};
  auto Finish=[&](bool Pass,const TCHAR* Reason,const ABattleTunnelHazards* Hazards,int32 Wipeouts){
   Key(false);S.Done=true;
-  UE_LOG(LogTemp,Display,TEXT("TunnelHazardAudit: {\"passed\":%s,\"reason\":\"%s\",\"phase\":%d,\"bore_cm\":%.0f,\"grounded_stations\":%d,\"deep_holes\":%d,\"shallow_holes\":%d,\"scooters\":%d,\"wipeouts\":%d}"),
-   Pass?TEXT("true"):TEXT("false"),Reason,S.Phase,Hazards?Hazards->BoreLengthCm:0.f,Hazards?Hazards->StationsGrounded:0,Hazards?Hazards->DeepHoles:0,Hazards?Hazards->ShallowHoles:0,Hazards?Hazards->Scooters:0,Wipeouts);
+  UE_LOG(LogTemp,Display,TEXT("TunnelHazardAudit: {\"passed\":%s,\"reason\":\"%s\",\"phase\":%d,\"bore_cm\":%.0f,\"grounded_stations\":%d,\"deep_holes\":%d,\"shallow_holes\":%d,\"scooters\":%d,\"punks\":%d,\"punk_seats\":%d,\"wipeouts\":%d}"),
+   Pass?TEXT("true"):TEXT("false"),Reason,S.Phase,Hazards?Hazards->BoreLengthCm:0.f,Hazards?Hazards->StationsGrounded:0,Hazards?Hazards->DeepHoles:0,Hazards?Hazards->ShallowHoles:0,Hazards?Hazards->Scooters:0,S.PunkCount,S.PunkSeats,Wipeouts);
   PC->ConsoleCommand(TEXT("quit"));
  };
  auto* Bike=Cast<ABattleBike>(PC->GetPawn());
@@ -244,10 +267,11 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
   // above it. The second is re-checked here instead of trusted.
   int32 InBore=0,Deep=0;
   const FVector A=BattleHomeData::TunnelEntry,B=BattleHomeData::TunnelExit;
+  const FVector FlatA(A.X,A.Y,0),FlatB(B.X,B.Y,0);
   for(TActorIterator<ABattlePothole> It(PC->GetWorld());It;++It){
    if(!It->ActorHasTag(TEXT("TunnelPothole")))continue;
    const FVector P=It->GetActorLocation();
-   const FVector FlatA(A.X,A.Y,0),FlatB(B.X,B.Y,0),Flat(P.X,P.Y,0);
+   const FVector Flat(P.X,P.Y,0);
    const float Along=FMath::Clamp(FVector::DotProduct(Flat-FlatA,(FlatB-FlatA).GetSafeNormal())/FVector::Dist2D(FlatA,FlatB),0.f,1.f);
    const float ProfileZ=FMath::Lerp(A.Z,B.Z,Along);
    if(FMath::Abs(P.Z-ProfileZ)<=200.f&&FVector::Dist2D(P,FMath::Lerp(FlatA,FlatB,Along))<=450.f)++InBore;
@@ -256,6 +280,22 @@ void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt){
   if(Deep<3){Finish(false,TEXT("Fewer than three deep holes were placed in the tunnel"),Hazards,0);return;}
   if(InBore<Deep){Finish(false,TEXT("A deep hole is outside the tunnel profile"),Hazards,0);return;}
   if(Hazards->Scooters<3){Finish(false,TEXT("Fewer than three scooters in the tunnel"),Hazards,0);return;}
+  // The punks are the same promise as the craters: on the shoulders inside the
+  // bore, standing on the traced floor. A punk left on the rail deck above the
+  // tunnel or floating over the lane reads as a bug from the bike, so it is
+  // checked here rather than trusted from the spawn log.
+  S.PunkCount=0;S.PunkSeats=0;
+  for(TActorIterator<ABattleZombie> It(PC->GetWorld());It;++It){
+   if(!It->ActorHasTag(TEXT("BattleTunnelPunk")))continue;
+   ++S.PunkCount;
+   const FVector P=It->GetActorLocation();
+   const FVector FlatP(P.X,P.Y,0);
+   const float Along=FMath::Clamp(FVector::DotProduct(FlatP-FlatA,(FlatB-FlatA).GetSafeNormal())/FVector::Dist2D(FlatA,FlatB),0.f,1.f);
+   const float ProfileZ=FMath::Lerp(A.Z,B.Z,Along);
+   if(FMath::Abs(P.Z-(ProfileZ+96.f))<=220.f&&FVector::Dist2D(P,FMath::Lerp(FlatA,FlatB,Along))<=450.f)++S.PunkSeats;
+  }
+  if(S.PunkCount<3){Finish(false,TEXT("Fewer than three punks were placed in the tunnel"),Hazards,0);return;}
+  if(S.PunkSeats<S.PunkCount){Finish(false,TEXT("A tunnel punk is off the floor or outside the tunnel profile"),Hazards,0);return;}
   FVector Start=Hazards->FirstDeepHoleApproach,Rest=Start;
   FHitResult Hit;FCollisionQueryParams Q(SCENE_QUERY_STAT(TunnelHazardStart),true,Bike);
   if(PC->GetWorld()->LineTraceSingleByChannel(Hit,Start+FVector(0,0,250),Start-FVector(0,0,420),ECC_Visibility,Q))Rest=Hit.ImpactPoint;

@@ -35,7 +35,7 @@ public:
  UPROPERTY(BlueprintReadOnly) FVector FirstDeepHole=FVector::ZeroVector;
  UPROPERTY(BlueprintReadOnly) FVector FirstDeepHoleApproach=FVector::ZeroVector;
  UPROPERTY(BlueprintReadOnly) FVector FirstScooterSpot=FVector::ZeroVector;
- UPROPERTY(BlueprintReadOnly) int32 StationsProbed=0,StationsGrounded=0,DeepHoles=0,ShallowHoles=0,Scooters=0;
+ UPROPERTY(BlueprintReadOnly) int32 StationsProbed=0,StationsGrounded=0,DeepHoles=0,ShallowHoles=0,Scooters=0,Punks=0;
  UPROPERTY(BlueprintReadOnly) float BoreLengthCm=0;
  virtual void Tick(float Dt) override;
 private:
@@ -47,6 +47,7 @@ private:
  float ReviewClock=0;
  void CarveHoles();
  void StrewnScooters();
+ void TunnelPunks();
 };
 
 /** Opt-in native audit: -BattleTunnelHazardAudit drives the bore over a deep hole. */

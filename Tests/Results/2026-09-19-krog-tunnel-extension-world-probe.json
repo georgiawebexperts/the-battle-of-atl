@@ -1,0 +1,761 @@
+{
+  "author": "2026-09-19 [codex-maclaptop]",
+  "question": "How far past each portal does the bore stay covered?",
+  "scope": "Traces only, on PiedmontWorld as saved. step 250 cm, reach 5000 cm.",
+  "stations": [
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 0,
+      "xyz": [
+        29782.1,
+        115813.6,
+        956.8
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 997.5
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 250,
+      "xyz": [
+        29684.1,
+        115583.7,
+        956.5
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 997.5
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 500,
+      "xyz": [
+        29586.0,
+        115353.7,
+        956.1
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 992.6
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 750,
+      "xyz": [
+        29487.9,
+        115123.8,
+        955.7
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 994.5
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 1000,
+      "xyz": [
+        29389.8,
+        114893.8,
+        955.4
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 999.9
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 1250,
+      "xyz": [
+        29291.7,
+        114663.9,
+        955.0
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 1002.6
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 1500,
+      "xyz": [
+        29193.6,
+        114433.9,
+        954.6
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 1014.5
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 1750,
+      "xyz": [
+        29095.6,
+        114203.9,
+        954.3
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1016.0,
+        "height_above_floor_cm": 61.7
+      },
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 1030.0
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 2000,
+      "xyz": [
+        28997.5,
+        113974.0,
+        953.9
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1026.2,
+        "height_above_floor_cm": 72.3
+      },
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 1040.1
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 2250,
+      "xyz": [
+        28899.4,
+        113744.0,
+        953.6
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1031.9,
+        "height_above_floor_cm": 78.3
+      },
+      "below": {
+        "actor": "Krog DeKalb road approaches",
+        "z": 1045.9
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 2500,
+      "xyz": [
+        28801.3,
+        113514.1,
+        953.2
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1036.0,
+        "height_above_floor_cm": 82.8
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1036.0
+      },
+      "rider_blocked_by": "Krog DeKalb road approaches"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 2750,
+      "xyz": [
+        28703.2,
+        113284.1,
+        952.8
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1035.7,
+        "height_above_floor_cm": 82.9
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1035.7
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 3000,
+      "xyz": [
+        28605.1,
+        113054.2,
+        952.5
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1033.7,
+        "height_above_floor_cm": 81.2
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1033.7
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 3250,
+      "xyz": [
+        28507.1,
+        112824.2,
+        952.1
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.1,
+        "height_above_floor_cm": 80.0
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.1
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 3500,
+      "xyz": [
+        28409.0,
+        112594.3,
+        951.7
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1030.5,
+        "height_above_floor_cm": 78.8
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1030.5
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 3750,
+      "xyz": [
+        28310.9,
+        112364.3,
+        951.4
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1031.7,
+        "height_above_floor_cm": 80.3
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1031.7
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 4000,
+      "xyz": [
+        28212.8,
+        112134.3,
+        951.0
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1033.1,
+        "height_above_floor_cm": 82.1
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1033.1
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 4250,
+      "xyz": [
+        28114.7,
+        111904.4,
+        950.7
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.8,
+        "height_above_floor_cm": 82.1
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.8
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 4500,
+      "xyz": [
+        28016.6,
+        111674.4,
+        950.3
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.5,
+        "height_above_floor_cm": 82.2
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.5
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 4750,
+      "xyz": [
+        27918.6,
+        111444.5,
+        949.9
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1037.1,
+        "height_above_floor_cm": 87.2
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1037.1
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "entry/Dekalb",
+      "beyond_portal_cm": 5000,
+      "xyz": [
+        27820.5,
+        111214.5,
+        949.6
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1030.2,
+        "height_above_floor_cm": 80.6
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1030.2
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 0,
+      "xyz": [
+        31590.1,
+        120052.3,
+        963.5
+      ],
+      "above": null,
+      "below": {
+        "actor": "Krog route SM_KrogRoute_Concrete_8_1",
+        "z": 963.5
+      },
+      "rider_blocked_by": null
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 250,
+      "xyz": [
+        31688.2,
+        120282.3,
+        963.9
+      ],
+      "above": null,
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 948.3
+      },
+      "rider_blocked_by": null
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 500,
+      "xyz": [
+        31786.3,
+        120512.2,
+        964.2
+      ],
+      "above": null,
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 957.7
+      },
+      "rider_blocked_by": null
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 750,
+      "xyz": [
+        31884.4,
+        120742.2,
+        964.6
+      ],
+      "above": null,
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 966.7
+      },
+      "rider_blocked_by": null
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 1000,
+      "xyz": [
+        31982.4,
+        120972.2,
+        965.0
+      ],
+      "above": {
+        "actor": "Krog buildings Landing",
+        "z": 1047.5,
+        "height_above_floor_cm": 82.6
+      },
+      "below": {
+        "actor": "Krog buildings Roof",
+        "z": 1308.5
+      },
+      "rider_blocked_by": "Krog buildings Landing"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 1250,
+      "xyz": [
+        32080.5,
+        121202.1,
+        965.3
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.1,
+        "height_above_floor_cm": 66.8
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1032.1
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 1500,
+      "xyz": [
+        32178.6,
+        121432.1,
+        965.7
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1035.4,
+        "height_above_floor_cm": 69.7
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1035.4
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 1750,
+      "xyz": [
+        32276.7,
+        121662.0,
+        966.1
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1030.2,
+        "height_above_floor_cm": 64.1
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1030.2
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 2000,
+      "xyz": [
+        32374.8,
+        121892.0,
+        966.4
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1037.2,
+        "height_above_floor_cm": 70.8
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1037.2
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 2250,
+      "xyz": [
+        32472.9,
+        122121.9,
+        966.8
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1052.5,
+        "height_above_floor_cm": 85.7
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1052.5
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 2500,
+      "xyz": [
+        32570.9,
+        122351.9,
+        967.2
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1053.4,
+        "height_above_floor_cm": 86.2
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1053.4
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 2750,
+      "xyz": [
+        32669.0,
+        122581.8,
+        967.5
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1056.2,
+        "height_above_floor_cm": 88.7
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1056.2
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 3000,
+      "xyz": [
+        32767.1,
+        122811.8,
+        967.9
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1059.5,
+        "height_above_floor_cm": 91.6
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1059.5
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 3250,
+      "xyz": [
+        32865.2,
+        123041.8,
+        968.2
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1062.5,
+        "height_above_floor_cm": 94.3
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1062.5
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 3500,
+      "xyz": [
+        32963.3,
+        123271.7,
+        968.6
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1065.2,
+        "height_above_floor_cm": 96.6
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1065.2
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 3750,
+      "xyz": [
+        33061.4,
+        123501.7,
+        969.0
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1060.7,
+        "height_above_floor_cm": 91.7
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1060.7
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 4000,
+      "xyz": [
+        33159.5,
+        123731.6,
+        969.3
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1059.8,
+        "height_above_floor_cm": 90.4
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1059.8
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 4250,
+      "xyz": [
+        33257.5,
+        123961.6,
+        969.7
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1056.8,
+        "height_above_floor_cm": 87.1
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1056.8
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 4500,
+      "xyz": [
+        33355.6,
+        124191.5,
+        970.1
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1052.2,
+        "height_above_floor_cm": 82.2
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1052.2
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 4750,
+      "xyz": [
+        33453.7,
+        124421.5,
+        970.4
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1050.5,
+        "height_above_floor_cm": 80.1
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1050.5
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    },
+    {
+      "end": "exit/trail",
+      "beyond_portal_cm": 5000,
+      "xyz": [
+        33551.8,
+        124651.4,
+        970.8
+      ],
+      "above": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1044.7,
+        "height_above_floor_cm": 73.9
+      },
+      "below": {
+        "actor": "USGS Atlanta terrain + authored underwater basin",
+        "z": 1044.7
+      },
+      "rider_blocked_by": "USGS Atlanta terrain + authored underwater basin"
+    }
+  ]
+}
