@@ -1,0 +1,106 @@
+{
+  "build": "151",
+  "date": "2026-09-19",
+  "author": "codex-windows",
+  "git_sha": "dcd8ce8795d2b7e38d194c9314100d023f5ba1bf",
+  "branch": "windows-port",
+  "exe": "C:\\Users\\webex\\Documents\\Codex\\2026-09-18\\AuraPlayground\\Saved\\StagedBuilds\\Windows\\AuraPlayground\\Binaries\\Win64\\AuraPlayground.exe",
+  "merge": "b85e5f3 ATL Streak (kills within 5s chain, every 3rd chained kill heals +15, best streak persists per difficulty and shows on the win screen, new BattleStreakAudit) + Mac 150 merge (bear visible in packaged builds)",
+  "targeted": {
+    "BattleFpsAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleFpsAudit.log",
+      "verdict": "[2026.09.19-13.53.35:263][ 57]LogTemp: Display: BattleFpsAudit: {\"passed\":true,\"avg_fps\":59.5,\"min_fps\":36.1,\"p05_fps\":56.8,\"samples\":1782}",
+      "note": "Verdict printed at ~2 minutes; the game did not self-exit and the 420s watchdog ended the process, scored on the printed verdict per harness policy."
+    },
+    "BattleSkaterAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleSkaterAudit.log",
+      "verdict": "[2026.09.19-14.01.13:320][784]LogTemp: Display: BattleSkaterAudit: {\"passed\":true,\"stage\":5,\"reason\":\"Two skaters/three spectators, circuit, foot reach, push/coast, arcade body hit leaving the rider up, realistic body hit throwing him off, and the civilian shooting penalty pass\",\"max_stance_error_cm\":0.000,\"travel_cm\":9742.0,\"corners\":6,\"people_hit\":2}",
+      "note": "Passed on the first attempt (no timing flake this round)."
+    },
+    "BattleTimeAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleTimeAudit.log",
+      "verdict": "[2026.09.19-14.01.40:009][416]LogTemp: Display: BattleTimeAudit: {\"passed\":true,\"phase\":4,\"reason\":\"Actual bonus layout, single collection, bike/foot clock, live pistol/shotgun rewards and penalties, miss and ended-run guards pass\",\"time_pickups\":3}",
+      "note": "Required verdict satisfied: time_pickups=3."
+    },
+    "BattleInventoryAudit": {
+      "pass": true,
+      "log": "work\\t151r2-BattleInventoryAudit.log",
+      "verdict": "[2026.09.19-14.41.30:782][308]LogTemp: Display: BattleInventoryAudit: {\"passed\":true,\"phase\":20,\"reason\":\"Crates, combat, death persistence, rifle zoom and shotgun individual-shell interruption/remount pass\",\"crates\":20,\"desired\":20,\"kills\":2,\"deaths\":1}",
+      "note": "Fix-round re-run on the rebuilt dev package after commit fa7c680: x1/x2 kills keep the weapon kill label, so the shotgun ZOMBIE DOWN confirmation survives (the streak banner takes over at x3). Re-verified green: passed:true, phase:20, crates:20."
+    },
+    "BattleFinishAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleFinishAudit.log",
+      "verdict": "[2026.09.19-14.03.26:885][238]LogTemp: Display: BattleFinishAudit: {\"passed\":true,\"reason\":\"Gate guards, real Artifact/checkpoints, ordered tunnel crossing, win stats/menu, frozen clock and saved records pass\"}",
+      "note": "Required verdict satisfied."
+    },
+    "BattleMusicAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleMusicAudit.log",
+      "verdict": "[2026.09.19-14.03.56:542][449]LogTemp: Display: BattleMusicAudit: {\"passed\":true,\"tracks\":2,\"cycle\":\"off-song1-song2-off\",\"preference_restored\":true}",
+      "note": "Audio-enabled run (harness drops -nosound automatically); passed first attempt."
+    },
+    "BattleTunnelHazardAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleTunnelHazardAudit.log",
+      "verdict": "[2026.09.19-14.04.23:412][443]LogTemp: Display: TunnelHazardAudit: {\"passed\":true,\"reason\":\"The deep tunnel hole threw the rider off the bike, and the cut-and-cover gallery carried him into the bore without a wipeout\",\"phase\":2,\"bore_cm\":4608,\"grounded_stations\":12,\"deep_holes\":6,\"shallow_holes\":6,\"scooters\":5,\"punks\":3,\"punk_seats\":3,\"gallery_columns\":37,\"gallery_blocked\":0,\"gallery_traffic\":2,\"gallery_ride_cm\":4681,\"wipeouts\":0}"
+    },
+    "BattleEastsideAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleEastsideAudit.log",
+      "verdict": "[2026.09.19-14.11.38:774][ 95]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":213769.58,\"maxCenterlineErrorCm\":92.42,\"wipeouts\":0}",
+      "note": "Required verdict satisfied: completedLegs=2 on the first attempt, ~7 minutes with the 480s watchdog."
+    },
+    "BattleSkateAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleSkateAudit.log",
+      "verdict": "[2026.09.19-14.12.13:710][937]LogTemp: Display: BattleSkateAudit: {\"passed\":true,\"stage\":9,\"reason\":\"Trail access and return, bowl/ramp collision, pedal-only airtime, +10 landing and single-use +30 bonus, plus the new west half and its launch bank pass\",\"air_rewards\":3,\"air_peak_cm\":79.94,\"x\":40350.61,\"z\":748.15}"
+    },
+    "BattleMurderKAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleMurderKAudit.log",
+      "verdict": "[2026.09.19-14.12.39:067][217]LogTemp: Display: BattleMurderKAudit: {\"passed\":true,\"checks\":16,\"difficulty\":\"Easy\",\"timer\":210,\"shooters\":1,\"punks\":7,\"wall\":6,\"bums\":3,\"fights\":3,\"ambient_police\":2,\"knife\":false,\"dancers\":8,\"rioters\":10,\"plaza_bodies\":3,\"chant\":\"MURDER K, GET OUT!\",\"reason\":\"Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass\"}",
+      "note": "Required verdict satisfied: all 16 checks green, wall=6, reason contains the six-punk shoot-through wall."
+    },
+    "BattleHomeDriveAudit": {
+      "pass": true,
+      "log": "work\\t151-BattleHomeDriveAudit.log",
+      "verdict": "[2026.09.19-14.13.14:075][ 50]LogTemp: Display: BattleConnectorAudit: {\"passed\":true,\"completedLegs\":2,\"travelCm\":4854.55,\"maxCenterlineErrorCm\":181.99,\"wipeouts\":0}"
+    },
+    "BattlePickupAudit": {
+      "pass": true,
+      "log": "work\\t151-BattlePickupAudit.log",
+      "verdict": "[2026.09.19-14.13.41:442][394]LogTemp: Display: BattlePickupAudit: {\"passed\":true,\"difficulty\":\"Easy\",\"phase\":7,\"reason\":\"Layout, checkpoints, bike/FPS healing, cap, walls, duplicate and death guards pass\",\"spawned\":18,\"park\":12,\"trail\":6,\"collected\":4}"
+    },
+    "BattleStreakAudit": {
+      "pass": true,
+      "log": "work\\t151r2-BattleStreakAudit.log",
+      "verdict": "[2026.09.19-14.41.52:988][639]LogTemp: Display: BattleStreakAudit: {\"passed\":true,\"streak\":1,\"best\":3,\"kills\":4,\"health\":87,\"reason\":\"5 s chain, x3 heal, window reset and best-streak persistence pass\"}",
+      "note": "Fix-round re-run on the rebuilt dev package after commit fa7c680: the audit now measures the x1 heal guard at kill time instead of after passive regen. Re-verified green: passed:true, streak:1, best:3, kills:4, health:87. The audit prints the live post-reset streak (1); the peak appears as best:3."
+    }
+  },
+  "sweep": {
+    "pass": true,
+    "passed_count": 30,
+    "total": 31,
+    "log": "work\\sweep-151-final2-20260919-113257.log",
+    "flakes": [
+      "BattleDuckAudit failed in the sweep (ducks=8 but only over_water=2 of the 3+ needed on open water) and passed its single allowed retry (ducks=8, over_water=4, notice=DUCK!). Sweep verdict: [2026.09.19-15.37.29:541][276]LogTemp: Display: BattleDuckAudit: {\"passed\":false,\"reason\":\"fewer than three ducks landed on open water\",\"ducks\":8,\"over_water\":2,\"bumps\":0,\"time_delta\":0.0,\"notice\":\"\",\"lowest_offset_cm\":-1.0} Retry verdict: [2026.09.19-15.54.22:385][913]LogTemp: Display: BattleDuckAudit: {\"passed\":true,\"reason\":\"swimmer dunked and charged for the duck\",\"ducks\":8,\"over_water\":4,\"bumps\":1,\"time_delta\":-5.0,\"notice\":\"DUCK!\",\"lowest_offset_cm\":-10.0} Fail-then-pass is recorded as a flake, not a failure; retry output is in work\\retry-151final2-BattleDuckAudit.log and the retry-run audit log is work\\BattleDuckAudit.log (sweep-run copy preserved as work\\BattleDuckAudit-sweep151final2.log)."
+    ],
+    "failures": []
+  },
+  "notes": "First validation round caught two deterministic failures rooted in the new ATL Streak feature: BattleInventoryAudit failed because AwardEnemyKill overwrote the shotgun ZOMBIE DOWN notice with the STREAK xN label on every kill, and BattleStreakAudit failed its exact-health guard because passive regen healed the rider during the 5.5s reset wait. Commit fa7c680 fixed both (x1/x2 kills keep the weapon kill label and the streak banner takes over at x3; the streak audit measures the x1 heal guard at kill time instead of after passive regen), and both audits were re-verified green on the rebuilt package (BattleInventoryAudit passed:true phase:20 crates:20; BattleStreakAudit passed:true streak:1 best:3 kills:4 health:87). The one remaining red was BattleDroneAudit, which missed its 35m pistol shot in the first sweep (off_target_cm ~2400) and failed its retry with the same verdict. That flake was root-caused and fixed in three commits: 91d3aed (arcade aim-assist was redirecting the pistol shot onto stray hostile pawns near the firing lane, so the audit now freezes enemy spawns and clears hostiles at start like the melee audit), 7782bc6 (the distant target drone was mid-dive under sweep load, so its tick is now disabled after spawn and the marksmanship stage tests a hovering target), and eb40d96 (the start clear now covers every aim-assist lock candidate: zombies, police, gunmen, knife attackers, and PiedmontThreat). The package was rebuilt from eb40d96 and BattleDroneAudit ran standalone 8 times, 8/8 green including the cold first launch. This final full sweep of 31 entries (work\\sweep-151-final2-20260919-113257.log): 30 passed first-pass, including BattleDroneAudit, BattleInventoryAudit, and BattleStreakAudit; BattleDuckAudit failed once (ducks=8, over_water=2, below the three-on-open-water guard) and passed its single allowed retry (over_water=4, notice=DUCK!) on the same binary, so the sweep is green with one fail-then-pass flake and zero failures. Staged exe: 335,806,976 bytes, LastWriteTime 2026-09-19 11:22:54, postdating the eb40d96 commit (2026-09-19 11:22:02 -0400), proving the tested binary contains the drone fix. No source edits, packaging, commits, or pushes were made; the only repo write is this results JSON. Shipping round: commit dcd8ce8 renamed the visible can branding Coca-Cola -> Soda Pop (Elliott trademark directive, announced to the Mac team on issue #2); commit 85009c9 ported the Mac BATTLE_SWEEP_EXTENDED mode (39 previously-untriaged audits, 2-minute cap) into Scripts/run_quick_audits.ps1. The Shipping package was built with the rename included, assembled into the share folder, launch-verified (stub -> real exe alive, killed cleanly), and the exe sha256 is recorded above. Shortcuts repointed next; then push and issue #2 update.",
+  "shipping": {
+    "status": "pass",
+    "archive": "D:\\Battle Of ATL\\Archives\\BattleForTheA\\Windows",
+    "share": "C:\\Users\\webex\\Documents\\Codex\\Builds\\Share\\The Battle of ATL Windows Playtest 151",
+    "launcher_stub": "The Battle of ATL.exe (171,520 bytes)",
+    "exe_sha256": "30B22E229A7CA0D1EF3718B2D05FA58C63CF1166923CCBAC8C65BCCC0F9401EE",
+    "package_log": "work\\windows-package.log",
+    "launch_verify": "pass",
+    "launch_note": "Launched the stub from the share folder; AuraPlayground-Win64-Shipping reached 81s of CPU after 30s wall (game truly running), then was killed cleanly. No Saved log exists in the share, as expected with bUseLoggingInShipping=false."
+  }
+}
