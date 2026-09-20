@@ -2,6 +2,7 @@
 #include "BattleSpirit.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
+#include "Components/AudioComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -18,6 +19,10 @@ float ABattleBike::ApplyRiderDamage(float Amount){
     (Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded))||UGameplayStatics::IsGamePaused(this))return 0;
  const float Applied=FMath::Min(RiderHealth,Amount);RiderHealth-=Applied;HurtCooldown=5;
  RideImpact(.35f);
+ // Elliott, 2026-09-19: a hit has to read instantly - say something, and put a
+ // red flash on the screen - so both happen here, in the one funnel every
+ // attacker comes through, before any of the death handling below can return.
+ DamageFlashRemaining=DamageFlashSeconds;PlayHurtVoice();
  auto* Person=Cast<ABattleRider>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Person&&Person->ParkedBike==this)Person->Health=RiderHealth;
  if(RiderHealth<=0){
@@ -32,6 +37,15 @@ float ABattleBike::ApplyRiderDamage(float Amount){
  }
  return Applied;
 }
+void ABattleBike::PlayHurtVoice(){
+ if(!HurtVoice||HurtVoiceLines.IsEmpty())return;
+ // Rotate the takes so a rider who keeps getting hit does not hear the same
+ // half-second of dialogue every time. One component, so a new line cuts the
+ // old one off rather than stacking on top of it.
+ HurtVoice->SetSound(HurtVoiceLines[HurtVoiceIndex%HurtVoiceLines.Num()]);
+ HurtVoiceIndex=(HurtVoiceIndex+1)%HurtVoiceLines.Num();
+ HurtVoice->Play();HurtVoiceStarts++;
+}
 float ABattleBike::RestoreRiderHealth(float Amount){
  const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
  if(!FMath::IsFinite(Amount)||Amount<=0||RiderHealth<=0||RiderHealth>=100||RespawnRemaining>0||UGameplayStatics::IsGamePaused(this)||(Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded)))return 0;
@@ -42,6 +56,7 @@ float ABattleBike::RestoreRiderHealth(float Amount){
 void ABattleBike::UpdateHealth(float Dt){
  ShotNoticeRemaining=FMath::Max(0.f,ShotNoticeRemaining-Dt);
  PickupNoticeRemaining=FMath::Max(0.f,PickupNoticeRemaining-Dt);
+ DamageFlashRemaining=FMath::Max(0.f,DamageFlashRemaining-Dt);
  auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));
  if(Mode&&(Mode->bTutorialActive||Mode->StartCountdown>0||Mode->bRunEnded))return;
  if(RespawnRemaining>0){

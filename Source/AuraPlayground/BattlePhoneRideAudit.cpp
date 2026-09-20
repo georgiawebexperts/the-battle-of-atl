@@ -57,7 +57,13 @@ void TickBattlePhoneRideAudit(APlayerController* PC,float Dt){
  }
  if(Replay&&FParse::Param(FCommandLine::Get(),TEXT("BattleCrossingTrafficWarmup"))&&S.Clock<12){Key(EKeys::W,false);Key(EKeys::SpaceBar,true);S.Still=S.WaypointAge=0;return;}
  if(S.WaypointAge>5&&S.WaypointAge-Dt<=5)FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/TEXT("PhoneRouteStall.png"),true,false);
- if(B->bCrashActive||B->RiderHealth<=0){End(false,TEXT("Ride interrupted by crash or death"));return;}
+ if(B->bCrashActive||B->RiderHealth<=0){
+  // Say what threw the rider. This stage went red twice in the sweep on
+  // 2026-09-19 with only "Ride interrupted by crash or death" to go on: no
+  // position, no speed, no target, so there was nothing to reproduce from.
+  UE_LOG(LogTemp,Display,TEXT("PhoneRideCrash: position=%s speed=%.1f yaw=%.1f health=%.1f wipeouts=%d crash=%d stun=%.1f target=%s previous=%s"),
+   *P.ToString(),B->Ride->Speed,B->GetActorRotation().Yaw,B->RiderHealth,B->Ride->Wipeouts,B->bCrashActive?1:0,B->StunRemaining,*S.Points[S.Next].ToString(),*S.Previous.ToString());
+  End(false,TEXT("Ride interrupted by crash or death"));return;}
  if(S.Clock>(Replay?25:Full?800:150)||S.Still>12||S.WaypointAge>30){UE_LOG(LogTemp,Display,TEXT("PhoneRideFailure: position=%s target=%s speed=%.2f yaw=%.2f"),*P.ToString(),*S.Points[S.Next].ToString(),B->Ride->Speed,B->GetActorRotation().Yaw);End(false,TEXT("Guided input stalled or timed out; inspect controller and world"));return;}
  // Navigation paths can contain points only a few centimetres apart. Chasing
  // each point directly made the audit circle a missed point at the Krog

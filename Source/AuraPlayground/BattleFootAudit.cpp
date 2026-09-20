@@ -2,6 +2,8 @@
 #include "HAL/IConsoleManager.h"
 #include "BattleBike.h"
 #include "BattleRider.h"
+#include "BattlePolice.h"
+#include "BattleQuest.h"
 #include "BattleDetailedRider.h"
 #include "BattleZombie.h"
 #include "PiedmontPedestrian.h"
@@ -147,6 +149,21 @@ void ABattleMacController::TickFootAudit(float Dt){
   for(TActorIterator<APiedmontTrafficDirector> It(GetWorld());It;++It)It->SetActorTickEnabled(false);
   for(TActorIterator<APiedmontPedestrian> It(GetWorld());It;++It)It->Destroy();for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)It->Destroy();
   auto* B=Cast<ABattleBike>(GetPawn());CHECKFOOT(B&&B->Dismount(),"Cannot dismount");P=Cast<ABattleRider>(GetPawn());CHECKFOOT(P&&!P->bWeaponDrawn&&!P->Weapon->IsVisible()&&!P->Fire(),"Dismount did not leave weapon holstered");
+  // Elliott, 2026-09-19: "when I jump off the bike it would be nice to be
+  // heading in the direction I should be going". Stepping off used to leave the
+  // view pointed back at the seat he had just left. He must come up looking
+  // down the route - unless a pursuer is close enough that the dismount's
+  // auto-aim is supposed to win, which is why the expected heading is built the
+  // same way the dismount builds it rather than asserted blindly.
+  CHECKFOOT(M->Quest,"Dismount facing check has no quest route");
+  const FVector StepOff=P->GetActorLocation();
+  FVector FaceTarget=ABattleQuest::FootHeadingTarget(StepOff,M->Quest->RoutePoints,M->Quest->RouteTargetLocation,M->Quest->ArtifactLocation);
+  float FaceBest=3400.f;
+  for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),StepOff);if(D<FaceBest){FaceBest=D;FaceTarget=It->GetActorLocation();}}
+  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),StepOff);if(D<FaceBest){FaceBest=D;FaceTarget=It->GetActorLocation();}}
+  const float FaceYaw=(FaceTarget-StepOff).Rotation().Yaw;
+  UE_LOG(LogTemp,Display,TEXT("DismountFacing: body=%.1f view=%.1f expected=%.1f"),P->GetActorRotation().Yaw,GetControlRotation().Yaw,FaceYaw);
+  CHECKFOOT(FMath::Abs(FMath::FindDeltaAngleDegrees(P->GetActorRotation().Yaw,FaceYaw))<35.f&&FMath::Abs(FMath::FindDeltaAngleDegrees(GetControlRotation().Yaw,FaceYaw))<35.f,"Dismount left the rider facing back at the bike");
   FootStart=P->GetActorLocation();Key(EKeys::LeftMouseButton,true);Key(EKeys::RightMouseButton,true);Advance(1);return;
  }
  CHECKFOOT(P,"Lost on-foot pawn");

@@ -22,6 +22,20 @@ Tools/road-geometry-venv/
 Content/CitySampleCrowd/Character/Male/NormalWeight/Textures/blazer/T_m_nrw_blazer_BN.uasset
 Content/EuropeanHornbeam/
 
+# ---------------------------------------------------------------------------
+# The review maps. One per review harness, about 70 MB each, and they belong in
+# the Drive content zips with the rest of the heavy content - Windows said so
+# themselves ("they travel in the content zip, not the repo, because of GitHub's
+# file limits").
+#
+# On 2026-09-19 a `git add -A` while merging Windows round 15 put 39 of them,
+# 2.65 GB, into this repo and pushed it. This rule is so that cannot happen
+# again by accident; `git add -f` still overrides it if a map is ever wanted in
+# git on purpose (PiedmontCarLaneReview was asked for that way once).
+# ---------------------------------------------------------------------------
+Content/PiedmontRide/Maps/*Review.umap
+Content/PiedmontRide/Maps/ScooterPreservationBackup.umap
+
 Build/
 work/
 Scripts/last-seen-release.txt

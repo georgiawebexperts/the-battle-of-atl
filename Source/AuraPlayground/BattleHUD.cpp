@@ -58,6 +58,15 @@ void ABattleLabHUD::DrawHUD(){
  auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
  auto* Bike=Cast<ABattleBike>(GetOwningPawn());auto* Person=Cast<ABattleRider>(GetOwningPawn());auto* Owner=Bike?Bike:Person?Person->ParkedBike.Get():nullptr;
  if(!Owner)return;
+ // Elliott, 2026-09-19: "the screen should flash red letting the person know
+ // they are getting attacked". Painted under the panels, so the red covers the
+ // world the moment a hit lands but never washes out the health bar the player
+ // is about to look at, and squared off so it snaps bright and then goes rather
+ // than easing in like a sunset.
+ if(Owner->DamageFlashRemaining>0&&Owner->DamageFlashSeconds>0){
+  const float Fade=FMath::Clamp(Owner->DamageFlashRemaining/Owner->DamageFlashSeconds,0.f,1.f);
+  DrawRect(FLinearColor(1.f,.06f,.04f,.55f*Fade*Fade),0,0,W,H);
+ }
  const bool FullHUD=Park&&Park->bTutorialHelp;
  const float BuildX=W*.5f+(FullHUD?145.f:105.f)*S,BuildW=(FullHUD?132.f:106.f)*S,BuildH=(FullHUD?38.f:30.f)*S;
  Panel(BuildX,M,BuildW,BuildH);DrawRect(Peach,BuildX,M,BuildW,BuildH);Text(BattleBuild::Label,BuildX+(FullHUD?13.f:10.f)*S,M+(FullHUD?8.f:5.f)*S,FullHUD?19:15,Ink);

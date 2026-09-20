@@ -22,6 +22,7 @@
 #include "Engine/SkeletalMesh.h"
 #include "EngineUtils.h"
 #include "UObject/ConstructorHelpers.h"
+#include "BattleInput.h"
 APiedmontExplorer::APiedmontExplorer(){
  PrimaryActorTick.bCanEverTick=true;
  static ConstructorHelpers::FObjectFinder<UAnimSequence> IdleClip(TEXT("/Game/PiedmontRide/Rider/Animations/Animations_CharacterArmature_Idle.Animations_CharacterArmature_Idle"));
@@ -82,13 +83,20 @@ void APiedmontExplorer::Tick(float Dt){
   // delivered by Unreal's normal input stack in editor and packaged builds.
   const float KeyYaw=(PC->IsInputKeyDown(EKeys::X)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::Z)?1.f:0.f);
   const float KeyPitch=(PC->IsInputKeyDown(EKeys::V)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::T)?1.f:0.f);
+  // The right stick is a rate rather than a delta - the mouse delivers a
+  // per-event delta, the stick delivers a position - so it is multiplied by
+  // DeltaTime here and then goes through the same sensitivity and aim scale as
+  // the keys. Without the DeltaTime it would turn twice as fast at 120 fps.
+  const float StickYaw=BattleInput::LookYawInput(PC),StickPitch=BattleInput::LookPitchInput(PC);
   const float AimScale=BattleAim::Scale();
-  AddControllerYawInput(KeyYaw*90.f*Dt*AimScale);AddControllerPitchInput(KeyPitch*65.f*Dt*AimScale);
-  const float Forward=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down)?1.f:0.f);
-  const float Side=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
+  AddControllerYawInput((KeyYaw+StickYaw)*90.f*Dt*AimScale);AddControllerPitchInput((KeyPitch+StickPitch)*65.f*Dt*AimScale);
+  // Walking is the left stick or the keys, and both stay analog: a stick half
+  // over is half speed, which Boolean keys could never express.
+  const float Forward=BattleInput::MoveForward(PC);
+  const float Side=BattleInput::MoveSide(PC);
   // The swim help advertises Shift as the fast stroke. Flying movement uses
   // MaxFlySpeed, so changing walking speed alone never made that control work.
-  if(bSwimming)GetCharacterMovement()->MaxFlySpeed=PC->IsInputKeyDown(EKeys::LeftShift)?290.f:200.f;
+  if(bSwimming)GetCharacterMovement()->MaxFlySpeed=BattleInput::Sprint(PC)?290.f:200.f;
   FRotator Heading(0,PC->GetControlRotation().Yaw,0);FVector Move=Heading.Vector()*Forward+FRotationMatrix(Heading).GetUnitAxis(EAxis::Y)*Side;
   AddMovementInput(Move.GetSafeNormal(),FMath::Min(1.f,Move.Size()));
  }

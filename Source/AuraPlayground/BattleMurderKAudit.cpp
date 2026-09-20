@@ -71,7 +71,10 @@ void ABattleMacController::TickMurderKAudit(float Dt){
  auto End=[&](bool Pass,const TCHAR* Reason){UE_LOG(LogTemp,Display,TEXT("BattleMurderKAudit: {\"passed\":%s,\"checks\":%d,\"difficulty\":\"%s\",\"timer\":%.0f,\"shooters\":%d,\"punks\":%d,\"wall\":%d,\"bums\":%d,\"fights\":%d,\"ambient_police\":%d,\"knife\":%s,\"dancers\":%d,\"rioters\":%d,\"plaza_bodies\":%d,\"chant\":\"%s\",\"reason\":\"%s\"}"),Pass?TEXT("true"):TEXT("false"),Checks,Mode?*Mode->DifficultyName.ToString():TEXT("none"),Mode?Mode->Difficulty.TimeLimitSeconds:0,Mode&&Mode->Enemies?Mode->Enemies->MurderKGunmenSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKPunksSpawned:-1,WallPunks,Mode&&Mode->Enemies?Mode->Enemies->MurderKBumsSpawned:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKFightSpots:-1,Mode&&Mode->Enemies?Mode->Enemies->MurderKAmbientPolice:-1,Mode&&Mode->Enemies&&Mode->Enemies->bMurderKKnifeSpawned?TEXT("true"):TEXT("false"),Store?Store->Dancers:-1,Store?Store->Rioters:-1,Store?Store->BodiesDown:-1,Store?*Store->ShoutText:TEXT(""),Reason);ConsoleCommand(TEXT("quit"));};
 #define MKCHECK(C,R) if(!(C)){End(false,TEXT(R));return;}else{Checks++;}
  MKCHECK(Mode&&Bike&&Mode->Quest&&Mode->Enemies,"Missing live game state");
- const float Expected=Mode->DifficultyName==TEXT("Easy")?210.f:(Mode->DifficultyName==TEXT("Medium")?180.f:150.f);
+ // Trimmed 2026-09-19: Elliott, "the game is 2 min too long across the board".
+ // Every run was two minutes longer than it needed to be, so each row lost 120
+ // seconds - Easy 3:30->1:30, Medium 3:00->1:00, Hard 2:30->0:30.
+ const float Expected=Mode->DifficultyName==TEXT("Easy")?90.f:(Mode->DifficultyName==TEXT("Medium")?60.f:30.f);
  MKCHECK(FMath::IsNearlyEqual(Mode->Difficulty.TimeLimitSeconds,Expected),"Difficulty timer is stale");
  MKCHECK(Store&&Store->StoreSign&&Store->StoreSign->Text.ToString()==TEXT("MURDER K"),"Murder K landmark or sign missing");
  MKCHECK(Store->StoreMass&&Store->StoreMass->GetRelativeLocation().Y<0,"Murder K is not on the east side of the trail");
@@ -93,7 +96,7 @@ void ABattleMacController::TickMurderKAudit(float Dt){
  MKCHECK(Mode->Enemies->MurderKPunksSpawned==ExpectedPunks&&Mode->Enemies->MurderKFightSpots==3,"Murder K punk crowd or fight spots missing");
  MKCHECK(Mode->Enemies->MurderKBumsSpawned==3,"Murder K sleeping bums missing");
  MKCHECK(Mode->Enemies->MurderKAmbientPolice==(Mode->DifficultyName==TEXT("Easy")?2:4),"Murder K ambient police missing");
- End(true,TEXT("Landmark, four-minute timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass"));
+ End(true,TEXT("Landmark, the trimmed 90/60/30 timer family, a full plaza riot and dance party, three brawls, a six-punk shoot-through wall, ambient non-taser police and the difficulty encounter all pass"));
 #undef MKCHECK
 #endif
 }

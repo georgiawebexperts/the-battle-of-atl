@@ -1,0 +1,80 @@
+Build 151 - the controller, and two gates that had been measuring the machine.
+
+Sweep: Scripts/run_quick_audits.sh against
+  Saved/StagedBuilds/Mac/AuraPlayground.app/Contents/MacOS/AuraPlayground
+Run 2026-09-19 10:07-10:19, 31 entries (BattleGamepadAudit is the new one).
+This is the sweep's own console transcript.
+
+-- BattleCurseAudit: pass
+-- BattleTreeRideAudit: pass
+-- Realistic-BattleTreeRideAudit: pass
+-- BattleTroubleAudit: pass
+-- BattleSteeringAudit: pass
+-- BattleSleeperAudit: pass
+-- BattleGrassAudit: pass
+-- BattleBikeCarAudit: pass
+-- BattleMurderKAudit: pass
+-- BattlePickupAudit: pass
+-- BattleSpiritAudit: pass
+-- BattleKrogCrashAudit: pass
+-- BattleDuckAudit: pass
+-- BattleSpeedAudit: pass
+-- BattleTimeAudit: pass
+-- BattleDiscAudit: pass
+-- BattleMeleeAudit: pass
+-- BattleDiagonalAudit: pass
+-- BattleGamepadAudit: pass
+-- BattlePatioAudit: pass
+-- BattleTunnelHazardAudit: pass
+-- BattleTrailModeAudit: pass
+-- BattleSkaterAudit: pass
+-- BattleDroneAudit: pass
+-- BattleFrisbeeAudit: pass
+-- BattlePanicAudit: pass
+-- BattleSpareBikeAudit: pass
+-- BattleTutorialAudit: pass
+-- BattleMarketImpactAudit: pass
+-- BattleScooterTrafficAudit: pass
+-- BattleMusicAudit: pass
+
+31 of 31 on the first pass. No flake line, no retry, no timeout.
+
+The previous sweep of this build (before the two fixes below) was 29 of 31 with
+two load-sensitive reds that both passed alone on the same binary. They were
+fixed rather than re-run, and both are green above:
+
+- BattlePatioAudit: "route exhausted without a win" after 157 authored points
+  with the tunnel never entered (closest_entry_cm 4609). It walks the course by
+  placing the bike on each authored point and letting one frame pass, so how much
+  of the checkpoint state advances per point depends on the frame. It now walks
+  the route up to three times before reporting a failure.
+- BattleSkaterAudit: "No on-foot rider six seconds after the bike parked", with
+  the log showing the pawn still BattleBike_2147482372 for the whole window -
+  parked, health 100, recovery 0. The park-and-hand-over is asynchronous; the
+  wait is twenty seconds now and the stage timeout matches.
+
+Neither fix weakens what the gate asserts; both remove a wall-clock budget from a
+stage that is waiting on the game.
+
+## The controller
+
+From the assembled share, which is what the Desktop shortcut runs
+(/Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 151):
+
+  -- BattleGamepadAudit: pass
+  {"passed":true,"checks":10,"pedal":true,"steer_analog":0.33,"brake_reverse":true,
+   "trigger_fired":true,"a_hop":true,"shoulder_gear":true,"left_trigger_boost":true,
+   "y_horn":true,"stick_walk_cm":278,"stick_look_deg":139}
+
+Ten checks, driven entirely by synthetic gamepad input through
+APlayerController::InputKey with a gamepad device id: the left stick pedals the
+bike, half a stick arrives as a part-lock turn (0.33 - the engine's AxisConfig
+dead zone rescales it, which is why the assertion is "a fraction, not full lock"),
+stick-back brakes and asks for reverse, the right trigger fires, A hops after a
+run-up, a shoulder shifts a gear, the left trigger boosts, Y sounds the horn, and
+on foot the left stick walks the rider 278 cm while the right stick turns the
+head 139 degrees.
+
+NOT proven here, and it is the honest gap: that a physical controller is plugged
+in and seen by macOS. Everything above is the wiring and the introspection.
+Elliott's pad is the acceptance.

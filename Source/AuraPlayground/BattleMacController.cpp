@@ -104,6 +104,20 @@ void TickBattlePropProbe(APlayerController* PC,float Dt);
 void TickBattlePanelProbe(APlayerController* PC,float Dt);
 void TickBattleTunnelHazardAudit(APlayerController* PC,float Dt);
 void TickBattleAimAudit(APlayerController* PC,float Dt);
+void TickGamepadAudit(APlayerController* PC,float Dt);
+void GamepadAuditInject(APlayerController* PC,float Dt);
+void ABattleMacController::TickActor(float DeltaSeconds,ELevelTick TickType,FActorTickFunction& ThisTickFunction){
+#if !UE_BUILD_SHIPPING
+ // A synthetic pad has to be pushed in before this frame's input processing, the
+ // way a real device's samples arrive. Injecting it from PlayerTick - which runs
+ // after TickPlayerInput - is a frame too late: the pawn ticks before the
+ // controller, and a gamepad axis is cleared again when a frame arrives without
+ // a fresh sample, so the bike never saw the stick while this audit could read
+ // it back perfectly. See BattleGamepadAudit.cpp.
+ if(TickType==LEVELTICK_All&&FParse::Param(FCommandLine::Get(),TEXT("BattleGamepadAudit")))GamepadAuditInject(this,DeltaSeconds);
+#endif
+ Super::TickActor(DeltaSeconds,TickType,ThisTickFunction);
+}
 void TickBattleDuckAudit(APlayerController* PC,float Dt);
 void TickBattleSkylineAudit(APlayerController* PC,float Dt);
 void TickBattleKrogCrashAudit(APlayerController* PC,float Dt);
@@ -126,6 +140,7 @@ void ABattleMacController::PlayerTick(float Dt){
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSpeedAudit")))TickBattleSpeedAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleMusicAudit")))BattleMusic::TickAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleAimAudit")))TickBattleAimAudit(this,Dt);
+ if(FParse::Param(FCommandLine::Get(),TEXT("BattleGamepadAudit")))TickGamepadAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleDuckAudit")))TickBattleDuckAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleSkylineAudit")))TickBattleSkylineAudit(this,Dt);
  if(FParse::Param(FCommandLine::Get(),TEXT("BattleKrogCrashAudit")))TickBattleKrogCrashAudit(this,Dt);
@@ -336,7 +351,10 @@ void ABattleMacController::ShowMenu(FString Page){
   Label(TEXT("Select a difficulty to start a new ride."),18,FLinearColor::White);
   Button(TEXT("ELLISON OUTFIT  |  ")+BattleRiderStyleName()+TEXT("  |  CHANGE"),[this](){CycleRiderStyle();});
   if(auto* Table=LoadObject<UDataTable>(nullptr,TEXT("/Game/BattleForTheA/Data/DT_Difficulty.DT_Difficulty")))for(FName Name:{FName(TEXT("Easy")),FName(TEXT("Medium")),FName(TEXT("Hard"))}){
-   if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %.0f MIN  |  %s"),*Name.ToString(),Row->TimeLimitSeconds/60,*Row->Warning),[this,Name](){StartDifficulty(Name);});
+   // The budget is under an hour, and since the 2026-09-19 two-minute trim it is
+   // under two minutes on the hardest row, where "%.0f MIN" printed "0 MIN".
+   // Show the real clock as M:SS instead of rounding it away.
+   if(const auto* Row=Table->FindRow<FBattleDifficultyRow>(Name,TEXT("Level select")))Button(FString::Printf(TEXT("%s  |  %s  |  %s"),*Name.ToString(),*BattleRecords::Format(Row->TimeLimitSeconds),*Row->Warning),[this,Name](){StartDifficulty(Name);});
    const float Best=BattleRecords::Best(Name);if(Best>0)Label(TEXT("BEST RUN  ")+BattleRecords::Format(Best),16,FLinearColor(1,.7,.35));
   }
   Label(TEXT("Difficulty changes the timer, crowds, enemy pressure, weapon supplies and search range."),14,FLinearColor(.7,.72,.75));

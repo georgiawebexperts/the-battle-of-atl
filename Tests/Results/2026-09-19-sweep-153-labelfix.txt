@@ -1,0 +1,67 @@
+Build 153, label correction - the on-screen build tag now reads 153, matching the
+bundle that shipped. The game logic is untouched by this commit: BattleBuild.h
+carried BUILD 152 while the package, the share folder and the bundle all said
+153, so the HUD, the opening screen, the Mac controller screen and the park
+splash disagreed with the shipped artifact. DefaultGame.ini moves to 0.153.0-dev
+so the version stamp used by the finalizer agrees with it.
+
+## The standard sweep
+
+Scripts/run_quick_audits.sh against
+  /Volumes/Adam Assets/Unreal/Builds/Share/The Battle of ATL Mac Playtest 153/
+    The Battle of ATL.app/Contents/MacOS/AuraPlayground
+Run 2026-09-19 20:26-20:43, 31 entries.
+
+-- BattleCurseAudit: pass
+-- BattleTreeRideAudit: pass
+-- Realistic-BattleTreeRideAudit: pass
+-- BattleTroubleAudit: flaked - "Officer failed actual navigation pursuit",
+   passed alone on the sweep's own retry (BattleTroubleAudit-retry.log)
+-- BattleSteeringAudit: pass
+-- BattleSleeperAudit: pass
+-- BattleGrassAudit: pass
+-- BattleBikeCarAudit: pass
+-- BattleMurderKAudit: pass
+-- BattlePickupAudit: pass
+-- BattleSpiritAudit: pass
+-- BattleKrogCrashAudit: pass
+-- BattleDuckAudit: pass
+-- BattleSpeedAudit: pass
+-- BattleTimeAudit: pass
+-- BattleDiscAudit: pass
+-- BattleMeleeAudit: pass
+-- BattleDiagonalAudit: pass
+-- BattleGamepadAudit: pass
+-- BattlePatioAudit: pass
+-- BattleTunnelHazardAudit: pass
+-- BattleTrailModeAudit: pass
+-- BattleSkaterAudit: pass
+-- BattleDroneAudit: red twice in the sweep ("Pistol shot at 35m failed",
+   off_target_cm=2449.1 then no verdict), green on a re-run alone
+-- BattleFrisbeeAudit: pass
+-- BattlePanicAudit: pass
+-- BattleSpareBikeAudit: pass
+-- BattleTutorialAudit: pass
+-- BattleMarketImpactAudit: pass
+-- BattleScooterTrafficAudit: pass
+-- BattleMusicAudit: pass
+
+Both reds are the documented flake signature this project already carries - red
+inside the sweep, green on its own - and neither is reachable from a change to a
+compile-time display string. BattleDroneAudit was re-run alone after the sweep:
+
+-- BattleDroneAudit (alone, 2026-09-19 20:44): fail on the first attempt with the
+   same signature, PASS alone on the retry (BattleDroneAudit-retry.log)
+
+For comparison, the same 31 entries on the same code went 31/31 first try at
+16:47 against Saved/StagedBuilds (2026-09-19-sweep-153-cooked.txt). The share
+copy runs from the external volume, which is the slower of the two paths.
+
+## Label evidence
+
+The shipped binary is checked directly rather than by eye. TCHAR on this platform
+is UTF-16, which is why `strings` cannot see the tag:
+
+  utf-16-le  'BUILD 153'                x2
+  utf-16-le  'VERSION 1  *  BUILD 153'  x1
+  'BUILD 152' - zero occurrences

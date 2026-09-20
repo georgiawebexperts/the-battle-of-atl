@@ -1,0 +1,14 @@
+{
+  "text": "Hey! Watch it!",
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "voice": "ash",
+  "speed": 1.3,
+  "instructions": "Voice Affect: a young rider yelping in pain. Tone: shocked, sharp, immediate. Emotion: hurt and irritated. Pacing: very fast, the opening cry first, no pause after it. Emphasis: the opening cry. Delivery: one burst, clipped, no laughter, no extra words.",
+  "ai_generated": true,
+  "duration_seconds": 1.01,
+  "trim": "Scripts/normalize_voice_wav.py, 30 ms lead / 70 ms tail",
+  "transcript": "Hey, watch it!",
+  "transcript_matches": true,
+  "validation": "Automatic transcription and duration; not a listening review",
+  "author": "2026-09-19 [codex-maclaptop]"
+}

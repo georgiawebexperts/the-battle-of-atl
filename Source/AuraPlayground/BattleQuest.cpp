@@ -94,9 +94,18 @@ bool ABattleQuest::PlaceArtifact(){
   Body->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BeltLineGlide/Materials/M_Rubber.M_Rubber")));
   auto* Screen=NewObject<UStaticMeshComponent>(Phone);Screen->SetupAttachment(Body);Screen->SetStaticMesh(Cube);Screen->SetRelativeLocation(FVector(0,-53,0));Screen->SetRelativeScale3D(FVector(.84,.08,.83));Screen->SetCollisionEnabled(ECollisionEnabled::NoCollision);Screen->SetCanEverAffectNavigation(false);Screen->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/BattleForTheA/Materials/M_ShotGlow.M_ShotGlow")));Screen->RegisterComponent();
   auto* Light=NewObject<UPointLightComponent>(Phone);Light->SetupAttachment(Body);Light->SetIntensity(180);Light->SetAttenuationRadius(220);Light->SetLightColor(FLinearColor(1,.65,.05));Light->SetCastShadows(false);Light->RegisterComponent();
-  Artifact=Phone;Phone->Tags.Add(TEXT("BattleArtifact"));return true;
+ Artifact=Phone;Phone->Tags.Add(TEXT("BattleArtifact"));return true;
  }
  return false;
+}
+// Elliott, 2026-09-19: "when I jump off the bike it would be nice to be heading
+// in the direction I should be going". On foot the direction that matters is
+// where the watch is steering, and on a bending trail the next stretch of route
+// reads better than the far end of the course - but only once it is far enough
+// ahead to be a direction rather than a spot underfoot.
+FVector ABattleQuest::FootHeadingTarget(const FVector& From,const TArray<FVector>& RoutePoints,const FVector& RouteTarget,const FVector& Artifact){
+ for(const FVector& Point:RoutePoints)if(FVector::Dist2D(Point,From)>=1000.f)return Point;
+ return RouteTarget.IsNearlyZero()?Artifact:RouteTarget;
 }
 void ABattleQuest::RefreshRoute(){
  RoutePoints.Reset();auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0);if(!Pawn)return;

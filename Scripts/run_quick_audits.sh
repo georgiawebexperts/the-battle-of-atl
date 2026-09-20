@@ -59,6 +59,10 @@ AUDITS=(
   # The two-keys-at-once complaint: holds W, then W+D, then W+A on foot and
   # measures the direction actually travelled against where the camera looks.
   "BattleDiagonalAudit||"
+  # The controller: the pad drives the same riding input the keyboard does, and
+  # the audit pushes real gamepad keys and axes to prove it rather than asserting
+  # that mappings exist.
+  "BattleGamepadAudit||"
   # End-to-end guard on the ending: walks the whole authored course and requires
   # the win to commit at the patio. This is the audit that would have caught a
   # rider reaching the party with no result screen.
@@ -85,6 +89,72 @@ AUDITS=(
 
 FAILED=0
 FLAKY=0
+
+# Audits that exist but are not in the list above. Some were left out on purpose
+# (the four long route audits), some are fixtures another harness drives, and
+# some were simply never triaged - and "outside the sweep" is exactly how
+# BattleSkaterAudit, BattleDroneAudit and BattleFrisbeeAudit stayed red without
+# anyone noticing. BattleFinishAudit is the sharpest example: it now guards the
+# ghost rider, a shipped feature, and nothing ran it in a sweep.
+#
+#   BATTLE_SWEEP_EXTENDED=1 zsh Scripts/run_quick_audits.sh <binary>
+#
+# They run with a tighter timeout by default, because an untriaged audit that
+# hangs should cost two minutes rather than seven.
+#
+# Three audits are deliberately NOT here and cannot be added back: they read
+# actors that only exist in a review map, and only PiedmontWorld is cooked into
+# the share, so against the sweep's map they answer "Review actors missing",
+# "Expected opposing lane candidates" or nothing at all. Those three reds sat in
+# the first extended run as if the game were broken. Each has its own harness:
+#
+#   BattleMonroeOccupancyAudit    python3 Scripts/test_native_monroe_occupancy.py
+#   BattleTrafficPopulationAudit  python3 Scripts/test_native_traffic_population.py
+#   BattleRoadLaneAudit           zsh Scripts/run_road_lane_audit.sh
+#
+# All three are green there (2026-09-19: occupancy 2.001 s held, population
+# spawned 9 with a signal wait, lanes 2 cars over 81397 cm).
+if [[ "${BATTLE_SWEEP_EXTENDED:-0}" == "1" ]]; then
+  AUDITS+=(
+    "BattleAimAudit||"
+    "BattleAmmoAudit||"
+    "BattleFinishAudit||"
+    "BattleFootAudit||"
+    "BattleGeographyAudit||"
+    "BattleHealthAudit||"
+    "BattleHornAudit||"
+    "BattleInventoryAudit||"
+    "BattleJumpAudit||"
+    "BattleKnifeAudit||"
+    "BattleSkateAudit||"
+    "BattleSkylineAudit||"
+    "BattleStorefrontAudit||"
+    "BattleSwimAudit||"
+    "BattleWatchAudit||"
+    "BattleZombieAudit||"
+    "BattleConnectorAudit||"
+    "BattleCrossingReservationAudit||"
+    "BattleEntranceWalkAudit||"
+    "BattlePhoneRideAudit||"
+    "BattlePlayerCrashAudit||"
+    "BattlePotholeAudit||"
+    "BattlePotholeRideAudit||"
+    "BattleZombiePopulationAudit||"
+    "BattleAmbientBenchAudit||"
+    "BattleAmbientSleeperAudit||"
+    "BattleBenchFireAudit||"
+    "BattleBenchIgnitionAudit||"
+    "BattleBenchReachAudit||"
+    "BattleRoadAmberAudit||"
+    "BattleRoadCarAudit||"
+    "BattleRoadCrossingAudit||"
+    "BattleRoadTrafficAudit||"
+    "BattleSleeperChaseAudit||"
+    "BattleSleeperSettleAudit||"
+    "BattleSleeperTriggerAudit||"
+  )
+  : "${BATTLE_AUDIT_TIMEOUT:=120}"
+fi
 
 # Launch one audit with a hard timeout. An audit that returns its verdict and
 # then fails to exit used to hang the whole sweep with no output at all:

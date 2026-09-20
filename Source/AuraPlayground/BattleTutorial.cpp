@@ -6,6 +6,7 @@
 #include "BattlePrideRoadCleanup.h"
 #include "BattleGateRoadCleanup.h"
 #include "BattleBike.h"
+#include "BattleInput.h"
 #include "BattleRider.h"
 #include "BattleQuest.h"
 #include "Components/InstancedStaticMeshComponent.h"
@@ -186,7 +187,9 @@ void ABattleTutorial::Tick(float Dt){
  const FVector Current=P->GetActorLocation();
  if(M->bTutorialActive){
   const float D=FVector::Dist2D(Current,PreviousPosition);if(D<200)M->PracticeDistance+=D;
-  if(auto* C=UGameplayStatics::GetPlayerController(this,0)){M->bPracticeBraked|=C->IsInputKeyDown(EKeys::SpaceBar);M->bPracticeHorn|=C->IsInputKeyDown(EKeys::H);M->bPracticeSteered|=C->IsInputKeyDown(EKeys::A)||C->IsInputKeyDown(EKeys::D)||C->IsInputKeyDown(EKeys::Left)||C->IsInputKeyDown(EKeys::Right);}
+  // The practice gates count the pad too, or a controller player would be told
+  // they had not braked while braking.
+  if(auto* C=UGameplayStatics::GetPlayerController(this,0)){M->bPracticeBraked|=BattleInput::KeyBrake(C)||BattleInput::KeyBack(C)||BattleInput::PadBack(C)>0.f||BattleInput::LeftTrigger(C)>0.f;M->bPracticeHorn|=C->IsInputKeyDown(EKeys::H)||C->IsInputKeyDown(EKeys::Gamepad_FaceButton_Top);M->bPracticeSteered|=BattleInput::Steer(C)!=0.f;}
   M->bPracticeDismounted|=P->IsA<ABattleRider>();
  }
  for(int I=0;I<UE_ARRAY_COUNT(BattleTutorialBlock::BarrierCenters);I++){

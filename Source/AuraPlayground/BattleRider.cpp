@@ -12,6 +12,7 @@
 #include "BattleShot.h"
 #include "BattleDisc.h"
 #include "BattleBike.h"
+#include "BattleQuest.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PoseableMeshComponent.h"
@@ -20,6 +21,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "BattleInput.h"
 #include "Kismet/GameplayStatics.h"
 namespace {
 void PoseThirdPersonGrip(UPoseableMeshComponent* Body,FVector Forward,float Weight,int32 WeaponSlot,FVector SupportGrip){
@@ -106,6 +108,26 @@ void ABattleRider::SetupPlayerInputComponent(UInputComponent* I){
  I->BindKey(EKeys::R,IE_Pressed,this,&ABattleRider::ReloadPistol);
  I->BindKey(EKeys::F,IE_Pressed,this,&ABattleRider::StartMelee);
  I->BindKey(EKeys::One,IE_Pressed,this,&ABattleRider::SelectPistol);I->BindKey(EKeys::Two,IE_Pressed,this,&ABattleRider::SelectShotgun);I->BindKey(EKeys::Three,IE_Pressed,this,&ABattleRider::SelectSMG);I->BindKey(EKeys::Five,IE_Pressed,this,&ABattleRider::SelectRifle);I->BindKey(EKeys::Four,IE_Pressed,this,&ABattleRider::SelectFrisbee);
+ // The pad, on foot, on the same handlers as the keys: A jump, B interact and
+ // get back on the bike, X reload, Y draw, left shoulder melee, right stick
+ // click crouch, the d-pad for weapons, and the triggers for aim and fire -
+ // which is the one place the layout differs from riding, and deliberately so:
+ // on a bike the left trigger is the boost, on foot it is the aim.
+ I->BindKey(EKeys::Gamepad_FaceButton_Bottom,IE_Pressed,this,&ABattleRider::StartJump);
+ I->BindKey(EKeys::Gamepad_FaceButton_Bottom,IE_Released,this,&ABattleRider::EndJump);
+ I->BindKey(EKeys::Gamepad_FaceButton_Right,IE_Pressed,this,&ABattleRider::Interact);
+ I->BindKey(EKeys::Gamepad_FaceButton_Left,IE_Pressed,this,&ABattleRider::ReloadPistol);
+ I->BindKey(EKeys::Gamepad_FaceButton_Top,IE_Pressed,this,&ABattleRider::DrawWeapon);
+ I->BindKey(EKeys::Gamepad_LeftShoulder,IE_Pressed,this,&ABattleRider::StartMelee);
+ I->BindKey(EKeys::Gamepad_RightThumbstick,IE_Pressed,this,&ABattleRider::ToggleCrouch);
+ I->BindKey(EKeys::Gamepad_LeftTrigger,IE_Pressed,this,&ABattleRider::AimOn);
+ I->BindKey(EKeys::Gamepad_LeftTrigger,IE_Released,this,&ABattleRider::AimOff);
+ I->BindKey(EKeys::Gamepad_RightTrigger,IE_Pressed,this,&ABattleRider::PullTrigger);
+ I->BindKey(EKeys::Gamepad_RightTrigger,IE_Released,this,&ABattleRider::ReleaseTrigger);
+ I->BindKey(EKeys::Gamepad_DPad_Up,IE_Pressed,this,&ABattleRider::SelectPistol);
+ I->BindKey(EKeys::Gamepad_DPad_Right,IE_Pressed,this,&ABattleRider::SelectShotgun);
+ I->BindKey(EKeys::Gamepad_DPad_Down,IE_Pressed,this,&ABattleRider::SelectSMG);
+ I->BindKey(EKeys::Gamepad_DPad_Left,IE_Pressed,this,&ABattleRider::SelectRifle);
 }
 bool ABattleRider::CanUseWeapon() const{const auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this));return Health>0&&(!ParkedBike||(ParkedBike->RiderHealth>0&&ParkedBike->StunRemaining<=0))&&!UGameplayStatics::IsGamePaused(this)&&!bSwimming&&GetController()&&(!Mode||(Mode->StartCountdown<=0&&!Mode->bRunEnded));}
 void ABattleRider::BeginStepOff(const FVector& From,const FVector& To,float Seconds){
@@ -128,9 +150,10 @@ void ABattleRider::Tick(float Dt){
 
  DrawRemaining=FMath::Max(0.f,DrawRemaining-Dt);
  if(auto* PC=Cast<APlayerController>(GetController())){
-  GetCharacterMovement()->MaxWalkSpeed=(PC->IsInputKeyDown(EKeys::LeftShift)?700:400);
-  bAiming=PC->IsInputKeyDown(EKeys::RightMouseButton)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
-  if(PC->IsInputKeyDown(EKeys::LeftMouseButton))Fire();
+  // Sprint, aim and fire answer to the pad as well as the keys. See BattleInput.h.
+  GetCharacterMovement()->MaxWalkSpeed=(BattleInput::Sprint(PC)?700:400);
+  bAiming=BattleInput::Aim(PC)&&bWeaponDrawn&&DrawRemaining<=0&&CanUseWeapon()&&ReloadRemaining<=0&&MeleeRemaining<=0;
+  if(BattleInput::Fire(PC))Fire();
  }
  bUseControllerRotationYaw=bWeaponDrawn;
  GetCharacterMovement()->bOrientRotationToMovement=!bWeaponDrawn;
@@ -230,12 +253,26 @@ bool ABattleBike::Dismount(){
  Person->BeginStepOff(Saddle,Exit);
  Ride->BoostRemaining=0;Ride->Speed=Ride->ReverseSpeed=Ride->Pedal=Ride->Steer=Ride->Brake=0;Ride->bReverseRequested=false;Ride->StopMovementImmediately();Ride->DisableMovement();bParked=true;Visual->SetRelativeRotation(FRotator::ZeroRotator);Rider->SetVisibility(false,true);
  ReloadTimer=0;LeanAngle=0;Ride->SmoothedSteer=Ride->TurnRateDegrees=0;Person->ParkedBike=this;Person->Health=RiderHealth;Person->RestoreLoadout();Person->GetCapsuleComponent()->IgnoreActorWhenMoving(this,true);PC->Possess(Person);
- // On foot the player is auto-aimed at the nearest threat, or the bike, and
- // told that the mouse now drives the camera.
- FVector Aim=GetActorLocation();float Best=3400.f;
+ // On foot the player is auto-aimed at the nearest threat, and told that the
+ // mouse now drives the camera.
+ // Elliott, 2026-09-19: "when I jump off the bike it would be nice to be
+ // heading in the direction I should be going". The default used to be the
+ // bike's own spot, and the bike is directly behind the rider the moment he
+ // steps off it, so the camera came up looking back down the trail he had just
+ // ridden. Point him down the route he is meant to be riding instead - the next
+ // stretch of trail, not the far end of the course - and let a pursuer close
+ // enough to matter take the aim back, the way it always could.
+ auto* Park=Cast<ABattleParkMode>(UGameplayStatics::GetGameMode(this));
+ FVector Aim=Park&&Park->Quest?ABattleQuest::FootHeadingTarget(Exit,Park->Quest->RoutePoints,Park->Quest->RouteTargetLocation,Park->Quest->ArtifactLocation):Exit+GetActorForwardVector()*1200.f;
+ float Best=3400.f;
  for(TActorIterator<ABattlePolice> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
  for(TActorIterator<ABattleZombie> It(GetWorld());It;++It)if(!It->bDead){const float D=FVector::Dist2D(It->GetActorLocation(),Exit);if(D<Best){Best=D;Aim=It->GetActorLocation();}}
- PC->SetControlRotation(FRotator(0,(Aim-Exit).Rotation().Yaw,0));
+ // The body turns with the camera, so the pawn he is now driving does not read
+ // as standing in the saddle's orientation with the view cranked 180 degrees
+ // round from it.
+ const float Facing=(Aim-Exit).Rotation().Yaw;
+ Person->SetActorRotation(FRotator(0,Facing,0));
+ PC->SetControlRotation(FRotator(0,Facing,0));
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))
   // Elliott: "sometimes when you get off the bike its disorienting - it should
   // tell the person to grab the mouse". The hint was already here, but it took

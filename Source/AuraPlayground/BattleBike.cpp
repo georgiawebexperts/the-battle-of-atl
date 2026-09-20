@@ -60,6 +60,9 @@ ABattleBike::ABattleBike(const FObjectInitializer& Init):Super(Init.SetDefaultSu
  Inventory.SetNum(BattleWeapons::Count);Inventory[0].Owned=true;Inventory[0].Magazine=17;Inventory[0].Reserve=0;
  AsphaltAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("AsphaltTires"));GrassAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("GrassTires"));MotorAudio=CreateDefaultSubobject<UAudioComponent>(TEXT("ElectricMotor"));
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()}){Audio->SetupAttachment(GetCapsuleComponent());Audio->bAutoActivate=false;Audio->SetVolumeMultiplier(0);}
+ // Ellison's own voice: no attenuation on purpose, so a hit sounds like it
+ // happened to the player rather than to something down the road.
+ HurtVoice=CreateDefaultSubobject<UAudioComponent>(TEXT("RiderVoice"));HurtVoice->SetupAttachment(GetCapsuleComponent());HurtVoice->bAutoActivate=false;
  PrimaryActorTick.bCanEverTick=true;bUseControllerRotationYaw=false;
  Capsule=GetCapsuleComponent();Capsule->InitCapsuleSize(32,96);Capsule->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
  GetMesh()->SetVisibility(false);GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -127,14 +130,32 @@ void ABattleBike::BeginPlay(){
  CheckpointTransform=GetActorTransform();Ride->LastSafeLocation=GetActorLocation();PreviousFeedbackLocation=GetActorLocation();
  RideEffects=GetWorld()->SpawnActor<ABattleRideFX>();
  AsphaltAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Asphalt.S_Asphalt")));GrassAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Grass.S_Grass")));MotorAudio->SetSound(LoadObject<USoundBase>(nullptr,TEXT("/Game/BattleForTheA/Audio/S_Motor.S_Motor")));
+ // Three takes on being hit, loaded by path the way the officer's warning line
+ // is, so a missing asset degrades to silence instead of breaking the build.
+ for(const TCHAR* Take:{TEXT("S_RiderHurt1"),TEXT("S_RiderHurt2"),TEXT("S_RiderHurt3")})if(auto* Line=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/BattleForTheA/Audio/%s.%s"),Take,Take)))HurtVoiceLines.Add(Line);
  for(auto* Audio:{AsphaltAudio.Get(),GrassAudio.Get(),MotorAudio.Get()})Audio->Play();
  for(TActorIterator<AActor> It(GetWorld());It;++It)if(It->ActorHasTag(TEXT("RideWater")))Capsule->IgnoreActorWhenMoving(*It,true);
  if(auto* Mesh=Cast<USkeletalMesh>(Rider->GetSkinnedAsset())){
   const auto& Ref=Mesh->GetRefSkeleton();for(int32 I=0;I<Ref.GetNum();++I){Parents.Add(Ref.GetParentIndex(I));BoneNames.Add(Ref.GetBoneName(I));FTransform T=Ref.GetRefBonePose()[I];if(Parents[I]>=0)T=T*ReferencePose[Parents[I]];ReferencePose.Add(T);}
  }
 }
+#include "BattleInput.h"
 void ABattleBike::SetupPlayerInputComponent(UInputComponent* I){
  Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::P,IE_Pressed,this,&ABattleBike::ToggleHandling);I->BindKey(EKeys::J,IE_Pressed,this,&ABattleBike::HopBike);I->BindKey(EKeys::H,IE_Pressed,this,&ABattleBike::Horn);I->BindKey(EKeys::LeftShift,IE_Pressed,this,&ABattleBike::StartBoost);I->BindKey(EKeys::E,IE_Pressed,this,&ABattleBike::Interact);I->BindKey(EKeys::R,IE_Pressed,this,&ABattleBike::GearUp);I->BindKey(EKeys::Q,IE_Pressed,this,&ABattleBike::GearDown);I->BindKey(EKeys::Tab,IE_Pressed,this,&ABattleBike::ToggleCamera);
+ // The pad, on the same handlers the keys use - so every one of these is the
+ // same code path the keyboard has been exercising, not a second implementation
+ // that can drift. A hop, boost, get off, horn, gears and the camera toggle, in
+ // the layout a rider would expect: A hop, X boost, B get off, Y horn, shoulders
+ // for gears, right stick click for the camera. See BattleInput.h for the
+ // sticks and triggers, which are polled in Tick because they are analog.
+ I->BindKey(EKeys::Gamepad_FaceButton_Bottom,IE_Pressed,this,&ABattleBike::HopBike);
+ I->BindKey(EKeys::Gamepad_FaceButton_Left,IE_Pressed,this,&ABattleBike::StartBoost);
+ I->BindKey(EKeys::Gamepad_LeftTrigger,IE_Pressed,this,&ABattleBike::StartBoost);
+ I->BindKey(EKeys::Gamepad_FaceButton_Right,IE_Pressed,this,&ABattleBike::Interact);
+ I->BindKey(EKeys::Gamepad_FaceButton_Top,IE_Pressed,this,&ABattleBike::Horn);
+ I->BindKey(EKeys::Gamepad_RightShoulder,IE_Pressed,this,&ABattleBike::GearUp);
+ I->BindKey(EKeys::Gamepad_LeftShoulder,IE_Pressed,this,&ABattleBike::GearDown);
+ I->BindKey(EKeys::Gamepad_RightThumbstick,IE_Pressed,this,&ABattleBike::ToggleCamera);
 }
 void ABattleBike::ToggleCamera(){if(bCrashActive)return;bFirstPerson=!bFirstPerson;Chase->SetActive(!bFirstPerson);Handlebar->SetActive(bFirstPerson);Rider->SetVisibility(!bFirstPerson,true);}
 void ABattleBike::ToggleHandling(){
@@ -160,11 +181,16 @@ void ABattleBike::Tick(float Dt){
  Chase->SetFieldOfView(FMath::FInterpTo(Chase->FieldOfView,Ride->BoostRemaining>0?98.f:85.f,Dt,5));
  Handlebar->SetFieldOfView(FMath::FInterpTo(Handlebar->FieldOfView,Ride->BoostRemaining>0?108.f:95.f,Dt,5));
  if(auto* PC=Cast<APlayerController>(GetController())){
-  if(PC->IsInputKeyDown(EKeys::LeftMouseButton))FirePistol();
-  Ride->Pedal=(PC->IsInputKeyDown(EKeys::W)||PC->IsInputKeyDown(EKeys::Up))?1:0;
-  Ride->Steer=(PC->IsInputKeyDown(EKeys::D)||PC->IsInputKeyDown(EKeys::Right)?1.f:0.f)-(PC->IsInputKeyDown(EKeys::A)||PC->IsInputKeyDown(EKeys::Left)?1.f:0.f);
-  Ride->bReverseRequested=(PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down))&&!PC->IsInputKeyDown(EKeys::SpaceBar);
-  Ride->Brake=(PC->IsInputKeyDown(EKeys::SpaceBar)||PC->IsInputKeyDown(EKeys::S)||PC->IsInputKeyDown(EKeys::Down))?1:0;
+  // Keyboard and pad are the same four lines now. The stick is read as a
+  // direction for the pedal and the brake, and as an angle for the steering,
+  // which is the one place a controller is better than the keys: A and D can
+  // only ask for full lock, the stick asks for the turn.
+  const float PadPedal=BattleInput::PadPedal(PC),PadBack=BattleInput::PadBack(PC);
+  if(BattleInput::Fire(PC))FirePistol();
+  Ride->Pedal=(BattleInput::KeyPedal(PC)||PadPedal>0.f)?1:0;
+  Ride->Steer=BattleInput::Steer(PC);
+  Ride->bReverseRequested=(BattleInput::KeyBack(PC)||PadBack>0.f)&&!BattleInput::KeyBrake(PC);
+  Ride->Brake=(BattleInput::KeyBrake(PC)||BattleInput::KeyBack(PC)||PadBack>0.f)?1:0;
  }
  if(auto* Mode=Cast<ABattleLabMode>(UGameplayStatics::GetGameMode(this)))if(Mode->bRunEnded||RiderHealth<=0||StunRemaining>0){Ride->Pedal=Ride->Steer=Ride->ReverseSpeed=0;Ride->bReverseRequested=false;}
  const float Fall=Ride->Recovery>0?FMath::Sin((2-Ride->Recovery)*PI/2):0;

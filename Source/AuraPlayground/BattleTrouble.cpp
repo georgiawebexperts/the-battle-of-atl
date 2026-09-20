@@ -60,6 +60,11 @@ bool ABattleBike::ApplyTaser(){
   if(Movement->IsFalling()){Movement->Velocity.X=0;Movement->Velocity.Y=0;}else{Movement->StopMovementImmediately();Movement->DisableMovement();}
  }
  Mode->AdjustRunTime(-10,TEXT("TASED"));RideImpact(.8f);
+ // A taser is an attack too, and it is the one that arrives without costing
+ // health, so it needs the yell and the red screen even though it never reaches
+ // ApplyRiderDamage. Without the flash here the one attack that cannot kill you
+ // was also the one attack that never told you it had landed.
+ PlayHurtVoice();DamageFlashRemaining=DamageFlashSeconds;
  UE_LOG(LogTemp,Display,TEXT("BattleTaser: hit=%d parked=%d time_penalty=10 stun=3"),TaserHits,bParked);return true;
 }
 void ABattleBike::UpdateStun(float Dt){
