@@ -1,6 +1,6 @@
 # Mac App Store release record
 
-Last updated 2026-09-16 [codex-maclaptop]
+Last updated 2026-09-19 [codex-maclaptop]
 
 ## Release identity
 
@@ -10,9 +10,11 @@ Last updated 2026-09-16 [codex-maclaptop]
 - Apple Team ID: `8HAG5A4GS7`
 - Apple account: `elliott@webexperts.com`
 - App Store Connect Apple ID: `6812874355`
-- App Store Connect record and explicit bundle ID are registered. Build 096 is uploaded, processed, assigned to the Public Beta group, and waiting for Apple’s external TestFlight review.
+- App Store Connect record and explicit bundle ID are registered. Build 096 is uploaded, processed, assigned to the Public Beta group, and **approved by Beta App Review** — verified live on 2026-09-19. It expires 90 days after upload, on or about 2026-12-15.
 - Public beta page: `https://webexperts.com/battleofatl`
-- Public TestFlight invitation: `https://testflight.apple.com/join/tpHVaTXK` (begins accepting testers after Apple approves Build 096)
+- Public TestFlight invitation: `https://testflight.apple.com/join/tpHVaTXK` — **still active on 2026-09-19**, with zero testers joined. Elliott is undecided between keeping it public and moving to private per-person email invitations, so it was deliberately left on. Retire it with TestFlight → External Testing → `Public Beta` → `Manage` → `Disable Public Link`.
+- Distribution state, read live on 2026-09-19: Build 96 in `Web Experts Internal` + `Public Beta`, **0 testers, 0 invites, 0 installs, 0 sessions, 0 crashes, 0 feedback**. Nobody has played the TestFlight build. Note that TestFlight serves Build 096, which is behind the local playtest build 153.
+- The "macOS 1.0 — Prepare for Submission" status in the apps list is the App Store release version, not the beta. Build 096 being approved for TestFlight does not submit 1.0.
 
 ## Submission guardrails
 
@@ -45,6 +47,7 @@ Last updated 2026-09-16 [codex-maclaptop]
 - Production bundle identity and sandbox-only, no-network entitlements are configured for Mac packages.
 - Development playtests remain locally signed. The Build 096 App Store candidate is signed with the Web Experts Mac App Distribution identity and packaged with the matching Mac Installer Distribution identity.
 - A clean Shipping package and runtime smoke test are required after each feature-complete candidate.
+- 2026-09-19 [codex-maclaptop] Read App Store Connect live and corrected this record. Build 096 is **Approved**, not Waiting for Review, and expires on or about 2026-12-15. The `Public Beta` external group holds **0 testers, 0 invites, 0 installs, 0 sessions, 0 crashes and 0 feedback** — nobody has played the TestFlight build. The public invitation link is still active and was deliberately left on, pending Elliott's decision between keeping the beta public and moving to private per-person email invitations. The "macOS 1.0 — Prepare for Submission" row in the apps list is the App Store release version and is separate from the beta. Invitation paths verified on screen: per-email, existing testers, and CSV import; Apple's limits are 10,000 external testers per app and 100 internal, and macOS TestFlight requires macOS 13 or later.
 - 2026-09-16 [codex-maclaptop] Build 096 packaged successfully in Shipping, launched under App Sandbox, and was staged at `/Volumes/Adam Assets/Unreal/Builds/AppStore/The Battle of ATL 0.96.0 Shipping/The Battle of ATL.app`. The staged candidate is ad-hoc signed until Xcode installs the Apple distribution identities.
 - 2026-09-16 [codex-maclaptop] Accepted the current Apple Developer Program agreement, registered `com.webexperts.battleofatl`, and created The Battle of ATL macOS app record (Apple ID `6812874355`).
 - 2026-09-16 [codex-maclaptop] Rebuilt the 1.4 GB Build 096 share ZIP with the v2 icon. `unzip -t` found no archive errors, and `codesign --verify --deep --strict` passed for both the share app and Shipping candidate.
