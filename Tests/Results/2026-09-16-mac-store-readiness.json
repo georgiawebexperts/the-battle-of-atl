@@ -11,6 +11,7 @@
     "production_map_only": true,
     "non_placeholder_metadata": true,
     "icon_complete": true,
+    "icon_current_brand": true,
     "license_inventory": true
   },
   "maps_to_cook": [
